@@ -1,0 +1,88 @@
+Liyuetongyi = {
+	icon = ger_mefo_bills
+
+	picture = GFX_decision_cat_generic_mefo_bills
+
+	allowed = {
+		original_tag = LYU
+	}
+} 
+cishashijian = {
+	icon = decision_category_ganyu_assassination
+	allowed = {
+		original_tag = LYU
+	}
+	visible = {
+		LYU = {has_country_flag = Gan_Cisha}
+	}
+	priority = 50
+}
+#DEBUG = {
+#	icon = ger_mefo_bills
+#
+#	picture = GFX_decision_cat_generic_mefo_bills
+#
+#	allowed = {
+#		original_tag = LYU
+#	}
+#} 
+ganyu_parliament = {
+	icon = ganyu_parliament_ui
+	allowed = {
+		original_tag = LYU
+	}
+	visible = {
+		LYU = { has_country_flag = Ganyu_parliamentflag_start }
+
+	}
+	visible_when_empty = yes
+	priority = 100
+	scripted_gui = ganyu_parliament_ui
+}
+ganyu_parliament_shouduan = {
+	icon = ganyu_parliament_ui
+	allowed = {
+		original_tag = LYU
+	}
+	visible = {
+		or = {
+			LYU = { has_country_flag = gan_zuopai_jianyi}
+			LYU = { has_country_flag = gan_tiaohepai_jianyi}
+			LYU = { has_country_flag = gan_youpai_jianyi}
+		}
+	}
+	priority = 99
+}
+
+
+
+
+
+
+
+
+
+
+
+LYU_mainline_Ganyu_decision_category = {
+
+	icon = power_struggle
+
+    scripted_gui = mainline_Ganyu_decision_ui
+	
+	visible = { 
+	    OR = { 
+		    has_country_flag = Ganyu_linshi_leader
+			has_country_flag = Ganyu_become_leader
+			has_country_flag = NingGuang_become_leader
+			has_country_flag = Keqing_become_leader
+  		}
+	}
+
+	allowed = {
+		original_tag = LYU
+	}
+	
+	priority = 100
+	
+}

@@ -1,0 +1,245 @@
+defined_text = {
+	name = GetqixingElectionOutcome
+	text = {
+		trigger = {
+			check_variable = { qixing_zhichilv < 0 }
+		}
+		localization_key = qixingElectionLost
+	}
+	text = {
+		trigger = {
+			check_variable = { var = qixing_zhichilv value = 0 compare = greater_than_or_equals }
+		}
+		localization_key = qixingElectionGained
+	}
+}
+defined_text = {
+	name = GetAssassinationPoint #根据刺杀度不同变化文本
+	text = {
+		trigger = {
+			check_variable = {
+				var = cisha
+				value = 30
+				compare = less_than
+			}
+		}
+		localization_key = assassination_stage_1
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = cisha
+				value = 50
+				compare = less_than
+			}
+			check_variable = {
+				var = cisha
+				value = 30
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = assassination_stage_2
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = cisha
+				value = 70
+				compare = less_than
+			}
+			check_variable = {
+				var = cisha
+				value = 50
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = assassination_stage_3
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = cisha
+				value = 90
+				compare = less_than
+			}
+			check_variable = {
+				var = cisha
+				value = 70
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = assassination_stage_4
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = cisha
+				value = 90
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = assassination_stage_5
+	}
+}
+
+defined_text = {
+	name = GetGuardPoint #根据安保度不同变化文本
+	text = {
+		trigger = {
+			check_variable = {
+				var = anbao
+				value = 30
+				compare = less_than
+			}
+		}
+		localization_key = guard_stage_1
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = anbao
+				value = 50
+				compare = less_than
+			}
+			check_variable = {
+				var = anbao
+				value = 30
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = guard_stage_2
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = anbao
+				value = 70
+				compare = less_than
+			}
+			check_variable = {
+				var = anbao
+				value = 50
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = guard_stage_3
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = anbao
+				value = 90
+				compare = less_than
+			}
+			check_variable = {
+				var = anbao
+				value = 70
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = guard_stage_4
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = anbao
+				value = 100
+				compare = less_than
+			}
+			check_variable = {
+				var = anbao
+				value = 90
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = guard_stage_5
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = anbao
+				value = 100
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = guard_stage_6
+	}
+}
+
+defined_text = {
+	name = GetAssassinationDesc #根据刺杀事件是否完成改变文本
+	text = {
+		trigger = {
+			LYU = {has_country_flag = Gan_Cisha}
+		}
+		localization_key = cishashijian_desc_1
+	}
+	text = {
+		trigger = {
+			NOT = {Lyu = {has_country_flag = Gan_Cisha}}
+		}
+		localization_key = cishashijian_desc_2
+	}
+}
+
+defined_text = {
+	name = GetGanyuFocus #根据甘雨是否转变，更改国策描述
+	text = {
+		trigger = {
+			LYU = {has_country_flag = Ganyu_Change}
+		}
+		localization_key = Ganyu_Focus_Change_desc2
+	}
+	text = {
+		trigger = {
+			NOT = {Lyu = {has_country_flag = Ganyu_Change}}
+		}
+		localization_key = Ganyu_Focus_Change_desc1
+	}
+}
+
+defined_text = {
+	name = GetAssassinationWeapon #根据极端分子准备程度不同，刺杀情形不同
+	
+#变量含义：
+#1、普通武器
+#2、至冬国先进武器
+#3、至冬国邪眼
+
+	text = {
+		trigger = {
+			check_variable = {
+				var = ganyu_assassination_weapon
+				value = 2
+				compare = less_than
+			}
+		}
+		localization_key = ganyu_assassination_event_desc_1
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = ganyu_assassination_weapon
+				value = 2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = ganyu_assassination_weapon
+				value = 3
+				compare = less_than
+			}
+		}
+		localization_key = ganyu_assassination_event_desc_2
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = ganyu_assassination_weapon
+				value = 3
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = ganyu_assassination_event_desc_3
+	}
+}
+

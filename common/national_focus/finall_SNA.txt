@@ -1,0 +1,687 @@
+focus_tree =
+{
+	id = SNA_final
+    country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SNA
+		}
+	}
+	focus = {
+		#鸣神已死，海神永生！
+		id = SNAFINAL_1	
+		icon = NoPicture
+		x = 6
+		y = 0
+		cost = 15
+        completion_reward = {
+             #自动跳过
+		}
+	 }
+	 focus = {
+		#内柔外刚，并非正路
+		id = SNAFINAL_2
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_1}
+		x = 6
+		y = 1
+		cost = 15
+        completion_reward = {
+              #解锁架空心海决议
+			  country_event = { id = FinSNA.2 }
+		}
+	 }	
+	 focus = {
+		#攘内攘外，紧要之事
+		id = SNAFINAL_3	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_2}
+		x = 2
+		y = 2
+		cost = 15
+        completion_reward = {
+            add_political_power = 100
+			add_offsite_building = { type = arms_factory level = 3 }	 
+			add_ideas = SNA_grain
+		} 
+	 }	
+	 focus = {
+		#海人之家，岂容外族？
+		id = SNAFINAL_4	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_2}
+		x = 6
+		y = 2
+		cost = 15
+        completion_reward = {
+             add_popularity = {
+					ideology = national_socialism
+					popularity = 0.1
+			}
+			add_popularity = {
+					ideology = liberalism
+					popularity = -0.1
+			}
+			custom_effect_tooltip = "radical"
+			hidden_effect =
+			{
+				if = 
+				{
+                       limit = {has_idea = SNA_trend_2}
+					   swap_ideas = {
+					          add_idea = SNA_trend_3
+							  remove_idea = SNA_trend_2
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_3}
+					   swap_ideas = {
+					          add_idea = SNA_trend_4
+							  remove_idea = SNA_trend_3
+				        }
+				}
+				else_if =
+				{
+                       limit = {has_idea = SNA_trend_4}
+					   swap_ideas = {
+					          add_idea = SNA_trend_4
+							  remove_idea = SNA_trend_5
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_1}
+					   swap_ideas = {
+					          add_idea = SNA_trend_2
+							  remove_idea = SNA_trend_1
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_5}
+					   swap_ideas = {
+					          add_idea = SNA_trend_xenophobia
+							  remove_idea = SNA_trend_5
+				        }
+				}
+				 
+			}	
+			add_manpower = -500
+		}
+	 }	
+	 focus = {
+		#彼之砒霜，吾之蜜糖
+		id = SNAFINAL_5	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_2}
+		x = 10
+		y = 2
+		cost = 15
+        completion_reward = {
+			custom_effect_tooltip = "Fatui_lot"
+			add_to_variable = {SNA_foolish_morale = 10}
+		}
+	 }	
+	 focus = {
+		#玉帛干戈，兵家先行
+		id = SNAFINAL_6
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_3}
+		x = 1
+		y = 3
+		cost = 15
+        completion_reward = {
+             if = 
+			 {
+				limit = {has_idea = SNA_grain_1}
+				swap_ideas = 
+				{
+					add_idea = SNA_grain_2
+					remove_idea = SNA_grain_1
+				}
+			 }
+			 else = 
+			 {
+				swap_ideas = 
+				{
+					add_idea = SNA_grain_1
+					remove_idea = SNA_grain
+				}
+			 }
+		}
+	 }		
+	 focus = {
+		#一心为战，无心务农
+		id = SNAFINAL_7	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_3}
+		x = 3
+		y = 3
+		cost = 15
+        completion_reward = {
+             if = 
+			 {
+				limit = {has_idea = SNA_grain_1}
+				swap_ideas = 
+				{
+					add_idea = SNA_grain_2
+					remove_idea = SNA_grain_1
+				}
+			 }
+			 else = 
+			 {
+				swap_ideas = 
+				{
+					add_idea = SNA_grain_1
+					remove_idea = SNA_grain
+				}
+			 }
+		}
+	 }	
+	 focus = {
+		#鸣神之人，吾民之奴
+		id = SNAFINAL_8	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_4}
+		mutually_exclusive = {focus = SNAFINAL_9}
+		x = 5
+		y = 3
+		cost = 15
+        completion_reward = {
+              add_ideas = SNA_enslavement_1
+			  add_offsite_building = { type = arms_factory level = 1 }	  
+			  #触发事件：劳改
+			  #触发事件：米饭
+			  #触发事件：孩童
+			  #触发事件：母亲
+		}
+	 }	
+	 focus = {
+		#双脚鱼牲，以血祭天
+		id = SNAFINAL_9
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_4}
+		mutually_exclusive = {focus = SNAFINAL_8} 
+		x = 7
+		y = 3
+		cost = 15
+        completion_reward = {
+              add_manpower = -5000
+              add_ideas = SNA_Kill_all_1
+			  #触发事件：血祭
+			  #触发事件：悲鸣
+			  #触发事件：血月
+			  #触发事件：逃离
+		} 
+	 }	
+	 focus = {
+		#愚人之众，吾之良友
+		id = SNAFINAL_10	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_5}
+		x = 10
+		y = 3
+		cost = 15
+        completion_reward = {
+			custom_effect_tooltip = "Fatui_a_lot"
+			add_to_variable = {SNA_foolish_morale = 15}
+              #触发事件：内森和他的志趣相投的朋友？
+		}
+	 }	
+	 focus = {
+		#良兵利器，吾需购之
+		id = SNAFINAL_11	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_10}
+		x = 9
+		y = 4
+		cost = 15
+        completion_reward = {
+              add_equipment_to_stockpile = {
+					type = infantry_equipment 
+					amount = 1000
+					producer = INA
+			  }
+			  add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 100
+					producer = INA
+			  }
+			custom_effect_tooltip = "Fatui_lots"
+			add_to_variable = {SNA_foolish_morale = 25}
+			  #获得两个编制 8刀兵 1支援弓兵
+		}
+	 }	
+	 focus = {
+		#冬国之铳，破敌神器
+		id = SNAFINAL_12	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_10}
+		x = 11
+		y = 4
+		cost = 15
+        completion_reward = {
+			add_equipment_to_stockpile = {
+					type = infantry_equipment 
+					amount = 1000
+					producer = SNE
+			  }
+			custom_effect_tooltip = "Fatui_lots"
+			add_to_variable = {SNA_foolish_morale = 25}
+              #获得一支火铳队：
+		}
+	 }	
+	 focus = {
+		#邪能之眼，人皆有之
+		id = SNAFINAL_13	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_11}
+		prerequisite = {focus = SNAFINAL_12}
+		x = 10
+		y = 5 
+		cost = 15
+        completion_reward = {
+              #获得三支精良的邪眼部队：编制：6刀卫 6火铳兵 1火炮支援连 1铲子
+			  swap_ideas = 
+			  {
+				add_idea = SNA_new_army_2
+				remove_idea = SNA_new_army
+			  }
+		}
+	 }	
+	 focus = {
+		#修建牢狱，强制劳动
+		id = SNAFINAL_14	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_8}
+		x = 5
+		y = 4
+		cost = 15
+        completion_reward = {
+			swap_ideas = 
+			{
+				add_idea = SNA_enslavement_2
+				remove_idea = SNA_enslavement_1
+			}
+            add_offsite_building = { type = arms_factory level = 1 }
+			94 = 
+			{
+				add_manpower = 145000
+				add_resource = 
+				{
+					type = grain
+					amount = 25
+				}
+				add_resource = 
+				{
+					type = wood
+					amount = 25
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = 
+				{
+					type = industrial_complex
+					instant_build = yes
+					level = 1
+				}
+			}
+			89 = 
+			{
+				add_manpower = -150000
+				add_building_construction = 
+				{
+					type = industrial_complex
+					instant_build = yes
+					level = -1
+				}
+			}
+		}
+	 }	
+	 focus = {
+		#食敌之肉，饮敌之血
+		id = SNAFINAL_15	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_9}
+		x = 7
+		y = 4
+		cost = 15
+        completion_reward = {
+              add_manpower = -10000
+			  swap_ideas = 
+			  {
+				add_idea = SNA_Kill_all_2
+				remove_idea = SNA_kill_all_1
+			  }
+		}
+	 }	
+	 focus = {
+		#如有怀柔，严刑对待！
+		id = SNAFINAL_16	
+		icon = NoPicture
+		available = {has_completed_focus = SNAFINAL_13 has_completed_focus = SNAFINAL_18 }
+		prerequisite = {focus = SNAFINAL_14 focus = SNAFINAL_15}
+		x = 6
+		y = 5
+		cost = 15
+        completion_reward = {
+			country_event = {id = FinSNA.1}
+		}
+	 }	
+	 focus = {
+		#上缴钱财，统一分配
+		id = SNAFINAL_17
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_6}
+		prerequisite = {focus = SNAFINAL_7}
+		x = 2
+		y = 4
+		cost = 15
+        completion_reward = {
+            swap_ideas = 
+			{
+				add_idea = SNA_grain_3
+				remove_idea = SNA_grain_2
+			}
+			add_political_power = -50
+		}
+	 }	
+	 focus = {  
+		#有难同当，人皆大同
+		id = SNAFINAL_18	
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_17}
+		x = 2
+		y = 5
+		cost = 15
+        completion_reward = {
+            swap_ideas = 
+			{
+				add_idea = SNA_grain_4
+				remove_idea = SNA_grain_3
+			}
+			add_offsite_building = {type = industrial_complex level = 1}
+
+		}
+	 }	
+	 focus = {
+		#若想杀敌，必先戮敌
+		id = SNAFINAL_19	
+		icon = NoPicture
+		mutually_exclusive = {focus = SNAFINAL_20}
+		prerequisite = {focus = SNAFINAL_13}
+		prerequisite = {focus = SNAFINAL_16}
+		prerequisite = {focus = SNAFINAL_18}
+		x = 4
+		y = 6
+		cost = 15
+        completion_reward = {
+             custom_effect_tooltip = "first"
+		}
+	 }	
+	 focus = {
+		#远有盟友，结交为重
+		id = SNAFINAL_20	
+		icon = NoPicture
+		mutually_exclusive = {focus = SNAFINAL_19}
+		prerequisite = {focus = SNAFINAL_13}
+		prerequisite = {focus = SNAFINAL_16}
+		prerequisite = {focus = SNAFINAL_18}
+		x = 8
+		y = 6
+		cost = 15
+        completion_reward = {
+            custom_effect_tooltip = "second"
+		}
+	 }	
+	 focus = {
+		#实验开始了！
+		id = SNAFINAL_21
+		icon = NoPicture
+		#allow_branch = { has_country_flag = SNA_SEN }
+		x = 15
+		y = 0
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#怨恨的土壤
+		id = SNAFINAL_22	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_21}
+		x = 14
+		y = 1
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#野性的解放
+		id = SNAFINAL_23
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_21}
+		x = 16
+		y = 1
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#雷祸...
+		id = SNAFINAL_24	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_22}
+		prerequisite = { focus = SNAFINAL_23}
+		x = 15
+		y = 2
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#时间紧迫！
+		id = SNAFINAL_25
+		icon = NoPicture
+		prerequisite = {focus = SNAFINAL_24}
+		mutually_exclusive = {focus = SNAFINAL_26}
+		x = 20
+		y = 3
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#没事，慢慢来
+		id = SNAFINAL_26
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_24}
+		mutually_exclusive = {focus = SNAFINAL_25}
+		x = 15
+		y = 3
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#成立炉心研究所
+		id = SNAFINAL_27
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_28}
+		prerequisite = { focus = SNAFINAL_29}
+		x = 15
+		y = 5
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#泽维尔的卫队
+		id = SNAFINAL_28	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_26}
+		x = 14
+		y = 4
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#崭新的研究设备
+		id = SNAFINAL_29	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_26}
+		x = 16
+		y = 4
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#炉心研究开始！
+		id = SNAFINAL_30
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_27 focus = SNAFINAL_25}
+		x = 18
+		y = 6
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#雷祸无害化研究
+		id = SNAFINAL_31	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_30}
+		x = 17
+		y = 7
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#雷属性武器附魔研究
+		id = SNAFINAL_32	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_30}
+		x = 19
+		y = 7
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#雷祸污染神之眼研究
+		id = SNAFINAL_33
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_31}
+		prerequisite = { focus = SNAFINAL_32}
+		x = 18
+		y = 8
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#扩大研究设施
+		id = SNAFINAL_34	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_33}
+		x = 16
+		y = 9
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#觉得身后有杀手......
+		id = SNAFINAL_35
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_33}
+		x = 18
+		y = 9
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#不为自己留后路！
+		id = SNAFINAL_36
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_33}
+		x = 20
+		y = 9
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#保护好博士的安全！
+		id = SNAFINAL_37	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_35}
+		x = 18
+		y = 10
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#抓到你了！
+		id = SNAFINAL_38	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_36}
+		prerequisite = { focus = SNAFINAL_37}
+		x = 19
+		y = 11
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#背叛我的人，就要成为我的实验对象
+		id = SNAFINAL_39	
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_34}
+		prerequisite = { focus = SNAFINAL_37}
+		x = 17
+		y = 11
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	 focus = {
+		#为稻妻播撒雷祸！
+		id = SNAFINAL_40
+		icon = NoPicture
+		prerequisite = { focus = SNAFINAL_38}
+		prerequisite = { focus = SNAFINAL_39}
+		x = 18
+		y = 12
+		cost = 15
+        completion_reward = {
+
+		}
+	 }	
+	
+}

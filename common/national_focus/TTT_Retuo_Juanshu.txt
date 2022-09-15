@@ -1,0 +1,1805 @@
+focus_tree = {
+    #Focus tree of kunjun (tag RTG) if Retuo succeed in overcoming wear and tear
+	#Made on April 25th, 2022.
+	id = RTG_2_Juanshu
+	country = {
+		factor = 0
+	}
+	default = no
+	focus = {
+		id = RTG_guyou
+		icon = GFX_goal_RTG_guyou
+		cost = 1
+		x = 21
+		y = 1
+		completion_reward = {
+		    country_event = {
+			    id = retuo_juanshu.1
+			    days = 1
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_nieerbuzi
+		icon = GFX_goal_RTG_nieerbuzi
+		cost = 14
+		prerequisite = {
+			focus = RTG_guyou
+		}
+		x = 21
+		y = 2
+		completion_reward = {
+		    add_ideas = RTG_nie_erbuzi
+			hidden_effect = {
+			    country_event = {
+				    id = retuo_juanshu.2
+				    days = 1
+				}
+				country_event = {
+				    id = retuo_juanshu.3
+				    days = 7
+				}
+                news_event = {
+				    id = retuo_juanshu_news.1
+					days = 1
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_baohu_chanye
+		icon = GFX_goal_unknown
+		cost = 14
+		prerequisite = {
+			focus = RTG_nieerbuzi
+		}
+		x = 8
+		y = 4
+		completion_reward = {
+		    add_ideas = RTG_chanye_baohu
+		}
+	}
+	
+	focus = {
+		id = RTG_jingji_jihua
+		icon = GFX_goal_RTG_jingji_jihua
+		cost = 21
+		prerequisite = {
+			focus = RTG_baohu_chanye
+		}
+		x = 5
+		y = 5
+		completion_reward = {
+		    add_ideas = RTG_jingjijihua
+		}
+	}
+	
+	focus = {
+		id = RTG_juyuan_zengli
+		icon = GFX_goal_RTG_juyuan_zengli
+		cost = 30
+		prerequisite = {
+			focus = RTG_jingji_jihua
+		}
+		x = 3
+		y = 6
+		completion_reward = {
+		    155 = {
+			    add_resource = {
+				    type = oil
+				    amount = 5
+			    }
+		    }
+			207 = {
+			    add_resource = {
+				    type = steel
+				    amount = 17
+			    }
+				add_resource = {
+				    type = rubber
+				    amount = 9
+			    }
+		    }
+			208 = {
+			    add_resource = {
+				    type = tungsten
+				    amount = 11
+			    }
+				add_resource = {
+				    type = chromium
+				    amount = 11
+			    }
+		    }
+		}
+	}
+	
+	focus = {
+		id = RTG_pingxi_yuannu
+		icon = GFX_goal_RTG_pingxi_yuannu
+		cost = 30
+		prerequisite = {
+			focus = RTG_jingji_jihua
+		}
+		x = 6
+		y = 6
+		completion_reward = {
+		    remove_ideas = the_earth_roars
+			add_political_power = -100
+		}
+	}
+	
+	focus = {
+		id = RTG_yanjian_gongchang
+		icon = GFX_goal_RTG_yanjian_gongchang
+		cost = 30
+		prerequisite = {
+			focus = RTG_pingxi_yuannu
+		}
+		x = 6
+		y = 7
+		completion_reward = {
+		    add_ideas = RTG_yanjian_gongchang_1
+		}
+    }
+	
+	focus = {
+		id = RTG_weile_shouhu
+		icon = GFX_goal_RTG_weile_shouhu
+		cost = 30
+		prerequisite = {
+			focus = RTG_juyuan_zengli
+		}
+		x = 3
+		y = 7
+		completion_reward = {
+		    155 = {
+			    add_extra_state_shared_building_slots = 4
+			    add_building_construction = {
+				    type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+				    type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_moshou_zichan
+		icon = GFX_goal_RTG_moshou_zichan
+		cost = 21
+		prerequisite = {
+			focus = RTG_baohu_chanye
+		}
+		x = 11
+		y = 5
+		completion_reward = {
+		    155 = {
+			    add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+				    type = industrial_complex
+					level = 2
+				}
+			}
+			207 = {
+			    add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+				    type = industrial_complex
+					level = 2
+				}
+			}
+			208 = {
+			    add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+				    type = industrial_complex
+					level = 2
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_qidi_minzhi
+		icon = GFX_goal_RTG_qidi_minzhi
+		cost = 30
+		prerequisite = {
+			focus = RTG_moshou_zichan
+		}
+		x = 10
+		y = 6
+		available = {
+		    has_completed_focus = RTG_yanjian_gongchang
+		}
+		completion_reward = {
+		    swap_ideas = {  
+			    remove_idea = RTG_yanjian_gongchang_1
+				add_idea = RTG_yanjian_gongchang_2
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_yuanjian_keyanyuan
+		icon = GFX_goal_RTG_yuanjian_keyanyuan
+		cost = 30
+		prerequisite = {
+			focus = RTG_qidi_minzhi
+		}
+		x = 10
+		y = 7
+		completion_reward = {
+		    add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = RTG_pingdeng_liyue
+		icon = GFX_goal_RTG_pingdeng_liyue
+		cost = 30
+		prerequisite = {
+			focus = RTG_moshou_zichan
+		}
+		x = 13
+		y = 6
+		completion_reward = { 
+		    add_ideas = RTG_pingdeng_zhiyue_1
+		}
+	}
+	
+	focus = {
+		id = RTG_gongren_xiehui
+		icon = GFX_goal_RTG_gongren_xiehui
+		cost = 30
+		prerequisite = {
+			focus = RTG_pingdeng_liyue
+		}
+		x = 13
+		y = 7
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_pingdeng_zhiyue_1
+				add_idea = RTG_pingdeng_zhiyue_2
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_fushifusheng_qianyuanjian
+		icon = GFX_goal_RTG_fushifusheng_qianyuanjian
+		cost = 30
+		prerequisite = {
+			focus = RTG_yuanjian_keyanyuan
+		}
+		prerequisite = {
+			focus = RTG_yanjian_gongchang
+		}
+		prerequisite = {
+			focus = RTG_weile_shouhu
+		}
+		prerequisite = {
+			focus = RTG_gongren_xiehui
+		}
+		x = 8
+		y = 8
+		completion_reward = {
+		    unlock_decision_category_tooltip = RTG_develop_capital
+		    155 = { add_extra_state_shared_building_slots = 3 }
+		}
+	}
+	
+	focus = {
+		id = RTG_dijun_suiqu_jingshen_busi
+		icon = GFX_goal_RTG_dijun_yiqu
+		cost = 14
+		prerequisite = {
+			focus = RTG_nieerbuzi
+		}
+		x = 21
+		y = 4
+		completion_reward = {
+		    hidden_effect = {
+		        add_dynamic_modifier = { modifier = RTG_morax_legacy }
+			}
+		    add_to_variable = { RTG_legacy_meirizhengzhidian = 0.1 }
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = Dijun_1
+		}
+	}
+	
+	focus = {
+		id = RTG_suiyidantong
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_dijun_suiqu_jingshen_busi
+		}
+		x = 19
+		y = 5
+		completion_reward = {
+		    add_to_variable = { RTG_legacy_wendingdu = 0.05 }
+			add_to_variable = { RTG_legacy_meirizhengzhidian = 0.1 }
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = Dijun_2
+		}
+	}
+	
+	focus = {
+		id = RTG_mihefenqi
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_dijun_suiqu_jingshen_busi
+		}
+		x = 21
+		y = 5
+		completion_reward = {
+		    add_to_variable = { RTG_legacy_meirizhengzhidian = 0.1 }
+			add_to_variable = { RTG_legacy_shiyirenkou = 0.01 }
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = Dijun_2
+		}
+	}
+	
+	focus = {
+		id = RTG_kaihua_yuansu
+		icon = GFX_goal_unknown
+		cost = 14
+		prerequisite = {
+			focus = RTG_mihefenqi
+		}
+		prerequisite = {
+			focus = RTG_suiyidantong
+		}
+		x = 20
+		y = 6
+		completion_reward = {
+		    add_timed_idea = {
+			    idea = RTG_kaihua_yuansu_ing
+				days = 365
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_qiyue_yongcun
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_dijun_suiqu_jingshen_busi
+		}
+		x = 23
+		y = 5
+		completion_reward = {
+		    add_to_variable = { RTG_legacy_wendingdu = 0.025 }
+			add_to_variable = { RTG_legacy_meirizhengzhidian = 0.05 }
+			add_to_variable = {	RTG_legacy_zhanzhengzhichidu = 0.025 }
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = Dijun_2
+			swap_ideas = {
+			    remove_idea = RTG_zhongzu_maodun_1
+				add_idea = RTG_zhongzu_maodun_2
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_kaihua_mowu
+		icon = GFX_goal_unknown
+		cost = 14
+		prerequisite = {
+			focus = RTG_qiyue_yongcun
+		}
+		prerequisite = {
+			focus = RTG_mihefenqi
+		}
+		x = 22
+		y = 6
+		completion_reward = {
+		    add_timed_idea = {
+			    idea = RTG_kaihua_mowu_ing
+				days = 365
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_qirubuzai
+		icon = GFX_goal_RTG_qirubuzai
+		cost = 30
+		prerequisite = {
+			focus = RTG_kaihua_mowu
+		}
+		prerequisite = {
+			focus = RTG_kaihua_yuansu
+		}
+		x = 21
+		y = 7
+		completion_reward = {
+		    add_to_variable = { RTG_legacy_meirizhengzhidian = 0.1 }
+			add_to_variable = {	RTG_legacy_zhanzhengzhichidu = 0.05 }
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = Dijun_2
+			remove_ideas = RTG_zhongzu_maodun_2
+		}
+	}
+	
+	focus = {
+		id = RTG_buxiangwanglai
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_qirubuzai
+		}
+		mutually_exclusive = {
+			focus = RTG_youxian_jiaorong
+			focus = RTG_yiqie_doujiang_ronghe
+		}
+		x = 18
+		y = 9
+		completion_reward = {
+		    add_ideas = RTG_youxian_ronghe_zhongzu
+		}
+	}
+	
+	focus = {
+		id = RTG_yiqie_doujiang_ronghe
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_qirubuzai
+		}
+		mutually_exclusive = {
+			focus = RTG_youxian_jiaorong
+			focus = RTG_buxiangwanglai
+		}
+		x = 24
+		y = 9
+		completion_reward = {
+		    add_ideas = RTG_weilaikeqi_zhongzu
+		}
+	}
+	
+	focus = {
+		id = RTG_yuansu_gongming
+		icon = GFX_goal_RTG_yuansu_gongming
+		cost = 14
+		prerequisite = {
+			focus = RTG_nieerbuzi
+		}
+		x = 34
+		y = 4
+		completion_reward = {
+		    custom_effect_tooltip = RTG_super_division_army
+		    hidden_effect = {
+			    load_oob = RTG_Civil_War_Juanshu
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_fenlizhijun
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = RTG_yuansu_gongming
+		}
+		mutually_exclusive = {
+			focus = RTG_juli_chansheng_wujie
+		}
+		x = 29
+		y = 5
+		completion_reward = {
+		    add_timed_idea = {
+			    idea = RTG_fenli_army
+				days = 365
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_juli_chansheng_wujie
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_yuansu_gongming
+		}
+		mutually_exclusive = {
+			focus = RTG_fenlizhijun
+		}
+		x = 39
+		y = 5
+		completion_reward = {
+		    add_timed_idea = {
+			    idea = RTG_jizhong_army
+				days = 365
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_laoji_shannian
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_fenlizhijun
+			focus = RTG_juli_chansheng_wujie
+		}
+		x = 29
+		y = 6
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_laoji_liyue
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_juli_chansheng_wujie
+			focus = RTG_fenlizhijun
+		}
+		x = 39
+		y = 6
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_laoji_qiyue
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_juli_chansheng_wujie
+			focus = RTG_fenlizhijun
+		}
+		x = 34
+		y = 6
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_jianghu_baiji
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_laoji_liyue
+		}
+		prerequisite = {
+			focus = RTG_laoji_qiyue
+		}
+		prerequisite = {
+			focus = RTG_laoji_shannian
+		}
+		mutually_exclusive = {
+			focus = RTG_linghui_tianshu
+		}
+		x = 31
+		y = 8
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_liyue_yuanjun_3
+			    add_idea = RTG_liyue_yuanjun_4a
+		    }
+		}
+	}
+	
+	focus = {
+		id = RTG_zhuzhong_buji
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_jianghu_baiji
+			focus = RTG_linghui_tianshu
+		}
+		mutually_exclusive = {
+			focus = RTG_zhuzhong_zhuangbei
+		}
+		x = 30
+		y = 9
+		completion_reward = {
+            if = {
+		        limit = { has_idea = RTG_liyue_yuanjun_4a }
+		        swap_ideas = {
+			        remove_idea = RTG_liyue_yuanjun_4a
+			        add_idea = RTG_liyue_yuanjun_5ax
+		        }
+	        }
+	        else_if = {
+		        limit = { has_idea = RTG_liyue_yuanjun_4b }
+		        swap_ideas = {
+			        remove_idea = RTG_liyue_yuanjun_4b
+			        add_idea = RTG_liyue_yuanjun_5bx
+		        }
+	        }
+		}
+	}
+	
+	focus = {
+		id = RTG_zhuzhong_zhuangbei
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_jianghu_baiji
+			focus = RTG_linghui_tianshu
+		}
+		mutually_exclusive = {
+			focus = RTG_zhuzhong_buji
+		}
+		x = 32
+		y = 9
+		completion_reward = {
+		    if = {
+		        limit = { has_idea = RTG_liyue_yuanjun_4a }
+		        swap_ideas = {
+			        remove_idea = RTG_liyue_yuanjun_4a
+			        add_idea = RTG_liyue_yuanjun_5ay
+		        }
+	        }
+	        else_if = {
+		        limit = { has_idea = RTG_liyue_yuanjun_4b }
+		        swap_ideas = {
+			        remove_idea = RTG_liyue_yuanjun_4b
+			        add_idea = RTG_liyue_yuanjun_5by
+		        }
+	        }
+		}
+	}
+	
+	focus = {
+		id = RTG_shanji_zhanshu
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_zhuzhong_zhuangbei
+		}
+		x = 32
+		y = 10
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_jidong_yanbi
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_shanji_zhanshu
+		}
+		x = 32
+		y = 11
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_chuangxin_keji
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_jidong_yanbi
+		}
+		x = 32
+		y = 12
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = RTG_linghui_tianshu
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_laoji_liyue
+		}
+		prerequisite = {
+			focus = RTG_laoji_qiyue
+		}
+		prerequisite = {
+			focus = RTG_laoji_shannian
+		}
+		mutually_exclusive = {
+			focus = RTG_jianghu_baiji
+		}
+		x = 37
+		y = 8
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_liyue_yuanjun_3
+			    add_idea = RTG_liyue_yuanjun_4b
+		    }
+		}
+	}
+	
+	focus = {
+		id = RTG_tiankonglong
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_jianghu_baiji
+			focus = RTG_linghui_tianshu
+		}
+		mutually_exclusive = {
+			focus = RTG_jingzhun_daji
+		}
+		x = 36
+		y = 9
+		completion_reward = {
+			add_ideas = RTG_tiankong_zhilong_1
+		}
+	}
+	
+	focus = {
+		id = RTG_zhikong_zhishang
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_tiankonglong
+		}
+		x = 36
+		y = 10
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_tiankong_zhilong_1
+				add_idea = RTG_tiankong_zhilong_2
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_lunhuan_zhanshu
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_zhikong_zhishang
+		}
+		x = 36
+		y = 11
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_tiankong_zhilong_2
+				add_idea = RTG_tiankong_zhilong_3
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_huoli_youxian
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_lunhuan_zhanshu
+		}
+		x = 36
+		y = 12
+		completion_reward = {
+		    swap_ideas = {
+		        remove_idea = RTG_tiankong_zhilong_3
+			    add_idea = RTG_tiankong_zhilong_4
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_jingzhun_daji
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_linghui_tianshu
+			focus = RTG_jianghu_baiji
+		}
+		mutually_exclusive = {
+			focus = RTG_tiankonglong
+		}
+		x = 38
+		y = 9
+		completion_reward = {
+		    add_ideas = RTG_tianjiang_yeyan_1
+		}
+	}
+	
+	focus = {
+		id = RTG_hongzha_zhishang
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_jingzhun_daji
+		}
+		x = 38
+		y = 10
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_tianjiang_yeyan_1
+				add_idea = RTG_tianjiang_yeyan_2
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_huhang_jiandui
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_hongzha_zhishang
+		}
+		x = 38
+		y = 11
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_tianjiang_yeyan_2
+				add_idea = RTG_tianjiang_yeyan_3
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_feixingyuan_youxian
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_huhang_jiandui
+		}
+		x = 38
+		y = 12
+		completion_reward = {
+		    swap_ideas = {
+			    remove_idea = RTG_tianjiang_yeyan_3
+				add_idea = RTG_tianjiang_yeyan_4
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_youxian_jiaorong
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_qirubuzai
+		}
+		mutually_exclusive = {
+			focus = RTG_buxiangwanglai
+			focus = RTG_yiqie_doujiang_ronghe
+		}
+		x = 21
+		y = 9
+		completion_reward = {
+		    add_ideas = RTG_zhengzai_ronghe_zhongzu
+		}
+	}
+	
+	focus = {
+		id = RTG_diandengren
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_buxiangwanglai
+			focus = RTG_youxian_jiaorong
+			focus = RTG_yiqie_doujiang_ronghe
+		}
+		x = 21
+		y = 10
+		completion_reward = {
+		    add_ideas = RTG_changming_deng
+			create_faction = south_liyue_alliance
+			hidden_effect = {
+                news_event = {
+				    id = retuo_juanshu_news.2
+				    days = 1
+			    }
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_yu_anarchist_tanpan
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_diandengren
+		}
+		x = 19
+		y = 11
+		bypass = {
+		    ANG = {
+			    exists = no
+			}
+	    }
+		completion_reward = {
+		    ANG = {
+			    country_event = {
+				    id = retuo_juanshu.8
+					hours = 12
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_yu_xianren_jiaoshe
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_diandengren
+		}
+		x = 23
+		y = 11
+		bypass = {
+		    XRG = {
+			    exists = no
+			}
+	    }
+		completion_reward = {
+		    XRG = {
+			    country_event = {
+			        id =  retuo_juanshu.5
+					hours = 12
+			    }
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_baohu_liyuegang
+		icon = GFX_goal_unknown
+		cost = 21
+		prerequisite = {
+			focus = RTG_yu_xianren_jiaoshe
+		}
+		prerequisite = {
+			focus = RTG_yu_anarchist_tanpan
+		}
+		x = 21
+		y = 12
+		bypass = {
+		    LYU = {
+			    exists = no
+			}
+	    }
+		completion_reward = {
+		    LYU = {
+			    country_event = {
+				    id = retuo_juanshu.11
+					hours = 12
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_genchu_hunluan
+		icon = GFX_goal_RTG_genchu_hunluan
+		cost = 21
+		prerequisite = {
+			focus = RTG_baohu_liyuegang
+		}
+		mutually_exclusive = {
+			focus = RTG_hepingzhizhi
+		}
+		x = 23
+		y = 13
+        bypass = {
+		    ZDG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			HTG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			XOG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			XQG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			NNG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			BDG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			XRG = { 
+			    OR = {
+				    exists = no 
+					is_in_faction_with = RTG
+					has_war_with = RTG
+				}
+			}
+			ANG = { 
+			    OR = {
+				    exists = no 
+					is_in_faction_with = RTG
+					has_war_with = RTG
+				}
+			}
+		}
+		completion_reward = {
+		    unlock_decision_category_tooltip = RTG_declare_war
+		}
+	}
+	
+	focus = {
+		id = RTG_hepingzhizhi
+		icon = GFX_goal_RTG_peace
+		cost = 21
+		prerequisite = {
+			focus = RTG_baohu_liyuegang
+		}
+		mutually_exclusive = {
+			focus = RTG_genchu_hunluan
+		}
+		x = 19
+		y = 13
+		bypass = {
+		    ZDG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			HTG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			XOG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			XQG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			NNG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			BDG = { 
+			    OR = {
+				    exists = no 
+					has_war_with = RTG
+				}
+			}
+			XRG = { 
+			    OR = {
+				    exists = no 
+					is_in_faction_with = RTG
+					has_war_with = RTG
+				}
+			}
+			ANG = { 
+			    OR = {
+				    exists = no 
+					is_in_faction_with = RTG
+					has_war_with = RTG
+				}
+			}
+		}
+		completion_reward = {
+		    HTG = {
+			    if = {
+				    limit = {
+					    exists =yes
+					    NOT = { has_war_with = RTG }
+					}
+			        country_event = {
+				        id = retuo_juanshu.14
+					    hours = 12
+				    }
+				}
+			}
+			KQG = {
+			    if = {
+				    limit = {
+					    exists =yes
+					    NOT = { has_war_with = RTG }
+					}
+			        country_event = {
+				        id = retuo_juanshu.14
+					    hours = 12
+				    }
+				}
+			}
+			XOG = {
+			    if = {
+				    limit = {
+					    exists =yes
+					    NOT = { has_war_with = RTG }
+					}
+			        country_event = {
+				        id = retuo_juanshu.14
+					    hours = 12
+				    }
+				}
+			}
+			NNG = {
+			    if = {
+				    limit = {
+					    exists =yes
+					    NOT = { has_war_with = RTG }
+					}
+			        country_event = {
+				        id = retuo_juanshu.14
+					    hours = 12
+				    }
+				}
+			}
+			ZDG = {
+			    if = {
+				    limit = {
+					    exists =yes
+					    NOT = { has_war_with = RTG }
+					}
+			        country_event = {
+				        id = retuo_juanshu.14
+					    hours = 12
+				    }
+				}
+			}
+			XRG = {
+			    if = {
+				    limit = {
+					    exists =yes
+						NOT = { has_war_with = RTG }
+					    NOT = { is_in_faction_with = RTG }
+					}
+			        country_event = {
+				        id = retuo_juanshu.14
+					    hours = 12
+					}
+				}
+			}
+		    ANG = {
+                if = {
+                    limit = {				
+					    exists = yes 
+						NOT = { has_war_with = RTG }
+						NOT = { is_in_faction_with = RTG }
+					}
+				    country_event = {
+					    id = retuo_juanshu.14
+					    hours = 12
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_shouxuzhiyue
+		icon = GFX_goal_unknown
+		cost = 60
+		prerequisite = {
+			focus = RTG_hepingzhizhi
+			focus = RTG_genchu_hunluan
+		}
+		x = 21
+		y = 14
+		
+		available = {
+		    has_stability > 0.6
+		    custom_trigger_tooltip = {
+		        tooltip = RTG_completely_control_south_liyue	
+                RTG_conrols_south_liyue = yes
+	        } 
+		}
+		completion_reward = {
+			add_to_variable = { RTG_legacy_wendingdu = 0.025 }
+			add_to_variable = { RTG_legacy_zhanzhengzhichidu = 0.025 }
+			add_to_variable = { RTG_legacy_meirizhengzhidian = 0.05 }
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = Dijun_3
+			set_cosmetic_tag = RTCW
+            hidden_effect = {
+                news_event = {
+				    id = retuo_juanshu_news.5
+					days = 1
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_shuanger_shengguo_dukou
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_shouxuzhiyue
+		}
+		x = 18
+		y = 15
+		completion_reward = {
+		    Liyue_rebirth = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_kuanrong_yiqie
+		icon = GFX_goal_RTG_kuanrong_yiqie
+		cost = 30
+		prerequisite = {
+			focus = RTG_shouxuzhiyue
+		}
+		x = 21
+		y = 15
+		bypass = {
+		    NOT = {
+			    any_country = { is_in_faction_with = RTG }
+			}
+		}
+		completion_reward = {
+		    custom_effect_tooltip = accept_clique_kuanrong
+		}
+	}
+
+	
+	focus = {
+		id = RTG_qiyueweiben
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_shouxuzhiyue
+		}
+		x = 24
+		y = 15
+		completion_reward = {
+		    add_political_power = 150
+		}
+	}
+	
+	focus = {
+		id = RTG_daguimo_jiuji
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_shouxuzhiyue
+		}
+		x = 27
+		y = 15
+		completion_reward = {
+		    add_ideas = RTG_yuan_zhijiuji
+			hidden_effect = {
+				country_event = {
+					id = retuo_juanshu.24
+					days = 1
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_ai_jiushi_ai
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_shouxuzhiyue
+		}
+		x = 15
+		y = 15
+		completion_reward = {
+		    Liyue_rebirth = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_rang_gehe_xiaochu_rang_liyue_xinsheng
+		icon = GFX_goal_unknown
+		cost = 60
+		prerequisite = {
+			focus = RTG_ai_jiushi_ai
+		}
+		prerequisite = {
+			focus = RTG_kuanrong_yiqie
+		}
+		prerequisite = {
+			focus = RTG_qiyueweiben
+		}
+		prerequisite = {
+			focus = RTG_daguimo_jiuji
+		}
+		prerequisite = {
+			focus = RTG_shuanger_shengguo_dukou
+		}
+		x = 21
+		y = 16
+		available = {
+			custom_trigger_tooltip = {
+		        tooltip = RTG_full_controls_liyue_except_guyunge	
+                has_completely_conrols_liyue_except_guyunge = yes
+	        } 
+		}
+		completion_reward = {
+		    Liyue_rebirth = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_xiaodengyinmeng
+		icon = GFX_goal_RTG_xiaodengyinmeng
+		cost = 30
+		prerequisite = {
+			focus = RTG_rang_gehe_xiaochu_rang_liyue_xinsheng
+		}
+		x = 21
+		y = 17
+		available = {
+		    has_completed_focus = RTG_weiyou_xinnian_zhishang
+			OR = {
+			    LYU = { 
+				    exists = yes
+				    NOT = { 
+					    has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			    LYU = { exists = no }
+			}
+		}
+		completion_reward = {
+		    custom_effect_tooltip = Retuo_Juanshu_unite_Liyue
+			if = {
+				limit = { 
+					LYU = {
+					    exists = yes
+					}
+				}
+			    LYU = {
+				    country_event = {
+				        id = retuo_juanshu.20 
+					    days = 3
+				    }
+				}
+			}
+			else_if = {
+				limit = {
+				    LYU = { exists = no }
+				}
+				hidden_effect = {
+					country_event = {
+				        id = retuo_juanshu.17 
+					    days = 60
+				    }
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_pojinde_shiming
+		icon = GFX_goal_RTG_pojinde_shiming
+		cost = 30
+		prerequisite = {
+			focus = RTG_fushifusheng_qianyuanjian
+		}
+		x = 8
+		y = 9
+		completion_reward = {
+		    add_timed_idea = {
+			    idea = RTG_shiming_jianglin
+				days = 180
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_gongmingzhili
+		icon = GFX_goal_RTG_gongmingzhili
+		cost = 30
+		prerequisite = {
+			focus = RTG_pojinde_shiming
+		}
+		x = 8
+		y = 11
+		completion_reward = {
+		    swap_ruler_traits = {
+			    remove = Morax_Juanshu_1
+				add = Morax_Juanshu_2
+			}
+			155 = {
+			    add_resource = {
+				    type = steel
+					amount = 50
+				}
+				 add_resource = {
+				    type = chromium
+					amount = 30
+				}
+				 add_resource = {
+				    type = tungsten
+					amount = 40
+				}
+				 add_resource = {
+				    type = aluminium
+					amount = 20
+				}
+				 add_resource = {
+				    type = oil
+					amount = 10
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_goulianbafang
+		icon = GFX_goal_RTG_goulianbafang
+		cost = 30
+		prerequisite = {
+			focus = RTG_gongmingzhili
+		}
+		x = 8
+		y = 13
+		completion_reward = {
+		    swap_ruler_traits = {
+			    remove = Morax_Juanshu_2
+				add = Morax_Juanshu_3
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_fuxing_heiyanchang
+		icon = GFX_goal_RTG_fuxing_heiyanchang
+		cost = 30
+		prerequisite = {
+			focus = RTG_goulianbafang
+		}
+		prerequisite = {
+			focus = RTG_shikongzhiyuan
+		}
+		prerequisite = {
+			focus = RTG_kaicai_xukezheng
+		}
+		x = 8
+		y = 15
+		available = {
+		    has_full_control_of_state = 169
+		}
+		completion_reward = {
+		    custom_effect_tooltip = RTG_heiyan_factory_is_enable
+			set_country_flag = RTG_keyi_shiyong_heiyanchang
+		}
+	}
+	
+	focus = {
+		id = RTG_yanjianzhijing
+		icon = GFX_goal_RTG_yanjianzhijing
+		cost = 30
+		prerequisite = {
+			focus = RTG_pojinde_shiming
+		}
+		x = 5
+		y = 10
+		available = {
+		    has_war = yes
+			controls_state = 206
+			controls_state = 207
+			controls_state = 209
+		}
+		completion_reward = {
+		    build_railway = {
+		        path = { 255 4770 2374 }
+	        }
+		    206 = {
+			    add_building_construction = {
+				    type = supply_node
+					level = 1
+					instant_build = yes
+					province = 2374
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_qianghua_juyuan_fangyu
+		icon = GFX_goal_RTG_qianghua_juyuan_fangyu
+		cost = 30
+		prerequisite = {
+			focus = RTG_yanjianzhijing
+		}
+		x = 5
+		y = 12
+		completion_reward = {
+		    155 = {
+			    add_building_construction = {
+				    type = bunker
+					level = 3
+					instant_build = yes
+					province = 255
+				}
+			}
+			206 = {
+			    add_building_construction = {
+				    type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						id = 2908
+						id = 2374
+						id = 4758
+					}
+				}
+			}
+			209 = {
+			    add_building_construction = {
+				    type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+					    id = 2682
+						id = 4742
+						id = 2122
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_shikongzhiyuan
+		icon = GFX_goal_RTG_shikongzhiyuan
+		cost = 30
+		prerequisite = {
+			focus = RTG_qianghua_juyuan_fangyu
+		}
+		x = 5
+		y = 14
+		completion_reward = {
+		    custom_effect_tooltip = RTG_whole_territory_antiair
+		    hidden_effect = {
+			    209 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                } 
+                208 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                }
+                207 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                }
+                206 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                }
+                156 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                }
+                205 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                }
+                154 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                }
+                155 = {
+				    add_building_construction = {
+					    type = anti_air_building
+						level = 1
+					    instant_build =yes	
+					}
+                }				
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_zhanshi_tongzhi
+		icon = GFX_goal_RTG_zhanshi_tongzhi
+		cost = 30
+		prerequisite = {
+			focus = RTG_pojinde_shiming
+		}
+		x = 11
+		y = 10
+		available = {
+		    has_war = yes
+	    }
+		completion_reward = {
+		    add_ideas = RTG_tongzhi_jingji
+		}
+	}
+	
+	focus = {
+		id = RTG_kuoda_junyong_gongchang
+		icon = GFX_goal_RTG_kuoda_junyong_gongchang
+		cost = 30
+		prerequisite = {
+			focus = RTG_zhanshi_tongzhi
+		}
+		x = 11
+		y = 12
+		completion_reward = {
+		    155 = {
+			    add_building_construction = {
+				    type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			208 = {
+			     add_building_construction = {
+				    type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_kaicai_xukezheng
+		icon = GFX_goal_RTG_kaicai_xukezheng
+		cost = 30
+		prerequisite = {
+			focus = RTG_kuoda_junyong_gongchang
+		}
+		x = 11
+		y = 14
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = RTG_zhantaoxinjun
+		icon = GFX_goal_RTG_zhantaoxinjun
+		cost = 30
+		prerequisite = {
+			focus = RTG_fuxing_heiyanchang
+		}
+		x = 8
+		y = 16
+		available = {
+		    has_war_with = NNG
+			has_full_control_of_state = 145
+			has_full_control_of_state = 148
+			has_full_control_of_state = 127
+		}
+		completion_reward = {
+		    127 = {
+			    add_building_construction = {
+				    type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			145 = {
+			    add_building_construction = {
+				    type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			148 = {
+			    add_building_construction = {
+				    type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = RTG_tanxing_zhanshu
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_zhuzhong_buji
+		}
+		x = 30
+		y = 10
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+    }
+	
+	focus = {
+		id = RTG_youjidui
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_tanxing_zhanshu
+		}
+		x = 30
+		y = 11
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_shenzhiyande_liren
+		icon = GFX_goal_unknown
+		cost = 30
+		prerequisite = {
+			focus = RTG_youjidui
+		}
+		x = 30
+		y = 12
+		completion_reward = {
+		    Retuo_juyuan_Army = yes
+		}
+	}
+	
+	focus = {
+		id = RTG_weiyou_xinnian_zhishang
+		icon = GFX_goal_unknown
+		cost = 50
+		prerequisite = {
+			focus = RTG_chuangxin_keji
+			focus = RTG_shenzhiyande_liren
+		}
+		prerequisite = {
+			focus = RTG_huoli_youxian
+			focus = RTG_feixingyuan_youxian
+		}
+		x = 34
+		y = 13
+		completion_reward = {
+		    add_ideas = RTG_xinnian_zhijun
+		}
+	}
+	
+}

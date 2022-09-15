@@ -1,0 +1,418 @@
+add_namespace = XinHaiSecond
+
+country_event = 
+{
+       #罕见冰雹
+       id = XinHaiSecond.1
+	   title = XinHaiSecond.1.t
+	   desc = XinHaiSecond.1.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = XinHaiSecond.1.a	
+		   add_stability = -0.05   
+	   }
+}
+
+country_event = 
+{
+       #清子小姐的信
+       id = XinHaiSecond.2
+	   title = XinHaiSecond.2.t
+	   desc = XinHaiSecond.2.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.2.a
+		   add_political_power = -50	   
+	   }
+}
+
+
+country_event =  
+{
+       #风暴
+       id = XinHaiSecond.3
+	   title = XinHaiSecond.3.t
+	   desc = XinHaiSecond.3.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.3.a
+		   add_manpower = -200
+		   if = 
+		   {
+			  limit = { has_country_flag = focus_on_island}
+			  add_ideas = SNA_no_goods_1
+		   }
+		   else = 
+		   {
+			  limit = { has_country_flag = focus_on_island}
+			  add_ideas = SNA_no_goods_1
+		   }
+	   }
+}
+
+country_event = 
+{ 
+       #关注占领区问题
+       id = XinHaiSecond.4
+	   title = XinHaiSecond.4.t
+	   desc = XinHaiSecond.4.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   mean_time_to_happen =
+	   {
+	       days = 1
+	   } 
+	   option = {
+	       name = XinHaiSecond.4.a
+		   set_country_flag = Not_Disturb
+		   custom_effect_tooltip = "mild"
+		   hidden_effect =
+		   {
+			    if = 
+				{
+                       limit = {has_idea = SNA_trend_2}
+					   swap_ideas = {
+					          add_idea = SNA_trend_1
+							  remove_idea = SNA_trend_2
+					   }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_3}
+					   swap_ideas = {
+					          add_idea = SNA_trend_2
+							  remove_idea = SNA_trend_3
+				        }
+				}
+				else_if =
+				{
+                       limit = {has_idea = SNA_trend_4}
+					   swap_ideas = {
+					          add_idea = SNA_trend_3
+							  remove_idea = SNA_trend_4
+				        }
+				}
+				else = 
+				{
+                       limit = {has_idea = SNA_trend_5}
+					   swap_ideas = {
+					          add_idea = SNA_trend_4
+							  remove_idea = SNA_trend_5
+				        }
+				}
+		   }
+		   		   
+	   }
+	   option = {
+	       name = XinHaiSecond.4.b
+		   set_country_flag = Forced_faith
+		   custom_effect_tooltip = "radical"
+		   hidden_effect =
+			{
+				if = 
+				{
+                       limit = {has_idea = SNA_trend_2}
+					   swap_ideas = {
+					          add_idea = SNA_trend_3
+							  remove_idea = SNA_trend_2
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_3}
+					   swap_ideas = {
+					          add_idea = SNA_trend_4
+							  remove_idea = SNA_trend_3
+				        }
+				}
+				else_if =
+				{
+                       limit = {has_idea = SNA_trend_4}
+					   swap_ideas = {
+					          add_idea = SNA_trend_5
+							  remove_idea = SNA_trend_4
+					   }
+				}
+				else = 
+				{
+                       limit = {has_idea = SNA_trend_1}
+					   swap_ideas = {
+					          add_idea = SNA_trend_2
+							  remove_idea = SNA_trend_1
+				        }
+				}
+				 
+			}
+		   	   
+	   }
+}
+
+ 
+country_event =  
+{
+       #武器订单
+       id = XinHaiSecond.5
+	   title = XinHaiSecond.5.t
+	   desc = XinHaiSecond.5.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.5.a
+		   add_equipment_to_stockpile = {
+				type = infantry_equipment 
+				amount = 100
+				producer = SNA
+			}
+	   }
+}
+
+country_event =  
+{
+       #武器订单 
+       id = XinHaiSecond.6
+	   title = XinHaiSecond.6.t
+	   desc = XinHaiSecond.6.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.6.a
+		   add_equipment_to_stockpile = {
+				type = infantry_equipment 
+				amount = 200
+				producer = SNA
+			}
+			set_country_flag = no
+			add_political_power = 20
+	   }
+	   option = {
+	       name = XinHaiSecond.6.b
+		   add_equipment_to_stockpile = {
+				type = infantry_equipment 
+				amount = 500
+				producer = SNA
+			}
+			set_country_flag = yes
+			add_war_support = 0.05
+	   }
+}
+
+country_event =  
+{
+       #接触社奉行
+       id = XinHaiSecond.7
+	   title = XinHaiSecond.7.t
+	   desc = XinHaiSecond.7.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.7.a
+		   add_political_power = 50
+		   add_stability = 0.02
+	   }
+}
+
+country_event =  
+{
+       #与终末番合作
+       id = XinHaiSecond.8
+	   title = XinHaiSecond.8.t
+	   desc = XinHaiSecond.8.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.8.a
+		   if = {
+				limit = { has_dlc = "La Resistance" }
+				if = {
+					limit = { has_intelligence_agency = no }
+					create_intelligence_agency = yes
+				}
+				else_if = {
+					limit = {
+						NOT = { has_done_agency_upgrade = upgrade_army_department }
+					}
+					upgrade_intelligence_agency = upgrade_army_department
+				}
+				else = {
+					add_political_power = 50
+				}
+				add_ideas = SNA_Shuumatsuban_support
+			}
+			else = {
+				add_ideas = SNA_Shuumatsuban_support_not
+			}
+	   }
+}
+
+country_event =  
+{
+       #九条家的情报
+       id = XinHaiSecond.9
+	   title = XinHaiSecond.9.t
+	   desc = XinHaiSecond.9.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.9.a
+	   }
+}
+
+country_event =  
+{
+       #鸣神岛局势
+       id = XinHaiSecond.10
+	   title = XinHaiSecond.10.t
+	   desc = XinHaiSecond.10.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.10.a
+	   }
+}
+
+country_event =  
+{
+       #永远的朋友
+       id = XinHaiSecond.11
+	   title = XinHaiSecond.11.t
+	   desc = XinHaiSecond.11.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.11.a
+	   }
+}
+
+country_event =  
+{
+       #乘胜追击
+       id = XinHaiSecond.12
+	   title = XinHaiSecond.12.t
+	   desc = XinHaiSecond.12.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.12.a
+	   }
+}
+
+country_event =  
+{
+       #将军！
+       id = XinHaiSecond.13
+	   title = XinHaiSecond.13.t
+	   desc = XinHaiSecond.13.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.13.a
+	   }
+}
+
+country_event =  
+{
+       #突袭九条阵屋
+       id = XinHaiSecond.14
+	   title = XinHaiSecond.14.t
+	   desc = XinHaiSecond.14.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.14.a
+	   }
+}
+
+country_event =  
+{
+       #宫司
+       id = XinHaiSecond.15
+	   title = XinHaiSecond.15.t
+	   desc = XinHaiSecond.15.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.15.a
+		   add_ideas = SNA_support_from_Grand_Narukami_Shrine
+	   }
+}
+
+country_event =  
+{
+       #甘金岛
+       id = XinHaiSecond.16
+	   title = XinHaiSecond.16.t
+	   desc = XinHaiSecond.16.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+	       name = XinHaiSecond.16.a
+	   }
+}
+
+country_event =  
+{
+       #和平谈判
+       id = XinHaiSecond.17
+	   title = XinHaiSecond.17.t
+	   desc = XinHaiSecond.17.d
+	   trigger = {
+	         tag = SNA
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes
+	   option = {
+		
+	       name = XinHaiSecond.17.a
+	   }
+}

@@ -1,0 +1,372 @@
+focus_tree = {
+	id = kokomi
+    country = {
+		factor = 0
+		#modifier = {
+			#add = 10
+			#tag = SNA
+		#}
+	}
+	default = no
+	
+	#九条家的威压
+	focus = {
+		id = SNA_jiutiaojiadeweiya
+		icon = GFX_SNA_jiutiaojiadeweiya-222857
+		x = 8
+		y = 0
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			country_event = { id = XinHai.2 }
+		}
+	}
+
+	#冷静处理
+	focus = {
+		id = SNA_lengjingchuli
+		icon = GFX_SNA_lengjingchuli-222867
+		x = 6
+		y = 1 
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = SNA_jiutiaojiadeweiya  }
+		mutually_exclusive = { focus = SNA_renwukeren  }
+		available = {
+			has_country_flag = clamly_dealing
+		}
+		completion_reward = {
+			country_event = { id = XinHai.3 } 
+		}
+	}
+
+	#斡旋
+	focus = {
+		id = SNA_woxuan
+		icon = GFX_SNA_woxuan-222868
+		x = 6
+		y = 2
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = SNA_lengjingchuli  }
+		completion_reward = {
+			country_event = { id = XinHai.4 }
+		}
+	}
+
+	#谈判结果
+	focus = {
+		id = SNA_tanpanjieguo
+		icon = GFX_SNA_tanpanjieguo-222869
+		x = 6
+		y = 3
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = SNA_woxuan  }
+		completion_reward = {
+			country_event = { id = XinHai.5 }
+		}
+	}
+
+	#忍无可忍
+	focus = {
+		id = SNA_renwukeren
+		icon = GFX_SNA_renwukeren-222871
+		x = 10
+		y = 1
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = SNA_jiutiaojiadeweiya  }
+		mutually_exclusive = { focus = SNA_lengjingchuli  }
+		available = {
+			has_country_flag = fed_up
+		}
+		completion_reward = {
+			country_event = { id = XinHai.6 }
+		}
+	}
+
+	#拆毁鸣神像
+	focus = {
+		id = SNA_chaihuimingshenxiang
+		icon = GFX_SNA_chaihuimingshenxiang-222878
+		x = 10
+		y = 2
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = SNA_renwukeren  }
+		completion_reward = {
+			country_event = { id = XinHai.7 }
+		}
+	}
+
+	#海祇岛狂热
+	focus = {
+		id = SNA_haizhidaokuangre
+		icon = GFX_SNA_haizhidaokuangre-222879
+		x = 10
+		y = 3
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = SNA_chaihuimingshenxiang  }
+		completion_reward = {
+			country_event = { id = XinHai.8 }
+		}
+	}
+
+	#无需再忍
+	focus = {
+		id = SNA_wuxuzairen
+		icon = GFX_SNA_wuxuzairen-222870
+		x = 8
+		y = 4
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite =  {
+			focus = SNA_tanpanjieguo  
+			focus = SNA_haizhidaokuangre
+		}
+		completion_reward = {
+			country_event = { id = XinHai.9 }
+			add_ideas = SNA_5	
+			if = {
+				limit = { has_country_flag = ZhePing_was_reused }
+				create_corps_commander = {
+					name = "哲平"
+					portrait_path = ""
+					traits = {}
+					skill = 1
+					attack_skill = 2
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1	   
+				}
+			}
+			else = {
+				set_country_flag = ZhePing_was_NOT_reused
+			}      
+		}
+	}
+
+	#反叛军
+	focus = {
+		id = SNA_fanpanjun
+		icon = GFX_SNA_fanpanjun-222881
+		x = 7
+		y = 5
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = SNA_wuxuzairen  }
+		completion_reward = {
+			random_owned_controlled_state={
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				    instant_build = yes
+				}
+			}
+			random_owned_controlled_state={
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				    instant_build = yes
+				}
+			}
+			random_owned_controlled_state={
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				    instant_build = yes
+				}
+			}
+						 division_template = {
+								name = "剑鱼一番队"
+								division_names_group = SNA_03
+								is_locked = no
+								regiments = {
+									infantry = { x = 0 y = 0 }
+									infantry = { x = 0 y = 1 }
+									infantry = { x = 0 y = 2 }
+				    	   		 	infantry = { x = 0 y = 3 }
+									infantry = { x = 0 y = 4 }
+			                        infantry = { x = 1 y = 0 }
+									infantry = { x = 1 y = 1 }
+									infantry = { x = 1 y = 2 }
+				    	   		 	infantry = { x = 1 y = 3 }
+									infantry = { x = 1 y = 4 } 						
+								}
+							}
+							91 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队珊瑚宫分队 \" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							91 = {
+								create_unit = {
+									division = "name = \" 剑鱼一番队珊瑚宫分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							89 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队曚云神社分队 \" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							89 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队曚云神社分队 \" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							90 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队望泷村分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							90 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队望泷村分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								} 
+							}
+							94 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队外海祇分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							94 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队外海祇分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							93 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队海祇岩分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							93 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队海祇岩分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							92 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队水月池分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							92 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队水月池分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							95 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队五郎阵屋分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							95 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队五郎阵屋分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							96 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队海祇军营分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+							96 = {
+								create_unit = {
+									division = "name = \"剑鱼一番队海祇军营分队\" division_template = \"剑鱼一番队\" start_experience_factor = 0.1" 
+									owner = SNA
+								}
+							}
+			        
+		}
+	}
+
+	#珊瑚弓小早
+	focus = {
+		id = SNA_shanhugongxiaozao
+		icon = GFX_SNA_shanhugongxiaozao-222880
+		x = 9
+		y = 5
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = SNA_wuxuzairen  }
+	}
+
+	#进军八酝岛
+	focus = {
+		id = SNA_jinjunbayundao
+		icon = GFX_SNA_jinjunbayundao-222885
+		x = 8
+		y = 6
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = SNA_fanpanjun  }
+		prerequisite = { focus = SNA_shanhugongxiaozao  }
+		completion_reward = {
+			88 = {transfer_state_to = ROOT}
+            83 = {transfer_state_to = ROOT}
+            82 = {transfer_state_to = ROOT}
+            85 = {transfer_state_to = ROOT}
+            373	= {transfer_state_to = ROOT}		
+		}
+	}
+
+	#开战！
+	focus = {
+		id = SNA_kaizhan
+		icon = GFX_SNA_kaizhan-222888
+		x = 8
+		y = 7
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = SNA_jinjunbayundao  }
+		completion_reward = {
+			SNA = {
+				country_event = { id = XinHai.10 }
+				news_event = { id = global_news.9 hours = 12 }
+			}      
+		}
+	}
+}

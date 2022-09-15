@@ -1,0 +1,1460 @@
+focus_tree = {
+	id = Second_Stage
+    country = {
+		factor = 0
+		#modifier = {
+			#add = 10
+			#tag = SNA
+		#}
+	}
+	#二阶段
+	focus = {
+		id = SNA_erjieduan
+		icon = GFX_SNA_erjieduan-264364
+		x = 10
+		y = 0
+		cost = 0.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			 always = no 
+		}
+		bypass = {
+			
+						custom_trigger_tooltip {
+							tooltip = will_bypass_by_event_tt
+							has_country_flag = Second_stage
+						}
+			        
+		}
+	}
+
+	#民生问题
+	focus = {
+		id = SNA_minshengwenti
+		icon = GFX_SNA_minshengwenti-264369
+		x = 6
+		y = 1
+		cost = 20.00
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_erjieduan  }
+		completion_reward = {
+			
+			              add_political_power = 25
+			              add_stability = 0.05
+			        
+		}
+		select_effect = {
+            country_event = {id = XinHaiSecond.1 days = 5}
+            country_event = {id = XinHaiSecond.2 days = 10}                
+            country_event = {id = XinHaiSecond.3 days = 15}
+        }
+	}
+
+	#战争问题
+	focus = {
+		id = SNA_zhanzhengwenti
+		icon = GFX_SNA_zhanzhengwenti-264392
+		x = 14
+		y = 1
+		cost = 20.00
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { } prerequisite = { focus = SNA_erjieduan  }
+		completion_reward = {
+			
+			             army_experience = 10
+			             add_tech_bonus = {
+							name = SNA_Bounds
+							bonus = 0.25
+							uses = 2
+							category = land_doctrine
+						}
+			            
+					
+		}
+	}
+
+	#收纳少量存粮
+	focus = {
+		id = SNA_shounashaoliangcunliang
+		icon = GFX_SNA_shounashaoliangcunliang-264370
+		x = 6
+		y = 2
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_minshengwenti  }
+		completion_reward = {
+			hidden_effect =
+			{
+                 swap_ideas = {
+			                 add_idea = SNA_emergency_1
+			                 remove_idea = SNA_no_goods
+			             }
+				if = 
+				{
+                       limit = {has_idea = SNA_trend_2}
+					   swap_ideas = {
+					          add_idea = SNA_trend_3
+							  remove_idea = SNA_trend_2
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_3}
+					   swap_ideas = {
+					          add_idea = SNA_trend_4
+							  remove_idea = SNA_trend_3
+				        }
+				}
+				else_if =
+				{
+                       limit = {has_idea = SNA_trend_4}
+					   swap_ideas = {
+					          add_idea = SNA_trend_5
+							  remove_idea = SNA_trend_4
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_1}
+					   swap_ideas = {
+					          add_idea = SNA_trend_2
+							  remove_idea = SNA_trend_1
+				        }
+				}
+				 
+			}
+			custom_effect_tooltip = "radical"            
+			        
+		}
+	} 
+
+	#关注占领区问题
+	focus = {
+		id = SNA_guanzhuzhanlingquwenti
+		icon = GFX_SNA_guanzhuzhanlingquwenti-264365
+		x = 10
+		y = 1
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_erjieduan  }
+		available = {
+			 has_country_flag = livehood_problem_solved 
+		}
+		completion_reward = {
+			
+			            country_event = {id = XinHaiSecond.4} 
+			        
+		}
+	}
+
+	#扩大征兵
+	focus = {
+		id = SNA_kuodazhengbing
+		icon = GFX_SNA_kuodazhengbing-264394
+		x = 15
+		y = 2
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { } prerequisite = { focus = SNA_zhanzhengwenti  }
+		completion_reward = {
+			
+			              add_ideas = service_by_requirement
+			        
+		}
+	}
+
+	#减少不必要的祭祀活动
+	focus = {
+		id = SNA_jianshaobubiyaodejisihuodong
+		icon = GFX_SNA_jianshaobubiyaodejisihuodong-264371
+		x = 5
+		y = 3
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_shounashaoliangcunliang  }
+		completion_reward = {
+			
+			             if = {
+			                 limit = {has_idea = SNA_emergency_3}
+			                 swap_ideas ={
+			                     add_idea = SNA_emergency_4
+			                     remove_idea = SNA_emergency_3
+			                 }
+			             }
+			             else_if ={
+			                   limit = {has_idea = SNA_emergency_1}
+			                   swap_ideas = {
+			                       add_idea = SNA_emergency_2
+			                       remove_idea = SNA_emergency_1
+			                   }
+			              }
+		    add_political_power = -100                 
+		}
+	}
+
+	#莫扰当地百姓
+	focus = {
+		id = SNA_moraodangdibaixing
+		icon = GFX_SNA_moraodangdibaixing-264366
+		x = 9
+		y = 2
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_guanzhuzhanlingquwenti  }
+		mutually_exclusive = { focus = SNA_qiangpohaishenxinyang  }
+		available = {
+			
+			             has_country_flag = Not_Disturb
+			        
+		}
+		completion_reward = {
+			 
+			               
+			            add_timed_idea={
+			                   days = 30
+			                   idea = SNA_Recuperate
+			            }
+			            random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+			             random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+			             random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+			             add_stability = 0.05
+			        
+		}
+	}
+
+	#强迫海神信仰
+	focus = {
+		id = SNA_qiangpohaishenxinyang
+		icon = GFX_SNA_qiangpohaishenxinyang-264367
+		x = 11
+		y = 2
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_guanzhuzhanlingquwenti  }
+		mutually_exclusive = { focus = SNA_moraodangdibaixing  }
+		available = {
+			
+			             has_country_flag = Forced_faith
+			        
+		}
+		completion_reward = {
+			
+			            
+			            add_timed_idea = {
+			                days = 30
+			                idea = SNA_narukami_statue
+			            }
+			            random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = arms_factory
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+			             random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = arms_factory
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+			             random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = arms_factory
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+			             add_stability = -0.1
+			        
+		}
+	}
+
+	#村武器工坊
+	focus = {
+		id = SNA_cunwuqigongfang
+		icon = GFX_SNA_cunwuqigongfang-264393
+		x = 13
+		y = 2
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_zhanzhengwenti  }
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 2 }
+			add_ideas = SNA_guns_in_village
+			        
+		}
+	}
+
+	#夜中捕鱼,风险翻倍
+	focus = {
+		id = SNA_yezhongbuyufengxianfanbei
+		icon = GFX_SNA_yezhongbuyufengxianfanbei-264373
+		x = 7
+		y = 3
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_shounashaoliangcunliang  }
+		completion_reward = {
+			
+			              if =
+			              {
+			                   limit = {has_idea = SNA_emergency_2}
+			                   swap_ideas = {
+			                       add_idea = SNA_emergency_4
+			                       remove_idea = SNA_emergency_2
+			                   }
+			              }
+			              else_if ={
+			                   limit = {has_idea = SNA_emergency_1}
+			                   swap_ideas = {
+			                       add_idea = SNA_emergency_3
+			                       remove_idea = SNA_emergency_1
+			                   }
+			              }
+			              add_manpower = -500
+			              
+			        
+		}
+	}
+
+	#接触社奉行
+	focus = {
+		id = SNA_jiehongshefengxing
+		icon = GFX_SNA_jiehongshefengxing-264368
+		x = 10
+		y = 3
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_moraodangdibaixing  focus = SNA_qiangpohaishenxinyang  }
+		completion_reward = {
+			
+			            
+			            country_event = { id = XinHaiSecond.7 }
+			        
+		}
+	}
+
+	#与愚人众交易
+	focus = {
+		id = SNA_yuyurenzhongjiaoyi
+		icon = GFX_SNA_yuyurenzhongjiaoyi-264428
+		x = 13
+		y = 3
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_cunwuqigongfang  }
+		completion_reward = {
+			
+			               
+			               country_event = {id = XinHaiSecond.5}
+			        
+		}
+	}
+
+	#建立走私网络
+	focus = {
+		id = SNA_jianlizousiwangluo
+		icon = GFX_SNA_jianlizousiwangluo-264377
+		x = 9
+		y = 5
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_shanhugongtianshouge  } prerequisite = { focus = SNA_gulifazhandangdimaoyi  }
+		completion_reward = {
+			
+			unlock_decision_category_tooltip =  SNA_internal_factions
+			set_country_flag = xinhai666
+			custom_effect_tooltip = "smuggle_line"
+			custom_effect_tooltip = "unlock"
+			add_to_variable = {SNA_smuggling_morale = 1}
+		}
+	}
+
+	#与终末番合作
+	focus = {
+		id = SNA_yuzhongmofanhezuo
+		icon = GFX_SNA_yuzhongmofanhezuo-264381
+		x = 9
+		y = 7
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_yushefengxingdehezuo  } prerequisite = { focus = SNA_jianlizousiwangluo  }
+		completion_reward = {       
+			    country_event = {id = XinHaiSecond.8}
+			    custom_effect_tooltip = "morale_lot"
+			    add_to_variable = {SNA_societypursuit_morale = 10}
+		}
+	}
+
+	#获取九条家情报
+	focus = {
+		id = SNA_huoqujiutiaojiaqingbao
+		icon = GFX_SNA_huoqujiutiaojiaqingbao-264407
+		x = 11
+		y = 8
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { } prerequisite = { focus = SNA_yushefengxingdehezuo  } prerequisite = { } prerequisite = { focus = SNA_yuzhongmofanhezuo  } prerequisite = { }
+		completion_reward = {
+			country_event = {id = XinHaiSecond.9}	
+			#获得30天对九条家进攻和防御加成的buff		        
+		}
+	}
+
+	#牵制!
+	focus = {
+		id = SNA_qianzhi
+		icon = GFX_SNA_qianzhi-264391
+		x = 13
+		y = 9
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_huoqujiutiaojiaqingbao focus = SNA_haizhidaoyongyuandepengyou  }
+		completion_reward = {
+			custom_effect_tooltip = diversionary
+			#获得民族精神，牵制！
+			#效果为指挥点数获得+1 获得进攻和防御buff
+			        
+		}
+	}
+
+	#鼓励发展当地贸易
+	focus = {
+		id = SNA_gulifazhandangdimaoyi
+		icon = GFX_SNA_gulifazhandangdimaoyi-264376
+		x = 9
+		y = 4
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = 
+		{
+			85 = {is_controlled_by = ROOT}
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jiehongshefengxing  } prerequisite = { }
+		completion_reward = {    
+			85 =
+			{
+                 add_extra_state_shared_building_slots = 2
+				 add_building_construction = {
+					type = industrial_complex
+					level = 2
+				    instant_build = yes
+				 }
+			}
+			        
+		}
+	}
+
+	#珊瑚宫,天守阁!
+	focus = {
+		id = SNA_shanhugongtianshouge
+		icon = GFX_SNA_shanhugongtianshouge-264397
+		x = 12
+		y = 4
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_yuyurenzhongjiaoyi  } prerequisite = { focus = SNA_jiehongshefengxing  }
+		completion_reward = {
+			
+			            country_event = {id = XinHaiSecond.6}
+			        
+		}
+	}
+
+	#加强联系!
+	focus = {
+		id = SNA_jiaqianglianxi
+		icon = GFX_SNA_jiaqianglianxi-264399
+		x = 14
+		y = 5
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_yurenzhongdejiangling  }
+		mutually_exclusive = { } mutually_exclusive = { focus = SNA_zhishimaoyihuoban  }
+		available = {
+			has_country_flag = yes
+		}
+		completion_reward = {
+			set_country_flag = Strengthen_contacts
+			custom_effect_tooltip = "Fatui_a_lot"
+			add_to_variable = {SNA_foolish_morale = 25}
+			country_event =
+			{
+				
+			}
+		}
+	}
+
+	#购买更多武器
+	focus = {
+		id = SNA_goumaigengduowuqi
+		icon = GFX_SNA_goumaigengduowuqi-264400
+		x = 13
+		y = 6
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { } prerequisite = { focus = SNA_zhishimaoyihuoban focus = SNA_jiaqianglianxi  } prerequisite = { focus = SNA_jianlizousiwangluo  }
+		completion_reward = {
+			
+			            if =
+			            {
+			                limit = {has_country_flag = only_friend}
+			                
+			                add_equipment_to_stockpile = {
+							   type = infantry_equipment 
+							   amount = 500
+							   producer = SNA
+						    }
+							custom_effect_tooltip = "Fatui_lot"
+			                add_to_variable = {SNA_foolish_morale = 10}
+			            }
+			            else_if =
+			            {
+			                limit = {has_country_flag = Strengthen_contacts}
+			                custom_effect_tooltip = "smuggle_line"
+							custom_effect_tooltip = "Fatui_a_lot"
+			                add_to_variable = {SNA_smuggling_morale = 1}
+			                add_to_variable = {SNA_foolish_morale = 25}
+			                add_equipment_to_stockpile = {
+							   type = infantry_equipment 
+							   amount = 1000
+							   producer = SNA
+						    }
+			            } 
+		}
+	}
+
+	#给愚人众提供基地
+	focus = {
+		id = SNA_geiyurenzhongtigongjidi
+		icon = GFX_SNA_geiyurenzhongtigongjidi-264402
+		x = 15
+		y = 6
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_FRA_OCCUPATION_COST
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jiaqianglianxi  }
+		available = {
+			
+			            has_idea = SNA_summggle_net_1
+			        
+		}
+		completion_reward = {
+			
+			             custom_effect_tooltip = "smuggle_line"
+						 custom_effect_tooltip = "Fatui_a_lot"
+			             add_to_variable = {SNA_smuggling_morale = 1}
+			             add_to_variable = {SNA_foolish_morale = 25}
+			            SNE = {
+			                set_state_owner = 374
+			                set_state_owner = 373
+			            }
+		}
+	}
+
+	#购买愚人众的火枪
+	focus = {
+		id = SNA_goumaiyurenzhongdehuoqiang
+		icon = GFX_SNA_goumaiyurenzhongdehuoqiang-264403
+		x = 14
+		y = 7
+		cost = 35.00
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { } prerequisite = { focus = SNA_goumaigengduowuqi  } prerequisite = { focus = SNA_geiyurenzhongtigongjidi  }
+		completion_reward = {
+			custom_effect_tooltip = "smuggle_line"
+			custom_effect_tooltip = "Fatui_lots"
+			add_to_variable = {SNA_smuggling_morale = 1}
+			add_to_variable = {SNA_foolish_morale = 25}
+			add_ideas = SNA_new_army                    
+		}
+	}
+
+	#海祇岛永远的朋友
+	focus = {
+		id = SNA_haizhidaoyongyuandepengyou
+		icon = GFX_SNA_haizhidaoyongyuandepengyou-264404
+		x = 14
+		y = 8
+		cost = 35.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_goumaiyurenzhongdehuoqiang  }
+		completion_reward = {      
+			country_event = {id = XinHaiSecond.11}
+		}
+	}
+
+	#只是贸易伙伴
+	focus = {
+		id = SNA_zhishimaoyihuoban
+		icon = GFX_SNA_zhishimaoyihuoban-264398
+		x = 12
+		y = 5
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_shanhugongtianshouge  } prerequisite = { focus = SNA_yuyurenzhongjiaoyi  }
+		mutually_exclusive = { } mutually_exclusive = { focus = SNA_jiaqianglianxi  }
+		available = {
+			 has_country_flag = no
+		}
+		completion_reward = {
+			    set_country_flag = only_friend
+			    custom_effect_tooltip = "smuggle_line"
+			    add_to_variable = {SNA_smuggling_morale = 1}      
+		}
+	}
+
+	#与社奉行的合作
+	focus = {
+		id = SNA_yushefengxingdehezuo
+		icon = GFX_SNA_yushefengxingdehezuo-264405
+		x = 11
+		y = 6
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jianlizousiwangluo  } prerequisite = { focus = SNA_zhishimaoyihuoban  }
+		completion_reward =
+		{
+			custom_effect_tooltip = "morale_lot"
+			add_to_variable = {SNA_societypursuit_morale = 10}
+		}
+	}
+
+	#增加工作时长
+	focus = {
+		id = SNA_zengjiagongzuoshichang
+		icon = GFX_SNA_zengjiagongzuoshichang-264374
+		x = 6
+		y = 4
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jianshaobubiyaodejisihuodong  } prerequisite = { focus = SNA_yezhongbuyufengxianfanbei  }
+		completion_reward = {		
+			                swap_ideas =
+			                {
+			                    add_idea = SNA_emergency_5
+			                    remove_idea = SNA_emergency_4
+			                }
+			                add_ideas = forteen_work
+			                set_country_flag = livehood_problem_solved
+			        
+		}
+	}
+
+	#大家真正关心的
+	focus = {
+		id = SNA_dajiazhenzhengguanxinde
+		icon = GFX_SNA_dajiazhenzhengguanxinde-264375
+		x = 6
+		y = 5
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { } prerequisite = { focus = SNA_gulifazhandangdimaoyi  } prerequisite = { focus = SNA_zengjiagongzuoshichang  }
+		completion_reward = 
+		{
+			if = 
+			{
+				limit = {has_idea = SNA_trend_3}
+				custom_effect_tooltip = "trend_2"
+				random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 1
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+				random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 1
+							  add_building_construction = {
+					              type = arms_factory
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+				add_political_power = -25
+			}
+			else_if = 
+			{
+                limit = {has_idea = SNA_trend_2}
+				custom_effect_tooltip = "trend_3"
+				random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 1
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+				add_stability = -0.05
+				add_war_support = 0.05
+				add_political_power  = -50
+			}
+			else_if =
+			{
+                limit = {has_idea = SNA_trend_1}
+				custom_effect_tooltip = "trend_3"
+				random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 2
+				                  instant_build = yes
+					          }
+			             }
+				add_stability = -0.1
+				add_war_support = 0.1
+				add_political_power  = -100
+			}
+			else_if =
+			{
+                limit = {has_idea = SNA_trend_4}
+				custom_effect_tooltip = "trend_1"
+				random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 1
+							  add_building_construction = {
+					              type = arms_factory
+					              level = 1
+				                  instant_build = yes
+					          }
+			             }
+				add_stability = -0.05
+				add_war_support = 0.05
+				add_political_power  = -50
+			}
+			else_if =
+			{
+                limit = {has_idea = SNA_trend_5}
+				custom_effect_tooltip = "trend_1"
+				random_owned_controlled_state ={
+			                 add_extra_state_shared_building_slots = 2
+							  add_building_construction = {
+					              type = arms_factory
+					              level = 2
+				                  instant_build = yes
+					          }
+			             }
+				add_stability = -0.1
+				add_war_support = 0.1
+				add_political_power  = -100
+			}
+
+		}
+		#思潮为偏极端 则添加军用工厂 战争支持度 减稳定度
+		#思潮为偏温和 则添加民用工厂 稳定度 减战争支持度
+	}
+
+	#大批进口生活物资
+	focus = {
+		id = SNA_dapijinkoushenghuowuzi
+		icon = GFX_SNA_dapijinkoushenghuowuzi-264378
+		x = 7
+		y = 6
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jianlizousiwangluo  } prerequisite = { focus = SNA_dajiazhenzhengguanxinde  }
+		available = {
+			has_country_flag = only_friend
+		}
+		completion_reward = {
+			
+			add_timed_idea = 
+			{
+				idea = SNA_paid_for_goods
+			    days = 120	
+			}	
+			custom_effect_tooltip = "smuggle_line"
+			custom_effect_tooltip = "morale_lot"
+			custom_effect_tooltip = "Fatui_lot"
+			add_to_variable = {SNA_smuggling_morale = 1}
+			add_to_variable = {SNA_societypursuit_morale = 10}
+			add_to_variable = {SNA_foolish_morale = 10}
+		}
+	}
+
+	#与社奉行航线
+	focus = {
+		id = SNA_yushefengxinghangxian
+		icon = GFX_SNA_yushefengxinghangxian-264380
+		x = 7
+		y = 7
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_dapijinkoushenghuowuzi  }
+		completion_reward = {		
+			custom_effect_tooltip = "smuggle_line"
+			custom_effect_tooltip = "morale_lot"
+			add_to_variable = {SNA_smuggling_morale = 1}
+			add_to_variable = {SNA_societypursuit_morale = 10}
+			#若零阶段点出处理海乱鬼决议 则降低一点海乱鬼对航线的影响    
+		}
+	}
+
+	#接触鸣神大社
+	focus = {
+		id = SNA_jiehongmingshendashe
+		icon = GFX_SNA_jiehongmingshendashe-264382
+		x = 8
+		y = 8
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_yushefengxinghangxian  } prerequisite = { focus = SNA_yuzhongmofanhezuo  }
+		completion_reward = 
+		{
+			country_event = {id = XinHaiSecond.15}
+			#获得民族精神"大社"
+		}
+	}
+
+	#鸣神岛的联系
+	focus = {
+		id = SNA_mingshendaodelianxi
+		icon = GFX_SNA_mingshendaodelianxi-264383
+		x = 9
+		y = 9
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_yuzhongmofanhezuo  } prerequisite = { focus = SNA_jiehongmingshendashe  }
+		completion_reward = {     
+			country_event = { id = XinHaiSecond.10 }
+			custom_effect_tooltip = "smuggle_line"
+			add_to_variable = {SNA_smuggling_morale = 1}
+			        
+		}
+	}
+
+	#培养新将领
+	focus = {
+		id = SNA_peiyangxinjiangling
+		icon = GFX_SNA_peiyangxinjiangling-264395
+		x = 15
+		y = 3
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { } prerequisite = { focus = SNA_kuodazhengbing  }
+		completion_reward = {
+			
+			              create_corps_commander = 
+							{
+								name = "博行"
+								portrait_path = ""
+								traits = {}
+								skill = 2
+								attack_skill = 2
+								defense_skill = 1
+								planning_skill = 1
+								logistics_skill = 1 
+							}
+			                create_corps_commander = 
+							{
+								name = "松口"
+								portrait_path = ""
+								traits = {}
+								skill = 2
+								attack_skill = 1
+								defense_skill = 2
+								planning_skill = 1
+								logistics_skill = 1   
+							}
+			              every_army_leader = 
+			              {
+			                  add_defense = 1
+			                  add_logistics = 1
+			              }
+			        
+		}
+	}
+
+	#愚人众的将领
+	focus = {
+		id = SNA_yurenzhongdejiangling
+		icon = GFX_SNA_yurenzhongdejiangling-264396
+		x = 14
+		y = 4
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { } prerequisite = { focus = SNA_peiyangxinjiangling  } prerequisite = { focus = SNA_yuyurenzhongjiaoyi  }
+		completion_reward = {
+			
+			                create_corps_commander = 
+							{
+								name = "愚人众——雷莹术士"
+								portrait_path = ""
+								traits = {}
+								skill = 4
+								attack_skill = 1
+								defense_skill = 3
+								planning_skill = 4
+								logistics_skill = 4	   
+							}
+			                create_corps_commander = 
+							{
+								name = "愚人众——债务处理人"
+								portrait_path = ""
+								traits = {}
+								skill = 5
+								attack_skill = 5
+								defense_skill = 1
+								planning_skill = 2
+								logistics_skill = 2	   
+							}
+			                create_corps_commander = 
+							{
+								name = "愚人众——藏镜侍女"
+								portrait_path = ""
+								traits = {}
+								skill = 4
+								attack_skill = 2
+								defense_skill = 5
+								planning_skill = 1
+								logistics_skill = 1	   
+							} 
+			        
+		}
+	}
+
+	#等待...直到一切结束
+	focus = {
+		id = SNA_dengdaizhidaoyiqiejieshu
+		icon = GFX_SNA_dengdaizhidaoyiqiejieshu-264385
+		x = 11
+		y = 10
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_qianzhi  } prerequisite = { focus = SNA_mingshendaodelianxi  }
+		completion_reward = {
+			
+			            custom_effect_tooltip = "wait"
+			            set_country_flag = waiting
+			                
+		}
+	}
+
+	#忍无可忍,推翻幕府统治!
+	focus = {
+		id = SNA_renwukerentuifanmufutongzhi
+		icon = GFX_SNA_renwukerentuifanmufutongzhi-264408
+		x = 14
+		y = 10
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { } prerequisite = { focus = SNA_qianzhi  } prerequisite = { focus = SNA_haizhidaoyongyuandepengyou  }
+		completion_reward = {
+			
+			custom_effect_tooltip = "ana"
+			hidden_effect = 
+			{
+                 load_focus_tree = SNA_final
+			}       
+		}
+	}
+
+	#乘胜追击
+	focus = {
+		id = SNA_chengshengzhuiji
+		icon = GFX_SNA_chengshengzhuiji-264386
+		x = 11
+		y = 11
+		cost = 7.00
+		available = 
+		{
+			81 = {is_controlled_by = ROOT}
+		}
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		#allow_branch = { has_country_flag = waiting}
+		prerequisite = { focus = SNA_dengdaizhidaoyiqiejieshu  }
+		completion_reward = {
+			
+			country_event = {id = XinHaiSecond.12}
+			add_timed_idea = 
+			{
+				idea = SNA_attack
+			    days = 30
+			}	
+			       
+		}
+	}
+
+	#突袭九条阵屋
+	focus = {
+		id = SNA_tuxijiutiaozhenwu
+		icon = GFX_SNA_tuxijiutiaozhenwu-264388
+		x = 10
+		y = 12
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { } prerequisite = { focus = SNA_chengshengzhuiji  }
+		completion_reward = {
+			            country_event = {id=XinHaiSecond.14}
+			            #进攻效果获得修正 +对九条家进攻和防御
+		}
+	}
+
+	#最后一枚棋子
+	focus = {
+		id = SNA_zuihouyimeiqizi
+		icon = GFX_SNA_zuihouyimeiqizi-264389
+		x = 12
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_chengshengzhuiji  }
+		completion_reward = 
+		{
+			country_event = {id = XinHaiSecond.16}
+		}
+	}
+
+	#将军！
+	focus = {
+		id = SNA_jiangjun
+		icon = GFX_SNA_jiangjun-264418
+		x = 11
+		y = 13
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_tuxijiutiaozhenwu  } prerequisite = { focus = SNA_zuihouyimeiqizi  }
+		completion_reward = {
+			  country_event = { id = XinHaiSecond.13}
+			        
+		}
+	}
+
+	#接触改革派
+	focus = {
+		id = SNA_jiehonggaigepai
+		icon = GFX_SNA_jiehonggaigepai-264411
+		x = 9
+		y = 15
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = 
+		{
+			OR = {has_idea = SNA_trend_5}
+			OR = {has_idea = SNA_trend_4}
+
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jiangjun  }
+		mutually_exclusive = { focus = SNA_weichixianzhuang  }
+		completion_reward = 
+		{
+			custom_effect_tooltip = "attach"
+			custom_effect_tooltip = "Reform"
+			add_popularity = {
+					ideology = liberalism
+					popularity = 0.1
+			}
+			hidden_effect =
+			{
+			    if =
+				{
+                       limit = {has_idea = SNA_trend_4}
+					   swap_ideas = {
+					          add_idea = SNA_trend_Reform
+							  remove_idea = SNA_trend_4
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_5}
+					   swap_ideas = {
+					          add_idea = SNA_trend_Reform
+							  remove_idea = SNA_trend_5
+				        }
+				}
+				 
+			}	
+		}
+	}
+
+	#维持现状
+	focus = {
+		id = SNA_weichixianzhuang
+		icon = GFX_SNA_weichixianzhuang-264422
+		x = 13
+		y = 15
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jiangjun  }
+		completion_reward = 
+		{
+			custom_effect_tooltip = "hcatta"
+			custom_effect_tooltip = "mild"
+			hidden_effect =
+		   {
+			    if = 
+				{
+                       limit = {has_idea = SNA_trend_2}
+					   swap_ideas = {
+					          add_idea = SNA_trend_1
+							  remove_idea = SNA_trend_2
+					   }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_3}
+					   swap_ideas = {
+					          add_idea = SNA_trend_2
+							  remove_idea = SNA_trend_3
+				        }
+				}
+				else_if =
+				{
+                       limit = {has_idea = SNA_trend_4}
+					   swap_ideas = {
+					          add_idea = SNA_trend_3
+							  remove_idea = SNA_trend_4
+				        }
+				}
+				else_if = 
+				{
+                       limit = {has_idea = SNA_trend_5}
+					   swap_ideas = {
+					          add_idea = SNA_trend_4
+							  remove_idea = SNA_trend_5
+				        }
+				}
+		   }
+		}
+	}
+
+	#和平谈判
+	focus = {
+		id = SNA_hepingtanpan
+		icon = GFX_SNA_hepingtanpan-264409
+		x = 11
+		y = 14
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jiangjun  }
+		completion_reward = 
+		{
+			custom_effect_tooltip = "peace"
+			set_country_flag = on_the_way_to_peace
+		}
+	}
+
+	#修复废弃航线
+	focus = {
+		id = SNA_xiufufeiqihangxian
+		icon = GFX_SNA_xiufufeiqihangxian-264413
+		x = 8
+		y = 16
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jiehonggaigepai  }
+		#如果解锁处理海乱鬼决议，将削弱一层debuff
+		#如果没有，则解锁处理海乱鬼决议
+	}
+
+	#维持走私网络
+	focus = {
+		id = SNA_weichizousiwangluo
+		icon = GFX_SNA_weichizousiwangluo-264419
+		x = 10
+		y = 16
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jiehonggaigepai  }
+		completion_reward = {
+			custom_effect_tooltip = "contiune"
+			hidden_effect = 
+			{
+                if = 
+			{
+		        limit = {has_idea = SNA_summggle_net_1}
+                swap_ideas = 
+			    {
+				add_idea = SNA_trade
+				remove_idea = SNA_summggle_net_1
+			    }  
+			}
+			else_if = 
+			{
+		        limit = {has_idea = SNA_summggle_net_2}
+                swap_ideas = 
+			    {
+				add_idea = SNA_trade
+				remove_idea = SNA_summggle_net_2
+			    }  
+			}
+			else_if = 
+			{
+		        limit = {has_idea = SNA_summggle_net_3}
+                swap_ideas = 
+			    {
+				add_idea = SNA_trade
+				remove_idea = SNA_summggle_net_3
+			    }
+			}
+			else_if = 
+			{
+		        limit = {has_idea = SNA_summggle_net_4}
+                swap_ideas = 
+			    {
+				add_idea = SNA_trade
+				remove_idea = SNA_summggle_net_4
+			    }
+			}
+		}	        
+	  }
+	}
+
+	#新的道路
+	focus = {
+		id = SNA_xindedaolu
+		icon = GFX_SNA_xindedaolu-264414
+		x = 9
+		y = 17
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { } prerequisite = { focus = SNA_xiufufeiqihangxian  } prerequisite = { focus = SNA_weichizousiwangluo  }
+		completion_reward = {
+			custom_effect_tooltip = "new_road"
+			set_country_flag = "road"        
+		}
+	}
+
+	#结束紧急状态
+	focus = {
+		id = SNA_jieshujinjizhuangtai
+		icon = GFX_SNA_jieshujinjizhuangtai-264420
+		x = 12
+		y = 16
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_weichixianzhuang  }
+		completion_reward = {
+			swap_ideas =
+			{
+			    add_idea = SNA_emergency_finished
+			    remove_idea = SNA_emergency_5
+			}
+			        
+		}
+	}
+
+	#停止走私网络
+	focus = {
+		id = SNA_tingzhizousiwangluo
+		icon = GFX_SNA_tingzhizousiwangluo-264423
+		x = 14
+		y = 16
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_weichixianzhuang  }
+		completion_reward = {
+			
+			            custom_effect_tooltip = "stop"
+			            clr_country_flag = xinhai666
+			            
+			        
+		}
+	}
+
+	#新的一步
+	focus = {
+		id = SNA_xindeyibu
+		icon = GFX_SNA_xindeyibu-264425
+		x = 13
+		y = 17
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { } prerequisite = { focus = SNA_jieshujinjizhuangtai  } prerequisite = { focus = SNA_tingzhizousiwangluo  }
+		completion_reward = {
+			    custom_effect_tooltip = "new_step"
+				set_country_flag = "step"
+		}
+	}
+
+	#终局
+	focus = {
+		id = SNA_zhongju
+		icon = GFX_SNA_zhongju-264417
+		x = 11
+		y = 17
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			NOT = {has_country_flag = on_the_way_to_peace }
+		}
+		prerequisite = { } prerequisite = { focus = SNA_hepingtanpan  }
+		completion_reward = {
+			
+			custom_effect_tooltip = "last"
+			SNA =
+			{
+				white_peace = KUJ
+				white_peace = INA
+			}
+				if = 
+				{
+					limit = {369 = {is_controlled_by = ROOT}}
+                    84 = {transfer_state_to = ROOT}
+                    370 = {transfer_state_to = ROOT}
+                    372 = {transfer_state_to = ROOT}
+                    371 = {transfer_state_to = ROOT}
+                    87	= {transfer_state_to = ROOT}
+					81	= {transfer_state_to = ROOT}
+					369	= {transfer_state_to = ROOT}	
+				}
+				else = 
+				{
+                    84 = {transfer_state_to = ROOT}
+                    370 = {transfer_state_to = ROOT}
+                    372 = {transfer_state_to = ROOT}
+                    371 = {transfer_state_to = ROOT}
+                    87	= {transfer_state_to = ROOT}
+					81	= {transfer_state_to = ROOT}
+				}         
+			        
+		}
+	}
+
+	#新的一天
+	focus = {
+		id = SNA_xindeyitian
+		icon = GFX_SNA_xindeyitian-264415
+		x = 11
+		y = 18
+		cost = 7.00
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = SNA_zhongju  } prerequisite = { focus = SNA_xindedaolu   focus = SNA_xindeyibu  }
+		completion_reward = {
+			
+			            custom_effect_tooltip = "arise"
+			            custom_effect_tooltip = "not_finish"
+			            
+			        
+		}
+	}
+
+}
+
+ 

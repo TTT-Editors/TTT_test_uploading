@@ -1,0 +1,865 @@
+focus_tree = {
+	id = Childe_and_LaSignora
+	country = {
+		base = 0
+		modifier = {
+			add = 10
+			tag = ZDG
+		}
+	}
+	default = no
+	focus = {
+		id = ZDG_yuguonei_qudelianxi
+		icon = GFX_goal_tripartite_pact
+		cost = 7
+		x = 7
+		y = 1
+		completion_reward = {
+            add_political_power = 100
+			add_opinion_modifier = {
+                target = SNE
+                modifier = Childe_or_LaSignora_dip1
+            }
+			SNE = {
+				add_opinion_modifier = {
+				    target = ZDG
+                    modifier = Childe_or_LaSignora_dip1
+				}
+			}
+			unlock_decision_category_tooltip = CLIA_xiangguonei_xunqiu_yuanzhu
+			set_country_flag = CLIA_yunxu_xiangguonei_qiuyuan
+		}
+	}
+	focus = {
+		id = ZDG_nvshi_daolai
+		icon = GFX_goal_generic_propaganda
+		cost = 0
+		x = 15 
+		y = 1
+
+		allow_branch = {
+            has_country_flag = CLIA_nvshi_laile_a  
+		}
+
+		available = {
+			always = no
+		}
+		
+		completion_reward = {
+            add_political_power = -50
+			add_stability = -0.05
+			set_party_name = { 
+				ideology = authoritarianism
+				long_name = ZDG_Childe_clique_long
+				name = ZDG_Childe_clique
+			}
+			set_party_name = { 
+				ideology = national_socialism
+				long_name = ZDG_La_Signora_clique_long
+				name = ZDG_La_Signora_clique
+			}
+			hidden_effect = {
+				set_popularities = {
+					authoritarianism = 50
+					national_socialism = 50
+				}
+			}
+		}
+	}
+	focus = {
+		id = ZDG_xunqiu_feiting_zhiyuan
+		icon = GFX_focus_generic_aircraft_production
+		cost = 14
+		prerequisite = {
+			focus = ZDG_yuguonei_qudelianxi
+		}
+		x = 4
+		y = 2
+        completion_reward = {
+            air_experience = 20
+			add_equipment_to_stockpile = { 
+				type = fighter_equipment_0 
+				amount = 80 
+				producer = SNE 
+			}
+		}
+
+		ai_will_do = {
+			base = 0 
+			modifier = {
+				add = 10
+                AND = { 
+					has_completed_focus = ZDG_saodang_difang 
+					has_completed_focus = ZDG_jinji_gongchang_zhengdiao
+					has_completed_focus = ZDG_jianli_jiceng_zhengquan
+				}
+			}
+		}
+	}
+	focus = {
+		id = ZDG_duoqu_tiankong
+		icon = GFX_goal_generic_air_fighter2
+		cost = 21
+		prerequisite = {
+			focus = ZDG_xunqiu_feiting_zhiyuan
+		}
+		x = 2
+		y = 3
+		completion_reward = {
+			add_timed_idea = {
+				idea = CLSIA_yongyou_tiankong
+				days = 180
+			}
+            set_country_flag = CLIA_yunxu_zaicihuode_yongyoutiankong
+		}
+	}
+	focus = {
+		id = ZDG_fengdan_zousi
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 21
+		prerequisite = {
+			focus = ZDG_duoqu_tiankong
+		}
+		x = 2
+		y = 4		
+        completion_reward = {
+            add_equipment_to_stockpile = {
+                type = artillery_equipment
+                amount = 800
+                producer = FON
+            }
+			add_equipment_to_stockpile = {
+                type = support_equipment
+                amount = 1000
+                producer = FON
+            }
+		}
+	}
+	focus = {
+		id = ZDG_zhidong_zhiyuanjun
+		icon = GFX_focus_generic_manpower
+		cost = 21
+		prerequisite = {
+			focus = ZDG_xunqiu_feiting_zhiyuan
+		}
+		x = 4
+		y = 3
+        completion_reward = {
+            add_manpower = 20000
+			division_template = {
+				name = "至冬志愿军"
+				is_locked = yes
+				division_names_group = ZDG_INF_01
+				priority = 1
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }
+				}
+				support = { 
+					engineer = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+					artillery = { x = 0 y = 2 }
+				} 
+			}
+			random_owned_state = {
+			    create_unit = {
+				    division = "division_template = \"至冬志愿军\" start_experience_factor = 0.3" 
+				    owner = ZDG
+				    count = 1
+			    }
+				create_unit = {
+				    division = "division_template = \"至冬志愿军\" start_experience_factor = 0.3" 
+				    owner = ZDG
+				    count = 1
+			    }
+		    }
+		}
+	}
+	focus = {
+		id = ZDG_bubing_zhuangbei_buji
+		icon = GFX_goal_generic_small_arms
+		cost = 21
+		prerequisite = {
+			focus = ZDG_xunqiu_feiting_zhiyuan
+		}
+		x = 6
+		y = 3
+        completion_reward = {
+            add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = 2500
+            }
+			custom_effect_tooltip = CLIA_qiyong_shengchan_tebiebu
+			set_country_flag = CLIA_yunxu_shengchan_tebiebu
+		}
+	}
+	focus = {
+		id = ZDG_yu_boshi_goutong
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 21
+		prerequisite = {
+			focus = ZDG_bubing_zhuangbei_buji
+		}
+		x = 6
+		y = 4
+        completion_reward = {
+            add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		id = ZDG_wending_bujixian
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 21
+		prerequisite = {
+			focus = ZDG_zhidong_zhiyuanjun
+		}
+		x = 4
+		y = 4
+        completion_reward = {
+            remove_ideas = CLSIA_bujibuzu
+		}
+	}
+	focus = {
+		id = ZDG_xiaojin_faan
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 7
+		prerequisite = {
+			focus = ZDG_yuguonei_qudelianxi
+		}
+		x = 10
+		y = 2
+        completion_reward = {
+            swap_ideas = {
+				remove_idea = CLSIA_chulaizhadao1
+				add_idea = CLSIA_chulaizhadao2
+			}
+		}
+	}
+	focus = {
+		id = ZDG_junshi_jieyan
+		icon = GFX_focus_generic_military_dictatorship
+		cost = 21
+		prerequisite = {
+			focus = ZDG_xiaojin_faan
+		}
+		x = 8
+		y = 3
+        completion_reward = {
+			if = { 
+				limit = { has_idea = CLSIA_chulaizhadao2 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao2
+				    add_idea = CLSIA_chulaizhadao3
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao3 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao3
+				    add_idea = CLSIA_chulaizhadao4
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao4 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao4
+				    add_idea = CLSIA_chulaizhadao5
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao5 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao5
+				    add_idea = CLSIA_chulaizhadao6
+			    }
+			}
+		}
+	}
+	focus = {
+		id = ZDG_saodang_difang
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 21
+		prerequisite = {
+			focus = ZDG_junshi_jieyan
+		}
+		x = 8
+		y = 4
+        completion_reward = {
+            add_stability = -0.15
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = ZDG_jingji_tongzhi
+		icon = GFX_focus_SOV_merge_plants
+		cost = 21
+		prerequisite = {
+			focus = ZDG_xiaojin_faan
+		}
+		x = 10
+		y = 3
+        completion_reward = {
+            if = { 
+				limit = { has_idea = CLSIA_chulaizhadao2 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao2
+				    add_idea = CLSIA_chulaizhadao3
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao3 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao3
+				    add_idea = CLSIA_chulaizhadao4
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao4 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao4
+				    add_idea = CLSIA_chulaizhadao5
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao5 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao5
+				    add_idea = CLSIA_chulaizhadao6
+			    }
+			}
+		}
+	}
+	focus = {
+		id = ZDG_jinji_gongchang_zhengdiao
+		icon = GFX_focus_generic_industry_1
+		cost = 21
+		prerequisite = {
+			focus = ZDG_jingji_tongzhi
+		}
+		x = 10
+		y = 4
+        completion_reward = {
+			212 = {
+				add_building_construction = {
+                    type = industrial_complex
+                    level = 2
+                    instant_build = yes
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = 2
+                    instant_build = yes
+                }
+			}
+		}
+	}
+	focus = {
+		id = ZDG_jiechu_daobaotuan
+		icon = GFX_goal_generic_more_territorial_claims
+		cost = 21
+		prerequisite = {
+			focus = ZDG_xiaojin_faan
+		}
+		x = 12
+		y = 3
+        completion_reward = {
+            add_stability = -0.1
+			if = { 
+				limit = { has_idea = CLSIA_chulaizhadao2 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao2
+				    add_idea = CLSIA_chulaizhadao3
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao3 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao3
+				    add_idea = CLSIA_chulaizhadao4
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao4 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao4
+				    add_idea = CLSIA_chulaizhadao5
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao5 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao5
+				    add_idea = CLSIA_chulaizhadao6
+			    }
+			}
+		}
+	}
+	focus = {
+		id = ZDG_jianli_jiceng_zhengquan
+		icon = GFX_focus_generic_self_management
+		cost = 21
+		prerequisite = {
+			focus = ZDG_jiechu_daobaotuan
+		}
+		x = 12
+		y = 4
+        completion_reward = {
+            add_stability = 0.1
+			if = { 
+				limit = { has_idea = CLSIA_chulaizhadao2 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao2
+				    add_idea = CLSIA_chulaizhadao3
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao3 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao3
+				    add_idea = CLSIA_chulaizhadao4
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao4 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao4
+				    add_idea = CLSIA_chulaizhadao5
+			    }
+			}
+			else_if = { 
+				limit = { has_idea = CLSIA_chulaizhadao5 }
+                swap_ideas = {
+				    remove_idea = CLSIA_chulaizhadao5
+				    add_idea = CLSIA_chulaizhadao6
+			    }
+			}
+			set_country_flag = CLIA_yunxu_jianshao_duidangdiren_huaiyi
+		}
+	}
+	focus = {
+		id = ZDG_zujian_jingrui
+		icon = GFX_focus_eng_special_air_service
+		cost = 21
+		prerequisite = {
+			focus = ZDG_nvshi_daolai
+		}
+		mutually_exclusive = {
+			focus = ZDG_daguimo_fenfa_xieyan
+		}
+		x = 14
+		y = 2
+		completion_reward = {
+			division_template = {
+				name = "愚人众精锐部队"
+				is_locked = yes
+				division_names_group = ZDG_INF_02
+				priority = 2
+				template_counter = 0
+				regiments = {
+					mountaineers = { x = 0 y = 0 }
+					mountaineers = { x = 0 y = 1 }
+					mountaineers = { x = 0 y = 2 }
+					mountaineers = { x = 0 y = 3 }
+					mountaineers = { x = 1 y = 0 }
+					mountaineers = { x = 1 y = 1 }
+					mountaineers = { x = 1 y = 2 }
+					mountaineers = { x = 1 y = 3 }
+					mountaineers = { x = 2 y = 0 }
+					mountaineers = { x = 2 y = 1 }
+					mountaineers = { x = 2 y = 2 }
+					mountaineers = { x = 2 y = 3 }
+				}
+				support = { 
+					engineer = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+					artillery = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				} 
+			}
+			random_owned_state = {
+			    create_unit = {
+				    division = "division_template = \"愚人众精锐部队\" start_experience_factor = 0.3" 
+				    owner = ZDG
+				    count = 1
+			    }
+				create_unit = {
+				    division = "division_template = \"愚人众精锐部队\" start_experience_factor = 0.3" 
+				    owner = ZDG
+				    count = 1
+			    }
+		    }
+            add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.1
+			}
+		}
+
+		ai_will_do = {
+			base = 0 
+			modifier = {
+				add = 6
+				AND = {
+				    has_completed_focus = ZDG_jushiwending
+				}
+			}
+		}
+	}
+	focus = {
+		id = ZDG_daguimo_fenfa_xieyan
+		icon = GFX_goal_generic_secret_weapon
+		cost = 14
+		prerequisite = {
+			focus = ZDG_nvshi_daolai
+		}
+		mutually_exclusive = {
+			focus = ZDG_zujian_jingrui
+		}
+		x = 16
+		y = 2
+        completion_reward = {
+			add_ideas = CLSIA_xieyanzhijun
+            add_popularity = {
+				ideology = national_socialism
+				popularity = 0.1
+			}
+		}
+
+		ai_will_do = {
+			base = 0 
+			modifier = {
+				add = 4
+				AND = {
+				    has_completed_focus = ZDG_jushiwending
+				}
+			}
+		}
+	}
+	focus = {
+		id = ZDG_bixia_chenmin
+		icon = GFX_goal_generic_national_unity
+		cost = 21
+		prerequisite = {
+			focus = ZDG_daguimo_fenfa_xieyan
+			focus = ZDG_zujian_jingrui
+		}
+		mutually_exclusive = {
+			focus = ZDG_renrucaojie
+		}
+		x = 14
+		y = 3
+        completion_reward = {
+			add_timed_idea = {
+				idea = CLSIA_changshi_hepinggongchu
+				days = 180
+			}
+            add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.1
+			}
+			set_country_flag = CLIA_wancheng_guoce_bixia_chengmin
+		}
+
+		ai_will_do = {
+			base = 6
+		}
+	}
+	focus = {
+		id = ZDG_renrucaojie
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 14
+		prerequisite = {
+			focus = ZDG_zujian_jingrui
+			focus = ZDG_daguimo_fenfa_xieyan
+		}
+		mutually_exclusive = {
+			focus = ZDG_bixia_chenmin
+		}
+		x = 16
+		y = 3
+		completion_reward = {
+			add_ideas = CLSIA_renru_caojie
+            add_popularity = {
+				ideology = national_socialism
+				popularity = 0.1
+			}
+		}
+        
+		ai_will_do = {
+			base = 4
+		}
+	}
+	focus = {
+		id = ZDG_jingji_zhengchanghua
+		icon = GFX_focus_generic_industry_3
+		cost = 21
+		prerequisite = {
+			focus = ZDG_renrucaojie
+			focus = ZDG_bixia_chenmin
+		}
+		mutually_exclusive = {
+			focus = ZDG_yiqie_junshi_youxian
+		}
+		x = 14
+		y = 4
+        completion_reward = {
+			random_owned_state = {
+				limit = { industrial_complex < 1 }
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = { industrial_complex < 1 }
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.1
+			add_war_support = -0.05
+            add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.1
+			}
+		}
+
+		ai_will_do = {
+			base = 6
+		}
+	}
+	focus = {
+		id = ZDG_yiqie_junshi_youxian
+		icon = GFX_focus_generic_tank_production
+		cost = 14
+		prerequisite = {
+			focus = ZDG_bixia_chenmin
+			focus = ZDG_renrucaojie
+		}
+		mutually_exclusive = {
+			focus = ZDG_jingji_zhengchanghua
+		}
+		x = 16
+		y = 4
+        completion_reward = {
+			set_temp_variable = { La_Signora_military_priority1 = 0 }
+			while_loop_effect = {
+				limit = { 
+					check_variable = { 
+						var = La_Signora_military_priority1 
+						value = 6
+						compare = less_than
+					}
+				}
+				random_owned_state = {
+					limit = { arms_factory < 2 }
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_to_temp_variable = { La_Signora_military_priority1 = 1 }
+				}
+			}
+			set_temp_variable = { La_Signora_military_priority2 = 0 }
+			while_loop_effect = {
+				limit = { 
+					check_variable = { 
+						var = La_Signora_military_priority2 
+						value = 2
+						compare = less_than
+					}
+				}
+				random_owned_state = {
+					limit = { industrial_complex > 0 }
+					add_building_construction = {
+						type = industrial_complex
+						level = -1
+						instant_build = yes
+					}
+					add_to_temp_variable = { La_Signora_military_priority2 = 1 }
+				}
+			}
+			add_stability = -0.05
+			add_war_support = 0.1
+            add_popularity = {
+				ideology = national_socialism
+				popularity = 0.1
+			}
+
+			custom_effect_tooltip = CLIA_jia6jungong_jian2mingong
+		}
+
+		ai_will_do = {
+			base = 4
+		}
+	}
+	focus = {
+		id = ZDG_jianli_yanjiuyuan
+		icon = GFX_focus_generic_military_academy
+		cost = 21
+		prerequisite = {
+			focus = ZDG_yiqie_junshi_youxian
+			focus = ZDG_jingji_zhengchanghua
+		}
+		mutually_exclusive = {
+			focus = ZDG_qianghua_zhihui_tixi
+		}
+		x = 14
+		y = 5
+        completion_reward = {
+			add_research_slot = 1
+            add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.1
+			}
+		}
+
+		ai_will_do = {
+			base = 6
+		}
+	}
+	focus = {
+		id = ZDG_qianghua_zhihui_tixi
+		icon = GFX_focus_generic_military_mission
+		cost = 14
+		prerequisite = {
+			focus = ZDG_jingji_zhengchanghua
+			focus = ZDG_yiqie_junshi_youxian
+		}
+		mutually_exclusive = {
+			focus = ZDG_jianli_yanjiuyuan
+		}
+		x = 16
+		y = 5
+        completion_reward = {
+			add_ideas = CLSIA_junshi_zhihui_tixi
+            add_popularity = {
+				ideology = national_socialism
+				popularity = 0.1
+			}
+		}
+
+		ai_will_do = {
+			base = 4
+		}
+	}
+	focus = {
+		id = ZDG_sijierdong
+		icon = GFX_focus_prc_infiltration
+		cost = 21
+		prerequisite = {
+			focus = ZDG_qianghua_zhihui_tixi
+			focus = ZDG_jianli_yanjiuyuan
+		}
+		mutually_exclusive = {
+			focus = ZDG_qiangying_taidu
+		}
+		x = 14
+		y = 6
+        completion_reward = {
+            add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.1
+			}
+			add_war_support = 0.15
+			add_stability = 0.05
+		}
+
+		ai_will_do = {
+			base = 6
+		}
+	}
+	focus = {
+		id = ZDG_qiangying_taidu
+		icon = GFX_goal_demand_sudetenland
+		cost = 14
+		prerequisite = {
+			focus = ZDG_jianli_yanjiuyuan
+			focus = ZDG_qianghua_zhihui_tixi
+		}
+		mutually_exclusive = {
+			focus = ZDG_sijierdong
+		}
+		x = 16
+		y = 6
+		completion_reward = {
+			unlock_decision_category_tooltip = CLIA_liehuozhong_erlaide_tongdie
+            add_popularity = {
+				ideology = national_socialism
+				popularity = 0.1
+			}
+			set_country_flag = CLIA_yunxu_liehuozhong_erlai_tongdie
+		}
+
+		ai_will_do = {
+			base = 4
+		}
+	}
+	focus = {
+		id = ZDG_nvhuang_caijue
+		icon = GFX_focus_generic_monarchy_1
+		cost = 21
+		prerequisite = {
+			focus = ZDG_sijierdong
+			focus = ZDG_qiangying_taidu
+		}
+		x = 13
+		y = 7
+		available = {
+			has_completed_focus = ZDG_wending_bujixian
+			has_completed_focus = ZDG_jushiwending
+		}
+        completion_reward = {
+            country_event = {
+				id = Childe_LaSignora.7
+				days = 3
+			}
+		}
+	}
+	focus = {
+		id = ZDG_jushiwending
+		icon = GFX_focus_generic_treaty
+		cost = 30
+		prerequisite = {
+			focus = ZDG_fengdan_zousi
+		}
+		prerequisite = {
+			focus = ZDG_wending_bujixian
+		}
+		prerequisite = {
+			focus = ZDG_yu_boshi_goutong
+		}
+		prerequisite = {
+			focus = ZDG_saodang_difang
+		}
+		prerequisite = {
+			focus = ZDG_jinji_gongchang_zhengdiao
+		}
+		prerequisite = {
+			focus = ZDG_jianli_jiceng_zhengquan
+		}
+		x = 7
+		y = 5
+        completion_reward = {
+			remove_ideas = CLSIA_chulaizhadao6
+		}
+	}
+}

@@ -1,0 +1,76 @@
+###########################
+# Xingqiu Events
+###########################
+
+add_namespace = xianren2
+
+country_event = {       #1
+	id = xianren2.1
+	title = xianren2.1.t
+	desc = xianren2.1.d
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = xianren2.1.a
+		LYU_Shenhe = {
+		    set_nationality = { target_country = SHG }
+		}
+		SHG = {
+		    promote_character = {
+			    character = LYU_Shenhe
+				ideology = authoritarian_democracy
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = LYU
+		}
+			add_core_of = SHG
+		}
+		SHG = { transfer_state = 153 }  
+		SHG = { transfer_state = 151 }
+		SHG = { load_oob = "SHG" }    
+        SHG = {
+			division_template = {
+				name = "申鹤千岩卫队"
+				division_names_group = SHG_INF_01
+				is_locked = yes
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"1.申鹤千岩卫队 \" division_template = \"申鹤千岩卫队\" start_experience_factor = 0.1" 
+					owner = SHG
+					count = 11
+				}
+			}
+		}
+		delete_unit_template_and_units = {
+			division_template = "申鹤千岩卫队"
+			disband = yes
+		}
+		puppet = SHG
+	}
+			
+	option = { 
+		name = xianren2.1.b
+    }
+}
+
+
+
+

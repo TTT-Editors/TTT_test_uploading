@@ -1,0 +1,692 @@
+focus_tree = {
+	id = LH_start
+	country = {
+		factor = 0
+	}
+	default = no
+
+	focus = {
+		id = LH_xunxun_shouyue
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 30
+		x = 8
+		y = 0
+
+		completion_reward = {
+			remove_ideas = panic_fills_land
+			add_country_leader_role = {
+                character = LYU_troika
+                promote_leader = yes
+                country_leader = {
+                    ideology = moraxism
+					expire = "2022.10.20.1"
+                    traits = { Liyue_Harbor_troika }
+                }
+            }
+			set_politics = {
+				ruling_party = reformism
+                elections_allowed = no
+			}
+			set_party_name = { 
+                ideology = reformism 
+                long_name = LH_party_linshi_zhengfu_long 
+                name = LH_party_linshi_zhengfu
+            }
+			set_party_name = { 
+                ideology = authoritarianism
+                long_name = LH_party_linshi_zhengfu_long 
+                name = LH_party_linshi_zhengfu
+            }
+			set_party_name = { 
+                ideology = despotism
+                long_name = LH_party_linshi_zhengfu_long 
+                name = LH_party_linshi_zhengfu
+            }
+			hidden_effect = {
+			    set_popularities = {
+				    reformism = 40
+				    authoritarianism = 30
+				    despotism = 30
+			    }
+			}
+		}
+	}
+
+	focus = {
+		id = LH_xuanbu_feichu_qixing
+		icon = GFX_goal_anti_comintern_pact
+		cost = 70
+		mutually_exclusive = {
+			focus = LH_zanting_qixing_zhiwu
+			focus = LH_chongjian_qixing_zhidu
+		}
+		x = 6
+		y = 1
+        
+		prerequisite = {
+			focus = LH_xunxun_shouyue
+		}
+
+		ai_will_do = {
+		    base = 0
+		}
+		
+		completion_reward = {
+			remove_ideas = collapse_ofqixing_system
+			add_political_power = -200
+			add_stability = -0.2
+			add_war_support = -0.2
+		    add_opinion_modifier = {
+                target = NNG
+                modifier = Liyue_Harbor_dip2
+            }
+		    add_opinion_modifier = {
+                target = KQG
+                modifier = Liyue_Harbor_dip2
+            }
+		    add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip3
+            }
+            set_variable = { troika_Yanfei = 1 }
+		}
+	}
+
+	focus = {
+		id = LH_zanting_qixing_zhiwu
+		icon = GFX_goal_generic_war_with_comintern
+		cost = 70
+		mutually_exclusive = {
+			focus = LH_xuanbu_feichu_qixing
+			focus = LH_chongjian_qixing_zhidu
+		}
+		x = 8
+		y = 1
+
+		prerequisite = {
+			focus = LH_xunxun_shouyue
+		}
+
+		ai_will_do = {
+		    base = 10
+		}
+		
+		completion_reward = {
+			remove_ideas = collapse_ofqixing_system
+			add_political_power = -100
+			add_stability = -0.1
+		    add_opinion_modifier = {
+                target = NNG
+                modifier = Liyue_Harbor_dip1
+            }
+		    add_opinion_modifier = {
+                target = KQG
+                modifier = Liyue_Harbor_dip1
+            }
+		 	set_variable = { troika_Ganyu = 1 }
+		}
+
+	}
+	focus = {
+		id = LH_chongjian_qixing_zhidu
+		icon = GFX_focus_SOV_the_last_purge
+		cost = 30
+		mutually_exclusive = {
+			focus = LH_xuanbu_feichu_qixing
+			focus = LH_zanting_qixing_zhiwu
+		}
+		x = 10
+		y = 1
+
+		prerequisite = {
+			focus = LH_xunxun_shouyue
+		}
+
+		ai_will_do = {
+		    base = 0
+		}
+		
+        completion_reward = {
+			remove_ideas = collapse_ofqixing_system
+			add_political_power = -100
+			XRG = {
+				country_event = {
+					id = LHPG.5
+					days = 3
+				}
+			}
+			add_opinion_modifier = {
+                target = NNG
+                modifier = Liyue_Harbor_dip4
+            }
+			add_opinion_modifier = {
+                target = KQG
+                modifier = Liyue_Harbor_dip4
+            }
+			add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip5
+            }
+			custom_effect_tooltip = LH_xianren_qianglie_buman
+			set_variable = { troika_Baizhu = 1 }
+		}
+	}
+
+	focus = {
+		id = LH_sheli_zuigao_junshifating
+		icon = GFX_focus_SOV_military_purge
+		cost = 30
+		prerequisite = {
+			focus = LH_xuanbu_feichu_qixing
+			focus = LH_zanting_qixing_zhiwu
+			focus = LH_chongjian_qixing_zhidu
+		}
+		mutually_exclusive = {
+			focus = LH_xiang_jundui_fasong_jintie
+			focus = LH_zaici_junshi_gaige
+		}
+		x = 6
+		y = 2
+
+		ai_will_do = {
+		    base = 0
+		}
+		
+        completion_reward = {
+			swap_ideas = {
+			    remove_idea = disorganized_army
+			    add_idea = LH_general_court_martial
+			} 
+			hidden_effect = {
+			    country_lock_all_division_template = no
+		    }
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Yanfei }
+				}
+			    set_variable = { troika_Yanfei = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Yanfei = 1 }
+			}
+		}
+	}
+	focus = {
+		id = LH_xiang_jundui_fasong_jintie
+		icon = GFX_focus_generic_military_dictatorship
+		cost = 70
+		prerequisite = {
+			focus = LH_xuanbu_feichu_qixing
+			focus = LH_zanting_qixing_zhiwu
+			focus = LH_chongjian_qixing_zhidu
+		}
+		mutually_exclusive = {
+			focus = LH_sheli_zuigao_junshifating
+			focus = LH_zaici_junshi_gaige
+		}
+		x = 8
+		y = 2
+
+		ai_will_do = {
+		    base = 5
+		}
+		
+        completion_reward = {
+			remove_ideas = disorganized_army
+			hidden_effect = {
+			    country_lock_all_division_template = no
+		    }
+			add_war_support = -0.1
+			add_timed_idea = {
+				idea = LH_troops_allowance
+				days = 180
+			}
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Ganyu }
+				}
+			    set_variable = { troika_Ganyu = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Ganyu = 1 }
+			}
+		}
+	}
+	focus = {
+		id = LH_zaici_junshi_gaige
+		icon = GFX_focus_generic_military_academy
+		cost = 70
+
+		prerequisite = {
+			focus = LH_xuanbu_feichu_qixing
+			focus = LH_zanting_qixing_zhiwu
+			focus = LH_chongjian_qixing_zhidu
+		}
+
+		mutually_exclusive = {
+			focus = LH_sheli_zuigao_junshifating
+			focus = LH_xiang_jundui_fasong_jintie
+		}
+
+		ai_will_do = {
+		    base = 5
+		}
+		
+		x = 10
+		y = 2
+
+        completion_reward = {
+			remove_ideas = disorganized_army
+			hidden_effect = {
+			    country_lock_all_division_template = no
+		    }
+			add_timed_idea = {
+			    idea = LH_quanmian_military_reform
+				days = 365
+			}
+
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Baizhu }
+				}
+			    set_variable = { troika_Baizhu = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Baizhu = 1 }
+			}
+		}
+	}
+
+	focus = {
+		id = LH_tongguo_shiwu_peijifa
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 70
+
+		prerequisite = {
+			focus = LH_sheli_zuigao_junshifating
+			focus = LH_xiang_jundui_fasong_jintie
+			focus = LH_zaici_junshi_gaige
+		}
+
+		mutually_exclusive = {
+			focus = LH_yu_beidou_tuoxie
+			focus = LH_zousi_texuling
+		}
+
+		ai_will_do = {
+		    base = 5
+		}
+		
+		x = 6
+		y = 3
+
+        completion_reward = {
+			set_country_flag = jiesuo_shiwu_peijifa_decision
+			unlock_decision_category_tooltip = LH_shiwu_peiji_decision
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Yanfei }
+				}
+			    set_variable = { troika_Yanfei = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Yanfei = 1 }
+			}
+		}
+	}
+	focus = {
+		id = LH_yu_beidou_tuoxie
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 70
+
+		prerequisite = {
+			focus = LH_sheli_zuigao_junshifating
+			focus = LH_xiang_jundui_fasong_jintie
+			focus = LH_zaici_junshi_gaige
+		}
+
+		mutually_exclusive = {
+			focus = LH_tongguo_shiwu_peijifa
+			focus = LH_zousi_texuling
+		}
+
+		ai_will_do = {
+		    base = 5
+		}
+		
+		x = 8
+		y = 3
+        
+		available = {
+			BDG = { exists = yes }
+		}
+        completion_reward = {
+			BDG = {
+				country_event = {
+					id = LHPG.1
+					days = 4
+				}
+			}
+			custom_effect_tooltip = LH_yinian_fengsuo_yingxiang
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Ganyu }
+				}
+			    set_variable = { troika_Ganyu = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Ganyu = 1 }
+			}
+		}
+	}
+	focus = {
+		id = LH_xiang_xianren_qiuzhu
+		icon = GFX_focus_generic_concessions
+		cost = 30
+
+		prerequisite = {
+			focus = LH_tongguo_shiwu_peijifa
+			focus = LH_yu_beidou_tuoxie
+			focus = LH_zousi_texuling
+		}
+
+		mutually_exclusive = {
+			focus = LH_mibu_mola_tixi
+			focus = LH_yubei_faxing_zhibi
+		}
+
+		x = 6
+		y = 4
+
+		ai_will_do = {
+		    base = 0
+		}
+		
+        completion_reward = {
+			XRG = {
+				country_event = {
+					id = LHPG.7
+					days = 3
+				}
+			}
+			custom_effect_tooltip = LH_changqi_baoliu_molatixibuwen
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Yanfei }
+				}
+			    set_variable = { troika_Yanfei = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Yanfei = 1 }
+			}
+			hidden_effect = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+	focus = {
+		id = LH_mibu_mola_tixi
+		icon = GFX_focus_hol_abandon_the_gold_standard
+		cost = 70
+
+		prerequisite = {
+			focus = LH_tongguo_shiwu_peijifa
+			focus = LH_yu_beidou_tuoxie
+			focus = LH_zousi_texuling
+		}
+
+		mutually_exclusive = {
+			focus = LH_xiang_xianren_qiuzhu
+			focus = LH_yubei_faxing_zhibi
+		}
+
+		ai_will_do = {
+		    base = 10
+		}
+		
+		x = 8
+		y = 4
+
+        completion_reward = {
+			remove_ideas = unstable_mora_system
+			add_timed_idea = { 
+				idea = LH_price_in_fortune 
+				days = 365
+			}  
+			add_political_power = -100
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Ganyu }
+				}
+			    set_variable = { troika_Ganyu = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Ganyu = 1 }
+			}
+			hidden_effect = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+	focus = {
+		id = LH_zousi_texuling
+		icon = GFX_goal_generic_trade
+		cost = 30
+
+		prerequisite = {
+			focus = LH_sheli_zuigao_junshifating
+			focus = LH_xiang_jundui_fasong_jintie
+			focus = LH_zaici_junshi_gaige
+		}
+
+		mutually_exclusive = {
+			focus = LH_tongguo_shiwu_peijifa
+			focus = LH_yu_beidou_tuoxie
+		}
+
+		ai_will_do = {
+		    base = 0
+		}
+		
+		x = 10
+		y = 3
+
+        completion_reward = {
+			unlock_decision_category_tooltip = LH_zousi_texu_decision
+			swap_ideas = {
+				remove_idea = blocked_harbour
+			    add_idea = LH_allow_smuggle
+			}
+			add_opinion_modifier = {
+                target = HTG
+                modifier = Liyue_Harbor_dip7
+            }
+			add_opinion_modifier = {
+                target = XOG
+                modifier = Liyue_Harbor_dip7
+            }
+			add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip7
+            }
+			add_opinion_modifier = {
+                target = SHG
+                modifier = Liyue_Harbor_dip7
+            }
+			add_opinion_modifier = {
+                target = KQG
+                modifier = Liyue_Harbor_dip7
+            }
+			add_opinion_modifier = {
+                target = RTG
+                modifier = Liyue_Harbor_dip7
+            }
+			add_opinion_modifier = {
+                target = BDG
+                modifier = Liyue_Harbor_dip8
+            }
+			add_opinion_modifier = {
+                target = XQG
+                modifier = Liyue_Harbor_dip8
+            }
+			add_opinion_modifier = {
+                target = NNG
+                modifier = Liyue_Harbor_dip8
+            }
+			set_country_flag = Baizhu_yunxu_zousi
+			set_country_flag = {
+				flag = Baizhu_yunxu_kaishi_zousi
+				days = 120
+				value = 1
+			}
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Baizhu }
+				}
+			    set_variable = { troika_Baizhu = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Baizhu = 1 }
+			}
+		}
+	}
+	focus = {
+		id = LH_yubei_faxing_zhibi
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 70
+
+		prerequisite = {
+			focus = LH_tongguo_shiwu_peijifa
+			focus = LH_yu_beidou_tuoxie
+			focus = LH_zousi_texuling
+		}
+
+		mutually_exclusive = {
+			focus = LH_xiang_xianren_qiuzhu
+			focus = LH_mibu_mola_tixi
+		}
+
+		ai_will_do = {
+		    base = 0
+		}
+		
+		x = 10
+		y = 4
+
+        completion_reward = {
+			swap_ideas = {
+				remove_idea = unstable_mora_system
+				add_idea = Liyue_paper_currency1
+			}
+			if = {
+				limit = { 
+					NOT = { has_variable = troika_Baizhu }
+				}
+			    set_variable = { troika_Baizhu = 1 }
+			}
+			else = {
+				add_to_variable = { troika_Baizhu = 1 }
+			}
+		}
+	}
+
+	focus = {
+		id = LH_liyue_xinhangxiang
+		icon = GFX_goal_generic_improve_relations
+		cost = 60
+
+		prerequisite = {
+			focus = LH_xiang_xianren_qiuzhu
+			focus = LH_mibu_mola_tixi
+			focus = LH_yubei_faxing_zhibi
+		}
+
+		x = 8
+		y = 5
+
+        completion_reward = {
+			country_event = {
+				id = LHPG.4
+				days = 3
+			}
+			set_country_flag = jieshusantoutongmeng
+			hidden_effect = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+
+	focus = {
+		id = LH_yi_fanrong_xuruo_renmin
+		icon = GFX_focus_generic_self_management
+		cost = 7
+
+		x = 6
+		y = 6
+        
+		prerequisite = {
+			focus = LH_liyue_xinhangxiang
+		}
+		
+		available = {
+			has_country_flag = jieshusantoutongmeng
+			has_country_flag = yanfei_victory
+		}
+
+        completion_reward = {
+			add_political_power = 100
+			add_stability = 0.1
+			clr_country_flag = jieshusantoutongmeng
+		}
+	}
+
+	focus = {
+		id = LH_yi_huangjin_jiaodao_renmin
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		cost = 7
+
+		x = 8
+		y = 6
+        
+		prerequisite = {
+			focus = LH_liyue_xinhangxiang
+		}
+
+		available = {
+			has_country_flag = jieshusantoutongmeng
+			has_country_flag = ganyu_victory
+		}
+
+        completion_reward = {
+			add_political_power = 100
+			add_stability = 0.1
+			load_focus_tree = GAN
+			clr_country_flag = jieshusantoutongmeng
+		}
+	}
+
+	focus = {
+		id = LH_yi_qinlao_zhiyin_renmin 
+		icon = GFX_goal_generic_soviet_construction
+		cost = 7
+
+		x = 10
+		y = 6
+        
+		prerequisite = {
+			focus = LH_liyue_xinhangxiang
+		}
+
+		available = {
+			has_country_flag = jieshusantoutongmeng
+			has_country_flag = baizhu_victory
+		}
+
+        completion_reward = {
+			add_political_power = 100
+			add_stability = 0.1
+			clr_country_flag = jieshusantoutongmeng
+		}
+	}
+
+}

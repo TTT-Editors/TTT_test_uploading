@@ -1,0 +1,429 @@
+add_namespace = FinSNA
+
+country_event = 
+{
+       #民之心声？
+       id = FinSNA.1
+	   title = FinSNA.1.t
+	   desc = FinSNA.1.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.1.a	
+		   add_stability = -0.30
+           add_war_support = -0.15
+		   hidden_effect =
+		   {
+			 country_event = {id = FinSNA.3 days = 10}
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #内森
+       id = FinSNA.2
+	   title = FinSNA.2.t
+	   desc = FinSNA.2.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.2.a
+		   custom_effect_tooltip = "Sen"
+	   }
+}
+
+country_event = 
+{
+	   #觉醒
+       id = FinSNA.3
+	   title = FinSNA.3.t
+	   desc = FinSNA.3.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.3.a
+		   hidden_effect =
+		   {
+			 country_event = {id = FinSNA.4 days = 10}
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #思鹤的行动（也许会失败）
+       id = FinSNA.4
+	   title = FinSNA.4.t
+	   desc = FinSNA.4.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.4.a
+		   hidden_effect = 
+		   {
+               	random_list = {
+				3 = {
+				   country_event = {id = FinSNA.14 days = 10}
+				}	
+				7 = {
+				   country_event = {id = FinSNA.5 days = 10}
+				}
+			  }
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #唤醒哲平
+       id = FinSNA.5
+	   title = FinSNA.5.t
+	   desc = FinSNA.5.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+		   #致哲平的信件
+	       name = FinSNA.5.a
+		   hidden_effect = 
+		   {
+			    if = 
+				{
+					limit = {has_idea = SNA_kill_all_2}
+					OR = {has_idea = SNA_kill_all_1}
+					random_list = {
+				    	2.5 = {
+				        	country_event = {id = FinSNA.6 days = 10}
+							set_country_flag = zhePing_support
+				    	}	
+				    	7.5 = {
+				        	country_event = {id = FinSNA.7 days = 10}
+				   		}
+			        }
+				}
+				else = 
+				{
+                    random_list = {
+				    	2.5 = {
+				        	country_event = {id = FinSNA.6 days = 10}
+							set_country_flag = zhePing_support
+				    	}	
+				    	7.5 = {
+				        	country_event = {id = FinSNA.7 days = 10}
+				   		}
+			        }
+				}
+		   }
+	   }
+	   #直言劝谏
+	   option = {
+	       name = FinSNA.5.b
+		   hidden_effect = 
+		   {
+                if = 
+				{
+					limit = {has_idea = SNA_kill_all_2}
+					OR = {has_idea = SNA_kill_all_1}
+					random_list = {
+				    	1.5 = {
+				        	country_event = {id = FinSNA.14 days = 10}
+				    	}	
+				    	6.5 = {
+				        	country_event = {id = FinSNA.7 days = 10}
+				   		}
+						2 = {
+				        	country_event = {id = FinSNA.6 days = 10}
+							set_country_flag = zhePing_support
+				   		}
+			        }
+				}
+				else = 
+				{
+                    random_list = {
+				    	4= {
+				        	country_event = {id = FinSNA.6 days = 10}
+                            set_country_flag = zhePing_support
+				    	}	
+				    	6 = {
+				        	country_event = {id = FinSNA.7 days = 10}
+				   		}
+			        }
+				}
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #头晕目眩（邪眼能量较低）
+       id = FinSNA.6
+	   title = FinSNA.6.t
+	   desc = FinSNA.6.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.6.a
+		   hidden_effect = {
+			country_event = {id = FinSNA.8 days = 10 }
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #陷入疯狂(邪眼能量过高)
+       id = FinSNA.7
+	   title = FinSNA.7.t
+	   desc = FinSNA.7.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.7.a
+		   hidden_effect = {
+			country_event = {id = FinSNA.15 days = 10 }
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #人间地狱
+       id = FinSNA.8
+	   title = FinSNA.8.t
+	   desc = FinSNA.8.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.8.a
+		   hidden_effect = {
+			 country_event = {id = FinSNA.9 days = 10}
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #阻止疯子
+       id = FinSNA.9
+	   title = FinSNA.9.t
+	   desc = FinSNA.9.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.9.a
+		if = {
+		  limit = {has_country_flag = zhePing_support}
+		  	   option = {
+	                name = FinSNA.9.b
+		            #哲平和思鹤带着军队去
+					hidden_effect = 
+					{
+                        random_list = {
+				    		7 = {
+				        		country_event = {id = FinSNA.10 days = 10}
+				    		}	
+				    		3 ={
+				        		country_event = {id = FinSNA.11 days = 10}
+				   			}
+			        	}
+					}
+	           }
+	   }
+		#思鹤亲自去
+		else = 
+		{
+           	hidden_effect = 
+			{
+                random_list = {
+				    3.5 = {
+				        country_event = {id = FinSNA.10 days = 10}
+				    }	
+				    6.5 = {
+				        country_event = {id = FinSNA.11 days = 10}
+				   	}
+			    }
+			}
+		}
+	 }
+	   
+}
+
+country_event = 
+{
+	   #筋疲力竭（阻止成功）
+       id = FinSNA.10
+	   title = FinSNA.10.t
+	   desc = FinSNA.10.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.10.a
+		   hidden_effect = {
+			  country_event = { id = FinSNA.13 days = 10 }
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #力无法敌（阻止失败）
+       id = FinSNA.11
+	   title = FinSNA.11.t
+	   desc = FinSNA.11.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.11.a
+		   hidden_effect = {
+			  country_event = { id = FinSNA.14 days = 10 }
+			  set_country_flag = failed
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #卸下邪眼，停止与愚人众合作
+	   #国策会卡住，届时海祇岛将获得大量debuff
+       id = FinSNA.12
+	   title = FinSNA.12.t
+	   desc = FinSNA.12.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.12.a
+		   custom_effect_tooltip = "Sen"
+		   hidden_effect = 
+		   {
+               	set_country_flag = "final"
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #内森上位
+       id = FinSNA.13
+	   title = FinSNA.13.t
+	   desc = FinSNA.13.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.13.a
+		   custom_effect_tooltip = "Sen"
+		   hidden_effect = 
+		   {
+			    set_country_flag = SNA_SEN
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #思鹤被杀
+       id = FinSNA.14
+	   title = FinSNA.14.t
+	   desc = FinSNA.14.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.14.a
+		   if = 
+		   {
+			  limit = {has_country_flag = failed}
+			  hidden_effect = 
+			  {
+				  country_event = {id = FinSNA.16 days = 10}
+			  }
+		   }
+		   else = 
+		   {
+			  hidden_effect =
+			  {
+				   country_event = {id = FinSNA.15 days = 10}
+			  }
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #顺理成章
+       id = FinSNA.15
+	   title = FinSNA.15.t
+	   desc = FinSNA.15.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.15.a
+		   hidden_effect = 
+		   {
+			  country_event = {id = FinSNA.13 days = 10}
+		   }
+	   }
+}
+
+country_event = 
+{
+	   #哲平的恐惧
+       id = FinSNA.16
+	   title = FinSNA.16.t
+	   desc = FinSNA.16.d
+	   trigger = {
+	         tag = SNA 
+	   }
+	   fire_only_once = true
+	   is_triggered_only = yes 
+	   option = {
+	       name = FinSNA.16.a
+		   hidden_effect = 
+		   {
+			  country_event = {id = FinSNA.13 days = 10}
+		   }
+	   }
+}

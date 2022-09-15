@@ -1,0 +1,138 @@
+SNA_smuggling_scale = {
+	set_temp_variable={SNA_smuggle = SNA_MATERIALS}
+    add_to_temp_variable={SNA_smuggle = SNA_ARMAMENT}
+if={
+limit={
+ check_variable={
+  var = SNA_smuggle 
+  value = 200
+  compare = greater_than_or_equals
+     }
+   }
+ subtract_from_variable = {SNA_smuggling_morale = 1}
+  }
+}
+
+SNA_foolishi_morale = {
+ if={
+ limit={
+    check_variable = { SNA_foolish_morale < 50 }
+	check_variable = { SNA_foolish_morale > 25 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+
+if={
+ limit={
+    check_variable = { SNA_foolish_morale < 75 }
+	check_variable = { SNA_foolish_morale > 49 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+
+if={
+ limit={
+    check_variable = { SNA_foolish_morale < 100 }
+	check_variable = { SNA_foolish_morale > 74 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+  
+if={
+ limit={
+    check_variable = { SNA_foolish_morale > 126 }
+	check_variable = { SNA_foolish_morale > 100 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+}
+
+SNA_societypursuit_morale = { 
+if={
+ limit={
+    check_variable = { SNA_societypursuit_morale > -1 }
+	check_variable = { SNA_societypursuit_morale < 25 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+  
+if={
+ limit={
+   check_variable = { SNA_societypursuit_morale < 50 }
+   check_variable = { SNA_societypursuit_morale > 25 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+  
+if={
+ limit={
+  check_variable = { SNA_societypursuit_morale < 75 }
+  check_variable = { SNA_societypursuit_morale > 49 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+  
+if={
+ limit={
+  check_variable = { SNA_societypursuit_morale < 100 }
+  check_variable = { SNA_societypursuit_morale > 74 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+  
+if={
+ limit={
+  check_variable = { SNA_societypursuit_morale > 126 }
+  check_variable = { SNA_societypursuit_morale > 100 }
+   }
+    add_to_variable = {SNA_ARMAMENT = 10}
+	add_to_variable = {SNA_MATERIALS = 10}
+  }
+}
+
+SNA_ideasxinhai = {
+if={
+ limit={
+    check_variable = { SNA_smuggling_morale = 1 }	
+   }
+    add_ideas = SNA_summggle_net_1
+  }
+
+if={
+ limit={
+    check_variable = { SNA_smuggling_morale = 2 }	
+   }
+    swap_ideas = {
+	remove_idea = SNA_summggle_net_1
+	add_idea = SNA_summggle_net_2
+   	}	
+  }
+
+if={
+ limit={
+    check_variable = { SNA_smuggling_morale = 3 }	
+   }
+   swap_ideas = {
+	remove_idea = SNA_summggle_net_2
+	add_idea = SNA_summggle_net_3
+   	}
+  }
+  
+if={
+ limit={
+    check_variable = { SNA_smuggling_morale > 3 }
+   } 
+	swap_ideas = {
+	remove_idea = SNA_summggle_net_3
+	add_idea = SNA_summggle_net_4
+   	}
+  }
+}

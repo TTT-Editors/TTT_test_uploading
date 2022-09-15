@@ -1,0 +1,255 @@
+#Important to put the highest first
+Ruotuo_turn_bad = {
+	RTG = { load_focus_tree = KUNJUN_3 } 
+	add_war_support = 0.1
+	set_politics = {
+		ruling_party = hive_mind                        
+	}
+	add_popularity = {
+		ideology = hive_mind
+		popularity = 1
+	}             
+	hidden_effect = {
+	    retire_character = RTG_KunJun
+	    add_field_marshal_role = {
+            Character = RTG_Retuo_bad
+            traits = { 
+			    logistics_wizard 
+				offensive_doctrine 
+				defensive_doctrine 
+				fast_planner 
+				thorough_planner 
+				organisational_leader 
+				inspirational_leader 
+			}
+			skill=9
+			attack_skill=9
+			defense_skill=9
+			planning_skill=9
+			logistics_skill=9
+			legacy_id=-1
+        }
+		news_event = { hours = 6 id = ruotuo.101 }
+		if = {
+			limit = { has_idea = RTG_Fengxu }
+			remove_ideas = RTG_Fengxu
+		}
+		if = {
+			limit = {
+				ANG = { exists = yes }
+			}
+			ANG = {
+				country_event = {
+					id = liyue_civil_war.1
+				}
+			}
+		}
+	}
+}
+
+Ruotuo_become_good = {
+	RTG = { load_focus_tree = RTG_2_Juanshu } 
+	add_stability = 0.1
+	set_politics = {
+		ruling_party = reformism                           
+	}
+	add_popularity = {
+		ideology = reformism
+		popularity = 1
+	}
+	hidden_effect = {
+	    retire_character = RTG_KunJun
+		add_field_marshal_role = {
+            Character = RTG_Retuo_good
+            traits = { 
+			    logistics_wizard 
+				offensive_doctrine 
+				defensive_doctrine 
+				fast_planner 
+				thorough_planner 
+				organisational_leader 
+				inspirational_leader 
+			}
+			skill=9
+			attack_skill=9
+			defense_skill=9
+			planning_skill=9
+			logistics_skill=9
+			legacy_id=-1
+        }
+	}
+}
+
+Ruotuo_end_of_the_first_stage = {
+	clr_country_flag = focus_RTG_right_finish_1
+	clr_country_flag = focus_RTG_right_finish_2
+	clr_country_flag = focus_RTG_right_finish_3
+	clr_country_flag = ruotuo_going_bad
+	clr_country_flag = you_have_choose_the_wrong_way
+	remove_ideas = {
+		temporary_shutdown
+		temporary_shutdown_2
+		temporary_shutdown_3
+		temporary_shutdown_4
+	}
+}
+
+Retuo_juyuan_Army = {
+    if = {
+		limit = { 
+		    NOT = {
+			    has_idea = RTG_liyue_yuanjun_1
+                has_idea = RTG_liyue_yuanjun_2
+                has_idea = RTG_liyue_yuanjun_3
+                has_idea = RTG_liyue_yuanjun_4a
+                has_idea = RTG_liyue_yuanjun_4b
+                has_idea = RTG_liyue_yuanjun_5ax
+                has_idea = RTG_liyue_yuanjun_5ay
+                has_idea = RTG_liyue_yuanjun_5bx
+                has_idea = RTG_liyue_yuanjun_5by
+                has_idea = RTG_liyue_yuanjun_6ax
+                has_idea = RTG_liyue_yuanjun_6ay
+                has_idea = RTG_liyue_yuanjun_6bx
+                has_idea = RTG_liyue_yuanjun_6by
+                has_idea = RTG_liyue_yuanjun_7ax
+                has_idea = RTG_liyue_yuanjun_7ay
+                has_idea = RTG_liyue_yuanjun_7bx
+                has_idea = RTG_liyue_yuanjun_7by
+                has_idea = RTG_liyue_yuanjun_8ax
+                has_idea = RTG_liyue_yuanjun_8ay
+                has_idea = RTG_liyue_yuanjun_8bx
+                has_idea = RTG_liyue_yuanjun_8by
+            }
+		}
+		add_ideas = RTG_liyue_yuanjun_1
+	}
+    else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_1 }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_1
+			add_idea = RTG_liyue_yuanjun_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_2 }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_2
+			add_idea = RTG_liyue_yuanjun_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_5ax }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_5ax
+			add_idea = RTG_liyue_yuanjun_6ax
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_5ay }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_5ay
+			add_idea = RTG_liyue_yuanjun_6ay
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_5bx }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_5bx
+			add_idea = RTG_liyue_yuanjun_6bx
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_5by }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_5by
+			add_idea = RTG_liyue_yuanjun_6by
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_6ax }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_6ax
+			add_idea = RTG_liyue_yuanjun_7ax
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_6ay }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_6ay
+			add_idea = RTG_liyue_yuanjun_7ay
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_6bx }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_6bx
+			add_idea = RTG_liyue_yuanjun_7bx
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_6by }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_6by
+			add_idea = RTG_liyue_yuanjun_7by
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_7ax }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_7ax
+			add_idea = RTG_liyue_yuanjun_8ax
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_7ay }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_7ay
+			add_idea = RTG_liyue_yuanjun_8ay
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_7bx }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_7bx
+			add_idea = RTG_liyue_yuanjun_8bx
+		}
+	}
+	else_if = {
+		limit = { has_idea = RTG_liyue_yuanjun_7by }
+		swap_ideas = {
+			remove_idea = RTG_liyue_yuanjun_7by
+			add_idea = RTG_liyue_yuanjun_8by
+		}
+	}
+}
+
+Liyue_rebirth = {
+    if = {
+		limit = { 
+		    NOT = {
+			    has_idea = RTG_liyue_xinsheng_1
+				has_idea = RTG_liyue_xinsheng_2
+				has_idea = RTG_liyue_xinsheng_3
+			}
+		}
+		add_ideas = RTG_liyue_xinsheng_1
+	}
+	else_if = {
+	    limit = {
+		    has_idea = RTG_liyue_xinsheng_1
+		}
+		swap_ideas = {
+		    remove_idea = RTG_liyue_xinsheng_1
+			add_idea = RTG_liyue_xinsheng_2
+		}
+	}
+	else_if = {
+	    limit = {
+		    has_idea = RTG_liyue_xinsheng_2
+		}
+		swap_ideas = {
+		    remove_idea = RTG_liyue_xinsheng_2
+			add_idea = RTG_liyue_xinsheng_3
+		}
+	}
+}

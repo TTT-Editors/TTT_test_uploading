@@ -1,0 +1,163 @@
+#I'm so sorry that I found no way in making it perfect.
+#If you have better ideas ,please improve it.
+#BUT IF YOU DON'T HAVE BETTER IDEAS, DON'T CHANGE COMMON CODES!!!!!!
+
+on_actions = {
+	on_capitulation = {
+		effect = {
+			#news event should put on first.
+			news_event = { id = country_capitulated.0 days = 0 }
+			#zhidong invaders failed
+		    if = { 
+				limit = {
+				    original_tag = ZDG
+					OR = {
+						AND = { 
+							any_country = { NOT = { is_ally_with = ROOT } }
+							ROOT = { is_subject = no }
+						}
+						all_country = { 
+							if = { 
+								limit = { is_ally_with = ROOT } 
+								has_capitulated = yes
+							} 
+						}
+                    }
+				}
+				news_event = { id = global_news.4 days = 0 }
+				every_state = {	
+					limit = { PREV.owner = { is_ally_with = ROOT } }						
+					every_country = {
+						limit = {
+							controls_state = PREV							
+						}
+						transfer_state = PREV
+					}
+				}
+				every_state = {	
+					limit = { is_owned_by = ROOT }						
+					every_country = {
+						limit = {
+							NOT = { is_ally_with = ROOT }
+							controls_state = PREV							
+						}
+						transfer_state = PREV
+					}
+				}
+				SNE = { 
+				    transfer_state = 176
+					transfer_state = 218
+					transfer_state = 221
+					transfer_state = 222
+					transfer_state = 220
+					transfer_state = 212
+					transfer_state = 219
+					transfer_state = 213
+					transfer_state = 214
+					transfer_state = 215
+					transfer_state = 216
+					transfer_state = 217
+				    every_owned_state = {
+					    limit = { is_core_of = ZDG }
+					    remove_core_of = ZDG
+						add_core_of = SNE
+					}
+				}
+			}
+		    else_if = {
+			    limit = {
+				    has_country_flag = Liyuegang_refuse_Retuo_good_reunite
+				    ROOT = { tag = LYU }
+					FROM = { tag = RTG }
+				}
+				FROM = {
+					white_peace = ROOT
+					annex_country = {
+						target = ROOT
+						transfer_troops = no
+					}
+					country_event = {
+                        id = retuo_juanshu.17
+				        days = 60
+			        }
+				}
+			}
+			#default
+			else_if = { 
+				limit = {
+					OR = {
+						AND = { 
+							any_country = { NOT = { is_ally_with = ROOT } }
+							ROOT = { is_subject = no }
+						}
+						all_country = { 
+							if = { 
+								limit = { is_ally_with = ROOT } 
+								has_capitulated = yes
+							} 
+						}
+                    }
+				}
+				every_country = {
+					limit = {
+						OR = {
+							tag = ROOT
+							is_ally_with = ROOT
+						}
+					}
+					every_owned_state = {
+						set_state_flag = defeated_states
+					}
+				}
+				ROOT = { transfer_navy = { target = FROM } }
+				ROOT = {
+					every_owned_state = {
+						limit = {
+							industrial_complex > 0
+						}
+						remove_building = {
+							type = industrial_complex
+							level = 1
+						}
+					}
+					every_owned_state = {
+						limit = {
+							arms_factory > 0
+						}
+						remove_building = {
+							type = arms_factory
+							level = 1
+						}
+					}
+					every_owned_state = {
+						limit = {
+							dockyard > 0
+						}
+						remove_building = {
+							type = dockyard
+							level = 1
+						}
+					}
+				}
+				every_state = {	
+					limit = { has_state_flag = defeated_states }						
+					every_country = {
+						limit = {
+							NOT = { is_ally_with = ROOT }
+							controls_state = PREV							
+						}
+						transfer_state = PREV
+					}
+					clr_state_flag = defeated_states
+				}
+				FROM = {
+					white_peace = ROOT
+					annex_country = {
+						target = ROOT
+						transfer_troops = no
+					}
+				}
+			}
+		}
+	}
+}

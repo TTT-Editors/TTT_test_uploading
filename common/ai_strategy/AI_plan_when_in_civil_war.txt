@@ -1,0 +1,376 @@
+Liyue_you_should_be_prepared_for_war = {
+	allowed = {
+		is_nominate_liyue = yes
+	}
+	enable = { has_global_flag = Liyue_Civil_War }
+	abort = { NOT = { has_global_flag = Liyue_Civil_War } }
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 250
+    }
+}
+
+Keqing_wants_to_beat_Ningguang = {
+	allowed = {
+		tag = KQG
+	}
+	
+	enable = {	
+		NNG = {
+			exists = yes
+			NOT = { has_country_flag = defeated_ningguang }
+			NOT = { is_in_faction_with = KQG }
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = antagonize
+		id = "NNG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "XQG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "NNG"
+		value = 200
+	}
+}
+
+let_northern_warlords_kill_themselves = {
+	allowed = {
+		OR = {
+			tag = KQG
+			tag = NNG
+		}
+	}
+	
+	enable = {
+		center_united = no
+		has_global_flag = zdg_has_come
+		ZDG = {
+			exists = yes 
+			NOT = { surrender_progress > 0.6 }
+		}
+		XOG = { exists = yes }
+		XRG = { exists = yes }
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = ignore
+		id = "ZDG"
+		value = 100
+	}
+	ai_strategy = {
+		type = ignore
+		id = "XOG"
+		value = 100
+	}
+	ai_strategy = {
+		type = ignore
+		id = "XRG"
+		value = 100
+	}
+}
+
+NingGuang_also_wants_to_beat_Keqing = {
+	allowed = {
+		tag = NNG
+	}
+	
+	enable = {	
+		KQG = {
+			exists = yes
+			NOT = { is_in_faction_with = NNG }
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = antagonize
+		id = "KQG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "KQG"
+		value = -200
+	}
+}
+
+NingGuang_is_landing = {
+	allowed = {
+		tag = NNG
+	}
+	
+	enable = {
+		has_country_flag = defeated_ningguang
+		has_war = yes
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "KQG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "LYU"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "RTG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "ZDG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "ANG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "XRG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "XOG"
+		value = 200
+	}
+}
+
+beat_Ganyu_then = {
+	allowed = {
+		is_nominate_liyue = yes
+	}
+	
+	enable = {	
+		center_united = yes
+		NOT = { is_in_faction_with = LYU }
+	}
+	
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = antagonize
+		id = "LYU"
+		value = 200
+	}
+}
+
+liyue_civil_war_SNE_intervention = {
+	allowed = {
+		original_tag = SNE
+	}
+	enable = {
+		country_exists = ZDG
+	}
+
+	abort = {
+		NOT = { country_exists = ZDG }
+	}
+
+	ai_strategy = {
+		type = befriend
+		id = "ZDG"
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ZDG"
+		value = 100
+	}
+}
+
+liyue_civil_war_anti_SNE_intervention = {
+	allowed = {
+		is_nominate_liyue = yes
+	}
+	enable = {
+		country_exists = ZDG
+		has_war_with = ZDG
+	}
+
+	abort = {
+		NOT = { country_exists = ZDG }
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "ZDG"
+		value = 200
+	}
+}
+
+watch_out_north = {
+	allowed = {
+		OR = {
+			tag = KQG
+			tag = NNG
+		}
+	}
+	
+	enable = {
+		has_global_flag = zdg_has_come
+		OR = {
+			ZDG = { exists = no }
+			XOG = { exists = no }
+			XRG = { exists = no }
+			ZDG = { surrender_progress > 0.6 }
+		}
+	}
+	
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = contain
+		id = "XRG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "SHG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "XOG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "ZDG"
+		value = 200
+	}
+}
+
+Ganyu_s_little_tricks = {
+	allowed = {
+		tag = LYU
+	}
+	
+	enable = {
+		has_global_flag = zdg_has_come
+		has_war_with = ZDG
+		is_faction_leader = yes
+	}
+	
+	abort = {
+		ZDG = { exists = no }
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "KQG"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "RTG"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "NNG"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ANG"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "SHG"
+		value = 500
+	}
+}
+
+Xianren_and_Xiao_not_mess_up_with_southern_warlords = {
+	allowed = {
+		OR = {
+			tag = XRG
+			tag = XOG
+		}
+	}
+	
+	enable = {
+		has_global_flag = zdg_has_come
+		has_war_with = ZDG
+	}
+	
+	abort = { ZDG = { exists = no } }
+	
+	ai_strategy = {
+		type = antagonize
+		id = "XOG"
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "XRG"
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = "KQG"
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = "NNG"
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = "RTG"
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = "ANG"
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = "LYU"
+		value = 100
+	}
+}

@@ -1,0 +1,233 @@
+add_namespace = lyu_start
+
+#菜市场
+country_event = {
+	id = lyu_start.1
+	title = lyu_start.1.t
+	desc = lyu_start.1.d
+
+	picture = lyu_start_unASjmeN-172103
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.1.a
+	}
+}
+#须弥的学者
+country_event = {
+	id = lyu_start.2
+	title = lyu_start.2.t
+	desc = lyu_start.2.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.2.a
+	}
+}
+#商人的日记
+country_event = {
+	id = lyu_start.3
+	title = lyu_start.3.t
+	desc = lyu_start.3.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.3.a
+	}
+}
+#工人在思考
+country_event = {
+	id = lyu_start.4
+	title = lyu_start.4.t
+	desc = lyu_start.4.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.4.a
+	}
+}
+#愤怒的巨头
+country_event = {
+	id = lyu_start.5
+	title = lyu_start.5.t
+	desc = lyu_start.5.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.5.a
+	}
+}
+#玉衡星遇刺
+country_event = {
+	id = lyu_start.6
+	title = lyu_start.6.t
+	desc = lyu_start.6.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.6.a
+	}
+}
+#不可避免的内战
+country_event = {
+	id = lyu_start.7
+	title = lyu_start.7.t
+	desc = lyu_start.7.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.7.a
+		custom_effect_tooltip = Quarter_year_countdown_tt
+		hidden_effect = {
+			country_event = {
+				id = liyue.4
+				days = 2
+			}
+			country_event = {
+				id = liyue.6
+				days = 3
+			}
+			country_event = {
+				id = liyue.7
+				days = 5
+			}
+			country_event = {
+				id = liyue.8
+				days = 7
+			}
+			country_event = {
+				id = liyue.10
+				days = 15
+			}
+			country_event = {
+				id = liyue.11
+				days = 20
+			}
+			country_event = {
+				id = liyue.12
+				days = 75
+			}
+			country_event = {
+				id = lyu_start.12
+				days = 80
+			}
+		}
+	}
+}
+#工人抗议
+country_event = {
+	id = lyu_start.8
+	title = lyu_start.8.t
+	desc = lyu_start.8.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.8.a
+		activate_mission = labour_requirement
+	}
+}
+#商人罢市
+country_event = {
+	id = lyu_start.9
+	title = lyu_start.9.t
+	desc = lyu_start.9.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.3.a
+		activate_mission = businessperson_requirement
+	}
+}
+#安抚群众
+country_event = {
+	id = lyu_start.10
+	title = lyu_start.10.t
+	desc = lyu_start.10.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.10.a
+		activate_mission = government_apparatus_requirement
+	}
+}
+
+country_event = {
+	id = lyu_start.11
+	title = lyu_start.11.t
+	desc = lyu_start.11.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		if = {
+			limit = { 
+				has_country_flag = Liyue_crisis
+			}
+			country_event = {
+				id = lyu_start.11
+				days = 1
+			}
+			random_list = {
+		        2 = {
+                    country_event = {
+						id = lyu_start.8
+					}
+		        }
+		        98 = {
+                     
+		        }
+		    }
+			random_list = {
+		        2 = {
+                    country_event = {
+						id = lyu_start.9
+					}
+		        }
+		        98 = {
+                     
+		        }
+		    }
+			random_list = {
+		        2 = {
+                    country_event = {
+						id = lyu_start.10
+					}
+		        }
+		        98 = {
+                     
+		        }
+		    }
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_global_flag = Liyue_Civil_War 
+					has_global_flag = avoid_Liyue_Civil_War
+				}
+			}
+		}
+	}
+}
+#一地狼藉
+country_event = {
+	id = lyu_start.12
+	title = lyu_start.12.t
+	desc = lyu_start.12.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.12.a
+	}
+}
+

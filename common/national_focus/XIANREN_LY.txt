@@ -1,0 +1,1240 @@
+focus_tree = {
+	id = XIANREN_LY
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = XRG
+		}
+	}
+	default = no
+	focus = {
+		id = LY_1
+		icon = GFX_goal_unknown
+		cost = 10.00
+		x = 17
+		y = 0
+		completion_reward = {
+		    promote_character = XRG_Liuyunjiefeng
+		    country_event = { id = XRG_EVENTS_LY.2 }
+			hidden_effect = {
+				remove_advisor_role = {
+                    character = XRG_Liuyunjiefeng
+                    slot = political_advisor
+                }
+			    add_advisor_role = {
+                    Character = XRG_Liuyunjiefeng
+                    advisor = {
+                        slot = political_advisor
+                        cost = 150
+                        idea_token = XRG_Liuyunjiefeng
+                        traits = {
+                            XRG_GW_LY_2
+                        }
+                        allowed = {
+                            original_tag = XRG
+                        } 
+                    }
+                    activate = no
+                }
+			}
+		}
+	}
+	focus = {
+		id = LY_2
+		icon = GFX_goal_generic_defence
+		cost = 20.00
+		prerequisite = {
+			focus = LY_1
+		}
+		x = 17
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = XRG_LY_BUFF_1
+			country_event = { id = XRG_EVENTS_LY.3 }
+		}
+
+	}
+	focus = {
+		id = LY_JJ_1
+		icon = GFX_goal_generic_production2
+		cost = 20.00
+		prerequisite = {
+			focus = LY_2
+		}
+		x = 6
+		y = 2
+			completion_reward = {
+					swap_ideas = {
+							remove_idea = XRG_LY_DEBUFF_1_ONE
+							add_idea = XRG_LY_DEBUFF_1_TWO
+						}
+				}
+
+	}
+	focus = {
+		id = LY_JJ_L1
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = LY_JJ_1
+		}
+		mutually_exclusive = {
+			focus = LY_JJ_R1
+		}
+		x = 4
+		y = 3
+			completion_reward = {
+					add_political_power = -100
+					add_ideas = XRG_LY_JJ_L1_ONE
+				}
+
+	}
+	focus = {
+		id = LY_JJ_L2
+		icon = GFX_goal_generic_consumer_goods
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_L1
+		}
+		x = 2
+		y = 4
+			completion_reward = {
+					add_political_power = -100
+					add_stability = -0.1
+					swap_ideas = {
+							remove_idea = XRG_LY_JJ_L1_ONE
+							add_idea = XRG_LY_JJ_L1_TWO
+						}
+				}
+
+	}
+	focus = {
+		id = LY_JJ_R1
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = LY_JJ_1
+		}
+		mutually_exclusive = {
+			focus = LY_JJ_L1
+		}
+		x = 8
+		y = 3
+			completion_reward = {
+					add_political_power = 100
+					add_ideas = XRG_LY_JJ_R1_ONE
+				}
+
+	}
+	focus = {
+		id = LY_JJ_2
+		icon = GFX_goal_generic_national_unity
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_L1
+			focus = LY_JJ_R1
+		}
+		x = 6
+		y = 4
+			completion_reward = {
+					add_stability = 0.05
+					add_timed_idea = {
+							idea = XRG_LY_JJ_1
+							days = 100
+						}
+				}
+
+	}
+	focus = {
+		id = LY_JJ_3
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_2
+		}
+		x = 6
+		y = 5
+			completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+				is_core_of = XRG
+				free_building_slots = {
+					building = infrastructure
+					size > 1
+				}
+				is_capital = no 
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+		}
+					swap_ideas = {
+							remove_idea = XRG_LY_DEBUFF_1_TWO
+							add_idea = XRG_LY_DEBUFF_1_THREE
+						}
+				}
+
+	}
+	focus = {
+		id = LY_JJ_4
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_3
+		}
+		x = 6
+		y = 6
+			completion_reward = {
+					every_owned_state = {
+			limit = {
+				is_core_of = XRG
+				free_building_slots = {
+					building = infrastructure
+					size < 5
+				}
+				is_capital = no 
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+			remove_ideas = XRG_LY_DEBUFF_1_THREE
+				}
+
+	}
+	focus = {
+		id = LY_JJ_R2
+		icon = GFX_goal_generic_national_unity
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_R1
+		}
+		x = 10
+		y = 4
+			completion_reward = {
+					add_political_power = -50
+					swap_ideas = {
+							remove_idea = XRG_LY_JJ_R1_ONE
+							add_idea = XRG_LY_JJ_R1_TWO
+						}
+				}
+
+	}
+	focus = {
+		id = LY_JJ_R3
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_R2
+		}
+		x = 10
+		y = 5
+			completion_reward = {
+					add_tech_bonus = {
+							name = industry
+							bonus = 1.0
+							uses = 2
+							category = industry
+						}
+					add_tech_bonus = {
+							name = construction_tech
+							bonus = 1.0
+							uses = 1
+							category = construction_tech
+						}
+					swap_ideas = {
+							remove_idea = XRG_LY_JJ_R1_TWO
+							add_idea = XRG_LY_JJ_R1_THREE
+						}
+				}
+
+	}
+	focus = {
+		id = LY_JJ_R4
+		icon = GFX_goal_unknown
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_R3
+		}
+		x = 10
+		y = 6
+			completion_reward = {
+					add_ideas = XRG_LY_JJ_R2
+				}
+
+
+	}
+	
+	focus = {
+		id = LY_JJ_L3
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_L2
+		}
+		x = 2
+		y = 5
+			completion_reward = {
+					add_tech_bonus = {
+							name = industry
+							bonus = 1.0
+							uses = 2
+							category = industry
+						}
+					add_tech_bonus = {
+							name = construction_tech
+							bonus = 1.0
+							uses = 1
+							category = construction_tech
+						}
+					swap_ideas = {
+							remove_idea = XRG_LY_JJ_L1_TWO
+							add_idea = XRG_LY_JJ_L1_THREE
+						}
+				}
+
+	}
+	focus = {
+		id = LY_JJ_L4
+		icon = GFX_goal_unknown
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_L3
+		}
+		x = 2
+		y = 6
+			completion_reward = {
+					add_ideas = XRG_LY_JJ_L2
+				}
+
+	}
+	focus = {
+		id = LY_JJ_L5
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = LY_JJ_5
+		}
+		x = 4
+		y = 8
+		available = {
+		has_completed_focus = LY_JJ_L1
+		}
+		completion_reward = {
+		remove_ideas = XRG_LY_JJ_2
+		remove_ideas = XRG_LY_JJ_L1_THREE
+		remove_ideas = XRG_LY_JJ_L2
+		add_ideas = XRG_LY_JJ_L3
+		}
+	}
+	focus = {
+		id = LY_JJ_R5
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = LY_JJ_5
+		}
+		x = 8
+		y = 8
+		available = {
+		has_completed_focus = LY_JJ_R1
+		}
+		completion_reward = {
+		remove_ideas = XRG_LY_JJ_2
+		remove_ideas = XRG_LY_JJ_R1_THREE
+		remove_ideas = XRG_LY_JJ_R2
+		add_ideas = XRG_LY_JJ_R3
+		}
+
+	}
+	focus = {
+		id = LY_JJ_5
+		icon = GFX_focus_research
+		cost = 20.00
+		prerequisite = {
+			focus = LY_JJ_4
+			}
+		prerequisite = {
+			focus = LY_JJ_L4
+			focus = LY_JJ_R4
+		}
+		x = 6
+		y = 7
+			completion_reward = {
+					add_research_slot = 1
+					add_ideas = XRG_LY_JJ_2
+				}
+
+	}
+	
+	focus = {
+		id = LY_ZZ_1
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 20.00
+		prerequisite = {
+			focus = LY_2
+		}
+		x = 17
+		y = 2
+		completion_reward = {
+					swap_ideas = {
+							remove_idea = XRG_LY_DEBUFF_2_ONE
+							add_idea = XRG_LY_DEBUFF_2_TWO
+						}
+				}
+
+	}
+	focus = {
+		id = LY_ZZ_L1
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = LY_ZZ_1
+		}
+		mutually_exclusive = {
+			focus = LY_ZZ_R1
+		}
+		x = 15
+		y = 3
+		completion_reward = {
+			add_political_power = -100
+			add_ideas = XRG_LY_ZZ_L1_ONE
+				}
+
+	}
+	focus = {
+		id = LY_ZZ_L2
+		icon = GFX_goal_generic_political_pressure
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_L1
+		}
+		x = 13
+		y = 4
+		completion_reward = {
+					swap_ideas = {
+							remove_idea = XRG_LY_DEBUFF_2_TWO
+							add_idea = XRG_LY_DEBUFF_2_THREE
+					}
+					swap_ideas = {
+							remove_idea = XRG_LY_ZZ_L1_ONE
+							add_idea = XRG_LY_ZZ_L1_TWO
+					}
+				}
+
+	}
+	focus = {
+		id = LY_ZZ_R1
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = LY_ZZ_1
+		}
+		mutually_exclusive = {
+			focus = LY_ZZ_L1
+		}
+		x = 19
+		y = 3
+		completion_reward = {
+		add_political_power = -100
+		add_ideas = XRG_LY_ZZ_R1_ONE
+				}
+
+	}
+	focus = {
+		id = LY_ZZ_2
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 5.00
+		prerequisite = {
+			focus = LY_ZZ_L1
+			focus = LY_ZZ_R1
+		}
+		x = 17
+		y = 4
+
+	}
+	focus = {
+		id = LY_ZZ_3
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 5.00
+		prerequisite = {
+			focus = LY_ZZ_2
+		}
+		x = 17
+		y = 5
+
+	}
+	focus = {
+		id = LY_ZZ_4
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 5.00
+		prerequisite = {
+			focus = LY_ZZ_3
+		}
+		x = 17
+		y = 6
+
+	}
+	focus = {
+		id = LY_ZZ_R2
+		icon = GFX_goal_generic_improve_relations
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_R1
+		}
+		x = 21
+		y = 4
+		completion_reward = {
+					swap_ideas = {
+							remove_idea = XRG_LY_DEBUFF_2_TWO
+							add_idea = XRG_LY_DEBUFF_2_THREE
+					}
+					swap_ideas = {
+							remove_idea = XRG_LY_ZZ_R1_ONE
+							add_idea = XRG_LY_ZZ_R1_TWO
+					}
+				}
+
+	}
+	focus = {
+		id = LY_ZZ_R3
+		icon = GFX_goal_generic_propaganda
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_R2
+		}
+		x = 21
+		y = 5
+		completion_reward = {
+		swap_ideas = {
+							remove_idea = XRG_LY_DEBUFF_2_THREE
+							add_idea = XRG_LY_DEBUFF_2_FOUR
+					}
+		swap_ideas = {
+							remove_idea = XRG_LY_ZZ_R1_TWO
+							add_idea = XRG_LY_ZZ_R1_THREE
+					}
+			}
+
+	}
+	focus = {
+		id = LY_ZZ_R4
+		icon = GFX_goal_generic_national_unity
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_R3
+		}
+		x = 21
+		y = 6
+		completion_reward = {
+			remove_ideas = XRG_LY_DEBUFF_2_FOUR
+			add_country_leader_trait = LY_TZ_2
+		}
+
+	}
+	focus = {
+		id = LY_ZZ_R5
+		icon = GFX_goal_unknown
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_4
+		}
+		prerequisite = {
+			focus = LY_ZZ_R4
+		}
+		x = 19
+		y = 7
+		completion_reward = {
+		swap_ideas = {
+							remove_idea = XRG_LY_ZZ_R1_THREE
+							add_idea = XRG_LY_ZZ_R1_FOUR
+					}
+				}
+
+	}
+	focus = {
+		id = LY_ZZ_L3
+		icon = GFX_goal_generic_propaganda
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_L2
+		}
+		x = 13
+		y = 5
+		completion_reward = {
+		swap_ideas = {
+							remove_idea = XRG_LY_DEBUFF_2_THREE
+							add_idea = XRG_LY_DEBUFF_2_FOUR
+					}
+		swap_ideas = {
+							remove_idea = XRG_LY_ZZ_L1_TWO
+							add_idea = XRG_LY_ZZ_L1_THREE
+					}
+			}
+
+	}
+	focus = {
+		id = LY_ZZ_L4
+		icon = GFX_goal_generic_demand_territory
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_L3
+		}
+		x = 13
+		y = 6
+		completion_reward = {
+			remove_ideas = XRG_LY_DEBUFF_2_FOUR
+			add_country_leader_trait = LY_TZ_1
+		}
+	}
+	focus = {
+		id = LY_ZZ_L5
+		icon = GFX_goal_unknown
+		cost = 20.00
+		prerequisite = {
+			focus = LY_ZZ_L4
+		}
+		prerequisite = {
+			focus = LY_ZZ_4
+		}
+		x = 15
+		y = 7
+		completion_reward = {
+		swap_ideas = {
+						remove_idea = XRG_LY_ZZ_L1_THREE
+						add_idea = XRG_LY_ZZ_L1_FOUR
+					}
+				}
+	}
+	focus = {
+		id = LY_ZZ_5
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10.00
+		prerequisite = {
+			focus = LY_ZZ_R5
+			focus = LY_ZZ_L5
+		}
+		x = 17
+		y = 8
+		completion_reward = {
+			remove_ideas =XRG_LY_BUFF_1
+			add_ideas = XRG_LY_ZZ_1	
+				}
+	}
+
+	focus = {
+		id = JS_1
+		icon = GFX_goal_generic_build_tank
+		cost = 20.00
+		prerequisite = {
+			focus = LY_2
+		}
+		x = 28
+		y = 2
+		completion_reward = {
+					army_experience = 50
+					add_ideas = XRG_JS_1
+				}
+		}
+	focus = {
+		id = JS_L1
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = JS_1
+		}
+		mutually_exclusive = {
+			focus = JS_R1
+		}
+		x = 26
+		y = 3
+		completion_reward = {
+		add_tech_bonus = {
+		name = land_doctrine
+		bonus = 0.5
+		uses = 2
+		category = land_doctrine
+		}
+			swap_ideas = {
+							remove_idea = XRG_JS_1
+							add_idea = XRG_JS_L1_ONE
+						}
+			add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+				}
+		}
+		focus = {
+		id = JS_L2
+		icon = GFX_goal_generic_CAS
+		cost = 20.00
+		prerequisite = {
+			focus = JS_L1
+		}
+		x = 24
+		y = 4
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		swap_ideas = {
+							remove_idea = XRG_JS_L1_ONE
+							add_idea = XRG_JS_L1_TWO
+						}
+		add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+		}
+
+	}
+	focus = {
+		id = JS_R1
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = JS_1
+		}
+		mutually_exclusive = {
+			focus = JS_L1
+		}
+		x = 30
+		y = 3
+		completion_reward = {
+			add_tech_bonus = {
+		name = land_doctrine
+		bonus = 0.5
+		uses = 2
+		category = land_doctrine
+		}
+			swap_ideas = {
+							remove_idea = XRG_JS_1
+							add_idea = XRG_JS_R1_ONE
+						}
+			add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+				}
+
+	}
+	focus = {
+		id = JS_2
+		icon = GFX_goal_unknown
+		cost = 20.00
+		prerequisite = {
+			focus = JS_L1
+			focus = JS_R1
+		}
+		x = 28
+		y = 4
+		completion_reward = {
+					add_ideas = XRG_JS_2
+				}
+
+	}
+
+	focus = {
+		id = JS_3
+		icon = GFX_goal_generic_military_sphere
+		cost = 20.00
+		prerequisite = {
+			focus = JS_2
+		}
+		x = 28
+		y = 5
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		army_experience = 50
+		add_ideas = XRG_JS_3
+		add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+		}
+	}
+
+	focus = {
+		id = JS_4
+		icon = GFX_goal_generic_scientific_exchange
+		cost =20.00
+		prerequisite = {
+			focus = JS_3
+		}
+		x = 28
+		y = 6
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		add_research_slot = 1
+		add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+		}
+	}
+
+	focus = {
+	id = JS_R2
+		icon = GFX_goal_generic_axis_build_infantry
+		cost = 20.00
+		prerequisite = {
+			focus = JS_R1
+		}
+		x = 32
+		y = 4
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		swap_ideas = {
+							remove_idea = XRG_JS_R1_ONE
+							add_idea = XRG_JS_R1_TWO
+						}
+		add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+		}
+
+	}
+	focus = {
+		id = JS_R3
+		icon = GFX_goal_generic_small_arms
+		cost = 20.00
+		prerequisite = {
+			focus = JS_R2
+		}
+		x = 32
+		y = 5
+		completion_reward = {
+		add_tech_bonus = {
+		name = infantry_weapons
+		bonus = 1
+		uses = 2
+		category = infantry_weapons
+	}
+		add_ideas = XRG_JS_R2
+		}
+	}
+	focus = {
+		id = JS_R4
+		icon = GFX_goal_generic_construction2
+		cost = 20.00
+		prerequisite = {
+			focus = JS_R3
+		}
+		x = 32
+		y = 6
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		army_experience = 50
+		swap_ideas = {
+							remove_idea = XRG_JS_R1_TWO
+							add_idea = XRG_JS_R1_THREE
+						}
+		add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+		}
+
+	}
+	focus = {
+		id = JS_R5
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = JS_4
+		}
+		prerequisite = {
+			focus = JS_R4
+		}
+		x = 30
+		y = 7
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		army_experience = 50
+		remove_ideas = XRG_JS_2
+		remove_ideas = XRG_JS_3
+		remove_ideas = XRG_JS_R1_THREE
+		add_ideas = XRG_JS_R1_FOUR
+						}
+
+	}
+	focus = {
+		id = JS_L3
+		icon = GFX_goal_generic_air_production
+		cost = 20.00
+		prerequisite = {
+			focus = JS_L2
+		}
+		x = 24
+		y = 5
+		completion_reward = {
+		add_tech_bonus = {
+		name = infantry_weapons
+		bonus = 1
+		uses = 2
+		category = infantry_weapons
+	}
+		add_ideas = XRG_JS_L2
+		}
+
+	}
+	focus = {
+		id = JS_L4
+		icon = GFX_goal_generic_demand_territory
+		cost = 20.00
+		prerequisite = {
+			focus = JS_L3
+		}
+		x = 24
+		y = 6
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		army_experience = 50
+		swap_ideas = {
+							remove_idea = XRG_JS_L1_TWO
+							add_idea = XRG_JS_L1_THREE
+						}
+		add_timed_idea = { idea = XRG_JS_DEBUFF_1 days = 20 }
+		}
+
+	}
+	focus = {
+		id = JS_L5
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = JS_4
+		}
+		prerequisite = {
+			focus = JS_L4
+		}
+		x = 26
+		y = 7
+		available = {
+		NOT = { has_idea = XRG_JS_DEBUFF_1 }
+		}
+		completion_reward = {
+		army_experience = 50
+		remove_ideas = XRG_JS_2
+		remove_ideas = XRG_JS_3
+		remove_ideas = XRG_JS_L1_THREE
+		add_ideas = XRG_JS_L1_FOUR
+						}
+
+	}
+
+	focus = {
+		id = WAR_1
+		icon = GFX_goal_generic_military_sphere
+		cost = 20.00
+		x = 17
+		y = 10
+		available = {
+		has_completed_focus = LY_2
+		NOT = { 
+		has_idea = XRG_LY_DEBUFF_1_ONE
+		has_idea = XRG_LY_DEBUFF_1_TWO
+		has_idea = XRG_LY_DEBUFF_1_THREE
+		has_idea = XRG_LY_DEBUFF_2_ONE
+		has_idea = XRG_LY_DEBUFF_2_TWO
+		has_idea = XRG_LY_DEBUFF_2_THREE
+		has_idea = XRG_LY_DEBUFF_2_FOUR }
+		}
+		completion_reward = {
+		add_war_support = 0.2 
+		add_timed_idea = { idea = XRG_WAR_1 days = 70 } 
+		add_timed_idea = { idea = XRG_WAR_2 days = 120 }
+		}
+	}
+
+	focus = {
+		id = WAR_2
+		icon = GFX_goal_generic_major_war
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_1
+		}
+		x = 17
+		y = 11
+		available = {
+			NOT = { 
+			has_war = yes
+			}
+		}
+		bypass = {
+			
+			OR = {
+				has_war_with = ZDG
+				NOT = { 
+					country_exists = ZDG
+				}
+			}
+		}
+		completion_reward = {
+		add_timed_idea = { idea = XRG_WAR_3 days = 70 } 
+		declare_war_on = {
+    		target = ZDG
+    		type = annex_everything
+			}
+		}
+
+	}
+
+	focus = {
+		id = WAR_3
+		icon = GFX_goal_generic_major_war
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_2
+		}
+		x = 15
+		y = 12
+		available = {
+			NOT = { 
+			has_war = yes
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = RTG
+				NOT = { 
+					country_exists = RTG
+				}
+			}
+		}
+		completion_reward = {
+		declare_war_on = {
+    		target = RTG
+    		type = annex_everything
+			}
+		}
+	}
+
+	focus = {
+		id = WAR_4
+		icon = GFX_goal_generic_major_war
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_2
+		}
+		x = 19
+		y = 12
+		available = {
+			NOT = { 
+			has_war = yes
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = ANG
+				NOT = { 
+					country_exists = ANG
+				}
+			}
+		}
+		completion_reward = {
+		declare_war_on = {
+    		target = ANG
+    		type = annex_everything
+			}
+		}
+
+	}
+
+	focus = {
+		id = WAR_5
+		icon = GFX_goal_generic_major_war
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_3
+		}
+		prerequisite = {
+			focus = WAR_4
+		}
+		x = 17
+		y = 13
+		available = {
+			NOT = { 
+			has_war = yes
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = LYU
+				NOT = { 
+					country_exists = LYU
+				}
+			}
+		}
+		completion_reward = {
+		declare_war_on = {
+    		target = LYU
+    		type = annex_everything
+			}
+		}
+	}
+
+	focus = {
+		id = WAR_6
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_5
+		}
+		x = 17
+		y = 14
+		available = {
+			country_exists = SHG
+			NOT = { 
+			has_war = yes
+			}
+		}
+		completion_reward = {
+		annex_country = { target = SHG transfer_troops = yes }
+		}
+	}
+
+	focus = {
+		id = WAR_7
+		icon = GFX_goal_generic_major_war
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_6
+		}
+		x = 15
+		y = 15
+		available = {
+			NOT = { 
+			has_war = yes
+			}
+		}
+		bypass = {
+			
+			OR = {
+				has_war_with = KQG
+				NOT = { 
+					country_exists = KQG
+				}
+			}
+		}
+		completion_reward = {
+		declare_war_on = {
+    		target = KQG
+    		type = annex_everything
+			}
+		}
+
+	}
+
+	focus = {
+		id = WAR_8
+		icon = GFX_goal_generic_major_war
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_6
+		}
+		x = 19
+		y = 15
+		available = {
+			NOT = { 
+			has_war = yes
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = NNG
+				NOT = { 
+					country_exists = NNG
+				}
+			}
+			OR = {
+				has_war_with = XQG
+				NOT = { 
+					country_exists = XQG
+				}
+			}
+			OR = {
+				has_war_with = BDG
+				NOT = { 
+					country_exists = BDG
+				}
+			}
+		}
+		completion_reward = {
+		declare_war_on = {
+    		target = NNG
+    		type = annex_everything
+			}
+		
+		declare_war_on = {
+    		target = XQG
+    		type = annex_everything
+			}
+		
+		declare_war_on = {
+    		target = BDG
+    		type = annex_everything
+			}
+		}
+	}
+
+	focus = {
+		id = WAR_9
+		icon = GFX_goal_generic_major_war
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_7
+		}
+		prerequisite = {
+			focus = WAR_8
+		}
+		x = 17
+		y = 16
+		available = {
+			NOT = { 
+			has_war = yes
+			}
+		}
+		bypass = {
+			
+			OR = {
+				has_war_with = XOG
+				NOT = { 
+					country_exists = XOG
+				}
+			}
+			OR = {
+				has_war_with = HTG
+				NOT = { 
+					country_exists = HTG
+				}
+			}
+		}
+		completion_reward = {
+		declare_war_on = {
+    		target = XOG
+    		type = annex_everything
+			}
+		declare_war_on = {
+    		target = HTG
+    		type = annex_everything
+			}
+		}
+
+	}
+
+	focus = {
+		id = WAR_10
+		icon = GFX_goal_unknown
+		cost = 20.00
+		prerequisite = {
+			focus = WAR_9
+		}
+		x = 17
+		y = 17
+	}
+}

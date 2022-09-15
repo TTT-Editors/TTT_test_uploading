@@ -1,0 +1,39 @@
+
+celestia_notice_frame_effect = {
+	set_temp_variable = { 
+		var = global.celestia_notice_temp 
+		value = global.celestia_notice_level1 
+	}
+
+	add_to_temp_variable = { var = global.celestia_notice_temp   value = -5 }
+	divide_temp_variable = { var = global.celestia_notice_temp   value = 100 }
+	multiply_temp_variable = { var = global.celestia_notice_temp   value = 10 }
+	round_temp_variable = global.celestia_notice_temp 
+
+	set_variable = { 
+	    var = global.celestia_notice_frame 
+	    value = global.celestia_notice_temp 
+	}
+	clamp_variable = {
+		var = global.celestia_notice_frame 
+	    min = 1
+		max = 10
+	}
+
+
+	set_temp_variable = {
+        var = global.celestia_notice_temp2 
+		value = global.celestia_notice_level1
+	}
+	add_to_temp_variable = { var = global.celestia_notice_temp2   value = -10 }
+	set_variable = { 
+	    var = global.celestia_notice_level2
+	    value = global.celestia_notice_temp2
+	}
+	clamp_variable = {
+		var = global.celestia_notice_level2
+	    min = 0
+		max = 100
+	}
+}
+

@@ -1,0 +1,410 @@
+focus_tree = {
+	id = XRG
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = XRG
+		}
+	}
+	default = no
+	focus = {
+		id = XR_0 #群仙会议#
+		icon = GFX_goal_generic_national_unity
+		cost = 50.00
+		x = 10
+		y = 0
+		cancelable = no
+		select_effect={
+			country_event = XRG_EVENTS_QXHY.1
+		}
+		completion_reward = {
+			country_event = XRG_EVENTS_QXHY.12
+		}
+	}
+
+	focus = {
+		id = XR_1 #彼方鹤归#
+		icon = GFX_goal_generic_territory_or_war
+		cost = 10.00
+		prerequisite = {
+			focus = XR_0 
+		}
+		x = 4
+		y = 1
+		completion_reward = {
+			country_event = XRG_EVENTS_0.2
+		}
+	}
+
+	focus = {
+		id = XR_2 #仙家守护#
+		icon = GFX_goal_generic_build_tank
+		cost = 20.00
+		prerequisite = {
+			focus = XR_0 
+		}
+		mutually_exclusive = {
+			focus = XR_3 
+		}
+		x = 12
+		y = 1
+		available = {
+			NOT = { 
+				has_idea = XRG_BUFF_2
+			}
+		}
+		completion_reward = {
+			add_ideas = XRG_BUFF_5
+			news_event = { 
+				id = XRG_NEWS_0.1
+			}
+		}
+	}
+
+	focus = {
+		id = XR_3 #璃月防务#
+		icon = GFX_goal_generic_small_arms
+		cost = 20.00
+		prerequisite = {
+			focus = XR_0 
+		}
+		mutually_exclusive = {
+			focus = XR_2 
+		}
+		available = {
+			has_idea = XRG_BUFF_2
+		}
+		x = 16
+		y = 1
+		completion_reward = {
+			add_ideas = XRG_BUFF_6
+			remove_ideas = XRG_BUFF_2
+			news_event = { 
+				id = XRG_NEWS_0.2
+			}
+		}
+	}
+
+	focus = {
+		id = XR_4 #接管防务#
+		icon = GFX_goal_generic_defence
+		cost = 30.00
+		prerequisite = {
+			focus = XR_1 
+		}
+		x = 2
+		y = 2
+		completion_reward = {
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = XR_5 #仙家镇守#
+		icon = GFX_goal_generic_demand_territory
+		cost = 30.00
+		prerequisite = {
+			focus = XR_1 
+		}
+		x = 6
+		y = 2
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
+		id = XR_6 #稳固军心#
+		icon = GFX_goal_generic_propaganda
+		cost = 0.00
+		prerequisite = {
+			focus = XR_4 
+		}
+		x = 2
+		y = 3
+		completion_reward = {
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = XR_7 #安定人心#
+		icon = GFX_goal_generic_propaganda
+		cost = 30.00
+		prerequisite = {
+			focus = XR_5 
+		}
+		x = 6
+		y = 3
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
+		id = XR_8 #坚定意志#
+		icon = GFX_goal_support_democracy
+		cost = 30.00
+		prerequisite = {
+			focus = XR_6 
+		}
+		x = 2
+		y = 4
+		completion_reward = {
+			add_ideas = XRG_BUFF_7
+		}
+	}
+
+	focus = {
+		id = XR_9 #坚定信仰#
+		icon = GFX_goal_support_democracy
+		cost = 30.00
+		prerequisite = {
+			focus = XR_7 
+		}
+		x = 6
+		y = 4
+		completion_reward = {
+			add_ideas = XRG_BUFF_8
+		}
+	}
+
+	focus = {
+		id = XR_10 #垒墙高筑#
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 30.00
+		prerequisite = {
+			focus = XR_8 
+		}
+		x = 2
+		y = 5
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 3 }
+		}
+	}
+	
+	focus = {
+		id = XR_11 #紧急工坊#
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 30.00
+		prerequisite = {
+			focus = XR_9 
+		}
+		x = 6
+		y = 5
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 5 }
+		}
+	}
+	
+	focus = {
+		id = XR_12 #以仙之名#
+		icon = GFX_goal_generic_political_pressure
+		cost = 30.00
+		prerequisite = {
+			focus = XR_11 
+		}
+		prerequisite = {
+			focus = XR_10 
+		}
+		x = 4
+		y = 6
+		completion_reward = {
+			add_timed_idea = {  
+				idea = XRG_BUFF_9
+				days = 200
+			}
+		}
+	}
+
+	focus = {
+		id = XR_13 #仙家伟力#
+		icon = GFX_goal_demand_sudetenland
+		cost = 30.00
+		prerequisite = {
+			focus = XR_2 
+		}
+		x = 10
+		y = 2
+		completion_reward = {
+			add_ideas = XRG_BUFF_10
+		}
+	}
+
+	focus = {
+		id = XR_14 #仙符庇佑#
+		icon = GFX_goal_generic_military_sphere
+		cost = 30.00
+		prerequisite = {
+			focus = XR_13 
+		}
+		x = 10
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_10
+				add_idea = XRG_BUFF_11
+			}
+		}
+	}
+	focus = {
+		id = XR_15 #群仙之战#
+		icon = GFX_goal_generic_major_war
+		cost = 30.00
+		prerequisite = {
+			focus = XR_14 
+		}
+		x = 10
+		y = 4
+		completion_reward = {
+			army_experience = 50
+			swap_ideas = {
+				remove_idea = XRG_BUFF_11
+				add_idea = XRG_BUFF_12
+			}
+		}
+	}
+	
+	focus = {
+		id = XR_16 #仙人合力#
+		icon = GFX_goal_tripartite_pact
+		cost = 30.00
+		prerequisite = {
+			focus = XR_3 
+		}
+		x = 18
+		y = 2
+		completion_reward = {
+			add_ideas = XRG_BUFF_13
+		}
+	}
+
+	focus = {
+		id = XR_17 #全民动员#
+		icon = GFX_goal_generic_axis_build_infantry
+		cost = 30.00
+		prerequisite = {
+			focus = XR_16 
+		}
+		x = 18
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_13
+				add_idea = XRG_BUFF_14
+			}
+		}
+	}
+
+	focus = {
+		id = XR_18 #仙人共战#
+		icon = GFX_goal_generic_military_deal
+		cost = 30.00
+		prerequisite = {
+			focus = XR_17 
+		}
+		x = 18
+		y = 4
+		completion_reward = {
+			army_experience = 50
+			swap_ideas = {
+				remove_idea = XRG_BUFF_14
+				add_idea = XRG_BUFF_15
+			}
+		}
+	}
+
+	focus = {
+		id = XR_19 #浮萍何去#
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10.00
+		prerequisite = {
+			focus = XR_2 
+			focus = XR_3 
+		}
+		x = 14
+		y = 2
+		completion_reward = {
+			country_event = XRG_EVENTS_0.3
+		}
+	}
+	focus = {
+		id = XR_20 #共循契约#
+		icon = GFX_goal_molotov_ribbentrop_pact
+		cost = 10.00
+		prerequisite = {
+			focus = XR_19 
+		}
+		x = 14
+		y = 3
+		completion_reward = {
+			country_event = XRG_EVENTS_0.1
+		}
+	}
+	focus = {
+		id = XR_21 #踏访巨渊#
+		icon = GFX_goal_generic_secret_weapon
+		cost = 10.00
+		prerequisite = {
+			focus = XR_20 
+		}
+		x = 14
+		y = 4
+		completion_reward = {
+			country_event = XRG_EVENTS_0.8
+		}
+	}
+	
+	focus = {
+		id = XR_22 #联合阵线#
+		icon = GFX_goal_generic_alliance
+		cost = 50.00
+		prerequisite = {
+			focus = XR_15 
+			focus = XR_18
+		}
+		prerequisite = {
+			focus = XR_21 
+		}
+		x = 14
+		y = 5
+		completion_reward = {
+			XOG = {
+				country_event = XRG_EVENTS_0.11
+			}
+		}
+	}
+	
+	focus = {
+		id = XR_23 #独守边疆#
+		icon = GFX_goal_generic_defence
+		cost = 10.00
+		prerequisite = {
+			focus = XR_22 
+		}
+		available = {
+			not = {
+				is_in_faction_with = XOG
+			}
+		}
+		x = 12
+		y = 6
+		
+	}
+
+	focus = {
+		id = XR_24 #共赴胜利#
+		icon = GFX_goal_generic_special_forces
+		cost = 10.00
+		prerequisite = {
+			focus = XR_22 
+		}
+		available = {
+			is_in_faction_with = XOG
+		}
+		x = 16
+		y = 6
+
+	}
+}

@@ -1,0 +1,79 @@
+add_namespace = celestia
+
+country_event = {
+	id = celestia.1
+	title = celestia.1.t
+	desc = celestia.1.d
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		check_variable = { 
+			var = global.celestia_notice_frame  
+			value = 10
+			compare = equals
+		}
+	}
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	option = { 
+		name = celestia.1.a
+	    every_country = {
+			CEL = { 
+				declare_war_on = {
+				    target = PREV
+				    type = annex_everything
+			    }
+		    }
+		}
+	}
+}
+
+country_event = {
+	id = celestia.2
+	title = celestia.2.t
+	desc = celestia.2.d
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		check_variable = { 
+			var = global.celestia_notice_frame  
+			value = 3
+			compare = equals
+		}
+	}
+
+	option = { 
+		name = celestia.2.a
+
+		HIL = {
+			add_ideas = QQren_baozao1
+		}
+		MDQ = {
+            add_ideas = QQren_baozao1
+		}
+		FDN = {
+            add_ideas = QQren_baozao1
+		}
+	}
+}
+
+country_event = {
+	id = celestia.3
+	title = celestia.3.t
+	desc = celestia.3.d
+	fire_only_once = yes
+	hidden = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = celestia.2.a
+
+		set_variable = {
+			var = global.celestia_notice_level1 
+			value = 10
+		}
+		celestia_notice_frame_effect = yes
+	}
+}

@@ -1,0 +1,208 @@
+scripted_gui = {
+    mainline_Ganyu_decision_ui = {
+        context_type = decison_category
+        window_name = "mainline_Ganyu_decision_window"
+		
+	    triggers = {
+		  ##璃月现状
+		    LYU_situaton_Ganyu_linshi_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			LYU_situaton_Ganyu_visible = {
+			    has_country_flag = Ganyu_become_leader
+			}
+			LYU_situaton_Keqing_visible = {
+			    has_country_flag = Keqing_become_leader
+			}
+			LYU_situaton_NingGuang_visible = {
+			    has_country_flag = NingGuang_become_leader
+			}
+			
+		  ##领导人情况
+		    Ganyu_linshi_leader_icon_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			Ganyu_become_leader_icon_visible = {
+			    has_country_flag = Ganyu_become_leader
+			}
+			Keqing_become_leader_icon_visible = {
+			    has_country_flag = Keqing_become_leader
+			}
+			NingGuang_become_leader_icon_visible = {
+			    has_country_flag = NingGuang_become_leader
+			}
+		  
+		  ##派系按钮
+			Ganyu_clique_button_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+				NOT = {
+				    has_country_flag = NingGuang_take_over_power
+			        has_country_flag = NingGuang_take_over_power
+				}
+			}
+			Keqing_clique_button_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+				NOT = { has_country_flag = Keqing_clique_GG }
+			}
+			NingGuang_clique_button_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+				NOT = { has_country_flag = NingGuang_clique_GG }
+			}
+			
+		  ##派系被消灭
+		    Ganyu_clique_GG_icon_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			    OR = {
+				    has_country_flag = Keqing_take_over_power
+			        has_country_flag = NingGuang_take_over_power
+			    }
+			}
+			Keqing_clique_GG_icon_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+				has_country_flag = Keqing_clique_GG
+			}
+			NingGuang_clique_GG_icon_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+				has_country_flag = NingGuang_clique_GG
+			}
+			
+		  ##政治影响力——人民支持度
+		    political_power_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			Ganyu_political_power_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			Keqing_political_power_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			NingGuang_political_power_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			people_support_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			Ganyu_people_support_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			Keqing_people_support_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			NingGuang_people_support_text_visible = {
+			    has_country_flag = Ganyu_linshi_leader
+			}
+			
+		}
+		
+	  ##派系按钮效果
+		effects = {
+		    Ganyu_clique_button_click = {
+			    if = { 
+				    limit = { NOT = { has_country_flag = open_LYU_clique_window } }
+				    set_country_flag = open_LYU_clique_window
+			        set_country_flag = open_Ganyu_clique_window	
+                }
+                else_if = {
+				    limit = { 
+					    has_country_flag = open_LYU_clique_window
+                        has_country_flag = open_Ganyu_clique_window					
+					}
+					clr_country_flag = open_LYU_clique_window
+			        clr_country_flag = open_Ganyu_clique_window	
+                }
+                else = {
+				    limit = { 
+					    has_country_flag = open_LYU_clique_window
+                        NOT = { has_country_flag = open_Ganyu_clique_window	}				
+					}
+					clr_country_flag = open_Keqing_clique_window
+			        clr_country_flag = open_NingGuang_clique_window
+                    set_country_flag = open_Ganyu_clique_window				
+                }				
+			}
+			Keqing_clique_button_click = {
+			    if = { 
+				    limit = { NOT = { has_country_flag = open_LYU_clique_window } }
+				    set_country_flag = open_LYU_clique_window
+			        set_country_flag = open_Keqing_clique_window	
+                }
+                else_if = {
+				    limit = { 
+					    has_country_flag = open_LYU_clique_window
+                        has_country_flag = open_Keqing_clique_window					
+					}
+					clr_country_flag = open_LYU_clique_window
+			        clr_country_flag = open_Keqing_clique_window	
+                }
+                else = {
+				    limit = { 
+					    has_country_flag = open_LYU_clique_window
+                        NOT = { has_country_flag = open_Keqing_clique_window	}				
+					}
+					clr_country_flag = open_Ganyu_clique_window
+			        clr_country_flag = open_NingGuang_clique_window
+                    set_country_flag = open_Keqing_clique_window				
+                }
+			}
+			NingGuang_clique_button_click = {
+			    if = { 
+				    limit = { NOT = { has_country_flag = open_LYU_clique_window } }
+				    set_country_flag = open_LYU_clique_window
+			        set_country_flag = open_NingGuang_clique_window	
+                }
+                else_if = {
+				    limit = { 
+					    has_country_flag = open_LYU_clique_window
+                        has_country_flag = open_NingGuang_clique_window					
+					}
+					clr_country_flag = open_LYU_clique_window
+			        clr_country_flag = open_NingGuang_clique_window	
+                }
+                else = {
+				    limit = { 
+					    has_country_flag = open_LYU_clique_window
+                        NOT = { has_country_flag = open_NingGuang_clique_window	}				
+					}
+					clr_country_flag = open_Ganyu_clique_window
+			        clr_country_flag = open_Keqing_clique_window
+                    set_country_flag = open_NingGuang_clique_window				
+                }
+			}
+		}
+	}
+	
+  ##派系窗口
+	mainline_Ganyu_decision_clique_ui = {
+        context_type = player_context
+        window_name = "mainline_Ganyu_decision_clique_window"
+		
+		visible = {
+		    has_country_flag = open_LYU_clique_window
+		}
+		
+		triggers = {
+		  ##派系领导人图标出现条件
+		    Ganyu_icon_visible = {
+			    has_country_flag = open_Ganyu_clique_window
+			}
+			Keqing_icon_visible = {
+			    has_country_flag = open_Keqing_clique_window
+			}
+			NingGuang_icon_visible = {
+			    has_country_flag = open_NingGuang_clique_window
+			}
+			
+		  ##派系文本出现条件
+		    Ganyu_text_visible = {
+			    has_country_flag = open_Ganyu_clique_window
+			}
+			Keqing_text_visible = {
+			    has_country_flag = open_Keqing_clique_window
+			}
+			NingGuang_text_visible = {
+			    has_country_flag = open_NingGuang_clique_window
+			}
+		}
+		
+	}
+}

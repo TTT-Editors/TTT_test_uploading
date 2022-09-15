@@ -1,0 +1,37 @@
+scripted_gui = {
+
+    open_Celestia_special_ui_button = {
+		context_type = player_context
+		window_name = "open_Celestia_special_ui_button_window"
+		
+		visible = { NOT = { original_tag = CEL } }
+
+		effects = {
+			Celestia_button_click = {
+				if = {
+					limit = { NOT = { has_country_flag = open_Celestia_special_ui } }
+				    set_country_flag = open_Celestia_special_ui
+			    }
+				else_if = {
+					limit = { has_country_flag = open_Celestia_special_ui }
+				    clr_country_flag = open_Celestia_special_ui
+			    }
+			}
+		}
+	}
+
+	Celestia_special_ui = {
+		context_type = player_context
+		window_name = "Celestia_special_ui_window"
+		
+		visible = { has_country_flag = open_Celestia_special_ui }
+		
+		properties = {
+            Celestia_notice = {
+                frame = global.celestia_notice_frame 
+            }
+        }
+
+	}
+	
+}

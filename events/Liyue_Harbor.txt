@@ -1,0 +1,317 @@
+add_namespace = LHPG
+
+#These are events about Liyue Harbor government.
+
+country_event = {
+	id = LHPG.1
+	title = LHPG.1.t
+	desc = LHPG.1.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.1.a
+		LYU = {
+			country_event = {
+				id = LHPG.2
+				days = 4
+			}
+		}
+		custom_effect_tooltip = Beidou_accept_require
+	}
+
+	option = { 
+		name = LHPG.1.b
+		LYU = {
+			country_event = {
+				id = LHPG.3
+				days = 4
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.2
+	title = LHPG.2.t
+	desc = LHPG.2.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.1.a
+		remove_ideas = blocked_harbour
+		add_timed_idea = {
+		    idea = connection_with_Beidou
+			days = 365
+	    }
+		add_opinion_modifier = {
+            target = BDG
+            modifier = Liyue_Harbor_dip6
+        }
+		BDG = {
+		    add_timed_idea = {
+			    idea = secret_benefit
+			    days = 365
+	        }
+			add_opinion_modifier = {
+                target = LYU
+                modifier = Liyue_Harbor_dip6
+            }
+	    }
+	}
+
+}
+
+country_event = {
+	id = LHPG.3
+	title = LHPG.3.t
+	desc = LHPG.3.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.3.a
+		hidden_effect = {
+			remove_ideas = blocked_harbour
+			add_timed_idea = {
+				idea = blocked_harbour
+				days = 365
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.4
+	title = LHPG.4.t
+	desc = LHPG.4.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.4.a
+		trigger = {
+			check_variable = { troika_Yanfei > 1 }
+        }
+		clear_variable = troika_Yanfei
+		clear_variable = troika_Ganyu
+		clear_variable = troika_Baizhu
+		retire_character = LYU_troika
+		set_politics = {
+	        ruling_party = authoritarianism
+            elections_allowed = no
+        }
+		set_party_name = { 
+            ideology = reformism
+            long_name = LH_party_Yuehaiting_long 
+            name = LH_party_Yuehaiting
+        }
+		set_party_name = { 
+            ideology = authoritarianism
+            long_name = LH_party_Yanfei_clique_long 
+            name = LH_party_Yanfei_clique
+        }
+		set_party_name = { 
+            ideology = despotism
+            long_name = LH_party_Baizhu_clique_long 
+            name = LH_party_Baizhu_clique 
+        }
+		set_country_flag = yanfei_victory
+	}
+
+	option = { 
+		name = LHPG.4.b
+		trigger = {
+			check_variable = { troika_Ganyu > 1 }
+        }
+		clear_variable = troika_Yanfei
+		clear_variable = troika_Ganyu
+		clear_variable = troika_Baizhu
+		retire_character = LYU_troika
+		set_politics = {
+	        ruling_party = reformism
+            elections_allowed = no
+        }
+		set_party_name = { 
+            ideology = reformism
+            long_name = LH_party_Yuehaiting_long 
+            name = LH_party_Yuehaiting
+        }
+		set_party_name = { 
+            ideology = authoritarianism
+            long_name = LH_party_Yanfei_clique_long 
+            name = LH_party_Yanfei_clique
+        }
+		set_party_name = { 
+            ideology = despotism
+            long_name = LH_party_Baizhu_clique_long 
+            name = LH_party_Baizhu_clique 
+        }
+		hidden_effect = {
+			set_popularities = {
+				reformism = 40
+				liberalism = 10
+				authoritarianism = 25
+				despotism = 25
+			}
+			set_country_flag = ganyu_victory
+		}
+	}
+
+	option = { 
+		name = LHPG.4.c
+		trigger = {
+			check_variable = { troika_Baizhu > 1 }
+        }
+		clear_variable = troika_Yanfei
+		clear_variable = troika_Ganyu
+		clear_variable = troika_Baizhu
+		set_politics = {
+	        ruling_party = despotism
+            elections_allowed = no
+        }
+		set_party_name = { 
+            ideology = reformism
+            long_name = LH_party_Yuehaiting_long 
+            name = LH_party_Yuehaiting
+        }
+		set_party_name = { 
+            ideology = authoritarianism
+            long_name = LH_party_Yanfei_clique_long 
+            name = LH_party_Yanfei_clique
+        }
+		set_party_name = { 
+            ideology = despotism
+            long_name = LH_party_Baizhu_clique_long 
+            name = LH_party_Baizhu_clique 
+        }
+		set_country_flag = baizhu_victory
+	}
+
+}
+
+country_event = {
+	id = LHPG.5
+	title = LHPG.5.t
+	desc = LHPG.5.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.5.a
+	
+	}
+
+}
+
+country_event = {
+	id = LHPG.6
+	title = LHPG.6.t
+	desc = LHPG.6.d
+
+	fire_only_once = yes
+	trigger = {
+		has_completed_focus = LH_zaici_junshi_gaige
+		NOT = { has_idea = LH_quanmian_military_reform }
+	}
+    
+	hidden = yes
+
+	option = { 
+		name = LHPG.6.a
+	    add_ideas = LH_Baizhu_military_reform
+	}
+
+}
+
+country_event = {
+	id = LHPG.7
+	title = LHPG.7.t
+	desc = LHPG.7.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.7.a
+	    LYU = {
+			country_event = {
+				id = LHPG.8
+				days = 3
+			}
+		}
+	}
+
+	option = { 
+		name = LHPG.7.b
+	    LYU = {
+			country_event = {
+				id = LHPG.9
+				days = 3
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.8
+	title = LHPG.8.t
+	desc = LHPG.8.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.8.a
+	    add_political_power = -100
+		remove_ideas = unstable_mora_system
+		XRG = {
+			add_opinion_modifier = {
+                target = LYU
+                modifier = Liyue_Harbor_dip9
+            }
+		}
+		LYU = {
+			add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip9
+            }
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.9
+	title = LHPG.9.t
+	desc = LHPG.9.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.9.a
+		XRG = {
+			add_opinion_modifier = {
+                target = LYU
+                modifier = Liyue_Harbor_dip10
+            }
+		}
+		LYU = {
+			add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip10
+            }
+		}
+	}
+
+}

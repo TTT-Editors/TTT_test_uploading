@@ -1,0 +1,947 @@
+focus_tree = {
+	id = Keqing_FocusTree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = KQG
+		}
+	}
+	default = no
+	focus = {
+		id = KQG_1   #进行战时规划
+		icon = GFX_goal_KQG_eco_1
+		
+		available_if_capitulated = no
+		
+		x = 6
+		y = 0
+		cost = 14
+		ai_will_do = {
+			factor = 100
+		}		
+        completion_reward = {
+			add_ideas = war_economy			
+			add_offsite_building = {
+				type = arms_factory
+				level = 5
+			}
+		    }	
+		}
+	focus = {
+		id = KQG_2    #军跟党走
+		icon = GFX_goal_KQG_mil_2
+		cost = 14
+		x = 22
+		y = 0
+		completion_reward = {
+			army_experience = 50
+			add_ideas = KQG1_8	
+		}
+
+	}
+	focus = {
+		id = KQG_3    #孤独的革命
+		icon = GFX_goal_KQG_pol_3
+		cost = 7
+		ai_will_do = {
+			factor = 100
+		}
+		x = 36
+		y = 0
+		completion_reward = {
+		add_political_power = 50	
+		}
+
+	}
+	focus = {
+		id = KQG_4     #土地改革
+		icon = GFX_goal_KQG_eco_4
+		cost = 14
+		prerequisite = {
+			focus = KQG_7
+		}
+		x = 3
+		y = 2
+		completion_reward = {
+			add_stability = -0.1			             			
+			add_ideas = KQG1_39
+		}
+	}
+	focus = {
+		id = KQG_5     #建立生产合作社
+		icon = GFX_goal_KQG_eco_5
+		cost = 14
+		prerequisite = {
+			focus = KQG_4
+		}
+		x = 3
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = KQG666
+			add_ideas = KQG1_2		
+			add_offsite_building = {
+				type = industrial_complex
+				level = 5
+			}
+			hidden_effect = { country_event = { id = KQG_events.9 days = 1 } }		
+		}
+	}
+	focus = {
+		id = KQG_7     #归离原改造计划
+		icon = GFX_goal_KQG_eco_7
+		cost = 7
+		prerequisite = {
+			focus = KQG_1
+		}
+		x = 3
+		y = 1
+		completion_reward = {
+		    unlock_decision_category_tooltip = KQG_special_categories1
+			add_offsite_building = { type = industrial_complex level = 5 }
+        }
+
+	}
+	focus = {
+		id = KQG_9  #开办工人夜校
+		icon = GFX_goal_KQG_3
+		cost = 21
+		prerequisite = {
+			focus = KQG_1
+		}
+		x = 9
+		y = 1
+		completion_reward = {
+		custom_effect_tooltip = KQG551
+		custom_effect_tooltip = unlock_advisor_keqing_1		
+		hidden_effect = { country_event = { id = KQG_events.5 days = 1 } }	
+		}
+
+	}
+	focus = {
+		id = KQG_10     #普及科学教育
+		icon = GFX_goal_KQG_eco_10
+		cost = 21
+		prerequisite = {
+			focus = KQG_9
+		}
+		x = 9
+		y = 2
+		completion_reward = {
+		add_research_slot = 1 			
+		}
+
+	}
+	focus = {
+		id = KQG_12     #工业实践学习
+		icon = GFX_goal_KQG_eco_12
+		cost = 14
+		prerequisite = {
+			focus = KQG_10
+		}
+		x = 9
+		y = 3
+		completion_reward = {
+		unlock_decision_category_tooltip = KQG_special_categories2	
+		add_tech_bonus = {
+				name = KQG_12
+				bonus = 1.0
+				uses = 2
+				category = industry 
+			}
+		}
+
+	}
+	focus = {
+		id = KQG_14     #职业化学校
+		icon = GFX_goal_KQG_eco_14
+		cost = 21
+		prerequisite = {
+			focus = KQG_12
+		}
+		x = 9
+		y = 4
+		completion_reward = {
+		  add_ideas = KQG1_7
+		}
+
+	}
+	focus = {
+		id = KQG_15      #军队建设
+		icon = GFX_goal_KQG_mil_15
+		cost = 35
+		prerequisite = {
+			focus = KQG_2
+		}
+		x = 15
+		y = 1
+		completion_reward = {
+			army_experience = 100
+			add_manpower = 90000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 5000				
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 1000				
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 900				
+			}
+			swap_ideas = {
+				remove_idea = KQG1_8
+				add_idea = KQG1_9
+			}				
+		}
+
+	}
+	focus = {
+		id = KQG_16      #确立指导思想
+		icon = GFX_goal_KQG_mil_28
+		cost = 32
+		prerequisite = {
+			focus = KQG_15
+		}
+		x = 13
+		y = 2
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = KQG1_9
+			add_idea = KQG1_11
+			}
+		}
+
+	}
+	focus = {
+		id = KQG_17     #设立政治委员
+		icon = GFX_goal_KQG_mil_17
+		cost = 35
+		prerequisite = {
+			focus = KQG_16
+		}
+		x = 13
+		y = 3
+		completion_reward = {
+		  add_manpower = 80000
+		add_equipment_to_stockpile = {
+		    type = ttt_uniform_eq
+		    amount = 2154		    
+	    }  
+		}
+
+	}
+	focus = {
+		id = KQG_18      #常态化动员
+		icon = GFX_goal_KQG_mil_18
+		cost = 32
+		prerequisite = {
+			focus = KQG_17
+		}
+		x = 13
+		y = 4
+		completion_reward = {		
+        add_ideas = limited_conscription
+		add_ideas = KQG1_12		
+		}
+
+	}
+	focus = {
+		id = KQG_19      #建设军事学院
+		icon = GFX_goal_KQG_mil_56
+		cost = 35
+		prerequisite = {
+			focus = KQG_15
+		}
+		x = 17
+		y = 2
+		completion_reward = {
+		add_ideas = KQG1_10	
+		}
+
+	}
+	focus = {
+		id = KQG_20      #动员地方民兵
+		icon = GFX_goal_KQG_mil_16
+		cost = 14
+		prerequisite = {
+			focus = KQG_19
+		}
+		x = 17
+		y = 3
+		completion_reward = {
+			add_manpower = 5000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000				
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 1145			
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 1000				
+			}	
+		}
+	}
+		
+	focus = {
+		id = KQG_21      #迅影如剑
+		icon = GFX_goal_KQG_mil_21
+		cost = 32
+		prerequisite = {
+			focus = KQG_20
+		}
+		x = 17
+		y = 4
+		completion_reward = {
+		add_ideas = KQG1_13	
+		}
+
+	}
+	focus = {
+		id = KQG_22         #建立人民青年团
+		icon = GFX_goal_KQG_4
+		cost = 35
+		prerequisite = {
+			focus = KQG_18
+		}
+		prerequisite = {
+			focus = KQG_21
+		}
+		x = 15
+		y = 5
+		completion_reward = {
+			custom_effect_tooltip = KQG557
+			hidden_effect = { country_event = { id = KQG_events.12 days = 1 } }
+			add_manpower = 90000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 5950				
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 5213				
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 1852				
+			}
+			
+		}
+
+		
+	}
+	focus = {
+		id = KQG_23        #重整编制
+		icon = GFX_goal_KQG_mil_23
+		cost = 7
+		prerequisite = {
+			focus = KQG_2
+		}
+		x = 22
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = KQG554
+			army_experience = 100
+			swap_ideas = {
+				remove_idea = KQG1_15_1
+				add_idea = KQG1_15 
+			}
+			hidden_effect = { country_event = { id = KQG_events.10 days = 1 } }	
+		}
+
+	}
+	focus = {
+		id = KQG_24      #内部审查
+		icon = GFX_goal_KQG_mil_24
+		cost = 14
+		prerequisite = {
+			focus = KQG_23
+		}
+		x = 22
+		y = 2
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = KQG1_15
+				add_idea = KQG1_16 
+			}
+		}
+
+	}
+	focus = {
+		id = KQG_25        #终止军队经商
+		icon = GFX_goal_KQG_mil_25
+		cost = 32
+		prerequisite = {
+			focus = KQG_24
+		}
+		x = 22
+		y = 3
+		completion_reward = {
+		custom_effect_tooltip = KQG552
+		add_stability = -0.1
+		hidden_effect = { country_event = { id = KQG_events.7 days = 1 } }
+		remove_ideas = KQG1_16		
+		}
+
+	}
+	focus = {
+		id = KQG_26      #赎买经商所得
+		icon = GFX_goal_KQG_mil_26
+		cost = 70
+		prerequisite = {
+			focus = KQG_25
+		}
+		mutually_exclusive = { focus = KQG_27 }
+		x = 20
+		y = 4
+		completion_reward = {
+		add_stability = -0.1
+		
+		unlock_decision_category_tooltip = KQG_special_categories3
+		
+		}
+
+	}
+	focus = { 
+		id = KQG_27      #没收经商所得
+		icon = GFX_goal_KQG_mil_27
+		cost = 32
+		prerequisite = {
+			focus = KQG_25
+		}
+		mutually_exclusive = { focus = KQG_26 }
+		x = 24
+		y = 4
+		completion_reward = {
+		add_stability = -0.2
+		
+        147 = {
+	    add_extra_state_shared_building_slots = 6
+	    add_building_construction = {
+		type = industrial_complex
+		level = 6
+	    instant_build = yes
+		}
+		}
+		}
+
+	}
+	focus = {
+		id = KQG_30     #军工建设
+		icon = GFX_goal_KQG_mil_30
+		cost = 35
+		prerequisite = {
+			focus = KQG_2
+		}
+		x = 28
+		y = 1
+		completion_reward = {
+		    add_offsite_building = {
+			type = arms_factory
+			level = 5
+			}
+		}
+	}
+	focus = {
+		id = KQG_31      #配套基础设施翻新
+		icon = GFX_goal_KQG_mil_31
+		cost = 32
+		prerequisite = {
+			focus = KQG_30
+		}
+		x = 28
+		y = 2
+		completion_reward = {
+         146 = {
+			add_building_construction = {
+			type =  infrastructure 
+			level = 1
+			instant_build = yes
+			}
+			}
+         147 = {
+			add_building_construction = {
+			type =  infrastructure 
+			level = 1
+			instant_build = yes
+			}
+			}
+        149 = {
+			add_building_construction = {
+			type =  infrastructure 
+			level = 1
+			instant_build = yes
+			}
+			}	
+        150 = {
+			add_building_construction = {
+			type =  infrastructure 
+			level = 1
+			instant_build = yes
+			}
+			}	
+        121 = {
+			add_building_construction = {
+			type =  infrastructure 
+			level = 1
+			instant_build = yes
+			}
+			}	
+        143 = {
+			add_building_construction = {
+			type =  infrastructure 
+			level = 1
+			instant_build = yes
+			}
+			}				
+		}
+
+	}
+	focus = {
+		id = KQG_32     #军工复合体建设
+		icon = GFX_goal_KQG_mil_32
+		cost = 70
+		prerequisite = {
+			focus = KQG_31
+		}
+		x = 28
+		y = 3
+		completion_reward = {
+		add_ideas = KQG1_19	
+		}
+	}
+	focus = { 
+		id = KQG_33      #扩大军工生产
+		icon = GFX_goal_KQG_mil_33
+		cost = 70
+		prerequisite = {
+			focus = KQG_32
+		}
+		x = 28
+		y = 4
+		completion_reward = {
+		147 = {
+	    add_extra_state_shared_building_slots = 6
+	    add_building_construction = {
+		type = arms_factory
+		level = 6
+	    instant_build = yes
+		}
+        }
+	}
+	}
+	focus = {
+		id = KQG_34       #现代化军工体系
+		icon = GFX_goal_KQG_mil_34
+		cost = 32
+		prerequisite = {
+			focus = KQG_33
+		}
+		x = 28
+		y = 5
+		completion_reward = {
+		add_ideas = KQG1_20	
+		}
+
+	}
+	focus = {
+		id = KQG_35      #建立党支部
+		icon = GFX_goal_KQG_pol_35
+		cost = 7
+		prerequisite = {
+			focus = KQG_3
+		}
+		x = 32
+		y = 1
+		completion_reward = {
+		  add_political_power = 50
+		  add_popularity = {
+			ideology = communism
+			popularity = 0.2	
+			}	  
+	     }
+    }
+	focus = {
+		id = KQG_36     #加强党内建设
+		icon = GFX_goal_KQG_pol_36
+		cost = 21
+		prerequisite = {
+			focus = KQG_35
+		}
+		x = 32
+		y = 2
+		completion_reward = {
+			add_advisor_role = {
+                Character = LYU_keqing
+                advisor = {
+                    slot = political_advisor
+                    cost = 150
+                    idea_token = LYU_keqing
+                    traits = {
+                        industry_doer
+                    }
+                    allowed = {
+                        always = yes
+                    }
+                }
+                activate = no
+            }	
+		}
+
+	}
+	focus = {
+		id = KQG_37      #风纪整改运动
+		icon = GFX_goal_KQG_pol_37
+		cost = 21
+		prerequisite = {
+			focus = KQG_36
+		}
+		x = 32
+		y = 3
+		completion_reward = {
+		add_ideas = KQG1_22
+		}
+
+	}
+	focus = {
+		id = KQG_38      #设立政治审查局
+		icon = GFX_goal_KQG_pol_38
+		cost = 21
+		prerequisite = {
+			focus = KQG_37
+		}
+		x = 32
+		y = 4
+		completion_reward = {
+		add_ideas = KQG1_29
+		create_intelligence_agency = yes
+		add_popularity = {
+        ideology = communism
+        popularity = 0.1	
+        } 
+		}
+
+	}
+	focus = {
+		id = KQG_39       #开展平权运动
+		icon = GFX_goal_KQG_pol_39
+		cost = 14
+		prerequisite = {
+			focus = KQG_3
+		}
+		x = 35
+		y = 1
+		completion_reward = {
+			add_manpower = 6000
+			add_stability = 0.05		
+		}
+	}
+	focus = {
+		id = KQG_40        #着手破除旧思想
+		icon = GFX_goal_KQG_pol_40
+		cost = 14
+		prerequisite = {
+			focus = KQG_39
+		}
+		x = 35
+		y = 2
+		completion_reward = {
+		add_ideas = KQG1_30
+		add_stability = -0.3
+		} 
+	    
+
+	}
+	focus = {
+		id = KQG_41       #法制建设
+		icon = GFX_goal_KQG_pol_41
+		cost = 32
+		prerequisite = {
+			focus = KQG_40
+		}
+		x = 35
+		y = 3
+		completion_reward = {
+		add_stability = 0.2
+		
+		add_popularity = {
+        ideology = communism
+        popularity = 0.2	
+        } 
+		}
+
+	}
+	focus = {
+		id = KQG_42        #对外防卫
+		icon = GFX_goal_KQG_pol_42
+		cost = 35
+		prerequisite = {
+			focus = KQG_3
+		}
+		x = 39
+		y = 1
+		completion_reward = {
+		147 = {
+		add_building_construction = {
+			type = bunker
+			level = 3
+			province = {
+					id = 4498
+					id = 4474
+					id = 4455
+					id = 2315
+					id = 2281
+					id = 4605
+					id = 4598
+					id = 332
+			}
+			instant_build = yes
+			}
+		}
+		160 = {
+		add_building_construction = {
+			type = bunker
+			level = 3
+			province = {
+					id = 1239
+					id = 4678
+					id = 1925
+					id = 945
+					id = 525
+					id = 4611
+					id = 2366
+					id = 2665
+					id = 4629
+			}
+			instant_build = yes
+			}
+		}
+        }
+	}
+	focus = {
+		id = KQG_43         #核心防卫
+		icon = GFX_goal_KQG_pol_43
+		cost = 35
+		available={ has_global_flag = Liyue_Civil_War }
+		prerequisite = {
+			focus = KQG_42
+		}
+		x = 38
+		y = 2
+		completion_reward = {
+			add_ideas = KQG1_33
+		}
+	}
+	focus = {
+		id = KQG_44         #联合进步人士
+		icon = GFX_goal_KQG_1
+		cost = 21
+		prerequisite = {
+			focus = KQG_42
+		}
+		x = 40
+		y = 2
+        completion_reward = {
+			custom_effect_tooltip = unlock_advisor_keqing_2
+			hidden_effect = { country_event = { id = KQG_events.8 days = 7 } }
+            }  
+		}
+	focus = {
+		id = KQG_45         #志同道合
+		icon = GFX_goal_KQG_pol_45
+		cost = 21
+		prerequisite = {
+			focus = KQG_43
+		}
+		prerequisite = {
+			focus = KQG_44
+		}
+		available = {
+		XQG = { exists = YES }
+		XQG = { has_government = communism }
+	    }
+		mutually_exclusive = { focus = KQG_46 }
+
+		x = 38
+		y = 3
+		completion_reward = {
+		unlock_decision_category_tooltip = KQG_special_categories5
+		}
+
+	}
+	focus = {
+		id = KQG_46         #独行天下
+		icon = GFX_goal_KQG_pol_46
+		cost = 14
+		prerequisite = {
+			focus = KQG_43
+		}
+		prerequisite = {
+			focus = KQG_44
+		}
+		mutually_exclusive = { focus = KQG_45 }
+		x = 40
+		y = 3
+		completion_reward = {
+		create_wargoal = { target = XQG type = annex_everything }			
+		}
+	}		
+	focus = {
+		id = KQG_50      #这是最后的斗争
+		icon = GFX_goal_KQG_pol_50
+		cost = 70				
+		prerequisite = {
+			focus = KQG_45
+			focus = KQG_46
+		}
+		x = 39
+		y = 4
+		completion_reward = {
+		add_ideas = KQG1_24
+		hidden_effect = { country_event = { id = KQG_events.14 days = 1 } }
+		custom_effect_tooltip = KQG559
+		}
+
+	}
+	focus = {
+		id = KQG_53      #规模化生产
+		icon = GFX_goal_KQG_eco_53
+		cost = 14
+		prerequisite = {
+			focus = KQG_5
+		}
+		prerequisite = {
+			focus = KQG_8
+		}		
+		x = 3
+		y = 4
+		completion_reward = {
+		swap_ideas = {		 
+		remove_idea = KQG1_2
+		remove_idea = KQG1_39
+		add_idea = KQG1_6
+	    }	    
+		}
+
+	}
+	focus = {
+		id = KQG_54      #明确社会分工
+		icon = GFX_goal_KQG_eco_54
+		cost = 42
+		prerequisite = {
+			focus = KQG_53
+		}
+		prerequisite = {
+			focus = KQG_14
+		}
+		x = 6
+		y = 5
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = KQG1_6
+				add_idea = KQG1_26
+			}  
+			remove_idea = KQG1_7
+			add_stability = 0.1
+		}
+
+	}
+	focus = {
+		id = KQG_56         #真正的人民军队
+		icon = GFX_goal_KQG_eco_13
+		cost = 35
+		prerequisite = {
+			focus = KQG_22
+		}
+		prerequisite = {
+			focus = KQG_26
+			focus = KQG_27
+		}
+		prerequisite = {
+			focus = KQG_34			
+		}
+		x = 22
+		y = 6
+		completion_reward = {
+		custom_effect_tooltip = KQG556
+		swap_ideas = { 
+			remove_idea = KQG1_11
+			add_idea = KQG1_14
+	    }
+		hidden_effect = { country_event = { id = KQG_events.11 days = 7 } }	
+		}
+
+	}
+    focus = {
+		id = KQG_58       #初步破除资产阶级法权
+		icon = GFX_goal_KQG_pol_58
+		cost = 14
+		prerequisite = {
+			focus = KQG_41
+		}
+		x = 35
+		y = 4
+		completion_reward = {
+		swap_ideas = {
+	    remove_idea = KQG1_30
+	    add_idea = KQG1_31
+   	    }		
+		}
+
+	}  
+	
+	focus = {
+		id = KQG_59       #社会思想走向解放
+		icon = GFX_goal_KQG_pol_59
+		cost = 21
+		prerequisite = {
+			focus = KQG_58
+		}
+		prerequisite = {
+			focus = KQG_38
+		}
+		x = 33.5
+		y = 5
+		completion_reward = {
+		swap_ideas = {
+	    remove_idea = KQG1_31	    
+	    add_idea = KQG1_32
+   	    }
+		}
+
+	}
+	focus = {
+		id = KQG_62       #为了更美好的明天
+		icon = GFX_goal_KQG_2
+		cost = 140
+		prerequisite = {
+			focus = KQG_50
+		}
+		available = {
+		XQG = { exists= NO}
+		XRG = { exists= NO}
+		RTG = { exists= NO}
+		XOG = { exists= NO}
+		ZDG = { exists= NO}
+		LYU = { exists= NO}
+		BDG = { exists= NO}
+		ANG = { exists= NO}
+	    }
+		x = 39
+		y = 5
+		completion_reward = {
+		custom_effect_tooltip = KQG558
+		hidden_effect = { country_event = { id = KQG_events.13 days = 1 } }
+		add_ideas = civilian_economy
+		add_ideas = volunteer_only
+	    add_ideas = KQG1_38
+		}
+	}  		   		
+} 
+
+    
+

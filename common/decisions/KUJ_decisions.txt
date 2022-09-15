@@ -1,0 +1,149 @@
+KUJ_decision_category = {
+
+    KUJ_test1 = {     
+		activation = {                         
+			   has_war_with = SNA 			
+		}
+        allowed = {	
+            tag = KUJ
+        }			
+		available = {
+			controls_state = 84
+			controls_state = 372
+			controls_state = 370
+			controls_state = 371
+			controls_state = 86
+			controls_state = 87
+			controls_state = 85
+			controls_state = 82
+			controls_state = 83
+			controls_state = 81
+			
+		}
+		
+		is_good = no                         
+		fire_only_once = yes
+		days_mission_timeout = 180
+		
+		timeout_effect = {                      
+			white_peace = SNA 
+			INA ={
+				white_peace = SNA
+			}
+			SNA={
+				transfer_state = 84
+				transfer_state = 372
+				transfer_state = 370
+				transfer_state = 371
+				transfer_state = 86
+				transfer_state = 87
+				transfer_state = 85
+				transfer_state = 82
+				transfer_state = 83
+				transfer_state = 81
+				transfer_state = 88
+				set_cosmetic_tag = kokomi_II_SNA
+			}
+			set_global_flag = lose_war_SNA
+		}
+
+		complete_effect = {                    
+			add_stability = 0.1         
+		}
+	}
+	KUJ_take_control = {     
+        allowed = {	
+			tag = KUJ
+        }			
+		available = {
+			    INA = {
+				controls_state = 372
+				controls_state = 84
+			   } 	
+		}
+		complete_effect = {                    
+		    KUJ={
+				transfer_state = 84
+				transfer_state = 372
+				set_global_flag = win_war_SNA
+				set_cosmetic_tag = sara_kujo	
+			}
+		
+		}
+		cost = 10
+		fire_only_once = yes
+		
+		visible = {
+			{SNA = {own_state = 372}}
+			has_war_with = SNA 
+		}
+		
+		
+	}
+
+	KUJ_reclaim_war = {       
+		
+		cost = 0
+		
+		days_remove = 30
+		
+		available = {
+			strength_ratio = {
+				tag = SNA
+				ratio > 1
+			}
+	    }
+		
+		visible = {
+		    has_global_flag = lose_war_SNA 
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+	    declare_war_on = {
+			target = SNA
+			type = annex_everything
+		}
+		set_war_support = 1.0
+		add_command_power = 100
+		add_political_power = 100
+		}	
+	}
+
+	KUJ_watatsumi = {	
+		cost = 10
+		days_remove = 10
+		available = {
+			controls_state = 84
+			controls_state = 372
+			controls_state = 370
+			controls_state = 371
+			controls_state = 86
+			controls_state = 87
+			controls_state = 85
+			controls_state = 82
+			controls_state = 83
+			controls_state = 81	
+	    }
+		allowed = {	
+            tag = KUJ
+        }
+		fire_only_once = yes		
+		visible = {
+		    has_global_flag = win_war_SNA
+		}
+		complete_effect = {
+		add_offsite_building = { type = dockyard level = 20 }
+		}
+		modifier = {
+			ai_focus_aggressive_factor = 1.0
+			naval_invasion_planning_bonus_speed = 2.0
+			naval_invasion_capacity = 35
+			naval_damage_factor = 0.8
+			naval_defense_factor = 0.1
+			repair_speed_factor = 0.9
+			naval_night_attack = 0.8
+		}
+	}
+}

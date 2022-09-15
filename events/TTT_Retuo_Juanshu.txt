@@ -1,0 +1,748 @@
+add_namespace = retuo_juanshu
+
+country_event = {
+    id = retuo_juanshu.1
+	title = retuo_juanshu.1.t
+	desc = retuo_juanshu.1.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.1.a
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.2
+	title = retuo_juanshu.2.t
+	desc = retuo_juanshu.2.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.2.a
+		add_political_power = 10
+		custom_effect_tooltip = Dao_serve_for_Ruotuo
+		add_corps_commander_role = {
+            Character = RTG_Dao
+            traits = { 
+			    logistics_wizard 
+				offensive_doctrine 
+				defensive_doctrine 
+				fast_planner 
+				thorough_planner 
+				organisational_leader 
+				inspirational_leader 
+			}
+			skill=7
+			attack_skill=7
+			defense_skill=7
+			planning_skill=7
+			logistics_skill=7
+			legacy_id=-1
+        }
+		hidden_effect = {
+		    set_country_flag = the_return_of_Dao
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.3
+	title = retuo_juanshu.3.t
+	desc = retuo_juanshu.3.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.3.a
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_political_power = -150
+        add_ideas = RTG_zhongzu_maodun_1
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.4
+	title = retuo_juanshu.4.t
+	desc = retuo_juanshu.4.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	trigger = {
+	    original_tag = RTG
+	    ROOT = {
+		    has_idea = RTG_Dao
+		}
+	}
+	option = {
+	    name = retuo_juanshu.4.a
+		add_political_power = 10
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.5
+	title = retuo_juanshu.5.t
+	desc = retuo_juanshu.5.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.5.a
+		set_country_flag = clique_in_Retuo_faction
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.6
+				hours = 12
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+			    factor = 0.1
+				has_country_leader = { 
+					character = XRG_Xueyuezhuyang 
+					ruling_only = yes 
+				}
+			}
+			modifier = {
+			    factor = 0.5 
+				XRG = { 
+				    has_country_leader = { 
+					    character = XRG_Lishuidieshan 
+						ruling_only = yes 
+					}
+				}
+			}
+			modifier = {
+			    factor = 0.9
+				XRG = { 
+				    has_country_leader = { 
+					    character = XRG_Liuyunjiefeng  
+						ruling_only = yes 
+					}
+				}
+			}
+		}
+	}
+	option = {
+	    name = retuo_juanshu.5.b
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.7
+				hours = 12
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+			    factor = 0.9
+				XRG = {
+				    has_country_leader = { 
+					    character = XRG_Xueyuezhuyang 
+					    ruling_only = yes 
+				    }
+			    }
+			}
+			modifier = {
+			    factor = 0.5
+				XRG = {
+					    has_country_leader = { 
+					    character = XRG_Lishuidieshan 
+					    ruling_only = yes 
+				    }
+			    }
+			}
+			modifier = {
+			    factor = 0.1
+				XRG = { 
+				    has_country_leader = { 
+					    character = LYU_Liuyunjiefeng  
+						ruling_only = yes 
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.6
+	title = retuo_juanshu.6.t
+	desc = retuo_juanshu.6.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.6.a
+		RTG = { add_to_faction = XRG }
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.7
+	title = retuo_juanshu.7.t
+	desc = retuo_juanshu.7.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.7.a
+		RTG = {
+			add_opinion_modifier = {
+		        target = XRG
+			    modifier = medium_decrease
+	        }
+		}
+		XRG = {
+			add_opinion_modifier = {
+		        target = RTG
+			    modifier = medium_decrease
+	        }
+		}
+	}
+}
+	
+country_event = {
+    id = retuo_juanshu.8
+	title = retuo_juanshu.8.t
+	desc = retuo_juanshu.8.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.8.a
+		set_country_flag = clique_in_Retuo_faction
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.9
+				hours = 12
+			}
+		}
+		ai_chance = {
+			base = 6
+		}
+	}
+	option = {
+	    name = retuo_juanshu.8.b
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.10
+				hours = 12
+			}
+		    add_opinion_modifier = {
+		        target = ANG
+			    modifier = medium_decrease
+			}
+	    }
+        ANG = {
+		    add_opinion_modifier = {
+		        target = RTG
+			    modifier = medium_decrease
+			}
+	    }
+		ai_chance = {
+			base = 4
+	    }
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.9
+	title = retuo_juanshu.9.t
+	desc = retuo_juanshu.9.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.9.a
+		RTG = { add_to_faction = ANG }
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.10
+	title = retuo_juanshu.10.t
+	desc = retuo_juanshu.10.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.10.a		
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.11
+	title = retuo_juanshu.11.t
+	desc = retuo_juanshu.11.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.11.a
+		custom_effect_tooltip = LYU_game_over_from_retuo
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.13
+				days = 7
+			}
+		}
+		set_country_flag = clique_in_Retuo_faction
+		ai_chance = {
+			base = 2
+			modifier = {
+			    add = -1
+				XRG = { has_country_flag = clique_in_Retuo_faction }
+				ANG = { has_country_flag = clique_in_Retuo_faction }
+				has_country_leader = {
+                    character = LYU_Yanfei
+                    ruling_only = yes
+                } 
+			}
+			modifier = {
+			    factor = 0
+			    OR = {
+				    XRG = { NOT = { has_country_flag = clique_in_Retuo_faction } }
+				    ANG = { NOT = { has_country_flag = clique_in_Retuo_faction } }
+				}
+			}
+		}
+	}
+	option = {
+	    name = retuo_juanshu.11.b
+		RTG = { add_to_faction = LYU }
+		set_country_flag = clique_in_Retuo_faction
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.12
+				hours = 12
+			}
+			add_opinion_modifier = {
+			    target = LYU
+				modifier = huge_increase
+			}
+		}
+		LYU = {
+		    add_opinion_modifier = {
+			    target = RTG
+		        modifier = huge_increase
+		    }
+		}
+		ai_chance = {
+			base = 2
+		}
+	}
+	option = {
+	    name = retuo_juanshu.11.c
+		diplomatic_relation = {
+            country = RTG
+            relation = non_aggression_pact
+            active = yes
+        }
+		add_opinion_modifier = {
+			target = RTG
+		    modifier = large_increase
+	    }
+		RTG = {
+		    add_opinion_modifier = {
+			    target = LYU
+				modifier = large_increase
+			}
+		    country_event = {
+			    id = retuo_juanshu.12
+				hours = 12
+			}
+		}
+		ai_chance = {
+			base = 6
+			modifier = {
+			    add = 1
+				XRG = { has_country_flag = clique_in_Retuo_faction }
+				ANG = { has_country_flag = clique_in_Retuo_faction }
+				has_country_leader = {
+                    character = LYU_Yanfei
+                    ruling_only = yes
+                } 
+		    }
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.12
+	title = retuo_juanshu.12.t
+	desc = retuo_juanshu.12.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.12.a
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.13
+	title = retuo_juanshu.13.t
+	desc = retuo_juanshu.13.d
+	#picture = GFX_report_event_old_friend
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.13.a
+		annex_country = {
+            target = LYU
+            transfer_troops = yes
+        }
+		add_timed_idea = {
+		    idea = RTG_integrate_liyuegang
+			days = 365
+		}
+		hidden_effect = {
+		    news_event = {
+			    id = retuo_juanshu_news.3
+				days = 1
+			}
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.14
+	title = retuo_juanshu.14.t
+	desc = retuo_juanshu.14.d
+	#picture = GFX_report_event_old_friend
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.14.a
+		custom_effect_tooltip = south_liyue_non_aggression_pact
+		hidden_effect = {
+		    diplomatic_relation = {
+                country = RTG
+                relation = non_aggression_pact
+                active = yes
+			}
+			every_country = {
+			    if = {
+			        limit = { 
+					    is_in_faction_with = RTG
+				    }
+		            diplomatic_relation = {
+                        country = ROOT
+                        relation = non_aggression_pact
+                        active = yes
+			        }
+				}
+			}
+		}
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.15
+				hours = 12
+			}
+		}
+		ROOT = {
+		    every_country = { 
+		        limit = { is_in_faction_with = RTG }
+			    add_opinion_modifier = {
+				    target = PREV
+			        modifier = large_increase
+			    }
+		    }
+		}
+		every_country = {
+		    limit = { is_in_faction_with = RTG }
+			ROOT = {
+			    add_opinion_modifier = {
+				    target = PREV
+					modifier = large_increase
+				}
+			}
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+			    add = 9
+				has_country_leader = {
+					character = HTG_ZhongliA
+				    ruling_only = yes
+				}
+			}
+		}
+	}
+	option = {
+	    name = retuo_juanshu.14.b
+		custom_effect_tooltip =  consequences_of_refusing_Retuo
+        RTG = {
+		    country_event = {
+			    id = retuo_juanshu.16
+				hours = 12
+			}
+        }
+        ROOT = {
+		    every_country = { 
+		        limit = { is_in_faction_with = RTG }
+			    add_opinion_modifier = {
+				    target = PREV
+			        modifier = medium_decrease
+			    }
+		    }
+		}
+		every_country = {
+		    limit = { is_in_faction_with = RTG }
+			ROOT = {
+			    add_opinion_modifier = {
+				    target = PREV
+					modifier = medium_decrease
+				}
+			}
+		}		
+		ai_chance = {
+			base = 10
+			modifier = {
+			    add = -9
+				has_country_leader = {
+					character = HTG_ZhongliA
+				    ruling_only = yes
+				}
+			}
+		}	
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.15
+	title = retuo_juanshu.15.t
+	desc = retuo_juanshu.15.d
+	#picture = GFX_report_event_old_friend
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.15.a
+		add_political_power = 15
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.16
+	title = retuo_juanshu.16.t
+	desc = retuo_juanshu.16.d
+	#picture = GFX_report_event_old_friend
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.16.a
+		add_political_power = -30
+		FROM = {
+		    RTG = {
+				declare_war_on = {
+				    target = PREV
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.17
+	title = retuo_juanshu.17.t
+	desc = retuo_juanshu.17.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.17.a
+		hidden_effect = {
+			country_event = {
+			    id = ruotuo.301
+				days = 15
+			}
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.18
+	title = retuo_juanshu.18.t
+	desc = retuo_juanshu.18.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	trigger = {
+	    tag = RTG
+	    has_completed_focus = RTG_kaihua_yuansu
+		NOT = {
+		    has_idea = RTG_kaihua_yuansu_ing
+		}
+	}
+	option = {
+	    name = retuo_juanshu.18.a
+		add_ideas = RTG_kaihua_yuansu_ed
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.19
+	title = retuo_juanshu.19.t
+	desc = retuo_juanshu.19.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	trigger = {
+	    tag = RTG
+	    has_completed_focus = RTG_kaihua_mowu
+		NOT = {
+		    has_idea = RTG_kaihua_mowu_ing
+		}
+	}
+	option = {
+	    name = retuo_juanshu.19.a
+		add_ideas = RTG_kaihua_mowu_ed
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.20
+	title = retuo_juanshu.20.t
+	desc = retuo_juanshu.20.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.20.a
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.21
+				days = 3
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+			    factor = 1
+			    ROOT = {
+				    has_country_leader = {
+					    character = LYU_Ganyu
+					}
+				}
+			}
+			modifier = {
+			    factor = 0.7
+			    ROOT = {
+				    has_country_leader = {
+					    character = LYU_Yanfei
+					}
+				}
+			}
+		}
+	}
+	option = {
+	    name = retuo_juanshu.20.b
+		RTG = {
+		    country_event = {
+			    id = retuo_juanshu.22
+				days = 3
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+			    factor = 0
+			    ROOT = {
+				    has_country_leader = {
+					    character = LYU_Ganyu
+					}
+				}
+			}
+			modifier = {
+			    factor = 0.3
+			    ROOT = {
+				    has_country_leader = {
+					    character = LYU_Yanfei
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.21
+	title = retuo_juanshu.21.t
+	desc = retuo_juanshu.21.d
+	#picture = GFX_report_event_old_friend
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.21.a
+		custom_effect_tooltip = Retuo_good_controls_all_Liyue
+		annex_country = {
+			target = LYU 
+			transfer_troops = yes
+		}
+		hidden_effect = {
+			country_event = {
+                id = retuo_juanshu.17
+				days = 60
+			}
+		}
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.22
+	title = retuo_juanshu.22.t
+	desc = retuo_juanshu.22.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.22.a
+        declare_war_on = {
+		    target = LYU
+			type = annex_everything
+		}
+		set_country_flag = Liyuegang_refuse_Retuo_good_reunite
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.23
+	title = retuo_juanshu.23.t
+	desc = retuo_juanshu.23.d
+	fire_only_once = yes
+	is_triggered_only = no
+	trigger = {
+		original_tag = RTG
+        has_country_flag = the_return_of_Dao
+		has_full_control_of_state = 127
+	}
+	option = {
+	    name = retuo_juanshu.23.a
+        add_political_power = 10
+		add_stability = 0.01
+	}
+}
+
+country_event = {
+    id = retuo_juanshu.24
+	title = retuo_juanshu.24.t
+	desc = retuo_juanshu.24.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	    name = retuo_juanshu.24.a
+        add_political_power = 10
+		add_stability = 0.01
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,245 @@
+
+clear_narukami_island_state_window = {
+	clr_country_flag = open_Baihuzhiye
+	clr_country_flag = open_east_Zhenshouzhisen
+	clr_country_flag = open_Ganjindao
+	clr_country_flag = open_Gantiancun
+	clr_country_flag = open_Houshan
+	clr_country_flag = open_Lidao_xinlu
+	clr_country_flag = open_Mingshendadi
+	clr_country_flag = open_Mingshenjiaoqu
+	clr_country_flag = open_north_Gantian
+	clr_country_flag = open_Shandao
+	clr_country_flag = open_Shenying
+	clr_country_flag = open_Shumaiyu
+	clr_country_flag = open_Wailindao
+	clr_country_flag = open_west_Yingxiang
+	clr_country_flag = open_west_Zhenshouzhisen
+	clr_country_flag = open_Yingxiadifang
+	clr_country_flag = open_Yingxiangshan
+	clr_country_flag = open_Yingxiangshe
+}
+
+clear_narukami_island_clique_window = {
+    clr_country_flag = open_Ritou2
+	clr_country_flag = open_Araumi
+	clr_country_flag = open_Grand_Narukami_Shrine
+	clr_country_flag = open_Yashiro_Commission
+	clr_country_flag = open_Naganohara
+	clr_country_flag = open_Kujou
+	clr_country_flag = open_Raiden_Shogun
+}
+
+Raden_Shogun_doubt_effect = {
+	random_list = {
+        30 = {
+            add_variable = { var = Raden_Shogun_doubt  value = 2.5 }
+			clamp_variable = {
+				var = Raden_Shogun_doubt
+				min = 0
+				max = 90
+			}
+			custom_effect_tooltip = level_Raden_Shogun_doubt1
+        }
+        70 = {
+            add_variable = { var = Raden_Shogun_doubt  value = 4 }
+			clamp_variable = {
+				var = Raden_Shogun_doubt
+				min = 0
+				max = 90
+			}
+			custom_effect_tooltip = level_Raden_Shogun_doubt2
+        }
+	}	
+}
+
+fangzhi_jueyi_xiaoshi = {
+	if = {
+		limit = { original_tag = NAR }
+		set_country_flag = open_Grand_Narukami_Shrine
+	}
+	else_if = {
+		limit = { original_tag = KMR }
+		set_country_flag = open_Yashiro_Commission
+	}
+	else = {
+		limit = { original_tag = KUJ }
+		set_country_flag = open_Kujou4
+	}
+}
+
+Narukami_Island_consolidate_effects = {
+	if = {
+		limit = { 
+			has_state_flag = Narukami_Island_damage1
+			has_state_flag = Narukami_Island_damage3
+		}
+		random_list = {
+			50 = {
+				clr_state_flag = Narukami_Island_damage1
+				custom_effect_tooltip = Narukami_Island_consolidate_effect1
+			}
+			50 = {
+				clr_state_flag = Narukami_Island_damage3
+				custom_effect_tooltip = Narukami_Island_consolidate_effect2
+			}
+		}
+	}
+	else_if = {
+		limit = { 
+			has_state_flag = Narukami_Island_damage1
+			has_state_flag = Narukami_Island_damage4
+		}
+		random_list = {
+			50 = {
+				clr_state_flag = Narukami_Island_damage1
+				custom_effect_tooltip = Narukami_Island_consolidate_effect1
+			}
+			50 = {
+				clr_state_flag = Narukami_Island_damage4
+				set_state_flag =  Narukami_Island_damage3
+				custom_effect_tooltip = Narukami_Island_consolidate_effect3
+			}
+		}
+	}
+	else_if = {
+		limit = { 
+			has_state_flag = Narukami_Island_damage2
+			has_state_flag = Narukami_Island_damage3
+		}
+		random_list = {
+			50 = {
+				clr_state_flag = Narukami_Island_damage2
+				set_state_flag =  Narukami_Island_damage1
+				custom_effect_tooltip = Narukami_Island_consolidate_effect4
+			}
+			50 = {
+				clr_state_flag = Narukami_Island_damage3
+				custom_effect_tooltip = Narukami_Island_consolidate_effect2
+			}
+		}
+	}
+	else_if = {
+		limit = { 
+			has_state_flag = Narukami_Island_damage2
+			has_state_flag = Narukami_Island_damage4
+		}
+		random_list = {
+			50 = {
+				clr_state_flag = Narukami_Island_damage2
+				set_state_flag =  Narukami_Island_damage1
+				custom_effect_tooltip = Narukami_Island_consolidate_effect4
+			}
+			50 = {
+				clr_state_flag = Narukami_Island_damage4
+				set_state_flag =  Narukami_Island_damage3
+				custom_effect_tooltip = Narukami_Island_consolidate_effect3
+			}
+		}
+	}
+    else_if = { 
+		limit = { 
+			has_state_flag = Narukami_Island_damage1
+		}
+		clr_state_flag = Narukami_Island_damage1
+		custom_effect_tooltip = Narukami_Island_consolidate_effect1
+	}
+	else_if = { 
+		limit = { 
+			has_state_flag = Narukami_Island_damage2
+		}
+		clr_state_flag = Narukami_Island_damage2
+		set_state_flag = Narukami_Island_damage1
+		custom_effect_tooltip = Narukami_Island_consolidate_effect4
+	}
+	else_if = { 
+		limit = { 
+			has_state_flag = Narukami_Island_damage3
+		}
+		clr_state_flag = Narukami_Island_damage3
+		custom_effect_tooltip = Narukami_Island_consolidate_effect2
+	}
+	else_if = { 
+		limit = { 
+			has_state_flag = Narukami_Island_damage4
+		}
+		clr_state_flag = Narukami_Island_damage4
+		set_state_flag = Narukami_Island_damage3
+		custom_effect_tooltip = Narukami_Island_consolidate_effect3
+	}
+	else_if = { 
+		limit = { 
+			has_state_flag = Narukami_Island_damage5
+		}
+		clr_state_flag = Narukami_Island_damage5
+		custom_effect_tooltip = Narukami_Island_consolidate_effect5
+	}
+	else_if = { 
+		limit = { 
+			has_state_flag = Narukami_Island_damage6
+		}
+		clr_state_flag = Narukami_Island_damage6
+		set_state_flag = Narukami_Island_damage5
+		custom_effect_tooltip = Narukami_Island_consolidate_effect6
+	}
+}
+
+
+Narukami_Island_infiltration_effects = {
+    if = {
+		limit = {
+			ROOT = { original_tag = NAR }
+			NOT = { 
+				has_state_flag = Narukami_Island_damage1
+				has_state_flag = Narukami_Island_damage2
+			}
+		}
+		set_state_flag = Narukami_Island_damage1
+	}
+	else_if = {
+		limit = {
+			ROOT = { original_tag = NAR } 
+			has_state_flag = Narukami_Island_damage1
+		}
+		clr_state_flag = Narukami_Island_damage1
+		set_state_flag = Narukami_Island_damage2
+	}
+	else_if = {
+		limit = {
+			ROOT = { original_tag = KMR } 
+			NOT = { 
+				has_state_flag = Narukami_Island_damage3
+				has_state_flag = Narukami_Island_damage4
+			}
+		}
+		set_state_flag = Narukami_Island_damage3
+	}
+	else_if = {
+		limit = {
+			ROOT = { original_tag = KMR } 
+			has_state_flag = Narukami_Island_damage3
+		}
+		clr_state_flag = Narukami_Island_damage3
+		set_state_flag = Narukami_Island_damage4
+	}
+	else_if = {
+		limit = {
+			ROOT = { original_tag = KUJ } 
+			NOT = { 
+				has_state_flag = Narukami_Island_damage5
+				has_state_flag = Narukami_Island_damage6
+			}
+		}
+		set_state_flag = Narukami_Island_damage5
+	}
+	else_if = {
+		limit = {
+			ROOT = { original_tag = KUJ } 
+			has_state_flag = Narukami_Island_damage5
+		}
+		clr_state_flag = Narukami_Island_damage5
+		set_state_flag = Narukami_Island_damage6
+	}
+}
+
+

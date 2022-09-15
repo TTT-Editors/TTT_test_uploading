@@ -1,0 +1,60 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			random_country = {
+				clear_variable = global.current_age
+				set_current_age = no
+				# Historical Age Start and End Years for Tooltip:
+				set_variable = { global.age_1_start_year = 1 }
+				set_variable = { global.age_2_start_year = 1000 }
+				set_variable = { global.age_3_start_year = 1500 }
+				set_variable = { global.age_4_start_year = 2000 }
+				set_variable = { global.age_5_start_year = 2010 }
+				set_variable = { global.age_6_start_year = 2020 }
+			}
+		}
+	}
+	
+	on_daily = {
+		effect = {
+			add_to_variable = { current_splendor = 1 }
+			for_each_loop = {
+				array = global.current_age_objectives
+				value = v
+				set_temp_variable = { age_objective = v }
+				if = {
+					limit = {
+						country_fulfills_current_age_objective = yes
+					}
+					add_to_variable = { current_splendor = 1 }
+				}
+			}
+			clamp_variable = {
+				var = current_splendor
+				min = 0
+				max = 10000
+			}
+			if = {
+				limit = {
+					owns_state = 1
+				}
+				if = {
+					limit = {
+						has_variable = global.days_til_next_age
+					}
+					if = {
+						limit = {
+							check_variable = { global.days_til_next_age > 1 }
+						}
+						subtract_from_variable = { global.days_til_next_age = 1 }
+					}
+					else = {
+						set_current_age = yes
+						clear_variable = global.days_til_next_age
+						clear_variable = global.next_age
+					}
+				}
+			}
+		}
+	}
+}

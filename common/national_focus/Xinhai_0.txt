@@ -1,0 +1,538 @@
+focus_tree = {
+	id = XinHai_0
+	continuous_focus_position = { x = -40 y = 1180 } 
+	country = {
+		factor = 0
+		#modifier = {
+			#add = 10
+			#tag = SNA
+		#}
+	}
+    focus = {
+        id = SNA_the_first_question
+        icon = GFX_SNA_goals_start_1
+        x = 5
+        y = 0
+        cost = 30.00
+        completion_reward = {
+              country_event = { 
+                   id = XinHai.1
+			  }
+            add_stability = 0.1
+            add_political_power = 50
+        }
+        #珊瑚宫民生问题
+    }
+
+    focus = {
+		id = SNA_jichusheshijianshe
+		icon = GFX_SNA_goals_start_5
+		x = 4
+		y = 2
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = SNA_focus_on_island }
+		completion_reward = {
+			if = {
+			        limit = {has_idea = SNA_focus_island_1}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_2
+			                     remove_idea = SNA_focus_island_1
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_island_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_3
+			                     remove_idea = SNA_focus_island_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_island_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_4
+			                     remove_idea = SNA_focus_island_3
+			         }
+			     }
+			every_owned_state = {
+				add_extra_state_shared_building_slots = 2
+			}      
+		}
+	}
+    #改善交通运输
+    focus = {
+        id = SNA_ore_import
+        icon = GFX_SNA_goals_start_9
+        x = 6
+        y = 2
+        cost = 30.00
+        prerequisite = {focus =  SNA_cujinshangyefazhan }
+        completion_reward =
+        {
+            if = {
+			        limit = {has_idea = SNA_focus_trade_1}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_2
+			                     remove_idea = SNA_focus_trade_1
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_3
+			                     remove_idea = SNA_focus_trade_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_4
+			                     remove_idea = SNA_focus_trade_3
+			         }
+			     }
+             89 = {
+				add_resource = {
+					type = steel
+					amount = 10 
+				}
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+						    type =  infrastructure 
+						    level = 1
+						    instant_build = yes
+				}
+                add_building_construction = {
+					        type = industrial_complex
+					        level = 1
+				            instant_build = yes
+				}
+			} 
+        }
+        #铁矿进口
+    }
+    focus = {
+        id = SNA_cujinshangyefazhan
+		icon = GFX_SNA_goals_start_8
+		x = 7
+		y = 1
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		} 
+        available = { has_country_flag = focus_on_trade}
+		prerequisite = { focus = SNA_the_first_question}
+        mutually_exclusive = { focus = SNA_focus_on_island }
+		completion_reward = {
+			custom_effect_tooltip = "trade"
+			hidden_effect =
+			{
+                swap_ideas =
+                {
+                   add_idea = SNA_focus_trade_1
+                   remove_idea = SNA_completely_dependent_economy
+                }
+			}
+            
+			
+		}
+        #购买矿物
+    }
+    focus = {
+        id = SNA_deal_Pirate
+        icon = GFX_SNA_goals_start_11
+        x = 8
+        y = 2
+        cost = 30.00
+        prerequisite = { focus = SNA_cujinshangyefazhan}
+        completion_reward =
+        {
+             if = {
+			        limit = {has_idea = SNA_focus_trade_1}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_2
+			                     remove_idea = SNA_focus_trade_1
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_3
+			                     remove_idea = SNA_focus_trade_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_4
+			                     remove_idea = SNA_focus_trade_3
+			         }
+			     }
+        }
+        #处理海乱鬼
+    }
+    focus = {
+        id = SNA_focus_on_island
+        icon = GFX_SNA_goals_start_2
+        x = 3
+        y = 1
+        cost = 30.00
+        available = {has_country_flag = focus_on_island }
+        prerequisite = {focus =  SNA_the_first_question }
+        mutually_exclusive = { focus = SNA_cujinshangyefazhan }
+        completion_reward =
+        {
+		custom_effect_tooltip = "island"
+		hidden_effect = 
+		{
+             swap_ideas = 
+              {
+                add_idea = SNA_focus_island_1 
+                remove_idea = SNA_completely_dependent_economy
+              }
+		}
+        }
+		
+        #处理内部问题
+    }
+    focus = {
+        id = SNA_nongchanpingailiang
+		icon = GFX_SNA_goals_start_3
+		x = 2
+		y = 2
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = SNA_focus_on_island  }
+		completion_reward = {
+            if = {
+			        limit = {has_idea = SNA_focus_island_1}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_2
+			                     remove_idea = SNA_focus_island_1
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_island_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_3
+			                     remove_idea = SNA_focus_island_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_island_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_4
+			                     remove_idea = SNA_focus_island_3
+			         }
+			     }		
+			89 = {
+				add_resource = {
+					type = grain 
+					amount = 20
+				}
+			}
+			89 = {
+				add_resource = {
+					type = wood 
+					amount = 20
+				}
+			}
+               
+		}#农业产品改良
+    }
+    focus = {
+        id = SNA_Optimization_of_aquaculture
+        icon = GFX_SNA_goals_start_4
+        x = 2
+        y = 3
+        cost = 30.00
+        prerequisite = { focus = SNA_nongchanpingailiang  }
+        completion_reward =
+        {
+             if = {
+			        limit = {has_idea = SNA_focus_island_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_3
+			                     remove_idea = SNA_focus_island_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_island_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_4
+			                     remove_idea = SNA_focus_island_3
+			         }
+			     }
+            else_if = { 
+			        limit = {has_idea = SNA_focus_island_4}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_5
+			                     remove_idea = SNA_focus_island_4
+			         }
+			     }
+			89 = {
+				add_resource = {
+					type = grain 
+					amount = 20
+				}
+			}
+			90 = {
+				add_resource = {
+					type = grain
+					amount = 20
+				}
+			}
+        }
+        #优化水产品养殖
+    }
+    focus = {
+        id = SNA_gaishanjiaotong
+		icon = GFX_SNA_goals_start_6
+		x = 4
+		y = 3
+		cost = 30.00
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = SNA_jichusheshijianshe  }
+		completion_reward = {			
+			if = {
+			        limit = {has_idea = SNA_focus_island_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_3
+			                     remove_idea = SNA_focus_island_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_island_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_4
+			                     remove_idea = SNA_focus_island_3
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_island_4}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_island_5
+			                     remove_idea = SNA_focus_island_4
+			         }
+			     }
+						 random_owned_controlled_state= {
+						      add_extra_state_shared_building_slots = 1
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+						 } 
+						 random_owned_controlled_state= {
+						      add_extra_state_shared_building_slots = 1
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+						 }
+						 random_owned_controlled_state= {
+						      add_extra_state_shared_building_slots = 1
+							  add_building_construction = {
+					              type = industrial_complex
+					              level = 1
+				                  instant_build = yes
+					          }
+						 }
+        }        
+        #改善交通
+    }
+    focus = {
+        id = SNA_ore_reprocessing
+        icon = GFX_SNA_goals_start_10
+        x = 6
+        y = 3
+        cost = 30.00
+        prerequisite = { focus = SNA_ore_import }
+        completion_reward =
+        {
+               if = {
+			        limit = {has_idea = SNA_focus_trade_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_3
+			                     remove_idea = SNA_focus_trade_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_4
+			                     remove_idea = SNA_focus_trade_3
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_4}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_5
+			                     remove_idea = SNA_focus_trade_4
+			         }
+			     }
+			89 = {
+				add_resource = {
+					type = steel
+					amount = 10 
+				}
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+						    type =  infrastructure 
+						    level = 1
+						    instant_build = yes
+				}
+                add_building_construction = {
+					        type = industrial_complex
+					        level = 1
+				            instant_build = yes
+				}
+			}
+			90 = {
+				add_resource = {
+					type = steel
+					amount = 10 
+				}
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+						    type =  infrastructure 
+						    level = 1
+						    instant_build = yes
+				}
+                add_building_construction = {
+					        type = industrial_complex
+					        level = 1
+				            instant_build = yes
+				}
+			}  
+        }
+        #铁矿再加工
+    }
+    focus = {
+        id = SNA_enlarge_guard
+        icon = GFX_SNA_goals_start_12
+        x = 8
+        y = 3
+        cost = 30.00
+        prerequisite = { focus = SNA_deal_Pirate }
+        completion_reward =
+        {
+            if = {
+			        limit = {has_idea = SNA_focus_trade_2}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_3
+			                     remove_idea = SNA_focus_trade_2
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_3}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_4
+			                     remove_idea = SNA_focus_trade_3
+			         }
+			     }
+            else_if = {
+			        limit = {has_idea = SNA_focus_trade_4}
+			        swap_ideas ={
+			                     add_idea = SNA_focus_trade_5
+			                     remove_idea = SNA_focus_trade_4
+			         }
+			     }
+        }
+        #扩大护卫队规模
+    }
+    focus = {
+        id = SNA_rebuild_wasteland
+        icon = GFX_SNA_goals_start_7
+        x = 3
+        y = 4
+        cost = 30.00
+        prerequisite = { focus = SNA_Optimization_of_aquaculture}
+        prerequisite = { focus = SNA_gaishanjiaotong }
+        completion_reward =
+        {
+                swap_ideas = 
+                {
+                    add_idea = SNA_focus_island_6
+                    remove_idea = SNA_focus_island_5
+                }
+				#set_state_category = city	#where?
+        }
+        #荒地再建设
+    }
+    focus = {
+        id = SNA_Expand_ports
+        icon = GFX_SNA_goals_start_13
+        x = 7
+        y = 4
+        cost = 30.00
+        prerequisite = { focus = SNA_ore_reprocessing}
+        prerequisite = { focus = SNA_enlarge_guard }
+        completion_reward =
+        {
+                swap_ideas = 
+                {
+                    add_idea = SNA_focus_trade_6
+                    remove_idea = SNA_focus_trade_5
+                }
+				89 = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+					        type = dockyard
+					        level = 1
+				            instant_build = yes
+                       }
+				
+				add_building_construction =
+					{
+						 type = naval_base
+						 level = 2
+						 instant_build = yes
+						 province = 5038
+					}
+				
+			   } 
+        }
+	}#珊瑚宫港口建设
+    focus = {
+        id = SNA_Ease_economic_pressures
+        icon = GFX_SNA_goals_start_14
+        x = 5
+        y = 5
+        cost = 30.00
+        prerequisite = {focus = SNA_rebuild_wasteland focus = SNA_Expand_ports}
+        completion_reward =
+        {
+			  custom_effect_tooltip = "temporarily"
+			  hidden_effect = 
+			  {
+                if =
+                {
+                  limit = {has_idea = SNA_focus_island_6}
+                  swap_ideas =
+                  {
+                    add_idea = SNA_ease_pressures
+                    remove_idea = SNA_focus_island_6
+                  }
+                }
+              	else_if =
+              	{
+                  limit = {has_idea = SNA_focus_trade_6}
+                  swap_ideas =
+                  {
+                    add_idea = SNA_ease_pressures
+                    remove_idea = SNA_focus_trade_6
+                  }
+              	}
+			  }
+              
+        } 
+        #缓解经济压力
+    }
+}

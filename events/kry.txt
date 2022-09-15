@@ -1,0 +1,87 @@
+add_namespace = kry
+
+country_event = {
+	id = kry.1
+	hidden = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = kry.1.a
+clr_global_flag = MOTKRY
+		}		
+}
+country_event = {
+	id = kry.2
+	hidden = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = kry.2.a
+    set_party_name = { ideology = esotericism long_name = ABY_esotericism_party_long name = ABY_esotericism_party } 
+    set_party_name = { ideology = communism long_name = ABY_communism_party_long name = ABY_communism_party } 
+    set_party_name = { ideology = despotism long_name = ABY_despotism_party_long name = ABY_despotism_party } 
+QST = { annex_country = { target = ABY transfer_troops = yes }  }
+                                QST = { kill_country_leader = yes}
+                                ABY = {QST = { change_tag_from = ROOT } } 
+                                add_popularity = {
+		ideology = despotism
+		popularity = 0.45
+		} 
+                                add_popularity = {
+		ideology = esotericism
+		popularity = 0.15
+		} 
+                                add_popularity = {
+		ideology = communism
+		popularity = 0.4
+		} 
+set_politics = {
+
+                                ruling_party = despotism                         
+		}
+                                create_country_leader = {
+	                name = "空"
+	                desc = "KONG_DESC"
+	                picture = "gfx/leaders/LY/Kong.dds"
+	                expire = "1965.1.1"
+	                ideology = esotericism   
+		traits = {
+
+			}                           
+		}    
+                                create_country_leader = {
+	                name = "空"
+	                desc = "KONG_DESC"
+	                picture = "gfx/leaders/LY/Kong.dds"
+	                expire = "1965.1.1"
+	                ideology = autocracy  
+		traits = {
+
+			}                           
+		}    
+                                create_country_leader = {
+	                name = "空"
+	                desc = "KONG_DESC"
+	                picture = "gfx/leaders/LY/Kong.dds"
+	                expire = "1965.1.1"
+	                ideology = ultravisionary_communism
+		traits = {
+
+			}                           
+		}      
+	}			
+}
+country_event = {
+	id = kry.3
+	title = kry.3.t
+	desc = kry.3.d
+	fire_only_once = no
+	is_triggered_only = yes
+	option = { 
+		name = kry.3.a
+		declare_war_on = {
+                                target = QST
+                                type = annex_everything
+                               } 
+		}		
+}

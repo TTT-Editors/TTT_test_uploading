@@ -1,0 +1,1689 @@
+
+################################################################
+ganyu_parliamenteff_confidence_subtract_02 = {
+	custom_effect_tooltip = ganyu_parliament_confidence_subtract_02_custom
+	add_to_variable = {
+		var = ganyu_parliament_confidence
+		value = -0.2
+	}
+	clamp_variable = {
+		var = ganyu_parliament_confidence
+		max = ganyu_parliament_confidence_max
+		min = 0
+	}
+	ganyu_parliamenteff_progress_add_recalculate = yes
+	ganyu_parliamenteff_confidence_frame_recalculate = yes
+}
+#甘雨信心-2
+
+ganyu_parliamenteff_confidence_subtract_025 = {
+	custom_effect_tooltip = ganyu_parliament_confidence_subtract_025_custom
+	add_to_variable = {
+		var = ganyu_parliament_confidence
+		value = -0.25
+	}
+	clamp_variable = {
+		var = ganyu_parliament_confidence
+		max = ganyu_parliament_confidence_max
+		min = 0
+	}
+	ganyu_parliamenteff_progress_add_recalculate = yes
+	ganyu_parliamenteff_confidence_frame_recalculate = yes
+}
+#甘雨信心-0.25
+
+ganyu_parliamenteff_confidence_add_02 = {
+	custom_effect_tooltip = ganyu_parliament_confidence_add_02_custom
+	add_to_variable = {
+		var = ganyu_parliament_confidence
+		value = 0.2
+	}
+	clamp_variable = {
+		var = ganyu_parliament_confidence
+		max = ganyu_parliament_confidence_max
+		min = 0
+	}
+	ganyu_parliamenteff_progress_add_recalculate = yes
+	ganyu_parliamenteff_confidence_frame_recalculate = yes
+}
+#甘雨信心+0.2
+
+ganyu_parliamenteff_confidence_add_025 = {
+	custom_effect_tooltip = ganyu_parliament_confidence_add_025_custom
+	add_to_variable = {
+		var = ganyu_parliament_confidence
+		value = 0.25
+	}
+	clamp_variable = {
+		var = ganyu_parliament_confidence
+		max = ganyu_parliament_confidence_max
+		min = 0
+	}
+	ganyu_parliamenteff_progress_add_recalculate = yes
+	ganyu_parliamenteff_confidence_frame_recalculate = yes
+}
+#甘雨信心+0.25
+
+ganyu_parliamenteff_confidence_max_subtract_02 = {
+	custom_effect_tooltip = ganyu_parliament_confidence_max_subtract_02
+	add_to_variable = {
+		var = ganyu_parliament_confidence_max
+		value = -0.2
+	}
+	clamp_variable = {
+		var = ganyu_parliament_confidence_max
+		max = 1.2
+		min = 0
+	}
+	clamp_variable = {
+		var = ganyu_parliament_confidence
+		max = ganyu_parliament_confidence_max
+		min = 0
+	}
+	ganyu_parliamenteff_progress_add_recalculate = yes
+	ganyu_parliamenteff_confidence_frame_recalculate = yes
+}
+#甘雨信心上限-0.2
+
+ganyu_parliamenteff_confidence_frame_recalculate = {
+	set_temp_variable = { ganyu_parliament_temp = ganyu_parliament_confidence }
+	multiply_temp_variable = { ganyu_parliament_temp = 9.17 }
+	clamp_temp_variable = {
+			var = ganyu_parliament_temp
+			min = 1
+			max = 11
+	}
+	set_variable = {
+		var = ganyu_parliament_frame
+		value = ganyu_parliament_temp
+	}
+}
+#计算甘雨信心图片的当前帧序
+
+##############################权力交接进度增加##################################
+ganyu_parliamenteff_progress_add_recalculate = {
+	set_variable = {
+		var = ganyu_parliament_progress_add_3
+		value = 3
+	}
+	multiply_variable = {
+		var = ganyu_parliament_progress_add_3
+		value = ganyu_parliament_confidence
+	}
+	set_variable = {
+		var = ganyu_parliament_progress_add_5
+		value = 5
+	}
+	multiply_variable = {
+		var = ganyu_parliament_progress_add_5
+		value = ganyu_parliament_confidence
+	}
+	set_variable = {
+		var = ganyu_parliament_progress_add_10
+		value = 10
+	}
+	multiply_variable = {
+		var = ganyu_parliament_progress_add_10
+		value = ganyu_parliament_confidence
+	}
+	set_variable = {
+		var = ganyu_parliament_progress_add_15
+		value = 15
+	}
+	multiply_variable = {
+		var = ganyu_parliament_progress_add_15
+		value = ganyu_parliament_confidence
+	}	
+}
+#在当前信心值下，重新计算每种交接进度的实际增加值
+#在每次进行信心值运算后进行该运算
+
+ganyu_parliamenteff_progress_add_3 = {
+	custom_effect_tooltip = ganyu_parliament_progress_add_custom_3
+	add_to_variable = {
+		var = ganyu_parliament_progress
+		value = ganyu_parliament_progress_add_3
+	}
+	ganyu_parliamenteff_progress_frame_recalculate = yes
+}
+#权力交接进度+3（基础值）
+
+ganyu_parliamenteff_progress_add_5 = {
+	custom_effect_tooltip = ganyu_parliament_progress_add_custom_5
+	add_to_variable = {
+		var = ganyu_parliament_progress
+		value = ganyu_parliament_progress_add_5
+	}
+	ganyu_parliamenteff_progress_frame_recalculate = yes
+}
+#权力交接进度+5（基础值）
+
+ganyu_parliamenteff_progress_add_10 = {
+	custom_effect_tooltip = ganyu_parliament_progress_add_custom_10
+	add_to_variable = {
+		var = ganyu_parliament_progress
+		value = ganyu_parliament_progress_add_10
+	}
+	ganyu_parliamenteff_progress_frame_recalculate = yes
+}
+#权力交接进度+10（基础值）
+
+ganyu_parliamenteff_progress_add_15 = {
+	custom_effect_tooltip = ganyu_parliament_progress_add_custom_15
+	add_to_variable = {
+		var = ganyu_parliament_progress
+		value = ganyu_parliament_progress_add_15
+	}
+	ganyu_parliamenteff_progress_frame_recalculate = yes
+}
+#权力交接进度+15（基础值）
+
+ganyu_parliamenteff_progress_frame_recalculate = {
+	set_temp_variable = { ganyu_parliament_temp = ganyu_parliament_progress }
+	multiply_temp_variable = { ganyu_parliament_temp = 0.21 }
+	clamp_temp_variable = {
+			var = ganyu_parliament_temp
+			min = 1
+			max = 21
+	}
+	set_variable = {
+		var = ganyu_parliament_progress_frame
+		value = ganyu_parliament_temp
+	}
+}
+#计算权力交接进度图片的当前帧序
+
+##############################派系斗争程度增减##################################
+ganyu_parliamenteff_struggle_recalculate = {
+	clamp_variable = {
+		var = ganyu_parliament_struggle
+		max = 100
+		min = 0
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_struggle
+				value = 30
+				compare = greater_than_or_equals
+			}			
+			check_variable = {
+				var = ganyu_parliament_struggle
+				value = 60
+				compare = less_than
+			}
+		}
+		#位于[30,60)区间内
+		ganyu_parliamenteff_struggle_recalculate_30_60 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_struggle
+				value = 60
+				compare = greater_than_or_equals
+			}			
+			check_variable = {
+				var = ganyu_parliament_struggle
+				value = 80
+				compare = less_than
+			}			
+		}
+		#位于[60,80)区间内
+		ganyu_parliamenteff_struggle_recalculate_60_80 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_struggle
+				value = 80
+				compare = greater_than_or_equals
+			}			
+			check_variable = {
+				var = ganyu_parliament_struggle
+				value = 100
+				compare = less_than
+			}			
+		}
+		#位于[80,100)区间内
+		ganyu_parliamenteff_struggle_recalculate_80_100 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_struggle
+				value = 100
+				compare = equals
+			}						
+		}
+		#达到100
+		ganyu_parliamenteff_struggle_recalculate_100 = yes
+	}
+	else = {
+		#位于[0,30)区间内
+		ganyu_parliamenteff_struggle_recalculate_0_30 = yes
+	}
+	ganyu_parliamenteff_struggle_frame_recalculate = yes
+}
+#在当前ganyu_parliament_struggle变量下重新进行派系斗争程度判定
+
+ganyu_parliamenteff_struggle_recalculate_0_30 = {
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_struggle_1
+		}
+		#从[30,60)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_struggle_1
+		remove_ideas = ganyu_parliament_struggle_idea_1
+	}
+	else = {
+		#本来就在[0,30)区间
+	}
+}
+#对于[0,30)区间进行判定
+
+ganyu_parliamenteff_struggle_recalculate_30_60 = {
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_struggle_2
+		}
+		#从[60,80)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_struggle_2
+		set_country_flag = ganyu_parliamentflag_struggle_1
+		remove_ideas = ganyu_parliament_struggle_idea_2
+		add_ideas = ganyu_parliament_struggle_idea_1
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_flag = ganyu_parliamentflag_struggle_1
+			}
+		}
+		#从[0,30)区间变化过来的
+		set_country_flag = ganyu_parliamentflag_struggle_1
+		add_ideas = ganyu_parliament_struggle_idea_1
+	}
+	else = {
+		#本来就在[30,60)区间
+	}
+}
+#对于[30,60)区间进行判定
+
+ganyu_parliamenteff_struggle_recalculate_60_80 = {
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_struggle_3
+		}
+		#从[80,100)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_struggle_3
+		set_country_flag = ganyu_parliamentflag_struggle_2
+		add_ideas = ganyu_parliament_struggle_idea_2
+		remove_ideas = ganyu_parliament_struggle_idea_3
+	}
+	else_if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_struggle_1
+		}
+		#从[30,60)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_struggle_1
+		set_country_flag = ganyu_parliamentflag_struggle_2
+		add_ideas = ganyu_parliament_struggle_idea_2
+		remove_ideas = ganyu_parliament_struggle_idea_1
+	}
+	else = {
+		#本来就在[60,80)区间
+	}
+}
+#对于[60,80)区间进行判定
+
+ganyu_parliamenteff_struggle_recalculate_80_100 = {
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_struggle_2
+		}
+		#从[60,80)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_struggle_2
+		set_country_flag = ganyu_parliamentflag_struggle_3
+		remove_ideas = ganyu_parliament_struggle_idea_2
+		add_ideas = ganyu_parliament_struggle_idea_3
+	}
+	else = {
+		#本来就在[80,100]区间
+	}
+}
+#对于[80,100)区间进行判定
+
+ganyu_parliamenteff_struggle_recalculate_100 = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = ganyu_parliamentflag_struggle_4
+			}
+		}
+		#派系争端第一次达到最大
+		set_country_flag = ganyu_parliamentflag_struggle_4
+		ganyu_parliamenteff_confidence_subtract_02 = yes
+		ganyu_parliamenteff_confidence_max_subtract_02 = yes
+		set_variable = {
+			var = ganyu_parliament_struggle
+			value = 85
+		}
+		country_event = { id = ganyu_parliament.1 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_flag = ganyu_parliamentflag_allgone
+			}
+		}
+		#派系争端第二次达到最大
+		country_event = { id = ganyu_parliament.2 }
+		ganyu_parliamenteff_allgone = yes
+	}
+}
+#对于派系争端达到100的效果
+
+ganyu_parliamenteff_struggle_frame_recalculate = {
+	set_temp_variable = { ganyu_parliament_temp = ganyu_parliament_struggle }
+	multiply_temp_variable = { ganyu_parliament_temp = 0.13 }
+	clamp_temp_variable = {
+			var = ganyu_parliament_temp
+			min = 1
+			max = 13
+	}
+	set_variable = {
+		var = ganyu_parliament_struggle_frame
+		value = ganyu_parliament_temp
+	}
+}
+
+
+
+ganyu_parliament_struggle_add_5 = {
+	add_to_variable = {
+		var = ganyu_parliament_struggle
+		value = 5
+	}
+	ganyu_parliamenteff_struggle_recalculate = yes
+}
+
+ganyu_parliament_struggle_subtract_5 = {
+	add_to_variable = {
+		var = ganyu_parliament_struggle
+		value = -5
+	}
+	ganyu_parliamenteff_struggle_recalculate = yes
+}
+
+
+
+
+
+
+
+
+
+
+
+##############################璃月港政策倾向增减##################################
+ganyu_parliamenteff_policy_recalculate = {
+	clamp_variable = {
+		var = ganyu_parliament_policy
+		max = 100
+		min = -100
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = -20
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = 20
+				compare = less_than_or_equals
+			}
+		}
+		#位于[-20,20]区间内
+		ganyu_parliamenteff_policy_recalculate_n20_20 = yes
+		set_variable = {
+			var = ganyu_parliament_policy_frame
+			value = 3
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = -20
+				compare = less_than
+			}
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = -60
+				compare = greater_than_or_equals
+			}
+		}
+		#位于[-60,-20)区间内
+		ganyu_parliamenteff_policy_recalculate_n60_n20 = yes
+		set_variable = {
+			var = ganyu_parliament_policy_frame
+			value = 2
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = 20
+				compare = greater_than
+			}
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = 60
+				compare = less_than_or_equals
+			}
+		}
+		#位于(20,60]区间内
+		ganyu_parliamenteff_policy_recalculate_20_60 = yes
+		set_variable = {
+			var = ganyu_parliament_policy_frame
+			value = 4
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = -60
+				compare = less_than
+			}
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = -100
+				compare = greater_than_or_equals
+			}
+		}
+		#位于[-100,-60)区间内
+		ganyu_parliamenteff_policy_recalculate_n100_n60 = yes
+		set_variable = {
+			var = ganyu_parliament_policy_frame
+			value = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = 60
+				compare = greater_than
+			}
+			check_variable = {
+				var = ganyu_parliament_policy
+				value = 100
+				compare = less_than_or_equals
+			}
+		}
+		#位于(20,60]区间内
+		ganyu_parliamenteff_policy_recalculate_60_100 = yes
+		set_variable = {
+			var = ganyu_parliament_policy_frame
+			value = 5
+		}
+	}
+}
+#在当前ganyu_parliament_policy变量下重新进行璃月港政策倾向判定
+
+ganyu_parliamenteff_policy_recalculate_n20_20 = {
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_left
+		}
+		#从[-60,-20)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_left
+		
+	}
+	else_if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_right
+		}
+		#从(20,60]区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_right
+		
+	}
+	else = {
+		#本来就在[-20,20]区间
+	}
+}
+#对于[-20,20]区间进行判定
+
+ganyu_parliamenteff_policy_recalculate_n60_n20 = {
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_far_left
+		}
+		#从[-100,-60)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_far_left
+		set_country_flag = ganyu_parliamentflag_left
+		
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_flag = ganyu_parliamentflag_left
+			}
+		}
+		#从[-20,20]区间变化过来的
+		set_country_flag = ganyu_parliamentflag_left
+		
+	}
+	else = {
+		#本来就在[-60,-20)区间
+	}
+}
+#对于[-60,-20)区间进行判定
+
+ganyu_parliamenteff_policy_recalculate_20_60 = {
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_far_right
+		}
+		#从(60,100]区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_far_right
+		set_country_flag = ganyu_parliamentflag_right
+		
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_country_flag = ganyu_parliamentflag_right
+			}
+		}
+		#从[-20,20]区间变化过来的
+		set_country_flag = ganyu_parliamentflag_right
+		
+	}
+	else = {
+		#本来就在(20,60]区间
+	}
+}
+#对于(20,60]区间进行判定
+
+ganyu_parliamenteff_policy_recalculate_n100_n60 = {
+	#判断变化过程
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_left
+		}
+		#从[-60,-20)区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_left
+		set_country_flag = ganyu_parliamentflag_far_left
+		
+	}
+	else = {
+		#本来就在[-100,-60)区间
+	}
+	#判断是否第一次到达[-100,-60)区间
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = ganyu_parliamentflag_far_left_mark
+			}
+		}
+		set_country_flag = ganyu_parliamentflag_far_left_mark
+		country_event = { id = ganyu_parliament.3 }
+	}
+	#判断政策是否左右摇摆
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_far_left_mark
+			has_country_flag = ganyu_parliamentflag_far_right_mark
+		}
+		#政策在极左和极右之间摇摆
+		country_event = { id = ganyu_parliament.4 }
+	}
+}
+#对于[-100,-60)区间进行判定
+
+ganyu_parliamenteff_policy_recalculate_60_100 = {
+	#判断变化过程
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_right
+		}
+		#从(20,60]区间变化过来的
+		clr_country_flag = ganyu_parliamentflag_right
+		set_country_flag = ganyu_parliamentflag_far_right
+		
+	}
+	else = {
+		#本来就在(60,100]区间
+	}
+	#判断是否第一次到达(60,100]区间
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = ganyu_parliamentflag_far_right_mark
+			}
+		}
+		set_country_flag = ganyu_parliamentflag_far_right_mark
+		country_event = { id = ganyu_parliament.3 }
+	}
+	#判断政策是否左右摇摆
+	if = {
+		limit = {
+			has_country_flag = ganyu_parliamentflag_far_left_mark
+			has_country_flag = ganyu_parliamentflag_far_right_mark
+		}
+		#政策在极左和极右之间摇摆
+		country_event = { id = ganyu_parliament.4 }
+	}
+}
+#对于(60,100]区间进行判定
+
+ganyu_parliament_policy_right_15 = {
+	custom_effect_tooltip = ganyu_parliament_policy_add_to_right_15
+	add_to_variable = {
+		var = ganyu_parliament_policy
+		value = 15
+	}
+	ganyu_parliamenteff_policy_recalculate = yes
+}
+
+ganyu_parliament_policy_left_15 = {
+	custom_effect_tooltip = ganyu_parliament_policy_add_to_left_15
+	add_to_variable = {
+		var = ganyu_parliament_policy
+		value = -15
+	}
+	ganyu_parliamenteff_policy_recalculate = yes
+}
+
+
+
+
+
+
+
+
+
+
+
+
+##############################特殊##################################
+ganyu_parliamenteff_allgone = {
+	set_country_flag = ganyu_parliamentflag_allgone
+	set_variable = {
+		var = ganyu_parliament_confidence
+		value = 0
+	}
+	set_variable = {
+		var = ganyu_parliament_confidence_max
+		value = 0
+	}
+	set_variable = {
+		var = ganyu_parliament_progress
+		value = 0
+	}
+	set_variable = {
+		var = ganyu_parliament_struggle
+		value = 0
+	}	
+	set_variable = {
+		var = ganyu_parliament_policy
+		value = 0
+	}
+	ganyu_parliamenteff_progress_add_recalculate = yes
+	set_variable = {
+		var = ganyu_parliament_policy_frame
+		value = 3
+	}
+	set_variable = {
+		var = ganyu_parliament_struggle_frame
+		value = 1
+	}
+	set_variable = {
+		var = ganyu_parliament_progress_frame
+		value = 1
+	}
+	set_variable = {
+		var = ganyu_parliament_frame
+		value = 8
+	}
+}
+#他奶奶滴，七星全给我死！我只要甘雨老婆❤❤❤❤❤❤❤❤	( ˘ ³˘)♥
+
+
+
+
+#############议会投票部分##############
+yihui_jingjitoupiao_chushihua = { #议会投票随机初始化
+	activate_mission = qixingyihui_jingji_toupiao
+        randomize_variable = {
+            var = ganyu_parliament_frame
+            distribution = uniform
+            min = 0
+            max = 8
+        }
+}
+
+yihui_wenhuatoupiao_chushihua = { #议会投票随机初始化
+	activate_mission = qixingyihui_wenhua_toupiao
+        randomize_variable = {
+            var = ganyu_parliament_frame
+            distribution = uniform
+            min = 0
+            max = 8
+        }
+}
+
+yihui_zhengzhitoupiao_chushihua = { #议会投票随机初始化
+	activate_mission = qixingyihui_zhengzhi_toupiao
+        randomize_variable = {
+            var = ganyu_parliament_frame
+            distribution = uniform
+            min = 0
+            max = 8
+        }
+}
+
+yihui_junshitoupiao_chushihua = { #议会投票随机初始化
+	activate_mission = qixingyihui_junshi_toupiao
+        randomize_variable = {
+            var = ganyu_parliament_frame
+            distribution = uniform
+            min = 0
+            max = 8
+        }
+}
+
+gan_jingji_zuopai_tongguo = { #左派经济提案通过
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_1
+		set_country_flag = Gan_jingjijueyi_1_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 1
+        }
+		ganyu_parliament_policy_left_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_2
+		set_country_flag = Gan_jingjijueyi_2_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 2
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_3
+		set_country_flag = Gan_jingjijueyi_3_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 3
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_jingji 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_4
+		set_country_flag = Gan_jingjijueyi_4_tongguo
+		clear_variable = gan_jingji
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_zuopai_jianyi
+}
+
+gan_jingji_tiaohepai_tongguo = { #调和派经济提案通过
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_5
+		set_country_flag = Gan_jingjijueyi_1_tongguo
+        set_variable = {
+            var = gan_jingji_focus
+            value = 1
+        }
+		
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_6
+		set_country_flag = Gan_jingjijueyi_2_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 2
+        }
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_7
+		set_country_flag = Gan_jingjijueyi_3_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 3
+        }
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_jingji 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_8
+		set_country_flag = Gan_jingjijueyi_4_tongguo
+		clear_variable = gan_jingji
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_tiaohepai_jianyi
+}
+
+gan_jingji_youpai_tongguo = { #右派经济提案通过
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_9
+		set_country_flag = Gan_jingjijueyi_1_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 1
+        }
+		ganyu_parliament_policy_right_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_10
+		set_country_flag = Gan_jingjijueyi_2_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 2
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_jingji 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_11
+		set_country_flag = Gan_jingjijueyi_3_tongguo
+		set_variable = {
+            var = gan_jingji_focus
+            value = 3
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_jingji 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_12
+		set_country_flag = Gan_jingjijueyi_4_tongguo
+		clear_variable = gan_jingji
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_youpai_jianyi
+}
+
+gan_wenhua_zuopai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_13
+		set_country_flag = Gan_wenhua_1_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 1
+        }
+		ganyu_parliament_policy_left_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_14
+		set_country_flag = Gan_wenhua_2_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 2
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_15
+		set_country_flag = Gan_wenhua_3_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 3
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_wenhua 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_16
+		set_country_flag = Gan_wenhua_4_tongguo
+		clear_variable = gan_wenhua
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_zuopai_jianyi
+}
+
+gan_wenhua_tiaohepai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_17
+		set_country_flag = Gan_wenhua_1_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 1
+        }
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_18
+		set_country_flag = Gan_wenhua_2_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 2
+        }
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_19
+		set_country_flag = Gan_wenhua_3_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 3
+        }
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_wenhua 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_20
+		set_country_flag = Gan_wenhua_4_tongguo
+		clear_variable = gan_wenhua
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_tiaohepai_jianyi
+}
+
+gan_wenhua_youpai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_21
+		set_country_flag = Gan_wenhua_1_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 1
+        }
+		ganyu_parliament_policy_right_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_22
+		set_country_flag = Gan_wenhua_2_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 2
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_wenhua 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_23
+		set_country_flag = Gan_wenhua_3_tongguo
+		set_variable = {
+            var = gan_wenhua_focus
+            value = 3
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_wenhua 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_24
+		set_country_flag = Gan_wenhua_4_tongguo
+		clear_variable = gan_wenhua
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_youpai_jianyi
+}
+
+
+
+
+
+
+
+gan_zhengzhi_zuopai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_stability = 0.1
+		set_country_flag = Gan_zhengzhi_1_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 1
+        }
+		ganyu_parliament_policy_left_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_2_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 2
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_3_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 3
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_4_tongguo
+		clear_variable = gan_zhengzhi
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_zuopai_jianyi
+}
+
+gan_zhengzhi_tiaohepai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_stability = 0.1
+		set_country_flag = Gan_zhengzhi_1_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 1
+        }
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_2_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 2
+        }
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_3_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 3
+        }
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_4_tongguo
+		clear_variable = gan_zhengzhi
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_tiaohepai_jianyi               
+}
+
+gan_zhengzhi_youpai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_stability = 0.1
+		set_country_flag = Gan_zhengzhi_1_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 1
+        }
+		ganyu_parliament_policy_right_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_2_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 2
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_3_tongguo
+		set_variable = {
+            var = gan_zhengzhi_focus
+            value = 3
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_zhengzhi 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_stability = 0.2
+		set_country_flag = Gan_zhengzhi_4_tongguo
+		clear_variable = gan_zhengzhi
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_youpai_jianyi                
+}
+
+
+
+
+
+
+
+
+gan_junshi_zuopai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_37
+		set_country_flag = Gan_junshi_1_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 1
+        }
+		ganyu_parliament_policy_left_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_38
+		set_country_flag = Gan_junshi_2_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 2
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_39
+		set_country_flag = Gan_junshi_3_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 3
+        }
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_junshi 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_40
+		set_country_flag = Gan_junshi_4_tongguo
+		clear_variable = gan_junshi
+		ganyu_parliament_policy_left_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_zuopai_jianyi               
+}
+
+gan_junshi_tiaohepai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_41
+		set_country_flag = Gan_junshi_1_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 1
+        }
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_42
+		set_country_flag = Gan_junshi_2_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 2
+        }
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_43
+		set_country_flag = Gan_junshi_3_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 3
+        }
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_junshi 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_44
+		set_country_flag = Gan_junshi_4_tongguo
+		clear_variable = gan_junshi
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_tiaohepai_jianyi               
+}
+
+gan_junshi_youpai_tongguo = {
+	if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 1
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_45
+		set_country_flag = Gan_junshi_1_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 1
+        }
+		ganyu_parliament_policy_right_15 = yes
+	} 
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 2
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_46
+		set_country_flag = Gan_junshi_2_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 2
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = { 
+			check_variable = {
+				var = gan_junshi 
+				value = 3
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_47
+		set_country_flag = Gan_junshi_3_tongguo
+		set_variable = {
+            var = gan_junshi_focus
+            value = 3
+        }
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = gan_junshi 
+				value = 4
+				compare = equals
+			} 
+		}
+		add_ideas = GANYU_H_48
+		set_country_flag = Gan_junshi_4_tongguo
+		clear_variable = gan_junshi
+		ganyu_parliament_policy_right_15 = yes
+	}
+	else = {
+		LYU = { country_event = { id = ganyu.1 } }
+	}
+	clr_country_flag = gan_youpai_jianyi                
+}
+
+
+quanweijisuan = {
+	set_temp_variable = {
+		var = quanwei_1
+		value = ganyu_parliament_progress_frame
+	}
+	add_to_temp_variable = {
+		var = quanwei_1
+		value = -18
+	} 
+	multiply_temp_variable = {
+		var = quanwei_1
+		value = 0.025
+	}
+	set_variable = {
+		var = quanwei_xiuzheng
+		value = quanwei_1
+	}
+}
+
+
+jisuan = {
+	set_temp_variable = {
+		var = t1
+		value = ANG_shiwushengchan
+	}
+	set_temp_variable = {
+		var = t2
+		value = ANG_shiwuxiaohao
+	}
+	subtract_from_temp_variable = { t1 = t2 }
+	add_to_variable = {
+		var = ANG_shiwuchubei
+		value = t1
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

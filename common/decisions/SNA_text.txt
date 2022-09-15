@@ -1,0 +1,8022 @@
+SNA_decision_category = {
+
+SNAday = {
+        activation = {                         
+			has_country_flag = xinhai666
+		}
+		
+		available = {                           
+			has_completed_focus = SNA_tingzhizousiwangluo
+		}
+		
+		complete_effect = {  
+			SNA_smuggling_scale = YES
+		}
+		
+		is_good = yes
+
+        icon = decision_category_generic_arms_trade		
+	
+		days_mission_timeout = 8
+		timeout_effect = {                      
+			   SNA_foolishi_morale = YES
+               SNA_societypursuit_morale = YES
+               custom_effect_tooltip = xinhai114514	
+               SNA_smuggling_scale = YES			   
+		}		
+	}
+
+SNA_expand_smuggling_network = {
+	available = {
+		add_to_variable = {SNA_ARMAMENT < 500} 
+		add_to_variable = {SNA_MATERIALS < 500}		
+	}
+	remove_effect = {
+		       add_to_variable = {SNA_ARMAMENT = 25}
+			   add_to_variable = {SNA_MATERIALS = 25}
+               add_to_variable = {SNA_smuggling_morale = 1}			   
+          }		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		complete_effect = {  
+			SNA_smuggling_scale = YES
+			SNA_ideasxinhai = YES
+			custom_effect_tooltip = smuggling_network
+		}
+		
+		cost = 20
+		
+		days_remove = 15
+		
+		icon = generic_civil_support
+						
+		modifier = {
+	    civilian_factory_use = 1
+        }
+		
+		fire_only_once = no
+				
+		is_good = no
+		
+}
+
+SNA_improve_relationship_society = {
+	remove_effect = {
+		       add_to_variable = {SNA_foolish_morale = 10}			   
+          }		
+		ai_will_do = {
+			factor = 3
+		}
+		cost = 20
+		
+		days_remove = 30
+		
+		icon = eng_ally_imperialist_coup
+		
+		complete_effect = {  
+			custom_effect_tooltip = xinhai552
+		}
+						
+		modifier = {
+	    political_power_factor = -0.05
+        }
+		
+		fire_only_once = no
+				
+		is_good = no
+		
+}
+
+SNA_improve_relationship_pursue = {
+	remove_effect = {
+		       add_to_variable = {SNA_societypursuit_morale = 10}			   
+          }		
+		ai_will_do = {
+			factor = 3
+		}
+		cost = 20
+		
+		days_remove = 30
+		
+		icon = eng_ally_imperialist_coup
+		
+		complete_effect = {  
+			custom_effect_tooltip = xinhai11
+		}
+						
+		modifier = {
+	    political_power_factor = -0.05
+        }
+		
+		fire_only_once = no
+				
+		is_good = no
+		
+}
+
+SNA_buy_test = {
+available = {
+	    NOT = {
+		has_country_flag = flag_1
+        has_country_flag = text		
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = test		
+		check_variable = { SNA_ARMAMENT  > 49 }
+	 }	 
+  }
+  
+     visible = {
+         check_variable = { SNA_foolish_morale > 24 }
+		        }
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+		
+		remove_effect = {
+			add_equipment_to_stockpile = {
+		    type = infantry_equipment
+		    amount = 250		    
+	     }
+		 add_equipment_to_stockpile = {
+		    type = ttt_uniform_eq
+		    amount = 250		    
+	     }
+  }
+		 
+	     complete_effect = {  
+			subtract_from_variable = {SNA_ARMAMENT = 50}
+			set_country_flag = flag_1
+            subtract_from_variable = {SNA_societypursuit_morale = 5}
+            add_to_variable = {SNA_foolish_morale = 5}
+            custom_effect_tooltip = xinhai521
+            SNA_smuggling_scale = YES			
+		}
+		
+		remove_effect = {
+			clr_country_flag = flag_1
+			set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}				
+				
+		icon = generic_tank
+								
+		fire_only_once = no
+				
+		is_good = no
+		
+}
+
+SNA_buy_test2 = {
+    available = {
+	      NOT = {
+          has_country_flag = flag_2
+		  has_country_flag = text
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = wuzi		
+		check_variable = { SNA_MATERIALS  > 49 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_societypursuit_morale > 24 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+		
+		modifier = {
+			 consumer_goods_factor = -0.05
+			 stability_weekly = 0.05			 
+	   	}
+										
+		complete_effect = {
+	       subtract_from_variable = {SNA_MATERIALS = 50}
+           subtract_from_variable = {SNA_foolish_morale = 5}
+           add_to_variable = {SNA_societypursuit_morale = 5}
+           set_country_flag = flag_2          
+		   custom_effect_tooltip = xinhai522
+           SNA_smuggling_scale = YES		   
+		}
+		
+        remove_effect = {
+			clr_country_flag = flag_2
+			set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}		
+		
+		icon = generic_wreckers
+								
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+
+SNA_buy_test3 = {
+    available = {
+	       NOT = {
+		has_country_flag = flag_1
+        has_country_flag = text		
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = sna		
+		check_variable = { SNA_ARMAMENT  > 99 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_foolish_morale > 49 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+			stability_weekly = 0.05
+			subtract_from_variable = {SNA_ARMAMENT = 100}			
+			subtract_from_variable = {SNA_societypursuit_morale = 10}
+			add_to_variable = {SNA_foolish_morale = 10}
+			set_country_flag = flag_1
+			custom_effect_tooltip = xinhai523
+			SNA_smuggling_scale = YES
+		}
+		
+		remove_effect = {
+		add_equipment_to_stockpile = {
+		  type = infantry_equipment
+		 amount = 500
+		  
+	}
+	       add_equipment_to_stockpile = {
+		   type = ttt_uniform_eq
+		  amount = 500
+		  
+	}
+		}
+         		
+		remove_effect = {
+			clr_country_flag = flag_1
+			set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}
+		
+		icon = generic_tank
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+
+SNA_buy_test31 = {
+    available = {
+	       NOT = {
+		has_country_flag = flag_1
+        has_country_flag = text		
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = test31		
+		check_variable = { SNA_ARMAMENT  > 99 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_foolish_morale > 49 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+		subtract_from_variable = {SNA_ARMAMENT = 100}
+        subtract_from_variable = {SNA_societypursuit_morale = 10}
+        add_to_variable = {SNA_foolish_morale = 10}
+        set_country_flag = flag_1
+        custom_effect_tooltip = xinhai523
+        SNA_smuggling_scale = YES		
+		}
+				
+         modifier = {			
+			command_power_gain_mult = 0.10
+			experience_gain_army_factor = 0.10			
+	   	}
+		
+		remove_effect = {
+			clr_country_flag = flag_1
+			set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}
+		
+		icon = GFX_decision_category_military_operation
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+   
+SNA_buy_test41 = {
+available = {
+	 NOT = {
+     has_country_flag = flag_2
+     has_country_flag = text	 
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = sna1		
+		check_variable = { SNA_MATERIALS  > 99 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_societypursuit_morale > 49 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+		subtract_from_variable = {SNA_MATERIALS = 100}
+        subtract_from_variable = {SNA_foolish_morale = 10}
+		add_to_variable = {SNA_societypursuit_morale = 10}
+		set_country_flag = flag_2
+        custom_effect_tooltip = xinhai524
+        SNA_smuggling_scale = YES		
+		}
+				
+        modifier = {		   
+		   war_support_weekly = 0.10
+		   stability_weekly = 0.10
+           research_spped = 0.10		   
+	   	}
+		
+		remove_effect = {
+			clr_country_flag = flag_2
+			set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}
+		
+		icon = ger_mefo_bills
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+
+SNA_buy_test61 = {
+available = {
+	 NOT = {
+     has_country_flag = flag_2
+     has_country_flag = text     
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = sna12		
+		check_variable = { SNA_MATERIALS  > 99 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_societypursuit_morale > 49 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+		subtract_from_variable = {SNA_MATERIALS = 100}
+        subtract_from_variable = {SNA_foolish_morale = 10}
+		add_to_variable = {SNA_societypursuit_morale = 10}
+		set_country_flag = flag_2
+		custom_effect_tooltip = xinhai524
+		SNA_smuggling_scale = YES
+		}
+		
+		remove_effect = {
+			clr_country_flag = flag_2
+			set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}
+				        		
+		targeted_modifier = {
+		tag = KUJ		
+		attack_bonus_against = 0.10
+		defense_bonus_against = 0.10		
+	    }
+		
+		icon = GFX_decision_category_saf_anti_colonialist_crusade
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+}
+				  
+SNA_buy_test51 = {
+available = {
+	 NOT = {
+     has_country_flag = flag_1
+     has_country_flag = text	 
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = sna123		
+		check_variable = { SNA_ARMAMENT  > 199 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_foolish_morale > 74 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+		subtract_from_variable = {SNA_ARMAMENT = 200}
+        subtract_from_variable = {SNA_societypursuit_morale = 15}
+		add_to_variable = {SNA_foolish_morale = 15}
+		set_country_flag = flag_1
+		custom_effect_tooltip = xinhai525
+		SNA_smuggling_scale = YES
+		}
+				        				
+	    remove_effect = {
+		add_equipment_to_stockpile = {
+		type = infantry_equipment
+		amount = 1500		  
+	      }
+		add_equipment_to_stockpile = {
+		   type = ttt_uniform_eq
+		  amount = 500
+		  }
+		clr_country_flag = flag_1
+		set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}
+		
+		icon = generic_tank
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+   
+SNA_buy_test71 = {
+available = {
+	 NOT = {
+     has_country_flag = flag_1
+     has_country_flag = text
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = sna1234		
+		check_variable = { SNA_ARMAMENT  > 199 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_foolish_morale > 74 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+		subtract_from_variable = {SNA_ARMAMENT = 200}
+        subtract_from_variable = {SNA_societypursuit_morale = 15}
+		add_to_variable = {SNA_foolish_morale = 15}
+		set_country_flag = flag_1
+		custom_effect_tooltip = xinhai525
+		SNA_smuggling_scale = YES
+		}
+				        				
+	    remove_effect = {
+			add_offsite_building = { type = arms_factory level = 1 }
+			clr_country_flag = flag_1
+			set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }
+		}
+		
+		icon = generic_economy
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+   
+SNA_buy_test81 = {
+available = {
+	 NOT = {
+     has_country_flag = flag_2
+     has_country_flag = text
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = sna1245		
+		check_variable = { SNA_MATERIALS  > 199 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_societypursuit_morale > 74 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+		subtract_from_variable = {SNA_MATERIALS = 200}
+        subtract_from_variable = {SNA_foolish_morale = 15}
+		add_to_variable = { SNA_societypursuit_morale = 15 }
+		set_country_flag = flag_2
+        custom_effect_tooltip = xinhai526
+        SNA_smuggling_scale = YES		
+		}
+
+        remove_effect = {
+		  clr_country_flag = flag_2
+          set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }		  
+		}
+		
+         modifier = {			
+            consumer_goods_factor = -0.10
+            stability_weekly = 0.015
+            war_support_weekly = -0.05			
+	   	}
+						
+		icon = GFX_decision_category_eng_appeal_to_imperial_loyalists
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+   
+SNA_buy_test22 = {
+available = {
+	 NOT = {
+     has_country_flag = flag_2
+     has_country_flag = text	 
+	 } 
+     custom_trigger_tooltip = {
+		tooltip = sna12456		
+		check_variable = { SNA_MATERIALS  > 199 }
+	 }	 
+  }
+  
+     visible = {
+			check_variable = { SNA_societypursuit_morale > 74 }
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		days_remove = 14
+		
+		cost = 20
+										
+		complete_effect = {		   
+		subtract_from_variable = {SNA_MATERIALS = 200}
+        subtract_from_variable = {SNA_foolish_morale = 15}
+		add_to_variable = { SNA_societypursuit_morale = 15 }
+		set_country_flag = flag_2
+		custom_effect_tooltip = xinhai526
+		SNA_smuggling_scale = YES
+		}
+				       		
+		remove_effect = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			clr_country_flag = flag_2
+            set_country_flag={
+                    flag = text
+                    days = 7
+                    value = 1
+                }			
+		}
+		   
+    		
+		icon = GFX_decision_category_SOV_permanent_revolution
+										
+		fire_only_once = no
+				
+		is_good = no
+		
+   }
+}
+
+SNA_internal_factions2 = {
+	SNA_army_reform = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			has_equipment = { infantry_equipment > 199 }
+			command_power > 50
+		}
+        
+		cost = 100
+		
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 100
+		
+		complete_effect = {  
+			add_command_power = -50
+			add_equipment_to_stockpile = {
+		    type = infantry_equipment
+		    amount = -200
+		
+	    }   
+		}
+
+		remove_effect = {		
+			if = {
+				limit = { has_idea = SNA_bare_hands }
+				swap_ideas = {
+					remove_idea = SNA_bare_hands
+					add_idea = SNA_training_1
+				}
+			}
+			else_if = {
+				limit = { has_idea = SNA_training_1 }
+				swap_ideas = {
+					remove_idea = SNA_training_1
+					add_idea = SNA_training_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = SNA_training_2 }
+				remove_ideas = SNA_training_2
+				add_idea = SNA_training_3
+			}
+			else_if = {
+				limit = { has_idea = SNA_training_3 }
+				remove_ideas = SNA_training_3
+				add_idea = SNA_training_4
+			}			
+		}		
+	}
+}
+
+SNA_internal_factions3 = {	   
+	SNA_state1 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 #MOSCOW
+					}
+				}
+			}
+		}
+		
+        cost = 25
+		
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+		
+		fire_only_once = yes
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1
+			95 =  {
+		infrastructure > 0		   
+        }
+		}
+		visible = {
+			
+		}
+
+		ai_hint_pp_cost = 25
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			95 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			95 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			95 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state1
+		}
+	}
+	
+	SNA_state2 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+		
+		fire_only_once = yes
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			95 =  {
+		infrastructure > 2		  
+        }
+		}
+		visible = {
+			has_country_flag = state1
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			95 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			95 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			95 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state2
+		}
+	}
+	
+	SNA_state3 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			95 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+			has_country_flag = state2
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			95 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			95 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			95 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state33
+		}
+	}
+	
+	SNA_state4 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 374 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 374 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1
+			374 =  {
+		infrastructure > 0
+		    }
+		}
+		visible = {
+			
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			374 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			374 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			374 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state3
+		}
+	}
+
+    SNA_state5 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 374 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 374 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			374 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+			has_country_flag = state3
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			374 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			374 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			374 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state4
+		}
+	}
+
+    SNA_state6 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 374 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 374 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			374 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+			has_country_flag = state4
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			374 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			374 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			374 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state34
+		}
+	}
+
+    SNA_state7 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 96 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 96 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1
+			96 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+			
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			96 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			96 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			96 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state5
+		}
+	}
+    SNA_state8 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 96 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 96 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			96 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+			has_country_flag = state5
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			96 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			96 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			96 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state6
+		}
+	}
+
+    SNA_state9 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 96 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 96 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			96 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+			has_country_flag = state6
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			96 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			96 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			96 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state35
+		}
+	}
+
+    SNA_state10 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 92 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 92 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1
+			96 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+			
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			96 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			96 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			96 = {
+		add_extra_state_shared_building_slots = 1
+		set_country_flag = state7
+			}
+		}
+	}
+   
+    SNA_state11 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 92 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 92 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			96 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+			has_country_flag = state7
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			96 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			96 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			96 = {
+		add_extra_state_shared_building_slots = 2
+		set_country_flag = state8
+			}
+		}
+	}
+
+    SNA_state12 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 92 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 92 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			96 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+			has_country_flag = state8
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			96 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			96 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			96 = {
+		add_extra_state_shared_building_slots = 4
+			}
+			set_country_flag = state36
+		}
+	}
+    
+    SNA_state13 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 94 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 94 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1
+			94 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+			
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			94 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			94 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			94 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state9
+		}
+	}
+    
+    SNA_state14 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 94 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 94 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			94 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+			has_country_flag = state9
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			94 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			94 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			94 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state10
+		}
+	}
+
+    SNA_state15 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 94 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 94 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			94 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+			has_country_flag = state10
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			94 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			94 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			94 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state37
+		}
+	}
+
+    SNA_state16 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 93 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 93 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1
+			93 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+			
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			93 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			93 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			93 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state11
+		}
+	}
+ 
+    SNA_state17 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 93 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 93 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			93 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		  has_country_flag = state11
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			93 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			93 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			93 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state12
+		}
+	}
+
+    SNA_state18 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 93 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 93 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			93 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		  has_country_flag = state12
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			93 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			93 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			93 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state38
+		}
+	}
+
+    SNA_state189 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 91 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 91 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			91 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		  
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			91 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			91 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			91 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state39
+		}
+	}
+
+    SNA_state19 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			90 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		  
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			90 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			90 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			90 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state13
+		}
+	}
+
+    SNA_state20 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			90 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		  has_country_flag = state13
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			90 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			90 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			90 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state20 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1
+			90 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		  has_country_flag = state13
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			90 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			90 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			90 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state40
+		}
+	}
+
+    SNA_state21 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 89 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 89 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1
+			89 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		  
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			89 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			89 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			89 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state14
+		}
+	}
+
+    SNA_state22 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 89 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 89 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			89 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   has_country_flag = state14
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			89 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			89 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			89 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		set_country_flag = state41
+		}
+	}
+
+    SNA_state23 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 224 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 224 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			224 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 224
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			224 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			224 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			224 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state15
+		}
+	}
+
+    SNA_state23 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 224 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 224 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			224 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 224
+		   has_country_flag = state15
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			224 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			224 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			224 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state16
+		}
+	}
+
+    SNA_state24 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 224 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 224 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			224 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 224
+		   has_country_flag = state16
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			224 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			224 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			224= {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state24 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 225 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 225 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			225 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 225
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			225 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			225 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			225 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state17
+		}
+	}
+
+    SNA_state25 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 225 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 225 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			225 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 225
+		   has_country_flag = state17
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			225 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			225 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			225 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state18
+		}
+	}
+
+    SNA_state26 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 225 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 225 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			225 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 225
+		   has_country_flag = state18
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			225 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			225 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			225 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state27 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 230 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 230 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			230 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 230
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			230 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			230 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			230 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state19
+		}
+	}
+
+    SNA_state28 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 230 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 230 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			230 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 230
+		   has_country_flag = state19
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			230 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			230 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			230 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state20
+		}
+	}
+
+    SNA_state29 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 230 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 230 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			230 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 230
+		   has_country_flag = state20
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			230 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			230 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			230 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state30 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 229 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 229 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			229 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 229
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			229 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			229 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			229 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state21
+		}
+	}
+
+    SNA_state31 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 229 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 229 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			229 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 229
+		   has_country_flag = state21
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			229 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			229 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			229 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state22
+		}
+	}
+
+    SNA_state32 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 229 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 229 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			229 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 229
+		   has_country_flag = state22
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			229 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			229 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			229 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state33 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 231 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 231 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			231 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 231
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			231 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			231 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			231 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state23
+		}
+	}
+
+    SNA_state34 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 231 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 231 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			231 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 231
+		   has_country_flag = state23
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			231 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			231 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			231 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state24
+		}
+	}
+
+    SNA_state34 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 231 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 231 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			231 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 231
+		   has_country_flag = state24
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			231 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			231 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			231 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state35 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 226 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 226 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			226 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 226
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			226 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			226 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			226 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state25
+		}
+	}
+
+    SNA_state35 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 226 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 226 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			226 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 226
+		   has_country_flag = state25
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			226 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			226 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			226 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state26
+		}
+	}
+
+    SNA_state36 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 226 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 226 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			226 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 226
+		   has_country_flag = state26
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			226 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			226 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			226 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state37 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 188 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 188 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			188 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 188
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			188 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			188 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			188 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state27
+		}
+	}
+
+    SNA_state38 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 188 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 188 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			188 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 188
+		   has_country_flag = state27
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			188 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			188 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			188 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state28
+		}
+	}
+
+    SNA_state39 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 188 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 188 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			188 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 188
+		   has_country_flag = state28
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			188 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			188 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			188 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state40 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 227 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 227 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			227 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 227
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			227 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			227 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			227 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state29
+		}
+	}
+
+    SNA_state41 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 227 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 227 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			227 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 227
+		   has_country_flag = state29
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			227 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			227 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			227 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state30
+		}
+	}
+
+    SNA_state42 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 227 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 227 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			227 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 227
+		   has_country_flag = state30
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			227 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			227 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			227 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state43 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 228 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 228 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction2
+			has_manpower > 500
+			industrial_complex > 1			
+			228 =  {
+		infrastructure > 0
+        }
+		}
+		visible = {
+		   owns_state = 228
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 20
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_1 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+			}
+			228 = {
+			add_resource = {
+				type = wood
+				amount = 1
+			}
+		}
+			228 = {
+			add_resource = {
+				type = grain
+				amount = 1
+				}
+			}
+			228 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		set_country_flag = state31
+		}
+	}
+
+    SNA_state44 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 228 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 228 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction3
+			has_manpower > 500
+			industrial_complex > 1			
+			228 =  {
+		infrastructure > 2
+        }
+		}
+		visible = {
+		   owns_state = 228
+		   has_country_flag = state31
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 40
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_2 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+			}
+			228 = {
+			add_resource = {
+				type = wood
+				amount = 2
+			}
+		}
+			228 = {
+			add_resource = {
+				type = grain
+				amount = 2
+				}
+			}
+			228 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		set_country_flag = state32
+		}
+	}
+
+    SNA_state45 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 228 
+					}
+				}
+			}
+		}
+		
+        cost = 20
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 228 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			has_tech = construction4
+			has_manpower > 500
+			industrial_complex > 1			
+			228 =  {
+		infrastructure > 4
+        }
+		}
+		visible = {
+		   owns_state = 228
+		   has_country_flag = state32
+		}
+
+		ai_hint_pp_cost = 20
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+		complete_effect = {  
+			add_manpower = -500
+		}
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SNA_state_modifier_3 }
+				add_dynamic_modifier = { modifier = SNA_state_modifier_4 }
+			}
+			228 = {
+			add_resource = {
+				type = wood
+				amount = 4
+			}
+		}
+			228 = {
+			add_resource = {
+				type = grain
+				amount = 4
+				}
+			}
+			228 = {
+		add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+    SNA_state46 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 2			
+		}
+		visible = {
+		   has_country_flag = state1
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			95 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+		}
+			95 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+
+    SNA_state47 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state2
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			consumer_goods_factor = 0.02
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			95 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+		}
+			95 = {
+		add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+
+    SNA_state48 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state2
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			consumer_goods_factor = 0.05
+			civilian_factory_use = 5
+	   	}
+
+		remove_effect = {
+			95 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+		    }
+             95 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+			95 = {
+		add_manpower = 5000
+			}
+		}
+	}
+
+    SNA_state49 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state33 
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 4
+	   	}
+
+		remove_effect = {
+			95 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+		    }        			
+			95 = {
+		add_building_construction = {
+				type = arms_factory
+				level = 1
+			}
+			}
+		95 = {
+		add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+
+    SNA_state50 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 95 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 95 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state33 
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+			consumer_goods_factor = 0.10
+	   	}
+
+		remove_effect = {
+			95 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+		    }
+             95 = {
+		add_extra_state_shared_building_slots = 2
+			}			
+			95 = {
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+			}
+		95 = {
+		add_manpower = 20000
+			}
+		}
+	}
+
+    SNA_state51 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 374 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 374 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state4
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			374 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+		    }
+            374 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+
+    SNA_state52 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 374 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 374 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state4
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+	   	}
+
+		remove_effect = {
+			374 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+		    }
+            374 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            374 = {
+		add_manpower = 5000
+			}			
+		}
+	}
+
+    SNA_state53 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 374 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 374 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state34
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+			consumer_goods_factor = 0.05
+	   	}
+
+		remove_effect = {
+			374 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+		    }
+            374 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            374 = {
+		add_building_construction = {
+				type = arms_factory
+				level = 1
+			}
+			}			
+		}
+	}
+
+    SNA_state54 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 374 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 374 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state34
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+			consumer_goods_factor = 0.10
+	   	}
+
+		remove_effect = {
+			374 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+		    }
+            374 = {
+		add_extra_state_shared_building_slots = 4
+			}
+            374 = {
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+			374 = {
+		add_manpower = 20000
+			}
+			}			
+		}
+	}
+
+     SNA_state55 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 96 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 96 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state6
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2
+	   	}
+
+		remove_effect = {
+			96 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+		    }
+            96 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+
+    SNA_state56 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 96 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 96 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state6
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+			consumer_goods_factor = 0.05
+	   	}
+
+		remove_effect = {
+			96 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+		    }
+			96 = {
+			add_manpower = 5000		
+		    }
+            96 = {
+		add_extra_state_shared_building_slots = 2
+			}			
+		}
+	}
+
+    SNA_state57 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 96 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 96 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state35
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 4
+	   	}
+
+		remove_effect = {
+			96 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+		    }
+			96 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+			}
+		    }
+            96 = {
+		add_extra_state_shared_building_slots = 2
+			}			
+		}
+	}
+
+    SNA_state58 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 96 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 96 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state35
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+			consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			96 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+		    }
+			96 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+		    }
+            96 = {
+		add_extra_state_shared_building_slots = 4
+			}
+            96 = {
+		add_manpower = 20000
+			}			
+		}
+	}
+
+    SNA_state59 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 92 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 92 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state8
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2			
+	   	}
+
+		remove_effect = {
+			92 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+		    }
+            92 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+
+    SNA_state60 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 92 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 92 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state8
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+            consumer_goods_factor = 0.05			
+	   	}
+
+		remove_effect = {
+			92 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+            92 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            92 = {
+		add_manpower = 5000
+			}			
+		}
+	}
+
+    SNA_state61 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 92 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 92 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state36
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 4	
+	   	}
+
+		remove_effect = {
+			92 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+			}
+			92 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+			}
+			}
+            92 = {
+		add_extra_state_shared_building_slots = 2
+			}			
+		}
+	}
+
+     SNA_state62 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 92 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 92 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state36
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+            consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			92 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+			92 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+			}
+            92 = {
+		add_extra_state_shared_building_slots = 4
+			}
+            92 = {
+		add_manpower = 20000
+			}			
+		}
+	}
+
+    SNA_state63 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 94 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 94 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state10
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2			
+	   	}
+
+		remove_effect = {
+			94 = {
+			add_resource = {
+				type = wood
+				amount = 15 
+			}
+			}
+            94 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+
+    SNA_state64 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 94 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 94 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state10
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+            consumer_goods_factor = 0.05			
+	   	}
+
+		remove_effect = {
+			94 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2 
+			}
+			}
+            94 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            94 = {
+		add_manpower = 5000
+			}			
+		}
+	}
+
+    SNA_state65 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 94 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 94 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state37
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 4		
+	   	}
+
+		remove_effect = {
+			94 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 1 
+			}
+			}
+			94 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1 
+			}
+            94 = {
+		add_extra_state_shared_building_slots = 2
+			}			
+		}
+	}
+
+    SNA_state66 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 94 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 94 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state37
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+            consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			94 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2 
+			}
+			}
+			94 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2 
+			}
+			}
+            94 = {
+		add_extra_state_shared_building_slots = 4
+			}
+            94 = {
+		add_manpower = 20000
+			}			
+		}
+	}
+
+    SNA_state67 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 93 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 93 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state12
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2			
+	   	}
+
+		remove_effect = {
+			93 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+			}
+            93 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+    SNA_state68 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 93 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 93 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state12
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+            consumer_goods_factor = 0.05			
+	   	}
+
+		remove_effect = {
+			93 = {
+			add_building_construction = {
+				type = industrial_complex
+				amount = 2
+			}
+			}
+            93 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            93 = {
+		add_manpower = 5000
+			}			
+		}
+	}
+    SNA_state69 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 93 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 93 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state38
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 4			
+	   	}
+
+		remove_effect = {
+			93 = {
+			add_building_construction = {
+				type = industrial_complex
+				amount = 1
+			}
+			}
+			93 = {
+			add_building_construction = {
+				type = arms_factory
+				amount = 1
+			}
+			}
+            93 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+
+    SNA_state70 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 93 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 93 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state38
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+            consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			93 = {
+			add_building_construction = {
+				type = industrial_complex
+				amount = 2
+			}
+			}
+			93 = {
+			add_building_construction = {
+				type = arms_factory
+				amount = 2
+			}
+			}
+            93 = {
+		add_extra_state_shared_building_slots = 4
+			}
+            93 = {
+		add_manpower = 20000
+			}			
+		}
+	}
+
+    SNA_state71 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 91 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 91 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2			
+	   	}
+
+		remove_effect = {
+			91 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+			}
+            91 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+
+    SNA_state72 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 91 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 91 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = 
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+            consumer_goods_factor = 0.05			
+	   	}
+
+		remove_effect = {
+			91 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+            91 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            91 = {
+		add_manpower = 5000
+			}			
+		}
+	}
+
+    SNA_state73 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 91 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 91 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state39
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 4			
+	   	}
+
+		remove_effect = {
+			91 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+			}
+			91 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+			}
+			}
+            91 = {
+		add_extra_state_shared_building_slots = 2
+			}			
+		}
+	}
+
+    SNA_state73 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 91 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 91 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state39
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+            consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			91 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+			91 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+			}
+            91 = {
+		add_extra_state_shared_building_slots = 4
+			}
+            91 = {
+		add_manpower = 20000
+			}			
+		}
+	}
+
+    SNA_state74 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state13
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2
+            			
+	   	}
+
+		remove_effect = {
+			90 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+			}
+            90 = {
+		add_extra_state_shared_building_slots = 1
+			}           			
+		}
+	}
+
+    SNA_state75 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state13
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+            consumer_goods_factor = 0.05			
+	   	}
+
+		remove_effect = {
+			90 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+            90 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            90 = {
+		add_manpower = 5000
+			}			
+		}
+	}
+
+    SNA_state76 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 3			
+		}
+		visible = {
+		   has_country_flag = state40
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 4			
+	   	}
+
+		remove_effect = {
+			90 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+			}
+			90 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+			}
+			}
+            90 = {
+		add_extra_state_shared_building_slots = 2
+			}			
+		}
+	}
+
+    SNA_state77 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state40
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+            consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			90 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+			90 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+			}
+            90 = {
+		add_extra_state_shared_building_slots = 4
+			}
+             90 = {
+		add_manpower = 20000
+			}			
+		}
+	}
+
+    SNA_state78 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 90 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 90 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state40
+		}
+
+		ai_hint_pp_cost = 150
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+            consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			90 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+			90 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+			}
+            90 = {
+		add_extra_state_shared_building_slots = 4
+			}
+             90 = {
+		add_manpower = 20000
+			}			
+		}
+	}
+
+    SNA_state79 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 89 
+					}
+				}
+			}
+		}
+		
+        cost = 50
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 89 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 1			
+		}
+		visible = {
+		   has_country_flag = state14
+		}
+
+		ai_hint_pp_cost = 50
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 2		
+	   	}
+
+		remove_effect = {
+			89 = {
+			add_resource = {
+				type = wood
+				amount = 15
+			}
+			}			 
+            89 = {
+		add_extra_state_shared_building_slots = 1
+			}			
+		}
+	}
+
+    SNA_state80 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 89 
+					}
+				}
+			}
+		}
+		
+        cost = 100
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 89 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 4			
+		}
+		visible = {
+		   has_country_flag = state41
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 5
+            consumer_goods_factor = 0.05			
+	   	}
+
+		remove_effect = {
+			89 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}			 
+            89 = {
+		add_extra_state_shared_building_slots = 2
+			}
+            89 = {
+		add_manpower = 5000
+			}			
+		}
+	}
+
+    SNA_state81 = { 		
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 89 
+					}
+				}
+			}
+		}
+		
+        cost = 150
+		
+		state_target = yes
+		
+		fire_only_once = yes
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 89 
+				}
+			}
+		}
+
+		target_root_trigger = {
+			
+		}
+
+		allowed = {
+			original_tag = SNA
+		}
+
+		available = {
+			industrial_complex > 5			
+		}
+		visible = {
+		   has_country_flag = state41
+		}
+
+		ai_hint_pp_cost = 100
+		
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 60
+		
+		cancel_if_not_visible = yes
+		
+        modifier = {
+			civilian_factory_use = 6
+            c consumer_goods_factor = 0.10			
+	   	}
+
+		remove_effect = {
+			89 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+			}
+			}
+            89 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+			}
+			}			
+            89 = {
+		add_extra_state_shared_building_slots = 4
+			}
+            89 = {
+		add_manpower = 20000
+			}			
+		}
+	}	
+}

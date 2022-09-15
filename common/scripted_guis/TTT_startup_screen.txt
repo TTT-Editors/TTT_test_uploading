@@ -1,0 +1,212 @@
+scripted_gui = {
+	
+	#一个按钮，覆盖掉原版成就的位置
+	TTT_show_welcome_button = {
+		
+		context_type = player_context
+		window_name = "show_welcome_button"
+		parent_window_token = top_bar
+
+		visible = {
+			is_ai = no
+		}
+
+		effects = {
+			show_button_click = {
+				set_variable = { TTT_Nation_Page = 1 }
+				set_variable = { TTT_Mod_Page = 1 }
+				#如果还没有TTT_opening_page变量则设定（打开欢迎界面，并且将国家和地区页面设置为1）
+				#如果有这个变量就删去（关闭欢迎界面）
+				if = {
+					limit = { has_variable = TTT_opening_page }
+					clear_variable = TTT_opening_page
+				}
+				else = {
+					set_variable = { TTT_opening_page = 1 }
+				}
+			}
+		}
+		
+		#Always visible
+	}
+	
+	TTT_welcome_screen_main = {
+		
+		context_type = player_context
+		window_name = "welcome_main"
+		#parent_window_token = top_bar
+
+		visible = {
+			has_variable = TTT_opening_page
+		}
+		
+		effects = {
+			TTT_welcome_screen_close_button_click = {
+				clear_variable = TTT_opening_page
+			}
+			
+			TTT_Nation_Page_Button_click = {
+				set_variable = { TTT_opening_page = 1 }
+				set_variable = { TTT_Nation_Page = 1 }
+			}
+			
+			TTT_Age_Page_Button_click = {
+				set_variable = { TTT_opening_page = 2 }
+			}
+			
+			TTT_Region_Page_Button_click = {
+				set_variable = { TTT_opening_page = 3 }
+			}
+			
+			TTT_Mod_Page_Button_click = {
+				set_variable = { TTT_opening_page = 4 }
+				set_variable = { TTT_Mod_Page = 1 }
+			}
+			
+			TTT_Next_Page_click = {
+				if = {
+					limit = {
+						#Nation Page
+						check_variable = { TTT_opening_page = 1 }
+					}
+					add_to_variable = { TTT_Nation_Page = 1 }
+				}
+				#if = {
+				#	limit = {
+				#		#Age Page
+				#		check_variable = { TTT_opening_page = 3 }
+				#	}
+				#	add_to_variable = { TTT_Age_Page = 1 }
+				#}
+				else_if = {
+					limit = {
+						#Mod Page
+						check_variable = { TTT_opening_page = 4 }
+					}
+					add_to_variable = { TTT_Mod_Page = 1 }
+				}
+			}
+			
+			TTT_Prev_Page_click = {
+				if = {
+					limit = {
+						#Nation Page
+						check_variable = { TTT_opening_page = 1 }
+					}
+					add_to_variable = { TTT_Nation_Page = -1 }
+				}
+				#if = {
+				#	limit = {
+				#		#Age Page
+				#		check_variable = { TTT_opening_page = 3 }
+				#	}
+				#	add_to_variable = { TTT_Age_Page = -1 }
+				#}
+				else_if = {
+					limit = {
+						#Mod Page
+						check_variable = { TTT_opening_page = 4 }
+					}
+					add_to_variable = { TTT_Mod_Page = -1 }
+				}
+			}
+		}
+		
+		triggers = {
+			#Icons to cover the buttons
+			TTT_Nation_Page_Cover_visible = {
+				check_variable = { TTT_opening_page = 1 }
+			}
+			TTT_Age_Page_Cover_visible = {
+				check_variable = { TTT_opening_page = 2 }
+			}
+			TTT_Region_Page_Cover_visible = {
+				check_variable = { TTT_opening_page = 3 }
+			}
+			TTT_Mod_Page_Cover_visible = {
+				check_variable = { TTT_opening_page = 4 }
+			}
+			
+			#Share, Like and subscribe us!
+			#TTT_QQ_button_visible = {
+			#	check_variable = { TTT_opening_page = 4 }
+			#}
+			#
+			#TTT_Bilibili_button_visible = {
+			#	check_variable = { TTT_opening_page = 4 }
+			#}
+			#
+			
+			#Prev and Next Page Buttons
+			TTT_Next_Page_visible = {
+				NOT = {
+					OR = {
+						check_variable = { TTT_opening_page = 2 }
+						check_variable = { TTT_opening_page = 3 }
+						AND = {
+							check_variable = { TTT_opening_page = 1 }
+							TTT_is_special_nation = no
+						}
+					}
+				}
+				OR = {
+					AND = {
+						check_variable = { TTT_opening_page = 4 }
+						check_variable = { TTT_Mod_Page < 5.5 }
+					}
+					AND = {
+						check_variable = { TTT_opening_page = 1 }
+						check_variable = { TTT_Nation_Page < 1.5 }
+						TTT_is_special_nation = yes
+					}
+				}
+			}
+			
+			TTT_Prev_Page_visible = {
+				NOT = {
+					OR = {
+						check_variable = { TTT_opening_page = 2 }
+						check_variable = { TTT_opening_page = 3 }
+						AND = {
+							check_variable = { TTT_opening_page = 1 }
+							TTT_is_special_nation = no
+						}
+					}
+				}
+				OR = {
+					AND = {
+						check_variable = { TTT_opening_page = 4 }
+						check_variable = { TTT_Mod_Page > 1.5 }
+					}
+					AND = {
+						check_variable = { TTT_opening_page = 1 }
+						check_variable = { TTT_Nation_Page > 1.5 }
+						#TTT_is_special_nation = yes
+					}
+				}
+			}
+		}
+		
+		#I have set pictures in advance.
+		properties = {
+			TTT_National_Picture = { image = "[ROOT_GetPicture]" }
+		}
+		
+		#Pictures:
+		#Picture_name ----- Picture_name_in_this_file(Picture_defined_name)
+		
+		#GFX_show_button_topbar ----- show_button
+		#GFX_TTT_on_startup_main ----- main_window
+		
+		#Location of these buttons should move towards upper left (4,4) to reach the true location.
+		#GFX_TTT_nation_cover ------ TTT_Nation_Page_Cover
+		#GFX_TTT_age_cover ------ TTT_Age_Page_Cover
+		#GFX_TTT_region_cover ----- TTT_Region_Page_Cover
+		#GFX_TTT_mod_cover ----- TTT_Mod_Page_Cover
+		
+		#Prev and Next Page Buttons
+		#Move towards upper left (6,6) to reach the true location
+		#GFX_TTT_prev_page_icon ----- TTT_Prev_Page
+		#GFX_TTT_next_page_icon ----- TTT_Next_Page
+	}
+}

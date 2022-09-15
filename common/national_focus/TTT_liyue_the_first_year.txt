@@ -1,0 +1,529 @@
+focus_tree = {
+	id = FocusTree_0
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = LYU
+		}
+	}
+	default = no
+	focus = {
+		id = the_year_of_1999	#新的一年
+		icon = GFX_goal_RTG_pingdeng_liyue
+		cost = 1
+		x = 10
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = what_we_do_good_last_year	#总结经验
+		icon = GFX_goal_RTG_yuanjian_keyanyuan
+		cost = 10
+		x = 9
+		y = 2
+		prerequisite = {
+			focus = the_year_of_1999
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = what_we_do_not_good_last_year	#吸取教训
+		icon = GFX_goal_RTG_qidi_minzhi
+		cost = 10
+		x = 11
+		y = 2
+		prerequisite = {
+			focus = the_year_of_1999
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = look_at_the_new_year	#展望新年
+		icon = GFX_goal_RTG_zhantaoxinjun
+		cost = 10
+		x = 10
+		y = 3
+		prerequisite = {
+			focus = what_we_do_good_last_year
+		}
+		prerequisite = {
+			focus = what_we_do_not_good_last_year
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = the_red_liyue	#人民的璃月
+		icon = GFX_goal_KQG_eco_51
+		cost = 15
+		x = 8
+		y = 4
+		prerequisite = {
+			focus = look_at_the_new_year
+		}
+		mutually_exclusive = {
+			focus = the_moderate_way
+		}
+		mutually_exclusive = {
+			focus = the_effective_way
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reformism
+				popularity = -0.05
+			}
+		}
+	}
+
+	focus = {
+		id = the_moderate_way	#和谐的国度
+		icon = GFX_goal_Ganyu1_hanfeng_Focus
+		cost = 15
+		x = 10
+		y = 4
+		prerequisite = {
+			focus = look_at_the_new_year
+		}
+		mutually_exclusive = {
+			focus = the_red_liyue
+		}
+		mutually_exclusive = {
+			focus = the_effective_way
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = reformism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = the_effective_way	#商业为先
+		icon = GFX_goal_RTG_jingji_jihua
+		cost = 15
+		x = 12
+		y = 4
+		prerequisite = {
+			focus = look_at_the_new_year
+		}
+		mutually_exclusive = {
+			focus = the_red_liyue
+		}
+		mutually_exclusive = {
+			focus = the_moderate_way
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = right_wing_anarchism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = liberalism
+				popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = happy_day_of_liyue	#海灯节
+		icon = GFX_goal_Ganyu1_shouhu_Focus
+		cost = 1
+		x = 12
+		y = 5
+		available = {
+			always = no
+		}
+		mutually_exclusive = {
+			focus = the_great_petition
+		}
+		prerequisite = {
+			focus = the_red_liyue
+			focus = the_moderate_way
+			focus = the_effective_way
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = reformism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = liberalism
+				popularity = -0.05
+			}
+		}
+	}
+
+	focus = {
+		id = the_great_petition	#海灯节请愿
+		icon = GFX_goal_Ganyu1_taiping_Focus
+		cost = 1
+		x = 9
+		y = 5
+		available = {
+			always = no
+		}
+		mutually_exclusive = {
+			focus = happy_day_of_liyue
+		}
+		prerequisite = {
+			focus = the_red_liyue
+			focus = the_moderate_way
+			focus = the_effective_way
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.1
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reformism
+				popularity = -0.05
+			}
+		}
+	}
+
+	focus = {
+		id = save_the_people	#解决问题
+		icon = GFX_goal_KQG_pol_45
+		cost = 15
+		x = 9
+		y = 6
+		prerequisite = {
+			focus = the_great_petition
+		}
+		completion_reward = {
+			add_political_power = -150
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = consider_human_governance	#考虑人治
+		icon = GFX_goal_KQG_pol_41
+		cost = 15
+		x = 9
+		y = 7
+		prerequisite = {
+			focus = save_the_people
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reformism
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = we_do_good_now	#我们做得不错
+		icon = GFX_goal_generic_proganda
+		cost = 15
+		x = 12
+		y = 6
+		prerequisite = {
+			focus = happy_day_of_liyue
+		}
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = nothing_to_change	#维持现状
+		icon = GFX_goal_Ganyu2_yuanfangliyue_Focus
+		cost = 15
+		x = 12
+		y = 7
+		prerequisite = {
+			focus = we_do_good_now
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = a_quick_turnaround	#快速转变
+		icon = GFX_goal_KQG_pol_37
+		cost = 15
+		x = 8
+		y = 8
+		prerequisite = {
+			focus = consider_human_governance
+		}
+		mutually_exclusive = {
+			focus = a_smooth_transition
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = authoritarianism
+				popularity = -0.1
+			}
+		}
+	}
+
+	focus = {
+		id = a_smooth_transition	#平稳过渡
+		icon = GFX_goal_Ganyu2_zizhiweiyuan_Focus
+		cost = 15
+		x = 10
+		y = 8
+		prerequisite = {
+			focus = consider_human_governance
+		}
+		mutually_exclusive = {
+			focus = a_quick_turnaround
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = reformism
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = authoritarianism
+				popularity = -0.05
+			}
+		}
+	}
+
+	focus = {
+		id = a_firm_hand	#引导之手
+		icon = GFX_goal_KQG_eco_1
+		cost = 15
+		x = 12
+		y = 8
+		prerequisite = {
+			focus = nothing_to_change
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.2
+			}
+		}
+	}
+
+	focus = {
+		id = drop_the_oracle	#请仙仪式
+		icon = GFX_goal_RexLapis
+		cost = 21
+		x = 10
+		y = 9
+		prerequisite = {
+			focus = a_quick_turnaround
+			focus = a_smooth_transition
+			focus = a_firm_hand
+		}
+		completion_reward = {
+			custom_effect_tooltip = drop_the_oracle_effect_tooltip
+			hidden_effect = {
+				country_event = {
+					id = liyue.1
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = limited_public_opinion	#舆论控制
+		cost = 21
+		x = -12
+        y = 0
+        icon = GFX_goal_LYU_1
+		offset = {
+		    x = 6
+		    y = 1
+            trigger = {
+				NOT = {
+			        has_country_leader = {
+					    character = LYU_morax
+					    ruling_only = yes
+				    }
+			    }
+            }
+        }
+		
+		allow_branch = {
+		    NOT = {
+			    has_country_leader = {
+					character = LYU_morax
+					ruling_only = yes
+				}
+			}
+		}
+	    
+		relative_position_id = the_year_of_1999
+
+		select_effect = {
+            hidden_effect = {
+				country_event = {
+					id = lyu_start.2
+					days = 20 
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = LYU_1
+		}
+	}
+	
+	focus = {
+		id = hold_qixing_congress	#召开七星会议
+		cost = 21
+		x = 0
+		y = 1
+		icon = GFX_goal_LYU_2
+        prerequisite = {
+			focus = limited_public_opinion
+		}
+		relative_position_id = limited_public_opinion
+		
+		select_effect = {
+            hidden_effect = {
+				country_event = {
+					id = lyu_start.3
+					days = 20 
+				}
+			}
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+			    idea = qixing_congress
+				days = 70 
+			}
+		add_political_power = 150	
+		}
+	}
+	
+	focus = {
+		id = increasingly_unstable_situation	#愈加动荡的局势
+		cost = 21
+		icon = GFX_goal_LYU_3
+		x = 0
+		y = 2
+        prerequisite = {
+			focus = hold_qixing_congress
+		}
+        relative_position_id = limited_public_opinion
+        
+		select_effect = {
+            hidden_effect = {
+				country_event = {
+					id = lyu_start.4
+					days = 20 
+				}
+			}
+		}
+
+		completion_reward = {
+			swap_ideas = {
+			add_idea = LYU_2
+			remove_idea = LYU_1
+		}
+		}
+	}
+	
+	focus = {
+		id = survive_together	#共渡难关
+		cost = 35
+		icon = GFX_goal_LYU_4
+		x = 0
+		y = 3
+        prerequisite = {
+			focus = increasingly_unstable_situation
+		}
+        relative_position_id = limited_public_opinion
+		
+		available = {
+		    has_stability > 0.7
+		    custom_trigger_tooltip = {
+			    tooltip = communism_liberalism_reformism_popularity_compare
+				check_variable = {
+				    var = party_popularity@communism
+					value = 30
+					compare = less_than_or_equals
+				}
+				check_variable = {
+				    var = party_popularity@communism
+					value = 50
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+				    var = party_popularity@liberalism
+					value = 30
+					compare = less_than_or_equals
+				}
+				check_variable = {
+				    var = party_popularity@liberalism
+					value = 50
+					compare = greater_than_or_equals
+				}
+			}
+		}
+        
+		select_effect = {
+            hidden_effect = {
+				country_event = {
+					id = lyu_start.5
+					days = 20 
+				}
+
+				country_event = {
+					id = lyu_start.6
+					days = 35 
+				}
+			}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = Liyue_crisis_solved
+		    clr_country_flag = Liyue_crisis
+			set_global_flag = avoid_Liyue_Civil_War
+		}
+	}
+}

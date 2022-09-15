@@ -1,0 +1,979 @@
+focus_tree = {
+	id = CHINPP0
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = NNG
+		}
+	}
+	default = no
+	focus = {
+		id = 全面扩军
+		icon = GFX_goal_generic_allies_build_infantry
+		cost = 7.00
+		x = 14
+		y = 0
+		completion_reward = {
+			load_oob = "NGG"
+        } 
+	}
+	focus = {
+		id = 归离原防线
+		icon = GFX_goal_generic_construct_military
+		cost = 7.00
+		mutually_exclusive = {
+			focus = 瑶光滩前沿阵地
+		}
+		x = 2
+		y = 2
+
+	}
+	focus = {
+		id = 瑶光滩前沿阵地
+		icon = GFX_goal_generic_construct_military
+		cost = 7.00
+		mutually_exclusive = {
+			focus = 归离原防线
+		}
+		x = 6
+		y = 2
+
+	}
+	focus = {
+		id = 渗透南十字船队
+		icon = GFX_goal_unknown
+		cost = 7.00
+		x = 8
+		y = 12
+			available = {
+					has_completed_focus = 凝光的方案
+				}
+
+	}
+	focus = {
+		id = 软禁行秋
+		icon = GFX_goal_unknown
+		cost = 7.00
+		x = 2
+		y = 12
+			available = {
+					has_completed_focus = 凝光的方案
+				}
+
+	}
+	focus = {
+		id = 分裂的联盟
+		icon = GFX_goal_unknown
+		cost = 7.00
+		x = 9
+		y = 16
+			available = {
+					has_completed_focus = 群玉阁战争会议
+					NOT = {
+							has_completed_focus = 北斗的方案
+						}
+				}
+
+	}
+	focus = {
+		id = 孤云阁兵变
+		icon = GFX_goal_unknown
+		cost = 7.00
+		x = 5
+		y = 21
+		prerequisite = {
+			focus = 完成部署
+		}
+		completion_reward = {
+		NNG = { country_event = { id = ningguang.3 } }
+				}
+	}
+	focus = {
+		id = 人工通胀
+		icon = GFX_goal_generic_trade
+		cost = 7.00
+		prerequisite = {
+			focus = 归离原防线
+			focus = 瑶光滩前沿阵地
+			focus = 归离原防线
+		}
+		x = 2
+		y = 3
+		completion_reward = {
+			NNG = { add_timed_idea = {idea = NINGGUANGF days = 720 }}
+			BDG = { add_timed_idea = {idea = NINGGUANGF days = 720 }}
+			XQG = { add_timed_idea = {idea = NINGGUANGF days = 720 }}
+			SHG = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+			XRG = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+			KQG = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+			ZDG = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+			HTG = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+			ANG = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+			LYU = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+			RTG = { add_timed_idea = {idea = NINGGUANGG days = 365 }}
+		}
+	}
+	focus = {
+		id = 凝光的自由非我所愿
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 分裂的联盟
+		}
+		mutually_exclusive = {
+			focus = 深化改革
+		}
+		x = 5
+		y = 18
+			available = {
+					NOT = {
+							has_completed_focus = 军队统合
+						}
+				}
+
+	}
+	focus = {
+		id = 团结士兵
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 凝光的自由非我所愿
+		}
+		x = 3
+		y = 19
+
+	}
+	focus = {
+		id = 扩建天权星情报机构
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 归离原防线
+			focus = 瑶光滩前沿阵地
+		}
+		x = 6
+		y = 3
+		completion_reward = {
+add_ideas = NINGGUANGH
+				}
+	}
+	focus = {
+		id = 团结农民
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 凝光的自由非我所愿
+		}
+		x = 7
+		y = 19
+
+	}
+	focus = {
+		id = 鼓励民族资本企业
+		icon = GFX_goal_generic_consumer_goods
+		cost = 7.00
+		prerequisite = {
+			focus = 全面扩军
+		}
+		x = 11
+		y = 1
+		completion_reward = {
+add_ideas = NINGGUANGB
+                               } 
+	}
+	focus = {
+		id = 军工私人定制
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 7.00
+		prerequisite = {
+			focus = 鼓励民族资本企业
+		}
+		x = 8
+		y = 2
+		completion_reward = {
+add_ideas = NINGGUANGD
+					126 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = arms_factory
+									level = 1
+									instant_build = yes
+								}
+						}
+					145 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = arms_factory
+									level = 1
+									instant_build = yes
+								}
+						}
+                               } 
+	}
+	focus = {
+		id = 民营国企外包政策
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 7.00
+		prerequisite = {
+			focus = 鼓励民族资本企业
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+add_ideas = NINGGUANGC
+					126 = {
+							add_extra_state_shared_building_slots = 2
+							add_building_construction = {
+									type = industrial_complex
+									level = 2
+									instant_build = yes
+								}
+						}
+					145 = {
+							add_extra_state_shared_building_slots = 2
+							add_building_construction = {
+									type = industrial_complex
+									level = 2
+									instant_build = yes
+								}
+						}
+                               } 
+	}
+	focus = {
+		id = 深化改革
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 分裂的联盟
+		}
+		mutually_exclusive = {
+			focus = 凝光的自由非我所愿
+		}
+		x = 13
+		y = 18
+
+	}
+	focus = {
+		id = 围剿南归离原游击队
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 深化改革
+		}
+		x = 11
+		y = 19
+
+	}
+	focus = {
+		id = 镇压行秋派残余
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 深化改革
+		}
+		x = 13
+		y = 19
+
+	}
+	focus = {
+		id = 深入勘探孤云阁
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 深化改革
+		}
+		x = 15
+		y = 19
+
+	}
+	focus = {
+		id = 察觉风声
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 围剿南归离原游击队
+		}
+		prerequisite = {
+			focus = 镇压行秋派残余
+		}
+		prerequisite = {
+			focus = 深入勘探孤云阁
+		}
+		x = 13
+		y = 20
+
+	}
+	focus = {
+		id = 自愿加入军队
+		icon = GFX_goal_generic_air_doctrine
+		cost = 7.00
+		prerequisite = {
+			focus = 全面扩军
+		}
+		x = 14
+		y = 1
+		completion_reward = {
+add_ideas = NINGGUANGA
+                               } 
+	}
+	focus = {
+		id = 招募生产队
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 7.00
+		prerequisite = {
+			focus = 自愿加入军队
+		}
+		x = 14
+		y = 2
+			completion_reward = {
+					129 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = arms_factory
+									level = 1
+									instant_build = yes
+								}
+						}
+					148 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = arms_factory
+									level = 1
+									instant_build = yes
+								}
+						}
+					126 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = arms_factory
+									level = 1
+									instant_build = yes
+								}
+						}
+				}
+	}
+	focus = {
+		id = 人民企业家
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 7.00
+		prerequisite = {
+			focus = 全面扩军
+		}
+		x = 17
+		y = 1
+		completion_reward = {
+add_ideas = NINGGUANGE
+				}
+	}
+	focus = {
+		id = 新科研体制
+		icon = GFX_focus_research
+		cost = 7.00
+		prerequisite = {
+			focus = 人民企业家
+		}
+		x = 17
+		y = 2
+		completion_reward = {
+					add_research_slot = 2
+				}
+	}
+	focus = {
+		id = 扩大对外贸易
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 7.00
+		prerequisite = {
+			focus = 人民企业家
+		}
+		x = 19
+		y = 2
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			add_opinion_modifier = {
+				target = RIT
+				modifier = 50
+			} 
+			add_opinion_modifier = {
+				target = MOT
+				modifier = 50
+			} 
+			add_opinion_modifier = {
+				target = DSC
+				modifier = 50
+			} 
+		}
+	}
+	focus = {
+		id = 准备齐全
+		icon = GFX_goal_generic_secret_weapon
+		cost = 7.00
+		prerequisite = {
+			focus = 新科研体制
+		}
+		prerequisite = {
+			focus = 扩大对外贸易
+		}
+		prerequisite = {
+			focus = 招募生产队
+		}
+		prerequisite = {
+			focus = 民营国企外包政策
+		}
+		prerequisite = {
+			focus = 军工私人定制
+		}
+		x = 14
+		y = 3
+		completion_reward = {
+			add_war_support = 1
+		}
+	}
+	focus = {
+		id = 群玉阁战争会议
+		icon = GFX_goal_generic_position_armies
+		cost = 5.00
+		prerequisite = {
+			focus = 准备齐全
+		}
+		x = 14
+		y = 6
+		completion_reward = {
+army_experience = 200
+				}
+	}
+	focus = {
+		id = 北斗的方案
+		icon = GFX_goal_unknown
+		cost = 2.00
+		prerequisite = {
+			focus = 群玉阁战争会议
+		}
+		mutually_exclusive = {
+			focus = 凝光的方案
+		}
+		x = 31
+		y = 8
+			available = {
+					NOT = {
+							has_completed_focus = 凝光的自由非我所愿
+						}
+				}
+
+	}
+	focus = {
+		id = 凝光的方案
+		icon = GFX_goal_unknown
+		cost = 2.00
+		prerequisite = {
+			focus = 群玉阁战争会议
+		}
+		mutually_exclusive = {
+			focus = 北斗的方案
+		}
+		x = 5
+		y = 8
+			available = {
+					NOT = {
+							has_completed_focus = 凝光的自由非我所愿
+						}
+				}
+		completion_reward = {
+add_popularity = { ideology = liberalism  popularity = 0.20}
+				}
+	}
+	focus = {
+		id = 建立民团
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 凝光的方案
+		}
+		x = 2
+		y = 9
+
+	}
+	focus = {
+		id = 高层联席会议
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 建立民团
+		}
+		x = 0
+		y = 10
+		completion_reward = {
+add_political_power = 200
+army_experience = 100
+navy_experience = 100
+add_popularity = { ideology = liberalism  popularity = 0.10}
+                               } 
+	}
+	focus = {
+		id = 重组层次结构
+		icon = GFX_goal_unknown
+		cost = 3.00
+		prerequisite = {
+			focus = 建立民团
+		}
+		x = 4
+		y = 10
+		completion_reward = {
+add_ideas = NINGGUANGK
+				}
+	}
+	focus = {
+		id = 增加军费开支
+		icon = GFX_goal_unknown
+		cost = 3.00
+		prerequisite = {
+			focus = 建立民团
+		}
+		x = 6
+		y = 10
+		completion_reward = {
+add_ideas = NINGGUANGN
+				}
+	}
+	focus = {
+		id = 晨曦酒庄的订单
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 凝光的方案
+		}
+		x = 8
+		y = 9
+
+	}
+	focus = {
+		id = 海祇岛物资供应协定
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 凝光的方案
+		}
+		x = 12
+		y = 9
+
+	}
+	focus = {
+		id = 国防承包商
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 晨曦酒庄的订单
+		}
+		prerequisite = {
+			focus = 海祇岛物资供应协定
+		}
+		x = 10
+		y = 10
+		completion_reward = {
+add_ideas = NINGGUANGL
+				}
+	}
+	focus = {
+		id = 分散军队指挥权
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 北斗的方案
+		}
+		x = 25
+		y = 10
+
+	}
+	focus = {
+		id = 船员上岸作战
+		icon = GFX_goal_unknown
+		cost = 3.00
+		prerequisite = {
+			focus = 北斗的方案
+		}
+		x = 28
+		y = 10
+
+	}
+	focus = {
+		id = 改革海军陆战队
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 北斗的方案
+		}
+		x = 31
+		y = 10
+
+	}
+	focus = {
+		id = 秘密转移资金
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 北斗的方案
+		}
+		x = 34
+		y = 10
+
+	}
+	focus = {
+		id = 建立稻妻秘密舰队
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 秘密转移资金
+		}
+		prerequisite = {
+			focus = 改革海军陆战队
+		}
+		x = 31
+		y = 11
+
+	}
+	focus = {
+		id = 和勘定奉行的秘密交易
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 秘密转移资金
+		}
+		x = 34
+		y = 11
+
+	}
+	focus = {
+		id = 建立最高指挥部
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 建立民团
+		}
+		x = 2
+		y = 10
+		completion_reward = {
+set_autonomy = {
+	target = XQG
+	autonomous_state = autonomy_army
+}
+set_autonomy = {
+	target = BDG
+	autonomous_state = autonomy_army
+}
+XQG = {add_ideas = NINGGUANGI}
+BDG = {add_ideas = NINGGUANGI}
+				}
+	}
+	focus = {
+		id = 登陆作战演习
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 船员上岸作战
+		}
+		prerequisite = {
+			focus = 改革海军陆战队
+		}
+		x = 28
+		y = 11
+
+	}
+	focus = {
+		id = 奇袭璃月港
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 登陆作战演习
+		}
+		x = 28
+		y = 12
+
+	}
+	focus = {
+		id = 背后的目光
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 奇袭璃月港
+		}
+		prerequisite = {
+			focus = 要求稻妻政府秘密援助
+		}
+		x = 31
+		y = 13
+
+	}
+	focus = {
+		id = 企业自卫队法案
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 背后的目光
+		}
+		x = 31
+		y = 14
+
+	}
+	focus = {
+		id = 秘密联系大资本家
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 企业自卫队法案
+		}
+		x = 31
+		y = 15
+
+	}
+	focus = {
+		id = 刺杀北斗
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 渗透南十字船队
+		}
+		mutually_exclusive = {
+			focus = 出让利益
+		}
+		x = 10
+		y = 13
+
+	}
+	focus = {
+		id = 归离原军事基地
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 软禁行秋
+		}
+		x = 0
+		y = 13
+
+	}
+	focus = {
+		id = 加固城防工事
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 软禁行秋
+		}
+		x = 4
+		y = 13
+
+	}
+	focus = {
+		id = 瑶光滩船厂
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 刺杀北斗
+			focus = 出让利益
+		}
+		x = 8
+		y = 14
+		completion_reward = {
+add_ideas = NINGGUANGR
+				}
+	}
+	focus = {
+		id = 南部大攻势
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 归离原军事基地
+			focus = 加固城防工事
+		}
+		x = 2
+		y = 14
+		completion_reward = {
+add_ideas = NINGGUANGS
+				}
+	}
+	focus = {
+		id = 撤换南十字船员
+		icon = GFX_goal_unknown
+		cost = 3.00
+		prerequisite = {
+			focus = 刺杀北斗
+		}
+		x = 10
+		y = 14
+
+	}
+	focus = {
+		id = 军队统合
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 建立最高指挥部
+		}
+		x = 2
+		y = 11
+		completion_reward = {
+		annex_country = { target = BDG transfer_troops = yes } 
+		annex_country = { target = XQG transfer_troops = yes } 
+add_popularity = { ideology = reformism  popularity = 0.20}
+add_popularity = { ideology = liberalism  popularity = 0.20}
+				}
+	}
+	focus = {
+		id = 建立军官培训基地
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 国防承包商
+		}
+		x = 10
+		y = 11
+		completion_reward = {
+add_ideas = NINGGUANGM
+				}
+	}
+	focus = {
+		id = 国防兵工厂
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 增加军费开支
+		}
+		x = 6
+		y = 11
+		completion_reward = {
+add_ideas = NINGGUANGO
+				}
+	}
+	focus = {
+		id = 归离原工业基地
+		icon = GFX_goal_unknown
+		cost = 5.00
+		prerequisite = {
+			focus = 软禁行秋
+		}
+		x = 2
+		y = 13
+
+	}
+	focus = {
+		id = 完善杀伤链
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 重组层次结构
+		}
+		x = 4
+		y = 11
+		completion_reward = {
+add_ideas = NINGGUANGJ
+				}
+	}
+	focus = {
+		id = 无差别轰炸
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 建立军官培训基地
+		}
+		x = 10
+		y = 12
+		completion_reward = {
+add_ideas = NINGGUANGP
+				}
+	}
+	focus = {
+		id = 瑶光滩军事化
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 分散军队指挥权
+		}
+		x = 25
+		y = 11
+
+	}
+	focus = {
+		id = 南十字海军船坞
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 瑶光滩军事化
+		}
+		x = 25
+		y = 12
+
+	}
+	focus = {
+		id = 还璃月以自由
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 秘密联系大资本家
+		}
+		x = 31
+		y = 16
+		completion_reward = {
+		NNG = { country_event = { id = ningguang.2 } }
+				}
+	}
+	focus = {
+		id = 出让利益
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 渗透南十字船队
+		}
+		mutually_exclusive = {
+			focus = 刺杀北斗
+		}
+		x = 6
+		y = 13
+		completion_reward = {
+add_ideas = NINGGUANGQ
+				}
+	}
+	focus = {
+		id = 成立孤云阁舰队
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 出让利益
+		}
+		x = 6
+		y = 14
+
+	}
+	focus = {
+		id = 团结工人
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 凝光的自由非我所愿
+		}
+		x = 5
+		y = 19
+
+	}
+	focus = {
+		id = 完成部署
+		icon = GFX_goal_unknown
+		cost = 7.00
+		prerequisite = {
+			focus = 团结士兵
+		}
+		prerequisite = {
+			focus = 团结工人
+		}
+		prerequisite = {
+			focus = 团结农民
+		}
+		x = 5
+		y = 20
+
+	}
+}

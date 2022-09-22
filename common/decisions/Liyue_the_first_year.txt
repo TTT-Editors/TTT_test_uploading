@@ -2,7 +2,7 @@ Liyue_political_crisis = {
     liyue_civilwar_is_coming = {
 	    icon = GFX_decision_hol_draw_up_staff_plans
         allowed = {
-            tag = LYU 
+            allowed = { always = no }
         }
         activation = { 
             NOT = { 
@@ -11,10 +11,22 @@ Liyue_political_crisis = {
                     ruling_only = yes
                 }
             }
+			has_country_flag = Liyue_crisis
+			NOT = { has_global_flag = Liyue_Civil_War }
+			NOT = { has_global_flag = avoid_Liyue_Civil_War }
         }
-        cancel_trigger = {
-			NOT = { has_country_flag = Liyue_crisis }
+		visible = {
+            NOT = { 
+                has_country_leader = {
+                    character = LYU_morax
+                    ruling_only = yes
+                }
+            }
+			has_country_flag = Liyue_crisis
+			NOT = { has_global_flag = Liyue_Civil_War }
+			NOT = { has_global_flag = avoid_Liyue_Civil_War }
 		}
+		cancel_if_not_visible = yes
         is_good = no
         days_mission_timeout = 180
         available = {

@@ -1,6 +1,8 @@
 #I'm so sorry that I found no way in making it perfect.
 #If you have better ideas ,please improve it.
 #BUT IF YOU DON'T HAVE BETTER IDEAS, DON'T CHANGE COMMON CODES!!!!!!
+#ROOT = defeated country
+#FROM = victor
 
 on_actions = {
 	on_capitulation = {
@@ -25,6 +27,15 @@ on_actions = {
                     }
 				}
 				news_event = { id = global_news.4 days = 0 }
+				random_country = {
+					limit = {
+						controls_state = 147
+					}
+					country_event = { id = liyue_civil_war.19 days = 60 }
+				}
+				FROM = {
+					country_event = { id = liyue_civil_war.20 days = 90 }
+				}
 				every_state = {	
 					limit = { PREV.owner = { is_ally_with = ROOT } }						
 					every_country = {

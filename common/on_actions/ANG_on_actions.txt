@@ -1,0 +1,75 @@
+on_actions = {
+	on_monthly_ANG = { #每月粮食计算以及饥荒民族精神替换检测
+		effect = {
+			if = {
+				limit = { 
+					tag = ANG 
+				}
+				if = {
+					limit = { 
+						OR = {
+							has_idea = ANG_idea_0
+							has_idea = ANG_idea_0_1
+						}
+					}
+					set_temp_variable = {
+						var = t1
+						value = ANG_shiwushengchan
+					}
+					set_temp_variable = {
+						var = t2
+						value = ANG_shiwuxiaohao
+					}
+					subtract_from_temp_variable = { t1 = t2 }
+					add_to_variable = {
+						var = ANG_shiwuchubei
+						value = t1
+					}	
+					clamp_variable = {
+						var = ANG_shiwuchubei
+						min = 0
+						max = 2000
+					}
+				}
+				
+				if = {
+					limit = {
+						check_variable = {
+							var = ANG_shiwuchubei
+							value = 0 
+							compare = less_than_or_equals
+						}
+						NOT = {
+							has_idea = ANG_idea_0_1
+						}
+						has_idea = ANG_idea_0
+					}
+					swap_ideas = {
+						remove_idea = ANG_idea_0
+						add_idea = ANG_idea_0_1
+					}
+					set_country_flag = ANG_jihuangjiyi
+				}
+				if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								var = ANG_shiwuchubei
+								value = 0 
+								compare = less_than_or_equals
+							}
+						}
+						NOT = {
+							has_idea = ANG_idea_0
+						}
+						has_idea = ANG_idea_0_1
+					}
+					swap_ideas = {
+						remove_idea = ANG_idea_0_1
+						add_idea = ANG_idea_0
+					}
+				}
+			}
+		}
+	}
+}

@@ -12,11 +12,11 @@ focus_tree = {
 		id = ANG_1_0   #饥荒问题
 		icon = GFX_goal_unknown
 		cost = 21.00
-		x = 8
-		y = 0
 		completion_reward = {
  
 		}
+		x = 7
+		y = 0
 	}
 	focus = {
 		id = ANG_2_0  #组建公社
@@ -33,7 +33,7 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 100
 		}
-		x = 2
+		x = 20
 		y = 0
 
 	}
@@ -69,13 +69,17 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = ANG_kaiqizousi
 			set_country_flag = ANG_kaiqizousi_on
+			set_variable = {
+				var = ANG_heishi_level
+				value = 1
+			}
 		}
-		x = 7
+		x = 6
 		y = 1
 
 	}
 	focus = {
-		id = ANG_1_2  #矿物换食物
+		id = ANG_1_2  #矿物交易
 		icon = GFX_goal_unknown
 		cost = 21.00
 		prerequisite = {
@@ -91,7 +95,7 @@ focus_tree = {
 				value = 100
 			}
 		}
-		x = 7
+		x = 6
 		y = 2
 
 	}
@@ -103,16 +107,15 @@ focus_tree = {
 			focus = ANG_1_1
 		}
 		completion_reward = {
-			custom_effect_tooltip = ANG_zousikuangwu
 			custom_effect_tooltip = ANG_huodeliangshi
 			set_country_flag = ANG_zousikuangwu_on
 			add_to_variable = {
 				var = ANG_shiwuchubei
 				value = 100
 			}
-			add_ideas = limited_exports
+			ANG_heishi_level_up = yes
 		}
-		x = 5
+		x = 4
 		y = 2
 
 	}
@@ -143,7 +146,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = ANG_shengchanzengjia
 		}
-		x = 9
+		x = 8
 		y = 1
 
 	}
@@ -161,7 +164,7 @@ focus_tree = {
 				value = 75
 			}
 		}
-		x = 9
+		x = 8
 		y = 2
 
 	}
@@ -179,7 +182,7 @@ focus_tree = {
 				value = 50
 			}
 		}
-		x = 11
+		x = 10
 		y = 2
 
 	}
@@ -211,65 +214,158 @@ focus_tree = {
 			}
 				
 		}
-		x = 8
+		x = 7
 		y = 3
 
 	}
 	focus = {
-		id = ANG_1_8
+		id = ANG_1_8 #修复废弃工厂
 		icon = GFX_goal_unknown
 		cost = 21.00
 		prerequisite = {
 			focus = ANG_1_5
 		}
-		complete_effect = {
-
+		completion_reward = {
+			170 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes 
+				}
+			}
+			211 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
 		}
-		x = 8
+		x = 7
 		y = 4
 	}
 	focus = {
-		id = ANG_2_1 #推选公社代表
+		id = ANG_1_9 #连接各公社
+		icon = GFX_goal_unknown
+		cost = 21.00
+		prerequisite = {
+			focus = ANG_1_5
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = ANG
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 
+				}
+			}
+		}
+		x = 5
+		y = 4
+	}
+	focus = {
+		id = ANG_1_10 #维持矿山运作
+		icon = GFX_goal_unknown
+		cost = 21.00
+		prerequisite = {
+			focus = ANG_1_5
+		}
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_owned_and_controlled_by = ANG
+				}
+				add_extra_state_shared_building_slots = 1
+				add_resource = {
+					type = steel
+					amount = 38
+				}
+			}
+		}
+		x = 9
+		y = 4
+	}
+	focus = {
+		id = ANG_1_11 #统计工业数据
+		icon = GFX_goal_unknown
+		cost = 21.00
+		prerequisite = {
+			focus = ANG_1_9
+		}
+		prerequisite = {
+			focus = ANG_1_8
+		}
+		prerequisite = {
+			focus = ANG_1_10
+		}
+		completion_reward = {
+			
+		}
+		x = 7
+		y = 5
+	}
+	focus = {
+		id = ANG_1_12 #恢复库存火车
+		icon = GFX_goal_unknown
+		cost = 21.00
+		prerequisite = {
+			focus = ANG_1_10
+		}
+		prerequisite = {
+			focus = ANG_1_8
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 10
+				producer = LYU
+			}
+		}
+		x = 9
+		y = 5
+	}
+	focus = {
+		id = ANG_2_1 #成立公社代表大会
 		icon = GFX_goal_unknown
 		cost = 21.00
 		prerequisite = {
 			focus = ANG_2_3
-		}
-		mutually_exclusive = {
-			focus = ANG_2_2
 		}
 		completion_reward = {
 			add_ideas = ANG_idea_2_0
 		}
-		x = 1
+		x = 19
 		y = 2
 
 	}
 	focus = {
-		id = ANG_2_2 #军事委员会主导
+		id = ANG_2_2 #成立黑军委员会
 		icon = GFX_goal_unknown
 		cost = 21.00
 		prerequisite = {
 			focus = ANG_2_3
 		}
-		mutually_exclusive = {
-			focus = ANG_2_1
-		}
 		completion_reward = {
 			add_ideas = ANG_idea_2_1
 		}
-		x = 3
+		x = 21
 		y = 2
 
 	}
 	focus = {
-		id = ANG_2_3 #公社代表大会
+		id = ANG_2_3 #公社代表
 		icon = GFX_goal_unknown
 		cost = 21.00
 		prerequisite = {
 			focus = ANG_2_0
 		}
-		x = 2
+		x = 20
 		y = 1
 
 	}
@@ -281,7 +377,7 @@ focus_tree = {
 			focus = ANG_2_1
 			focus = ANG_2_2
 		}
-		x = 2
+		x = 20
 		y = 3
 
 	}
@@ -391,13 +487,13 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 21.00
 		prerequisite = {
-			focus = ANG_3_4
+			focus = ANG_3_2
 		}
 		completion_reward = {
 			add_ideas = ANG_idea_3_0
 		}
-		x = 13
-		y = 4
+		x = 12
+		y = 3
 
 	}
 	focus = {
@@ -408,10 +504,68 @@ focus_tree = {
 			focus = ANG_3_4
 		}
 		completion_reward = {
-			add_ideas = ANG_idea_3_0
+			
 		}
-		x = 15
+		x = 14
 		y = 4
-
 	}
+	focus = {
+		id = ANG_3_7 #先发制人
+		icon = GFX_goal_unknown
+		cost = 21.00
+		prerequisite = {
+			focus = ANG_3_6
+		}
+		mutually_exclusive = {
+			focus = ANG_3_8
+		}
+		completion_reward = {
+			
+		}
+		x = 12
+		y = 5
+	}
+	focus = {
+		id = ANG_3_8 #坐山观虎斗
+		icon = GFX_goal_unknown
+		cost = 21.00
+		prerequisite = {
+			focus = ANG_3_6
+		}
+		mutually_exclusive = {
+			focus = ANG_3_7
+		}
+		completion_reward = {
+			
+		}
+		x = 16
+		y = 5
+	}
+	focus = {
+		id = ANG_3_9 #煽动无执政主义者
+		icon = GFX_goal_unknown
+		cost = 21.00
+		prerequisite = {
+			focus = ANG_3_7
+		}
+		completion_reward = {
+			
+		}
+		x = 12
+		y = 6
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -23,7 +23,7 @@ ANG_zousi = {
 			base = 100
 		}
 		available = {
-		
+			ANG_check_heishi_level_1 = yes
 		}
 		visible = {
 			OR = {
@@ -52,7 +52,7 @@ ANG_zousi = {
 			base = 100
 		}
 		available = {
-		
+			ANG_check_heishi_level_2 = yes
 		}
 		visible = {
 			OR = {
@@ -88,13 +88,13 @@ ANG_zousi = {
 			base = 100
 		}
 		available = {
-			
+			ANG_check_heishi_level_1 = yes
 		}
 		visible = {
 			has_country_flag = ANG_zousikuangwu_on
 		}
 		complete_effect = {
-			custom_effect_tooltip = ANG_kuangwuchubei_jianshao_shaoliang
+			custom_effect_tooltip = ANG_kuangwuchubei_jianshao_200
 			ANG_kaungwu_jianshao_200 = yes
 		}
 		remove_effect = { 
@@ -120,13 +120,13 @@ ANG_zousi = {
 			base = 100
 		}
 		available = {
-			
+			ANG_check_heishi_level_2 = yes
 		}
 		visible = {
 			has_country_flag = ANG_zousikuangwu_on
 		}
 		complete_effect = {
-			custom_effect_tooltip = ANG_kuangwuchubei_jianshao_zhongliang
+			custom_effect_tooltip = ANG_kuangwuchubei_jianshao_600
 			ANG_kaungwu_jianshao_600 = yes
 		}
 		remove_effect = { 
@@ -152,19 +152,51 @@ ANG_zousi = {
 			base = 100
 		}
 		available = {
-			
+			ANG_check_heishi_level_3 = yes
 		}
 		visible = {
 			has_country_flag = ANG_zousikuangwu_on
 		}
 		complete_effect = {
-			custom_effect_tooltip = ANG_kuangwuchubei_jianshao_daliang
+			custom_effect_tooltip = ANG_kuangwuchubei_jianshao_1500
 			ANG_kaungwu_jianshao_1500 = yes
 		}
 		remove_effect = { 
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = 1000
+				producer = LYU
+			}
+		}
+	}
+	huopao_shaoliang_zousi_kuangwu = { #购买少量火炮
+		custom_cost_trigger = {
+			check_variable = {
+				var = ANG_kuangwuchubei
+				value = 1000
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = ANG_kuangwuchubei_1000
+		days_re_enable = 60
+		days_remove = 15 
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			ANG_check_heishi_level_3 = yes
+		}
+		visible = {
+			has_country_flag = ANG_zousikuangwu_on
+		}
+		complete_effect = {
+			custom_effect_tooltip = ANG_kuangwuchubei_jianshao_1000
+			ANG_kaungwu_jianshao_1000 = yes
+		}
+		remove_effect = { 
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 250
 				producer = LYU
 			}
 		}
@@ -184,7 +216,7 @@ ANG_zousi = {
 			base = 100
 		}
 		available = {
-
+			ANG_check_heishi_level_5 = yes
 		}
 		visible = {
 			check_variable = {

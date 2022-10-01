@@ -1,0 +1,39 @@
+# Default Logic behaviour that the AI will fallback on if no other fits the bill
+# Should just be "good enough" to make sure the AI acts smart in the war
+# Written by Henrik "Groogy" Hansson
+
+#Adjustments
+#Default AI (ie neutral AI) will act like a mix between democratic and fascist, but in general way more conservative and mostly interested in obtaining cores and the status quo. If they have enough warscore, they will puppet/liberate neighbors as well.
+#Neutral AI in general do not directly annex other nations.
+#The plan is to eventually make individualized AI for every country in the game.
+
+# Temp variables
+# Old actions will be stored as temp variables
+# For Winners:
+#	taken_states@TAG: an array where each element contains the state that is taken by country TAG
+#	taken_by@STATE_ID: is set to country that took the state
+# For Losers:
+# 	current_states@TAG: Remaining states of loser
+# For each subject action:
+#   subject_states@TAG : an array where each element contains the state that is subjected by country TAG
+#   subject_countries@TAG : an array where each element contains the country that is subjected by country TAG
+#   subjected_by@STATE_ID : a variable for each state that is subjected by a country, value is overlord
+#   subjected_by@TAG : an array for each loser that is subjected, array contains overlord
+# For each liberated:
+#   liberate_states@TAG : an array where each element contains the state that is liberated by country TAG
+#   liberate_countries@TAG : an array where each element contains the country that is liberated by country TAG
+# Scripted AI desire for peace actions.
+# See documentation.info file for more detailed scripting information.
+# P she i sun your horse!
+
+peace_ai_desires = {
+	
+	default_peace = {
+        peace_action_type = { take_states }
+        enable = {
+            always = yes
+        }
+        ai_desire = 100
+    }
+	
+}

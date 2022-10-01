@@ -2,6 +2,10 @@
 # Effects are fully scriptable here.
 # These names can NOT be removed or changes, as the code uses them....
 
+_test_power_balance_mod = {
+	power_balance_daily = 0.02
+}
+
 weather_rain_light = { # on Region
 	air_accidents = 0.1
 	air_detection = -0.1
@@ -162,6 +166,7 @@ night = { # On province. Multiplied by amount of darkness.
 	carrier_traffic = -1.0
 	naval_hit_chance = -0.25
 	naval_retreat_speed = 0.1
+	air_attack_factor = -0.50
 }
 
 # The following is multiplied by local resistance strength.
@@ -211,89 +216,6 @@ gain_focus = {
 
 #license production
 
-ROM_license_german_equipment = {
-	valid_relation_trigger = {
-		FROM = {
-			NOT = { has_war_with = ROOT }
-		}
-	}
-
-	license_purchase_cost = 0 #base cost reduction
-	ai_license_acceptance = 20 #more to AI acceptance value.
-	license_production_speed = 0.25 #speed  increase for being a license
-	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level
-}
-
-ROM_foreign_motor_company = {
-	valid_relation_trigger = {
-		FROM = {
-			NOT = { has_war_with = ROOT }
-		}
-	}
-
-	license_purchase_cost = 0 #base cost reduction
-	ai_license_acceptance = 20 #more to AI acceptance value.
-	license_production_speed = 0.1 #speed  increase for being a license
-	license_tech_difference_speed = 0.1 #less cost increase for each tech level between the license and own tech level
-}
-
-HUN_dynastic_ties_license = {
-	valid_relation_trigger = {
-		FROM = {
-			NOT = { has_war_with = ROOT }
-		}
-	}
-
-	license_purchase_cost = 0 #base cost reduction
-	ai_license_acceptance = 50 #more to AI acceptance value.
-
-}
-
-YUG_western_license = {
-	valid_relation_trigger = {
-		FROM = {
-			NOT = { has_war_with = ROOT }
-		}
-	}
-	ai_license_acceptance = 20 #more to AI acceptance value.
-
-}
-
-FRA_coordinate_rearmament = {
-	valid_relation_trigger = {
-		FROM = {
-			is_in_faction_with = ROOT
-		}
-	}
-	license_purchase_cost = 0
-	ai_license_acceptance = 100 #more to AI acceptance value.
-	license_production_speed = 0.25
-	license_tech_difference_speed = 0.25
-}
-
-HUN_stubborn_fools = {
-	valid_relation_trigger = {
-		FROM = {
-			NOT = { is_in_faction_with = ROOT }
-		}
-	}
-	ai_license_acceptance = -50 #penalty to AI acceptance
-
-}
-
-ROM_military_modernization = {
-	valid_relation_trigger = {
-		FROM = {
-			NOT = { has_war_with = ROOT }
-		}
-	}
-
-	license_purchase_cost = 0 #base cost reduction
-	ai_license_acceptance = 60 #more to AI acceptance value.
-	license_production_speed = 0.25 #speed  increase for being a license
-	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level
-}
-
 free_license = {
 	valid_relation_trigger = {
 		FROM = {
@@ -331,6 +253,10 @@ war_support_bad_modifier = {
 	#army_noncore_defence_factor = -0.50
 	command_power_gain_mult = -0.95
 	surrender_limit = -0.3
+}
+
+war_support_during_war = { #Applied during war, scaled from 0-100% with war support, not split.
+	stability_factor = -0.3
 }
 
 

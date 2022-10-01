@@ -1,0 +1,78 @@
+
+music_station = "base_music"
+
+music = {
+	song = "claustrophobic_march"
+
+	chance = {
+		factor = 1
+		modifier = {
+			not = { original_tag = MOT }
+			factor = 0.25
+		}
+		modifier = {
+			has_stability < 0.5
+			factor = 1.5
+		}
+		modifier = {
+			original_tag = MOT
+			not = { has_a_fascist_ideology = yes }
+			factor = 2
+		}
+	}
+
+}
+
+music = {
+	song = "communist_america"
+
+	chance = {
+		factor = 1
+		modifier = {
+			not = { has_a_pro_communism_ideology = yes }
+			factor = 0
+		}
+		modifier = {
+			not = { has_a_pro_communism_ideology = yes }
+			factor = 2
+		}
+		modifier = {
+			original_tag = KQG
+			factor = 3.5
+		}
+	}
+}
+
+music = {
+	song = "confederate_flags"
+
+	chance = {
+		factor = 1
+		modifier = {
+			not = { has_a_fascist_ideology = yes }
+			factor = 2
+		}
+		modifier = {
+			has_a_fascist_ideology = yes
+			factor = 0.05
+		}
+	}
+}
+
+music = {
+	song = "democratic_movements"
+
+	chance = {
+		factor = 1
+		modifier = {
+			OR = {
+				not = { has_a_democratic_ideology = yes }
+			}
+			factor = 0
+		}
+		modifier = {
+			has_war = yes
+			factor = 2
+		}
+	}
+}

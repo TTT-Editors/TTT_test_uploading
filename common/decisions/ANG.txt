@@ -4,6 +4,9 @@ jihuang = {
 		cost = 0
 		days_re_enable = 0
 		days_remove = 0
+		visible = {
+			is_debug = yes
+		}
 		complete_effect = {
 			custom_effect_tooltip = ANG_huodeliangshi
 			add_to_variable = {
@@ -259,10 +262,12 @@ ANG_tongyiliyue = {
 			
 		}
 		complete_effect = {
-			declare_war_on = {
-				target = LYU
-				type = annex_everything
+			LYU = {
+				country_event = { id = liyue_civil_war.101 }
 			}
+		}
+		remove_effect = {
+			country_event = { id = liyue_civil_war.13 }
 		}
 	}
 	ANG_against_RTG = {
@@ -278,17 +283,72 @@ ANG_tongyiliyue = {
 			
 		}
 		complete_effect = {
+			RTG = {
+				country_event = { id = liyue_civil_war.101 }
+			}
+		}
+		remove_effect = {
+			country_event = { id = liyue_civil_war.2 }
+		}
+	}
+	ANG_against_NNG = {
+		cost = 40
+		days_remove = 7
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+		}
+		visible = {
+			NOT = {
+				LYU = { exists = yes }
+				RTG = { exists = yes }
+			}
+		}
+		complete_effect = {
+			NNG = {
+				country_event = { id = liyue_civil_war.101 }
+			}
+		}
+		remove_effect = {
 			declare_war_on = {
-				target = RTG
+				target = NNG
 				type = annex_everything
 			}
 		}
 	}
-
-
-
-
-
-
-
+	ANG_war_targeted_decision = {
+		target_root_trigger = {
+			NOT = {
+				LYU = { exists = yes }
+				RTG = { exists = yes }
+			}
+		}
+		targets = { KQG XQG XRG XOG ZDG SHG }
+		targets_dynamic = yes
+		target_trigger = {
+			FROM = {
+				is_neighbor_of = ANG
+			}
+		}
+		cost = 20
+		days_remove = 7
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		war_with_target_on_complete = yes
+		complete_effect = {
+			FROM = {
+				country_event = { id = liyue_civil_war.101 }
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+	}
 }

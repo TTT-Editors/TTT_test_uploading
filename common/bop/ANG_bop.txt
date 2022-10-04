@@ -1,37 +1,70 @@
 ANG_test_balance = {
-	initial_value = 1
-	left_side = default_left_side
-	right_side = default_right_side
+	initial_value = 0.25
+	left_side = ANG_left_side
+	right_side = ANG_right_side
 	decision_category = ANG_bop_decisions_categories
 	range = {
 		id = mid_range
-		min = -0.1
-		max = 0.1
+		min = -0.4
+		max = 0.4
 		modifier = {
-			war_support_weekly = 0.5
+			war_support_weekly = 0.01
+			stability_weekly = 0.01
 		}
 	}
 	side = {
-		id = default_left_side
+		id = ANG_left_side
 		icon = GFX_idea_generic_agrarian_society
 		range = {
-			id = left_side_range
+			id = left_side_range_A
 			min = -1
-			max = -0.1
+			max = -0.8
+			modifier = {
+				war_support_weekly = 0.2
+			}
+		}
+		range = {
+			id = left_side_range_B
+			min = -0.8
+			max = -0.6
 			modifier = {
 				war_support_weekly = 0.1
 			}
 		}
+		range = {
+			id = left_side_range_C
+			min = -0.6
+			max = -0.4
+			modifier = {
+				war_support_weekly = 0.05
+			}
+		}
 	}
 	side = {
-		id = default_right_side
+		id = ANG_right_side
 		icon = GFX_idea_generic_degauss_ship_hulls
 		range = {
-			id = right_side_range
-			min = 0.1
+			id = right_side_range_C
+			min = 0.4
+			max = 0.6
+			modifier = {
+				stability_weekly = 0.05
+			}
+		}
+		range = {
+			id = right_side_range_B
+			min = 0.6
+			max = 0.8
+			modifier = {
+				stability_weekly = 0.1
+			}
+		}
+		range = {
+			id = right_side_range_A
+			min = 0.8
 			max = 1
 			modifier = {
-				war_support_weekly = 0.9
+				stability_weekly = 0.2
 			}
 		}
 	}

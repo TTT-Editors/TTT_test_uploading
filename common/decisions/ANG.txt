@@ -432,11 +432,7 @@ ANG_bop_decisions_categories = {
 }
 ANG_debug = {
 	ANG_bop_test = {
-		cost = 40
-		days_remove = 7
-		ai_will_do = {
-			base = 100
-		}
+		cost = 0
 		available = {
 			always = yes
 		}
@@ -445,10 +441,112 @@ ANG_debug = {
 		}
 		complete_effect = {
 			set_power_balance = {
-			id = ANG_test_balance
-			set_default = yes
+				id = ANG_test_balance
+				set_default = yes
 			}
 		}
 	}
 	
+	ANG_bop_add_right_mod = {
+		cost = 0
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+
+			add_power_balance_modifier = {
+				id = ANG_test_balance
+				modifier = ANG_bop_right_weekly
+			}
+		}
+	}
+	ANG_bop_add_right = {
+		cost = 0
+		available = {
+			is_power_balance_in_range = {
+				id = ANG_test_balance
+				range < left_side_range_C
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			
+			add_power_balance_value = {
+				id = ANG_test_balance
+				value = 0.1
+			}
+		}
+	}
+	ANG_bop_add_right_1 = {
+		cost = 0
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			
+			add_power_balance_value = {
+				id = ANG_test_balance
+				value = 0.1
+			}
+		}
+	}
+	
+	ANG_bop_add_left_mod = {
+		cost = 0
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_power_balance_modifier = {
+				id = ANG_test_balance
+				modifier = ANG_bop_left_weekly
+			}
+		}
+	}
+	ANG_bop_add_left = {
+		cost = 0
+		available = {
+			is_power_balance_in_range = {
+				id = ANG_test_balance
+				range > right_side_range_c
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			
+			add_power_balance_value = {
+				id = ANG_test_balance
+				value = -0.1
+			}
+		}
+	}
+	ANG_bop_add_left_1 = {
+		cost = 0
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			
+			add_power_balance_value = {
+				id = ANG_test_balance
+				value = -0.1
+			}
+		}
+	}
 }

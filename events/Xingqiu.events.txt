@@ -4,16 +4,13 @@
 
 add_namespace = Xingqiu
 
-country_event = {       #1
+country_event = {       #并不乐观的局势
 	id = Xingqiu.1
-	title = Xingqiu.1.t
+	title = Xingqiu.1
 	desc = Xingqiu.1.d 
 	
-	trigger = {
-	    tag = NNG
-		date > 1999.5.2
-		      }
 	fire_only_once = yes
+	is_triggered_only = yes
 	
 	mean_time_to_happen = {
 	   days = 1
@@ -21,19 +18,17 @@ country_event = {       #1
 	
 	option = { 
 		name = Xingqiu.1.a
+		add_stability = -0.30
     }
 }
 
-country_event = {      #1
+country_event = {      #游街串巷
 	id = Xingqiu.2
-	title = Xingqiu.2.t
+	title = Xingqiu.2
 	desc = Xingqiu.2.d 
-	
-	trigger = {
-	    tag = XQG
-		date > 1999.5.2
-		      }
+
 	fire_only_once = yes
+	is_triggered_only = yes
 	
 	mean_time_to_happen = {
 	   days = 1
@@ -44,15 +39,12 @@ country_event = {      #1
     }
 }
 
-country_event = {      #1
+country_event = {      #草木萌芽
 	id = Xingqiu.3
-	title = Xingqiu.3.t
+	title = Xingqiu.3
 	desc = Xingqiu.3.d 
 	
-	trigger = {
-	    tag = BDG
-		date > 1999.5.2
-		      }
+	is_triggered_only = yes	
 	fire_only_once = yes
 	
 	mean_time_to_happen = {
@@ -64,9 +56,9 @@ country_event = {      #1
     }
 }
 
-country_event = {       #2
+country_event = {       #阴谋
 	id = Xingqiu.4
-	title = Xingqiu.4.t
+	title = Xingqiu.4
 	desc = Xingqiu.4.d
 	
 	is_triggered_only = yes
@@ -77,16 +69,13 @@ country_event = {       #2
     }
 }
 
-country_event = {       #3
+country_event = {       #一笔资助
 	id = Xingqiu.5
-	title = Xingqiu.5.t
+	title = Xingqiu.5
 	desc = Xingqiu.5.d 
-	
-	trigger = {
-	    tag = NNG
-		date > 1999.6.2
-		      }
+
 	fire_only_once = yes
+	is_triggered_only = yes
 	
 	mean_time_to_happen = {
 	   days = 1
@@ -97,17 +86,12 @@ country_event = {       #3
     }
 }
 
-country_event = {       #3
+country_event = {       #秘密行动
 	id = Xingqiu.6
-	title = Xingqiu.6.t
+	title = Xingqiu.6
 	desc = Xingqiu.6.d 
-	
-	trigger = {
-	    tag = XQG
-		date > 1999.6.2
-		      }
 	fire_only_once = yes
-	
+	is_triggered_only = yes	
 	mean_time_to_happen = {
 	   days = 1
 	}
@@ -117,29 +101,30 @@ country_event = {       #3
     }
 }
 
-country_event = {       #3
+country_event = {       #资本的力量
 	id = Xingqiu.7
-	title = Xingqiu.7.t
+	title = Xingqiu.7
 	desc = Xingqiu.7.d 
-	
-	trigger = {
-	    tag = BDG
-		date > 1999.6.2
-		      }
+
 	fire_only_once = yes
-	
+	is_triggered_only = yes	
 	mean_time_to_happen = {
 	   days = 1
 	}
 	
 	option = { 
 		name = Xingqiu.7.a
+		omplete_national_focus = XQG_9
+		set_politics = {
+			ruling_party = liberalism
+			elections_allowed = yes
+		}
     }
 }
 
-country_event = {       #4
+country_event = {       #理想的侠义
 	id = Xingqiu.8
-	title = Xingqiu.8.t
+	title = Xingqiu.8
 	desc = Xingqiu.8.d
 	
 	is_triggered_only = yes
@@ -147,140 +132,142 @@ country_event = {       #4
 	
 	option = { 
 		name = Xingqiu.8.a
+		complete_national_focus = XQG_10
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
     }
 }
 
-country_event = {        #5
-	id = Xingqiu.20
-	title = Xingqiu.20.t
-	desc = Xingqiu.20.d 
+country_event = {        #来自北方的通讯
+	id = Xingqiu.9
+	title = Xingqiu.9
+	desc = Xingqiu.9.d 
 	
-	trigger = {
-	    tag = NNG
-		date > 2001.1.20
+	fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = Xingqiu.9.a
+		ai_chance = {
+		factor = 900
+		}
+		create_faction = llp
+        XQG = {
+			add_to_faction = KQG
+		}		
+		KQG = {
+				country_event = Xingqiu.10
+		}
+        country_event = Xingqiu.10
+        XRG = {
+				country_event = Xingqiu.10
+		}
+        NNG = {
+				country_event = Xingqiu.10
+		}
+        ZDG = {
+				country_event = Xingqiu.10
+		}
+        LYU = {
+				country_event = Xingqiu.10
+		}
+        ANG = {
+				country_event = Xingqiu.10
+		}
+        RTG = {
+				country_event = Xingqiu.10
+		}
+        XOG = {
+				country_event = Xingqiu.10
+		}
+		unlock_decision_category_tooltip = XQG_decision_category6
+        set_country_flag = xingqiu1
 	}
-	fire_only_once = yes
 	
-	mean_time_to_happen = {
-	   days = 1
+	option = {
+	    name = Xingqiu.9.b
+		ai_chance = {
+		factor = 200
+		}
+		complete_national_focus = XQG_14
+		KQG = {
+				country_event = Xingqiu.10
+				complete_national_focus = KQG_46
+		}
+        country_event = Xingqiu.11
+        XRG = {
+				country_event = Xingqiu.11
+		}
+        NNG = {
+				country_event = Xingqiu.11
+		}
+        ZDG = {
+				country_event = Xingqiu.11
+		}
+        LYU = {
+				country_event = Xingqiu.11
+		}
+        ANG = {
+				country_event = Xingqiu.11
+		}
+        RTG = {
+				country_event = Xingqiu.11
+		}
+        XOG = {
+				country_event = Xingqiu.11
+		}
 	}
-	
-	option = { 
-		name = Xingqiu.20.a
-		country_event = { id = Xingqiu.35 days = 1 }
-    }
 }
 
-country_event = {       #6
-	id = Xingqiu.35
-	title = Xingqiu.35.t
-	desc = Xingqiu.35.d 
+country_event = {       #人民主义的合作
+	id = Xingqiu.10
+	title = Xingqiu.10
+	desc = Xingqiu.10.d 
 	
     is_triggered_only = yes
 	fire_only_once = yes
 	
 	option = { 
-		name = Xingqiu.35.a
-		country_event = { id = Xingqiu.14 days = 1 }
+		name = Xingqiu.10.a
     }
 }
 
-country_event = {       #7
-	id = Xingqiu.14
-	title = Xingqiu.14.t
-	desc = Xingqiu.14.d 
+country_event = {       #人民主义的对立
+	id = Xingqiu.11
+	title = Xingqiu.11
+	desc = Xingqiu.11.d 
 	is_triggered_only = yes
 	fire_only_once = yes
 	
 	option = { 
-		name = Xingqiu.14.a
-		hidden_effect = {
-			country_event = { id = Xingqiu.18 days = 7 }
-			country_event = { id = Xingqiu.41 days = 2 }
+		name = Xingqiu.11.a
+    }
+}
+
+country_event = {       #统一
+	id = Xingqiu.12
+	title = Xingqiu.12.t
+	desc = Xingqiu.12.d 
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = Xingqiu.12.a
+		XQG = {
+		annex_country = { target = KQG transfer_troops =  yes }
 		}
+		XQG = { change_tag_from = ROOT }
     }
-	option = { 
-		name = Xingqiu.14.b
-		hidden_effect = {
-			country_event = { id = Xingqiu.18 days = 7 }
-			country_event = { id = Xingqiu.41 days = 2 }
-		}
-    }
-}
-
-country_event = {       #8
-	id = Xingqiu.41
-	title = Xingqiu.41.t
-	desc = Xingqiu.41.d 
-	
-    is_triggered_only = yes
-	fire_only_once = yes
 	
 	option = { 
-		name = Xingqiu.41.a
-		country_event = { id = Xingqiu.15 }
+		name = Xingqiu.12.b
+		declare_war_on = { target = KQG type = annex_everything }
     }
 }
 
-country_event = {       #9
-	id = Xingqiu.15
-	title = Xingqiu.15.t
-	desc = Xingqiu.15.d 
-	
-    is_triggered_only = yes
-	fire_only_once = yes
-		
-	option = { 
-		name = Xingqiu.15.a
-		country_event = { id = Xingqiu.16 days = 1 }
-    }
-	option = { 
-		name = Xingqiu.15.b
-		country_event = { id = Xingqiu.17 days = 1 }
-    }
-}
 
-country_event = {       #10
-	id = Xingqiu.16
-	title = Xingqiu.16.t
-	desc = Xingqiu.16.d 
-	
-	is_triggered_only = yes
-	fire_only_once = yes
-	
-	option = { 
-		name = Xingqiu.16.a
-    }
-}
 
-country_event = {       #11
-	id = Xingqiu.17
-	title = Xingqiu.17.t
-	desc = Xingqiu.17.d 
-	
-	is_triggered_only = yes
-	fire_only_once = yes
-	
-	option = { 
-		name = Xingqiu.17.a
-    }
-}
-
-country_event = {       #12
-	id = Xingqiu.18
-	title = Xingqiu.18.t
-	desc = Xingqiu.18.d 
-	
-	is_triggered_only = yes
-	fire_only_once = yes
-	
-	option = { 
-		name = Xingqiu.18.a
-		add_timed_idea = {
-			idea = Rioting_fallout
-			days = 180			
-		}
-	}
-}
 
 

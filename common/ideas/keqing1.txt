@@ -6,10 +6,12 @@ ideas = {
 			picture = KQG_1_1
 			removal_cost = -1
 			#country_lock_all_division_template = no
-			modifier = {
-				production_speed_industrial_complex_factor = 0.1 
-                production_speed_arms_factory_factor = 0.1
-                production_speed_infrastructure_factor = 0.1				
+			available={has_global_flag=Liyue_Civil_War}
+			modifier = { 
+                production_speed_arms_factory_factor = 0.2
+                production_speed_infrastructure_factor = 0.1
+				stability_weekly = -0.015
+                consumer_goods_factor = -0.02				
 			}
 		}
 		
@@ -18,7 +20,9 @@ ideas = {
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				production_factory_max_efficiency_factor = 0.05               				
+				production_factory_max_efficiency_factor = 0.05
+                consumer_goods_factor = -0.01
+                production_factory_efficiency_gain_factor = 0.05				
 			}
 		}
 		
@@ -31,12 +35,14 @@ ideas = {
 			}
 		}
 		
-		KQG1_4 = {       #小型农业技术
-			picture = generic_agrarian_reform
+		KQG1_4 = {       #土地改革
+			picture = KQG_tugai
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				production_factory_efficiency_gain_factor = 0.1 		
+				global_building_slots_factor = 0.15
+                local_resources_factor = 0.15
+                production_speed_buildings_factor = 0.05				
 			}
 		}
 		
@@ -62,25 +68,24 @@ ideas = {
 			}
 		}
 		
-		KQG1_7 = {       #义务教育
-			picture = KQG_1_7
+		KQG1_7 = {       #工会
+			picture = KQG_1_19
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			available={has_global_flag=Liyue_Civil_War}
 			modifier = {
-				 conscription_factor = 0.05
-                 production_factory_efficiency_gain_factor = 0.1	
-                 research_speed_factor = 0.05			 
+				industrial_capacity_factory = 0.05
+                production_speed_buildings_factor = 0.10				
 			}
 		}
 		
-		KQG1_8 = {       #党军一体
+		KQG1_8 = {       #重整军队
 			picture = KQG_1_8
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				 army_morale_factor = 0.1
-				 army_org_factor = 0.1
+				experience_gain_army_factor = 0.05
+				army_morale_factor = 0.05
 			}
 		}
 		
@@ -102,34 +107,35 @@ ideas = {
 			available={has_global_flag=Liyue_Civil_War}
 			#country_lock_all_division_template = no
 			modifier = {
-			planning_speed = 0.05
-	        max_planning = 0.05
+			training_time_army_factor = -0.05
+			MINIMUM_TRAINING_LEVEL = -0.10
             experience_gain_army_factor = 0.05			
 			}
 		}
 		
-		KQG1_11 = {       #人民军队建设1
+		KQG1_11 = {       #人民赤卫队3
 			picture = generic_infantry_bonus
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-			     land_reinforce_rate = 0.05
-	             recon_factor = 0.05
-				 training_time_factor = -0.1
-                 army_morale_factor = 0.1
-				 army_org_factor = 0.1
+			    army_core_attack_factor = 0.15
+	            army_core_defence_factor = 0.15
+				army_morale_factor = 0.05
+				conscription_factor = 0.05
+                land_reinforce_rate = 0.05
+				army_org_factor = 0.10
 			}
 		}
 		
-		KQG1_12 = {       #护卫祖国
-			picture = KQG_1_12
+		KQG1_12 = {       #回收利用
+			picture = KQG_1_10
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			available={has_global_flag=Liyue_Civil_War}
 			modifier = {
-				 army_core_attack_factor = 0.05  
-                 army_core_defence_factor = 0.05
-                 conscription = 0.01				 
+				 supply_combat_penalties_on_core_factor = -0.10
+                 PRODUCTION_LACK_OF_RESOURCE_PENALTY_FACTOR = -0.20
+                 EQUIPMENT_CAPTURE = 0.20				 
 			}
 		}
 		
@@ -146,59 +152,60 @@ ideas = {
 		}
 		
 		KQG1_14 = {       #人民军队
-			picture = generic_infantry_bonus
+			picture = generic_manpower_bonus
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				land_reinforce_rate = 0.05
-	            recon_factor = 0.05
-				training_time_factor = -0.1
-                army_morale_factor = 0.1
-				army_org_factor = 0.1
-                army_core_attack_factor = 0.05
+				army_core_attack_factor = 0.20
+	            army_core_defence_factor = 0.20
+				army_attack_factor = 0.05
+	            army_defence_factor = 0.05
+	            army_speed_factor = 0.05
+				army_org_factor = 0.10
+				army_morale_factor = 0.05
+				conscription_factor = 0.10
+                land_reinforce_rate = 0.05
+                supply_consumption_factor = -0.05				
+			}
+		}
+		
+		KQG1_15_1 = {       #人民赤卫队1
+			picture = KQG_1_12
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = {
+				army_core_attack_factor = 0.05
 	            army_core_defence_factor = 0.05
-                mobilization_speed = 0.05
-                experience_loss_factor = -0.05				
+				army_org_factor = 0.05
+				army_morale_factor = -0.05
+				conscription_factor = 0.05				
 			}
 		}
 		
-		KQG1_15_1 = {       #军队经商
-			picture = KQG_1_15
+		KQG1_15 = {       #人民赤卫队2
+			picture = KQG_1_12
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				consumer_goods_factor = -0.05
-				army_org_factor = -0.3				
+				army_core_attack_factor = 0.05
+	            army_core_defence_factor = 0.05
+				army_morale_factor = 0.05
+				conscription_factor = 0.05
+                land_reinforce_rate = 0.05
+                army_org_factor = 0.07				
 			}
 		}
-		
-		KQG1_15 = {       #军队经商
-			picture = KQG_1_15
+				
+		KQG1_17 = {       #七星参谋部
+			picture = KQG_zhihui
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				consumer_goods_factor = -0.03
-				army_org_factor = -0.2				
-			}
-		}
-		
-		KQG1_16 = {       #军队经商
-			picture = KQG_1_15
-			removal_cost = -1
-			#country_lock_all_division_template = no
-			modifier = {
-				consumer_goods_factor = -0.02
-				army_org_factor = -0.1				
-			}
-		}
-		
-		KQG1_17 = {       #现代化军队
-			picture = KQG_1_17
-			removal_cost = -1
-			#country_lock_all_division_template = no
-			modifier = {
-				army_org_factor = 0.2
-                land_reinforce_rate = 0.05				
+				experience_loss_factor = -0.10
+ 				planning_speed = 0.10
+	            max_planning = 0.10
+                army_leader_start_level = 1
+                military_leader_cost_factor = -0.25				
 			}
 		}
 		
@@ -212,50 +219,49 @@ ideas = {
 			}
 		}
 		
-		KQG1_19 = {       #军工复合体
-			picture = KQG_1_19
-			removal_cost = -1
-			#country_lock_all_division_template = no
-			available={has_global_flag=Liyue_Civil_War}
-			equipment_bonus = {
-				infantry_weapons = {
-					build_cost_ic = -0.1
-				}
-				medium_tank_chassis = {
-					build_cost_ic = -0.1
-				}
-				light_tank_chassis = {
-					build_cost_ic = -0.1
-				}
-				heavy_tank_chassis = {
-					build_cost_ic = -0.1
-				}
-				}
-			}
-			
-			KQG1_20 = {       #现代化军工建设
+		KQG1_19 = {       #简化军工生产线
 			picture = KQG_1_18
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			available={has_global_flag=Liyue_Civil_War}
-			modifier = {
-			     production_speed_arms_factory_factor = 0.20
-				 production_speed_dockyard_factor = 0.20
-                 production_speed_air_base_factor = 0.20
-                 production_speed_naval_base_factor = 0.20
-                 production_speed_coastal_bunker_factor = 0.20
-                 production_speed_bunker_factor = 0.20 			 
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					soft_attack = -0.05
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.1
+					soft_attack = -0.05
+					instant = yes
+				}
 			}
+			}
+			
+			KQG1_20 = {       #扩大军工生产
+			picture = KQG_1_18
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			available={has_global_flag=Liyue_Civil_War}			
+			    equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					soft_attack = -0.05
+					instant = yes
+				}
+			} 			 
 		    }	
 			
-			KQG1_21 = {       #现代化强军！
-			picture = KQG_1_21
+			KQG1_21 = {       #七星参谋部
+			picture = KQG_zhihui
 			removal_cost = 1
 			#country_lock_all_division_template = no
 			modifier = {
-			    army_attack_factor = 0.1
-				army_defence_factor = 0.1
-                army_org_factor = 0.2				
+			    experience_loss_factor = -0.15
+ 			    planning_speed = 0.15
+	            max_planning = 0.15
+                army_leader_start_level = 1
+                military_leader_cost_factor = -0.25				
 			}
 		    }	
 			KQG1_22 = {       #三大纪律
@@ -273,7 +279,6 @@ ideas = {
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-			    army_morale_factor = 0.2
                 army_org_factor = 0.2
                 army_defence_factor = 0.2		
 			}
@@ -284,10 +289,12 @@ ideas = {
 			#country_lock_all_division_template = no
 			available={has_global_flag=Liyue_Civil_War}
 			modifier = {
-			    army_morale_factor = 0.3
+			    army_morale_factor = 0.1
                 army_org_factor = 0.1
-				army_attack_factor = 0.2
-                army_defence_factor = 0.2		
+				breakthrough_factor = 0.20
+                org_loss_when_moving = -0.10
+                army_attack_factor = 0.10
+	            army_defence_factor = 0.10  				
 			}
 		    }
             KQG1_25 = {       #工农们的联合
@@ -305,13 +312,12 @@ ideas = {
 			#country_lock_all_division_template = no
 			available={has_global_flag=Liyue_Civil_War}
 			modifier = {
-				conscription_factor = 0.05
-                production_factory_efficiency_gain_factor = 0.1	
-                research_speed_factor = 0.05
-				local_building_slots_factor = 0.10
-                local_resources_factor = 0.10
-				production_factory_max_efficiency_factor = 0.10
-                industrial_capacity_factory = 0.10				     				
+				line_change_production_efficiency_factor = 0.10
+	            industrial_capacity_factory = 0.10
+	            production_factory_max_efficiency_factor = 0.10
+	            production_factory_efficiency_gain_factor = 0.10
+                war_support_weekly = -0.01
+                stability_weekly = -0.01				
 			}
 		}	
                       
@@ -343,49 +349,42 @@ ideas = {
 			}
 		}	
 
-        KQG1_30 = {       #打破生锈的枷锁
+        KQG1_30 = {       #人民主义社会建设
 			picture = KQG_1_31
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				drift_defence_factor = 0.2				
-                add_popularity = {
-                ideology = communism
-                popularity = 0.05	
-            } 				
+			drift_defence_factor = 0.05				
+            stability_weekly = 0.02
+	        defensive_war_stability_factor = 0.25
+            monthly_population = 0.10 				
 			}
 		}
 
-              KQG1_31 = {       #初步破除资产阶级法权
+              KQG1_31 = {       #人民主义社会建设
 			picture = KQG_1_31
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-			    stability_factor = 0.1
-				monthly_population = 0.1
-                war_support_factor = 0.2
-                drift_defence_factor = 0.2				
+			    drift_defence_factor = 0.15				
+                stability_weekly = 0.03
+	            defensive_war_stability_factor = 0.25
+                monthly_population = 0.15				
 			}
 		}	
 
-              KQG1_32 = {       #社会思想初步解放
+              KQG1_32 = {       #人民主义社会建设
 			picture = KQG_1_31
 			removal_cost = -1
 			#country_lock_all_division_template = no
+			available = {has_global_flag=Liyue_Civil_War}
 			modifier = {
-			    stability_factor = 0.1
-				monthly_population = 0.1
-                war_support_factor = 0.2
-                drift_defence_factor = 0.2
-                stability_weekly = 0.005				
-                add_popularity = {
-                ideology = communism
-                popularity = 0.05
-               			
+			    drift_defence_factor = 0.20				
+                stability_weekly = 0.05
+	            defensive_war_stability_factor = 0.25
+                monthly_population = 0.20               			
             }			  
-			}
-		}	
-
+		}			
                KQG1_33 = {       #核心防卫
 			picture = generic_purge
 			removal_cost = 1
@@ -398,52 +397,32 @@ ideas = {
 			}			
 		}							
 		       	
-               	KQG1_35 = {       #“西南戒备”计划
-			picture = generic_war_preparation
+               	KQG1_35 = {       #人民主义社会建设
+			picture = KQG_1_31
 			removal_cost = 1
 			#country_lock_all_division_template = no
-				targeted_modifier = {
-                   tag = XRG
-                attack_bonus_against = 0.2 
-                defense_bonus_against = 0.2 			
-                }	
-                targeted_modifier = {
-                   tag = RTG
-                attack_bonus_against = 0.2 
-                defense_bonus_against = 0.2 			
-                }
-                targeted_modifier = {
-                   tag = ZDG
-                attack_bonus_against = 0.2 
-                defense_bonus_against = 0.2 			
-                }					
-                	targeted_modifier = {
-                   tag = ANG
-                attack_bonus_against = 0.2 
-                defense_bonus_against = 0.2 			
-                }								
-		}	 
-               
-            KQG1_36 = {       #独行者
-			picture = generic_war_plan
-			removal_cost = 1
-			#country_lock_all_division_template = no
-			available={has_global_flag=Liyue_Civil_War}
 			modifier = {
-				supply_consumption_factor = -0.10
-                org_loss_when_moving = -0.05
-	            breakthrough_factor = 0.05
-	            recon_factor = 0.05
-	            land_reinforce_rate = 0.05				
-		       }
+			stability_weekly = 0.01
+	        defensive_war_stability_factor = 0.25
+            monthly_population = 0.05         			
+		    }	 
+        }  
+            KQG1_36 = {       #急速扩大的行政机构
+			picture = generic_production_bonus
+			removal_cost = 1
+			#country_lock_all_division_template = no
+			modifier = {
+				POLITICAL_POWER_COST = 0.25
+	            drift_defence_factor = -0.25
+		    }
 		}     
                  KQG1_39 = {       #土地改革
-			picture = KQG_1_2
+			picture = KQG_tugai
 			removal_cost = 1
 			#country_lock_all_division_template = no
 			modifier = {
-				local_building_slots_factor = 0.05
-                local_resources_factor = 0.05				
+				global_building_slots_factor = 0.10
+                local_resources_factor = 0.10				
 		    }
 		}
                	KQG1_40 = {       #集体化生产
@@ -456,19 +435,14 @@ ideas = {
             local_resources_factor = 0.20           			
 		    }
         }		
-	        KQG1_41 = {       #战时职业学校
+	        KQG1_41 = {       #关注璃月内战后勤
 			picture = generic_war_plan
 			removal_cost = 1
 			#country_lock_all_division_template = no			
 			modifier = {
-			army_chief_cost_factor = -0.10
-	        navy_chief_cost_factor = -0.10
-	        air_chief_cost_factor = -0.10
-	        high_command_cost_factor = -0.10
-            experience_loss_factor = -0.05
-            command_power_gain_mult = 0.1
-	        max_command_power_mult = 0.1
-            mobilization_speed = 0.05			
+			supply_consumption_factor = -0.05
+            production_speed_rail_way_factor = 0.20
+            production_speed_supply_node_factor = 0.50			
 		    }
 	 }	
 	           KQG1_38 = {       #从废墟中崛起
@@ -476,14 +450,80 @@ ideas = {
 			removal_cost = -1
 			#country_lock_all_division_template = no
 			modifier = {
-				production_speed_buildings_factor = -0.3
-                production_speed_arms_factory_factor = -0.5
-	            production_speed_industrial_complex_factor = 0.5
-                production_speed_infrastructure_factor = 0.2
-                consumer_goods_factor = 0.10
-                conscription_factor = -0.25				
+				production_speed_industrial_complex_factor = 0.10
+				stability_weekly = 0.015
+				war_support_weekly = -0.05
+				conscription_factor = -0.30
+                consumer_goods_factor = 0.15				
 	         }
-
+		}
+		
+		   KQG1_42 = {       #七星参谋部
+			picture = KQG_zhihui
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = {
+				experience_loss_factor = -0.05
+ 				planning_speed = -0.05
+	            max_planning = 0.10
+	         }
+		}
+		
+		KQG1_43 = {       #人民赤卫队
+			picture = KQG_1_12
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = {
+				army_core_attack_factor = 0.05
+	            army_core_defence_factor = 0.05
+				army_morale_factor = -0.10
+				conscription_factor = 0.05
+	         }
+		}
+		
+		KQG114514 = {       #漫漫长路
+			picture = KQG_1_33kx
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = {
+				POLITICAL_POWER_GAIN = 0.02
+				communism_drift = 0.02
+	         }
+		}
+		
+		KQG1145144 = {       #漫漫长路
+			picture = KQG_1_33kx
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = {
+				POLITICAL_POWER_GAIN = 0.05
+				communism_drift = 0.05
+				political_advisor_cost_factor = -0.05
+	         }
+		}
+		
+		KQG1919810 = {       #漫漫长路
+			picture = KQG_1_33kx
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = {
+				POLITICAL_POWER_GAIN = 0.10
+				communism_drift = 0.05
+				political_advisor_cost_factor = -0.10
+	         }
+		}
+		
+		KQG1107 = {       #漫漫长路
+			picture = KQG_1_33kx
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = {
+				POLITICAL_POWER_GAIN = 0.15
+				communism_drift = 0.10
+				political_advisor_cost_factor = -0.15
+				STABILITY_POPULARITY_FACTOR = 0.25
+				FOREIGN_SUBVERSIVE_ACTIVITIES = -0.25
+	         }
 		}
     }
 }

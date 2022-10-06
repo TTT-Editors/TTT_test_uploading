@@ -14,43 +14,95 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 4
+		x = 6
 		y = 0
 		cost = 14
 		ai_will_do = {
-			factor = 100
+			factor = 50
 		}		
         completion_reward = {
-			add_ideas = war_economy			
+			add_ideas = KQG1_1
 			add_offsite_building = {
 				type = arms_factory
+				level = 5
+			}
+			add_offsite_building = {
+				type = industrial_complex
 				level = 5
 			}
 		    }	
 		}
 	focus = {
-		id = KQG_2    #军跟党走
-		icon = GFX_goal_KQG_mil_2
+		id = KQG_2    #重整军队
+		icon = GFX_goal_KQG_mil_15
 		cost = 14
-		x = 14
+		x = 19
 		y = 0
+		ai_will_do = {
+			factor = 25
+		}
 		completion_reward = {
 			army_experience = 50
-			add_ideas = KQG1_8	
+			add_tech_bonus = {
+		    name = KQG_2
+		    bonus = 2
+		    uses = 2
+		    category = cat_mobile_warfare
+	        }	
 		}
 
 	}
 	focus = {
-		id = KQG_3    #孤独的革命
+		id = KQG_3    #革命开始了
 		icon = GFX_goal_KQG_pol_3
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 100
 		}
-		x = 25
-		y = 0
+		prerequisite = {
+			focus = KQG5_2
+		}
+		x = 32
+		y = 2
 		completion_reward = {
-		add_political_power = 50	
+		build_railway = {
+			path = { 3658 10089 10053 1898 }
+			}
+		build_railway = {
+			path = { 10543 104690 10438  }
+			}
+		build_railway = {
+			path = { 1284 253 10584 10544 10531  }
+			}
+		build_railway = {
+			path = { 1284 10472 10477 3379  }
+			}
+		147 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 1284
+					instant_build = yes
+				}
+			}
+		147 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 10077
+					instant_build = yes
+				}
+			}
+		143 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 9880
+					instant_build = yes
+				}
+			}
+		country_event = { id = KQG_events.6 days = 1 }
+		add_ideas = KQG114514	
 		}
 
 	}
@@ -59,13 +111,12 @@ focus_tree = {
 		icon = GFX_goal_KQG_eco_4
 		cost = 14
 		prerequisite = {
-			focus = KQG_7
+			focus = KQG_1
 		}
 		x = 3
-		y = 2
+		y = 1
 		completion_reward = {
-			add_stability = -0.1			             			
-			add_ideas = KQG1_39
+			unlock_decision_category_tooltip = KQG_special_categories1
 		}
 	}
 	focus = {
@@ -78,27 +129,70 @@ focus_tree = {
 		x = 3
 		y = 3
 		completion_reward = {
-			custom_effect_tooltip = KQG666
-			add_ideas = KQG1_2		
-			add_offsite_building = {
-				type = industrial_complex
-				level = 5
-			}
-			hidden_effect = { country_event = { id = KQG_events.9 days = 1 } }		
+		custom_effect_tooltip = KQG666
+		add_ideas = KQG1_2		
+		hidden_effect = { country_event = { id = KQG_events.9 days = 1 } }		
 		}
+
 	}
 	focus = {
-		id = KQG_7     #归离原改造计划
+		id = KQG_7     #开采资源
 		icon = GFX_goal_KQG_eco_7
 		cost = 7
 		prerequisite = {
-			focus = KQG_1
+			focus = KQG_4
 		}
 		x = 3
-		y = 1
+		y = 2
 		completion_reward = {
-		    unlock_decision_category_tooltip = KQG_special_categories1
-			add_offsite_building = { type = industrial_complex level = 5 }
+		147 = {
+			add_resource = {
+				type = wood
+				amount = 20
+			}
+		}
+		147 = {
+			add_resource = {
+				type = coal
+				amount = 20
+			}
+		}
+		147 = {
+			add_resource = {
+				type = grain
+				amount = 20
+			}
+		}
+		147 = {
+			add_resource = {
+				type = steel
+				amount = 20
+			}
+		}
+		144 = {
+			add_resource = {
+				type = wood
+				amount = 20
+			}
+		}
+		144 = {
+			add_resource = {
+				type = coal
+				amount = 20
+			}
+		}
+		144 = {
+			add_resource = {
+				type = grain
+				amount = 20
+			}
+		}
+		144 = {
+			add_resource = {
+				type = steel
+				amount = 20
+			}
+		}    
         }
 
 	}
@@ -109,8 +203,8 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_1
 		}
-		x = 5
-		y = 1
+		x = 9
+		y = 2
 		completion_reward = {
 		custom_effect_tooltip = KQG551
 		custom_effect_tooltip = unlock_advisor_keqing_1		
@@ -125,8 +219,8 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_9
 		}
-		x = 5
-		y = 2
+		x = 9
+		y = 3
 		completion_reward = {
 		add_research_slot = 1 			
 		}
@@ -139,8 +233,8 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_10
 		}
-		x = 5
-		y = 3
+		x = 9
+		y = 4
 		completion_reward = {
 		unlock_decision_category_tooltip = KQG_special_categories2	
 		add_tech_bonus = {
@@ -153,280 +247,285 @@ focus_tree = {
 
 	}
 	focus = {
-		id = KQG_14     #职业化学校
-		icon = GFX_goal_KQG_eco_14
+		id = KQG_14     #建立工会
+		icon = GFX_goal_KQG_kx3
 		cost = 21
 		prerequisite = {
-			focus = KQG_12
+			focus = KQG_1
 		}
-		x = 5
-		y = 4
+		x = 9
+		y = 1
 		completion_reward = {
 		  add_ideas = KQG1_7
 		}
 
 	}
 	focus = {
-		id = KQG_15      #军队建设
-		icon = GFX_goal_KQG_mil_15
+		id = KQG_15      #军跟党走
+		icon = GFX_goal_KQG_mil_2
 		cost = 35
 		prerequisite = {
 			focus = KQG_2
 		}
-		x = 10
+		x = 15
 		y = 1
 		completion_reward = {
-			army_experience = 100
-			add_manpower = 90000
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 5000				
-			}
-			add_equipment_to_stockpile = {
-				type = grain_conversion_eq
-				amount = 1000				
-			}
-			add_equipment_to_stockpile = {
-				type = artillery_equipment
-				amount = 900				
-			}
-			swap_ideas = {
-				remove_idea = KQG1_8
-				add_idea = KQG1_9
-			}				
+			add_ideas = KQG1_8
+            country_event = { days = 7  id = KQG_events.10 }			
 		}
 
 	}
 	focus = {
 		id = KQG_16      #确立指导思想
-		icon = GFX_goal_KQG_mil_28
-		cost = 32
+		icon = GFX_goal_KQG_mil_18
+		cost = 35
 		prerequisite = {
 			focus = KQG_15
 		}
-		x = 9
+		x = 13
 		y = 2
 		completion_reward = {
 			swap_ideas = {
-			remove_idea = KQG1_9
-			add_idea = KQG1_11
+			remove_idea = KQG1_43
+			add_idea = KQG1_15_1
 			}
 		}
 
 	}
 	focus = {
 		id = KQG_17     #设立政治委员
-		icon = GFX_goal_KQG_mil_17
+		icon = GFX_goal_KQG_eco_13
 		cost = 35
 		prerequisite = {
 			focus = KQG_16
 		}
-		x = 9
+		x = 13
 		y = 3
 		completion_reward = {
-		  add_manpower = 80000
-		add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
-		    amount = 2154		    
-	    }  
+		    swap_ideas = {
+			remove_idea = KQG1_15_1
+			add_idea = KQG1_15
+			}
 		}
 
 	}
 	focus = {
-		id = KQG_18      #常态化动员
-		icon = GFX_goal_KQG_mil_18
+		id = KQG_18      #改革赤卫队
+		icon = GFX_goal_KQG_mil_29
 		cost = 32
 		prerequisite = {
 			focus = KQG_17
 		}
-		x = 9
+		x = 13
 		y = 4
 		completion_reward = {		
-        add_ideas = limited_conscription
-		add_ideas = KQG1_12		
+            swap_ideas = {
+			remove_idea = KQG1_15
+			add_idea = KQG1_11
+			}		
 		}
 
 	}
 	focus = {
-		id = KQG_19      #建设军事学院
+		id = KQG_19      #召集工人赤卫队
 		icon = GFX_goal_KQG_mil_56
 		cost = 35
 		prerequisite = {
 			focus = KQG_15
 		}
-		x = 11
+		x = 17
 		y = 2
 		completion_reward = {
-		add_ideas = KQG1_10	
+		division_template = {
+					name = "地方赤卫队"
+					priority = 2
+					is_locked = yes
+					division_names_group = KQG_INF_02
+					regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+				}
+		    }
+		147 = {
+		create_unit = {
+			division = "division_template = \"地方赤卫队\" start_experience_factor = 0.4"
+			owner = KQG
+			count = 5
+		    }
+	    }	
 		}
 
 	}
 	focus = {
 		id = KQG_20      #动员地方民兵
 		icon = GFX_goal_KQG_mil_16
-		cost = 14
+		cost = 35
 		prerequisite = {
 			focus = KQG_19
 		}
-		x = 11
+		x = 17
 		y = 3
 		completion_reward = {
-			add_manpower = 5000
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 2000				
-			}
-			add_equipment_to_stockpile = {
-				type = grain_conversion_eq
-				amount = 1145			
-			}
-			add_equipment_to_stockpile = {
-				type = artillery_equipment
-				amount = 1000				
-			}	
+			division_template = {
+					name = "地方赤卫队"
+					priority = 2
+					is_locked = yes
+					division_names_group = KQG_INF_02
+					regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+				}
+		    }
+		147 = {
+		create_unit = {
+			division = "division_template = \"地方赤卫队\" start_experience_factor = 0.4"
+			owner = KQG
+			count = 5
+		    }
+	    }
 		}
 	}
 		
 	focus = {
-		id = KQG_21      #迅影如剑
-		icon = GFX_goal_KQG_mil_21
+		id = KQG_21      #我们是人民的军队
+		icon = GFX_goal_KQG_pol_49
 		cost = 32
 		prerequisite = {
-			focus = KQG_20
+			focus = KQG_22
 		}
-		x = 11
-		y = 4
+		prerequisite = {
+			focus = KQG_18
+		}
+		x = 15
+		y = 5
 		completion_reward = {
-		add_ideas = KQG1_13	
+		remove_idea = KQG1_8
+		custom_effect_tooltip = KQG556
+		hidden_effect = { country_event = { id = KQG_events.11 days = 7 } }	
+		swap_ideas = {
+			add_idea = KQG1_14
+			remove_idea = KQG1_11
+		}
 		}
 
 	}
 	focus = {
 		id = KQG_22         #建立人民青年团
-		icon = GFX_goal_KQG_4
+		icon = GFX_goal_KQG_mil_23
 		cost = 35
 		prerequisite = {
-			focus = KQG_18
+			focus = KQG_20
 		}
-		prerequisite = {
-			focus = KQG_21
-		}
-		x = 10
-		y = 5
+		x = 17
+		y = 4
 		completion_reward = {
 			custom_effect_tooltip = KQG557
 			hidden_effect = { country_event = { id = KQG_events.12 days = 1 } }
-			add_manpower = 90000
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 5950				
-			}
-			add_equipment_to_stockpile = {
-				type = grain_conversion_eq
-				amount = 5213				
-			}
-			add_equipment_to_stockpile = {
-				type = artillery_equipment
-				amount = 1852				
-			}
-			
+			division_template = {
+					name = "青年团"
+					priority = 2
+					is_locked = yes
+					division_names_group = KQG_INF_02
+					regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+				}
+		    }
+		147 = {
+		create_unit = {
+			division = "division_template = \"青年团\" start_experience_factor = 0.4"
+			owner = KQG
+			count = 2
+		    }
+	    }			
 		}
 
 		
 	}
 	focus = {
-		id = KQG_23        #重整编制
-		icon = GFX_goal_KQG_mil_23
+		id = KQG_23        #建设军事学院
+		icon = GFX_goal_KQG_mil_56
 		cost = 7
 		prerequisite = {
 			focus = KQG_2
 		}
-		x = 14
+		x = 22
 		y = 1
 		completion_reward = {
-			custom_effect_tooltip = KQG554
-			army_experience = 100
-			swap_ideas = {
-				remove_idea = KQG1_15_1
-				add_idea = KQG1_15 
-			}
-			hidden_effect = { country_event = { id = KQG_events.10 days = 1 } }	
+			add_ideas = KQG1_10	
 		}
 
 	}
 	focus = {
-		id = KQG_24      #内部审查
-		icon = GFX_goal_KQG_mil_24
+		id = KQG_24      #参谋部正规化
+		icon = GFX_goal_KQG_mil_28
 		cost = 14
 		prerequisite = {
 			focus = KQG_23
 		}
-		x = 14
+		x = 22
 		y = 2
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = KQG1_15
-				add_idea = KQG1_16 
+				remove_idea = KQG1_42
+				add_idea = KQG1_17 
 			}
 		}
 
 	}
 	focus = {
-		id = KQG_25        #终止军队经商
-		icon = GFX_goal_KQG_mil_25
+		id = KQG_25        #参谋部扩大化
+		icon = GFX_goal_KQG_mil_65
 		cost = 32
 		prerequisite = {
 			focus = KQG_24
 		}
-		x = 14
+		x = 22
 		y = 3
 		completion_reward = {
-		custom_effect_tooltip = KQG552
-		add_stability = -0.1
-		hidden_effect = { country_event = { id = KQG_events.7 days = 1 } }
-		remove_ideas = KQG1_16		
+		swap_ideas = {
+				remove_idea = KQG1_17
+				add_idea =  KQG1_21
+			}		
 		}
 
 	}
 	focus = {
-		id = KQG_26      #赎买经商所得
-		icon = GFX_goal_KQG_mil_26
+		id = KQG_26      #西部防线后勤建设
+		icon = GFX_goal_KQG_mil_63
 		cost = 70
 		prerequisite = {
 			focus = KQG_25
 		}
 		mutually_exclusive = { focus = KQG_27 }
-		x = 13
+		x = 22
 		y = 4
 		completion_reward = {
-		add_stability = -0.1
-		
-		unlock_decision_category_tooltip = KQG_special_categories3
-		
-		}
-
-	}
-	focus = { 
-		id = KQG_27      #没收经商所得
-		icon = GFX_goal_KQG_mil_27
-		cost = 32
-		prerequisite = {
-			focus = KQG_25
-		}
-		mutually_exclusive = { focus = KQG_26 }
-		x = 15
-		y = 4
-		completion_reward = {
-		add_stability = -0.2
-		
-        147 = {
-	    add_extra_state_shared_building_slots = 6
-	    add_building_construction = {
-		type = industrial_complex
-		level = 6
-	    instant_build = yes
-		}
-		}
+		    build_railway = {
+			path = { 2742 10407 10444 10465 10505 10543 160  }
+			}
+			160 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 10385
+					instant_build = yes
+				}
+			}	
 		}
 
 	}
@@ -435,17 +534,17 @@ focus_tree = {
 		icon = GFX_goal_KQG_mil_30
 		cost = 35
 		prerequisite = {
-			focus = KQG_2
+			focus = KQG_1
 		}
-		x = 17
+		x = 6
 		y = 1
 		completion_reward = {
-		    add_offsite_building = {
-			type = arms_factory
-			level = 5
+		add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
 			}
 		}
-	}
 	focus = {
 		id = KQG_31      #配套基础设施翻新
 		icon = GFX_goal_KQG_mil_31
@@ -453,34 +552,34 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_30
 		}
-		x = 17
+		x = 6
 		y = 2
 		completion_reward = {
          146 = {
 			add_building_construction = {
 			type =  infrastructure 
-			level = 1
+			level = 2
 			instant_build = yes
 			}
 			}
          147 = {
 			add_building_construction = {
 			type =  infrastructure 
-			level = 1
+			level = 2
 			instant_build = yes
 			}
 			}
         149 = {
 			add_building_construction = {
 			type =  infrastructure 
-			level = 1
+			level = 2
 			instant_build = yes
 			}
 			}	
         150 = {
 			add_building_construction = {
 			type =  infrastructure 
-			level = 1
+			level = 2
 			instant_build = yes
 			}
 			}	
@@ -502,13 +601,13 @@ focus_tree = {
 
 	}
 	focus = {
-		id = KQG_32     #军工复合体建设
-		icon = GFX_goal_KQG_mil_32
+		id = KQG_32     #简化军工生产线
+		icon = GFX_goal_KQG_eco_52
 		cost = 70
 		prerequisite = {
 			focus = KQG_31
 		}
-		x = 17
+		x = 6
 		y = 3
 		completion_reward = {
 		add_ideas = KQG1_19	
@@ -516,54 +615,35 @@ focus_tree = {
 	}
 	focus = { 
 		id = KQG_33      #扩大军工生产
-		icon = GFX_goal_KQG_mil_33
+		icon = GFX_goal_KQG_mil_32
 		cost = 70
 		prerequisite = {
 			focus = KQG_32
 		}
-		x = 17
+		x = 6
 		y = 4
 		completion_reward = {
-		147 = {
-	    add_extra_state_shared_building_slots = 6
-	    add_building_construction = {
-		type = arms_factory
-		level = 6
-	    instant_build = yes
-		}
-        }
-	}
-	}
-	focus = {
-		id = KQG_34       #现代化军工体系
-		icon = GFX_goal_KQG_mil_34
-		cost = 32
-		prerequisite = {
-			focus = KQG_33
-		}
-		x = 17
-		y = 5
-		completion_reward = {
-		add_ideas = KQG1_20	
-		}
-
+		add_offsite_building = {
+				type = arms_factory
+				level = 5
+			}
+	    }
 	}
 	focus = {
 		id = KQG_35      #建立党支部
 		icon = GFX_goal_KQG_pol_35
-		cost = 7
+		cost = 28
 		prerequisite = {
 			focus = KQG_3
 		}
-		x = 21
-		y = 1
+		x = 29
+		y = 3
 		completion_reward = {
-		  add_political_power = 50
-		  add_popularity = {
-			ideology = communism
-			popularity = 0.2	
-			}	  
-	     }
+		swap_ideas = {
+			add_idea = KQG1145144
+			remove_idea = KQG114514
+		    } 	  
+	    }
     }
 	focus = {
 		id = KQG_36     #加强党内建设
@@ -572,9 +652,13 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_35
 		}
-		x = 21
-		y = 2
+		x = 29
+		y = 4
 		completion_reward = {
+			swap_ideas = {
+			add_idea = KQG1919810
+			remove_idea = KQG1145144
+		    }
 			add_advisor_role = {
                 Character = LYU_keqing
                 advisor = {
@@ -600,29 +684,31 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_36
 		}
-		x = 21
-		y = 3
+		x = 29
+		y = 5
 		completion_reward = {
-		add_ideas = KQG1_22
+		    swap_ideas = {
+			add_idea = KQG1107
+			remove_idea = KQG1919810
+		    }
 		}
 
 	}
 	focus = {
 		id = KQG_38      #设立政治审查局
 		icon = GFX_goal_KQG_pol_38
-		cost = 21
+		cost = 70
 		prerequisite = {
 			focus = KQG_37
 		}
-		x = 21
-		y = 4
+		x = 29
+		y = 6
 		completion_reward = {
 		add_ideas = KQG1_29
+		if =  {
+		limit =  { has_intelligence_agency = no }
 		create_intelligence_agency = yes
-		add_popularity = {
-        ideology = communism
-        popularity = 0.1	
-        } 
+		}
 		}
 
 	}
@@ -633,12 +719,68 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_3
 		}
-		x = 23
+		x = 35
+		y = 3
+		completion_reward = {
+		add_ideas = KQG1_35
+	}
+	}
+	focus = {
+		id = KQG5_1       #召集反正部队
+		icon = GFX_goal_KQG_fanzheng
+		cost = 28
+		ai_will_do = {
+			factor = 100
+		}
+		x = 32
+		y = 0
+		completion_reward = {
+		division_template = {
+					name = "归离原地方部队"
+					priority = 2
+					is_locked = yes
+					division_names_group = KQG_INF_02
+					regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+					artillery_brigade = { x = 4 y = 1 }
+					artillery_brigade = { x = 4 y = 2 }
+					artillery_brigade = { x = 5 y = 1 }
+				}
+		    }
+		147 = {
+		create_unit = {
+			division = "division_template = \"归离原地方部队\" start_experience_factor = 0.4"
+			owner = KQG
+			count = 12
+		    }
+	    }    
+	    }
+	}
+	focus = {
+		id = KQG5_2      #准备持久战
+		icon = GFX_goal_KQG_chijiu
+		cost = 35
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = {
+			focus = KQG5_1
+		}
+		x = 32
 		y = 1
 		completion_reward = {
-			add_manpower = 6000
-			add_stability = 0.05		
-		}
+		    add_ideas = war_economy
+			add_ideas = limited_conscription
+	    }
 	}
 	focus = {
 		id = KQG_40        #着手破除旧思想
@@ -647,104 +789,24 @@ focus_tree = {
 		prerequisite = {
 			focus = KQG_39
 		}
-		x = 23
-		y = 2
+		x = 35
+		y = 4
 		completion_reward = {
-		add_ideas = KQG1_30
-		add_stability = -0.3
+		swap_ideas = {
+			add_idea = KQG1_30
+			remove_idea = KQG1_35
+		}
 		} 
-	    
-
-	}
-	focus = {
-		id = KQG_41       #法制建设
-		icon = GFX_goal_KQG_pol_41
-		cost = 32
-		prerequisite = {
-			focus = KQG_40
-		}
-		x = 23
-		y = 3
-		completion_reward = {
-		add_stability = 0.2
-		
-		add_popularity = {
-        ideology = communism
-        popularity = 0.2	
-        } 
-		}
-
-	}
-	focus = {
-		id = KQG_42        #对外防卫
-		icon = GFX_goal_KQG_pol_42
-		cost = 35
-		prerequisite = {
-			focus = KQG_3
-		}
-		x = 27
-		y = 1
-		completion_reward = {
-		147 = {
-		add_building_construction = {
-			type = bunker
-			level = 3
-			province = {
-					id = 4498
-					id = 4474
-					id = 4455
-					id = 2315
-					id = 2281
-					id = 4605
-					id = 4598
-					id = 332
-			}
-			instant_build = yes
-			}
-		}
-		160 = {
-		add_building_construction = {
-			type = bunker
-			level = 3
-			province = {
-					id = 1239
-					id = 4678
-					id = 1925
-					id = 945
-					id = 525
-					id = 4611
-					id = 2366
-					id = 2665
-					id = 4629
-			}
-			instant_build = yes
-			}
-		}
-        }
-	}
-	focus = {
-		id = KQG_43         #核心防卫
-		icon = GFX_goal_KQG_pol_43
-		cost = 35
-		available={ has_global_flag = Liyue_Civil_War }
-		prerequisite = {
-			focus = KQG_42
-		}
-		x = 26
-		y = 2
-		completion_reward = {
-			add_ideas = KQG1_33
-		}
 	}
 	focus = {
 		id = KQG_44         #联合进步人士
 		icon = GFX_goal_KQG_1
 		cost = 21
 		prerequisite = {
-			focus = KQG_42
+			focus = KQG_3
 		}
-		x = 28
-		y = 2
+		x = 32
+		y = 3
         completion_reward = {
 			custom_effect_tooltip = unlock_advisor_keqing_2
 			hidden_effect = { country_event = { id = KQG_events.8 days = 7 } }
@@ -752,7 +814,7 @@ focus_tree = {
 		}
 	focus = {
 		id = KQG_45         #志同道合
-		icon = GFX_goal_KQG_pol_45
+		icon = GFX_goal_KQG_kx1
 		cost = 21
 		prerequisite = {
 			focus = KQG_43
@@ -764,12 +826,17 @@ focus_tree = {
 		XQG = { exists = YES }
 		XQG = { has_government = communism }
 	    }
+		bypass = {
+		is_in_faction_with = XQG
+		}
 		mutually_exclusive = { focus = KQG_46 }
 
-		x = 26
-		y = 3
-		completion_reward = {
-		unlock_decision_category_tooltip = KQG_special_categories5
+		x = 31
+		y = 4
+		completion_reward = {		
+		XQG = {
+				country_event = Xingqiu.9
+		}
 		}
 
 	}
@@ -784,8 +851,11 @@ focus_tree = {
 			focus = KQG_44
 		}
 		mutually_exclusive = { focus = KQG_45 }
-		x = 28
-		y = 3
+		bypass = {
+		  XQG  = { exists = NO }
+		}
+		x = 33
+		y = 4
 		completion_reward = {
 		create_wargoal = { target = XQG type = annex_everything }			
 		}
@@ -798,18 +868,20 @@ focus_tree = {
 			focus = KQG_45
 			focus = KQG_46
 		}
-		x = 27
-		y = 4
+		x = 32
+		y = 5
 		completion_reward = {
 		add_ideas = KQG1_24
-		hidden_effect = { country_event = { id = KQG_events.14 days = 1 } }
+		hidden_effect = {
+		country_event = { id = KQG_events.14 days = 1 }
+		}
 		custom_effect_tooltip = KQG559
 		}
 
 	}
 	focus = {
-		id = KQG_53      #规模化生产
-		icon = GFX_goal_KQG_eco_53
+		id = KQG_53      #回收利用
+		icon = GFX_goal_KQG_kx2
 		cost = 14
 		prerequisite = {
 			focus = KQG_5
@@ -819,60 +891,22 @@ focus_tree = {
 		}		
 		x = 3
 		y = 4
-		completion_reward = {
-		swap_ideas = {		 
-		remove_idea = KQG1_2
-		remove_idea = KQG1_39
-		add_idea = KQG1_6
-	    }	    
+		completion_reward = {		 
+		add_ideas = KQG1_12	    
 		}
 
 	}
 	focus = {
-		id = KQG_54      #明确社会分工
-		icon = GFX_goal_KQG_eco_54
-		cost = 42
-		prerequisite = {
-			focus = KQG_53
-		}
-		prerequisite = {
-			focus = KQG_14
-		}
-		x = 4
-		y = 5
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = KQG1_6
-				add_idea = KQG1_26
-			}  
-			remove_idea = KQG1_7
-			add_stability = 0.1
-		}
-
-	}
-	focus = {
-		id = KQG_56         #真正的人民军队
-		icon = GFX_goal_KQG_eco_13
+		id = KQG_56         #关注后勤建设
+		icon = GFX_goal_KQG_road1
 		cost = 35
 		prerequisite = {
-			focus = KQG_22
-		}
-		prerequisite = {
 			focus = KQG_26
-			focus = KQG_27
 		}
-		prerequisite = {
-			focus = KQG_34			
-		}
-		x = 14
-		y = 6
+		x = 22
+		y = 5
 		completion_reward = {
-		custom_effect_tooltip = KQG556
-		swap_ideas = { 
-			remove_idea = KQG1_11
-			add_idea = KQG1_14
-	    }
-		hidden_effect = { country_event = { id = KQG_events.11 days = 7 } }	
+		add_ideas = KQG1_41
 		}
 
 	}
@@ -881,43 +915,38 @@ focus_tree = {
 		icon = GFX_goal_KQG_pol_58
 		cost = 14
 		prerequisite = {
-			focus = KQG_41
+			focus = KQG_40
 		}
-		x = 23
-		y = 4
+		x = 35
+		y = 5
 		completion_reward = {
 		swap_ideas = {
 	    remove_idea = KQG1_30
 	    add_idea = KQG1_31
    	    }		
 		}
-
 	}  
 	
 	focus = {
 		id = KQG_59       #社会思想走向解放
 		icon = GFX_goal_KQG_pol_59
-		cost = 21
+		cost = 70
 		prerequisite = {
 			focus = KQG_58
 		}
-		prerequisite = {
-			focus = KQG_38
-		}
-		x = 22
-		y = 5
+		x = 35
+		y = 6
 		completion_reward = {
 		swap_ideas = {
 	    remove_idea = KQG1_31	    
 	    add_idea = KQG1_32
    	    }
 		}
-
 	}
 	focus = {
 		id = KQG_62       #为了更美好的明天
 		icon = GFX_goal_KQG_2
-		cost = 140
+		cost = 70
 		prerequisite = {
 			focus = KQG_50
 		}
@@ -931,14 +960,18 @@ focus_tree = {
 		BDG = { exists= NO}
 		ANG = { exists= NO}
 	    }
-		x = 27
-		y = 5
+		x = 32
+		y = 6
 		completion_reward = {
 		custom_effect_tooltip = KQG558
-		hidden_effect = { country_event = { id = KQG_events.13 days = 1 } }
+		hidden_effect = { 
+		country_event = { id = KQG_events.13 days = 1 }
+		play_song = "cfxzjq"
+		}
 		add_ideas = civilian_economy
 		add_ideas = volunteer_only
 	    add_ideas = KQG1_38
+		add_ideas = KQG1_36
 		}
 	}  		   		
 } 

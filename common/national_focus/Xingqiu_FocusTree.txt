@@ -1,0 +1,1596 @@
+  focus_tree = {
+	id = Xingqiu_FocusTree
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = XQG
+		}
+	}
+	
+	default = no
+
+	focus = {
+		id = XQG_1   #危机时刻
+		icon = GFX_goal_XQG_weijishike
+		x = 5
+		y = 0
+		
+		cost = 7
+
+		ai_will_do = {
+			factor = 100		
+		}
+		completion_reward = {
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_manpower = 5000
+			country_event = { days = 7  id = Xingqiu.1 }
+		}		
+    }
+	focus = {
+		id = XQG_2   #集结家丁
+		icon = GFX_goal_XQG_jijiejiading
+		x = 3
+		y = 1
+		
+		cost = 7
+
+		prerequisite = { focus = XQG_1 }
+
+		ai_will_do = {
+			factor = 100			
+		}
+		completion_reward = {
+			country_event = { days = 7  id = Xingqiu.2 }
+			add_ideas = limited_conscription
+			add_manpower = 5000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500				
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 100				
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 100				
+			}
+		}		
+    }
+	focus = {
+		id = XQG_3   #加班生产
+		icon = GFX_goal_XQG_jiabanshengchan
+		x = 7
+		y = 1
+		cost = 7		
+		prerequisite = { focus = XQG_1 }
+
+		ai_will_do = {
+			factor = 100			
+		}
+		completion_reward = {
+			add_ideas = XQG1_3
+			add_ideas = war_economy
+		}		
+    }
+	focus = {
+		id = XQG_4  #综合意见
+		icon = GFX_goal_XQG_yijian
+		x = 7
+		y = 2
+		cost = 21
+		prerequisite = { focus = XQG_3 }
+
+		ai_will_do = {
+			factor = 100			
+		}
+		completion_reward = {
+			add_stability = 0.10
+			add_political_power = 150
+		}		
+    }
+	focus = {
+		id = XQG_5  #边防巡逻
+		icon = GFX_goal_XQG_bianfangxunluo
+		x = 3
+		y = 2
+				
+		prerequisite = { focus = XQG_2 }
+        cost = 7
+		ai_will_do = {
+			factor = 100			
+		}
+		completion_reward = {
+			add_ideas = XQG1_1
+			country_event = { days = 7  id = Xingqiu.3 }
+		}		
+    }
+	focus = {
+		id = XQG_6  #宵禁
+		icon = GFX_goal_XQG_xiaojing
+		x = 3
+		y = 3
+				
+		prerequisite = { focus = XQG_5 }
+        cost = 7
+		ai_will_do = {
+			factor = 2000		
+		}
+		completion_reward = {
+			add_timed_idea = { idea = XQG1_2 days = 30 }
+			country_event = { days = 7  id = Xingqiu.4 }
+		}		
+    }
+	focus = {
+		id = XQG_7  #紧急会议
+		icon = GFX_goal_XQG_jinjihuiyi
+		x = 7
+		y = 3
+			
+		prerequisite = { focus = XQG_4 }
+        cost = 7
+		ai_will_do = {
+			factor = 100			
+		}
+		completion_reward = {
+			add_political_power = 500
+			country_event = { days = 7  id = Xingqiu.6 }
+		}		
+    }
+	focus = {
+		id = XQG_8  #下归离原集体会议
+		icon = GFX_goal_XQG_jitihuiyi
+		x = 5
+		y = 4
+		
+		cost = 0
+
+		prerequisite = { focus = XQG_6 }
+		prerequisite = { focus = XQG_7 }
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+
+		available = {
+		  has_country_flag = huiyi
+	    }
+
+		completion_reward = {
+		 country_event = { days = 1  id = Xingqiu.5 }			
+       }
+	}
+	focus = {
+		id = XQG_9  #飞云商会的胜利
+		icon = GFX_goal_XQG_feiyunshanghui
+		x = 2
+		y = 5
+				
+		prerequisite = { focus = XQG_8 }
+		mutually_exclusive = { focus = XQG_10 }
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+        available = {
+		has_government = liberalism
+	    }
+
+		completion_reward = {
+			add_political_power = 150
+			set_cosmetic_tag = XQG_liberalism
+			add_timed_idea = { idea = XQG1_4 days = 70 }
+		}		
+    }
+	focus = {
+		id = XQG_10  #裁新派的领导
+		icon = GFX_goal_XQG_caixinpai
+		x = 9
+		y = 5
+				
+		prerequisite = { focus = XQG_8 }
+
+		mutually_exclusive = { focus = XQG_9 }
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+        available = {
+		has_government = communism
+	    }
+
+		completion_reward = {
+			add_political_power = 150
+			create_wargoal = { target = NNG type = annex_everything }
+			NNG = {
+			set_autonomy = {
+				target = XQG
+				autonomy_state = autonomy_free
+			}
+		}
+		}	
+    }
+	focus = {
+		id = XQG_11  #确立人民委员会
+		icon = GFX_goal_XQG_weiyuanhui
+		x = 9
+		y = 6
+				
+		prerequisite = { focus = XQG_10 }
+		cost = 14
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			show_ideas_tooltip = XQG_xingqiu
+			swap_ideas = {
+	        remove_idea = XQG2_1
+	        add_idea = XQG1_10
+   	        }
+		}		
+    }
+	focus = {
+		id = XQG_12  #北方的邻居
+		icon = GFX_goal_XQG_beifangdelingju
+		x = 9
+		y = 7
+		cost = 14	
+		prerequisite = { focus = XQG_11 }
+		
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_political_power = 200
+		}		
+    }
+	focus = {
+		id = XQG_13  #合作与交流
+		icon = GFX_goal_XQG_jiaoliuyuhezuo
+		x = 7
+		y = 8
+		cost = 14		
+		prerequisite = { focus = XQG_12 }
+
+		mutually_exclusive = { focus = XQG_14 }
+        bypass = {
+		  KQG  = { exists = NO }
+		}
+		ai_will_do = {
+			factor = 500		
+		}
+		completion_reward = {
+			KQG = {
+				country_event = KQG_events.15
+			}
+		}		
+    }
+	focus = {
+		id = XQG_14  #猜忌与怀疑
+		icon = GFX_goal_XQG_caijiyuhuaiyi
+		x = 11
+		y = 8
+				
+		prerequisite = { focus = XQG_12 }
+
+		mutually_exclusive = { focus = XQG_13 }
+
+		ai_will_do = {
+			factor = 100			
+		}
+
+		bypass = {
+		  KQG  = { exists = NO }
+		}
+		completion_reward = {
+		create_wargoal = { target = KQG type = annex_everything }
+		}		
+    }
+	focus = {
+		id = XQG_15  #加紧军备输出
+		icon = GFX_goal_XQG_jiajinjunbeishuchu
+		x = 11
+		y = 9
+				
+		prerequisite = { focus = XQG_14 }
+		cost = 35
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_timed_idea = { idea = XQG1_11 days = 60 }
+			add_stability = -0.10
+	        add_war_support = 0.10
+		}		
+    }
+	focus = {
+		id = XQG_16  #应急演习
+		icon = GFX_goal_XQG_yanxi
+		x = 11
+		y = 10
+				
+		prerequisite = { focus = XQG_15 }
+		cost = 35
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_ideas = XQG1_12
+		}		
+    }
+	focus = {
+		id = XQG_17  #外国同志的援助
+		icon = GFX_goal_XQG_waiguotongzhi
+		x = 7
+		y = 9
+		cost = 35		
+		prerequisite = { focus = XQG_13 }
+		
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000				
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 500				
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 900				
+			}
+		}		
+    }
+	focus = {
+		id = XQG_18  #经济技术合作
+		icon = GFX_goal_XQG_jingjijishuhezuo
+		x = 7
+		y = 10
+				
+		prerequisite = { focus = XQG_17 }
+		cost = 35
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+		    name = XQG_18
+		    bonus = 0.5
+		    uses = 2
+			category = industry
+	      }
+		}		
+    }
+	focus = {
+		id = XQG_19  #放眼世界
+		icon = GFX_goal_XQG_fangyanshijie
+		x = 9
+		y = 11
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_18
+		focus = XQG_16
+		}
+		
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_ideas = XQG1_14
+		}		
+    }
+	focus = {
+		id = XQG_20  #节制资本
+		icon = GFX_goal_XQG_jiezhiziben
+		x = 7
+		y = 12
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_19
+		}
+		
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			swap_ideas = {
+	        remove_idea = XQG2_2
+	        add_idea = XQG1_14
+   	        }
+		}		
+    }
+	focus = {
+		id = XQG_21  #规范市场行为
+		icon = GFX_goal_XQG_guifanshichang
+		x = 7
+		y = 13
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_20
+		}
+		
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_ideas = XQG1_14
+		}		
+    }
+	focus = {
+		id = XQG_22  #委员会改组
+		icon = GFX_goal_XQG_weuyuanhuigaizu
+		x = 11
+		y = 12
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_19
+		}
+		
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_political_power = 150
+			show_ideas_tooltip = XQG_yunlai
+			show_ideas_tooltip = XQG_feiyungonghui
+			show_ideas_tooltip = XQG_junshi
+		}		
+    }
+	focus = {
+		id = XQG_23  #中央委员会的成立
+		icon = GFX_goal_XQG_zhongyangweiyuanhui
+		x = 11
+		y = 13
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_22
+		}
+		
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			swap_ideas = {
+			add_idea = XQG1_15
+			remove_idea = XQG1_10
+		    }
+		}		
+    }
+	focus = {
+		id = XQG_24  #无产阶级共和国
+		icon = GFX_goal_XQG_wuchanjieji
+		x = 9
+		y = 70
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_21
+		}
+		prerequisite = { 
+		focus = XQG_23
+		}
+		available = {
+		KQG = { exists= NO}
+		XRG = { exists= NO}
+		RTG = { exists= NO}
+		XOG = { exists= NO}
+		ZDG = { exists= NO}
+		LYU = { exists= NO}
+		BDG = { exists= NO}
+		ANG = { exists= NO}
+	    }
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_ideas = XQG1_16
+			add_ideas = civilian_economy
+		    add_ideas = volunteer_only
+		}		
+    }
+    focus = {
+		id = XQG_25  #确立多数派议会
+		icon = GFX_goal_XQG_yihui
+		x = 2
+		y = 6
+		cost = 14		
+		prerequisite = { 
+		focus = XQG_9
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+		show_ideas_tooltip = XQG_changqin
+		show_ideas_tooltip = XQG_oyangxu	
+		}		
+    }
+	focus = {
+		id = XQG_26  #选举官僚机构
+		icon = GFX_goal_XQG_xuanju
+		x = 4
+		y = 7
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_25
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+		show_ideas_tooltip = XQG_Feiyun
+		show_ideas_tooltip = XQG_guiliyuan
+		show_ideas_tooltip = XQG_senlan	
+		}		
+    }
+	focus = {
+		id = XQG_27  #加强文官统治
+		icon = GFX_goal_XQG_jiaqiangwenguantongzhi
+		x = 4
+		y = 8
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_26
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_popularity = { ideology = liberalism popularity = 0.15 }
+		}		
+    }
+	focus = {
+		id = XQG_28  #团结利益群体
+		icon = GFX_goal_XQG_tuanjie
+		x = 4
+		y = 9
+				
+		prerequisite = { 
+		focus = XQG_27
+		}
+
+		cost = 21
+
+		available = {
+		has_idea = XQG1_6
+	    }
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			swap_ideas = {
+	        remove_idea = XQG1_6
+	        add_idea = XQG1_7
+   	        }
+		}		
+    }
+	focus = {
+		id = XQG_29  #消灭不安定因素
+		icon = GFX_goal_XQG_xiaomie
+		x = 4
+		y = 10
+				
+		prerequisite = { 
+		focus = XQG_28
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_ideas = XQG1_8
+		}		
+    }
+	focus = {
+		id = XQG_30  #爱国主义宣传运动
+		icon = GFX_goal_XQG_aiguozhuyi
+		x = 0
+		y = 7
+		cost = 14		
+		prerequisite = { 
+		focus = XQG_25
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			swap_ideas = {
+	        remove_idea = XQG2_1
+	        add_idea = XQG1_5
+   	        }
+		}		
+    }
+	focus = {
+		id = XQG_31  #安抚民心
+		icon = GFX_goal_XQG_anfuminxin
+		x = 0
+		y = 8
+		cost = 35		
+		prerequisite = { 
+		focus = XQG_30
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_stability = 0.10
+	        add_war_support = -0.10
+		}		
+    }
+	focus = {
+		id = XQG_32  #扩大市场自由
+		icon = GFX_goal_XQG_shichangziyou
+		x = 0
+		y = 9
+
+		cost = 42
+
+		prerequisite = { 
+		focus = XQG_31
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			swap_ideas = {
+	        remove_idea = XQG2_2
+	        add_idea = XQG1_6
+   	}
+		}		
+    }
+	focus = {
+		id = XQG_33  #争取外国贸易
+		icon = GFX_goal_XQG_haiwaimaoyi
+		x = 0
+		y = 10
+
+		cost = 49
+
+		prerequisite = { 
+		focus = XQG_32
+		}
+				
+		ai_will_do = {
+			factor = 10			
+		}
+		completion_reward = {
+			add_political_power = -150
+			unlock_decision_category_tooltip = XQG_decision_category4
+		}		
+    }
+	focus = {
+		id = XQG_34  #资产阶级共和国
+		icon = GFX_goal_XQG_zichanjieji
+		x = 2
+		y = 11
+
+		cost = 70
+        available = {
+		KQG = { exists= NO}
+		XRG = { exists= NO}
+		RTG = { exists= NO}
+		XOG = { exists= NO}
+		ZDG = { exists= NO}
+		LYU = { exists= NO}
+		BDG = { exists= NO}
+		ANG = { exists= NO}
+	    }
+		prerequisite = { 
+		focus = XQG_33
+		}
+
+		prerequisite = { 
+		focus = XQG_29
+		}
+				
+		ai_will_do = {
+			factor = 20			
+		}
+		completion_reward = {
+		  add_ideas = XQG1_9
+		}		
+    }
+	focus = {
+		id = XQG_35  #改革旧军队
+		icon = GFX_goal_XQG_gaigejiujundui
+		x = 17
+		y = 0
+
+		cost = 21
+        available = {
+		    or = {
+		    has_government = liberalism
+			has_government = communism
+	        }
+	    }				
+		ai_will_do = {
+			factor = 20			
+		}
+		completion_reward = {
+			swap_ideas = {
+			add_idea = XQG1_17
+			remove_idea = XQG2_3
+			}
+		}		
+    }
+	focus = {
+		id = XQG_36  #开展正规训练
+		icon = GFX_goal_XQG_xunlian
+		x = 17
+		y = 1
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_35
+		}
+
+		completion_reward = {
+			swap_ideas = {
+			add_idea = XQG1_18
+			remove_idea = XQG1_17
+			}
+		}		
+    }
+	focus = {
+		id = XQG_37  #筛选适役人群
+		icon = GFX_goal_XQG_shaixuanshiyirenqun
+		x = 17
+		y = 2
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_36
+		}
+
+		completion_reward = {
+			swap_ideas = {
+			add_idea = XQG1_19
+			remove_idea = XQG1_18
+			}
+		}		
+    }
+	focus = {
+		id = XQG_38  #职业军队路线
+		icon = GFX_goal_XQG_zhiyejundui
+		x = 14
+		y = 3
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+         
+		available = {
+		has_government = liberalism
+	    }
+
+		prerequisite = { 
+		focus = XQG_37
+		}
+		mutually_exclusive = { focus = XQG_45 }
+
+		completion_reward = {
+			add_ideas = XQG1_20
+		}		
+    }
+	focus = {
+		id = XQG_39  #特种作战力量
+		icon = GFX_goal_XQG_tezhong
+		x = 12
+		y = 4
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_38
+		}
+
+		completion_reward = {
+			swap_ideas = {
+			add_idea = XQG1_21
+			remove_idea = XQG1_20
+		}
+		}		
+    }
+	focus = {
+		id = XQG_40  #战时军事学院
+		icon = GFX_goal_XQG_junshixueyuan
+		x = 12
+		y = 5
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_39
+		}
+
+		completion_reward = {
+			add_ideas = XQG1_22
+		}		
+    }
+	focus = {
+		id = XQG_41  #军衔体系
+		icon = GFX_goal_XQG_junxian
+		x = 12
+		y = 6
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_40
+		}
+
+		completion_reward = {
+			add_ideas = XQG1_23
+		}		
+    }
+	focus = {
+		id = XQG_42  #军用装备设计
+		icon = GFX_goal_XQG_zhuangbei
+		x = 16
+		y = 4
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_38
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = XQG_42
+				bonus = 1.0
+				uses = 3
+				category = infantry_weapons 
+			}
+			add_tech_bonus = {
+				name = XQG_42
+				bonus = 0.5
+				uses = 2
+				category = support_tech 
+			}
+		}		
+    }
+	focus = {
+		id = XQG_43  #战术研讨会议
+		icon = GFX_goal_XQG_zhanshu
+		x = 16
+		y = 5
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_42
+		}
+
+		completion_reward = {
+			add_ideas = XQG1_24
+		}		
+    }
+	focus = {
+		id = XQG_44  #雇佣军
+		icon = GFX_goal_XQG_guyongbing
+		x = 16
+		y = 6
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_43
+		}
+
+		completion_reward = {
+			add_ideas = XQG1_24
+			division_template = {
+					name = "雇佣军"
+					priority = 2
+					is_locked = yes
+					division_names_group = XQG_CAV_01
+					regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+				}
+				    support = { 
+		            mot_recon = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+	                artillery = { x = 0 y = 2 }
+	            }
+		    }
+		148 = {
+		create_unit = {
+			division = "division_template = \"雇佣军\" start_experience_factor = 0.4"
+			owner = XQG
+			count = 4
+		    }
+	    }
+		}		
+    }
+	focus = {
+		id = XQG_45  #全民皆兵路线
+		icon = GFX_goal_XQG_quanminjiebing
+		x = 20
+		y = 3
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_37
+		}
+		mutually_exclusive = { focus = XQG_38 }
+
+		completion_reward = {
+			
+		}		
+    }
+	focus = {
+		id = XQG_46  #大兵团实践
+		icon = GFX_goal_XQG_lilunshijian
+		x = 18
+		y = 4
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_45
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+		    name = XQG_46
+		    bonus = 1.0
+		    ahead_reduction = 2
+		    uses = 2
+		    category = cat_mass_assault
+	        }
+		}		
+    }
+	focus = {
+		id = XQG_47  #机动载具测试
+		icon = GFX_goal_XQG_jidongzaijuxunlian
+		x = 18
+		y = 5
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_46
+		}
+
+		completion_reward = {
+			division_template = {
+					name = "机动兵团"
+					priority = 2
+					is_locked = yes
+					division_names_group = XQG_CAV_01
+					regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+				}
+		    }
+		148 = {
+		create_unit = {
+			division = "division_template = \"机动兵团\" start_experience_factor = 0.4"
+			owner = XQG
+			count = 2
+		    }
+	    }
+		}		
+    }
+	focus = {
+		id = XQG_48 #政委体系
+		icon = GFX_goal_XQG_zhengwei
+		x = 18
+		y = 6
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_47
+		}
+
+		completion_reward = {
+			add_ideas = XQG1_26
+		}		
+    }
+	focus = {
+		id = XQG_49 #民兵战术培养
+		icon = GFX_goal_XQG_minbing
+		x = 22
+		y = 4
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_45
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+		    name = XQG_49
+		    bonus = 0.5
+		    uses = 2
+		    category = cat_mass_assault
+	        }
+		}		
+    }
+	focus = {
+		id = XQG_50 #意识形态工作
+		icon = GFX_goal_XQG_yishixingtai
+		x = 22
+		y = 5
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_49
+		}
+
+		completion_reward = {
+		add_ideas = XQG1_27	
+		}		
+    }
+	focus = {
+		id = XQG_51 #志愿者
+		icon = GFX_goal_XQG_zhiyuanzhe
+		x = 22
+		y = 6
+
+		cost = 21
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_50
+		}
+
+		completion_reward = {
+			division_template = {
+					name = "志愿军"
+					priority = 2
+					is_locked = yes
+					division_names_group = XQG_INF_01
+					regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 3 y = 1 }
+                    artillery_brigade = { x = 3 y = 2 }
+                    artillery_brigade = { x = 4 y = 1 }
+					artillery_brigade = { x = 4 y = 2 }
+				}
+				    support = { 
+		            recon = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+	                artillery = { x = 0 y = 2 }
+	            }
+		    }
+		148 = {
+		create_unit = {
+			division = "division_template = \"志愿军\" start_experience_factor = 0.4"
+			owner = XQG
+			count = 4
+		    }
+	    }
+		}		
+    }
+	focus = {
+		id = XQG_52  #整合现有工业
+		icon = GFX_goal_XQG_zhenghe
+		x = 29
+		y = 0
+
+		cost = 28
+        				
+		ai_will_do = {
+			factor = 10			
+		}
+		available = {
+		    or = {
+		    has_government = liberalism
+			has_government = communism
+	        }
+	    }
+		completion_reward = {
+		random_owned_controlled_state = {
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		        }
+	        }
+		random_owned_controlled_state = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		        }
+	        }
+		}		
+    }
+	focus = {
+		id =XQG_53 #军用工厂改装
+		icon = GFX_goal_XQG_junyong
+		x = 25
+		y = 1
+
+		cost =28
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_52
+		}
+
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+	}
+	focus = {
+		id =XQG_54 #简化军工生产线
+		icon = GFX_goal_XQG_jianhuajungongshengchanxian
+		x = 25
+		y = 2
+
+		cost =14
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_53
+		}
+
+		completion_reward = {
+			add_ideas = XQG1_28
+		}
+	}
+	focus = {
+		id =XQG_55 #购入至冬军火
+		icon = GFX_goal_XQG_gouruzhidongjunhuo
+		x = 25
+		y = 3
+
+		cost =21
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_54
+		}
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+		    type = infantry_equipment
+		    amount = 12000
+		    producer = ZDG
+	    }
+		}
+	}
+	focus = {
+		id =XQG_56 #修复工业设备
+		icon = GFX_goal_XQG_xiufu
+		x = 29
+		y = 1
+
+		cost =21
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_52
+		}
+
+		completion_reward = {
+			add_timed_idea = { idea = XQG1_29 days = 90 }
+		}
+	}
+	focus = {
+		id =XQG_57 #培训新工人
+		icon = GFX_goal_XQG_gongren
+		x = 29
+		y = 2
+
+		cost =14
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_56
+		}
+
+		completion_reward = {
+			add_timed_idea = { idea = XQG1_30 days = 180 }
+		}
+	}
+	focus = {
+		id =XQG_58 #征用地皮
+		icon = GFX_goal_XQG_dipi
+		x = 29
+		y = 3
+
+		cost =21
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_57
+		}
+
+		completion_reward = {
+			unlock_decision_category_tooltip = XQG_decision_category5
+		}
+	}
+	focus = {
+		id =XQG_59 #人才筛选
+		icon = GFX_goal_XQG_rencai
+		x = 33
+		y = 1
+
+		cost =21
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_52
+		}
+
+		completion_reward = {
+	    show_ideas_tooltip = XQG_yangweimin
+		show_ideas_tooltip = XQG_keyunjie	
+		}
+	}
+	focus = {
+		id =XQG_60 #重点培养
+		icon = GFX_goal_XQG_zhongdianpeiyang
+		x = 33
+		y = 2
+
+		cost =21
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_59
+		}
+
+		completion_reward = {
+			add_ideas = XQG1_31
+		}
+	}
+	focus = {
+		id =XQG_61 #成立最高学府
+		icon = GFX_goal_XQG_chenglidifangxuefu
+		x = 33
+		y = 3
+
+		cost =28
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_60
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+			add_ideas = XQG1_31
+		}
+	}
+	focus = {
+		id =XQG_62 #战时工业体系
+		icon = GFX_goal_XQG_gongye
+		x = 27
+		y = 4
+
+		cost =21
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = {focus = XQG_55 focus = XQG_58}
+
+		completion_reward = {
+			add_ideas = XQG1_37
+		}
+	}
+	focus = {
+		id =XQG_63 #战时科研体系
+		icon = GFX_goal_XQG_keyan
+		x = 33
+		y = 4
+
+		cost =21
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_61
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+			swap_ideas = {
+			add_idea = XQG1_32
+			remove_idea = XQG1_31
+		    }
+		}
+	}
+	focus = {
+		id =XQG_64 #精英主导生产
+		icon = GFX_goal_XQG_jingying
+		x = 27
+		y = 5
+
+		cost = 35
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		available = {
+		has_government = liberalism
+	    }
+
+		prerequisite = {focus = XQG_62 focus =XQG_63}
+		mutually_exclusive = { focus = XQG_68}
+
+		completion_reward = {
+			add_ideas = XQG1_33
+		}
+
+	}
+	focus = {
+		id =XQG_65 #理论最大化
+		icon = GFX_goal_XQG_lilun
+		x = 27
+		y = 6
+
+		cost = 28
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_64
+		}
+
+		completion_reward = {
+			swap_ideas = {
+			add_idea = XQG1_34
+			remove_idea = XQG1_33
+		}
+		}
+		
+	}
+	focus = {
+		id =XQG_66 #高效的集中管理
+		icon = GFX_goal_XQG_gaoxiaodejizhongguanli
+		x = 27
+		y = 7
+
+		cost = 35
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_65
+		}
+
+		completion_reward = {
+			unlock_decision_category_tooltip = XQG_special_categories
+		}
+		
+	}
+	focus = {
+		id =XQG_67 #庞大的管理集团
+		icon = GFX_goal_XQG_guanli
+		x = 27
+		y = 8
+
+		cost = 35
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = { 
+		focus = XQG_66
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = jueyi
+		}
+		
+	}
+	focus = {
+		id =XQG_68 #工人指导经济
+		icon = GFX_goal_XQG_gongrenzhidaojingji
+		x = 33
+		y = 5
+
+		cost = 35
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = {focus = XQG_62 focus =XQG_63}
+		mutually_exclusive = { focus = XQG_64 }
+
+		completion_reward = {
+			add_ideas = XQG1_35
+		}
+		
+	}
+	focus = {
+		id =XQG_69 #劳动中实践
+		icon = GFX_goal_XQG_laodong
+		x = 33
+		y = 6
+
+		cost = 28
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = {focus = XQG_68}
+
+		completion_reward = {
+			swap_ideas = {
+			add_idea = XQG1_36
+			remove_idea = XQG1_35
+		}
+		}
+		
+	}
+	focus = {
+		id =XQG_70 #工人委员会
+		icon = GFX_goal_XQG_gongrenweiyuanhui
+		x = 33
+		y = 7
+
+		cost = 14
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = {focus = XQG_69}
+
+		completion_reward = {
+			unlock_decision_category_tooltip = XQG_decision_category3
+		}
+		
+	}
+	focus = {
+		id =XQG_71 #地方工会
+		icon = GFX_goal_XQG_difanggonghui
+		x = 33
+		y = 8
+
+		cost = 35
+
+		ai_will_do = {
+			factor = 10			
+		}
+
+		prerequisite = {focus = XQG_70}
+
+		completion_reward = {
+			custom_effect_tooltip = jueyi
+		}
+		
+	}
+}

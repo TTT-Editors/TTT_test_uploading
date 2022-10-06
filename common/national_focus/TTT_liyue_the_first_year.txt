@@ -480,13 +480,29 @@ focus_tree = {
         relative_position_id = limited_public_opinion
 		
 		available = {
-		    has_stability > 0.7
+		    has_stability > 0.6
 		    custom_trigger_tooltip = {
 			    tooltip = communism_liberalism_reformism_popularity_compare
-				root = { communism < 0.50 }
-				root = { communism > 0.30 }
-				root = { liberalism < 0.50 }
-				root = { liberalism > 0.30 }
+				check_variable = {
+				    var = party_popularity@communism
+					value = 0.5
+					compare = less_than_or_equals
+				}
+				check_variable = {
+				    var = party_popularity@communism
+					value = 0.3
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+				    var = party_popularity@liberalism
+					value = 0.5
+					compare = less_than_or_equals
+				}
+				check_variable = {
+				    var = party_popularity@liberalism
+					value = 0.3
+					compare = greater_than_or_equals
+				}
 			}
 		}
         

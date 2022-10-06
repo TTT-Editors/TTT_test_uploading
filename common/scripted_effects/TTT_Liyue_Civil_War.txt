@@ -1,5 +1,5 @@
 #璃月内战第一阶段：中部军阀混战
-kickstart_of_liyue_civil_war = {
+kickstart_of_liyue_civil_war = { 
 	KQG = {
 		declare_war_on = {
 			target = NNG
@@ -13,11 +13,27 @@ kickstart_of_liyue_civil_war = {
 			hostility_reason = asked_to_join
 		}
 	}
-	XQG = {
-		add_to_war = {
+	if = {
+			limit = {
+				XQG = { has_government = communism }
+			}
+		XQG = {
+		declare_war_on = {
+			target = NNG
+			type = annex_everything
+		        }
+	        }
+		} 
+	else_if = {
+			limit = {
+				XQG = { has_government = liberalism }
+		    }
+			XQG = {
+		    add_to_war = {
 			targeted_alliance = NNG
 			enemy = KQG
 			hostility_reason = asked_to_join
 		}
+	        }
 	}
 }

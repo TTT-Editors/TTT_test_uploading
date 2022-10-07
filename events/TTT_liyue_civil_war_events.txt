@@ -62,11 +62,74 @@ country_event = {
 	trigger = { 
 		has_global_flag = Liyue_Civil_War
 		is_nominate_liyue = yes
-		145 = { is_controlled_by = ROOT }
-		146 = { is_controlled_by = ROOT }
-		147 = { is_controlled_by = ROOT }
-		148 = { is_controlled_by = ROOT }
-		129 = { is_controlled_by = ROOT }
+		OR = {
+			145 = { is_controlled_by = ROOT }
+			AND = {
+				is_faction_leader = yes
+				145 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+			}
+		}
+		OR = {
+			AND = {
+				146 = { is_controlled_by = ROOT }
+				147 = { is_controlled_by = ROOT }
+				148 = { is_controlled_by = ROOT }
+				129 = { is_controlled_by = ROOT }
+				149 = { is_controlled_by = ROOT }
+				150 = { is_controlled_by = ROOT }
+			}
+			AND = {
+				is_faction_leader = yes
+				146 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				147 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				148 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				129 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				149 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				150 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+			}
+		}
 		has_war_with = NNG
 	}
 	
@@ -78,11 +141,48 @@ country_event = {
 	option = {
 		name = liyue_civil_war.3.a
 		set_country_flag = victor_in_center
-		transfer_state = 145
-		transfer_state = 146
-		transfer_state = 147
-		transfer_state = 148
-		transfer_state = 129
+		if = {
+			limit = {
+				controls_state = 145
+			}
+			transfer_state = 145
+		}
+		if = {
+			limit = {
+				controls_state = 146
+			}
+			transfer_state = 146
+		}
+		if = {
+			limit = {
+				controls_state = 147
+			}
+			transfer_state = 147
+		}
+		if = {
+			limit = {
+				controls_state = 148
+			}
+			transfer_state = 148
+		}
+		if = {
+			limit = {
+				controls_state = 149
+			}
+			transfer_state = 149
+		}
+		if = {
+			limit = {
+				controls_state = 150
+			}
+			transfer_state = 150
+		}
+		if = {
+			limit = {
+				controls_state = 129
+			}
+			transfer_state = 129
+		}
 		add_political_power = 100
 		add_stability = 0.1
 		add_war_support = 0.1

@@ -104,8 +104,12 @@ country_event =
 		   {
 			    if = 
 				{
-					limit = {has_idea = SNA_kill_all_2}
-					OR = {has_idea = SNA_kill_all_1}
+					limit = {
+						OR = {
+							has_idea = SNA_kill_all_2
+							has_idea = SNA_kill_all_1
+						}
+					}
 					random_list = {
 				    	2.5 = {
 				        	country_event = {id = FinSNA.6 days = 10}
@@ -137,8 +141,12 @@ country_event =
 		   {
                 if = 
 				{
-					limit = {has_idea = SNA_kill_all_2}
-					OR = {has_idea = SNA_kill_all_1}
+					limit = {
+						OR = {
+							has_idea = SNA_kill_all_2
+							has_idea = SNA_kill_all_1
+						}
+					}
 					random_list = {
 				    	1.5 = {
 				        	country_event = {id = FinSNA.14 days = 10}
@@ -225,40 +233,37 @@ country_event =
 	   }
 }
 
-country_event = 
-{
-	   #阻止疯子
-       id = FinSNA.9
-	   title = FinSNA.9.t
-	   desc = FinSNA.9.d
-	   trigger = {
-	         tag = SNA 
-	   }
-	   fire_only_once = yes
-	   is_triggered_only = yes 
-	   option = {
-	       name = FinSNA.9.a
+country_event = {
+	#阻止疯子
+	id = FinSNA.9
+	title = FinSNA.9.t
+	desc = FinSNA.9.d
+	trigger = {
+		tag = SNA 
+	}
+	fire_only_once = yes
+	is_triggered_only = yes 
+	option = {
+		name = FinSNA.9.a
+	}
+	option = {
+		name = FinSNA.9.b
 		if = {
-		  limit = {has_country_flag = zhePing_support}
-		  	   option = {
-	                name = FinSNA.9.b
-		            #哲平和思鹤带着军队去
-					hidden_effect = 
-					{
-                        random_list = {
-				    		7 = {
-				        		country_event = {id = FinSNA.10 days = 10}
-				    		}	
-				    		3 ={
-				        		country_event = {id = FinSNA.11 days = 10}
-				   			}
-			        	}
-					}
-	           }
-	   }
+			limit = {has_country_flag = zhePing_support}
+			#哲平和思鹤带着军队去
+			hidden_effect = {
+				random_list = {
+					7 = {
+						country_event = {id = FinSNA.10 days = 10}
+			    	}	
+			    	3 ={
+						country_event = {id = FinSNA.11 days = 10}
+			   		}
+				}
+			}
+		}
 		#思鹤亲自去
-		else = 
-		{
+		else = {
            	hidden_effect = 
 			{
                 random_list = {
@@ -271,8 +276,7 @@ country_event =
 			    }
 			}
 		}
-	 }
-	   
+	}
 }
 
 country_event = 

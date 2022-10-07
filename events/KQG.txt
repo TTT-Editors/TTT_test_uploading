@@ -184,7 +184,7 @@ country_event = {
 	option = {
 	    name = KQG_events.15.a
 		ai_chance = {
-		factor = 85
+		factor = 100
 		}
 		create_faction = communism_alliance
 		KQG = {
@@ -222,7 +222,7 @@ country_event = {
 	option = {
 	    name = KQG_events.15.b
 		ai_chance = {
-		factor = 15
+		factor = 0
 		}
 		complete_national_focus = KQG_46
 		XQG = {
@@ -290,16 +290,27 @@ country_event = {
 			factor = 1
 		}
 	    name = KQG_events.18.a
-		if = {
-			limit = { 
-				KQG = {
-					is_ai = yes
+		hidden_effect = {
+			if = {
+				limit = { 
+					KQG = {
+						is_ai = yes
+					}
 				}
+				KQG = { change_tag_from = ROOT }
 			}
-			KQG = { change_tag_from = ROOT }
 		}
 		KQG = {
 			annex_country = { target = XQG transfer_troops =  yes }
+			every_owned_state = {
+				limit = {
+					is_core_of = XQG
+				}
+				remove_core_of = XQG
+				KQG = {
+					add_state_core = PREV
+				}
+			}
         }
 		XQG = {
 			transfer_navy = { target = KQG }

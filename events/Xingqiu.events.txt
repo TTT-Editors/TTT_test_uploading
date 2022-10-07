@@ -114,7 +114,7 @@ country_event = {       #资本的力量
 	
 	option = { 
 		name = Xingqiu.7.a
-		omplete_national_focus = XQG_9
+		complete_national_focus = XQG_9
 		set_politics = {
 			ruling_party = liberalism
 			elections_allowed = yes
@@ -151,7 +151,7 @@ country_event = {        #来自北方的通讯
 	option = {
 	    name = Xingqiu.9.a
 		ai_chance = {
-		factor = 85
+		factor = 100
 		}
 		create_faction = communism_alliance
         XQG = {
@@ -189,7 +189,7 @@ country_event = {        #来自北方的通讯
 	option = {
 	    name = Xingqiu.9.b
 		ai_chance = {
-		factor = 15
+		factor = 0
 		}
 		complete_national_focus = XQG_14
 		KQG = {
@@ -258,17 +258,28 @@ country_event = {       #统一
 	    ai_chance = {
 			factor = 1
 		}
-		if = {
-			limit = { 
-				XQG = {
-					is_ai = yes
+		hidden_effect = {
+			if = {
+				limit = { 
+					XQG = {
+						is_ai = yes
+					}
 				}
+				XQG = { change_tag_from = ROOT }
 			}
-			XQG = { change_tag_from = ROOT }
 		}
 		#custom_effect_tooltip = GAME_OVER_TT
 		XQG = {
 			annex_country = { target = KQG transfer_troops =  yes }
+			every_owned_state = {
+				limit = {
+					is_core_of = KQG
+				}
+				remove_core_of = KQG
+				XQG = {
+					add_state_core = PREV
+				}
+			}
 		}
 		KQG = {
 			transfer_navy = { target = XQG }

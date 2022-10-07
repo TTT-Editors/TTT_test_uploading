@@ -40,15 +40,15 @@ is_nominate_liyue = {
 		original_tag = ZDG
 		original_tag = XRG
 		original_tag = RTG
-		original_tag = SHG
+		#original_tag = SHG
 		original_tag = ANG
 		original_tag = LYU
 		original_tag = KQG
 		original_tag = XQG
-		original_tag = BDG
+		#original_tag = BDG
 		original_tag = NNG
 		original_tag = XOG
-		original_tag = HTG
+		#original_tag = HTG
 	}
 	#Maybe some warlords will break up, again.
 }
@@ -402,11 +402,13 @@ is_southern_warlords = {
 	}
 }
 
+# central, central, central!!! Such an f-word spelling mistake!!!!!
 is_center_warlords = {
 	has_global_flag = Liyue_Civil_War
 	OR = {
 		tag = KQG
 		tag = NNG
+		tag = XQG
 	}
 }
 
@@ -443,10 +445,28 @@ northern_united = {
 center_united = {
 	has_global_flag = Liyue_Civil_War
 	NOT = { has_country_flag = ready_for_another_round }
-	NOT = {
-		any_other_country = {
-			is_center_warlords = yes
-			NOT = { has_country_flag = defeated_ningguang }
+	OR = {
+		NOT = {
+			any_other_country = {
+				is_center_warlords = yes
+				NOT = { has_country_flag = defeated_ningguang }
+			}
+		}
+		AND = {
+			tag = XQG
+			has_country_flag = xingqiu1
+			OR = {
+				NNG = { exists = no }
+				NNG = { has_country_flag = defeated_ningguang }
+			}
+		}
+		AND = {
+			tag = KQG
+			has_country_flag = keqing1
+			OR = {
+				NNG = { exists = no }
+				NNG = { has_country_flag = defeated_ningguang }
+			}
 		}
 	}
 }

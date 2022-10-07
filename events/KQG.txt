@@ -184,9 +184,9 @@ country_event = {
 	option = {
 	    name = KQG_events.15.a
 		ai_chance = {
-		factor = 900
+		factor = 85
 		}
-		create_faction = llp
+		create_faction = communism_alliance
 		KQG = {
 			add_to_faction = XQG
 		}
@@ -215,13 +215,14 @@ country_event = {
         XOG = {
 				country_event = KQG_events.16
 		}
-        unlock_decision_category_tooltip = KQG_special_categories6                          		
+        unlock_decision_category_tooltip = KQG_special_categories6
+        set_country_flag = keqing1                          		
     }
 	
 	option = {
 	    name = KQG_events.15.b
 		ai_chance = {
-		factor = 200
+		factor = 15
 		}
 		complete_national_focus = KQG_46
 		XQG = {
@@ -286,20 +287,31 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 	    ai_chance = {
-		factor = 500
+			factor = 1
 		}
 	    name = KQG_events.18.a
+		if = {
+			limit = { 
+				KQG = {
+					is_ai = yes
+				}
+			}
+			KQG = { change_tag_from = ROOT }
+		}
 		KQG = {
-        annex_country = { target = XQG transfer_troops =  yes }
+			annex_country = { target = XQG transfer_troops =  yes }
         }
-        KQG = { change_tag_from = ROOT }		
+		XQG = {
+			transfer_navy = { target = KQG }
+			every_unit_leader = { set_nationality = KQG }
+		}		
     }
 	option = {
 	    ai_chance = {
-		factor = 200
+		factor = 0
 		}
 	    name = KQG_events.18.b
-		XQG = { leave_faction= yes }
-        declare_war_on = { target = KQG type = annex_everything } 		
+		XQG = { leave_faction = yes }
+        XQG = { declare_war_on = { target = KQG type = annex_everything } }	
     }
 }

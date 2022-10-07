@@ -6,7 +6,7 @@ add_namespace = Xingqiu
 
 country_event = {       #并不乐观的局势
 	id = Xingqiu.1
-	title = Xingqiu.1
+	title = Xingqiu.1.t
 	desc = Xingqiu.1.d 
 	
 	fire_only_once = yes
@@ -24,7 +24,7 @@ country_event = {       #并不乐观的局势
 
 country_event = {      #游街串巷
 	id = Xingqiu.2
-	title = Xingqiu.2
+	title = Xingqiu.2.t
 	desc = Xingqiu.2.d 
 
 	fire_only_once = yes
@@ -41,7 +41,7 @@ country_event = {      #游街串巷
 
 country_event = {      #草木萌芽
 	id = Xingqiu.3
-	title = Xingqiu.3
+	title = Xingqiu.3.t
 	desc = Xingqiu.3.d 
 	
 	is_triggered_only = yes	
@@ -58,7 +58,7 @@ country_event = {      #草木萌芽
 
 country_event = {       #阴谋
 	id = Xingqiu.4
-	title = Xingqiu.4
+	title = Xingqiu.4.t
 	desc = Xingqiu.4.d
 	
 	is_triggered_only = yes
@@ -71,7 +71,7 @@ country_event = {       #阴谋
 
 country_event = {       #一笔资助
 	id = Xingqiu.5
-	title = Xingqiu.5
+	title = Xingqiu.5.t
 	desc = Xingqiu.5.d 
 
 	fire_only_once = yes
@@ -88,7 +88,7 @@ country_event = {       #一笔资助
 
 country_event = {       #秘密行动
 	id = Xingqiu.6
-	title = Xingqiu.6
+	title = Xingqiu.6.t
 	desc = Xingqiu.6.d 
 	fire_only_once = yes
 	is_triggered_only = yes	
@@ -103,7 +103,7 @@ country_event = {       #秘密行动
 
 country_event = {       #资本的力量
 	id = Xingqiu.7
-	title = Xingqiu.7
+	title = Xingqiu.7.t
 	desc = Xingqiu.7.d 
 
 	fire_only_once = yes
@@ -124,7 +124,7 @@ country_event = {       #资本的力量
 
 country_event = {       #理想的侠义
 	id = Xingqiu.8
-	title = Xingqiu.8
+	title = Xingqiu.8.t
 	desc = Xingqiu.8.d
 	
 	is_triggered_only = yes
@@ -135,14 +135,14 @@ country_event = {       #理想的侠义
 		complete_national_focus = XQG_10
 		set_politics = {
 			ruling_party = communism
-			elections_allowed = no
+			elections_allowed = yes
 		}
     }
 }
 
 country_event = {        #来自北方的通讯
 	id = Xingqiu.9
-	title = Xingqiu.9
+	title = Xingqiu.9.t
 	desc = Xingqiu.9.d 
 	
 	fire_only_once=yes
@@ -151,9 +151,9 @@ country_event = {        #来自北方的通讯
 	option = {
 	    name = Xingqiu.9.a
 		ai_chance = {
-		factor = 900
+		factor = 85
 		}
-		create_faction = llp
+		create_faction = communism_alliance
         XQG = {
 			add_to_faction = KQG
 		}		
@@ -189,12 +189,12 @@ country_event = {        #来自北方的通讯
 	option = {
 	    name = Xingqiu.9.b
 		ai_chance = {
-		factor = 200
+		factor = 15
 		}
 		complete_national_focus = XQG_14
 		KQG = {
-				country_event = Xingqiu.10
-				complete_national_focus = KQG_46
+			country_event = Xingqiu.11
+			complete_national_focus = KQG_46
 		}
         country_event = Xingqiu.11
         XRG = {
@@ -223,7 +223,7 @@ country_event = {        #来自北方的通讯
 
 country_event = {       #人民主义的合作
 	id = Xingqiu.10
-	title = Xingqiu.10
+	title = Xingqiu.10.t
 	desc = Xingqiu.10.d 
 	
     is_triggered_only = yes
@@ -236,7 +236,7 @@ country_event = {       #人民主义的合作
 
 country_event = {       #人民主义的对立
 	id = Xingqiu.11
-	title = Xingqiu.11
+	title = Xingqiu.11.t
 	desc = Xingqiu.11.d 
 	is_triggered_only = yes
 	fire_only_once = yes
@@ -255,16 +255,34 @@ country_event = {       #统一
 	
 	option = { 
 		name = Xingqiu.12.a
-		XQG = {
-		annex_country = { target = KQG transfer_troops =  yes }
+	    ai_chance = {
+			factor = 1
 		}
-		XQG = { change_tag_from = ROOT }
+		if = {
+			limit = { 
+				XQG = {
+					is_ai = yes
+				}
+			}
+			XQG = { change_tag_from = ROOT }
+		}
+		#custom_effect_tooltip = GAME_OVER_TT
+		XQG = {
+			annex_country = { target = KQG transfer_troops =  yes }
+		}
+		KQG = {
+			transfer_navy = { target = XQG }
+			every_unit_leader = { set_nationality = XQG }
+		}
     }
 	
 	option = { 
 		name = Xingqiu.12.b
+	    ai_chance = {
+			factor = 0
+		}
 		KQG = { leave_faction= yes }
-		declare_war_on = { target = KQG type = annex_everything }
+		XQG = { declare_war_on = { target = KQG type = annex_everything } }
     }
 }
 

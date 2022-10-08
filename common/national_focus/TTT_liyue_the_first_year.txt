@@ -480,31 +480,17 @@ focus_tree = {
         relative_position_id = limited_public_opinion
 		
 		available = {
+			has_country_flag = Liyue_crisis
 		    has_stability > 0.6
 		    custom_trigger_tooltip = {
 			    tooltip = communism_liberalism_reformism_popularity_compare
-				check_variable = {
-				    var = party_popularity@communism
-					value = 0.5
-					compare = less_than_or_equals
-				}
-				check_variable = {
-				    var = party_popularity@communism
-					value = 0.3
-					compare = greater_than_or_equals
-				}
-				check_variable = {
-				    var = party_popularity@liberalism
-					value = 0.5
-					compare = less_than_or_equals
-				}
-				check_variable = {
-				    var = party_popularity@liberalism
-					value = 0.3
-					compare = greater_than_or_equals
-				}
+				communism > 0.3
+				liberalism > 0.3
+				reformism > 0.3
 			}
 		}
+		
+ 		cancel_if_invalid = yes
         
 		select_effect = {
             hidden_effect = {

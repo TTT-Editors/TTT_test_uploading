@@ -121,11 +121,6 @@ country_event = {
 		hidden_effect = {
 			add_ideas = panic_fills_land
 			add_ideas = blocked_harbour
-			retire_character = LYU_NingGuang
-			retire_character = LYU_Yunjin
-			retire_character = LYU_Xinyan
-			retire_character = LYU_BeiDou
-			retire_character = LYU_Xingqiu
 			
 		    NNG = { transfer_state = 145 } 
 		    NNG = { transfer_state = 126 } 
@@ -150,35 +145,62 @@ country_event = {
 					set_state_flag = is_Liyues_territory 
 	  	        } 
 		    } 
-			NNG = {
-				puppet = XQG
+			XQG = { load_oob = "XQG" }      
+			NNG = { load_oob = "NNG" }
+			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
+			transfer_units_fraction = {
+				target = XQG
+				size = 0.15
+				keep_unit_leaders = { }
+				keep_unit_leaders_trigger = {
+					always = yes
+				}
+			} 
+			transfer_units_fraction = {
+				target = NNG
+				size = 0.25
+				keep_unit_leaders = { }
+				keep_unit_leaders_trigger = {
+					always = yes
+				}
+			} 
+			every_owned_state = {
+				set_state_flag = is_Liyues_territory
 			}
+			XQG = { set_research_slots = 1 }
+			
+			LYU_NingGuang = { set_nationality = NNG }
+			LYU_Yunjin = { set_nationality = NNG }
+			LYU_Yelan = { set_nationality = NNG }
+			LYU_BeiDou = { set_nationality = NNG }
+			LYU_Xinyan = { set_nationality = NNG }
+			
 			NNG = {
 				inherit_technology = LYU
-                recruit_character = LYU_NingGuang
-				recruit_character = LYU_BeiDou
-				recruit_character = LYU_Yunjin
-				recruit_character = LYU_Xinyan
-			    promote_character = { 
-					Character = LYU_NingGuang
-					ideology = classical_liberalism
-				}
-				promote_character = { 
-					Character = LYU_NingGuang
-					ideology = authoritarianism_subtype
+				promote_character = {
+					character = LYU_BeiDou
+					ideology = market_liberalism
 				}
 				promote_character = { 
 					Character = LYU_Xinyan
 					ideology = anarcho_syndicalism
 				}
-				promote_character = {
-					character = LYU_BeiDou
-					ideology = market_liberalism
+				promote_character = { 
+					Character = LYU_NingGuang
+					ideology = authoritarianism_subtype
+				}
+			    promote_character = { 
+					Character = LYU_NingGuang
+					ideology = classical_liberalism
 				}
 			}
+			
+			NNG = {
+				puppet = XQG
+			}
+			
 			XQG = {
 				inherit_technology = LYU
-				recruit_character = LYU_Xingqiu
 				set_politics = {
 					ruling_party = reformism
 					election_frequency = 60
@@ -189,53 +211,7 @@ country_event = {
 					liberalism = 40
 					reformism = 40
 				}
-				promote_character = {
-				    character = LYU_Xingqiu
-					ideology = people_livelihood
-			    }
-				promote_character = {
-				    character = LYU_Xingqiu
-					ideology = solidarism
-			    }
-			}  
-			XQG = { load_oob = "XQG" }      
-			NNG = { load_oob = "NNG" }
-			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
-			transfer_units_fraction = {
-				target = XQG
-				#size = 0.08
-				stockpile_ratio = 0.08
-				army_ratio = 0.08
-				navy_ratio = 0.08
-				air_ratio = 0.08
-				#keep_unit_leaders = {
-				#		    
-				#}
-				#keep_unit_leaders_trigger = {
-				#	
-				#}
 			} 
-			transfer_units_fraction = {
-				target = NNG
-				#size = 0.15
-				stockpile_ratio = 0.15
-				army_ratio = 0.15
-				navy_ratio = 0.15
-				air_ratio = 0.15
-				#keep_unit_leaders = {
-				#		    
-				#}
-				#keep_unit_leaders_trigger = {
-				#	
-				#}
-			} 
-			every_owned_state = {
-				set_state_flag = is_Liyues_territory
-			}
-			XQG = { set_research_slots = 1 }
-            #delete_unit_template_and_units = { division_template = "Border Guard Army" }
-            #delete_unit_template_and_units = { division_template = "Local Milita" }
-            #delete_unit_template_and_units = { division_template = "Liyue Cavalry" }
         }
 	}
 	option = { 
@@ -260,15 +236,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {			
-			LYU_Keqing = { set_nationality = { target_country = KQG } }
-			LYU_Hutao = { set_nationality = { target_country = KQG } }
-			LYU_ZhongliA = { set_nationality = { target_country = KQG } }
-
-		    KQG = {
-				inherit_technology = LYU
-			    promote_character = LYU_Keqing
-		    }
+		hidden_effect = {	
 
 			KQG = { transfer_state = 147 }  
 			KQG = { transfer_state = 160 } 
@@ -297,12 +265,21 @@ country_event = {
 			} 
 			transfer_units_fraction = {
 				target = KQG
-				#size = 0.2
-				stockpile_ratio = 0.2
-				army_ratio = 0.2
-				navy_ratio = 0.2
-				air_ratio = 0.2
+				size = 0.15
+				keep_unit_leaders_trigger = {
+					always = yes
+				}
 			}
+			
+			LYU_Keqing = { set_nationality = { target_country = KQG } }
+			LYU_Hutao = { set_nationality = { target_country = KQG } }
+			LYU_ZhongliA = { set_nationality = { target_country = KQG } }		
+
+		    KQG = {
+				inherit_technology = LYU
+			    promote_character = LYU_Keqing
+		    }
+			
 			KQG = { 
 				country_event = {
 					id = KQG_events.1
@@ -313,7 +290,6 @@ country_event = {
 					days = 35
 				}
 			}
-			KQG = { set_research_slots = 1 }
 		}
 	}
 	
@@ -335,13 +311,6 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-		    retire_character = LYU_Xiao
-			LYU_XiangLing = { set_nationality = { target_country = LYU } }
-		    XOG = {
-				inherit_technology = LYU
-				recruit_character = LYU_Xiao
-			    promote_character = LYU_Xiao
-		    }
 			XOG = { inherit_technology = LYU }
 			XOG = { transfer_state = 138 }
 			XOG = { transfer_state = 139 }   
@@ -358,12 +327,19 @@ country_event = {
 			XOG = { load_oob = "XOG" } 
 			transfer_units_fraction = {
 				target = XOG
-				#size = 0.25
-				stockpile_ratio = 0.25
-				army_ratio = 0.25
-				navy_ratio = 0.25
-				air_ratio = 0.25
+				size = 0.25
+				keep_unit_leaders_trigger = {
+					always = yes
+				}
 			}
+			
+			LYU_Xiao = { set_nationality = XOG }
+			
+		    XOG = {
+				inherit_technology = LYU
+			    promote_character = LYU_Xiao
+		    }
+			
 			XOG = { 
 			    every_owned_state = {
 			        add_core_of = XOG
@@ -453,13 +429,11 @@ country_event = {
 					remove_core_of = SNE
 	  	        } 
 		    } 
-			SNE = {
-				retire_character = SNE_Childe
-				retire_character = SNE_Pavlovic
-			}
+			
+			SNE_Childe = { set_nationality = ZDG }
+			SNE_Pavlovic = { set_nationality = ZDG }
+			
 			ZDG = {
-				recruit_character = SNE_Childe
-				recruit_character = SNE_Pavlovic
 				promote_character = {
 					character = SNE_Childe
 					ideology = despotism_subtype
@@ -524,11 +498,11 @@ country_event = {
 			
 			transfer_units_fraction = {
 				target = XRG
-				#size = 0.15 # Fallback in case one of the ratios below are not stipulated
-				stockpile_ratio = 0.15
-				army_ratio = 0.15
-				navy_ratio = 0.15
-				air_ratio = 0.15
+				size = 0.15
+				keep_unit_leaders = {}
+				keep_unit_leaders_trigger = {
+					always = yes
+				}
 			}
 			log = "XRG gained weapons"
 			XRG = { 
@@ -537,6 +511,7 @@ country_event = {
 					remove_core_of = LYU
 	  	        } 
 		    } 
+			XRG_Shenhe = { set_nationality = XRG }
 			log = "finish"
 		}
 	}
@@ -571,11 +546,10 @@ country_event = {
 		ANG = { load_oob = "ANG" }     
 		transfer_units_fraction = {
 			target = ANG
-			#size = 0.5
-			stockpile_ratio = 0.5
-			army_ratio = 0.5
-			navy_ratio = 0.5
-			air_ratio = 0.5
+			size = 0.5
+			keep_unit_leaders_trigger = {
+				always = yes
+			}
 		}
 		ANG = { 
 			every_owned_state = {
@@ -608,11 +582,10 @@ country_event = {
 		ANG = { load_oob = "ANG" }   
 		transfer_units_fraction = {
 			target = ANG
-			#size = 0.5
-			stockpile_ratio = 0.5
-			army_ratio = 0.5
-			navy_ratio = 0.5
-			air_ratio = 0.5
+			size = 0.5
+			keep_unit_leaders_trigger = {
+				always = yes
+			}
 		}  
 		ANG = { 
 			every_owned_state = {

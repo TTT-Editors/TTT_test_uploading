@@ -145,9 +145,6 @@ country_event = {
 					set_state_flag = is_Liyues_territory 
 	  	        } 
 		    } 
-			XQG = { load_oob = "XQG" }      
-			NNG = { load_oob = "NNG" }
-			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
 			transfer_units_fraction = {
 				target = XQG
 				size = 0.15
@@ -211,7 +208,11 @@ country_event = {
 					liberalism = 40
 					reformism = 40
 				}
-			} 
+			}
+			
+			XQG = { load_oob = "XQG" }      
+			NNG = { load_oob = "NNG" }
+			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
         }
 	}
 	option = { 
@@ -252,17 +253,6 @@ country_event = {
 					remove_core_of = LYU
 	  	        } 
 		    }   
-			KQG = {
-				load_oob = "KQG"
-				if = {
-					limit = { has_dlc = "Man the Guns" }
-						load_oob = "Keqing_Navy_MTG"
-						add_war_support = -0.05
-					else = {
-						load_oob = "Keqing_Navy"
-					}
-				}
-			} 
 			transfer_units_fraction = {
 				target = KQG
 				size = 0.15
@@ -279,6 +269,18 @@ country_event = {
 				inherit_technology = LYU
 			    promote_character = LYU_Keqing
 		    }
+			
+			KQG = {
+				load_oob = "KQG"
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+						load_oob = "Keqing_Navy_MTG"
+						add_war_support = -0.05
+					else = {
+						load_oob = "Keqing_Navy"
+					}
+				}
+			} 
 			
 			KQG = { 
 				country_event = {
@@ -416,7 +418,21 @@ country_event = {
 			ZDG = { transfer_state = 220 } 
 			ZDG = { transfer_state = 221 } 
 			ZDG = { transfer_state = 222 }
-			ZDG = { load_oob = "ZDG" }  
+			
+			ZDG = {
+				inherit_technology = SNE
+				set_research_slots = 2
+			}
+
+			SNE = {
+				transfer_units_fraction = {
+					target = ZDG
+					size = 0.12
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				}
+			}
 			167 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			132 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			134 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
@@ -430,8 +446,10 @@ country_event = {
 	  	        } 
 		    } 
 			
-			SNE_Childe = { set_nationality = ZDG }
-			SNE_Pavlovic = { set_nationality = ZDG }
+			SNE = {
+				SNE_Childe = { set_nationality = ZDG }
+				SNE_Pavlovic = { set_nationality = ZDG }
+			}
 			
 			ZDG = {
 				promote_character = {

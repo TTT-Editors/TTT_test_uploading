@@ -1,0 +1,55 @@
+add_namespace = dikangjun
+
+country_event = { #巨渊之变
+	id = dikangjun.1 
+	title = dikangjun.1.t
+	desc = dikangjun.1.d
+	fire_only_once = yes 
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.1.a #没有必要：-30关系，反抗军触发“xxx拒绝援助”
+		ARF  = {
+            add_opinion_modifier = {
+                target = PREV
+                modifier = Refusal_of_assistance
+            } 
+			country_event = {id = dikangjun.2}
+        }
+	}
+	option = {
+		name = dikangjun.1.b #我们会考虑的：+30关系，反抗军触发“xxx同意援助”，解锁援助反抗军的决议
+		ARF  = {
+            add_opinion_modifier = {
+                target = PREV
+                modifier = Agree_to_assist
+            } 
+			country_event = {id = dikangjun.3}
+        }
+	}
+}
+country_event = { #拒绝援助
+	id = dikangjun.2
+	title = dikangjun.2.t
+	desc = dikangjun.2.d
+	fire_only_once = no 
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.2.a
+		ARF = {
+			add_war_support = -0.03
+		}
+	}
+}
+country_event = { #同意援助
+	id = dikangjun.3
+	title = dikangjun.3.t
+	desc = dikangjun.3.d
+	fire_only_once = no 
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.3.a
+		ARF = {
+			add_war_support = 0.03
+		}
+	}
+}

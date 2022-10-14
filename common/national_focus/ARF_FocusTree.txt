@@ -22,11 +22,13 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 100
-
+			ANG = { country_event = { id = dikangjun.1 } }
+			lYU = { country_event = { id = dikangjun.1 } }
+			XRG = { country_event = { id = dikangjun.1 } }
 		}
 	}
 	focus = {
-		id = ARF_2
+		id = ARF_2 #无乡之人
 		icon = ARF
 
 		available_if_capitulated = no
@@ -38,14 +40,19 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			add_popularity = { ideology = Liberalism popularity = -0.1 } 
+			swap_ideas = {
+			remove_idea = ARF_3c
+			add_idea = ARF_3c_a
+			}
 		}
+		
 		prerequisite = {
 			focus = ARF_1
 		}
 	}
 	focus = {
-		id = ARF_3
+		id = ARF_3 #化外工厂
 		icon = ARF
 
 		available_if_capitulated = no
@@ -57,7 +64,18 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			154 ={ 
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = -2
+					instant_build = yes
+				}
+			}
 		}
 		prerequisite = {
 			focus = ARF_1
@@ -65,7 +83,7 @@ focus_tree = {
 		
 	}
 	focus = {
-		id = ARF_4
+		id = ARF_4 #内部爆破
 		icon = ARF
 
 		available_if_capitulated = no
@@ -77,14 +95,15 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			war_support_factor = 0.05
+			add_popularity = { ideology = national_socialism popularity = 0.1 } 
 		}
 		prerequisite = {
 			focus = ARF_1
 		}
 	}
 	focus = {
-		id = ARF_5
+		id = ARF_5 #竭泽
 		icon = ARF
 
 		available_if_capitulated = no
@@ -96,14 +115,15 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			war_support_factor = 0.2
+			stability_factor = 0.2
 		}
 		prerequisite = {
 			focus = ARF_3
 		}
 	}
 	focus = {
-		id = ARF_6
+		id = ARF_6 #天光
 		icon = ARF
 
 		available_if_capitulated = no
@@ -115,14 +135,18 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			swap_ideas = {
+			remove_idea = ARF_3c_a
+			add_idea = ARF_3c_b
+			}
 		}
+		
 		prerequisite = {
 			focus = ARF_2
 		}
 	}
 	focus = {
-		id = ARF_7
+		id = ARF_7 #暗度
 		icon = ARF
 
 		available_if_capitulated = no
@@ -134,14 +158,15 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			war_support_factor = 0.10
+			add_popularity = { ideology = national_socialism popularity = 0.1 } 
 		}
 		prerequisite = {
 			focus = ARF_4
 		}
 	}
 	focus = {
-		id = ARF_8
+		id = ARF_8 #博爱
 		icon = ARF
 
 		available_if_capitulated = no
@@ -167,7 +192,7 @@ focus_tree = {
 		mutually_exclusive = { focus = ARF_9 }
 	}
 	focus = {
-		id = ARF_9
+		id = ARF_9 #冷眼
 		icon = ARF
 
 		available_if_capitulated = no
@@ -193,7 +218,7 @@ focus_tree = {
 		mutually_exclusive = { focus = ARF_8 }
 	}
 	focus = {
-		id = ARF_10
+		id = ARF_10 #我们所热爱的巨渊
 		icon = ARF
 
 		available_if_capitulated = no
@@ -205,7 +230,17 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = ANG
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 1000
+				producer = ANG
+			}
+			add_manpower = 10000
 		}
 		prerequisite = {
 			focus = ARF_8
@@ -213,7 +248,7 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = ARF_11
+		id = ARF_11 #归乡
 		icon = ARF
 
 		available_if_capitulated = no

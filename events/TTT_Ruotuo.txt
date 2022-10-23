@@ -29,10 +29,10 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = ruotuo_going_bad
 			set_country_flag = save_our_people_immed
-			random_list = {
-				60 = { }
-				40 = { set_country_flag = AI_not_save }
-			}
+			#random_list = {
+			#	60 = { }
+			#	40 = { set_country_flag = AI_not_save }
+			#}
 			#RTG = { 
 			#	country_event = { 
 			#		id = ruotuo.2
@@ -92,7 +92,27 @@ country_event = {
 			set_country_flag = you_have_choose_the_wrong_way
 		}
 		ai_chance = {
-			factor = 7
+			factor = 1
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_INSANE
+					}
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_COLLAPSE
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = RTG_ai_behavior
+					option = RTG_COMMON
+				}
+			}
 		}
 	}
 	
@@ -102,7 +122,27 @@ country_event = {
 		add_stability = 0.05
 		ai_chance = {
 			#factor = 10
-			factor = 3
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_INSANE
+					}
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_COLLAPSE
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = RTG_ai_behavior
+					option = RTG_COMMON
+				}
+			}
 		}
 	}
 }

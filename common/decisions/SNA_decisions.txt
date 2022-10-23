@@ -24,30 +24,34 @@ SNA_internal_factions = {
 	    }   
 		}
 
-		remove_effect = {		
+		remove_effect = {
+			if = {
+				limit = { has_idea = SNA_training_3 }
+				swap_ideas = {
+					remove_idea = SNA_training_3
+					add_idea = SNA_training_4
+				}
+			}
+			if = {
+				limit = { has_idea = SNA_training_2 }
+				swap_ideas = {
+					remove_idea = SNA_training_2
+					add_idea = SNA_training_3
+				}
+			}
+			if = {
+				limit = { has_idea = SNA_training_1 }
+				swap_ideas = {
+					remove_idea = SNA_training_1
+					add_idea = SNA_training_2
+				}
+			}		
 			if = {
 				limit = { has_idea = SNA_bare_hands }
 				swap_ideas = {
 					remove_idea = SNA_bare_hands
 					add_idea = SNA_training_1
 				}
-			}
-			else_if = {
-				limit = { has_idea = SNA_training_1 }
-				swap_ideas = {
-					remove_idea = SNA_training_1
-					add_idea = SNA_training_2
-				}
-			}
-			else_if = {
-				limit = { has_idea = SNA_training_2 }
-				remove_ideas = SNA_training_2
-				add_idea = SNA_training_3
-			}
-			else_if = {
-				limit = { has_idea = SNA_training_3 }
-				remove_ideas = SNA_training_3
-				add_idea = SNA_training_4
 			}			
 		}		
 	}

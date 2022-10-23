@@ -141,10 +141,26 @@ RTG_special_categories = {
 		cost = 40
 
 		ai_will_do = {
-			base = 10
+			base = 1
 			modifier = {
 				factor = 0
-				has_country_flag = AI_not_save
+				OR = {
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_INSANE
+					}
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_COLLAPSE
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = RTG_ai_behavior
+					option = RTG_COMMON
+				}
 			}
 		}
 
@@ -178,6 +194,8 @@ RTG_special_categories = {
 		fire_only_once = no
 
 		days_remove = 14
+		
+		days_re_enable = 14
 
 		cost = 30
 
@@ -186,7 +204,28 @@ RTG_special_categories = {
 		}
 
 		ai_will_do = {
-			base = 10
+			base = 1
+			
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_INSANE
+					}
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_COLLAPSE
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = RTG_ai_behavior
+					option = RTG_COMMON
+				}
+			}
 		}
 
 		remove_effect = {
@@ -224,6 +263,27 @@ RTG_special_categories = {
 
 		ai_will_do = {
 			base = 10
+			
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_INSANE
+					}
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_COLLAPSE
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = RTG_ai_behavior
+					option = RTG_COMMON
+				}
+			}
 		}
 
 		remove_effect = {
@@ -269,6 +329,27 @@ RTG_special_categories = {
 
 		ai_will_do = {
 			base = 10
+			
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_INSANE
+					}
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_COLLAPSE
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = RTG_ai_behavior
+					option = RTG_COMMON
+				}
+			}
 		}
 
 		remove_effect = {
@@ -312,7 +393,7 @@ RTG_special_categories = {
 		modifier = { }
 
 		ai_will_do = {
-			base = 10
+			base = 1
 		}
 
 		remove_effect = {
@@ -370,6 +451,27 @@ RTG_yuan_kun_she = {
 
 		ai_will_do = {
 			base = 10
+			
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_INSANE
+					}
+					has_game_rule = {
+						rule = RTG_ai_behavior
+						option = RTG_COLLAPSE
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = RTG_ai_behavior
+					option = RTG_COMMON
+				}
+			}
 		}
 		
 		remove_effect = { 
@@ -400,26 +502,6 @@ RTG_declare_war = {
 		remove_effect = { 
 		    declare_war_on = {
                 target = ZDG
-                type = annex_everything
-            }
-		}
-	}
-	
-	RTG_declare_war_on_wangshengtang = {
-	    icon = decision_RTG_Declare_war_on
-		visible = { 
-		    NOT = { has_war_with = HTG }
-            HTG = { exists = yes }			
-		}
-		fire_only_once = yes
-		days_remove = 14
-		cost = 50
-		ai_will_do = {
-			base = 10
-		}
-		remove_effect = { 
-		    declare_war_on = {
-                target = HTG
                 type = annex_everything
             }
 		}

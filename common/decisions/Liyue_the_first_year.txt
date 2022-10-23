@@ -5,26 +5,31 @@ Liyue_political_crisis = {
             allowed = { always = no }
         }
         activation = { 
-            NOT = { 
-                has_country_leader = {
-                    character = LYU_morax
-                    ruling_only = yes
-                }
-            }
-			has_country_flag = Liyue_crisis
-			NOT = { has_global_flag = Liyue_Civil_War }
-			NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
+				}
+				has_country_flag = Liyue_crisis
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			}
         }
 		visible = {
-            NOT = { 
-                has_country_leader = {
-                    character = LYU_morax
-                    ruling_only = yes
-                }
-            }
-			has_country_flag = Liyue_crisis
-			NOT = { has_global_flag = Liyue_Civil_War }
-			NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
+				}
+				has_country_flag = Liyue_crisis
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			}
+			#Guess why i add an "AND" here?
 		}
 		cancel_if_not_visible = yes
         is_good = no
@@ -115,9 +120,42 @@ Liyue_political_crisis = {
         cost = 50
         days_remove = 14
 		modifier = {
-		stability_weekly = 0.050
-		reformism_drift = 0.05
+			stability_weekly = 0.050
+			reformism_drift = 0.05
 	   	}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = people_has_calmed_down }
+				}
+				set_country_flag = people_has_calmed_down
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_stability > 0.66
+				#we don't need such high stability
+				has_country_flag = people_has_calmed_down
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_CIVIL_WAR
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_AVOID_CIVIL_WAR
+				}
+			}
+		}
     }
     Liyue_level_labours_wage = {
 	    icon = GFX_decision_generic_speech
@@ -129,13 +167,43 @@ Liyue_political_crisis = {
         cost = 100
         days_remove = 14
 		modifier = {
-		industrial_capacity_factory = 0.05
-		production_factory_efficiency_gain_factor = 0.05
-		communism_drift = 0.10 
-        }		
-        remove_effect = {
-           
+			industrial_capacity_factory = 0.05
+			production_factory_efficiency_gain_factor = 0.05
+			communism_drift = 0.10 
         }
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = labours_wage_has_leveled }
+				}
+				set_country_flag = labours_wage_has_leveled
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				communism > 0.31
+				#we don't need such high communism supporting
+				has_country_flag = labours_wage_has_leveled
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_CIVIL_WAR
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_AVOID_CIVIL_WAR
+				}
+			}
+		}
     }
     Liyue_improve_market_law = {
 	    icon = GFX_decision_hol_attract_foreign_investors
@@ -145,15 +213,45 @@ Liyue_political_crisis = {
         }
         fire_only_once = no
         cost = 100
-        days_remove = 7
+        days_remove = 14
 		modifier = {
-		global_building_slots_factor = 0.05
-	    production_speed_buildings_factor = 0.10
-		liberalism_drift = 0.10
+			global_building_slots_factor = 0.05
+			production_speed_buildings_factor = 0.10
+			liberalism_drift = 0.10
 		}
-        remove_effect = {
-            
-        }
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = market_opening }
+				}
+				set_country_flag = market_opening
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				liberalism > 0.31
+				#we don't need such high liberalism supporting
+				has_country_flag = market_opening
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_CIVIL_WAR
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_AVOID_CIVIL_WAR
+				}
+			}
+		}
 	}
     Liyue_ordered_curfew = {
 	    icon = GFX_decision_generic_purge
@@ -163,11 +261,34 @@ Liyue_political_crisis = {
         }
         fire_only_once = no
         cost = 100
-        days_remove = 7
+        days_remove = 14
 		modifier = {
-		drift_defence_factor = 0.50
-		political_power_factor = 0.25
-		reformism_drift = 0.10
+			drift_defence_factor = 0.50
+			political_power_factor = 0.25
+			reformism_drift = 0.10
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				reformism > 0.31
+				#we don't need such high reformism supporting
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_CIVIL_WAR
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_AVOID_CIVIL_WAR
+				}
+			}
 		}
     }
     Liyue_srike_against_labour_movement = {
@@ -178,10 +299,32 @@ Liyue_political_crisis = {
         }
         fire_only_once = no
         cost = 100
-        days_remove = 7
+        days_remove = 14
         modifier = {
-		communism_drift = -0.10		
+			communism_drift = -0.10		
         }
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				communism < 0.35
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_CIVIL_WAR
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_AVOID_CIVIL_WAR
+				}
+			}
+		}
     }
     Liyue_srike_against_illicit_trade = {
 	    icon = GFX_decision_cash_flow
@@ -191,10 +334,32 @@ Liyue_political_crisis = {
         }
         fire_only_once = no
         cost = 100
-        days_remove = 7
+        days_remove = 14
         modifier = {
-		liberalism_drift = -0.10		
+			liberalism_drift = -0.10		
         }
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				liberalism < 0.35
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_CIVIL_WAR
+				}
+			}
+			modifier = {
+				factor = 100
+				has_game_rule = {
+					rule = LYU_ai_behavior
+					option = LIYUE_AVOID_CIVIL_WAR
+				}
+			}
+		}
     }
     Liyue_political_consultation = {
 	    icon = GFX_decision_ger_mefo_bills

@@ -18,7 +18,8 @@ country_event = { #巨渊之变
 	}
 	option = {
 		name = dikangjun.1.b #我们会考虑的：+30关系，反抗军触发“xxx同意援助”，解锁援助反抗军的决议
-		ARF  = {
+		set_country_flag = ARF_yes
+		ARF = {
             add_opinion_modifier = {
                 target = PREV
                 modifier = Agree_to_assist
@@ -57,9 +58,71 @@ country_event = { #绯珀会谈
 	id = dikangjun.3
 	title = dikangjun.3.t
 	desc = dikangjun.3.d
-	fire_only_once = no 
+	fire_only_once = yes 
 	is_triggered_only = yes
 	option = {
 		name = dikangjun.3.a
+	}
+}
+country_event = { #xxx的援助抵达
+	id = dikangjun.4
+	title = dikangjun.4.t
+	desc = dikangjun.4.d
+	fire_only_once = no 
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.4.a
+		ARF = {
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 2000
+				producer = FROM
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = FROM
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = 500
+				producer = FROM
+			}
+		}	
+	}
+}
+country_event = { #Xxx向我们组织禁运
+	id = dikangjun.5
+	title = dikangjun.5.t
+	desc = dikangjun.5.d
+	fire_only_once = no
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.5.a
+		RTG = {
+			if = {
+				limit = {has_idea = RTG_fengsuo_b}
+					swap_ideas = {
+						remove_idea = RTG_fengsuo_b
+						add_idea = RTG_fengsuo_c
+				}
+			}
+			if = {
+				limit = {has_idea = RTG_fengsuo_a}
+					swap_ideas = {
+						remove_idea = RTG_fengsuo_a
+						add_idea = RTG_fengsuo_b
+				}
+			}
+			if = {
+				limit = {
+				NOT = {has_idea = RTG_fengsuo_a}
+				NOT = {has_idea = RTG_fengsuo_b}
+				NOT = {has_idea = RTG_fengsuo_c}
+				}
+				add_ideas = RTG_fengsuo_a
+			}
+			
+		}
 	}
 }

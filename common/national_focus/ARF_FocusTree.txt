@@ -181,7 +181,7 @@ focus_tree = {
 			stability_factor = -0.1
 			swap_ideas = {
 				remove_idea = ARF_1c
-				}
+			}
 		}
 		prerequisite = {
 			focus = ARF_5
@@ -267,7 +267,13 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			
+			declare_war_on = { target = RTG type = take_state_focus }
+			if = {
+				limit = {has_completed_focus = ARF_8}
+				RTG = {
+				add_timed_idea = {idea= RTG_Hive_curdling days = 120}
+				}
+			}
 		}
 		prerequisite = {
 			focus = ARF_10

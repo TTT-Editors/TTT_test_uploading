@@ -1,0 +1,108 @@
+toudu = { #偷渡物资
+	toudu_1 = {
+		cost = 20
+		days_re_enable = 60
+		days_remove = 60
+		visible = {
+			has_country_flag = ARF_yes
+		}
+		modifier = {
+			civilian_factory_use = 2
+		}
+		complete_effect = {
+			ARF = {
+				country_events ={id = dikangjun.4}
+			}
+		}
+	}
+}
+jinyun = { #向巨渊禁运
+	jinyun_1 = {
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			has_country_flag = ARF_yes
+		}
+		complete_effect = {
+			RTG = {
+				country_event={id = dikangjun.5}
+			}
+		}
+	}
+}
+bianjing = { #边境袭扰
+	bianjing_1 = {
+		cost = 100
+		days_re_enable = 120
+		visible = {
+			has_country_flag = ARF_yes
+		}
+		modifier = {
+			command_power > 25
+		}
+		complete_effect = {
+			add_command_power = -25
+			random_state = {
+				limit = {
+					is_core_of = RTG
+					any_neighbor_state = {
+						is_fully_controlled_by = ROOT
+						hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+					}
+				}
+				hidden_effect = {
+					save_event_target_as = defender_state
+					set_variable = { FROM.defender_state_vs_@ROOT = id }
+					set_temp_variable = { defender_state_temp = id }
+					set_state_flag = border_incident_active
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+					has_ROOT_at_least_1_div_in_current_state_scope = yes
+					any_neighbor_state = {
+						state = var:FROM.defender_state_vs_@ROOT
+					}
+				}
+				save_event_target_as = attacker_state
+				set_variable = { FROM.attacker_state_vs_@ROOT = id }
+				set_temp_variable = { attacker_state_temp = id }
+				set_state_flag = border_incident_active
+			}
+			start_border_war = {
+				change_state_after_war = yes
+				attacker = {
+					state = var:FROM.attacker_state_vs_@ROOT
+					num_provinces = 4
+					on_win = 0				#进攻方胜利
+					on_lose = 0				#进攻方失败
+					on_cancel = 0
+				}
+					
+				defender = {
+					state = var:FROM.defender_state_vs_@ROOT
+					num_provinces = 4
+					on_win = 0				#防守方胜利
+					on_lose = 0				#防守方失败
+					on_cancel = 0			#防守方胜利
+				}
+			}
+		}
+	}
+}
+wuliganshe = { #武力干涉
+	wuliganshe_1 = {
+		cost = 100
+		visible = {
+			has_country_flag = ARF_yes
+		}
+		modifier = {
+			command_power > 50
+		}
+		complete_effect = {
+			add_command_power = -50
+		}
+	}
+}

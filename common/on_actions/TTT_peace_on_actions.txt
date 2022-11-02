@@ -87,19 +87,24 @@ on_actions = {
 					FROM = { tag = RTG }
 				}
 				FROM = {
-					white_peace = ROOT
-					annex_country = {
-						target = ROOT
-						transfer_troops = no
-					}
 					country_event = {
                         id = retuo_juanshu.17
 				        days = 60
 			        }
 				}
 			}
+			else_if = {
+				limit = {
+					FROM = { tag = RTG }
+				}
+				every_state = {
+					limit = { has_state_flag = border_incident_active }
+					clr_state_flag = border_incident_active
+				}
+			}
+			
 			#default
-			else_if = { 
+			if = { 
 				limit = {
 					OR = {
 						AND = { 
@@ -119,6 +124,7 @@ on_actions = {
 						OR = {
 							tag = ROOT
 							is_ally_with = ROOT
+							is_subject_of = ROOT
 						}
 					}
 					every_owned_state = {
@@ -166,8 +172,8 @@ on_actions = {
 					}
 					clr_state_flag = defeated_states
 				}
+				FROM = { white_peace = ROOT }
 				FROM = {
-					white_peace = ROOT
 					annex_country = {
 						target = ROOT
 						transfer_troops = no

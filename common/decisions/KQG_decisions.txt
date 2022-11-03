@@ -1,7 +1,7 @@
 KQG_special_categories1 = {
 
     KQG_test = {
-	on_map_mode = map_and_decisions_view
+	on_map_mode = map_only
 	
 		priority = 20
 		
@@ -10,14 +10,14 @@ KQG_special_categories1 = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 15
+				add = 20
 				FROM = {
 					is_core_of = ROOT
 				}
 			}
 		}
 		
-		cost = 0
+		cost = 25
 
 		state_target = yes
 
@@ -36,7 +36,7 @@ KQG_special_categories1 = {
 		        
 		target_array = core_states
 		
-		days_remove = 7
+		days_remove = 30
 		
         modifier = {
 		WEEKLY_MANPOWER = -50
@@ -58,7 +58,7 @@ KQG_special_categories1 = {
   		icon = GFX_decision_generic_construction
 
 		ai_will_do = {
-			base = 20
+			base = 50
 		}
 		
 		cost = 10
@@ -82,7 +82,7 @@ KQG_special_categories1 = {
   		icon = GFX_decision_generic_construction
 
 		ai_will_do = {
-			base = 20
+			base = 25
 		}
 		
 		cost = 10
@@ -99,6 +99,13 @@ KQG_special_categories1 = {
 			add_idea = KQG1_4
 			remove_idea = KQG1_39
 		    }
+			every_state = {
+			limit = {
+			is_core_of = ROOT
+		        }
+			remove_dynamic_modifier = { modifier = KQG_state_modifier_2 }
+			remove_dynamic_modifier = { modifier = KQG_state_modifier_1 }
+			}
 		}
 	}
 	
@@ -110,14 +117,14 @@ KQG_special_categories1 = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				add = 15
+				add = 20
 				FROM = {
 					is_core_of = ROOT
 				}
 			}
 		}
 		
-		cost = 0
+		cost = 30
 
 		state_target = yes
 
@@ -136,7 +143,7 @@ KQG_special_categories1 = {
 		        
 		target_array = core_states
 		
-		days_remove = 7
+		days_remove = 60
 		
         modifier = {
 		WEEKLY_MANPOWER = -50
@@ -147,6 +154,7 @@ KQG_special_categories1 = {
 		    add_to_variable = { KQG_agrarian = 0.02 }
 			FROM = {
 					add_dynamic_modifier = { modifier = KQG_state_modifier_2 }
+					remove_dynamic_modifier = { modifier = KQG_state_modifier_1 }
 					set_state_flag = KQG_state2
 			}
 		}
@@ -398,12 +406,12 @@ KQG_special_categories4 = {
 		priority = 200
 							
 		ai_will_do = {
-			factor = 20
+			factor = 50
 		}
 		
         target_trigger = {
 			FROM = {
-				is_core_of = ROOT
+				random_owned_controlled_state = ROOT
 			}
 		}
 		
@@ -414,7 +422,7 @@ KQG_special_categories4 = {
 			modifier = {
 				add = 15
 				FROM = {
-					is_core_of = ROOT
+					random_owned_controlled_state = ROOT
 				}
 			}
 		}
@@ -442,11 +450,11 @@ KQG_special_categories4 = {
 					is_locked = no
 					division_names_group = KQG_INF_02
 					regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 1 y = 0 }
+					militia = { x = 1 y = 1 }
 				}
 		    }
 		FROM = {
@@ -472,7 +480,7 @@ KQG_special_categories4 = {
 			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 70
 		}
 		modifier = {
 			mobilization_speed = 0.05
@@ -505,7 +513,7 @@ KQG_special_categories4 = {
 			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 60
 		}
 		modifier = {
 			industrial_capacity_factory = 0.20
@@ -528,7 +536,7 @@ KQG_special_categories4 = {
 			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 60
 		}
 		modifier = {
 			stability_weekly = 0.025
@@ -549,7 +557,7 @@ KQG_special_categories4 = {
 			
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 60
 		}
 		modifier = {
 		  supply_consumption_factor = -0.10
@@ -570,12 +578,15 @@ KQG_special_categories4 = {
 			has_war_with = XQG	
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 100
 		}
+		
+		
+		
         targeted_modifier = {		
 		tag = XQG
-		attack_bonus_against = 0.20
-		defense_bonus_against = 0.20		
+		attack_bonus_against = 0.25
+		defense_bonus_against = 0.25		
 		}		
 	}
 	KQG_test50 = {
@@ -592,12 +603,12 @@ KQG_special_categories4 = {
 		 has_war_with = NNG	
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 100
 		}
         targeted_modifier = {		
 		tag = NNG
-		attack_bonus_against = 0.20
-		defense_bonus_against = 0.20		
+		attack_bonus_against = 0.25
+		defense_bonus_against = 0.25		
 		}		
 	}
 	KQG_test67 = {
@@ -614,12 +625,12 @@ KQG_special_categories4 = {
 			has_war_with = XOG
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 100
 		}
 		targeted_modifier = {
 		tag = XOG
-		attack_bonus_against = 0.10
-		defense_bonus_against = 0.10		
+		attack_bonus_against = 0.25
+		defense_bonus_against = 0.25		
 		}		
 	}
 	KQG_test68 = {
@@ -636,12 +647,12 @@ KQG_special_categories4 = {
 			has_war_with = XRG
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 100
 		}
         targeted_modifier = {		
 		tag = XRG
-		attack_bonus_against = 0.10
-		defense_bonus_against = 0.10		
+		attack_bonus_against = 0.25
+		defense_bonus_against = 0.25		
 		}		
 	}
 }

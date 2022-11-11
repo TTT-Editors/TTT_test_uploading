@@ -166,6 +166,11 @@ country_event = {
 			}
 			XQG = { set_research_slots = 1 }
 			
+			if = {
+				limit = { has_idea = LYU_NingGuang }
+				remove_ideas = LYU_NingGuang
+			}
+			
 			LYU_NingGuang = { set_nationality = NNG }
 			LYU_Yunjin = { set_nationality = NNG }
 			LYU_Yelan = { set_nationality = NNG }
@@ -260,7 +265,10 @@ country_event = {
 					always = yes
 				}
 			}
-			
+			if = {
+				limit = { has_idea = idea_LYU_Keqing }
+				remove_ideas = LYU_Keqing
+			}
 			LYU_Keqing = { set_nationality = { target_country = KQG } }
 			LYU_Hutao = { set_nationality = { target_country = KQG } }
 			LYU_ZhongliA = { set_nationality = { target_country = KQG } }		
@@ -268,19 +276,7 @@ country_event = {
 		    KQG = {
 				inherit_technology = LYU
 			    promote_character = LYU_Keqing
-		    }
-			
-			KQG = {
-				load_oob = "KQG"
-				if = {
-					limit = { has_dlc = "Man the Guns" }
-						load_oob = "Keqing_Navy_MTG"
-						add_war_support = -0.05
-					else = {
-						load_oob = "Keqing_Navy"
-					}
-				}
-			} 
+		    } 
 			
 			KQG = { 
 				country_event = {

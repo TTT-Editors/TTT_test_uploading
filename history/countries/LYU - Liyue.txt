@@ -43,6 +43,47 @@ set_technology = {
 	#artillery
 	bow_1 = 1
 	bow_2 = 1
+	
+	#electronic
+	electronic_mechanical_engineering = 1
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		three_masted_warship = 1
+		light_ironclads = 1
+		medium_ironclads = 1
+		heavy_ironclads = 1
+		super_heavy_warship = 1
+		improved_light_ironclads = 1
+		early_destroyer = 1
+		basic_transport = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		#ship hull
+		wooden_ship_hull_light = 1
+		iron_ship_hull_light = 1
+		improved_iron_ship_hull_light = 1
+		early_ship_hull_light = 1
+		iron_ship_hull_cruiser = 1
+		
+		#naval support
+		mtg_early_transport = 1
+		pre_industrial_battery = 1
+		iron_ship_battery = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		early_torpedo = 1
+	}
 }
 
 starting_train_buffer = 2
@@ -71,30 +112,6 @@ if = {
 }
 
 if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_submarine = 1
-		early_destroyer = 1
-		transport = 1
-	}
-}
-
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		basic_naval_mines = 1
-		submarine_mine_laying = 1
-		early_ship_hull_light = 1
-		early_ship_hull_submarine = 1
-		basic_battery = 1
-		basic_light_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
-		mtg_transport = 1
-	}
-}
-
-if = {
 	limit = {
 		not = { has_dlc = "By Blood Alone" }
 	}
@@ -117,7 +134,21 @@ if = {
 	}
 }
 
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "LYU_navy_mtg"
+		set_war_support = 0.15
+	else = {
+		set_naval_oob = "LYU_navy"
+		set_war_support = 0.2
+	}
+}
+
 add_ideas = {
+	LYU_Keqing
+	LYU_NingGuang
+	LYU_Ganyu
+
     Limited_election
     Low_tax
     balance_laws
@@ -129,9 +160,6 @@ add_ideas = {
 	a_dying_morax
 	an_unbalanced_developed_country
 	a_torn_society
-	LYU_Keqing
-	LYU_NingGuang
-	LYU_Ganyu
 }
 	
 complete_national_focus = the_year_of_1999
@@ -145,7 +173,6 @@ complete_national_focus = consider_human_governance
 complete_national_focus = a_quick_turnaround
 
 set_stability = 0.5
-set_war_support = 0.2
 set_convoys = 100
 add_political_power = 1500
 
@@ -189,6 +216,121 @@ if = {
 
 if = {
 	limit = {
+		has_dlc = "Man the Guns"
+	}
+	
+	#Destroyers
+	#木神
+	create_equipment_variant = {
+		name = "Mushen Class"	
+		type = ship_hull_light_1
+		name_group = LYU_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	
+	#玄武
+	create_equipment_variant = {
+		name = "Xuanwu Class"	
+		type = ship_hull_light_2
+		name_group = LYU_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	
+	#泽物
+	create_equipment_variant = {
+		name = "Zewu Class"	
+		type = ship_hull_light_3
+		name_group = LYU_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_3
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_3
+			fixed_ship_torpedo_slot = empty
+			rear_1_custom_slot = empty
+		}
+	}
+	
+	#云山
+	create_equipment_variant = {
+		name = "Yunshan Class"	
+		type = ship_hull_light_4
+		name_group = LYU_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_4
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_4
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+	}
+	
+	#Light Cruiser
+	#博土
+	create_equipment_variant = {
+		name = "Botu Class"
+		type = ship_hull_cruiser_2
+		name_group = LYU_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_light_medium_battery_2
+			rear_1_custom_slot = empty
+		}
+	}
+	
+	#Heavy Cruiser
+	#銮岩
+	create_equipment_variant = {
+		name = "Luanyan Class"
+		type = ship_hull_cruiser_2
+		name_group = LYU_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_medium_battery_2
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+if = {
+	limit = {
 		has_dlc = "No Step Back"
 	}
 	create_equipment_variant = {
@@ -225,40 +367,6 @@ if = {
 		upgrades = {
 			tank_nsb_engine_upgrade = 2
 			tank_nsb_armor_upgrade = 2
-		}
-	}
-}
-
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	# Submarines #
-	create_equipment_variant = {
-		name = "Jinghai Class"
-	#	name = "Pingguo Class"
-		type = ship_hull_submarine_1
-		parent_version = 0
-		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = empty
-		}
-	}
-	
-	# Destroyers #
-	create_equipment_variant = {
-		name = "Hu'min Class"
-	#	name = "Xiangjiao Class"
-		type = ship_hull_light_1
-		parent_version = 0
-		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = empty
 		}
 	}
 }

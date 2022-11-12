@@ -15,23 +15,35 @@ Liyue_political_crisis = {
 				has_country_flag = Liyue_crisis
 				NOT = { has_global_flag = Liyue_Civil_War }
 				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+				NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
 			}
         }
 		visible = {
-			AND = {
-				NOT = { 
-					has_country_leader = {
-						character = LYU_morax
-						ruling_only = yes
-					}
+			NOT = { 
+				has_country_leader = {
+					character = LYU_morax
+					ruling_only = yes
 				}
-				has_country_flag = Liyue_crisis
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
 			}
-			#Guess why i add an "AND" here?
+			has_country_flag = Liyue_crisis
+			NOT = { has_global_flag = Liyue_Civil_War }
+			NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
 		}
-		cancel_if_not_visible = yes
+
+		cancel_trigger = {
+			OR = {
+				NOT = { has_country_flag = Liyue_crisis }
+				has_global_flag = Liyue_Civil_War
+				has_global_flag = avoid_Liyue_Civil_War
+				has_global_flag = Liyue_Civil_War_Coming_Soon
+				has_country_leader = {
+					character = LYU_morax
+					ruling_only = yes
+				}
+			}
+		}
+		
         is_good = no
         days_mission_timeout = 181
         available = {

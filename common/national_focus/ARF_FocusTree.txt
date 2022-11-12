@@ -16,7 +16,7 @@ focus_tree = {
 
 		x = 5
 		y = 0
-		cost = 60
+		cost = 35
 		ai_will_do = {
 			factor = 50
 		}
@@ -35,7 +35,7 @@ focus_tree = {
 
 		x = 5
 		y = 1
-		cost = 60
+		cost = 70
 		ai_will_do = {
 			factor = 50
 		}
@@ -59,7 +59,7 @@ focus_tree = {
 
 		x = 3
 		y = 1
-		cost = 60
+		cost = 70
 		ai_will_do = {
 			factor = 50
 		}
@@ -90,12 +90,12 @@ focus_tree = {
 
 		x = 7
 		y = 1
-		cost = 60
+		cost = 35
 		ai_will_do = {
 			factor = 50
 		}
 		completion_reward = {
-			war_support_factor = 0.05
+			add_war_support = 0.05
 			add_popularity = { ideology = national_socialism popularity = 0.1 } 
 		}
 		prerequisite = {
@@ -110,13 +110,13 @@ focus_tree = {
 
 		x = 3
 		y = 2
-		cost = 60
+		cost = 35
 		ai_will_do = {
 			factor = 50
 		}
 		completion_reward = {
-			war_support_factor = 0.2
-			stability_factor = 0.2
+			add_stability = 0.2
+			add_war_support = 0.2
 		}
 		prerequisite = {
 			focus = ARF_3
@@ -130,7 +130,7 @@ focus_tree = {
 
 		x = 5
 		y = 2
-		cost = 60
+		cost = 70
 		ai_will_do = {
 			factor = 50
 		}
@@ -158,8 +158,15 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			war_support_factor = 0.10
+			add_war_support = 0.10
 			add_popularity = { ideology = national_socialism popularity = 0.1 } 
+			154 ={ 
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 		prerequisite = {
 			focus = ARF_4
@@ -178,10 +185,9 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			stability_factor = -0.1
-			swap_ideas = {
-				remove_idea = ARF_1c
-			}
+			add_stability = -0.1
+			remove_idea = ARF_1c
+			country_event = dikangjun.6
 		}
 		prerequisite = {
 			focus = ARF_5
@@ -274,6 +280,28 @@ focus_tree = {
 				add_timed_idea = {idea= RTG_Hive_curdling days = 120}
 				}
 			}
+			division_template = {
+				name = "Minbing Budui"
+				priority = 2
+				is_locked = yes
+				division_names_group = ARF_M_1
+				regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 1 y = 0 }
+					militia = { x = 1 y = 1 }
+					militia = { x = 1 y = 2 }
+				}
+			}
+			154 = {
+				create_unit = {
+					division = "division_template = \"Minbing Budui\" start_experience_factor = 0.2"
+					count = 3
+					owner = ARF
+				}		
+			}
+			custom_effect_tooltip = ARF_11m
 		}
 		prerequisite = {
 			focus = ARF_10

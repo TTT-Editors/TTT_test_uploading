@@ -257,14 +257,15 @@ country_event = {
 		ai_chance = {
 			base = 10
 			modifier = {
-				factor = 5
+				factor = 0.1
+				#No need to worry
 				strength_ratio = {
 					tag = ZDG
 					ratio > 2
 				}
 			}
 			modifier = {
-				factor = 100
+				factor = 2
 				OR = {
 					XRG = { exists = no }
 					XOG = { exists = no }
@@ -388,7 +389,7 @@ country_event = {
 		}
 	}
 	
-	mean_time_to_happen = { days = 1 }
+	mean_time_to_happen = { days = 14 }
 	
 	#仗打完了，再见！
 	option = {
@@ -418,7 +419,6 @@ country_event = {
 			if = {
 				limit = {
 					NNG = { exists = yes }
-					NNG = { NOT = { has_country_flag = defeated_ningguang } }
 				}
 				XOG = {
 					declare_war_on = {
@@ -444,7 +444,6 @@ country_event = {
 			if = {
 				limit = {
 					NNG = { exists = yes }
-					NNG = { NOT = { has_country_flag = defeated_ningguang } }
 				}
 				XRG = {
 					declare_war_on = {
@@ -567,7 +566,7 @@ country_event = {
 		ZDG = { exists = no }
 	}
 	
-	mean_time_to_happen = { days = 15 }
+	mean_time_to_happen = { days = 45 }
 	
 	#最后一战
 	option = {
@@ -795,6 +794,9 @@ country_event = {
 		OR = {
 			RTG = { can_be_attacked = yes }
 			ANG = { can_be_attacked = yes }
+		}
+		NOT = {
+			has_idea = GANYU0_A
 		}
 	}
 	option = {

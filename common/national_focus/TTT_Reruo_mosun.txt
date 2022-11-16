@@ -54,7 +54,7 @@ focus_tree = {
 					id=Reruo_mosun.3 #触发噩梦之夜国策
 			}
 			country_event={
-					id=Reruo_mosun.4 day=30 #延迟30天触发事件
+					id=Reruo_mosun.4 day=14 #延迟14天触发事件
 			}
 			add_stability = -0.1 #减少稳定度10
 	    }
@@ -81,6 +81,10 @@ focus_tree = {
 				}
 				add_resource = {
 					type = tungsten
+					amount = 5
+				}
+				add_resource = {
+					type = chromium
 					amount = 5
 				}
 			}
@@ -121,11 +125,15 @@ focus_tree = {
 		x = 10
 		y = 4
         completion_reward = {
+<<<<<<< Updated upstream
 			swap_ideas = {
 				remove_idea = emeng_1
 				add_idea = emeng_2
 			}
 			#《永夜血月》追加效果+10%月度人力+10稳定+10战争支持度+5000人力
+=======
+			add_manpower = 50000
+>>>>>>> Stashed changes
 	    }
 	}
 	focus = {
@@ -138,7 +146,7 @@ focus_tree = {
 		x = 14
 		y = 3
         completion_reward = {
-#触发《军队的方向》
+		#触发《军队的方向》
 	    }
 	}
 	focus = {
@@ -152,7 +160,6 @@ focus_tree = {
 		y = 4
         completion_reward = {
 			add_war_support = 0.15
-#+15%战争支持度，获得365天民族精神《复仇乐章》-10%训练速度，+10%军用工厂建造速度
 	    }
 	}
 	focus = {
@@ -533,7 +540,10 @@ focus_tree = {
 		x = 6
 		y = 4
         completion_reward = {
-			add_ideas = nuli
+			swap_ideas = {
+				add_ideas = Blood_Moon2
+				remove_ideas = Blood_Moon
+			}
 	    }
 	}
 	focus = {
@@ -549,7 +559,7 @@ focus_tree = {
 		x = 4
 		y = 5
         completion_reward = {
-			#在首都加25水晶矿和铁矿，以及10其他资源
+			set_country_flag = RTG_kuizeng_flag
 	    }
 	}
 	focus = {
@@ -650,8 +660,9 @@ focus_tree = {
 		x = 4
 		y = 6
         completion_reward = {
-			#60天《收集设备》+5消费品工厂，-0.05PP
-			#结束后触发事件《设备的用途》
+			country_event={
+				id = Reruo_mosun.5
+			}
 	    }
 	}
 	focus = {
@@ -665,7 +676,7 @@ focus_tree = {
 			focus = RTG_yanjian_zhilu
 		}
 		prerequisite = {
-			focus = RTG_shengyu_jiazhilun
+			focus = RTG_xuerou_jiazhi
 		}
 		x = 6
 		y = 8
@@ -930,7 +941,7 @@ focus_tree = {
 	    }
 	}
 	focus = {
-		id = RTG_shengyu_jiazhilun #剩余价值论
+		id = RTG_xuerou_jiazhi #血肉价值
 		icon = GFX_goal_unknown
 		cost = 21
 		prerequisite = {
@@ -939,7 +950,10 @@ focus_tree = {
 		x = 4
 		y = 7
         completion_reward = {
-			#获得精神《剩余价值论》+10工厂产出、生产效率、资源获取，-10稳定，-10%人口增长，+1反抗意志
+			swap_ideas = {
+				add_ideas = Blood_Moon3
+				remove_ideas = Blood_Moon2
+			}
 	    }
 	}
 }

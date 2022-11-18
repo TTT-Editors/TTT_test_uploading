@@ -485,7 +485,13 @@ country_event = {
 			limit = {
 				is_nominate_liyue = yes
 				NOT = { tag = ZDG }
-				is_subject = no
+			}
+			if = {
+				limit = {
+					is_faction_leader = yes
+					NOT = { tag = LYU }
+				}
+				dismantle_faction = yes
 			}
 			set_country_flag = ready_for_another_round
 		}
@@ -500,13 +506,7 @@ country_event = {
 			limit = {
 				has_country_flag = ready_for_another_round
 				NOT = { has_government = hive_mind }
-			}
-			if = {
-				limit = {
-					is_faction_leader = yes
-					NOT = { tag = LYU }
-				}
-				dismantle_faction = yes
+				is_subject = no
 			}
 			if = {
 				limit = {
@@ -538,6 +538,12 @@ country_event = {
 					has_war_with = NNG
 				}
 				white_peace = NNG
+			}
+			if = {
+				limit = {
+					has_war_with = XQG
+				}
+				white_peace = XQG
 			}
 			LYU = { add_to_faction = PREV }
 			add_to_war = {

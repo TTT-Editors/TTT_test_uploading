@@ -1023,7 +1023,9 @@ operation_coup_government = { ### 7 1/70
 			target = FROM
 			value > 35
 		}
-		NOT = { has_completed_focus = SPR_regional_defense_council_of_aragon }
+		NOT = { has_government = left_wing_anarchism }
+		NOT = { has_government = right_wing_anarchism }
+		NOT = { has_government = hive_mind }
 	}
 
 	equipment = {
@@ -1054,9 +1056,9 @@ operation_coup_government = { ### 7 1/70
 			}
 			if = {
 				limit = {
-					PREV.ROOT = { has_government = fascism }
+					PREV.ROOT = { has_government = totalitarianism }
 				}
-				fascism > 0.2
+				totalitarianism > 0.2
 			}
 			if = {
 				limit = {
@@ -1066,15 +1068,45 @@ operation_coup_government = { ### 7 1/70
 			}
 			if = {
 				limit = {
-					PREV.ROOT = { has_government = democratic }
+					PREV.ROOT = { has_government = populism }
 				}
-				democratic > 0.2
+				populism > 0.2
 			}
 			if = {
 				limit = {
-					PREV.ROOT = { has_government = neutrality }
+					PREV.ROOT = { has_government = reformism }
 				}
-				neutrality > 0.2
+				reformism > 0.2
+			}
+			if = {
+				limit = {
+					PREV.ROOT = { has_government = liberalism }
+				}
+				liberalism > 0.2
+			}
+			if = {
+				limit = {
+					PREV.ROOT = { has_government = authoritarianism }
+				}
+				authoritarianism > 0.2
+			}
+			if = {
+				limit = {
+					PREV.ROOT = { has_government = despotism }
+				}
+				despotism > 0.2
+			}
+			if = {
+				limit = {
+					PREV.ROOT = { has_government = national_socialism }
+				}
+				national_socialism > 0.2
+			}
+			if = {
+				limit = {
+					PREV.ROOT = { has_government = esotericism }
+				}
+				esotericism > 0.2
 			}
 				#set_temp_variable = { coup_ideology@ROOT = PREV.ROOT.current_party_ideology_group }
 				#set_temp_variable = { coup_ideology_popularity@ROOT = party_popularity@ROOT.coup_ideology }

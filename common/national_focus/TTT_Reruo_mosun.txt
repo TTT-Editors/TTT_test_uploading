@@ -166,8 +166,11 @@ focus_tree = {
 		}
 		x = 14
 		y = 5
+		bypass = {
+			ANG = {exists = no}
+		}
         completion_reward = {
-#（黑卫军存在且可进攻，否则跳）黑卫军触发《自由或枷锁》
+			declare_war_on = { target = ANG type = take_state_focus }
 	    }
 	}
 	focus = {
@@ -182,8 +185,15 @@ focus_tree = {
 		}
 		x = 12
 		y = 6
+		bypass = {
+			XRG = {exists = no}
+		}
         completion_reward = {
-#（仙人存在可以攻击，拥有伏龙树，否则跳过）仙人触发《龙王索取伏龙树》
+			XRG = {
+				country_event = {
+					id = Reruo_mosun.7
+				}
+			}
 	    }
 	}
 	focus = {
@@ -198,8 +208,14 @@ focus_tree = {
 		}
 		x = 16
 		y = 6
+		bypass = {
+			XRG = {exists = no}
+		}
         completion_reward = {
-#对仙人宣战，仙人获得30天《猝不及防》-10%陆军防御和陆军组织度以及恢复
+			declare_war_on = { target = XRG type = take_state_focus }
+			XRG = {
+				add_timed_idea = {idea= caught_off_guard days = 30}
+			}
 	    }
 	}
 	focus = {
@@ -212,10 +228,13 @@ focus_tree = {
 		prerequisite = {
 			focus = RTG_shanji_xianren
 		}
+		prerequisite = {
+			has_state = 244
+		}
 		x = 14
 		y = 7
         completion_reward = {
-#控制伏龙树为前提，获得《龙王之力》精神+2.5%稳定和战争支持度，陆军组织度，陆军速度，资源获取，建造速度，可以用决议继续强化
+
 	    }
 	}
 	focus = {

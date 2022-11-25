@@ -143,13 +143,17 @@ country_event = {
 		add_war_support = -0.3
 		RTG = {
 			transfer_state = 244
-		}
-		set_autonomy = { #这里有问题
-			target = XRG
-			autonomy_state = autonomy_supervised_state
-		}
-		ai_will_do = {
-			factor = 10
-		}
+			if = {
+				limit = { has_dlc = "Together for Victory" }
+				set_autonomy = { 
+					target = XRG
+					autonomy_state = autonomy_colony
+				}
+			}
+			else = { puppet = XRG }
+			ai_will_do = {
+				factor = 10
+			}
+	    }
 	}
 }

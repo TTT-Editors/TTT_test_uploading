@@ -221,33 +221,21 @@ focus_tree = {
 	focus = {
 		id = RTG_longwang_chushi #龙王出世国策
 		icon = GFX_goal_unknown
-		cost = 21
+		cost = 70
 		prerequisite = {
 			focus = RTG_suoqu_fulongshu
-			}
-		prerequisite = {
 			focus = RTG_shanji_xianren
-		}
-		prerequisite = {
-			has_state = 244
+			}
+		available = {
+			244 = {
+				owner={tag=RTG} #这里有问题
+			}
 		}
 		x = 14
 		y = 7
         completion_reward = {
-
-	    }
-	}
-	focus = {
-		id = RTG_xianren_de_mingyun #仙人的命运国策
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_longwang_chushi
-		}
-		x = 14
-		y = 8
-        completion_reward = {
-#前置：龙王之力达到3级
+			add_war_support = 0.1
+			add_stability = 0.1
 	    }
 	}
 	focus = {
@@ -255,12 +243,18 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 21
 		prerequisite = {
-			focus = RTG_xianren_de_mingyun
+			focus = RTG_longwang_chushi
 		}
 		x = 11
-		y = 9
+		y = 8
+		bypass = {
+			ZDG = {exists = no}
+		}
         completion_reward = {
-
+			declare_war_on = { target = ZDG type = take_state_focus }
+			ZDG = {
+				add_timed_idea = {idea= Elemental_Riot days = 90}
+			}
 	    }
 	}
 	focus = {
@@ -268,12 +262,18 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 21
 		prerequisite = {
-			focus = RTG_xianren_de_mingyun
+			focus = RTG_longwang_chushi
 		}
 		x = 14
-		y = 9
+		y = 8
+		bypass = {
+			LYU = {exists = no}
+		}
         completion_reward = {
-
+			declare_war_on = { target = LYU type = take_state_focus }
+			LYU = {
+				add_timed_idea = {idea= Elemental_Riot days = 30}
+			}
 	    }
 	}
 	focus = {
@@ -281,12 +281,18 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 21
 		prerequisite = {
-			focus = RTG_xianren_de_mingyun
+			focus = RTG_longwang_chushi
 		}
 		x = 17
-		y = 9
+		y = 8
+		bypass = {
+		NNG = {exists = no}
+		}
         completion_reward = {
-
+			declare_war_on = { target = NNG type = take_state_focus }
+			NNG = {
+				add_timed_idea = {idea= Elemental_Riot days = 60}
+			}
 	    }
 	}
 	focus = {
@@ -302,8 +308,14 @@ focus_tree = {
 		prerequisite = {
 			focus = RTG_zhuiji_ziyoupai
 		}
+		prerequisite = {
+			STABILITY > 0.5
+		}
+		prerequisite = {
+			has_state = {}
+		}
 		x = 14
-		y = 10
+		y = 9
         completion_reward = {
 
 	    }
@@ -316,9 +328,12 @@ focus_tree = {
 			focus = RTG_yuansu_zhidi
 		}
 		x = 14
-		y = 11
+		y = 10
         completion_reward = {
-
+			declare_war_on = { target = KQG type = take_state_focus }
+			declare_war_on = { target = XOG type = take_state_focus }
+			KQG = {add_timed_idea = {idea= Elemental_Riot days = 60}}
+			XOG = {add_timed_idea = {idea= Elemental_Riot days = 60}}
 	    }
 	}
 	focus = {
@@ -329,7 +344,7 @@ focus_tree = {
 			focus = RTG_duoqu_beiliyue
 		}
 		x = 14
-		y = 12
+		y = 11
         completion_reward = {
 
 	    }
@@ -342,7 +357,7 @@ focus_tree = {
 			focus = RTG_wuxiang_jihua
 		}
 		x = 14
-		y = 13
+		y = 12
         completion_reward = {
 
 	    }

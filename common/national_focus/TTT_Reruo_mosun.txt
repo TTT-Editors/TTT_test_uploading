@@ -308,11 +308,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RTG_zhuiji_ziyoupai
 		}
-		prerequisite = {
+		available = {
 			STABILITY > 0.5
-		}
-		prerequisite = {
-			has_state = {}
+				has_state = {}
 		}
 		x = 14
 		y = 9
@@ -359,7 +357,7 @@ focus_tree = {
 		x = 14
 		y = 12
         completion_reward = {
-
+			custom_effect_tooltip = RTG_jixu_huimie_m
 	    }
 	}
 	focus = {
@@ -494,67 +492,21 @@ focus_tree = {
 
 	    }
 	}
-	focus = {
-		id = RTG_xina_touxiangpai #吸纳投降派
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_yiren_zhiren
-		}
-		x = 24
-		y = 8
-        completion_reward = {
 
-	    }
-	}
-	focus = {
-		id = RTG_fuzhu_jundui #辅助军队
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_xina_touxiangpai
-		}
-		x = 24
-		y = 9
-        completion_reward = {
 
-	    }
-	}
-	focus = {
-		id = RTG_youxian_zizhi #有限自治
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_fuzhu_jundui
-		}
-		x = 24
-		y = 10
-        completion_reward = {
 
-	    }
-	}
 	focus = {
 		id = RTG_jiancha_shuiwu #监察水雾
 		icon = GFX_goal_unknown
 		cost = 21
 		prerequisite = {
-			focus = RTG_youxian_zizhi
+			focus = RTG_guihua_baohuqu
 		}
-		x = 24
-		y = 11
-        completion_reward = {
-
-	    }
-	}
-	focus = {
-		id = RTG_renai_de_baojun #“仁爱的暴君”
-		icon = GFX_goal_unknown
-		cost = 21
 		prerequisite = {
-			focus = RTG_jiancha_shuiwu
+			focus = RTG_yiren_zhiren
 		}
-		x = 24
-		y = 12
+		x = 22
+		y = 8
         completion_reward = {
 
 	    }
@@ -881,6 +833,19 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 60
 		prerequisite = {
+			focus = RTG_zhishen_zhiyuan
+		}
+		x = 6
+		y = 9
+        completion_reward = {
+			
+	    }
+	}
+	focus = {
+		id = RTG_zhishen_zhiyuan #至深之渊
+		icon = GFX_goal_unknown
+		cost = 60
+		prerequisite = {
 			focus = RTG_jiechu_jiaotuan
 		}
 		prerequisite = {
@@ -892,21 +857,19 @@ focus_tree = {
 		x = 6
 		y = 8
         completion_reward = {
-			#“渊众”+2建筑位，+2基建 解锁决议《兴建都城》
-
-	    }
-	}
-	focus = {
-		id = RTG_zhishen_zhiyuan #至深之渊
-		icon = GFX_goal_unknown
-		cost = 60
-		prerequisite = {
-			focus = RTG_yuansu_zhidu
-		}
-		x = 6
-		y = 9
-        completion_reward = {
-				#解锁决议《至深之渊》
+			RTG = {
+				if = {
+					limit = { has_dlc = "Together for Victory" }
+					set_autonomy = { 
+						target = CUG
+						autonomy_state = autonomy_colony #这里需要一个专属于龙王的傀儡等级：“渊都“：上缴工厂+100%，宗主拥有资源使用权，禁止一切外交活动，禁止训练军队，建造工厂等
+					}
+				}
+				else = { puppet = CUG }
+				ai_will_do = {
+					factor = 10
+				}
+			}
 	    }
 	}
 	focus = {
@@ -914,7 +877,7 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 0.00
 		prerequisite = {
-			focus = RTG_zhishen_zhiyuan
+			focus = RTG_yuansu_zhidu
 		}
 		mutually_exclusive = {
 			focus = RTG_xiaolv_zhishang
@@ -930,7 +893,7 @@ focus_tree = {
 		icon = GFX_goal_unknown
 		cost = 21
 		prerequisite = {
-			focus = RTG_zhishen_zhiyuan
+			focus = RTG_yuansu_zhidu
 		}
 		mutually_exclusive = {
 			focus = RTG_zhiliang_zhishang
@@ -1088,80 +1051,14 @@ focus_tree = {
 	    }
 	}
 	focus = {
-		id = RTG_qiangzhi_qianxi #强制迁移
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_guihua_baohuqu
-		}
-		x = 20
-		y = 8
-        completion_reward = {
-
-	    }
-	}
-	focus = {
-		id = RTG_renxu_siyang_jizhongying #人畜饲养集中营
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_qiangzhi_qianxi
-		}
-		x = 20
-		y = 9
-        completion_reward = {
-
-	    }
-	}
-	focus = {
-		id = RTG_pinji_gongying #品级供应
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_renxu_siyang_jizhongying
-		}
-		x = 20
-		y = 10
-        completion_reward = {
-
-	    }
-	}
-	focus = {
-		id = RTG_xuerou_tiantang #血肉天堂
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_pinji_gongying
-		}
-		x = 20
-		y = 11
-        completion_reward = {
-
-	    }
-	}
-	focus = {
-		id = RTG_xingyue_xueri #猩月血日
-		icon = GFX_goal_unknown
-		cost = 21
-		prerequisite = {
-			focus = RTG_xuerou_tiantang
-		}
-		x = 20
-		y = 12
-        completion_reward = {
-
-	    }
-	}
-	focus = {
 		id = RTG_yongheng_aihao_yongshi_tongku #永世哀嚎，永世恸哭
 		icon = GFX_goal_unknown
 		cost = 60
 		prerequisite = {
-			focus = RTG_xingyue_xueri
-			focus = RTG_renai_de_baojun
+			focus = RTG_jiancha_shuiwu
 		}
 		x = 22
-		y = 13
+		y = 9
         completion_reward = {
 
 	    }
@@ -1174,7 +1071,7 @@ focus_tree = {
 			focus = RTG_yongheng_aihao_yongshi_tongku
 		}
 		x = 22
-		y = 14
+		y = 10
         completion_reward = {
 
 	    }

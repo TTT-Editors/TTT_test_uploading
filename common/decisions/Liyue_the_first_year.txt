@@ -15,37 +15,25 @@ Liyue_political_crisis = {
 				has_country_flag = Liyue_crisis
 				NOT = { has_global_flag = Liyue_Civil_War }
 				NOT = { has_global_flag = avoid_Liyue_Civil_War }
-				NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
 			}
         }
 		visible = {
-			NOT = { 
-				has_country_leader = {
-					character = LYU_morax
-					ruling_only = yes
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
 				}
+				has_country_flag = Liyue_crisis
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
 			}
-			has_country_flag = Liyue_crisis
-			NOT = { has_global_flag = Liyue_Civil_War }
-			NOT = { has_global_flag = avoid_Liyue_Civil_War }
-			NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
+			#Guess why i add an "AND" here?
 		}
-
-		cancel_trigger = {
-			OR = {
-				NOT = { has_country_flag = Liyue_crisis }
-				has_global_flag = Liyue_Civil_War
-				has_global_flag = avoid_Liyue_Civil_War
-				has_global_flag = Liyue_Civil_War_Coming_Soon
-				has_country_leader = {
-					character = LYU_morax
-					ruling_only = yes
-				}
-			}
-		}
-		
+		cancel_if_not_visible = yes
         is_good = no
-        days_mission_timeout = 181
+        days_mission_timeout = 7
         available = {
             has_global_flag = avoid_Liyue_Civil_War
         }
@@ -391,3 +379,388 @@ Liyue_political_crisis = {
         }
     }
 }
+
+Prepare_coastal_defense =  {   
+	Osel_comes = {     
+		activation = {                         
+			
+		}                                    
+		available = {
+            or = {
+		    has_completed_focus = two_15
+			has_completed_focus = two_17
+	        }					
+		}
+		
+		is_good = no                         
+	
+		days_mission_timeout = 281
+		timeout_effect = {
+        set_country_flag = Secretwar		
+			if = {
+			limit = {
+				check_variable = { breakwater  > 0.99 }
+				check_variable = { Shoregun  > 0.99 }
+				check_variable = { logistics > 0.99 }
+				complete_national_focus = two_17
+			}			
+		}
+		else_if = {
+			limit = {
+				check_variable = { breakwater  < 0.99 }
+				check_variable = { Shoregun  < 0.99 }
+				check_variable = { logistics < 0.99 }
+			}
+			complete_national_focus = two_15
+		}           
+		}
+	}
+	
+	Construction_breakwater = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		
+		}
+		available = {
+        custom_trigger_tooltip = {
+		tooltip = Andeshuijing3	
+		check_variable = { breakwater  < 0.99 }
+	       }
+        }
+		
+        fire_only_once = no
+		
+        cost = 50
+		
+        days_remove = 30
+		
+		
+        complete_effect = {
+		   custom_effect_tooltip = breakwater_text
+           add_to_variable = { breakwater = 0.20}
+        }
+	}
+	
+	Purchase_gun = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		
+		}
+		available = {
+        custom_trigger_tooltip = {
+		tooltip = Andeshuijing4	
+		check_variable = { Shoregun  < 0.99 }
+	       }
+        }
+		
+        fire_only_once = no
+		
+        cost = 25
+		
+        days_remove = 30
+				
+        complete_effect = {
+		   custom_effect_tooltip = Shoregun_text
+           add_to_variable = { Shoregun = 0.10}
+        }
+	}
+	
+	
+	Build_logisticsline = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		
+		}
+		available = {
+        custom_trigger_tooltip = {
+		tooltip = Andeshuijing5	
+		check_variable = { logistics  < 0.99 }
+	       }
+        }
+		
+        fire_only_once = no
+		
+        cost = 50
+		
+        days_remove = 30
+		
+		
+        complete_effect = {
+		   custom_effect_tooltip = logistics_text
+           add_to_variable = { logistics = 0.10}
+        }
+	}
+}
+
+Secret_war = {
+    Strengthen_security = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		
+		}
+		available = {
+		has_equipment = { infantry_equipment > 4999 }
+        custom_trigger_tooltip = {
+		tooltip = Andeshuijing2	
+		check_variable = { Operationprogress  < 0.99 }
+	       }
+        }
+		
+        fire_only_once = no
+		
+        custom_cost_text = LYU_Strengthen_5000
+		
+        days_remove = 30
+		
+		
+        complete_effect = {
+		   add_equipment_to_stockpile = {
+		   type = infantry_equipment
+		   amount = -5000
+	        }
+		   custom_effect_tooltip = Operationprogress_text
+           add_to_variable = { Operationprogress = -0.30 }
+        }
+	}
+	
+    Insertion_operator = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		
+		}
+		available = {		
+        custom_trigger_tooltip = {
+		tooltip = Andeshuijing1	
+		check_variable = { IntelligenceCollection  < 0.99 }
+	       }
+        }
+		
+        fire_only_once = no
+		
+        cost = 50
+		
+        days_remove = 30
+		
+		
+        complete_effect = {
+		   custom_effect_tooltip = Operationprogress_text
+           add_to_variable = { IntelligenceCollection = 0.30 }
+        }
+	}
+	
+	Assault_stronghold = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		
+		}
+		available = {
+        has_equipment = { infantry_equipment > 999 }		
+        custom_trigger_tooltip = {
+		tooltip = Andeshuijing	
+		check_variable = { IntelligenceCollection  < 0.99 }
+	       }
+		custom_trigger_tooltip = {
+		tooltip = Andeshuijing	
+		check_variable = { Operationprogress  < 0.99 }
+	       }
+        }
+		
+        fire_only_once = no
+		
+        custom_cost_text = LYU_Strengthen_100
+		
+        days_remove = 14
+				
+        complete_effect = {
+		   custom_effect_tooltip = Operationprogress_text1
+		   add_equipment_to_stockpile = {
+		   type = infantry_equipment
+		   amount = -1000
+	        }
+           add_to_variable = { IntelligenceCollection = 0.20 }
+		   add_to_variable = { Operationprogress = -0.10 }
+        }
+	}
+	
+	Diplomatic_pressure = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		
+		}
+		available = {		
+        custom_trigger_tooltip = {
+		tooltip = Andeshuijing	
+		check_variable = { IntelligenceCollection  < 0.99 }
+	       }
+		custom_trigger_tooltip = {
+		tooltip = Andeshuijing	
+		check_variable = { Operationprogress  < 0.99 }
+	       }
+        }
+		
+        fire_only_once = no
+		
+        cost = 100
+		
+        days_remove = 35
+		
+		modifier = {
+		
+		}
+		
+        complete_effect = {
+		   custom_effect_tooltip = IntelligenceCollection_text1
+           set_country_flag = { flag = Ande value = 1 days = 30 }		   
+        }
+	}
+}
+
+    Liyue_political_situation = {	
+	LYU_count_down = {     
+		activation = {                         
+			has_country_flag = Ganyu_linshi_leader
+		}                                    
+		available = {                           
+		  or = {
+		    has_country_leader = { ruling_only = yes name = LYU_keqing } 
+	        }  	
+		}
+		
+		is_good = no                         
+	
+		days_mission_timeout = 181
+		
+		timeout_effect = {
+		custom_effect_tooltip = elected_automatically
+                set_temp_variable = { lyu_linshi }
+                add_to_variable	= { lyu_linshi = Keqing_PP }
+                add_to_variable	= { lyu_linshi = Keqing_PS }
+                set_temp_variable = { lyu_linshi1 }
+				add_to_variable	= { lyu_linshi = NingGuang_PP }
+                add_to_variable	= { lyu_linshi = NingGuang_PS }
+			if = {
+			    limit = {
+				check_variable =  { lyu_linshi < lyu_linshi1 }
+			    }
+				country_event = { 
+				days = 1
+				id = lyu_start.17
+				}
+		    }
+            else_if = {
+			limit = {
+				check_variable =  { lyu_linshi > lyu_linshi1 }
+			}
+			country_event = { 
+				days = 1
+				id = lyu_start.18
+				}
+		}			
+		}				
+	}
+	
+	LYU_test1 = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		tag = LYU
+		}
+		available = {		
+        
+        }
+		
+        fire_only_once = no
+		
+        cost = 0
+						
+        complete_effect = {
+		   set_country_flag = Ganyu_linshi_leader
+        }
+	}
+	
+	Worker_group_publicity = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		has_country_flag = Ganyu_linshi_leader
+		}
+		available = {		
+        
+        }
+		
+        fire_only_once = no
+		
+        cost = 50
+		
+        days_remove = 7
+		
+		
+        complete_effect = {
+		   custom_effect_tooltip = KQG_zhengzhi
+           add_to_variable = { Keqing_PP = 25 }
+        }
+	}
+
+	Business_Council = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		has_country_flag = Ganyu_linshi_leader
+		}
+		available = {		
+        
+        }
+		
+        fire_only_once = no
+		
+        cost = 50
+		
+        days_remove = 7
+		
+		
+        complete_effect = {
+		   custom_effect_tooltip = NNG_zhengzhi
+           add_to_variable = { NingGuang_PP = 25 }
+        }
+	}
+	
+	LYU_kqg = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		has_country_flag = Ganyu_linshi_leader
+		}
+		available = {		
+        
+        }
+		
+        fire_only_once = no
+		
+        cost = 100
+		
+        days_remove = 30
+				
+        complete_effect = {
+		   custom_effect_tooltip = KQG_people
+           add_to_variable = { Keqing_PP = 3 }
+        }
+	}
+	
+	LYU_nng = {
+	icon = GFX_decision_ger_mefo_bills
+        visible = {
+		has_country_flag = Ganyu_linshi_leader
+		}
+		available = {		
+        
+        }
+		
+        fire_only_once = no
+		
+        cost = 100
+		
+        days_remove = 30
+				
+        complete_effect = {
+		   custom_effect_tooltip = NNG_people
+           add_to_variable = { NingGuang_PS = 3 }
+        }
+	}
+}	
+

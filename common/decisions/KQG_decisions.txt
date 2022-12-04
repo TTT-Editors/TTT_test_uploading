@@ -7,26 +7,27 @@ KQG_special_categories1 = {
 		
   		icon = GFX_decision_generic_construction
 
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 20
-				FROM = {
-					is_core_of = ROOT
-				}
+		visible = {
+			#拥有
+			FROM = { is_owned_by = ROOT }
+		}
+
+		available = {
+			is_subject = no
+			ROOT = {
+				controls_state = FROM
 			}
 		}
+		
+		ai_will_do = {
+			factor = 60
+		}		
+		cancel_if_not_visible = yes
 		
 		cost = 25
 
 		state_target = yes
 
-		target_trigger = {
-			FROM = {
-				is_core_of = ROOT
-				NOT = { has_state_flag = KQG_state1 }
-			}
-		}
 
 		highlight_color_while_active = 1
 	
@@ -114,13 +115,15 @@ KQG_special_categories1 = {
 		
   		icon = GFX_decision_generic_construction
 
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 20
-				FROM = {
-					is_core_of = ROOT
-				}
+		visible = {
+			#拥有
+			FROM = { is_owned_by = ROOT }
+		}
+
+		available = {
+			is_subject = no
+			ROOT = {
+				controls_state = FROM
 			}
 		}
 		
@@ -128,19 +131,15 @@ KQG_special_categories1 = {
 
 		state_target = yes
 
-		target_trigger = {
-			FROM = {
-				is_core_of = ROOT
-				NOT = { has_state_flag = KQG_state2 }
-			}
-		}
-
 		highlight_color_while_active = 1
 	
 		visible = {
 		check_variable = { KQG_agrarian > 0.49 }
 	    }
-		        
+		
+		ai_will_do = {
+			factor = 60
+		}        
 		target_array = core_states
 		
 		days_remove = 60
@@ -400,56 +399,46 @@ KQG_test10 = {
 
 }
 KQG_special_categories4 = {
-    KQG_redarmy1 = {
+     KQG_redarmy1 = {
 		icon = GFX_decision_generic_military
 		on_map_mode = map_only
 		priority = 200
-							
-		ai_will_do = {
-			factor = 50
-		}
-		
-        target_trigger = {
-			FROM = {
-				random_owned_controlled_state = ROOT
-			}
-		}
-		
-		state_target = yes
 
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 15
-				FROM = {
-					random_owned_controlled_state = ROOT
-				}
+		visible = {
+			#拥有
+			FROM = { is_owned_by = ROOT }
+		}
+
+		available = {
+			is_subject = no
+			ROOT = {
+				controls_state = FROM
 			}
 		}
 				
 		cancel_if_not_visible = yes
-		
 		highlight_color_while_active = 1
-		
-		state_target = yes
-		
 		cost = 25
-		
+		state_target = yes
+		target_array = core_states
 		fire_only_once = yes
-		
 		days_remove = 15
-
+							
+		ai_will_do = {
+			factor = 1145
+		}
+		
 		complete_effect = {
 		
 		}
          
 		remove_effect = {	
-				division_template = {
-					name = "工人赤卫队"
-					priority = 2
-					is_locked = no
-					division_names_group = KQG_INF_02
-					regiments = {
+			division_template = {
+				name = "Gongren Zhiyuanjun"
+				priority = 2
+				is_locked = yes
+				division_names_group = KQG_INF_02
+				regiments = {
 					militia = { x = 0 y = 0 }
 					militia = { x = 0 y = 1 }
 					militia = { x = 0 y = 2 }
@@ -457,13 +446,13 @@ KQG_special_categories4 = {
 					militia = { x = 1 y = 1 }
 				}
 		    }
-		FROM = {
-		create_unit = {
-			division = "division_template = \"工人赤卫队\" start_experience_factor = 0.4"
-			owner = KQG
-			count = 3
-		    }
-	    }
+			FROM = {
+				create_unit = {
+					division = "division_template = \"Gongren Zhiyuanjun\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = KQG
+					count = 2
+				}
+			}
 		}
 	}	
     KQG_test16 = {
@@ -570,7 +559,7 @@ KQG_special_categories4 = {
 		
 		cost = 10
 		
-		days_remove = 90
+		days_remove = 180
 		
 		fire_only_once = yes
 		
@@ -581,7 +570,7 @@ KQG_special_categories4 = {
 			factor = 100
 		}
 		
-		
+		cosmetic_tag = XQG
 		
         targeted_modifier = {		
 		tag = XQG
@@ -595,7 +584,7 @@ KQG_special_categories4 = {
 		
 		cost = 10
 		
-		days_remove = 90
+		days_remove = 180
 		
 		fire_only_once = yes
 		
@@ -605,6 +594,9 @@ KQG_special_categories4 = {
 		ai_will_do = {
 			factor = 100
 		}
+		
+		cosmetic_tag = NNG
+		
         targeted_modifier = {		
 		tag = NNG
 		attack_bonus_against = 0.25
@@ -617,7 +609,7 @@ KQG_special_categories4 = {
 		
 		cost = 10
 		
-		days_remove = 30
+		days_remove = 180
 		
 		fire_only_once = yes
 		
@@ -627,11 +619,14 @@ KQG_special_categories4 = {
 		ai_will_do = {
 			factor = 100
 		}
+		
 		targeted_modifier = {
 		tag = XOG
 		attack_bonus_against = 0.25
 		defense_bonus_against = 0.25		
-		}		
+		}
+		
+        cosmetic_tag = XOG		
 	}
 	KQG_test68 = {
 		
@@ -639,7 +634,7 @@ KQG_special_categories4 = {
 		
 		cost = 10
 		
-		days_remove = 30
+		days_remove = 180
 		
 		fire_only_once = yes
 		
@@ -649,6 +644,9 @@ KQG_special_categories4 = {
 		ai_will_do = {
 			factor = 100
 		}
+		
+		cosmetic_tag = XOG
+		
         targeted_modifier = {		
 		tag = XRG
 		attack_bonus_against = 0.25

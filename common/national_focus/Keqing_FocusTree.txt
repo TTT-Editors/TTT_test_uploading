@@ -16,19 +16,19 @@ focus_tree = {
 		
 		x = 5
 		y = 0
-		cost = 14
+		cost = 35
 		ai_will_do = {
-			factor = 50
+			factor = 10
 		}		
         completion_reward = {
 			add_ideas = KQG1_1
 			add_offsite_building = {
 				type = arms_factory
-				level = 5
+				level = 2
 			}
 			add_offsite_building = {
 				type = industrial_complex
-				level = 5
+				level = 2
 			}
 		    }	
 		}
@@ -39,7 +39,7 @@ focus_tree = {
 		x = 13
 		y = 0
 		ai_will_do = {
-			factor = 25
+			factor = 35
 		}
 		completion_reward = {
 			army_experience = 50
@@ -47,7 +47,7 @@ focus_tree = {
 		    name = KQG_2
 		    bonus = 2
 		    uses = 2
-		    category = cat_mobile_warfare
+		    category = land_doctrine
 	        }	
 		}
 
@@ -122,7 +122,7 @@ focus_tree = {
 	focus = {
 		id = KQG_5     #建立生产合作社
 		icon = GFX_goal_KQG_eco_5
-		cost = 14
+		cost = 35
 		prerequisite = {
 			focus = KQG_7
 		}
@@ -130,7 +130,10 @@ focus_tree = {
 		y = 3
 		completion_reward = {
 		custom_effect_tooltip = KQG666
-		add_ideas = KQG1_2		
+		add_offsite_building = {
+			type = industrial_complex
+			level = 2
+		}		
 		hidden_effect = { country_event = { id = KQG_events.9 days = 1 } }		
 		}
 
@@ -327,7 +330,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = KQG_19      #召集工人赤卫队
+		id = KQG_19      #武装思想
 		icon = GFX_goal_KQG_mil_56
 		cost = 35
 		prerequisite = {
@@ -336,31 +339,7 @@ focus_tree = {
 		x = 12
 		y = 2
 		completion_reward = {
-		division_template = {
-					name = "Gongren Chiweidui"
-					priority = 2
-					is_locked = yes
-					division_names_group = KQG_INF_02
-					regiments = {
-					militia = { x = 0 y = 0 }
-					militia = { x = 0 y = 1 }
-					militia = { x = 0 y = 2 }
-					militia = { x = 1 y = 0 }
-					militia = { x = 1 y = 1 }
-					militia = { x = 1 y = 2 }
-					militia = { x = 2 y = 1 }
-					militia = { x = 2 y = 2 }
-					militia = { x = 3 y = 1 }
-					militia = { x = 3 y = 2 }
-				}
-		    }
-		147 = {
-		create_unit = {
-			division = "division_template = \"Gongren Chiweidui\" start_experience_factor = 0.4"
-			owner = KQG
-			count = 5
-		    }
-	    }	
+		add_ideas = KQG1_44
 		}
 
 	}
@@ -374,26 +353,10 @@ focus_tree = {
 		x = 12
 		y = 3
 		completion_reward = {
-			division_template = {
-					name = "Difang Minbingshi"
-					priority = 2
-					is_locked = yes
-					division_names_group = KQG_INF_02
-					regiments = {
-					militia = { x = 0 y = 0 }
-					militia = { x = 0 y = 1 }
-					militia = { x = 0 y = 2 }
-					militia = { x = 1 y = 0 }
-					militia = { x = 1 y = 1 }
-				}
-		    }
-		147 = {
-		create_unit = {
-			division = "division_template = \"Difang Minbingshi\" start_experience_factor = 0.4"
-			owner = KQG
-			count = 5
-		    }
-	    }
+			swap_ideas = {
+			add_idea = KQG1_45
+			remove_idea = KQG1_44
+		}
 		}
 	}
 		
@@ -801,50 +764,23 @@ focus_tree = {
 		x = 21
 		y = 3
         completion_reward = {
-			custom_effect_tooltip = unlock_advisor_keqing_2
+			show_ideas_tooltip = KQG_Zhongli
+			show_ideas_tooltip = KQG_Hutao
 			hidden_effect = { country_event = { id = KQG_events.8 days = 7 } }
             }  
 		}
-	focus = {
-		id = KQG_45         #志同道合
-		icon = GFX_goal_KQG_kx1
-		cost = 21
-		prerequisite = {
-			focus = KQG_44
-		}
-		available = {
-		XQG = { exists = YES }
-		XQG = { has_government = communism }
-	    }
-		bypass = {
-		is_in_faction_with = XQG
-		}
-		mutually_exclusive = { focus = KQG_46 }
-
-		x = 20
-		y = 4
-		completion_reward = {		
-		XQG = {
-				country_event = Xingqiu.9
-		}
-		}
-
-	}
+	
 	focus = {
 		id = KQG_46         #独行天下
 		icon = GFX_goal_KQG_pol_46
-		cost = 14
+		cost = 35
 		prerequisite = {
 			focus = KQG_44
 		}
-		mutually_exclusive = { focus = KQG_45 }
-		bypass = {
-		  XQG  = { exists = NO }
-		}
-		x = 22
+		x = 21
 		y = 4
 		completion_reward = {
-		create_wargoal = { target = XQG type = annex_everything }			
+		add_ideas = KQG1_46		
 		}
 	}		
 	focus = {
@@ -858,7 +794,7 @@ focus_tree = {
 		x = 21
 		y = 5
 		completion_reward = {
-		add_ideas = KQG1_24
+		add_timed_idea = { idea = KQG1_24 days = 180 }
 		hidden_effect = {
 		country_event = { id = KQG_events.14 days = 1 }
 		}
@@ -947,15 +883,16 @@ focus_tree = {
 		x = 21
 		y = 6
 		completion_reward = {
-		custom_effect_tooltip = KQG558
+		custom_effect_tooltip = KQG5510
 		hidden_effect = { 
-		country_event = { id = KQG_events.13 days = 1 }
-		play_song = "cfxzjq"
+		play_song = "cfxzjq"	    
 		}
 		add_ideas = civilian_economy
 		add_ideas = volunteer_only
-	    add_ideas = KQG1_38
-		add_ideas = KQG1_36
+		remove_ideas = idea_jieminuofu
+		}
+		select_effect = {
+		   country_event = { id = KQG_events.13 days = 1 }
 		}
 	}  		   		
 } 

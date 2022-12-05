@@ -1,0 +1,63 @@
+scripted_gui = {
+	
+	TTT_show_introduction_button = {
+		
+		#四种context_type，分别是player_context（默认，比如top_bar）,selected_country_context（针对选中的国家，多用于特殊的国家交互）；
+		#selected_state_context（针对选中的省份，多用于特殊的省份交互），decision_category（决议GUI）
+		context_type = selected_state_context
+		window_name = "TTT_show_introduction_button"
+		parent_window_token = selected_state_view
+
+		#AI能不能用？
+		ai_enabled = {
+			always = no
+		}
+
+		visible = {
+			#省份拥有奇观
+			state_has_wonder = yes
+			#主界面没有展开
+			NOT = { has_global_flag = states_introduction_on_show }
+		}
+
+		effects = {
+			show_state_wonder_button_click = {
+				#展开主界面
+				set_global_flag = states_introduction_on_show
+			}
+		}
+		
+	}
+	
+	#地区介绍主界面
+	TTT_state_wonder_main_view = {
+		
+		context_type = selected_state_context
+		window_name = "TTT_state_wonder_main_view"
+		parent_window_token = selected_state_view
+
+		ai_enabled = {
+			always = no
+		}
+
+		visible = {
+			#省份拥有奇观
+			state_has_wonder = yes
+			#主界面已经展开
+			has_global_flag = states_introduction_on_show
+		}
+
+		effects = {
+			close_state_wonder_button_click = {
+				#关闭主界面
+				clr_global_flag = states_introduction_on_show
+			}
+		}
+		
+		#I have set pictures in advance, again!
+		properties = {
+			TTT_States_Picture = { image = "[ROOT_GetStatePicture]" }
+		}
+	}
+	
+}

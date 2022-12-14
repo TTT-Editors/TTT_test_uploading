@@ -51,7 +51,10 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_ideas =ZHZL#转换之令
+		swap_ideas = {
+			add_idea = ZHZL
+			remove_idea = GYZL
+		}
 		}
 	}
 focus = {
@@ -90,7 +93,7 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_stability =0.15
 		}
 	}
     focus = {
@@ -105,7 +108,7 @@ focus = {
 	125 = {
 		add_extra_state_shared_building_slots = 5
 		add_building_construction = {
-			type = industrial_complex
+			type = arms_factory 
 			level = 5
 			instant_build = yes 
 		}
@@ -124,6 +127,10 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
+			swap_ideas = {
+			add_idea = YZSN
+			remove_idea = ZHZL
+		}
 		
 		}
 	}
@@ -152,7 +159,7 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_war_support = 0.1
 		}
 	}
 
@@ -165,20 +172,20 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_stability =0.1 #未完成
 		}
 	}
 
 focus = {
 		id = YFX11#云海盟来
 		icon = 0
-		prerequisite = { focus = YFX08 }
+		prerequisite = { focus = YFX010 }
 		x = -2
 		y = 13
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_stability =0.1 #未完成
 		}
 	}
 
@@ -186,12 +193,13 @@ focus = {
 		id = YFX12#青墟之主
 		icon = 0
 		prerequisite = { focus = YFX09 }
+		bypass = {ANG = { exists= NO}}	
 		x = 2
 		y = 11
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		declare_war_on = { target = ANG type = annex_everything }
 		}
 	}
 
@@ -199,12 +207,14 @@ focus = {
 		id = YFX13#归离俯首
 		icon = 0
 		prerequisite = { focus = YFX12 }
+		bypass = {XQG = { exists= NO} KQG = { exists= NO}}
 		x = 2
 		y = 13
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		declare_war_on = { target = KQG type = annex_everything }
+		declare_war_on = { target = XQG type = annex_everything }
 		}
 	}
 
@@ -217,7 +227,14 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		create_wargoal = { target = ANG type = annex_everything }
+		create_wargoal = { target = XQG type = annex_everything }
+		create_wargoal = { target = KQG type = annex_everything }
+		create_wargoal = { target = XRG type = annex_everything }
+		create_wargoal = { target = ZDG type = annex_everything }
+		create_wargoal = { target = RTG type = annex_everything }
+        create_wargoal = { target = XOG type = annex_everything }
+		create_wargoal = { target = BDG type = annex_everything }
 		}
 	}
 
@@ -237,7 +254,7 @@ focus = {
 focus = {
 		id = YFX16#丹火炼印
 		icon = 0
-		prerequisite = { focus = YFX14 }
+		prerequisite = { focus = YFX15 }
 		x = 0
 		y = 19
 

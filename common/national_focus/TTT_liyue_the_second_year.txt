@@ -79,6 +79,8 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
+			add_ideas = LYU_Ruled
+			custom_effect_tooltip = LYU_Ruled_txt
 			swap_ideas = {
 			add_idea = LYU_5
 			remove_idea = a_torn_society
@@ -120,19 +122,7 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				custom_effect_tooltip = liyue_renzhi
-				if = {
-			    limit = {
-				NOT =  { has_dynamic_modifier = { modifier = LYU_rule_man } }
-			    }
-			    set_country_flag = liyuechushi1
-		        }
-				else_if = {
-			    limit = {
-				has_dynamic_modifier = { modifier = LYU_rule_man }
-			    }
-			    set_country_flag = liyuerenzhi1
-		        }
+				custom_effect_tooltip = liyue2
 				hidden_effect = {				
 			    add_dynamic_modifier = { modifier = LYU_rule_man }
 				set_variable = { LYU_political = 0.05 }
@@ -168,19 +158,7 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				custom_effect_tooltip = liyue_renzhi
-				if = {
-			    limit = {
-				NOT =  { has_dynamic_modifier = { modifier = LYU_rule_man } }
-			    }
-			    set_country_flag = liyuechushi
-		        }
-				else_if = {
-			    limit = {
-				has_dynamic_modifier = { modifier = LYU_rule_man }
-			    }
-			    set_country_flag = liyuerenzhi
-		        }
+				custom_effect_tooltip = liyue4
 				hidden_effect = {
 				add_dynamic_modifier = { modifier = LYU_rule_man }
 				set_variable = { LYU_drift = 0.20 }
@@ -254,18 +232,7 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				if = {
-			    limit = {
-				NOT =  { has_dynamic_modifier = { modifier = LYU_rule_man } }
-			    }
-			    set_country_flag = liyuechushi2
-		        }
-				else_if = {
-			    limit = {
-				has_dynamic_modifier = { modifier = LYU_rule_man }
-			    }
-			    set_country_flag = liyuerenzhi2
-		        }
+				custom_effect_tooltip = liyue3
 				hidden_effect = {
 				add_dynamic_modifier = { modifier = LYU_rule_man }
 				set_variable = { LYU_stability = 0.005 }
@@ -290,7 +257,7 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				
+				country_event = { days = 1  id = lyu_start.23 } 
 			}	
 		}
 
@@ -330,7 +297,7 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				
+				custom_effect_tooltip = Stronghold_raid_decision
 			}	
 		}
 
@@ -350,7 +317,8 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				
+				set_country_flag = Intelligence_Collection
+				custom_effect_tooltip = Intelligence_Collection_tt
 			}	
 		}
 
@@ -378,7 +346,7 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				add_timed_idea = { idea = LYU_7 days = 180 }
+				add_timed_idea = { idea = LYU_Assets_Beiguo_Bank days = 180 }
 			}	
 		}
 
@@ -405,7 +373,8 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				
+				add_timed_idea = { idea = LYU_Assets_Beiguo_Bank days = 180 }
+
 			}	
 		}
 
@@ -423,7 +392,7 @@ focus_tree = {
 				factor = 50
 			}		
 			completion_reward = {
-				
+				country_event = { days = 1  id = lyu_start.26 }
 			}	
 		}
 
@@ -575,10 +544,14 @@ focus_tree = {
 				focus = two_21
 			}	
 			completion_reward = {
-				swap_ideas = {
-			    add_idea = LYU_11
-			    remove_idea = an_unbalanced_developed_country
-		        }
+			147 = {
+		    add_extra_state_shared_building_slots = 2
+		    add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes 
+		            }
+	            }
 			}	
 		}
 

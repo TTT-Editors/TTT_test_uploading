@@ -316,7 +316,6 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = lyu_start.19.a
-		custom_effect_tooltip = two_3_text
 		unlock_decision_category_tooltip = Secret_war
 		unlock_decision_category_tooltip = Prepare_coastal_defense
 		set_country_flag = Secretwar
@@ -348,10 +347,16 @@ country_event = {
 	option = {
 		name = lyu_start.21.a
 		add_ideas = LYU_labor
+		ai_chance = {
+			base = 15
+		}
 	}
 	option = {
 		name = lyu_start.22.a
 		add_ideas = LYU_relief_fund
+		ai_chance = {
+			base = 15
+		}
 	}
 }
 #凝光宣传事件
@@ -364,10 +369,16 @@ country_event = {
 	option = {
 		name = lyu_start.22.a
 		add_ideas = LYU_trade_expectations
+		ai_chance = {
+			base = 15
+		}
 	}
 	option = {
 		name = lyu_start.22.b
 		add_ideas = LYU_contractual_port
+		ai_chance = {
+			base = 15
+		}
 	}
 }
 #自至冬国
@@ -424,5 +435,118 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = lyu_start.27.a
+	}
+}
+#潜伏的抉择
+country_event = {
+	id = lyu_start.28
+	title = lyu_start.28.t
+	desc = lyu_start.28.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.28.a
+		ai_chance = {
+			base = 15
+		}
+		add_political_power = -50
+		add_equipment_to_stockpile = {
+		type = support_equipment
+		amount = -200
+	    }
+		random_list = {
+			40 = {
+				country_event = {
+					id = lyu_start.29
+					days = 10
+			    }
+		    }
+			60 = {
+				country_event = {
+					id = lyu_start.30
+					days = 10
+			    }
+		    }
+		}
+	}
+	option = {
+	    ai_chance = {
+			base = 15
+		}
+		name = lyu_start.28.b
+	}
+}
+#不入虎穴，焉得虎子
+country_event = {
+	id = lyu_start.29
+	title = lyu_start.29.t
+	desc = lyu_start.29.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.29.a
+		add_political_power = 100
+		add_to_variable = { Operationprogress = -0.20 }
+		add_to_variable = { IntelligenceCollection = -0.20 }
+		custom_effect_tooltip = Nothing_ventured_tt
+	}
+}
+#葬于尘烟
+country_event = {
+	id = lyu_start.30
+	title = lyu_start.30.t
+	desc = lyu_start.30.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.30.a
+		add_manpower = -1
+	}
+}
+#意外的收获
+country_event = {
+	id = lyu_start.31
+	title = lyu_start.31.t
+	desc = lyu_start.31.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.31.a
+		add_to_variable = { IntelligenceCollection = 0.20 }
+		custom_effect_tooltip = Unexpected_gains_txt
+		ai_chance = {
+			base = 15
+		}
+	}
+	option = {
+		name = lyu_start.31.b
+		add_to_variable = { Operationprogress = -0.15 }
+		custom_effect_tooltip = Unexpected_gains
+		ai_chance = {
+			base = 15
+		}
+	}
+}
+#斯人已逝
+country_event = {
+	id = lyu_start.32
+	title = lyu_start.32.t
+	desc = lyu_start.32.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.32.a
+		add_political_power = 50
+	}
+}
+#过往云烟
+country_event = {
+	id = lyu_start.33
+	title = lyu_start.33.t
+	desc = lyu_start.33.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.33.a
 	}
 }

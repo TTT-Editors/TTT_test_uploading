@@ -1,0 +1,37 @@
+on_actions = {
+	on_weekly_LYU = {
+		effect = {
+			#每周扣除的至冬国进度
+			if = {
+				limit = {
+					has_country_flag = Ande
+				}
+				add_to_variable = { Operationprogress = -0.05 }				
+			}			
+		}	
+	}
+	on_weekly_LYU = {
+		effect = {
+			#每周增加的至冬国进度
+			if = {
+				limit = {
+					has_country_flag = Secretwar
+				}
+				add_to_variable = { Operationprogress = 0.10 }				
+			}			
+		}	
+	}
+	on_weekly_LYU = {
+		effect = {
+			#100%后对海防项目每周扣除5%筹备值
+			if = {
+				limit = {
+					check_variable = { Operationprogress  > 0.99 }
+				}
+				add_to_variable = { breakwater = -0.05 }
+                add_to_variable = { Shoregun = -0.05 }
+                add_to_variable = { logistics = -0.05 }				
+			}			
+		}	
+	}
+}

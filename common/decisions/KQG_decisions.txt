@@ -37,23 +37,31 @@ KQG_special_categories1 = {
 		        
 		target_array = core_states
 		
-		days_remove = 30
+		days_remove = 60
 		
         modifier = {
-		WEEKLY_MANPOWER = -50
         POLITICAL_POWER_COST = 0.25		
 	   	}
 		
-		remove_effect = {
-		    add_to_variable = { KQG_agrarian = 0.02 }
-			FROM = {
-					add_dynamic_modifier = { modifier = KQG_state_modifier_1 }
-					set_state_flag = KQG_state1
-			}
+		complete_effect = {
+		    random_list = {
+			50 = {
+				country_event = {
+					id = KQG_events.23
+					days = 25
+			    }
+		    }
+			50 = {
+				country_event = {
+					id = KQG_events.22
+					days = 25
+			    }
+		    }
+		  }
 		}
 	}
 	
-	KQG_test2 = {
+	KQG_test3 = {
 		priority = 20
 		
   		icon = GFX_decision_generic_construction
@@ -67,97 +75,15 @@ KQG_special_categories1 = {
 		fire_only_once = yes
 		available = {
 		custom_trigger_tooltip = {
-		tooltip = KQGagrarian
-		check_variable = { KQG_agrarian > 0.49 }
-	        }
-	    }		        
-		remove_effect = {
-		   add_ideas = KQG1_39
-		}
-	}
-	
-	KQG_test3 = {
-	
-		priority = 20
-		
-  		icon = GFX_decision_generic_construction
-
-		ai_will_do = {
-			base = 25
-		}
-		
-		cost = 10
-
-		available = {
-		custom_trigger_tooltip = {
 		tooltip = KQG_agrarian1	
 		check_variable = { KQG_agrarian > 0.99 }
 	        }
-	    }
-		fire_only_once = yes       
+	    }		        
 		remove_effect = {
-		   swap_ideas = {
-			add_idea = KQG1_4
-			remove_idea = KQG1_39
-		    }
-			every_state = {
-			limit = {
-			is_core_of = ROOT
-		        }
-			remove_dynamic_modifier = { modifier = KQG_state_modifier_2 }
-			remove_dynamic_modifier = { modifier = KQG_state_modifier_1 }
-			}
+		   add_ideas = KQG1_4
 		}
 	}
 	
-	KQG_test1 = {
-		priority = 20
-		
-  		icon = GFX_decision_generic_construction
-
-		visible = {
-			#拥有
-			FROM = { is_owned_by = ROOT }
-		}
-
-		available = {
-			is_subject = no
-			ROOT = {
-				controls_state = FROM
-			}
-		}
-		
-		cost = 30
-
-		state_target = yes
-
-		highlight_color_while_active = 1
-	
-		visible = {
-		check_variable = { KQG_agrarian > 0.49 }
-	    }
-		
-		ai_will_do = {
-			factor = 60
-		}        
-		target_array = core_states
-		
-		days_remove = 60
-		
-        modifier = {
-		WEEKLY_MANPOWER = -50
-        POLITICAL_POWER_COST = 0.25		
-	   	}
-		
-		remove_effect = {
-		    add_to_variable = { KQG_agrarian = 0.02 }
-			FROM = {
-					add_dynamic_modifier = { modifier = KQG_state_modifier_2 }
-					remove_dynamic_modifier = { modifier = KQG_state_modifier_1 }
-					set_state_flag = KQG_state2
-			}
-		}
-	}
 }
 
 

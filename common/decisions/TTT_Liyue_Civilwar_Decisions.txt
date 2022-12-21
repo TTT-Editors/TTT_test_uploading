@@ -399,6 +399,148 @@ defeat_or_annex_other_warlords = {
 			}
 		}
 	}
+	Collect_military_equipment = {
+		
+		icon = GFX_decision_eng_trade_unions_support
+		
+		cost = 50
+		
+		days_remove = 30
+		
+		fire_only_once = no
+		
+		visible ={has_global_flag=Liyue_Civil_War}
+		
+		available = {
+		or = {
+		original_tag = XRG
+		original_tag = RTG
+		original_tag = ANG
+		original_tag = LYU
+		original_tag = XQG
+		original_tag = NNG
+		original_tag = XOG
+		original_tag = ARF
+	        }
+		}
+		
+		remove_effect = {		
+			add_equipment_to_stockpile = {
+		    type = infantry_equipment
+		    amount = 1000
+	        }
+            add_equipment_to_stockpile = {
+		    type = support_equipment
+		    amount = 1000
+	        }
+            add_equipment_to_stockpile = {
+		    type = artillery_equipment
+		    amount = 1000
+	        }			
+		}
+	
+		ai_will_do = {
+			factor = 1145
+		}
+	}
+	Collect_military_provisions = {
+		
+		icon = GFX_decision_eng_trade_unions_support
+		
+		cost = 50
+		
+		days_remove = 30
+		
+		fire_only_once = no
+		
+		visible = {
+		has_global_flag=Liyue_Civil_War
+		or = {
+		original_tag = XRG
+		original_tag = RTG
+		original_tag = ANG
+		original_tag = LYU
+		original_tag = XQG
+		original_tag = NNG
+		original_tag = XOG
+		original_tag = ARF
+	    }
+		}		
+		
+		remove_effect = {		
+			add_equipment_to_stockpile = {
+		    type = ttt_uniform_eq
+		    amount = 5000
+	        }			
+		}
+	
+		ai_will_do = {
+			factor = 1145
+		}
+	}
+	Muster_the_militia = {
+		
+		icon = GFX_decision_eng_trade_unions_support
+		
+		on_map_mode = map_only
+		
+		cost = 25
+		
+		days_remove = 15
+		
+		fire_only_once = yes
+		
+		visible ={
+		has_global_flag=Liyue_Civil_War
+		or = {
+		original_tag = XRG
+		original_tag = ANG
+		original_tag = LYU
+		original_tag = XQG
+		original_tag = NNG
+		original_tag = XOG
+		original_tag = ARF
+	    }
+		#拥有
+			FROM = { is_owned_by = ROOT }
+		}
+		available = {
+			ROOT = {
+			controls_state = FROM
+		}
+		}
+		
+		state_target = yes
+		target_array = core_states
+		cancel_if_not_visible = yes
+		highlight_color_while_active = 1
+		
+		remove_effect = {		
+			division_template = {
+				name = "Mingbing Zhiyuanjun"
+				priority = 2
+				is_locked = yes
+				division_names_group = LYU_INF_02
+				regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 1 y = 0 }
+				}
+		    }
+			FROM = {
+				create_unit = {
+					division = "division_template = \"Mingbing Zhiyuanjun\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = ROOT
+					count = 2
+				}
+			}			
+		}
+	
+		ai_will_do = {
+			factor = 1145
+		}
+	}
 }
 
 Liyue_Now = {

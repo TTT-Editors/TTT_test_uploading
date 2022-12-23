@@ -409,9 +409,8 @@ defeat_or_annex_other_warlords = {
 		
 		fire_only_once = no
 		
-		visible ={has_global_flag=Liyue_Civil_War}
-		
-		available = {
+		visible ={
+		has_global_flag = Liyue_Civil_War
 		or = {
 		original_tag = XRG
 		original_tag = RTG
@@ -421,9 +420,10 @@ defeat_or_annex_other_warlords = {
 		original_tag = NNG
 		original_tag = XOG
 		original_tag = ARF
+		KQG = { has_government = reformism }
 	        }
 		}
-		
+				
 		remove_effect = {		
 			add_equipment_to_stockpile = {
 		    type = infantry_equipment
@@ -435,6 +435,10 @@ defeat_or_annex_other_warlords = {
 	        }
             add_equipment_to_stockpile = {
 		    type = artillery_equipment
+		    amount = 1000
+	        }
+            add_equipment_to_stockpile = {
+		    type = ttt_uniform_eq
 		    amount = 1000
 	        }			
 		}
@@ -454,7 +458,7 @@ defeat_or_annex_other_warlords = {
 		fire_only_once = no
 		
 		visible = {
-		has_global_flag=Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		or = {
 		original_tag = XRG
 		original_tag = RTG
@@ -464,12 +468,13 @@ defeat_or_annex_other_warlords = {
 		original_tag = NNG
 		original_tag = XOG
 		original_tag = ARF
+		KQG = { has_government = reformism }
 	    }
 		}		
 		
 		remove_effect = {		
 			add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
+		    type = grain_conversion_eq
 		    amount = 5000
 	        }			
 		}
@@ -491,8 +496,11 @@ defeat_or_annex_other_warlords = {
 		fire_only_once = yes
 		
 		visible ={
-		has_global_flag=Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
+		NOT = { original_tag = KQG }
 		or = {
+		RTG = { has_government = reformism }
+		RTG = { has_government = authoritarianism }
 		original_tag = XRG
 		original_tag = ANG
 		original_tag = LYU

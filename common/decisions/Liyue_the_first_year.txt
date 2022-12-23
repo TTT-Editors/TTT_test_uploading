@@ -1,9 +1,7 @@
 Liyue_political_crisis = {
     liyue_civilwar_is_coming = {
 	    icon = GFX_decision_hol_draw_up_staff_plans
-        allowed = {
-            allowed = { always = no }
-        }
+   
         activation = { 
 			AND = {
 				NOT = { 
@@ -35,7 +33,10 @@ Liyue_political_crisis = {
         is_good = no
         days_mission_timeout = 181
         available = {
-            has_global_flag = avoid_Liyue_Civil_War
+			or = {
+		    has_global_flag = avoid_Liyue_Civil_War
+			country_exists = NNG
+	        }
         }
         timeout_effect = {
             clr_country_flag = Liyue_crisis

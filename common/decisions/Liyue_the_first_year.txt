@@ -15,20 +15,6 @@ Liyue_political_crisis = {
 				NOT = { has_global_flag = avoid_Liyue_Civil_War }
 			}
         }
-		visible = {
-			AND = {
-				NOT = { 
-					has_country_leader = {
-						character = LYU_morax
-						ruling_only = yes
-					}
-				}
-				has_country_flag = Liyue_crisis
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
-			}
-			#Guess why i add an "AND" here?
-		}
 		cancel_if_not_visible = yes
         is_good = no
         days_mission_timeout = 181
@@ -40,344 +26,608 @@ Liyue_political_crisis = {
         }
         timeout_effect = {
             clr_country_flag = Liyue_crisis
+			clr_country_flag = Financial_collapse
+			clr_country_flag = Social_unrest
+			clr_country_flag = Economic_reconstruction
+			clr_country_flag = Public_opinion
+			clr_country_flag = government_reformn
             country_event = {
                 id = lyu_start.7
                 days = 3
             }
         }
     }
-    Liyue_labour_requirement = {
-        allowed = {
-            tag = LYU 
-        }
-        activation = { 
-            always = no
-        }
-        cancel_trigger = {
-            OR = {
-			    NOT = { has_country_flag = Liyue_crisis }
-                has_country_flag = labours_wage_has_leveled
-            }
-		}
-        is_good = no
-        days_mission_timeout = 30
-        available = {
-        }
-        timeout_effect = {
-            add_stability = -0.15
-        }
-    }
-    Liyue_businessperson_requirement = {
-        allowed = {
-            tag = LYU 
-        }
-        activation = { 
-            always = no
-        }
-        cancel_trigger = {
-            OR = {
-			    NOT = { has_country_flag = Liyue_crisis }
-                has_country_flag = market_opening
-            }
-		}
-        is_good = no
-        days_mission_timeout = 30
-        available = {
-            always = no
-        }
-        timeout_effect = {
-            add_stability = -0.15
-        }
-    }
-    Liyue_government_apparatus_requirement = {
-        allowed = {
-            tag = LYU 
-        }
-        activation = { 
-            always = no
-        }
-        cancel_trigger = {
-            OR = {
-			    NOT = { has_country_flag = Liyue_crisis }
-                has_country_flag = people_has_calmed_down
-            }
-		}
-        is_good = no
-        days_mission_timeout = 30 
-        available = {
-            always = no
-        }
-        timeout_effect = {
-            add_stability = -0.15
-        }
-    }
-    Liyue_make_people_calm_down = {
-	    icon = GFX_decision_generic_political_discourse
-        visible = { has_country_flag = Liyue_crisis }
-        available = {
-            has_country_flag = Liyue_crisis
-        }
-        fire_only_once = no
-        cost = 50
-        days_remove = 14
-		modifier = {
-			stability_weekly = 0.050
-			reformism_drift = 0.05
-	   	}
-		
-		remove_effect = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = people_has_calmed_down }
+	
+	LYU_Financial_collapse = {     
+		activation = {                         
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
 				}
-				set_country_flag = people_has_calmed_down
+				has_country_flag = Liyue_crisis
+				has_country_flag = Financial_collapse
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
 			}
+		}                                    
+		available = {                           
+			
 		}
 		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				has_stability > 0.66
-				#we don't need such high stability
-				has_country_flag = people_has_calmed_down
-			}
-			modifier = {
-				factor = 0
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_CIVIL_WAR
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_AVOID_CIVIL_WAR
-				}
-			}
-		}
-    }
-    Liyue_level_labours_wage = {
-	    icon = GFX_decision_generic_speech
-        visible = { has_country_flag = Liyue_crisis }
-        available = {
-            has_country_flag = Liyue_crisis
-        }
-        fire_only_once = no
-        cost = 100
-        days_remove = 14
-		modifier = {
-			industrial_capacity_factory = 0.05
-			production_factory_efficiency_gain_factor = 0.05
-			communism_drift = 0.10 
-        }
+		is_good = no                         
+	
+		days_mission_timeout = 31
 		
-		remove_effect = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = labours_wage_has_leveled }
-				}
-				set_country_flag = labours_wage_has_leveled
-			}
+		timeout_effect = {                      
+			          
 		}
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				communism > 0.31
-				#we don't need such high communism supporting
-				has_country_flag = labours_wage_has_leveled
-			}
-			modifier = {
-				factor = 0
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_CIVIL_WAR
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_AVOID_CIVIL_WAR
-				}
-			}
-		}
-    }
-    Liyue_improve_market_law = {
-	    icon = GFX_decision_hol_attract_foreign_investors
-        visible = { has_country_flag = Liyue_crisis }
-        available = {
-            has_country_flag = Liyue_crisis
-        }
-        fire_only_once = no
-        cost = 100
-        days_remove = 14
-		modifier = {
-			global_building_slots_factor = 0.05
-			production_speed_buildings_factor = 0.10
-			liberalism_drift = 0.10
-		}
-		
-		remove_effect = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = market_opening }
-				}
-				set_country_flag = market_opening
-			}
-		}
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				liberalism > 0.31
-				#we don't need such high liberalism supporting
-				has_country_flag = market_opening
-			}
-			modifier = {
-				factor = 0
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_CIVIL_WAR
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_AVOID_CIVIL_WAR
-				}
-			}
+		complete_effect = {                    
+			          
 		}
 	}
-    Liyue_ordered_curfew = {
-	    icon = GFX_decision_generic_purge
-        visible = { has_country_flag = Liyue_crisis }
-        available = {
-            has_country_flag = Liyue_crisis
-        }
-        fire_only_once = no
-        cost = 100
-        days_remove = 14
+	
+    Liyue_Capital_injection = {
+       icon = GFX_decision_generic_political_discourse
+		
+		cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Financial_collapse		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
 		modifier = {
-			drift_defence_factor = 0.50
-			political_power_factor = 0.25
-			reformism_drift = 0.10
-		}
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				reformism > 0.31
-				#we don't need such high reformism supporting
-			}
-			modifier = {
-				factor = 0
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_CIVIL_WAR
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_AVOID_CIVIL_WAR
-				}
-			}
-		}
-    }
-    Liyue_srike_against_labour_movement = {
-	    icon = GFX_decision_SOV_the_workers_dictatorship
-        visible = { has_country_flag = Liyue_crisis }
-        available = {
-            has_country_flag = Liyue_crisis
-        }
-        fire_only_once = no
-        cost = 100
-        days_remove = 14
-        modifier = {
-			communism_drift = -0.10		
-        }
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				communism < 0.35
-			}
-			modifier = {
-				factor = 0
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_CIVIL_WAR
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_AVOID_CIVIL_WAR
-				}
-			}
-		}
-    }
-    Liyue_srike_against_illicit_trade = {
-	    icon = GFX_decision_cash_flow
-        visible = { has_country_flag = Liyue_crisis }
-        available = {
-            has_country_flag = Liyue_crisis
-        }
-        fire_only_once = no
-        cost = 100
-        days_remove = 14
-        modifier = {
-			liberalism_drift = -0.10		
-        }
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				liberalism < 0.35
-			}
-			modifier = {
-				factor = 0
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_CIVIL_WAR
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = LYU_ai_behavior
-					option = LIYUE_AVOID_CIVIL_WAR
-				}
-			}
-		}
-    }
-    Liyue_political_consultation = {
-	    icon = GFX_decision_ger_mefo_bills
-        visible = { has_country_flag = Liyue_crisis }
-        available = {
-            has_country_flag = Liyue_crisis
-        }
-        fire_only_once = no
-        cost = 150
-        days_remove = 30
-		modifier = {
-			political_power_factor = -0.25
+			
 	   	}
-        remove_effect = {
-            add_stability = 0.1
-			add_political_power = 100
-        }
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+    Liyue_Government_Intervention = {
+        icon = GFX_decision_generic_political_discourse
+		
+		cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Financial_collapse		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+    Liyue_Social_unrest = {
+        activation = {                         
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
+				}
+				has_country_flag = Liyue_crisis
+				has_country_flag = Social_unrest
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			}
+		}                                    
+		available = {
+            OR = {		
+			NOT = { has_country_flag = Social_unrest }
+			NOT = { has_country_flag = Liyue_crisis }
+			}
+		}
+		
+		is_good = no                         
+	
+		days_mission_timeout = 31
+		
+		timeout_effect = {                      
+			          
+		}
+		complete_effect = {                    
+			          
+		}
+    }
+    Liyue_Relief_assistance = {
+	    icon = GFX_decision_generic_political_discourse
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Social_unrest		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+    Liyue_Public_Department = {
+	    icon = GFX_decision_generic_speech
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Social_unrest		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+    Liyue_visit_activities = {
+	    icon = GFX_decision_hol_attract_foreign_investors
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Social_unrest		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+	}
+	Liyue_Economic_reconstruction = {
+        activation = {                         
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
+				}
+				has_country_flag = Liyue_crisis
+				has_country_flag = Economic_reconstruction
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			}
+		}                                    
+		available = {
+            OR = {		
+			NOT = { has_country_flag = Economic_reconstruction }
+			NOT = { has_country_flag = Liyue_crisis }
+			}
+		}
+		
+		is_good = no                         
+	
+		days_mission_timeout = 31
+		
+		timeout_effect = {                      
+			          
+		}
+		complete_effect = {                    
+			          
+		}
+    }
+    Liyue_Revitalize_maritime_transport = {
+	    icon = GFX_decision_generic_purge
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Economic_reconstruction		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+    Liyue_Expand_manufacturing = {
+	    icon = GFX_decision_SOV_the_workers_dictatorship
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Economic_reconstruction		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+    Liyue_Priority_Infrastructure = {
+	    icon = GFX_decision_cash_flow
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Economic_reconstruction		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+	Liyue_Public_opinion = {
+        activation = {                         
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
+				}
+				has_country_flag = Liyue_crisis
+				has_country_flag = Public_opinion
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			}
+		}                                    
+		available = {
+            OR = {		
+			NOT = { has_country_flag = Public_opinion }
+			NOT = { has_country_flag = Liyue_crisis }
+			}
+		}
+		
+		is_good = no                         
+	
+		days_mission_timeout = 31
+		
+		timeout_effect = {                      
+			          
+		}
+		complete_effect = {                    
+			          
+		}
+    }
+    Liyue_road_man = {
+	    icon = GFX_decision_ger_mefo_bills
+       cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Public_opinion		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+	Liyue_turning_people = {
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Public_opinion		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+	Liyue_emperor_livest = {
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Public_opinion		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+	Liyue_government_reform = {
+        activation = {                         
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
+				}
+				has_country_flag = Liyue_crisis
+				has_country_flag = government_reformn
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+			}
+		}                                    
+		available = {
+            OR = {		
+			NOT = { has_country_flag = government_reform }
+			NOT = { has_country_flag = Liyue_crisis }
+			}
+		}
+		
+		is_good = no                         
+	
+		days_mission_timeout = 31
+		
+		timeout_effect = {                      
+			          
+		}
+		complete_effect = {                    
+			          
+		}
+    }
+	Liyue_Humanized_politics = {
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = government_reform
+        has_country_flag = Liyue_crisis		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+	Liyue_Democratization_reform = {
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = government_reform
+        has_country_flag = Liyue_crisis		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
+    }
+	Liyue_Seven_restructuring = {
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = government_reform
+        has_country_flag = Liyue_crisis		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			
+	   	}
+		complete_effect = {  
+			
+		}
+		remove_effect = {
+			
+		}
     }
 }
 

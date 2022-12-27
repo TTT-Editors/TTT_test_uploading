@@ -9,7 +9,7 @@ focus_tree = {
 	}
 	default = no
 	focus = {
-		id = the_year_of_1999	#新的一年
+		id = LYU_Towards_outlook	#向着崭新的千年展望
 		icon = GFX_goal_RTG_pingdeng_liyue
 		cost = 1
 		x = 10
@@ -20,13 +20,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = what_we_do_good_last_year	#总结经验
+		id = LYU_Resource_planning	#工业计划的资源倾斜
 		icon = GFX_goal_RTG_yuanjian_keyanyuan
 		cost = 10
-		x = 9
+		x = 8
 		y = 2
 		prerequisite = {
-			focus = the_year_of_1999
+			focus = LYU_Towards_outlook
 		}
 		completion_reward = {
 			add_stability = 0.05
@@ -34,13 +34,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = what_we_do_not_good_last_year	#吸取教训
+		id = LYU_Ningguang_Promotion	#凝光的海务振兴
 		icon = GFX_goal_RTG_qidi_minzhi
 		cost = 10
-		x = 11
-		y = 2
+		x = 9
+		y = 3
 		prerequisite = {
-			focus = the_year_of_1999
+			focus = LYU_Resource_planning
+		}
+        mutually_exclusive = {
+			focus = LYU_Keqing_Industrial
 		}
 		completion_reward = {
 			add_popularity = {
@@ -51,16 +54,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = look_at_the_new_year	#展望新年
+		id = LYU_Keqing_Industrial	#刻晴的工业计划
 		icon = GFX_goal_RTG_zhantaoxinjun
 		cost = 10
-		x = 10
+		x = 7
 		y = 3
 		prerequisite = {
-			focus = what_we_do_good_last_year
+			focus = LYU_Resource_planning
 		}
-		prerequisite = {
-			focus = what_we_do_not_good_last_year
+		mutually_exclusive = {
+			focus = LYU_Ningguang_Promotion
 		}
 		completion_reward = {
 			add_political_power = 50
@@ -68,19 +71,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = the_red_liyue	#人民的璃月
+		id = LYU_Return_original	#归离原工业计划
 		icon = GFX_goal_KQG_eco_51
 		cost = 15
-		x = 8
+		x = 7
 		y = 4
 		prerequisite = {
-			focus = look_at_the_new_year
-		}
-		mutually_exclusive = {
-			focus = the_moderate_way
-		}
-		mutually_exclusive = {
-			focus = the_effective_way
+			focus = LYU_Keqing_Industrial
 		}
 		completion_reward = {
 			add_popularity = {
@@ -95,19 +92,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = the_moderate_way	#和谐的国度
+		id = LYU_Construction_floating	#摇光摊浮动港建设
 		icon = GFX_goal_Ganyu1_hanfeng_Focus
 		cost = 15
-		x = 10
+		x = 9
 		y = 4
 		prerequisite = {
-			focus = look_at_the_new_year
-		}
-		mutually_exclusive = {
-			focus = the_red_liyue
-		}
-		mutually_exclusive = {
-			focus = the_effective_way
+			focus = LYU_Ningguang_Promotion
 		}
 		completion_reward = {
 			add_stability = 0.05
@@ -119,19 +110,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = the_effective_way	#商业为先
+		id = LYU_Large_development	#大规模工矿开发
 		icon = GFX_goal_RTG_jingji_jihua
 		cost = 15
-		x = 12
-		y = 4
+		x = 7
+		y = 5
 		prerequisite = {
-			focus = look_at_the_new_year
-		}
-		mutually_exclusive = {
-			focus = the_red_liyue
-		}
-		mutually_exclusive = {
-			focus = the_moderate_way
+			focus = LYU_Return_original
 		}
 		completion_reward = {
 			add_stability = -0.05
@@ -147,21 +132,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = happy_day_of_liyue	#海灯节
+		id = LYU_Preparations_Millennium	#千禧年海灯节的筹备
 		icon = GFX_goal_Ganyu1_shouhu_Focus
 		cost = 1
 		x = 12
-		y = 5
-		available = {
-			always = no
-		}
-		mutually_exclusive = {
-			focus = the_great_petition
-		}
+		y = 2
 		prerequisite = {
-			focus = the_red_liyue
-			focus = the_moderate_way
-			focus = the_effective_way
+			focus = LYU_Towards_outlook
 		}
 		completion_reward = {
 			add_political_power = 50
@@ -181,21 +158,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = the_great_petition	#海灯节请愿
+		id = LYU_Guyunge_Industrial	#孤云阁工业区计划
 		icon = GFX_goal_Ganyu1_taiping_Focus
 		cost = 1
 		x = 9
 		y = 5
-		available = {
-			always = no
-		}
-		mutually_exclusive = {
-			focus = happy_day_of_liyue
-		}
 		prerequisite = {
-			focus = the_red_liyue
-			focus = the_moderate_way
-			focus = the_effective_way
+			focus = LYU_Construction_floating
 		}
 		completion_reward = {
 			add_political_power = -50
@@ -212,13 +181,17 @@ focus_tree = {
 	}
 
 	focus = {
-		id = save_the_people	#解决问题
+		id = LYU_lantern_festival	#千禧之际的海灯节
 		icon = GFX_goal_KQG_pol_45
 		cost = 15
-		x = 9
+		x = 10
 		y = 6
 		prerequisite = {
-			focus = the_great_petition
+			focus = LYU_Speech_before_Millennium
+		}
+		prerequisite = {
+			focus = LYU_Large_development
+			focus = LYU_Guyunge_Industrial
 		}
 		completion_reward = {
 			add_political_power = -150
@@ -226,49 +199,29 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = consider_human_governance	#考虑人治
-		icon = GFX_goal_KQG_pol_41
-		cost = 15
-		x = 9
-		y = 7
-		prerequisite = {
-			focus = save_the_people
-		}
-		completion_reward = {
-			add_political_power = -50
-			add_popularity = {
-				ideology = communism
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = reformism
-				popularity = 0.05
-			}
-		}
-	}
 
 	focus = {
-		id = we_do_good_now	#我们做得不错
+		id = LYU_Clean_up_government 	#清理政务
 		icon = GFX_goal_generic_proganda
 		cost = 15
 		x = 12
-		y = 6
+		y = 3
 		prerequisite = {
-			focus = happy_day_of_liyue
+			focus = LYU_Preparations_Millennium
 		}
 		completion_reward = {
+
 		}
 	}
 
 	focus = {
-		id = nothing_to_change	#维持现状
+		id = LYU_Rectify_social	#整顿社会乱象
 		icon = GFX_goal_Ganyu2_yuanfangliyue_Focus
 		cost = 15
 		x = 12
-		y = 7
+		y = 4
 		prerequisite = {
-			focus = we_do_good_now
+			focus = LYU_Clean_up_government
 		}
 		completion_reward = {
 			add_stability = 0.05
@@ -279,64 +232,17 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = a_quick_turnaround	#快速转变
-		icon = GFX_goal_KQG_pol_37
-		cost = 15
-		x = 8
-		y = 8
-		prerequisite = {
-			focus = consider_human_governance
-		}
-		mutually_exclusive = {
-			focus = a_smooth_transition
-		}
-		completion_reward = {
-			add_stability = -0.05
-			add_popularity = {
-				ideology = communism
-				popularity = 0.1
-			}
-			add_popularity = {
-				ideology = authoritarianism
-				popularity = -0.1
-			}
-		}
-	}
+	
+
 
 	focus = {
-		id = a_smooth_transition	#平稳过渡
-		icon = GFX_goal_Ganyu2_zizhiweiyuan_Focus
-		cost = 15
-		x = 10
-		y = 8
-		prerequisite = {
-			focus = consider_human_governance
-		}
-		mutually_exclusive = {
-			focus = a_quick_turnaround
-		}
-		completion_reward = {
-			add_stability = 0.05
-			add_popularity = {
-				ideology = reformism
-				popularity = 0.1
-			}
-			add_popularity = {
-				ideology = authoritarianism
-				popularity = -0.05
-			}
-		}
-	}
-
-	focus = {
-		id = a_firm_hand	#引导之手
+		id = LYU_Speech_before_Millennium	#千禧年前的演讲
 		icon = GFX_goal_KQG_eco_1
 		cost = 15
 		x = 12
-		y = 8
+		y = 5
 		prerequisite = {
-			focus = nothing_to_change
+			focus = LYU_Rectify_social
 		}
 		completion_reward = {
 			add_stability = 0.05
@@ -348,15 +254,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = drop_the_oracle	#请仙仪式
+		id = drop_the_oracle	#请仙典仪
 		icon = GFX_goal_RexLapis
 		cost = 70
 		x = 10
-		y = 9
+		y = 7
 		prerequisite = {
-			focus = a_quick_turnaround
-			focus = a_smooth_transition
-			focus = a_firm_hand
+			focus = LYU_lantern_festival
 		}
 		completion_reward = {
 			
@@ -399,7 +303,7 @@ focus_tree = {
 			}
 		}
 	    
-		relative_position_id = the_year_of_1999
+		relative_position_id = LYU_Towards_outlook
 
 		select_effect = {
             hidden_effect = {

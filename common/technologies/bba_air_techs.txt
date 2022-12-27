@@ -43,6 +43,12 @@ technologies = {
 	
 	primitive_airframe = {
 
+		enable_equipment_modules = {
+			early_small_explosive_box
+			early_medium_explosive_box
+			early_large_explosive_box
+		}
+
 		enable_equipments = {
 			primitive_small_plane_airframe_0
 			cv_primitive_small_plane_airframe_0
@@ -61,6 +67,7 @@ technologies = {
 		
 		dependencies = {
 			wind_wing = 1
+			ttt_primitive_engine = 1
 		}
 		
 		research_cost = 2
@@ -417,6 +424,10 @@ technologies = {
 			leads_to_tech = tech_wind_elemental_engine_2
 			research_cost_coeff = 1
 		}
+
+		dependencies = {
+			wind_wing = 1
+		}
 		
 		research_cost = 1
 		start_year = 1990
@@ -713,6 +724,11 @@ technologies = {
 			biological_engine_3_3x
 			biological_engine_3_4x
 			biological_engine_3_6x
+		}
+		
+		path = {
+			leads_to_tech = tech_areodynamics
+			research_cost_coeff = 1
 		}
 		
 		research_cost = 1
@@ -1550,14 +1566,6 @@ technologies = {
 	}
 	
 	jet_engine_theory = {
-
-		enable_equipment_modules = {
-			jet_engine_1x
-			jet_engine_2x
-			jet_engine_3x
-			jet_engine_4x
-			jet_engine_6x
-		}
 		
 		air_agility_factor = 0.05
 		
@@ -1590,6 +1598,10 @@ technologies = {
 	}
 	
 	modern_engine = {
+
+		dependencies = {
+			jet_engines = 1
+		}
 
 		enable_equipment_modules = {
 			modern_engine_1x
@@ -1663,7 +1675,7 @@ technologies = {
 	colorful_torches = {
 
 		enable_equipment_modules = {
-			recon_module_2
+			recon_camera
 		}
 		
 		research_cost = 1

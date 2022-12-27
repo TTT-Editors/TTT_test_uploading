@@ -19,11 +19,11 @@ jihuang = {
 }
 ANG_zousi = {
 	liangshi_shaoliang_zousi = { #走私少量粮食
-		cost = 20
+		cost = 5
 		days_re_enable = 15
 		days_remove = 3
 		ai_will_do = {
-			base = 100
+			base = 25
 		}
 		available = {
 			ANG_check_heishi_level_1 = yes
@@ -32,6 +32,7 @@ ANG_zousi = {
 			OR = {
 				has_idea = ANG_idea_0
 				has_idea = ANG_idea_0_1
+				has_idea = ANG_idea_0_2
 			}
 		}
 		remove_effect = {
@@ -48,11 +49,18 @@ ANG_zousi = {
 		}
 	}
 	liangshi_zhongliang_zousi = { #走私中量粮食
-		cost = 50
+		custom_cost_trigger = {
+			check_variable = {
+				var = ANG_kuangwuchubei
+				value = 600
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = ANG_kuangwuchubei_600
 		days_re_enable = 30
 		days_remove = 7
 		ai_will_do = {
-			base = 100
+			base = 25
 		}
 		available = {
 			ANG_check_heishi_level_2 = yes
@@ -61,6 +69,7 @@ ANG_zousi = {
 			OR = {
 				has_idea = ANG_idea_0
 				has_idea = ANG_idea_0_1
+				has_idea = ANG_idea_0_2
 			}
 		}
 		remove_effect = {
@@ -71,7 +80,7 @@ ANG_zousi = {
 			}
 			add_equipment_to_stockpile = {
 				type = grain_conversion_eq
-				amount = 1750
+				amount = 2750
 				producer = LYU
 			}
 		}
@@ -88,7 +97,7 @@ ANG_zousi = {
 		days_re_enable = 21
 		days_remove = 7 
 		ai_will_do = {
-			base = 100
+			base = 25
 		}
 		available = {
 			ANG_check_heishi_level_1 = yes
@@ -120,7 +129,7 @@ ANG_zousi = {
 		days_re_enable = 20
 		days_remove = 15 
 		ai_will_do = {
-			base = 100
+			base = 25
 		}
 		available = {
 			ANG_check_heishi_level_2 = yes
@@ -152,7 +161,7 @@ ANG_zousi = {
 		days_re_enable = 20
 		days_remove = 15 
 		ai_will_do = {
-			base = 100
+			base = 25
 		}
 		available = {
 			ANG_check_heishi_level_3 = yes
@@ -184,7 +193,7 @@ ANG_zousi = {
 		days_re_enable = 60
 		days_remove = 15 
 		ai_will_do = {
-			base = 100
+			base = 25
 		}
 		available = {
 			ANG_check_heishi_level_3 = yes
@@ -216,7 +225,7 @@ ANG_zousi = {
 		days_re_enable = 90
 		days_remove = 30
 		ai_will_do = {
-			base = 100
+			base = 25
 		}
 		available = {
 			ANG_check_heishi_level_5 = yes
@@ -244,6 +253,30 @@ ANG_zousi = {
 			}
 		}
 	}
+	ANG_ai_heishi_level_up = {
+		cost = 100
+		days_remove = 30
+		days_re_enable = 90 
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			check_variable = {
+				var = ANG_heishi_level
+				value = 5
+				compare = less_than_or_equals
+			}
+		}
+		visible = {
+			#is_ai = yes
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = ANG_heishi_level
+				value = 1
+			}
+		}
+	}
 }
 
 
@@ -254,7 +287,9 @@ ANG_tongyiliyue = {
 			is_debug = yes
 		}
 		visible = {
-			
+			NOT = {
+				is_ai = yes
+			}
 		}
 		complete_effect = {
 			set_variable = {
@@ -306,7 +341,7 @@ ANG_tongyiliyue = {
 		}
 	}
 	ANG_against_LYU = {
-		cost = 40
+		cost = 20
 		days_remove = 7
 		ai_will_do = {
 			base = 10
@@ -316,6 +351,7 @@ ANG_tongyiliyue = {
 		}
 		visible = {
 		    LYU = { exists = yes }
+			
 		}
 		complete_effect = {
 			LYU = {
@@ -327,7 +363,7 @@ ANG_tongyiliyue = {
 		}
 	}
 	ANG_against_RTG = {
-		cost = 40
+		cost = 20
 		days_remove = 7
 		ai_will_do = {
 			base = 10
@@ -348,7 +384,7 @@ ANG_tongyiliyue = {
 		}
 	}
 	ANG_against_NNG = {
-		cost = 40
+		cost = 20
 		days_remove = 7
 		ai_will_do = {
 			base = 10
@@ -453,6 +489,169 @@ ANG_tongyiliyue = {
 				target = FROM
 				type = annex_everything
 			}
+		}
+	}
+############AI枣核决议#########
+	ANG_ai_take_core_LYU = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				LYU = { exists = yes }
+			}
+			has_full_control_of_state = 127
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_LYU_CORE = yes
+		}
+	}
+	ANG_ai_take_core_RTG = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				RTG = { exists = yes }
+			}
+			has_full_control_of_state = 155
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_RTG_CORE = yes
+		}
+	}
+	ANG_ai_take_core_XQG = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				XQG = { exists = yes }
+			}
+			has_full_control_of_state = 148
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_XQG_CORE = yes
+		}
+	}
+	ANG_ai_take_core_KQG = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				KQG = { exists = yes }
+			}
+			has_full_control_of_state = 147
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_KQG_CORE = yes
+		}
+	}
+	ANG_ai_take_core_NNG = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				NNG = { exists = yes }
+			}
+			has_full_control_of_state = 126
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_NNG_CORE = yes
+			ANG_BDG_CORE = yes
+		}
+	}
+	ANG_ai_take_core_XRG = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				XRG = { exists = yes }
+			}
+			has_full_control_of_state = 165
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_XRG_CORE = yes
+			ANG_SHG_CORE = yes
+		}
+	}
+	ANG_ai_take_core_XOG = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				XOG = { exists = yes }
+			}
+			has_full_control_of_state = 130
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_XOG_CORE = yes
+		}
+	}
+	ANG_ai_take_core_ZDG = {
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				ZDG = { exists = yes }
+			}
+			has_full_control_of_state = 134
+		}
+		visible = {
+			is_ai = yes
+		}
+		remove_effect = {
+			ANG_ZDG_CORE = yes
 		}
 	}
 }

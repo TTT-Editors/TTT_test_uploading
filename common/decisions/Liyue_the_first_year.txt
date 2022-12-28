@@ -1,5 +1,5 @@
 Liyue_political_crisis = {
-    liyue_civilwar_is_coming = {
+    liyue_civilwar_is_coming = {   #内战倒计时
 	    icon = GFX_decision_hol_draw_up_staff_plans
    
         activation = {            
@@ -10,7 +10,6 @@ Liyue_political_crisis = {
 						ruling_only = yes
 					}
 				}
-				NNG = 
 				has_country_flag = Liyue_crisis
 				NOT = { has_global_flag = Liyue_Civil_War }
 				NOT = { has_global_flag = avoid_Liyue_Civil_War }
@@ -31,44 +30,40 @@ Liyue_political_crisis = {
 			NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
 		}
 		
-		cancel_trigger = {
-			OR = {
-				NOT = { has_country_flag = Liyue_crisis }
-				has_global_flag = Liyue_Civil_War
-				has_global_flag = avoid_Liyue_Civil_War
-				has_global_flag = Liyue_Civil_War_Coming_Soon
-				has_country_leader = {
-					character = LYU_morax
-					ruling_only = yes
-				}
-			}
-		}
-		
 		cancel_if_not_visible = yes
 		
         is_good = no
+		
         days_mission_timeout = 181
-        available = {
+		
+        available = {		    
 			or = {
+			has_completed_focus = 
 		    has_global_flag = avoid_Liyue_Civil_War
 			country_exists = NNG
 	        }
         }
         timeout_effect = {
             clr_country_flag = Liyue_crisis
-			clr_country_flag = Financial_collapse
-			clr_country_flag = Social_unrest
-			clr_country_flag = Economic_reconstruction
-			clr_country_flag = Public_opinion
-			clr_country_flag = government_reformn
-            country_event = {
+			if = {
+			limit = {
+				has_completed_focus = 
+			}
+			clr_country_flag = Liyue_crisis
+		}
+		else_if = {
+			limit = {
+				NOT = { has_completed_focus = }
+			}
+			country_event = {
                 id = lyu_start.7
                 days = 3
             }
+		}
         }
     }
 	
-	LYU_Financial_collapse = {     
+	LYU_Financial_collapse = {     #金融崩溃
 		activation = {                         
 			AND = {
 				NOT = { 
@@ -84,7 +79,7 @@ Liyue_political_crisis = {
 			}
 		}                                    
 		available = {                           
-			
+			NOT = { has_country_flag = Financial_collapse }
 		}
 		
 		is_good = no                         
@@ -92,17 +87,15 @@ Liyue_political_crisis = {
 		days_mission_timeout = 31
 		
 		timeout_effect = {                      
-			          
-		}
-		complete_effect = {                    
-			          
+			clr_country_flag = Financial_collapse
+            set_country_flag = Social_unrest			
 		}
 	}
 	
-    Liyue_Capital_injection = {
+    Liyue_Capital_injection = {                 #凝光资本变卖方案
        icon = GFX_decision_generic_political_discourse
 		
-		cost = 25
+		cost = 75
 			
 		fire_only_once = yes
 		
@@ -120,20 +113,19 @@ Liyue_political_crisis = {
 				has_war = no
 			}
 		}
+		days_remove = 90
 		modifier = {
-			
+			consumer_goods_factor = 0.10
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			custom_effect_tooltip = Liyue_Capital_injection_tt
+			set_country_flag = Liyue_Capital_injection_1
 		}
     }
-    Liyue_Government_Intervention = {
+    Liyue_Government_Intervention = {                 #刻甘政府干预方案
         icon = GFX_decision_generic_political_discourse
 		
-		cost = 25
+		cost = 75
 			
 		fire_only_once = yes
 		
@@ -152,16 +144,14 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			political_power_cost = 0.10
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			custom_effect_tooltip = Liyue_Government_Intervention_tt
+			set_country_flag = Liyue_Government_Intervention_1
 		}
     }
-    Liyue_Social_unrest = {
+    Liyue_Social_unrest = {                #社会动荡
         activation = {                         
 			AND = {
 				NOT = { 
@@ -188,16 +178,14 @@ Liyue_political_crisis = {
 		days_mission_timeout = 31
 		
 		timeout_effect = {                      
-			          
-		}
-		complete_effect = {                    
-			          
+			set_country_flag = Economic_reconstruction
+            clr_country_flag = Social_unrest			
 		}
     }
-    Liyue_Relief_assistance = {
+    Liyue_Relief_assistance = {                       #救济金援助计划
 	    icon = GFX_decision_generic_political_discourse
         cost = 25
-			
+		days_remove = 60	
 		fire_only_once = yes
 		
 		allowed = {
@@ -215,19 +203,18 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			consumer_goods_factor = 0.15
+			stability_weekly = 0.10
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			custom_effect_tooltip = Liyue_Capital_injection_tt
+			set_country_flag = Liyue_Relief_assistance_1
 		}
     }
-    Liyue_Public_Department = {
+    Liyue_Public_Department = {                    #公共事业计划部
 	    icon = GFX_decision_generic_speech
         cost = 25
-			
+		days_remove = 60	
 		fire_only_once = yes
 		
 		allowed = {
@@ -245,21 +232,20 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			political_power_cost = 0.15
+			stability_weekly = 0.015
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			custom_effect_tooltip = Liyue_Government_Intervention_tt
+			set_country_flag = Liyue_Public_Department_1
 		}
     }
-    Liyue_visit_activities = {
+    Liyue_visit_activities = {                 #民间走访活动
 	    icon = GFX_decision_hol_attract_foreign_investors
         cost = 25
 			
 		fire_only_once = yes
-		
+		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
@@ -275,16 +261,15 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			political_power_cost = 0.20
+			stability_weekly = 0.20
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			set_country_flag = Liyue_visit_activities_1
+			custom_effect_tooltip = Liyue_visit_activities_tt
 		}
 	}
-	Liyue_Economic_reconstruction = {
+	Liyue_Economic_reconstruction = {            #经济重建
         activation = {                         
 			AND = {
 				NOT = { 
@@ -311,18 +296,16 @@ Liyue_political_crisis = {
 		days_mission_timeout = 31
 		
 		timeout_effect = {                      
-			          
-		}
-		complete_effect = {                    
-			          
+			clr_country_flag = Economic_reconstruction
+            set_country_flag = 			
 		}
     }
-    Liyue_Revitalize_maritime_transport = {
+    Liyue_Revitalize_maritime_transport = {        #振兴海务运输
 	    icon = GFX_decision_generic_purge
         cost = 25
 			
 		fire_only_once = yes
-		
+		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
@@ -338,21 +321,19 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			production_speed_dockyard_factor = 0.20
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			custom_effect_tooltip = Liyue_Capital_injection_tt
+			set_country_flag = Liyue_Revitalize_maritime_transport_1
 		}
     }
-    Liyue_Expand_manufacturing = {
+    Liyue_Expand_manufacturing = {         #扩大制造产业
 	    icon = GFX_decision_SOV_the_workers_dictatorship
         cost = 25
 			
 		fire_only_once = yes
-		
+		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
@@ -368,22 +349,20 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			production_speed_industrial_complex_factor = 0.20
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			custom_effect_tooltip = Liyue_Expand_manufacturing_tt
+			set_country_flag = Liyue_Expand_manufacturing_1
 		}
     }
-    Liyue_Priority_Infrastructure = {
+    Liyue_Priority_Infrastructure = {              #优先基础设施
 	    icon = GFX_decision_cash_flow
 		
         cost = 25
 			
 		fire_only_once = yes
-		
+		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
@@ -399,16 +378,16 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			production_speed_infrastructure_factor = 0.20
+			production_speed_rail_way_factor = 0.20
+	        production_speed_supply_node_factor = 0.20
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			set_country_flag = Liyue_Priority_Infrastructure_1
+			custom_effect_tooltip = Liyue_visit_activities_tt
 		}
     }
-	Liyue_Public_opinion = {
+	Liyue_Public_opinion = {                     #舆论控制
         activation = {                         
 			AND = {
 				NOT = { 
@@ -435,48 +414,44 @@ Liyue_political_crisis = {
 		days_mission_timeout = 31
 		
 		timeout_effect = {                      
-			          
-		}
-		complete_effect = {                    
-			          
+			clr_country_flag = Public_opinion
+            set_country_flag = government_reformn		
 		}
     }
-    Liyue_road_man = {
+    Liyue_road_man = {                    #迈向人治之路
 	    icon = GFX_decision_ger_mefo_bills
-       cost = 25
-			
-		fire_only_once = yes
-		
-		allowed = {
-			tag = LYU
-		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Public_opinion		
-		}
-		ai_will_do = {
-			factor = 20
-			modifier = {
-				factor = 20
-				has_war = no
-			}
-		}
-		modifier = {
-			
-	   	}
-		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
-		}
-    }
-	Liyue_turning_people = {
-	    icon = GFX_decision_ger_mefo_bills
-		
         cost = 25
 			
 		fire_only_once = yes
+		days_remove = 60
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Public_opinion		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			liberalism_drift = 0.10
+	   	}
+		complete_effect = {  
+			custom_effect_tooltip = Liyue_road_man_tt
+			clr_country_flag = Liyue_road_man_1
+		}
+    }
+	Liyue_turning_people = {                     #人民的转折点
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+		days_remove = 60	
+		fire_only_once = yes
 		
 		allowed = {
 			tag = LYU
@@ -493,20 +468,18 @@ Liyue_political_crisis = {
 			}
 		}
 		modifier = {
-			
+			communism_drift = 0.10
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			custom_effect_tooltip = Liyue_turning_people_tt
+			clr_country_flag = Liyue_turning_people_1
 		}
     }
-	Liyue_emperor_livest = {
+	Liyue_emperor_livest = {             #帝君存于人心
 	    icon = GFX_decision_ger_mefo_bills
 		
         cost = 25
-			
+		days_remove = 60	
 		fire_only_once = yes
 		
 		allowed = {
@@ -527,13 +500,12 @@ Liyue_political_crisis = {
 			
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			reformism_drift = 0.10
+			set_country_flag = Liyue_emperor_livest_1
+			custom_effect_tooltip = Liyue_emperor_livest_tt
 		}
     }
-	Liyue_government_reform = {
+	Liyue_government_reform = {             #政治协商
         activation = {                         
 			AND = {
 				NOT = { 
@@ -560,13 +532,62 @@ Liyue_political_crisis = {
 		days_mission_timeout = 31
 		
 		timeout_effect = {                      
-			          
-		}
-		complete_effect = {                    
-			          
+			clr_country_flag = government_reformn  			
 		}
     }
-	Liyue_Humanized_politics = {
+	Liyue_Humanized_politics = {        #注重商业贸易
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = government_reform
+        has_country_flag = Liyue_crisis		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		complete_effect = {  
+			custom_effect_tooltip = Liyue_road_man_tt
+			set_country_flag = Liyue_Humanized_politics_1
+		}
+    }
+	Liyue_Democratization_reform = {      #注重工业发展
+	    icon = GFX_decision_ger_mefo_bills
+		
+        cost = 25
+			
+		fire_only_once = yes
+		
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = government_reform
+        has_country_flag = Liyue_crisis		
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		complete_effect = {  
+			set_country_flag = Liyue_Democratization_reform_1
+			custom_effect_tooltip = Liyue_turning_people_tt
+		}
+    }
+	Liyue_Seven_restructuring = {         #注重社会稳定
 	    icon = GFX_decision_ger_mefo_bills
 		
         cost = 25
@@ -591,72 +612,8 @@ Liyue_political_crisis = {
 			
 	   	}
 		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
-		}
-    }
-	Liyue_Democratization_reform = {
-	    icon = GFX_decision_ger_mefo_bills
-		
-        cost = 25
-			
-		fire_only_once = yes
-		
-		allowed = {
-			tag = LYU
-		}
-		visible = { 
-		has_country_flag = government_reform
-        has_country_flag = Liyue_crisis		
-		}
-		ai_will_do = {
-			factor = 20
-			modifier = {
-				factor = 20
-				has_war = no
-			}
-		}
-		modifier = {
-			
-	   	}
-		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
-		}
-    }
-	Liyue_Seven_restructuring = {
-	    icon = GFX_decision_ger_mefo_bills
-		
-        cost = 25
-			
-		fire_only_once = yes
-		
-		allowed = {
-			tag = LYU
-		}
-		visible = { 
-		has_country_flag = government_reform
-        has_country_flag = Liyue_crisis		
-		}
-		ai_will_do = {
-			factor = 20
-			modifier = {
-				factor = 20
-				has_war = no
-			}
-		}
-		modifier = {
-			
-	   	}
-		complete_effect = {  
-			
-		}
-		remove_effect = {
-			
+			set_country_flag = Liyue_Seven_restructuring_1
+			custom_effect_tooltip = Liyue_emperor_livest_tt
 		}
     }
 }

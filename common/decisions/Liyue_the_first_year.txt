@@ -2,7 +2,9 @@ Liyue_political_crisis = {
     liyue_civilwar_is_coming = {   #内战倒计时
 	    icon = GFX_decision_hol_draw_up_staff_plans
    
-        activation = {            
+        activation = {
+			NOT = { has_global_flag = avoid_Liyue_Civil_War }
+            custom_trigger_tooltip = { 		
 			AND = {
 				NOT = { 
 					has_country_leader = {
@@ -12,22 +14,26 @@ Liyue_political_crisis = {
 				}
 				has_country_flag = Liyue_crisis
 				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
 				NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
-			} 		
+			    }
+            }			
         }
 		
 		visible = {
-			NOT = { 
-				has_country_leader = {
-					character = LYU_morax
-					ruling_only = yes
-				}
-			}
-			has_country_flag = Liyue_crisis
-			NOT = { has_global_flag = Liyue_Civil_War }
 			NOT = { has_global_flag = avoid_Liyue_Civil_War }
-			NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
+            custom_trigger_tooltip = { 		
+			AND = {
+				NOT = { 
+					has_country_leader = {
+						character = LYU_morax
+						ruling_only = yes
+					}
+				}
+				has_country_flag = Liyue_crisis
+				NOT = { has_global_flag = Liyue_Civil_War }
+				NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
+			    }
+            }
 		}
 		
 		cancel_if_not_visible = yes
@@ -38,22 +44,22 @@ Liyue_political_crisis = {
 		
         available = {		    
 			or = {
-			has_completed_focus = 
+			has_completed_focus = survive_together
 		    has_global_flag = avoid_Liyue_Civil_War
-			country_exists = NNG
 	        }
         }
         timeout_effect = {
             clr_country_flag = Liyue_crisis
 			if = {
 			limit = {
-				has_completed_focus = 
+				has_completed_focus = survive_together
 			}
 			clr_country_flag = Liyue_crisis
+			set_global_flag = avoid_Liyue_Civil_War 
 		}
 		else_if = {
 			limit = {
-				NOT = { has_completed_focus = }
+				NOT = { has_completed_focus = survive_together }
 			}
 			country_event = {
                 id = lyu_start.7
@@ -88,7 +94,8 @@ Liyue_political_crisis = {
 		
 		timeout_effect = {                      
 			clr_country_flag = Financial_collapse
-            set_country_flag = Social_unrest			
+            set_country_flag = Social_unrest
+            custom_effect_tooltip = LYU_Financial_collapse_tt			
 		}
 	}
 	
@@ -106,6 +113,9 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Financial_collapse		
 		}
+		available  = {
+		NOT = { has_country_flag = Liyue_Government_Intervention_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -120,6 +130,7 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_Capital_injection_tt
 			set_country_flag = Liyue_Capital_injection_1
+			set_variable = { Ningguang_Tianquan_Star = 10 }
 		}
     }
     Liyue_Government_Intervention = {                 #刻甘政府干预方案
@@ -136,6 +147,9 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Financial_collapse		
 		}
+		available  = {
+		NOT = { has_country_flag = Liyue_Capital_injection_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -149,6 +163,8 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_Government_Intervention_tt
 			set_country_flag = Liyue_Government_Intervention_1
+			set_variable = { General_Affairs_Division = 10 }
+			set_variable = { Keqing_Alioth = 10 }
 		}
     }
     Liyue_Social_unrest = {                #社会动荡
@@ -166,11 +182,8 @@ Liyue_political_crisis = {
 				NOT = { has_global_flag = avoid_Liyue_Civil_War }
 			}
 		}                                    
-		available = {
-            OR = {		
+		available = {           		
 			NOT = { has_country_flag = Social_unrest }
-			NOT = { has_country_flag = Liyue_crisis }
-			}
 		}
 		
 		is_good = no                         
@@ -179,7 +192,8 @@ Liyue_political_crisis = {
 		
 		timeout_effect = {                      
 			set_country_flag = Economic_reconstruction
-            clr_country_flag = Social_unrest			
+            clr_country_flag = Social_unrest
+            custom_effect_tooltip = Liyue_Social_unrest_tt			
 		}
     }
     Liyue_Relief_assistance = {                       #救济金援助计划
@@ -195,6 +209,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Social_unrest		
 		}
+		available = {
+		NOT = { has_country_flag = Liyue_visit_activities_1 }
+		NOT = { has_country_flag = Liyue_Public_Department_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -209,6 +227,7 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_Capital_injection_tt
 			set_country_flag = Liyue_Relief_assistance_1
+			set_variable = { Ningguang_Tianquan_Star = 10 }
 		}
     }
     Liyue_Public_Department = {                    #公共事业计划部
@@ -224,6 +243,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Social_unrest		
 		}
+		available = {
+		NOT = { has_country_flag = Liyue_visit_activities_1 }
+		NOT = { has_country_flag = Liyue_Relief_assistance_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -238,6 +261,8 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_Government_Intervention_tt
 			set_country_flag = Liyue_Public_Department_1
+			set_variable = { Keqing_Alioth = 10 }
+			set_variable = { General_Affairs_Division = 5 }
 		}
     }
     Liyue_visit_activities = {                 #民间走访活动
@@ -253,6 +278,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Social_unrest		
 		}
+		available = {
+		NOT = { has_country_flag = Liyue_Public_Department_1 }
+		NOT = { has_country_flag = Liyue_Relief_assistance_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -267,6 +296,7 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			set_country_flag = Liyue_visit_activities_1
 			custom_effect_tooltip = Liyue_visit_activities_tt
+			set_variable = { General_Affairs_Division = 15 }
 		}
 	}
 	Liyue_Economic_reconstruction = {            #经济重建
@@ -297,7 +327,8 @@ Liyue_political_crisis = {
 		
 		timeout_effect = {                      
 			clr_country_flag = Economic_reconstruction
-            set_country_flag = 			
+            set_country_flag = Public_opinion
+            custom_effect_tooltip = Liyue_Economic_reconstruction_tt			
 		}
     }
     Liyue_Revitalize_maritime_transport = {        #振兴海务运输
@@ -313,6 +344,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Economic_reconstruction		
 		}
+		available = {
+		NOT = { has_country_flag = Liyue_Priority_Infrastructure_1 }
+		NOT = { has_country_flag = Liyue_Expand_manufacturing_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -326,6 +361,7 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_Capital_injection_tt
 			set_country_flag = Liyue_Revitalize_maritime_transport_1
+			set_variable = { Ningguang_Tianquan_Star = 15 }
 		}
     }
     Liyue_Expand_manufacturing = {         #扩大制造产业
@@ -341,6 +377,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Economic_reconstruction		
 		}
+		available = {
+		NOT = { has_country_flag = Liyue_Priority_Infrastructure_1 }
+		NOT = { has_country_flag = Liyue_Revitalize_maritime_transport_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -354,6 +394,7 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_Expand_manufacturing_tt
 			set_country_flag = Liyue_Expand_manufacturing_1
+			set_variable = { Keqing_Alioth = 20 }
 		}
     }
     Liyue_Priority_Infrastructure = {              #优先基础设施
@@ -370,6 +411,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Economic_reconstruction		
 		}
+		available = {
+		NOT = { has_country_flag = Liyue_Expand_manufacturing_1 }
+		NOT = { has_country_flag = Liyue_Revitalize_maritime_transport_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -385,6 +430,7 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			set_country_flag = Liyue_Priority_Infrastructure_1
 			custom_effect_tooltip = Liyue_visit_activities_tt
+			set_variable = { General_Affairs_Division = 20 }
 		}
     }
 	Liyue_Public_opinion = {                     #舆论控制
@@ -415,7 +461,8 @@ Liyue_political_crisis = {
 		
 		timeout_effect = {                      
 			clr_country_flag = Public_opinion
-            set_country_flag = government_reformn		
+            set_country_flag = government_reformn
+            custom_effect_tooltip = Liyue_Public_opinion_tt			
 		}
     }
     Liyue_road_man = {                    #迈向人治之路
@@ -438,12 +485,19 @@ Liyue_political_crisis = {
 				has_war = no
 			}
 		}
+		available = {
+		NOT = { has_country_flag =  Liyue_emperor_livest_1 }
+		NOT = { has_country_flag =  Liyue_turning_people_1 }
+		}
 		modifier = {
 			liberalism_drift = 0.10
 	   	}
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_road_man_tt
-			clr_country_flag = Liyue_road_man_1
+			set_country_flag = Liyue_road_man_1
+			set_variable = { Ningguang_Tianquan_Star = 10 }
+			set_variable = { Keqing_Alioth = -15 }
+			set_variable = { General_Affairs_Division = -5 }
 		}
     }
 	Liyue_turning_people = {                     #人民的转折点
@@ -460,6 +514,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Public_opinion		
 		}
+		available = {
+		NOT = { has_country_flag =  Liyue_emperor_livest_1 }
+		NOT = { has_country_flag =  Liyue_road_man_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -472,7 +530,10 @@ Liyue_political_crisis = {
 	   	}
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_turning_people_tt
-			clr_country_flag = Liyue_turning_people_1
+			set_country_flag = Liyue_turning_people_1
+			set_variable = { Ningguang_Tianquan_Star = -10 }
+			set_variable = { Keqing_Alioth = 10 }
+			set_variable = { General_Affairs_Division = -5 }
 		}
     }
 	Liyue_emperor_livest = {             #帝君存于人心
@@ -489,6 +550,10 @@ Liyue_political_crisis = {
 		has_country_flag = Liyue_crisis
         has_country_flag = Public_opinion		
 		}
+		available = {
+		NOT = { has_country_flag =  Liyue_turning_people_1 }
+		NOT = { has_country_flag =  Liyue_road_man_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -503,6 +568,9 @@ Liyue_political_crisis = {
 			reformism_drift = 0.10
 			set_country_flag = Liyue_emperor_livest_1
 			custom_effect_tooltip = Liyue_emperor_livest_tt
+			set_variable = { Ningguang_Tianquan_Star = -5 }
+			set_variable = { Keqing_Alioth = -5 }
+			set_variable = { General_Affairs_Division = 10 }
 		}
     }
 	Liyue_government_reform = {             #政治协商
@@ -532,7 +600,8 @@ Liyue_political_crisis = {
 		days_mission_timeout = 31
 		
 		timeout_effect = {                      
-			clr_country_flag = government_reformn  			
+			clr_country_flag = government_reformn
+            custom_effect_tooltip = Liyue_government_reform_tt		
 		}
     }
 	Liyue_Humanized_politics = {        #注重商业贸易
@@ -549,6 +618,10 @@ Liyue_political_crisis = {
 		has_country_flag = government_reform
         has_country_flag = Liyue_crisis		
 		}
+		available = { 
+		NOT = { has_country_flag = Liyue_Seven_restructuring_1 }
+		NOT = { has_country_flag = Liyue_Democratization_reform_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -559,6 +632,9 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			custom_effect_tooltip = Liyue_road_man_tt
 			set_country_flag = Liyue_Humanized_politics_1
+			set_variable = { Ningguang_Tianquan_Star = 25 }
+			set_variable = { Keqing_Alioth = -15 }
+			set_variable = { General_Affairs_Division = -10 }
 		}
     }
 	Liyue_Democratization_reform = {      #注重工业发展
@@ -575,6 +651,10 @@ Liyue_political_crisis = {
 		has_country_flag = government_reform
         has_country_flag = Liyue_crisis		
 		}
+		available = { 
+		NOT = { has_country_flag = Liyue_Seven_restructuring_1 }
+		NOT = { has_country_flag = Liyue_Humanized_politics_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -585,6 +665,9 @@ Liyue_political_crisis = {
 		complete_effect = {  
 			set_country_flag = Liyue_Democratization_reform_1
 			custom_effect_tooltip = Liyue_turning_people_tt
+			set_variable = { Ningguang_Tianquan_Star = -15 }
+			set_variable = { Keqing_Alioth = 25 }
+			set_variable = { General_Affairs_Division = -10 }
 		}
     }
 	Liyue_Seven_restructuring = {         #注重社会稳定
@@ -601,6 +684,10 @@ Liyue_political_crisis = {
 		has_country_flag = government_reform
         has_country_flag = Liyue_crisis		
 		}
+		available = { 
+		NOT = { has_country_flag = Liyue_Democratization_reform_1 }
+		NOT = { has_country_flag = Liyue_Humanized_politics_1 }
+		}
 		ai_will_do = {
 			factor = 20
 			modifier = {
@@ -608,12 +695,12 @@ Liyue_political_crisis = {
 				has_war = no
 			}
 		}
-		modifier = {
-			
-	   	}
 		complete_effect = {  
 			set_country_flag = Liyue_Seven_restructuring_1
 			custom_effect_tooltip = Liyue_emperor_livest_tt
+			set_variable = { Ningguang_Tianquan_Star = -15 }
+			set_variable = { Keqing_Alioth = -10 }
+			set_variable = { General_Affairs_Division = 20 }
 		}
     }
 }

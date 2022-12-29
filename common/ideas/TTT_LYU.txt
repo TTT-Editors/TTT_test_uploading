@@ -43,39 +43,6 @@ ideas = {
 				liberalism_drift = 0.10
 			}
 		}
-		#一个极度撕裂的社会1
-		a_torn_society1 = {
-			picture = generic_lyu_divided
-			allowed = {
-				always = no
-			}
-			
-			available = {
-				NNG = {
-					exists = no
-				}
-			}
-			
-
-			removal_cost = -1
-			
-			modifier = {
-				stability_factor = -0.3
-				stability_weekly = -0.005
-				conscription_factor = -0.5
-				political_power_cost = 0.5
-				communism_drift = 0.10
-				liberalism_drift = 0.10
-				custom_modifier_tooltip = SPR_military_disloyalty_tt
-				disabled_ideas = 1
-			}
-			on_add = {
-				country_lock_all_division_template = yes
-			}
-			on_remove = {
-				country_lock_all_division_template = no
-			}
-		}
 		#一个发展失衡的国家
 		an_unbalanced_developed_country = {
 			picture = usa_great_depression_3
@@ -411,7 +378,12 @@ ideas = {
 		#幅员辽阔
 		Liyue_Vast_territory = {
 			removal_cost = -1
-			picture = FRA_national_mobilization_focus
+			picture = LYU_fuyuanliaoko
+			available = {
+				NNG = {
+					exists = no
+				}
+			}
 			modifier = {
 			  political_power_factor = 0.15
 			  conscription_factor = 0.10
@@ -421,10 +393,23 @@ ideas = {
 		Liyue_social_unrest = {
 			removal_cost = -1
 			picture = anti_soviet_pact
+			available = {
+				NNG = {
+					exists = no
+				}
+			}
 			modifier = {
 			  stability_factor = -0.30
 			  political_power_factor = -0.15
-			   reformism_drift = -0.30
+			  reformism_drift = -0.30
+			  custom_modifier_tooltip = SPR_military_disloyalty_tt
+			  disabled_ideas = 1
+			  on_add = {
+				country_lock_all_division_template = yes
+			   }
+			    on_remove = {
+				country_lock_all_division_template = no
+			    }
 			}
 		}
 		#动荡余波
@@ -434,6 +419,17 @@ ideas = {
 			modifier = {
 			  stability_factor = -0.15
 			  political_power_factor = -0.05
+			}
+		}
+		#思潮吸引
+		Liyue_Ideological_attraction = {
+			removal_cost = -1
+			picture = LYU_sichaoxiying
+			modifier = {
+			stability_factor = 0.10
+			political_power_factor = 0.05
+			war_support_factor = 0.10
+            monthly_population = 0.20			
 			}
 		}
 	}

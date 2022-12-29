@@ -21,7 +21,6 @@ country_event = {
 	option = { 
 		name = liyue.1.a
 		add_stability = -0.20
-		custom_effect_tooltip = drop_the_oracle_effect_tooltip
 		complete_national_focus = drop_the_oracle 
 		unlock_decision_category_tooltip = Liyue_political_crisis
         set_country_flag = Liyue_crisis
@@ -29,7 +28,9 @@ country_event = {
 		set_variable = { Keqing_Alioth = 10 }
 		set_variable = { Ningguang_Tianquan_Star = 30 }
 		set_variable = { General_Affairs_Division = 20 }
-		activate_mission = liyue_civilwar_is_coming
+		activate_mission = liyue_civilwar_is_coming	
+		add_ideas = Liyue_social_unrest 
+		remove_ideas = a_dying_morax
 		ai_chance = {
 			factor = 100
         }	        
@@ -128,7 +129,12 @@ country_event = {
 		hidden_effect = {
 			add_ideas = panic_fills_land
 			add_ideas = blocked_harbour
-			
+			if = {
+			limit = {
+			    NNG = { has_country_flag = Ideological attraction }
+			}
+			    NNG = {  add_ideas = Liyue_Turbulence_aftereffect }
+		    }
 		    NNG = { transfer_state = 145 } 
 		    NNG = { transfer_state = 126 } 
 		    XQG = { transfer_state = 148 } 
@@ -264,7 +270,12 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {	
-
+            if = {
+			limit = {
+			    KQG = { has_country_flag = Ideological attraction }
+			}
+			    KQG = {  add_ideas = Liyue_Turbulence_aftereffect }
+		    }
 			KQG = { transfer_state = 147 }  
 			KQG = { transfer_state = 160 } 
 			KQG = { transfer_state = 223 } 
@@ -393,6 +404,12 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
+	    if = {
+			limit = {
+			    LYU = { has_country_flag = Ideological attraction }
+			}
+			    LYU = {  add_ideas = Liyue_Turbulence_aftereffect }
+		    }
 		hidden_effect = {
 			RTG = { transfer_state = 155 } 
 			RTG = { transfer_state = 156 } 

@@ -86,32 +86,32 @@ country_event = {
 		custom_effect_tooltip = Quarter_year_countdown_tt
 		hidden_effect = {
 		    if = {
-			limit = {
-				check_variable = { Keqing_Alioth > Ningguang_Tianquan_Star }
-				check_variable = { Keqing_Alioth > General_Affairs_Division }
+				limit = {
+					check_variable = { Keqing_Alioth > Ningguang_Tianquan_Star }
+					check_variable = { Keqing_Alioth > General_Affairs_Division }
+				}
+				KQG = {
+					set_country_flag = Ideological_attraction
+				}
 			}
-			KQG = {
-			set_country_flag = Ideological attraction
+			else_if = {
+				limit = {
+					check_variable = { Ningguang_Tianquan_Star > Keqing_Alioth }
+					check_variable = { Ningguang_Tianquan_Star > General_Affairs_Division }
+				}
+				NNG = {
+					set_country_flag = Ideological_attraction
+				}
 			}
-		}
-		else_if = {
-			limit = {
-				check_variable = { Ningguang_Tianquan_Star > Keqing_Alioth }
-				check_variable = { Ningguang_Tianquan_Star > General_Affairs_Division }
+			else_if = {
+				limit = {
+					check_variable = { General_Affairs_Division > Keqing_Alioth }
+					check_variable = { General_Affairs_Division > Ningguang_Tianquan_Star }
+				}
+				LYU = {
+					set_country_flag = Ideological_attraction
+				}
 			}
-			NNG = {
-			set_country_flag = Ideological attraction
-			}
-		}
-		else_if = {
-			limit = {
-				check_variable = { General_Affairs_Division > Keqing_Alioth }
-				check_variable = { General_Affairs_Division > Ningguang_Tianquan_Star }
-			}
-			LYU = {
-			set_country_flag = Ideological attraction
-			}
-		}
 			country_event = {
 				id = liyue.7
 				days = 5

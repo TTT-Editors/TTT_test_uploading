@@ -80,6 +80,22 @@ on_actions = {
 					}
 				}
 			}
+			else_if = {
+				limit = {
+					tag = RTG
+					CUG = { is_subject_of = RTG }
+				}
+				RTG = {
+					set_autonomy = {
+						target = CUG
+						autonomy_state = autonomy_free				
+					}
+				}
+				every_country = {
+					limit = { has_war_with = CUG }
+					white_peace = CUG
+				}
+			}
 		    else_if = {
 			    limit = {
 				    has_country_flag = Liyuegang_refuse_Retuo_good_reunite

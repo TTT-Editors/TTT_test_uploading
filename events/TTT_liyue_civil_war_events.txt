@@ -221,18 +221,22 @@ country_event = {
 	}
 	
 	option = {
+		name = liyue_civil_war.5.a
 		if = {
 			limit = { NOT = { has_global_flag = zdg_has_come } }
 			set_global_flag = zdg_has_come
 		}
-		name = liyue_civil_war.5.a
-		declare_war_on = {
-			target = ZDG
-			type = annex_everything
+		ROOT = {
+			ZDG = {
+				declare_war_on = {
+					target = PREV
+					type = annex_everything
+				}
+			}
 		}
-		hidden_effect = {
-			add_ideas = beat_the_ZDG_invaders
-		}
+		#hidden_effect = {
+		#	add_ideas = beat_the_ZDG_invaders
+		#}
 	}
 }
 

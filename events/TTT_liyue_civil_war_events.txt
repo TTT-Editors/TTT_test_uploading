@@ -488,11 +488,12 @@ country_event = {
 		tag = LYU
 		ZDG = { exists = yes }
 		LYU = { exists = yes }
+		LYU = { NOT = { surrender_progress > 0.2 } }
 		XOG = { exists = no }
 		XRG = { exists = no }
 	}
 	
-	mean_time_to_happen = { days = 15 }
+	mean_time_to_happen = { days = 45 }
 	
 	#最后一搏
 	option = {
@@ -590,7 +591,7 @@ country_event = {
 		ZDG = { exists = no }
 	}
 	
-	mean_time_to_happen = { days = 15 }
+	is_triggered_only = yes
 	
 	#最后一战
 	option = {
@@ -599,7 +600,6 @@ country_event = {
 			limit = {
 				has_country_flag = ready_for_another_round
 			}
-			dismantle_faction = yes
 			every_other_country = {
 				limit = {
 					has_country_flag = ready_for_another_round
@@ -613,26 +613,13 @@ country_event = {
 		}
 		if = {
 			limit = {
-				tag = KQG
-				has_country_flag = keqing1
+				tag = NNG
 				XQG = { exists = yes }
 			}
-			KQG = {
+			NNG = {
 				white_peace = XQG
-				create_faction = communism_alliance
+				create_faction = liyue_liberation_alliance
 				add_to_faction = XQG
-			}
-		}
-		else_if = {
-			limit = {
-				tag = XQG
-				has_country_flag = xingqiu1
-				KQG = { exists = yes }
-			}
-			XQG = {
-				white_peace = KQG
-				create_faction = communism_alliance
-				add_to_faction = KQG
 			}
 		}
 		news_event = { id = global_news.13 hours = 12 }
@@ -818,6 +805,7 @@ country_event = {
 		OR = {
 			RTG = { can_be_attacked = yes }
 			ANG = { can_be_attacked = yes }
+			ARF = { can_be_attacked = yes }
 		}
 	}
 	option = {
@@ -834,6 +822,15 @@ country_event = {
 		if = {
 			limit = {
 				ANG = { can_be_attacked = yes }
+			}
+			declare_war_on = {
+				target = ANG
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = {
+				ARF = { can_be_attacked = yes }
 			}
 			declare_war_on = {
 				target = ANG

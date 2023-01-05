@@ -1,0 +1,44 @@
+autonomy_state = {
+	id = SUM_autonomus_states
+	
+	default = no
+	is_puppet = yes
+
+	use_overlord_color = yes
+	
+	min_freedom_level = 0.7
+	
+	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+		can_not_declare_war = yes
+		can_decline_call_to_war = yes
+		can_be_spymaster = no
+	}
+	
+	modifier = {
+		research_sharing_per_country_bonus_factor = -0.1
+		monthly_population = 1
+	}
+	
+	ai_subject_wants_higher = {
+		factor = 0.0
+	}
+	
+	ai_overlord_wants_lower = {
+		factor = 0.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		has_dlc = "Together for Victory"
+		OVERLORD = { original_tag = SUM }
+	}
+
+	#ROOT is puppet - FROM is potential OVERLORD
+	use_for_peace_conference_weight = {
+		base = 0
+	}
+}

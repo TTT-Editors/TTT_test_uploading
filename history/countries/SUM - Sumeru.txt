@@ -11,9 +11,27 @@ recruit_character = SUM_Theresa
 
 set_stability = 0.80
 
-set_war_support = 0.01
+set_war_support = 0.10
 
-set_convoys = 0
+set_convoys = 2000
+
+create_faction = Sumeru
+add_to_faction = SUM
+
+if = {
+	limit = { 
+		has_dlc = "Together for Victory"
+	}
+	set_autonomy = {
+		target = SUD
+		autonomous_state = SUM_autonomus_states
+	}
+	else = {
+		puppet = SUD
+	}
+}
+
+
 
 set_politics = {
 	ruling_party = authoritarianism

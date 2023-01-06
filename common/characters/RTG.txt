@@ -105,13 +105,14 @@ characters={
 		advisor={
 			slot = political_advisor
 			idea_token = RTG_Fengxu
-			allowed  = {
-			    original_tag = RTG
+			allowed  = {						#只在游戏开局判定一次，优先度最高
+				OR = {
+					original_tag = RTG
+					original_tag = ARF
+				}
 			}
-			available = {
-				has_country_flag = focus_RTG_right_finish_1
+			available = {						#游戏开局后仍会进行判定，优先度最后，不写默认always = yes
 				NOT = { has_government = hive_mind }
-				NOT = { has_war_with = HTG }
 			}
 			traits  = {
 				little_cost 
@@ -126,12 +127,13 @@ characters={
 			idea_token = RTG_Fengxu
 			ledger = air
 			allowed  = {
-				original_tag = RTG
+				OR = {
+					original_tag = RTG
+					original_tag = ARF
+				}
 			}
 			available = {
-				has_country_flag = focus_RTG_right_finish_1
 				NOT = { has_government = hive_mind }
-				NOT = { has_war_with = HTG }
 			}
 			traits = {
 				To_King 
@@ -161,9 +163,12 @@ characters={
 			slot = political_advisor
 			idea_token = RTG_Mingbo
 			allowed  = {
-				original_tag = RTG
+				OR = {
+					original_tag = RTG
+					original_tag = ARF
+				}
 			}
-			visible = {
+			visible = {						#同available但优先度较高
 			    NOT = { has_government = hive_mind }
 			}
 			traits = {

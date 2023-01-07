@@ -1,16 +1,36 @@
-characters={
+﻿characters={
 	RTG_KunJun = {
-		name=RTG_KunJun
+		name=RTG_KunJun #领袖和领袖介绍本地化是这个：TTT_characters_l_english
 		portraits={
-			civilian={
+			civilian={ #政治
 				large = GFX_portrait_large_Liyue_KunJun
+				small = GFX_portrait_small_Liyue_KunJun
 			}
-			army={
-				large = GFX_portrait_large_Liyue_KunJun
+			army={ #军事
+				large = GFX_portrait_large_Liyue_KunJun #定义的大头像
+				small = GFX_portrait_small_Liyue_KunJun #定义的小头像（记得注册，在_TTT_characters里）
 			}
 		}
 		
-		country_leader={
+        advisor={ #内阁顾问
+			slot = political_advisor #这里填算什么顾问，这里是政治顾问
+			idea_token = RTG_KunJun  #idea，代号
+			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+					original_tag = RTG
+			}
+			available = {						#出现（就是看得见）条件，如果没有写always = yes
+				NOT = { has_government = hive_mind }
+			}
+			traits  = {
+				mingjiangzhihou  #效果，要在country_leader里写具体效果，并且记得本地化
+			}
+			cost = 200
+			ai_will_do = {
+				base = 10
+			}
+		}
+
+		country_leader={ #领袖
 			desc = RTG_KunJun_desc
 			ideology = authoritarian_democracy
 			traits={ mysterious_mineralogist }
@@ -105,13 +125,13 @@ characters={
 		advisor={
 			slot = political_advisor
 			idea_token = RTG_Fengxu
-			allowed  = {						#ֻ����Ϸ�����ж�һ�Σ����ȶ����
+			allowed  = {						#ֻ����Ϸ�����ж�һ�Σ����ȶ�����
 				OR = {
 					original_tag = RTG
 					original_tag = ARF
 				}
 			}
-			available = {						#��Ϸ���ֺ��Ի�����ж������ȶ���󣬲�дĬ��always = yes
+			available = {						#��Ϸ���ֺ��Ի������ж������ȶ����󣬲�дĬ��always = yes
 				NOT = { has_government = hive_mind }
 			}
 			traits  = {
@@ -154,11 +174,11 @@ characters={
 	
 	RTG_Mingbo = {
 		name=RTG_Mingbo
-		#portraits={
-		#	civilian={
-		#		small = GFX_idea_RTG_Mingbo
-		#	}
-		#}
+		portraits={
+			civilian={
+				small = GFX_portrait_small_Liyue_Mingbo
+			}
+		}
 		advisor={
 			slot = political_advisor
 			idea_token = RTG_Mingbo
@@ -168,7 +188,7 @@ characters={
 					original_tag = ARF
 				}
 			}
-			visible = {						#ͬavailable�����ȶȽϸ�
+			visible = {						#ͬavailable�����ȶȽϸ�
 			    NOT = { has_government = hive_mind }
 			}
 			traits = {

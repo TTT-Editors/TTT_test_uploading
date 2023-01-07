@@ -302,4 +302,35 @@
 		}
 		
 	}
+
+RTG_AnMozhi = {
+		name=RTG_AnMozhi #领袖和领袖介绍本地化是这个：TTT_characters_l_english
+		portraits={
+			civilian={ #政治
+				small = GFX_portrait_small_Liyue_AnMozhi
+			}
+			army={ #军事
+				small = GFX_portrait_small_Liyue_AnMozhi #定义的小头像（记得注册，在_TTT_characters里）
+			}
+		}
+		
+        advisor={ #内阁顾问
+			slot = political_advisor #这里填算什么顾问，这里是政治顾问
+			idea_token = RTG_AnMozhi  #idea，代号
+			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+					original_tag = RTG
+			}
+			available = {						#出现（就是看得见）条件，如果没有写always = yes
+				NOT = { has_government = hive_mind }
+			}
+			traits  = {
+				anranyizhi  #效果，要在country_leader里写具体效果，并且记得本地化
+			}
+			cost = 150
+			ai_will_do = {
+				base = 10
+			}
+		}
+	}
+
 }

@@ -23,7 +23,8 @@ focus_tree = {
 			}
 		}
 		search_filters = {  }
-		completion_reward = {add_political_power =100 add_war_support =0.05 add_stability =0.05
+		completion_reward = {
+			add_political_power =100 add_war_support =0.05 add_stability =0.05
 		}
 		
 		
@@ -38,7 +39,7 @@ focus_tree = {
 
 		cost = 35
 		completion_reward = {	
-		add_ideas =GYZL#战时特别法
+		add_ideas = GYZL #战时特别法
 		}
 	}
 
@@ -52,8 +53,8 @@ focus = {
 		cost = 35
 		completion_reward = {	
 		swap_ideas = {
-			add_idea = ZHZL
-			remove_idea = GYZL
+			add_idea = ZHZL #战时特别法（加强）
+			remove_idea = GYZL #战时特别法
 		}
 		}
 	}
@@ -105,14 +106,14 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-	125 = {
+	    125 = {
 		add_extra_state_shared_building_slots = 5
 		add_building_construction = {
 			type = arms_factory 
 			level = 5
 			instant_build = yes 
 		}
-	}
+	    }
 		}
 	}
 focus = {
@@ -128,8 +129,8 @@ focus = {
 		cost = 35
 		completion_reward = {	
 			swap_ideas = {
-			add_idea = YZSN
-			remove_idea = ZHZL
+			add_idea = YZSN #战时特别法（再加强）
+			remove_idea = ZHZL #战时特别法（加强）
 		}
 		
 		}
@@ -267,7 +268,7 @@ focus = {
 		completion_reward = {	
 			swap_ideas = {
 			add_idea = YZSN
-			remove_idea = TZSN
+			remove_idea = TZSN #在里面是idea不是ideas
 		}
 	}
     }
@@ -287,7 +288,10 @@ focus = {
 			}
 		}
 		search_filters = {  }
-		completion_reward = {add_political_power =100 add_war_support =0.05 add_stability =0.05
+		completion_reward = { 
+			add_political_power =100 
+			add_stability = 0.1
+			add_war_support = 0.1
 		}
 		
 	}
@@ -296,12 +300,13 @@ focus = {
 		id = YFX18#獬豸之辨
 		icon = 0
 		prerequisite = { focus = YFX17 }
-		x = 13
+		x = 10
 		y = 3
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_stability = -0.25
+		add_ideas = xiezhizhibian#獬豸之辨
 		}
 	}
 
@@ -309,12 +314,17 @@ focus = {
 		id = YFX19#灼眼法狩
 		icon = 0
 		prerequisite = { focus = YFX17 }
-		x = 10
+		prerequisite = { focus = YFX20 }
+		prerequisite = { focus = YFX18 }
+		x = 13
 		y = 3
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = liyuexianfaxiuzhengan1 #璃月宪法修正案1
+			remove_idea = liyuexianfaxiuzhengan #璃月宪法修正案
+		}
 		}
 	}
 
@@ -327,7 +337,7 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_ideas = liyuexianfaxiuzhengan #璃月宪法修正案
 		}
 	}
 
@@ -343,7 +353,10 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = liyuexianfaxiuzhengan2 #璃月宪法修正案2
+			remove_idea = liyuexianfaxiuzhengan1 #璃月宪法修正案1
+		}
 		}
 	}
 
@@ -359,7 +372,10 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = liyuexianfaxiuzhengan3 #璃月宪法修正案3
+			remove_idea = liyuexianfaxiuzhengan1 #璃月宪法修正案1
+		}
 		}
 	}
 
@@ -372,7 +388,10 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = liyuexianfaxiuzhengan4 #璃月宪法修正案4
+			remove_idea = liyuexianfaxiuzhengan3 #璃月宪法修正案3
+		}
 		}
 	}
 
@@ -384,8 +403,11 @@ focus = {
 		y = 5
 
 		cost = 35
-		completion_reward = {	
-		add_stability =0.1
+		completion_reward = {		
+		swap_ideas = {
+			add_idea = liyuexianfaxiuzhengan5 #璃月宪法修正案5
+			remove_idea = liyuexianfaxiuzhengan2 #璃月宪法修正案2
+		}
 		}
 	}
 
@@ -398,7 +420,7 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_timed_idea = { idea = pufajiaoyu  days = 180 } #180天 普法教育
 		}
 	}
 
@@ -411,7 +433,10 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		remove_ideas = liyuexianfaxiuzhengan5 #璃月宪法修正案5
+		remove_ideas = liyuexianfaxiuzhengan4 #璃月宪法修正案4
+		add_ideas = liyueguoxianfa #璃月国宪法
+		country_event = { days = 7 id = YFX_event.1 }#几天后触发国家事件，此处事件为 律法的未来
 		}
 	}
 
@@ -430,7 +455,8 @@ focus = {
 			}
 		}
 		search_filters = {  }
-		completion_reward = {add_political_power =100 add_war_support =0.05 add_stability =0.05
+		completion_reward = {
+			add_political_power =100 add_war_support =0.05 add_stability =0.05
 		}
 		
 	}
@@ -494,7 +520,7 @@ focus = {
 		icon = 0
 		prerequisite = { focus = YFX29 }
 		x = 20
-		y = 4
+		y = 3
 
 		cost = 35
 		completion_reward = {	
@@ -582,7 +608,7 @@ focus = {
 	}
 
 focus = {
-		id = YFX39#对至冬制裁
+		id = YFX39#璃月银行
 		icon = 0
 		prerequisite = { focus =YFX37}
 		x = 26
@@ -614,6 +640,137 @@ focus = {
 		prerequisite = { focus =YFX40}
 		x = 23
 		y = 10
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX42#朱笔之约
+		icon = 0
+		x = 13
+		y = 10
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX43#精锐准则
+		icon = 0
+		prerequisite = { focus =YFX42}
+		x = 13
+		y = 11
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX44#军令如山
+		icon = 0
+		prerequisite = { focus =YFX42}
+		x = 10
+		y = 11
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX45#军武契约
+		icon = 0
+		prerequisite = { focus =YFX42}
+		x = 16
+		y = 11
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX46#铁印必达
+		icon = 0
+		prerequisite = { focus =YFX44}
+		x = 10
+		y = 12
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX47#以律定则
+		icon = 0
+		prerequisite = { focus =YFX46}
+		x = 10
+		y = 13
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX48#令律破敌
+		icon = 0
+		prerequisite = { focus =YFX43 }
+		x = 13
+		y = 13
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX49#技术契约
+		icon = 0
+		prerequisite = { focus =YFX45 }
+		x = 16
+		y = 12
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX50#公义契约
+		icon = 0
+		prerequisite = { focus =YFX49 }
+		x = 16
+		y = 13
+
+		cost = 35
+		completion_reward = {	
+		add_stability =0.1
+		}
+	}
+
+	focus = {
+		id = YFX51#度衡行战
+		icon = 0
+		prerequisite = { focus =YFX47 }
+		prerequisite = { focus =YFX48 }
+		prerequisite = { focus =YFX50 }
+		x = 13
+		y = 14
 
 		cost = 35
 		completion_reward = {	

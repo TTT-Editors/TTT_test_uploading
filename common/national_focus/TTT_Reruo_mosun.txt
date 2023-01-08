@@ -10,7 +10,7 @@ focus_tree = {
 	focus = {
 		id = RTG_quanjing_jieyan  #全境戒严国策
 		icon = GFX_goal_unknown
-		cost = 3
+		cost = 7
 		x = 14
 		y = 0
         completion_reward = {
@@ -18,7 +18,7 @@ focus_tree = {
 				country_event={
 					id=Reruo_mosun.1 #触发“戒严令”事件
 				}
-				add_stability = -0.05 #减少5%稳定度
+				add_stability = -0.01 #减少1%稳定度
 				}
 		}
 	}
@@ -36,14 +36,14 @@ focus_tree = {
 			country_event={
 				id=Reruo_mosun.2 #触发山雨欲来事件
 			}
-			add_stability = -0.05 #减少稳定度5
+			add_stability = -0.01 #减少稳定度1
 	    }
 	}
 
 	focus = {
 		id = RTG_emeng_zhiye #噩梦之夜国策
 		icon = GFX_goal_unknown
-		cost = 1
+		cost = 7
 		prerequisite = {
 			focus = RTG_yuansu_zhiling
 		}
@@ -56,14 +56,14 @@ focus_tree = {
 			country_event={
 					id=Reruo_mosun.4 day=14 #延迟14天触发事件
 			}
-			add_stability = -0.1 #减少稳定度10
+			add_stability = -0.05 #减少稳定度5
 	    }
 	}
 
 	focus = {
 		id = RTG_didi_yichan #地底遗产国策
 		icon = GFX_goal_unknown
-		cost = 14
+		cost = 7
 		prerequisite = {
 			focus = RTG_emeng_zhiye
 		}
@@ -73,40 +73,40 @@ focus_tree = {
 			155 = {
 				add_resource = {
 					type = oil
-					amount = 5
+					amount = 15
 				}
 				add_resource = {
 					type = steel
-					amount = 5
+					amount = 15
 				}
 				add_resource = {
 					type = tungsten
-					amount = 5
+					amount = 15
 				}
 				add_resource = {
 					type = chromium
-					amount = 5
+					amount = 15
 				}
 			}
-				#+5铁矿 水晶矿 白铁矿在首都
+				#+15铁矿 水晶矿 白铁矿在首都
 	    }
 	}
 	focus = {
 		id = RTG_chongzu_kuangjing #重组矿井国策
 		icon = GFX_goal_unknown
-		cost = 21
+		cost = 14
 		prerequisite = {
 			focus = RTG_didi_yichan
 		}
 		x = 2
 		y = 4
-        completion_reward = {	#+2民工 移除混乱的产业
+        completion_reward = {	#+4民工 移除混乱的产业
 			random_owned_state = {
 				limit = {
 					is_controlled_by = ROOT
 					is_core_of = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
 					level = 2
@@ -118,14 +118,14 @@ focus_tree = {
 	focus = {
 		id = RTG_huanxing_yuansu #唤醒元素国策
 		icon = GFX_goal_unknown
-		cost = 21
+		cost = 14
 		prerequisite = {
 			focus = RTG_didi_yichan
 		}
 		x = 10
 		y = 4
         completion_reward = {
-			add_manpower = 50000
+			add_manpower = 100000
 	    }
 	}
 	focus = {
@@ -150,10 +150,13 @@ focus_tree = {
 		prerequisite = {
 			focus = RTG_yuansu_zhijun
 		}
+		available = { #available（可见的国策前提条件）
+			ARF={ exists = NO } #要求巨渊反抗军已被消灭
+		}
 		x = 14
 		y = 4
         completion_reward = {
-			add_war_support = 0.15
+			add_war_support = 0.25
 			add_time_idea = {idea = fuchou_zhizhang days = 365}
 	    }
 	}

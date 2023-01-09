@@ -20,15 +20,136 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes #仅触发一次
 	option = { 
-		name = YFX_event.2.a1
+		name = YFX_event.2.a
         
 	}
 	option = { 
-		name = YFX_event.2.a2
+		name = YFX_event.2.b
         
 	}
 	option = { 
-		name = YFX_event.2.a3
+		name = YFX_event.2.c
         #immediate = {	}	当这个这个事件跳出来时的效果
+	}
+}
+
+country_event = {
+	id = YFX_event.3 #（仙人）烟绯来信
+	title = YFX_event.3.t
+	desc = YFX_event.3.d
+	
+	is_triggered_only = yes
+	fire_only_once = yes #仅触发一次
+	option = { 
+		name = YFX_event.3.a #我们将加入璃月联盟
+		country_event = { days = 7 id = YFX_event.4 }
+		ai_chance = {
+			factor = 40 #ai倾向，放到选项里面
+			modifier = {
+			has_war = yes 
+			factor = 60   #处于战争时的倾向
+		    }
+			}
+		}
+	
+	option = { 
+		name = YFX_event.3.b #我们不会同意
+        #immediate = {	}	当这个这个事件跳出来时的效果
+		ai_chance = {
+			factor = 60
+			modifier = {
+			has_war = yes 
+			factor = 40   #处于战争时的倾向
+		    }
+			}
+		country_event = { days = 7 id = YFX_event.5 }
+	}
+}
+
+
+country_event = {
+	id = YFX_event.4 #仙人同意加入
+	title = YFX_event.4.t
+	desc = YFX_event.4.d
+	
+	is_triggered_only = yes #能否被国策、决议等触发
+	fire_only_once = yes #仅触发一次
+	option = { 
+		name = YFX_event.4.a
+		LYU = {
+			add_to_faction = XRG
+		}
+	}
+}
+
+country_event = {
+	id = YFX_event.5 #仙人拒绝加入
+	title = YFX_event.5.t
+	desc = YFX_event.5.d
+	
+	is_triggered_only = yes #能否被国策、决议等触发
+	fire_only_once = yes #仅触发一次
+	option = { 
+		name = YFX_event.5.a
+	}
+}
+
+country_event = {
+	id = YFX_event.6 #（魈）烟绯来信
+	title = YFX_event.6.t
+	desc = YFX_event.6.d
+	
+	is_triggered_only = yes
+	fire_only_once = yes #仅触发一次
+	option = { 
+		name = YFX_event.6.a #我们将加入璃月联盟
+		country_event = { days = 7 id = YFX_event.7}
+		ai_chance = {
+			factor = 40 #ai倾向，放到选项里面
+			modifier = {
+			has_war = yes 
+			factor = 60   #处于战争时的倾向
+		    }
+			}
+		}
+	
+	option = { 
+		name = YFX_event.6.b #我们不会同意
+        #immediate = {	}	当这个这个事件跳出来时的效果
+		ai_chance = {
+			factor = 60
+			modifier = {
+			has_war = yes 
+			factor = 40   #处于战争时的倾向
+		    }
+			}
+		country_event = { days = 7 id = YFX_event.8 }
+	}
+}
+
+country_event = {
+	id = YFX_event.7 #仙人同意加入
+	title = YFX_event.7.t
+	desc = YFX_event.7.d
+	
+	is_triggered_only = yes #能否被国策、决议等触发
+	fire_only_once = yes #仅触发一次
+	option = { 
+		name = YFX_event.7.a
+		LYU = {
+			add_to_faction = XOG
+		}
+	}
+}
+
+country_event = {
+	id = YFX_event.8 #魈拒绝加入
+	title = YFX_event.8.t
+	desc = YFX_event.8.d
+	
+	is_triggered_only = yes #能否被国策、决议等触发
+	fire_only_once = yes #仅触发一次
+	option = { 
+		name = YFX_event.8.a
 	}
 }

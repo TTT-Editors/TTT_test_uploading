@@ -17,10 +17,7 @@ focus_tree = {
 		cost = 7
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war =yes #Factor
-			}
+		    base = 15
 		}
 		search_filters = {  }
 		completion_reward = {
@@ -37,7 +34,10 @@ focus_tree = {
 		x = 4
 		y = 2
 
-		cost = 35
+		cost = 14
+		ai_will_do = {
+		    base = 5
+		}
 		completion_reward = {	
 		add_ideas = GYZL #战时特别法
 		}
@@ -50,7 +50,10 @@ focus = {
 		x = 1
 		y = 3
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 5
+		}
 		completion_reward = {	
 		swap_ideas = {
 			add_idea = ZHZL #战时特别法（加强）
@@ -65,7 +68,10 @@ focus = {
 		x = 3
 		y = 3
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 5
+		}
 		completion_reward = {	
 		    129= {
 			add_building_construction = {
@@ -83,8 +89,10 @@ focus = {
 				province = 4173 5156 11135 3565 11243
 			}
 		}
+		army_experience = 25 
 		}
 		}
+
         focus = {
 		id = YFX05#秩序之令
 		icon = 0
@@ -92,9 +100,12 @@ focus = {
 		x = 5
 		y = 3
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 5
+		}
 		completion_reward = {	
-		add_stability =0.15
+		add_stability =0.1
 		}
 	}
     focus = {
@@ -104,13 +115,16 @@ focus = {
 		x = 7
 		y = 3
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 5
+		}
 		completion_reward = {	
 	    125 = {
-		add_extra_state_shared_building_slots = 5
+		add_extra_state_shared_building_slots = 4
 		add_building_construction = {
 			type = arms_factory 
-			level = 5
+			level = 4
 			instant_build = yes 
 		}
 	    }
@@ -132,7 +146,7 @@ focus = {
 			add_idea = YZSN #战时特别法（再加强）
 			remove_idea = ZHZL #战时特别法（加强）
 		}
-		
+		declare_war_on = { target = ANG type = annex_everything }
 		}
 	}
 
@@ -144,10 +158,17 @@ focus = {
 		x = 2
 		y = 5
 
-		cost = 35
+        ai_will_do = {
+		    base = 20
+		}
+		cost = 28
 		completion_reward = {	
 		add_stability =0.05
 		create_faction = liyuehepingtongyizhanxian
+		news_event = {
+			    id = global_news.27#事件id
+				days = 7#几天后触发
+			}#此为触发世界新闻
 		}
 	}
 
@@ -159,9 +180,12 @@ focus = {
 		x = 6
 		y = 5
 
-		cost = 35
+        ai_will_do = {
+		    base = 10
+		}
+		cost = 14
 		completion_reward = {	
-		add_war_support = 0.1
+		add_war_support = 0.05
 		}
 	}
 
@@ -172,12 +196,19 @@ focus = {
 		x = 2
 		y = 6
 
-		cost = 35
+		cost = 14
 		bypass = {
-		XRG={ exists = NO }
-		}#仙人派不存在
+		OR = {
+		XRG={exists = NO }
+		has_war_with = XRG
+		}
+		}#仙人派不存在或与仙人在战争中
 		completion_reward = {	
-		add_stability =0.1 #未完成
+		XRG = {
+			country_event = { 
+				days = 3 id = YFX_event.3 
+		}
+		}
 		}
 	}
 
@@ -188,9 +219,19 @@ focus = {
 		x = 2
 		y = 7
 
-		cost = 35
+		cost = 14
+		bypass = {
+		OR = {
+		XOG={exists = NO }
+		has_war_with = XOG
+		}
+		}#魈不存在或与魈在战争中
 		completion_reward = {	
-		add_stability =0.1 #未完成
+		XOG = {
+			country_event = { 
+				days = 3 id = YFX_event.6 #（魈）烟绯来信 
+		}
+		}
 		}
 	}
 
@@ -198,13 +239,13 @@ focus = {
 		id = YFX12#青墟之主
 		icon = 0
 		prerequisite = { focus = YFX09 }
-		bypass = {ANG = { exists= NO}}	
+		bypass = { RTG = { exists= NO } }	
 		x = 6
 		y = 6
 
-		cost = 35
+		cost = 7
 		completion_reward = {	
-		declare_war_on = { target = ANG type = annex_everything }
+		declare_war_on = { target = RTG type = annex_everything }
 		}
 	}
 
@@ -212,11 +253,12 @@ focus = {
 		id = YFX13#归离俯首
 		icon = 0
 		prerequisite = { focus = YFX12 }
-		bypass = {XQG = { exists= NO} KQG = { exists= NO}}
+		available = { has_war = no } #available是条件判定，此处为要求不在战争中
+		bypass = { XQG = { exists= NO } KQG = { exists= NO } }
 		x = 6
 		y = 7
 
-		cost = 35
+		cost = 7
 		completion_reward = {	
 		declare_war_on = { target = KQG type = annex_everything }
 		declare_war_on = { target = XQG type = annex_everything }
@@ -228,9 +270,10 @@ focus = {
 		icon = 0
 		prerequisite = { focus = YFX11 focus = YFX13 }
 		x = 4
-		y =8
+		y = 8
 
-		cost = 35
+		cost = 49
+		available = { has_war = no } #available是条件判定，此处为要求不在战争中
 		completion_reward = {	
 		create_wargoal = { target = ANG type = annex_everything }
 		create_wargoal = { target = XQG type = annex_everything }
@@ -240,6 +283,7 @@ focus = {
 		create_wargoal = { target = RTG type = annex_everything }
         create_wargoal = { target = XOG type = annex_everything }
 		create_wargoal = { target = BDG type = annex_everything }
+		create_wargoal = { target = ARF type = annex_everything }
 		}
 	}
 
@@ -251,7 +295,10 @@ focus = {
 		x = 4
 		y = 9
 
-		cost = 35
+		cost = 70
+		ai_will_do = {
+		    base = 30
+		}
 		completion_reward = {	
 		add_state_core = 167 add_state_core = 134 add_state_core = 132 add_state_core = 135 add_state_core = 133 add_state_core = 130 add_state_core = 194 add_state_core = 131 add_state_core = 136 add_state_core = 137 add_state_core = 139  add_state_core = 138 add_state_core = 166 add_state_core = 160 add_state_core = 147 add_state_core = 143 add_state_core = 144 add_state_core = 141 add_state_core = 121 add_state_core = 145 add_state_core = 165 add_state_core = 163 add_state_core = 204 add_state_core = 168 add_state_core = 203 add_state_core = 162 add_state_core = 164 add_state_core = 159 add_state_core = 161 add_state_core = 199 add_state_core = 198 add_state_core = 244 add_state_core = 158 add_state_core = 157 add_state_core = 195 add_state_core = 196 add_state_core = 171 add_state_core = 197 add_state_core = 151 add_state_core = 153 add_state_core = 206 add_state_core = 209 add_state_core = 208 add_state_core = 207 add_state_core = 155 add_state_core = 156 add_state_core = 205 add_state_core = 154 add_state_core = 152 add_state_core = 211 add_state_core = 170 add_state_core = 210 add_state_core = 169 add_state_core = 128 add_state_core = 124 add_state_core = 123 add_state_core = 243 add_state_core = 122 add_state_core = 127 add_state_core = 125 add_state_core = 150 add_state_core = 146 add_state_core = 149 add_state_core = 129 add_state_core = 148 add_state_core = 403 add_state_core = 404 add_state_core = 405 add_state_core = 406
 		}
@@ -264,12 +311,14 @@ focus = {
 		x = 4
 		y = 10
 
-		cost = 35
+		cost = 70
 		completion_reward = {	
-			swap_ideas = {
-			add_idea = YZSN
-			remove_idea = TZSN #在里面是idea不是ideas
+			swap_ideas = { #在里面是idea不是ideas
+			add_idea = yanhuorengjian #烟火人间
+			remove_idea = YZSN #战时特别法（再加强）
 		}
+		add_timed_idea = { idea = zhengtongrenhe #政通人和，百废待兴
+		                    days = 365 }
 	}
     }
 
@@ -282,16 +331,12 @@ focus = {
 		cost = 7
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war =yes Factor
-			}
+		    base = 15
 		}
 		search_filters = {  }
 		completion_reward = { 
-			add_political_power =100 
-			add_stability = 0.1
-			add_war_support = 0.1
+			add_political_power = 50
+			add_research_slot = 1
 		}
 		
 	}
@@ -303,7 +348,7 @@ focus = {
 		x = 10
 		y = 3
 
-		cost = 35
+		cost = 14
 		completion_reward = {	
 		add_stability = -0.25
 		add_ideas = xiezhizhibian#獬豸之辨
@@ -319,7 +364,7 @@ focus = {
 		x = 13
 		y = 3
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
 		swap_ideas = {
 			add_idea = liyuexianfaxiuzhengan1 #璃月宪法修正案1
@@ -335,7 +380,7 @@ focus = {
 		x = 16
 		y = 3
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
 		add_ideas = liyuexianfaxiuzhengan #璃月宪法修正案
 		}
@@ -351,7 +396,10 @@ focus = {
 		x = 15
 		y = 4
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 10
+		}
 		completion_reward = {	
 		swap_ideas = {
 			add_idea = liyuexianfaxiuzhengan2 #璃月宪法修正案2
@@ -370,7 +418,10 @@ focus = {
 		x = 11
 		y = 4
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 20
+		}
 		completion_reward = {	
 		swap_ideas = {
 			add_idea = liyuexianfaxiuzhengan3 #璃月宪法修正案3
@@ -386,7 +437,7 @@ focus = {
 		x = 12
 		y = 5
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
 		swap_ideas = {
 			add_idea = liyuexianfaxiuzhengan4 #璃月宪法修正案4
@@ -402,9 +453,10 @@ focus = {
 		x = 14
 		y = 5
 
-		cost = 35
-		completion_reward = {		
-		swap_ideas = {
+		cost = 28
+		completion_reward = {	
+		add_war_support = -0.1	
+		swap_ideas = {	
 			add_idea = liyuexianfaxiuzhengan5 #璃月宪法修正案5
 			remove_idea = liyuexianfaxiuzhengan2 #璃月宪法修正案2
 		}
@@ -431,7 +483,10 @@ focus = {
 		x = 13
 		y = 8
 
-		cost = 35
+		cost = 49
+		ai_will_do = {
+		    base = 15
+		}
 		completion_reward = {	
 		remove_ideas = liyuexianfaxiuzhengan5 #璃月宪法修正案5
 		remove_ideas = liyuexianfaxiuzhengan4 #璃月宪法修正案4
@@ -443,36 +498,29 @@ focus = {
 focus = {
 		id = YFX27#稳定国内经济
 		icon = 0
-		x = 24
+		x = 20
 		y = 1
 		
 		cost = 7
 
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war =yes Factor
-			}
+		    base = 10
 		}
 		search_filters = {  }
 		completion_reward = {
-			add_political_power =100 add_war_support =0.05 add_stability =0.05
+			125 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes 
+		}
+	    }
 		}
 		
 	}
 
-focus = {
-		id = YFX28#关停北国银行
-		icon = 0
-		prerequisite = { focus = YFX27 }
-		x = 28
-		y = 2
 
-		cost = 35
-		completion_reward = {	
-		add_stability =0.1
-		}
-	}
 
 focus = {
 		id = YFX29#特殊时期
@@ -481,9 +529,9 @@ focus = {
 		x = 20
 		y =2
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		add_ideas = jingjitiaozheng1 #经济调整
 		}
 	}
 	
@@ -495,9 +543,13 @@ focus = {
 		x = 17
 		y = 4
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 10
+		}
 		completion_reward = {	
-		add_stability =0.1
+		add_stability = -0.05
+		add_offsite_building = { type = industrial_complex level = 1 }
 		}
 	}
 
@@ -509,9 +561,13 @@ focus = {
 		x = 23
 		y = 4
 
-		cost = 35
+		cost = 28
+		ai_will_do = {
+		    base = 20
+		}
 		completion_reward = {	
-		add_stability =0.1
+		add_stability = -0.1
+		add_offsite_building = { type = arms_factory level = 1 }
 		}
 	}
 
@@ -524,7 +580,30 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		125 = {
+			add_resource = {
+				type = wood #木材
+				amount = 6
+			}
+		}
+		125 = {
+			add_resource = {
+				type = grain #粮食
+				amount = 6
+			}
+		}
+		125 = {
+			add_resource = {
+				type = iron #铁矿
+				amount = 6
+			}
+		}
+		125 = {
+			add_resource = {
+				type = caol #煤矿
+				amount = 6
+			}
+		}
 		}
 	}
 
@@ -537,7 +616,7 @@ focus = {
 
 		cost = 35
 		completion_reward = {	
-		add_stability =0.1
+		add_ideas = liyueziyuanshu #璃月资源署
 		}
 	}
 
@@ -548,9 +627,10 @@ focus = {
 		x = 23
 		y = 5
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		add_ideas = war_economy #修改为战时经济
+		add_offsite_building = { type = arms_factory level = 1 }
 		}
 	}
 
@@ -561,9 +641,13 @@ focus = {
 		x = 17
 		y = 5
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		add_offsite_building = { type = industrial_complex level = 2 }
+		swap_ideas = {	
+			add_idea = jingjitiaozheng2 #经济调整2
+			remove_idea = jingjitiaozheng1 #经济调整1
+		}
 		}
 	}
 
@@ -575,87 +659,30 @@ focus = {
 		x = 20
 		y = 7
 
-		cost = 35
+		cost = 49
+		ai_will_do = {
+		    base = 15
+		}
 		completion_reward = {	
-		add_stability =0.1
+			add_ideas = liyueshangfa #璃月商法
+			remove_ideas = jingjitiaozheng2 #经济调整2
+			remove_ideas = jingjitiaozheng1 #经济调整1
 		}
 	}
 
-focus = {
-		id = YFX37#维护摩拉体系
-		icon = 0
-		prerequisite = { focus =YFX28}
-		x = 26
-		y = 5
-
-		cost = 35
-		completion_reward = {	
-		add_stability =0.1
-		}
-	}
-
-focus = {
-		id = YFX38#对至冬制裁
-		icon = 0
-		prerequisite = { focus =YFX28}
-		x = 30
-		y = 5
-
-		cost = 35
-		completion_reward = {	
-		add_stability =0.1
-		}
-	}
-
-focus = {
-		id = YFX39#璃月银行
-		icon = 0
-		prerequisite = { focus =YFX37}
-		x = 26
-		y = 7
-
-		cost = 35
-		completion_reward = {	
-		add_stability =0.1
-		}
-	}
-
-focus = {
-		id = YFX40#统一大市场
-		icon = 0
-		prerequisite = { focus =YFX39 }
-		prerequisite = { focus =YFX36 }
-		x = 23
-		y = 9
-
-		cost = 35
-		completion_reward = {	
-		add_stability =0.1
-		}
-	}
-	
-	focus = {
-		id = YFX41#繁荣的哲学
-		icon = 0
-		prerequisite = { focus =YFX40}
-		x = 23
-		y = 10
-
-		cost = 35
-		completion_reward = {	
-		add_stability =0.1
-		}
-	}
 
 	focus = {
 		id = YFX42#朱笔之约
 		icon = 0
 		x = 13
 		y = 10
+		ai_will_do = {
+		    base = 10
+		}
 
-		cost = 35
+		cost =7
 		completion_reward = {	
-		add_stability =0.1
+		add_ideas = zongcanmoubu1 #总参谋部1
 		}
 	}
 
@@ -666,9 +693,12 @@ focus = {
 		x = 13
 		y = 11
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = zongcanmoubu2 #总参谋部2
+			remove_idea = zongcanmoubu1 #总参谋部1
+		}
 		}
 	}
 
@@ -679,22 +709,22 @@ focus = {
 		x = 10
 		y = 11
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		add_ideas = xinbianliyuejunfa1 #新编璃月军法1
 		}
 	}
 
 	focus = {
-		id = YFX45#军武契约
+		id = YFX45#军伍契约
 		icon = 0
 		prerequisite = { focus =YFX42}
 		x = 16
 		y = 11
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		add_ideas = qianyanqiyue1 #千岩契约1
 		}
 	}
 
@@ -705,9 +735,12 @@ focus = {
 		x = 10
 		y = 12
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = xinbianliyuejunfa2 #新编璃月军法2
+			remove_idea = xinbianliyuejunfa1 #新编璃月军法1
+		}
 		}
 	}
 
@@ -718,9 +751,12 @@ focus = {
 		x = 10
 		y = 13
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = xinbianliyuejunfa3 #新编璃月军法3
+			remove_idea = xinbianliyuejunfa2 #新编璃月军法2
+		}
 		}
 	}
 
@@ -731,9 +767,12 @@ focus = {
 		x = 13
 		y = 13
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = zongcanmoubu3 #总参谋部3
+			remove_idea = zongcanmoubu2 #总参谋部2
+		}
 		}
 	}
 
@@ -744,11 +783,14 @@ focus = {
 		x = 16
 		y = 12
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = qianyanqiyue2 #千岩契约2
+			remove_idea = qianyanqiyue1 #千岩契约1
 		}
-	}
+		}
+		}
 
 	focus = {
 		id = YFX50#公义契约
@@ -757,9 +799,12 @@ focus = {
 		x = 16
 		y = 13
 
-		cost = 35
+		cost = 28
 		completion_reward = {	
-		add_stability =0.1
+		swap_ideas = {
+			add_idea = qianyanqiyue3 #千岩契约3
+			remove_idea = qianyanqiyue2 #千岩契约2
+		}
 		}
 	}
 
@@ -772,9 +817,15 @@ focus = {
 		x = 13
 		y = 14
 
-		cost = 35
+		cost = 49
+		ai_will_do = {
+		    base = 15
+		}
 		completion_reward = {	
-		add_stability =0.1
+			add_ideas = liyueguofangshi #璃月国防司
+			remove_ideas = qianyanqiyue3 #千岩契约3
+			remove_ideas = zongcanmoubu3 #总参谋部3
+			remove_ideas = xinbianliyuejunfa3 #新编璃月军法3
 		}
 	}
 }

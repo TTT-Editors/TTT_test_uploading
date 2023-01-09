@@ -78,11 +78,11 @@ country_event = {
 		OR = {
 			AND = {
 				146 = { is_controlled_by = ROOT }
-				147 = { is_controlled_by = ROOT }
 				148 = { is_controlled_by = ROOT }
-				129 = { is_controlled_by = ROOT }
 				149 = { is_controlled_by = ROOT }
 				150 = { is_controlled_by = ROOT }
+				405 = { is_controlled_by = ROOT }
+				406 = { is_controlled_by = ROOT }
 			}
 			AND = {
 				is_faction_leader = yes
@@ -93,21 +93,7 @@ country_event = {
 						}
 					}
 				}
-				147 = {
-					controller = {
-						any_country = {
-							is_in_faction_with = ROOT
-						}
-					}
-				}
 				148 = {
-					controller = {
-						any_country = {
-							is_in_faction_with = ROOT
-						}
-					}
-				}
-				129 = {
 					controller = {
 						any_country = {
 							is_in_faction_with = ROOT
@@ -128,11 +114,24 @@ country_event = {
 						}
 					}
 				}
+				405 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				406 = {
+					controller = {
+						any_country = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
 			}
 		}
 		has_war_with = NNG
 	}
-	
 	mean_time_to_happen = {
 		days = 3
 	}
@@ -155,12 +154,6 @@ country_event = {
 		}
 		if = {
 			limit = {
-				controls_state = 147
-			}
-			transfer_state = 147
-		}
-		if = {
-			limit = {
 				controls_state = 148
 			}
 			transfer_state = 148
@@ -179,9 +172,15 @@ country_event = {
 		}
 		if = {
 			limit = {
-				controls_state = 129
+				controls_state = 405
 			}
-			transfer_state = 129
+			transfer_state = 405
+		}
+		if = {
+			limit = {
+				controls_state = 406
+			}
+			transfer_state = 406
 		}
 		add_political_power = 100
 		add_stability = 0.1

@@ -115,10 +115,12 @@
 		name=RTG_Fengxu
 	    portraits={
 			civilian={
-				small= GFX_idea_RTG_Fengxu
+				large = GFX_portrait_large_Liyue_Qunxianhuiyi
+				small = GFX_portrait_small_Liyue_lishuidieshan
 			}
 			army={
-				small = GFX_idea_RTG_Fengxu
+				large = GFX_portrait_large_Liyue_Qunxianhuiyi
+				small = GFX_portrait_small_Liyue_lishuidieshan
 			}
 		}
 		
@@ -169,6 +171,15 @@
 			expire="2022.10.20.1"
 			id=-1
 		}
+		corps_commander={
+			traits={ }
+			skill=4
+			attack_skill=5
+			defense_skill=5
+			planning_skill=1
+			logistics_skill=2
+			legacy_id=-1
+		}
 
 		
 		
@@ -179,6 +190,11 @@
 		portraits={
 			civilian={
 				small = GFX_portrait_small_Liyue_Mingbo
+				large = GFX_portrait_large_Liyue_Mingbo
+			}
+			army={
+				small = GFX_portrait_small_Liyue_Mingbo
+				large = GFX_portrait_large_Liyue_Mingbo
 			}
 		}
 		advisor={
@@ -209,6 +225,16 @@
 			id=-1
 		}
 
+		corps_commander={
+			traits={ }
+			skill=3
+			attack_skill=3
+			defense_skill=1
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+		}
+
 		
 	}
 	
@@ -221,6 +247,7 @@
 			}
 		    army={
 				large = GFX_portrait_large_Liyue_Dao
+				small = GFX_portrait_small_Liyue_Dao
 			}
 		}
 		
@@ -271,10 +298,12 @@
 		name=RTG_Zhiqiong
 		portraits={
 			civilian={
-				#large = 
+				large = GFX_portrait_large_Liyue_leaved_Retuo
+				small = GFX_portrait_small_Liyue_lishuidieshan
 			}
 			army={
-				#large = 
+				large = GFX_portrait_large_Liyue_leaved_Retuo
+				small = GFX_portrait_small_Liyue_lishuidieshan
 			}
 		}
 		
@@ -283,6 +312,37 @@
 			traits={ Ordinary_Courage }
 			expire="2022.10.20.1"
 			id=-1
+		}
+
+		advisor={ #内阁顾问
+			slot = political_advisor #这里填算什么顾问，这里是政治顾问
+			idea_token = RTG_Zhiqiong  #idea，代号
+			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+					OR = {
+					original_tag = RTG
+					original_tag = ARF
+				}
+			}
+			available = {						#出现（就是看得见）条件，如果没有写always = yes
+				NOT = { has_government = hive_mind }
+			}
+			traits  = {
+				renzhiyizhi  #效果，要在country_leader里写具体效果，并且记得本地化
+			}
+			cost = 150
+			ai_will_do = {
+				base = 10
+			}
+		}
+
+		corps_commander={
+			traits={ }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
 		}
 		
 	}
@@ -312,9 +372,11 @@ RTG_AnMozhi = {
 		portraits={
 			civilian={ #政治
 				small = GFX_portrait_small_Liyue_AnMozhi
+				large = GFX_portrait_large_Liyue_Anmozhi
 			}
 			army={ #军事
 				small = GFX_portrait_small_Liyue_AnMozhi #定义的小头像（记得注册，在_TTT_characters里）
+				large = GFX_portrait_large_Liyue_Anmozhi
 			}
 		}
 		
@@ -334,6 +396,16 @@ RTG_AnMozhi = {
 			ai_will_do = {
 				base = 10
 			}
+		}
+
+		corps_commander={
+			traits={ }
+			skill=3
+			attack_skill=1
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
 		}
 
 		

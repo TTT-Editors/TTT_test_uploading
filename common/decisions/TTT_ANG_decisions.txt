@@ -278,7 +278,77 @@ ANG_zousi = {
 		}
 	}
 }
+##############征召军队和人力##########
+ANG_mil_decision_categories = {
+	ANG_raise_militias = {
+		cost = 50
+		days_remove = 180
+		days_re_enable = 360
+		visible = {
+			has_country_flag = ANG_can_raise_mil
+		}
+		ai_will_do = {
+			base = 50
+		}
+		complete_effect = {
+			custom_effect_tooltip = ANG_unlock_mil_decision_tooltip
+			hidden_effect = {
+				division_template = {
+					name = "Commune Militia"
+					is_locked = yes
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 0 y = 3 }
+						militia = { x = 0 y = 4 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+						militia = { x = 1 y = 3 }
+						militia = { x = 1 y = 4 }
+					}
+				}
+				every_owned_state = {
+					limit = {
+						is_core_of = ANG
+					}
+					create_unit = { 
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						owner = ANG 
+					}
+					create_unit = { 
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						owner = ANG 
+					}
+					create_unit = { 
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						owner = ANG 
+					}
+					create_unit = { 
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						owner = ANG 
+					}
+					create_unit = { 
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.3"
+						owner = ANG 
+					}
+					create_unit = { 
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.3"
+						owner = ANG 
+					}
+				} 
+			}
+		}
+			
+		remove_effect = {
+			delete_unit_template_and_units = {
+				division_template = "Commune Militia"
+			}
+		}
+	}
 
+}
 
 ###############统一璃月############
 ANG_tongyiliyue = {

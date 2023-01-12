@@ -751,18 +751,25 @@ defeat_or_annex_other_warlords = {
 		
 		visible ={
 		custom_trigger_tooltip = {
-		has_global_flag = Liyue_Civil_War
-		or = {
-		original_tag = XRG
-		original_tag = RTG
-		original_tag = ANG
-		original_tag = LYU
-		original_tag = XQG
-		original_tag = NNG
-		original_tag = XOG
-		original_tag = ARF
-		KQG = { has_government = reformism }
-		RTG = NOT = { has_government = hive_mind }
+			has_global_flag = Liyue_Civil_War
+			OR = {
+				original_tag = XRG
+				original_tag = RTG
+				original_tag = ANG
+				original_tag = LYU
+				original_tag = XQG
+				original_tag = NNG
+				original_tag = XOG
+				original_tag = ARF
+				AND = {
+					tag = KQG
+					has_government = reformism
+				}
+				AND = {
+					tag = RTG
+					NOT = { has_government = hive_mind }
+					
+				}
 	        }
 	    }
 		#控制

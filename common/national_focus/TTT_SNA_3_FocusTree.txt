@@ -3,10 +3,10 @@ focus_tree =
 	id = SNA_final
     country = {
 		factor = 0
-		modifier = {
-			add = 10
-			tag = SNA
-		}
+		#modifier = {
+			#add = 10
+			#tag = SNA
+		#}
 	}
 	focus = {
 		#鸣神已死，海神永生！
@@ -189,14 +189,12 @@ focus_tree =
 		x = 5
 		y = 3
 		cost = 15
-        completion_reward = {
-              add_ideas = SNA_enslavement_1
-			  add_offsite_building = { type = arms_factory level = 1 }	  
-			  #触发事件：劳改
-			  #触发事件：米饭
-			  #触发事件：孩童
-			  #触发事件：母亲
-		}
+        completion_reward = {	  
+          country_event = 
+			{
+				id = FinSNA.17
+			}
+		} 
 	 }	
 	 focus = {
 		#双脚鱼牲，以血祭天
@@ -208,12 +206,10 @@ focus_tree =
 		y = 3
 		cost = 15
         completion_reward = {
-              add_manpower = -5000
-              add_ideas = SNA_Kill_all_1
-			  #触发事件：血祭
-			  #触发事件：悲鸣
-			  #触发事件：血月
-			  #触发事件：逃离
+			country_event = 
+			  {
+				id = FinSNA.18
+			  }
 		} 
 	 }	
 	 focus = {
@@ -439,12 +435,12 @@ focus_tree =
 		#实验开始了！
 		id = SNAFINAL_21
 		icon = NoPicture
-		#allow_branch = { has_country_flag = SNA_SEN }
+		allow_branch = { has_country_flag = SNA_SEN }
 		x = 15
 		y = 0
 		cost = 15
         completion_reward = {
-
+              custom_effect_tooltip = "start"
 		}
 	 }	
 	 focus = {
@@ -456,7 +452,10 @@ focus_tree =
 		y = 1
 		cost = 15
         completion_reward = {
-
+             country_event = 
+			 {
+				id = FinSNA.17
+			 }
 		}
 	 }	
 	 focus = {
@@ -468,7 +467,10 @@ focus_tree =
 		y = 1
 		cost = 15
         completion_reward = {
-
+            country_event = 
+			 {
+				id = FinSNA.18
+			 }
 		}
 	 }	
 	 focus = {

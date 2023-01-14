@@ -55,6 +55,7 @@ country_event =
 		   hidden_effect =
 		   {
 			 country_event = {id = FinSNA.4 days = 10}
+			 custom_effect_tooltip = "Fin1"
 		   }
 	   }
 }
@@ -294,6 +295,7 @@ country_event =
 	       name = FinSNA.10.a
 		   hidden_effect = {
 			  country_event = { id = FinSNA.13 days = 10 }
+			  add_political_power = -50
 		   }
 	   }
 }
@@ -332,12 +334,114 @@ country_event =
 	   is_triggered_only = yes 
 	   option = {
 	       name = FinSNA.12.a
-		   custom_effect_tooltip = "Sen"
+		   custom_effect_tooltip = "Fin2"
 		   hidden_effect = 
 		   {
                	set_country_flag = "final"
+				SNA = {
+					kill_country_leader = yes
+					add_country_leader_role = {
+			        character = SNA_waste
+					promote_leader = no
+					country_leader = {
+						ideology = authoritarianism_subtype
+						expire = "2222.1.1"
+						traits = { waste }
+		     		}
+	    		}
+				}
 		   }
-	   }
+		   if = 
+		   {
+			  limit = {has_idea = SNA_new_army_2}
+			  swap_ideas = 
+		   	  {
+			  	add_idea = SNA_remove_eyes
+			  	remove_idea = SNA_new_army_2
+		   	  }
+		   }
+		   if = 
+		   {
+			  limit = {has_idea = SNA_grain_4}
+			  swap_ideas = 
+		   	  {
+			  	add_idea = SNA_waste
+			  	remove_idea = SNA_grain_4
+		      }
+		   }
+		   if = 
+		   {
+			  limit = {has_idea = SNA_training_4}
+			  swap_ideas =
+			  {
+				add_idea = SNA_bare_hands
+				remove_idea = SNA_training_4
+			  }
+		   }
+		   else_if = 
+		   {
+			  limit = {has_idea = SNA_training_3}
+			  swap_ideas =
+			  {
+				add_idea = SNA_bare_hands
+				remove_idea = SNA_training_3
+			  }
+		   }
+		   else_if = 
+		   {
+			  limit = {has_idea = SNA_training_2}
+			  swap_ideas =
+			  {
+				add_idea = SNA_bare_hands
+				remove_idea = SNA_training_2
+			  }
+		   }
+		   else =
+		   {
+			  limit = {has_idea = SNA_training_1}
+			  swap_ideas =
+			  {
+				add_idea = SNA_bare_hands
+				remove_idea = SNA_training_1
+			  }
+		   }
+		    if = 
+			{
+			 limit = {has_idea = SNA_summggle_net_1}
+			    swap_ideas = 
+		        {    
+			       add_idea = SNA_summggle_net_was_destoryed
+			        remove_idea = SNA_summggle_net_1
+			    }
+			}
+			else_if = 
+			{
+			 limit = {has_idea = SNA_summggle_net_2}
+			    swap_ideas = 
+		        {    
+			       add_idea = SNA_summggle_net_was_destoryed
+			        remove_idea = SNA_summggle_net_2
+			    }
+			}
+			else_if = 
+			{
+			 limit = {has_idea = SNA_summggle_net_3}
+			    swap_ideas = 
+		        {    
+			       add_idea = SNA_summggle_net_was_destoryed
+			        remove_idea = SNA_summggle_net_3
+			    }
+			}
+			else = 
+			{
+			 limit = {has_idea = SNA_summggle_net_4}
+			    swap_ideas = 
+		        {    
+			       add_idea = SNA_summggle_net_was_destoryed
+			        remove_idea = SNA_summggle_net_4
+			    }
+			}
+	 }
 }
 
 country_event = 
@@ -353,11 +457,22 @@ country_event =
 	   is_triggered_only = yes 
 	   option = {
 	       name = FinSNA.13.a
-		   custom_effect_tooltip = "Sen"
-		   hidden_effect = 
-		   {
-			    set_country_flag = SNA_SEN
-		   }
+		   custom_effect_tooltip = "Fin3"
+		   set_country_flag = SNA_SEN
+			kill_country_leader = yes
+			add_country_leader_role = {
+			    character = SNA_NeiSen
+				promote_leader = no
+				country_leader = {
+					ideology = national_socialism_subtype
+					expire = "2222.1.1"
+					traits = { NeiSen }
+		     	}
+	    	}
+			set_politics = { 
+			    ruling_party = national_socialism 
+		        elections_allowed = no 
+			}
 	   }
 }
 
@@ -429,5 +544,39 @@ country_event =
 		   {
 			  country_event = {id = FinSNA.13 days = 10}
 		   }
+	   }
+}
+
+country_event = 
+{
+       id = FinSNA.17
+	   title = FinSNA.17.t 
+	   desc = FinSNA.17.d
+	   trigger = {
+		    tag = SNA
+	   }
+	   fire_only_once = yes
+	   is_triggered_only = yes
+	   option = {
+		    name = FinSNA.17.a
+			add_ideas = SNA_enslavement_1
+			add_offsite_building = { type = arms_factory level = 1 }
+	   }
+}
+
+country_event = 
+{
+		id = FinSNA.18
+	   title = FinSNA.18.t 
+	   desc = FinSNA.18.d
+	   trigger = {
+		    tag = SNA
+	   }
+	   fire_only_once = yes
+	   is_triggered_only = yes
+	   option = {
+		    name = FinSNA.18.a
+			add_manpower = -5000
+            add_ideas = SNA_Kill_all_1
 	   }
 }

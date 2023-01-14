@@ -253,8 +253,40 @@ ANG_zousi = {
 			}
 		}
 	}
+	ANG_heishi_level_up = {
+		cost = 100
+		days_remove = 30
+		days_re_enable = 90 
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			check_variable = {
+				var = ANG_heishi_level
+				value = 5
+				compare = less_than_or_equals
+			}
+		}
+		visible = {
+			NOT = {
+				is_ai = yes
+			}
+		}
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+		complete_effect = {
+			add_stability = -0.05
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = ANG_heishi_level
+				value = 1
+			}
+			custom_effect_tooltip = ANG_heishi_level_up_text
+		}
+	}
 	ANG_ai_heishi_level_up = {
-
 		days_remove = 30
 		days_re_enable = 90 
 		ai_will_do = {
@@ -279,11 +311,14 @@ ANG_zousi = {
 	}
 }
 ##############征召军队和人力##########
-ANG_mil_decision_categories = {
+liyue_civil_war_decisions = {
 	ANG_raise_militias = {
 		cost = 50
 		days_remove = 180
 		days_re_enable = 360
+		allowed = {
+			tag = ANG
+		}
 		visible = {
 			has_country_flag = ANG_can_raise_mil
 		}
@@ -351,6 +386,12 @@ ANG_mil_decision_categories = {
 		cost = 20
 		days_remove = 60
 		days_re_enable = 120
+		visible = {
+			has_country_flag = ANG_can_zhuazhuangding
+		}
+		allowed = {
+			tag = ANG
+		}
 		modifier = {
 			training_time_army_factor = 0.2
 			stability_weekly = -0.005
@@ -770,6 +811,7 @@ ANG_bop_decisions_categories = {
 		}
 	}
 }
+###
 ANG_bop_decisions_categories_no_dlc = {
 	ANG_bop_decision_no_dlc = {
 		cost = 40

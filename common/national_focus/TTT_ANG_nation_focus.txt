@@ -11,9 +11,12 @@ focus_tree = {
 	focus = {
 		id = ANG_1_0   #饥荒问题
 		icon = GFX_goal_unknown
-		cost = 1.00
+		cost = 15.00
+		select_effect = {
+			country_event = { id = heiyan.1 }
+		}
 		completion_reward = {
- 
+			
 		}
 		x = 7
 		y = 0
@@ -354,7 +357,20 @@ focus_tree = {
 		x = 7
 		y = 6
 	}
-
+	focus = {
+		id = ANG_1_15 #社员互助
+		icon = GFX_goal_unknown
+		cost = 15.00
+		prerequisite = {
+			focus = ANG_1_13
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+		}
+		x = 5
+		y = 6
+	}
 
 
 
@@ -410,14 +426,10 @@ focus_tree = {
 			focus = ANG_2_2
 		}
 		completion_reward = {
-			add_ideas = Anarchy
-			add_ideas = flowersbloom_together
-			add_ideas = equalitarianism
-			add_ideas = Authoritative_release
-
+			country_event = { id = heiyan.11 }
 			custom_effect_tooltip = ANG_unlock_bop
 			set_country_flag = ANG_bop_is_began
-
+			add_political_power = 100
 			set_variable = {
 				var = ANG_bop_var
 				value = 50
@@ -630,6 +642,7 @@ focus_tree = {
 				remove_idea = ANG_idea_1_1
 				add_idea = ANG_idea_1_2
 			}
+			set_country_flag = ANG_can_zhuazhuangding
 		}
 		x = 15
 		y = 2
@@ -697,7 +710,7 @@ focus_tree = {
 			focus = ANG_3_4
 		}
 		completion_reward = {
-			
+			country_event = { id = heiyan.10 }
 		}
 		x = 14
 		y = 4
@@ -706,6 +719,9 @@ focus_tree = {
 		id = ANG_3_7 #先发制人
 		icon = GFX_goal_unknown
 		cost = 7.00
+		available = {
+			always = no
+		}
 		prerequisite = {
 			focus = ANG_3_6
 		}
@@ -713,7 +729,7 @@ focus_tree = {
 			focus = ANG_3_8
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ANG_focus_unlock
 		}
 		x = 12
 		y = 5
@@ -722,6 +738,9 @@ focus_tree = {
 		id = ANG_3_8 #坐山观虎斗
 		icon = GFX_goal_unknown
 		cost = 15.00
+		available = {
+			always = no
+		}
 		prerequisite = {
 			focus = ANG_3_6
 		}
@@ -729,7 +748,7 @@ focus_tree = {
 			focus = ANG_3_7
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ANG_focus_unlock
 		}
 		x = 16
 		y = 5
@@ -742,7 +761,7 @@ focus_tree = {
 			focus = ANG_3_7
 		}
 		completion_reward = {
-			
+			add_ideas = ANG_idea_8_0
 		}
 		x = 12
 		y = 6
@@ -819,7 +838,7 @@ focus_tree = {
 			focus = ANG_3_10
 		}
 		completion_reward = {
-			
+			add_ideas = ANG_idea_9_0
 		}
 		x = 17
 		y = 7
@@ -832,6 +851,7 @@ focus_tree = {
 			focus = ANG_3_11
 		}
 		completion_reward = {
+			custom_effect_tooltip = ANG_unlock_tongyiliyue_tooltip
 			set_country_flag = ANG_tongyiliyue_on
 			ANG_tongyiliyue_start = yes
 			
@@ -848,6 +868,7 @@ focus_tree = {
 			focus = ANG_3_13
 		}
 		completion_reward = {
+			custom_effect_tooltip = ANG_unlock_tongyiliyue_tooltip
 			set_country_flag = ANG_tongyiliyue_on
 			ANG_tongyiliyue_start = yes
 		}

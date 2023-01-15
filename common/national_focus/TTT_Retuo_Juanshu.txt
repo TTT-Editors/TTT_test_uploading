@@ -13,6 +13,7 @@ focus_tree = {
 		x = 21
 		y = 1
 		completion_reward = {
+			add_political_power = 50
 		    country_event = {
 			    id = retuo_juanshu.1
 			    days = 1
@@ -23,13 +24,14 @@ focus_tree = {
 	focus = {
 		id = RTG_nieerbuzi
 		icon = GFX_goal_RTG_nieerbuzi
-		cost = 7
+		cost = 14
 		prerequisite = {
 			focus = RTG_guyou
 		}
 		x = 21
 		y = 2
 		completion_reward = {
+			add_political_power = 100
 		    add_ideas = RTG_nie_erbuzi
 			hidden_effect = {
 			    country_event = {
@@ -181,24 +183,24 @@ focus_tree = {
 		y = 5
 		completion_reward = {
 		    155 = {
-			    add_extra_state_shared_building_slots = 2
+			    add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-				    type = industrial_complex
-					level = 2
+				    type = arms_factory
+					level = 1
 				}
 			}
 			207 = {
-			    add_extra_state_shared_building_slots = 2
+			    add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 				    type = industrial_complex
-					level = 2
+					level = 1
 				}
 			}
 			208 = {
-			    add_extra_state_shared_building_slots = 2
+			    add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 				    type = industrial_complex
-					level = 2
+					level = 1
 				}
 			}
 		}
@@ -429,7 +431,7 @@ focus_tree = {
 	focus = {
 		id = RTG_qirubuzai
 		icon = GFX_goal_RTG_qirubuzai
-		cost = 21
+		cost = 28
 		ai_will_do = {
 		    base = 20
 		}
@@ -453,7 +455,7 @@ focus_tree = {
 	focus = {
 		id = RTG_buxiangwanglai
 		icon = GFX_goal_unknown
-		cost = 28
+		cost = 21
 		ai_will_do = {
 		    base = 5
 		}
@@ -474,7 +476,7 @@ focus_tree = {
 	focus = {
 		id = RTG_yiqie_doujiang_ronghe
 		icon = GFX_goal_unknown
-		cost = 28
+		cost = 35
 		ai_will_do = {
 		    base = 5
 		}
@@ -495,7 +497,7 @@ focus_tree = {
 	focus = {
 		id = RTG_yuansu_gongming
 		icon = GFX_goal_RTG_yuansu_gongming
-		cost = 14
+		cost = 7
 		prerequisite = {
 			focus = RTG_nieerbuzi
 		}
@@ -558,7 +560,7 @@ focus_tree = {
 	focus = {
 		id = RTG_laoji_shannian
 		icon = GFX_goal_unknown
-		cost = 28
+		cost = 21
 		prerequisite = {
 			focus = RTG_fenlizhijun
 			focus = RTG_juli_chansheng_wujie
@@ -573,7 +575,7 @@ focus_tree = {
 	focus = {
 		id = RTG_laoji_liyue
 		icon = GFX_goal_unknown
-		cost = 28
+		cost = 21
 		prerequisite = {
 			focus = RTG_juli_chansheng_wujie
 			focus = RTG_fenlizhijun
@@ -588,7 +590,7 @@ focus_tree = {
 	focus = {
 		id = RTG_laoji_qiyue
 		icon = GFX_goal_unknown
-		cost = 28
+		cost = 21
 		prerequisite = {
 			focus = RTG_juli_chansheng_wujie
 			focus = RTG_fenlizhijun
@@ -934,6 +936,7 @@ focus_tree = {
 		x = 21
 		y = 10
 		completion_reward = {
+			add_political_power = 120
 		    add_ideas = RTG_changming_deng
 			create_faction = south_liyue_alliance
 			hidden_effect = {
@@ -1383,7 +1386,14 @@ focus_tree = {
 		available = {
 			custom_trigger_tooltip = {
 		        tooltip = RTG_full_controls_liyue_except_guyunge	
-                has_completely_conrols_liyue_except_guyunge = yes
+                NOT = { country_exists = NNG }
+				NOT = { country_exists = XOG }
+				NOT = { country_exists = XQG }
+				NOT = { country_exists = KQG }
+				NOT = { country_exists = XRG }
+				NOT = { country_exists = ANG }
+				NOT = { country_exists = LYU }
+				NOT = { country_exists = ZDG }
 	        } 
 		}
 		completion_reward = {
@@ -1452,6 +1462,7 @@ focus_tree = {
 		x = 8
 		y = 9
 		completion_reward = {
+			add_ideas = war_economy #战时经济
 		    add_timed_idea = {
 			    idea = RTG_shiming_jianglin
 				days = 180

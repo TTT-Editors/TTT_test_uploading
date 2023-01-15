@@ -4,7 +4,7 @@
 #so if you have better ideas such as transfer navy, unite at peace or recruit characters, you can also put them into these decisons.
 #i'm really a caibi.
 
-liyue_civil_war_decisions = #{
+liyue_civil_war_decisions = {
 
 	ZDG_offensive_in_one_year = {
 
@@ -15,6 +15,7 @@ liyue_civil_war_decisions = #{
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = ZDG_has_win_the_northern_war
+				original_tag = ZDG
 				XOG = { exists = no }
 				XRG = { exists = no }
 			}
@@ -26,6 +27,7 @@ liyue_civil_war_decisions = #{
 
 		activation = {
 			OR = {
+				original_tag = ZDG
 				has_war_with = XOG
 				has_war_with = XRG
 			}
@@ -65,8 +67,8 @@ liyue_civil_war_decisions = #{
 		activation = {
 			has_war_with = ZDG
 			OR = {
-				tag = XOG
-				tag = XRG
+				original_tag = XOG
+				original_tag = XRG
 			}
 		}
 
@@ -76,9 +78,7 @@ liyue_civil_war_decisions = #{
 			custom_effect_tooltip = anti_ZDG_we_win
 		}
 	}
-#}
-#
-defeat_or_annex_other_warlords = {
+	
 	#Get rid of Zhidong invaders
 	#ZDG - 167
 	defeat_zdg = {
@@ -653,20 +653,26 @@ defeat_or_annex_other_warlords = {
 		fire_only_once = no
 		
 		visible ={
-		custom_trigger_tooltip = {
-		has_global_flag = Liyue_Civil_War
-		or = {
-		original_tag = XRG
-		original_tag = RTG
-		original_tag = ANG
-		original_tag = LYU
-		original_tag = XQG
-		original_tag = NNG
-		original_tag = XOG
-		original_tag = ARF
-		KQG = { has_government = reformism }
+			has_global_flag = Liyue_Civil_War
+			OR = {
+				original_tag = XRG
+				original_tag = RTG
+				original_tag = ANG
+				original_tag = LYU
+				original_tag = XQG
+				original_tag = NNG
+				original_tag = XOG
+				original_tag = ARF
+				AND = {
+					tag = KQG
+					has_government = reformism
+				}
+				AND = {
+					tag = RTG
+					NOT = { has_government = hive_mind }
+					
+				}
 	        }
-	    }
 		}
 				
 		remove_effect = {
@@ -710,19 +716,26 @@ defeat_or_annex_other_warlords = {
 		
 		visible = {
 		custom_trigger_tooltip = {
-		has_global_flag = Liyue_Civil_War
-		or = {
-		original_tag = XRG
-		original_tag = RTG
-		original_tag = ANG
-		original_tag = LYU
-		original_tag = XQG
-		original_tag = NNG
-		original_tag = XOG
-		original_tag = ARF
-		KQG = { has_government = reformism }
+			has_global_flag = Liyue_Civil_War
+			OR = {
+				original_tag = XRG
+				original_tag = RTG
+				original_tag = ANG
+				original_tag = LYU
+				original_tag = XQG
+				original_tag = NNG
+				original_tag = XOG
+				original_tag = ARF
+				AND = {
+					tag = KQG
+					has_government = reformism
+				}
+				AND = {
+					tag = RTG
+					NOT = { has_government = hive_mind }
+					
+				}
 	        }
-	    }
 		}		
 		
 		remove_effect = {

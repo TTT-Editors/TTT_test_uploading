@@ -1,10 +1,9 @@
-
 focus_tree = {
 	id = ben_lang_ling_focustree
 	country = {
 		factor = 0
 		modifier = {
-			add = 0
+			add = 10
 			tag = BLL
 		}
 	}
@@ -24,7 +23,7 @@ focus_tree = {
                 has_completed_focus = BLL_ZI_YOU_LI_NIAN_DE_CHONG_XIN_QUAN_SHI
                 }
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
             factor = 0
         }
@@ -32,7 +31,11 @@ focus_tree = {
             add_popularity = { 
                 ideology =  left_wing_anarchism
                 popularity = 0.3 
-                }
+            }
+            set_politics = { 
+                ruling_party =left_wing_anarchism
+                elections_allowed = no
+            }
         }
     }
 
@@ -45,7 +48,7 @@ focus_tree = {
         prerequisite = {
             focus =BLL_ZI_YOU_CHUAN_TONG
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
             factor = 0
         }
@@ -54,14 +57,8 @@ focus_tree = {
             add_war_support = 0.2
             set_rule = { 
                 can_send_volunteers = yes
-                }
-            add_country_leader_role = {
-				character = FRA_leon_blum
-				country_leader = {
-					ideology = left_wing_anarchism
-				}
-				promote_leader = yes
-			}
+            }
+            add_to_variable = {BLL_1_dynamic_modifier_send_volunteer_divisions_required = -0.7}
         }
     }
 
@@ -74,7 +71,7 @@ focus_tree = {
         prerequisite = {
             focus =BLL_FOU_REN_QUAN_WEI
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
             factor = 0
         }
@@ -94,12 +91,17 @@ focus_tree = {
         prerequisite = {
             focus =BLL_QU_DI_ZHEN_ZHI_HOU_DONG
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
             factor = 0
         }
         completion_reward = {
-            weekly_manpower = 1000
+            add_dynamic_modifier = {
+	            modifier = BLL_1_dynamic_modifier
+            }
+            add_to_variable = {BLL_1_dynamic_modifier_left_wing_anarchism_drift = 0.01}
+            add_to_variable = {BLL_1_dynamic_modifier_drift_defence_factor = 0.1}
+            add_to_variable = {BLL_1_dynamic_modifier_research_speed_factor = 0.05}
             if = {
                 limit = {
                     has_idea = BLL_NAN_MIN_YONG_RU_1
@@ -128,7 +130,7 @@ focus_tree = {
         prerequisite = {
             focus =BLL_PING_DENG_YUAN_ZE
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
             factor = 0
         }
@@ -146,7 +148,7 @@ focus_tree = {
         prerequisite = {
             focus =BLL_JI_CHENG_QUAN_FEI_FA
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
             factor = 0
         }
@@ -164,15 +166,15 @@ focus_tree = {
         prerequisite = {
             focus =BLL_ZHI_JIE_MIN_ZHU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
             factor = 0
         }
         completion_reward = {
-            add_dynamic_modifier = {
-	            modifier = BLL_1_dynamic_modifier
-            }
-            add_stability =0.2
+            add_to_variable = { BLL_1_dynamic_modifier_weekly_manpower= 500 }
+            add_to_variable = { BLL_1_dynamic_modifier_compliance_growth = 0.1 }    
+            add_stability =0.1
+            add_war_support = 0.1
         }
     }
 ###国策名：自由理念的重新诠释
@@ -189,20 +191,16 @@ focus = {
                 has_completed_focus = BLL_ZI_YOU_CHUAN_TONG
             }
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            authoritarianism_drift = 0.2
-            add_country_leader_role = {
-				character = FRA_leon_blum
-				country_leader = {
-					ideology = authoritarianism
-				}
-				promote_leader = yes
-                }
+            add_popularity = { 
+                ideology = authoritarianism
+                popularity = 0.3 
             }
+        }
     }
 
 ###国策名：有限自由
@@ -214,11 +212,15 @@ focus = {
         prerequisite = {
             focus =BLL_ZI_YOU_LI_NIAN_DE_CHONG_XIN_QUAN_SHI
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
+            set_politics = { 
+                ruling_party = authoritarianism
+                elections_allowed = no
+            }
             add_stability = 0.2
         }
     }
@@ -232,12 +234,14 @@ focus = {
         prerequisite = {
             focus =BLL_YOU_XIAN_ZI_YOU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            add_ideas = BLL_TUAN_JIE_YI_ZHI       
+            add_ideas = BLL_TUAN_JIE_YI_ZHI
+            add_to_variable = {BLL_1_dynamic_modifier_authoritarianism_drift = 0.02}
+
         }
     }
 
@@ -250,7 +254,7 @@ focus = {
         prerequisite = {
             focus =BLL_CHUANG_JIAN_GUO_JIA_JI_QI
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -268,7 +272,7 @@ focus = {
         prerequisite = {
             focus =BLL_JING_CHA_BAO_HU_GONG_MIN
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -305,12 +309,17 @@ focus = {
         prerequisite = {
             focus =BLL_ZHENG_FU_ZHU_DAO_GONG_GONG_ZHI_XU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-             ##待定
+            add_dynamic_modifier = {
+	            modifier = BLL_2_dynamic_modifier
+            }
+            add_to_variable = { BLL_2_dynamic_modifier_stability_factor = 0.2}
+            add_to_variable = { BLL_2_dynamic_modifier_political_power_factor = 0.1 }     
+            add_to_variable = { BLL_2_dynamic_modifier_resistance_decay = 0.1}
         }
     }
 
@@ -323,12 +332,13 @@ focus = {
         prerequisite = {
             focus =BLL_XUE_XI_MENG_DE_ZHNEG_FU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
             ##解锁所有顾问
+            add_research_slot = 1
         }
     }
 
@@ -343,7 +353,7 @@ focus = {
             focus =BLL_SHE_HU_ZI_ZHI
         }
          
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -353,10 +363,10 @@ focus = {
 					is_controlled_by = ROOT
 					is_core_of = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -373,7 +383,7 @@ focus = {
         prerequisite = {
             focus = BLL_ZHONG_YANG_YIN_HANG
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -392,7 +402,7 @@ focus = {
         prerequisite = {
             focus =BLL_GUO_YOU_JIN_CHU_KOU_JAO_YI_GONG_SI
             }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -426,13 +436,22 @@ focus = {
         mutually_exclusive = {
             focus =BLL_MENG_DE_DE_GUO_JIA_GONG_YUAN
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            add_ideas = BLL_ZHEN_XING_SHU
-            ##启用工业企业：工商业振兴署+20建设速度
+                add_to_variable = { BLL_1_dynamic_modifier_tank_manufacturer_cost_factor = -0.1}
+                add_to_variable = {BLL_1_dynamic_modifier_naval_manufacturer_cost_factor= -0.1}
+                add_to_variable = {BLL_1_dynamic_modifier_aircraft_manufacturer_cost_factor= -0.1}
+                add_to_variable = {BLL_1_dynamic_modifier_materiel_manufacturer_cost_factor= -0.1}
+                add_to_variable = {BLL_1_dynamic_modifier_industrial_concern_cost_factor= -0.1}
+                add_to_variable = {BLL_2_dynamic_modifier_production_speed_arms_factory_factor = 0.05}
+                add_to_variable = {BLL_2_dynamic_modifier_production_speed_industrial_complex_factor =0.05} 
+                add_to_variable = {BLL_2_dynamic_modifier_production_speed_synthetic_refinery_factor=0.05}
+                add_to_variable = {BLL_2_dynamic_modifier_production_speed_dockyard_factor=0.05}
+                add_to_variable = {BLL_2_dynamic_modifier_production_speed_infrastructure_factor=0.05} 
+            ##启用工业企业：工商业振兴署+15建设速度+10工厂产出
         }
     }
 
@@ -445,7 +464,7 @@ focus = {
         prerequisite = {
             focus =BLL_GONG_SHANG_YE_ZHEN_XING_SHU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -455,13 +474,17 @@ focus = {
 					is_controlled_by = ROOT
 					is_core_of = ROOT
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 6
+					level = 3
 					instant_build = yes
                 }
             }
+            add_to_variable = {BLL_1_dynamic_modifier_industrial_capacity_factory = 0.1}
+            add_to_variable = {BLL_1_dynamic_modifier_industrial_capacity_dockyard = 0.1}
+            add_to_variable = {BLL_2_dynamic_modifier_industrial_capacity_factory = 0.1}
+            add_to_variable = {BLL_2_dynamic_modifier_industrial_capacity_dockyard =0.1}
             remove_ideas = BLL_ZI_RAN_JING_TU_2
 			add_ideas = BLL_ZI_RAN_JING_TU_3		    
         }
@@ -479,11 +502,12 @@ focus = {
         mutually_exclusive = {
             focus =BLL_GONG_SHANG_YE_ZHEN_XING_SHU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
+            remove_ideas = BLL_ZI_RAN_JING_TU_2
             add_ideas = BLL_ZI_RAN_JING_TU_PLUS       
         }
     }
@@ -497,7 +521,7 @@ focus = {
         prerequisite = {
             focus =BLL_GONG_YE_HUA
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -507,21 +531,18 @@ focus = {
 					is_controlled_by = ROOT
 					is_core_of = ROOT
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 6
+					level = 3
 					instant_build = yes
                     }
                 }
-                BLL_BEI_FENG_LANG_WANG_DE_JUAN_GU = {
-                modifier = {
-                industrial_capacity_factory = 0.1
-				industrial_capacity_dockyard = 0.1
-                }
-                }
+                add_to_variable = {BLL_1_dynamic_modifier_production_factory_max_efficiency_factor = 0.075}
+                add_to_variable = {BLL_1_dynamic_modifier_production_factory_efficiency_gain_factor = 0.075}
+                add_to_variable = {BLL_2_dynamic_modifier_production_factory_max_efficiency_factor = 0.075}
+                add_to_variable = {BLL_2_dynamic_modifier_production_factory_efficiency_gain_factor = 0.075}
 			    remove_ideas = BLL_ZI_RAN_JING_TU_3
-                    
             }
         }
     
@@ -531,7 +552,7 @@ focus = {
         icon = GFX_goal_unknown        	
 		x = 16
         y = 0
-        cost = 1
+        cost = 70
         available = {
  			has_war = no 	
 		}	
@@ -539,27 +560,11 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-           if = {
-			limit = {
-				has_completed_focus = BLL_GONG_YE_HUA
-			}
-			add_ideass = partial_economic_mobilisation
-            }
-		else = {
-			245 = {
-			add_building_construction = {
-                limit = {
-                    is_controlled_by = ROOT
-					is_core_of = ROOT
+			    add_ideas = partial_economic_mobilisation
+                add_dynamic_modifier = {
+                    modifier = BLL_3_dynamic_modifier
                 }
-                add_extra_state_shared_building_slots = 2
-				type = arms_factory
-				level = 2
-				instant_build = yes
-			}
-		        }
-		}
-		
+                add_to_variable = {BLL_3_dynamic_modifier_attrition = -0.1}
         }
     }
 
@@ -572,14 +577,14 @@ focus = {
         prerequisite = {
             focus =BLL_ZHAN_QIAN_JUN_SHI_JIAN_SHE
         }
-        cost = 1	
+        cost = 70	
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-			army_experience = 100
-            command_power_gain = 1
-            max_command_power = 50
+			army_experience = 100 
+            add_to_variable = {BLL_3_dynamic_modifier_command_power_gain = 0.05}
+            add_to_variable = {BLL_3_dynamic_modifier_max_command_power = 50}
 		}
         
     }
@@ -593,12 +598,12 @@ focus = {
         prerequisite = {
             focus =BLL_JIAN_LI_ZONG_CAN_MOU_BU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            add_ideass = limited_conscription
+            add_ideas = limited_conscription
         }
     }
 
@@ -611,7 +616,7 @@ focus = {
         prerequisite = {
             focus =BLL_GONG_MIN_BING_ZHI_DU
         }
-        cost = 1
+        cost = 70
         available = { 		
 				
 		}
@@ -619,17 +624,7 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            army_leader_start_level = 1
-            every_army_leader = {
-			add_attack = 1
-			add_defense = 1
-			add_planning = 1
-			add_logistics = 2
-			add_skill_level = 1
-			    add_unit_leader_trait ={
-                adaptable
-                }			
-		    }
+            add_research_slot = 1
         }
     }
 
@@ -642,7 +637,7 @@ focus = {
         prerequisite = {
             focus =BLL_JUN_SHI_XUE_YUAN_JI_HWA
         }
-        cost = 1
+        cost = 70
         available = { 		
 				
 		}
@@ -650,11 +645,7 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            army_core_attack_factor = 0.2
-	        army_core_defence_factor = 0.2
-            mobilization_speed = 0.2
-            army_org_factor = 0.1
-	        army_morale_factor = 0.1
+            add_to_variable = {BLL_3_dynamic_modifier_army_org_factor=0.05}
         }
     }
 
@@ -667,7 +658,7 @@ focus = {
         prerequisite = {
             focus =BLL_YIN_JIN_XIAN_JIN_JUN_SHI_ZHUAN_JIA
         }
-        cost = 1
+        cost = 70
         available = { 		
 				
 		}
@@ -675,9 +666,8 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            experience_loss_factor = -0.2 ##有经验的士兵损失减少20%
-            experience_gain_army_factor = 0.1 ##陆军经验获得
-            planning_speed = 0.2
+            add_to_variable = {BLL_3_dynamic_modifier_experience_gain_army_factor=0.05}
+            custom_effect_tooltip = BLL_XUN_LIAN_YOU_SU_DE_JUN_GUAN_tt
         }
     }
 
@@ -690,15 +680,15 @@ focus = {
         prerequisite = {
             focus =BLL_XUN_LIAN_YOU_SU_DE_JUN_GUAN
         }
-        cost = 1
+        cost = 70
         available = { 		
 				
 		}
         ai_will_do = {
-                factor = 1
+            factor = 1
         }
         completion_reward = {
-            max_dig_in = 20
+            add_to_variable = {BLL_3_dynamic_modifier_max_dig_in = 5}
         }
     }
 
@@ -706,12 +696,12 @@ focus = {
 focus = {
     id = BLL_HOU_QIN_BU_JIAN_SHE
         icon = GFX_goal_unknown        	
-		x = 14
-        y = 6
+		x = 16
+        y = 7
         prerequisite = {
-            focus =BLL_XUN_LIAN_YOU_SU_DE_JUN_GUAN
+            focus = BLL_GONG_CHENG_BING_TUAN_JIAN_SHE
         }
-        cost = 1
+        cost = 70
         available = { 		
 				
 		}
@@ -719,8 +709,7 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            supply_consumption_factor = -0.20
-            no_supply_grace = 2400
+            add_to_variable = {BLL_3_dynamic_modifier_supply_consumption_factor = -0.1}
         }
     }
 
@@ -728,12 +717,12 @@ focus = {
 focus = {
     id = BLL_YE_ZHAN_YI_LIAO_JIAN_SHE
         icon = GFX_goal_unknown        
-		x = 16
-        y = 7
+		x = 14
+        y = 6
         prerequisite = {
-            focus =BLL_GONG_CHENG_BING_TUAN_JIAN_SHE
+            focus =BLL_XUN_LIAN_YOU_SU_DE_JUN_GUAN
         }
-        cost = 1
+        cost = 70
         available = { 		
 				
 		}
@@ -741,31 +730,7 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            casualty_trickleback = 0.5
-        }
-    }
-
-###国策名：防空部队建设
-focus = {
-    id = BLL_FANG_KONG_BU_DUI
-        icon = GFX_goal_unknown        
-		x = 16
-        y = 8
-        prerequisite = {
-            focus =BLL_YE_ZHAN_YI_LIAO_JIAN_SHE
-        }
-        cost = 1
-        available = { 		
-			has_war = no 	
-		}
-        ai_will_do = {
-                factor = 1
-        }
-        completion_reward = {
-            add_equipment_to_stockpile = {
-            type = anti_air_equipment_1
-            amount = 100000
-            }
+            add_to_variable = {BLL_3_dynamic_modifier_casualty_trickleback = 0.2}
         }
     }
 
@@ -778,7 +743,7 @@ focus = {
         prerequisite = {
             focus =BLL_XUN_LIAN_YOU_SU_DE_JUN_GUAN
         }
-        cost = 1
+        cost = 70
         available = { 		
 
 		}
@@ -793,7 +758,7 @@ focus = {
 			    }
                 add_resource = {
 				type = wood
-				amount = 50
+				amount = 100
 			    }
             }
         }
@@ -802,56 +767,44 @@ focus = {
 focus = {
     id = BLL_ZHAN_SHI_JING_JI
         icon = GFX_goal_unknown
-        x = 20
-        y = 0
-        cost = 1
-        available = { 
-            has_war = yes
-        }
+        x = 5
+        y = 1
+        cost = 70
+        ##available = { 
+            ##has_war = yes
+       ## }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            add_ideass = war_economy
-            add_ideass = closed_economy
+            add_ideas = war_economy
+            add_ideas = closed_economy
+            add_war_support = 0.2
+            add_dynamic_modifier = {
+                    modifier = BLL_4_dynamic_modifier
+            }
         }
     }
 
-###国策名：先军政策
-focus = {
-    id = BLL_XIAN_JUN_ZHENG_CE
-        icon = GFX_goal_unknown
-        x = 20
-        y = 1
-        prerequisite = {
-            focus =BLL_ZHAN_SHI_JING_JI
-        }
-        cost = 1
-        ai_will_do = {
-                factor = 1
-        }
-        completion_reward = {
-            add_manpower = 100000
-        }
-    }
 
 ###国策名：空军部
 focus = {
     id = BLL_KONG_JUN_BU
         icon = GFX_goal_unknown
-        x = 22
+        x = 7
         y = 2
         prerequisite = {
-            focus =BLL_XIAN_JUN_ZHENG_CE
+            focus =BLL_ZHAN_SHI_JING_JI
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            research_bonus = {
-		    light_fighter = 0.2
-	        }
+            air_experience = 50
+            add_dynamic_modifier = {
+                    modifier = BLL_5_dynamic_modifier
+            }
         }
     }
 
@@ -859,12 +812,12 @@ focus = {
 focus = {
     id = BLL_SHI_YOU_JIN_JI_KAI_CAI
         icon = GFX_goal_unknown
-        x = 20
+        x = 5
         y = 2
         prerequisite = {
-            focus =BLL_XIAN_JUN_ZHENG_CE
+            focus =BLL_ZHAN_SHI_JING_JI
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -872,7 +825,7 @@ focus = {
             245 = {
                 add_resource = {
 				type = oil
-				amount = 50
+				amount = 25
 			    }
             }
         }
@@ -882,12 +835,12 @@ focus = {
 focus = {
     id = BLL_SHI_YOU_WEN_BU_KAI_CAI
         icon = GFX_goal_unknown
-        x = 20
+        x = 5
         y = 3
         prerequisite = {
             focus =BLL_SHI_YOU_JIN_JI_KAI_CAI
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
@@ -905,17 +858,17 @@ focus = {
 focus = {
     id = BLL_BEN_LANG_LING_SHI_YOU_KAI_FA
         icon = GFX_goal_unknown
-        x = 20
+        x = 5
         y = 4
         prerequisite = {
             focus =BLL_SHI_YOU_WEN_BU_KAI_CAI
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            local_resources_factor = 0.2
+            add_to_variable = {BLL_4_dynamic_modifier_local_resources_factor = 0.1}
         }
     }
 
@@ -923,18 +876,18 @@ focus = {
 focus = {
     id = BLL_LU_PI_KA_FEI_XING
         icon = GFX_goal_unknown
-        x = 22
+        x = 7
         y = 3
         prerequisite = {
             focus =BLL_KONG_JUN_BU
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            air_superiority_efficiency = 0.1
-            air_intercept_efficiency = 0.1
+            add_to_variable = {BLL_5_dynamic_modifier_air_fuel_consumption_factor = -0.1}
+            add_to_variable = {BLL_5_dynamic_modifier_air_agility_factor = 0.1}
         }
     }
 
@@ -942,24 +895,18 @@ focus = {
 focus = {
     id = BLL_BAO_WEI_LING_KONG
         icon = GFX_goal_unknown
-        x = 22
+        x = 7
         y = 4
         prerequisite = {
             focus =BLL_LU_PI_KA_FEI_XING
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            add_equipment_to_stockpile = {
-            type = light_fighter 
-            amount = 100
-            }
-            add_equipment_to_stockpile = {
-            type = cas_bomber
-            amount = 100
-            }
+            add_to_variable = {BLL_5_dynamic_modifier_air_intercept_efficiency = 0.1}
+            add_to_variable = {BLL_5_dynamic_modifier_air_superiority_efficiency = 0.1}
         }
     }
 
@@ -967,30 +914,30 @@ focus = {
 focus = {
     id = BLL_ZHAN_SHI_LU_JUN_BU
         icon = GFX_goal_unknown
-        x = 18
+        x = 3
         y = 2
         prerequisite = {
-            focus =BLL_XIAN_JUN_ZHENG_CE
+            focus =BLL_ZHAN_SHI_JING_JI
         }
         available = {
             not = {
             has_completed_focus = BLL_JIAN_LI_ZONG_CAN_MOU_BU
             }
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            army_chief_cost_factor = -0.2
+            add_to_variable = {BLL_4_dynamic_modifier_supply_consumption_factor = 0.1}
         }
     }
 
-###国策名：紧急军备采购
+###国策名：紧急征兵
 focus = {
-    id = BLL_JIN_JI_JUN_BEI_CAI_GOU
+    id = BLL_JIN_JI_ZHEN_BING
         icon = GFX_goal_unknown
-        x = 18
+        x = 3
         y = 3
         prerequisite = {
             focus = BLL_ZHAN_SHI_LU_JUN_BU
@@ -1000,15 +947,13 @@ focus = {
 		        has_completed_focus = BLL_JIAN_LI_ZONG_CAN_MOU_BU
             }
 	    }	
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            add_equipment_to_stockpile = {
-            type = infantry_weapons 
-            amount = 10000
-            }
+            add_ideas = extensive_conscription
+            add_to_variable = {BLL_4_dynamic_modifier_mobilization_speed = 0.2}
         }
     }
 
@@ -1016,28 +961,22 @@ focus = {
 focus = {
     id = BLL_GUO_MIN_WEI_DUI
         icon = GFX_goal_unknown
-        x = 18
+        x = 3
         y = 4
         prerequisite = {
-            focus = BLL_JIN_JI_JUN_BEI_CAI_GOU
+            focus = BLL_JIN_JI_ZHEN_BING
         }
         available = {
             not = {
 		        has_completed_focus = BLL_JIAN_LI_ZONG_CAN_MOU_BU
             }
 	    }	
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            equipment_bonus = {
-		    infantry_weapons  = {
-			build_cost_ic = -0.1
-			instant = yes
-		        }
-	        }
-            #add_ideas = limited_conscription
+            add_to_variable = {BLL_4_dynamic_modifier_conscription_factor = 0.25}
         }
     }
 
@@ -1045,19 +984,21 @@ focus = {
     focus = {
     id = BLL_TE_ZHAN_BU_DUI
         icon = GFX_goal_unknown
-        x = 20
+        x = 5
         y = 5
         prerequisite = {
             focus =BLL_GUO_MIN_WEI_DUI
             focus =BLL_BAO_WEI_LING_KONG
             focus =BLL_BEN_LANG_LING_SHI_YOU_KAI_FA
         }
-        cost = 1
+        cost = 70
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ##获得山地师
+            add_to_variable = {BLL_4_dynamic_modifier_no_supply_grace = 48}
+            add_to_variable = {BLL_4_dynamic_modifier_supply_consumption_factor = -0.1}
+            add_to_variable = {BLL_4_dynamic_modifier_attrition = -0.1}
         }
     }
 }

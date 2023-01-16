@@ -4,16 +4,15 @@
 duplicate_archetypes = {
 
 	# small_plane
-	
+
 	small_plane_cas_airframe = {
 		archetype = small_plane_airframe
 		type = cas
 		picture = archetype_CAS_equipment
 		variant_name = {
-			pre_modern_small_plane_cas_airframe_0 = pre_modern_CAS_equipment_0
-			pre_modern_small_plane_cas_airframe_1 = pre_modern_CAS_equipment_1
-			pre_modern_small_plane_cas_airframe_2 = pre_modern_CAS_equipment_2
 			small_plane_cas_airframe_1 = CAS_equipment_1
+			small_plane_cas_airframe_2 = CAS_equipment_2
+			small_plane_cas_airframe_3 = CAS_equipment_3
 		}
 		air_map_icon_frame = 2
 		interface_overview_category_index = 0
@@ -25,10 +24,9 @@ duplicate_archetypes = {
 		ai_type = cv_cas
 		picture = archetype_CAS_equipment
 		variant_name = {
-			cv_pre_modern_small_plane_cas_airframe_0 = cv_pre_modern_CAS_equipment_0
-			cv_pre_modern_small_plane_cas_airframe_1 = cv_pre_modern_CAS_equipment_1
-			cv_pre_modern_small_plane_cas_airframe_2 = cv_pre_modern_CAS_equipment_2
 			cv_small_plane_cas_airframe_1 = cv_CAS_equipment_1
+			cv_small_plane_cas_airframe_2 = cv_CAS_equipment_3
+			cv_small_plane_cas_airframe_3 = cv_CAS_equipment_2
 		}
 		air_map_icon_frame = 17
 		interface_overview_category_index = 0
@@ -39,10 +37,9 @@ duplicate_archetypes = {
 		type = naval_bomber
 		picture = archetype_heavy_fighter_equipment
 		variant_name = {
-			pre_modern_small_plane_naval_bomber_airframe_0 = pre_modern_nav_bomber_equipment_0
-			pre_modern_small_plane_naval_bomber_airframe_1 = pre_modern_nav_bomber_equipment_1
-			pre_modern_small_plane_naval_bomber_airframe_2 = pre_modern_nav_bomber_equipment_2
 			small_plane_naval_bomber_airframe_1 = nav_bomber_equipment_1
+			small_plane_naval_bomber_airframe_2 = nav_bomber_equipment_2
+			small_plane_naval_bomber_airframe_3 = nav_bomber_equipment_3
 		}
 		air_map_icon_frame = 3
 		interface_overview_category_index = 2
@@ -54,10 +51,9 @@ duplicate_archetypes = {
 		ai_type = cv_naval_bomber
 		picture = archetype_heavy_fighter_equipment
 		variant_name = {
-			cv_pre_modern_small_plane_naval_bomber_airframe_0 = cv_pre_modern_nav_bomber_equipment_0
-			cv_pre_modern_small_plane_naval_bomber_airframe_1 = cv_pre_modern_nav_bomber_equipment_1
-			cv_pre_modern_small_plane_naval_bomber_airframe_2 = cv_pre_modern_nav_bomber_equipment_2
 			cv_small_plane_naval_bomber_airframe_1 = cv_nav_bomber_equipment_1
+			cv_small_plane_naval_bomber_airframe_2 = cv_nav_bomber_equipment_2
+			cv_small_plane_naval_bomber_airframe_3 = cv_nav_bomber_equipment_3
 		}
 		air_map_icon_frame = 18
 		interface_overview_category_index = 2
@@ -69,10 +65,7 @@ duplicate_archetypes = {
 		type = suicide
 		picture = archetype_rocket_interceptor_equipment
 		variant_name = {
-			pre_modern_small_plane_suicide_airframe_0 = pre_modern_rocket_suicide_equipment_0
-			pre_modern_small_plane_suicide_airframe_1 = pre_modern_rocket_suicide_equipment_1
-			pre_modern_small_plane_suicide_airframe_2 = pre_modern_rocket_suicide_equipment_2
-			small_plane_suicide_airframe_1 = rocket_suicide_equipment_1
+			small_plane_suicide_airframe_3 = rocket_suicide_equipment_1
 		}
 		air_map_icon_frame = 15
 		interface_overview_category_index = -1 # Do not include these in the intel or airforce overview.
@@ -171,10 +164,8 @@ duplicate_archetypes = {
 }
 
 equipments = {
-
-	# Basic Fighter
-	primitive_fighter_equipment_0 = {
-		year = 1970
+	fighter_equipment_0 = {
+		year = 1933
 
 		archetype = small_plane_airframe
 		priority = 5
@@ -184,14 +175,14 @@ equipments = {
 			interception
 		}
 
-		air_range = 200
-		maximum_speed = 90
-		air_agility = 15
-		air_attack = 4
-		air_defence = 3
-		
-		naval_strike_attack = 0.4
-		naval_strike_targetting = 0.4
+		air_range = 570
+		maximum_speed = 330
+		air_agility = 45
+		air_attack = 9
+		air_defence = 8
+
+		naval_strike_attack = 1
+		naval_strike_targetting = 10
 
 		upgrades = {
 			plane_gun_upgrade
@@ -200,19 +191,19 @@ equipments = {
 			plane_reliability_upgrade
 		}
 
-		air_superiority = 0.4
-		reliability = 0.5
+		air_superiority = 1
+		reliability = 0.8
 
 		# Air vs Navy - low damage / high hit chance / easy to hurt
-		naval_strike_attack = 0.4
-		naval_strike_targetting = 0.4
-		surface_detection = 2 # For airwing of 100 planes (Destroyer I: 20 surface detection)
-		sub_detection = 0 # For airwing of 100 planes (Destroyer I: 5 sub detection )
+		naval_strike_attack = 1
+		naval_strike_targetting = 10
+		surface_detection = 10 # For airwing of 100 planes (Destroyer I: 20 surface detection)
+		sub_detection = 2.5 # For airwing of 100 planes (Destroyer I: 5 sub detection )
 
 		#Space taken in convoy
 		lend_lease_cost = 8
 
-		build_cost_ic = 12
+		build_cost_ic = 22
 		resources = {
 			#oil = 1
 			aluminium = 2
@@ -220,8 +211,8 @@ equipments = {
 		}
 
 		manpower = 20
-		fuel_consumption = 0.05
-		
+		fuel_consumption = 0.21
+
 	}
 
 	# Basic Fighter
@@ -229,7 +220,7 @@ equipments = {
 		year = 1936
 
 		archetype = small_plane_airframe
-		parent = primitive_fighter_equipment_0
+		parent = fighter_equipment_0
 		priority = 10
 
 		air_range = 700

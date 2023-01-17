@@ -311,7 +311,7 @@ ANG_zousi = {
 	}
 }
 ##############征召军队和人力##########
-liyue_civil_war_decisions = {
+ANG_mil_decision_categories = {
 	ANG_raise_militias = {
 		cost = 50
 		days_remove = 180
@@ -403,6 +403,49 @@ liyue_civil_war_decisions = {
 		}
 		remove_effect = {
 			add_manpower = 20000
+		}
+	}
+	ANG_zuozhanjihua = { #制定作战计划
+		cost = 50
+		days_re_enable = 30
+		days_remove = 15
+		visible = {
+			has_completed_focus = ANG_3_9
+			check_variable = {
+				var = ANG_zuozhanzhunbei
+				value = 0.3
+				compare = less_than
+			}
+		}
+		allowed = {
+			tag = ANG
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = ANG_zuozhan_idea
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ANG_zuozhan_idea
+				}
+			}
+			clamp_variable = {
+				var = ANG_zuozhanzhunbei
+				min = 0
+				max = 0.3
+			}
+			custom_effect_tooltip = ANG_zuozhanjihua_complete_tooltip
+		}
+		remove_effect = {
+			custom_effect_tooltip = ANG_zuozhanjihua_remove_tooltip
+			add_to_variable = {
+				var = ANG_zuozhanzhunbei
+				value = 0.05
+			}
 		}
 	}
 

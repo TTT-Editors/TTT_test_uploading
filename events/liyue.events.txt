@@ -134,6 +134,7 @@ country_event = {
 			    NNG = { add_timed_idea = { idea = Liyue_Ideological_attraction days = 180 } }  
 		    }
 		    NNG = { transfer_state = 145 } 
+			145 = { set_demilitarized_zone = yes }
 		    NNG = { transfer_state = 126 } 
 		    XQG = { transfer_state = 148 } 
 		    XQG = { transfer_state = 146 } 
@@ -316,7 +317,12 @@ country_event = {
 		    } 	
 			
 			KQG = { load_oob = "KQG" }
-			
+			KQG = { activate_mission = KQG_ready_to_attack_NNG }
+			KQG = { activate_mission = battle_of_yaoguang_shoal }
+			NNG = { activate_mission = NNG_ready_to_attack_KQG }
+			XQG = { activate_mission = NNG_ready_to_attack_KQG }
+			NNG = { activate_mission = battle_of_yaoguang_shoal_reverse }
+			XQG = { activate_mission = battle_of_yaoguang_shoal_reverse }
 		}
 	}
 	
@@ -660,13 +666,6 @@ country_event = {
 				remove_core_of = LYU
 	  	    } 
 		}  
-		
-		hidden_effect = {
-			if = {
-				limit = { LYU = { is_ai = no } }
-				LYU = { TTT_open_book = yes }
-			}
-		}
 	}
 	option = { 
 		name = liyue.11.b
@@ -717,8 +716,13 @@ country_event = {
 		add_country_leader_trait = sinner_ofLiyue 
 		XOG = {  load_focus_tree = XIAO_focus_tree  }   
 		set_global_flag = Liyue_Civil_War
+		clr_global_flag = Liyue_Civil_War_Coming
 		
 		hidden_effect = {
+			if = {
+				limit = { LYU = { is_ai = no } }
+				LYU = { TTT_open_book = yes }
+			}
 			log = "[GetDateText], [Root.GetName]: Liyue Civil War Begins"
 			country_event = {
 				id = super.1

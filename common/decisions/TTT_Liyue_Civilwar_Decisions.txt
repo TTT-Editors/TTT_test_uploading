@@ -6,6 +6,7 @@
 
 liyue_civil_war_decisions = {
 
+	#First Stage of Liyue Civil War ----- Northern
 	ZDG_offensive_in_one_year = {
 
 		priority = 10
@@ -26,8 +27,8 @@ liyue_civil_war_decisions = {
 		fire_only_once = yes
 
 		activation = {
+			original_tag = ZDG
 			OR = {
-				original_tag = ZDG
 				has_war_with = XOG
 				has_war_with = XRG
 			}
@@ -47,6 +48,7 @@ liyue_civil_war_decisions = {
 		}
 	}
 	
+	#reverse mission against invaders
 	anti_ZDG_offensive_in_one_year = {
 
 		priority = 10
@@ -76,6 +78,302 @@ liyue_civil_war_decisions = {
 
 		timeout_effect = {
 			custom_effect_tooltip = anti_ZDG_we_win
+		}
+	}
+	
+	#First Stage of Liyue Civil War ----- Central
+	KQG_ready_to_attack_NNG = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 90
+
+		fire_only_once = yes
+
+		activation = {
+			tag = KQG
+			NNG = { exists = yes }
+			NOT = { has_global_flag = Liyue_Civil_War }
+			has_war = no
+		}
+
+		visible = {
+			tag = KQG
+			NNG = { exists = yes }
+			NOT = { has_global_flag = Liyue_Civil_War }
+			has_war = no
+		}
+		
+		war_with_on_timeout = NNG
+		war_with_on_timeout = XQG
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		timeout_effect = {
+			hidden_effect = {
+				country_event = {
+					id = liyue.12
+				}
+			}
+			effect_tooltip = {
+				declare_war_on = {
+					target = NNG
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = XQG
+					type = annex_everything
+				}
+			}
+		}
+	}
+	
+	NNG_ready_to_attack_KQG = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 90
+
+		fire_only_once = yes
+
+		activation = {
+			OR = {
+				tag = NNG
+				tag = XQG
+			}
+			KQG = { exists = yes }
+			NOT = { has_global_flag = Liyue_Civil_War }
+			has_war = no
+		}
+
+		visible = {
+			OR = {
+				tag = NNG
+				tag = XQG
+			}
+			KQG = { exists = yes }
+			NOT = { has_global_flag = Liyue_Civil_War }
+			has_war = no
+		}
+		
+		war_with_on_timeout = KQG
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		timeout_effect = {
+			effect_tooltip = {
+				declare_war_on = {
+					target = KQG
+					type = annex_everything
+				}
+			}
+		}
+	}
+	
+	battle_of_yaoguang_shoal = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 60
+
+		fire_only_once = yes
+
+		activation = {
+			NOT = { has_global_flag = Liyue_Civil_War }
+			is_center_warlords = yes
+			145 = {
+				controller = {
+					tag = NNG
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_global_flag = Liyue_Civil_War }
+			is_center_warlords = yes
+			145 = {
+				controller = {
+					tag = NNG
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		timeout_effect = {
+			custom_effect_tooltip = waiting_result_of_battle
+			hidden_effect = {
+				random_list = {
+					15 = {
+						145 = { set_demilitarized_zone = no }
+						KQG = { transfer_state = 145 } 
+						145 = { add_core_of = KQG }
+						145 = { remove_core_of = NNG }
+						NNG = {
+							transfer_units_fraction = {
+								target = KQG
+								size = 0.05 # Fallback in case one of the ratios below are not stipulated
+								stockpile_ratio = 0.15
+								army_ratio = 0.05
+								navy_ratio = 0.5
+								air_ratio = 0.2
+								keep_unit_leaders = {
+									
+								}
+								keep_unit_leaders_trigger = {
+									always = yes
+								}
+							}
+						}
+						KQG = { news_event = { id = global_news.32 hours = 12 } }
+					}
+					85 = {
+						145 = { set_demilitarized_zone = no }
+						NNG = { news_event = { id = global_news.31 hours = 12 } }
+					}
+				}
+			}
+		}
+	}
+	
+	battle_of_yaoguang_shoal_reverse = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 60
+
+		fire_only_once = yes
+
+		activation = {
+			NOT = { has_global_flag = Liyue_Civil_War }
+			is_center_warlords = yes
+			145 = {
+				controller = {
+					tag = NNG
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_global_flag = Liyue_Civil_War }
+			is_center_warlords = yes
+			145 = {
+				controller = {
+					tag = NNG
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		timeout_effect = {
+			custom_effect_tooltip = waiting_result_of_battle
+		}
+	}
+	
+	unify_centre = {
+		icon = generic_civil_support
+		
+		visible = {
+			is_center_warlords = yes
+			NOT = { has_country_flag = ready_for_another_round }
+		}
+		
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = ningguang_defeat_keqing
+					tag = NNG
+					KQG = { exists = no }
+				}
+				custom_trigger_tooltip = {
+					tooltip = keqing_beat_ningguang
+					tag = KQG
+					NOT = { NNG = { controls_state = 145 } }
+					OR = {
+						XQG = { has_capitulated = yes }
+						XQG = { exists = no }
+					}
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 1000
+			#Really really important
+		}
+		
+		complete_effect = {
+			add_political_power = 200
+			add_stability = 0.1
+			add_war_support = 0.1
+			hidden_effect = {
+				if = {
+					limit = {
+						tag = KQG
+					}
+					if = {
+						limit = { NNG = { exists = yes } }
+						NNG = { 
+							country_event = { id = liyue_civil_war.4 }
+							set_country_flag = defeated_ningguang
+						}
+						news_event = { id = global_news.10 hours = 12 }
+					}
+					every_state = {	
+						limit = { is_owned_by = XQG }						
+						every_country = {
+							limit = {
+								NOT = { is_ally_with = XQG }
+								controls_state = PREV							
+							}
+							transfer_state = PREV
+						}
+					}
+					FROM = { white_peace = XQG }
+					FROM = {
+						annex_country = {
+							target = XQG
+							transfer_troops = no
+						}
+					}
+				}
+			}
+			set_country_flag = center_victor
 		}
 	}
 	
@@ -807,21 +1105,26 @@ liyue_civil_war_decisions = {
 		state_target = yes
 		target_array = core_states
 		cancel_if_not_visible = yes
-		highlight_color_while_active = 1
+		#highlight_color_while_active = 1
 		
-		remove_effect = {		
-			division_template = {
-				name = "民兵"
-				priority = 2
-				is_locked = yes
-				division_names_group = LYU_INF_03
-				regiments = {
-					militia = { x = 0 y = 0 }
-					militia = { x = 0 y = 1 }
-					militia = { x = 0 y = 2 }
-					militia = { x = 1 y = 0 }
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_template = "民兵" }
 				}
-		    }
+				division_template = {
+					name = "民兵"
+					priority = 2
+					is_locked = yes
+					division_names_group = LYU_INF_03
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+					}
+				}
+			}
 			FROM = {
 				create_unit = {
 					division = "division_template = \"民兵\" start_experience_factor = 0.1 start_equipment_factor = 0.75"

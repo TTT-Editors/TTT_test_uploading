@@ -21,7 +21,7 @@ focus_tree = {
 			factor = 10
 		}		
         completion_reward = {
-		
+		    add_political_power = 150
 		}	
 	}
 	focus = {
@@ -38,7 +38,33 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Establishline_rule_byman }		
         completion_reward = {
-		
+		    if = {
+				limit = {
+					NOT = { has_template = "千岩军" }
+				}
+			}
+		division_template = {
+			name = "千岩军"
+			priority = 2
+			is_locked = yes
+			division_names_group = LYU_INF_01
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				artillery_brigade = { x = 0 y = 3 }
+			}
+		}
+		145 = {
+			create_unit = {
+				division = "division_template = \"千岩军\" start_experience_factor = 0.4"
+				owner = NNG
+				count = 4
+				}
+			}
 		}	
 	}
 	focus = {
@@ -55,7 +81,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Integrate_loyal_troops }		
         completion_reward = {
-		
+	    145 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		        }
+	        }
 		}	
 	}
 	focus = {
@@ -72,7 +105,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Absorb_local_industries }		
         completion_reward = {
-		
+		    add_political_power = 50
 		}	
 	}
 	focus = {
@@ -81,7 +114,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 4
+		x = 3
 		y = 4
 		cost = 35
 		ai_will_do = {
@@ -90,7 +123,9 @@ focus_tree = {
 		prerequisite = { focus = NNG_Debateover_securityroutes }
 		mutually_exclusive = { focus = NNG_Deploy_lethalweapons  }
         completion_reward = {
-		
+		    add_political_power = 25
+			add_popularity = { ideology = liberalism popularity = 0.12 }
+			add_popularity = { ideology = communism popularity = 0.05 } 
 		}	
 	}
 	focus = {
@@ -99,7 +134,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 4
+		x = 3
 		y = 5
 		cost = 35
 		ai_will_do = {
@@ -116,7 +151,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 4
+		x = 3
 		y = 6
 		cost = 35
 		ai_will_do = {
@@ -124,7 +159,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Establishtrial_courtruledbyman }		
         completion_reward = {
-		
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 10000
+			}
 		}	
 	}
 	focus = {
@@ -133,7 +171,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 4
+		x = 3
 		y = 7
 		cost = 35
 		ai_will_do = {
@@ -150,7 +188,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 6
+		x = 7
 		y = 4
 		cost = 35
 		ai_will_do = {
@@ -168,7 +206,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 6
+		x = 7
 		y = 5
 		cost = 35
 		ai_will_do = {
@@ -185,7 +223,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 6
+		x = 7
 		y = 6
 		cost = 35
 		ai_will_do = {
@@ -202,7 +240,7 @@ focus_tree = {
 		
 		available_if_capitulated = no
 		
-		x = 6
+		x = 7
 		y = 7
 		cost = 35
 		ai_will_do = {
@@ -210,7 +248,37 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Serve_forLiyue }
         completion_reward = {
-		
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 15000
+			}
+			if = {
+				limit = {
+					NOT = { has_template = "千岩军" }
+				}
+			}
+		division_template = {
+			name = "千岩军"
+			priority = 2
+			is_locked = yes
+			division_names_group = LYU_INF_01
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				artillery_brigade = { x = 0 y = 3 }
+			}
+		}
+		145 = {
+			create_unit = {
+				division = "division_template = \"千岩军\" start_experience_factor = 0.4"
+				owner = NNG
+				count = 6
+				}
+			}
 		}	
 	}
 	focus = {
@@ -227,7 +295,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Setup_laborgroup focus = NNG_Setup_deathsquads }
         completion_reward = {
-		
+		    add_stability = 0.10
+	        add_war_support = 0.10
 		}	
 	}
 }

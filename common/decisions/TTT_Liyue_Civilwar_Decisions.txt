@@ -81,6 +81,130 @@ liyue_civil_war_decisions = {
 		}
 	}
 	
+	#Xianren and Xiao Negotiate for peace
+	northern_negotation = {
+		icon = generic_civil_support
+		
+		visible = {
+			tag = XRG
+			is_subject = no
+			XOG = { exists = yes }
+			OR = {
+				is_faction_leader = yes
+				is_in_faction = no
+			}
+		}
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_defeated_or_not_come
+				ZDG = { exists = no }
+				XOG = { is_in_faction = no }
+				has_global_flag = zdg_has_come
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 40
+			#Important
+		}
+		
+		cost = 40
+		
+		complete_effect = {
+			effect_tooltip = {
+				if = {
+					limit = {
+						XRG = { is_in_faction = no }
+					}
+					create_faction = "qunxianfangxian"
+				}
+				add_to_faction = XOG
+			}
+			hidden_effect = { XOG = { country_event = XRG_EVENTS_0.8 } }
+			custom_effect_tooltip = they_must_agreed_to_procceed
+		}
+	}
+	
+	unify_northern = {
+		icon = generic_civil_support
+		
+		visible = {
+			OR = {
+				tag = XRG
+				tag = XOG
+			}
+			OR = {
+				is_faction_leader = yes
+				is_in_faction = no
+			}
+			has_global_flag = Liyue_Civil_War
+		}
+		
+		available = {
+			ZDG = { exists = no }
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = XOG_unifies_northern_by_himself
+					tag = XOG
+					is_in_faction = no
+					OR = {
+						has_country_flag = XOG_refuse_XRG
+						has_country_flag = XOG_refuse_LYU
+						XRG = {
+							OR = {
+								exists = no
+								AND = {
+									is_in_faction = yes
+									is_faction_leader = no
+								}
+								is_subject = yes
+							}
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = XRG_unifies_northern
+					tag = XRG
+					OR = {
+						is_faction_leader = yes
+						is_in_faction = no
+					}
+					XOG = {
+						OR = {
+							exists = no
+							is_in_faction_with = XRG
+							AND = {
+								XRG = { has_country_flag = xrg_has_tried_to_cooperate_with_xog }
+								NOT = {
+									has_country_flag = XOG_refuse_XRG
+									has_country_flag = XOG_refuse_LYU
+									has_war_with = XRG
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		
+		complete_effect = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_political_power = 200
+			set_country_flag = north_victor
+		}
+	}
+	
 	#First Stage of Liyue Civil War ----- Central
 	KQG_ready_to_attack_NNG = {
 
@@ -313,6 +437,7 @@ liyue_civil_war_decisions = {
 		visible = {
 			is_center_warlords = yes
 			NOT = { has_country_flag = ready_for_another_round }
+			has_global_flag = Liyue_Civil_War
 		}
 		
 		available = {
@@ -378,6 +503,212 @@ liyue_civil_war_decisions = {
 				}
 			}
 			set_country_flag = center_victor
+		}
+	}
+	
+	#Battle of center and north liyue
+	battle_of_center_and_north_liyue_c = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+		
+		days_remove = 21
+
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 0
+				surrender_progress > 0.2
+			}
+			#Really really important
+		}
+
+		visible = {
+			is_center_warlords = yes
+			NOT = { has_country_flag = ready_for_another_round }
+			NOT = { has_global_flag = cn_battle_has_happen }
+			OR = {
+				XRG = { exists = yes }
+				XOG = { exists = yes }
+			}
+		}
+		
+		available = {
+			has_country_flag = center_victor
+		}
+		
+		war_with_on_remove = XRG
+		war_with_on_remove = ZDG
+		war_with_on_remove = XOG
+		
+		complete_effect = {
+			XRG = { country_event = { id = liyue_civil_war.101 } }
+			XOG = { country_event = { id = liyue_civil_war.101 } }
+			ZDG = { country_event = { id = liyue_civil_war.101 } }
+		}
+
+		remove_effect = {
+			set_global_flag = cn_battle_has_happen
+			custom_effect_tooltip = ready_to_attack_north
+			hidden_effect = {
+				news_event = { id = global_news.11 hours = 12 }
+			}
+			if = {
+				limit = {
+					XOG = { can_be_attacked = yes }
+				}
+				declare_war_on = {
+					target = XOG
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					XRG = { can_be_attacked = yes }
+				}
+				declare_war_on = {
+					target = XRG
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					ZDG = { can_be_attacked = yes }
+				}
+				declare_war_on = {
+					target = ZDG
+					type = annex_everything
+				}
+			}
+		}
+	}
+	
+	#Battle of center and north liyue
+	battle_of_center_and_north_liyue_n = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+		
+		days_remove = 21
+
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 0
+				surrender_progress > 0.2
+			}
+			#Really really important
+		}
+
+		visible = {
+			OR = {
+				tag = XRG
+				tag = XOG
+			}
+			NOT = { has_global_flag = cn_battle_has_happen }
+			OR = {
+				KQG = { exists = yes }
+				NNG = { exists = yes }
+				XQG = { exists = yes }
+			}
+		}
+		
+		available = {
+			has_country_flag = north_victor
+		}
+		
+		war_with_on_remove = KQG
+		war_with_on_remove = NNG
+		war_with_on_remove = XQG
+		
+		complete_effect = {
+			KQG = { country_event = { id = liyue_civil_war.101 } }
+			NNG = { country_event = { id = liyue_civil_war.101 } }
+			XQG = { country_event = { id = liyue_civil_war.101 } }
+		}
+
+		remove_effect = {
+			set_global_flag = cn_battle_has_happen
+			custom_effect_tooltip = ready_to_attack_center
+			hidden_effect = {
+				news_event = { id = global_news.11 hours = 12 }
+			}
+			if = {
+				limit = {
+					KQG = { can_be_attacked = yes }
+				}
+				declare_war_on = {
+					target = KQG
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					NNG = { can_be_attacked = yes }
+				}
+				declare_war_on = {
+					target = NNG
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					XQG = { can_be_attacked = yes }
+				}
+				declare_war_on = {
+					target = XQG
+					type = annex_everything
+				}
+			}
+		}
+	}
+	
+	#Strike ARF
+	strike_arf_default = {
+		
+		cost = 25
+		
+		days_remove = 15
+		
+		fire_only_once = yes
+		
+		visible = {
+			RTG = { exists = no }
+			ARF = { exists = yes }
+			any_neighbor_country = {
+				tag = ARF
+			}
+		}
+		
+		available = {
+			NOT = { has_non_aggression_pact_with = ARF }
+		}
+	
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+		}
+		
+		war_with_on_remove = ARF
+		
+		complete_effect = {
+			ARF = { country_event = { id = liyue_civil_war.101 } }
+		}
+		
+		remove_effect = {
+			declare_war_on = {
+				target = ARF
+				type = annex_everything
+			}	
 		}
 	}
 	

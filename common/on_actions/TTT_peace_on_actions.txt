@@ -79,16 +79,28 @@ on_actions = {
 						add_core_of = SNE
 					}
 				}
-				every_country = {
-					limit = {
-						has_country_flag = ready_for_another_round
+				if = {
+					limit = { 
+						XRG = { exists = no }
+						XOG = { exists = no }
 					}
-					dismantle_faction = yes
+					every_country = {
+						limit = {
+							has_country_flag = ready_for_another_round
+						}
+						dismantle_faction = yes
+					}
+					LYU = {
+						country_event = {
+							id = liyue_civil_war.10
+							days = 45
+						}
+					}
 				}
-				LYU = {
-					country_event = {
-						id = liyue_civil_war.10
-						days = 45
+				if = {
+					limit = {
+						XRG = { exists = yes }
+						XOG = { exists = yes }
 					}
 				}
 			}

@@ -98,95 +98,6 @@ country_event = {
 	}
 }
 
-#中部赛区胜利，北上还是南下？
-country_event = {
-	id = liyue_civil_war.6
-	title = liyue_civil_war.6.t
-	desc = liyue_civil_war.6.d
-	fire_only_once = yes
-	
-	trigger = {
-		has_global_flag = Liyue_Civil_War
-		OR = {
-			ZDG = { exists = yes }
-		}
-		is_center_warlords = yes
-		center_united = yes
-	}
-	
-	mean_time_to_happen = { days = 7 }
-	
-	#北上，赶走侵略者
-	option = {
-		name = liyue_civil_war.6.a
-		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 5
-				strength_ratio = {
-					tag = ZDG
-					ratio > 2
-				}
-			}
-			modifier = {
-				factor = 100
-				OR = {
-					XRG = { exists = no }
-					XOG = { exists = no }
-					XRG = { has_capitulated = yes }
-					XOG = { has_capitulated = yes }
-				}
-			}
-		}
-		trigger = {
-			ZDG = { exists = yes }
-		}
-		hidden_effect = {
-			declare_war_on = {
-				target = ZDG
-				type = annex_everything
-			}
-		}
-	}
-	
-	#南下，统一南部地区
-	option = {
-		name = liyue_civil_war.6.b
-		ai_chance = {
-			base = 10
-		}
-		trigger = {
-			southern_united = no
-		}
-		custom_effect_tooltip = will_unite_south_first
-		hidden_effect = {
-			every_country = {
-				limit = { is_southern_warlords = yes }
-				country_event = { id = liyue_civil_war.101 }
-			}
-			country_event = {
-				id = liyue_civil_war.7
-				days = 45
-			}
-			add_ai_strategy = {
-				type = conquer
-				id = "LYU"
-				value = 200
-			}
-			add_ai_strategy = {
-				type = conquer
-				id = "ANG"
-				value = 200
-			}
-			add_ai_strategy = {
-				type = conquer
-				id = "RTG"
-				value = 200
-			}
-		}
-	}
-}
-
 #统一南部，正式开始
 country_event = {
 	id = liyue_civil_war.7
@@ -229,107 +140,15 @@ country_event = {
 				type = annex_everything
 			}
 		}
-	}
-}
-
-#至冬败退，反至冬联盟解体
-country_event = {
-	id = liyue_civil_war.8
-	title = liyue_civil_war.8.t
-	desc = liyue_civil_war.8.d
-	fire_only_once = yes
-	
-	trigger = {
-		has_global_flag = zdg_has_come
-		NOT = { has_global_flag = liyue_unified }
-		ZDG = { exists = no }
-		OR = {
-			is_northern_warlords = yes
-			is_center_warlords = yes
-		}
-		OR = {
-			northern_united = no
-			center_united = no
-		}
-	}
-	
-	mean_time_to_happen = { days = 1 }
-	
-	#仗打完了，再见！
-	option = {
-		name = liyue_civil_war.8.a
 		if = {
 			limit = {
-				XOG = { exists = yes }
+				ARF = { can_be_attacked = yes }
 			}
-			if = {
-				limit = { XRG = { exists = yes } }
-				XOG = {
-					declare_war_on = {
-						target = XRG
-						type = annex_everything
-					}
-				}
-			}
-			if = {
-				limit = { KQG = { exists = yes } }
-				XOG = {
-					declare_war_on = {
-						target = KQG
-						type = annex_everything
-					}
-				}
-			}
-			if = {
-				limit = {
-					NNG = { exists = yes }
-					NNG = { NOT = { has_country_flag = defeated_ningguang } }
-				}
-				XOG = {
-					declare_war_on = {
-						target = NNG
-						type = annex_everything
-					}
-				}
+			declare_war_on = {
+				target = ARF
+				type = annex_everything
 			}
 		}
-		if = {
-			limit = {
-				XRG = { exists = yes }
-			}
-			if = {
-				limit = { KQG = { exists = yes } }
-				XRG = {
-					declare_war_on = {
-						target = KQG
-						type = annex_everything
-					}
-				}
-			}
-			if = {
-				limit = {
-					NNG = { exists = yes }
-					NNG = { NOT = { has_country_flag = defeated_ningguang } }
-				}
-				XRG = {
-					declare_war_on = {
-						target = NNG
-						type = annex_everything
-					}
-				}
-			}
-		}
-		hidden_effect = {
-			every_country = {
-				if = {
-					limit = {
-						has_idea = beat_the_ZDG_invaders
-					}
-					remove_ideas = beat_the_ZDG_invaders
-				}
-			}
-		}
-		news_event = { id = global_news.11 hours = 12 }
 	}
 }
 

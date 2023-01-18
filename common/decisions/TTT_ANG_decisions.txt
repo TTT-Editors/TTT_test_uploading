@@ -311,7 +311,7 @@ ANG_zousi = {
 	}
 }
 ##############征召军队和人力##########
-ANG_mil_decision_categories = {
+liyue_civil_war_decisions = {
 	ANG_raise_militias = {
 		cost = 50
 		days_remove = 180
@@ -899,7 +899,7 @@ ANG_tongyiliyue = {
 ############权力平衡###########
 ANG_bop_decisions_categories = {
 	ANG_bop_right = {
-		cost = 40
+		cost = 100
 		days_remove = 7
 		ai_will_do = {
 			base = 100
@@ -918,10 +918,10 @@ ANG_bop_decisions_categories = {
 		}
 	}
 }
-###
+#############BOP###########
 ANG_bop_decisions_categories_no_dlc = {
 	ANG_bop_decision_no_dlc = {
-		cost = 40
+		cost = 100
 		days_remove = 7
 		ai_will_do = {
 			base = 100
@@ -930,7 +930,7 @@ ANG_bop_decisions_categories_no_dlc = {
 			always = yes
 		}
 		visible = {
-			always = yes
+			is_debug = yes
 		}
 		complete_effect = {
 			
@@ -939,7 +939,529 @@ ANG_bop_decisions_categories_no_dlc = {
 			
 		}
 	}
+	########公社政治顾问展示与隐藏#######
+	ANG_bop_decision_show_com_advisor = {
+		cost = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ANG_show_com_advisor
+			}
+		}
+		complete_effect = {
+			set_country_flag = ANG_show_com_advisor
+		}
+	}
+	ANG_bop_decision_not_show_com_advisor = {
+		cost = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+				has_country_flag = ANG_show_com_advisor
+		}
+		complete_effect = {
+			clr_country_flag = ANG_show_com_advisor
+		}
+	}
+	ANG_bop_decision_ad_gaochang = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_com_gaochang 
+			}
+			has_country_flag = ANG_show_com_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_com_gaochang
+		}
+	}
+	ANG_bop_decision_ad_cuishan = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_com_cuishan 
+			}
+			has_country_flag = ANG_show_com_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_com_cuishan
+		}
+	}
+	ANG_bop_decision_ad_gechang = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_com_gechang 
+			}
+			has_country_flag = ANG_show_com_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_com_gechang
+		}
+	}
+	ANG_bop_decision_ad_guangwenhong = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_com_guangwenhong 
+			}
+			has_country_flag = ANG_show_com_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_com_guangwenhong
+		}
+	}
+	ANG_bop_decision_ad_shenshufang = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_com_shenshufang 
+			}
+			has_country_flag = ANG_show_com_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_com_shenshufang
+		}
+	}
+	ANG_bop_decision_ad_xingyunxiu = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_com_xingyunxiu 
+			}
+			has_country_flag = ANG_show_com_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_com_xingyunxiu
+		}
+	}
+	##########军事委员会顾问显示与隐藏##########
+	ANG_bop_decision_show_mil_advisor = {
+		cost = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ANG_show_mil_advisor
+			}
+		}
+		complete_effect = {
+			set_country_flag = ANG_show_mil_advisor
+		}
+	}
+	ANG_bop_decision_not_show_mil_advisor = {
+		cost = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+				has_country_flag = ANG_show_mil_advisor
+		}
+		complete_effect = {
+			clr_country_flag = ANG_show_mil_advisor
+		}
+	}
+	ANG_bop_decision_ad_changchuan = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_mil_changchuan 
+			}
+			has_country_flag = ANG_show_mil_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_mil_changchuan
+		}
+	}
+	ANG_bop_decision_ad_guangwei = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_mil_guangwei 
+			}
+			has_country_flag = ANG_show_mil_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_mil_guangwei
+		}
+	}
+	ANG_bop_decision_ad_zhenhong = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_mil_zhenhong 
+			}
+			has_country_flag = ANG_show_mil_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_mil_zhenhong
+		}
+	}
+	ANG_bop_decision_ad_mudanshan = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_mil_mudanshan 
+			}
+			has_country_flag = ANG_show_mil_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_mil_mudanshan
+		}
+	}
+	ANG_bop_decision_ad_xionghaoguang = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_mil_xionghaoguang 
+			}
+			has_country_flag = ANG_show_mil_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_mil_xionghaoguang
+		}
+	}
+	ANG_bop_decision_ad_luqingwen = {
+		cost = 100
+		days_remove = 0 
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			NOT = {
+				has_idea = ANG_mil_luqingwen 
+			}
+			has_country_flag = ANG_show_mil_advisor
+		}
+		complete_effect = {
+			add_ideas = ANG_mil_luqingwen
+		}
+	}
+    ############BOP决议############
+	ANG_mil_bop_up = {
+		cost = 50
+		days_remove = 15
+		days_re_enable = 30
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.025
+
+		}
+		complete_effect = {
+			ANG_mil_bop_up_8 = yes
+		}
+	}
+	ANG_mil_junduijingtie = {
+		cost = 25
+		days_remove = 30
+		ai_will_do = {
+			base = 25
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.05
+			army_core_defence_factor = 0.05
+			army_core_attack_factor = 0.05
+		}
+		complete_effect = {
+			ANG_mil_bop_up_5 = yes
+		}
+		remove_effect = {
+			add_war_support = 0.01
+			add_stability = -0.01
+		}
+	}
+	ANG_mil_bop_use_1 = { #增加工厂生产配额
+		cost = 50
+		days_remove = 60
+		days_re_enable = 60
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			check_variable = {
+				var = ANG_bop_var
+				value  = 50
+				compare = greater_than_or_equals
+			}
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			industrial_capacity_factory = 0.15
+		}
+		complete_effect = {
+			ANG_com_bop_up_5 = yes
+		}
+	}
+	ANG_mil_bop_use_2 = { #征召预备役
+		cost = 50
+		days_remove = 60
+		days_re_enable = 60
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			check_variable = {
+				var = ANG_bop_var
+				value  = 50
+				compare = greater_than_or_equals
+			}
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			mobilization_speed = 0.15
+			monthly_population = 0.5
+			conscription_factor = 0.1
+		}
+		complete_effect = {
+			ANG_com_bop_up_5 = yes
+		}
+	}
+
+
+
+
+	ANG_com_bop_up = {
+		cost = 50
+		days_remove = 15
+		days_re_enable = 30
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.025
+
+		}
+		complete_effect = {
+			ANG_com_bop_up_8 = yes
+		}
+	}
+	ANG_com_gaishanshenghuo = {
+		cost = 25
+		days_remove = 30
+		ai_will_do = {
+			base = 25
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.075
+
+		}
+		complete_effect = {
+			ANG_com_bop_up_5 = yes
+		}
+		remove_effect = {
+			add_war_support = -0.02
+			add_stability = 0.05
+		}
+	}
+	ANG_com_bop_use_1 = { #号召劳动者
+		cost = 50
+		days_remove = 60
+		days_re_enable = 60
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			check_variable = {
+				var = ANG_bop_var_com
+				value  = 50
+				compare = greater_than_or_equals
+			}
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			production_speed_buildings_factor = 0.1
+		}
+		complete_effect = {
+			ANG_mil_bop_up_5 = yes
+		}
+	}
+	ANG_com_bop_use_2 = { #社员交流
+		cost = 20
+		days_remove = 60
+		days_re_enable = 60
+		ai_will_do = {
+			base = 20
+		}
+		available = {
+			check_variable = {
+				var = ANG_bop_var_com
+				value  = 50
+				compare = greater_than_or_equals
+			}
+		}
+		visible = {
+			always = yes
+		}
+		modifier = {
+			political_power_factor = 0.15
+		}
+		complete_effect = {
+			ANG_mil_bop_up_5 = yes
+		}
+		remove_effect = {
+			add_political_power = 30
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ANG_debug = {

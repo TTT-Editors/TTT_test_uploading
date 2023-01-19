@@ -1,0 +1,88 @@
+KL_event_link = {
+    ###可莉事件链
+    randomize_temp_variable ={
+        var = every_mouth_judge        
+        distribution = uniform
+        min = 1
+        max = 10
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = every_mouth_judge
+                value = 10
+                compare = equals
+            }
+        }
+        add_to_variable = {
+            KL_event_link_yes_or_no_judge =1
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = KL_event_link_yes_or_no_judge
+                value = 1
+                compare = equals
+            }
+        }
+        randomize_temp_variable = {
+            var = event_num       
+            distribution = uniform
+            min = 1
+            max = 5
+        }
+        randomize_temp_variable = {
+            var = days_num       
+            distribution = uniform
+            min = 1
+            max = 30
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = event_num
+                    value = 1
+                    compare = equals
+                }
+            }
+            country_event = {id = BLL_event.17 days = days_num}
+        }else_if = {
+            limit = {
+                check_variable = {
+                    var = event_num
+                    value = 2
+                    compare = equals
+                }
+            }
+            country_event = {id = BLL_event.18 days = days_num}
+        }else_if = {
+            limit = {
+                check_variable = {
+                    var = event_num
+                    value = 3
+                    compare = equals
+                }
+            }
+            country_event = {id = BLL_event.19 days = days_num}
+        }else_if = {
+            limit = {
+                check_variable = {
+                    var = event_num
+                    value = 4
+                    compare = equals
+                }
+            }
+            country_event = {id = BLL_event.20 days = days_num}
+        }else_if = {
+            limit = {
+                check_variable = {
+                    var = event_num
+                    value = 5
+                    compare = equals
+                }
+            }
+            country_event = {id = BLL_event.21 days = days_num}
+        }
+    }
+}

@@ -1,0 +1,273 @@
+add_namespace = BLL_event
+###事件名：空中巨龙
+country_event = {
+	id = BLL_event.1
+	immediate = {}
+	
+	title = BLL_event.1.t
+	desc = BLL_event.1.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	
+	option = {
+		name = BLL_event.1.a
+	}
+}
+###事件名：群狼的土地，富饶的家园
+country_event = {
+	id = BLL_event.2
+	immediate = {}
+	trigger = {
+		tag = BLL
+		date > 1999.4.2
+	}
+	mean_time_to_happen = {
+		days = 3	# Historical outbreak time after elections
+	}
+	title = BLL_event.2.t
+	desc = BLL_event.2.d
+	fire_only_once =yes
+	
+	option = {
+		name = BLL_event.2.a
+		hidden_effect = {
+			BLL = {
+			country_event = { id = BLL_event.1 days = 7}
+			country_event = { id = BLL_event.16 days = 20}
+			country_event = { id = BLL_event.3 days = 35}
+			news_event = { id = BLL_event.6 days = 100}
+			country_event = { id = BLL_event.8 days = 155}
+			}
+		}
+		
+		
+	}
+}
+###事件名：难民与奔狼领的冲突
+country_event = {
+	id = BLL_event.3
+	immediate = {}
+	
+	title = BLL_event.3.t
+	desc = BLL_event.3.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	
+	option = {
+		name = BLL_event.3.a
+	}
+}
+###事件名：卢皮卡团结议会
+country_event = {
+	id = BLL_event.4
+	immediate = {}
+	
+	title = BLL_event.4.t
+	desc = BLL_event.4.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.4.a
+	}
+}
+###事件名：奔狼领资源开发局
+country_event = {
+	id = BLL_event.5
+	immediate = {}
+	
+	title = BLL_event.5.t
+	desc = BLL_event.5.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.5.a
+	}
+}
+###事件名：奔狼领风花节
+news_event = {
+	id = BLL_event.6
+	immediate = {}
+	
+	title = BLL_event.6.t
+	desc = BLL_event.6.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.6.a
+		hidden_effect = {
+		randomize_temp_variable ={
+			var = BLL_event_6_temp_judge
+  			distribution = uniform
+			min = 0
+			max = 5
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = BLL_event_6_temp_judge
+					value = 3
+					compare = greater_than_or_equals
+				}
+			}
+			BLL = {
+				news_event = {id = BLL_event_7 days = 3}
+			}
+			
+		}
+	}
+		
+	}
+}
+###事件名：奔狼领风花节事故
+news_event = {
+	id = BLL_event.7
+	immediate = {}
+	
+	title = BLL_event.7.t
+	desc = BLL_event.7.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.7.a
+	}
+}
+###事件名：大量难民冲过边境
+country_event = {
+	id = BLL_event.8
+	immediate = {}
+	
+	title = BLL_event.8.t
+	desc = BLL_event.8.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.8.a
+	}
+}
+###事件名：勾勾果减产
+country_event = {
+	id = BLL_event.9
+	immediate = {}
+	
+	title = BLL_event.9.t
+	desc = BLL_event.9.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.9.a
+	}
+}
+###事件名：森林被砍伐
+country_event = {
+	id = BLL_event.10
+	immediate = {}
+	
+	title = BLL_event.10.t
+	desc = BLL_event.10.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.10.a
+	}
+}
+###事件名：不适应新状况的议会
+country_event = {
+	id = BLL_event.11
+	immediate = {}
+	
+	title = BLL_event.11.t
+	desc = BLL_event.11.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = BLL_event.11.a
+	}
+}
+
+
+
+
+
+
+###可莉事件链
+###事件名：嘟嘟可的宝藏？
+country_event = {
+	id = BLL_event.16
+	immediate = {}
+	
+	title = BLL_event.16.t
+	desc = BLL_event.16.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = BLL_event.16.a
+		add_to_variable = {}
+		clr_country_flag = lock_KL_event_link 
+		}
+	}
+}
+###事件名：可莉又来炸鱼了
+country_event = {
+	id = BLL_event.17
+	immediate = {}
+	
+	title = BLL_event.17.t
+	desc = BLL_event.17.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = BLL_event.17.a
+	}
+}
+###事件名：可莉在湖边埋藏了炸弹
+country_event = {
+	id = BLL_event.18
+	immediate = {}
+	
+	title = BLL_event.18.t
+	desc = BLL_event.18.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = BLL_event.18.a
+	}
+}
+###事件名：有红色的可疑身影出现在奔狼领
+country_event = {
+	id = BLL_event.19
+	immediate = {}
+	
+	title = BLL_event.19.t
+	desc = BLL_event.19.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = BLL_event.19.a
+	}
+}
+###事件名：可莉来炸鱼了
+country_event = {
+	id = BLL_event.20
+	immediate = {}
+	
+	title = BLL_event.20.t
+	desc = BLL_event.20.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = BLL_event.20.a
+	}
+}
+###事件名：湖边有掩埋痕迹
+country_event = {
+	id = BLL_event.21
+	immediate = {}
+	
+	title = BLL_event.21.t
+	desc = BLL_event.21.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = BLL_event.21.a
+	}
+}

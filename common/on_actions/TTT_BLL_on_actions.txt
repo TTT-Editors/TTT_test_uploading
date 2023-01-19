@@ -1,0 +1,44 @@
+on_actions = {
+    on_weekly_BLL = { 
+        effect = {
+			add_to_variable = {BLL_GGG = BLL_GGG_inscrease}
+        }
+    }
+    on_monthly_BLL = {
+        effect = {
+            if = {
+                limit = {
+                    not = {
+                        has_country_flag = {lock_KL_event_link}
+                    }
+                }
+                KL_event_link = yes
+                add_to_variable = {KL_event_link_event_num = 1}
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = KL_event_link_event_num
+                        value = 9
+                        compare = greater_than_or_equals
+                    }
+                }
+                KL_event_link = no
+                set_country_flag = {lock_KL_event_link}
+            }
+        }
+    }
+    on_startup = { 
+        effect = { 
+            BLL = {
+                country_event = { id = BLL_event.2 days = 7}
+                country_event = { id = BLL_event.1 days = 15}
+                country_event = { id = BLL_event.16 days = 21}
+                country_event = { id = BLL_event.3 days = 40}
+                news_event = { id = BLL_event.6 days = 105}
+                country_event = { id = BLL_event.8 days = 165}
+            }
+        } 
+     }
+    
+}

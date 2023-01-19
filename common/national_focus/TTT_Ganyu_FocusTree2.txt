@@ -231,6 +231,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GAN2_9
 		}
+		completion_reward = {
+			add_political_power = 150
+		}
 		x = 5
 		y = 6
 
@@ -238,9 +241,12 @@ focus_tree = {
 	focus = {
 		id = GAN2_11 #向外看
 		icon = GFX_goal_unknown
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_1
+		}
+		completion_reward = {
+			custom_effect_tooltip = GANYU_war_able_tootip
 		}
 		x = 10
 		y = 2
@@ -249,31 +255,51 @@ focus_tree = {
 	focus = {
 		id = GAN2_12 #跨过天衡山
 		icon = GFX_goal_Ganyu2_kuaguotianheshan_Focus
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_11
 		}
-		will_lead_to_war_with = ANG
 		available = {
-			NOT = {
-				has_war = yes
-			}
+
+		}
+		bypass = {
+			ANG = { exists = no }
 		}
 		x = 8
 		y = 3
 		completion_reward = {
-			create_wargoal = {
-				target = ANG
-				type = take_state_focus
+			add_timed_idea = {
+				idea = GANYU_idea_aginst_ANG
+				days = 90
 			}
 		}
 	}
 	focus = {
 		id = GAN2_13 #根除无执政
 		icon = GFX_goal_Ganyu2_wuzhengfuchonggui_Focus
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_12
+		}
+		available = {
+			ANG = { exists = no }
+			LYU = { has_full_control_of_state = 211 }
+		}
+		bypass_if_unavailable = yes
+		completion_reward = {
+			211 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
 		}
 		x = 8
 		y = 4
@@ -282,31 +308,31 @@ focus_tree = {
 	focus = {
 		id = GAN2_14 #斩断牵连
 		icon = GFX_goal_Ganyu2_jianshourenzhi_Focus
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_11
 		}
-		will_lead_to_war_with = XRG
 		available = {
-			NOT = {
-				has_war = yes
-			}
+
 		}
 		x = 10
 		y = 3
 		completion_reward = {
-			create_wargoal = {
-				target = XRG
-				type = take_state_focus
-			}
+			add_stability = -0.05
+			add_war_support = 0.05
+			add_political_power = 150
 		}
 	}
 	focus = {
 		id = GAN2_15 #坚守人治
 		icon = GFX_goal_Ganyu2_liyueganghemu_Focus
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_14
+		}
+		completion_reward = {
+			add_manpower = 15000
+			add_ideas = GANYU_idea_21
 		}
 		x = 10
 		y = 4
@@ -315,31 +341,48 @@ focus_tree = {
 	focus = {
 		id = GAN2_16 #祸世之龙
 		icon = GFX_goal_Ganyu2_cengyan_Focus
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_11
 		}
-		will_lead_to_war_with = RTG
 		available = {
-			NOT = {
-				has_war = yes
-			}
+
 		}
 		x = 12
 		y = 3
 		completion_reward = {
-			create_wargoal = {
-				target = RTG
-				type = take_state_focus
+			add_timed_idea = {
+				idea = GANYU_idea_aginst_RTG
+				days = 90
 			}
 		}
 	}
 	focus = {
 		id = GAN2_17 #层岩再开发
 		icon = GFX_goal_Ganyu2_kuangshi_Focus
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_16
+		}
+		available = {
+			RTG = { exists = no }
+			LYU = { has_full_control_of_state = 155 }
+		}
+		bypass_if_unavailable = yes
+		completion_reward = {
+			155 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}			
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
+			
 		}
 		x = 12
 		y = 4
@@ -348,22 +391,36 @@ focus_tree = {
 	focus = {
 		id = GAN2_18 #向北看
 		icon = GFX_goal_unknown
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_15
 			focus = GAN2_17
 			focus = GAN2_13
 		}
+		completion_reward = {
+			custom_effect_tooltip = GANYU_war_able_tootip
+		}
+
 		x = 10
 		y = 5
 
 	}
 	focus = {
 		id = GAN2_19 #打击激进派
-		icon = GFX_goal_Ganyu2_wukeliyu_Focus
-		cost = 20.00
+		icon = GFX_goal_unknown
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_18
+		}
+		available = {
+			KQG = { exists = yes }
+		}
+		bypass_if_unavailable = yes
+		completion_reward = {
+			add_timed_idea = {
+				idea = GANYU_idea_aginst_KQG
+				days = 120
+			}
 		}
 		x = 9
 		y = 6
@@ -372,9 +429,26 @@ focus_tree = {
 	focus = {
 		id = GAN2_20 #清理败类
 		icon = GFX_goal_Ganyu2_renxian_Focus
-		cost = 20.00
+		cost = 15.00
 		prerequisite = {
 			focus = GAN2_18
+		}
+		available = {
+			OR = {
+				NNG = { exists = yes }
+				XQG = { exists = yes }
+			}
+		}
+		bypass_if_unavailable = yes
+		completion_reward = {
+			add_timed_idea = {
+				idea = GANYU_idea_aginst_NNG
+				days = 120
+			}
+			add_timed_idea = {
+				idea = GANYU_idea_aginst_XQG
+				days = 120
+			}
 		}
 		x = 11
 		y = 6
@@ -579,6 +653,10 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = GAN2_28
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.01
 		}
 		x = 15
 		y = 6

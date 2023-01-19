@@ -1,5 +1,84 @@
 Liyuetongyi = {
+	GANYU_war_targeted_decision_1 = {
+		target_root_trigger = {
+			has_completed_focus = GAN2_11
+		}
+		targets = { ANG RTG ARF }
+		targets_dynamic = yes
+		target_trigger = {
+			FROM = {
+				is_neighbor_of = ROOT
+			}
+		}
+		cost = 0
+		days_remove = 7
+		ai_will_do = {
+			base = 50
+		}
+		fire_only_once = yes
+		war_with_target_on_complete = yes
+		complete_effect = {
+			FROM = {
+				country_event = { id = liyue_civil_war.101 }
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+	}
+	debug_GAYU_decision = {
+		cost = 0
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			add_timed_idea = {
+				idea = GANYU_idea_aginst_ANG
+				days = 90
+			}
+		}
+	}
+	GANYU_war_targeted_decision_2 = {
+		target_root_trigger = {
+			has_completed_focus = GAN2_18
+		}
+		targets = { NNG KQG XQG XRG XOG ZDG ARF }
+		targets_dynamic = yes
+		target_trigger = {
+			OR = {
+				FROM = {
+				is_neighbor_of = ROOT
+				}
+				FROM = {
+					tag = NNG
+				}
+			}
+			
+		}
+		cost = 0
+		days_remove = 7
+		ai_will_do = {
+			base = 50
+		}
+		fire_only_once = yes
+		war_with_target_on_complete = yes
+		complete_effect = {
+			FROM = {
+				country_event = { id = liyue_civil_war.101 }
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+	}
 }
+
 debug_LYU_civil_war = {
 	debug_parliament_start = { 
 			icon = decision_icon_xinuoxiaojiepinpaichuangjian

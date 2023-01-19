@@ -92,32 +92,34 @@ news_event = {
 	desc = BLL_event.6.d
 	is_triggered_only =yes
 	fire_only_once =yes
-	option = {
-		name = BLL_event.6.a
-		hidden_effect = {
-		randomize_temp_variable ={
-			var = BLL_event_6_temp_judge
-  			distribution = uniform
-			min = 0
-			max = 5
-		}
-		if = {
-			limit = {
-				check_variable = {
+		option = {
+			name = BLL_event.6.a
+			hidden_effect = {
+				randomize_variable ={
 					var = BLL_event_6_temp_judge
-					value = 3
-					compare = greater_than_or_equals
+					distribution = uniform
+					min = 0
+					max = 5
 				}
+				add_to_variable = {BLL_test = BLL_event_6_temp_judge}
+				if = {
+					limit = {
+						check_variable = {
+							var = BLL_test
+							value = 3
+							compare = greater_than_or_equals
+						}
+					}
+					BLL = {
+						news_event = {id = BLL_event.7 days = 3}
+					}
+				}
+				
 			}
-			BLL = {
-				news_event = {id = BLL_event_7 days = 3}
-			}
-			
 		}
-	}
-		
-	}
 }
+
+
 ###事件名：奔狼领风花节事故
 news_event = {
 	id = BLL_event.7

@@ -288,68 +288,25 @@ RTG_conrols_south_liyue = {
 
 
 has_completely_conrols_liyue_except_guyunge = {
-    ROOT = {
-        controls_state = 134  
-	    controls_state = 135 
-	    controls_state = 132 
-	    controls_state = 141  
-	    controls_state = 136 
-	    controls_state = 130  
-	    controls_state = 133  
-	    controls_state = 131  
-	    controls_state = 194   
-	    controls_state = 139 
-	    controls_state = 137  
-	    controls_state = 167  
-	    controls_state = 138 
-	    controls_state = 142 
-	    controls_state = 143   
-	    controls_state = 144 
-	    controls_state = 121  
-	    controls_state = 145  
-	    controls_state = 148  
-	    controls_state = 149   
-	    controls_state = 146
-        controls_state = 147				
-	    controls_state = 168  
-	    controls_state = 204 
-        controls_state = 205
-        controls_state = 206				
-	    controls_state = 201   
-	    controls_state = 202 
-	    controls_state = 203 
-	    controls_state = 200
-        controls_state = 199				
-	    controls_state = 162
-        controls_state = 163				
-	    controls_state = 164  
-	    controls_state = 165 
-	    controls_state = 166 
-	    controls_state = 159  
-	    controls_state = 161  
-	    controls_state = 171   
-	    controls_state = 198 
-	    controls_state = 244  
-	    controls_state = 158  
-	    controls_state = 160  
-	    controls_state = 223   
-	    controls_state = 150 
-	    controls_state = 195  
-	    controls_state = 196  
-	    controls_state = 197  
-	    controls_state = 157   
-	    controls_state = 207 
-	    controls_state = 208  
-	    controls_state = 209 
-	    controls_state = 156 
-	    controls_state = 155   
-	    controls_state = 154
-        controls_state = 153				
-	    controls_state = 152   
-	    controls_state = 151 
-	    controls_state = 170   
-	    controls_state = 210 
-	    controls_state = 211       
+    ROOT = {  
+		OR = {
+			is_in_faction = no
+			is_faction_leader = yes
+		}
+		all_state = {
+			has_state_flag = is_Liyues_territory
+			OR = {
+				state = 126
+				state = 242
+				controller = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}     
 	}
 }
 

@@ -1,0 +1,168 @@
+focus_tree = {
+	id = EMP_FocusTree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = EMP
+		}
+	}
+	default = no
+	focus = {
+		id = TTT_huijiachongkai  #解散TTT
+		icon = GFX_goal_TTT_huijiagundan          
+		
+		available = {
+			is_ai = no
+		}    
+		mutually_exclusive = { focus = TTT_zhizuorengjiangjixu }
+		x = 5
+		y = 0
+		cost = 35                       		
+        completion_reward = {    
+		   custom_effect_tooltip = TTT_huijiachongkai_tt
+		}	
+	}	
+	focus = {
+		id = TTT_zhizuorengjiangjixu   #维持TTT
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+        mutually_exclusive = { focus = TTT_huijiachongkai }
+		completion_reward = {
+			add_political_power = 25	
+		}
+		x = 7
+		y = 0
+	}
+	focus = {
+		id = TTT_chuliluanju   #处理乱象
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_zhizuorengjiangjixu }
+		completion_reward = {
+			add_political_power = -25
+            add_stability = 0.05
+		}
+		x = 7
+		y = 1
+	}
+	focus = {
+		id = TTT_taolunrenhofangxiang   #讨论日后方向
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_chuliluanju }
+		completion_reward = {
+			
+		}
+		x = 7
+		y = 2
+	}
+	focus = {
+		id = TTT_chulilinandeyichang  #处理林安的遗产
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_taolunrenhofangxiang }
+		completion_reward = {
+			
+		}
+		x = 7
+		y = 3
+	}
+	focus = {
+		id = TTT_chenglizuigaoweiyuanhui  #成立最高委员会
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_chulilinandeyichang }
+		completion_reward = {
+			
+		}
+		x = 7
+		y = 4
+	}
+	focus = {
+		id = TTT_taolunfengongwenti  #讨论分工问题
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_chenglizuigaoweiyuanhui }
+		completion_reward = {
+			
+		}
+		x = 5
+		y = 5
+	}
+	focus = {
+		id = TTT_xuanchuanwenti  #宣传问题
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_taolunfengongwenti }
+		completion_reward = {
+			
+		}
+		x = 5
+		y = 6
+	}
+	focus = {
+		id = TTT_daoqizizhi  #稻妻自治
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_chenglizuigaoweiyuanhui }
+		completion_reward = {
+			
+		}
+		x = 9
+		y = 5
+	}
+	focus = {
+		id = TTT_chuliliyueneizhan  #着手处理璃月内战设定
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_daoqizizhi }
+		completion_reward = {
+			
+		}
+		x = 9
+		y = 6
+	}
+	focus = {
+		id = TTT_queliduanqimubiao  #确立短期方向
+		icon = GFX_goal_unknown
+		cost = 15
+		available = {
+			is_ai = no
+		}
+		prerequisite = { focus = TTT_chuliliyueneizhan }
+		prerequisite = { focus = TTT_xuanchuanwenti }
+		completion_reward = {
+			
+		}
+		x = 7
+		y = 7
+	}
+}

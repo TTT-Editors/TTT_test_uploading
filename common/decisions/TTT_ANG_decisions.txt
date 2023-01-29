@@ -942,7 +942,24 @@ ANG_bop_decisions_categories_no_dlc = {
 			is_debug = yes
 		}
 		complete_effect = {
-			
+			if = {
+				limit = {
+					has_political_power > 100
+				}
+				add_political_power = 100
+			}
+			else = {
+				add_political_power = 50
+			}
+			if = {
+				limit= {
+					has_stability > 0.5
+				}
+				add_political_power = 150
+			}
+			else = {
+				add_political_power = 200
+			}
 		}
 		remove_effect = {
 			

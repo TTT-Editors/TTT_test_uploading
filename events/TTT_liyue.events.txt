@@ -135,45 +135,28 @@ country_event = {
 		    }
 		    NNG = { transfer_state = 145 } 
 		    NNG = { transfer_state = 126 } 
-		    XQG = { transfer_state = 148 } 
-		    XQG = { transfer_state = 146 } 
-		    XQG = { transfer_state = 149 }
-            XQG = { transfer_state = 405 }
-            XQG = { transfer_state = 406 }			
-		    XQG = { transfer_state = 150 }  
+		    NNG = { transfer_state = 148 } 
+		    NNG = { transfer_state = 146 } 
+		    NNG = { transfer_state = 149 }
+            NNG = { transfer_state = 405 }
+            NNG = { transfer_state = 406 }			
+		    NNG = { transfer_state = 150 }  
 		    NNG = { transfer_state = 242 } 
-			XQG = { 
-			    every_owned_state = {
-			        add_core_of = XQG
-					add_core_of = NNG
-					remove_core_of = LYU
-	  	        } 
-		    }
-			log = "XQG has been released"
 			NNG = { 
 			    every_owned_state = {
 			        add_core_of = NNG
 					remove_core_of = LYU
 	  	        } 
-		    }			
-			transfer_units_fraction = {
-				target = XQG
-				size = 0.10
-				keep_unit_leaders = { }
-				keep_unit_leaders_trigger = {
-					always = yes
-				}
-			}			
+		    }				
 			transfer_units_fraction = {
 				target = NNG
-				size = 0.25
+				size = 0.16
 				keep_unit_leaders = { }
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
 			}     			
 			log = "Units has been released"
-			XQG = { set_research_slots = 1 }
 			
 			if = {
 				limit = { has_idea = LYU_NingGuang }
@@ -185,7 +168,7 @@ country_event = {
 			LYU_Yelan = { set_nationality = NNG }
 			LYU_BeiDou = { set_nationality = NNG }
 			LYU_Xinyan = { set_nationality = NNG }
-			LYU_Chongyun = { set_nationality = XQG }
+			LYU_Chongyun = { set_nationality = NNG }
 			
 			log = "Characters has been divided"
 			
@@ -209,30 +192,6 @@ country_event = {
 				}
 			}
 			
-			NNG = {
-			#	puppet = XQG
-				create_faction = liyue_liberation_alliance
-				add_to_faction = XQG
-			}
-			
-			log = "Faction has been Set up"
-			
-			XQG = {
-				inherit_technology = LYU
-				set_politics = {
-					ruling_party = reformism
-					election_frequency = 60
-					elections_allowed = yes
-				}
-				set_popularities = {
-					communism = 20
-					liberalism = 40
-					reformism = 40
-				}
-				set_country_flag = befriend_with_NNG
-			}
-			
-			XQG = { load_oob = "XQG" }      
 			NNG = { load_oob = "NNG" }
 			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
         }
@@ -250,15 +209,6 @@ country_event = {
         } 
 		NNG = { change_tag_from = ROOT }
 		NNG = { TTT_open_book = yes }
-    }
-	option = { 
-		name = liyue.4.c 
-		ai_chance = {
-			factor = 0
-        }  
-		XQG = { change_tag_from = ROOT }
-		custom_effect_tooltip = Xingqiulantanzi
-		XQG = { TTT_open_book = yes }
     }
 }
 
@@ -296,7 +246,7 @@ country_event = {
 		    }   
 			transfer_units_fraction = {
 				target = KQG
-				size = 0.15
+				size = 0.2
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
@@ -315,9 +265,7 @@ country_event = {
 			KQG = { activate_mission = KQG_ready_to_attack_NNG }
 			#KQG = { activate_mission = battle_of_yaoguang_shoal }
 			NNG = { activate_mission = NNG_ready_to_attack_KQG }
-			XQG = { activate_mission = NNG_ready_to_attack_KQG }
 			#NNG = { activate_mission = battle_of_yaoguang_shoal_reverse }
-			#XQG = { activate_mission = battle_of_yaoguang_shoal_reverse }
 		}
 	}
 	
@@ -357,8 +305,7 @@ country_event = {
 			XOG = { transfer_state = 134 } 
 			XOG = { transfer_state = 135 } 
 			XOG = { transfer_state = 132 } 
-			XOG = { transfer_state = 136 } 
-			XOG = { transfer_state = 167 }    
+			XOG = { transfer_state = 136 }   
 			XOG = { load_oob = "XOG" } 
 			transfer_units_fraction = {
 				target = XOG
@@ -462,8 +409,8 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			ZDG = { transfer_state = 134 } 
-			ZDG = { transfer_state = 135 } 
+			#ZDG = { transfer_state = 134 } 
+			#ZDG = { transfer_state = 135 } 
 			ZDG = { transfer_state = 132 } 
 			ZDG = { transfer_state = 167 } 
 			ZDG = { transfer_state = 176 } 
@@ -497,8 +444,8 @@ country_event = {
 			}
 			167 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			132 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			134 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			135 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
+			#134 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
+			#135 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			136 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			141 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			ZDG = { 
@@ -579,7 +526,8 @@ country_event = {
 			log = "XRG gained 199" 
 			#XRG = { transfer_state = 201 } 
 			#XRG = { transfer_state = 202 } 
-			XRG = { transfer_state = 198 } 
+			XRG = { transfer_state = 198 }
+			XRG = { transfer_state = 167 }   
 			log = "XRG gained all lands"
 			XRG = { inherit_technology = LYU }  
 			XRG = { load_oob = "XRG" } 
@@ -752,8 +700,7 @@ country_event = {
 		annex_country = { target = LYU transfer_troops = yes }  
 		annex_country = { target = ZDG transfer_troops = yes }          
 		annex_country = { target = ANG transfer_troops = yes }           
-		annex_country = { target = KQG transfer_troops = yes }  
-		annex_country = { target = XQG transfer_troops = yes }            
+		annex_country = { target = KQG transfer_troops = yes }             
 		annex_country = { target = XOG transfer_troops = yes }            
         set_capital = { state = 127 }
     }

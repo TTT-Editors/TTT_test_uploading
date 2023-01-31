@@ -134,17 +134,25 @@ country_event = {
 
 	option = {
 		name = liyue_civil_war.21.a		#join
+		trigger = {
+			NOT = { has_government = hive_mind }
+			NOT = { has_government = esotericism }
+		}
+		custom_effect_tooltip = we_will_make_peace_and_join_it
+		if = {
+			limit = { surrender_progress > 0.3 }
+			custom_effect_tooltip = we_will_lose_occupied_land
+		}
 		ai_chance = {
 			factor = 10
-			modifier = {
-				factor = 0
-				OR = {
-					has_government = hive_mind
-					has_government = esotericism
-				}
-			}
 		}
 		set_country_flag = ready_to_join_pact
+		every_country = {
+			if = {
+				limit = { is_in_faction_with = ROOT }
+			}
+			set_country_flag = ready_to_join_pact
+		}
 	}
 
 	option = {
@@ -180,14 +188,7 @@ country_event = {
 			if = {
 				limit = {
 					is_faction_leader = yes
-					NOT = { tag = LYU }
-				}
-				every_country = {
-					if = {
-						limit = { is_in_faction_with = PREV }
-					}
-					set_country_flag = ready_to_join_pact
-					set_country_flag = ready_for_another_round
+					NOT = { tag = ROOT }
 				}
 				dismantle_faction = yes
 			}
@@ -195,9 +196,7 @@ country_event = {
 		}
 		every_country = {
 			limit = {
-				has_country_flag = ready_for_another_round
-				NOT = { has_government = hive_mind }
-				is_subject = no
+				has_country_flag = ready_to_join_pact
 			}
 			if = {
 				limit = { surrender_progress > 0.3 }
@@ -208,42 +207,22 @@ country_event = {
 					transfer_state_to = THIS.controller
 				}
 			}
-			if = {
+			every_country = {
 				limit = {
-					has_war_with = ANG
+					NOT = { tag = PREV }
+					has_country_flag = ready_to_join_pact
+					has_war_with = PREV
 				}
-				white_peace = ANG
-			}
-			if = {
-				limit = {
-					has_war_with = RTG
-					RTG = { NOT = { has_government = hive_mind } }
-				}
-				white_peace = RTG
-			}
-			if = {
-				limit = {
-					has_war_with = LYU
-				}
-				white_peace = LYU
-			}
-			if = {
-				limit = {
-					has_war_with = KQG
-				}
-				white_peace = KQG
-			}
-			if = {
-				limit = {
-					has_war_with = NNG
-				}
-				white_peace = NNG
+				white_peace = PREV
 			}
 		}
 		ROOT = {
-			declare_war_on = {
-				target = ZDG
-				type = annex_everything
+			if = {
+				limit = { NOT = { has_war_with = ZDG } }
+				declare_war_on = {
+					target = ZDG
+					type = annex_everything
+				}
 			}
 		}
 		every_country = {

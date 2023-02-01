@@ -338,10 +338,6 @@ liyue_civil_war_decisions = {
 						militia = { x = 0 y = 3 }
 						militia = { x = 0 y = 4 }
 						militia = { x = 1 y = 0 }
-						militia = { x = 1 y = 1 }
-						militia = { x = 1 y = 2 }
-						militia = { x = 1 y = 3 }
-						militia = { x = 1 y = 4 }
 					}
 				}
 				every_owned_state = {
@@ -349,27 +345,27 @@ liyue_civil_war_decisions = {
 						is_core_of = ANG
 					}
 					create_unit = { 
-						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.2"
 						owner = ANG 
 					}
 					create_unit = { 
-						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.2"
 						owner = ANG 
 					}
 					create_unit = { 
-						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.2"
 						owner = ANG 
 					}
 					create_unit = { 
-						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.5"
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.2"
 						owner = ANG 
 					}
 					create_unit = { 
-						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.3"
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.2"
 						owner = ANG 
 					}
 					create_unit = { 
-						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.3"
+						division = "name = \"Heiyan Commune Militia\" division_template = \"Commune Militia\" start_experience_factor = 0.2"
 						owner = ANG 
 					}
 				} 
@@ -523,7 +519,6 @@ ANG_tongyiliyue = {
 		}
 		fire_only_once = yes
 		available = {
-			has_war = no
 		}
 		visible = {
 		    LYU = { exists = yes }
@@ -538,7 +533,10 @@ ANG_tongyiliyue = {
 			}
 		}
 		remove_effect = {
-			country_event = { id = liyue_civil_war.13 }
+			declare_war_on = {
+				target = LYU
+				type = annex_everything
+			}
 		}
 	}
 	ANG_against_RTG = {
@@ -549,7 +547,6 @@ ANG_tongyiliyue = {
 		}
 		fire_only_once = yes
 		available = {
-			has_war = no
 			NOT = {
 				is_puppet_of = RTG
 			}
@@ -567,7 +564,10 @@ ANG_tongyiliyue = {
 			}
 		}
 		remove_effect = {
-			country_event = { id = liyue_civil_war.2 }
+			declare_war_on = {
+				target = RTG
+				type = annex_everything
+			}
 		}
 	}
 	ANG_be_against_by_LYU = {

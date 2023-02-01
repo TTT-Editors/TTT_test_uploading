@@ -159,58 +159,44 @@ liyue_civil_war_decisions = {
 		
 		available = {
 			ZDG = { exists = no }
-			OR = {
-				custom_trigger_tooltip = {
-					tooltip = XOG_unifies_northern_by_himself
-					tag = XOG
-					is_in_faction = no
-					OR = {
-						has_country_flag = XOG_refuse_XRG
-						has_country_flag = XOG_refuse_LYU
-						XRG = {
-							OR = {
-								exists = no
-								AND = {
-									is_in_faction = yes
-									is_faction_leader = no
-								}
-								is_subject = yes
+			custom_trigger_tooltip = {
+				tooltip = north_no_enemy
+				OR = {
+					tag = XRG
+					XRG = { exists = no }
+					XRG = {
+						OR = {
+							AND = {
+								is_in_faction = yes
+								is_faction_leader = no
 							}
+							is_subject = yes
 						}
+						NOT = { has_war_with = ROOT }
 					}
 				}
-				custom_trigger_tooltip = {
-					tooltip = XRG_unifies_northern
-					tag = XRG
-					OR = {
-						is_faction_leader = yes
-						is_in_faction = no
-					}
+				OR = {
+					tag = XOG
+					XOG = { exists = no }
 					XOG = {
 						OR = {
-							exists = no
-							is_in_faction_with = XRG
 							AND = {
-								XRG = { has_country_flag = xrg_has_tried_to_cooperate_with_xog }
-								NOT = {
-									has_country_flag = XOG_refuse_XRG
-									has_country_flag = XOG_refuse_LYU
-									has_war_with = XRG
-								}
+								is_in_faction = yes
+								is_faction_leader = no
 							}
+							is_subject = yes
 						}
+						NOT = { has_war_with = ROOT }
 					}
 				}
-				custom_trigger_tooltip = {
-					tooltip = center_beats_north
-					has_country_flag = center_victor
-					OR = {
-						is_faction_leader = yes
-						is_in_faction = no
+				OR = {
+					tag = XRG
+					tag = XOG
+					AND = {
+						has_country_flag = center_victor
+						XRG = { exists = no }
+						XOG = { exists = no }
 					}
-					XOG = { exists = no }
-					XRG = { exists = no }
-					ZDG = { exists = no }
 				}
 			}
 		}
@@ -478,38 +464,31 @@ liyue_civil_war_decisions = {
 				is_faction_leader = yes
 				is_in_faction = no
 			}
-			OR = {
-				custom_trigger_tooltip = {
-					tooltip = ningguang_defeat_keqing
+			custom_trigger_tooltip = {
+				tooltip = center_no_enemy
+				OR = {
 					tag = NNG
-					KQG = { exists = no }
+					AND = {
+						NOT = { tag = NNG }
+						NNG = {
+							all_owned_state = {
+								OR = {
+									state = 126
+									state = 242
+									is_controlled_by = ROOT
+								}
+							}
+						}
+					}
 				}
-				custom_trigger_tooltip = {
-					tooltip = keqing_beat_ningguang
+				OR = {
 					tag = KQG
-					NNG = {
-						all_owned_state = {
-							OR = {
-								state = 126
-								state = 242
-								is_controlled_by = ROOT
-							}
-						}
-					}
-				}
-				custom_trigger_tooltip = {
-					tooltip = north_beats_center
-					has_country_flag = north_victor
 					KQG = { exists = no }
-					NNG = {
-						all_owned_state = {
-							OR = {
-								state = 126
-								state = 242
-								is_controlled_by = ROOT
-							}
-						}
-					}
+				}
+				OR = {
+					tag = NNG
+					tag = KQG
+					has_country_flag = north_victor
 				}
 			}
 		}
@@ -537,6 +516,22 @@ liyue_civil_war_decisions = {
 							set_country_flag = defeated_ningguang
 						}
 						news_event = { id = global_news.10 hours = 12 }
+						NNG = {
+							transfer_units_fraction = {
+								target = ROOT
+								size = 0.05 # Fallback in case one of the ratios below are not stipulated
+								stockpile_ratio = 0.15
+								army_ratio = 0.05
+								navy_ratio = 0.3
+								air_ratio = 0.2
+								keep_unit_leaders = {
+									
+								}
+								keep_unit_leaders_trigger = {
+									always = yes
+								}
+							}
+						}
 					}
 					every_state = {	
 						limit = {
@@ -547,6 +542,7 @@ liyue_civil_war_decisions = {
 						ROOT = {
 							transfer_state = PREV
 						}
+						add_core_of = ROOT
 					}
 				}
 			}
@@ -805,7 +801,7 @@ liyue_civil_war_decisions = {
 
 	strike_liyue_default = {
 
-		icon = onmap_recruit_operative
+		icon = default_battle
 
 		available = {
 			
@@ -904,7 +900,7 @@ liyue_civil_war_decisions = {
 		
 		cost = 50
 
-		days_remove = 14
+		days_remove = 6
 
 		war_with_on_remove = ZDG
 		
@@ -937,7 +933,7 @@ liyue_civil_war_decisions = {
 						is_faction_leader = yes
 					}
 				}
-				country_event = { id = liyue_civil_war.21 days = 3 }
+				country_event = { id = liyue_civil_war.21 days = 2 }
 			}
 		}
 
@@ -949,6 +945,7 @@ liyue_civil_war_decisions = {
 					type = annex_everything
 				}
 			}
+			custom_effect_tooltip = see_how_charmful_we_are
 		}
 	}
 	
@@ -1469,10 +1466,7 @@ liyue_civil_war_decisions = {
 				original_tag = NNG
 				original_tag = XOG
 				original_tag = ARF
-				AND = {
-					tag = KQG
-					has_government = reformism
-				}
+				original_tag = KQG
 				AND = {
 					tag = RTG
 					NOT = { has_government = hive_mind }
@@ -1530,10 +1524,7 @@ liyue_civil_war_decisions = {
 				original_tag = NNG
 				original_tag = XOG
 				original_tag = ARF
-				AND = {
-					tag = KQG
-					has_government = reformism
-				}
+				original_tag = KQG
 				AND = {
 					tag = RTG
 					NOT = { has_government = hive_mind }

@@ -92,7 +92,6 @@ country_event = {
 	
 	option = {
 	    name = KQG_events.8.a
-		LYU_ZhongliA = { set_nationality = { target_country = KQG } }
     }
 }
 
@@ -159,7 +158,18 @@ country_event = {
 	picture = GFX_country_event_baifeidaixing
 	option = {
 	    name = KQG_events.13.a
-		add_stability = 0.05 
+		add_stability = 0.05
+        remove_ideas = idea_jieminuofu
+        remove_ideas = KQG_Aerfuleide
+        KQG_jieminuofu = {
+			clr_character_flag = KQG_exiled_flag1
+		}
+        KQG_Afuyuer = {
+			clr_character_flag = KQG_exiled_flag2
+		}
+		KQG_Aerfuleide = {
+			clr_character_flag = KQG_exiled_flag3
+		}
     }
 }
 
@@ -176,7 +186,66 @@ country_event = {
 		add_war_support = 0.05		
     }
 }
-
+#访客
+country_event = {
+    id = KQG_events.15
+	title = KQG_events.15.t
+    desc = KQG_events.15.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	picture = GFX_country_event_juexin
+	option = {
+	    name = KQG_events.15.a
+		country_event = { days = 30  id = KQG_events.16 }	
+    }
+}
+#“铁人”——杰米洛夫斯基
+country_event = {
+    id = KQG_events.16
+	title = KQG_events.16.t
+    desc = KQG_events.16.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	option = {
+	    name = KQG_events.16.a
+		add_ideas = idea_jieminuofu
+		country_event = { days = 15  id = KQG_events.17 }
+        KQG_jieminuofu = {
+			set_character_flag = KQG_exiled_flag1
+		}		
+    }
+}
+#“曙光”——阿芙乐尔
+country_event = {
+    id = KQG_events.17
+	title = KQG_events.17.t
+    desc = KQG_events.17.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	option = {
+	    name = KQG_events.17.a
+		custom_effect_tooltip = unlock_advisor_keqing_3
+		country_event = { days = 20  id = KQG_events.18 }
+        KQG_Afuyuer = {
+			set_character_flag = KQG_exiled_flag2
+		}		
+    }
+}
+#“下水道的豹子”——阿尔弗雷德
+country_event = {
+    id = KQG_events.18
+	title = KQG_events.18.t
+    desc = KQG_events.18.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	option = {
+	    name = KQG_events.18.a
+		add_ideas = KQG_Aerfuleide
+        KQG_Aerfuleide = {
+			set_character_flag = KQG_exiled_flag3
+		}		
+    }
+}
 #璃月人民临时政府紧急通报
 country_event = {
     id = KQG_events.19
@@ -247,158 +316,6 @@ country_event = {
     }
 }
 
-#来自南方的请求
-country_event = {
-    id = KQG_events.15
-	title = KQG_events.15.t
-    desc = KQG_events.15.d
-    fire_only_once=yes
-	is_triggered_only = yes
-	option = {
-	    name = KQG_events.15.a
-		ai_chance = {
-		factor = 100
-		}
-		create_faction = communism_alliance
-		KQG = {
-			add_to_faction = XQG
-		}
-        XQG = {
-				country_event = KQG_events.16
-		}
-        country_event = KQG_events.16
-        XRG = {
-				country_event = KQG_events.16
-		}
-        NNG = {
-				country_event = KQG_events.16
-		}
-        ZDG = {
-				country_event = KQG_events.16
-		}
-        LYU = {
-				country_event = KQG_events.16
-		}
-        ANG = {
-				country_event = KQG_events.16
-		}
-        RTG = {
-				country_event = KQG_events.16
-		}
-        XOG = {
-				country_event = KQG_events.16
-		}
-        unlock_decision_category_tooltip = KQG_special_categories6
-        set_country_flag = keqing1                          		
-    }
-	
-	option = {
-	    name = KQG_events.15.b
-		ai_chance = {
-		factor = 0
-		}
-		complete_national_focus = KQG_46
-		XQG = {
-				country_event = KQG_events.17
-				complete_national_focus = XQG_14
-		}
-        country_event = KQG_events.17
-        XRG = {
-				country_event = KQG_events.17
-		}
-        NNG = {
-				country_event = KQG_events.17
-		}
-        ZDG = {
-				country_event = KQG_events.17
-		}
-        LYU = {
-				country_event = KQG_events.17
-		}
-        ANG = {
-				country_event = KQG_events.17
-		}
-        RTG = {
-				country_event = KQG_events.17
-		}
-        XOG = {
-				country_event = KQG_events.17
-		}
-	}
-}
-
-#人民主义的合作
-country_event = {
-    id = KQG_events.16
-	title = KQG_events.16.t
-    desc = KQG_events.16.d
-    fire_only_once=yes
-	is_triggered_only = yes
-	option = {
-	    name = KQG_events.16.a		
-    }
-}
-
-#人民主义的对立
-country_event = {
-    id = KQG_events.17
-	title = KQG_events.17.t
-    desc = KQG_events.17.d
-    fire_only_once=yes
-	is_triggered_only = yes
-	option = {
-	    name = KQG_events.17.a		
-    }
-}
-#统一
-country_event = {
-    id = KQG_events.18
-	title = KQG_events.18.t
-    desc = KQG_events.18.d
-    fire_only_once=yes
-	is_triggered_only = yes
-	option = {
-	    ai_chance = {
-			factor = 1
-		}
-	    name = KQG_events.18.a
-		hidden_effect = {
-			if = {
-				limit = { 
-					KQG = {
-						is_ai = yes
-					}
-				}
-				KQG = { change_tag_from = ROOT }
-			}
-		}
-		KQG = {
-			annex_country = { target = XQG transfer_troops =  yes }
-			every_owned_state = {
-				limit = {
-					is_core_of = XQG
-				}
-				remove_core_of = XQG
-				KQG = {
-					add_state_core = PREV
-				}
-			}
-        }
-		XQG = {
-			transfer_navy = { target = KQG }
-			every_unit_leader = { set_nationality = KQG }
-		}		
-    }
-	option = {
-	    ai_chance = {
-		factor = 0
-		}
-	    name = KQG_events.18.b
-		XQG = { leave_faction = yes }
-        XQG = { declare_war_on = { target = KQG type = annex_everything } }	
-    }
-}
-
 #开会事件
 country_event = {
     id = KQG_events.24
@@ -419,14 +336,23 @@ country_event = {
     fire_only_once=yes
 	is_triggered_only = yes
 	option = {
+	    ai_chance = {
+			factor = 25
+        }
 	    name = KQG_events.25.a
         add_timed_idea = { idea = idea_Radical_political days = 90 }		
     }
 	option = {
+	    ai_chance = {
+			factor = 25
+        }
 	    name = KQG_events.25.b
         add_timed_idea = { idea = idea_Grassroots_publicity days = 90 }		
     }
 	option = {
+	    ai_chance = {
+			factor = 25
+        }
 	    name = KQG_events.25.c
         add_stability = 0.20
         add_political_power = -200

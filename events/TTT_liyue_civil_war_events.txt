@@ -52,19 +52,6 @@ country_event = {
 	}
 }
 
-#凝光撤出大陆（凝光视角）
-country_event = {
-	id = liyue_civil_war.4
-	title = liyue_civil_war.4.t
-	desc = liyue_civil_war.4.d
-	is_triggered_only = yes
-	
-	option = {
-		name = liyue_civil_war.4.a
-		add_political_power = -100
-	}
-}
-
 #反至冬干涉军阵线
 country_event = {
 	id = liyue_civil_war.5
@@ -138,6 +125,49 @@ country_event = {
 	}
 }
 
+#要求事件
+country_event = {
+	id = liyue_civil_war.21
+	title = liyue_civil_war.21.t
+	desc = liyue_civil_war.21.d
+	is_triggered_only = yes
+
+	option = {
+		name = liyue_civil_war.21.a		#join
+		trigger = {
+			NOT = { has_government = hive_mind }
+			NOT = { has_government = esotericism }
+		}
+		custom_effect_tooltip = we_will_make_peace_and_join_it
+		if = {
+			limit = { surrender_progress > 0.3 }
+			custom_effect_tooltip = we_will_lose_occupied_land
+		}
+		ai_chance = {
+			factor = 10
+		}
+		set_country_flag = ready_to_join_pact
+		every_country = {
+			if = {
+				limit = { is_in_faction_with = ROOT }
+			}
+			set_country_flag = ready_to_join_pact
+		}
+	}
+
+	option = {
+		name = liyue_civil_war.21.b		#reject
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { has_government = hive_mind }
+				NOT = { has_government = esotericism }
+			}
+		}
+	}
+}
+
 #至冬获胜，璃月反至冬阵营成立
 country_event = {
 	id = liyue_civil_war.9
@@ -146,93 +176,65 @@ country_event = {
 	fire_only_once = yes
 	hidden = yes
 	
-	trigger = {
-		has_global_flag = Liyue_Civil_War
-		tag = LYU
-		ZDG = { exists = yes }
-		LYU = { exists = yes }
-		LYU = { NOT = { surrender_progress > 0.2 } }
-		XOG = { exists = no }
-		XRG = { exists = no }
-	}
-	
-	mean_time_to_happen = { days = 45 }
+	is_triggered_only = yes
 	
 	#最后一搏
 	option = {
 		name = liyue_civil_war.9.a
-		set_global_flag = liyue_unified
 		every_country = {
 			limit = {
-				is_nominate_liyue = yes
-				NOT = { tag = ZDG }
+				has_country_flag = ready_to_join_pact
 			}
 			if = {
 				limit = {
 					is_faction_leader = yes
-					NOT = { tag = LYU }
+					NOT = { tag = ROOT }
 				}
 				dismantle_faction = yes
 			}
 			set_country_flag = ready_for_another_round
 		}
-		LYU = {
-			create_faction = Liyue_united_faction
-			declare_war_on = {
-				target = ZDG
-				type = annex_everything
+		every_country = {
+			limit = {
+				has_country_flag = ready_to_join_pact
+			}
+			if = {
+				limit = { surrender_progress > 0.3 }
+				every_owned_state = {
+					limit = {
+						NOT = { is_controlled_by = THIS.owner }
+					}
+					transfer_state_to = THIS.controller
+				}
+			}
+			every_country = {
+				limit = {
+					NOT = { tag = PREV }
+					has_country_flag = ready_to_join_pact
+					has_war_with = PREV
+				}
+				white_peace = PREV
+			}
+		}
+		ROOT = {
+			if = {
+				limit = { NOT = { has_war_with = ZDG } }
+				declare_war_on = {
+					target = ZDG
+					type = annex_everything
+				}
 			}
 		}
 		every_country = {
-			limit = {
-				has_country_flag = ready_for_another_round
-				NOT = { has_government = hive_mind }
-				is_subject = no
-			}
-			if = {
-				limit = {
-					has_war_with = ANG
-				}
-				white_peace = ANG
-			}
-			if = {
-				limit = {
-					has_war_with = RTG
-					RTG = { NOT = { has_government = hive_mind } }
-				}
-				white_peace = RTG
-			}
-			if = {
-				limit = {
-					has_war_with = LYU
-				}
-				white_peace = LYU
-			}
-			if = {
-				limit = {
-					has_war_with = KQG
-				}
-				white_peace = KQG
-			}
-			if = {
-				limit = {
-					has_war_with = NNG
-				}
-				white_peace = NNG
-			}
-			if = {
-				limit = {
-					has_war_with = XQG
-				}
-				white_peace = XQG
-			}
-			LYU = { add_to_faction = PREV }
+			limit = { has_country_flag = ready_to_join_pact }
+			ROOT = { add_to_faction = PREV }
 			add_to_war = {
-				targeted_alliance = LYU
+				targeted_alliance = ROOT
 				enemy = ZDG
 				hostility_reason = asked_to_join
 			}
-			set_country_flag = ready_for_another_round
+			clr_country_flag = ready_to_join_pact
+			clr_country_flag = former_faction_members
 		}
 		news_event = { id = global_news.12 hours = 12 }
 		news_event = { id = global_news.35 hours = 1 }
@@ -273,17 +275,6 @@ country_event = {
 					target = PREV
 					type = annex_everything
 				}
-			}
-		}
-		if = {
-			limit = {
-				tag = NNG
-				XQG = { exists = yes }
-			}
-			NNG = {
-				white_peace = XQG
-				create_faction = liyue_liberation_alliance
-				add_to_faction = XQG
 			}
 		}
 		news_event = { id = global_news.13 hours = 12 }

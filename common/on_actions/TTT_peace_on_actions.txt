@@ -32,15 +32,6 @@ on_actions = {
 						set_nationality = SNE
 					}
 				}
-				random_country = {
-					limit = {
-						controls_state = 147
-					}
-					country_event = { id = liyue_civil_war.19 days = 60 }
-				}
-				FROM = {
-					country_event = { id = liyue_civil_war.20 days = 90 }
-				}
 				every_state = {	
 					limit = { PREV.owner = { is_ally_with = ROOT } }						
 					every_country = {
@@ -84,24 +75,26 @@ on_actions = {
 						XRG = { exists = no }
 						XOG = { exists = no }
 					}
-					every_country = {
+					random_country = {
 						limit = {
 							has_country_flag = ready_for_another_round
+							is_faction_leader = yes
 						}
 						dismantle_faction = yes
-					}
-					LYU = {
 						country_event = {
 							id = liyue_civil_war.10
 							days = 45
 						}
 					}
 				}
-				if = {
+				random_country = {
 					limit = {
-						XRG = { exists = yes }
-						XOG = { exists = yes }
+						controls_state = 147
 					}
+					country_event = { id = liyue_civil_war.19 days = 60 }
+				}
+				FROM = {
+					country_event = { id = liyue_civil_war.20 days = 90 }
 				}
 			}
 			else_if = {

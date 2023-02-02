@@ -19,3 +19,254 @@ scripted_gui = {
 		}
 	}
 }
+scripted_gui = { 
+    open_SUM_Akasha_Terminal_gui_button = {
+        context_type = player_context
+        window_name = "open_SUM_Akasha_Terminal_gui_button_window"
+        
+        visible = { 
+            tag = SUM
+            has_country_flag = Akasha_Terminal_is_open
+        }
+
+        effects = {
+            Akasha_button_click = {
+                if = {
+                    limit = { NOT = { has_country_flag = open_Akasha_Terminal_gui } }
+                    set_country_flag = open_Akasha_Terminal_gui
+                }
+                else_if = {
+                    limit = { has_country_flag = open_Akasha_Terminal_gui }
+                    clr_country_flag = open_Akasha_Terminal_gui
+                }
+            }
+        }
+    }
+    SUM_Akasha_Terminal_gui = {
+        context_type = player_context
+        window_name = "SUM_Akasha_gui_window"
+        
+        visible = { 
+            has_country_flag = open_Akasha_Terminal_gui
+        }
+
+
+		triggers = {
+			##纳西妲按钮##
+			Akasha_Nahida_button_cover_icon_visible = {
+				check_variable = {
+					var = Akasha_info
+					value = 1
+					compare = equals
+				}
+			}
+			SUM_Akasha_Nahida_Card_visible = {
+				check_variable = {
+					var = Akasha_info
+					value = 1
+					compare = equals
+				}
+			}
+		}
+
+
+
+        effects = {
+			Akasha_Nahida_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 1
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 1
+					}
+				}
+			}
+			Akasha_Mil_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 2
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 2
+					}
+				}
+			}
+			Akasha_Event_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 3
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 3
+					}
+				}
+			}
+			Akasha_Res_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 4
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 4
+					}
+				}
+			}
+			Akasha_Akademiya_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 5
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 5
+					}
+				}
+			}
+			Akasha_Building_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 6
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 6
+					}
+				}
+			}
+			Akasha_Jungle_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 7
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 7
+					}
+				}
+			}
+			Akasha_Desert_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 8
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 8
+					}
+				}
+			}
+			Akasha_Special_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = Akasha_info
+							value = 9
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = Akasha_info
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = Akasha_info
+						value = 9
+					}
+				}
+			}
+
+
+
+			close_button_click = {
+				clr_country_flag = open_Akasha_Terminal_gui
+			}
+		}
+    }
+}

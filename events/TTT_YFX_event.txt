@@ -246,3 +246,60 @@ country_event = {
 		name = YFX_event.14.a
 	}
 }
+
+country_event = {
+	id = YFX_event.15 #西行————致巨渊
+	title = YFX_event.15.t
+	desc = YFX_event.15.d
+	
+	is_triggered_only = no #是否仅能通过其他方式触发
+	fire_only_once = yes 
+	trigger = { is_in_faction_with = XRG 
+	            is_in_faction_with = XOG 
+				tag = LYU
+				RTG={
+					NOT = {
+						 has_government = hive_mind 
+					}
+					}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = { 
+		name = YFX_event.15.a
+		RTG = {
+			country_event = { 
+				days = 3 id = YFX_event.16
+			}
+		}
+	}
+}
+
+country_event = {
+	id = YFX_event.16 #烟绯来信
+	title = YFX_event.16.t
+	desc = YFX_event.16.d
+	
+	is_triggered_only = yes 
+	fire_only_once = yes 
+	option = { 
+		name = YFX_event.16.a #同意
+		every_country = {
+	limit = { 
+		OR = { 
+			tag = ROOT 
+			is_in_faction_with = ROOT
+		} 
+	}
+	    set_country_flag = nlytm01
+   }
+        dismantle_faction = yes
+        LYU = {
+	every_country = {
+		limit = { has_country_flag = nlytm01 }
+		LYU = { add_to_faction = PREV }
+		clr_country_flag = nlytm01
+	}
+}
+news_event = { id = global_news.36  days = 1 }
+}
+}

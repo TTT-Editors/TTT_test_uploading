@@ -1,5 +1,43 @@
 MDQ_dadaupa_War_decision_category = {
-    
+ MDQ_dadaupa_War_decision_1 = {
+        allowed = {
+            tag = MDQ
+        }
+        activation = {
+            not = {
+                has_country_flag = MDQ_dadaupa_War_flag
+            }
+        }
+        available = {
+            has_country_flag = MDQ_dadaupa_War_flag
+        }
+        is_good = no
+        selectable_mission = yes  
+        days_mission_timeout = 10
+        timeout_effect = {
+            set_country_flag = MDQ_dadaupa_War_flag
+            leave_faction = yes
+            QQR = {
+                transfer_state = 280
+                transfer_state = 281
+                transfer_state = 284
+                transfer_state = 398
+                transfer_state = 400
+                transfer_state = 402
+                transfer_state = 283
+                transfer_state = 286
+                load_oob = "QQR"
+            }
+            declare_war_on = {
+                target = QQR
+                type = annex_everything
+            }
+            add_named_threat = { 
+                threat = 1.8
+                name = MDQ_dadaupa_War
+            }
+        }
+    }   
     ###决议选项名：军事训练
 MDQ_dadaupa_War_decision_2= {
 	cost = 50.0
@@ -20,7 +58,7 @@ MDQ_dadaupa_War_decision_2= {
 		factor = 5
 	}
 	modifier = {
-		political_power_gain = -0.4
+		political_power_gain = -0.2
         experience_gain_infantry_training_factor = 0.3
 	}
 	complete_effect = {
@@ -56,7 +94,7 @@ MDQ_dadaupa_War_decision_3= {
         factor = 5
     }
 	modifier = {
-		political_power_gain = -0.4
+		political_power_gain = -0.2
 	}
 	complete_effect = {
 		
@@ -106,7 +144,7 @@ MDQ_dadaupa_War_decision_4= {
         factor = 5
     }
 	modifier = {
-		political_power_gain = -0.4
+		political_power_gain = -0.2
 	}
 	complete_effect = {
 		
@@ -142,7 +180,7 @@ MDQ_dadaupa_War_decision_5= {
         factor = 5
     }
 	modifier = {
-		political_power_gain = -0.4
+		political_power_gain = -0.2
 	}
 	complete_effect = {
 		
@@ -182,7 +220,7 @@ MDQ_dadaupa_War_decision_6= {
         factor = 5
     }
 	modifier = {
-		political_power_gain = -0.4
+		political_power_gain = -0.2
 	}
 	complete_effect = {
 		
@@ -221,7 +259,7 @@ MDQ_dadaupa_War_decision_7= {
 		factor = 5
 	}
 	modifier = {
-		political_power_gain = -0.4
+		political_power_gain = -0.2
 	}
 	complete_effect = {
 		hidden_effect = {
@@ -239,43 +277,109 @@ MDQ_dadaupa_War_decision_7= {
 		}
 	}
 }
-MDQ_dadaupa_War_decision_1 = {
+###决策名：战争宣传
+MDQ_dadaupa_War_decision_8= {
+	cost = 100.0
+	days_remove =30.0
+	fire_only_once = no
+	days_re_enable = 30.0
+	on_map_mode = map_and_decisions_view
+	visible = {
+		has_completed_focus = MDQ_Continue_attack
+	}
+	available = {
+		has_completed_focus = MDQ_Continue_attack
+		not = {
+			has_country_flag = lock_decision_X
+		}
+	}
+	ai_will_do ={
+		factor = 5
+	}
+	modifier = {
+		political_power_gain = -0.2
+	}
+	complete_effect = {
+		hidden_effect = {
+			set_country_flag = lock_decision_X
+		}
+	}
+	remove_effect = {
+        add_war_support = 0.15
+		hidden_effect = {
+			clr_country_flag = lock_decision_X
+		}
+	}
+}
+###维护社会稳定
+MDQ_dadaupa_War_decision_9= {
+	cost =100.0
+	days_remove =60.0
+	fire_only_once = no
+	days_re_enable = 200.0
+	on_map_mode = map_and_decisions_view
+	visible = {
+		has_completed_focus = MDQ_Continue_attack
+	}
+	available = {
+		has_completed_focus = MDQ_Continue_attack
+		not = {
+			has_country_flag = lock_decision_X
+		}
+	}
+	ai_will_do ={
+		factor = 5
+	}
+	modifier = {
+		political_power_gain = -0.2
+	}
+	complete_effect = {
+		hidden_effect = {
+			set_country_flag = lock_decision_X
+		}
+	}
+	remove_effect = {
+		add_stability = 0.1
+		hidden_effect = {
+			clr_country_flag = lock_decision_X
+		}
+	}
+}
+###达达乌帕谷战争停战
+MDQ_dadaupa_War_decision_10 = {
         allowed = {
             tag = MDQ
         }
         activation = {
-            not = {
-                has_country_flag = MDQ_dadaupa_War_flag
-            }
+            MDQ = {
+				has_war_support < 0.35
+			}
         }
         available = {
+		not = {
             has_country_flag = MDQ_dadaupa_War_flag
+		}	
         }
         is_good = no
-        selectable_mission = yes  
-        days_mission_timeout = 180
+        selectable_mission = yes 
+        days_mission_timeout = 30
         timeout_effect = {
-            set_country_flag = MDQ_dadaupa_War_flag
-            leave_faction = yes
-            QQR = {
-                transfer_state = 280
-                transfer_state = 281
-                transfer_state = 284
-                transfer_state = 398
-                transfer_state = 400
-                transfer_state = 402
-                transfer_state = 283
-                transfer_state = 286
-                load_oob = "QQR"
-            }
-            declare_war_on = {
-                target = QQR
-                type = annex_everything
-            }
-            add_named_threat = { 
-                threat = 1.8
-                name = MDQ_dadaupa_War
+			white_peace = {
+				tag = QQR
+				message = while_peace_with_QQR_1
+			}
+			set_truce = {
+				target = QQR
+				days = 180
+			}
+            MOT = {add_to_faction = MDQ}
+			QQR = {
+                transfer_state = 285
+                transfer_state = 14
+				add_state_core = 285
+				add_state_core = 14
             }
         }
-    }
+    }   
+
 }

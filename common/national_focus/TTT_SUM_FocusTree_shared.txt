@@ -1,83 +1,102 @@
-shared_focus = {
-	id = SUM_shared_test_1
+#须弥开始头一年一阶段
+shared_focus = { 
+	id = SUM_Akademiya_Daily_Activity #教令院日常活动
 	icon = GFX_unknow
-	x = 6
+	x = 10
 	y = 0
 	cost = 7.00
 	ai_will_do = {
 		factor = 80
 	}
 	completion_reward = {
-        add_stability = 1
+        country_event = { id = sumeru.1 }
 	}
 }
 
+
+###研究
 shared_focus = {
-	id = SUM_shared_test_2
+	id = SUM_Akademiya_Res_plan #研究计划
 	icon = GFX_unknow
-	x = -4
+
+	relative_position_id = SUM_Akademiya_Daily_Activity
+	x = -8
 	y = 1
-	relative_position_id = SUM_shared_test_1
+
 	cost = 7.00
 	prerequisite = {
-		focus = SUM_shared_test_1
+		focus = SUM_Akademiya_Daily_Activity
     }
     ai_will_do = {
         factor = 10
     }
 	completion_reward = {
-		add_war_support = 1
+
 	}
 }
+
+
+
+###建设
 shared_focus = {
-	id = SUM_shared_test_3
+	id = SUM_Akademiya_build_plan #建筑计划
 	icon = GFX_unknow
-	x = 4
+
+	relative_position_id = SUM_Akademiya_Daily_Activity
+	x = -3
 	y = 1
-	relative_position_id = SUM_shared_test_1
+	
 	cost = 7.00
 	prerequisite = {
-		focus = SUM_shared_test_1
+		focus = SUM_Akademiya_Daily_Activity
     }
     ai_will_do = {
         factor = 10
     }
 	completion_reward = {
-		add_war_support = 1
-		mark_focus_tree_layout_dirty = yes
+
 	}
 }
+
+###外交
 shared_focus = {
-	id = SUM_shared_test_4
+	id = SUM_Akademiya_Diplomacy_plan #外交计划
 	icon = GFX_unknow
-	x = 16
-	y = 0
+
+	relative_position_id = SUM_Akademiya_Daily_Activity
+	x = 3
+	y = 1
+	
 	cost = 7.00
+	prerequisite = {
+		focus = SUM_Akademiya_Daily_Activity
+    }
+    ai_will_do = {
+        factor = 10
+	}
+	completion_reward = {
+
+	}
+}
+
+#处理死域
+shared_focus = {
+	id = SUM_Akademiya_Withering_problem #死域问题
+	icon = GFX_unknow
+
+	relative_position_id = SUM_Akademiya_Daily_Activity
+	x = 8
+	y = 1
+	
+	cost = 7.00
+	prerequisite = {
+		focus = SUM_Akademiya_Daily_Activity
+    }
     ai_will_do = {
         factor = 10
     }
-	allow_branch = {
-		has_political_power > 50
-	}
 	
 	completion_reward = {
-		add_war_support = 1
-	}
-}
-shared_focus = {
-	id = SUM_shared_test_5
-	icon = GFX_unknow
-	x = 1
-	y = 1
-	cost = 7.00
-    ai_will_do = {
-        factor = 10
-	}
-	relative_position_id = SUM_shared_test_4
-	prerequisite = {
-		focus = SUM_shared_test_4
-	}
-	completion_reward = {
-		add_war_support = 1
+
 	}
 }

@@ -1,39 +1,4 @@
 SUM_decision_test_categories = {
-    nahida_heiheihei = {
-        cost = 0
-		ai_will_do = {
-			base = 0
-		}
-		available = {
-		}
-		visible = {
-			is_debug = yes
-		}
-
-		complete_effect = {
-
-		}
-    }
-	SUM_debug_mission = {
-		allowed = {
-			tag = SUM
-		}
-		activation = {
-			always = no
-		}
-		available = {
-			always = no
-		}
-		is_good = no
-		days_mission_timeout = 15
-		selectable_mission = no
-
-		complete_effect = {
-		}
-		timeout_effect = {
-		}
-
-	}
 	SUM_test_decision_1 = {
 		cost = 0
 		days_remove = 30
@@ -50,28 +15,6 @@ SUM_decision_test_categories = {
 
 		complete_effect = {
 			activate_mission = SUM_test_mission_1
-		}
-		remove_effect = {
-			
-		}
-	}
-	SUM_test_decision_2 = {
-		cost = 0
-		days_remove = 30
-		days_re_enable = 0
-		ai_will_do = {
-			base = 0
-		}
-		available = {
-
-		}
-		visible = {
-			is_debug = yes
-		}
-
-		complete_effect = {
-			remove_mission = SUM_test_mission_2
-			remove_mission = SUM_test_mission_3
 		}
 		remove_effect = {
 			
@@ -96,48 +39,90 @@ SUM_decision_test_categories = {
 		timeout_effect = {
 			activate_mission = SUM_test_mission_2
 		}
-
 	}
-	SUM_test_mission_2 = {
+}
+SUM_decision_WitheringZone_categories = {
+	SUM_WitheringZone_is_getting_bigger = {
 		allowed = {
 			tag = SUM
 		}
 		activation = {
-			always = no
+			NOT = {
+				has_country_flag = SUM_WitheringZone_is_clr
+			}
 		}
 		available = {
-			always = no
+			has_country_flag = SUM_WitheringZone_is_clr
 		}
 		is_good = no
-		days_mission_timeout = 35
+		days_mission_timeout = 165
 		selectable_mission = no
 
 		complete_effect = {
+		
 		}
 		timeout_effect = {
-			activate_mission = SUM_test_mission_2
-		}
 
+		}
 	}
-	SUM_test_mission_3 = {
-		allowed = {
-			tag = SUM
-		}
-		activation = {
-			always = no
+	SUM_clr_WitheringZone = {
+		cost = 100
+		days_remove = 90
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
 		}
 		available = {
-			always = no
+
 		}
-		is_good = no
-		days_mission_timeout = 35
-		selectable_mission = no
+		visible = {
+			has_completed_focus = SUM_Akademiya_Withering_problem_15
+			has_completed_focus = SUM_Akademiya_Withering_problem_16
+		}
 
 		complete_effect = {
+			
 		}
-		timeout_effect = {
+		remove_effect = {
+			set_country_flag = SUM_WitheringZone_is_clr
+		}
+	}
+}
+SUM_decision_Akasha_Terminal_categories = {
+	SUM_Akasha_Terminal_open = {
+		cost = 0
+		days_remove = 0
+		days_re_enable = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
 
 		}
+		visible = {
+			is_debug = yes
+		}
 
+		complete_effect = {
+			set_country_flag = Akasha_Terminal_is_open
+		}
+	}
+	SUM_Akasha_Terminal_close = {
+		cost = 0
+		days_remove = 0
+		days_re_enable = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+
+		}
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			clr_country_flag = Akasha_Terminal_is_open
+		}
 	}
 }

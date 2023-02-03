@@ -33,11 +33,7 @@ scripted_gui = {
 		triggers = {
 			##纳西妲按钮##
 			SUM_Akasha_Nahida_Card_visible = {
-				check_variable = {
-					var = Akasha_info
-					value = 1
-					compare = equals
-				}
+				Akasha_info_Nahida = yes
 			}
 		}
 
@@ -47,11 +43,7 @@ scripted_gui = {
 			Akasha_Nahida_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 1
-							compare = equals
-						}
+						Akasha_info_Nahida = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -68,11 +60,7 @@ scripted_gui = {
 			Akasha_Mil_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 2
-							compare = equals
-						}
+						Akasha_info_Mil = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -89,11 +77,7 @@ scripted_gui = {
 			Akasha_Event_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 3
-							compare = equals
-						}
+						Akasha_info_Event = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -110,11 +94,7 @@ scripted_gui = {
 			Akasha_Res_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 4
-							compare = equals
-						}
+						Akasha_info_Res = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -131,11 +111,7 @@ scripted_gui = {
 			Akasha_Akademiya_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 5
-							compare = equals
-						}
+						Akasha_info_Akademiya = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -152,11 +128,7 @@ scripted_gui = {
 			Akasha_Building_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 6
-							compare = equals
-						}
+						Akasha_info_Building = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -173,11 +145,7 @@ scripted_gui = {
 			Akasha_Jungle_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 7
-							compare = equals
-						}
+						Akasha_info_Jungle = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -194,11 +162,7 @@ scripted_gui = {
 			Akasha_Desert_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 8
-							compare = equals
-						}
+						Akasha_info_Desert = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -215,11 +179,7 @@ scripted_gui = {
 			Akasha_Special_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 9
-							compare = equals
-						}
+						Akasha_info_Special = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -238,6 +198,45 @@ scripted_gui = {
 
 			close_button_click = {
 				clr_country_flag = open_Akasha_Terminal_gui
+			}
+		}
+    }
+	SUM_Akasha_Terminal_gui_button = { ##计划子gui
+        context_type = player_context
+        window_name = "SUM_Akasha_gui_building_window"
+        parent_window_name = "SUM_Akasha_gui_window"
+        visible = { 
+			Akasha_info_Building = yes
+        }
+
+		triggers = {
+			#须弥城基建计划
+			Akasha_Building_plan_1_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_1
+			}
+			SUM_Akasha_building_plan_name_1_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_1
+			}
+			#维摩庄开发
+			Akasha_Building_plan_2_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_2
+			}
+			SUM_Akasha_building_plan_name_2_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_2
+			}
+			#教令院研究设施
+			Akasha_Building_plan_3_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_1
+			}
+			SUM_Akasha_building_plan_name_3_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_1
+			}
+			#禅那园升级
+			Akasha_Building_plan_4_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_2
+			}
+			SUM_Akasha_building_plan_name_4_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_2
 			}
 		}
     }

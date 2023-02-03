@@ -254,14 +254,16 @@ country_event = {
 	
 	is_triggered_only = no #是否仅能通过其他方式触发
 	fire_only_once = yes 
-	trigger = { is_in_faction_with = XRG 
-	            is_in_faction_with = XOG 
-				tag = LYU
-				RTG={
-					NOT = {
-						 has_government = hive_mind 
-					}
-					}
+	trigger = {
+		is_in_faction_with = XRG 
+	    is_in_faction_with = XOG 
+		is_faction_leader = yes
+		tag = LYU
+		RTG= {
+			NOT = {
+				 has_government = hive_mind 
+			}
+		}
 	}
 	mean_time_to_happen = { days = 1 }
 	option = { 
@@ -283,23 +285,49 @@ country_event = {
 	fire_only_once = yes 
 	option = { 
 		name = YFX_event.16.a #同意
-		every_country = {
-	limit = { 
-		OR = { 
-			tag = ROOT 
-			is_in_faction_with = ROOT
-		} 
+		ai_chance = {
+			base = 1
+		}
+		RTG = {
+			if = {
+				limit = { is_faction_leader = yes }
+			}
+			dismantle_faction = yes
+		}
+		LYU = { add_to_faction = RTG }
+		news_event = { id = global_news.36  days = 1 }
+		LYU = { set_country_flag = LYU_great_union }
 	}
-	    set_country_flag = nlytm01
-   }
-        dismantle_faction = yes
-        LYU = {
-	every_country = {
-		limit = { has_country_flag = nlytm01 }
-		LYU = { add_to_faction = PREV }
-		clr_country_flag = nlytm01
+	option = { 
+		name = YFX_event.16.b #拒绝
+		ai_chance = {
+			base = 0
+		}
+		effect_tooltip = {
+			LYU = {
+				create_wargoal = {
+					type = annex_everything
+					target = RTG
+				}
+			}
+		}
 	}
 }
-news_event = { id = global_news.36  days = 1 }
-}
+
+country_event = {
+	id = YFX_event.17 #龙王的回信
+	title = YFX_event.17.t
+	desc = YFX_event.17.d
+	
+	is_triggered_only = yes 
+
+	option = {
+		name = YFX_event.17.a #拒绝
+		LYU = {
+			create_wargoal = {
+				type = annex_everything
+				target = RTG
+			}
+		}
+	}
 }

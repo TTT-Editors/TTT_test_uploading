@@ -52,9 +52,7 @@ on_actions = {
 					}
 				}
 				KQG = { country_event = { id = KQG_events.4 } }
-				
 			}
-			
 			
 			#¸ÉÉæ¾ü
 			if = {
@@ -71,7 +69,63 @@ on_actions = {
 					}
 				}
 				KQG = { country_event = { id = KQG_events.19 } }
-				
+			}
+
+			#The Great Unification
+			if = {
+				limit = {
+					OR = {
+						tag = LYU
+						has_country_flag = LYU_great_union
+						FROM = {
+							OR = {
+								tag = KQG
+								tag = NNG
+								tag = ANG
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						count_triggers = {
+							amount = 2
+							KQG = { exists = yes }
+							NNG = { exists = yes }
+							ANG = { exists = yes }
+						}
+					}
+					if = {
+						limit = { NNG = { exists = yes } }
+						NNG = { create_faction = liyue_people_alliance }
+						if = {
+							limit = { KQG = { exists = yes } }
+							if = { 
+								limit = { KQG = { has_war_with = NNG } } 
+								NNG = { white_peace = KQG }
+							}
+							NNG = { add_to_faction = KQG }
+						}
+						if = {
+							limit = { ANG = { exists = yes } }
+							if = { 
+								limit = { ANG = { has_war_with = NNG } } 
+								NNG = { white_peace = ANG }
+							}
+							NNG = { add_to_faction = ANG }
+						}
+						NNG = { news_event = { id =  global_news.37 } }
+					}
+					else = {
+						if = { 
+							limit = { ANG = { has_war_with = KQG } } 
+							KQG = { white_peace = ANG }
+						}
+						KQG = { create_faction = liyue_people_alliance }
+						KQG = { add_to_faction = ANG }
+						KQG = { news_event = { id =  global_news.37 } }
+					}
+				}
 			}
 		}
 	}

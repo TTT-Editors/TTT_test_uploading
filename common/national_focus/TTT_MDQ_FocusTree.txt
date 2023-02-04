@@ -1,0 +1,719 @@
+focus_tree = {
+	id = TTT_MDQ_focustree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = MDQ
+		}
+	}
+    default = no
+###国策名：无休无止的战斗
+focus = {
+    id = MDQ_Endless_battle
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 1.0
+        
+       
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_ideas = MDQ_Endless_battle_1
+        }
+    }
+
+###国策名：夜晚的攻势
+focus = {
+    id = MDQ_Night_offensive
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 2.0
+        prerequisite = {
+            focus =MDQ_Endless_battle
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            hidden_effect = {
+                remove_ideas = MDQ_Endless_battle_1
+                add_ideas = MDQ_Endless_battle_2
+            }
+            custom_effect_tooltip = MDQ_Night_offensive_tooltip
+        }
+    }
+
+###国策名：训练民兵
+focus = {
+    id = MDQ_Train_militia
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 3.0
+        prerequisite = {
+            focus =MDQ_Night_offensive
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_2
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_3
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_4        
+            }
+    }
+
+###国策名：南风碉楼
+focus = {
+    id = MDQ_South_wing_castle
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_Train_militia
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            399 = {
+                add_building_construction = {
+                    type = bunker
+                    level = 2
+                    instant_build = yes
+                    province = 4796
+                }
+            }
+        }
+    }
+
+###国策名：隐形的攻势
+focus = {
+    id = MDQ_Invisible_offensive
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 2.0
+        prerequisite = {
+            focus =MDQ_Endless_battle
+        }
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_tech_bonus = {
+                bonus = 1
+                uses = 2
+                category = industry
+            }
+        }
+    }
+
+###国策名：白日的攻势
+focus = {
+    id = MDQ_White_sun_offensive
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 2.0
+        prerequisite = {
+            focus =MDQ_Endless_battle
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_5
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_6
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_7  
+        }
+    }
+
+###国策名：风在呼唤
+focus = {
+    id = MDQ_The_wind_is_calling
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 3.0
+        prerequisite = {
+            focus =MDQ_White_sun_offensive
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {###此处国策效果内创建编制，并用create_unit语句创建单位
+            division_template = {
+                name = "达达乌帕谷山地师" 				
+                division_names_group = MDQ_02
+                regiments = {
+                    mountaineers = { x = 0 y = 0 }
+                    mountaineers = { x = 0 y = 1 }
+                    mountaineers = { x = 0 y = 2 }
+                    mountaineers = { x = 0 y = 3 }
+                }
+            }
+            capital_scope = {
+					create_unit = {
+						division = "name = \"达达乌帕谷山地师01\" division_template = \"达达乌帕谷山地师\" start_experience_factor = 0.5"  
+						owner = ROOT
+					}
+                    create_unit = {
+						division = "name = \"达达乌帕谷山地师02\" division_template = \"达达乌帕谷山地师\" start_experience_factor = 0.5"  
+						owner = ROOT
+					}
+                    create_unit = {
+						division = "name = \"达达乌帕谷山地师03\" division_template = \"达达乌帕谷山地师\" start_experience_factor = 0.5"  
+						owner = ROOT
+					}
+            }
+        }
+    }
+
+###国策名：复兴达达乌帕战士的雄风
+focus = {
+    id = MDQ_Rejuvenate_the_warriors_of_dadaupa
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_The_wind_is_calling
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_dynamic_modifier = {modifier = MDQ_the_warriors_of_dadaupa}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_pocket_penalty = -0.2}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_out_of_supply_factor = -0.1}
+            custom_effect_tooltip = MDQ_Rejuvenate_the_warriors_of_dadaupa_tooltip
+        }
+        
+    }
+
+###国策名：黑日自东方升起
+focus = {
+    id = MDQ_The_black_sun_rises_in_the_east
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_South_wing_castle
+            focus =MDQ_Invisible_offensive
+            focus =MDQ_Rejuvenate_the_warriors_of_dadaupa
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_army_org_factor =0.05}
+            add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = 1000
+                producer = MDQ
+            }
+            ##此处触发事件
+            custom_effect_tooltip = MDQ_The_black_sun_rises_in_the_east_tooltip
+        }
+    }
+
+###国策名：长号进击
+focus = {
+    id = MDQ_Continue_attack
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 6.0
+        prerequisite = {
+            focus =MDQ_The_black_sun_rises_in_the_east
+        }
+        mutually_exclusive = {
+            focus =MDQ_Withdraw
+        }
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_8
+            unlock_decision_tooltip =MDQ_dadaupa_War_decision_9
+            add_war_support = 0.1
+            add_stability = 0.1
+        }
+    }
+
+###国策名：步步为营
+focus = {
+    id = MDQ_Step_by_step
+        icon = GFX_goal_unknown
+        x = 6.0
+        Y = 7.0
+        prerequisite = {
+            focus =MDQ_Continue_attack
+        }
+        mutually_exclusive = {
+            focus =MDQ_Take_the_lead
+        }
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_army_defence_factor = 0.1}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_army_speed_factor = 0.05}
+            add_tech_bonus = {
+                bonus = 1
+                uses = 1
+                category = land_doctrine
+            }
+            custom_effect_tooltip = MDQ_Step_by_step_tooltip
+        }
+    }
+
+###国策名：武库充足
+focus = {
+    id = MDQ_Ample_weapon
+        icon = GFX_goal_unknown
+        x = 6.0
+        Y = 8.0
+        prerequisite = {
+            focus =MDQ_Step_by_step
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_production_factory_max_efficiency_factor = 0.05}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_production_speed_buildings_factor = 0.1}
+            13 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+            custom_effect_tooltip = MDQ_Ample_weapon_tooltip
+        }
+    }
+
+###国策名：稳扎稳打
+focus = {
+    id = MDQ_Slow_and_steady
+        icon = GFX_goal_unknown
+        x = 6.0
+        Y = 9.0
+        prerequisite = {
+            focus =MDQ_Ample_weapon
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_tech_bonus = {
+                bonus = 0.5
+                uses = 2
+                category = land_doctrine
+            }
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_research_speed_factor = 0.05}
+            custom_effect_tooltip = MDQ_Slow_and_steady_tooltip
+        }
+    }
+
+###国策名：谨慎作风
+focus = {
+    id = MDQ_Prudence
+        icon = GFX_goal_unknown
+        x = 6.0
+        Y = 10.0
+        prerequisite = {
+            focus =MDQ_Slow_and_steady
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_breakthrough_factor = 0.05}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_terrain_penalty_reduction = 0.15}
+            custom_effect_tooltip = MDQ_Prudence_tooltip
+        }
+    }
+
+###国策名：空地一体化侦查
+focus = {
+    id = MDQ_Integrated_investigation_of_open_space
+        icon = GFX_goal_unknown
+        x = 4.0
+        Y = 8.0
+        prerequisite = {
+            focus =MDQ_Step_by_step
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_air_mission_efficiency = 0.15}
+            add_ideas =MDQ_Integrated_investigation_of_open_space
+            custom_effect_tooltip = MDQ_Integrated_investigation_of_open_space_tooltip
+        }
+    }
+
+###国策名：移动堡垒
+focus = {
+    id = MDQ_Mobile_castle
+        icon = GFX_goal_unknown
+        x = 4.0
+        Y = 9.0
+        prerequisite = {
+            focus =MDQ_Integrated_investigation_of_open_space
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_ideas = MDQ_Mobile_castle
+            
+        }
+    }
+
+###国策名：一马当先
+focus = {
+    id = MDQ_Take_the_lead
+        icon = GFX_goal_unknown
+        x = 10.0
+        Y = 7.0
+        prerequisite = {
+            focus =MDQ_Continue_attack
+        }
+        mutually_exclusive = {
+            focus =MDQ_Step_by_step
+        }
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ##民族精神：突击攻势
+            add_timed_idea = {
+                idea = MDQ_Take_the_lead
+                days = 90
+            }
+        }
+    }
+
+###国策名：重装出击
+focus = {
+    id = MDQ_Heavy_equipment
+        icon = GFX_goal_unknown
+        x = 10.0
+        Y = 8.0
+        prerequisite = {
+            focus =MDQ_Take_the_lead
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_ideas = MDQ_Heavy_equipment
+            add_tech_bonus = {
+                bonus = 0.5
+                uses = 2
+                category = infantry_weapons
+            }
+        }
+    }
+
+###国策名：锋芒毕露
+focus = {
+    id = MDQ_The_edge_is_clear
+        icon = GFX_goal_unknown
+        x = 10.0
+        Y = 9.0
+        prerequisite = {
+            focus =MDQ_Heavy_equipment
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_war_support_weekly = -0.035}
+             add_to_variable ={MDQ_the_warriors_of_dadaupa_conscription_factor = 0.15}
+             add_to_variable ={MDQ_the_warriors_of_dadaupa_army_attack_factor = 0.1}
+             custom_effect_tooltip = MDQ_The_edge_is_clear_tooltip
+        }   
+    }
+
+###国策名：最终的呐喊
+focus = {
+    id = MDQ_The_finally_yell
+        icon = GFX_goal_unknown
+        x = 10.0
+        Y = 10.0
+        prerequisite = {
+            focus =MDQ_The_edge_is_clear
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+             add_to_variable ={MDQ_the_warriors_of_dadaupa_army_org_regain = 0.05}
+              add_to_variable ={MDQ_the_warriors_of_dadaupa_out_of_supply_factor = -0.2}
+               add_to_variable ={MDQ_the_warriors_of_dadaupa_army_speed_factor = 0.1}
+               custom_effect_tooltip = MDQ_The_finally_yell_tooltip
+        }
+    }
+
+###国策名：无形之刺
+focus = {
+    id = MDQ_Invisible_stab
+        icon = GFX_goal_unknown
+        x = 12.0
+        Y = 8.0
+        prerequisite = {
+            focus =MDQ_Take_the_lead
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+           add_ideas = MDQ_Invisible_stab
+        }
+    }
+
+###国策名：风之翼攻势
+focus = {
+    id = MDQ_The_wings_of_wind_attack
+        icon = GFX_goal_unknown
+        x = 12.0
+        Y = 9.0
+        prerequisite = {
+            focus =MDQ_Invisible_stab
+        }
+        
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            add_tech_bonus = {
+                bonus = 0.5
+                uses = 2
+                category = primitive_air
+                category = light_air
+                category = medium_air
+                category = heavy_air
+            }
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_air_cas_present_factor = 0.1}
+            custom_effect_tooltip = MDQ_The_wings_of_wind_attack_tooltip
+        }
+    }
+
+###国策名：鸣金收兵
+focus = {
+    id = MDQ_Withdraw
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 6.0
+        prerequisite = {
+            focus =MDQ_The_black_sun_rises_in_the_east
+        }
+        mutually_exclusive = {
+            focus =MDQ_Continue_attack
+        }
+        cost = 70.0
+        available = { 
+            has_war = yes
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            
+        }
+    }
+
+###国策名：骑士团的女仆
+focus = {
+    id = MDQ_The_maid_of_the_MOT_knight
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 1.0
+        
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            
+        }
+    }
+
+###国策名：委员会一大
+focus = {
+    id = MDQ_Committee_1
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 2.0
+        prerequisite = {
+            focus =MDQ_The_maid_of_the_MOT_knight
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            
+        }
+    }
+
+###国策名：骑士修行之道
+focus = {
+    id = MDQ_The_way_of_chivalry
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 3.0
+        prerequisite = {
+            focus =MDQ_Committee_1
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            
+        }
+    }
+
+###国策名：骑士管理之道
+focus = {
+    id = MDQ_The_rule_of_chivalry
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_The_way_of_chivalry
+        }
+        
+        cost = 70.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            
+        }
+    }
+}
+
+

@@ -1169,3 +1169,319 @@ SNA_internal_factions3 = {
 		}
 	}
 }
+
+INA_war_internal_factions = {   #民间宣传
+   ISA_Folk_propaganda = {
+       icon = GFX_decision_generic_construction
+		
+		cost = 30
+		
+		days_remove = 7
+		
+		fire_only_once = no
+
+		allowed = {
+			 or = {
+		     original_tag = INA
+		     original_tag = SNA
+	        }
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		modifier = {
+			political_power_gain = -0.05
+	   	}
+		
+		remove_effect = {
+			if = {
+			limit = {
+			   original_tag = INA
+			}
+			add_to_variable = { INA_minjianzhichidu = 5 }
+		    }
+		   else_if = {
+			limit = {
+			   original_tag = SNA
+			}
+			add_to_variable = { SNA_minjianzhichidu = 5 }
+		    }
+		}  
+    }
+    ISA_military_propaganda = {    #军事宣传
+       icon = GFX_decision_generic_construction
+		
+		cost = 30
+		
+		days_remove = 7
+		
+		fire_only_once = no
+
+		allowed = {
+			 or = {
+		     original_tag = INA
+		     original_tag = SNA
+	        }
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		
+		modifier = {
+		    command_power_gain_mult = -1
+        }
+		
+		available = {
+		    command_power > 29
+		}
+		
+		complete_effect = {
+		    add_command_power = -30
+		}
+		
+		remove_effect = {
+			if = {
+			limit = {
+			   original_tag = INA
+			}
+			add_to_variable = { INA_junshizhichidu = 5 }
+		    }
+		   else_if = {
+			limit = {
+			   original_tag = SNA
+			}
+			add_to_variable = { SNA_junshizhichidu = 5 }
+		    }
+		}  
+    }
+    ISA_Construction_workshop = {    #修建工坊
+       icon = GFX_decision_generic_construction
+		
+		cost = 30
+		
+		allowed = {
+			 or = {
+		     original_tag = INA
+		     original_tag = SNA
+	        }
+		}
+		
+		days_remove = 30
+						        		
+		fire_only_once = no
+			
+		ai_will_do = {
+			factor = 50
+		}
+		
+		modifier = {
+		   production_factory_max_efficiency_factor =  -0.05
+        }
+				
+		remove_effect = {
+			if = {
+			limit = {
+			   original_tag = INA
+			}
+			add_to_variable = { INA_junshizhichidu = 10 }
+			random_state = {
+			limit = {
+			is_core_of = INA
+		    }
+		    add_extra_state_shared_building_slots = 1
+		    add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes 
+		        }
+		    }
+			}
+		   else_if = {
+			limit = {
+			   original_tag = SNA
+			}
+			add_to_variable = { SNA_junshizhichidu = 10 }
+			random_state = {
+			limit = {
+			is_core_of = SNA
+		    }
+		    add_extra_state_shared_building_slots = 1
+		    add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes 
+		        }
+		    }
+		    }
+		}  
+    }
+    ISA_Recruit_troops = {    招募部队
+       icon = GFX_decision_generic_construction
+	   	
+		cost = 30
+		
+		days_remove = 30
+		
+		fire_only_once = no
+		
+		
+		allowed = {
+			 or = {
+		     original_tag = INA
+		     original_tag = SNA
+	        }
+		}
+		ai_will_do = {
+			factor = 50
+		}
+						
+		remove_effect = {
+			if = {
+			limit = {
+			   original_tag = INA
+			   NOT = { has_template = "同心" }
+			}			
+		    division_template = {
+					name = "同心"
+					priority = 2
+					is_locked = no
+					division_names_group = SNA_INF_01
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+					    militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+					}
+				}
+			
+				random_state = {
+				    limit = {
+			        is_core_of = INA
+		             }
+					division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = INA
+					count = 1
+				}
+		    }
+		 
+		   else_if = {
+			limit = {
+			   original_tag = SNA
+			    NOT = { has_template = "海祇守备" }
+			    }
+		        division_template = {
+					name = "海祇守备"
+					priority = 2
+					is_locked = no
+					division_names_group = INA_INF_01
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+					    militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+					}
+				}
+			    random_state = {
+				    limit = {
+			        is_core_of = SNA
+		            }
+				create_unit = {
+					division = "division_template = \"海祇守备\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = SNA
+					count = 1
+					}
+				}              
+            }			
+		}		  
+    }
+    ISA_Appease_thepeople = {    #安抚民心
+       icon = GFX_decision_generic_construction
+		
+		cost = 30
+		
+		days_remove = 28
+		
+		fire_only_once = no
+
+		allowed = {
+			 or = {
+		     original_tag = INA
+		     original_tag = SNA
+	        }
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		
+		modifier = {
+		    stability_weekly = 0.01
+			line_change_production_efficiency_factor = -0.05
+			production_factory_max_efficiency_factor = -0.05
+	        production_factory_efficiency_gain_factor = -0.05
+        }		
+		remove_effect = {
+			if = {
+			limit = {
+			   original_tag = INA
+			}
+			add_to_variable = { INA_minjianzhichidu = 10 }
+			add_war_support = -0.02
+		    }
+		   else_if = {
+			limit = {
+			   original_tag = SNA
+			}
+			add_to_variable = { SNA_minjianzhichidu = 10 }
+			add_war_support = -0.02
+		    }
+		}  
+    }
+    ISA_Collect_military_provisions = {    #收纳军粮
+       icon = GFX_decision_generic_construction
+		
+		cost = 30
+		
+		days_remove = 28
+		
+		fire_only_once = no
+
+		allowed = {
+			 or = {
+		     original_tag = INA
+		     original_tag = SNA
+	        }
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		
+		modifier = {
+			line_change_production_efficiency_factor = -0.05
+			production_factory_max_efficiency_factor = -0.05
+	        production_factory_efficiency_gain_factor = -0.05
+        }		
+		remove_effect = {
+		    add_stability = -0.01
+			if = {
+			limit = {
+			   original_tag = INA
+			}
+			add_equipment_to_stockpile = {
+		    type = grain_conversion_eq
+		    amount = 5000
+	        }
+		    }
+		   else_if = {
+			limit = {
+			   original_tag = SNA
+			}
+			add_equipment_to_stockpile = {
+		    type = grain_conversion_eq
+		    amount = 5000
+	        }
+		    }
+		}  
+    }	
+}

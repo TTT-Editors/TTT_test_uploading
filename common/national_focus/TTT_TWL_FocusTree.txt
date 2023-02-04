@@ -1,0 +1,556 @@
+focus_tree = {
+	id = TWL_focustree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = TWL
+		}
+	}
+    default = no
+    ###国策名：召开军区委员会
+focus = {
+    id = TWL_Hold_a_regional_military_committee
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 2.0
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###触发事件“新的军区委员长”政治点数+50
+        }
+    }
+
+###国策名：解决人力短缺
+focus = {
+    id = TWL_Solve_manpower_shortage
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 3.0
+        prerequisite = {
+            focus =TWL_Hold_a_regional_military_committee
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###获得民族精神 强制征募（稳定度-5% 每周人口+50）
+        }
+    }
+
+###国策名：解决工厂产量
+focus = {
+    id = TWL_Plant_output
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 3.0
+        prerequisite = {
+            focus =TWL_Hold_a_regional_military_committee
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###隐蔽工厂 追加效果：工厂产出+15%
+        }
+    }
+
+###国策名：解决治安问题
+focus = {
+    id = TWL_Solve_the_security_problem
+        icon = GFX_goal_unknown
+        x = 12.0
+        y = 3.0
+        prerequisite = {
+            focus =TWL_Hold_a_regional_military_committee
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###（其他人）基础稳定度+5%（加尔文）触发事件“致尊敬的代理团长”
+        }
+    }
+
+###国策名：重塑行政机关
+focus = {
+    id = TWL_Commission_of_inquiry_corruption
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_Solve_manpower_shortage
+        }
+        mutually_exclusive = {
+            focus =TWL_These_are_far_from_enough
+        }
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 军区政府追加效果：政治点数+10%
+        }
+    }
+
+###国策名：精简化管理机构
+focus = {
+    id = TWL_Streamline_the_management_structure
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_Commission_of_inquiry_corruption
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 军区政府追加效果： 政治点数+15%（蒙德城）触发事件“废墟军区军队改革案”
+        }
+    }
+
+###国策名：降低骑士招收资格
+focus = {
+    id = TWL_Reduce_the_eligibility_for_knighthood
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_Streamline_the_management_structure
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 强制征募 追加效果（每周人口+30 允许训练部队）
+        }
+    }
+
+###国策名：这些远远不够
+focus = {
+    id = TWL_These_are_far_from_enough
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_Solve_manpower_shortage
+        }
+        mutually_exclusive = {
+            focus =TWL_Commission_of_inquiry_corruption
+        }
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###获得3支民兵队伍（三营）
+        }
+    }
+
+###国策名：最低限度的武装
+focus = {
+    id = TWL_Minimal_arming
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_These_are_far_from_enough
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###获得2000步枪120支援装备
+        }
+    }
+
+###国策名：最低程度的训练
+focus = {
+    id = TWL_Minimal_training
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_Minimal_arming
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###政治点数-100民族精神 强制征募 追加效果（训练时间-15% 陆军组织度-15% 允许训练部队）
+        }
+    }
+
+###国策名：外国雇佣军
+focus = {
+    id = TWL_Foreign_mercenary
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 7.0
+        prerequisite = {
+            focus =TWL_Reduce_the_eligibility_for_knighthood
+            focus =TWL_Minimal_training
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 人口问题 追加效果 （生活消费品+15% 陆军组织度+15% 每周人口+150）
+        }
+    }
+
+###国策名：改善生产环境
+focus = {
+    id = TWL_Improve_the_production_environment
+        icon = GFX_goal_unknown
+        x = 6.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_Plant_output
+        }
+        mutually_exclusive = {
+            focus =TWL_Structural_line_of_defense
+        }
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###政治点数-100民族精神 隐蔽工厂追加效果：工厂产出+15%工厂修复速度+20%
+        }
+    }
+
+###国策名：专注生产
+focus = {
+    id = TWL_Focus_on_production
+        icon = GFX_goal_unknown
+        x = 6.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_Improve_the_production_environment
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 隐蔽工厂追加效果：生产效率上限+15%生产效率保持-40%
+        }
+    }
+
+###国策名：提高工人待遇
+focus = {
+    id = TWL_Improve_the_treatment_of_workers
+        icon = GFX_goal_unknown
+        x = 6.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_Focus_on_production
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###稳定度+5%民族精神 隐蔽工厂追加效果：生活消费品+3%生产效率上限+5%
+        }
+    }
+
+###国策名：构造防线
+focus = {
+    id = TWL_Structural_line_of_defense
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_Plant_output
+        }
+        mutually_exclusive = {
+            focus =TWL_Improve_the_production_environment
+        }
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###风魔龙袭击的烈度降低获得民族精神 新战略(核心领土单位防御+5%)在部分地区获得一级要塞
+        }
+    }
+
+###国策名：尝试运用热气球
+focus = {
+    id = TWL_Try_a_hot_air_balloon
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_Structural_line_of_defense
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###风魔龙袭击的频率降低民族精神 新战略 追加效果（主动性+3% 侦察+10%）
+        }
+    }
+
+###国策名：堑壕战与地道战
+focus = {
+    id = TWL_Trench_warfare_and_tunnel_warfare
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_Try_a_hot_air_balloon
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 新战略 追加效果（核心领土单位防御+5% 堑壕上限+5.0 堑壕速度+20%）
+        }
+    }
+
+###国策名：降低武器水准
+focus = {
+    id = TWL_depress_level_weapons
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 7.0
+        prerequisite = {
+            focus =TWL_Trench_warfare_and_tunnel_warfare
+            focus =TWL_Improve_the_treatment_of_workers
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###解锁工业企业 军区地下工厂（工厂产出+15%）获得工业企业 军区地下工厂
+        }
+    }
+
+###国策名：解除限制
+focus = {
+    id = TWL_unrestrict
+        icon = GFX_goal_unknown
+        x = 11.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_Solve_the_security_problem
+        }
+        mutually_exclusive = {
+            focus =TWL_Reorganize_the_intelligence_community
+        }
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###基础稳定度+10.00%指挥点数+50.0
+        }
+    }
+
+###国策名：改良火焰生成装置
+focus = {
+    id = TWL_Improved_flame_generation_device
+        icon = GFX_goal_unknown
+        x = 11.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_unrestrict
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 火焰喷射装置 追加效果（稳定度-15% 陆军损耗+20% 补给消耗+10% 对人员杀伤+50% 突破+15%）
+        }
+    }
+
+###国策名：爱国青年团
+focus = {
+    id = TWL_Patriotic_youth_league
+        icon = GFX_goal_unknown
+        x = 11.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_Improved_flame_generation_device
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###（所有拥有『难民危机』民族精神的蒙德势力）触发事件“爱国青年团吸纳过剩人口”（隐藏效果-只有完成该国策之后，才能解锁国家新兴主义线）获得民族精神 爱国青年团（反间谍+1.00 生活消费品+5% 每日获得的政治点数+0.30 适役人口+2.00% 意识形态变化抵制力度+75% 党派支持度对稳定度影响+15% 指挥点数增长+8% 每周战争支持度+0.10%[人员损伤]）国家新兴主义支持率变化 +12%
+###政治点数+200
+        }
+    }
+
+###国策名：重组情报部门
+focus = {
+    id = TWL_Reorganize_the_intelligence_community
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_Solve_the_security_problem
+        }
+        mutually_exclusive = {
+            focus =TWL_unrestrict
+        }
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###获得民族精神 情报局（每日获得的政治点数-0.20 特工位+1 反间谍+1.50）
+        }
+    }
+
+###国策名：配装生成装置
+focus = {
+    id = TWL_Install_the_generating_device
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_Reorganize_the_intelligence_community
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 火焰生成装置 追加效果（对人员杀伤+5%）政治点数-50基础稳定度+10%
+        }
+    }
+
+###国策名：制造隔离带
+focus = {
+    id = TWL_Manufacturing_barrier
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_Install_the_generating_device
+        }
+        
+        cost = 70.0
+        available = { 
+            tag = TWL
+        }
+        ai_will_do = {
+                factor = 1.0
+        }
+        completion_reward = {
+            ###民族精神 情报局 追加效果 （每日获得的政治点数+0.20 反间谍-0.50 特工位+1）政治点数+100基础稳定度+5%
+        }
+    }
+}
+
+            
+
+
+
+

@@ -1,15 +1,15 @@
 on_actions = {
     on_monthly_SUM = { 
 		effect = {
-			if = {
-				limit = {
-					has_country_flag = SUM_nahida_is_followed
-				}
-				add_to_variable = {
-					var = nahida_guanzhu
-					value = 10
-				}
-			}
+#			set_variable = {
+#				var = SUM_construction_capacity
+#				value = num_of_available_civilian_factories
+#			}
+			set_temp_variable = { SUM_CC_temp = num_of_civilian_factories }
+			divide_temp_variable = { SUM_CC_temp = 5 }
+			set_variable = { SUM_construction_capacity = SUM_CC_temp }
+			round_variable = SUM_construction_capacity
+			
 		}
 	}
 }

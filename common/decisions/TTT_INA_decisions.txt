@@ -167,10 +167,17 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		    
+		   has_completed_focus = INA_WAR_BEG_6 
 		}
 		available = {
-		   command_power < 49 
+		   NOT = { has_country_flag = INA_NO_Same_type1 }
+		   NOT = { has_country_flag = INA_NO_Same_type } 
+		   command_power > 49
+           custom_trigger_tooltip = {
+		   tooltip = INA_Compulsory_conscription_text	
+		   check_variable = { INA_junshizhichidu > 14 }
+		   check_variable = { INA_minjianzhichidu > 14 }
+	        }		   
 		}
 		ai_will_do = {
 			factor = 50
@@ -185,6 +192,9 @@ INA_war_internal_factions = {
 		}
 		
 		remove_effect = {
+		    set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
+		    custom_effect_tooltip = INA_Compulsory_conscription_tt
+			set_country_flag = INA_Compulsory_conscription_budui
 			add_to_variable = { INA_junshizhichidu = -15 }
 			add_to_variable = { INA_minjianzhichidu = -15 }
 		}
@@ -204,10 +214,17 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		    
+		   has_completed_focus = INA_WAR_BEG_7
 		}
 		available = {
-		   command_power < 49 
+		   command_power < 49
+           NOT = { has_country_flag = INA_NO_Same_type1 }
+		   NOT = { has_country_flag = INA_NO_Same_type }
+           custom_trigger_tooltip = {
+		   tooltip = INA_Compulsory_conscription_text	
+		   check_variable = { INA_junshizhichidu > 14 }
+		   check_variable = { INA_minjianzhichidu > 14 }
+	        }		   
 		}
 		ai_will_do = {
 			factor = 50
@@ -222,8 +239,11 @@ INA_war_internal_factions = {
 		}
 		
 		remove_effect = {
+		    set_country_flag = INA_Jiutiaojia_Elite_test
+			custom_effect_tooltip = INA_Jiutiaojia_Elite_tt
 			add_to_variable = { INA_junshizhichidu = -15 }
 			add_to_variable = { INA_minjianzhichidu = -15 }
+			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
 		}
 	}
 	INA_Investment_inoutlying_islands = {     #离岛投资
@@ -241,10 +261,16 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		    
+		    has_completed_focus = INA_WAR_BEG_2
 		}
 		available = {
-		   command_power < 49 
+		   NOT = { has_country_flag = INA_NO_Same_type1 }
+		   NOT = { has_country_flag = INA_NO_Same_type }
+           custom_trigger_tooltip = {
+		   tooltip = INA_Investment_inoutlying_islands_text	
+		   check_variable = { INA_junshizhichidu > 19 }
+		   check_variable = { INA_minjianzhichidu > 19 }
+	        } 
 		}
 		ai_will_do = {
 			factor = 50
@@ -259,9 +285,11 @@ INA_war_internal_factions = {
 		}
 		
 		remove_effect = {
-			add_to_variable = { INA_junshizhichidu = -15 }
-			add_to_variable = { INA_minjianzhichidu = -15 }
+			add_to_variable = { INA_junshizhichidu = -20 }
+			add_to_variable = { INA_minjianzhichidu = -20 }
 			set_country_flag = KUJ_Investment_inoutlying_islands
+			custom_effect_tooltip = INA_Investment_inoutlying_islands_tt
+			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
 		}
 	}
 	INA_War_propaganda = {     #战争宣传
@@ -279,9 +307,12 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		    
+		   has_completed_focus = INA_WAR_BEG_4
 		}
 		
+		available = {
+		  	
+		}
 		ai_will_do = {
 			factor = 50
 		}
@@ -293,8 +324,9 @@ INA_war_internal_factions = {
 		
 		
 		remove_effect = {
-			set_country_flag = KUJ_War_propaganda
+			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
 			set_country_flag = KUJ_War_propaganda1
+			custom_effect_tooltip = INA_War_propaganda_tt
 		}
 	}
 	INA_Weapons_acquisition = {     #武器获取
@@ -312,9 +344,18 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		    
+		   has_completed_focus = INA_WAR_BEG_5 
 		}
 		
+		available = { 
+		   NOT = { has_country_flag = INA_NO_Same_type1 }
+		   NOT = { has_country_flag = INA_NO_Same_type } 
+           custom_trigger_tooltip = {
+		   tooltip = INA_Compulsory_conscription_text	
+		   check_variable = { INA_junshizhichidu > 14 }
+		   check_variable = { INA_minjianzhichidu > 14 }
+	        }
+		}
 		ai_will_do = {
 			factor = 50
 		}
@@ -327,7 +368,8 @@ INA_war_internal_factions = {
 		remove_effect = {
 		    add_to_variable = { INA_junshizhichidu = -15 }
 			add_to_variable = { INA_minjianzhichidu = -15 }
-			set_country_flag = KUJ_Weapons_acquisition
+			custom_effect_tooltip = INA_Weapons_acquisition_tt
+			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 50 }
 			add_equipment_to_stockpile = {
 		    type = infantry_weapons 
 		    amount = 1000
@@ -349,5 +391,35 @@ INA_war_internal_factions = {
 		    amount = 1000
 	        }
 		}
+	}
+	ISA_Declare_war = {     
+		activation = {                         
+			ISA_triggers_Declare_war = yes
+		}                                    
+		available = {
+            or = {		
+			has_war_with = INA
+			has_war_with = SNA
+			}
+		}
+		
+		is_good = no                         
+	
+		days_mission_timeout = 7
+		
+		timeout_effect = {                      
+			if = {
+			limit = {
+				original_tag = INA
+			}
+			declare_war_on = { target = SNA type = annex_everything }
+		}
+		else_if = {
+			limit = {
+				original_tag = SNA
+			}
+			declare_war_on = { target = INA type = annex_everything }
+		    }           
+		}		
 	}
 }

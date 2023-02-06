@@ -12,4 +12,123 @@ on_actions =
             }
         }
     }
+	on_war = {
+		effect = {
+			#九条家获得民兵部队
+			if = {
+				limit = {
+					has_country_flag = INA_Compulsory_conscription_budui
+					 NOT = { has_template = "同心" }
+				}
+				 division_template = {
+					name = "同心"
+					priority = 2
+					is_locked = no
+					division_names_group = INA_INF_01
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+					    militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+					}
+				}
+			
+				random_state = {
+				    limit = {
+			        is_core_of = KUJ
+		            }
+					create_unit = {
+					division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = KUJ
+					count = 8
+				    }
+		        }				
+			}			
+		}	
+	}
+	on_war = {
+	effect = {
+	#九条家获得精锐部队
+	        limit = {
+			original_tag = INA
+			NOT = { has_template = "同心" }
+			has_country_flag = INA_Jiutiaojia_Elite_test
+			}			
+		    division_template = {
+					name = "同心"
+					priority = 2
+					is_locked = no
+					division_names_group = INA_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+		                infantry = { x = 0 y = 1 }
+		                infantry = { x = 0 y = 2 }
+		                infantry = { x = 0 y = 3 }
+		                infantry = { x = 0 y = 4 }
+		                infantry = { x = 1 y = 0 }
+		                infantry = { x = 1 y = 1 }
+		                artillery_brigade  = { x = 2 y = 1 }
+		                artillery_brigade  = { x = 2 y = 0 }
+					}
+				}
+			
+				random_state = {
+				    limit = {
+			        is_core_of = INA
+		             }
+					create_unit = {
+					division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = INA
+					count = 3
+				}
+		    }
+		}
+	}
+	on_war = {
+	effect = {
+	#九条家获得军工厂
+	        limit = {
+			original_tag = INA
+			has_country_flag = KUJ_Investment_inoutlying_islands
+			}			
+		    KUJ = { add_offsite_building = { type = arms_factory level = 4 } }
+		}
+	}
+	on_weekly_INA = {
+		effect = {
+			#每周获得准备度
+			if = {
+				limit = {
+					has_country_flag = KUJ_War_propaganda1
+				}
+				add_to_variable = { INA_junshizhichidu = 0.5 }
+                add_to_variable = { INA_minjianzhichidu = 0.5 }				
+			}			
+		}	
+	}
+	on_weekly_SNA = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = INA_34_flag
+					original_tag = SNA
+				}
+                add_to_variable = { SNA_junshizhichidu = 3.5 }
+                add_to_variable = { SNA_minjianzhichidu = 3.5 }				
+			}			
+		}	
+	}
+	on_weekly_INA = {
+		effect = {
+			if = {
+				limit = {
+				    original_tag = INA
+					has_country_flag = INA_34_flag
+				}
+				add_to_variable = { INA_junshizhichidu = 3.5 }
+                add_to_variable = { INA_minjianzhichidu = 3.5 }				
+			}			
+		}	
+	}
 }

@@ -1,15 +1,43 @@
 on_actions = {
     on_monthly_SUM = { 
 		effect = {
-			if = {
-				limit = {
-					has_country_flag = SUM_nahida_is_followed
-				}
-				add_to_variable = {
-					var = nahida_guanzhu
-					value = 10
-				}
+#			set_variable = {
+#				var = SUM_construction_capacity
+#				value = num_of_available_civilian_factories
+#			}
+			#建造力结算 民工数量除10
+			set_temp_variable = { SUM_CC_temp = num_of_civilian_factories }
+			divide_temp_variable = { SUM_CC_temp = 10 }
+			set_variable = { SUM_construction_capacity = SUM_CC_temp }
+			round_variable = SUM_construction_capacity
+			#可用建造力结算
+			set_variable = {
+				var = SUM_CC_available
+				value = SUM_construction_capacity
 			}
+			subtract_from_variable = {
+				var = SUM_CC_available
+				value = SUM_CC_USE_plan_1_var
+			}
+			subtract_from_variable = {
+				var = SUM_CC_available
+				value = SUM_CC_USE_plan_2_var
+			}
+			subtract_from_variable = {
+				var = SUM_CC_available
+				value = SUM_CC_USE_plan_3_var
+			}
+			subtract_from_variable = {
+				var = SUM_CC_available
+				value = SUM_CC_USE_plan_4_var
+			}
+			clamp_variable = {
+				var = SUM_CC_available
+				min = 0
+				max = 1000
+			}
+
+
 		}
 	}
 }

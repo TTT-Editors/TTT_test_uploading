@@ -33,11 +33,13 @@ scripted_gui = {
 		triggers = {
 			##纳西妲按钮##
 			SUM_Akasha_Nahida_Card_visible = {
-				check_variable = {
-					var = Akasha_info
-					value = 1
-					compare = equals
-				}
+				Akasha_info_Nahida = yes
+			}
+			SUM_Akasha_nahida_attitude_visible = {
+				Akasha_info_Nahida = yes
+			}
+			SUM_Akasha_nahida_condition_visible = {
+				Akasha_info_Nahida = yes
 			}
 		}
 
@@ -47,11 +49,7 @@ scripted_gui = {
 			Akasha_Nahida_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 1
-							compare = equals
-						}
+						Akasha_info_Nahida = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -68,11 +66,7 @@ scripted_gui = {
 			Akasha_Mil_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 2
-							compare = equals
-						}
+						Akasha_info_Mil = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -89,11 +83,7 @@ scripted_gui = {
 			Akasha_Event_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 3
-							compare = equals
-						}
+						Akasha_info_Event = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -110,11 +100,7 @@ scripted_gui = {
 			Akasha_Res_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 4
-							compare = equals
-						}
+						Akasha_info_Res = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -131,11 +117,7 @@ scripted_gui = {
 			Akasha_Akademiya_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 5
-							compare = equals
-						}
+						Akasha_info_Akademiya = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -152,11 +134,7 @@ scripted_gui = {
 			Akasha_Building_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 6
-							compare = equals
-						}
+						Akasha_info_Building = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -173,11 +151,7 @@ scripted_gui = {
 			Akasha_Jungle_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 7
-							compare = equals
-						}
+						Akasha_info_Jungle = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -194,11 +168,7 @@ scripted_gui = {
 			Akasha_Desert_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 8
-							compare = equals
-						}
+						Akasha_info_Desert = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -215,11 +185,7 @@ scripted_gui = {
 			Akasha_Special_button_click = {
 				if = {
 					limit = {
-						check_variable = {
-							var = Akasha_info
-							value = 9
-							compare = equals
-						}
+						Akasha_info_Special = yes
 					}
 					set_variable = {
 						var = Akasha_info
@@ -238,6 +204,342 @@ scripted_gui = {
 
 			close_button_click = {
 				clr_country_flag = open_Akasha_Terminal_gui
+			}
+		}
+    }
+	SUM_Akasha_res_gui_button = { ##研究计划子gui
+        context_type = player_context
+        window_name = "SUM_Akasha_gui_res_window"
+        parent_window_name = "SUM_Akasha_gui_window"
+        visible = { 
+			Akasha_info_Res = yes
+        }
+
+		triggers = {
+			#地脉研究
+			Akasha_res_plan_1_button_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_1
+			}
+			SUM_Akasha_res_plan_name_1_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_1
+			}
+			#虚空系统研究
+			Akasha_res_plan_2_button_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_2
+			}
+			SUM_Akasha_res_plan_name_2_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_2
+			}
+			#普通研究
+			Akasha_res_plan_3_button_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_3
+			}
+			SUM_Akasha_res_plan_name_3_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_3
+			}
+			#遗迹研究
+			Akasha_res_plan_4_button_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_4
+			}
+			SUM_Akasha_res_plan_name_4_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_4
+			}
+			#普通研究实用化
+			Akasha_res_plan_5_button_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_6
+			}
+			SUM_Akasha_res_plan_name_5_visible = {
+				has_completed_focus = SUM_Akademiya_Res_plan_6
+			}
+		}
+    }
+	SUM_Akasha_build_gui_button = { ##建设计划子gui
+        context_type = player_context
+        window_name = "SUM_Akasha_gui_building_window"
+        parent_window_name = "SUM_Akasha_gui_window"
+        visible = { 
+			Akasha_info_Building = yes
+        }
+
+		triggers = {
+			#须弥城基建计划
+			Akasha_Building_plan_1_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_1
+			}
+			SUM_Akasha_building_plan_name_1_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_1
+			}
+			SUM_Akasha_BC_Sumeru_building_visible = {
+				check_variable = {
+					var = SUM_BC_var
+					value =  1
+					compare = equals
+				}
+			}
+			#维摩庄开发
+			Akasha_Building_plan_2_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_2
+			}
+			SUM_Akasha_building_plan_name_2_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_1_2
+			}
+			SUM_Akasha_BC_weimo_building_visible = {
+				check_variable = {
+					var = SUM_BC_var
+					value =  2
+					compare = equals
+				}
+			}
+			#教令院研究设施
+			Akasha_Building_plan_3_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_1
+			}
+			SUM_Akasha_building_plan_name_3_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_1
+			}
+			SUM_Akasha_BC_kagong_building_visible = {
+				check_variable = {
+					var = SUM_BC_var
+					value =  3
+					compare = equals
+				}
+			}
+			#禅那园升级
+			Akasha_Building_plan_4_button_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_2
+			}
+			SUM_Akasha_building_plan_name_4_visible = {
+				has_completed_focus = SUM_Akademiya_build_plan_2_2
+			}
+			SUM_Akasha_BC_channayuan_building_visible = {
+				check_variable = {
+					var = SUM_BC_var
+					value =  4
+					compare = equals
+				}
+			}
+			#
+			SUM_Akasha_building_CC_use_visible = {
+				AND = {
+					check_variable = {
+						var = SUM_BC_var
+						value = 1
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = SUM_BC_var
+						value = 4
+						compare = less_than_or_equals
+					}
+				}
+			}
+			SUM_Akasha_building_CC_plan_visible = {
+				AND = {
+					check_variable = {
+						var = SUM_BC_var
+						value = 1
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = SUM_BC_var
+						value = 4
+						compare = less_than_or_equals
+					}
+				}
+			}
+			SUM_Akasha_building_CC_progress_visible = {
+				AND = {
+					check_variable = {
+						var = SUM_BC_var
+						value = 1
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = SUM_BC_var
+						value = 4
+						compare = less_than_or_equals
+					}
+				}
+			}
+			Akasha_CC_up_button_visible = {
+				AND = {
+					check_variable = {
+						var = SUM_BC_var
+						value = 1
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = SUM_BC_var
+						value = 4
+						compare = less_than_or_equals
+					}
+				}
+			}
+			Akasha_CC_down_button_visible = {
+				AND = {
+					check_variable = {
+						var = SUM_BC_var
+						value = 1
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = SUM_BC_var
+						value = 4
+						compare = less_than_or_equals
+					}
+				}
+			}
+			Akasha_CC_up_button_click_enabled = {
+				check_variable = {
+					var = SUM_CC_available
+					value = 1
+					compare = greater_than_or_equals
+				}
+			}
+			Akasha_CC_down_button_click_enabled = {
+				OR = {
+					AND = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 1
+							compare = equals
+						}
+						check_variable = {
+							var = SUM_CC_USE_plan_1_var
+							value = 1
+							compare = greater_than_or_equals
+						}
+					}
+					AND = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 2
+							compare = equals
+						}
+						check_variable = {
+							var = SUM_CC_USE_plan_2_var
+							value = 1
+							compare = greater_than_or_equals
+						}
+					}
+					AND = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 3
+							compare = equals
+						}
+						check_variable = {
+							var = SUM_CC_USE_plan_3_var
+							value = 1
+							compare = greater_than_or_equals
+						}
+					}
+					AND = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 4
+							compare = equals
+						}
+						check_variable = {
+							var = SUM_CC_USE_plan_4_var
+							value = 1
+							compare = greater_than_or_equals
+						}
+					}
+					
+				}
+			}
+		}
+		effects = {
+			Akasha_Building_plan_1_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 1
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = SUM_BC_var
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = SUM_BC_var
+						value = 1
+					}
+				}
+			}
+			Akasha_Building_plan_2_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 2
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = SUM_BC_var
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = SUM_BC_var
+						value = 2
+					}
+				}
+			}
+			Akasha_Building_plan_3_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 3
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = SUM_BC_var
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = SUM_BC_var
+						value = 3
+					}
+				}
+			}
+			Akasha_Building_plan_4_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							var = SUM_BC_var
+							value = 4
+							compare = equals
+						}
+					}
+					set_variable = {
+						var = SUM_BC_var
+						value = 0
+					}
+				}
+				else = {
+					set_variable = {
+						var = SUM_BC_var
+						value = 4
+					}
+				}
+			}
+			Akasha_CC_up_button_click = {
+				Akasha_CC_up_effect = yes
+			}
+			Akasha_CC_down_button_click = {
+				Akasha_CC_down_effect = yes
 			}
 		}
     }

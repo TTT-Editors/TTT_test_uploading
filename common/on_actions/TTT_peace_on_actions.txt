@@ -99,16 +99,56 @@ on_actions = {
 			}
 			else_if = {
 				limit = {
-					tag = LYU
-					has_country_flag = LYU_great_union
+					is_in_faction_with = LYU
+					LYU = { has_country_flag = LYU_great_union }
+					all_country = {
+						limit = { 
+							OR = {
+								is_in_faction_with = LYU
+							}
+						}
+						has_capitulated = yes
+					}
 				}
-				news_event = { id = global_news.38 }
-				every_country = {
+				LYU = { clr_country_flag = LYU_great_union }
+				random_country = {
 					limit = { 
 						is_faction_leader = yes
+						OR = {
+							tag = FROM
+							is_in_faction_with = FROM
+						}
 						is_nominate_liyue = yes
 					}
 					dismantle_faction = yes
+					if = {
+						limit = {
+							count_triggers = {
+								amount = 2
+								NNG = { exists = yes }
+								KQG = { exists = yes }
+								ANG = { exists = yes }
+							}
+						}
+						if = {
+							limit = { NNG = { exists = yes } }
+							NNG = {
+								country_event = {
+									id = liyue_civil_war.22
+									days = 45
+								}
+							}
+						}
+						if = {
+							limit = { KQG = { exists = yes } }
+							KQG = {
+								country_event = {
+									id = liyue_civil_war.22
+									days = 45
+								}
+							}
+						}
+					}
 				}
 			}
 			else_if = {
@@ -147,6 +187,36 @@ on_actions = {
 				every_state = {
 					limit = { has_state_flag = border_incident_active }
 					clr_state_flag = border_incident_active
+				}
+			}
+			else_if = {
+				limit = {
+					LYU = {
+						exists = yes
+						has_country_flag = LYU_great_union
+					}
+					ROOT = { has_country_flag = people_alliance_menbers }
+					all_country = {
+						limit = { has_country_flag = people_alliance_menbers }
+						has_capitulated = yes
+					}
+				}
+				every_possible_country = {
+					limit = { has_country_flag = people_alliance_menbers }
+					clr_country_flag = people_alliance_menbers
+				}
+				every_country = {
+					limit = { is_in_faction_with = LYU }
+					every_unit_leader = {
+						set_nationality = LYU
+					}
+					LYU = {
+						annex_country = {
+							target = PREV
+							transfer_troops = yes
+						}
+						news_event = { id = global_news.36 days = 2 }
+					}
 				}
 			}
 			

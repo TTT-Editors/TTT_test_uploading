@@ -219,14 +219,6 @@ country_event = {
 	fire_only_once = yes
 	hidden = yes
 	
-	trigger = {
-		has_global_flag = liyue_unified
-		is_nominate_liyue = yes
-		has_global_flag = zdg_has_come
-		has_global_flag = Liyue_Civil_War
-		ZDG = { exists = no }
-	}
-	
 	is_triggered_only = yes
 	
 	#最后一战
@@ -248,6 +240,56 @@ country_event = {
 			}
 		}
 		news_event = { id = global_news.13 hours = 12 }
+	}
+}
+
+#增补事件，刻晴和凝光继续开撕
+country_event = {
+	id = liyue_civil_war.22
+	title = liyue_civil_war.22.t
+	desc = liyue_civil_war.22.d
+	fire_only_once = yes
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	#最后一战
+	option = {
+		name = liyue_civil_war.22.a
+		if = {
+			limit = {
+				NOT = { tag = NNG }
+				KQG = { exists = yes }
+				NOT = { has_war_with = NNG }
+			}
+			declare_war_on = {
+				target = NNG
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = {
+				NOT = { tag = KQG }
+				KQG = { exists = yes }
+				NOT = { has_war_with = KQG }
+			}
+			declare_war_on = {
+				target = KQG
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = {
+				NOT = { tag = ANG }
+				ANG = { exists = yes }
+				NOT = { has_war_with = ANG }
+			}
+			declare_war_on = {
+				target = ANG
+				type = annex_everything
+			}
+		}
+		news_event = { id = global_news.38 hours = 12 }
 	}
 }
 

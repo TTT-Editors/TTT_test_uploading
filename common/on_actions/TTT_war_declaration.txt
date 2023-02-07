@@ -74,15 +74,12 @@ on_actions = {
 			#The Great Unification
 			if = {
 				limit = {
-					OR = {
-						tag = LYU
-						has_country_flag = LYU_great_union
-						FROM = {
-							OR = {
-								tag = KQG
-								tag = NNG
-								tag = ANG
-							}
+					has_country_flag = LYU_great_union
+					FROM = {
+						OR = {
+							tag = KQG
+							tag = NNG
+							tag = ANG
 						}
 					}
 				}
@@ -94,6 +91,10 @@ on_actions = {
 							NNG = { exists = yes }
 							ANG = { exists = yes }
 						}
+					}
+					if = {
+						limit = { exists = yes }
+						set_country_flag = people_alliance_menbers
 					}
 					if = {
 						limit = { NNG = { exists = yes } }

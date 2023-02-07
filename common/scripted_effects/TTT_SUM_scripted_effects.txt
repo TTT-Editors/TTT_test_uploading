@@ -12,7 +12,7 @@ Akasha_CC_up_effect = {
             value = -1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_1_var
+            var = SUM_BC_use_array^0
             value = 1
         }
     }
@@ -29,7 +29,7 @@ Akasha_CC_up_effect = {
             value = -1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_2_var
+            var = SUM_BC_use_array^1
             value = 1
         }
     }
@@ -46,7 +46,7 @@ Akasha_CC_up_effect = {
             value = -1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_3_var
+            var = SUM_BC_use_array^2
             value = 1
         }
     }
@@ -63,7 +63,7 @@ Akasha_CC_up_effect = {
             value = -1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_4_var
+            var = SUM_BC_use_array^3
             value = 1
         }
     }
@@ -82,7 +82,7 @@ Akasha_CC_down_effect = {
             value = 1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_1_var
+            var = SUM_BC_use_array^0
             value = -1
         }
     }
@@ -99,7 +99,7 @@ Akasha_CC_down_effect = {
             value = 1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_2_var
+            var = SUM_BC_use_array^1
             value = -1
         }
     }
@@ -116,7 +116,7 @@ Akasha_CC_down_effect = {
             value = 1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_3_var
+            var = SUM_BC_use_array^2
             value = -1
         }
     }
@@ -133,7 +133,7 @@ Akasha_CC_down_effect = {
             value = 1
         }
         add_to_variable = {
-            var = SUM_CC_USE_plan_4_var
+            var = SUM_BC_use_array^3
             value = -1
         }
     }
@@ -144,28 +144,15 @@ start_BC_plan_pro = {
         size = 4
         value = 0
     }
-}
-BC_plan_pro_in = {
     resize_array = {
         array = SUM_BC_use_array
         size = 4
         value = 0
     }
-    set_variable = {
-        var = SUM_BC_use_array^0
-        value = SUM_CC_USE_plan_1_var
-    }
-    set_variable = {
-        var = SUM_BC_use_array^1
-        value = SUM_CC_USE_plan_2_var
-    }
-    set_variable = {
-        var = SUM_BC_use_array^2
-        value = SUM_CC_USE_plan_3_var
-    }
-    set_variable = {
-        var = SUM_BC_use_array^3
-        value = SUM_CC_USE_plan_4_var
+    resize_array = {
+        array = SUM_BC_comp_array
+        size = 4
+        value = 0
     }
 }
 calculation_BC_plan_pro = {
@@ -177,4 +164,143 @@ calculation_BC_plan_pro = {
             value = SUM_BC_use_array^v
         }
     }
+}
+check_BC_plan_pro = {
+    for_loop_effect = {
+        start = 0
+        end = 4
+        if = {
+            limit = {
+                check_variable = {
+                    var = SUM_BC_pro_array^v
+                    value = 100
+                    compare = greater_than_or_equals
+                }
+            }
+            set_variable = {
+                var = SUM_BC_comp_array^v
+                value = 1
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = SUM_BC_comp_array^v
+                    value = 1
+                    compare = equals
+                }
+            }
+            set_variable = {
+                var = SUM_BC_pro_array^v
+                value = 100
+            }
+            set_variable = {
+                var = SUM_BC_use_array^v
+                value = 0
+            }
+        }
+    }
+}
+BC_plan_comp = {
+    if = {
+        limit = {
+            check_variable = {
+                var = SUM_BC_comp_array^0
+                value = 1
+            }
+        }
+        country_event = { id = sumeru.2 }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = SUM_BC_comp_array^1
+                value = 1
+            }
+        }
+        country_event = { id = sumeru.3 }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = SUM_BC_comp_array^2
+                value = 1
+            }
+        }
+        country_event = { id = sumeru.4 }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = SUM_BC_comp_array^3
+                value = 1
+            }
+        }
+        country_event = { id = sumeru.5 }
+    }
+}
+SUM_Aka_create_pie_chart = {
+	clear_array = pie_chart
+	resize_array = {
+		array = pie_chart
+		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+    for_loop_effect = {
+        start = 0
+        end = 16
+        set_variable = {
+            var = pie_chart^v
+            value = 2
+        }
+    }
+    for_loop_effect = {
+        start = 16
+        end = 32
+        set_variable = {
+            var = pie_chart^v
+            value = 3
+        }
+    }
+    for_loop_effect = {
+        start = 32
+        end = 48
+        set_variable = {
+            var = pie_chart^v
+            value = 4
+        }
+    }
+    for_loop_effect = {
+        start = 48
+        end = 64
+        set_variable = {
+            var = pie_chart^v
+            value = 5
+        }
+    }
+    for_loop_effect = {
+        start = 64
+        end = 74
+        set_variable = {
+            var = pie_chart^v
+            value = 6
+        }
+    }
+    for_loop_effect = {
+        start = 74
+        end = 80
+        set_variable = {
+            var = pie_chart^v
+            value = 7
+        }
+    }
+    for_loop_effect = {
+        start = 80
+        end = 90
+        set_variable = {
+            var = pie_chart^v
+            value = 8
+        }
+    }
+	add_to_variable = { pie_chart_dirty = 1 }
 }

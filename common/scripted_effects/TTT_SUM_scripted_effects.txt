@@ -138,3 +138,43 @@ Akasha_CC_down_effect = {
         }
     }
 }
+start_BC_plan_pro = {
+    resize_array = {
+        array = SUM_BC_pro_array
+        size = 4
+        value = 0
+    }
+}
+BC_plan_pro_in = {
+    resize_array = {
+        array = SUM_BC_use_array
+        size = 4
+        value = 0
+    }
+    set_variable = {
+        var = SUM_BC_use_array^0
+        value = SUM_CC_USE_plan_1_var
+    }
+    set_variable = {
+        var = SUM_BC_use_array^1
+        value = SUM_CC_USE_plan_2_var
+    }
+    set_variable = {
+        var = SUM_BC_use_array^2
+        value = SUM_CC_USE_plan_3_var
+    }
+    set_variable = {
+        var = SUM_BC_use_array^3
+        value = SUM_CC_USE_plan_4_var
+    }
+}
+calculation_BC_plan_pro = {
+    for_loop_effect = {
+        start = 0
+        end = 4
+        add_to_variable = {
+            var = SUM_BC_pro_array^v
+            value = SUM_BC_use_array^v
+        }
+    }
+}

@@ -240,67 +240,122 @@ BC_plan_comp = {
     }
 }
 SUM_Aka_create_pie_chart = {
-	clear_array = pie_chart
+	clear_array = SUM_Aka_pie_chart
 	resize_array = {
-		array = pie_chart
-		value = 1 # 1 is value for neutrality frame, so we don't have to make a loop for it
-		size = 100 # 100 pieces, each percent is one piece
+		array = SUM_Aka_pie_chart
+		value = 1
+		size = 100 
 	}
+
+    set_variable_to_random = {
+        var = SUM_Aka_pie_chart_var
+        min = 0
+        max = 100
+        integer = yes
+    }
+    set_variable_to_random = {
+        var = SUM_Aka_pie_chart_var_2
+        min = SUM_Aka_pie_chart_var
+        max = 100
+        integer = yes
+    }
+    set_variable_to_random = {
+        var = SUM_Aka_pie_chart_var_3
+        min = SUM_Aka_pie_chart_var_2
+        max = 100
+        integer = yes
+    }
+    set_variable_to_random = {
+        var = SUM_Aka_pie_chart_var_4
+        min = SUM_Aka_pie_chart_var_3
+        max = 100
+        integer = yes
+    }
+    set_variable_to_random = {
+        var = SUM_Aka_pie_chart_var_5
+        min = SUM_Aka_pie_chart_var_4
+        max = 100
+        integer = yes
+    }
+    set_variable_to_random = {
+        var = SUM_Aka_pie_chart_var_6
+        min = SUM_Aka_pie_chart_var_5
+        max = 100
+        integer = yes
+    }
+    set_variable_to_random = {
+        var = SUM_Aka_pie_chart_var_7
+        min = SUM_Aka_pie_chart_var_6
+        max = 100
+        integer = yes
+    }
     for_loop_effect = {
         start = 0
-        end = 16
+        end = SUM_Aka_pie_chart_var
         set_variable = {
-            var = pie_chart^v
+            var = SUM_Aka_pie_chart^v
             value = 2
         }
+        add_to_variable = { ROOT.last_idx = 1 }
+    }
+    set_variable = {
+        var = ROOT.last_idx
+        value = SUM_Aka_pie_chart_var
     }
     for_loop_effect = {
-        start = 16
-        end = 32
+        start = ROOT.last_idx
+        end = SUM_Aka_pie_chart_var_2
         set_variable = {
-            var = pie_chart^v
+            var = SUM_Aka_pie_chart^v
             value = 3
         }
+        add_to_variable = { ROOT.last_idx = 1 }
     }
     for_loop_effect = {
-        start = 32
-        end = 48
+        start = ROOT.last_idx
+        end = SUM_Aka_pie_chart_var_3
         set_variable = {
-            var = pie_chart^v
+            var = SUM_Aka_pie_chart^v
             value = 4
         }
+        add_to_variable = { ROOT.last_idx = 1 }
     }
     for_loop_effect = {
-        start = 48
-        end = 64
+        start = ROOT.last_idx
+        end = SUM_Aka_pie_chart_var_4
         set_variable = {
-            var = pie_chart^v
+            var = SUM_Aka_pie_chart^v
             value = 5
         }
+        add_to_variable = { ROOT.last_idx = 1 }
     }
     for_loop_effect = {
-        start = 64
-        end = 74
+        start = ROOT.last_idx
+        end = SUM_Aka_pie_chart_var_5
         set_variable = {
-            var = pie_chart^v
+            var = SUM_Aka_pie_chart^v
             value = 6
         }
+        add_to_variable = { ROOT.last_idx = 1 }
     }
     for_loop_effect = {
-        start = 74
-        end = 80
+        start = ROOT.last_idx
+        end = SUM_Aka_pie_chart_var_6
         set_variable = {
-            var = pie_chart^v
+            var = SUM_Aka_pie_chart^v
             value = 7
         }
+        add_to_variable = { ROOT.last_idx = 1 }
     }
     for_loop_effect = {
-        start = 80
-        end = 90
+        start = ROOT.last_idx
+        end = SUM_Aka_pie_chart_var_7
         set_variable = {
-            var = pie_chart^v
+            var = SUM_Aka_pie_chart^v
             value = 8
         }
+        add_to_variable = { ROOT.last_idx = 1 }
     }
-	add_to_variable = { pie_chart_dirty = 1 }
+	add_to_variable = { SUM_Aka_pie_chart_dirty = 1 }
 }
+ran

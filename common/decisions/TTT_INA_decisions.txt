@@ -402,23 +402,44 @@ INA_war_internal_factions = {
 			has_war_with = SNA
 			}
 		}
+		visible = {
+		   has_war = no
+		}
 		
-		is_good = no                         
-	
-		days_mission_timeout = 7
+		is_good = no 
+		
+	    fire_only_once = yes
+		
+		days_mission_timeout = 1
 		
 		timeout_effect = {                      
 			if = {
 			limit = {
 				original_tag = INA
 			}
+			INA = {
+			set_autonomy = {
+				target = SNA
+				autonomy_state = autonomy_free
+			    }
+			}
+			SNA = { leave_faction = yes }
 			declare_war_on = { target = SNA type = annex_everything }
+			clr_country_flag = INA_34_flag
 		}
 		else_if = {
 			limit = {
 				original_tag = SNA
 			}
+			INA = {
+			set_autonomy = {
+				target = SNA
+				autonomy_state = autonomy_free
+			    }
+			}
+			SNA = { leave_faction = yes }
 			declare_war_on = { target = INA type = annex_everything }
+			clr_country_flag = INA_34_flag
 		    }           
 		}		
 	}

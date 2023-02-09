@@ -117,11 +117,13 @@ country_event = {
 			factor = 10
 		}
 		set_country_flag = ready_to_join_pact
-		every_country = {
-			if = {
-				limit = { is_in_faction_with = ROOT }
+		ROOT = {
+			every_country = {
+				if = {
+					limit = { is_in_faction_with = PREV }
+				}
+				set_country_flag = ready_to_join_pact
 			}
-			set_country_flag = ready_to_join_pact
 		}
 	}
 

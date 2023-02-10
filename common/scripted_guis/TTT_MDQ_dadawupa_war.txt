@@ -1,0 +1,211 @@
+scripted_gui = {
+
+	dadawupa_war_process_ui = {
+		context_type = decision_category
+		window_name = "dadawupa_war_process_ui_gui"
+		visible = {
+			tag = MDQ
+		}
+		effects = {
+			dadawupa_war_decision_1_click = {
+				add_political_power = -50
+				set_country_flag = {flag = decision_1_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				army_experience = 25
+			}
+			dadawupa_war_decision_2_click = {
+				add_political_power = -50
+				set_country_flag = {flag = decision_2_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				division_template = {
+					name = "达达乌帕谷征召兵"
+					division_names_group = MDQ_03
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+					}
+				}
+				capital_scope = {
+							create_unit = {
+								division = "name = \"达达乌帕谷征召兵\" division_template = \"达达乌帕谷征召兵\" start_experience_factor = -0.4"  
+								owner = ROOT
+							}
+				}
+			}
+			dadawupa_war_decision_3_click = {
+				add_political_power = -50
+				set_country_flag = {flag = decision_3_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				add_manpower = 4000
+			}
+			dadawupa_war_decision_4_click = {
+				add_political_power = -50
+				set_country_flag = {flag = decision_4_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2000
+					producer = MDQ
+				}
+			}
+			dadawupa_war_decision_5_click = {
+				add_political_power = -50
+				set_country_flag = {flag = decision_5_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 3000
+					producer = MDQ
+				}
+			}
+			dadawupa_war_decision_6_click = {
+				add_political_power = -50
+				set_country_flag = {flag = decision_6_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				add_equipment_to_stockpile = {
+					type = grain_conversion_0
+					amount = 3000
+					producer = MDQ
+				}
+			}
+			dadawupa_war_decision_7_click = {
+				add_political_power = -100
+				set_country_flag = {flag = decision_7_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				add_war_support = 0.15
+			}
+			dadawupa_war_decision_8_click = {
+				add_political_power = -100
+				set_country_flag = {flag = decision_8_cooling value = 1 days = 200}
+				hidden_effect = {
+					set_country_flag = {flag = lock_decision_1 value = 1 days = 60}
+				}
+				add_stability = 0.1
+			}
+		}
+		triggers = {
+			dadawupa_war_background2_visible = {
+				not = {
+					has_war_with = QQR
+				}
+			}
+			
+			dadawupa_war_background1_visible = {
+				has_war_with = QQR
+			}
+
+			dadawupa_war_decision_1_click_enabled = {
+				not = {
+					has_country_flag = lock_decision_1
+				}
+				not = {
+					has_country_flag = decision_1_cooling
+				}
+                has_political_power > 50
+            }
+			dadawupa_war_decision_2_click_enabled = {
+                not = {
+					has_country_flag = lock_decision_1
+				}
+                not = {
+					has_country_flag = decision_2_cooling
+				}
+				has_political_power > 50
+            }
+			dadawupa_war_decision_3_click_enabled = {
+                not = {
+					has_country_flag = lock_decision_1
+				}
+				not = {
+					has_country_flag = decision_3_cooling
+				}
+                has_political_power > 50
+            }
+			dadawupa_war_decision_4_click_enabled = {
+                not = {
+					has_country_flag = lock_decision_1
+				}
+				not = {
+					has_country_flag = decision_4_cooling
+				}
+                has_political_power > 50
+            }
+			dadawupa_war_decision_5_click_enabled = {
+                not = {
+					has_country_flag = lock_decision_1
+				}
+				not = {
+					has_country_flag = decision_5_cooling
+				}
+
+                has_political_power > 50
+            }
+			dadawupa_war_decision_6_click_enabled = {
+                not = {
+					has_country_flag = lock_decision_1
+				}
+				not = {
+					has_country_flag = decision_6_cooling
+				}
+                has_political_power > 50
+            }
+			dadawupa_war_decision_7_click_enabled = {
+                not = {
+					has_country_flag = lock_decision_1
+				}
+				not = {
+					has_country_flag = decision_7_cooling
+				}
+                has_political_power > 100
+            }
+			dadawupa_war_decision_8_click_enabled = {
+                not = {
+					has_country_flag = lock_decision_1
+				}
+				not = {
+					has_country_flag = decision_8_cooling
+				}
+                has_political_power > 100
+            }
+            dadawupa_war_decision_1_visible = {
+                has_completed_focus = MDQ_Train_militia
+            }
+			dadawupa_war_decision_2_visible = {
+                has_completed_focus = MDQ_Train_militia
+            }
+			dadawupa_war_decision_3_visible = {
+                has_completed_focus = MDQ_Train_militia
+            }
+			dadawupa_war_decision_4_visible = {
+                has_completed_focus = MDQ_White_sun_offensive
+            }
+			dadawupa_war_decision_5_visible = {
+                has_completed_focus = MDQ_White_sun_offensive
+            }
+			dadawupa_war_decision_6_visible = {
+                has_completed_focus = MDQ_White_sun_offensive
+            }
+			dadawupa_war_decision_7_visible = {
+                has_completed_focus = has_completed_focus = MDQ_Continue_attack
+            }
+			dadawupa_war_decision_8_visible = {
+                has_completed_focus = has_completed_focus = MDQ_Continue_attack
+            }
+        }
+	}
+}

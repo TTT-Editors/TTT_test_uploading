@@ -380,11 +380,19 @@ focus_tree =
 		y = 2
 		cost = 21
         completion_reward = {
-				
+				add_offsite_building = {type = arms_factory level = 4}
+				random_owned_state = 
+				{
+					add_resource = 
+					{
+						type = steel
+						amount = 20
+					}
+				}
 		}
 	}
 	focus = {
-		id = KUJ_14   #有内鬼
+		id = KUJ_14   #愚人众武器
 		icon = GFX_goal_generic
 		prerequisite = {focus = KUJ_3}
 		available_if_capitulated = no
@@ -396,7 +404,27 @@ focus_tree =
 		y = 2
 		cost = 21
         completion_reward = {
-				
+			custom_effect_tooltip = "KUJ_Fatui_Infulence"
+			add_equipment_to_stockpile = {
+		    	type = infantry_weapons 
+		    	amount = 5000
+	        }
+            add_equipment_to_stockpile = {
+		    	type = support_equipment
+		    	amount = 500
+	        }
+            add_equipment_to_stockpile = {
+		    	type = artillery_equipment 
+		   		amount = 1000
+	        }
+            add_equipment_to_stockpile = {
+		    	type = ttt_uniform_eq
+		    	amount = 1000
+	        }
+			add_equipment_to_stockpile = {
+		    	type = grain_conversion_eq
+		    	amount = 3000
+	        }
 		}
 	}
 	focus = {
@@ -412,7 +440,31 @@ focus_tree =
 		y = 2
 		cost = 21
         completion_reward = {
-				
+			division_template = {
+					name = "KUJ_Inzuazuma_volunteer" 			
+					division_names_group = KUJ_Inzuazuma_volunteer
+					is_locked = yes
+									
+			regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					artillery_brigade  = { x = 1 y = 1 }
+		            artillery_brigade  = { x = 1 y = 0 }
+			}
+			support = 	{
+					engineer = { x = 0 y = 0 }
+				}		
+			}
+			76 = 
+			{
+				create_unit = {
+					division_template = "\"KUJ_Inzuazuma_volunteer\"  start_experience_factor = 1.5"
+					owner = KUJ
+					count = 3
+				}
+			}
 		}
 	}
 	focus = {
@@ -429,7 +481,8 @@ focus_tree =
 		y = 3
 		cost = 21
         completion_reward = {
-				
+		     country_event = KUJevents.1
+			 add_ideas = KUJ_LiDao_labor
 		}
 	}
 	focus = {

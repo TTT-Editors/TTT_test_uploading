@@ -3,8 +3,30 @@ scripted_gui = {
 	ttt_liyue_civil_war_decision_ui = {
 		context_type = decision_category
 		window_name = "ttt_liyue_civil_war_decision_ui_window"
+		dirty = ttt_liyue_civil_war_decision_ui_variable
+
+		dynamic_lists = {
+			TTT_Liyue_tags_grid = {
+				array = ROOT.liyue_warlords_array
+				index = i
+				change_scope = yes
+				entry_container = ttt_liyue_tag_entry
+			}
+		}
 
 		effects = {
+			#refresh
+			#tlcw_refresh_click = {
+				#clear_array = ROOT.liyue_warlords_array
+				#every_country = {
+				#	limit = {
+				#		is_nominate_liyue = yes
+				#		NOT = { is_in_array = { ROOT.liyue_warlords_array = THIS } }
+				#	}
+				#	add_to_array = { ROOT.liyue_warlords_array = THIS }
+				#}
+			#}
+		
 			#recon
 			tlcw_button_1_click = {
 				
@@ -34,6 +56,10 @@ scripted_gui = {
 			tlcw_button_6_click = {
 				
 			}
+		}
+
+		properties = {
+			ttt_liyue_tag_entry_flag = { image = "[This.GetFlag]" }
 		}
 	}
 }

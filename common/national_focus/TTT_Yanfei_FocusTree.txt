@@ -212,6 +212,8 @@ focus = {
 		completion_reward = {	
 		add_stability =0.1
 		country_event = { days = 3 id = YFX_event.11 }
+		swap_ideas = { remove_idea = Freedom_first add_idea = Gonewith_Wind }
+		swap_ideas = { remove_idea = Special_rectification add_idea = Tosuppress_bandits }
 		}
 	}
     focus = {
@@ -413,8 +415,11 @@ focus = {
 		id = YFX15#重铸磐岩
 		icon = 0
 		prerequisite = { focus = YFX14 }
-		available = {
-			    NOT = { country_exists = NNG }
+		
+			available = { #自定义前提条件
+			custom_trigger_tooltip = {
+            tooltip = yanfei_0_01
+	            NOT = { country_exists = NNG }
 				NOT = { country_exists = XOG }
 				NOT = { country_exists = XQG }
 				NOT = { country_exists = KQG }
@@ -422,6 +427,7 @@ focus = {
 				NOT = { country_exists = ANG }
 				NOT = { country_exists = RTG }
 				NOT = { country_exists = ZDG }
+            }
 				}
 		x = 4
 		y = 9
@@ -445,13 +451,10 @@ focus = {
 
 		cost = 70
 		completion_reward = {	
-			swap_ideas = { #在里面是idea不是ideas
-			add_idea = yanhuorengjian #烟火人间
-			remove_idea = YZSN #战时特别法（再加强）
-		}
-		add_timed_idea = { idea = zhengtongrenhe #政通人和，百废待兴
+			remove_ideas = YZSN #战时特别法（再加强）
+		    add_timed_idea = { idea = zhengtongrenhe #政通人和，百废待兴
 		                    days = 365 }
-		country_event = { days = 7 id = YFX_event.1 }#几天后触发国家事件，此处事件为 律法的未来
+		    country_event = { days = 7 id = YFX_event.1 }#几天后触发国家事件，此处事件为 律法的未来
 	}
     }
 
@@ -669,7 +672,7 @@ focus = {
 	}
 	
 focus = {
-		id = YFX30#开放优先
+		id = YFX30#有限干预
 		icon = 0
 		prerequisite = { focus = YFX29 }
 		mutually_exclusive = { focus = YFX31 }

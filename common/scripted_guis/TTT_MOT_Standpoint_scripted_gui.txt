@@ -1,0 +1,77 @@
+scripted_gui = {
+	MOT_Standpoint_ui = {
+		context_type = decision_category
+		window_name = "MOT_Standpoint_ui_window"
+		visible = {
+            tag = MOT
+		}
+        effects = {
+            MOT_Standpoint_decision1_click = {
+                set_country_flag = Lock_MOT_Standpoint_decision_1
+            }
+            MOT_Standpoint_decision2_click = {
+                set_country_flag = Lock_MOT_Standpoint_decision_2
+            }
+            MOT_Standpoint_decision3_click = {
+                set_country_flag = Lock_MOT_Standpoint_decision_3
+            }
+            MOT_Standpoint_transfer_click = {
+                if = {
+                    limit = {
+                        has_country_flag = Lock_MOT_Standpoint_decision_1
+                    }
+                    clr_country_flag = Lock_MOT_Standpoint_decision_1
+                }
+                if = {
+                    limit = {
+                        has_country_flag = Lock_MOT_Standpoint_decision_2
+                    }
+                    clr_country_flag = Lock_MOT_Standpoint_decision_2
+                }
+                if = {
+                    limit = {
+                        has_country_flag = Lock_MOT_Standpoint_decision_3
+                    }
+                    clr_country_flag = Lock_MOT_Standpoint_decision_3
+                }
+            }
+        }
+
+        triggers = {
+            MOT_Standpoint_decision1_click_enabled = {
+                not = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_2
+                }
+                not = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_3
+                }
+            }
+            MOT_Standpoint_decision2_click_enabled = {
+                not = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_1
+                }
+                not = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_3
+                }
+            }
+            MOT_Standpoint_decision3_click_enabled = {
+                not = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_1
+                }
+                not = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_2
+                }
+            }
+            MOT_Standpoint_sign1_visible = {
+                has_country_flag = Lock_MOT_Standpoint_decision_1
+            }
+            MOT_Standpoint_sign2_visible = {
+                has_country_flag = Lock_MOT_Standpoint_decision_2
+            }
+            MOT_Standpoint_sign3_visible = {
+                has_country_flag = Lock_MOT_Standpoint_decision_3
+            }
+
+        }
+	}
+}

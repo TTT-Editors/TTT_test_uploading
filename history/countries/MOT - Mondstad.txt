@@ -15,6 +15,17 @@ set_technology = {
 
 recruit_character = MOT_Jean
 recruit_character = MOT_westwind_knights_1
+recruit_character =MOT_Lisa
+recruit_character =MOT_Swann
+recruit_character =MOT_Lawrence
+recruit_character =MOT_Mona
+recruit_character =MOT_Barbara
+recruit_character =MOT_Rosary
+recruit_character =MOT_Andlika
+recruit_character =MOT_Selius
+recruit_character =MOT_Goethe
+recruit_character =MOT_Kayae
+recruit_character =MOT_Hertha
 
 add_ideas = {
 	Low_tax
@@ -32,6 +43,36 @@ add_ideas = {
 	MOT_confederation
 	MOT_wave_of_refugee
 }
+###MOT_Political
+set_country_flag = MOT_open_gui_map1
+set_country_flag = MOT_Political_character1_is_locking
+add_to_array = {
+	array = MOT_Political_character_map_array
+	value = 0
+	index = 0
+}
+set_temp_variable = { i = 1 }
+while_loop_effect = {
+	limit = {
+		check_variable = { i = 5 compare =less_than_or_equals }
+	}
+	add_to_array = { MOT_Political_character_map_array = 0 }
+	add_to_temp_variable = { i = 1 }
+}
+set_variable = {character_num = 0}
+set_variable = {map_num = 0}
+set_variable = {array_value = 0}
+remove_from_array = {
+	array = MOT_Political_character_map_array
+	index = 0
+}
+add_to_array = {
+	array = MOT_Political_character_map_array
+	value = 1
+	index = 0
+}
+MOT_Political_character_is_visible =yes
+
 set_stability = 0.50
 set_war_support = 0.10
 set_convoys = 100

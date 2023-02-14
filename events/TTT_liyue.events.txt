@@ -410,8 +410,6 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			#ZDG = { transfer_state = 135 } 
-			#ZDG = { transfer_state = 132 } 
 			ZDG = { transfer_state = 176 } 
 			ZDG = { transfer_state = 212 } 
 			ZDG = { transfer_state = 213 } 
@@ -444,9 +442,7 @@ country_event = {
 				}
 			}
 			167 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			#132 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			134 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			#135 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			136 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			141 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
 			ZDG = { 
@@ -471,16 +467,17 @@ country_event = {
 			news_event = { id = global_news.3 hours = 12 }
 			XOG = { country_event = { id = liyue_civil_war.5 days = 20 } }
 			XRG = { country_event = { id = liyue_civil_war.5 days = 20 } }
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = { is_in_array = { liyue_warlords_array = ZDG } }
+				}
+				add_to_array = { liyue_warlords_array = ZDG }
+			}
 		}
 	}
 	option = { 
 		name = liyue.9.a
-        #hidden_effect = {		
-		#ZDG = {
-		#transfer_state = 167
-		#transfer_state = 134
-		#}
-		#}
 		ai_chance = {
 			factor = 1
         } 
@@ -489,13 +486,7 @@ country_event = {
 		name = liyue.9.b
 		ai_chance = {
 			factor = 0
-        }
-        #hidden_effect = {		
-		#ZDG = {
-		#transfer_state = 167
-		#transfer_state = 134
-		#}
-		#}		
+        }	
 		ZDG = { change_tag_from = ROOT }  
 		ZDG = { TTT_open_book = yes }
 	}
@@ -535,10 +526,7 @@ country_event = {
 			XRG = { transfer_state = 204 } 
 			XRG = { transfer_state = 203 } 
 			XRG = { transfer_state = 199 } 
-			#XRG = { transfer_state = 200 } 
 			log = "XRG gained 199" 
-			#XRG = { transfer_state = 201 } 
-			#XRG = { transfer_state = 202 } 
 			XRG = { transfer_state = 198 }
 			XRG = { transfer_state = 167 }   
 			log = "XRG gained all lands"
@@ -588,79 +576,59 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-		LYU = { load_focus_tree = LH_start }
-		LYU = { add_ideas = collapse_ofqixing_system }
-		LYU = { add_ideas = disorganized_army } 
-		LYU = { add_ideas = unstable_mora_system }
-		set_cosmetic_tag = GANYULY
-		add_ideas = closed_economy
-		add_ideas = low_economic_mobilisation
+			ANG = { 
+				inherit_technology = LYU
+				transfer_state = 3
+				transfer_state = 152
+				transfer_state = 170 
+				transfer_state = 210 
+				transfer_state = 211 
+				load_oob = "ANG"
+				every_owned_state = {
+					add_core_of = ANG
+					remove_core_of = LYU
+				}
+			}
+			LYU = {
+				set_cosmetic_tag = GANYULY
+				load_focus_tree = LH_start
+				add_ideas = collapse_ofqixing_system
+				add_ideas = disorganized_army
+				add_ideas = unstable_mora_system
+				add_ideas = closed_economy
+				add_ideas = low_economic_mobilisation           
+				transfer_units_fraction = {
+					target = ANG
+					size = 0.35
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				} 
+			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = { is_in_array = { liyue_warlords_array = ANG } }
+				}
+				add_to_array = { liyue_warlords_array = ANG }
+			}
 		}
 	}
 	option = { 
 		name = liyue.11.a
 		ai_chance = {
-			factor = 6
+			factor = 1
         } 
-		ANG = { 
-			inherit_technology = LYU
-			transfer_state = 3
-			transfer_state = 152
-			transfer_state = 170 
-		    transfer_state = 210 
-		    transfer_state = 211 
-		}
-		ANG = {
-			load_oob = "ANG"
-		}           
-		transfer_units_fraction = {
-			target = ANG
-			size = 0.35
-			keep_unit_leaders_trigger = {
-				always = yes
-			}
-		}  
-		ANG = { 
-			every_owned_state = {
-			    add_core_of = ANG
-				remove_core_of = LYU
-	  	    } 
-		}  
 	}
 	option = { 
 		name = liyue.11.b
 		ai_chance = {
 			factor = 0
         } 
-		ANG = { 
-			inherit_technology = LYU
-			transfer_state = 3
-			transfer_state = 152
-			transfer_state = 170 
-		    transfer_state = 210 
-		    transfer_state = 211 
-		}   
 		ANG = {
-			load_oob = "ANG"
-		}
-		ANG = { change_tag_from = ROOT }         
-		transfer_units_fraction = {
-			target = ANG
-			size = 0.35
-			keep_unit_leaders_trigger = {
-				always = yes
-			}
-		}
-		ANG = { 
-			every_owned_state = {
-			    add_core_of = ANG
-				remove_core_of = LYU
-	  	    } 
-		} 
-		
-		hidden_effect = {
-			ANG = { TTT_open_book = yes }
-		}	
+			change_tag_from = ROOT
+			TTT_open_book = yes
+		}         	
 	}
 }
 

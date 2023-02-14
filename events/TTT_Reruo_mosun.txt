@@ -47,44 +47,52 @@ country_event = {
 	desc = Reruo_mosun.4.d
 	
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {	
+			RTG = {
+				add_ideas = Resistance_Army
+				RTG_Fengxu = { set_nationality = ARF }
+				RTG_Mingbo = { set_nationality = ARF }
+				RTG_Zhiqiong = { set_nationality = ARF }
+				RTG_Local_Committee = { set_nationality = ARF }
+			}
+			ARF = {
+				transfer_state = 154
+				every_owned_state = {
+					add_core_of = ARF
+				} 
+				load_oob = "ARF"
+				inherit_technology = RTG
+				promote_character = RTG_Fengxu
+				promote_character = RTG_Mingbo
+				promote_character = RTG_Zhiqiong
+				promote_character = RTG_Local_Committee
+			}	
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = { is_in_array = { liyue_warlords_array = ARF } }
+				}
+				add_to_array = { liyue_warlords_array = ARF }
+			}
+		}
+	}
 	
 	option = { 
 		name = Reruo_mosun.4.a
-		add_ideas = Resistance_Army
-		ARF = { transfer_state = 154 } 
-		ARF = { 
-			every_owned_state = {
-				add_core_of = ARF
-				#remove_core_of = RTG
-				set_state_flag = is_Liyues_territory 
-			  } 
-		} 
-		RTG={
-			RTG_Fengxu = {set_nationality = ARF}
-			RTG_Mingbo = {set_nationality = ARF}
-			RTG_Zhiqiong = {set_nationality = ARF}
-			RTG_Local_Committee = {set_nationality = ARF}
-		}
+		ai_chance = {
+			factor = 1
+        } 
 	}	
 	option = { 
 		name = Reruo_mosun.4.b
-		add_ideas = Resistance_Army
-		ARF = { transfer_state = 154 } 
-		ARF = {change_tag_from = ROOT }
-		ARF = { TTT_open_book = yes }
-		ARF = { load_oob = "ARF" }
-		ARF = { 
-			every_owned_state = {
-				add_core_of = ARF
-				#remove_core_of = RTG
-				set_state_flag = is_Liyues_territory 
-			  } 
-		} 
-		RTG={
-			RTG_Fengxu = {set_nationality = ARF}
-			RTG_Mingbo = {set_nationality = ARF}
-			RTG_Zhiqiong = {set_nationality = ARF}
-			RTG_Local_Committee = {set_nationality = ARF}
+		ai_chance = {
+			factor = 0
+        } 
+		ARF = {
+			change_tag_from = ROOT
+			TTT_open_book = yes
 		}
 	}	
 }

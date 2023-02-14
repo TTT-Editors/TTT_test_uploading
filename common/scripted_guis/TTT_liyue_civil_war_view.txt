@@ -3,7 +3,7 @@ scripted_gui = {
 	ttt_liyue_civil_war_decision_ui = {
 		context_type = decision_category
 		window_name = "ttt_liyue_civil_war_decision_ui_window"
-		dirty = ttt_liyue_civil_war_decision_ui_variable
+		dirty = ttt_liyue_civil_war_decision_ui_dirty
 
 		dynamic_lists = {
 			TTT_Liyue_tags_grid = {
@@ -16,16 +16,9 @@ scripted_gui = {
 
 		effects = {
 			#refresh
-			#tlcw_refresh_click = {
-				#clear_array = ROOT.liyue_warlords_array
-				#every_country = {
-				#	limit = {
-				#		is_nominate_liyue = yes
-				#		NOT = { is_in_array = { ROOT.liyue_warlords_array = THIS } }
-				#	}
-				#	add_to_array = { ROOT.liyue_warlords_array = THIS }
-				#}
-			#}
+			tlcw_refresh_click = {
+				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
+			}
 		
 			#recon
 			tlcw_button_1_click = {

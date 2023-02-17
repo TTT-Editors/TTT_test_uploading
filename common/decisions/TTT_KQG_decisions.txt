@@ -11,7 +11,13 @@ KQG_special_categories1 = {
 			#拥有
 			ROOT = { has_full_control_of_state = FROM }
 		}
-
+		
+        target_trigger = {
+			FROM = {
+				NOT = { has_state_flag = KQG_state_flag1 }				
+			}
+		}
+		
 		available = {
 			is_subject = no
 			ROOT = {
@@ -34,53 +40,62 @@ KQG_special_categories1 = {
 		
 		fire_only_once = yes
 		
-		days_remove = 60
+		days_remove = 30
 		
         modifier = {
         POLITICAL_POWER_COST = 0.25		
 	   	}
 		
-		complete_effect = {
+		remove_effect = {
 		    random_list = {
 			50 = {
+			    FROM = {
+				set_state_flag = { flag = KQG_state_flag1 value = 1 days = 30 } 
+				}
 				country_event = {
 					id = KQG_events.23
 					days = 1
 			    }
 		    }
 			50 = {
+			    hidden_effect = {					 
+			    FROM = {
+				add_dynamic_modifier = { modifier = KQG_state_modifier_1 }
+				}
+                }
 				country_event = {
 					id = KQG_events.22
 					days = 1
-			    }
+			        }
+		        }
 		    }
-		  }
-		}
-		remove_effect = {
-		   add_to_variable = { KQG_agrarian = 1 }
 		}
 	}
 	
 	KQG_test3 = {
 		priority = 20
 		
-  		icon = GFX_decision_generic_construction
+  	    icon = GFX_decision_generic_construction
 
 		ai_will_do = {
-			base = 50
+			#base = 50
 		}
 		
 		cost = 0
         
 		fire_only_once = yes
 		available = {
-		custom_trigger_tooltip = {
-		tooltip = KQG_agrarian1	
-		check_variable = { KQG_agrarian = 74 }
-	        }
-	    }		        
+        NOT =  {		
+	    any_state = {  		
+			has_state_flag = is_Liyues_territory
+			NOT =  {
+			has_dynamic_modifier = { modifier = KQG_state_modifier_1 }
+                    }			
+	            }
+			}
+        }		
 		remove_effect = {
-		   add_ideas = KQG1_4
+		   #add_ideas = KQG1_4
 		}
 	}
 }

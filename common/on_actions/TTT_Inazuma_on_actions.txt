@@ -52,12 +52,15 @@ on_actions =
 	on_war = {
 	effect = {
 	#九条家获得精锐部队
-	        limit = {
+	if = 
+		{
+		limit = {
 			original_tag = INA
 			NOT = { has_template = "同心" }
 			has_country_flag = INA_Jiutiaojia_Elite_test
 			original_tag = KUJ
-			}
+		}
+	}
             KUJ = {			
 		    division_template = {
 					name = "同心"
@@ -92,11 +95,13 @@ on_actions =
 	on_war = {
 	effect = {
 	#九条家获得军工厂
-	        limit = {
-			original_tag = INA
-			has_country_flag = KUJ_Investment_inoutlying_islands
-			}			
-		    KUJ = { add_offsite_building = { type = arms_factory level = 4 } }
+	   		if = {
+				limit = {
+					original_tag = INA
+					has_country_flag = KUJ_Investment_inoutlying_islands
+					}			
+					KUJ = { add_offsite_building = { type = arms_factory level = 4 } }
+	   		}
 		}
 	}
 	on_weekly_INA = {
@@ -106,8 +111,20 @@ on_actions =
 				limit = {
 					has_country_flag = KUJ_War_propaganda1
 				}
-				add_to_variable = { INA_junshizhichidu = 0.50 }
-                add_to_variable = { INA_minjianzhichidu = 0.50 }				
+				add_to_variable = { INA_junshizhichidu = 1.00 }
+                add_to_variable = { INA_minjianzhichidu = 1.00 }
+				clamp_variable = 
+				{
+					var = INA_minjianzhichidu
+					max = 100
+					min = 0
+				}
+				clamp_variable = 
+				{
+					var = INA_junshizhichidu
+					max = 100
+					min = 0
+				}				
 			}			
 		}	
 	}
@@ -118,8 +135,20 @@ on_actions =
 					has_country_flag = INA_34_flag
 					original_tag = SNA
 				}
-                add_to_variable = { SNA_junshizhichidu = 3.50 }
-                add_to_variable = { SNA_minjianzhichidu = 3.50 }				
+                add_to_variable = { SNA_junshizhichidu = 3.00 }
+                add_to_variable = { SNA_minjianzhichidu = 3.00 }
+				clamp_variable = 
+				{
+					var = SNA_minjianzhichidu
+					max = 100
+					min = 0
+				}
+				clamp_variable = 
+				{
+					var = SNA_junshizhichidu
+					max = 100
+					min = 0
+				}				
 			}			
 		}	
 	}
@@ -130,9 +159,21 @@ on_actions =
 				    original_tag = INA
 					has_country_flag = INA_34_flag
 				}
-				add_to_variable = { INA_junshizhichidu = 3.50 }
-                add_to_variable = { INA_minjianzhichidu = 3.50 }				
-			}			
+				add_to_variable = { INA_junshizhichidu = 3.00 }
+                add_to_variable = { INA_minjianzhichidu = 3.00 }
+				clamp_variable = 
+				{
+					var = INA_minjianzhichidu
+					max = 100
+					min = 0
+				}
+				clamp_variable = 
+				{
+					var = INA_junshizhichidu
+					max = 100
+					min = 0
+				}				
+			}		
 		}	
 	}
 }

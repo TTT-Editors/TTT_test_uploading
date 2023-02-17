@@ -85,7 +85,6 @@ SNA_improve_relationship_society = {
 		
 		fire_only_once = no
 				
-		is_good = no
 		
 }
 
@@ -112,25 +111,24 @@ SNA_improve_relationship_pursue = {
 		
 		fire_only_once = no
 				
-		is_good = no
 		
 }
 
 SNA_buy_test = {
-available = {
+	available = {
 	    NOT = {
-		has_country_flag = flag_1
-        has_country_flag = text		
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = test		
-		check_variable = { SNA_ARMAMENT  > 49 }
-	 }	 
-  }
-  
-     visible = {
+			has_country_flag = flag_1
+        	has_country_flag = text		
+	 	} 
+     	custom_trigger_tooltip = {   tooltip = test	 check_variable = { SNA_ARMAMENT  > 49 } }	 
+	}
+    visible = {
          check_variable = { SNA_foolish_morale > 24 }
-		        }
+	}
+
+	icon = generic_tank
+								
+	fire_only_once = no
 		
 		ai_will_do = {
 			factor = 3
@@ -168,12 +166,7 @@ available = {
                     value = 1
                 }
 		}				
-				
-		icon = generic_tank
-								
-		fire_only_once = no
-				
-		is_good = no
+			
 		
 }
 
@@ -227,22 +220,21 @@ SNA_buy_test2 = {
 		icon = generic_wreckers
 								
 		fire_only_once = no
-				
-		is_good = no
+			
 		
    }
 
 SNA_buy_test3 = {
     available = {
 	       NOT = {
-		has_country_flag = flag_1
-        has_country_flag = text		
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = sna		
-		check_variable = { SNA_ARMAMENT  > 99 }
-	 }	 
-  }
+				has_country_flag = flag_1
+        		has_country_flag = text		
+			 } 
+     		custom_trigger_tooltip = {
+				tooltip = sna		
+				check_variable = { SNA_ARMAMENT  > 99 }
+	 		}	 
+  	}
   
      visible = {
 			check_variable = { SNA_foolish_morale > 49 }
@@ -255,9 +247,12 @@ SNA_buy_test3 = {
 		days_remove = 14
 		
 		cost = 20
+
+		modifier = {
+			stability_weekly = 0.05
+		}
 										
 		complete_effect = {		   
-			stability_weekly = 0.05
 			subtract_from_variable = {SNA_ARMAMENT = 100}			
 			subtract_from_variable = {SNA_societypursuit_morale = 10}
 			add_to_variable = {SNA_foolish_morale = 10}
@@ -267,16 +262,14 @@ SNA_buy_test3 = {
 		}
 		
 		remove_effect = {
-		add_equipment_to_stockpile = {
-		  type = infantry_equipment
-		 amount = 500
-		  
-	}
-	       add_equipment_to_stockpile = {
-		   type = ttt_uniform_eq
-		  amount = 500
-		  
-	}
+			add_equipment_to_stockpile = {
+		  		type = infantry_equipment
+		 		amount = 500
+		   }
+	       	add_equipment_to_stockpile = {
+		   		type = ttt_uniform_eq
+		  		amount = 500
+		   }
 		}
          		
 		remove_effect = {
@@ -292,7 +285,6 @@ SNA_buy_test3 = {
 										
 		fire_only_once = no
 				
-		is_good = no
 		
    }
 
@@ -346,8 +338,6 @@ SNA_buy_test31 = {
 		icon = GFX_decision_category_military_operation
 										
 		fire_only_once = no
-				
-		is_good = no
 		
    }
    
@@ -403,7 +393,6 @@ available = {
 										
 		fire_only_once = no
 				
-		is_good = no
 		
    }
 
@@ -450,16 +439,15 @@ available = {
 		}
 				        		
 		targeted_modifier = {
-		tag = KUJ		
-		attack_bonus_against = 0.10
-		defense_bonus_against = 0.10		
+			tag = KUJ		
+			attack_bonus_against = 0.10
+			defense_bonus_against = 0.10		
 	    }
 		
 		icon = GFX_decision_category_saf_anti_colonialist_crusade
 										
 		fire_only_once = no
 				
-		is_good = no
 		
 }
 				  
@@ -517,7 +505,6 @@ available = {
 										
 		fire_only_once = no
 				
-		is_good = no
 		
    }
    
@@ -568,7 +555,6 @@ available = {
 										
 		fire_only_once = no
 				
-		is_good = no
 		
    }
    
@@ -624,7 +610,6 @@ available = {
 										
 		fire_only_once = no
 				
-		is_good = no
 		
    }
    
@@ -676,7 +661,6 @@ available = {
 										
 		fire_only_once = no
 				
-		is_good = no
 		
    }
 }
@@ -738,7 +722,7 @@ SNA_internal_factions2 = {   #军改
 
 SNA_internal_factions3 = {	   
 	SNA_state1 = { 		
-    on_map_mode = map_and_decisions_view
+    on_map_mode = map_only
 	
 		priority = 20
 		
@@ -760,7 +744,6 @@ SNA_internal_factions3 = {
 			FROM = {
 				is_core_of = ROOT
 				has_dynamic_modifier = {  modifier = SNA_state_modifier_1  }
-				infrastructure > 0
 			}
 		}
 
@@ -777,6 +760,7 @@ SNA_internal_factions3 = {
 			has_manpower > 499
 			has_tech = construction2
 			industrial_complex > 1
+			infrastructure > 0
 		}
 
 		days_remove = 20
@@ -800,7 +784,7 @@ SNA_internal_factions3 = {
     }
 	
 	SNA_state2 = { 		
-    on_map_mode = map_and_decisions_view
+    on_map_mode = map_only
 	
 		priority = 20
 		
@@ -822,7 +806,6 @@ SNA_internal_factions3 = {
 			FROM = {
 				is_core_of = ROOT
 				has_dynamic_modifier = {  modifier = SNA_state_modifier_2  }
-				infrastructure > 2
 			}
 		}
 
@@ -840,6 +823,7 @@ SNA_internal_factions3 = {
 			has_manpower > 499
 			has_tech = construction3
 			industrial_complex > 1
+			infrastructure > 2
 		}
 
 		days_remove = 40
@@ -863,7 +847,7 @@ SNA_internal_factions3 = {
 	}
 	
 	SNA_state3 = { 		
-    on_map_mode = map_and_decisions_view
+    on_map_mode = map_only
 	
 		priority = 20
 		
@@ -886,6 +870,7 @@ SNA_internal_factions3 = {
 				is_core_of = ROOT
 				has_dynamic_modifier = {  modifier = SNA_state_modifier_3  }
 				infrastructure > 4
+				industrial_complex > 1
 			}
 		}
 
@@ -926,7 +911,7 @@ SNA_internal_factions3 = {
 	}
 		
 	SNA_state4 = {       #农田开垦		
-    on_map_mode = map_and_decisions_view
+    on_map_mode = map_only
 	
 		priority = 20
 		
@@ -984,7 +969,7 @@ SNA_internal_factions3 = {
 	}
 	
 	SNA_state5 = { 		#村庄建设
-    on_map_mode = map_and_decisions_view
+    on_map_mode = map_only
 	
 		priority = 20
 		
@@ -1081,7 +1066,6 @@ SNA_internal_factions3 = {
 		
 		available  = {  
 			industrial_complex > 5
-			consumer_goods_factor = 0.10
 		}
 
 		days_remove = 180
@@ -1090,6 +1074,7 @@ SNA_internal_factions3 = {
 		
         modifier = {
 			civilian_factory_use = 4
+			consumer_goods_factor = 0.10
 	   	}
 
 		remove_effect = {
@@ -1364,7 +1349,7 @@ INA_war_internal_factions = {   #民间宣传
 		    }
 		}  
     }
-    ISA_Recruit_troops = {    招募部队
+    ISA_Recruit_troops = {    #招募部队
        icon = GFX_decision_generic_construction
 	   	
 		cost = 30
@@ -1421,8 +1406,8 @@ INA_war_internal_factions = {   #民间宣传
 			
 				random_state = {
 				    limit = {
-			        is_core_of = INA
-		             }
+			        		is_core_of = INA
+		            }
 					create_unit = {
 					division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = INA

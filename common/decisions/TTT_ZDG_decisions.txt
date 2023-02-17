@@ -1,0 +1,98 @@
+ZDG_decision_category = {
+    ZDG_Zaoliyue_Core = {   #加顺从度
+		
+		#icon = 图标名
+		on_map_mode = map_only
+		visible = {
+			#拥有
+			FROM = {
+			NOT = { is_core_of = ZDG }
+			}
+		}
+
+		available = {
+		    FROM = {
+			is_controlled_by = ZDG
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+		}		
+		cancel_if_not_visible = yes
+		
+		cost = 0
+
+		state_target = yes
+
+		highlight_color_while_active = yes
+		        
+		target_array = owned_states
+		
+		fire_only_once = no
+		
+		days_remove = 60
+		
+        modifier = {
+        POLITICAL_POWER_COST = 0.25
+        custom_modifier_tooltip = ZDG_Zaoliyue_Core_tt		
+	   	}
+		
+		complete_effect = {
+		    
+		}
+		remove_effect = {
+		   add_to_variable = { ZDG_agrarian = 0.01 }
+		   add_stability = 0.01
+		   add_war_support = 0.01
+		   FROM = {
+		   add_compliance = 10
+		   }
+		}
+	}
+	ZDG_Zaoliyue_Core_LYU = {   #造核心
+		
+		#icon = 图标名
+		on_map_mode = map_only
+		visible = {
+			#拥有
+			FROM = {
+			NOT = { is_core_of = ZDG }
+			}
+		}
+
+		available = {
+		    FROM = {
+			is_fully_controlled_by = ZDG
+			compliance > 49
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}		
+		cancel_if_not_visible = yes
+		
+		cost = 0
+
+		state_target = yes
+
+		highlight_color_while_active = yes
+		        
+		target_array = owned_states
+		
+		fire_only_once = yes
+		
+	
+		
+		complete_effect = {
+		   FROM = {
+		   add_core_of = ZDG 
+		   }
+		}
+	}
+}

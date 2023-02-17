@@ -555,6 +555,7 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
+			army_experience = 100
 		}	
 	}
 	focus = { #后勤保障
@@ -571,6 +572,7 @@ focus_tree = {
 			focus = XOG_28
 		}
 		completion_reward = {
+			add_ideas = XOG_logistic_service
 		}	
 	}
 	focus = { #统一生产管理
@@ -579,7 +581,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 16
 		y = 2
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -590,6 +592,10 @@ focus_tree = {
 			focus = XOG_34
 		}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = XOG_logistic_service1
+				remove_idea = XOG_logistic_service
+			}
 		}	
 	}
 	focus = { #资源整合
@@ -598,7 +604,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 16
 		y = 3
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -606,6 +612,10 @@ focus_tree = {
 			focus = XOG_30
 		}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = XOG_logistic_service2
+				remove_idea = XOG_logistic_service1
+			} 
 		}	
 	}
 	focus = { #奉献精神
@@ -614,7 +624,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 16
 		y = 4
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -622,6 +632,10 @@ focus_tree = {
 			focus = XOG_32
 		}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = XOG_logistic_service3
+				remove_idea = XOG_logistic_service2
+			}
 		}	
 	}
 	focus = { #地方自主建设
@@ -630,7 +644,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 20
 		y = 2
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -641,6 +655,10 @@ focus_tree = {
 			focus = XOG_30
 		}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = XOG_Another_line
+				remove_idea = XOG_logistic_service
+			}
 		}	
 	}
 	focus = { #工程奇迹
@@ -649,7 +667,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 20
 		y = 3
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -657,6 +675,10 @@ focus_tree = {
 			focus = XOG_34
 		}
 		completion_reward = {
+            swap_ideas = {
+				add_idea = XOG_Another_line1
+				remove_idea = XOG_logistic_service
+			}
 		}	
 	}
 	focus = { #发动人民
@@ -665,7 +687,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 20
 		y = 4
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -673,6 +695,10 @@ focus_tree = {
 			focus = XOG_35
 		}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = XOG_Another_line12
+				remove_idea = XOG_logistic_service1
+			}
 		}	
 	}
 	focus = { #军用工业扩张
@@ -681,14 +707,36 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 22
 		y = 1
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			XOG = {
+			has_full_control_of_state = 194
+			has_full_control_of_state = 117
+		    }
 		}
 		prerequisite = {
 			focus = XOG_28
 		}
 		completion_reward = {
+			194 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes 
+				}
+			}
+			137 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes 
+				}
+			}
 		}	
 	}
 	focus = { #农业经济改革
@@ -697,7 +745,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 22
 		y = 2
-		cost = 7
+		cost = 70
 		ai_will_do = {
 			factor = 10
 		}
@@ -705,6 +753,10 @@ focus_tree = {
 			focus = XOG_37
 		}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = XOG_3_ideas2
+				remove_idea = XOG_3_ideas1
+			}
 		}	
 	}
 	focus = { #军事改革
@@ -713,9 +765,12 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 26
 		y = 1
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			has_war = no
 		}
 		prerequisite = {
 			focus = XOG_28
@@ -724,6 +779,10 @@ focus_tree = {
 			focus = XOG_42
 		}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = XOG_Qianyan_Army1
+				remove_idea = XOG_Qianyan_Army
+			}
 		}	
 	}
 	focus = { #青年军官学校
@@ -732,7 +791,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 24
 		y = 2
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -748,7 +807,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 26
 		y = 2
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -756,6 +815,7 @@ focus_tree = {
 			focus = XOG_39
 		}
 		completion_reward = {
+
 		}	
 	}
 	focus = { #传统的部队
@@ -764,7 +824,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 28
 		y = 1
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -783,7 +843,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 28
 		y = 2
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}

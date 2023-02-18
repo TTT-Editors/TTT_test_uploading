@@ -1,4 +1,74 @@
 ideas = {
+    industrial_concern = {   #工业制造商
+		designer = yes
+	
+	    XOG_FanMuTang = {		#范木堂
+		    name = XOG_FanMuTang
+						
+		    #picture = KQG_Return_original
+			cost = 150
+			allowed = {
+				original_tag = XOG
+			}
+			research_bonus = {
+		        industry = 0.05
+	        }			
+			traits = { industrial_concern }			
+			ai_will_do = {
+				factor = 20
+			}
+		    modifier = {
+			    production_speed_infrastructure_factor = 0.05
+			    }
+		    }
+	    }
+	materiel_manufacturer = {   #军需制造商	
+		designer = yes
+
+	    XOG_Cold_front_ironware = {		#寒锋铁器
+		    name = XOG_Cold_front_ironware
+
+			
+		    #picture = KQG_Junshigongcheng
+			cost = 150
+			allowed = {
+				original_tag = XOG
+			}			
+			traits = { materiel_manufacturer }			
+			ai_will_do = {
+				factor = 20
+			}
+		    equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+		    }
+		XOG_Small_white_mill = {		#小白磨坊
+		    name = XOG_Small_white_mill
+
+			
+		    #picture = KQG_Junshigongcheng
+			cost = 150
+			allowed = {
+				original_tag = XOG
+			}			
+			traits = { materiel_manufacturer }			
+			ai_will_do = {
+				factor = 20
+			}
+			research_bonus = {
+		        infantry_weapons = 0.05
+	        }
+		    equipment_bonus = {
+				support_equipment = {
+					build_cost_ic =  -0.1
+					instant = yes
+				}
+			}
+		    }
+	    }
 	country = {
 		XOG_1_ideas = {       #飞速扩大的行政机构
 			picture = XOG_feixukuoda
@@ -9,6 +79,10 @@ ideas = {
                 war_support_factor = -0.30
                 economy_cost_factor = 0.25
 				training_time_army_factor = 0.25
+				disabled_ideas = 1
+				economy_cost_factor = 0.25
+				mobilization_laws_cost_factor = 0.25
+	            trade_laws_cost_factor = 0.25
 			}
 		}
 		XOG_2_ideas = {       #混乱的思潮
@@ -47,6 +121,16 @@ ideas = {
 			modifier = { 
                 stability_factor = 0.10
                 reformism_drift = 0.10				
+			}
+		}
+		XOG_Protect_the_homeland = {       #保卫家园
+			picture = XOQ_qingcezhuang
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = { 
+                war_support_factor = 0.20
+                army_attack_factor = 0.10
+	            army_defence_factor = 0.10				
 			}
 		}
 		XOG_3_ideas1 = {       #轻策庄农业区1
@@ -92,6 +176,33 @@ ideas = {
                 local_resources_factor = 0.20				
 			}
 		}
+		XOG_logistic_service3 = {       #后勤保障3
+			picture = XOQ_qingcezhuang
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				artillery_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+			modifier = { 
+              	production_factory_max_efficiency_factor = 0.10
+				line_change_production_efficiency_factor = 0.10
+                supply_consumption_factor = -0.10
+	            army_defence_factor = 0.05
+                local_resources_factor = 0.20
+                consumer_goods_factor = -0.05				
+			}
+		}
 		XOG_Another_line = {       #后勤保障另条线
 			picture = XOQ_qingcezhuang
 			removal_cost = -1
@@ -115,6 +226,20 @@ ideas = {
 				production_speed_buildings_factor = 0.10
 			}
 		}
+		XOG_Another_line2 = {       #后勤保障另条线2
+			picture = XOQ_qingcezhuang
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = { 
+              	line_change_production_efficiency_factor = 0.10
+                supply_consumption_factor = -0.10
+	            army_defence_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.10
+				production_speed_buildings_factor = 0.10
+				political_power_factor = 0.20
+				weekly_manpower = 100
+			}
+		}
 		XOG_3_ideas2 = {       #轻策庄农业区2
 			picture = XOQ_qingcezhuang
 			removal_cost = -1
@@ -125,5 +250,53 @@ ideas = {
 				 line_change_production_efficiency_factor = 0.15
 			}
 		}		
-    }
+	XOG_1_ideas1 = {       #飞速扩大的行政机构1
+			picture = XOG_feixukuoda
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = { 
+               	stability_factor = -0.30
+                war_support_factor = -0.30             
+				mobilization_laws_cost_factor = 0.25
+                political_advisor_cost_factor = -0.25				
+			}
+		}
+	XOG_1_ideas2 = {       #飞速扩大的行政机构2
+			picture = XOG_feixukuoda
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = { 
+               	stability_factor = -0.20
+                war_support_factor = -0.20
+                political_advisor_cost_factor = -0.25
+				mobilization_laws_cost_factor = 0.25	       
+			}
+		}
+	XOG_1_ideas3 = {       #飞速扩大的行政机构3
+			picture = XOG_feixukuoda
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = { 
+               	stability_factor = -0.05
+                war_support_factor = -0.05
+                political_advisor_cost_factor = -0.25
+                mobilization_laws_cost_factor = -0.25
+	            trade_laws_cost_factor  = -0.25				
+			}
+		}
+	XOG_Stable_effective_government = {       #稳定有效的政府
+			picture = XOG_feixukuoda
+			removal_cost = -1
+			#country_lock_all_division_template = no
+			modifier = { 
+               	stability_factor = 0.05
+                war_support_factor = 0.05
+                political_advisor_cost_factor = -0.25
+				training_time_army_factor = -0.10
+                mobilization_laws_cost_factor = -0.25
+	            trade_laws_cost_factor  = -0.25
+                political_power_gain = 0.10				
+			}
+		}
+	}
 }

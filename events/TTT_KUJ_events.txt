@@ -5,7 +5,6 @@ country_event =
     id = KUJevents.1
     title = KUJevents.1.t
     desc = KUJevents.1.d
-    tigger = {tag = KUJ}
     fire_only_once = yes 
     is_triggered_only = yes
     option = 
@@ -13,7 +12,7 @@ country_event =
         name = KUJevents.1.a
         add_political_power = -15
         custom_effect_tooltip = KUJ_LiDaoDaFu
-        add_global_flag = KUJ_LiDaoXieDing
+        set_global_flag = KUJ_LiDaoXieDing
     }
 }
 
@@ -22,7 +21,6 @@ country_event =
     id = KUJevents.2
     title = KUJevents.2.t
     desc = KUJevents.2.d
-    tigger = {tag = KUJ}
     fire_only_once = yes 
     is_triggered_only = yes
     option = 
@@ -37,7 +35,6 @@ country_event =
     id = KUJevents.3
     title = KUJevents.3.t
     desc = KUJevents.3.d
-    tigger = {tag = KUJ}
     fire_only_once = yes 
     is_triggered_only = yes
     option = 
@@ -53,15 +50,16 @@ country_event =
 			}
 			add_manpower = 20000
             INA = {
-                if = { 
-                    has_global_flag = KUJ_LiDaoXieDing 
-                    remove_timed_idea = INA_Labor_Shortages
+                if = 
+                {
+                    limit = {has_global_flag = KUJ_LiDaoXieDing}
+                    remove_ideas = INA_Labor_Shortages
                     add_timed_idea = 
-                    {
+                     {
                         idea = INA_more_Labor_Shortages
                         days = 120
-                    }
-				}
+                    } 
+                }
                 else = {
                     add_timed_idea = 
                     {
@@ -69,18 +67,19 @@ country_event =
                         days = 120
                     }
                 }
+			}
+
 				236 = { add_manpower = -20000 }
 		    }  		
 		}
     }
-}
+
 
 country_event = 
 {
     id = KUJevents.4
     title = KUJevents.4.t
     desc = KUJevents.4.d
-    tigger = {tag = KUJ}
     fire_only_once = yes 
     is_triggered_only = yes
     option = 
@@ -95,7 +94,6 @@ country_event =
     id = KUJevents.5
     title = KUJevents.5.t
     desc = KUJevents.5.d
-    tigger = {tag = KUJ}
     fire_only_once = yes 
     is_triggered_only = yes
     option = 

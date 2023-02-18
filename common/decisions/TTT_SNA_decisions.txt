@@ -26,10 +26,10 @@ SNAday = {
 		}		
 	}
 
-SNA_expand_smuggling_network = {
+	SNA_expand_smuggling_network = {
 	available = {
-		add_to_variable = {SNA_ARMAMENT < 500} 
-		add_to_variable = {SNA_MATERIALS < 500}		
+		check_variable = {SNA_ARMAMENT < 500} 
+		check_variable = {SNA_MATERIALS < 500}		
 	}
 	remove_effect = {
 		       add_to_variable = {SNA_ARMAMENT = 25}
@@ -58,11 +58,9 @@ SNA_expand_smuggling_network = {
 		
 		fire_only_once = no
 				
-		is_good = no
-		
-}
+		}
 
-SNA_improve_relationship_society = {
+	SNA_improve_relationship_society = {
 	remove_effect = {
 		       add_to_variable = {SNA_foolish_morale = 10}			   
           }		
@@ -85,10 +83,9 @@ SNA_improve_relationship_society = {
 		
 		fire_only_once = no
 				
-		
-}
+		}
 
-SNA_improve_relationship_pursue = {
+	SNA_improve_relationship_pursue = {
 	remove_effect = {
 		       add_to_variable = {SNA_societypursuit_morale = 10}			   
           }		
@@ -111,10 +108,9 @@ SNA_improve_relationship_pursue = {
 		
 		fire_only_once = no
 				
-		
-}
+		}
 
-SNA_buy_test = {
+	SNA_buy_test = {
 	available = {
 	    NOT = {
 			has_country_flag = flag_1
@@ -167,10 +163,9 @@ SNA_buy_test = {
                 }
 		}				
 			
-		
-}
+		}
 
-SNA_buy_test2 = {
+	SNA_buy_test2 = {
     available = {
 	      NOT = {
           has_country_flag = flag_2
@@ -224,7 +219,7 @@ SNA_buy_test2 = {
 		
    }
 
-SNA_buy_test3 = {
+	SNA_buy_test3 = {
     available = {
 	       NOT = {
 				has_country_flag = flag_1
@@ -288,7 +283,7 @@ SNA_buy_test3 = {
 		
    }
 
-SNA_buy_test31 = {
+	SNA_buy_test31 = {
     available = {
 	       NOT = {
 		has_country_flag = flag_1
@@ -341,8 +336,8 @@ SNA_buy_test31 = {
 		
    }
    
-SNA_buy_test41 = {
-available = {
+	SNA_buy_test41 = {
+	available = {
 	 NOT = {
      has_country_flag = flag_2
      has_country_flag = text	 
@@ -377,7 +372,7 @@ available = {
         modifier = {		   
 		   war_support_weekly = 0.10
 		   stability_weekly = 0.10
-           research_spped = 0.10		   
+           research_speed = 0.10		   
 	   	}
 		
 		remove_effect = {
@@ -396,8 +391,8 @@ available = {
 		
    }
 
-SNA_buy_test61 = {
-available = {
+	SNA_buy_test61 = {
+	available = {
 	 NOT = {
      has_country_flag = flag_2
      has_country_flag = text     
@@ -448,11 +443,9 @@ available = {
 										
 		fire_only_once = no
 				
-		
-}
-				  
-SNA_buy_test51 = {
-available = {
+		}				  
+	SNA_buy_test51 = {
+	available = {
 	 NOT = {
      has_country_flag = flag_1
      has_country_flag = text	 
@@ -508,8 +501,8 @@ available = {
 		
    }
    
-SNA_buy_test71 = {
-available = {
+	SNA_buy_test71 = {
+	available = {
 	 NOT = {
      has_country_flag = flag_1
      has_country_flag = text
@@ -558,8 +551,8 @@ available = {
 		
    }
    
-SNA_buy_test81 = {
-available = {
+	SNA_buy_test81 = {
+	available = {
 	 NOT = {
      has_country_flag = flag_2
      has_country_flag = text
@@ -613,8 +606,8 @@ available = {
 		
    }
    
-SNA_buy_test22 = {
-available = {
+	SNA_buy_test22 = {
+	available = {
 	 NOT = {
      has_country_flag = flag_2
      has_country_flag = text	 
@@ -708,19 +701,25 @@ SNA_internal_factions2 = {   #军改
 			}
 			else_if = {
 				limit = { has_idea = SNA_training_2 }
-				remove_ideas = SNA_training_2
-				add_idea = SNA_training_3
+				swap_ideas = 
+				{
+					remove_idea = SNA_training_2
+					add_idea = SNA_training_3
+				}
 			}
 			else_if = {
 				limit = { has_idea = SNA_training_3 }
-				remove_ideas = SNA_training_3
-				add_idea = SNA_training_4
+				swap_ideas = 
+				{
+					remove_idea = SNA_training_3
+					add_idea = SNA_training_4
+				}
 			}			
 		}		
 	}
 }
 
-SNA_internal_factions3 = {	   
+SNA_internal_factions3 = {	 #地区发展
 	SNA_state1 = { 		
     on_map_mode = map_only
 	
@@ -747,7 +746,7 @@ SNA_internal_factions3 = {
 			}
 		}
 
-		highlight_color_while_active = 1
+		
 	
 		allowed = {
 			original_tag = SNA
@@ -809,7 +808,7 @@ SNA_internal_factions3 = {
 			}
 		}
 
-		highlight_color_while_active = 1
+		
 	
 		allowed = {
 			original_tag = SNA
@@ -869,12 +868,9 @@ SNA_internal_factions3 = {
 			FROM = {
 				is_core_of = ROOT
 				has_dynamic_modifier = {  modifier = SNA_state_modifier_3  }
-				infrastructure > 4
-				industrial_complex > 1
 			}
 		}
 
-		highlight_color_while_active = 1
 	
 		allowed = {
 			original_tag = SNA
@@ -911,10 +907,10 @@ SNA_internal_factions3 = {
 	}
 		
 	SNA_state4 = {       #农田开垦		
-    on_map_mode = map_only
+    	on_map_mode = map_only
 	
 		priority = 20
-		
+		fire_only_once = yes
   		icon = GFX_decision_generic_construction
 
 		ai_will_do = {
@@ -936,7 +932,7 @@ SNA_internal_factions3 = {
 			}
 		}
 
-		highlight_color_while_active = 1
+		
 	
 		allowed = {
 			original_tag = SNA
@@ -972,7 +968,7 @@ SNA_internal_factions3 = {
     on_map_mode = map_only
 	
 		priority = 20
-		
+		fire_only_once = yes
   		icon = GFX_decision_generic_construction
 
 		ai_will_do = {
@@ -994,7 +990,7 @@ SNA_internal_factions3 = {
 			}
 		}
 
-		highlight_color_while_active = 1
+		
 	
 		allowed = {
 			original_tag = SNA
@@ -1033,7 +1029,7 @@ SNA_internal_factions3 = {
     on_map_mode = map_and_decisions_view
 	
 		priority = 20
-		
+		fire_only_once = yes
   		icon = GFX_decision_generic_construction
 
 		ai_will_do = {
@@ -1055,7 +1051,7 @@ SNA_internal_factions3 = {
 			}
 		}
 
-		highlight_color_while_active = 1
+		
 	
 		allowed = {
 			original_tag = SNA
@@ -1091,12 +1087,12 @@ SNA_internal_factions3 = {
 	}
 	
 	SNA_state7 = { 		#城市建设
-    on_map_mode = map_and_decisions_view
+    	on_map_mode = map_only
 	
 		priority = 20
 		
   		icon = GFX_decision_generic_construction
-
+		  fire_only_once = yes
 		ai_will_do = {
 			base = 0
 			modifier = {
@@ -1116,7 +1112,7 @@ SNA_internal_factions3 = {
 			}
 		}
 
-		highlight_color_while_active = 1
+		
 	
 		allowed = {
 			original_tag = SNA
@@ -1632,9 +1628,11 @@ INA_war_internal_factions = {   #民间宣传
 		remove_effect = {
 		    set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
 		    custom_effect_tooltip = SNA_Summon_soldiers_tt
-		    limit = {
-			   NOT = { has_template = "海祇守备" }
-			}			
+			if = {
+				limit = {
+					NOT = { has_template = "海祇守备" }
+				 }	
+			}		
 		    division_template = {
 					name = "海祇守备"
 					priority = 2
@@ -1769,7 +1767,7 @@ INA_war_internal_factions = {   #民间宣传
 		remove_effect = {
 		    set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 7 }
 		    add_equipment_to_stockpile = {
-		    type = infantry_weapons 
+		    type = infantry_equipment 
 		    amount = 400
 			producer = KUJ
 	        }

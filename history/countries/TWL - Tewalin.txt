@@ -5,14 +5,6 @@ set_technology = {
 	infantry_weapons = 1
 	ttt_uniform = 1
 	z_1999_grain_tech = 1
-	
-	#support
-	tech_support = 1
-	tech_engineers = 1
-	
-	#artillery
-	bow_1 = 1
-	bow_2 = 1
 }
 
 recruit_character = MOT_TWL
@@ -46,12 +38,23 @@ add_ideas = {
 	service_by_requirement
 	TWL_military_government
 	TWL_population_problem
-	TWL_hidden_factories
 	TWL_frightening_strikes_of_windy_dargons
 	TWL_abyss_church
 }
+add_dynamic_modifier = { modifier = TWL_hidden_factories}
+add_to_variable = {TWL_hidden_factories_industrial_capacity_factory = -0.2}
+add_to_variable = {TWL_hidden_factories_production_factory_max_efficiency_factor = -0.3}
+add_to_variable = {TWL_hidden_factories_production_factory_efficiency_gain_factor = -0.3}
+add_to_variable = {TWL_hidden_factories_production_factory_start_efficiency_factor = -0.1}
+add_to_variable = {TWL_hidden_factories_industry_repair_factor = -0.5}
+
+
+
+
+
 
 country_lock_all_division_template = yes
+country_event = { id = TWL_event.1 days = 3 }
 
 set_stability = 0.44
 set_war_support = 0.16

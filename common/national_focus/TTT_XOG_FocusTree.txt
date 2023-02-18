@@ -57,9 +57,38 @@ focus_tree = {
 		has_army_manpower = { size > 70000 }
         }		
 		completion_reward = {
+			add_ideas = partial_economic_mobilisation
+			add_ideas = limited_conscription
 		    XOG_Damihu = {
 		    set_character_flag = XOG_exiled_flag
 			}
+			if = {
+				limit = {
+					NOT = { has_template = "千岩军" }
+				}
+		division_template = {
+			name = "千岩军"
+			priority = 2
+			is_locked = yes
+			division_names_group = LYU_INF_04
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				artillery_brigade = { x = 0 y = 3 }
+			}
+		}
+	}
+		131 = {
+		create_unit = {
+			division = "division_template = \"千岩军\" start_experience_factor = 0.4"
+			owner = XOG
+			count = 2
+		    }
+	    }
 		}	
 	}
 	focus = { #训练千岩军
@@ -76,7 +105,12 @@ focus_tree = {
 			focus = XOG_3
 		}
 		completion_reward = {
-		    add_ideas = XOG_Qianyan_Army 
+			custom_effect_tooltip = XOG_4_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
+				add_to_variable = { XOG_army_speed_factor = 0.10 }
+				add_to_variable = { XOG_army_morale_factor = 0.05 }
+			}
 		}	
 	}
 	focus = { #重拾帝君思想
@@ -112,6 +146,10 @@ focus_tree = {
 		completion_reward = {
 		    set_country_flag = XOG_Unlock_all_consultants
 			add_political_power = 150
+			swap_ideas = {
+				add_idea = XOG_1_ideas1
+				remove_idea = XOG_1_ideas
+			}
 		}	
 	}
 	focus = { #荻花洲道路网
@@ -184,6 +222,78 @@ focus_tree = {
         XOG = { has_full_control_of_state = 132	}	
 		}
 		completion_reward = {
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 2669
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 4686
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 3832
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 9261
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province =  9278
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 9296
+				}
+			}
+            132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 9340
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 9343
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes 
+					province = 9320
+				}
+			}
 		}	
 	}
 	focus = { #清理无妄坡
@@ -550,7 +660,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 24
 		y = 0
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -696,8 +806,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			swap_ideas = {
-				add_idea = XOG_Another_line12
-				remove_idea = XOG_logistic_service1
+				add_idea = XOG_Another_line2
+				remove_idea = XOG_Another_line1
 			}
 		}	
 	}
@@ -714,7 +824,7 @@ focus_tree = {
 		available = {
 			XOG = {
 			has_full_control_of_state = 194
-			has_full_control_of_state = 117
+			has_full_control_of_state = 137
 		    }
 		}
 		prerequisite = {
@@ -779,9 +889,10 @@ focus_tree = {
 			focus = XOG_42
 		}
 		completion_reward = {
-			swap_ideas = {
-				add_idea = XOG_Qianyan_Army1
-				remove_idea = XOG_Qianyan_Army
+			custom_effect_tooltip = XOG_39_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
+				add_to_variable = { XOG_army_attack_factor = 0.05 }
 			}
 		}	
 	}
@@ -799,6 +910,13 @@ focus_tree = {
 			focus = XOG_39
 		}
 		completion_reward = {
+			custom_effect_tooltip = XOG_40_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
+				add_to_variable = { XOG_max_command_power = 50 }
+                add_to_variable = { XOG_army_org_factor = 0.05 }
+				add_to_variable = { XOG_experience_gain_army_factor = 0.10 }				
+			}
 		}	
 	}
 	focus = { #大规模训练
@@ -815,7 +933,12 @@ focus_tree = {
 			focus = XOG_39
 		}
 		completion_reward = {
-
+            custom_effect_tooltip = XOG_41_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
+				add_to_variable = { XOG_training_time_army_factor = -0.20 }
+                add_to_variable = { XOG_conscription = 0.02 }
+			}
 		}	
 	}
 	focus = { #传统的部队
@@ -835,6 +958,11 @@ focus_tree = {
 			focus = XOG_39
 		}
 		completion_reward = {
+			custom_effect_tooltip = XOG_42_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
+				add_to_variable = { XOG_army_defence_factor = 0.05}
+			}
 		}	
 	}
 	focus = { #牢记历史
@@ -851,6 +979,12 @@ focus_tree = {
 			focus = XOG_42
 		}
 		completion_reward = {
+			custom_effect_tooltip = XOG_43_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
+				add_to_variable = { XOG_land_reinforce_rate = 0.03 }
+				add_to_variable = { XOG_pocket_penalty = -0.20 }
+			}
 		}	
 	}
 	focus = { #精锐之师
@@ -859,7 +993,7 @@ focus_tree = {
 		available_if_capitulated = no	
 		x = 30
 		y = 2
-		cost = 7
+		cost = 35
 		ai_will_do = {
 			factor = 10
 		}
@@ -867,6 +1001,13 @@ focus_tree = {
 			focus = XOG_42
 		}
 		completion_reward = {
+			custom_effect_tooltip = XOG_44_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
+				add_to_variable = { XOG_experience_gain_army_unit_factor = 0.20 }
+				add_to_variable = { XOG_breakthrough_factor = 0.05 }
+				add_to_variable = { XOG_army_attack_factor = 0.05 }
+			}
 		}	
 	}
 }

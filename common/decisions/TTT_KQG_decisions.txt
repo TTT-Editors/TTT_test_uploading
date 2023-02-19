@@ -61,6 +61,7 @@ KQG_special_categories1 = {
 			    hidden_effect = {					 
 			    FROM = {
 				add_dynamic_modifier = { modifier = KQG_state_modifier_1 }
+				set_state_flag = KQG_state_flag2
 				}
                 }
 				country_event = {
@@ -95,6 +96,9 @@ KQG_special_categories1 = {
 			}
         }		
 		remove_effect = {
+		    every_owned_state = {  		
+			remove_dynamic_modifier = { modifier = KQG_state_modifier_1 }			
+	        }   
 		   add_ideas = KQG1_4
 		}
 	}
@@ -341,7 +345,7 @@ KQG_test10 = {
 
 liyue_civil_war_decisions = {
 KQG_redarmy1 = {                      #刻晴内战招民兵
-		icon = Recruit_icon_Small
+		icon = TTT_Recruit_icon_Small
 		on_map_mode = map_only
 		priority = 200
 
@@ -378,10 +382,10 @@ KQG_redarmy1 = {                      #刻晴内战招民兵
 		remove_effect = {
             if = {
 				limit = {
-					NOT = { has_template = "赤卫队" }
+					NOT = { has_template = "人民赤卫队" }
 				}		
 			division_template = {
-				name = "赤卫队"
+				name = "人民赤卫队"
 				priority = 2
 				is_locked = yes
 				division_names_group = KQG_INF_02
@@ -396,7 +400,7 @@ KQG_redarmy1 = {                      #刻晴内战招民兵
 		}
 			FROM = {
 				create_unit = {
-					division = "division_template = \"赤卫队\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					division = "division_template = \"人民赤卫队\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = KQG
 					count = 2
 				}

@@ -1151,419 +1151,266 @@ SNA_internal_factions3 = {	 #地区发展
 	}
 }
 
-INA_war_internal_factions = {   #民间宣传
-   ISA_Folk_propaganda = {
-       icon = GFX_decision_generic_construction
-		
-		cost = 30
-		
-		days_remove = 7
-		
-		fire_only_once = no
-
-		allowed = {
-			 or = {
-		     original_tag = INA
-		     original_tag = SNA
-	        }
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		modifier = {
-			political_power_gain = -0.05
-	   	}
-		available = {
-		   ISA_scripted_triggers = yes
-		}
-		complete_effect = {
-		    if = {
-			limit = {
-			   original_tag = INA
-			}
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 7 }  
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 7 }
-		    }
-		}
-		remove_effect = {
-		    custom_effect_tooltip = ISA_Folk_propaganda_tt
-			if = {
-			limit = {
-			   original_tag = INA
-			}
-			add_to_variable = { INA_minjianzhichidu = 5 }
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			add_to_variable = { SNA_minjianzhichidu = 5 }
-		    }
-		}  
-    }
-    ISA_military_propaganda = {    #军事宣传
-       icon = GFX_decision_generic_construction
-		
-		cost = 30
-		
-		days_remove = 7
-		
-		fire_only_once = no
-
-		allowed = {
-			 or = {
-		     original_tag = INA
-		     original_tag = SNA
-	        }
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		available = {
-		   ISA_scripted_triggers = yes
-		}
-		modifier = {
-		    command_power_gain_mult = -0.01
-        }
-		
-		available = {
-		    command_power > 29
-		}
-		
-		complete_effect = {
-		    add_command_power = -30
-		}
-		complete_effect = {
-		    if = {
-			limit = {
-			   original_tag = INA
-			}
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 7 }  
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 7 }
-		    }
-		}
-		remove_effect = {
-		    custom_effect_tooltip = ISA_military_propaganda_tt 
-			if = {
-			limit = {
-			   original_tag = INA
-			}
-			add_to_variable = { INA_junshizhichidu = 5 }
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			add_to_variable = { SNA_junshizhichidu = 5 }
-		    }
-		}  
-    }
-    ISA_Construction_workshop = {    #修建工坊
-       icon = GFX_decision_generic_construction
-		
-		cost = 30
-		
-		allowed = {
-			 or = {
-		     original_tag = INA
-		     original_tag = SNA
-	        }
-		}
-		
-		days_remove = 30
-						        		
+SNA_war_beginning = {   
+ SNA_fenge =
+	{
+		icon = null
+		cost = 0
 		fire_only_once = no
 		available = {
-		   ISA_scripted_triggers = yes
-		}	
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-		   production_factory_max_efficiency_factor =  -0.05
-        }
-		complete_effect = {
-		    if = {
-			limit = {
-			   original_tag = INA
-			}
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 30 }  
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 30 }
-		    }
-		}		
-		remove_effect = {
-		    custom_effect_tooltip = ISA_Construction_workshop_tt
-			if = {
-			limit = {
-			   original_tag = INA
-			}
-			add_to_variable = { INA_junshizhichidu = 10 }
-			random_state = {
-			limit = {
-			is_core_of = INA
-		    }
-		    add_extra_state_shared_building_slots = 1
-		    add_building_construction = {
-			type = arms_factory
-			level = 1
-			instant_build = yes 
-		        }
-		    }
-			}
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			add_to_variable = { SNA_junshizhichidu = 10 }
-			random_state = {
-			limit = {
-			is_core_of = SNA
-		    }
-		    add_extra_state_shared_building_slots = 1
-		    add_building_construction = {
-			type = arms_factory
-			level = 1
-			instant_build = yes 
-		        }
-		    }
-		    }
-		}  
-    }
-    ISA_Recruit_troops = {    #招募部队
-       icon = GFX_decision_generic_construction
-	   	
-		cost = 30
-		
-		days_remove = 30
-		
-		fire_only_once = no
-		
-		available = {
-		   ISA_scripted_triggers = yes
-		}
-		allowed = {
-			 or = {
-		     original_tag = INA
-		     original_tag = SNA
-	        }
-		}
-		ai_will_do = {
-			factor = 50
+			always = no
 		}
 		complete_effect = {
-		    if = {
-			limit = {
-			   original_tag = INA
-			}
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 30 }  
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 30 }
-		    }
-		}				
-		remove_effect = {
-			if = {
-			limit = {
-			   original_tag = INA
-			   NOT = { has_template = "同心" }
-			}			
-		    division_template = {
-					name = "同心"
-					priority = 2
-					is_locked = no
-					division_names_group = INA_INF_01
-					regiments = {
-						militia = { x = 0 y = 0 }
-						militia = { x = 0 y = 1 }
-						militia = { x = 0 y = 2 }
-					    militia = { x = 1 y = 0 }
-						militia = { x = 1 y = 1 }
-					}
-				}
 			
-				random_state = {
-				    limit = {
-			        		is_core_of = INA
-		            }
-					create_unit = {
-					division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
-					owner = INA
-					count = 1
-				}
-		    }
 		}
-		 
-		    else_if = {
-			limit = {
-			   original_tag = SNA
-			   NOT = { has_template = "海祇守备" }
-			}
-		        division_template = {
-					name = "海祇守备"
-					priority = 2
-					is_locked = no
-					division_names_group = SNA_INF_01
-					regiments = {
-						militia = { x = 0 y = 0 }
-						militia = { x = 0 y = 1 }
-						militia = { x = 0 y = 2 }
-					    militia = { x = 1 y = 0 }
-						militia = { x = 1 y = 1 }
-					}
-				}
-			    random_state = {
-				    limit = {
-			        is_core_of = SNA
-		            }
-				create_unit = {
-					division = "division_template = \"海祇守备\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
-					owner = SNA
-					count = 1
-					}
-				}              
-            }			
-		}		  
-    }
-    ISA_Appease_thepeople = {    #安抚民心
-       icon = GFX_decision_generic_construction
-		
-		cost = 30
-		
-		days_remove = 28
-		
-		fire_only_once = no
-
-		allowed = {
-			 or = {
-		     original_tag = INA
-		     original_tag = SNA
-	        }
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		available = {
-		   ISA_scripted_triggers = yes
-		}
-				
-		modifier = {
-		    stability_weekly = 0.01
-			line_change_production_efficiency_factor = -0.05
-			production_factory_max_efficiency_factor = -0.05
-	        production_factory_efficiency_gain_factor = -0.05
-        }
-        complete_effect = {
-		    if = {
-			limit = {
-			   original_tag = INA
-			}
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 28 }  
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 28 }
-		    }
-		}		
 		remove_effect = {
-			if = {
-			limit = {
-			   original_tag = INA
-			}
-			add_to_variable = { INA_minjianzhichidu = 10 }
-			add_war_support = -0.02
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			add_to_variable = { SNA_minjianzhichidu = 10 }
-			add_war_support = -0.02
-		    }
-		}  
-    }
-    ISA_Collect_military_provisions = {    #收纳军粮
-       icon = GFX_decision_generic_construction
-		
-		cost = 30
-		
-		days_remove = 28
-		
-		fire_only_once = no
+			
+		}
 
-		allowed = {
-			 or = {
-		     original_tag = INA
-		     original_tag = SNA
-	        }
+	}
+ SNA_Folk_propaganda = {  #民间宣传
+	icon = GFX_decision_generic_construction
+	 
+	 cost = 30
+	 
+	 days_remove = 7
+	 
+	 fire_only_once = no
+
+	 allowed = {
+		  original_tag = SNA
+	 }
+	 ai_will_do = {
+		 factor = 50
+	 }
+	 modifier = {
+		 political_power_gain = -0.05
 		}
-		ai_will_do = {
-			factor = 50
-		}
-		available = {
-		   ISA_scripted_triggers = yes
-		}
-		modifier = {
-			line_change_production_efficiency_factor = -0.05
-			production_factory_max_efficiency_factor = -0.05
-	        production_factory_efficiency_gain_factor = -0.05
-        }
-        complete_effect = {
-		    if = {
+	 available = {
+		SNA_scripted_triggers = yes
+	 }
+	 complete_effect = {
+		 set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 7 }
+	 }
+	 remove_effect = {
+		 custom_effect_tooltip = SNA_Folk_propaganda_tt
+		 add_to_variable = { SNA_minjianzhichidu = 5 }
+	 }  
+ }
+ SNA_military_propaganda = {    #军事宣传
+	icon = GFX_decision_generic_construction
+	 
+	 cost = 30
+	 
+	 days_remove = 7
+	 
+	 fire_only_once = no
+
+	 allowed = {
+		  original_tag = SNA
+	 }
+	 ai_will_do = {
+		 factor = 50
+	 }
+	 available = {
+		SNA_scripted_triggers = yes
+	 }
+	 modifier = {
+		 command_power_gain_mult = -0.01
+	 }
+	 
+	 available = {
+		 command_power > 29
+	 }
+	 
+	 complete_effect = {
+		 add_command_power = -30
+	 }
+	 complete_effect = {
+		 set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 7 }
+	 }
+	 remove_effect = {
+		 custom_effect_tooltip = SNA_military_propaganda_tt
+		 add_to_variable = { SNA_junshizhichidu = 5 }
+	 }  
+ }
+ SNA_Construction_workshop = {    #修建工坊
+	icon = GFX_decision_generic_construction
+	 
+	 cost = 30
+	 
+	 allowed = {
+		  original_tag = SNA
+	 }
+	 
+	 days_remove = 30
+									 
+	 fire_only_once = no
+	 available = {
+		SNA_scripted_triggers = yes
+	 }	
+	 ai_will_do = {
+		 factor = 50
+	 }
+	 
+	 modifier = {
+		production_factory_max_efficiency_factor =  -0.05
+	 }
+	 complete_effect = {
+		 set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 30 }
+		 }
+	 remove_effect = {
+		 custom_effect_tooltip = SNA_Construction_workshop_tt
+		 random_owned_state = {
+		 	limit = {
+		 			is_core_of = SNA
+		 	}
+		 	add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			 	type = arms_factory
+		 		level = 1
+		 		instant_build = yes 
+			 }
+		 }
+	  }
+ }
+ 
+ SNA_Recruit_troops = {    #招募部队
+	icon = GFX_decision_generic_construction
+		
+	 cost = 30
+	 
+	 days_remove = 30
+	 
+	 fire_only_once = no
+	 
+	 available = {
+		SNA_scripted_triggers = yes
+	 }
+	 allowed = {
+		  original_tag = SNA
+	 }
+	 ai_will_do = {
+		 factor = 50
+	 }
+	 complete_effect = {
+		 set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 30 }
+	 }				
+	 remove_effect = {
+		 if = 
+		 {
 			limit = {
-			   original_tag = INA
-			}
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 28 }  
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 28 }
-		    }
-		}		
-		remove_effect = {
-		    add_stability = -0.01
-			if = {
-			limit = {
-			   original_tag = INA
-			}
-			add_equipment_to_stockpile = {
-		    type = grain_conversion_eq
-		    amount = 5000
-	        }
-		    }
-		   else_if = {
-			limit = {
-			   original_tag = SNA
-			}
-			add_equipment_to_stockpile = {
-		    type = grain_conversion_eq
-		    amount = 5000
-	        }
-		    }
-		}  
+				NOT = { has_template = "海祇守备" }
+			 }
+				 division_template = {
+					 name = "海祇守备"
+					 priority = 2
+					 is_locked = no
+					 division_names_group = SNA_INF_01
+					 regiments = {
+						 militia = { x = 0 y = 0 }
+						 militia = { x = 0 y = 1 }
+						 militia = { x = 0 y = 2 }
+						 militia = { x = 1 y = 0 }
+						 militia = { x = 1 y = 1 }
+					 }
+				 }
+		 }
+			 random_owned_state = {
+				 limit = {
+				 is_core_of = SNA
+				 }
+			 create_unit = {
+				 division = "division_template = \"海祇守备\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+				 owner = SNA
+				 count = 1
+				 }
+			 }              
+		 }					  
     }
+ SNA_Appease_thepeople = {    #安抚民心
+	icon = GFX_decision_generic_construction
+	 
+	 cost = 30
+	 
+	 days_remove = 28
+	 
+	 fire_only_once = no
+
+	 allowed = {
+		  original_tag = SNA
+	 }
+	 ai_will_do = {
+		 factor = 50
+	 }
+	 available = {
+		SNA_scripted_triggers = yes
+	 }
+			 
+	 modifier = {
+		 stability_weekly = 0.01
+		 line_change_production_efficiency_factor = -0.05
+		 production_factory_max_efficiency_factor = -0.05
+		 production_factory_efficiency_gain_factor = -0.05
+	 }
+	 complete_effect = {
+		 set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 28 }
+	 }		
+	 remove_effect = {
+		 add_to_variable = { SNA_minjianzhichidu = 10 }
+		 add_war_support = -0.02
+	 }  
+ }
+ SNA_Collect_military_provisions = {    #收纳军粮
+	icon = GFX_decision_generic_construction
+	 
+	 cost = 30
+	 
+	 days_remove = 28
+	 
+	 fire_only_once = no
+
+	 allowed = {
+		  original_tag = SNA
+	 }
+	 ai_will_do = {
+		 factor = 50
+	 }
+	 available = {
+		SNA_scripted_triggers = yes
+	 }
+	 modifier = {
+		 line_change_production_efficiency_factor = -0.05
+		 production_factory_max_efficiency_factor = -0.05
+		 production_factory_efficiency_gain_factor = -0.05
+	 }
+	 complete_effect = {
+		 set_country_flag = { flag = SNA_NO_Same_type value = 1 days = 28 }
+	 }		
+	 remove_effect = {
+		 add_stability = -0.01
+		 add_equipment_to_stockpile = {
+		 type = grain_conversion_eq
+		 amount = 5000
+		 }
+	 }  
+ }
+ SNA_fenge_2 =
+	{
+		icon = null
+		cost = 0
+		fire_only_once = no
+		available = {
+			always = no
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+		}
+
+	}
     SNA_Strike_downnine_families = {    #打击九条家
        icon = GFX_decision_generic_construction
 		

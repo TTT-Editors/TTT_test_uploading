@@ -151,7 +151,256 @@ X_INA_propaganda_campaigns = {
 
 }
 
-INA_war_internal_factions = {
+INA_war_beginning = {
+	INA_fenge =
+	{
+		icon = null
+		cost = 0
+		fire_only_once = no
+		available = {
+			always = no
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+		}
+
+	}
+	INA_Folk_propaganda = { #民间宣传
+		icon = GFX_decision_generic_construction
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+			}
+		 available = {
+			INA_scripted_tiggers = yes
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 7 }  
+		 }
+		 remove_effect = {
+			 custom_effect_tooltip = INA_Folk_propaganda_tt
+			 add_to_variable = { INA_minjianzhichidu = 5 }
+		 }
+	 }
+	 INA_military_propaganda = {    #军事宣传
+		icon = GFX_decision_generic_construction
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 available = {
+			INA_scripted_tiggers = yes
+		 }
+		 modifier = {
+			 command_power_gain_mult = -0.01
+		 }
+		 
+		 available = {
+			 command_power > 29
+		 }
+		 
+		 complete_effect = {
+			 add_command_power = -30
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 7 }  
+		 }
+		 remove_effect = {
+			 custom_effect_tooltip = INA_military_propaganda_tt 
+			 add_to_variable = { INA_junshizhichidu = 5 }
+		 }  
+	 }
+	 INA_Construction_workshop = {    #修建工坊
+		icon = GFX_decision_generic_construction
+		 
+		 cost = 30
+		 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 
+		 days_remove = 30
+										 
+		 fire_only_once = no
+		 available = {
+			INA_scripted_tiggers = yes
+		 }	
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 
+		 modifier = {
+			production_factory_max_efficiency_factor =  -0.05
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 30 }  
+		 }		
+		 remove_effect = {
+			 custom_effect_tooltip = INA_Construction_workshop_tt
+			 add_to_variable = { INA_junshizhichidu = 10 }
+			 random_owned_state = {
+						limit = { is_core_of = ROOT}
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = arms_factory
+							 level = 1
+						instant_build = yes 
+						}
+			 	}
+			}
+	}  
+	INA_Recruit_troops = {    #招募部队
+		icon = GFX_decision_generic_construction
+			
+		 cost = 30
+		 
+		 days_remove = 30
+		 
+		 fire_only_once = no
+		 
+		 available = {
+			INA_scripted_tiggers = yes
+		 }
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 30 }  
+		 }				
+		 remove_effect = {	
+			 division_template = {
+					 name = "同心"
+					 priority = 2
+					 is_locked = no
+					 division_names_group = INA_INF_01
+					 regiments = {
+						 militia = { x = 0 y = 0 }
+						 militia = { x = 0 y = 1 }
+						 militia = { x = 0 y = 2 }
+						 militia = { x = 1 y = 0 }
+						 militia = { x = 1 y = 1 }
+					 }
+				 }
+			 
+				 random_owned_state = {
+					 limit = {is_core_of = ROOT}
+					 create_unit = {
+					 division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					 owner = INA
+					 count = 1
+				 	}
+				}	
+		   }		  
+	 }
+	INA_Appease_thepeople = {    #安抚民心
+		icon = GFX_decision_generic_construction
+		 
+		 cost = 30
+		 
+		 days_remove = 28
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 available = {
+			INA_scripted_tiggers = yes
+		 }
+				 
+		 modifier = {
+			 stability_weekly = 0.01
+			 line_change_production_efficiency_factor = -0.05
+			 production_factory_max_efficiency_factor = -0.05
+			 production_factory_efficiency_gain_factor = -0.05
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 28 }  
+		 }		
+		 remove_effect = {
+			 add_to_variable = { INA_minjianzhichidu = 10 }
+			 add_war_support = -0.02
+		 }  
+	 }
+	 INA_Collect_military_provisions = {    #收纳军粮
+		icon = GFX_decision_generic_construction
+		 
+		 cost = 30
+		 
+		 days_remove = 28
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 available = {
+			INA_scripted_tiggers = yes
+		 }
+		 modifier = {
+			 line_change_production_efficiency_factor = -0.05
+			 production_factory_max_efficiency_factor = -0.05
+			 production_factory_efficiency_gain_factor = -0.05
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 28 }  
+		 }		
+		 remove_effect = {
+			 add_stability = -0.01
+			 add_equipment_to_stockpile = {
+			 type = grain_conversion_eq
+			 amount = 5000
+			 }
+		 }  
+	 }
+	 INA_fenge_2 = 
+	 {
+		icon = null
+		cost = 0
+		fire_only_once = no
+		available = {
+			always = no
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+		}
+	 }
     INA_Compulsory_conscription = {   #强制征兵
 		
 		icon = eng_propaganda_campaigns
@@ -167,7 +416,7 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		   has_completed_focus = INA_WAR_BEG_6 
+		   #has_completed_focus = INA_WAR_BEG_6 
 		}
 		available = {
 		   NOT = { has_country_flag = INA_NO_Same_type1 }
@@ -214,7 +463,7 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		   has_completed_focus = INA_WAR_BEG_7
+		   #has_completed_focus = INA_WAR_BEG_7
 		}
 		available = {
 		   command_power < 49
@@ -261,7 +510,7 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		    has_completed_focus = INA_WAR_BEG_2
+		    #has_completed_focus = INA_WAR_BEG_2
 		}
 		available = {
 		   NOT = { has_country_flag = INA_NO_Same_type1 }
@@ -307,7 +556,7 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		   has_completed_focus = INA_WAR_BEG_4
+		   #has_completed_focus = INA_WAR_BEG_4
 		}
 		
 		available = {
@@ -344,7 +593,7 @@ INA_war_internal_factions = {
 		}
 		
 		visible = {
-		   has_completed_focus = INA_WAR_BEG_5 
+		   #has_completed_focus = INA_WAR_BEG_5 
 		}
 		
 		available = { 

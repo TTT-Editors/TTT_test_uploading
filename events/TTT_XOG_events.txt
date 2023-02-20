@@ -13,12 +13,13 @@ country_event = {
 		trigger = {
              country_exists = LYU
              LYU = {
-			 has_government = reformism 
-             }			 
+				has_government = reformism 
+             }
+			NOT = { has_country_flag = XOG_refuse_LYU }
         }
 		set_country_flag = XOG_Choice_Ganyu
 		LYU = {
-		country_event = { days = 7  id = XOG_events.2  }
+			country_event = { days = 7  id = XOG_events.2  }
 		}
 	}
 	option = {
@@ -26,22 +27,24 @@ country_event = {
 		trigger = {
              country_exists = RTG
              RTG = {
-			 has_government = reformism 
-             }			 
+				has_government = reformism 
+             }	
+			NOT = { has_country_flag = XOG_refuse_RTG }		 
         }
 		set_country_flag = XOG_Choice_Ruotuo
 		RTG = {
-		country_event = { days = 7  id = XOG_events.2  }
+			country_event = { days = 7  id = XOG_events.2  }
 		}
 	}
 	option = {
 	    name = XOG_events.1.c
 		trigger = {
-             country_exists = XRG		 
+             country_exists = XRG
+			NOT = { has_country_flag = XOG_refuse_XRG }			 
         }
 		set_country_flag =  XOG_Choice_XRG
 		XRG = {
-		country_event = { days = 7  id = XOG_events.2  }
+			country_event = { days = 7  id = XOG_events.2  }
 		}
 	}
 	option = {
@@ -62,8 +65,8 @@ country_event = {
 	    name = XOG_events.2.a
 		ROOT = {
 		set_autonomy = {
-		target = XOG
-		autonomy_state = autonomy_dominion
+			target = XOG
+			autonomy_state = autonomy_dominion
 	        }
 		}
 	}

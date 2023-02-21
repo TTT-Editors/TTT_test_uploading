@@ -271,7 +271,7 @@ scripted_gui = {
         parent_window_name = "SUM_Akasha_gui_window"
         visible = { 
 			Akasha_info_Res = yes
-        }
+		}
 
 		triggers = {
 			#地脉研究
@@ -311,9 +311,31 @@ scripted_gui = {
 			}
 		}
     }
+	SUM_Akasha_res_gui = { ##研究计划子gui
+		context_type = player_context
+		window_name = "SUM_res_button_container_window"
+		parent_window_name = "SUM_Akasha_gui_window"
+		visible = { 
+			Akasha_info_Res = yes
+		}
+		dynamic_lists = {
+			SUM_Aka_res_button_gird = {
+				array = SUM_Aka_res_available
+				change_scope = no
+				entry_container = SUM_res_button_window
+				index = SUM_Aka_res_idx
+			}
+		}
+		effects = {
+			SUM_res_button_click = {
+				set_variable = {
+					var = SUM_Aka_res_info
+					value = 114514
+				}
+			}
+		}
 
-
-
+	}
 
 
 

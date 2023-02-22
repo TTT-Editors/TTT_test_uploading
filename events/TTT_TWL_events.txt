@@ -162,6 +162,10 @@ country_event = {
 	option = {
 		name = TWL_event.10.c
 		activate_advisor =TWL_Evalister_Galvan
+		add_popularity = {
+			ideology = national_socialism
+			popularity = 0.05
+		}
 	}
 }
 ###事件名：致尊敬的代理团长
@@ -207,12 +211,22 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = TWL_event.13.a
+		add_political_power =-50
+		TWL = {
+			add_stability = 0.05
+			add_political_power = 150
+		}
 	}
 	option = {
 		name = TWL_event.13.b
+		add_political_power =-5
+		TWL = {
+			add_stability = 0.05
+		}
 	}
 	option = {
 		name = TWL_event.13.c
+		add_political_power = 50
 	}
 }
 ###事件名：第二次请求 
@@ -226,9 +240,23 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = TWL_event.14.a
+		add_political_power = 150
+		TWL={
+			add_popularity = {
+                ideology = national_socialism
+                popularity = 0.05
+            }
+		}
 	}
 	option = {
 		name = TWL_event.14.b
+		add_political_power =-50
+		TWL={
+			add_popularity = {
+                ideology = national_socialism
+                popularity = -0.15
+            }
+		}
 	}
 }
 
@@ -242,9 +270,22 @@ country_event = {
 	picture =null
 	title = TWL_event.15.t
 	desc = TWL_event.15.d
-	is_triggered_only = yes
+	is_triggered_only = no
+	trigger = {
+		tag = TWL
+		has_idea = TWL_frightening_strikes_of_windy_dargons
+	}
+	mean_time_to_happen = {
+		days = 60
+		modifier = {
+			factor = 0.1
+			tag = TWL
+		}
+	}
 	option = {
 		name = TWL_event.15.a
+		add_manpower = 300
+		add_stability = -0.03
 	}
 }
 ###事件名：风魔龙袭击军队！
@@ -254,12 +295,41 @@ country_event = {
 	picture =null
 	title = TWL_event.16.t
 	desc = TWL_event.16.d
-	is_triggered_only = yes
+	is_triggered_only = no
+	trigger = {
+		tag = TWL
+		has_idea = TWL_frightening_strikes_of_windy_dargons
+	}
+	mean_time_to_happen = {
+		days = 180
+		modifier = {
+			factor = 0.1
+			tag = TWL
+		}
+	}
 	option = {
 		name = TWL_event.16.a
+		add_manpower = -2000
+		add_stability = -0.05
+		###随机铁路线受损
+		random_owned_controlled_state={
+			trigger = {
+				rail_way > 0
+			}
+			
+			damage_building = {
+				type = rail_way
+				damage = 1
+			}
+		}
+		
+
 	}
 	option = {
 		name = TWL_event.16.b
+		add_political_power =-50
+		add_manpower =-1500
+
 	}
 }
 ###事件名：运输车队遭到袭击！
@@ -269,12 +339,50 @@ country_event = {
 	picture =null
 	title = TWL_event.17.t
 	desc = TWL_event.17.d
-	is_triggered_only = yes
+	is_triggered_only = no
+	trigger = {
+		tag = TWL
+		has_idea = TWL_frightening_strikes_of_windy_dargons
+	}
+	mean_time_to_happen = {
+		days = 180
+		modifier = {
+			factor = 0.1
+			tag = TWL
+		}
+	}
 	option = {
 		name = TWL_event.17.a
+		add_stability = -0.03
+		add_manpower = 1000
+		###随机铁路线受损
+		random_owned_controlled_state={
+			trigger = {
+				rail_way > 0
+			}
+			
+			damage_building = {
+				type = rail_way
+				damage = 1
+			}
+		}
 	}
 	option = {
 		name = TWL_event.17.b
+		add_manpower =-50
+		add_timed_idea = { idea = TWL_logistics_supplyment days = 30 }
+
+		###随机铁路线受损
+		random_owned_controlled_state={
+			trigger = {
+				rail_way > 0
+			}
+			
+			damage_building = {
+				type = rail_way
+				damage = 1
+			}
+		}
 	}
 }
 ###事件名：地下工厂遭到袭击！
@@ -284,8 +392,49 @@ country_event = {
 	picture =null
 	title = TWL_event.18.t
 	desc = TWL_event.18.d
-	is_triggered_only = yes
+	is_triggered_only = no
+	trigger = {
+		tag = TWL
+		has_idea = TWL_frightening_strikes_of_windy_dargons
+	}
+	mean_time_to_happen = {
+		days = 180
+		modifier = {
+			factor = 0.1
+			tag = TWL
+		}
+	}
 	option = {
 		name = TWL_event.18.a
+		add_stability = -0.05
+		add_manpower =-500
+		##随机工厂受损。
+		random_list = {
+			50 ={
+				random_owned_state = {
+					limit={
+						arms_factory > 0
+					}
+
+					damage_building = {
+					type = arms_factory
+					damage = 1
+					}
+				}
+			}
+			50 = {
+				random_owned_state = {
+					limit={
+						industrial_complex > 0
+					}
+
+					damage_building = {
+					type = industrial_complex
+					damage = 1
+					}
+				}
+			}
+			
+		}
 	}
 }

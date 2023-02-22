@@ -1,664 +1,4 @@
-SNA_decision_category = {
-
-SNAday = {
-        activation = {                         
-			has_country_flag = xinhai666
-		}
-		
-		available = {                           
-			has_completed_focus = SNA_tingzhizousiwangluo
-		}
-		
-		complete_effect = {  
-			SNA_smuggling_scale = YES
-		}
-		
-		is_good = yes
-
-        icon = decision_category_generic_arms_trade		
-	
-		days_mission_timeout = 8
-		timeout_effect = {                      
-			   SNA_foolishi_morale = YES
-               SNA_societypursuit_morale = YES
-               custom_effect_tooltip = xinhai114514	
-               SNA_smuggling_scale = YES			   
-		}		
-	}
-
-	SNA_expand_smuggling_network = {
-	available = {
-		check_variable = {SNA_ARMAMENT < 500} 
-		check_variable = {SNA_MATERIALS < 500}		
-	}
-	remove_effect = {
-		       add_to_variable = {SNA_ARMAMENT = 25}
-			   add_to_variable = {SNA_MATERIALS = 25}
-               add_to_variable = {SNA_smuggling_morale = 1}			   
-          }		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		complete_effect = {  
-			SNA_smuggling_scale = YES
-			SNA_ideasxinhai = YES
-			custom_effect_tooltip = smuggling_network
-		}
-		
-		cost = 20
-		
-		days_remove = 15
-		
-		icon = generic_civil_support
-						
-		modifier = {
-	    civilian_factory_use = 1
-        }
-		
-		fire_only_once = no
-				
-		}
-
-	SNA_improve_relationship_society = {
-	remove_effect = {
-		       add_to_variable = {SNA_foolish_morale = 10}			   
-          }		
-		ai_will_do = {
-			factor = 3
-		}
-		cost = 20
-		
-		days_remove = 30
-		
-		icon = eng_ally_imperialist_coup
-		
-		complete_effect = {  
-			custom_effect_tooltip = xinhai552
-		}
-						
-		modifier = {
-	    political_power_factor = -0.05
-        }
-		
-		fire_only_once = no
-				
-		}
-
-	SNA_improve_relationship_pursue = {
-	remove_effect = {
-		       add_to_variable = {SNA_societypursuit_morale = 10}			   
-          }		
-		ai_will_do = {
-			factor = 3
-		}
-		cost = 20
-		
-		days_remove = 30
-		
-		icon = eng_ally_imperialist_coup
-		
-		complete_effect = {  
-			custom_effect_tooltip = xinhai11
-		}
-						
-		modifier = {
-	    political_power_factor = -0.05
-        }
-		
-		fire_only_once = no
-				
-		}
-
-	SNA_buy_test = {
-	available = {
-	    NOT = {
-			has_country_flag = flag_1
-        	has_country_flag = text		
-	 	} 
-     	custom_trigger_tooltip = {   tooltip = test	 check_variable = { SNA_ARMAMENT  > 49 } }	 
-	}
-    visible = {
-         check_variable = { SNA_foolish_morale > 24 }
-	}
-
-	icon = generic_tank
-								
-	fire_only_once = no
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-		
-		remove_effect = {
-			add_equipment_to_stockpile = {
-		    type = infantry_equipment
-		    amount = 250		    
-	     }
-		 add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
-		    amount = 250		    
-	     }
-  }
-		 
-	     complete_effect = {  
-			subtract_from_variable = {SNA_ARMAMENT = 50}
-			set_country_flag = flag_1
-            subtract_from_variable = {SNA_societypursuit_morale = 5}
-            add_to_variable = {SNA_foolish_morale = 5}
-            custom_effect_tooltip = xinhai521
-            SNA_smuggling_scale = YES			
-		}
-		
-		remove_effect = {
-			clr_country_flag = flag_1
-			set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}				
-			
-		}
-
-	SNA_buy_test2 = {
-    available = {
-	      NOT = {
-          has_country_flag = flag_2
-		  has_country_flag = text
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = wuzi		
-		check_variable = { SNA_MATERIALS  > 49 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_societypursuit_morale > 24 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-		
-		modifier = {
-			 consumer_goods_factor = -0.05
-			 stability_weekly = 0.05			 
-	   	}
-										
-		complete_effect = {
-	       subtract_from_variable = {SNA_MATERIALS = 50}
-           subtract_from_variable = {SNA_foolish_morale = 5}
-           add_to_variable = {SNA_societypursuit_morale = 5}
-           set_country_flag = flag_2          
-		   custom_effect_tooltip = xinhai522
-           SNA_smuggling_scale = YES		   
-		}
-		
-        remove_effect = {
-			clr_country_flag = flag_2
-			set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}		
-		
-		icon = generic_wreckers
-								
-		fire_only_once = no
-			
-		
-   }
-
-	SNA_buy_test3 = {
-    available = {
-	       NOT = {
-				has_country_flag = flag_1
-        		has_country_flag = text		
-			 } 
-     		custom_trigger_tooltip = {
-				tooltip = sna		
-				check_variable = { SNA_ARMAMENT  > 99 }
-	 		}	 
-  	}
-  
-     visible = {
-			check_variable = { SNA_foolish_morale > 49 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-
-		modifier = {
-			stability_weekly = 0.05
-		}
-										
-		complete_effect = {		   
-			subtract_from_variable = {SNA_ARMAMENT = 100}			
-			subtract_from_variable = {SNA_societypursuit_morale = 10}
-			add_to_variable = {SNA_foolish_morale = 10}
-			set_country_flag = flag_1
-			custom_effect_tooltip = xinhai523
-			SNA_smuggling_scale = YES
-		}
-		
-		remove_effect = {
-			add_equipment_to_stockpile = {
-		  		type = infantry_equipment
-		 		amount = 500
-		   }
-	       	add_equipment_to_stockpile = {
-		   		type = ttt_uniform_eq
-		  		amount = 500
-		   }
-		}
-         		
-		remove_effect = {
-			clr_country_flag = flag_1
-			set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}
-		
-		icon = generic_tank
-										
-		fire_only_once = no
-				
-		
-   }
-
-	SNA_buy_test31 = {
-    available = {
-	       NOT = {
-		has_country_flag = flag_1
-        has_country_flag = text		
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = test31		
-		check_variable = { SNA_ARMAMENT  > 99 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_foolish_morale > 49 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-										
-		complete_effect = {		   
-		subtract_from_variable = {SNA_ARMAMENT = 100}
-        subtract_from_variable = {SNA_societypursuit_morale = 10}
-        add_to_variable = {SNA_foolish_morale = 10}
-        set_country_flag = flag_1
-        custom_effect_tooltip = xinhai523
-        SNA_smuggling_scale = YES		
-		}
-				
-         modifier = {			
-			command_power_gain_mult = 0.10
-			experience_gain_army_factor = 0.10			
-	   	}
-		
-		remove_effect = {
-			clr_country_flag = flag_1
-			set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}
-		
-		icon = GFX_decision_category_military_operation
-										
-		fire_only_once = no
-		
-   }
-   
-	SNA_buy_test41 = {
-	available = {
-	 NOT = {
-     has_country_flag = flag_2
-     has_country_flag = text	 
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = sna1		
-		check_variable = { SNA_MATERIALS  > 99 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_societypursuit_morale > 49 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-										
-		complete_effect = {		   
-		subtract_from_variable = {SNA_MATERIALS = 100}
-        subtract_from_variable = {SNA_foolish_morale = 10}
-		add_to_variable = {SNA_societypursuit_morale = 10}
-		set_country_flag = flag_2
-        custom_effect_tooltip = xinhai524
-        SNA_smuggling_scale = YES		
-		}
-				
-        modifier = {		   
-		   war_support_weekly = 0.10
-		   stability_weekly = 0.10
-           research_speed = 0.10		   
-	   	}
-		
-		remove_effect = {
-			clr_country_flag = flag_2
-			set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}
-		
-		icon = ger_mefo_bills
-										
-		fire_only_once = no
-				
-		
-   }
-
-	SNA_buy_test61 = {
-	available = {
-	 NOT = {
-     has_country_flag = flag_2
-     has_country_flag = text     
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = sna12		
-		check_variable = { SNA_MATERIALS  > 99 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_societypursuit_morale > 49 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-										
-		complete_effect = {		   
-		subtract_from_variable = {SNA_MATERIALS = 100}
-        subtract_from_variable = {SNA_foolish_morale = 10}
-		add_to_variable = {SNA_societypursuit_morale = 10}
-		set_country_flag = flag_2
-		custom_effect_tooltip = xinhai524
-		SNA_smuggling_scale = YES
-		}
-		
-		remove_effect = {
-			clr_country_flag = flag_2
-			set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}
-				        		
-		targeted_modifier = {
-			tag = KUJ		
-			attack_bonus_against = 0.10
-			defense_bonus_against = 0.10		
-	    }
-		
-		icon = GFX_decision_category_saf_anti_colonialist_crusade
-										
-		fire_only_once = no
-				
-		}				  
-	SNA_buy_test51 = {
-	available = {
-	 NOT = {
-     has_country_flag = flag_1
-     has_country_flag = text	 
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = sna123		
-		check_variable = { SNA_ARMAMENT  > 199 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_foolish_morale > 74 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-										
-		complete_effect = {		   
-		subtract_from_variable = {SNA_ARMAMENT = 200}
-        subtract_from_variable = {SNA_societypursuit_morale = 15}
-		add_to_variable = {SNA_foolish_morale = 15}
-		set_country_flag = flag_1
-		custom_effect_tooltip = xinhai525
-		SNA_smuggling_scale = YES
-		}
-				        				
-	    remove_effect = {
-		add_equipment_to_stockpile = {
-		type = infantry_equipment
-		amount = 1500		  
-	      }
-		add_equipment_to_stockpile = {
-		   type = ttt_uniform_eq
-		  amount = 500
-		  }
-		clr_country_flag = flag_1
-		set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}
-		
-		icon = generic_tank
-										
-		fire_only_once = no
-				
-		
-   }
-   
-	SNA_buy_test71 = {
-	available = {
-	 NOT = {
-     has_country_flag = flag_1
-     has_country_flag = text
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = sna1234		
-		check_variable = { SNA_ARMAMENT  > 199 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_foolish_morale > 74 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-										
-		complete_effect = {		   
-		subtract_from_variable = {SNA_ARMAMENT = 200}
-        subtract_from_variable = {SNA_societypursuit_morale = 15}
-		add_to_variable = {SNA_foolish_morale = 15}
-		set_country_flag = flag_1
-		custom_effect_tooltip = xinhai525
-		SNA_smuggling_scale = YES
-		}
-				        				
-	    remove_effect = {
-			add_offsite_building = { type = arms_factory level = 1 }
-			clr_country_flag = flag_1
-			set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }
-		}
-		
-		icon = generic_economy
-										
-		fire_only_once = no
-				
-		
-   }
-   
-	SNA_buy_test81 = {
-	available = {
-	 NOT = {
-     has_country_flag = flag_2
-     has_country_flag = text
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = sna1245		
-		check_variable = { SNA_MATERIALS  > 199 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_societypursuit_morale > 74 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-										
-		complete_effect = {		   
-		subtract_from_variable = {SNA_MATERIALS = 200}
-        subtract_from_variable = {SNA_foolish_morale = 15}
-		add_to_variable = { SNA_societypursuit_morale = 15 }
-		set_country_flag = flag_2
-        custom_effect_tooltip = xinhai526
-        SNA_smuggling_scale = YES		
-		}
-
-        remove_effect = {
-		  clr_country_flag = flag_2
-          set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }		  
-		}
-		
-         modifier = {			
-            consumer_goods_factor = -0.10
-            stability_weekly = 0.015
-            war_support_weekly = -0.05			
-	   	}
-						
-		icon = GFX_decision_category_eng_appeal_to_imperial_loyalists
-										
-		fire_only_once = no
-				
-		
-   }
-   
-	SNA_buy_test22 = {
-	available = {
-	 NOT = {
-     has_country_flag = flag_2
-     has_country_flag = text	 
-	 } 
-     custom_trigger_tooltip = {
-		tooltip = sna12456		
-		check_variable = { SNA_MATERIALS  > 199 }
-	 }	 
-  }
-  
-     visible = {
-			check_variable = { SNA_societypursuit_morale > 74 }
-		}
-		
-		ai_will_do = {
-			factor = 3
-		}
-		
-		days_remove = 14
-		
-		cost = 20
-										
-		complete_effect = {		   
-		subtract_from_variable = {SNA_MATERIALS = 200}
-        subtract_from_variable = {SNA_foolish_morale = 15}
-		add_to_variable = { SNA_societypursuit_morale = 15 }
-		set_country_flag = flag_2
-		custom_effect_tooltip = xinhai526
-		SNA_smuggling_scale = YES
-		}
-				       		
-		remove_effect = {
-			add_offsite_building = { type = industrial_complex level = 1 }
-			clr_country_flag = flag_2
-            set_country_flag={
-                    flag = text
-                    days = 7
-                    value = 1
-                }			
-		}
-		   
-    		
-		icon = GFX_decision_category_SOV_permanent_revolution
-										
-		fire_only_once = no
-				
-		
-   }
-}
-
-SNA_internal_factions2 = {   #军改	
+SNA_army_reform = {   #军改	
 	SNA_army_reform = {
 
 		icon = generic_prepare_civil_war
@@ -719,7 +59,7 @@ SNA_internal_factions2 = {   #军改
 	}
 }
 
-SNA_internal_factions3 = {	 #地区发展
+SNA_area_develop = {	 #地区发展
 	SNA_state1 = { 		
     on_map_mode = map_only
 	
@@ -1169,7 +509,7 @@ SNA_war_beginning = {
 
 	}
  SNA_Folk_propaganda = {  #民间宣传
-	icon = GFX_decision_generic_construction
+	icon = GFX_prepare_war_generic
 	 
 	 cost = 30
 	 
@@ -1198,7 +538,7 @@ SNA_war_beginning = {
 	 }  
  }
  SNA_military_propaganda = {    #军事宣传
-	icon = GFX_decision_generic_construction
+	icon = GFX_prepare_war_generic
 	 
 	 cost = 30
 	 
@@ -1235,7 +575,7 @@ SNA_war_beginning = {
 	 }  
  }
  SNA_Construction_workshop = {    #修建工坊
-	icon = GFX_decision_generic_construction
+	icon = GFX_prepare_war_generic
 	 
 	 cost = 30
 	 
@@ -1276,7 +616,7 @@ SNA_war_beginning = {
  }
  
  SNA_Recruit_troops = {    #招募部队
-	icon = GFX_decision_generic_construction
+	icon = GFX_prepare_war_generic
 		
 	 cost = 30
 	 
@@ -1329,7 +669,7 @@ SNA_war_beginning = {
 		 }					  
     }
  SNA_Appease_thepeople = {    #安抚民心
-	icon = GFX_decision_generic_construction
+	icon = GFX_prepare_war_generic
 	 
 	 cost = 30
 	 
@@ -1362,7 +702,7 @@ SNA_war_beginning = {
 	 }  
  }
  SNA_Collect_military_provisions = {    #收纳军粮
-	icon = GFX_decision_generic_construction
+	icon = GFX_prepare_war_generic
 	 
 	 cost = 30
 	 
@@ -1412,7 +752,7 @@ SNA_war_beginning = {
 
 	}
     SNA_Strike_downnine_families = {    #打击九条家
-       icon = GFX_decision_generic_construction
+       icon = GFX_SNA_prepare_war_small
 		
 		cost = 20
 		
@@ -1425,18 +765,16 @@ SNA_war_beginning = {
 		}
 		
 		available = {
-		   NOT = { has_country_flag = SNA_NO_Same_type1 }
-		   NOT = { has_country_flag = SNA_NO_Same_type }
         }
 		
 		ai_will_do = {
-			factor = 50
+			factor = 100
 		}
 		
 		visible = {
-		   check_variable = { INA_junshizhichidu > 0 }
-		   check_variable = { INA_junshizhichidu > 0 }
-		   has_completed_focus = SNA_wuxuzairen
+		   #check_variable = { INA_junshizhichidu > 0 }
+		   #check_variable = { INA_junshizhichidu > 0 }
+		   #has_completed_focus = SNA_wuxuzairen
 		}
 		
 		remove_effect = {
@@ -1447,7 +785,7 @@ SNA_war_beginning = {
 		}  
     }
     SNA_Summon_soldiers = {    #召集士兵
-       icon = GFX_decision_generic_construction
+       icon = GFX_SNA_prepare_war_small
 		
 		cost = 40
 		
@@ -1460,16 +798,15 @@ SNA_war_beginning = {
 		}
 		
 		available = {
-		   NOT = { has_country_flag = SNA_NO_Same_type1 }
 		   NOT = { has_country_flag = SNA_NO_Same_type }
         }
 		
 		ai_will_do = {
-			factor = 50
+			factor = 100
 		}
 		
 		visible = {
-		   has_completed_focus = SNA_fanpanjun
+		   #has_completed_focus = SNA_fanpanjun
 		}
 		
 		remove_effect = {
@@ -1509,7 +846,7 @@ SNA_war_beginning = {
 		}  
     }
     SNA_Callonthe_peopleto_jointhewar = {    #呼吁民众参战
-       icon = GFX_decision_generic_construction
+       icon = GFX_SNA_prepare_war_small
 		
 		cost = 40
 		
@@ -1522,16 +859,15 @@ SNA_war_beginning = {
 		}
 		
 		available = {
-		   NOT = { has_country_flag = SNA_NO_Same_type1 }
 		   NOT = { has_country_flag = SNA_NO_Same_type }
         }
 		
 		ai_will_do = {
-			factor = 50
+			factor = 100
 		}
 		
 		visible = {
-		    has_completed_focus = SNA_haizhidaokuangre
+		    #has_completed_focus = SNA_haizhidaokuangre
 		}
 		
 		remove_effect = {
@@ -1545,7 +881,7 @@ SNA_war_beginning = {
 		}  
     }
     SNA_Try_to_mediate = {    #尽力斡旋
-       icon = GFX_decision_generic_construction
+       icon = GFX_SNA_prepare_war_small
 		
 		cost = 0
 		
@@ -1558,16 +894,15 @@ SNA_war_beginning = {
 		}
 		
 		available = {
-		   NOT = { has_country_flag = SNA_NO_Same_type1 }
 		   NOT = { has_country_flag = SNA_NO_Same_type }
         }
 		
 		ai_will_do = {
-			factor = 50
+			factor = 100
 		}
 		
 		visible = {
-		    has_completed_focus = SNA_tanpanjieguo
+		    #has_completed_focus = SNA_tanpanjieguo
 		}
 		
 		modifier = {
@@ -1583,7 +918,7 @@ SNA_war_beginning = {
 		}  
     }
     SNA_Capturenine_family_weapons = {    #夺取九条家武器
-       icon = GFX_decision_generic_construction
+       icon = GFX_SNA_prepare_war_small
 		
 		cost = 15
 		
@@ -1596,16 +931,15 @@ SNA_war_beginning = {
 		}
 		
 		available = {
-		   NOT = { has_country_flag = SNA_NO_Same_type1 }
 		   NOT = { has_country_flag = SNA_NO_Same_type }
         }
 		
 		ai_will_do = {
-			factor = 50
+			factor = 100
 		}
 		
 		visible = {
-		   has_completed_focus = SNA_wuxuzairen
+		   #has_completed_focus = SNA_wuxuzairen
 		}
 		
 		modifier = {
@@ -1639,5 +973,340 @@ SNA_war_beginning = {
 			producer = KUJ
 	        }
 		}  
-    }	
+    }
+}
+
+SNA_smuggle_decision = {
+	SNA_smuggle_supplies_will_coming = 
+	{ #走私物资到达
+		activation = {
+			#has_country_flag = XinHai_create_smuggle
+			always = yes
+		}
+		available = {
+			#has_country_flag = XinHai_create_smuggle
+			always = no
+		}
+		complete_effect = {
+		}
+		priority = 100
+		is_good = yes
+		icon = null
+		days_mission_timeout = 7
+		timeout_effect = {
+			add_to_variable = { SNA_MATERIALS = 25 }
+			add_to_variable = { SNA_ARMAMENT = 25 }
+			add_political_power = 25
+			custom_effect_tooltip = XinHai_get_resouces
+			set_country_flag = SNA_smuggle_net_steel_running
+		}
+	}
+	SNA_expand_smuggle_net = 
+	{ #扩大走私网
+		available = {
+			check_variable = { smuggle_net_scale < 4 }
+		}
+		icon = null
+		cost = 20
+		days_remove = 15
+		icon = null
+        modifier = {
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			custom_effect_tooltip = SNA_smuggle_net_enlarge
+			add_to_variable = { smuggle_net_scale = 1 }
+		}
+	}
+	SNA_add_Kamisato_Clan_relation = 
+	{ #增加与社奉行关系
+        available = 
+		{
+			NOT = 
+			{
+				has_country_flag = Strengthen_contacts 
+			}
+		}
+		icon = null
+		cost = 20
+		days_remove = 30
+		remove_effect = 
+		{
+			add_to_variable = { SNA_Kamisato_Clan_morale = 10}
+			custom_effect_tooltip = SNA_Kamisato_Clan_morale_increase 
+			
+		}
+		modifier = {
+			political_power_factor = -0.05
+		}
+	}
+	SNA_add_Fatui_relation = 
+	{ #增加与愚人众关系
+        available = 
+		{
+			
+		}
+		icon = null
+		cost = 20
+		days_remove = 30
+		remove_effect = 
+		{
+			add_to_variable = { SNA_Fatui_morale = 10}
+			custom_effect_tooltip = SNA_Fatui_morale_increase 
+			
+		}
+		modifier = {
+			political_power_factor = -0.05
+		}
+	}
+	#社奉行决议内容
+	SNA_Purchase_of_daily_necessities = 
+	{ #购买少量生活物资
+		available = {
+			NOT = { has_country_flag = SNA_use_resource}
+			check_variable = { SNA_MATERIALS > 49 }
+			check_variable = { SNA_Kamisato_clan_morale > 24}
+		}
+		visible = { #check_variable = {SNA_Kamisato_clan_morale > 24}
+		 }
+		icon = null
+		cost = 20	
+		days_remove = 14
+
+		modifier = {
+			consumer_goods_factor = -0.05
+			stability_weekly = 0.05
+		}
+		remove_effect = {
+		    subtract_from_variable = { SNA_MATERIALS = 50 }
+			subtract_from_variable = { SNA_Fatui_morale = 5 }
+			add_to_variable = { SNA_Kamisato_Clan_morale = 5 }
+		}
+	}
+	SNA_Book_market_circulation = 
+	{ #书籍市场流通
+		available = {
+			NOT = { has_country_flag = SNA_use_resource}
+			check_variable = {SNA_Kamisato_Clan_morale > 49 }
+			check_variable = { SNA_MATERIALS > 99 }
+		}
+		visible = {
+			#check_variable = {SNA_Kamisato_clan_morale > 49}
+			NOT = 
+			{
+				has_country_flag = Strengthen_contacts
+			}
+		}
+		icon = null
+        cost = 20
+		days_remove = 14
+		modifier = {		   
+			war_support_weekly = 0.10
+			stability_weekly = 0.10
+			research_speed = 0.10		   
+		}
+		remove_effect = {
+			subtract_from_variable = { SNA_MATERIALS = 100 }
+			subtract_from_variable = { SNA_Fatui_morale = 10 }
+			add_to_variable = { SNA_Kamisato_Clan_morale = 10 }
+		}
+	}
+	SNA_buy_kujyou_information = 
+	{ #购买九条家情报
+		available = {
+			NOT = { has_country_flag = SNA_use_resource }
+			check_variable = {SNA_Kamisato_Clan_morale > 49 }
+			check_variable = { SNA_MATERIALS > 99 }
+		}
+		visible = {
+			#check_variable = {SNA_Kamisato_clan_morale > 49}
+			NOT = 
+			{
+				has_country_flag = Strengthen_contacts
+			}
+		}
+		icon = null
+        cost = 20
+		days_remove = 14
+		remove_effect = {
+			subtract_from_variable = { SNA_MATERIALS = 100 }
+			subtract_from_variable = { SNA_Fatui_morale = 10 }
+			add_to_variable = { SNA_Kamisato_Clan_morale = 10 }
+		}
+		targeted_modifier = {
+			tag = KUJ		
+			attack_bonus_against = 0.10
+			defense_bonus_against = 0.10		
+	    }
+	}
+	SNA_Opening_of_a_luxury_market=
+	{ #开设奢侈品市场
+		available = {
+			NOT = { has_country_flag = SNA_use_resource }
+			check_variable = {SNA_Kamisato_Clan_morale > 74 }
+			check_variable = { SNA_MATERIALS > 199 }
+		}
+		visible = {
+			#check_variable = {SNA_Kamisato_clan_morale > 74}
+			NOT = 
+			{
+				has_country_flag = Strengthen_contacts
+			}
+		}
+		icon = null
+		cost = 20
+		days_remove = 30
+		remove_effect = {
+			subtract_from_variable = { SNA_MATERIALS = 200 }
+			subtract_from_variable = { SNA_Fatui_morale = 15 }
+			add_to_variable = { SNA_Kamisato_Clan_morale = 15 }
+		}
+		modifier = {			
+            consumer_goods_factor = -0.10
+            stability_weekly = 0.015
+            war_support_weekly = -0.05			
+	   	}
+	}
+	SNA_train_new_labor=
+	{ #培训新工人
+		available = {
+			NOT = { has_country_flag = SNA_use_resource }
+			check_variable = {SNA_Kamisato_Clan_morale > 74 }
+			check_variable = { SNA_MATERIALS > 199 }
+		}
+		visible = {
+			#check_variable = {SNA_Kamisato_clan_morale > 74}
+			NOT = 
+			{
+				has_country_flag = Strengthen_contacts
+			}
+		}
+		icon = null
+		cost = 20
+		days_remove = 30
+		remove_effect = {
+			subtract_from_variable = { SNA_MATERIALS = 200 }
+			subtract_from_variable = { SNA_Fatui_morale = 15 }
+			add_to_variable = { SNA_Kamisato_Clan_morale = 15 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+		modifier = {			
+			consumer_goods_factor = -0.10
+			stability_weekly = 0.015
+			war_support_weekly = -0.05			
+	   	}
+	}
+	#愚人众决议内容
+	SNA_buy_little_weapons = 
+	{#购买少量武器
+		available = { check_variable = { SNA_ARMAMENT  > 49 } }	 
+    	visible = { #check_variable = { SNA_Fatui_morale > 24 
+	    }
+        icon = null
+		days_remove = 14
+		cost = 20
+		
+		remove_effect = {
+			add_equipment_to_stockpile = {
+		    	type = infantry_equipment
+		    	amount = 250		    
+	        }
+		 	add_equipment_to_stockpile = {
+		    	type = ttt_uniform_eq
+		    	amount = 250		    
+	     	}
+			subtract_from_variable = {SNA_ARMAMENT = 50}
+			subtract_from_variable = {SNA_Kamisato_Clan_morale = 5}
+            add_to_variable = {SNA_Fatui_morale = 5}
+  		}
+	}
+	SNA_buy_medium_nums_weapons = 
+	{#购买中量武器
+		available = { check_variable = { SNA_ARMAMENT  > 99 } }	 
+    	visible = { #check_variable = { SNA_Fatui_morale > 49 
+	    }
+        icon = null
+		days_remove = 14
+		cost = 20
+		
+		remove_effect = {
+			add_equipment_to_stockpile = {
+		    	type = infantry_equipment
+		    	amount = 500		    
+	        }
+		 	add_equipment_to_stockpile = {
+		    	type = ttt_uniform_eq
+		    	amount = 500		    
+	     	}
+			 add_equipment_to_stockpile = {
+		    	type = artillery_equipment
+		    	amount = 50	    
+	     	}
+			subtract_from_variable = {SNA_ARMAMENT = 100}
+			subtract_from_variable = {SNA_Kamisato_Clan_morale = 10}
+            add_to_variable = {SNA_Fatui_morale = 10}
+  		}
+	}
+	SNA_recruit_Fatui_consultant =
+	{#招募愚人众顾问
+		available = { check_variable = { SNA_ARMAMENT  > 99 } }	 
+		visible = { #check_variable = { SNA_Fatui_morale > 49 
+		}
+		icon = null
+		days_remove = 14
+		cost = 20
+	
+		remove_effect = {
+			subtract_from_variable = {SNA_ARMAMENT = 100}
+			subtract_from_variable = {SNA_Kamisato_Clan_morale = 10}
+			add_to_variable = {SNA_Fatui_morale = 10}
+	  	}
+		modifier = {			
+			command_power_gain_mult = 0.10
+			experience_gain_army_factor = 0.10			
+		}
+	}
+	SNA_buy_large_amount_weapons = 
+	{#购买大量武器
+		available = { check_variable = { SNA_ARMAMENT  > 199 } }	 
+		visible = { #check_variable = { SNA_Fatui_morale > 74
+		}
+		icon = null
+		days_remove = 30
+		cost = 20
+	
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000		    
+			}
+		 	add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = 500		    
+		 	}
+		 	add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 200    
+		 	}
+			subtract_from_variable = {SNA_ARMAMENT = 200}
+			subtract_from_variable = {SNA_Kamisato_Clan_morale = 15}
+			add_to_variable = {SNA_Fatui_morale = 15}
+	  	}
+	}
+	SNA_workshops_under_constructions = 
+	{#建设工坊
+		available = { check_variable = { SNA_ARMAMENT  > 199 } }	 
+		visible = { #check_variable = { SNA_Fatui_morale > 74
+		}
+		icon = null
+		days_remove = 30
+		cost = 20
+	
+		remove_effect = {
+			add_offsite_building = {type = arms_factory level = 1 }
+			subtract_from_variable = {SNA_ARMAMENT = 200}
+			subtract_from_variable = {SNA_Kamisato_Clan_morale = 15}
+			add_to_variable = {SNA_Fatui_morale = 15}
+	  	}
+	}
 }

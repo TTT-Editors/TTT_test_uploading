@@ -15,7 +15,6 @@ scripted_gui = {
 			show_button_click = {
 				set_variable = { TTT_Nation_Page = 1 }
 				set_variable = { TTT_Mod_Page = 1 }
-				set_variable = { TTT_Age_Page = 1 }
 				#如果还没有TTT_opening_page变量则设定（打开欢迎界面，并且将国家和地区页面设置为1）
 				#如果有这个变量就删去（关闭欢迎界面）
 				if = {
@@ -53,7 +52,6 @@ scripted_gui = {
 			
 			TTT_Age_Page_Button_click = {
 				set_variable = { TTT_opening_page = 2 }
-				set_variable = { TTT_Age_Page = 1 }
 			}
 			
 			TTT_Region_Page_Button_click = {
@@ -65,7 +63,6 @@ scripted_gui = {
 				set_variable = { TTT_Mod_Page = 1 }
 			}
 			
-			
 			TTT_Next_Page_click = {
 				if = {
 					limit = {
@@ -74,13 +71,13 @@ scripted_gui = {
 					}
 					add_to_variable = { TTT_Nation_Page = 1 }
 				}
-				if = {
-					limit = {
-						#Age Page
-						check_variable = { TTT_opening_page = 2 }
-					}
-					add_to_variable = { TTT_Age_Page = 1 }
-				}
+				#if = {
+				#	limit = {
+				#		#Age Page
+				#		check_variable = { TTT_opening_page = 3 }
+				#	}
+				#	add_to_variable = { TTT_Age_Page = 1 }
+				#}
 				else_if = {
 					limit = {
 						#Mod Page
@@ -98,13 +95,13 @@ scripted_gui = {
 					}
 					add_to_variable = { TTT_Nation_Page = -1 }
 				}
-				if = {
-					limit = {
-						#Age Page
-						check_variable = { TTT_opening_page = 2 }
-					}
-					add_to_variable = { TTT_Age_Page = -1 }
-				}
+				#if = {
+				#	limit = {
+				#		#Age Page
+				#		check_variable = { TTT_opening_page = 3 }
+				#	}
+				#	add_to_variable = { TTT_Age_Page = -1 }
+				#}
 				else_if = {
 					limit = {
 						#Mod Page
@@ -158,10 +155,6 @@ scripted_gui = {
 						check_variable = { TTT_Mod_Page < 5.5 }
 					}
 					AND = {
-						check_variable = { TTT_opening_page = 2 }
-						check_variable = { TTT_Age_Page < 2.5 }
-					}
-					AND = {
 						check_variable = { TTT_opening_page = 1 }
 						check_variable = { TTT_Nation_Page < 1.5 }
 						TTT_is_special_nation = yes
@@ -184,10 +177,6 @@ scripted_gui = {
 					AND = {
 						check_variable = { TTT_opening_page = 4 }
 						check_variable = { TTT_Mod_Page > 1.5 }
-					}
-					AND = {
-						check_variable = { TTT_opening_page = 2 }
-						check_variable = { TTT_Age_Page > 1.5 }
 					}
 					AND = {
 						check_variable = { TTT_opening_page = 1 }

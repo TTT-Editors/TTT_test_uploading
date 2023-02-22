@@ -14,18 +14,59 @@ Genshin_impact_The_Twist_of_Teyvat_Team_decision_category = {
 		}
 		complete_effect = {
 			custom_effect_tooltip = BUT_There_is_nothing
-			set_variable = { Operationprogress = 0.20 }
             set_variable = { Keqing_Alioth = 10 }
             set_variable = { Ningguang_Tianquan_Star = 30 }
             set_variable = { General_Affairs_Division = 20 }
+			set_country_flag = Liyue_Capital_injection_12
 			every_owned_state = {
 				add_core_of = EMP
 			}
 		}
-		
+		remove_effect = { 
+		add_stability = 0.05
+        clr_country_flag = Liyue_Capital_injection_12		
+		}
 		
 	}
-
+    Liyue_Government_Intervention1 = {                 #刻甘政府干预方案
+        icon = GFX_decision_generic_political_discourse
+		
+		cost = 75
+			
+		fire_only_once = yes
+		days_remove = 60
+		allowed = {
+			tag = LYU
+		}
+		visible = { 
+		has_country_flag = Liyue_crisis
+        has_country_flag = Financial_collapse		
+		}
+		available  = {
+		NOT = { has_country_flag = Liyue_Capital_injection_1 }
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 20
+				has_war = no
+			}
+		}
+		modifier = {
+			political_power_cost = 0.10
+	   	}
+		complete_effect = {  
+			custom_effect_tooltip = Liyue_Government_Intervention_tt
+			set_country_flag = Liyue_Government_Intervention_1
+			set_country_flag = Liyue_Government_Intervention_12
+			add_to_variable = { General_Affairs_Division = 10 }
+			add_to_variable = { Keqing_Alioth = 10 }
+		}
+		remove_effect = { 
+		add_stability = 0.05
+		clr_country_flag = Liyue_Government_Intervention_12
+		}
+    }
 }
 
 INA_decision_test_categories = {

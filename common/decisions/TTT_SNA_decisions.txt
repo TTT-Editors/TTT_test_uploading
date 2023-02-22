@@ -994,9 +994,11 @@ SNA_smuggle_decision = {
 		icon = null
 		days_mission_timeout = 7
 		timeout_effect = {
-			add_to_variable = { SNA_MATERIALS = 25 }
-			add_to_variable = { SNA_ARMAMENT = 25 }
-			add_political_power = 25
+			SNA_MATERIALS_add_effects = yes
+			SNA_ARMAMENT_add_effects = yes
+			add_to_variable = { SNA_MATERIALS = SNA_MATERIALS_add }
+			add_to_variable = { SNA_ARMAMENT = SNA_ARMAMENT_add }
+			SNA_Resources_check_effects = yes
 			custom_effect_tooltip = XinHai_get_resouces
 			set_country_flag = SNA_smuggle_net_steel_running
 		}
@@ -1014,8 +1016,9 @@ SNA_smuggle_decision = {
 			civilian_factory_use = 1
 		}
 		remove_effect = {
-			custom_effect_tooltip = SNA_smuggle_net_enlarge
-			add_to_variable = { smuggle_net_scale = 1 }
+			hidden_effect = { SNA_Smuggle_decision_add_idea = yes}
+			custom_effect_tooltip = SNA_smuggle_net_enlarge 
+			add_to_variable = { smuggle_net_scale = 1 } 
 		}
 	}
 	SNA_add_Kamisato_Clan_relation = 
@@ -1034,7 +1037,7 @@ SNA_smuggle_decision = {
 		{
 			add_to_variable = { SNA_Kamisato_Clan_morale = 10}
 			custom_effect_tooltip = SNA_Kamisato_Clan_morale_increase 
-			
+			SNA_relation_checks = yes
 		}
 		modifier = {
 			political_power_factor = -0.05
@@ -1042,10 +1045,6 @@ SNA_smuggle_decision = {
 	}
 	SNA_add_Fatui_relation = 
 	{ #增加与愚人众关系
-        available = 
-		{
-			
-		}
 		icon = null
 		cost = 20
 		days_remove = 30
@@ -1053,7 +1052,7 @@ SNA_smuggle_decision = {
 		{
 			add_to_variable = { SNA_Fatui_morale = 10}
 			custom_effect_tooltip = SNA_Fatui_morale_increase 
-			
+			SNA_relation_checks = yes
 		}
 		modifier = {
 			political_power_factor = -0.05
@@ -1066,8 +1065,11 @@ SNA_smuggle_decision = {
 			NOT = { has_country_flag = SNA_use_resource}
 			check_variable = { SNA_MATERIALS > 49 }
 			check_variable = { SNA_Kamisato_clan_morale > 24}
+			check_variable = { smuggle_net_scale > 1}
 		}
-		visible = { #check_variable = {SNA_Kamisato_clan_morale > 24}
+		visible = { 
+			check_variable = {SNA_Kamisato_clan_morale > 24} 
+			NOT = { has_country_flag = Strengthen_contacts }
 		 }
 		icon = null
 		cost = 20	
@@ -1081,6 +1083,7 @@ SNA_smuggle_decision = {
 		    subtract_from_variable = { SNA_MATERIALS = 50 }
 			subtract_from_variable = { SNA_Fatui_morale = 5 }
 			add_to_variable = { SNA_Kamisato_Clan_morale = 5 }
+			SNA_relation_checks = yes
 		}
 	}
 	SNA_Book_market_circulation = 
@@ -1089,9 +1092,10 @@ SNA_smuggle_decision = {
 			NOT = { has_country_flag = SNA_use_resource}
 			check_variable = {SNA_Kamisato_Clan_morale > 49 }
 			check_variable = { SNA_MATERIALS > 99 }
+			check_variable = { smuggle_net_scale > 2}
 		}
 		visible = {
-			#check_variable = {SNA_Kamisato_clan_morale > 49}
+			check_variable = {SNA_Kamisato_clan_morale > 49}
 			NOT = 
 			{
 				has_country_flag = Strengthen_contacts
@@ -1109,6 +1113,7 @@ SNA_smuggle_decision = {
 			subtract_from_variable = { SNA_MATERIALS = 100 }
 			subtract_from_variable = { SNA_Fatui_morale = 10 }
 			add_to_variable = { SNA_Kamisato_Clan_morale = 10 }
+			SNA_relation_checks = yes
 		}
 	}
 	SNA_buy_kujyou_information = 
@@ -1117,13 +1122,11 @@ SNA_smuggle_decision = {
 			NOT = { has_country_flag = SNA_use_resource }
 			check_variable = {SNA_Kamisato_Clan_morale > 49 }
 			check_variable = { SNA_MATERIALS > 99 }
+			check_variable = { smuggle_net_scale > 2}
 		}
 		visible = {
-			#check_variable = {SNA_Kamisato_clan_morale > 49}
-			NOT = 
-			{
-				has_country_flag = Strengthen_contacts
-			}
+			check_variable = {SNA_Kamisato_clan_morale > 49} 
+			NOT = { has_country_flag = Strengthen_contacts }
 		}
 		icon = null
         cost = 20
@@ -1132,11 +1135,12 @@ SNA_smuggle_decision = {
 			subtract_from_variable = { SNA_MATERIALS = 100 }
 			subtract_from_variable = { SNA_Fatui_morale = 10 }
 			add_to_variable = { SNA_Kamisato_Clan_morale = 10 }
+			SNA_relation_checks = yes
 		}
 		targeted_modifier = {
 			tag = KUJ		
 			attack_bonus_against = 0.10
-			defense_bonus_against = 0.10		
+			defense_bonus_against = 0.10	
 	    }
 	}
 	SNA_Opening_of_a_luxury_market=
@@ -1145,13 +1149,11 @@ SNA_smuggle_decision = {
 			NOT = { has_country_flag = SNA_use_resource }
 			check_variable = {SNA_Kamisato_Clan_morale > 74 }
 			check_variable = { SNA_MATERIALS > 199 }
+			check_variable = { smuggle_net_scale > 3}
 		}
 		visible = {
-			#check_variable = {SNA_Kamisato_clan_morale > 74}
-			NOT = 
-			{
-				has_country_flag = Strengthen_contacts
-			}
+			check_variable = {SNA_Kamisato_clan_morale > 74}
+			NOT = { has_country_flag = Strengthen_contacts }
 		}
 		icon = null
 		cost = 20
@@ -1160,6 +1162,9 @@ SNA_smuggle_decision = {
 			subtract_from_variable = { SNA_MATERIALS = 200 }
 			subtract_from_variable = { SNA_Fatui_morale = 15 }
 			add_to_variable = { SNA_Kamisato_Clan_morale = 15 }
+			SNA_relation_checks = yes
+			subtract_from_variable = {smuggle_net_scale = 1}
+			hidden_effect = { SNA_Smuggle_decision_add_idea = yes}
 		}
 		modifier = {			
             consumer_goods_factor = -0.10
@@ -1173,13 +1178,11 @@ SNA_smuggle_decision = {
 			NOT = { has_country_flag = SNA_use_resource }
 			check_variable = {SNA_Kamisato_Clan_morale > 74 }
 			check_variable = { SNA_MATERIALS > 199 }
+			check_variable = { smuggle_net_scale > 3}
 		}
 		visible = {
-			#check_variable = {SNA_Kamisato_clan_morale > 74}
-			NOT = 
-			{
-				has_country_flag = Strengthen_contacts
-			}
+			check_variable = {SNA_Kamisato_clan_morale > 74}
+			NOT = { has_country_flag = Strengthen_contacts }
 		}
 		icon = null
 		cost = 20
@@ -1189,6 +1192,9 @@ SNA_smuggle_decision = {
 			subtract_from_variable = { SNA_Fatui_morale = 15 }
 			add_to_variable = { SNA_Kamisato_Clan_morale = 15 }
 			add_offsite_building = { type = industrial_complex level = 1 }
+			SNA_relation_checks = yes
+			subtract_from_variable = {smuggle_net_scale = 1}
+			hidden_effect = { SNA_Smuggle_decision_add_idea = yes}
 		}
 		modifier = {			
 			consumer_goods_factor = -0.10
@@ -1199,9 +1205,8 @@ SNA_smuggle_decision = {
 	#愚人众决议内容
 	SNA_buy_little_weapons = 
 	{#购买少量武器
-		available = { check_variable = { SNA_ARMAMENT  > 49 } }	 
-    	visible = { #check_variable = { SNA_Fatui_morale > 24 
-	    }
+		available = { check_variable = { SNA_ARMAMENT  > 49 } check_variable = { smuggle_net_scale > 1}}	 
+    	visible = { check_variable = { SNA_Fatui_morale > 24  } }
         icon = null
 		days_remove = 14
 		cost = 20
@@ -1218,13 +1223,13 @@ SNA_smuggle_decision = {
 			subtract_from_variable = {SNA_ARMAMENT = 50}
 			subtract_from_variable = {SNA_Kamisato_Clan_morale = 5}
             add_to_variable = {SNA_Fatui_morale = 5}
+			SNA_relation_checks = yes
   		}
 	}
 	SNA_buy_medium_nums_weapons = 
 	{#购买中量武器
-		available = { check_variable = { SNA_ARMAMENT  > 99 } }	 
-    	visible = { #check_variable = { SNA_Fatui_morale > 49 
-	    }
+		available = { check_variable = { SNA_ARMAMENT  > 99 } check_variable = { smuggle_net_scale > 2}}	 
+    	visible = { check_variable = { SNA_Fatui_morale > 49  } }
         icon = null
 		days_remove = 14
 		cost = 20
@@ -1245,13 +1250,13 @@ SNA_smuggle_decision = {
 			subtract_from_variable = {SNA_ARMAMENT = 100}
 			subtract_from_variable = {SNA_Kamisato_Clan_morale = 10}
             add_to_variable = {SNA_Fatui_morale = 10}
+			SNA_relation_checks = yes
   		}
 	}
 	SNA_recruit_Fatui_consultant =
 	{#招募愚人众顾问
-		available = { check_variable = { SNA_ARMAMENT  > 99 } }	 
-		visible = { #check_variable = { SNA_Fatui_morale > 49 
-		}
+		available = { check_variable = { SNA_ARMAMENT  > 99 } check_variable = { smuggle_net_scale > 2}}	 
+		visible = { check_variable = { SNA_Fatui_morale > 49 } }
 		icon = null
 		days_remove = 14
 		cost = 20
@@ -1260,17 +1265,19 @@ SNA_smuggle_decision = {
 			subtract_from_variable = {SNA_ARMAMENT = 100}
 			subtract_from_variable = {SNA_Kamisato_Clan_morale = 10}
 			add_to_variable = {SNA_Fatui_morale = 10}
+			SNA_relation_checks = yes	
 	  	}
-		modifier = {			
+		modifier = {		
+			command_power_gain = 50
 			command_power_gain_mult = 0.10
-			experience_gain_army_factor = 0.10			
+			army_experience = 50
+			experience_gain_army_factor = 0.10		
 		}
 	}
 	SNA_buy_large_amount_weapons = 
 	{#购买大量武器
-		available = { check_variable = { SNA_ARMAMENT  > 199 } }	 
-		visible = { #check_variable = { SNA_Fatui_morale > 74
-		}
+		available = { check_variable = { SNA_ARMAMENT  > 199 } check_variable = { smuggle_net_scale > 3}}	 
+		visible = { check_variable = { SNA_Fatui_morale > 74 } }
 		icon = null
 		days_remove = 30
 		cost = 20
@@ -1291,13 +1298,15 @@ SNA_smuggle_decision = {
 			subtract_from_variable = {SNA_ARMAMENT = 200}
 			subtract_from_variable = {SNA_Kamisato_Clan_morale = 15}
 			add_to_variable = {SNA_Fatui_morale = 15}
+			SNA_relation_checks = yes
+			subtract_from_variable = {smuggle_net_scale = 1}
+			hidden_effect = { SNA_Smuggle_decision_add_idea = yes}
 	  	}
 	}
 	SNA_workshops_under_constructions = 
 	{#建设工坊
-		available = { check_variable = { SNA_ARMAMENT  > 199 } }	 
-		visible = { #check_variable = { SNA_Fatui_morale > 74
-		}
+		available = { check_variable = { SNA_ARMAMENT  > 199 } check_variable = { smuggle_net_scale > 3}}	 
+		visible = { check_variable = { SNA_Fatui_morale > 74 } }
 		icon = null
 		days_remove = 30
 		cost = 20
@@ -1307,6 +1316,9 @@ SNA_smuggle_decision = {
 			subtract_from_variable = {SNA_ARMAMENT = 200}
 			subtract_from_variable = {SNA_Kamisato_Clan_morale = 15}
 			add_to_variable = {SNA_Fatui_morale = 15}
+			SNA_relation_checks = yes	
+			subtract_from_variable = {smuggle_net_scale = 1}
+			hidden_effect = { SNA_Smuggle_decision_add_idea = yes}
 	  	}
 	}
 }

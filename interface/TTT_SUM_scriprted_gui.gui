@@ -232,44 +232,6 @@ guiTypes = {
         name = "SUM_Akasha_gui_res_window"
         size = { width = 200 height = 500 }
         position = { x = 100  y = 0 }
-
-		
-
-		buttonType = { #地脉研究
-			name = Akasha_res_plan_1_button
-			position = {x=270 y=200}	
-			spriteType = "GFX_SUM_Akasha_gui_plan_button"
-			scale = 1.5
-			clicksound = click_ok
-		}
-		buttonType = { #虚空系统研究
-			name = Akasha_res_plan_2_button
-			position = {x=270 y=250}	
-			spriteType = "GFX_SUM_Akasha_gui_plan_button"
-			scale = 1.5
-			clicksound = click_ok
-		}
-		buttonType = { #常规研究
-			name = Akasha_res_plan_3_button
-			position = {x=270 y=300}	
-			spriteType = "GFX_SUM_Akasha_gui_plan_button"
-			scale = 1.5
-			clicksound = click_ok
-		}
-		buttonType = { #遗迹研究
-			name = Akasha_res_plan_4_button
-			position = {x=270 y=350}	
-			spriteType = "GFX_SUM_Akasha_gui_plan_button"
-			scale = 1.5
-			clicksound = click_ok
-		}
-		buttonType = { #常规研究实用化
-			name = Akasha_res_plan_5_button
-			position = {x=270 y=400}	
-			spriteType = "GFX_SUM_Akasha_gui_plan_button"
-			scale = 1.5
-			clicksound = click_ok
-		}
   		
 		instantTextBoxType = { #计划介绍
 			name = "SUM_Akasha_res_plan_title"
@@ -282,91 +244,62 @@ guiTypes = {
 			orientation = UPPER_LEFT
 		}
 		instantTextBoxType = { #
-			name = "SUM_Akasha_res_plan_name_1"
-			position = { x = 325 y = 210 }
+			name = "SUM_Akasha_res_plan_name_desc"
+			position = { x = 625 y = 210 }
 			font = "TTT_special_font_desc"
-			text = "SUM_Akasha_res_plan_name_text_1"
+			text = "SUM_Akasha_res_plan_name_desc_text"
 			maxHeight = 20
 			maxWidth = 430
 			fixedsize = yes
 			orientation = UPPER_LEFT
 		}
-		instantTextBoxType = { #
-			name = "SUM_Akasha_res_plan_name_2"
-			position = { x = 325 y = 260 }
-			font = "TTT_special_font_desc"
-			text = "SUM_Akasha_res_plan_name_text_2"
-			maxHeight = 20
-			maxWidth = 430
-			fixedsize = yes
-			orientation = UPPER_LEFT
-		}
-		instantTextBoxType = { #
-			name = "SUM_Akasha_res_plan_name_3"
-			position = { x = 325 y = 310 }
-			font = "TTT_special_font_desc"
-			text = "SUM_Akasha_res_plan_name_text_3"
-			maxHeight = 20
-			maxWidth = 430
-			fixedsize = yes
-			orientation = UPPER_LEFT
-		}
-		instantTextBoxType = { #
-			name = "SUM_Akasha_res_plan_name_4"
-			position = { x = 325 y = 360 }
-			font = "TTT_special_font_desc"
-			text = "SUM_Akasha_res_plan_name_text_4"
-			maxHeight = 20
-			maxWidth = 430
-			fixedsize = yes
-			orientation = UPPER_LEFT
-		}
-		instantTextBoxType = { #
-			name = "SUM_Akasha_res_plan_name_5"
-			position = { x = 325 y = 410 }
-			font = "TTT_special_font_desc"
-			text = "SUM_Akasha_res_plan_name_text_5"
-			maxHeight = 20
-			maxWidth = 430
-			fixedsize = yes
-			orientation = UPPER_LEFT
+		
+		
+		
+		
+		containerWindowType = { #研究项目
+			name = "SUM_res_button_container_window"
+			position = { x = 230 y = 196 }
+			size = { width = 300 height = 440 }
+			verticalScrollbar = "left_vertical_slider" 
+			margin = { top = 6 left = 30 bottom = 5 right = 0}
+			
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_SUM_Aka_ui_background"
+			}
+			
+			gridBoxType = {
+				name = "SUM_Aka_res_button_gird"
+				position = { x = 0 y = 0 }
+				size = { width = 1 height = 20 }
+				slotsize = { width = 0 height = 35 }
+				max_slots_horizontal = 1
+				add_horizontal = yes
+			}
 		}
     }
-	containerWindowType = {
-		name = "SUM_res_button_container_window"
-		position = { x = 330 y = 196 }
-		size = { width = 300 height = 240 }
-		scale = 1.5
-		verticalScrollbar = "left_vertical_slider" 
-		margin = { top = 6 left = 30 bottom = 5 right = 0}
-
-		background = {
-			name = "Background"
-			quadTextureSprite = "GFX_SUM_Aka_ui_background"
-		}
-		
-		gridBoxType = {
-			name = "SUM_Aka_res_button_gird"
-			position = { x = 0 y = 0 }
-			size = { width = 1 height = 20 }
-			slotsize = { width = 0 height = 35 }
-			max_slots_horizontal = 1
-			add_horizontal = yes
-		}
-
-		
-	}
-	containerWindowType = {
+	
+	containerWindowType = {#girdbox使用模板
 		name = "SUM_res_button_window"
 		position = { x = 0 y = 0 }
-
 		buttonType = {
 			name = "SUM_res_button"
 			position = { x = 0 y = 0 }	
 			spriteType = "GFX_SUM_Akasha_gui_plan_button"
 			orientation = "UPPER_RIGHT"
 			clicksound = click_close
-			scale = 0.9
+			
+		}
+		instantTextBoxType = { #
+			name = "SUM_Akasha_res_button_name"
+			position = { x = 35 y = 3 }
+			font = "hoi_20bs"
+			text = "SUM_Akasha_res_button_name_text"
+			maxHeight = 20
+			maxWidth = 150
+			fixedsize = yes
+			orientation = UPPER_LEFT
 		}
 	}
 

@@ -272,51 +272,16 @@ scripted_gui = {
         visible = { 
 			Akasha_info_Res = yes
 		}
-
-		triggers = {
-			#地脉研究
-			Akasha_res_plan_1_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_1
+		effects = {
+			SUM_res_button_click = {
+				meta_effect = {
+				    text = {
+					    SUM_Aka_res_button_[index] = yes
+				    }
+				index = SUM_Aka_res_idx
+			    }
+				add_political_power = 100
 			}
-			SUM_Akasha_res_plan_name_1_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_1
-			}
-			#虚空系统研究
-			Akasha_res_plan_2_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_2
-			}
-			SUM_Akasha_res_plan_name_2_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_2
-			}
-			#普通研究
-			Akasha_res_plan_3_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_3
-			}
-			SUM_Akasha_res_plan_name_3_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_3
-			}
-			#遗迹研究
-			Akasha_res_plan_4_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_4
-			}
-			SUM_Akasha_res_plan_name_4_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_4
-			}
-			#普通研究实用化
-			Akasha_res_plan_5_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_6
-			}
-			SUM_Akasha_res_plan_name_5_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_6
-			}
-		}
-    }
-	SUM_Akasha_res_gui = { ##研究计划子gui
-		context_type = player_context
-		window_name = "SUM_res_button_container_window"
-		parent_window_name = "SUM_Akasha_gui_window"
-		visible = { 
-			Akasha_info_Res = yes
 		}
 		dynamic_lists = {
 			SUM_Aka_res_button_gird = {
@@ -326,21 +291,11 @@ scripted_gui = {
 				index = SUM_Aka_res_idx
 			}
 		}
-		effects = {
-			SUM_res_button_click = {
-				set_variable = {
-					var = SUM_Aka_res_info
-					value = 114514
-				}
-			}
+		triggers = {
+			
 		}
 
-	}
-
-
-
-
-
+    }
 
 	SUM_Akasha_Aka_gui = { ##教令院子gui
 		context_type = player_context

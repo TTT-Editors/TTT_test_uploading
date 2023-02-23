@@ -871,7 +871,6 @@ SNA_war_beginning = {
 		}
 		
 		remove_effect = {
-		  set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
 		  custom_effect_tooltip = SNA_Callonthe_peopleto_jointhewar_tt
 		  add_manpower = 5000
 		  add_to_variable = { SNA_junshizhichidu = 10 }
@@ -946,7 +945,6 @@ SNA_war_beginning = {
 		   war_support_weekly = -0.01
 		}
 		remove_effect = {
-		    set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 7 }
 		    add_equipment_to_stockpile = {
 		    type = infantry_equipment 
 		    amount = 400
@@ -974,6 +972,39 @@ SNA_war_beginning = {
 	        }
 		}  
     }
+	SNA_Declare_war = 
+	{
+		activation = {
+			SNA_triggers_Declare_war = yes
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		is_good = no
+		fire_only_once = yes
+		days_mission_timeout = 25
+		timeout_effect = {
+			INA = {
+				set_autonomy = {
+					target = SNA
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = {
+					target = KUJ
+					autonomy_state = autonomy_free
+				}
+			}
+			SNA = { leave_faction = yes }
+			KUJ = { leave_faction = yes add_ideas = putrid_Shogunate_Army}
+			country_event = XinHai.10
+			declare_war_on = {target = KUJ type = annex_everything}
+			clr_country_flag = INA_34_flag
+			INA = {clr_country_flag = INA_34_flag}
+		}
+	}
 }
 
 SNA_smuggle_decision = {

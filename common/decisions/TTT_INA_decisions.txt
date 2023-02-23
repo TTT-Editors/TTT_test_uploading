@@ -644,73 +644,40 @@ INA_war_beginning = {
 	        }
 		}
 	}
-	ISA_Declare_war = {     
-		activation = {                         
-			ISA_triggers_Declare_war = yes
-		}                                    
+	INA_Declare_war = {     
+		activation = {
+			INA_triggers_Declare_war = yes
+		}
 		available = {
-            or = {		
-				NOT = {has_war_with = INA}
-				NOT = {has_war_with = SNA}
-			INA = 
-			{
-				has_completed_focus = INA_WAR_BEG_8
-			}
-			}
+			always = no
 		}
 		visible = {
-		   always = yes
+			always = yes
 		}
-		
-		is_good = no 
-		
-	    fire_only_once = yes
-		
+		is_good = no
 		days_mission_timeout = 25
-		
-		timeout_effect = {                      
-			if = {
-			limit = {
-				original_tag = INA
-			}
+		fire_only_once = yes
+		timeout_effect = {
 			INA = {
-			set_autonomy = {
-				target = SNA
-				autonomy_state = autonomy_free
-			    }
-			}
-			SNA = { leave_faction = yes  #add_ideas = SNA_war_start_hidden_idea}
-			INA = { 
-				leave_faction = yes
+				set_autonomy = {
+					target = SNA
+					autonomy_state = autonomy_free
+				}
 				set_autonomy = {
 					target = KUJ
 					autonomy_state = autonomy_free
 				}
 			}
-			declare_war_on = { target = SNA type = annex_everything }
+			SNA = { 
+				leave_faction = yes 
+			    country_event = XinHai.10
+			}
+			KUJ = { 
+				leave_faction = yes
+				declare_war_on = {target = SNA type = annex_everything} 
+			}
 			clr_country_flag = INA_34_flag
+			SNA = {clr_country_flag = INA_34_flag}
 		}
-		else_if = {
-			limit = {
-				original_tag = SNA
-			}
-			INA = {
-			set_autonomy = {
-				target = SNA
-				autonomy_state = autonomy_free
-			    }
-			}
-			INA = { 
-				leave_faction = yes
-				set_autonomy = {
-					target = KUJ
-					autonomy_state = autonomy_free
-				}
-			}
-			SNA = { leave_faction = yes  #add_ideas = SNA_war_start_hidden_idea }
-			declare_war_on = { target = INA type = annex_everything }
-			clr_country_flag = INA_34_flag
-		    }           
-		}		
 	}
 }

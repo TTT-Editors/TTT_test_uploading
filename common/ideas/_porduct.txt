@@ -17,6 +17,12 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			   army_org_factor = 0.25
+			   army_attack_factor = 0.20
+	           army_defence_factor = 0.20
+			   land_reinforce_rate = 0.04
+			   land_doctrine_cost_factor = -0.15
+			   experience_loss_factor = -0.05
 			}
 			
 			
@@ -38,14 +44,44 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			   army_org_factor = 0.15
+			   army_attack_factor = 0.10
+	           army_defence_factor = 0.10
+			   land_reinforce_rate = 0.02
+			   land_doctrine_cost_factor = -0.10
+               experience_loss_factor = -0.02			   
+			}
+			
+			
+			cancel_if_invalid = no
+		}
+		
+		Conscription_militia = {     #训练有素
+			
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = you_degree_of_social_development_no
+					always = no
+				}
+			}
+			
+			cost = 500
+			
+			removal_cost = -1
+			
+			modifier = {
+			   army_org_factor = 0.05
+			   army_attack_factor = 0.05
+	           army_defence_factor = 0.05
+			   land_doctrine_cost_factor = -0.05
 			}
 			
 			default = yes
 			
 			cancel_if_invalid = no
+
 		}
-		
-		Conscription_militia = {     #征召民兵
+		Mercenary_army = {      #可堪一战
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -59,6 +95,12 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			   army_org_factor = -0.15
+			   army_attack_factor = -0.10
+	           army_defence_factor = -0.10
+			   land_reinforce_rate = -0.02
+			   land_doctrine_cost_factor = 0.05
+			   experience_gain_army_unit_factor = -0.02
 			}
 			
 			
@@ -66,7 +108,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Mercenary_army = {      #雇佣军队
+		Armed_police = {      #散兵游勇
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -80,6 +122,12 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			   army_org_factor = -0.25
+			   army_attack_factor = -0.20
+	           army_defence_factor = -0.20
+			   land_reinforce_rate = -0.04
+			   land_doctrine_cost_factor = 0.15
+			   experience_gain_army_unit_factor = -0.05
 			}
 			
 			
@@ -87,7 +135,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Armed_police = {      #武装警察
+		Folk_power = {      #乌合之众
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -101,27 +149,12 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-			}
-			
-			
-			
-			cancel_if_invalid = no
-
-		}
-		Folk_power = {      #民间力量
-			
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
-			}
-			
-			cost = 500
-			
-			removal_cost = -1
-			
-			modifier = {
+			   army_org_factor = -0.30
+			   army_attack_factor = -0.30
+	           army_defence_factor = -0.30
+			   land_reinforce_rate = -0.06
+			   land_doctrine_cost_factor = 0.20
+			   experience_gain_army_unit_factor = -0.05
 			}
 			
 			
@@ -243,11 +276,11 @@ ideas = {
 
 	}
 	
-    Right_to_vote = {  #教育方向 
+    Right_to_vote = {  #科研教育 
 		law = yes
 		use_list_view = yes
 	
-		No_right_to_vote = { #学术教育 
+		No_right_to_vote = { #黄金年代 
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -261,6 +294,8 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    research_speed_factor = 0.30
+				custom_modifier_tooltip = No_right_to_vote_tt
 			}
 			
 			
@@ -268,7 +303,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Real_estate_election = {   #职业教育
+		Real_estate_election = {   #高等教育
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -282,6 +317,8 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    research_speed_factor = 0.20
+				custom_modifier_tooltip = No_right_to_vote_tt
 			}
 			
 			
@@ -289,7 +326,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Limited_election = {  #先军教育
+		Limited_election = {  #义务教育
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -302,7 +339,11 @@ ideas = {
 			
 			removal_cost = -1
 			
+			research_bonus = {
+		    electronics = 0.05
+	        }
 			modifier = {
+			    research_speed_factor = 0.15
 			}
 			
 			
@@ -310,7 +351,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Universal_suffrage = {   #基本教育
+		Universal_suffrage = {   #职业技术
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -323,7 +364,11 @@ ideas = {
 			
 			removal_cost = -1
 			
+			research_bonus = {
+		    industry = 0.05
+	        }
 			modifier = {
+			    research_speed_factor = 0.10
 			}
 			
 			default = yes
@@ -331,7 +376,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Lack_education = {   #教育缺失
+		Lack_education = {   #基本学术
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -345,6 +390,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    research_speed_factor = -0.05
 			}
 			
 			
@@ -352,7 +398,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		ideological_imprint = {   #思想烙印
+		ideological_imprint = {   #基础教育
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -366,6 +412,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    research_speed_factor = -0.10
 			}
 			
 			
@@ -373,7 +420,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Academic_utopia = { #学术乌托邦
+		Academic_utopia = { #文盲遍地
             available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -386,6 +433,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    research_speed_factor = -0.20
 			}
 			
 			cancel_if_invalid = no
@@ -397,7 +445,7 @@ ideas = {
 		law = yes
 		use_list_view = yes
 		
-	    Manual_production = {  #手工生产
+	    Manual_production = {  #万里钢城
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -410,6 +458,11 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    industrial_capacity_factory = 0.40
+				production_speed_buildings_factor = 0.30
+				global_building_slots_factor = 0.30
+				conscription_factor = -0.20
+				industry_repair_factor = 0.15
 			}
 			
 			
@@ -417,7 +470,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		Low_tax= {   #行会生产  
+		Low_tax= {   #机械始鸣  
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -430,6 +483,11 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    industrial_capacity_factory = 0.30
+				production_speed_buildings_factor = 0.20
+				global_building_slots_factor = 0.20
+				conscription_factor = -0.15
+				industry_repair_factor = 0.10
 			}
 			
 			
@@ -437,7 +495,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		High_tax = {  #蒸汽时代
+		High_tax = {  #齿轮周转
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -450,6 +508,11 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    industrial_capacity_factory = 0.20
+				production_speed_buildings_factor = 0.10
+				global_building_slots_factor = 0.10
+				conscription_factor = -0.10
+				industry_repair_factor = 0.05
 			}
 			
 			default = yes
@@ -457,7 +520,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		Olive_tax = {   #专业化工厂
+		Olive_tax = {   #千机雏形
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -470,6 +533,10 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    industrial_capacity_factory = 0.10
+				production_speed_buildings_factor = 0.05
+				global_building_slots_factor = 0.05
+				conscription_factor = -0.05
 			}
 			
 			
@@ -477,7 +544,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		Inverted_pyramid_tax = {  #工业城市
+		Inverted_pyramid_tax = {  #男耕女织
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -490,20 +557,99 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    industrial_capacity_factory = -0.10
+				production_speed_buildings_factor = -0.05
+				global_building_slots_factor = -0.05
+				conscription_factor = 0.05
+				industry_repair_factor = -0.05
 			}
 			
 			
 			
 			cancel_if_invalid = no
 		}
-				
+		
+		secret_country = {  #隐秘国度
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = you_degree_of_social_development_no
+					always = no
+				}
+			}
+			
+			cost = 500
+			
+			removal_cost = -1
+			
+			modifier = {
+			    industrial_capacity_factory = -0.20
+				production_speed_buildings_factor = -0.10
+				global_building_slots_factor = -0.10
+				conscription_factor = 0.10
+				industry_repair_factor = -0.10
+			}
+			
+			
+			
+			cancel_if_invalid = no
+		}
+		
+		slashandburn_cultivation = {  #刀耕火种
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = you_degree_of_social_development_no
+					always = no
+				}
+			}
+			
+			cost = 500
+			
+			removal_cost = -1
+			
+			modifier = {
+			    industrial_capacity_factory = -0.30
+				production_speed_buildings_factor = -0.20
+				global_building_slots_factor = -0.20
+				conscription_factor = 0.15
+				industry_repair_factor = -0.15
+			}
+			
+			
+			
+			cancel_if_invalid = no
+		}
+
+        Primitive_society = {  #原始社会
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = you_degree_of_social_development_no
+					always = no
+				}
+			}
+			
+			cost = 500
+			
+			removal_cost = -1
+			
+			modifier = {
+			    industrial_capacity_factory = -0.40
+				production_speed_buildings_factor = -0.30
+				global_building_slots_factor = -0.30
+				conscription_factor = 0.20
+				industry_repair_factor = -0.20
+			}
+			
+			
+			
+			cancel_if_invalid = no
+		}		
 	}
 	
-	Revenue_expenditure_laws = {  #政府运行    
+	Revenue_expenditure_laws = {  #政府效率    
 		law = yes
 		use_list_view = yes
 	
-		deficit_laws= {  #政令难行  
+		deficit_laws= {  #有条不紊  
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -516,6 +662,16 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    stability_factor = 0.20
+				political_power_factor = 0.10
+				political_advisor_cost_factor = -0.15
+				tank_manufacturer_cost_factor = -0.15
+	            naval_manufacturer_cost_factor = -0.15
+	            aircraft_manufacturer_cost_factor = -0.15
+	            materiel_manufacturer_cost_factor = -0.15
+	            industrial_concern_cost_factor = -0.15
+				research_speed_factor = 0.15
+				drift_defence_factor = 0.20
 			}
 			
 			
@@ -523,7 +679,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		savings_laws = {      #混乱之至
+		savings_laws = {      #稳定航行
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -536,6 +692,16 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    stability_factor = 0.10
+				political_power_factor = 0.05
+				political_advisor_cost_factor = -0.10
+				tank_manufacturer_cost_factor = -0.10
+	            naval_manufacturer_cost_factor = -0.10
+	            aircraft_manufacturer_cost_factor = -0.10
+	            materiel_manufacturer_cost_factor = -0.10
+	            industrial_concern_cost_factor = -0.10
+				research_speed_factor = 0.10
+				drift_defence_factor = 0.10 
 			}
 			
 			
@@ -543,7 +709,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		balance_laws = {   #瑕不掩瑜
+		balance_laws = {   #无伤大雅
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -556,6 +722,10 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    stability_factor = 0.05
+				political_power_factor = 0.05
+				research_speed_factor = 0.10
+				drift_defence_factor = 0.10
 			}
 			
 			default = yes
@@ -563,7 +733,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		Smooth_operation = {   #平稳运行
+		Smooth_operation = {   #差强人意
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -576,6 +746,16 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    stability_factor = -0.10
+				political_power_factor = -0.05
+				political_advisor_cost_factor = 0.10
+				tank_manufacturer_cost_factor = 0.10
+	            naval_manufacturer_cost_factor = 0.10
+	            aircraft_manufacturer_cost_factor = 0.10
+	            materiel_manufacturer_cost_factor = 0.10
+	            industrial_concern_cost_factor = 0.10
+				research_speed_factor = -0.10
+				drift_defence_factor = -0.10 
 			}
 			
 			
@@ -583,7 +763,7 @@ ideas = {
 			cancel_if_invalid = no
 		}
 		
-		Anarchy = {   #无政府状态
+		Anarchy = {   #政令难行
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -596,6 +776,16 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			    stability_factor = -0.20
+				political_power_factor = -0.10
+				political_advisor_cost_factor = 0.15
+				tank_manufacturer_cost_factor = 0.15
+	            naval_manufacturer_cost_factor = 0.15
+	            aircraft_manufacturer_cost_factor = 0.15
+	            materiel_manufacturer_cost_factor = 0.15
+	            industrial_concern_cost_factor = 0.15
+				research_speed_factor = -0.15
+				drift_defence_factor = -0.20
 			}
 			
 			
@@ -612,7 +802,17 @@ ideas = {
 		contention_hundred_schools_thought= {            #百家争鸣
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			   or = {
+		        NOT = { 
+				has_government = authoritarianism
+				has_government = despotism
+				has_government = esotericism
+				has_government = communism
+				has_government = totalitarianism
+				    }
+	            }
+			}
 			modifier = {
 				stability_factor = -0.08
 				research_speed_factor = 0.06
@@ -625,7 +825,17 @@ ideas = {
 		free_speech = {            #言论自由     
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			   or = {
+		        NOT = { 
+				has_government = despotism
+				has_government = esotericism
+				has_government = esotericism
+				has_government = communism
+				has_government = totalitarianism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = -0.04
 				research_speed_factor = 0.03
@@ -638,7 +848,16 @@ ideas = {
 		Authoritative_release = {        #权威发布
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = right_wing_anarchism
+				has_government = esotericism
+				has_government = left_wing_anarchism
+				has_government = populism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = 0.04
 				political_power_cost = -0.01
@@ -652,7 +871,15 @@ ideas = {
 		Cultural_review = {        #文化审查
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = right_wing_anarchism
+				has_government = left_wing_anarchism
+				has_government = populism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = 0.08
                 political_power_cost = -0.03
@@ -667,7 +894,17 @@ ideas = {
 		Acquit_oneself_words = {        #因言获罪
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = liberalism
+				has_government = right_wing_anarchism
+				has_government = left_wing_anarchism
+				has_government = populism
+				has_government = reformism
+				    }
+	            }
+			}
 			modifier = {
                stability_factor = 0.15
 			   drift_defence_factor = 0.1
@@ -688,7 +925,16 @@ ideas = {
 	    Civilself_determination = {        #民间自决
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			   or = {
+		        NOT = { 
+				has_government =  despotism
+				has_government =  authoritarianism
+				has_government =  esotericism
+				has_government = totalitarianism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = -0.08
 				conscription_factor = -0.04
@@ -703,7 +949,16 @@ ideas = {
 		Keep_watch_peace= {            #守望平安
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			   or = {
+		        NOT = { 
+				has_government =  authoritarianism
+				has_government =  despotism
+				has_government =  esotericism
+				has_government = totalitarianism
+				    }
+	            }
+			}
 			modifier = {
 				stability_factor = -0.10
 				conscription_factor = -0.08
@@ -718,7 +973,13 @@ ideas = {
 		Limited_supervision = {        #有限监察
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			   or = {
+		        NOT = { 
+				has_government =  esotericism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = -0.04
 				conscription_factor = 0.04
@@ -731,7 +992,13 @@ ideas = {
 		Special_rectification = {            #专项整治     
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government =  right_wing_anarchism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = 0.04
 				conscription_factor = 0.08
@@ -746,7 +1013,14 @@ ideas = {
 		Tosuppress_bandits = {        #进剿匪寇
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = right_wing_anarchism
+				has_government = left_wing_anarchism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = 0.08
 				conscription_factor = 0.04
@@ -762,7 +1036,15 @@ ideas = {
 		Better_errmiss = {        #宁错勿漏
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = liberalism
+				has_government = right_wing_anarchism
+				has_government = left_wing_anarchism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = 0.20
 				conscription_factor = -0.10
@@ -783,7 +1065,18 @@ ideas = {
 		equalitarianism= {            #平均主义
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = liberalism
+				has_government = authoritarianism
+				has_government = right_wing_anarchism
+				has_government = despotism
+				has_government = esotericism
+				has_government = reformism
+				    }
+	            }
+			}
 			modifier = {
 				stability_factor = 0.10
 				war_support_factor = 0.10
@@ -797,7 +1090,16 @@ ideas = {
 		Cradle_Paradise= {            #摇篮天堂
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = liberalism
+				has_government = right_wing_anarchism
+				has_government = despotism
+				has_government = esotericism
+				    }
+	            }
+			}
 			modifier = {
 				stability_factor = 0.20
 				consumer_goods_factor = 0.10
@@ -823,7 +1125,14 @@ ideas = {
 		Ladder_support = {        #公益减免
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = communism
+				has_government = left_wing_anarchism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = 0.04
 				war_support_factor = 0.04
@@ -837,7 +1146,14 @@ ideas = {
 		Minimum_relief = {        #最低救济
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = communism
+				has_government = left_wing_anarchism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = -0.04
 				war_support_factor = -0.04
@@ -851,7 +1167,17 @@ ideas = {
         emerge_itself_perish_itself = {        #自生自灭
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = authoritarianism
+				has_government = communism
+				has_government = left_wing_anarchism
+				has_government = totalitarianism
+				has_government = reformism
+				    }
+	            }
+			}
 			modifier = {
                 stability_factor = -0.08
 				war_support_factor = -0.04
@@ -871,7 +1197,15 @@ ideas = {
 		flowersbloom_together= {            #百花齐放
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government =  authoritarianism
+				has_government =  esotericism
+				has_government = totalitarianism
+				    }
+	            }
+			}
 			modifier = {
 				political_power_cost = -0.03
 				mobilization_laws_cost_factor = 0.20
@@ -885,7 +1219,14 @@ ideas = {
 		Literary_artistic_protection = {            #文艺保护     
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government =  esotericism
+				has_government = totalitarianism
+				    }
+	            }
+			}
 			modifier = {
                 political_power_cost = -0.01
 				mobilization_laws_cost_factor = 0.15
@@ -899,7 +1240,15 @@ ideas = {
 		Creation_redline = {        #创作红线
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = right_wing_anarchism
+				has_government = esotericism
+				has_government = left_wing_anarchism
+				    }
+	            }
+			}
 			modifier = {
 				mobilization_laws_cost_factor = 0.05
 	            trade_laws_cost_factor = 0.05
@@ -912,7 +1261,16 @@ ideas = {
 		blacklist = {        #黑名单
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = liberalism
+				has_government = right_wing_anarchism
+				has_government = esotericism
+				has_government = left_wing_anarchism
+				    }
+	            }
+			}
 			modifier = {
                 political_power_cost = 0.01
 				mobilization_laws_cost_factor = -0.15
@@ -927,7 +1285,16 @@ ideas = {
         Command_entertainment = {        #指令娱乐
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = liberalism
+				has_government = right_wing_anarchism
+				has_government = left_wing_anarchism
+				has_government = reformism
+				    }
+	            }
+			}
 			modifier = {
                 political_power_cost = 0.03
 				mobilization_laws_cost_factor = -0.20
@@ -942,7 +1309,17 @@ ideas = {
         Cancel_entertainment = {        #取消娱乐
 			cost = 150
 			removal_cost = -1
-			
+			available = {
+			 or = {
+		        NOT = { 
+				has_government = liberalism
+				has_government = right_wing_anarchism
+				has_government = communism
+				has_government = left_wing_anarchism
+				has_government = reformism
+				    }
+	            }
+			}
 			modifier = {
                 political_power_cost = -0.01
 				stability_factor = -0.06

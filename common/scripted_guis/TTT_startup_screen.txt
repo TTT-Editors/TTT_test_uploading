@@ -52,6 +52,7 @@ scripted_gui = {
 			
 			TTT_Age_Page_Button_click = {
 				set_variable = { TTT_opening_page = 2 }
+				set_variable = { TTT_Age_Page = 1 }
 			}
 			
 			TTT_Region_Page_Button_click = {
@@ -71,13 +72,13 @@ scripted_gui = {
 					}
 					add_to_variable = { TTT_Nation_Page = 1 }
 				}
-				#if = {
-				#	limit = {
-				#		#Age Page
-				#		check_variable = { TTT_opening_page = 3 }
-				#	}
-				#	add_to_variable = { TTT_Age_Page = 1 }
-				#}
+				if = {
+					limit = {
+						#Age Page
+						check_variable = { TTT_opening_page = 2 }
+					}
+					add_to_variable = { TTT_Age_Page = 1 }
+				}
 				else_if = {
 					limit = {
 						#Mod Page
@@ -95,13 +96,13 @@ scripted_gui = {
 					}
 					add_to_variable = { TTT_Nation_Page = -1 }
 				}
-				#if = {
-				#	limit = {
-				#		#Age Page
-				#		check_variable = { TTT_opening_page = 3 }
-				#	}
-				#	add_to_variable = { TTT_Age_Page = -1 }
-				#}
+				if = {
+					limit = {
+						#Age Page
+						check_variable = { TTT_opening_page = 2 }
+					}
+					add_to_variable = { TTT_Age_Page = -1 }
+				}
 				else_if = {
 					limit = {
 						#Mod Page
@@ -141,7 +142,6 @@ scripted_gui = {
 			TTT_Next_Page_visible = {
 				NOT = {
 					OR = {
-						check_variable = { TTT_opening_page = 2 }
 						check_variable = { TTT_opening_page = 3 }
 						AND = {
 							check_variable = { TTT_opening_page = 1 }
@@ -155,6 +155,10 @@ scripted_gui = {
 						check_variable = { TTT_Mod_Page < 5.5 }
 					}
 					AND = {
+						check_variable = { TTT_opening_page = 2 }
+						check_variable = { TTT_Age_Page < 6.5 }
+					}
+					AND = {
 						check_variable = { TTT_opening_page = 1 }
 						check_variable = { TTT_Nation_Page < 1.5 }
 						TTT_is_special_nation = yes
@@ -165,7 +169,6 @@ scripted_gui = {
 			TTT_Prev_Page_visible = {
 				NOT = {
 					OR = {
-						check_variable = { TTT_opening_page = 2 }
 						check_variable = { TTT_opening_page = 3 }
 						AND = {
 							check_variable = { TTT_opening_page = 1 }
@@ -174,6 +177,10 @@ scripted_gui = {
 					}
 				}
 				OR = {
+					AND = {
+						check_variable = { TTT_opening_page = 2 }
+						check_variable = { TTT_Age_Page > 1.5 }
+					}
 					AND = {
 						check_variable = { TTT_opening_page = 4 }
 						check_variable = { TTT_Mod_Page > 1.5 }

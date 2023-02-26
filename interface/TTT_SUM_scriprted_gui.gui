@@ -233,9 +233,19 @@ guiTypes = {
         size = { width = 200 height = 500 }
         position = { x = 100  y = 0 }
   		
-		instantTextBoxType = { #计划介绍
-			name = "SUM_Akasha_res_plan_title"
+		instantTextBoxType = { #长期计划介绍
+			name = "SUM_Akasha_res_long_plan_title"
 			position = { x = 250 y = 175 }
+			font = "TTT_special_font_desc"
+			text = "SUM_Akasha_res_long_plan_title_text"
+			maxHeight = 20
+			maxWidth = 430
+			fixedsize = yes
+			orientation = UPPER_LEFT
+		}
+		instantTextBoxType = { #短期计划介绍
+			name = "SUM_Akasha_res_short_plan_title"
+			position = { x = 250 y = 410 }
 			font = "TTT_special_font_desc"
 			text = "SUM_Akasha_res_plan_title_text"
 			maxHeight = 20
@@ -243,24 +253,46 @@ guiTypes = {
 			fixedsize = yes
 			orientation = UPPER_LEFT
 		}
-		instantTextBoxType = { #
+		instantTextBoxType = { #项目概览
 			name = "SUM_Akasha_res_plan_name_desc"
 			position = { x = 625 y = 155 }
-			font = "TTT_special_font_desc"
+			font = "TTT_special_font_title"
 			text = "SUM_Akasha_res_plan_name_desc_text"
 			maxHeight = 20
 			maxWidth = 430
 			fixedsize = yes
 			orientation = UPPER_LEFT
 		}
-		
-		
-		
-		
-		containerWindowType = { #研究项目
-			name = "SUM_res_button_container_window"
-			position = { x = 230 y = 196 }
-			size = { width = 300 height = 440 }
+		instantTextBoxType = { #长期研究项目介绍
+			name = "SUM_Akasha_res_long_plan_desc"
+			position = { x = 625 y = 200 }
+			font = "TTT_special_font_desc"
+			text = "SUM_Akasha_res_long_plan_desc_text"
+			maxHeight = 200
+			maxWidth = 460
+			fixedsize = yes
+			orientation = UPPER_LEFT
+		}
+		iconType = { #进度条
+            name = "SUM_Akasha_res_long_plan_progressbar"
+            position = { x = 600 y = 400 }
+            spriteType = "GFX_SUM_progressbar_1"
+        }
+		instantTextBoxType = { #长期研究项目进度
+			name = "SUM_Akasha_res_long_plan_progress"
+			position = { x = 625 y = 460 }
+			font = "TTT_special_font_desc"
+			text = "SUM_Akasha_res_long_plan_progress_text"
+			maxHeight = 200
+			maxWidth = 460
+			fixedsize = yes
+			orientation = UPPER_LEFT
+		}
+
+		containerWindowType = { #长期期研究项目
+			name = "SUM_res_long_button_container_window"
+			position = { x = 230 y = 200 }
+			size = { width = 300 height = 200 }
 			verticalScrollbar = "left_vertical_slider" 
 			margin = { top = 6 left = 30 bottom = 5 right = 0}
 			
@@ -268,9 +300,30 @@ guiTypes = {
 				name = "Background"
 				quadTextureSprite = "GFX_SUM_Aka_ui_background"
 			}
-			
+
 			gridBoxType = {
-				name = "SUM_Aka_res_button_gird"
+				name = "SUM_Aka_res_long_button_gird"
+				position = { x = 0 y = 0 }
+				size = { width = 1 height = 20 }
+				slotsize = { width = 0 height = 35 }
+				max_slots_horizontal = 1
+				add_horizontal = yes
+			}
+		}
+		containerWindowType = { #短期研究项目
+			name = "SUM_res_short_button_container_window"
+			position = { x = 230 y = 440 }
+			size = { width = 300 height = 240 }
+			verticalScrollbar = "left_vertical_slider" 
+			margin = { top = 6 left = 30 bottom = 5 right = 0}
+			
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_SUM_Aka_ui_background"
+			}
+
+			gridBoxType = {
+				name = "SUM_Aka_res_short_button_gird"
 				position = { x = 0 y = 0 }
 				size = { width = 1 height = 20 }
 				slotsize = { width = 0 height = 35 }
@@ -281,10 +334,10 @@ guiTypes = {
     }
 	
 	containerWindowType = {#girdbox使用模板
-		name = "SUM_res_button_window"
+		name = "SUM_res_long_button_window"
 		position = { x = 0 y = 0 }
 		buttonType = {
-			name = "SUM_res_button"
+			name = "SUM_res_long_button"
 			position = { x = 0 y = 0 }	
 			spriteType = "GFX_SUM_Akasha_gui_plan_button"
 			orientation = "UPPER_RIGHT"
@@ -292,10 +345,32 @@ guiTypes = {
 			
 		}
 		instantTextBoxType = { #
-			name = "SUM_Akasha_res_button_name"
+			name = "SUM_Akasha_res_short_button_name"
 			position = { x = 35 y = 3 }
 			font = "hoi_20bs"
-			text = "SUM_Akasha_res_button_name_text"
+			text = "SUM_Akasha_res_long_button_name_text"
+			maxHeight = 20
+			maxWidth = 200
+			fixedsize = yes
+			orientation = UPPER_LEFT
+		}
+	}
+	containerWindowType = {#girdbox使用模板
+		name = "SUM_res_short_button_window"
+		position = { x = 0 y = 0 }
+		buttonType = {
+			name = "SUM_res_short_button"
+			position = { x = 0 y = 0 }	
+			spriteType = "GFX_SUM_Akasha_gui_plan_button"
+			orientation = "UPPER_RIGHT"
+			clicksound = click_close
+			
+		}
+		instantTextBoxType = { #
+			name = "SUM_Akasha_res_short_button_name"
+			position = { x = 35 y = 3 }
+			font = "hoi_20bs"
+			text = "SUM_Akasha_res_short_button_name_text"
 			maxHeight = 20
 			maxWidth = 200
 			fixedsize = yes

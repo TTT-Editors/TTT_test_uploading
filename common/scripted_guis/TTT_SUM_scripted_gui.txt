@@ -273,33 +273,91 @@ scripted_gui = {
 			Akasha_info_Res = yes
 		}
 		effects = {
-			SUM_res_button_click = {
+			SUM_res_long_button_click = {
 				meta_effect = {
 				    text = {
-					    SUM_Aka_res_button_[index] = yes
+					    SUM_Aka_res_long_button_[index] = yes
 				    }
-				index = SUM_Aka_res_idx
+				index = SUM_Aka_res_long_idx
 			    }
-				add_political_power = 100
+			}
+			SUM_res_short_button_click = {
+				meta_effect = {
+				    text = {
+					    SUM_Aka_res_short_button_[index] = yes
+				    }
+				index = SUM_Aka_res_short_idx
+			    }
 			}
 		}
 		dynamic_lists = {
-			SUM_Aka_res_button_gird = {
-				array = SUM_Aka_res_available
+			SUM_Aka_res_long_button_gird = {
+				array = SUM_Aka_res_long_available
 				change_scope = no
-				entry_container = SUM_res_button_window
-				index = SUM_Aka_res_idx
+				entry_container = SUM_res_long_button_window
+				index = SUM_Aka_res_long_idx
+			}
+			SUM_Aka_res_short_button_gird = {
+				array = SUM_Aka_res_short_available
+				change_scope = no
+				entry_container = SUM_res_short_button_window
+				index = SUM_Aka_res_short_idx
 			}
 		}
 		triggers = {
-#			SUM_res_button_visible = {
+#			SUM_res_short_button_visible = {
 #				meta_trigger = {
 #					text = {
-#						SUM_Aka_res_button_tri_[index] = yes
+#						SUM_Aka_res_short_button_tri_[index] = yes
 #					}
-#					index = SUM_Aka_res_idx
+#					index = SUM_Aka_res_short_idx
 #				}
 #			}
+			SUM_Akasha_res_long_plan_progressbar_visible = {
+				OR = {
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 100
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 101
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 102
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 103
+					}
+				}
+			}
+			SUM_Akasha_res_long_plan_progress_visible = {
+				OR = {
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 100
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 101
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 102
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 103
+					}
+				}
+			}
+		}
+		properties = {
+			SUM_Akasha_res_long_plan_progressbar = {
+				frame = SUM_Akasha_res_long_plan_progress_var
+			}
 		}
 
     }

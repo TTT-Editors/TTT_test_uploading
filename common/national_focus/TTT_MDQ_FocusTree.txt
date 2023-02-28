@@ -623,7 +623,35 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            
+            white_peace = {
+                tag = QQR
+                message = while_peace_with_QQR_1
+            }
+            set_truce = {
+                target = QQR
+                days = 180
+            }
+            set_country_flag = MDQ_dadaupa_peace_flag
+            MOT = {add_to_faction = MDQ}
+            QQR = {
+                transfer_state = 285
+                transfer_state = 14
+                add_state_core = 285
+                add_state_core = 14
+            }
+            if = {
+                limit = {
+                    has_idea = MDQ_Endless_battle_1
+                }
+                remove_ideas = MDQ_Endless_battle_1
+            }
+            else_if = {
+                limit = {
+                    has_idea = MDQ_Endless_battle_2
+                }
+                remove_ideas = MDQ_Endless_battle_2
+            }
+            load_focus_tree = TTT_MDQ_focustree2
         }
     }
 
@@ -713,5 +741,662 @@ focus = {
         }
     }
 }
+#####################################################################################################################################
+##################################################################################################################################
+###紧急军区
+##################################################################################################################################
+##################################################################################################################################
+focus_tree = {
+	id = TTT_MDQ_focustree2
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = MDQ
+		}
+	}
+    ###国策名称：烽火长城
+focus = {
+    id = MDQ_The_Great_Wall_of_Beacon_Fire
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 1.0
+        
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_production_speed_bunker_factor = 0.15}
+            ###（建造堡垒速度+15%）
+        }
+    }
 
+
+###国策名称：终于稳定了
+focus = {
+    id = MDQ_Finally_stable
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 2.0
+        prerequisite = {
+            focus =MDQ_The_Great_Wall_of_Beacon_Fire
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.1
+            ###（稳定度+10%，解锁经济线，军事线，政治线）
+        }
+    }
+
+
+###国策名称：山区经济
+focus = {
+    id = MDQ_Mountainous_area_economy
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 3.0
+        prerequisite = {
+            focus =MDQ_Finally_stable
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###开始为期180日的经济重组任务，完成任务送稳定度+10%，建造速度+15%
+        }
+    }
+
+
+###国策名称：经济改革计划
+focus = {
+    id = MDQ_Economic_reform_plan
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_Mountainous_area_economy
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###开始经济改革决议：支付50政治点，每次持续20日，完成后需从生产效率+5%、工厂产出+5%、建筑速度+5%中选择一项
+        }
+    }
+
+
+###国策名称：缩减军事开支
+focus = {
+    id = MDQ_Cut_military_spending
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_Economic_reform_plan
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###适役人口-5%，特种部队数量上限+100%
+        }
+    }
+
+
+###国策名称：精简开支计划
+focus = {
+    id = MDQ_Cost-cutting_programme
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_Economic_reform_plan
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###经济法案切为前期动员，生活消费品消耗-5%
+        }
+    }
+
+
+###国策名称：居民外迁
+focus = {
+    id = MDQ_Outmigration
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 6.0
+        prerequisite = {
+            focus =MDQ_Cost-cutting_programme
+            focus =MDQ_Cut_military_spending
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###适役人口-5%，稳定度+5%，生产效率+10%
+        }
+    }
+
+
+###国策名称：开发南方矿石
+focus = {
+    id = MDQ_Develop_ore_in_south_China
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 7.0
+        prerequisite = {
+            focus =MDQ_Outmigration
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###军区营帐送3铁，1白铁，1电气水晶
+        }
+    }
+
+
+###国策名称：开发东方水资源
+focus = {
+    id = MDQ_Develop_water_resources_in_the_East
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 7.0
+        prerequisite = {
+            focus =MDQ_Outmigration
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###军区营帐，南风镇各增加2食物
+        }
+    }
+
+
+###国策名称：重连西方道路
+focus = {
+    id = MDQ_Reconnecting_the_Western_road
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 8.0
+        prerequisite = {
+            focus =MDQ_Develop_ore_in_south_China
+            focus =MDQ_Develop_water_resources_in_the_East
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###军区营帐基础设施+1级，能够用决议寻求更多帮助，比如送食物，送工厂等
+        }
+    }
+
+
+###国策名称：山区基建
+focus = {
+    id = MDQ_Construction_in_mountainous_areas
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 9.0
+        prerequisite = {
+            focus =MDQ_Reconnecting_the_Western_road
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###山区营帐基础设施等级+1，南风镇基础设施等级+2，建造速度+5%
+        }
+    }
+
+
+###国策名称：大后方生产运动
+focus = {
+    id = MDQ_The_production_movement_in_the_rear_area
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 10.0
+        prerequisite = {
+            focus =MDQ_Construction_in_mountainous_areas
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###军区营帐与南风镇各增加4建筑槽
+        }
+    }
+
+
+###国策名称：工业优先
+focus = {
+    id = MDQ_Industrial_priority
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 11.0
+        prerequisite = {
+            focus =MDQ_The_production_movement_in_the_rear_area
+        }
+        
+        cost = 140.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###军区营帐送3个军工，南风镇送2个军工
+        }
+    }
+
+
+###国策名称：农业优先
+focus = {
+    id = MDQ_Agricultural_priority
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 11.0
+        prerequisite = {
+            focus =MDQ_The_production_movement_in_the_rear_area
+        }
+        
+        cost = 140.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###军区营帐送4个民工，南风镇送2个民工
+        }
+    }
+
+
+###国策名称：靠山
+focus = {
+    id = MDQ_Backer
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 12.0
+        prerequisite = {
+            focus =MDQ_Industrial_priority
+            focus =MDQ_Agricultural_priority
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###政治点+200，稳定度+5%，人力增长+5%
+        }
+    }
+
+
+###国策名称：以逸待劳
+focus = {
+    id = MDQ_Wait_for_the_day
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_Rethinking_tactics
+        }
+        mutually_exclusive = {
+            focus =MDQ_Revolutionary_warfare
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###防御+10%，突破-5%
+        }
+    }
+
+
+###国策名称：攻防互换
+focus = {
+    id = MDQ_Exchange_of_attack_and_defense
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_Wait_for_the_day
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###“丘丘人部落”获得民族精神：军区的攻势，效果为：增援率-5%，陆军组织度-10%
+        }
+    }
+
+
+###国策名称：私掠者
+focus = {
+    id = MDQ_Privateer
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 6.0
+        prerequisite = {
+            focus =MDQ_Exchange_of_attack_and_defense
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###获得军事理论家：盗宝团，效果为：增援率+2%，缴获装备比例+5%
+        }
+    }
+
+
+###国策名称：反思战术
+focus = {
+    id = MDQ_Rethinking_tactics
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 3.0
+        prerequisite = {
+            focus =MDQ_Finally_stable
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###（获得陆军经验+100，2次 陆军理论耗费-50%）
+        }
+    }
+
+
+###国策名称：革新战法
+focus = {
+    id = MDQ_Revolutionary_warfare
+        icon = GFX_goal_unknown
+        x = 9.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_Rethinking_tactics
+        }
+        mutually_exclusive = {
+            focus =MDQ_Wait_for_the_day
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###（山地特种兵研究+100%
+        }
+    }
+
+
+###国策名称：翻新装备
+focus = {
+    id = MDQ_Retrofit
+        icon = GFX_goal_unknown
+        x = 9.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_Revolutionary_warfare
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###步兵装备杀伤力-20%，突破-10%，防御+15%，生产效率+10%，这个效果可以通过决议开关
+        }
+    }
+
+
+###国策名称：新建武库
+focus = {
+    id = MDQ_New_Arsenal
+        icon = GFX_goal_unknown
+        x = 9.0
+        y = 6.0
+        prerequisite = {
+            focus =MDQ_Retrofit
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###
+        }
+    }
+
+
+###国策名称：其人之道
+focus = {
+    id = MDQ_The_way_of_a_man
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 7.0
+        prerequisite = {
+            focus =MDQ_Privateer
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###进攻+10%，突破+5，战争支持度+5%，触发事件：“黑日之下，风声呼啸”
+        }
+    }
+
+
+###国策名称：达达乌帕军区的黎明
+focus = {
+    id = MDQ_Dawn_in_Dadaupa_military_district
+        icon = GFX_goal_unknown
+        x = 9.0
+        y = 7.0
+        prerequisite = {
+            focus =MDQ_New_Arsenal
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###防御+5%，突破+10%，战争支持度+5%，触发事件“黑日之下，风声呼啸”
+        }
+    }
+
+
+###国策名称：我们的靠山
+focus = {
+    id = MDQ_Our_backer
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 3.0
+        prerequisite = {
+            focus =MDQ_The_Great_Wall_of_Beacon_Fire
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###（可以跟蒙德索要更多东西，包括政治点、陆军经验、空军装备和民用工厂）
+        }
+    }
+
+
+###国策名称：致阿贝多先生……
+focus = {
+    id = MDQ_To_Abedo
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_Our_backer
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###（可以通过决议向雪山索要援助，援助的物件由雪山自行选择）
+        }
+    }
+
+
+###国策名称：我们的工厂
+focus = {
+    id = MDQ_Our_factory
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_To_Abedo
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###（军区营帐和南风镇获得5个建筑槽，送2个军工，军工、民工建造速度+20%）
+        }
+    }
+
+
+###国策名称：立起我们的旗帜！
+focus = {
+    id = MDQ_Raise_our_flag
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 6.0
+        prerequisite = {
+            focus =MDQ_Our_factory
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###（丘丘人和盗宝团获得效果：陆军组织度-10%）
+        }
+    }
+
+
+###国策名称：欢庆佳酿节
+focus = {
+    id = MDQ_Celebrate_the_wine_Festival
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 7.0
+        prerequisite = {
+            focus =MDQ_Raise_our_flag
+        }
+        
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            ###（触发事件：欢庆佳酿节）
+        }
+    }
+}
 

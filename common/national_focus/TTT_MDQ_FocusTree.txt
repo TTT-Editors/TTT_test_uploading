@@ -75,7 +75,11 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            custom_effect_tooltip = MDQ_Train_militia_tooltip       
+            custom_effect_tooltip = MDQ_Train_militia_tooltip
+            hidden_effect = {
+                remove_ideas = MDQ_Endless_battle_2
+                add_ideas = MDQ_Endless_battle_3
+            }
         }
     }
 
@@ -131,6 +135,7 @@ focus = {
                 uses = 2
                 category = industry
             }
+            add_war_support = 0.1
         }
     }
 
@@ -220,8 +225,8 @@ focus = {
         }
         completion_reward = {
             add_dynamic_modifier = {modifier = MDQ_the_warriors_of_dadaupa}
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_pocket_penalty = -0.2}
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_out_of_supply_factor = -0.1}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_pocket_penalty = -0.1}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_out_of_supply_factor = -0.05}
             custom_effect_tooltip = MDQ_Rejuvenate_the_warriors_of_dadaupa_tooltip
         }
         
@@ -251,8 +256,12 @@ focus = {
                 amount = 1000
                 producer = MDQ
             }
-            add_war_support = 0.1
+            hidden_effect = {
+                remove_ideas = MDQ_Endless_battle_3
+                add_ideas = MDQ_Endless_battle_4
+            }
             ##此处触发事件
+            country_event = {id =MDQ_event.4 days = 1}
             custom_effect_tooltip = MDQ_The_black_sun_rises_in_the_east_tooltip
         }
     }
@@ -303,7 +312,7 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_army_defence_factor = 0.1}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_army_defence_factor = 0.05}
             add_to_variable = {MDQ_the_warriors_of_dadaupa_army_speed_factor = 0.05}
             add_tech_bonus = {
                 bonus = 1
@@ -333,7 +342,7 @@ focus = {
         }
         completion_reward = {
             add_to_variable = {MDQ_the_warriors_of_dadaupa_production_factory_max_efficiency_factor = 0.05}
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_production_speed_buildings_factor = 0.1}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_production_speed_buildings_factor = 0.05}
             13 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -392,7 +401,6 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_breakthrough_factor = 0.05}
             add_to_variable = {MDQ_the_warriors_of_dadaupa_terrain_penalty_reduction = 0.15}
             custom_effect_tooltip = MDQ_Prudence_tooltip
         }
@@ -416,7 +424,7 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_air_mission_efficiency = 0.15}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_air_mission_efficiency = 0.10}
             add_ideas =MDQ_Integrated_investigation_of_open_space
             custom_effect_tooltip = MDQ_Integrated_investigation_of_open_space_tooltip
         }
@@ -468,7 +476,7 @@ focus = {
             ##民族精神：突击攻势
             add_timed_idea = {
                 idea = MDQ_Take_the_lead
-                days = 90
+                days = 300
             }
         }
     }
@@ -518,8 +526,7 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_war_support_weekly = -0.007}
-             add_to_variable ={MDQ_the_warriors_of_dadaupa_conscription_factor = 0.15}
+             add_to_variable ={MDQ_the_warriors_of_dadaupa_conscription_factor = 0.1}
              add_to_variable ={MDQ_the_warriors_of_dadaupa_army_attack_factor = 0.1}
              custom_effect_tooltip = MDQ_The_edge_is_clear_tooltip
         }   
@@ -543,10 +550,10 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-             add_to_variable ={MDQ_the_warriors_of_dadaupa_army_org_regain = 0.05}
-              add_to_variable ={MDQ_the_warriors_of_dadaupa_out_of_supply_factor = -0.2}
-               add_to_variable ={MDQ_the_warriors_of_dadaupa_army_speed_factor = 0.1}
-               custom_effect_tooltip = MDQ_The_finally_yell_tooltip
+            add_to_variable ={MDQ_the_warriors_of_dadaupa_army_org_regain = 0.05}
+            add_to_variable ={MDQ_the_warriors_of_dadaupa_out_of_supply_factor = -0.1}
+            add_to_variable ={MDQ_the_warriors_of_dadaupa_army_speed_factor = 0.05}
+            custom_effect_tooltip = MDQ_The_finally_yell_tooltip
         }
     }
 
@@ -629,7 +636,7 @@ focus = {
             }
             set_truce = {
                 target = QQR
-                days = 180
+                days = 270
             }
             set_country_flag = MDQ_dadaupa_peace_flag
             MOT = {add_to_faction = MDQ}
@@ -763,7 +770,7 @@ focus = {
         y = 1.0
         
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -771,6 +778,7 @@ focus = {
         }
         completion_reward = {
             add_to_variable = {MDQ_the_warriors_of_dadaupa_production_speed_bunker_factor = 0.15}
+            custom_effect_tooltip = MDQ_The_Great_Wall_of_Beacon_Fire_tooltip
             ###（建造堡垒速度+15%）
         }
     }
@@ -786,7 +794,7 @@ focus = {
             focus =MDQ_The_Great_Wall_of_Beacon_Fire
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -809,13 +817,14 @@ focus = {
             focus =MDQ_Finally_stable
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
+            add_timed_idea = { idea = MDQ_Economic_refrom days = 180 }
             ###开始为期180日的经济重组任务，完成任务送稳定度+10%，建造速度+15%
         }
     }
@@ -831,14 +840,15 @@ focus = {
             focus =MDQ_Mountainous_area_economy
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###开始经济改革决议：支付50政治点，每次持续20日，完成后需从生产效率+5%、工厂产出+5%、建筑速度+5%中选择一项
+            ###开始经济改革决议：支付50政治点，每次持续20日，完成后需从生产效率+5%、工厂产出+5%、建筑速度+5%中随机选择一项
+            unlock_decision_tooltip = MDQ_dadaupa_War_decision_3
         }
     }
 
@@ -853,21 +863,36 @@ focus = {
             focus =MDQ_Economic_reform_plan
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###适役人口-5%，特种部队数量上限+100%
+            transfer_dynamic_modifiers = yes
+            add_to_variable = {MDQ_military_reform_conscription_factor =-0.05}
+            add_to_variable = {MDQ_military_reform_special_forces_cap = 0.5}
+            ###适役人口-5%，特种部队数量上限+50%
+            if = {
+                limit = {
+                    has_dynamic_modifier = {
+                        modifier =MDQ_the_warriors_of_dadaupa
+                    }
+                }
+                custom_effect_tooltip =MDQ_Cut_military_spending_tooltip_1
+            }
+            else_if = {
+                custom_effect_tooltip =MDQ_Cut_military_spending_tooltip_2
+            }
+            
         }
     }
 
 
 ###国策名称：精简开支计划
 focus = {
-    id = MDQ_Cost-cutting_programme
+    id = MDQ_Cost_cutting_programme
         icon = GFX_goal_unknown
         x = 3.0
         y = 5.0
@@ -875,14 +900,28 @@ focus = {
             focus =MDQ_Economic_reform_plan
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
+            transfer_dynamic_modifiers = yes
             ###经济法案切为前期动员，生活消费品消耗-5%
+            add_ideas = low_economic_mobilisation
+            add_to_variable = {MDQ_military_reform_consumer_goods_factor = -0.05}
+            if = {
+                limit = {
+                    has_dynamic_modifier = {
+                        modifier =MDQ_the_warriors_of_dadaupa
+                    }
+                }
+                custom_effect_tooltip =MDQ_Cost_cutting_programme_tooltip_1
+            }
+            else_if = {
+                custom_effect_tooltip =MDQ_Cost_cutting_programme_tooltip_2
+            }
         }
     }
 
@@ -894,18 +933,22 @@ focus = {
         x = 2.0
         y = 6.0
         prerequisite = {
-            focus =MDQ_Cost-cutting_programme
+            focus =MDQ_Cost_cutting_programme
+        }
+        prerequisite = {
             focus =MDQ_Cut_military_spending
         }
-        
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###适役人口-5%，稳定度+5%，生产效率+10%
+            ###适役人口-5%，稳定度+10%
+            add_to_variable = {MDQ_military_reform_conscription_factor =-0.05}
+            add_stability = 0.1
+            custom_effect_tooltip = MDQ_Outmigration_tooltip
         }
     }
 
@@ -920,14 +963,31 @@ focus = {
             focus =MDQ_Outmigration
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###军区营帐送3铁，1白铁，1电气水晶
+            ###军区营帐送30铁，10白铁，10电气水晶
+            ##南风镇：399
+            ##军区营帐：13
+            add_resource = {
+                type = coal
+                amount = 30
+                state = 13
+            }
+            add_resource = {
+                type = steel
+                amount = 50
+                state = 13
+            }
+            add_resource = {
+                type = chromium
+                amount = 50
+                state = 13
+            }
         }
     }
 
@@ -942,14 +1002,24 @@ focus = {
             focus =MDQ_Outmigration
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###军区营帐，南风镇各增加2食物
+            ###军区营帐，南风镇各增加20食物
+            add_resource = {
+                type = grain
+                amount = 20
+                state = 13
+            }
+            add_resource = {
+                type = grain
+                amount = 20
+                state = 399
+            }
         }
     }
 
@@ -961,11 +1031,12 @@ focus = {
         x = 2.0
         y = 8.0
         prerequisite = {
-            focus =MDQ_Develop_ore_in_south_China
             focus =MDQ_Develop_water_resources_in_the_East
         }
-        
-        cost = 70.0
+        prerequisite = {
+            focus =MDQ_Develop_ore_in_south_China
+        }
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -973,6 +1044,17 @@ focus = {
         }
         completion_reward = {
             ###军区营帐基础设施+1级，能够用决议寻求更多帮助，比如送食物，送工厂等
+            13 = {
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
         }
     }
 
@@ -987,14 +1069,27 @@ focus = {
             focus =MDQ_Reconnecting_the_Western_road
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###山区营帐基础设施等级+1，南风镇基础设施等级+2，建造速度+5%
+            ###南风镇基础设施等级+1，建造速度+5%
+           399 = {
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            add_to_variable = {MDQ_military_reform_production_speed_buildings_factor=0.05}
+            custom_effect_tooltip = MDQ_Construction_in_mountainous_areas_tooltip
         }
     }
 
@@ -1009,7 +1104,7 @@ focus = {
             focus =MDQ_Construction_in_mountainous_areas
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1017,6 +1112,21 @@ focus = {
         }
         completion_reward = {
             ###军区营帐与南风镇各增加4建筑槽
+            13 = {
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =4
+            }
+            399={
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =4
+            }
+            
         }
     }
 
@@ -1031,7 +1141,7 @@ focus = {
             focus =MDQ_The_production_movement_in_the_rear_area
         }
         
-        cost = 140.0
+        cost =70.0
         available = { 
         }
         ai_will_do = {
@@ -1039,6 +1149,30 @@ focus = {
         }
         completion_reward = {
             ###军区营帐送3个军工，南风镇送2个军工
+            13 = {
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =3
+                add_building_construction = {
+                    type = arms_factory
+                    level = 3
+                    instant_build = yes
+                }
+            }
+            399 = {
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =2
+                add_building_construction = {
+                    type = arms_factory
+                    level = 2
+                    instant_build = yes
+                }
+            }
         }
     }
 
@@ -1053,7 +1187,7 @@ focus = {
             focus =MDQ_The_production_movement_in_the_rear_area
         }
         
-        cost = 140.0
+        cost =70.0
         available = { 
         }
         ai_will_do = {
@@ -1061,6 +1195,30 @@ focus = {
         }
         completion_reward = {
             ###军区营帐送4个民工，南风镇送2个民工
+            13 = {
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =4
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 4
+                    instant_build = yes
+                }
+            }
+            399 = {
+                trigger= {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =2
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 2
+                    instant_build = yes
+                }
+            }
         }
     }
 
@@ -1073,10 +1231,11 @@ focus = {
         y = 12.0
         prerequisite = {
             focus =MDQ_Industrial_priority
+        }
+        prerequisite = {
             focus =MDQ_Agricultural_priority
         }
-        
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1084,6 +1243,10 @@ focus = {
         }
         completion_reward = {
             ###政治点+200，稳定度+5%，人力增长+5%
+            add_to_variable = {MDQ_military_reform_monthly_population = 0.05}
+            add_stability = 0.05
+            add_political_power = 200
+            custom_effect_tooltip = MDQ_Backer_tooltip
         }
     }
 
@@ -1100,14 +1263,28 @@ focus = {
         mutually_exclusive = {
             focus =MDQ_Revolutionary_warfare
         }
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
+            transfer_dynamic_modifiers = yes
+            add_to_variable ={MDQ_military_reform_army_defence_factor = 0.1}
+            add_to_variable ={MDQ_military_reform_breakthrough_factor = -0.05}
             ###防御+10%，突破-5%
+            if = {
+                limit = {
+                    has_dynamic_modifier = {
+                        modifier =MDQ_the_warriors_of_dadaupa
+                    }
+                }
+                custom_effect_tooltip =MDQ_Wait_for_the_day_tooltip_1
+            }
+            else_if = {
+                custom_effect_tooltip =MDQ_Wait_for_the_day_tooltip_2
+            }
         }
     }
 
@@ -1122,13 +1299,16 @@ focus = {
             focus =MDQ_Wait_for_the_day
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
+            QQR = {
+                add_ideas = MDQ_dadawupa_military_goverment_offensive
+            }
             ###“丘丘人部落”获得民族精神：军区的攻势，效果为：增援率-5%，陆军组织度-10%
         }
     }
@@ -1144,7 +1324,7 @@ focus = {
             focus =MDQ_Exchange_of_attack_and_defense
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1166,7 +1346,7 @@ focus = {
             focus =MDQ_Finally_stable
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1174,6 +1354,12 @@ focus = {
         }
         completion_reward = {
             ###（获得陆军经验+100，2次 陆军理论耗费-50%）
+            army_experience = 100
+            add_tech_bonus = {
+                bonus = 0.5
+                uses = 2
+                category = land_doctrine
+            }
         }
     }
 
@@ -1190,14 +1376,19 @@ focus = {
         mutually_exclusive = {
             focus =MDQ_Wait_for_the_day
         }
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###（山地特种兵研究+100%
+            ###（山地特种兵研究+100%)
+            add_tech_bonus = {
+                bonus = 1
+                uses = 1
+                category = mountaineers_tech
+            }
         }
     }
 
@@ -1212,7 +1403,7 @@ focus = {
             focus =MDQ_Revolutionary_warfare
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1220,6 +1411,7 @@ focus = {
         }
         completion_reward = {
             ###步兵装备杀伤力-20%，突破-10%，防御+15%，生产效率+10%，这个效果可以通过决议开关
+            unlock_decision_tooltip = MDQ_dadaupa_War_decision_7
         }
     }
 
@@ -1234,14 +1426,14 @@ focus = {
             focus =MDQ_Retrofit
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###
+            ###获得加装备的决议
         }
     }
 
@@ -1256,14 +1448,18 @@ focus = {
             focus =MDQ_Privateer
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###进攻+10%，突破+5，战争支持度+5%，触发事件：“黑日之下，风声呼啸”
+            add_to_variable = {MDQ_military_reform_army_attack_factor = 0.1}
+            add_war_support = 0.05
+            custom_effect_tooltip = MDQ_The_way_of_a_man_tooltip
+            ###进攻+10%，战争支持度+5%，触发事件：“黑日之下，风声呼啸”\
+            country_event = {id =MDQ_event.2 days = 1}
         }
     }
 
@@ -1278,14 +1474,29 @@ focus = {
             focus =MDQ_New_Arsenal
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###防御+5%，突破+10%，战争支持度+5%，触发事件“黑日之下，风声呼啸”
+            transfer_dynamic_modifiers = yes
+            add_to_variable = {MDQ_military_reform_army_defence_factor = 0.1}
+            add_war_support = 0.05
+            if = {
+                limit = {
+                    has_dynamic_modifier = {
+                        modifier =MDQ_the_warriors_of_dadaupa
+                    }
+                }
+                custom_effect_tooltip =MDQ_Dawn_in_Dadaupa_military_district_tooltip_1
+            }
+            else_if = {
+                custom_effect_tooltip =MDQ_Dawn_in_Dadaupa_military_district_tooltip_2
+            }
+            ###防御+10%，战争支持度+5%，触发事件“黑日之下，风声呼啸”
+            country_event = {id =MDQ_event.2 days = 1}
         }
     }
 
@@ -1300,7 +1511,7 @@ focus = {
             focus =MDQ_The_Great_Wall_of_Beacon_Fire
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1308,6 +1519,8 @@ focus = {
         }
         completion_reward = {
             ###（可以跟蒙德索要更多东西，包括政治点、陆军经验、空军装备和民用工厂）
+            unlock_decision_category_tooltip = MDQ_ask_for_help_from_others_decision_category
+            unlock_decision_tooltip = MDQ_ask_for_help_from_others_decision_1
         }
     }
 
@@ -1322,7 +1535,7 @@ focus = {
             focus =MDQ_Our_backer
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1330,6 +1543,7 @@ focus = {
         }
         completion_reward = {
             ###（可以通过决议向雪山索要援助，援助的物件由雪山自行选择）
+            unlock_decision_tooltip = MDQ_ask_for_help_from_others_decision_2
         }
     }
 
@@ -1344,14 +1558,38 @@ focus = {
             focus =MDQ_To_Abedo
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            ###（军区营帐和南风镇获得5个建筑槽，送2个军工，军工、民工建造速度+20%）
+            ###（军区营帐和南风镇获得5个建筑槽，送2个军工）
+            399 = {
+                trigger= {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =5
+                add_building_construction = {
+                    type = arms_factory
+                    level = 2
+                    instant_build = yes
+                }
+            }
+            13 = {
+                trigger = {
+                    is_controlled_by =MDQ
+                    is_core_of = MDQ
+                }
+                add_extra_state_shared_building_slots =5
+                add_building_construction = {
+                    type = arms_factory
+                    level = 2
+                    instant_build = yes
+                }
+            }
         }
     }
 
@@ -1366,7 +1604,7 @@ focus = {
             focus =MDQ_Our_factory
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1374,6 +1612,9 @@ focus = {
         }
         completion_reward = {
             ###（丘丘人和盗宝团获得效果：陆军组织度-10%）
+            QQR = {
+                add_ideas = MDQ_dadawupa_military_goverment_high_orgnization
+            }
         }
     }
 
@@ -1388,7 +1629,7 @@ focus = {
             focus =MDQ_Raise_our_flag
         }
         
-        cost = 70.0
+        cost = 35.0
         available = { 
         }
         ai_will_do = {
@@ -1396,6 +1637,218 @@ focus = {
         }
         completion_reward = {
             ###（触发事件：欢庆佳酿节）
+            country_event = {id =MDQ_event.3 days = 1}
+        }
+    }
+
+    ###国策名称：我们是风的子民…
+focus = {
+    id = MDQ_The_second_dadawupa_war_1
+        icon = GFX_goal_unknown
+        x = 14.0
+        y = 1.0
+        cost = 7
+        
+        trigger = {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：我们是人民的剑盾…
+focus = {
+    id = MDQ_The_second_dadawupa_war_2
+        icon = GFX_goal_unknown
+        x = 14.0
+        y = 2.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_1
+        }
+        
+        cost = 7
+        trigger = {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：我们是神明的骄傲…
+focus = {
+    id = MDQ_The_second_dadawupa_war_3
+        icon = GFX_goal_unknown
+        x = 14.0
+        y = 3.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_2
+        }
+        
+        cost = 7
+        
+        trigger= {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：我们是狮子般的雄兵…
+focus = {
+    id = MDQ_The_second_dadawupa_war_4
+        icon = GFX_goal_unknown
+        x = 14.0
+        y = 4.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_3
+        }
+        
+        cost = 7
+        
+        trigger = {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：…孩子们，莫害怕
+focus = {
+    id = MDQ_The_second_dadawupa_war_5
+        icon = GFX_goal_unknown
+        x = 13.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_4
+        }
+        
+        cost = 7
+        
+        trigger= {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：…妈妈们，莫悲伤
+focus = {
+    id = MDQ_The_second_dadawupa_war_6
+        icon = GFX_goal_unknown
+        x = 15.0
+        y = 5.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_4
+        }
+        
+        cost = 7
+        
+        trigger= {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：你们的英雄就要出现在战场上！
+focus = {
+    id = MDQ_The_second_dadawupa_war_7
+        icon = GFX_goal_unknown
+        x = 14.0
+        y = 6.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_5
+            focus =MDQ_The_second_dadawupa_war_6
+        }
+        
+        cost =7
+        
+        trigger= {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：若我于血泊之中气绝身亡…
+focus = {
+    id = MDQ_The_second_dadawupa_war_8
+        icon = GFX_goal_unknown
+        x = 14.0
+        y = 7.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_7
+        }
+        
+        cost = 7
+        
+        trigger= {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
+        }
+    }
+
+
+###国策名称：…我会化作蒲公英盛放在草原之上
+focus = {
+    id = MDQ_The_second_dadawupa_war_9
+        icon = GFX_goal_unknown
+        x = 14.0
+        y = 8.0
+        prerequisite = {
+            focus =MDQ_The_second_dadawupa_war_8
+        }
+        
+        cost = 7
+        
+        trigger= {
+            has_country_flag =MDQ_second_dadaupa_War_flag
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            
         }
     }
 }

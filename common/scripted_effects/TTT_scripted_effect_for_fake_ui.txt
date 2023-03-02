@@ -638,12 +638,6 @@ recalculate_button_values = {
 		set_variable = { liyue_button_frames^4 = 2 }
 	}
 	else = {
-		limit = {
-			OR = {
-				check_variable = { liyue_region_frames^ttt_ui_region_selection = 4 }
-				check_variable = { liyue_region_frames^ttt_ui_region_selection = 5 }
-			}
-		}
 		set_variable = { liyue_button_frames^5 = 2 }
 		set_variable = { liyue_button_frames^6 = 2 }
 	}
@@ -652,9 +646,16 @@ recalculate_button_values = {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+#marked states
+#shamelessly steal from Kaiserreich
 
-#for buttons
-tlcw_button_1_click_effect = {
+set_marked_states = {
+	every_state = {
+		if = {
+			limit = { is_in_array = { liyue_marked_states = THIS } }
+			remove_from_array = { liyue_marked_states = THIS }
+		}
+	}
 	if = {
 		limit = {
 			check_variable = { ttt_ui_region_selection = 1 }
@@ -662,9 +663,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_one_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -674,9 +674,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_two_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -686,9 +685,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_three_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -698,9 +696,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_four_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -710,9 +707,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_five_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -722,9 +718,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_seven_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -734,9 +729,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_eight_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -746,9 +740,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_nine_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -758,9 +751,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_ten_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -770,9 +762,8 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_eleven_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
 	else_if = {
@@ -782,134 +773,40 @@ tlcw_button_1_click_effect = {
 		every_state = {
 			limit = {
 				is_liyue_region_twelve_states = yes
-				NOT = { is_controlled_by = ROOT }
 			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+			add_to_array = { liyue_marked_states = THIS }
 		}
+	}
+	log = "[GetDateText]: [Root.liyue_marked_states^0]: Liyue_Region_has_been_marked"
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+#for buttons
+tlcw_button_1_click_effect = {
+	every_state = {
+		limit = {
+			is_in_array = { liyue_marked_states = THIS }
+			NOT = { is_controlled_by = ROOT }
+		}
+		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
 	}
 }
 
-
 tlcw_button_2_click_effect = {
-	if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 1 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_one_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
+	every_state = {
+		limit = { is_in_array = { liyue_marked_states = THIS } }
+		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
 	}
-	else_if = {
+}
+
+tlcw_button_3_click_effect = {
+	every_state = {
 		limit = {
-			check_variable = { ttt_ui_region_selection = 2 }
+			is_in_array = { liyue_marked_states = THIS }
+			is_controlled_by = ROOT
 		}
-		every_state = {
-			limit = {
-				is_liyue_region_two_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 3 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_three_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 4 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_four_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 5 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_five_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 7 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_seven_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 8 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_eight_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 9 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_nine_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 10 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_ten_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 11 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_eleven_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = { ttt_ui_region_selection = 12 }
-		}
-		every_state = {
-			limit = {
-				is_liyue_region_twelve_states = yes
-			}
-			add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
-		}
+		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_3 days = 45 }
 	}
 }

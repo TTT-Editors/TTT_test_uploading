@@ -810,3 +810,56 @@ tlcw_button_3_click_effect = {
 		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_3 days = 45 }
 	}
 }
+
+tlcw_button_4_click_effect = {
+	every_state = {
+		limit = {
+			is_in_array = { liyue_marked_states = THIS }
+			is_controlled_by = ROOT
+		}
+		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_4 days = 45 }
+	}
+}
+
+tlcw_button_5_click_effect = {
+	every_state = {
+		limit = {
+			is_in_array = { liyue_marked_states = THIS }
+			is_controlled_by = ROOT
+		}
+		ROOT = { 	
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 100
+	        }		
+		}
+	}
+}
+
+tlcw_button_6_click_effect = {
+	if = {
+		limit = {
+			NOT = { has_template = "民兵" }
+		}
+		division_template = {
+			name = "民兵"
+			priority = 2
+			is_locked = yes
+			division_names_group = LYU_INF_03
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+			}
+		}
+	}
+	every_state = {
+		limit = { is_in_array = { liyue_marked_states = THIS } }
+		create_unit = {
+			division = "division_template = \"民兵\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
+			owner = ROOT
+			count = 2
+		}
+	}
+}

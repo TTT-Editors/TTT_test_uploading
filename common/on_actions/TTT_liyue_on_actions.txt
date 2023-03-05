@@ -34,4 +34,66 @@ on_actions = {
 			}			
 		}	
 	}
+	on_weekly_LYU = {
+		effect = {
+			#检测天平平衡度
+			if = {
+				limit = {
+					check_variable = { Keqing_Alioth  > Ningguang_Tianquan_Star}
+					has_country_flag = Liyue_crisis
+				}
+				set_country_flag = Keqing_Dominant
+                clr_country_flag = Ningguang_Dominant
+                clr_country_flag = Ningguang_Keqing_balance				
+			}
+            else_if = {
+			limit = {
+				check_variable = { Ningguang_Tianquan_Star  > Keqing_Alioth}
+				has_country_flag = Liyue_crisis
+			}
+			clr_country_flag = Keqing_Dominant
+            set_country_flag = Ningguang_Dominant
+            clr_country_flag = Ningguang_Keqing_balance
+		    }
+            else_if = {
+			limit = {
+			    has_country_flag = Liyue_crisis
+				AND = {
+			    check_variable = {
+				var = Ningguang_Tianquan_Star
+				value = 60
+				compare = less_than_or_equals
+			        }
+			    check_variable = {
+				var = Ningguang_Tianquan_Star
+				value = 40
+				compare = greater_than
+			        }
+				check_variable = {
+				var = Keqing_Alioth
+				value = 60
+				compare = less_than_or_equals
+			        }
+			    check_variable = {
+				var = Keqing_Alioth
+				value = 40
+				compare = greater_than
+			        }
+				}
+			}
+			clr_country_flag = Keqing_Dominant
+            clr_country_flag = Ningguang_Dominant
+            set_country_flag = Ningguang_Keqing_balance
+		    }			
+		}	
+	}z
+	on_weekly = {
+        effect = {
+			if = {
+				limit = { has_variable = ttt_liyue_civil_war_decision_ui_dirty }
+				recalculate_region_values = yes
+				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
+			}
+        }
+	}
 }

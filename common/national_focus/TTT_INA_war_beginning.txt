@@ -197,27 +197,119 @@ focus_tree ={
 				KUJ = {load_oob = "KUJ"}
 				if = { 
 					limit = {has_country_flag = KUJ_get_weapons}
-					add_equipment_to_stockpile = {
-						type = infantry_equipment 
-						amount = 1000
+					KUJ = {
+					    add_equipment_to_stockpile = {
+							type = infantry_equipment 
+							amount = 1000
 						}
 						add_equipment_to_stockpile = {
-						type = support_equipment
-						amount = 100
+							type = support_equipment
+							amount = 100
 						}
 						add_equipment_to_stockpile = {
-						type = artillery_equipment 
-						amount = 500
+							type = artillery_equipment 
+							amount = 500
 						}
 						add_equipment_to_stockpile = {
-						type = ttt_uniform_eq
-						amount = 400
+							type = ttt_uniform_eq
+							amount = 400
 						}
 						add_equipment_to_stockpile = {
-						type = grain_conversion_eq
-						amount = 1000
+							type = grain_conversion_eq
+							amount = 1000
 						}
+					}
 			    }
+				if = {
+					limit = {has_variable = KUJ_wapons_are_stolen}
+					multiply_variable = { KUJ_wapons_are_stolen = -400}
+					KUJ = {
+                        add_equipment_to_stockpile = {
+							type = infantry_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -400}
+					multiply_variable = { KUJ_wapons_are_stolen = -40}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = support_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -40}
+					multiply_variable = { KUJ_wapons_are_stolen = -500}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = artillery_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -500}
+					multiply_variable = { KUJ_wapons_are_stolen = -80}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = ttt_uniform_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -80}
+					multiply_variable = { KUJ_wapons_are_stolen = -400}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = grain_conversion_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -400}
+					multiply_variable = { KUJ_wapons_are_stolen = 400}
+					SNA = {
+                        add_equipment_to_stockpile = {
+							type = infantry_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 400}
+					multiply_variable = { KUJ_wapons_are_stolen = 40}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = support_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 40}
+					multiply_variable = { KUJ_wapons_are_stolen = 500}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = artillery_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 500}
+					multiply_variable = { KUJ_wapons_are_stolen = 80}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = ttt_uniform_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 80}
+					multiply_variable = { KUJ_wapons_are_stolen = 400}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = grain_conversion_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+				}
 			 }
           }
 	   }

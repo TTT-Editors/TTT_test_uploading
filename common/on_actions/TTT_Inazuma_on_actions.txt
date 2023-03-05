@@ -52,44 +52,42 @@ on_actions =
 	on_war = {
 	effect = {
 	#九条家获得精锐部队
-	if = 
-		{
+	if = {
 		limit = {
 			NOT = { has_template = "精锐足轻" }
 			has_country_flag = INA_Jiutiaojia_Elite_test
 			original_tag = KUJ
-		}
-	}
-            KUJ = {			
-		    division_template = {
-					name = "精锐足轻"
-					priority = 2
-					is_locked = no
-					division_names_group = KUJ_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-		                infantry = { x = 0 y = 1 }
-		                infantry = { x = 0 y = 2 }
-		                infantry = { x = 0 y = 3 }
-		                infantry = { x = 0 y = 4 }
-		                infantry = { x = 1 y = 0 }
-		                infantry = { x = 1 y = 1 }
-		                artillery_brigade  = { x = 2 y = 1 }
-		                artillery_brigade  = { x = 2 y = 0 }
+			KUJ = {			
+				division_template = {
+						name = "精锐足轻"
+						priority = 2
+						is_locked = no
+						division_names_group = KUJ_INF_01
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 0 y = 4 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							artillery_brigade  = { x = 2 y = 1 }
+							artillery_brigade  = { x = 2 y = 0 }
+						}
+					}
+					random_state = {
+						limit = {
+						is_core_of = KUJ
+						 }
+						create_unit = {
+						division = "division_template = \"精锐足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = KUJ
+						count = 3
 					}
 				}
-			}
-				random_state = {
-				    limit = {
-			        is_core_of = KUJ
-		             }
-					create_unit = {
-					division = "division_template = \"精锐足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
-					owner = KUJ
-					count = 3
-				}
-		    }
+	     	}
 		}
+	}
 	}
 	on_war = {
 	effect = {

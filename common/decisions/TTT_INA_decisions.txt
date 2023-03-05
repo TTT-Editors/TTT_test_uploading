@@ -416,7 +416,7 @@ INA_war_beginning = {
 		}
 		
 		visible = {
-		   #has_completed_focus = INA_WAR_BEG_6 
+		   has_completed_focus = INA_WAR_BEG_6 
 		}
 		available = {
 		   INA_scripted_tiggers = yes
@@ -462,7 +462,7 @@ INA_war_beginning = {
 		}
 		
 		visible = {
-		   #has_completed_focus = INA_WAR_BEG_7
+		   has_completed_focus = INA_WAR_BEG_7
 		}
 		available = {
 		   command_power < 49
@@ -508,7 +508,7 @@ INA_war_beginning = {
 		}
 		
 		visible = {
-		    #has_completed_focus = INA_WAR_BEG_2
+		    has_completed_focus = INA_WAR_BEG_2
 		}
 		available = {
 		   INA_scripted_tiggers = yes
@@ -553,7 +553,7 @@ INA_war_beginning = {
 		}
 		
 		visible = {
-		   #has_completed_focus = INA_WAR_BEG_4
+		   has_completed_focus = INA_WAR_BEG_4
 		}
 		
 		available = {
@@ -593,7 +593,7 @@ INA_war_beginning = {
 		}
 		
 		visible = {
-		   #has_completed_focus = INA_WAR_BEG_5 
+		   has_completed_focus = INA_WAR_BEG_5 
 		}
 		
 		available = { 
@@ -624,6 +624,7 @@ INA_war_beginning = {
 	INA_Declare_war = {     
 		activation = {
 			INA_triggers_Declare_war = yes
+			NOT = {SNA = {has_War_with = KUJ}}
 		}
 		available = {
 			always = no
@@ -655,6 +656,77 @@ INA_war_beginning = {
 			}
 			clr_country_flag = INA_34_flag
 			SNA = {clr_country_flag = INA_34_flag}
+			KUJ = 
+			{
+				if = {
+					limit = {
+						has_country_flag = INA_Compulsory_conscription_budui
+						NOT = { has_template = "足轻" }
+						original_tag = KUJ
+					}
+					KUJ = {				
+					 division_template = {
+						name = "足轻"
+						priority = 2
+						is_locked = no
+						division_names_group = INA_INF_01
+						regiments = {
+							militia = { x = 0 y = 0 }
+							militia = { x = 0 y = 1 }
+							militia = { x = 0 y = 2 }
+							militia = { x = 1 y = 0 }
+							militia = { x = 1 y = 1 }
+						}
+					}
+				}
+					random_state = {
+						limit = {
+						is_core_of = KUJ
+						}
+						create_unit = {
+						division = "division_template = \"足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = KUJ
+						count = 8
+						}
+					}				
+				}
+				if = {
+					limit = {
+						NOT = { has_template = "精锐足轻" }
+						has_country_flag = INA_Jiutiaojia_Elite_test
+						original_tag = KUJ
+					}
+						KUJ = {			
+							division_template = {
+									name = "精锐足轻"
+									priority = 2
+									is_locked = no
+									division_names_group = INA_INF_01
+									regiments = {
+										infantry = { x = 0 y = 0 }
+										infantry = { x = 0 y = 1 }
+										infantry = { x = 0 y = 2 }
+										infantry = { x = 0 y = 3 }
+										infantry = { x = 0 y = 4 }
+										infantry = { x = 1 y = 0 }
+										infantry = { x = 1 y = 1 }
+										artillery_brigade  = { x = 2 y = 1 }
+										artillery_brigade  = { x = 2 y = 0 }
+									}
+								}
+								random_state = {
+									limit = {
+									is_core_of = KUJ
+									 }
+									create_unit = {
+									division = "division_template = \"精锐足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+									owner = KUJ
+									count = 3
+								}
+							}
+						 }
+					}
+			}
 		}
 	}
-}`
+}

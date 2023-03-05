@@ -765,7 +765,13 @@ SNA_war_beginning = {
 		}
 		
 		available = {
-		   NOT = { has_country_flag = SNA_NO_Same_type1 } 
+		   NOT = { has_country_flag = SNA_NO_Same_type1 }
+		   INA = 
+		   {
+			    custom_effect_tooltip = SNA_Strike_kujyou_check
+				check_variable = { INA_junshizhichidu > 0 }
+				check_variable = { INA_minjianzhichidu > 0 }
+		   }
         }
 		
 		ai_will_do = {
@@ -773,16 +779,20 @@ SNA_war_beginning = {
 		}
 		
 		visible = {
-		   #check_variable = { INA = {INA_junshizhichidu > 0 } }
-		   #check_variable = { INA = {INA_junshizhichidu > 0 } }
 		   #has_completed_focus = SNA_wuxuzairen
+		   always = yes
 		}
-		
+		complete_effect = 
+		{
+			set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 7 }
+		}
 		remove_effect = {
-		   custom_effect_tooltip = SNA_Strike_downnine_families_tt
-		   set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 7 }
-		   add_to_variable = { INA_junshizhichidu = -5 }
-		   add_to_variable = { INA_minjianzhichidu = -5 }
+		   custom_effect_tooltip = SNA_Strike_kujyou_tt
+		   INA = 
+		   {
+				add_to_variable = { INA_junshizhichidu = -5 }
+				add_to_variable = { INA_minjianzhichidu = -5 }
+		   }
 		}  
     }
     SNA_Summon_soldiers = {    #召集士兵
@@ -807,11 +817,13 @@ SNA_war_beginning = {
 		}
 		
 		visible = {
-		   #has_completed_focus = SNA_fanpanjun
+		   has_completed_focus = SNA_fanpanjun
 		}
-		
+		complete_effect = 
+		{
+			set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
+		}
 		remove_effect = {
-		    set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
 		    custom_effect_tooltip = SNA_Summon_soldiers_tt
 			if = {
 				limit = {
@@ -868,11 +880,13 @@ SNA_war_beginning = {
 		}
 		
 		visible = {
-		    #has_completed_focus = SNA_haizhidaokuangre
+		    has_completed_focus = SNA_haizhidaokuangre
 		}
-		
+		complete_effect = 
+		{
+			set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
+		}
 		remove_effect = {
-		  set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
 		  custom_effect_tooltip = SNA_Callonthe_peopleto_jointhewar_tt
 		  add_manpower = 5000
 		  add_to_variable = { SNA_junshizhichidu = 10 }
@@ -884,7 +898,7 @@ SNA_war_beginning = {
     SNA_Try_to_mediate = {    #尽力斡旋
        icon = GFX_SNA_prepare_war_small
 		
-		cost = 0
+		cost = 40
 		
 		days_remove = 28
 		
@@ -903,15 +917,18 @@ SNA_war_beginning = {
 		}
 		
 		visible = {
-		    #has_completed_focus = SNA_tanpanjieguo
+		    has_completed_focus = SNA_tanpanjieguo
 		}
 		
 		modifier = {
 		   war_support_weekly = -0.01
 		}
+		complete_effect = 
+		{
+			set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
+		}
 		remove_effect = {
 		   custom_effect_tooltip = SNA_Callonthe_peopleto_jointhewar_tt
-		   set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
 		   add_stability = 0.05
 		   add_political_power = 150
 		   add_to_variable = { SNA_junshizhichidu = 10 }
@@ -940,45 +957,82 @@ SNA_war_beginning = {
 		}
 		
 		visible = {
-		   #has_completed_focus = SNA_wuxuzairen
+		  # has_completed_focus = SNA_wuxuzairen
 		}
 		
 		modifier = {
 		   war_support_weekly = -0.01
 		}
-		remove_effect = {
+		complete_effect = 
+		{
 			set_country_flag = { flag = SNA_NO_Same_type1 value = 1 days = 28 }
-		    add_equipment_to_stockpile = {
-		    type = infantry_equipment 
-		    amount = 400
-			producer = KUJ
-	        }
-            add_equipment_to_stockpile = {
-		    type = support_equipment
-		    amount = 40
-			producer = KUJ
-	        }
-            add_equipment_to_stockpile = {
-		    type = artillery_equipment 
-		    amount = 500
-			producer = KUJ
-	        }
-            add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
-		    amount = 80
-			producer = KUJ
-	        }
-			add_equipment_to_stockpile = {
-		    type = grain_conversion_eq
-		    amount = 400
-			producer = KUJ
-	        }
+		}
+		remove_effect = {
+		    if = {
+				limit = { 
+					INA = { has_completed_focus = INA_WAR_BEG_8} 
+				}
+				KUJ = 
+				{
+					add_equipment_to_stockpile = {
+						type = infantry_equipment 
+						amount = -400
+						}
+						add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = -40
+						}
+						add_equipment_to_stockpile = {
+						type = artillery_equipment 
+						amount = -500
+						}
+						add_equipment_to_stockpile = {
+						type = ttt_uniform_eq
+						amount = -80
+						}
+						add_equipment_to_stockpile = {
+						type = grain_conversion_eq
+						amount = -400
+					}
+				}
+				SNA = 
+				{
+					add_equipment_to_stockpile = {
+						type = infantry_equipment 
+						amount = 400
+						}
+						add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 40
+						}
+						add_equipment_to_stockpile = {
+						type = artillery_equipment 
+						amount = 500
+						}
+						add_equipment_to_stockpile = {
+						type = ttt_uniform_eq
+						amount = 80
+						}
+						add_equipment_to_stockpile = {
+						type = grain_conversion_eq
+						amount = 400
+					}
+				}
+			}
+			else = 
+			{
+				add_to_variable =
+				{
+					KUJ_wapons_are_stolen = 1
+				}
+			}
 		}  
     }
 	SNA_Declare_war = 
 	{
 		activation = {
 			SNA_triggers_Declare_war = yes
+			NOT = {SNA = {has_War_with = KUJ}}
 		}
 		available = {
 			always = no
@@ -1006,6 +1060,77 @@ SNA_war_beginning = {
 			declare_war_on = {target = KUJ type = annex_everything}
 			clr_country_flag = INA_34_flag
 			INA = {clr_country_flag = INA_34_flag}
+			KUJ = 
+			{
+				if = {
+					limit = {
+						has_country_flag = INA_Compulsory_conscription_budui
+						NOT = { has_template = "足轻" }
+						original_tag = KUJ
+					}
+					KUJ = {				
+					 division_template = {
+						name = "足轻"
+						priority = 2
+						is_locked = no
+						division_names_group = INA_INF_01
+						regiments = {
+							militia = { x = 0 y = 0 }
+							militia = { x = 0 y = 1 }
+							militia = { x = 0 y = 2 }
+							militia = { x = 1 y = 0 }
+							militia = { x = 1 y = 1 }
+						}
+					}
+				}
+					random_state = {
+						limit = {
+						is_core_of = KUJ
+						}
+						create_unit = {
+						division = "division_template = \"足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = KUJ
+						count = 8
+						}
+					}				
+				}
+				if = {
+					limit = {
+						NOT = { has_template = "精锐足轻" }
+						has_country_flag = INA_Jiutiaojia_Elite_test
+						original_tag = KUJ
+					}
+						KUJ = {			
+							division_template = {
+									name = "精锐足轻"
+									priority = 2
+									is_locked = no
+									division_names_group = INA_INF_01
+									regiments = {
+										infantry = { x = 0 y = 0 }
+										infantry = { x = 0 y = 1 }
+										infantry = { x = 0 y = 2 }
+										infantry = { x = 0 y = 3 }
+										infantry = { x = 0 y = 4 }
+										infantry = { x = 1 y = 0 }
+										infantry = { x = 1 y = 1 }
+										artillery_brigade  = { x = 2 y = 1 }
+										artillery_brigade  = { x = 2 y = 0 }
+									}
+								}
+								random_state = {
+									limit = {
+									is_core_of = KUJ
+									 }
+									create_unit = {
+									division = "division_template = \"精锐足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+									owner = KUJ
+									count = 3
+								}
+							}
+						 }
+					}
+				}
 		}
 	}
 }

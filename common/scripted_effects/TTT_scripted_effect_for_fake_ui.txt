@@ -617,29 +617,58 @@ recalculate_region_values = {
 }
 
 recalculate_button_values = {
-	set_variable = { liyue_button_frames^1 = 1 }
-	set_variable = { liyue_button_frames^2 = 1 }
-	set_variable = { liyue_button_frames^3 = 1 }
-	set_variable = { liyue_button_frames^4 = 1 }
-	set_variable = { liyue_button_frames^5 = 1 }
-	set_variable = { liyue_button_frames^6 = 1 }
-	if = {
-		limit = {
-			check_variable = { liyue_region_frames^ttt_ui_region_selection = 1 }
-		}
-		set_variable = { liyue_button_frames^2 = 2 }
+	for_loop_effect = {
+		start = 1
+		end = 6
+		value = j
+				
+		set_variable = { liyue_button_frames^j = 1 }
 	}
+	
+	#overrite for liyue_region_movement_point
 	if = {
-		limit = {
-			check_variable = { liyue_region_frames^ttt_ui_region_selection < 3.5 }
+		limit = { 
+			NOT = {
+				check_variable = { liyue_region_movement_point^ttt_ui_region_selection = 0 }
+			}
 		}
-		set_variable = { liyue_button_frames^1 = 2 }
-		set_variable = { liyue_button_frames^3 = 2 }
-		set_variable = { liyue_button_frames^4 = 2 }
+		set_temp_variable = { LYU_btn = liyue_region_movement_point^ttt_ui_region_selection }
+		set_variable = { liyue_button_frames^LYU_btn = 3 }
 	}
 	else = {
-		set_variable = { liyue_button_frames^5 = 2 }
-		set_variable = { liyue_button_frames^6 = 2 }
+		if = {
+			limit = {
+				check_variable = { liyue_region_frames^ttt_ui_region_selection = 1 }
+			}
+			set_variable = { liyue_button_frames^2 = 2 }
+		}
+		if = {
+			limit = {
+				check_variable = { liyue_region_frames^ttt_ui_region_selection < 3.5 }
+			}
+			set_variable = { liyue_button_frames^1 = 2 }
+			set_variable = { liyue_button_frames^3 = 2 }
+			set_variable = { liyue_button_frames^4 = 2 }
+		}
+		else = {
+			set_variable = { liyue_button_frames^5 = 2 }
+			set_variable = { liyue_button_frames^6 = 2 }
+		}
+	}
+	
+	#overrite for others
+	if = {
+		limit = {
+			NOT = { has_global_flag = Liyue_Civil_War }
+		}
+		set_variable = { liyue_button_frames^5 = 1 }
+		set_variable = { liyue_button_frames^6 = 1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { liyue_region_milita_usable^ttt_ui_region_selection = 0 }
+		}
+		set_variable = { liyue_button_frames^6 = 3 }
 	}
 }
 
@@ -778,6 +807,7 @@ set_marked_states = {
 		}
 	}
 	log = "[GetDateText]: [Root.liyue_marked_states^0]: Liyue_Region_has_been_marked"
+	#No log no game!
 }
 
 ###################################################################################################
@@ -785,6 +815,9 @@ set_marked_states = {
 ###################################################################################################
 #for buttons
 tlcw_button_1_click_effect = {
+	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 1 }
+	recalculate_button_values = yes
+	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
 			is_in_array = { liyue_marked_states = THIS }
@@ -795,6 +828,9 @@ tlcw_button_1_click_effect = {
 }
 
 tlcw_button_2_click_effect = {
+	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 2 }
+	recalculate_button_values = yes
+	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = { is_in_array = { liyue_marked_states = THIS } }
 		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
@@ -802,6 +838,9 @@ tlcw_button_2_click_effect = {
 }
 
 tlcw_button_3_click_effect = {
+	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 3 }
+	recalculate_button_values = yes
+	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
 			is_in_array = { liyue_marked_states = THIS }
@@ -812,6 +851,9 @@ tlcw_button_3_click_effect = {
 }
 
 tlcw_button_4_click_effect = {
+	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 4 }
+	recalculate_button_values = yes
+	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
 			is_in_array = { liyue_marked_states = THIS }
@@ -822,6 +864,9 @@ tlcw_button_4_click_effect = {
 }
 
 tlcw_button_5_click_effect = {
+	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 5 }
+	recalculate_button_values = yes
+	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
 			is_in_array = { liyue_marked_states = THIS }
@@ -837,6 +882,10 @@ tlcw_button_5_click_effect = {
 }
 
 tlcw_button_6_click_effect = {
+	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 6 }
+	set_variable = { liyue_region_milita_usable^ttt_ui_region_selection = 0 }
+	recalculate_button_values = yes
+	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	if = {
 		limit = {
 			NOT = { has_template = "民兵" }

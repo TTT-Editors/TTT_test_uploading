@@ -75,4 +75,70 @@ scripted_gui = {
              }
         }
     }
+    INA_pingDing_main = 
+    {
+        window_name = INA_pingDing_main
+        context_type = player_context
+        parent_window_name = INA_PingDing_background
+
+        visible = {
+            always = yes
+        }
+    }
+    INA_PianCha_use = 
+    {
+        window_name = "INA_PianCha_use"
+        context_type = player_context
+        parent_window_token = politics_tab
+
+        visible = {
+            always = yes
+        }
+        effects = {
+            INA_PianCha_use_button_click = 
+            {
+                if = {
+					limit = { NOT = {has_country_flag = PianCha_Gui_open}}
+					set_country_flag = PianCha_Gui_open
+				}
+				else_if = {
+					limit = { has_country_flag = PianCha_Gui_open}
+					clr_country_flag = PianCha_Gui_open
+				}
+            }
+        }
+    }
+    INA_PianCha_window = 
+    {
+        window_name = "INA_PianCha_window"
+        context_type = player_context
+
+        visible = {
+            has_country_flag = PianCha_Gui_open
+        }
+
+        effects = {
+            left_button_click = 
+            {
+                add_to_variable = {
+                    PianZhi_Amount = 1
+                }
+                clamp_variable = { var = PianZhi_Amount min = 0 max = 100 }
+            }
+            right_button_click = 
+            {
+                subtract_from_variable = {
+                    PianZhi_Amount = 1
+                }
+                clamp_variable = { var = PianZhi_Amount min = 0 max = 100 }
+            }
+        }
+
+        properties = {
+            INA_PianZhi_dial = {
+                frame = PianZhi_Amount
+            }
+        }
+
+    }
 }	

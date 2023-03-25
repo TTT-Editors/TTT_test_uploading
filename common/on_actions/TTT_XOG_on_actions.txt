@@ -1,0 +1,102 @@
+on_actions = {
+	on_weekly_XOG = {
+		effect = {
+			#每月增加的业障度
+			if = {
+				limit = {
+					has_country_flag = XOG_mechanism_mandrills
+					
+				}
+				add_to_variable = { XOG_yezhangdu = 1.0 }
+                clamp_variable = {
+					var = XOG_yezhangdu
+					max = 100.0
+					min = 0.0
+				}				
+			}			
+		}	
+	}
+	on_weekly_XOG = {
+		effect = {
+			#每月增加的业障度
+			if = {
+				limit = {
+					has_country_flag = XOG_mechanism_mandrills
+					has_war = yes					
+				}
+				add_to_variable = { XOG_yezhangdu = 0.5 }
+                clamp_variable = {
+					var = XOG_yezhangdu
+					max = 100.0
+					min = 0.0
+				}				
+			}			
+		}	
+	}
+	on_weekly_XOG = {
+		effect = {
+			#每月检测变量，切换指针
+			if = {
+				limit = {
+			    AND = {
+			    check_variable = {
+				var = XOG_yezhangdu
+				value = 25.0
+				compare = less_than_or_equals
+			    }
+			    check_variable = {
+				var = XOG_yezhangdu
+				value = 0.0
+				compare = greater_than
+			    }
+			    }					
+				}
+				set_variable = { XOG_zhizheng_var = 0.0 } 			
+			}			
+		}	
+	}
+	on_weekly_XOG = {
+		effect = {
+			#每月检测变量，切换指针
+			if = {
+				limit = {
+			    AND = {
+			    check_variable = {
+				var = XOG_yezhangdu
+				value = 50.0
+				compare = less_than_or_equals
+			    }
+			    check_variable = {
+				var = XOG_yezhangdu
+				value = 25.0
+				compare = greater_than
+			    }
+			    }					
+				}
+				set_variable = { XOG_zhizheng_var = 25.0 } 			
+			}			
+		}	
+	}
+	on_weekly_XOG = {
+		effect = {
+			#每月检测变量，切换指针
+			if = {
+				limit = {
+			    AND = {
+			    check_variable = {
+				var = XOG_yezhangdu
+				value = 100.0
+				compare = less_than_or_equals
+			    }
+			    check_variable = {
+				var = XOG_yezhangdu
+				value = 50.0
+				compare = greater_than
+			    }
+			    }					
+				}
+				set_variable = { XOG_zhizheng_var = 50.0 } 			
+			}			
+		}	
+	}
+}

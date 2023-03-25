@@ -1,0 +1,118 @@
+add_namespace = TTT_daoqi_gui
+
+country_event = {
+    id = TTT_daoqi_gui.1  ##25偏执时触发
+    title = TTT_daoqi_gui.t
+    desc = TTT_daoqi_gui.d
+    picture = TTT_daoqi_gui.p
+
+    trigger = {
+        check_variable = {
+            PianZhi_Amount = 24
+        }
+    }
+
+    fire_only_once = yes 
+
+    option = {
+        name = TTT_daoqi_gui_option.a
+
+        custom_effect_tooltip = daoqi_GUI_jiangjun_tt
+        hidden_effect = {
+            add_ideas = TTT_jiangjunzhinu
+            set_country_flag = jiangjunzhennu  ##将军之怒，将所有国策全部锁定 30天
+            set_country_flag = days_30 ##用于动态文本，30天所对应的文本
+            add_to_variable = {
+                PianZhi_Amount = -5
+            }
+            country_event = {
+                days = 29
+                id = TTT_daoqi_gui.4
+            }
+        }
+    }
+}
+
+
+country_event = {
+    id = TTT_daoqi_gui.2  ##50偏执触发
+    title = TTT_daoqi_gui_2.t
+    desc = TTT_daoqi_gui_2.d
+    picture = TTT_daoqi_gui_2.p
+
+    trigger = {
+        check_variable = {
+            PianZhi_Amount = 49
+        }
+    }
+    fire_only_once = yes 
+
+    option = {
+        name = TTT_daoqi_gui_option_2.a
+
+        custom_effect_tooltip = daoqi_GUI_jiangjun_2_tt
+        hidden_effect = {
+            add_ideas = TTT_jiangjunzhinu
+            set_country_flag = jiangjunzhennu  ##将军之怒，将所有国策全部锁定 60天
+            set_country_flag = days_60 ##用于动态文本，60天所对应的文本
+            add_to_variable = {
+                PianZhi_Amount = -10
+            }
+            country_event = {
+                days = 59
+                id = TTT_daoqi_gui.4
+            }
+        }
+    }
+}
+
+country_event = {  ##75偏执触发
+    id = TTT_daoqi_gui.3
+    title = TTT_daoqi_gui_3.t
+    desc = TTT_daoqi_gui_3.d
+    picture = TTT_daoqi_gui_3.p
+
+    trigger = {
+        check_variable = {
+            PianZhi_Amount = 74
+        }
+    }
+    fire_only_once = yes 
+
+    option = {
+        name = TTT_daoqi_gui_option_3.a
+
+        custom_effect_tooltip = daoqi_GUI_jiangjun_3_tt
+        hidden_effect = {
+            add_ideas = TTT_jiangjunzhinu
+            set_country_flag = jiangjunzhennu  ##将军之怒，将所有国策全部锁定 90天
+            set_country_flag = days_90  ##用于动态文本，90天所对应的文本
+            add_to_variable = {
+                PianZhi_Amount = -15
+            }
+            country_event = {
+                days = 89
+                id = TTT_daoqi_gui.4
+            }
+        }
+    }
+}
+
+country_event = {  ##国策解除锁定事件
+    id = TTT_daoqi_gui.4
+    title = TTT_daoqi_gui_4.t
+    desc = TTT_daoqi_gui_4.d
+    picture = TTT_daoqi_gui_4.p
+
+    is_triggered_only = yes
+
+    option = {
+        name = TTT_daoqi_gui_option_4.a
+
+        custom_effect_tooltip = daoqi_GUI_jiangjun_4_tt
+        hidden_effect = {
+            remove_ideas = TTT_jiangjunzhinu
+            clr_country_flag = jiangjunzhennu
+        }
+    }
+}

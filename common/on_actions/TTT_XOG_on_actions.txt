@@ -68,7 +68,7 @@ on_actions = {
 			    }
 			    check_variable = {
 				var = XOG_yezhangdu
-				value = 25.0
+				value = 80.0
 				compare = greater_than
 			    }
 			    }					
@@ -90,13 +90,73 @@ on_actions = {
 			    }
 			    check_variable = {
 				var = XOG_yezhangdu
-				value = 50.0
+				value = 80.0
 				compare = greater_than
 			    }
 			    }					
 				}
 				set_variable = { XOG_zhizheng_var = 50.0 } 			
 			}			
+		}	
+	}
+	on_weekly_XOG = {
+		effect = {
+			#每月检测变量，到100就会爆炸
+			if = {
+				limit = {
+			    AND = {
+			    check_variable = {
+				var = XOG_yezhangdu
+				value = 99.0
+				compare = greater_than
+			                }
+			            }					
+				    }
+				every_country_division = {
+			    destroy_unit = yes
+                } 			
+			}			
+		}	
+	}
+	on_weekly_XOG = {
+		effect = {
+			#每月检测变量，增加业障buff的陆军攻击效果
+			if = {
+				limit = {
+			        check_variable = { XOG_yezhangdu = 5.0 }			
+				}
+				add_to_variable = { XOG_army_attack_factor1 = 0.01 }		
+			}
+            else_if = {
+			limit = {
+				check_variable = { XOG_yezhangdu = 10.0 }
+			    }
+			add_to_variable = { XOG_army_attack_factor1 = 0.01 }
+		    }
+            else_if = {
+			limit = {
+				check_variable = { XOG_yezhangdu = 15.0 }
+			    }
+			add_to_variable = { XOG_army_attack_factor1 = 0.01 }
+		    }
+            else_if = {
+			limit = {
+				check_variable = { XOG_yezhangdu = 15.0 }
+			    }
+			add_to_variable = { XOG_army_attack_factor1 = 0.01 }
+		    }
+			else_if = {
+			limit = {
+				check_variable = { XOG_yezhangdu = 20.0 }
+			    }
+			add_to_variable = { XOG_army_attack_factor1 = 0.01 }
+		    }
+			else_if = {
+			limit = {
+				check_variable = { XOG_yezhangdu = 25.0 }
+			    }
+			add_to_variable = { XOG_army_attack_factor1 = 0.01 }
+		    }
 		}	
 	}
 }

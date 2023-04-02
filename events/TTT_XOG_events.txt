@@ -71,3 +71,63 @@ country_event = {
 		}
 	}
 }
+
+#发现某地区有丘丘人作乱
+country_event = {
+    id = XOG_events.3
+	title = XOG_events.3.t
+    desc = XOG_events.3.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.3.a
+		 random_list = {
+			50 = {
+				country_event = {
+					id = XOG_events.4
+					days = 14
+			    }
+		    }
+			50 = {
+				country_event = {
+					id = XOG_events.5
+					days = 14
+			    }
+		    }
+		}
+	}
+}
+
+#成功
+country_event = {
+    id = XOG_events.4
+	title = XOG_events.4.t
+    desc = XOG_events.4.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.4.a
+		add_stability = 0.05
+		add_political_power = 50
+		add_to_variable = { XOG_yezhangdu = 0.1 }
+	}
+}
+
+#失败
+country_event = {
+    id = XOG_events.5
+	title = XOG_events.5.t
+    desc = XOG_events.5.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.5.a
+		add_stability = -0.05
+		add_political_power = -50
+		add_war_support = -0.05
+		add_to_variable = { XOG_yezhangdu = -0.1 }
+	}
+}

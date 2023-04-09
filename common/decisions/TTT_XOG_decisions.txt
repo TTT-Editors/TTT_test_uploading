@@ -35,3 +35,76 @@ liyue_civil_war_decisions = {
 	    }
     }
 }
+
+XOG_special_categories2 = {
+    XOG_yezhangdubaozha = {     
+		activation = {                         
+			check_variable = { XOG_yezhangdu > 99.9 }
+		}                                    
+		available = {                           
+			has_country_flag = XOG_yezhangdubaozha_flag
+		}
+		
+		is_good = no                        
+	
+		days_mission_timeout = 1
+		
+		timeout_effect = {
+            hidden_effect = {		
+			every_country_division = {
+			    destroy_unit = yes
+            }
+			}
+			set_country_flag = XOG_yezhangdubaozha_flag
+		}
+		
+		complete_effect = {                    
+			          
+		}
+	}
+	XOG_Pointer_change = {  #切换指针    
+		activation = {                         
+			check_variable = { XOG_yezhangdu > 49.0 }
+			check_variable = { XOG_yezhangdu < 79.9 }
+		}                                    
+		available = {                           
+			has_country_flag = XOG_Pointer_change_1
+		}
+		
+		is_good = no                        
+	
+		days_mission_timeout = 1
+		
+		timeout_effect = {                      
+			set_variable = { XOG_zhizheng_var = 25.0 }
+			set_country_flag = { flag = XOG_Pointer_change_1 value = 1 days = 60 }
+		}
+		
+		complete_effect = {                    
+			          
+		}
+	}
+	XOG_Pointer_change1 = {  #切换指针1     
+		activation = {                         
+			check_variable = { XOG_yezhangdu > 79.0 }
+			check_variable = { XOG_yezhangdu < 100.0 }
+		}                                    
+		available = {                           
+			has_country_flag = XOG_Pointer_change_0
+		}
+		
+		is_good = no                        
+	
+		days_mission_timeout = 1
+		
+		timeout_effect = {                      
+			set_variable = { XOG_zhizheng_var = 50.0 }
+			set_country_flag = { flag = XOG_Pointer_change_0 value = 1 days = 60 }
+		}
+		
+		complete_effect = {                    
+			          
+		}
+	}
+}
+

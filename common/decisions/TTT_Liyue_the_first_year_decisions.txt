@@ -5,16 +5,16 @@ Liyue_political_crisis = {
         activation = {
 			NOT = { has_global_flag = avoid_Liyue_Civil_War }
             custom_trigger_tooltip = { 		
-			AND = {
-				NOT = { 
-					has_country_leader = {
-						character = LYU_morax
-						ruling_only = yes
+				AND = {
+					NOT = { 
+						has_country_leader = {
+							character = LYU_morax
+							ruling_only = yes
+						}
 					}
-				}
-				has_country_flag = Liyue_crisis
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
+					has_country_flag = Liyue_crisis
+					NOT = { has_global_flag = Liyue_Civil_War }
+					NOT = { has_global_flag = Liyue_Civil_War_Coming }
 			    }
             }			
         }
@@ -22,16 +22,16 @@ Liyue_political_crisis = {
 		visible = {
 			NOT = { has_global_flag = avoid_Liyue_Civil_War }
             custom_trigger_tooltip = { 		
-			AND = {
-				NOT = { 
-					has_country_leader = {
-						character = LYU_morax
-						ruling_only = yes
+				AND = {
+					NOT = { 
+						has_country_leader = {
+							character = LYU_morax
+							ruling_only = yes
+						}
 					}
-				}
-				has_country_flag = Liyue_crisis
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = Liyue_Civil_War_Coming_Soon }
+					has_country_flag = Liyue_crisis
+					NOT = { has_global_flag = Liyue_Civil_War }
+					NOT = { has_global_flag = Liyue_Civil_War_Coming }
 			    }
             }
 		}
@@ -56,14 +56,14 @@ Liyue_political_crisis = {
 			}
 			if = {
 				limit = {
-					has_completed_focus = survive_together
+					has_global_flag = avoid_Liyue_Civil_War
 				}
 				clr_country_flag = Liyue_crisis
 				set_global_flag = avoid_Liyue_Civil_War 
 			}
 			else_if = {
 				limit = {
-					NOT = { has_completed_focus = survive_together }
+					NOT = { has_global_flag = avoid_Liyue_Civil_War }
 				}
 				clr_country_flag = Liyue_crisis
 				country_event = {
@@ -102,14 +102,14 @@ Liyue_political_crisis = {
 			}
 			if = {
 				limit = {
-					has_completed_focus = survive_together
+					has_global_flag = avoid_Liyue_Civil_War
 				}
 				clr_country_flag = Liyue_crisis
 				set_global_flag = avoid_Liyue_Civil_War 
 			}
 			else_if = {
 				limit = {
-					NOT = { has_completed_focus = survive_together }
+					NOT = { has_global_flag = avoid_Liyue_Civil_War }
 				}
 				clr_country_flag = Liyue_crisis
 				country_event = {
@@ -148,11 +148,11 @@ Liyue_political_crisis = {
             set_country_flag = Social_unrest
             custom_effect_tooltip = LYU_Financial_collapse_tt
             if = {
-			limit = {				
-				NOT = { has_country_flag = Liyue_Capital_injection_1 }
-				NOT = { has_country_flag = Liyue_Government_Intervention_1 }
-			}
-			add_stability = -0.05
+				limit = {				
+					NOT = { has_country_flag = Liyue_Capital_injection_1 }
+					NOT = { has_country_flag = Liyue_Government_Intervention_1 }
+				}
+				add_stability = -0.05
 		    }			
 		}
 	}
@@ -171,13 +171,17 @@ Liyue_political_crisis = {
         has_country_flag = Financial_collapse		
 		}
 		available  = {
-		NOT = { has_country_flag = Liyue_Government_Intervention_1 }
+			NOT = { has_country_flag = Liyue_Government_Intervention_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Ningguang_Tianquan_Star < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Ningguang_Tianquan_Star > 50 }
 			}
 		}
 		days_remove = 90
@@ -213,13 +217,17 @@ Liyue_political_crisis = {
         has_country_flag = Financial_collapse		
 		}
 		available  = {
-		NOT = { has_country_flag = Liyue_Capital_injection_1 }
+			NOT = { has_country_flag = Liyue_Capital_injection_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Keqing_Alioth < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Keqing_Alioth > 50 }
 			}
 		}
 		modifier = {
@@ -294,10 +302,14 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Public_Department_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Ningguang_Tianquan_Star < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Ningguang_Tianquan_Star > 60 }
 			}
 		}
 		modifier = {
@@ -347,10 +359,14 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Relief_assistance_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Keqing_Alioth < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Keqing_Alioth > 60 }
 			}
 		}
 		modifier = {
@@ -400,10 +416,13 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Relief_assistance_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 10
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 10
+				check_variable = { Keqing_Alioth > 40 }
+				check_variable = { Keqing_Alioth < 60 }
+				check_variable = { Ningguang_Tianquan_Star > 40 }
+				check_variable = { Ningguang_Tianquan_Star < 60 }
 			}
 		}
 		modifier = {
@@ -491,10 +510,14 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Expand_manufacturing_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Ningguang_Tianquan_Star < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Ningguang_Tianquan_Star > 50 }
 			}
 		}
 		modifier = {
@@ -565,10 +588,14 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Revitalize_maritime_transport_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Keqing_Alioth < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Keqing_Alioth > 60 }
 			}
 		}
 		modifier = {
@@ -640,10 +667,13 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Revitalize_maritime_transport_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 10
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 10
+				check_variable = { Keqing_Alioth > 40 }
+				check_variable = { Keqing_Alioth < 60 }
+				check_variable = { Ningguang_Tianquan_Star > 40 }
+				check_variable = { Ningguang_Tianquan_Star < 60 }
 			}
 		}
 		modifier = {
@@ -776,10 +806,14 @@ Liyue_political_crisis = {
         has_country_flag = Public_opinion		
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Ningguang_Tianquan_Star < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Ningguang_Tianquan_Star > 50 }
 			}
 		}
 		available = {
@@ -838,10 +872,14 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag =  Liyue_road_man_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Keqing_Alioth < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Keqing_Alioth > 60 }
 			}
 		}
 		modifier = {
@@ -896,10 +934,13 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag =  Liyue_road_man_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 10
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 10
+				check_variable = { Keqing_Alioth > 40 }
+				check_variable = { Keqing_Alioth < 60 }
+				check_variable = { Ningguang_Tianquan_Star > 40 }
+				check_variable = { Ningguang_Tianquan_Star < 60 }
 			}
 		}
 		modifier = {
@@ -992,10 +1033,14 @@ Liyue_political_crisis = {
 		}
 		days_remove = 180
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Ningguang_Tianquan_Star < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Ningguang_Tianquan_Star > 50 }
 			}
 		}
 		complete_effect = {  
@@ -1051,10 +1096,14 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Humanized_politics_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 40
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 3
+				check_variable = { Keqing_Alioth < 40 }
+			}
+			modifier = {
+				factor = 0.25
+				check_variable = { Keqing_Alioth > 60 }
 			}
 		}
 		modifier = {
@@ -1110,10 +1159,13 @@ Liyue_political_crisis = {
 		NOT = { has_country_flag = Liyue_Humanized_politics_1 }
 		}
 		ai_will_do = {
-			factor = 20
+			factor = 10
 			modifier = {
-				factor = 20
-				has_war = no
+				factor = 10
+				check_variable = { Keqing_Alioth > 40 }
+				check_variable = { Keqing_Alioth < 60 }
+				check_variable = { Ningguang_Tianquan_Star > 40 }
+				check_variable = { Ningguang_Tianquan_Star < 60 }
 			}
 		}
 		modifier = {

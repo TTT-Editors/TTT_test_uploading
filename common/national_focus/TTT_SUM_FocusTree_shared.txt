@@ -2,7 +2,7 @@
 shared_focus = { 
 	id = SUM_Akademiya_Daily_Activity #教令院日常活动
 	icon = GFX_unknow
-	x = 10
+	x = 12
 	y = 0
 	cost = 35.00
 	ai_will_do = {
@@ -20,7 +20,7 @@ shared_focus = {
 	icon = GFX_unknow
 
 	relative_position_id = SUM_Akademiya_Daily_Activity
-	x = -8
+	x = -9
 	y = 1
 
 	cost = 35.00
@@ -31,11 +31,16 @@ shared_focus = {
         factor = 10
     }
 	completion_reward = {
-
+		custom_effect_tooltip = SUM_res_unlock_tooltip
+		resize_array = {
+			array = SUM_Aka_res_short_available
+			size = 4
+			value = 1
+		}
 	}
 }
 shared_focus = {
-	id = SUM_Akademiya_Res_plan_1 #地脉研究
+	id = SUM_Akademiya_Res_long_plan #长期研究计划
 	icon = GFX_unknow
 
 	relative_position_id = SUM_Akademiya_Res_plan
@@ -50,30 +55,16 @@ shared_focus = {
         factor = 10
     }
 	completion_reward = {
-
+		custom_effect_tooltip = SUM_res_unlock_tooltip
+		resize_array = {
+			array = SUM_Aka_res_short_available
+			size = 4
+			value = 0
+		}
 	}
 }
 shared_focus = {
-	id = SUM_Akademiya_Res_plan_2 #虚空系统研究
-	icon = GFX_unknow
-
-	relative_position_id = SUM_Akademiya_Res_plan
-	x = 0
-	y = 1
-
-	cost = 35.00
-	prerequisite = {
-		focus = SUM_Akademiya_Res_plan
-    }
-    ai_will_do = {
-        factor = 10
-    }
-	completion_reward = {
-
-	}
-}
-shared_focus = {
-	id = SUM_Akademiya_Res_plan_3 #查看常规研究进展
+	id = SUM_Akademiya_Res_short_plan #短期研究计划
 	icon = GFX_unknow
 
 	relative_position_id = SUM_Akademiya_Res_plan
@@ -88,6 +79,68 @@ shared_focus = {
         factor = 10
     }
 	completion_reward = {
+		custom_effect_tooltip = SUM_res_unlock_tooltip
+		resize_array = {
+			array = SUM_Aka_res_short_available
+			size = 4
+			value = 0
+		}
+	}
+}
+shared_focus = {
+	id = SUM_Akademiya_Res_plan_1 #地脉研究
+	icon = GFX_unknow
+
+	relative_position_id = SUM_Akademiya_Res_long_plan
+	x = -2
+	y = 1
+
+	cost = 35.00
+	prerequisite = {
+		focus = SUM_Akademiya_Res_long_plan
+    }
+    ai_will_do = {
+        factor = 10
+    }
+	completion_reward = {
+
+	}
+}
+shared_focus = {
+	id = SUM_Akademiya_Res_plan_2 #虚空系统研究
+	icon = GFX_unknow
+
+	relative_position_id = SUM_Akademiya_Res_long_plan
+	x = 0
+	y = 1
+
+	cost = 35.00
+	prerequisite = {
+		focus = SUM_Akademiya_Res_long_plan
+    }
+    ai_will_do = {
+        factor = 10
+    }
+	completion_reward = {
+
+	}
+}
+shared_focus = {
+	id = SUM_Akademiya_Res_plan_3 #查看常规研究进展
+	icon = GFX_unknow
+
+	relative_position_id = SUM_Akademiya_Res_short_plan
+	x = 2
+	y = 1
+
+	cost = 35.00
+	prerequisite = {
+		focus = SUM_Akademiya_Res_short_plan
+    }
+    ai_will_do = {
+        factor = 10
+    }
+	completion_reward = {
 
 	}
 }
@@ -95,13 +148,13 @@ shared_focus = {
 	id = SUM_Akademiya_Res_plan_4 #荼诃遗迹研究
 	icon = GFX_unknow
 
-	relative_position_id = SUM_Akademiya_Res_plan_1
-	x = 0
+	relative_position_id = SUM_Akademiya_Res_long_plan
+	x = 2
 	y = 1
 
 	cost = 35.00
 	prerequisite = {
-		focus = SUM_Akademiya_Res_plan_1
+		focus = SUM_Akademiya_Res_long_plan
     }
     ai_will_do = {
         factor = 10
@@ -114,13 +167,13 @@ shared_focus = {
 	id = SUM_Akademiya_Res_plan_5 #罐装知识
 	icon = GFX_unknow
 
-	relative_position_id = SUM_Akademiya_Res_plan_2
+	relative_position_id = SUM_Akademiya_Res_short_plan
 	x = 0
 	y = 1
 
 	cost = 35.00
 	prerequisite = {
-		focus = SUM_Akademiya_Res_plan_2
+		focus = SUM_Akademiya_Res_short_plan
     }
     ai_will_do = {
         factor = 10
@@ -391,7 +444,7 @@ shared_focus = {
 	icon = GFX_unknow
 
 	relative_position_id = SUM_Akademiya_Daily_Activity
-	x = 8
+	x = 9
 	y = 1
 	
 	cost = 35.00
@@ -481,12 +534,40 @@ shared_focus = {
 
 	}
 }
+#教令院剧情
+shared_focus = { 
+	id = SUM_Akademiya_internal_meeting #召开会议
+	icon = GFX_unknow
+	x = 12
+	y = 6
+	cost = 35.00
+	ai_will_do = {
+		factor = 80
+	}
+	allow_branch = {
+		has_country_flag = SUM_play_aka
+	}
+	completion_reward = {
+        
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 #处理死域
 shared_focus = {
 	id = SUM_Akademiya_Withering_problem #死域问题
 	icon = GFX_unknow
 
-	x = 28
+	x = 32
 	y = 0
 	
 	cost = 70.00
@@ -831,6 +912,119 @@ shared_focus = {
 	prerequisite = {
 		focus = SUM_Akademiya_Withering_problem_12
     }
+	
+    ai_will_do = {
+        factor = 10
+	}
+	completion_reward = {
+
+	}
+}
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+shared_focus = {
+	id = SUM_Akademiya_big_focus_test_1 #
+	icon = GFX_goal_SUM_big_Nahida
+	x = 50
+	y = 5
+	cost = 70.00
+	available = {
+		always = no
+	}
+    ai_will_do = {
+        factor = 10
+	}
+	completion_reward = {
+
+	}
+}
+shared_focus = {
+	id = SUM_Akademiya_big_focus_test_2 #
+	icon = GFX_goal_SUM_big_Nahida_l
+
+	relative_position_id = SUM_Akademiya_big_focus_test_1
+
+	x = -2
+	y = 1
+
+	prerequisite = {
+		focus = SUM_Akademiya_big_focus_test_1
+	}
+	
+	cost = 70.00
+	
+    ai_will_do = {
+        factor = 10
+	}
+	completion_reward = {
+
+	}
+}
+shared_focus = {
+	id = SUM_Akademiya_big_focus_test_3 #
+	icon = GFX_goal_SUM_big_Nahida_r
+
+	relative_position_id = SUM_Akademiya_big_focus_test_1
+
+	x = 2
+	y = 1
+
+	prerequisite = {
+		focus = SUM_Akademiya_big_focus_test_1
+	}
+	cost = 70.00
+	
+    ai_will_do = {
+        factor = 10
+	}
+	completion_reward = {
+
+	}
+}
+shared_focus = {
+	id = SUM_Akademiya_big_focus_test_4 #
+	icon = GFX_goal_unknown
+
+	relative_position_id = SUM_Akademiya_big_focus_test_1
+
+	x = 0
+	y = 2
+	
+	prerequisite = {
+		focus = SUM_Akademiya_big_focus_test_2
+	}
+	prerequisite = {
+		focus = SUM_Akademiya_big_focus_test_3
+	}
+
+	cost = 70.00
 	
     ai_will_do = {
         factor = 10

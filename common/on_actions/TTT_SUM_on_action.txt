@@ -43,4 +43,65 @@ on_actions = {
 			BC_plan_comp = yes
 		}
 	}
+	on_startup = {
+		effect = {
+			SUM = {
+				resize_array = {
+					array = SUM_Akasha_res_long_plan_progress_array
+					size = 3
+					value = 0
+				}
+				resize_array = {
+					array = SUM_Akasha_res_short_plan_progress_array
+					size = 10
+					value = 0
+				}
+				set_variable = {
+					var = SUM_Akasha_res_long_plan_progress_array^0
+					value = 15
+				}
+				set_variable = {
+					var = SUM_Akasha_res_long_plan_progress_array^1
+					value = 32.5
+				}
+				set_variable = {
+					var = SUM_Akasha_res_long_plan_progress_array^2
+					value = 11.5
+				}
+			}
+		}
+	}
+	on_monthly_SUM = { 
+		effect = {
+			for_loop_effect = {
+				start = 0
+				end = 4
+				add_to_variable = {
+					var = SUM_Akasha_res_long_plan_progress_array^v
+					value = 0.25
+				}
+				clamp_variable = {
+					var = SUM_Akasha_res_long_plan_progress_array^v
+					min = 0
+					max = 100
+				}
+			}
+		}
+	}
+	on_startup = { #开局触发事件
+		effect = {
+			SUM = {
+
+				SUM_Aka_create_pie_chart = yes
+
+				resize_array = {
+					array = SUM_Aka_res_long_available
+					size = 3
+					value = 1
+				}
+				
+				country_event = { id = sumeru.2000 days = 540 }
+			}
+		}
+	}
 }

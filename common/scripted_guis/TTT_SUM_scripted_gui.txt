@@ -1,4 +1,12 @@
 scripted_gui = { 
+	SUM_Test_gui = {
+		context_type = decision_category
+		window_name = "SUM_Test_gui_window"
+
+	}
+
+
+
     open_SUM_Akasha_Terminal_gui_button = {
         context_type = player_context
         window_name = "open_SUM_Akasha_Terminal_gui_button_window"
@@ -247,54 +255,168 @@ scripted_gui = {
         parent_window_name = "SUM_Akasha_gui_window"
         visible = { 
 			Akasha_info_Res = yes
-        }
-
-		triggers = {
-			#地脉研究
-			Akasha_res_plan_1_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_1
+		}
+		effects = {
+			SUM_res_long_button_click = {
+				meta_effect = {
+				    text = {
+					    SUM_Aka_res_long_button_[index] = yes
+				    }
+				index = SUM_Aka_res_long_idx
+			    }
 			}
-			SUM_Akasha_res_plan_name_1_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_1
-			}
-			#虚空系统研究
-			Akasha_res_plan_2_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_2
-			}
-			SUM_Akasha_res_plan_name_2_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_2
-			}
-			#普通研究
-			Akasha_res_plan_3_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_3
-			}
-			SUM_Akasha_res_plan_name_3_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_3
-			}
-			#遗迹研究
-			Akasha_res_plan_4_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_4
-			}
-			SUM_Akasha_res_plan_name_4_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_4
-			}
-			#普通研究实用化
-			Akasha_res_plan_5_button_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_6
-			}
-			SUM_Akasha_res_plan_name_5_visible = {
-				has_completed_focus = SUM_Akademiya_Res_plan_6
+			SUM_res_short_button_click = {
+				meta_effect = {
+				    text = {
+					    SUM_Aka_res_short_button_[index] = yes
+				    }
+				index = SUM_Aka_res_short_idx
+			    }
 			}
 		}
+		dynamic_lists = {
+			SUM_Aka_res_long_button_gird = {
+				array = SUM_Aka_res_long_available
+				change_scope = no
+				entry_container = SUM_res_long_button_window
+				index = SUM_Aka_res_long_idx
+			}
+			SUM_Aka_res_short_button_gird = {
+				array = SUM_Aka_res_short_available
+				change_scope = no
+				entry_container = SUM_res_short_button_window
+				index = SUM_Aka_res_short_idx
+			}
+		}
+		triggers = {
+#			SUM_res_short_button_visible = {
+#				meta_trigger = {
+#					text = {
+#						SUM_Aka_res_short_button_tri_[index] = yes
+#					}
+#					index = SUM_Aka_res_short_idx
+#				}
+#			}
+			SUM_Akasha_res_plan_progressbar_visible = {
+				OR = {
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 1
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 2
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 3
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 4
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 5
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 6
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 7
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 8
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 9
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 100
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 101
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 102
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 103
+					}
+				}
+			}
+			SUM_Akasha_res_plan_progress_visible = {
+				OR = {
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 1
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 2
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 3
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 4
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 5
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 6
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 7
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 8
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 9
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 100
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 101
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 102
+					}
+					check_variable = {
+						var = SUM_Aka_res_info
+						value = 103
+					}
+				}
+			}
+		}
+		properties = {
+			SUM_Akasha_res_plan_progressbar = {
+				frame = SUM_Akasha_res_plan_progress_var
+			}
+		}
+
     }
-
-
-
-
-
-
-
-
 
 	SUM_Akasha_Aka_gui = { ##教令院子gui
 		context_type = player_context
@@ -307,7 +429,43 @@ scripted_gui = {
 
 		effects = {
 			Akasha_button_click = {
-				SUM_Aka_create_pie_chart = yes
+				SUM_Aka_reflesh_pie_chart = yes
+			}
+			Akasha_Amurta_info_button_click = {
+				set_variable = {
+					var = Aka_info_var
+					value = 1
+				}
+			}
+			Akasha_Rtawahist_info_button_click = {
+				set_variable = {
+					var = Aka_info_var
+					value = 2
+				}
+			}
+			Akasha_Kshahrewar_info_button_click = {
+				set_variable = {
+					var = Aka_info_var
+					value = 3
+				}
+			}
+			Akasha_Spantamad_info_button_click = {
+				set_variable = {
+					var = Aka_info_var
+					value = 4
+				}
+			}
+			Akasha_Haravatat_info_button_click = {
+				set_variable = {
+					var = Aka_info_var
+					value = 5
+				}
+			}
+			Akasha_Vahumana_info_button_click = {
+				set_variable = {
+					var = Aka_info_var
+					value = 6
+				}
 			}
 		}
 	}

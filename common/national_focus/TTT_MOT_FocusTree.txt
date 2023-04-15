@@ -12,7 +12,7 @@ focus_tree = {
 
     focus = {
 		id = MOT_tree_0_01 #魔风的序曲
-		icon = 0
+		icon = GFX_goal_mot_01_mofengdexuqu
 		x = 12
 		y = 1
 		
@@ -24,12 +24,22 @@ focus_tree = {
 			add_idea = MOT_crisis_of_Tewalin2 #风魔龙危机2
 			remove_idea = MOT_crisis_of_Tewalin #风魔龙危机
 		}
+		hidden_effect = { #此为隐藏效果
+			news_event = {
+			    id = global_news.39#事件id
+				days = 7#几天后触发
+			}#此为触发世界新闻
+			news_event = {
+			    id = global_news.41#事件id
+				days = 35#几天后触发
+			}#此为触发世界新闻
+		}
 		}
 	}
 
     focus = {
 		id = MOT_tree_0_02 #召集代表
-		icon = 0
+		icon = GFX_goal_mot_01_zhaojidaibiao
         prerequisite = { focus = MOT_tree_0_01 }
 		x = 12
 		y = 2
@@ -37,7 +47,14 @@ focus_tree = {
 		cost = 7
 		search_filters = {  }
 		completion_reward = {
-            TWL = {
+			custom_effect_tooltip = mot_0_02
+			hidden_effect = { #此为隐藏效果
+        MOT = {
+			country_event = { 
+				days = 21 id = MOT_event.3
+		}
+		}
+		TWL = {
 			country_event = { 
 				days = 3 id = MOT_event.1
 		}
@@ -72,13 +89,13 @@ focus_tree = {
 				days = 3 id = MOT_event.1
 		}
 		}
-			
+		}
 		}
 	}
 
     focus = {
 		id = MOT_tree_0_03 #承诺解决
-		icon = 0
+		icon = GFX_goal_mot_01_chengnuojiejue
         prerequisite = { focus = MOT_tree_0_01 }
 		x = 10
 		y = 2
@@ -87,12 +104,18 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			add_stability = 0.05
+			custom_effect_tooltip = mot_0_03
+			hidden_effect = { #此为隐藏效果
+			country_event = { 
+				days = 1 id = MOT_event.2
+		    }
+			}
 		}
 	}
 
     focus = {
 		id = MOT_tree_0_04 #保卫救济
-		icon = 0
+		icon = GFX_goal_mot_01_baoweijiuji
         prerequisite = { focus = MOT_tree_0_01 }
 		x = 14
 		y = 2
@@ -105,12 +128,17 @@ focus_tree = {
 			add_idea = MOT_wave_of_refugee2 #难民潮2
 			remove_idea = MOT_wave_of_refugee #难民潮
 		}
+		hidden_effect = { #此为隐藏效果
+			country_event = { 
+				days = 1 id = MOT_event.5
+		    }
+			}
 		}
 	}
 
     focus = {
 		id = MOT_tree_0_05 #安抚群众
-		icon = 0
+		icon = GFX_goal_mot_01_anfuqunzhong
         prerequisite = { focus = MOT_tree_0_02 }
         prerequisite = { focus = MOT_tree_0_03 }
         prerequisite = { focus = MOT_tree_0_04 }
@@ -129,7 +157,7 @@ focus_tree = {
 
     focus = {
 		id = MOT_tree_0_06 #支援军区
-		icon = 0
+		icon = GFX_goal_mot_01_zhiyuanjunqu
         prerequisite = { focus = MOT_tree_0_02 }
         prerequisite = { focus = MOT_tree_0_03 }
         prerequisite = { focus = MOT_tree_0_04 }
@@ -139,15 +167,13 @@ focus_tree = {
 		cost = 14
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
             add_war_support = 0.05
-            add_political_power = 25
 		}
 	}
 
     focus = {
 		id = MOT_tree_0_07 #风魔龙会议
-		icon = 0
+		icon = GFX_goal_mot_01_fengmolonghuiyi
         prerequisite = { focus = MOT_tree_0_05 }
         prerequisite = { focus = MOT_tree_0_06 }
 		x = 12
@@ -158,14 +184,27 @@ focus_tree = {
 		completion_reward = {
 			news_event = {
 			    id = global_news.28#事件id
+				days = 1#几天后触发
+			}#此为触发世界新闻
+            hidden_effect = { #此为隐藏效果
+			news_event = {
+			    id = global_news.40#事件id
 				days = 7#几天后触发
 			}#此为触发世界新闻
+			news_event = {
+			    id = global_news.42#事件id
+				days = 70#几天后触发
+			}#此为触发世界新闻
+		    }
+            select_effect = {
+				 #国策不可取消，内填效果为国策持续时触发的效果
+            }
 		}
 	}
 
     focus = {
 		id = MOT_tree_0_08 #风之回转
-		icon = 0
+		icon = GFX_goal_mot_01_fengzhihuizhuan
         prerequisite = { focus = MOT_tree_0_07 }
         mutually_exclusive = { focus = MOT_tree_0_12 }
 		x = 10
@@ -234,7 +273,7 @@ focus_tree = {
 
     focus = {
 		id = MOT_tree_0_12 #风之凛冽
-		icon = 0
+		icon = GFX_goal_mot_01_fengzhilinglie
         prerequisite = { focus = MOT_tree_0_07 }
         mutually_exclusive = { focus = MOT_tree_0_08 }
 		x = 14
@@ -303,7 +342,7 @@ focus_tree = {
 
     focus = {
 		id = MOT_tree_0_16 #天空之琴
-		icon = 0
+		icon = GFX_goal_mot_01_tiankongzhiqing
         prerequisite = { focus = MOT_tree_0_08 focus = MOT_tree_0_12 }
 		x = 12
 		y = 6
@@ -337,7 +376,7 @@ focus_tree = {
 
     focus = {
 		id = MOT_tree_0_18 #盛风的进行曲
-		icon = 0
+		icon = GFX_goal_mot_01_shengfengdejinxingqu
 		x = 28
 		y = 1
 		available = { #自定义前提条件
@@ -359,7 +398,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_19 #轻风之能
-		icon = 0
+		icon = GFX_goal_mot_01_qingfengzhineng
 		x = 23
 		y = 2
 		prerequisite = {focus = MOT_tree_0_18 }
@@ -380,7 +419,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_20 #必要重风
-		icon = 0
+		icon = GFX_goal_mot_01_biyaozhongfeng
 		x = 33
 		y = 2
 		prerequisite = {focus = MOT_tree_0_18 }
@@ -409,9 +448,9 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			country_event = { 
+				days = 1 id = MOT_event.4
+		    }
 		}
 	}
 
@@ -685,9 +724,10 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			news_event = {
+			    id = global_news.43#事件id
+				days = 7#几天后触发
+			}#此为触发世界新闻
 		}
 	}
         

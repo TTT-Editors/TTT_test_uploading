@@ -966,17 +966,21 @@ liyue_civil_war_decisions = {
 		fire_only_once = yes
 
 		available = {
+			is_subject = no
 			OR = {
-				is_subject = no
-				OR = {
-					is_faction_leader = yes
-					is_in_faction = no
-				}
-				AND = {
-					controls_state = 127
-					surrender_progress < 0.3
-				}
+				is_faction_leader = yes
+				is_in_faction = no
+			}
+			OR = {
 				has_war_with = ZDG
+				127 = {
+					controller = {
+						OR = {
+							tag = ROOT
+							is_ally_with = ROOT
+						}
+					}
+				}
 			}
 		}
 
@@ -993,6 +997,7 @@ liyue_civil_war_decisions = {
 		
 		complete_effect = {
 			set_global_flag = liyue_unified
+			set_country_flag = ready_to_join_pact
 			every_country = {
 				limit = { is_in_faction_with = ROOT }
 				set_country_flag = former_faction_members

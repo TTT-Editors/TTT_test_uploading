@@ -1,0 +1,76 @@
+scripted_gui = {
+	MOT_Progress = {
+		context_type = decision_category
+		window_name = "MOT_Progress_window"
+		visible = {
+            tag = MOT
+		}
+		effects = {
+			MOT_Progress_option1_click = {
+				add_to_variable = {MOT_Progress_num =1}
+				Clear_Progress_num  = yes
+			}
+			MOT_Progress_option2_click = {
+				add_to_variable = {MOT_Progress_num =-1}
+				Clear_Progress_num  = yes
+			}
+			MOT_Progress_option3_click = {
+				add_to_variable = {MOT_Deadline_num_1 =1}
+				add_to_variable = {MOT_Deadline_num_2 = 1}
+				Clear_Deadline_num_1 = yes
+				Clear_Deadline_num_2 = yes
+			}
+			MOT_Progress_option4_click = {
+				add_to_variable = {MOT_Deadline_num_1 =-1}
+				add_to_variable = {MOT_Deadline_num_2 =-1}
+				Clear_Deadline_num_1 = yes
+				Clear_Deadline_num_2 = yes
+			}
+			MOT_Progress_Open_Button1_click ={
+				set_country_flag = Open_MOT_Standpoint_ui_window
+			}
+			MOT_Progress_Open_Button2_click ={
+				clr_country_flag = Open_MOT_Standpoint_ui_window
+			}
+
+		}
+		triggers = {
+			MOT_Progress_clock_1_visible = {
+				check_variable = {
+					var =MOT_Deadline_num_1
+					value = 5
+					compare = less_than_or_equals
+				}
+			}
+
+			MOT_Progress_clock_2_visible= {
+				check_variable = {
+					var = MOT_Deadline_num_2
+					value = 1
+					compare = greater_than_or_equals
+				}
+			}
+
+			MOT_Progress_Open_Button1_visible ={
+				not = {
+					has_country_flag = Open_MOT_Standpoint_ui_window
+				}
+			}
+			MOT_Progress_Open_Button2_visible ={
+				has_country_flag = Open_MOT_Standpoint_ui_window
+			}
+
+		}
+        properties = {
+			MOT_Progress_clock_1= {
+				frame = MOT_Deadline_num_1
+			}
+			MOT_Progress_clock_2= {
+				frame = MOT_Deadline_num_2
+			}
+			MOT_Progress_bar = {
+				frame = MOT_Progress_num
+			}
+        }
+    }
+}

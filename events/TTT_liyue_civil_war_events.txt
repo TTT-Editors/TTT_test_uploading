@@ -101,6 +101,10 @@ country_event = {
 	title = liyue_civil_war.21.t
 	desc = liyue_civil_war.21.d
 	is_triggered_only = yes
+	
+	immediate = {
+		log = "[GetDateText]: [Root.GetName] has received a message from [From.GetName]."
+	}
 
 	option = {
 		name = liyue_civil_war.21.a		#join
@@ -117,13 +121,10 @@ country_event = {
 			factor = 10
 		}
 		set_country_flag = ready_to_join_pact
-		ROOT = {
-			every_country = {
-				if = {
-					limit = { is_in_faction_with = PREV }
-				}
-				set_country_flag = ready_to_join_pact
-			}
+		every_country = {
+			limit = { is_in_faction_with = ROOT }
+			set_country_flag = ready_to_join_pact
+			log = "[GetDateText]: [This.GetName] has been pulled into a faction by [Root.GetName]."
 		}
 	}
 
@@ -197,9 +198,11 @@ country_event = {
 				}
 			}
 		}
+		ROOT = { clr_country_flag = ready_to_join_pact }
 		every_country = {
 			limit = { has_country_flag = ready_to_join_pact }
 			ROOT = { add_to_faction = PREV }
+			log = "[GetDateText]: [PREV.GetName] has join a faction lead by [Root.GetName]."
 			add_to_war = {
 				targeted_alliance = ROOT
 				enemy = ZDG

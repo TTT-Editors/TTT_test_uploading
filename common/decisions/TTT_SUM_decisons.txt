@@ -72,7 +72,8 @@ SUM_decision_test_categories = {
 		}
 
 		complete_effect = {
-			clear_array = SUM_Aka_res_short_available
+			set_country_flag = SUM_start_go_to_aru
+			
 		}
 		remove_effect = {
 			
@@ -98,99 +99,442 @@ SUM_decision_test_categories = {
 		}
 	}
 }
-Theresa_is_the_loveliest_in_the_world_cat = {
-	Theresa_is_the_loveliest_in_the_world = {
-		cost = 0
-		days_remove = 0
-		days_re_enable = 0
-		ai_will_do = {
-			base = 0
+SUM_decision_go_to_west_categories = {
+	SUM_Aka_is_looking_for_you = {
+		allowed = {
+			tag = SUM
+		}
+		activation = {
+			has_country_flag = SUM_start_go_to_aru
 		}
 		available = {
-
+			has_country_flag = SUM_all_people_arrive_aru
+		}
+		is_good = no
+		days_mission_timeout = 35
+		selectable_mission = no
+		priority = 100
+		complete_effect = {
+		}
+		timeout_effect = {
+			add_to_variable = {
+				var = SUM_Aka_attentiom
+				value = 1 	
+			} 
+		}
+	}
+	SUM_go_to_west_hide = {
+		cost = 10
+		days_remove = 30
+		days_re_enable = 45
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_is_going_to_west
+			}
 		}
 		visible = {
-			is_debug = yes
-			has_country_flag = Theresa_is_coming
+			
 		}
 
 		complete_effect = {
+			set_country_flag = SUM_go_to_west_is_hidden
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_Aka_attentiom
+				value = -2 	
+			}
+			clr_country_flag = SUM_go_to_west_is_hidden
+		}
+	}
+	SUM_go_to_west_0 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
 			
-			set_politics = {
-				ruling_party = hive_mind   
-				last_election = "1999.1.1"
-				election_frequency = 72
-				elections_allowed = no
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			set_variable = {
+				var = SUM_go_to_west_progress
+				value = 0
 			}
-			set_popularities = {
-				hive_mind = 100
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_1_0 = {
+		cost = 0
+		days_remove = 15
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
 			}
-			retire_character = SUM_Azar
-			set_party_name = {
-				ideology = totalitarianism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+			NOT = {
+				has_country_flag = SUM_is_going_to_west
 			}
-			set_party_name = {
-				ideology = communism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 0
+				compare = equals
 			}
-			set_party_name = {
-				ideology = left_wing_anarchism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = SUM_go_to_west_tooltip
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
 			}
-			set_party_name = {
-				ideology = populism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_1_1 = {
+		cost = 0
+		days_remove = 15
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
 			}
-			set_party_name = {
-				ideology = reformism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+			NOT = {
+				has_country_flag = SUM_is_going_to_west
 			}
-			set_party_name = {
-				ideology = liberalism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 0
+				compare = equals
 			}
-			set_party_name = {
-				ideology = right_wing_anarchism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
 			}
-			set_party_name = {
-				ideology = authoritarianism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_2 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
 			}
-			set_party_name = {
-				ideology = despotism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+				compare = equals
 			}
-			set_party_name = {
-				ideology = national_socialism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
 			}
-			set_party_name = {
-				ideology = esotericism
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_3 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
 			}
-			set_party_name = {
-				ideology = hive_mind
-				long_name = SUM_Theresa_party_long
-				name = SUM_Theresa_party
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 2
+				compare = equals
 			}
-			SUM_Theresa = {
-				promote_character = yes
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
 			}
-			add_stability = 1
-			add_war_support = 1
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_4 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 3
+				compare = equals
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+			}
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_5 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 4
+				compare = equals
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+			}
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_6 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 5
+				compare = equals
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+			}
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_7 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 6
+				compare = equals
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+			}
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_8 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 7
+				compare = equals
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+			}
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_9 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 8
+				compare = equals
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+			}
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
+		}
+	}
+	SUM_go_to_west_10 = {
+		cost = 0
+		days_remove = 25
+		fire_only_once = yes
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			NOT = {
+				has_country_flag = SUM_go_to_west_is_hidden
+			}
+		}
+		visible = {
+			check_variable = {
+				var = SUM_go_to_west_progress
+				value = 9
+				compare = equals
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = SUM_is_going_to_west
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = SUM_go_to_west_progress
+				value = 1
+			}
+			country_event = { id = sumeru.100 }
+			clr_country_flag = SUM_is_going_to_west
 		}
 	}
 }

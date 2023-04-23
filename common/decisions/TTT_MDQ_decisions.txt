@@ -8,13 +8,20 @@ MDQ_dadaupa_War_decision_category = {
             not = {
                 has_country_flag = MDQ_dadaupa_War_flag
             }
+			not = {
+				has_war_with = QQR
+			}
         }
         available = {
             has_country_flag = MDQ_dadaupa_War_flag
+			not = {
+				has_war_with = QQR
+			}
         }
         is_good = no
         selectable_mission = yes  
         days_mission_timeout = 300
+		war_with_on_timeout = QQR
         timeout_effect = {
             set_country_flag = MDQ_dadaupa_War_flag
             leave_faction = yes
@@ -48,9 +55,8 @@ MDQ_dadaupa_War_decision_category = {
 				MDQ = {
 					has_war_support < 0.35
 				}
-				MDQ = {
-					has_war = yes
-				}
+				has_war_with = QQR
+				has_country_flag = MDQ_dadaupa_War_flag
 			}
 			available = {
 				not = {
@@ -67,8 +73,10 @@ MDQ_dadaupa_War_decision_category = {
 				}
 				set_truce = {
 					target = QQR
-					days = 180
+					days = 270
 				}
+				clr_country_flag = MDQ_dadaupa_War_flag
+				set_country_flag = MDQ_dadaupa_peace_flag
 				MOT = {add_to_faction = MDQ}
 				QQR = {
 					transfer_state = 285
@@ -76,7 +84,275 @@ MDQ_dadaupa_War_decision_category = {
 					add_state_core = 285
 					add_state_core = 14
 				}
+				if = {
+					limit = {
+						has_idea = MDQ_Endless_battle_1
+					}
+					remove_ideas = MDQ_Endless_battle_1
+				}
+				else_if = {
+					limit = {
+						has_idea = MDQ_Endless_battle_2
+					}
+					remove_ideas = MDQ_Endless_battle_2
+				}
+				else_if = {
+					limit = {
+						has_idea = MDQ_Endless_battle_3
+					}
+					remove_ideas = MDQ_Endless_battle_3
+				}
+				else_if = {
+					limit = {
+						has_idea = MDQ_Endless_battle_4
+					}
+					remove_ideas = MDQ_Endless_battle_4
+				}
+				load_focus_tree = TTT_MDQ_focustree2
 			}
-		}   
+		}
+		MDQ_dadaupa_War_decision_3 = {
+			allowed = {
+				tag = MDQ
+			}
+			visible ={
+				not = {
+					has_country_flag = MDQ_dadaupa_War_flag
+				}
+				has_completed_focus = MDQ_Economic_reform_plan
+			}
+			cost = 50
+			fixed_random_seed = no
+			days_remove = 20
+			remove_effect = {
+				hidden_effect = {
+					random_list = {
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_speed_buildings_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_industrial_capacity_factory = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_factory_max_efficiency_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_line_change_production_efficiency_factor = 0.05}
+						}
+					}
+				}
+				set_country_flag = unlock_MDQ_dadaupa_War_decision_4
+				custom_effect_tooltip = MDQ_dadaupa_War_decision_3_tooltip
+			}
+		}
+		MDQ_dadaupa_War_decision_4= {
+			allowed = {
+				tag = MDQ
+			}
+			visible ={
+				not = {
+					has_country_flag = MDQ_dadaupa_War_flag
+				}
+				has_completed_focus = MDQ_Economic_reform_plan
+				has_country_flag = unlock_MDQ_dadaupa_War_decision_4
+			}
+			cost = 50
+			fixed_random_seed = no
+			days_remove = 20
+			remove_effect = {
+				hidden_effect = {
+					random_list = {
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_speed_buildings_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_industrial_capacity_factory = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_factory_max_efficiency_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_line_change_production_efficiency_factor = 0.05}
+						}
+					}
+				}
+				set_country_flag = unlock_MDQ_dadaupa_War_decision_5
+				clr_country_flag = unlock_MDQ_dadaupa_War_decision_4
+				custom_effect_tooltip = MDQ_dadaupa_War_decision_4_tooltip
+			}
+		}
+		MDQ_dadaupa_War_decision_5= {
+			allowed = {
+				tag = MDQ
+			}
+			visible ={
+				not = {
+					has_country_flag = MDQ_dadaupa_War_flag
+				}
+				has_completed_focus = MDQ_Economic_reform_plan
+				has_country_flag = unlock_MDQ_dadaupa_War_decision_5
+			}
+			cost = 50
+			fixed_random_seed = no
+			days_remove = 20
+			remove_effect = {
+				hidden_effect = {
+					random_list = {
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_speed_buildings_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_industrial_capacity_factory = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_factory_max_efficiency_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_line_change_production_efficiency_factor = 0.05}
+						}
+					}
+				}
+				set_country_flag = unlock_MDQ_dadaupa_War_decision_6
+				clr_country_flag = unlock_MDQ_dadaupa_War_decision_5
+				custom_effect_tooltip = MDQ_dadaupa_War_decision_5_tooltip
+			}
+		}
+		MDQ_dadaupa_War_decision_6 = {
+			allowed = {
+				tag = MDQ
+			}
+			visible ={
+				not = {
+					has_country_flag = MDQ_dadaupa_War_flag
+				}
+				has_completed_focus = MDQ_Economic_reform_plan
+				has_country_flag = unlock_MDQ_dadaupa_War_decision_6
+			}
+			cost = 50
+			fixed_random_seed = no
+			days_remove = 20
+			remove_effect = {
+				hidden_effect = {
+					random_list = {
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_speed_buildings_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_industrial_capacity_factory = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_production_factory_max_efficiency_factor = 0.05}
+						}
+						25 = {
+							add_to_variable = {MDQ_military_reform_line_change_production_efficiency_factor = 0.05}
+						}
+					}
+				}
+				clr_country_flag = unlock_MDQ_dadaupa_War_decision_6
+				custom_effect_tooltip = MDQ_dadaupa_War_decision_6_tooltip
+			}
+		}
+		MDQ_dadaupa_War_decision_7 = {
+			allowed = {
+				tag = MDQ
+				has_completed_focus = MDQ_Retrofit
+			}
+			available = {
+				has_political_power > 50
+		   	}
+			visible = {
+				has_completed_focus = MDQ_Retrofit
+			}
+			cost = 5
+			days_remove = 300
+			fire_only_once = no
+			modifier = {
+				soft_attack = -0.1
+				breakthrough_factor = -0.05
+				army_defence_factor = 0.05
+				industrial_capacity_factory = 0.1
+				##步兵装备杀伤力-10%，突破-5%，防御+5%，生产效率+10%
+		   	}
+		}
+		MDQ_dadaupa_War_decision_8 = {
+			allowed = {
+				tag = MDQ
+				has_completed_focus =MDQ_Celebrate_the_wine_Festival
+			}
+			available = {
+				not = {
+					has_war_with = QQR
+				}
+				has_completed_focus =MDQ_Celebrate_the_wine_Festival
+		   	}
+			visible = {
+				has_completed_focus =MDQ_Celebrate_the_wine_Festival
+			}
+			fire_only_once = yes
+			remove_effect = {
+				leave_faction = yes
+				news_event = {
+					id = MDQ_event.5
+					days = 3
+				}
+				set_country_flag = MDQ_second_dadaupa_War_flag
+            	declare_war_on = {
+					target = QQR
+					type = annex_everything
+				}
+				add_named_threat = { 
+					threat = 1.8
+					name = MDQ_dadaupa_War
+				}
+			}
+		}
+		MDQ_dadaupa_War_decision_9 = {
+			allowed = {
+				tag = MDQ
+				always = yes
+			}
+			remove_effect = {
+				load_focus_tree = TTT_MDQ_focustree2
+			}
+		}
 
+
+}
+MDQ_ask_for_help_from_others_decision_category= {
+	MDQ_ask_for_help_from_others_decision_1 = {
+		allowed = {
+			tag = MDQ
+			has_completed_focus =MDQ_Our_backer
+		}
+		available = {
+			has_completed_focus =MDQ_Our_backer
+		}
+		visible = {
+			has_completed_focus =MDQ_Our_backer
+		}
+		fire_only_once = no
+		cost = 100
+		days_remove = 100
+		remove_effect = {
+			
+		}
+	}
+	MDQ_ask_for_help_from_others_decision_2 = {
+		allowed = {
+			tag = MDQ
+			has_completed_focus =MDQ_To_Abedo
+		}
+		available = {
+			has_completed_focus =MDQ_To_Abedo
+		}
+		visible = {
+			has_completed_focus =MDQ_To_Abedo
+		}
+		fire_only_once = no
+		cost = 100
+		days_remove = 100
+		remove_effect = {
+			
+		}
+	}
 }

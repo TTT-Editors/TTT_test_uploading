@@ -21,19 +21,21 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			swap_ideas = {
-			add_idea = MOT_crisis_of_Tewalin2 #风魔龙危机2
-			remove_idea = MOT_crisis_of_Tewalin #风魔龙危机
-		}
-		hidden_effect = { #此为隐藏效果
-			news_event = {
-			    id = global_news.39#事件id
-				days = 7#几天后触发
-			}#此为触发世界新闻
-			news_event = {
-			    id = global_news.41#事件id
-				days = 35#几天后触发
-			}#此为触发世界新闻
-		}
+				add_idea = MOT_crisis_of_Tewalin2 #风魔龙危机2
+				remove_idea = MOT_crisis_of_Tewalin #风魔龙危机
+			}
+			hidden_effect = { #此为隐藏效果
+				news_event = {
+					id = global_news.39#事件id
+					days = 7#几天后触发
+				}#此为触发世界新闻
+				news_event = {
+					id = global_news.41#事件id
+					days = 35#几天后触发
+				}#此为触发世界新闻
+				set_global_flag = MOT_dragon_crisis
+			}
+
 		}
 	}
 
@@ -49,47 +51,47 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = mot_0_02
 			hidden_effect = { #此为隐藏效果
-        MOT = {
-			country_event = { 
-				days = 21 id = MOT_event.3
-		}
-		}
-		TWL = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        BLL = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        DLK = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        QQZ = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        FXE = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        DSC = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        MDQ = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-		}
+				MOT = {
+					country_event = { 
+						days = 21 id = MOT_event.3
+					}
+				}
+				TWL = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				BLL = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				DLK = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				QQZ = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				FXE = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				DSC = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				MDQ = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+			}
 		}
 	}
 
@@ -106,9 +108,7 @@ focus_tree = {
 			add_stability = 0.05
 			custom_effect_tooltip = mot_0_03
 			hidden_effect = { #此为隐藏效果
-			country_event = { 
-				days = 1 id = MOT_event.2
-		    }
+				country_event = {days = 1 id = MOT_event.2}
 			}
 		}
 	}
@@ -125,13 +125,13 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = -100
             swap_ideas = {
-			add_idea = MOT_wave_of_refugee2 #难民潮2
-			remove_idea = MOT_wave_of_refugee #难民潮
-		}
-		hidden_effect = { #此为隐藏效果
-			country_event = { 
-				days = 1 id = MOT_event.5
-		    }
+				add_idea = MOT_wave_of_refugee2 #难民潮2
+				remove_idea = MOT_wave_of_refugee #难民潮
+			}
+			hidden_effect = { #此为隐藏效果
+				country_event = { 
+					days = 1 id = MOT_event.5
+				}
 			}
 		}
 	}
@@ -167,7 +167,19 @@ focus_tree = {
 		cost = 14
 		search_filters = {  }
 		completion_reward = {
-            add_war_support = 0.05
+            ##解锁支援军区的决议
+			add_to_array = {
+				array = MOT_Political_grid_array
+				value = 1
+			}
+			add_to_array = {
+				array = MOT_Political_grid_array
+				value = 2
+			}
+			add_to_array = {
+				array = MOT_Political_grid_array
+				value = 3
+			}
 		}
 	}
 
@@ -181,23 +193,35 @@ focus_tree = {
 		
 		cost = 35
 		search_filters = {  }
+		available ={
+			always = no
+		}
 		completion_reward = {
 			news_event = {
 			    id = global_news.28#事件id
 				days = 1#几天后触发
 			}#此为触发世界新闻
             hidden_effect = { #此为隐藏效果
-			news_event = {
-			    id = global_news.40#事件id
-				days = 7#几天后触发
-			}#此为触发世界新闻
-			news_event = {
-			    id = global_news.42#事件id
-				days = 70#几天后触发
-			}#此为触发世界新闻
+				news_event = {
+					id = global_news.40#事件id
+					days = 7#几天后触发
+				}#此为触发世界新闻
+				news_event = {
+					id = global_news.42#事件id
+					days = 70#几天后触发
+				}#此为触发世界新闻
+				set_global_flag = MOT_dragon_crisis_standpoint_is_locked
+				###此处解锁倒计时
+				set_variable_to_random = {
+					var = MOT_dragon_crisis_deadline_num
+					min = 1
+					max = 7
+					integer = yes
+				}
+				set_country_flag = MOT_Deadline_is_unlocked
 		    }
             select_effect = {
-				 #国策不可取消，内填效果为国策持续时触发的效果
+				 #此处填写倒计时决议，30天后完成该国策
             }
 		}
 	}
@@ -213,13 +237,11 @@ focus_tree = {
 		cost = 42
 
 		ai_will_do = {
-		    base = 60
+		    base = 60 
 		}
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			##发布任务：观察
 		}
 	}
 
@@ -233,9 +255,7 @@ focus_tree = {
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：探寻
 		}
 	}
 
@@ -249,9 +269,7 @@ focus_tree = {
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：准备净化
 		}
 	}
 
@@ -265,9 +283,7 @@ focus_tree = {
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#解锁决议：净化风魔龙 
 		}
 	}
 
@@ -286,9 +302,7 @@ focus_tree = {
 		}
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：战争准备
 		}
 	}
 
@@ -302,9 +316,7 @@ focus_tree = {
 		cost = 21
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：修建设施
 		}
 	}
 
@@ -318,9 +330,7 @@ focus_tree = {
 		cost = 21
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：启动烈风之印 
 		}
 	}
 
@@ -334,9 +344,7 @@ focus_tree = {
 		cost = 21
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#解锁决议：消灭风魔龙 
 		}
 	}
 
@@ -350,9 +358,7 @@ focus_tree = {
 		cost = 70
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#在最终阶段，我们成功的几率增加20%
 		}
 	}
 

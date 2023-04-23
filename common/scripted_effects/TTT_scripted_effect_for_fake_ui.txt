@@ -639,18 +639,27 @@ recalculate_button_values = {
 		if = {
 			limit = {
 				check_variable = { liyue_region_frames^ttt_ui_region_selection = 1 }
+				has_political_power > 15
+				command_power > 15
 			}
 			set_variable = { liyue_button_frames^2 = 2 }
 		}
 		if = {
 			limit = {
 				check_variable = { liyue_region_frames^ttt_ui_region_selection < 3.5 }
+				has_political_power > 15
+				command_power > 15
 			}
 			set_variable = { liyue_button_frames^1 = 2 }
 			set_variable = { liyue_button_frames^3 = 2 }
 			set_variable = { liyue_button_frames^4 = 2 }
 		}
-		else = {
+		else_if = {
+			limit = {
+				check_variable = { liyue_region_frames^ttt_ui_region_selection = 5 }
+				has_political_power > 50
+				command_power > 25
+			}
 			set_variable = { liyue_button_frames^5 = 2 }
 			set_variable = { liyue_button_frames^6 = 2 }
 		}

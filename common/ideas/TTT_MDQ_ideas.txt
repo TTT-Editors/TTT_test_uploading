@@ -59,7 +59,7 @@ ideas = {
 				consumer_goods_factor = 0.05
 			}
 		}
-		###无尽的战斗1\2
+		###无尽的战斗1\2\3\4
 		MDQ_Endless_battle_1 = {
 			allowed = {
 				original_tag = MDQ
@@ -90,7 +90,44 @@ ideas = {
 			
 			modifier = {
 				war_support_weekly = -0.007
-				required_garrison_factor = -0.1
+				resistance_damage_to_garrison_on_our_occupied_states = 0.1
+			}
+		}
+		MDQ_Endless_battle_3 = {
+			allowed = {
+				original_tag = MDQ
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				war_support_weekly = -0.007
+				compliance_growth_on_our_occupied_states = -0.1
+				resistance_damage_to_garrison_on_our_occupied_states = 0.1
+			}
+		}
+		MDQ_Endless_battle_4 = {
+			allowed = {
+				original_tag = MDQ
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				war_support_weekly = -0.007
+				resistance_damage_to_garrison_on_our_occupied_states = 0.1
+				resistance_growth_on_our_occupied_states = 0.1
+				compliance_growth_on_our_occupied_states = -0.1
 			}
 		}
 		
@@ -138,7 +175,6 @@ ideas = {
 				breakthrough_factor = 0.1
 				army_org_factor = 0.1
 				land_reinforce_rate = -0.02
-				stability_weekly = -0.007
 			}
 		}
 		##重装部队
@@ -178,7 +214,51 @@ ideas = {
 				land_night_attack = 0.1
 			}
 		}
+		##################################################################################################
+		###经济重组
+		MDQ_Economic_refrom = {
+			allowed = { 
+				always = no 
+				original_tag = MDQ
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			modifier = {
+				###稳定度+10%，建造速度+15%
+				stability_factor = 0.1
+			}
+		}
+
+		###军区的攻势
+		MDQ_dadawupa_military_goverment_offensive = {
+			allowed = { 
+				always = no 
+			}
+			removal_cost = -1
+			modifier = {
+				###增援率-2.5%，陆军组织度-10%
+				army_org_factor = -0.1
+				land_reinforce_rate = -0.025
+			}
+		}
+		###军区士气高涨
+		MDQ_dadawupa_military_goverment_high_orgnization = {
+			allowed = { 
+				always = no 
+			}
+			removal_cost = -1
+			modifier = {
+				###陆军组织度-10%
+				army_org_factor = -0.1
+			}
+		}
 	}
+
+
+	#################################################################################################################
 	####工业企业
 	industrial_concern = {
 		MDQ_southwing_paper_mills = {
@@ -197,6 +277,7 @@ ideas = {
 				industry = 0.15
 			}
 
-			traits = {   }
+			traits = { MDQ_southwing_paper_mills_trait }
 		}
-}	
+	}
+}

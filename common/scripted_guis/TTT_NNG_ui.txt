@@ -1,0 +1,36 @@
+scripted_gui = {
+	NNG_parliament_sample_scripted_gui = {
+		window_name = "NNG_parliament_sample_gui"
+		context_type = player_context
+
+		visible = {
+			has_country_flag = open_parliament_gui
+		}
+
+		dynamic_lists = {
+			parliament_diagram = {
+				array = SAMPLE_seat_frame
+				change_scope = no
+				entry_container = NNG_SAMPLE_parliament_seat
+				index = seat_idx
+			}
+		}
+
+		properties = {
+			parliament_dot_icon = {
+				x = NNG_SAMPLE_seat_x^seat_idx
+				y = NNG_SAMPLE_seat_y^seat_idx
+				frame = SAMPLE_seat_frame^seat_idx
+			}
+		}
+
+		effects = {
+			close_button_click = {
+				clr_country_flag = open_parliament_gui
+			}
+			refresh_button_click = {
+				NNG_SAMPLE_init_parliament = yes
+			}
+		}
+	}
+}

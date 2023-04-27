@@ -54,7 +54,13 @@ on_actions = {
 	on_weekly = {
         effect = {
 			if = {
-				limit = { has_variable = ttt_liyue_civil_war_decision_ui_dirty }
+				limit = {
+					has_variable = ttt_liyue_civil_war_decision_ui_dirty
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
 				recalculate_region_values = yes
 				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }

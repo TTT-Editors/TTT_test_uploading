@@ -13,3 +13,5 @@ NDefines.NSupply.SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.50
 NDefines.NSupply.RAILWAY_FLOW_PER_LEVEL = 10
 NDefines.NSupply.NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.5
 NDefines_CareerProfile.NCareerProfile.MOD_STATISTICS_GROUP_NAME = "Genshin Impact: the Twist of Teyvat"
+NDefines.NCountry.MIN_STABILITY = -1.0
+NDefines.NCountry.MIN_WAR_SUPPORT = -1.0

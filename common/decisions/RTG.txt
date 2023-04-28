@@ -253,8 +253,6 @@ RTG_special_categories = {
 			has_country_flag = focus_RTG_right_finish_2
 		}
 
-		is_good = yes
-
 		fire_only_once = no
 
 		days_remove = 30
@@ -317,7 +315,6 @@ RTG_special_categories = {
 			has_country_flag = focus_RTG_right_finish_3
 		}
 
-		is_good = yes
 
 		fire_only_once = no
 
@@ -773,24 +770,9 @@ RTG_integrate_allied_nations = {
 		        transfer_troops = yes 
 			}
 			XRG = {
-				retire_character = XRG_Liuyunjiefeng
-				retire_character = XRG_Lishuidieshan
-				retire_character = XRG_Xueyuezhuyang
-			    retire_character = XRG_Xunguinaqi
-			}
-			recruit_character = XRG_Liuyunjiefeng
-			recruit_character = XRG_Lishuidieshan
-			recruit_character = XRG_Xueyuezhuyang
-			recruit_character = XRG_Xunguinaqi
-			if = {
-				limit = { XRG = { has_charactaer = LYU_Pinglaolao } }
-				XRG = { retire_character = LYU_Pinglaolao }
-                recruit_character = LYU_Pinglaolao
-			}
-			if = {
-				limit = { XRG = { has_charactaer = XRG_Shenhe } }
-				XRG = { retire_character = XRG_Shenhe }
-                recruit_character = XRG_Shenhe
+				every_character = {
+					set_nationality = RTG
+				}
 			}
 #			if = {
 #				limit = { SHG = { exists = yes } }
@@ -803,9 +785,8 @@ RTG_integrate_allied_nations = {
 #			    }
 #				recruit_character = XRG_Shenhe
 #			}
-			promote_character = { 
-				character = XRG_Liuyunjiefeng
-				ideology = authoritarian_democracy
+			XRG_Liuyunjiefeng = { 
+				promote_character = yes
 			}	
 		}
 	}
@@ -828,7 +809,9 @@ RTG_integrate_allied_nations = {
 			ANG = {
 			    retire_character = ANG_com_zijigongshe
 			}
-			recruit_character = ANG_com_zijigongshe
+			ANG_com_zijigongshe = {
+				set_nationality = RTG
+			}
 		}
 	}
 	RTG_integrate_Liyuegang = {
@@ -848,24 +831,12 @@ RTG_integrate_allied_nations = {
 		        transfer_troops = yes 
 			}
 			LYU = {
-				retire_character = LYU_Ganyu
-				retire_character = LYU_Yanfei
-				retire_character = LYU_qiqi
-				retire_character = LYU_Xiangling
-				retire_character = LYU_Pinglaolao
-				retire_character = LYU_Baizhu
-				retire_character = LYU_Xiaoyu
+				every_character = {
+					set_nationality = RTG
+				}
 			}	
-			recruit_character = LYU_Ganyu
-			recruit_character = LYU_Yanfei
-			recruit_character = LYU_qiqi
-			recruit_character = LYU_Xiangling
-			recruit_character = LYU_Pinglaolao
-			recruit_character = LYU_Baizhu
-			recruit_character = LYU_Xiaoyu	
-			promote_character = { 
-				character = LYU_Baizhu
-				ideology = despotism_subtype
+			LYU_Baizhu = { 
+				promote_character = yes
 			}	
 		}
 	}
@@ -922,7 +893,7 @@ RTG_develop_capital = {
 				50 = {
 					random_owned_controlled_state = {
 					    limit = {
-						    industrial_complex_level > 1
+						    industrial_complex > 1
 						}
 			            add_building_construction = {
 			                type = industrial_complex
@@ -976,7 +947,6 @@ RTG_develop_capital = {
 			base = 10
 		}
 		remove_effect = {
-		    
 			custom_effect_tooltip = add_RTG_yuan_capital_FS
 		}
 	}
@@ -996,36 +966,18 @@ RTG_forgive_everything = {
 		}
 		remove_effect = { 
 		    NNG = {
-		        retire_character = LYU_NingGuang
-			    retire_character = LYU_Xingqiu
-                retire_character = LYU_BeiDou
-                retire_character = LYU_Xinyan	
-				retire_character = LYU_Yunjin		
+		        every_character = {
+					set_nationality = RTG
+				}
             }
-			recruit_character = LYU_NingGuang
-			recruit_character = LYU_Xingqiu
-            recruit_character = LYU_BeiDou
-            recruit_character = LYU_Xinyan	
-			recruit_character = LYU_Yunjin
-			promote_character = {
-			    character = LYU_NingGuang
-				ideology = neo_liberalism
+			LYU_NingGuang = {
+				promote_character = yes
 			}
-			promote_character = {
-			    character = LYU_Xingqiu
-				ideology = feiyun_cc_association
+			LYU_Xingqiu = {
+				promote_character = yes
 			}
-			promote_character = {
-			    character = LYU_Xingqiu
-				ideology = feiyun_cc_association
-			}
-			promote_character = {
-			    character = LYU_Xingqiu
-				ideology = caixinpai
-			}
-			promote_character = {
-			    character = LYU_Xinyan
-				ideology = anarcho_syndicalism
+			LYU_Xinyan = {
+				promote_character = yes
 			}
 		}
 	}
@@ -1042,16 +994,12 @@ RTG_forgive_everything = {
 		}
 		remove_effect = { 
 		    KQG = {
-		        retire_character = LYU_Keqing  
-				retire_character = LYU_Hutao
-				retire_character = LYU_ZhongliA
+		        every_character = {
+					set_nationality = RTG
+				}
             }
-			recruit_character = LYU_Keqing
-			recruit_character = LYU_Hutao
-			recruit_character = LYU_ZhongliA
-	        promote_character = { 
-				character = LYU_ZhongliA
-				ideology = revisionism
+			LYU_ZhongliA = {
+				promote_character = yes
 			}
 		}
 	}
@@ -1068,12 +1016,12 @@ RTG_forgive_everything = {
 		}
 		remove_effect = {
 		    XOG = {
-                retire_character = LYU_Xiao
+                every_character = {
+					set_nationality = RTG
+				}
 			}
-			recruit_character = LYU_Xiao
-            promote_character = {
-			    character = LYU_Xiao
-				ideology = totalist
+            LYU_Xiao = {
+			    promote_character = yes
 			}			
 		}
 	}
@@ -1093,24 +1041,15 @@ RTG_forgive_everything = {
 		}
 		remove_effect = { 
 		    XRG = {
-		        retire_character = XRG_Liuyunjiefeng
-				retire_character = XRG_Shenhe
-				retire_character = XRG_Lishuidieshan
-				retire_character = XRG_Xueyuezhuyang
-				retire_character = XRG_Xunguinaqi
+		        every_character = {
+					set_nationality = RTG
+				}
             }
-			recruit_character = XRG_Liuyunjiefeng
-			recruit_character = XRG_Shenhe
-			recruit_character = XRG_Lishuidieshan
-			recruit_character = XRG_Xueyuezhuyang
-			recruit_character = XRG_Xunguinaqi
-			promote_character = { 
-				character = XRG_Liuyunjiefeng
-				ideology = authoritarian_democracy
+			XRG_Liuyunjiefeng = {
+				promote_character = yes
 			}
-			promote_character = { 
-				character = XRG_Xueyuezhuyang
-				ideology = orderism
+			XRG_Xueyuezhuyang = {
+				promote_character = yes
 			}
 		}
 	}
@@ -1132,10 +1071,9 @@ RTG_forgive_everything = {
 			base = 100
 		}
 		remove_effect = {
-		    ANG = {
-                retire_character = ANG_com_zijigongshe
-            }
-			recruit_character = ANG_com_zijigongshe	
+			ANG_com_zijigongshe = {
+				set_nationality = RTG
+			}	
 		}
 	}
 	RTG_accept_Liyuegang = {
@@ -1154,25 +1092,13 @@ RTG_forgive_everything = {
 		}
 		remove_effect = {
 		    LYU = {
-                retire_character = LYU_Ganyu
-			    retire_character = LYU_Yanfei
-			    retire_character = LYU_qiqi
-				retire_character = LYU_Xiangling
-				retire_character = LYU_Pinglaolao
-				retire_character = LYU_Baizhu
-				retire_character = LYU_Xiaoyu
-			}	
-			recruit_character = LYU_Ganyu
-			recruit_character = LYU_Yanfei
-			recruit_character = LYU_qiqi
-			recruit_character = LYU_Xiangling
-			recruit_character = LYU_Pinglaolao
-			recruit_character = LYU_Baizhu
-			recruit_character = LYU_Xiaoyu	
-			promote_character = { 
-				character = LYU_Baizhu
-				ideology = despotism_subtype
-			}		
+				every_character = {
+					set_nationality = RTG
+				}
+			}
+			LYU_Baizhu = {
+				promote_character = yes
+			}
 		}
 	}
 }
@@ -1237,8 +1163,8 @@ RTG_shenyuan_zhizhi = {
 
 		}
 		complete_effect = {
-			add_manpower = 10000
-			experience_gain_army = 20
+			add_manpower = 12000
+			army_experience = 20
 		}
 	}
 	RTG_shenyuan2 = { #枝叶的教诲

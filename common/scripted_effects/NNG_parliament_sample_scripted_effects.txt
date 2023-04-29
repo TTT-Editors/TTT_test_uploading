@@ -1,21 +1,26 @@
 # 分配席位 
 NNG_SAMPLE_generate_random_party_seats = {
-	set_temp_variable = { SAMPLE_party1_seats = ROOT.party_popularity@reformism }
+	set_temp_variable = { SAMPLE_party1_seats = ROOT.party_popularity@liberalism }
 	multiply_temp_variable = { SAMPLE_party1_seats = 300 }
 	round_temp_variable = SAMPLE_party1_seats
-	set_temp_variable = { SAMPLE_party2_seats = ROOT.party_popularity@liberalism }
+	set_temp_variable = { SAMPLE_party2_seats = ROOT.party_popularity@authoritarianism }
 	multiply_temp_variable = { SAMPLE_party2_seats = 300 }
 	round_temp_variable = SAMPLE_party2_seats
-	set_temp_variable = { SAMPLE_party3_seats = ROOT.party_popularity@authoritarianism }
+	set_temp_variable = { SAMPLE_party3_seats = ROOT.party_popularity@right_wing_anarchism }
 	multiply_temp_variable = { SAMPLE_party3_seats = 300 }
 	round_temp_variable = SAMPLE_party3_seats
 	set_temp_variable = { SAMPLE_party4_seats = ROOT.party_popularity@despotism }
 	multiply_temp_variable = { SAMPLE_party4_seats = 300 }
 	round_temp_variable = SAMPLE_party4_seats
-	set_temp_variable = { t5 = 300 }
-	subtract_from_variable = { t5 = red_total }
-	subtract_from_variable = { t5 = yellow_total }
-	subtract_from_variable = { t5 = blue_total }
+	set_temp_variable = { SAMPLE_party5_seats = ROOT.party_popularity@esotericism }
+	multiply_temp_variable = { SAMPLE_party5_seats = 300 }
+	round_temp_variable = SAMPLE_party5_seats
+	set_temp_variable = { SAMPLE_party6_seats = ROOT.party_popularity@reformism }
+	multiply_temp_variable = { SAMPLE_party6_seats = 300 }
+	round_temp_variable = SAMPLE_party6_seats
+	set_temp_variable = { SAMPLE_party7_seats = ROOT.party_popularity@communism }
+	multiply_temp_variable = { SAMPLE_party7_seats = 300 }
+	round_temp_variable = SAMPLE_party7_seats
 }
 
 NNG_SAMPLE_init_parliament = {
@@ -25,11 +30,15 @@ NNG_SAMPLE_init_parliament = {
 	set_temp_variable = { t2 = SAMPLE_party2_seats }
 	set_temp_variable = { t3 = SAMPLE_party3_seats }
 	set_temp_variable = { t4 = SAMPLE_party4_seats }
-	set_temp_variable = { t5 = 300 }
+	set_temp_variable = { t5 = SAMPLE_party5_seats }
+	set_temp_variable = { t6 = SAMPLE_party6_seats }
+	set_temp_variable = { t7 = 300 }
 
 	add_to_temp_variable = { t2 = t1 }
 	add_to_temp_variable = { t3 = t2 }
     add_to_temp_variable = { t4 = t3 }
+	add_to_temp_variable = { t5 = t4 }
+	add_to_temp_variable = { t6 = t5 }
 
 	clear_array = SAMPLE_seat_frame
 
@@ -62,6 +71,18 @@ NNG_SAMPLE_init_parliament = {
 		array = SAMPLE_seat_frame
 		value = 5
 		size = t5
+	}
+	# 分配席位给t6
+	resize_array = {
+		array = SAMPLE_seat_frame
+		value = 6
+		size = t6
+	}
+	# 分配席位给t7
+	resize_array = {
+		array = SAMPLE_seat_frame
+		value = 7
+		size = 300
 	}
 
 	# 拼成扇形...最好是用DIY生成，手写反人类

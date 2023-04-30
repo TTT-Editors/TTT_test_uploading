@@ -6,24 +6,25 @@ MDQ_dadaupa_War_decision_category = {
         }
         activation = {
             not = {
-                has_country_flag = MDQ_dadaupa_War_flag
-            }
+				has_country_flag = MDQ_dadaupa_War_flag
+			}
+			not = {
+				has_country_flag = MDQ_dadaupa_peace_flag
+			}
 			not = {
 				has_war_with = QQR
 			}
         }
         available = {
-            has_country_flag = MDQ_dadaupa_War_flag
-			not = {
-				has_war_with = QQR
-			}
+			always = no
         }
         is_good = no
         selectable_mission = yes  
         days_mission_timeout = 300
 		war_with_on_timeout = QQR
         timeout_effect = {
-            set_country_flag = MDQ_dadaupa_War_flag
+			clr_country_flag = MDQ_dadaupa_peace_flag
+			set_country_flag = MDQ_dadaupa_War_flag
             leave_faction = yes
             QQR = {
                 transfer_state = 280
@@ -57,11 +58,12 @@ MDQ_dadaupa_War_decision_category = {
 				}
 				has_war_with = QQR
 				has_country_flag = MDQ_dadaupa_War_flag
+				not = {
+					has_country_flag MDQ_dadaupa_peace_flag
+				}
 			}
 			available = {
-				not = {
-					has_country_flag = MDQ_dadaupa_War_flag
-				}	
+				always = no
 			}
 			is_good = no
 			selectable_mission = yes 

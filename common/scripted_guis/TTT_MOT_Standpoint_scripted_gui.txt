@@ -9,12 +9,15 @@ scripted_gui = {
         effects = {
             MOT_Standpoint_decision1_click = {
                 set_country_flag = Lock_MOT_Standpoint_decision_1
+                MOT_Standpoint_config_flag_01 =YES
             }
             MOT_Standpoint_decision2_click = {
                 set_country_flag = Lock_MOT_Standpoint_decision_2
+                MOT_Standpoint_config_flag_02 =YES
             }
             MOT_Standpoint_decision3_click = {
                 set_country_flag = Lock_MOT_Standpoint_decision_3
+                MOT_Standpoint_config_flag_03 =YES
             }
             MOT_Standpoint_transfer_click = {
                 if = {
@@ -35,6 +38,10 @@ scripted_gui = {
                     }
                     clr_country_flag = Lock_MOT_Standpoint_decision_3
                 }
+                MOT_Standpoint_Clear_flag_from_array_01 =YES
+                MOT_Standpoint_Clear_flag_from_array_02 =YES
+                MOT_Standpoint_Clear_flag_from_array_03 =YES
+                add_political_power = -50
             }
             MOT_Standpoint_close2_click = {
                 clr_country_flag = Open_MOT_Standpoint_ui_window
@@ -94,6 +101,7 @@ scripted_gui = {
                 not = {
                     has_global_flag = MOT_dragon_crisis_standpoint_is_locked
                 }
+                has_political_power > 50
             }
 
             MOT_Standpoint_sign1_visible = {
@@ -107,15 +115,50 @@ scripted_gui = {
             }
 
         }
+
+        dynamic_lists ={
+            MOT_Standpoint_flag_list_grid_01= {
+                array = MOT_Standpoint_flag_array_01
+                change_scope = no
+                entry_container = MOT_Standpoint_flag_list_model_01
+                index = MOT_Standpoint_flag_array_index_01
+                value = MOT_Standpoint_flag_array_value_01
+            }
+            MOT_Standpoint_flag_list_grid_02= {
+                array = MOT_Standpoint_flag_array_02
+                change_scope = no
+                entry_container = MOT_Standpoint_flag_list_model_02
+                index = MOT_Standpoint_flag_array_index_02
+                value = MOT_Standpoint_flag_array_value_02
+            }
+            MOT_Standpoint_flag_list_grid_03= {
+                array = MOT_Standpoint_flag_array_03
+                change_scope = no
+                entry_container = MOT_Standpoint_flag_list_model_03
+                index = MOT_Standpoint_flag_array_index_03
+                value = MOT_Standpoint_flag_array_value_03
+            }
+        }
+
+
         properties = {
             MOT_Expectation_circle1 = {
-                frame = 25
+                frame = 0
             }
             MOT_Expectation_circle2 = {
-                frame = 65
+                frame = 0
             }
             MOT_Expectation_circle3 = {
-                frame = 95
+                frame = 0
+            }
+            MOT_Standpoint_flag_list_model_icon_01 = {
+                frame = MOT_Standpoint_flag_array_value_01
+            }
+            MOT_Standpoint_flag_list_model_icon_02 = {
+                frame = MOT_Standpoint_flag_array_value_02
+            }
+            MOT_Standpoint_flag_list_model_icon_03 = {
+                frame = MOT_Standpoint_flag_array_value_03
             }
         }
 	}

@@ -33,9 +33,8 @@ focus_tree = {
 					id = global_news.41#事件id
 					days = 35#几天后触发
 				}#此为触发世界新闻
-				set_global_flag = MOT_dragon_crisis
 			}
-
+			set_global_flag = MOT_dragon_crisis
 		}
 	}
 
@@ -168,18 +167,15 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
             ##解锁支援军区的决议
-			add_to_array = {
-				array = MOT_Political_grid_array
-				value = 1
-			}
-			add_to_array = {
-				array = MOT_Political_grid_array
-				value = 2
-			}
-			add_to_array = {
-				array = MOT_Political_grid_array
-				value = 3
-			}
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_01
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_02
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_03
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_04
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_05
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_06
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_07
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_08
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_09
 		}
 	}
 
@@ -218,7 +214,22 @@ focus_tree = {
 					max = 7
 					integer = yes
 				}
+				if = {
+					limit = {
+						ROOT = {
+							not = {
+								or = {
+									has_country_flag = Lock_MOT_Standpoint_decision_1
+									has_country_flag = Lock_MOT_Standpoint_decision_3
+								}
+							}
+						}
+						
+					}
+					set_country_flag = Lock_MOT_Standpoint_decision_1
+				}
 				set_country_flag = MOT_Deadline_is_unlocked
+				set_country_flag = MOT_Progress_is_unlocked
 		    }
             select_effect = {
 				 #此处填写倒计时决议，30天后完成该国策
@@ -239,9 +250,16 @@ focus_tree = {
 		ai_will_do = {
 		    base = 60 
 		}
+		available = {
+			has_country_flag = Lock_MOT_Standpoint_decision_1
+		}
 		search_filters = {  }
 		completion_reward = {
 			##发布任务：观察
+			add_to_array = {
+				array = MOT_Political_grid_array
+				value = 6
+			}
 		}
 	}
 
@@ -256,6 +274,10 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：探寻
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 7
+            }
 		}
 	}
 
@@ -270,6 +292,10 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：准备净化
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 8
+            }
 		}
 	}
 
@@ -283,7 +309,7 @@ focus_tree = {
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			#解锁决议：净化风魔龙 
+			#解锁决议：净化风魔龙
 		}
 	}
 
@@ -300,9 +326,16 @@ focus_tree = {
 		ai_will_do = {
 		    base = 0
 		}
+		available = {
+			has_country_flag = Lock_MOT_Standpoint_decision_3
+		}
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：战争准备
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 6
+            }
 		}
 	}
 
@@ -317,6 +350,10 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：修建设施
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 7
+            }
 		}
 	}
 
@@ -330,7 +367,11 @@ focus_tree = {
 		cost = 21
 		search_filters = {  }
 		completion_reward = {
-			#发布任务：启动烈风之印 
+			#发布任务：启动烈风之印
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 8
+            }
 		}
 	}
 

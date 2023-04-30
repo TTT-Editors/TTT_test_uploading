@@ -1,0 +1,78 @@
+on_actions = {
+    on_weekly_MOT = { 
+        ###check variable number weekly
+        effect ={
+            if = {
+                limit = {
+                    has_country_flag = MOT_Deadline_is_unlocked
+                    has_global_flag = MOT_dragon_crisis
+                    not = {
+                        has_global_flag = MOT_dragon_crisis_is_over
+                    }
+                }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = MOT_Deadline_num_1
+                                value = 11
+                                compare = greater_than_or_equals
+                            }
+                        }
+                        Clear_Deadline_num_1 = yes
+                        Clear_Deadline_num_2 = yes
+                        set_global_flag = MOT_dragon_crisis_is_over
+                        clr_country_flag = MOT_Deadline_is_unlocked
+                        clr_global_flag = MOT_dragon_crisis
+                        clr_global_flag = MOT_dragon_crisis_is_locked
+                    }
+                    else = {
+                        add_to_variable = {MOT_dragon_crisis_deadline_num = 7}
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = MOT_dragon_crisis_deadline_num
+                                    value = 37
+                                    compare = greater_than_or_equals
+                                }
+                            }
+                            add_to_variable = {MOT_dragon_crisis_deadline_num = -37}
+                            add_to_variable = {MOT_Deadline_num_1 =1}
+                            add_to_variable = {MOT_Deadline_num_2 =1}
+                            Clear_Deadline_num_1 = yes
+                            Clear_Deadline_num_2 = yes
+                        }
+                    }
+                    
+            }
+            ##清除多余标记
+            if = {
+                limit = {
+                    not = {
+                        has_global_flag = MOT_dragon_crisis
+                    }
+                    has_country_flag = MOT_Deadline_is_unlocked
+                }
+                clr_country_flag = MOT_Deadline_is_unlocked
+                Clear_Deadline_num_1 = yes
+                Clear_Deadline_num_2 = yes
+                
+            }
+        }
+    }
+    on_monthly_MOT = {
+        ##change_refugee_mood
+        effect ={
+            if = {
+                limit = {
+                    check_variable = {
+                        var = MOT_Refugee_mood_num 
+                        value = 1
+                        compare = greater_than
+                    }
+                }
+                add_to_variable = {MOT_Refugee_mood_num = -1}
+                MOT_flush_Refugee_mood = yes
+            }
+        }
+    }
+}

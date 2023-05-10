@@ -1,0 +1,115 @@
+RTG_underground_networks = {
+	add_underground_network = {
+		on_map_mode = map_only
+	
+		priority = 20
+		
+  		icon = onmap_recruit_operative
+
+		visible = {
+			#拥有
+			RTG = { has_full_control_of_state = FROM }
+			FROM = { has_RTG_network = no }
+			FROM = { NOT = { state = 156 } }
+		}
+		
+        state_target = yes
+		target_array = controlled_states
+		
+		available = {
+			check_variable = { used_network_states < usable_network_states }
+		}
+		
+		ai_will_do = {
+			factor = 15
+		}		
+
+		cancel_if_not_visible = yes
+
+		highlight_color_while_active = yes
+		
+		fire_only_once = no
+		
+		days_remove = 14
+
+		days_re_enable = 30
+
+		complete_effect = {
+			add_to_variable = { used_network_states = 1 }
+		}
+		
+		remove_effect = {
+			FROM = { RTG_add_network = yes }
+		}
+	}
+
+	remove_underground_network = {
+		on_map_mode = map_only
+	
+		priority = 20
+		
+  		icon = onmap_recruit_operative
+
+		visible = {
+			#拥有
+			FROM = { has_RTG_network = yes }
+			FROM = { NOT = { state = 156 } }
+		}
+		
+        state_target = yes
+		target_array = controlled_states
+		
+		ai_will_do = {
+			factor = 0
+		}		
+
+		cancel_if_not_visible = yes
+
+		highlight_color_while_active = yes
+		
+		fire_only_once = no
+		
+		days_remove = 7
+
+		days_re_enable = 14
+		
+		remove_effect = {
+		    FROM = { RTG_remove_network = yes }
+			add_to_variable = { used_network_states = -1 }
+		}
+	}
+
+	strengthen_network = {
+		on_map_mode = map_only
+	
+		priority = 20
+		
+  		icon = onmap_recruit_operative
+
+		visible = {
+			#拥有
+			FROM = { has_RTG_network = yes }
+		}
+		
+        state_target = yes
+		target_array = controlled_states
+		
+		ai_will_do = {
+			factor = 0
+		}		
+
+		cancel_if_not_visible = yes
+
+		highlight_color_while_active = yes
+		
+		fire_only_once = no
+		
+		days_remove = 7
+
+		days_re_enable = 120
+		
+		remove_effect = {
+		    FROM = { RTG_strengthen_network = yes }
+		}
+	}
+}

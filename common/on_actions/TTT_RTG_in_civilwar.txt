@@ -5,16 +5,12 @@ on_actions = {
         effect = {
             if = {
                 limit = {
-                    ROOT = { tag = RTG }
+                    ROOT = {
+						tag = RTG
+						NOT = { has_government = hive_mind }
+					}
 					FROM = {
-					    OR = {
-						    tag = ZDG
-							tag = HTG
-							tag = XOG
-							tag = NNG
-							tag = XRG
-							tag = ANG
-						}
+					    is_nominate_liyue = yes
 					}
                 }
 				news_event = { 
@@ -24,5 +20,15 @@ on_actions = {
             }
         }
     }	
+
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = { FROM.FROM = { has_RTG_network = yes } }
+				FROM.FROM = { RTG_remove_network = yes }
+				RTG = { add_to_variable = { used_network_states = -1 } }
+			}
+		}
+	}
 	
 }

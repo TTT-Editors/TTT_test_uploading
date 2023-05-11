@@ -325,3 +325,63 @@ RTG_strengthen_network = {
 		add_dynamic_modifier = { modifier = RTG_network_strength_5 }
 	}
 }
+
+RTG_tick_up_networks = {
+	RTG = {
+		if = {
+			limit = { check_variable = { network_strength = 4 } }
+			every_controlled_state = {
+				limit = {
+					OR = {
+						has_dynamic_modifier = { modifier = RTG_network_strength_1 }
+						has_dynamic_modifier = { modifier = RTG_network_strength_2 }
+						has_dynamic_modifier = { modifier = RTG_network_strength_3 }
+					}
+				}
+				if = {
+					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_1 } }
+					remove_dynamic_modifier = { modifier = RTG_network_strength_1 }
+				}
+				else_if = {
+					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_2 } }
+					remove_dynamic_modifier = { modifier = RTG_network_strength_2 }
+				}
+				else_if = {
+					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_3 } }
+					remove_dynamic_modifier = { modifier = RTG_network_strength_3 }
+				}
+				add_dynamic_modifier = { modifier = RTG_network_strength_4 }
+			}
+		}
+		else_if = {
+			limit = { check_variable = { network_strength = 3 } }
+			every_controlled_state = {
+				limit = {
+					OR = {
+						has_dynamic_modifier = { modifier = RTG_network_strength_1 }
+						has_dynamic_modifier = { modifier = RTG_network_strength_2 }
+					}
+				}
+				if = {
+					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_1 } }
+					remove_dynamic_modifier = { modifier = RTG_network_strength_1 }
+				}
+				else_if = {
+					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_2 } }
+					remove_dynamic_modifier = { modifier = RTG_network_strength_2 }
+				}
+				add_dynamic_modifier = { modifier = RTG_network_strength_3 }
+			}
+		}
+		else_if = {
+			limit = { check_variable = { network_strength = 2 } }
+			every_controlled_state = {
+				limit = {
+					has_dynamic_modifier = { modifier = RTG_network_strength_1 }
+				}
+				remove_dynamic_modifier = { modifier = RTG_network_strength_1 }
+				add_dynamic_modifier = { modifier = RTG_network_strength_2 }
+			}
+		}
+	}
+}

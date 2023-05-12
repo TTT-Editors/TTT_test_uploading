@@ -858,12 +858,17 @@ RTG_develop_capital = {
 		ai_will_do = {
 			base = 5
 		}
+		modifier = {
+        civilian_factory_use = 3		
+		}
 		available = {
 		industrial_complex > 4
 		}
 		remove_effect = {
 		    add_ideas = RTG_Excavate_Yuandug
 			set_country_flag = RTG_expand_yuan_capital_flag
+			set_variable = { RTG_yongyoujianzhucao = 10 }
+			set_variable = { RTG_shengyukeyon = 10 }			
         }		
 	}
 	RTG_migrate_factory = {        #拓展渊都
@@ -910,9 +915,13 @@ RTG_develop_capital = {
 		    tooltip = RTG_extend_residential_areas_tt1	
 		    check_variable = { RTG_extend_residential_areas_value < 6 }
 	        }		
-		 custom_trigger_tooltip = {
+		custom_trigger_tooltip = {
 		    tooltip = RTG_extend_residential_areas_tt2	
 		    check_variable = { RTG_shengyukeyon > 0 }
+	        }
+		custom_trigger_tooltip = {
+		    tooltip = RTG_extend_residential_areas_tt3	
+		    NOT = { has_country_flag = RTG_zhinengjinxingyici }
 	        }
 		industrial_complex > 3
 		}
@@ -928,6 +937,7 @@ RTG_develop_capital = {
 		    add_to_variable = { RTG_junyongongchang = 1 }
 			add_to_variable = { RTG_shengyukeyon = -1 }
 			add_to_variable = { RTG_yishiyondejianzhucao = 1 }
+			set_country_flag = { flag = RTG_zhinengjinxingyici value = 1 days = 60 }
 		}
 	}
 	RTG_defend_yuan_capital = {  #建造民用工厂
@@ -949,7 +959,11 @@ RTG_develop_capital = {
 		custom_trigger_tooltip = {
 		    tooltip = RTG_extend_residential_areas_tt2	
 		    check_variable = { RTG_shengyukeyon > 0 }
-	        }		
+	        }
+        custom_trigger_tooltip = {
+		    tooltip = RTG_extend_residential_areas_tt3	
+		    NOT = { has_country_flag = RTG_zhinengjinxingyici }
+	        }			
 		industrial_complex > 4
 		}
 		modifier = {
@@ -964,6 +978,7 @@ RTG_develop_capital = {
 			custom_effect_tooltip = add_RTG_yuan_capital_AD
 			add_to_variable = { RTG_shengyukeyon = -1 }
 			add_to_variable = { RTG_yishiyondejianzhucao = 1 }
+			set_country_flag = { flag = RTG_zhinengjinxingyici value = 1 days = 90 } 
 		}
 	}
 	RTG_yuan_capital_fix_speed = {   #建造居民区 
@@ -983,6 +998,10 @@ RTG_develop_capital = {
 		tooltip = RTG_yuan_capital_fix_speed_tt
 		check_variable = { RTG_yuan_capital_fix_speed_value < 11 }
 		    }
+		custom_trigger_tooltip = {
+		    tooltip = RTG_extend_residential_areas_tt3	
+		    NOT = { has_country_flag = RTG_zhinengjinxingyici }
+	        }
 		}
 		modifier = {
 		civilian_factory_use = 2
@@ -994,6 +1013,7 @@ RTG_develop_capital = {
 			}
 			add_to_variable = { RTG_yuan_capital_fix_speed_value = 1 }
 			add_to_variable = { RTG_dailaiderenli = 500 }
+			set_country_flag = { flag = RTG_zhinengjinxingyici value = 1 days = 20 }
 		}
 	}
 	RTG_yuandu_engineering_department = {   #渊都工程署 
@@ -1051,6 +1071,10 @@ RTG_develop_capital = {
 		tooltip = RTG_yuanduyan_statue_tt
 		check_variable = { RTG_shengyukeyon > 1 }
             }
+		custom_trigger_tooltip = {
+		tooltip = RTG_extend_residential_areas_tt3
+		NOT = { has_country_flag = RTG_zhinengjinxingyici }
+            }
 		industrial_complex > 7
 		}
 		modifier = {
@@ -1063,6 +1087,7 @@ RTG_develop_capital = {
 		remove_effect = {
 			add_ideas = RTG_Yuanduyan_Statue
 			add_to_variable = { RTG_yixiujian = 1 }
+			set_country_flag = { flag = RTG_zhinengjinxingyici value = 1 days = 180 }
 		}
 	}
 	RTG_prosperity_equality = {   #共荣平等纪念碑 
@@ -1081,6 +1106,10 @@ RTG_develop_capital = {
 		tooltip = RTG_yuanduyan_statue_tt
 		check_variable = { RTG_shengyukeyon > 1 }
             }
+		custom_trigger_tooltip = {
+		tooltip = RTG_extend_residential_areas_tt3
+		NOT = { has_country_flag = RTG_zhinengjinxingyici }
+            }
 		industrial_complex > 7
 		}
 		modifier = {
@@ -1093,6 +1122,7 @@ RTG_develop_capital = {
 		remove_effect = {
 			add_ideas = RTG_prosperity_equality
 			add_to_variable = { RTG_yixiujian = 1 }
+			set_country_flag = { flag = RTG_zhinengjinxingyici value = 1 days = 180 }
 		}
 	}
 	RTG_yuankun_society_headquarters = {   #渊坤社总部 
@@ -1111,6 +1141,10 @@ RTG_develop_capital = {
 		tooltip = RTG_yuanduyan_statue_tt
 		check_variable = { RTG_shengyukeyon > 1 }
             }
+		custom_trigger_tooltip = {
+		tooltip = RTG_extend_residential_areas_tt3
+		NOT = { has_country_flag = RTG_zhinengjinxingyici }
+            }
 		industrial_complex > 7
 		}
 		modifier = {
@@ -1119,7 +1153,7 @@ RTG_develop_capital = {
 		complete_effect = { 
 		add_to_variable = { RTG_yishiyondejianzhucao = 2 }
 		add_to_variable = { RTG_shengyukeyon = -2 }
-	
+		set_country_flag = { flag = RTG_zhinengjinxingyici value = 1 days = 180 }	
 		}
 		remove_effect = {
 		    swap_ideas = {
@@ -1146,6 +1180,10 @@ RTG_develop_capital = {
 		tooltip = RTG_yuanduyan_statue_tt
 		check_variable = { RTG_shengyukeyon > 1 }
             }
+		custom_trigger_tooltip = {
+		tooltip = RTG_extend_residential_areas_tt3
+		NOT = { has_country_flag = RTG_zhinengjinxingyici }
+            }
 		}
 		modifier = {
 		civilian_factory_use = 6
@@ -1154,6 +1192,7 @@ RTG_develop_capital = {
 		add_to_variable = { RTG_yishiyondejianzhucao = 2 }
 		add_to_variable = { RTG_shengyukeyon = -2 }
 		add_to_variable = { RTG_yixiujian = 1 }
+		set_country_flag = { flag = RTG_zhinengjinxingyici value = 1 days = 180 }
 		}
 		remove_effect = {
 			add_ideas = RTG_prosperity_equality

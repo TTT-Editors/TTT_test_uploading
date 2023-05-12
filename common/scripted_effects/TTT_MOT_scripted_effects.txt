@@ -408,893 +408,233 @@ Clear_Progress_num = {
         add_to_variable = {MOT_Progress_num = 1}
     }
 }
-##################################################################
+
 ###根据国家放置国旗
+MOT_Standpoint_config_country_num = {
+    if = {
+        limit={
+            tag = TWL
+        }
+        set_variable ={MOT_Standpoint_country_num = 1}
+    }
+    if = {
+        limit={
+            tag = BLL
+        }
+        set_variable ={MOT_Standpoint_country_num = 2}
+    }
+    if = {
+        limit={
+            tag = MOT
+        }
+        set_variable ={MOT_Standpoint_country_num = 3}
+    }
+    if = {
+        limit={
+            tag = QQZ
+        }
+        set_variable ={MOT_Standpoint_country_num = 4}
+    }
+    if = {
+        limit={
+            tag = DLK
+        }
+        set_variable ={MOT_Standpoint_country_num = 5}
+    }
+    if = {
+        limit={
+            tag = DLS
+        }
+        set_variable ={MOT_Standpoint_country_num = 6}
+    }
+    if = {
+        limit={
+            tag = MDQ
+        }
+        set_variable ={MOT_Standpoint_country_num = 7}
+    }
+    if = {
+        limit={
+            tag = FXE
+        }
+        set_variable ={MOT_Standpoint_country_num = 8}
+    }
+    if = {
+        limit={
+            tag = ALS
+        }
+        set_variable ={MOT_Standpoint_country_num = 9}
+    }
+}
+###取消温和立场
+MOT_Standpoint_clear_flag_01 = {
+    set_temp_variable = { MOT_n = 0 }
+    while_loop_effect = {
+        limit = {
+            not = {
+                check_variable = {
+                    var = global.MOT_Standpoint_flag_array_01^MOT_n
+                    value = MOT_Standpoint_country_num
+                    compare =equals
+                }
+            }
+            check_variable = {
+                var = MOT_n
+                value= 10
+                compare = less_than_or_equals
+            }
+        }
+        add_to_temp_variable = { MOT_n = 1 }
+    }
+    remove_from_array = {
+        array = global.MOT_Standpoint_flag_array_01
+        index = MOT_n
+    }
+    clear_variable = MOT_n
+}
+###取消中立立场
+MOT_Standpoint_clear_flag_02 = {
+    set_temp_variable = { MOT_n = 0 }
+    while_loop_effect = {
+        limit = {
+            not = {
+                check_variable = {
+                    var = global.MOT_Standpoint_flag_array_02^MOT_n
+                    value = MOT_Standpoint_country_num
+                    compare =equals
+                }
+            }
+            check_variable = {
+                var = MOT_n
+                value= 10
+                compare = less_than_or_equals
+            }
+        }
+        add_to_temp_variable = { MOT_n = 1 }
+    }
+    remove_from_array = {
+        array = global.MOT_Standpoint_flag_array_02
+        index = MOT_n
+    }
+    clear_variable = MOT_n
+}
+###取消激进立场
+MOT_Standpoint_clear_flag_03 = {
+    set_temp_variable = { MOT_n = 0 }
+    while_loop_effect = {
+        limit = {
+            not = {
+                check_variable = {
+                    var = global.MOT_Standpoint_flag_array_03^MOT_n
+                    value = MOT_Standpoint_country_num
+                    compare =equals
+                }
+            }
+            check_variable = {
+                var = MOT_n
+                value= 10
+                compare = less_than_or_equals
+            }
+        }
+        add_to_temp_variable = { MOT_n = 1 }
+    }
+    remove_from_array = {
+        array = global.MOT_Standpoint_flag_array_03
+        index = MOT_n
+    }
+    clear_variable = MOT_n
+}
 ###选择温和立场
 MOT_Standpoint_config_flag_01 = {
-    if = {
-        limit= {
-            ROOT = {
-                tag = TWL
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 0
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = BLL
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 1
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MOT
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 2
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = QQZ
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 3
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = DLK
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 4
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = DSC
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 5
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MDQ
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 6
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = FXE
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 7
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = ALS
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_01
-            value = 8
-        }
+    add_to_array = {
+        array = global.MOT_Standpoint_flag_array_01
+        value = MOT_Standpoint_country_num
     }
 }
 #######选择中立立场
 MOT_Standpoint_config_flag_02 = {
-    if = {
-        limit= {
-            ROOT = {
-                tag = TWL
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 0
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = BLL
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 1
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MOT
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 2
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = QQZ
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 3
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = DLK
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 4
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = DSC
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 5
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MDQ
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 6
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = FXE
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 7
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = ALS
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_02
-            value = 8
-        }
+    add_to_array = {
+        array = global.MOT_Standpoint_flag_array_02
+        value = MOT_Standpoint_country_num
     }
 }
 #######选择激进立场
 MOT_Standpoint_config_flag_03 = {
-    if = {
-        limit= {
-            ROOT = {
-                tag = TWL
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 0
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = BLL
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 1
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MOT
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 2
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = QQZ
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 3
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = DLK
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 4
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = DSC
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 5
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MDQ
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 6
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = FXE
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 7
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = ALS
-            }
-        }
-        add_to_array ={
-            array = MOT_Standpoint_flag_array_03
-            value = 8
-        }
+    add_to_array = {
+        array = global.MOT_Standpoint_flag_array_03
+        value = MOT_Standpoint_country_num
     }
 }
 ###################################################################
- ###从温和立场中删除国家
-MOT_Standpoint_Clear_flag_from_array_01 = {
-    if = {
-        limit= {
-            ROOT = {
-                tag = TWL
+###检查温和立场的国家数量
+MOT_Standpoint_check_total_country_num_01 = {
+    clear_variable = MOT_Standpoint_total_country_num_01
+    while_loop_effect = {
+        limit = {
+            check_variable = {
+                var = global.MOT_Standpoint_flag_array_01^MOT_Standpoint_total_country_num_01
+                value = 0
+                compare = greater_than
             }
         }
         if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 0
+            limit = {
+                MOT = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_1
                 }
             }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
+            add_to_variable ={MOT_Standpoint_total_country_num_01 = 0.5}
         }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = BLL
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 1
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MOT
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 2
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = QQZ
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 3
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = DLK
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 4
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
-        }
-    }
-    
-    if = {
-        limit= {
-            ROOT = {
-                tag = DSC
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 5
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = MDQ
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 6
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = FXE
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 7
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
-        }
-    }
-    if = {
-        limit= {
-            ROOT = {
-                tag = ALS
-            }
-        }
-        if = {
-            limit={
-                check_variable ={
-                    var = MOT_Standpoint_flag_array_01^MOT_Standpoint_flag_array_index_01
-                    value = 8
-                }
-            }
-            set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_01}
-            remove_from_array ={
-                array = MOT_Standpoint_flag_array_01
-                index = MOT_Standpoint_temp_country_num
-            }
-            clear_variable = MOT_Standpoint_temp_country_num
+        else = {
+            add_to_variable ={MOT_Standpoint_total_country_num_01 = 0.25}
         }
     }
 }
-#######################################################################
-    ####从中立立场中删除国家
-    MOT_Standpoint_Clear_flag_from_array_02 = {
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = TWL
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 0
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = BLL
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 1
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = MOT
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 2
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = QQZ
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 3
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = DLK
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 4
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = DSC
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 5
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = MDQ
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 6
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = FXE
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 7
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-            if = {
-                limit= {
-                    ROOT = {
-                        tag = ALS
-                    }
-                }
-                if = {
-                    limit={
-                        check_variable ={
-                            var = MOT_Standpoint_flag_array_02^MOT_Standpoint_flag_array_index_02
-                            value = 8
-                        }
-                    }
-                    set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_02}
-                    remove_from_array ={
-                        array = MOT_Standpoint_flag_array_02
-                        index = MOT_Standpoint_temp_country_num
-                    }
-                    clear_variable = MOT_Standpoint_temp_country_num
-                }
-            }
-        }
-    ##################################################################################
-    ####从激进立场中删除国家
-MOT_Standpoint_Clear_flag_from_array_03 = {
-        if = {
-            limit= {
-                ROOT = {
-                    tag = TWL
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 0
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
+###检查中立立场国家数量
+MOT_Standpoint_check_total_country_num_02 = {
+    clear_variable = MOT_Standpoint_total_country_num_02
+    while_loop_effect = {
+        limit = {
+            check_variable = {
+                var = global.MOT_Standpoint_flag_array_02^MOT_Standpoint_total_country_num_02
+                value = 0
+                compare = greater_than
             }
         }
         if = {
-            limit= {
-                ROOT = {
-                    tag = BLL
+            limit = {
+                MOT = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_2
                 }
             }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 1
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
+            add_to_variable ={MOT_Standpoint_total_country_num_02 = 0.5}
         }
-        if = {
-            limit= {
-                ROOT = {
-                    tag = MOT
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 2
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
-        }
-        if = {
-            limit= {
-                ROOT = {
-                    tag = QQZ
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 3
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
-        }
-        if = {
-            limit= {
-                ROOT = {
-                    tag = DLK
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 4
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
-        }
-        
-        if = {
-            limit= {
-                ROOT = {
-                    tag = DSC
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 5
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
-        }
-        if = {
-            limit= {
-                ROOT = {
-                    tag = MDQ
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 6
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
-        }
-        if = {
-            limit= {
-                ROOT = {
-                    tag = FXE
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 7
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
-        }
-        if = {
-            limit= {
-                ROOT = {
-                    tag = ALS
-                }
-            }
-            if = {
-                limit={
-                    check_variable ={
-                        var = MOT_Standpoint_flag_array_03^MOT_Standpoint_flag_array_index_03
-                        value = 8
-                    }
-                }
-                set_temp_variable = {MOT_Standpoint_temp_country_num = MOT_Standpoint_flag_array_index_03}
-                remove_from_array ={
-                    array = MOT_Standpoint_flag_array_03
-                    index = MOT_Standpoint_temp_country_num
-                }
-                clear_variable = MOT_Standpoint_temp_country_num
-            }
+        else = {
+            add_to_variable ={MOT_Standpoint_total_country_num_02 = 0.25}
         }
     }
+}
+##检查激进立场国家数量
+MOT_Standpoint_check_total_country_num_03 = {
+    clear_variable = MOT_Standpoint_total_country_num_03
+    while_loop_effect = {
+        limit = {
+            check_variable = {
+                var = global.MOT_Standpoint_flag_array_03^MOT_Standpoint_total_country_num_03
+                value = 0
+                compare = greater_than
+            }
+        }
+        if = {
+            limit = {
+                MOT = {
+                    has_country_flag = Lock_MOT_Standpoint_decision_3
+                }
+            }
+            add_to_variable ={MOT_Standpoint_total_country_num_03 = 0.5}
+        }
+        else = {
+            add_to_variable ={MOT_Standpoint_total_country_num_03 = 0.25}
+        }
+    }
+}

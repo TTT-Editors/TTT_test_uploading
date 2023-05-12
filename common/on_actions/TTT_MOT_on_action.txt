@@ -5,44 +5,44 @@ on_actions = {
             if = {
                 limit = {
                     has_country_flag = MOT_Deadline_is_unlocked
+                    ##条件以后再做修改
                     has_global_flag = MOT_dragon_crisis
                     not = {
                         has_global_flag = MOT_dragon_crisis_is_over
                     }
                 }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = MOT_Deadline_num_1
+                            value = 11
+                            compare = greater_than_or_equals
+                        }
+                    }
+                    Clear_Deadline_num_1 = yes
+                    Clear_Deadline_num_2 = yes
+                    set_global_flag = MOT_dragon_crisis_is_over
+                    clr_country_flag = MOT_Deadline_is_unlocked
+                    clr_global_flag = MOT_dragon_crisis
+                    clr_global_flag = MOT_dragon_crisis_is_locked
+                }
+                else = {
+                    add_to_variable = {MOT_dragon_crisis_deadline_num = 7}
                     if = {
                         limit = {
                             check_variable = {
-                                var = MOT_Deadline_num_1
-                                value = 11
+                                var = MOT_dragon_crisis_deadline_num
+                                value = 36.5
                                 compare = greater_than_or_equals
                             }
                         }
+                        add_to_variable = {MOT_dragon_crisis_deadline_num = -36.5}
+                        add_to_variable = {MOT_Deadline_num_1 =1}
+                        add_to_variable = {MOT_Deadline_num_2 =1}
                         Clear_Deadline_num_1 = yes
                         Clear_Deadline_num_2 = yes
-                        set_global_flag = MOT_dragon_crisis_is_over
-                        clr_country_flag = MOT_Deadline_is_unlocked
-                        clr_global_flag = MOT_dragon_crisis
-                        clr_global_flag = MOT_dragon_crisis_is_locked
                     }
-                    else = {
-                        add_to_variable = {MOT_dragon_crisis_deadline_num = 7}
-                        if = {
-                            limit = {
-                                check_variable = {
-                                    var = MOT_dragon_crisis_deadline_num
-                                    value = 37
-                                    compare = greater_than_or_equals
-                                }
-                            }
-                            add_to_variable = {MOT_dragon_crisis_deadline_num = -37}
-                            add_to_variable = {MOT_Deadline_num_1 =1}
-                            add_to_variable = {MOT_Deadline_num_2 =1}
-                            Clear_Deadline_num_1 = yes
-                            Clear_Deadline_num_2 = yes
-                        }
-                    }
-                    
+                }            
             }
             ##清除多余标记
             if = {
@@ -56,6 +56,23 @@ on_actions = {
                 Clear_Deadline_num_1 = yes
                 Clear_Deadline_num_2 = yes
                 
+            }
+            ##进度条
+            if = {
+                limit = {
+                    has_country_flag = MOT_Progress_is_unlocked
+                    ##条件以后再做修改
+                    has_global_flag = MOT_dragon_crisis
+                    not = {
+                        has_global_flag = MOT_dragon_crisis_is_over
+                    }
+                }
+                MOT_Standpoint_check_total_country_num_01 = Yes
+                MOT_Standpoint_check_total_country_num_02 = Yes
+                MOT_Standpoint_check_total_country_num_03 = Yes
+                add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_01}
+                add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_02}
+                add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_03}
             }
         }
     }

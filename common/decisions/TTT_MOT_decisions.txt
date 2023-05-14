@@ -317,28 +317,6 @@ MOT_Political_decision_category = {
             }
 		}
     }
-    ##帮助难民决议
-    MOT_Political_decision_help_refugees_01= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-        }
-        visible = {
-            always = yes
-            has_country_flag = MOT_open_gui_map1
-        }
-        days_re_enable = 14
-		days_remove = 7
-        fire_only_once = no
-        cost = 25
-        remove_effect = {
-            add_to_variable={MOT_Refugee_mood_num = 2}
-            MOT_flush_Refugee_mood = yes
-            add_to_variable ={MOT_Progress_num = -1}
-		}
-    }
 }
 ##########################################################################
 #######################################################################
@@ -380,7 +358,7 @@ MOT_Progress_decision_category = {
         fire_only_once =yes
         timeout_effect = {
             ###失败结果未写
-            set_temp_variable = { MOT_m = 6 }
+            set_temp_variable = { MOT_m = 1 }
             MOT_Clear_invalid_mission = yes
         }
         complete_effect = {
@@ -388,7 +366,7 @@ MOT_Progress_decision_category = {
             TWL = {
                 add_war_support = 0.05
             }
-            set_temp_variable = { MOT_m = 6 }
+            set_temp_variable = { MOT_m = 1 }
             MOT_Clear_invalid_mission = yes
         }
     }
@@ -492,12 +470,12 @@ MOT_Progress_decision_category = {
         fire_only_once =yes
         timeout_effect = {
             ###失败结果未写
-            set_temp_variable = { MOT_m = 7 }
+            set_temp_variable = { MOT_m = 2 }
             MOT_Clear_invalid_mission = yes
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
-            set_temp_variable = { MOT_m = 7 }
+            set_temp_variable = { MOT_m = 2 }
             MOT_Clear_invalid_mission = yes
         }
     }
@@ -598,12 +576,12 @@ MOT_Progress_decision_category = {
         fire_only_once =yes
         timeout_effect = {
             ###失败结果未写
-            set_temp_variable = { MOT_m = 8 }
+            set_temp_variable = { MOT_m = 3 }
             MOT_Clear_invalid_mission = yes
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -50}
-            set_temp_variable = { MOT_m = 8 }
+            set_temp_variable = { MOT_m = 3 }
             MOT_Clear_invalid_mission = yes
         }
     }
@@ -783,6 +761,7 @@ MOT_Standpoint_decision_category= {
             }
             not = {
                 has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
             }
         }
         cost = 0
@@ -807,7 +786,7 @@ MOT_Standpoint_decision_category= {
                 MOT_Standpoint_clear_flag_03=YES
                 MOT_Standpoint_config_flag_01 =YES
             }
-            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 30 }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
         }
     }
     MOT_Standpoint_decision_category_02 = {
@@ -838,6 +817,7 @@ MOT_Standpoint_decision_category= {
             }
             not = {
                 has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
             }
         }
         ai_will_do = {
@@ -862,7 +842,7 @@ MOT_Standpoint_decision_category= {
                 MOT_Standpoint_clear_flag_03=YES
                 MOT_Standpoint_config_flag_02=YES
             }
-            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 30 }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
         }
     }
     MOT_Standpoint_decision_category_03 = {
@@ -895,6 +875,7 @@ MOT_Standpoint_decision_category= {
             }
             not = {
                 has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
             }
         }
         ai_will_do = {
@@ -919,7 +900,7 @@ MOT_Standpoint_decision_category= {
                 MOT_Standpoint_clear_flag_02=YES
                 MOT_Standpoint_config_flag_03 =YES
             }
-            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 30 }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
         }
     }
 }

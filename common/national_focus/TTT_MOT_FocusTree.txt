@@ -216,22 +216,30 @@ focus_tree = {
 					limit = {
 						ROOT = {
 							not = {
-								or = {
-									has_country_flag = Lock_MOT_Standpoint_decision_1
-									has_country_flag = Lock_MOT_Standpoint_decision_3
-								}
+								has_country_flag = Lock_MOT_Standpoint_decision_1
+								has_country_flag = Lock_MOT_Standpoint_decision_3
 							}
 						}
 						
 					}
 					set_country_flag = Lock_MOT_Standpoint_decision_1
+					MOT_Standpoint_config_country_num =YES
+					if = {
+						limit={
+							not = {
+								is_in_array = {
+									array = global.MOT_Standpoint_flag_array_01
+									value = MOT_Standpoint_country_num
+								}
+							}
+						}
+						MOT_Standpoint_config_flag_01 =YES
+					}
 				}
 				set_country_flag = MOT_Deadline_is_unlocked
 				set_country_flag = MOT_Progress_is_unlocked
 		    }
-            select_effect = {
-				 #此处填写倒计时决议，30天后完成该国策
-            }
+			custom_effect_tooltip = MOT_tree_0_07_tooltip
 		}
 	}
 
@@ -256,8 +264,9 @@ focus_tree = {
 			##发布任务：观察
 			add_to_array = {
 				array = MOT_Political_grid_array
-				value = 6
+				value = 1
 			}
+			custom_effect_tooltip = MOT_tree_0_08_tooltip
 		}
 	}
 
@@ -274,8 +283,9 @@ focus_tree = {
 			#发布任务：探寻
             add_to_array = {
                 array = MOT_Political_grid_array
-                value = 7
+                value = 2
             }
+			custom_effect_tooltip = MOT_tree_0_09_tooltip
 		}
 	}
 
@@ -292,8 +302,9 @@ focus_tree = {
 			#发布任务：准备净化
             add_to_array = {
                 array = MOT_Political_grid_array
-                value = 8
+                value = 3
             }
+			custom_effect_tooltip = MOT_tree_0_10_tooltip
 		}
 	}
 
@@ -303,7 +314,6 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_10 }
 		x = 10
 		y = 8
-		
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
@@ -332,8 +342,9 @@ focus_tree = {
 			#发布任务：战争准备
             add_to_array = {
                 array = MOT_Political_grid_array
-                value = 6
+                value = 1
             }
+			custom_effect_tooltip = MOT_tree_0_12_tooltip
 		}
 	}
 
@@ -350,8 +361,9 @@ focus_tree = {
 			#发布任务：修建设施
             add_to_array = {
                 array = MOT_Political_grid_array
-                value = 7
+                value = 2
             }
+			custom_effect_tooltip = MOT_tree_0_13_tooltip
 		}
 	}
 
@@ -368,8 +380,9 @@ focus_tree = {
 			#发布任务：启动烈风之印
             add_to_array = {
                 array = MOT_Political_grid_array
-                value = 8
+                value = 3
             }
+			custom_effect_tooltip = MOT_tree_0_14_tooltip
 		}
 	}
 
@@ -397,7 +410,7 @@ focus_tree = {
 		cost = 70
 		search_filters = {  }
 		completion_reward = {
-			#在最终阶段，我们成功的几率增加20%
+			custom_effect_tooltip = MOT_tree_0_16_tooltip
 		}
 	}
 
@@ -426,9 +439,9 @@ focus_tree = {
 		y = 1
 		available = { #自定义前提条件
 			custom_trigger_tooltip = {
-            tooltip = mot_0_01
-	        NOT = { has_idea = MOT_crisis_of_Tewalin } 
-			NOT = { has_idea = MOT_crisis_of_Tewalin2 }
+				tooltip = mot_0_01
+				NOT = { has_idea = MOT_crisis_of_Tewalin } 
+				NOT = { has_idea = MOT_crisis_of_Tewalin2 }
             }
          }
 		cost = 7

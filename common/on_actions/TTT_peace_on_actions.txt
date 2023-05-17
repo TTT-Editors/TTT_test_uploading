@@ -134,18 +134,24 @@ on_actions = {
 			}
 			else_if = {
 				limit = {
-					tag = RTG
-					CUG = { is_subject_of = RTG }
+					ROOT = { tag = RTG }
 				}
-				RTG = {
-					set_autonomy = {
-						target = CUG
-						autonomy_state = autonomy_free				
+				if = {
+					limit = { CUG = { is_subject_of = RTG } }
+					RTG = {
+						set_autonomy = {
+							target = CUG
+							autonomy_state = autonomy_free				
+						}
+					}
+					every_country = {
+						limit = { has_war_with = CUG }
+						white_peace = CUG
 					}
 				}
-				every_country = {
-					limit = { has_war_with = CUG }
-					white_peace = CUG
+				every_state = {
+					limit = { has_RTG_network = yes }
+					RTG_remove_network = yes
 				}
 			}
 		    else_if = {
@@ -198,6 +204,20 @@ on_actions = {
 						}
 						news_event = { id = global_news.36 days = 2 }
 					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_global_flag = liyue_civil_war
+					FROM = { tag = RTG }
+					RTG = {
+						has_government = hive_mind
+						check_variable = { usable_network_states < 5 }
+					}
+				}
+				RTG = {
+					add_to_variable = { usable_network_states = 1 }
 				}
 			}
 			

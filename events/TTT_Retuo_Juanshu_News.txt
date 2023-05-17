@@ -2,12 +2,12 @@ add_namespace = retuo_juanshu_news
 
 news_event = {
 	id = retuo_juanshu_news.1
-	title = retuo_juanshu_news1.t
+	title = retuo_juanshu_news.1.t
 	desc = retuo_juanshu_news.1.d
 	picture = GFX_news_event_RTG_dragon_birth
-	major = yes 
-	is_triggered_only = yes 
-    fire_only_once = no
+	major = yes #所有国家是否可见
+	is_triggered_only = yes #是否只能被动触发
+    #fire_only_once = no #是否仅触发一次（如果是主动触发的不能使用，一般不建议和major一起使用）
     option = {
         name = retuo_juanshu_news.1.a
     }	
@@ -17,10 +17,10 @@ news_event = {
 	id = retuo_juanshu_news.2
 	title = retuo_juanshu_news.2.t
 	desc = retuo_juanshu_news.2.d
-	#picture = GFX_news_event_RTG_foundation_allies
+	picture = GFX_news_event_liyue10
 	major = yes 
 	is_triggered_only = yes 
-    fire_only_once = no
+    #fire_only_once = no
     option = {
         name = retuo_juanshu_news.2.a
     }	
@@ -30,10 +30,10 @@ news_event = {
 	id = retuo_juanshu_news.3
 	title = retuo_juanshu_news.3.t
 	desc = retuo_juanshu_news.3.d
-	#picture = GFX_news_event_RTG_controls_liyuegang
+	picture = GFX_news_event_rt01
 	major = yes 
 	is_triggered_only = yes 
-    fire_only_once = no
+    #fire_only_once = no
     option = {
         name = retuo_juanshu_news.3.a
     }	
@@ -43,12 +43,19 @@ news_event = {
 	id = retuo_juanshu_news.4
 	title = retuo_juanshu_news.4.t
 	desc = retuo_juanshu_news.4.d
-	#picture = GFX_news_event_RTG_participate_civil_war
+	picture = GFX_news_event_liyue09
 	major = yes 
-	is_triggered_only = yes 	
-    fire_only_once = no
+	trigger = {     #触发条件
+        not = {
+			has_global_flag = RTG_shoucixuanzhan
+		}
+		RTG = {
+		has_war = yes
+		}
+	}	
     option = {
-        name = retuo_juanshu_news.4.a
+        name = retuo_juanshu_news.4.a		
+		set_global_flag = RTG_shoucixuanzhan
     }	
 }
 
@@ -59,7 +66,7 @@ news_event = {
 	picture = GFX_news_event_RTG_foundation_heaven_liyue
 	major = yes 
 	is_triggered_only = yes 
-    fire_only_once = no
+    #fire_only_once = no
     option = {
         name = retuo_juanshu_news.5.a
     }	

@@ -246,6 +246,11 @@ focus_tree = {
         completion_reward = {
 			add_war_support = 0.1
 			add_stability = 0.1
+			custom_effect_tooltip = RTG_tick_up_network_tt
+			hidden_effect = {
+				add_to_variable = { network_strength = 1 }
+				RTG_tick_up_networks = yes
+			}
 	    }
 	}
 	focus = {
@@ -845,6 +850,20 @@ focus_tree = {
 			add_stability = 0.05
 			add_war_support = 0.05
 			#允许建立地下运输网已经改善补给，协助进攻（？）
+			custom_effect_tooltip = RTG_start_build_undergroung_netowrk_tt
+			hidden_effect = {
+				set_country_flag = RTG_dixia_yunshuwang_finished
+				every_controlled_state = {
+					limit = {
+						OR = {
+							state = 197
+							is_liyue_region_eight_states = yes
+						}
+					}
+					RTG_add_network = yes
+					add_to_variable = { RTG.used_network_states = 1 }
+				}
+			}
 	    }
 	}
 	focus = {
@@ -889,7 +908,11 @@ focus_tree = {
         completion_reward = {
 			add_stability = 0.05
 			add_war_support = 0.05
-			
+			custom_effect_tooltip = RTG_tick_up_network_tt
+			hidden_effect = {
+				add_to_variable = { network_strength = 1 }
+				RTG_tick_up_networks = yes
+			}
 	    }
 	}
 	focus = {

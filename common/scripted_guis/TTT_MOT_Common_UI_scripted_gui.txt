@@ -1,0 +1,90 @@
+scripted_gui = {
+	MOT_Common_ui = {
+		context_type = decision_category
+		window_name = "MOT_Common_ui_gui"
+		visible = {
+            or = {
+                tag = TWL
+                tag = BLL
+                tag = QQZ
+                tag = DLK
+                tag = MDQ
+                tag = DSC
+                tag = FXE       
+                tag = ALS
+            }
+		}
+        triggers = {
+            MOT_Common_ui_MDQ_background_visible = {
+                check_variable ={MOT_Standpoint_country_num = 7}
+            }
+            MOT_Common_ui_background_icon_visible = {
+                not = {
+                    tag = MDQ
+                }
+            }
+            MOT_Common_ui_declare_war_button_visible = {
+                tag = MDQ
+            }
+            MOT_Common_ui_background = {
+                tag = MDQ
+            }
+            MOT_Common_ui_standpoint_sign1_visible= {
+                has_country_flag = MOT_Standpoint_choose_decision_01
+            }
+            MOT_Common_ui_standpoint_sign2_visible= {
+                has_country_flag = MOT_Standpoint_choose_decision_02
+            }
+            MOT_Common_ui_standpoint_sign3_visible= {
+                has_country_flag = MOT_Standpoint_choose_decision_03
+            }
+            MOT_Common_ui_declare_war_button_visible = {
+                tag = MDQ
+            }
+            MOT_Common_ui_standpoint_flag1_click_enable= {
+                not = {
+                    has_country_flag = MOT_Standpoint_decision_locked
+                }
+                has_country_flag = MOT_Standpoint_choose_decision_01
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
+                }
+            }
+            MOT_Common_ui_standpoint_flag2_click_enable= {
+                not = {
+                    has_country_flag = MOT_Standpoint_decision_locked
+                }
+                has_country_flag = MOT_Standpoint_choose_decision_02
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
+                }
+            }
+            MOT_Common_ui_standpoint_flag3_click_enable= {
+                not = {
+                    has_country_flag = MOT_Standpoint_decision_locked
+                }
+                has_country_flag = MOT_Standpoint_choose_decision_03
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
+                }
+            }
+        }
+        properties = {
+			MOT_Common_ui_background_icon = {
+                frame = MOT_Standpoint_country_num
+            }
+            MOT_Common_ui_background = {
+                frame = MOT_Standpoint_country_num
+            }
+        }
+    }
+}

@@ -1,0 +1,304 @@
+guiTypes = {
+
+	containerWindowType = {
+		name = "Turning_point_ui_button_window"
+		size = { width = 80 height = 50 }
+        position = { x = 0  y = 0 }
+		orientation = LOWER_RIGHT
+		
+		iconType = {
+            name = "Turning_point_ui_button_frame"
+            position = { x = -80 y = 0 }
+            spriteType = "GFX_Akasha_frame"
+            pdx_tooltip = "ope_Akasha_button_gui"	
+			alwaystransparent = yes
+        }
+  
+        buttonType = {
+            name = "Turning_point_ui_button"
+            position = { x = -65 y = -400 }
+            spriteType = "GFX_Akasha_button"
+            clicksound = click_ok
+            oversound = ui_menu_over
+            scale = 1.5
+            pdx_tooltip = "ope_Turning_point_ui_button_tt"                      
+        }
+	}
+
+
+
+
+
+
+	containerWindowType = {
+		name = "Turning_point_ui_window"
+		size = { width = 1500 height = 600 }
+		position = { x = -600  y = -300 }
+		orientation = CENTER
+		moveable = yes
+        
+		#背景
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_bg"
+		}
+
+		containerWindowType = { #本国家
+			name = "turning_point_country_ROOT_window"
+			position = { x = 20 y = 30 }
+			size = { width = 210 height = 140 }
+			verticalScrollbar = left_vertical_slider
+			margin = { top = 10 left = 10 bottom = 10 right = 10}
+
+			background = {
+				name = "Background"
+				quadTextureSprite ="GFX_tiled_bg"
+			}
+
+			iconType = {  #国家图片
+				name = "turning_point_country_ROOT_icon"
+				position = { x = 50 y = 25 }
+				quadTextureSprite = "GFX_flag_large"
+				orientation = UPPER_LEFT
+			}
+
+			buttonType = {
+				name = "turning_point_country_ROOT_button"
+				position = { x = 50 y = 25 }
+				quadTextureSprite = "GFX_flag_large"
+				clicksound = click_ok
+				orientation = UPPER_LEFT
+			}
+
+			instantTextBoxType = { #本国
+				name = "turning_point_country_ROOT_textbox"
+				position = { x = 15 y = 15 }
+				font = "TTT_special_font_border_desc"
+				text = "turning_point_country_ROOT_text"
+				maxHeight = 200
+				maxWidth = 25
+				fixedsize = yes
+			}
+
+		}
+
+		containerWindowType = { #主要国家
+			name = "turning_point_country_major_window"
+			position = { x = 20 y = 160 }
+			size = { width = 210 height = 230 }
+			verticalScrollbar = left_vertical_slider
+			margin = { top = 15 left = 10 bottom = 15 right = 10}
+
+			background = {
+				name = "Background"
+				quadTextureSprite ="GFX_tiled_bg"
+			}
+
+			gridboxtype = {
+				name = "turning_point_country_major_gird"
+				position = { x = 10 y = 0 }
+				size = { width = 100 height = 100 }
+				slotsize = { width = 500 height = 68 }
+				max_slots = { x = 1 y = 100 }
+				format = "UPPER_LEFT"
+			}
+
+			
+		}
+			instantTextBoxType = { #主要国家
+				name = "turning_point_country_major_Ttextbox"
+				position = { x = 45 y = 175 }
+				font = "TTT_special_font_border_desc"
+				text = "turning_point_country_major_text"
+				maxHeight = 200
+				maxWidth = 25
+				fixedsize = yes
+			}
+
+
+		containerWindowType = { #其他国家
+			name = "turning_point_country_normal_window"
+			position = { x = 20 y = 380 }
+			size = { width = 210 height = 190 }
+			verticalScrollbar = left_vertical_slider
+			margin = { top = 15 left = 10 bottom = 15 right = 10}
+
+			background = {
+				name = "Background"
+				quadTextureSprite ="GFX_tiled_bg"
+			}
+
+			gridboxtype = {
+				name = "turning_point_country_normal_gird"
+				position = { x = 10 y = 0 }
+				size = { width = 100 height = 100 }
+				slotsize = { width = 500 height = 40 }
+				max_slots = { x = 1 y = 100 }
+				format = "UPPER_LEFT"
+			}
+
+			
+		}
+			instantTextBoxType = { #其他国家
+				name = "turning_point_country_normal_Ttextbox"
+				position = { x = 45 y = 395 }
+				font = "TTT_special_font_border_desc"
+				text = "turning_point_country_normal_text"
+				maxHeight = 200
+				maxWidth = 25
+				fixedsize = yes
+			}
+
+	containerWindowType = {
+		name = "turning_point_faction_window"
+		position = { x = 220 y = 30 }
+		size = { width = 430 height = 540 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_bg"
+		}
+	}
+	#事件容器
+	containerWindowType = {
+		name = "turning_point_event_window"
+		position = { x = 650 y = 30 }
+		size = { width = 840 height = 540 }
+
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_bg"
+		}
+
+		iconType = {
+			name = "Turning_point_line"
+			spriteType = "GFX_Turning_point_line"
+			position = { x = -5 y = 0 }
+			orientation = CENTER
+			centerposition = yes
+		}
+
+
+
+		containerWindowType = { #事件
+			name = "turning_point_event_container_window"
+			position = { x = 20 y = 0 }
+			size = { width = 800 height = 540 }
+			
+			horizontalScrollbar = "bottom_horizontal_slider"
+			margin = { top = 20 left = 0 bottom = 20 right = 0 }
+			
+			background = {
+				name = "Background"
+				spriteType  = "GFX_Turning_frame"
+				#quadTextureSprite ="GFX_tiled_bg"
+			}
+
+			gridBoxType = {
+				name = "turning_point_event_gird"
+				position = { x = 0 y = 0 }
+				size = { width = 1 height = 20 }
+				slotsize = { width = 500 height = 35 }
+				max_slots_horizontal = 100
+				add_horizontal = yes
+			}
+			
+		}
+	}
+	
+		
+	#关闭按钮
+		buttonType = {
+			name = "close_button"
+			position = {x=-45 y=13}	
+			spriteType = "GFX_closebutton"
+			orientation = "UPPER_RIGHT"
+			shortcut = "ESCAPE"
+			clicksound = click_close
+		}
+	}
+
+	containerWindowType = {#事件模板
+		name = "turning_point_event_window"
+		position = { x = 0 y = 0 }
+
+		iconType = {  #事件图片
+			name = "turning_point_event_icon"
+			position = { x = 0 y = 25 }
+			orientation = CENTER
+		}
+
+		instantTextBoxType = { #事件名字
+			name = "turning_point_event_title"
+			position = { x = 5 y = 450 }
+			font = "TTT_special_font_border_desc"
+			text = "turning_point_event_text"
+			maxHeight = 20
+			maxWidth = 400
+			fixedsize = yes
+			orientation = CENTER
+		}
+	}
+
+	containerWindowType = {#主要国家图片模板
+		name = "turning_point_country_major_window"
+		position = { x = 0 y = 0 }
+
+		iconType = {  #国家图片
+			name = "turning_point_country_major_icon"
+			position = { x = 50 y = 5 }
+			quadTextureSprite = "GFX_flag_medium"
+			orientation = UPPER_LEFT
+		}
+
+		buttonType = {
+			name = "turning_point_country_major_button"
+			position = { x = 50 y = 5 }
+			quadTextureSprite = "GFX_flag_medium"
+			clicksound = click_ok
+			orientation = UPPER_LEFT
+		}
+
+		instantTextBoxType = { #国家名字
+			name = "turning_point_country_title"
+			position = { x = 5 y = 30 }
+			font = "TTT_special_font_border_desc"
+			text = "turning_point_country_text"
+			maxHeight = 20
+			maxWidth = 350
+			fixedsize = yes
+			orientation = CENTER
+		}
+	}
+	containerWindowType = {#其他国家图片模板
+		name = "turning_point_country_normal_window"
+		position = { x = 0 y = 0 }
+
+		iconType = {  #国家图片
+			name = "turning_point_country_normal_icon"
+			position = { x = 50 y = 5 }
+			quadTextureSprite = "GFX_flag_small2"
+			orientation = UPPER_LEFT
+		}
+
+		buttonType = {
+			name = "turning_point_country_normal_button"
+			position = { x = 50 y = 5 }
+			quadTextureSprite = "GFX_flag_small2"
+			clicksound = click_ok
+			orientation = UPPER_LEFT
+		}
+
+
+		instantTextBoxType = { #国家名字
+			name = "turning_point_country_title"
+			position = { x = 5 y = 30 }
+			font = "TTT_special_font_border_desc"
+			text = "turning_point_country_text"
+			maxHeight = 20
+			maxWidth = 350
+			fixedsize = yes
+			orientation = CENTER
+		}
+	}
+}

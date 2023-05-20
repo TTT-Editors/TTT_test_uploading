@@ -1,0 +1,100 @@
+scripted_gui = {
+    Turning_point_ui_button = {
+        window_name = "Turning_point_ui_button_window"
+        context_type = player_context
+       
+        visible = { 
+            always = yes
+        }
+    
+        effects = {
+            Turning_point_ui_button_click = {
+                if = {
+                    limit = { NOT = { has_global_flag = Turning_point_enable } }
+                    Turning_Point_THIS_set_event  = yes
+                    set_global_flag = Turning_point_enable
+                }
+                else_if = {
+                    limit = { has_global_flag = Turning_point_enable }
+                    clr_global_flag = Turning_point_enable
+                    clear_array = global.turning_point_event_array
+                    clear_array = global.turning_point_country_major
+                    clear_array = global.turning_point_country_normal
+                    clear_variable = global.Turning_Point_event                    
+                }
+                Turning_Point_check_country = yes
+            }
+        }
+        
+    }
+    
+
+
+    Turning_point_ui = {
+        window_name = "Turning_point_ui_window"
+        context_type = player_context
+
+        visible = { 
+            is_ai = no  
+            has_global_flag = Turning_point_enable 
+        }
+
+        effects = {
+            close_button_click = {
+                clr_global_flag = Turning_point_enable
+                clear_array = global.turning_point_event_array
+                clear_array = global.turning_point_country_major
+                clear_array = global.turning_point_country_normal
+                clear_variable = global.Turning_Point_event
+            }
+            turning_point_country_ROOT_button_click = {
+                Turning_Point_THIS_set_event  = yes
+            }
+            turning_point_country_major_button_click = {
+                Turning_Point_THIS_set_event  = yes
+            }
+            turning_point_country_normal_button_click = {
+                Turning_Point_THIS_set_event  = yes
+            }
+        }
+
+        dynamic_lists = {
+			turning_point_event_gird = {
+				array = global.turning_point_event_array
+				change_scope = yes
+				entry_container = turning_point_event_window
+				index = turning_point_event_array_index
+			}
+            turning_point_country_major_gird = {
+				array = global.turning_point_country_major
+				change_scope = yes
+				entry_container = turning_point_country_major_window
+			}
+            turning_point_country_normal_gird = {
+				array = global.turning_point_country_normal
+				change_scope = yes
+				entry_container = turning_point_country_normal_window
+			}
+		}
+
+        properties = {
+			turning_point_event_icon = { 
+                image = "GFX_[?global.Turning_Point_event.GetTag]_[?turning_point_event_array_index]_[?global.turning_point_event_id^turning_point_event_array_index]_icon" 
+            }
+            turning_point_country_major_icon = { 
+                image = [THIS.GetFlag]
+            }
+            turning_point_country_normal_icon = { 
+                image = [THIS.GetFlag]
+            }
+            turning_point_country_ROOT_icon = {
+                image = [THIS.GetFlag]
+            }
+		}
+
+        ai_enabled = {
+            always = no
+        }
+
+    }	
+}

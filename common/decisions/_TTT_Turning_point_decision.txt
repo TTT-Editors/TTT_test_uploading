@@ -1,0 +1,286 @@
+Turning_point_debug_decision_categories = {
+    open_Turning_point_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			set_global_flag = Turning_point_enable
+		}
+	}
+    close_Turning_point_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			clr_global_flag = Turning_point_enable
+		}
+	}
+    set_Turning_point_10_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			resize_array = {
+                array = THIS.turning_point_event_array
+                size = 10
+                value = 0
+            }
+            resize_array = {
+                array = turning_point_event_id
+                size = 10
+                value = 0
+            }
+		}
+	}
+	set_Turning_point_10_decision_MOT = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			resize_array = {
+                array = MOT.turning_point_event_array
+                size = 2
+                value = 0
+            }
+			resize_array = {
+                array = MOT.turning_point_event_id
+                size = 1
+                value = 0
+            }
+		}
+	}
+    set_Turning_point_100_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			resize_array = {
+                array = global.turning_point_event_array
+                size = 100
+                value = 0
+            }
+            resize_array = {
+                array = turning_point_event_id
+                size = 100
+                value = 0
+            }
+		}
+	}
+    set_Turning_point_event_0_0_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = ROOT.turning_point_event_id^0
+                value = 0
+            }
+		}
+	}
+    set_Turning_point_event_0_1_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = ROOT.turning_point_event_id^0
+                value = 1
+            }
+		}
+	}
+    set_Turning_point_event_1_0_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = ROOT.turning_point_event_id^1
+                value = 0
+            }
+		}
+	}
+    set_Turning_point_event_1_1_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = ROOT.turning_point_event_id^1
+                value = 1
+            }
+		}
+	}
+	set_Turning_point_event_0_0_decision_MOT = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = MOT.turning_point_event_id^0
+                value = 0
+            }
+		}
+	}
+    set_Turning_point_event_0_1_decision_MOT = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = MOT.turning_point_event_id^0
+                value = 1
+            }
+		}
+	}
+    set_Turning_point_event_1_0_decision_MOT = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = MOT.turning_point_event_id^1
+                value = 0
+            }
+		}
+	}
+    set_Turning_point_event_1_1_decision_MOT = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            set_variable = {
+                var = MOT.turning_point_event_id^1
+                value = 1
+            }
+		}
+	}
+	set_Turning_point_event_ROOT_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			for_loop_effect = {
+				start = -1
+				end = 100
+				set_variable = {
+					var = global.turning_point_event_id^v
+					value = ROOT.turning_point_event_id^v
+				}
+			}
+		}
+	}
+	set_Turning_point_event_MOT_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			for_loop_effect = {
+				start = -1
+				end = 100
+				set_variable = {
+					var = global.turning_point_event_id^v
+					value = MOT.turning_point_event_id^v
+				}
+			}
+		}
+	}
+    set_Turning_point_array_country = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+            clear_array = global.turning_point_country_major
+			log = "[THIS.GetName] has been add to array"
+			every_country = {
+				limit = {
+					exists = yes
+					is_ai = yes
+					is_major = yes
+				}
+				add_to_array = { global.turning_point_country_major = THIS }
+				log = "[THIS.GetName] has been add to array major"
+			}
+			every_country = {
+				limit = {
+					exists = yes
+					is_ai = yes
+					is_major = no
+					NOT = {
+						tag = CEL
+						tag = CUG
+						tag = EKM
+						tag = EMP
+						tag = GAP
+						tag = TRM
+						tag = HIL
+					}
+				}
+				add_to_array = { global.turning_point_country_normal = THIS }
+				log = "[THIS.GetName] has been add to array"
+			}
+			
+		}
+	}
+    clr_Turning_point_decision = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			clear_array = global.turning_point_event_array
+			clear_array = global.turning_point_country_major
+			clear_array = global.turning_point_country_normal
+			clear_variable = global.Turning_Point_event
+		}
+	}
+}

@@ -16,7 +16,7 @@ guiTypes = {
   
         buttonType = {
             name = "Turning_point_ui_button"
-            position = { x = -65 y = -400 }
+            position = { x = -65 y = -800 }
             spriteType = "GFX_Akasha_button"
             clicksound = click_ok
             oversound = ui_menu_over
@@ -33,9 +33,17 @@ guiTypes = {
 	containerWindowType = {
 		name = "Turning_point_ui_window"
 		size = { width = 1500 height = 600 }
-		position = { x = -600  y = -300 }
-		orientation = CENTER
+
+		position = { x = 5000 y = -300 }
+		show_position = { x = -750 y = -300 }
+
 		moveable = yes
+
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+
+		orientation = CENTER
         
 		#背景
 		background = {
@@ -46,7 +54,7 @@ guiTypes = {
 		containerWindowType = { #本国家
 			name = "turning_point_country_ROOT_window"
 			position = { x = 20 y = 30 }
-			size = { width = 210 height = 140 }
+			size = { width = 230 height = 140 }
 			verticalScrollbar = left_vertical_slider
 			margin = { top = 10 left = 10 bottom = 10 right = 10}
 
@@ -58,14 +66,14 @@ guiTypes = {
 			iconType = {  #国家图片
 				name = "turning_point_country_ROOT_icon"
 				position = { x = 50 y = 25 }
-				quadTextureSprite = "GFX_flag_large"
+				quadTextureSprite = "GFX_flag_large_no_overlay"
 				orientation = UPPER_LEFT
 			}
 
 			buttonType = {
 				name = "turning_point_country_ROOT_button"
 				position = { x = 50 y = 25 }
-				quadTextureSprite = "GFX_flag_large"
+				quadTextureSprite = "GFX_flag_large_no_overlay"
 				clicksound = click_ok
 				orientation = UPPER_LEFT
 			}
@@ -80,12 +88,23 @@ guiTypes = {
 				fixedsize = yes
 			}
 
+			instantTextBoxType = { #国家名字
+				name = "turning_point_country_title"
+				position = { x = -55 y = 30 }
+				font = "TTT_special_font_border_desc"
+				text = "turning_point_country_text"
+				maxHeight = 45
+				maxWidth = 200
+				fixedsize = yes
+				orientation = CENTER
+			}
+
 		}
 
 		containerWindowType = { #主要国家
 			name = "turning_point_country_major_window"
 			position = { x = 20 y = 160 }
-			size = { width = 210 height = 230 }
+			size = { width = 230 height = 230 }
 			verticalScrollbar = left_vertical_slider
 			margin = { top = 15 left = 10 bottom = 15 right = 10}
 
@@ -106,7 +125,7 @@ guiTypes = {
 			
 		}
 			instantTextBoxType = { #主要国家
-				name = "turning_point_country_major_Ttextbox"
+				name = "turning_point_country_major_textbox"
 				position = { x = 45 y = 175 }
 				font = "TTT_special_font_border_desc"
 				text = "turning_point_country_major_text"
@@ -119,7 +138,7 @@ guiTypes = {
 		containerWindowType = { #其他国家
 			name = "turning_point_country_normal_window"
 			position = { x = 20 y = 380 }
-			size = { width = 210 height = 190 }
+			size = { width = 230 height = 190 }
 			verticalScrollbar = left_vertical_slider
 			margin = { top = 15 left = 10 bottom = 15 right = 10}
 
@@ -132,7 +151,7 @@ guiTypes = {
 				name = "turning_point_country_normal_gird"
 				position = { x = 10 y = 0 }
 				size = { width = 100 height = 100 }
-				slotsize = { width = 500 height = 40 }
+				slotsize = { width = 500 height = 50 }
 				max_slots = { x = 1 y = 100 }
 				format = "UPPER_LEFT"
 			}
@@ -140,7 +159,7 @@ guiTypes = {
 			
 		}
 			instantTextBoxType = { #其他国家
-				name = "turning_point_country_normal_Ttextbox"
+				name = "turning_point_country_normal_textbox"
 				position = { x = 45 y = 395 }
 				font = "TTT_special_font_border_desc"
 				text = "turning_point_country_normal_text"
@@ -151,14 +170,110 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "turning_point_faction_window"
-		position = { x = 220 y = 30 }
-		size = { width = 430 height = 540 }
+		position = { x = 240 y = 30 }
+		size = { width = 410 height = 540 }
 		
 		background = {
 			name = "Background"
 			quadTextureSprite ="GFX_tiled_bg"
 		}
+
+		iconType = { #火
+			name = "Turning_Point_Gnosis_Pyro"
+			spriteType = "GFX_Turning_Point_Gnosis_Pyro"
+
+			position = { x = -129 y = -75 }
+			orientation = CENTER
+			centerposition = yes
+
+			tooltip = Turning_Point_Gnosis_Pyro_tt
+			scale = 0.8
+		}
+
+		iconType = { #水
+			name = "Turning_Point_Gnosis_Hydro"
+			spriteType = "GFX_Turning_Point_Gnosis_Hydro"
+
+			position = { x = 0 y = -150 }
+			orientation = CENTER
+			centerposition = yes
+
+			tooltip = Turning_Point_Gnosis_Hydro_tt
+			scale = 0.8
+
+		}
+
+		iconType = { #风
+			name = "Turning_Point_Gnosis_Anemo"
+			spriteType = "GFX_Turning_Point_Gnosis_Anemo"
+
+			position = { x = 129 y = -75 }
+			orientation = CENTER
+			centerposition = yes
+
+			tooltip = Turning_Point_Gnosis_Anemo_tt
+			scale = 0.8
+		}
+
+		iconType = { #雷
+			name = "Turning_Point_Gnosis_Electro"
+			spriteType = "GFX_Turning_Point_Gnosis_Electro"
+
+			position = { x = -129 y = 75 }
+			orientation = CENTER
+			centerposition = yes
+
+			tooltip = Turning_Point_Gnosis_Electro_tt
+			scale = 0.8
+		}
+
+		iconType = { #草
+			name = "Turning_Point_Gnosis_Dendro"
+			spriteType = "GFX_Turning_Point_Gnosis_Dendro"
+
+			position = { x = 0 y = 150 }
+			orientation = CENTER
+			centerposition = yes
+
+			tooltip = Turning_Point_Gnosis_Dendro_tt
+			scale = 0.8
+		}
+
+		iconType = { #冰
+			name = "Turning_Point_Gnosis_Cryo"
+			spriteType = "GFX_Turning_Point_Gnosis_Cryo"
+
+			position = { x = 0 y = 0 }
+			orientation = CENTER
+			centerposition = yes
+
+			tooltip = Turning_Point_Gnosis_Cryo_tt
+			scale = 0.8
+		}
+
+		iconType = { #岩
+			name = "Turning_Point_Gnosis_Geo"
+			spriteType = "GFX_Turning_Point_Gnosis_Geo"
+
+			position = { x = 129 y = 75 }
+			orientation = CENTER
+			centerposition = yes
+
+			tooltip = Turning_Point_Gnosis_Geo_tt
+			scale = 0.8
+		}
+
+		instantTextBoxType = { #主要国家
+			name = "turning_point_Gnosis_title"
+			position = { x = 100 y = 30 }
+			font = "TTT_special_font_border_title"
+			text = "turning_point_Gnosis_title_text"
+			maxHeight = 200
+			maxWidth = 400
+			fixedsize = yes
+		}
 	}
+
 	#事件容器
 	containerWindowType = {
 		name = "turning_point_event_window"
@@ -198,7 +313,7 @@ guiTypes = {
 				name = "turning_point_event_gird"
 				position = { x = 0 y = 0 }
 				size = { width = 1 height = 20 }
-				slotsize = { width = 500 height = 35 }
+				slotsize = { width = 500 height = 45 }
 				max_slots_horizontal = 100
 				add_horizontal = yes
 			}
@@ -225,7 +340,8 @@ guiTypes = {
 		iconType = {  #事件图片
 			name = "turning_point_event_icon"
 			position = { x = 0 y = 25 }
-			orientation = CENTER
+			orientation = "UPPER_RIGHT"
+			add_horizontal = yes
 		}
 
 		instantTextBoxType = { #事件名字
@@ -246,26 +362,26 @@ guiTypes = {
 
 		iconType = {  #国家图片
 			name = "turning_point_country_major_icon"
-			position = { x = 50 y = 5 }
-			quadTextureSprite = "GFX_flag_medium"
+			position = { x = 30 y = 5 }
+			quadTextureSprite = "GFX_flag_medium_no_overlay"
 			orientation = UPPER_LEFT
 		}
 
 		buttonType = {
 			name = "turning_point_country_major_button"
-			position = { x = 50 y = 5 }
-			quadTextureSprite = "GFX_flag_medium"
+			position = { x = 30 y = 5 }
+			quadTextureSprite = "GFX_flag_medium_no_overlay"
 			clicksound = click_ok
 			orientation = UPPER_LEFT
 		}
 
 		instantTextBoxType = { #国家名字
 			name = "turning_point_country_title"
-			position = { x = 5 y = 30 }
-			font = "TTT_special_font_border_desc"
+			position = { x = 100 y = 10 }
+			font = "hoi_20bs"
 			text = "turning_point_country_text"
-			maxHeight = 20
-			maxWidth = 350
+			maxHeight = 45
+			maxWidth = 100
 			fixedsize = yes
 			orientation = CENTER
 		}
@@ -276,15 +392,15 @@ guiTypes = {
 
 		iconType = {  #国家图片
 			name = "turning_point_country_normal_icon"
-			position = { x = 50 y = 5 }
-			quadTextureSprite = "GFX_flag_small2"
+			position = { x = 30 y = 5 }
+			quadTextureSprite = "GFX_flag_small2_no_overlay"
 			orientation = UPPER_LEFT
 		}
 
 		buttonType = {
 			name = "turning_point_country_normal_button"
-			position = { x = 50 y = 5 }
-			quadTextureSprite = "GFX_flag_small2"
+			position = { x = 30 y = 5 }
+			quadTextureSprite = "GFX_flag_small2_no_overlay"
 			clicksound = click_ok
 			orientation = UPPER_LEFT
 		}
@@ -292,11 +408,11 @@ guiTypes = {
 
 		instantTextBoxType = { #国家名字
 			name = "turning_point_country_title"
-			position = { x = 5 y = 30 }
-			font = "TTT_special_font_border_desc"
+			position = { x = 80 y = 10 }
+			font = "hoi_20bs"
 			text = "turning_point_country_text"
-			maxHeight = 20
-			maxWidth = 350
+			maxHeight = 45
+			maxWidth = 100
 			fixedsize = yes
 			orientation = CENTER
 		}

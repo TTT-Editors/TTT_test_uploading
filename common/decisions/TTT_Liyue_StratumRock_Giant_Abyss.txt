@@ -1,18 +1,279 @@
 cengyanjuyuankaifaxiangmu = {
-	#kaicaimeikuang = {
-	#	icon = decision_icon_kaicaimeikuang
-	#	cost = 160
-	#	days_remove = 14
-	#	days_re_enable = 60
-	#	available = {
-	#		has_completed_focus = newfocus_9
-	#	}
-	#	remove_effect = {
-	#		add_resource = {
-	#			type = coal
-	#			amount = 50
-	#			state = 207
-	#		}
-	#	}
-	#}
+	LYU_cengyansetvariable = {		
+		cost = 0
+		allowed = {
+		is_ai = no
+		is_debug = yes
+	    }
+		complete_effect = {
+        set_variable = { global.Liyue_dixiashuize_var = 21  }
+		set_variable = { global.Liyue_jushenyandong_var = 40  }
+		set_variable = { global.Liyue_juyuanzhukuangqu_var = 13 }
+		set_variable = { global.Liyue_linshizhukuangdao_var = 60 }
+		}
+	}
+	Liyue_solving_sludge = {            #解决淤泥		
+		cost = 50		
+		days_remove = 1		
+		fire_only_once = yes
+		allowed = {
+			is_ai = no
+		    is_debug = yes
+		}
+        visible = {
+		or = {
+		    check_variable = { LYU_Selected_Area_bianliang = 1 }
+			check_variable = { LYU_Selected_Area_bianliang = 2 }
+			check_variable = { LYU_Selected_Area_bianliang = 3 }
+			check_variable = { LYU_Selected_Area_bianliang = 4 }
+		    }
+	    }		
+		remove_effect = {
+            if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 1 }
+			}
+			set_country_flag = Liyue_solving_sludge_flag1
+		}
+		else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 2 }
+			}
+			set_country_flag = Liyue_solving_sludge_flag2
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 3 }
+			}
+			set_country_flag = Liyue_solving_sludge_flag3
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 4 }
+			}
+			set_country_flag = Liyue_solving_sludge_flag4
+		    }			
+			custom_effect_tooltip = Liyue_solving_sludge_tt
+		}
+	}
+	Liyue_Organize_exploration_team = {       #组织勘探队	
+		cost = 25
+		days_remove = 14	
+		fire_only_once = no
+		available= {
+			has_manpower > 500		
+		}
+		visible = {
+			or = {
+			has_country_flag = Liyue_solving_sludge_flag1
+			has_country_flag = Liyue_solving_sludge_flag2
+			has_country_flag = Liyue_solving_sludge_flag3
+			has_country_flag = Liyue_solving_sludge_flag4
+			}
+		}
+		remove_effect = {
+		    custom_effect_tooltip = Liyue_Organize_exploration_team_tt
+			if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 1 }
+			}
+			add_to_variable = { global.Liyue_dixiashuize_var = 5 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 2 }
+			}
+			add_to_variable = { global.Liyue_jushenyandong_var = 5 }
+		    }
+        else_if = {
+			limit = {
+				check_variable = { .LYU_Selected_Area_bianliang = 3 }
+			}
+			add_to_variable = { global.Liyue_juyuanzhukuangqu_var = 5 }
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 4 }
+			}
+			add_to_variable = { global.Liyue_linshizhukuangdao_var = 5 }
+		    }
+		}
+	}
+	Liyue_Cleaning_threat = {       #清扫威胁	
+		cost = 0
+		days_remove = 14	
+		fire_only_once = no
+		available= {
+			has_manpower > 800
+            command_power > 19
+            Liyue_Cleaningthreat_tiaojie = yes			
+		}
+		visible = {
+			or = {
+			has_country_flag = Liyue_solving_sludge_flag1
+			has_country_flag = Liyue_solving_sludge_flag2
+			has_country_flag = Liyue_solving_sludge_flag3
+			has_country_flag = Liyue_solving_sludge_flag4
+			}
+		}
+		
+		remove_effect = {
+		    add_command_power = -20
+			if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 1 }
+			}
+			
+		}
+		else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 2 }
+			}
+			
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 3 }
+			}
+			
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 4 }
+			}
+			
+		    }
+		}
+	}
+	Liyue_establishing_miningsites = {       #建立开采据点	
+		cost = 50
+		days_remove = 1	
+		fire_only_once = no
+		available= {
+			industrial_complex > 1
+            Liyue_Cleaningthreat_tiaojie = yes			
+		}
+		visible = {
+			or = {
+			has_country_flag = Liyue_solving_sludge_flag1
+			has_country_flag = Liyue_solving_sludge_flag2
+			has_country_flag = Liyue_solving_sludge_flag3
+			has_country_flag = Liyue_solving_sludge_flag4
+			}
+		}
+		modifier = {
+		    civilian_factory_use = 2
+		}
+		remove_effect = {
+		    add_stability = 0.02
+			if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 1 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction1
+		}
+		else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 2 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction2
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 3 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction3
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 4 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction4
+		    }
+		}
+	}
+	Liyue_prioritize_resourceextraction = {       #更改模式为优先开采奢侈矿石	
+		cost = 5
+		fire_only_once = no
+		available= {
+		    NOT = { has_country_flag = Liyue_prioritize_resourceextraction_flag }			
+		}
+		visible = {
+			or = {
+			has_country_flag = Liyue_Prioritize_resourceextraction1
+			has_country_flag = Liyue_Prioritize_resourceextraction2
+			has_country_flag = Liyue_Prioritize_resourceextraction3
+			has_country_flag = Liyue_Prioritize_resourceextraction4
+			}
+		}
+		remove_effect = {
+		    set_country_flag = { flag = Liyue_prioritize_resourceextraction_flag value = 1 days = 90 } 
+			if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 1 }
+			}
+			set_country_flag = Liyue_Priority_miningluxuryores1
+		}
+		else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 2 }
+			}
+			set_country_flag = Liyue_Priority_miningluxuryores2
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 3 }
+			}
+			set_country_flag = Liyue_Priority_miningluxuryores3
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 4 }
+			}
+			set_country_flag = Liyue_Priority_miningluxuryores4
+		    }
+		}
+	}
+	Liyue_priority_miningluxuryores = {       #更改模式为优先开采资源	
+		cost = 5	
+		fire_only_once = no
+		available= {
+		    NOT = { has_country_flag = Liyue_prioritize_resourceextraction_flag }			
+		}
+		visible = {
+			or = {
+			has_country_flag = Liyue_Priority_miningluxuryores1
+			has_country_flag = Liyue_Priority_miningluxuryores2
+			has_country_flag = Liyue_Priority_miningluxuryores3
+			has_country_flag = Liyue_Priority_miningluxuryores4
+			}
+		}
+		remove_effect = {
+		    set_country_flag = { flag = Liyue_prioritize_resourceextraction_flag value = 1 days = 90 }
+			if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 1 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction1
+		}
+		else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 2 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction2
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 3 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction3
+		    }
+        else_if = {
+			limit = {
+				check_variable = { LYU_Selected_Area_bianliang = 4 }
+			}
+			set_country_flag = Liyue_Prioritize_resourceextraction4
+		    }
+		}
+	}
 }

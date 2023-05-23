@@ -334,67 +334,45 @@ MOT_Clear_invalid_mission = {
 
 #########################################################
 ##MOT_Progress
-Clear_Deadline_num_1 = {
+Clear_Deadline_num = {
     if = {
         limit = {
             check_variable = {
-                var = MOT_Deadline_num_1
+                var = MOT_Deadline_num
 				value = 11
 				compare = greater_than_or_equals
             }
         }
-        clear_variable = MOT_Deadline_num_1
-        add_to_variable = {MOT_Deadline_num_1 =1}
+        clear_variable = MOT_Deadline_num
+        add_to_variable = {MOT_Deadline_num =1}
     }
     
     if = {
         limit = {
             check_variable = {
-                var = MOT_Deadline_num_1
+                var = MOT_Deadline_num
 				value = 0
 				compare = less_than_or_equals
             }
         }
-        clear_variable = MOT_Deadline_num_1
-        add_to_variable = {MOT_Deadline_num_1 = 1}
+        clear_variable = MOT_Deadline_num
+        add_to_variable = {MOT_Deadline_num = 1}
     }
     
-}
-Clear_Deadline_num_2 = {
-    if = {
-        limit = {
-            check_variable = {
-                var = MOT_Deadline_num_2
-				value = 6
-				compare = greater_than_or_equals
-            }
-        }
-        clear_variable = MOT_Deadline_num_2
-        add_to_variable = {MOT_Deadline_num_2 =-4}
-    }
-    if = {
-        limit = {
-            check_variable = {
-                var = MOT_Deadline_num_2
-				value = -5
-				compare = less_than_or_equals
-            }
-        }
-        clear_variable = MOT_Deadline_num_2
-        add_to_variable = {MOT_Deadline_num_2 = -4}
-    }
 }
 Clear_Progress_num = {
     if = {
         limit = {
             check_variable = {
                 var = MOT_Progress_num
-				value = 12
+				value = 101
 				compare = greater_than_or_equals
             }
         }
         clear_variable = MOT_Progress_num
-        add_to_variable = {MOT_Progress_num = 1}
+        clear_variable = MOT_Progress_num_localization
+        add_to_variable = {MOT_Progress_num = 101}
+        add_to_variable = {MOT_Progress_num_localization = 100}
     }
     if = {
         limit = {
@@ -405,7 +383,9 @@ Clear_Progress_num = {
             }
         }
         clear_variable = MOT_Progress_num
+        clear_variable = MOT_Progress_num_localization
         add_to_variable = {MOT_Progress_num = 1}
+        set_variable = {MOT_Progress_num_localization = 0}
     }
 }
 ###取消温和立场
@@ -510,73 +490,64 @@ MOT_Standpoint_config_flag_03 = {
 ###################################################################
 ###检查温和立场的国家数量
 MOT_Standpoint_check_total_country_num_01 = {
-    clear_variable = MOT_Standpoint_total_country_num_01
-    while_loop_effect = {
+    add_to_variable = {MOT_Standpoint_total_country_num_01 = global.MOT_Standpoint_flag_array_01^num}
+    if = {
         limit = {
-            check_variable = {
-                var = global.MOT_Standpoint_flag_array_01^MOT_Standpoint_total_country_num_01
-                value = 0
-                compare = greater_than
+            MOT = {
+                has_country_flag = Lock_MOT_Standpoint_decision_1
             }
         }
-        if = {
-            limit = {
-                MOT = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_1
-                }
-            }
-            add_to_variable ={MOT_Standpoint_total_country_num_01 = 0.5}
+        multiply_variable = {
+            var = MOT_Standpoint_total_country_num_01
+            value = 0.5
         }
-        else = {
-            add_to_variable ={MOT_Standpoint_total_country_num_01 = 0.25}
+    }
+    else = {
+        multiply_variable = {
+            var = MOT_Standpoint_total_country_num_01
+            value = 0.25
         }
     }
 }
 ###检查中立立场国家数量
 MOT_Standpoint_check_total_country_num_02 = {
-    clear_variable = MOT_Standpoint_total_country_num_02
-    while_loop_effect = {
+    add_to_variable = {MOT_Standpoint_total_country_num_02 = global.MOT_Standpoint_flag_array_02^num}
+    if = {
         limit = {
-            check_variable = {
-                var = global.MOT_Standpoint_flag_array_02^MOT_Standpoint_total_country_num_02
-                value = 0
-                compare = greater_than
+            MOT = {
+                has_country_flag = Lock_MOT_Standpoint_decision_2
             }
         }
-        if = {
-            limit = {
-                MOT = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_2
-                }
-            }
-            add_to_variable ={MOT_Standpoint_total_country_num_02 = 0.5}
+        multiply_variable = {
+            var = MOT_Standpoint_total_country_num_02
+            value = 0.5
         }
-        else = {
-            add_to_variable ={MOT_Standpoint_total_country_num_02 = 0.25}
+    }
+    else = {
+        multiply_variable = {
+            var = MOT_Standpoint_total_country_num_02
+            value = 0.25
         }
     }
 }
 ##检查激进立场国家数量
 MOT_Standpoint_check_total_country_num_03 = {
-    clear_variable = MOT_Standpoint_total_country_num_03
-    while_loop_effect = {
+    add_to_variable = {MOT_Standpoint_total_country_num_03 = global.MOT_Standpoint_flag_array_03^num}
+    if = {
         limit = {
-            check_variable = {
-                var = global.MOT_Standpoint_flag_array_03^MOT_Standpoint_total_country_num_03
-                value = 0
-                compare = greater_than
+            MOT = {
+                has_country_flag = Lock_MOT_Standpoint_decision_3
             }
         }
-        if = {
-            limit = {
-                MOT = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_3
-                }
-            }
-            add_to_variable ={MOT_Standpoint_total_country_num_03 = 0.5}
+        multiply_variable = {
+            var = MOT_Standpoint_total_country_num_03
+            value = 0.5
         }
-        else = {
-            add_to_variable ={MOT_Standpoint_total_country_num_03 = 0.25}
+    }
+    else = {
+        multiply_variable = {
+            var = MOT_Standpoint_total_country_num_03
+            value = 0.25
         }
     }
 }

@@ -14,15 +14,21 @@ on_actions = {
                 if = {
                     limit = {
                         check_variable = {
-                            var = MOT_Deadline_num_1
+                            var = MOT_Deadline_num
                             value = 11
                             compare = greater_than_or_equals
                         }
                     }
-                    Clear_Deadline_num_1 = yes
-                    Clear_Deadline_num_2 = yes
+                    Clear_Deadline_num = yes
                     set_global_flag = MOT_dragon_crisis_is_over
                     clr_country_flag = MOT_Deadline_is_unlocked
+                    clr_country_flag = MOT_Progress_is_unlocked
+                    clear_variable = MOT_Progress_num 
+                    clear_variable = MOT_Deadline_num
+                    set_variable = {MOT_Progress_num = 1}
+                    set_variable = {MOT_Deadline_num = 1}
+                    set_variable = {MOT_Progress_num_localization = 0}
+                    set_variable = {MOT_Deadline_num_localization = 0}
                     clr_global_flag = MOT_dragon_crisis
                     clr_global_flag = MOT_dragon_crisis_is_locked
                 }
@@ -37,10 +43,9 @@ on_actions = {
                             }
                         }
                         add_to_variable = {MOT_dragon_crisis_deadline_num = -36.5}
-                        add_to_variable = {MOT_Deadline_num_1 =1}
-                        add_to_variable = {MOT_Deadline_num_2 =1}
-                        Clear_Deadline_num_1 = yes
-                        Clear_Deadline_num_2 = yes
+                        add_to_variable = {MOT_Deadline_num =1}
+                        add_to_variable = {MOT_Deadline_num_localization = 1}
+                        Clear_Deadline_num = yes
                     }
                 }            
             }
@@ -73,6 +78,13 @@ on_actions = {
                 add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_01}
                 add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_02}
                 add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_03}
+                Clear_Progress_num = yes
+                add_to_variable ={MOT_Progress_num_localization = MOT_Standpoint_total_country_num_01}
+                add_to_variable ={MOT_Progress_num_localization = MOT_Standpoint_total_country_num_02}
+                add_to_variable ={MOT_Progress_num_localization = MOT_Standpoint_total_country_num_03}
+                clear_variable = MOT_Standpoint_total_country_num_01
+                clear_variable = MOT_Standpoint_total_country_num_02
+                clear_variable = MOT_Standpoint_total_country_num_03
             }
         }
     }

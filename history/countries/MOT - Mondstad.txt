@@ -47,18 +47,10 @@ add_ideas = {
 ###MOT_Political
 set_country_flag = MOT_open_gui_map1
 set_country_flag = MOT_Political_character1_is_locking
-add_to_array = {
-	array = MOT_Political_character_map_array
-	value = 0
-	index = 0
-}
-set_temp_variable = { i = 1 }
-while_loop_effect = {
-	limit = {
-		check_variable = { i = 5 compare =less_than_or_equals }
-	}
-	add_to_array = { MOT_Political_character_map_array = 0 }
-	add_to_temp_variable = { i = 1 }
+resize_array = {
+    array = MOT_Political_character_map_array
+    value = 0
+    size = 5
 }
 set_variable = {character_num = 0}
 set_variable = {map_num = 0}
@@ -74,6 +66,17 @@ add_to_array = {
 }
 MOT_Political_character_is_visible =yes
 
+###MOT_nationalfocus_mission
+##publish moderate's mission when the variable is "1".publish radical's mission when the variable is "2".
+##complete moderate's mission when the variable is "3".complete radical's mission when the variable is "4"
+resize_array = {
+    array = global.MOT_naionalfocus_mission
+    value = 0
+    size = 3
+}
+
+
+
 ##Refugee_mood
 #set_variable = {MOT_Refugee_mood_num = 3}
 #add_to_array ={
@@ -84,15 +87,15 @@ MOT_Political_character_is_visible =yes
 
 ####MOT_Progress
 ##country_flag:MOT_Deadline_is_unlocked\MOT_Progress_is_unlocked
-set_variable = {MOT_Deadline_num_1 = 1}
-set_variable = {MOT_Deadline_num_2 = -4}
+set_variable = {MOT_Deadline_num = 1}
 set_variable = {MOT_Progress_num = 1}
-
+set_variable = {MOT_Deadline_num_localization = 0}
+set_variable = {MOT_Progress_num_localization = 0}
 ###MOT_Standpoint
 set_variable = {MOT_Standpoint_total_country_num_01 = 0}
 set_variable = {MOT_Standpoint_total_country_num_02 = 0}
 set_variable = {MOT_Standpoint_total_country_num_03 = 0}
-set_variable ={MOT_Standpoint_country_num = 3}
+set_variable = {MOT_Standpoint_country_num = 3}
 #global_flag:MOT_dragon_crisis、MOT_dragon_crisis_is_over、MOT_dragon_crisis_is_locked、MOT_dragon_crisis_deadline
 #global_flag:MOT_federal_route
 #global_flag:MOT_industrialization_program

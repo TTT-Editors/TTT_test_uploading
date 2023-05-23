@@ -131,3 +131,122 @@ country_event = {
 		add_to_variable = { XOG_yezhangdu = -0.1 }
 	}
 }
+
+####################################################################
+
+#    #   ####  #####  ###   ####   #    #   ####   #
+##   #  #    #   #     #   #    #  ##   #  #    #  #
+# #  #  #    #   #     #   #    #  # #  #  #    #  #
+# ## #  ######   #     #   #    #  # ## #  ######  #
+#  # #  #    #   #     #   #    #  #  # #  #    #  #
+#   ##  #    #   #     #   #    #  #   ##  #    #  #
+#    #  #    #   #    ###   ####   #    #  #    #  ######
+
+######  ####    ####   #    #   ####
+#      #    #  #    #  #    #  #    #
+#      #    #  #       #    #  #
+#####  #    #  #       #    #   ####
+#      #    #  #       #    #       #
+#      #    #  #    #  #    #  #    #
+#       ####    ####    ####    ####
+
+####################################################################
+
+#甘雨来信
+country_event = {
+    id = XOG_events.101
+	title = XOG_events.101.t
+    desc = XOG_events.101.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.101.a
+		add_opinion_modifier = { target = LYU modifier = triggered_improved_relation }
+		LYU = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation } }
+		add_popularity = { ideology = reformism popularity = 0.02 }
+	}
+}
+
+#龙王来信
+country_event = {
+    id = XOG_events.102
+	title = XOG_events.102.t
+    desc = XOG_events.102.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.102.a
+		add_opinion_modifier = { target = RTG modifier = triggered_improved_relation }
+		RTG = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation } }
+		add_popularity = { ideology = reformism popularity = 0.02 }
+	}
+	
+	option = {
+	    name = XOG_events.102.b
+		add_opinion_modifier = { target = RTG modifier = triggered_break_relation }
+		RTG = { add_opinion_modifier = { target = XOG modifier = triggered_break_relation } }
+		add_popularity = { ideology = reformism popularity = -0.02 }
+	}
+}
+
+#仙人来信
+country_event = {
+    id = XOG_events.103
+	title = XOG_events.103.t
+    desc = XOG_events.103.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.103.a
+		add_opinion_modifier = { target = XRG modifier = triggered_improved_relation }
+		XRG = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation } }
+		add_popularity = { ideology = authoritarianism popularity = 0.02 }
+	}
+	
+	option = {
+	    name = XOG_events.103.b
+		add_opinion_modifier = { target = XRG modifier = triggered_break_relation }
+		XRG = { add_opinion_modifier = { target = XOG modifier = triggered_break_relation } }
+		add_popularity = { ideology = liberalism popularity = 0.02 }
+	}
+}
+
+#国策和解——夜叉
+country_event = {
+    id = XOG_events.104
+	title = XOG_events.104.t
+    desc = XOG_events.104.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.104.a
+		XOG = {
+			every_unit_leader = {
+				set_nationality = RTG
+			}
+		}
+		RTG = {
+			annex_country = { target = XOG transfer_troops = yes }
+		}
+	}
+}
+
+#国策恢复秩序——恢复秩序
+country_event = {
+    id = XOG_events.105
+	title = XOG_events.105.t
+    desc = XOG_events.105.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.105.a
+		XOG = {
+			every_unit_leader = {
+				set_nationality = LYU
+			}
+		}
+		LYU = {
+			annex_country = { target = XOG transfer_troops = yes }
+		}
+	}
+}

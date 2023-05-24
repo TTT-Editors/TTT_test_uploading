@@ -245,6 +245,7 @@ country_event = {
 }
 
 #击败干涉军——解决璃月内部事宜
+#这个事件测试完成后请删除XOG_events.1，以及璃月港、龙王、仙人可以通过国策或决议拉拢魈的所有内容
 country_event = {
     id = XOG_events.105
 	title = XOG_events.105.t
@@ -507,7 +508,7 @@ country_event = {
 	option = {
 	    name = XOG_events.112.a
 		ai_chance = {
-			base = 75
+			base = 85
 		}
 		set_country_flag = XOG_Choice_XOG
 		XRG = {
@@ -529,7 +530,7 @@ country_event = {
 			XOG = { is_in_faction = no }
 		}
 		ai_chance = {
-			base = 25
+			base = 15
 		}
 		set_country_flag = XOG_Choice_XRG
 		XRG = {
@@ -540,5 +541,60 @@ country_event = {
 			}
 			add_to_faction = XOG
 		}
+	}
+}
+
+#国策来自龙王的援助——旧日之敌，今日之友
+country_event = {
+    id = XOG_events.113
+	title = XOG_events.113.t
+    desc = XOG_events.113.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.113.a
+		swap_ideas = {
+			remove_idea = XOG_Protect_the_homeland
+			add_idea = XOG_Protect_the_homeland_RTG
+		}
+	}
+}
+
+#国策契约之璃月——降魔大圣
+country_event = {
+    id = XOG_events.114
+	title = XOG_events.114.t
+    desc = XOG_events.114.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.114.a
+		swap_ideas = {
+			remove_idea = XOG_Protect_the_homeland
+			add_idea = XOG_Protect_the_homeland_LYU
+		}
+	}
+}
+
+#国策守护和平——回归
+country_event = {
+    id = XOG_events.115
+	title = XOG_events.115.t
+    desc = XOG_events.115.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.115.a
+		XOG = {
+			every_character = {
+				set_nationality = XRG
+			}
+		}
+		every_state = {
+			limit = { is_core_of = XOG }
+			add_core_of = RTG
+			remove_core_of = XOG
+		}
+		XRG = { annex_country = { target = XOG transfer_troops = yes } }
 	}
 }

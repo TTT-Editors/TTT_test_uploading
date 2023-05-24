@@ -94,6 +94,11 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
+		path = {
+			leads_to_tech = interwar_artillery
+			research_cost_coeff = 1
+		}
+
 		research_cost = 2.5
 
 		start_year = 1999
@@ -125,9 +130,9 @@ technologies = {
 		}
 		
 		path = {
-			leads_to_tech = interwar_artillery
+			leads_to_tech = gw_artillery
 			research_cost_coeff = 1
-		}		
+		}	
 
 		research_cost = 2.5
 		start_year = 1995
@@ -143,65 +148,6 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 10
-		}
-	}
-
-	gw_artillery = {
-
-		enable_equipments = {
-			artillery_equipment_1
-		}
-
-		path = {
-			leads_to_tech = artillery1
-			research_cost_coeff = 1
-		}
-
-		path = {
-			leads_to_tech = interwar_antitank
-			research_cost_coeff = 1
-		}
-
-		path = {
-			leads_to_tech = interwar_antiair
-			research_cost_coeff = 1
-		}
-		enable_equipment_modules = {
-			ship_anti_air_1
-			tank_small_cannon
-			secondary_turret_small_cannon
-		}
-
-		research_cost = 2.5
-
-		start_year = 1999
-
-		folder = {
-			name = artillery_folder
-			position = { x = 0 y = 10 }
-		}
-
-		categories = {
-			artillery
-		}
-
-		ai_will_do = {
-			factor = 2
-
-			modifier = {
-				factor = 2
-				date > "2000.1.1"
-			}
-
-			modifier = {
-				factor = 5
-				date > "2001.1.1"
-			}
-
-			modifier = {
-				factor = 5
-				date > "2002.1.1"
-			}
 		}
 	}
 
@@ -257,6 +203,73 @@ technologies = {
 
 			modifier = {
 				factor = 2
+				date > "2001.1.1"
+			}
+
+			modifier = {
+				factor = 5
+				date > "2002.1.1"
+			}
+		}
+	}
+
+	gw_artillery = {
+
+		dependencies = {
+			artillery_Rifling = 1
+		}
+		
+		dependencies = {
+			interwar_artillery = 1
+		}
+
+		enable_equipments = {
+			artillery_equipment_1
+		}
+
+		path = {
+			leads_to_tech = artillery1
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = interwar_antitank
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = interwar_antiair
+			research_cost_coeff = 1
+		}
+		enable_equipment_modules = {
+			ship_anti_air_1
+			tank_small_cannon
+			secondary_turret_small_cannon
+		}
+
+		research_cost = 2.5
+
+		start_year = 1999
+
+		folder = {
+			name = artillery_folder
+			position = { x = 0 y = 10 }
+		}
+
+		categories = {
+			artillery
+		}
+
+		ai_will_do = {
+			factor = 2
+
+			modifier = {
+				factor = 2
+				date > "2000.1.1"
+			}
+
+			modifier = {
+				factor = 5
 				date > "2001.1.1"
 			}
 

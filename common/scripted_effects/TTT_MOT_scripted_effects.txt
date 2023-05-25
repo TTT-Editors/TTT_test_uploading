@@ -305,8 +305,8 @@ MOT_Political_check_character_num = {
    #     index = 0
   #  }
 #}
-###清除已无效的任务
-MOT_Clear_invalid_mission = {
+###切换成已完成任务
+MOT_Political_complete_mission = {
     set_temp_variable = { MOT_n = 0 }
     while_loop_effect = {
         limit = {
@@ -325,13 +325,50 @@ MOT_Clear_invalid_mission = {
         }
         add_to_temp_variable = { MOT_n = 1 }
     }
+    add_to_temp_variable = {MOT_m = 3}
     remove_from_array = {
         array = MOT_Political_grid_array
         index = MOT_n
     }
+    add_to_array = {
+        array = MOT_Political_grid_array
+        value = MOT_m
+        index = MOT_n
+    }
     clear_variable = MOT_n
 }
-
+###切换成超时任务
+MOT_Political_overtime_mission = {
+    set_temp_variable = { MOT_n = 0 }
+    while_loop_effect = {
+        limit = {
+            not = {
+                check_variable = {
+                    var = MOT_Political_grid_array^MOT_n
+                    value = MOT_m
+                    compare =equals
+                }
+            }
+            check_variable = {
+                var = MOT_n
+                value= 5
+                compare = less_than_or_equals
+            }
+        }
+        add_to_temp_variable = { MOT_n = 1 }
+    }
+    add_to_temp_variable = {MOT_m = 6}
+    remove_from_array = {
+        array = MOT_Political_grid_array
+        index = MOT_n
+    }
+    add_to_array = {
+        array = MOT_Political_grid_array
+        value = MOT_m
+        index = MOT_n
+    }
+    clear_variable = MOT_n
+}
 #########################################################
 ##MOT_Progress
 Clear_Deadline_num = {

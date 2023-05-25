@@ -1,55 +1,33 @@
 add_namespace = XOG_events
 
-#解决璃月内部事宜
+#开局事件→现状
 country_event = {
     id = XOG_events.1
 	title = XOG_events.1.t
     desc = XOG_events.1.d
-    fire_only_once=yes
 	is_triggered_only = yes
 	
 	option = {
 	    name = XOG_events.1.a
-		trigger = {
-             country_exists = LYU
-             LYU = {
-				has_government = reformism 
-             }
-			NOT = { has_country_flag = XOG_refuse_LYU }
-        }
-		set_country_flag = XOG_Choice_Ganyu
-		LYU = {
-			country_event = { days = 7  id = XOG_events.2  }
+		country_event = {
+			id = XOG_events.2
+			days = 1
 		}
 	}
+}
+
+
+#开局事件→暗潮
+country_event = {
+    id = XOG_events.2
+	title = XOG_events.2.t
+    desc = XOG_events.2.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
 	option = {
-	    name = XOG_events.1.b
-		trigger = {
-             country_exists = RTG
-             RTG = {
-				has_government = reformism 
-             }	
-			NOT = { has_country_flag = XOG_refuse_RTG }		 
-        }
-		set_country_flag = XOG_Choice_Ruotuo
-		RTG = {
-			country_event = { days = 7  id = XOG_events.2  }
-		}
-	}
-	option = {
-	    name = XOG_events.1.c
-		trigger = {
-             country_exists = XRG
-			NOT = { has_country_flag = XOG_refuse_XRG }			 
-        }
-		set_country_flag =  XOG_Choice_XRG
-		XRG = {
-			country_event = { days = 7  id = XOG_events.2  }
-		}
-	}
-	option = {
-	    name = XOG_events.1.d
-		set_country_flag = XOG_Choice_XOG
+	    name = XOG_events.2.a
+		add_political_power = 5
 	}
 }
 
@@ -596,5 +574,33 @@ country_event = {
 			remove_core_of = XOG
 		}
 		XRG = { annex_country = { target = XOG transfer_troops = yes } }
+	}
+}
+
+#国策四面皆敌——南下
+country_event = {
+    id = XOG_events.116
+	title = XOG_events.116.t
+    desc = XOG_events.116.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.116.a
+	}
+}
+
+#群仙会议的新人
+country_event = {
+    id = XOG_events.117
+	title = XOG_events.117.t
+    desc = XOG_events.117.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.117.a
+		swap_ideas = {
+			remove_idea = XOG_Protect_the_homeland
+			add_idea = XOG_Protect_the_homeland_XRG
+		}
 	}
 }

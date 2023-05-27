@@ -241,18 +241,16 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_Vision_Hunt_Decree
+	id = INA_Vision_Hunt_Decree #眼狩令开始
 	icon = GFX_null
-	relative_position_id = INA_First_stage
+	relative_position_id = INA_Vision_Hunt_Decree
     
-	allow_branch = {
-		#has_country_flag = INA_start_Vision_hunt
-	}
-	x = 8
-	y = 0
+	#allow_branch = {has_country_flag = INA_start_Vision_hunt}
+	x = 9
+	y = 1
 	cost = 35.00
 	ai_will_do = {
-		factor = 100
+		factor = 100 
 	}
 	completion_reward = {
 		add_political_power = 50
@@ -263,11 +261,11 @@ shared_focus =
 {
 	id = INA_Vision_Hunt_Decree_1
 	icon = GFX_null
-	relative_position_id = INA_First_stage
+	relative_position_id = INA_Vision_Hunt_Decree
 	prerequisite = {
 		focus = INA_Vision_Hunt_Decree
 	}
-	x = 8
+	x = 0
 	y = 1
 	cost = 35.00
 	ai_will_do = {
@@ -282,11 +280,15 @@ shared_focus =
 {
 	id = INA_Vision_Hunt_Decree_2
 	icon = GFX_null
-	relative_position_id = INA_First_stage
+	relative_position_id = INA_Vision_Hunt_Decree
 	prerequisite = {
 		focus = INA_Vision_Hunt_Decree_1
 	}
-	x = 7
+	mutually_exclusive =
+	{
+		focus = INA_Vision_Hunt_Decree_3
+	}
+	x = -1
 	y = 2
 	cost = 35.00
 	ai_will_do = {
@@ -301,11 +303,15 @@ shared_focus =
 {
 	id = INA_Vision_Hunt_Decree_3
 	icon = GFX_null
-	relative_position_id = INA_First_stage
+	relative_position_id = INA_Vision_Hunt_Decree
 	prerequisite = {
 		focus = INA_Vision_Hunt_Decree_1
 	}
-	x = 9
+	mutually_exclusive =
+	{
+		focus = INA_Vision_Hunt_Decree_2
+	}
+	x = 1
 	y = 2
 	cost = 35.00
 	ai_will_do = {
@@ -320,11 +326,11 @@ shared_focus =
 {
 	id = INA_Vision_Hunt_Decree_4
 	icon = GFX_null
-	relative_position_id = INA_First_stage
+	relative_position_id = INA_Vision_Hunt_Decree
 	prerequisite = {
 		focus = INA_Vision_Hunt_Decree_2
 	}
-	x = 7
+	x = -1
 	y = 4
 	cost = 35.00
 	ai_will_do = {
@@ -339,11 +345,11 @@ shared_focus =
 {
 	id = INA_Vision_Hunt_Decree_5
 	icon = GFX_null
-	relative_position_id = INA_First_stage
+	relative_position_id = INA_Vision_Hunt_Decree
 	prerequisite = {
 		focus = INA_Vision_Hunt_Decree_3
 	}
-	x = 9
+	x = 1
 	y = 4
 	cost = 35.00
 	ai_will_do = {
@@ -358,15 +364,35 @@ shared_focus =
 {
 	id = INA_Vision_Hunt_Decree_6
 	icon = GFX_null
-	relative_position_id = INA_First_stage
+	relative_position_id = INA_Vision_Hunt_Decree
 	prerequisite = {
 		focus = INA_Vision_Hunt_Decree_4
 	}
 	prerequisite = {
 		focus = INA_Vision_Hunt_Decree_5
 	}
-	x = 8
+	x = 0
 	y = 6
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		add_political_power = 50
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_7
+	icon = GFX_null
+	relative_position_id = INA_Vision_Hunt_Decree
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree_2
+		focus = INA_Vision_Hunt_Decree_3
+	}
+	x = 0
+	y = 3
 	cost = 35.00
 	ai_will_do = {
 		factor = 100

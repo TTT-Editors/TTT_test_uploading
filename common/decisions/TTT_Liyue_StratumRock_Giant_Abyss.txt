@@ -1,29 +1,8 @@
 cengyanjuyuankaifaxiangmu = {
-	LYU_cengyansetvariable = {		
-		cost = 0
-		allowed = {
-		is_ai = no
-		is_debug = yes
-	    }
-		complete_effect = {
-        set_variable = { global.Liyue_dixiashuize_var = 21  }
-		set_variable = { global.Liyue_jushenyandong_var = 13  }
-		set_variable = { global.Liyue_juyuanzhukuangqu_var = 40 }
-		set_variable = { global.Liyue_linshizhukuangdao_var = 60 }
-		set_global_flag = linshizhuguangdao_hazard_level1  #临时主矿道 
-		set_global_flag = juyuanzhukuangqu_hazard_level2   #巨渊主矿区 
-		set_global_flag = dixiashuize_hazard_level3        #地下水泽 
-		set_global_flag = jusheyandong_hazard_level3       #巨蛇岩洞 
-		}
-	}
 	Liyue_solving_sludge = {            #解决淤泥		
 		cost = 50		
-		days_remove = 1		
+		days_remove = 120		
 		fire_only_once = no
-		allowed = {
-			is_ai = no
-		    is_debug = yes
-		}
         visible = {
 		Liyue_solving_tiaojie = yes
 		or = {
@@ -126,7 +105,7 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag =  dixiashuize_hazard_level3
 			set_global_flag = dixiashuize_hazard_level2
-			set_variable = { global.Liyue_dixiashuize_var = 25 }
+			add_to_variable = { global.Liyue_dixiashuize_var = -75 }
 		}
 		else_if = {
 			limit = {
@@ -135,7 +114,7 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag = dixiashuize_hazard_level2
 			set_global_flag = dixiashuize_hazard_level1
-			set_variable = { global.Liyue_dixiashuize_var = 50 }
+			add_to_variable = { global.Liyue_dixiashuize_var = -50 }
 		    }
 		else_if = {
 			limit = {
@@ -143,7 +122,7 @@ cengyanjuyuankaifaxiangmu = {
 				has_global_flag =  dixiashuize_hazard_level1
 			}
 			clr_global_flag =  dixiashuize_hazard_level1
-			set_variable = { global.Liyue_dixiashuize_var = 75 }
+			add_to_variable = { global.Liyue_dixiashuize_var = -50 }
 		    }
 		else_if = {
 			limit = {
@@ -152,7 +131,7 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag = jusheyandong_hazard_level3
 			set_global_flag = jusheyandong_hazard_level2
-			set_variable = { global.Liyue_jushenyandong_var = 25 }
+			add_to_variable = { global.Liyue_jushenyandong_var = -75 }
 		    }
 		else_if = {
 			limit = {
@@ -161,7 +140,7 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag = = jusheyandong_hazard_level2
 			set_global_flag = jusheyandong_hazard_level1
-			set_variable = { global.Liyue_jushenyandong_var = 50 }
+			add_to_variable = { global.Liyue_jushenyandong_var = -50 }
 		    }
 		else_if = {
 			limit = {
@@ -169,7 +148,7 @@ cengyanjuyuankaifaxiangmu = {
 				has_global_flag = juyuanzhukuangqu_hazard_level1
 			}
 			clr_global_flag = jusheyandong_hazard_level1
-			set_variable = { global.Liyue_jushenyandong_var = 75 }
+			add_to_variable = { global.Liyue_jushenyandong_var = -25 }
 		    }
 		else_if = {
 			limit = {
@@ -178,7 +157,7 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag = juyuanzhukuangqu_hazard_level2
 			set_global_flag = jusheyandong_hazard_level1
-			set_variable = { global.Liyue_juyuanzhukuangqu_var = 50 }
+			add_to_variable = { global.Liyue_juyuanzhukuangqu_var = -50 }
 		    }
 		else_if = {
 			limit = {
@@ -186,7 +165,7 @@ cengyanjuyuankaifaxiangmu = {
 				has_global_flag = juyuanzhukuangqu_hazard_level1
 			}
 			clr_global_flag = juyuanzhukuangqu_hazard_level1
-			set_variable = { global.Liyue_juyuanzhukuangqu_var = 75 }
+			add_to_variable = { global.Liyue_juyuanzhukuangqu_var = -25 }
 		    }
         else_if = {
 			limit = {
@@ -194,13 +173,13 @@ cengyanjuyuankaifaxiangmu = {
 				has_global_flag = linshizhuguangdao_hazard_level1
 			}
 			clr_global_flag = linshizhuguangdao_hazard_level1
-			set_variable = { global.Liyue_linshizhukuangdao_var = 75 }
+			add_to_variable = { global.Liyue_linshizhukuangdao_var = -25 }
 		    }
 		}
 	}
 	Liyue_establishing_miningsites = {       #建立开采据点	
 		cost = 50
-		days_remove = 1	
+		days_remove = 30	
 		fire_only_once = no
 		available = {
 			industrial_complex > 1
@@ -340,12 +319,14 @@ cengyanjuyuankaifaxiangmu = {
 		cost = 5
 		fire_only_once = no
 		available= {
-		    NOT = { has_country_flag = Liyue_prioritize_resourceextraction_flag }			
+		    NOT = { has_country_flag = Liyue_prioritize_resourceextraction_flag }
+            Liyue_priority_miningluxuryores_tiaojie = yes			
 		}
 		visible = {
 			Liyue_Organize_exploration_tiaojie = yes
 		}
 		remove_effect = {
+		    custom_effect_tooltip = Liyue_prioritize_resourceextraction_tt
 		    set_country_flag = { flag = Liyue_prioritize_resourceextraction_flag value = 1 days = 90 } 
 			if = {
 			limit = {
@@ -389,7 +370,8 @@ cengyanjuyuankaifaxiangmu = {
 		cost = 5	
 		fire_only_once = no
 		available= {
-		    NOT = { has_country_flag = Liyue_prioritize_resourceextraction_flag }			
+		    NOT = { has_country_flag = Liyue_prioritize_resourceextraction_flag }
+            Liyue_prioritize_resourceextraction_tiaojie = yes			
 		}
 		visible = {
 			Liyue_Organize_exploration_tiaojie = yes

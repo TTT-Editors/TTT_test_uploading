@@ -30,7 +30,7 @@ unit_leader_event = {
 	
 	option = {
 	    name = XOG_events.2.a
-		add_political_power = 5
+		XOG = { add_political_power = 5 }
 	}
 }
 
@@ -207,13 +207,13 @@ country_event = {
 
 #国策恢复秩序——恢复秩序
 country_event = {
-    id = XOG_events.105
-	title = XOG_events.105.t
-    desc = XOG_events.105.d
+    id = XOG_events.100
+	title = XOG_events.100.t
+    desc = XOG_events.100.d
 	is_triggered_only = yes
 	
 	option = {
-	    name = XOG_events.105.a
+	    name = XOG_events.100.a
 		XOG = {
 			every_unit_leader = {
 				set_nationality = LYU
@@ -226,7 +226,7 @@ country_event = {
 }
 
 #击败干涉军——解决璃月内部事宜
-#这个事件测试完成后请删除XOG_events.1，以及璃月港、龙王、仙人可以通过国策或决议拉拢魈的所有内容
+#这个事件测试完成后请删除或修改XOG_events.1（已完成），以及璃月港、龙王、仙人可以通过国策或决议拉拢魈的所有内容
 country_event = {
     id = XOG_events.105
 	title = XOG_events.105.t
@@ -617,5 +617,33 @@ country_event = {
 	
 	option = {
 		name = XOG_events.118.a
+	}
+}
+
+#随机事件→吹笛人
+country_event = {
+    id = XOG_events.119
+	title = XOG_events.119.t
+    desc = XOG_events.119.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.119.a
+		add_to_variable = { XOG_yezhangdu = -5 }
+	}
+}
+
+#占领事件→庙
+country_event = {
+    id = XOG_events.120
+	title = XOG_events.120.t
+    desc = XOG_events.120.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = XOG_events.120.a
+		add_stability = 0.05
+		add_to_variable = { XOG_yezhangdu = -2 }
 	}
 }

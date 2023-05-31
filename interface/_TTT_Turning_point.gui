@@ -34,14 +34,13 @@ guiTypes = {
 		name = "Turning_point_ui_window"
 		size = { width = 1500 height = 600 }
 
-		position = { x = 5000 y = -300 }
+		position = { x = -750 y = -300 }
 		show_position = { x = -750 y = -300 }
 
 		moveable = yes
 
-		show_animation_type = decelerated
-		hide_animation_type = accelerated
-		animation_time = 300
+		fade_type = linear
+		fade_time = 300
 
 		orientation = CENTER
         
@@ -203,8 +202,8 @@ guiTypes = {
 			name = "turning_point_event_desc"
 			position = { x = 30 y = 30 }
 			font = "TTT_special_font_border_title"
-			text = "turning_point_event_desc_text"
-			maxHeight = 200
+			text = "[turning_point_event_desc_text]"
+			maxHeight = 400
 			maxWidth = 350
 			fixedsize = yes
 		}
@@ -235,8 +234,12 @@ guiTypes = {
 			name = "turning_point_event_container_window"
 			position = { x = 20 y = 0 }
 			size = { width = 800 height = 540 }
-			
+
+			clipping = yes
 			horizontalScrollbar = "bottom_horizontal_slider"
+			smooth_scrolling = yes
+			horizontal_scroll_step = 2
+
 			margin = { top = 20 left = 0 bottom = 20 right = 0 }
 			
 			background = {
@@ -245,11 +248,11 @@ guiTypes = {
 				#quadTextureSprite ="GFX_tiled_bg"
 			}
 
-			gridBoxType = {
+			gridBoxType = { #注意，girdbox的最后一张图不会显示，每次添加新事件操作数应为倒数第二个变量
 				name = "turning_point_event_gird"
 				position = { x = 0 y = 0 }
-				size = { width = 100 height = 20 }
-				slotsize = { width = 500 height = 45 }
+				size = { width = 50%% height = 100%% }
+				slotsize = { width = 500 height = 500 }
 				max_slots_horizontal = 100
 				
 			}
@@ -279,7 +282,13 @@ guiTypes = {
 			orientation = "UPPER_RIGHT"
 			add_horizontal = yes
 		}
-
+		buttonType = {
+			name = "turning_point_event_button"
+			position = { x = 0 y = 25 }
+			quadTextureSprite = "GFX_Turning_button_frame"
+			clicksound = click_ok
+			orientation = UPPER_LEFT
+		}
 		instantTextBoxType = { #事件名字
 			name = "turning_point_event_title"
 			position = { x = 5 y = 450 }

@@ -10,7 +10,6 @@ shared_focus =
 	}
 	completion_reward = {
 		add_political_power = 50
-		custom_effect_tooltip = t
 	}
 }
 
@@ -29,10 +28,8 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		country_event = 
-		{
-			country_event = { id = INA_events.1}
-		}
+		country_event = INA_events.1 
+		add_political_power = 10
 	}
 }
 
@@ -51,7 +48,12 @@ shared_focus =
 		focus = INA_First_stage
 	}
 	completion_reward = {
-		add_political_power = 50
+		add_stability = 0.01
+	}
+	select_effect = {
+		country_event = {id = INA_events.2 days = 5}
+		country_event = {id = INA_events.3 days = 10}
+		country_event = {id = INA_events.4 days = 15}
 	}
 }
 
@@ -73,7 +75,10 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		add_political_power = 20
+		add_stability = 0.01
+		add_war_support = 0.01
+		custom_effect_tooltip = INA_first_problen
 	}
 }
 
@@ -92,7 +97,11 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		custom_effect_tooltip = INA_reduce_army_pressure
+		custom_effect_tooltip = INA_add_ecomony_pressure
+		hidden_effect = {
+			INA_army_conscription_easier = yes
+		}
 	}
 }
 
@@ -111,7 +120,7 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		custom_effect_tooltip = INA_reduce_ecomony_pressure
 	}
 }
 
@@ -133,7 +142,8 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		custom_effect_tooltip = INA_mild
+		custom_effect_tooltip = INA_add_ecomony_pressure
 	}
 }
 
@@ -155,7 +165,15 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		custom_effect_tooltip = INA_harshly
+		custom_effect_tooltip = INA_reduce_army_pressure
+		custom_effect_tooltip = INA_reduce_army_quality
+		custom_effect_tooltip = INA_conscription_low_action_on_War_extend
+		hidden_effect = 
+		{
+			INA_army_conscription_easier = yes
+		}
+		set_country_flag = INA_conscription_law_flag_extend
 	}
 }
 
@@ -175,7 +193,7 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		add_stability = 0.05
 	}
 }
 
@@ -202,6 +220,16 @@ shared_focus =
 	completion_reward = {
 		add_political_power = 50
 		set_country_flag = INA_start_Vision_hunt
+		custom_effect_tooltip = INA_Vision_hunt_law
+		hidden_effect = 
+		{
+			country_event = INA_events.Vision_hunt_decree_success
+			swap_ideas = 
+			{
+				add_idea = INA_putrid_Shogunate_Army_quality_1
+				remove_idea = INA_putrid_Shogunate_Army_quality_2
+			}
+		}
 	}
 }
 
@@ -220,7 +248,10 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		army_experience = 10
+	    add_war_support = 0.01
+		add_ideas = INA_short_conscription_law
+		set_country_flag = INA_conscription_law_flag
 	}
 }
 
@@ -256,7 +287,14 @@ shared_focus =
 		factor = 100 
 	}
 	completion_reward = {
-		add_political_power = 50
+		add_stability = 0.01
+		add_war_support = 0.01
+		add_manpower = -50
+		custom_effect_tooltip = INA_Vision_hunt_first_day
+		custom_effect_tooltip = INA_reduce_army_quality
+		hidden_effect = {
+			INA_reduce_army_quality = yes
+		}
 	}
 }
 
@@ -275,7 +313,8 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_political_power = 50
+		add_political_power = 25
+		custom_effect_tooltip = INA_chudong_tongxin
 	}
 }
 

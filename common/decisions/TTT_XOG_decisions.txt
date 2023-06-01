@@ -12,24 +12,26 @@ liyue_civil_war_decisions = {
 			factor = 100			
 		}
 		visible = {
+			is_nominate_liyue = yes
 		    is_subject = no
-			every_other_country = {
+			#please replace to any_other_country
+			XOG = {
+				is_nominate_liyue = yes
 			    is_subject_of = ROOT
 			}
 		}
 		remove_effect = {
-		every_other_country = {
-					limit = {
-						is_subject_of = ROOT
-					}
-					XOG = {
-		            every_unit_leader = {
-			        set_nationality = ROOT
-		            }
-			        ROOT = {
-                   annex_country = { target = XOG transfer_troops = yes }
-                    }			
-		        }
+			every_other_country = {
+				limit = {
+					is_nominate_liyue = yes
+					is_subject_of = ROOT
+				}
+				every_unit_leader = {
+					set_nationality = ROOT
+				}	
+				ROOT = {
+					annex_country = { target = PREV transfer_troops = yes }
+				}
 		    }
 	    }
     }

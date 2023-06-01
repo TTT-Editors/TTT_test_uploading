@@ -1,6 +1,6 @@
 ideas = {
     country = {
-        eternity = {
+        INA_eternity = {
             removal_cost = -1
             picture = INA_eternity
 			
@@ -8,54 +8,12 @@ ideas = {
 				always = yes
 			}
             modifier = {
-                stability_factor = -0.2
-                war_support_factor = -0.2
-                research_speed_factor = -0.3
+                stability_factor = 0.10
+                research_speed_factor = -0.2
+                disabled_ideas = 1
+                political_power_gain = -0.05  
             }
-        }#永恒？
-        outdated_feudalism = {
-            removal_cost = -1
-            picture = INA_outdated_feudalism
-			
-			available = {
-				always = yes
-			}
-            modifier = {
-                consumer_goods_factor = 0.2
-                stability_factor = 0.1
-                political_power_gain = -0.1
-                stability_weekly = -0.01
-                disabled_ideas = 1                
-            }
-            
-        }#过时思想
-        Sharp_human_contradictions = {
-            removal_cost = -1
-            picture = INA_Sharp_human_contradictions
-			available = {
-				always = yes
-			}
-            modifier = {
-                consumer_goods_factor = 0.2
-                weekly_manpower = -1000 
-                monthly_population = -0.05
-                global_building_slots_factor = -0.5
-            }
-        }#人地矛盾
-        weekly_industrial = {
-            removal_cost = -1
-            picture = INA_weekly_industrial
-            available = {
-				always = yes
-			}
-            modifier = {
-                consumer_goods_factor = 0.1
-                production_speed_buildings_factor = -0.5
-                production_factory_max_efficiency_factor = -0.2
-				production_factory_efficiency_gain_factor = -0.2              	
-                industrial_capacity_dockyard = -0.2
-            }
-        }#虚弱工业
+        }#永恒存续
         collapsed = {
             removal_cost = -1
             picture = army_forces_1
@@ -70,32 +28,18 @@ ideas = {
                 industrial_capacity_dockyard = -0.5
               }
         }#经济崩溃
-        Vision_Hunt_Decree = {
-            removal_cost = -1
-            picture = INA_Vision_Hunt_Decree
-           available = {
-				always = yes
-			}
-            modifier = {
-                occupation_cost = 0.5
-                required_garrison_factor = 0.5
-                compliance_growth_on_our_occupied_states = 0.5
-            }
-        }#眼狩令的遗产
-        putrid_Shogunate_Army = {
+        #Vision_Hunt_Decree = {removal_cost = -1 picture = INA_Vision_Hunt_Decree available = { always = yes } modifier = { occupation_cost = 0.5 required_garrison_factor = 0.5 compliance_growth_on_our_occupied_states = 0.5}}#眼狩令的遗产
+        INA_putrid_Shogunate_Army = {
             removal_cost = -1
             picture = INA_putrid_Shogunate_Army
-           available = {
+            available = {
 				always = yes
 			}
             modifier = {
-                land_doctrine_cost_factor = 0.4
-                offence = -0.2
-                defence = -0.2   
-                army_speed_factor = -0.3   
-                army_attack_speed_factor = -0.3
-                army_org_factor = -0.3    
-                monthly_population = -0.2
+                army_org_factor = -0.2
+                command_power_gain = -0.3
+                land_doctrine_cost_factor = 0.2
+                custom_modifier_tooltip = INA_Army_more_problem
             }
             
         }#腐败的军队
@@ -137,6 +81,351 @@ ideas = {
             modifier = {
                 political_power_factor = -1
                 political_power_gain = -5
+            }
+        }
+
+        #锁国令
+        INA_Lockdown_order = 
+        {
+            allowed = 
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                political_power_factor = 0.05
+                stability_factor = 0.10
+                custom_modifier_tooltip = INA_Lockdown
+            }
+        }
+        #欣欣向荣
+        INA_flourishing = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                custom_modifier_tooltip = INA_flourishing_economy
+            }
+        }
+        #战时征兵法案
+        INA_short_conscription_law = 
+        {
+            allowed = 
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                custom_modifier_tooltip = INA_conscription_low_action_on_War
+            }
+        }
+        INA_short_conscription_law_on_War = 
+        {
+            allowed = 
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = 0.015
+                training_time_factor = 0.2
+            }
+        }
+
+    }
+    hidden_ideas =
+    {
+        #破败其后
+        INA_flourishing_hidden = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                consumer_goods_factor = 0.10
+                production_speed_buildings_factor = -0.05
+                production_factory_max_efficiency_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.05         	
+                industrial_capacity_dockyard = -0.1
+                industrial_capacity_factory = -0.1
+                weekly_manpower = -1000 
+                monthly_population = -0.05
+                global_building_slots_factor = -0.2
+            }
+        }
+        #锁国令
+        INA_Lockdown_order_hidden =
+        {
+            allowed = 
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                min_export = -1.0
+                trade_opinion_factor = -1.0
+                opinion_gain_monthly = -1.0
+                encryption = 1.0
+                production_speed_buildings_factor = -0.10
+                civilian_factory_use = 10
+                consumer_goods_factor = 0.4
+            }
+        }
+        #无人愿服兵役
+        INA_putrid_Shogunate_Army_conscription= 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.04
+                conscription_factor = -0.3
+                training_time_factor = 0.5
+                war_support_factor = -0.4
+            }
+        }
+        #逃兵役倾向严重
+        INA_putrid_Shogunate_Army_conscription_1 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.035
+                conscription_factor = -0.25
+                training_time_factor = 0.4
+                war_support_factor = -0.35
+            }
+        }
+        #有逃兵役倾向
+        INA_putrid_Shogunate_Army_conscription_2 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.04
+                conscription_factor = -0.25
+                training_time_factor = 0.4
+                war_support_factor = -0.3
+            }
+        }
+        #征兵十分困难
+        INA_putrid_Shogunate_Army_conscription_3 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.035
+                conscription_factor = -0.25
+                training_time_factor = 0.4
+                war_support_factor = -0.25
+            }
+        }
+        #征兵困难
+        INA_putrid_Shogunate_Army_conscription_4 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.03
+                conscription_factor = -0.20
+                training_time_factor = 0.3
+                war_support_factor = -0.20
+            }
+        }
+        #征兵压力稍有缓解
+        INA_putrid_Shogunate_Army_conscription_5 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.025
+                conscription_factor = -0.15
+                training_time_factor = 0.25
+                war_support_factor = -0.15
+            }
+        }
+        #征兵压力减缓
+        INA_putrid_Shogunate_Army_conscription_6 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.02
+                conscription_factor = -0.10
+                training_time_factor = 0.20
+                war_support_factor = -0.10
+            }
+        }
+        #征兵稍有压力
+        INA_putrid_Shogunate_Army_conscription_7 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.15
+                conscription_factor = -0.05
+                training_time_factor = 0.15
+                war_support_factor = -0.05
+            }
+        }
+        #征兵压力很小
+        INA_putrid_Shogunate_Army_conscription_8 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                conscription = -0.10
+                training_time_factor = 0.10
+            }
+        }
+
+        #兵员质量极差
+        INA_putrid_Shogunate_Army_quality = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = -0.4
+                army_attack_speed_factor = -0.4
+                offence = -0.3
+                defence = -0.3
+            }
+        }
+        #兵员质量很差
+        INA_putrid_Shogunate_Army_quality_1 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = -0.3
+                army_attack_speed_factor = -0.3
+                offence = -0.2
+                defence = -0.2
+            }
+        }
+        #兵员质量差
+        INA_putrid_Shogunate_Army_quality_2 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = -0.1   
+                army_attack_speed_factor = -0.1
+                offence = -0.1
+                defence = -0.1
+            }
+        }
+        #兵员质量中等
+        INA_putrid_Shogunate_Army_quality_3 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = -0.05  
+                army_attack_speed_factor = -0.05
+                offence = -0.05
+                defence = -0.05
+            }
+        }
+        #兵员质量好
+        INA_putrid_Shogunate_Army_quality_4 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = -0.03
+                army_attack_speed_factor = -0.03
+            }
+        }
+        #兵员质量优秀
+        INA_putrid_Shogunate_Army_quality_5 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = 0.05
+                army_attack_speed_factor = 0.05
+                offence = 0.03
+                defence = 0.03
+            }
+        }
+        #兵员质量极好
+        INA_putrid_Shogunate_Army_quality_6 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = 0.1  
+                army_attack_speed_factor = 0.1
+                offence = 0.05
+                defence = 0.05
+            }
+        }
+        #现代化的军队
+        INA_putrid_Shogunate_Army_quality_7 = 
+        {
+            allowed =
+            {
+                always = yes
+            }
+            modifier = 
+            {
+                army_speed_factor = 0.15  
+                army_attack_speed_factor = 0.15
+                offence = 0.1
+                defence = 0.1
             }
         }
     }

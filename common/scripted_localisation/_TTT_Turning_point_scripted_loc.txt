@@ -31,6 +31,9 @@ defined_text = { #确定tag
         }
         localization_key = [turning_point_event_text_MOT]
     }
+    text = {
+        localization_key = [turning_point_event_text_NULL]
+    }
 }
 
 
@@ -42,7 +45,7 @@ defined_text = { #确定tag
 
 defined_text = { #确定图片文字顺序
 	name = turning_point_event_text_EMP
-
+    
     text = {
         trigger = {
             check_variable = {
@@ -143,6 +146,14 @@ defined_text = { #确定图片文字顺序
         }
         localization_key = [turning_point_event_text_EMP_9]
     }
+    text = {
+        trigger = {
+            NOT = {
+                has_variable = global.turning_point_event_index
+            }
+        }
+        localization_key = [turning_point_event_text_NULL]
+    }
 }
 ########EMP#########
 defined_text = { #确定图片文字
@@ -207,6 +218,21 @@ defined_text = { #确定图片文字
             }
         }
         localization_key = turning_point_event_text_EMP_2_0
+    }
+
+}
+defined_text = { #确定图片文字
+	name = turning_point_event_text_EMP_3
+
+    text = {
+        trigger = {
+            check_variable = {
+                var = global.turning_point_event_index_index
+                value = 0
+                compare = equals
+            }
+        }
+        localization_key = turning_point_event_text_EMP_3_0
     }
 
 }

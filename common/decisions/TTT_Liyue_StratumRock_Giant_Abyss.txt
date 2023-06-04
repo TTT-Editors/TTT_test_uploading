@@ -1,4 +1,21 @@
 cengyanjuyuankaifaxiangmu = {
+    #LYU_cengyansetvariable = {		 测试用的
+		#cost = 0
+		#allowed = {
+		#is_ai = no
+		#is_debug = yes
+	    #}
+		#complete_effect = {
+        #set_variable = { global.Liyue_dixiashuize_var = 21  }
+		#set_variable = { global.Liyue_jushenyandong_var = 13  }
+		#set_variable = { global.Liyue_juyuanzhukuangqu_var = 40 }
+		#set_variable = { global.Liyue_linshizhukuangdao_var = 60 }
+		#set_global_flag = linshizhuguangdao_hazard_level1  #临时主矿道 
+		#set_global_flag = juyuanzhukuangqu_hazard_level2   #巨渊主矿区 
+		#set_global_flag = dixiashuize_hazard_level3        #地下水泽 
+		#set_global_flag = jusheyandong_hazard_level3       #巨蛇岩洞
+		#}
+	#}
 	Liyue_solving_sludge = {            #解决淤泥		
 		cost = 50		
 		days_remove = 120		
@@ -61,24 +78,40 @@ cengyanjuyuankaifaxiangmu = {
 				check_variable = { LYU_Selected_Area_bianliang = 1 }
 			}
 			add_to_variable = { global.Liyue_dixiashuize_var = 5 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_dixiashuize_var         
+                }
 		}
 		else_if = {
 			limit = {
 				check_variable = { LYU_Selected_Area_bianliang = 2 }
 			}
 			add_to_variable = { global.Liyue_jushenyandong_var = 5 }
+			set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_jushenyandong_var         
+                }
 		    }
         else_if = {
 			limit = {
 				check_variable = { .LYU_Selected_Area_bianliang = 3 }
 			}
 			add_to_variable = { global.Liyue_juyuanzhukuangqu_var = 5 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_juyuanzhukuangqu_var         
+                }
 		    }
         else_if = {
 			limit = {
 				check_variable = { LYU_Selected_Area_bianliang = 4 }
 			}
 			add_to_variable = { global.Liyue_linshizhukuangdao_var = 5 }
+			set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_linshizhukuangdao_var         
+                }
 		    }
 		}
 	}
@@ -106,6 +139,10 @@ cengyanjuyuankaifaxiangmu = {
 			clr_global_flag =  dixiashuize_hazard_level3
 			set_global_flag = dixiashuize_hazard_level2
 			add_to_variable = { global.Liyue_dixiashuize_var = -75 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_dixiashuize_var         
+                }
 		}
 		else_if = {
 			limit = {
@@ -115,6 +152,10 @@ cengyanjuyuankaifaxiangmu = {
 			clr_global_flag = dixiashuize_hazard_level2
 			set_global_flag = dixiashuize_hazard_level1
 			add_to_variable = { global.Liyue_dixiashuize_var = -50 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_dixiashuize_var         
+                }
 		    }
 		else_if = {
 			limit = {
@@ -123,6 +164,10 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag =  dixiashuize_hazard_level1
 			add_to_variable = { global.Liyue_dixiashuize_var = -50 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_dixiashuize_var         
+                }
 		    }
 		else_if = {
 			limit = {
@@ -132,6 +177,10 @@ cengyanjuyuankaifaxiangmu = {
 			clr_global_flag = jusheyandong_hazard_level3
 			set_global_flag = jusheyandong_hazard_level2
 			add_to_variable = { global.Liyue_jushenyandong_var = -75 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_jushenyandong_var         
+                }
 		    }
 		else_if = {
 			limit = {
@@ -141,6 +190,10 @@ cengyanjuyuankaifaxiangmu = {
 			clr_global_flag = = jusheyandong_hazard_level2
 			set_global_flag = jusheyandong_hazard_level1
 			add_to_variable = { global.Liyue_jushenyandong_var = -50 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_jushenyandong_var         
+                }
 		    }
 		else_if = {
 			limit = {
@@ -149,6 +202,10 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag = jusheyandong_hazard_level1
 			add_to_variable = { global.Liyue_jushenyandong_var = -25 }
+			 set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_jushenyandong_var         
+                }
 		    }
 		else_if = {
 			limit = {
@@ -158,6 +215,10 @@ cengyanjuyuankaifaxiangmu = {
 			clr_global_flag = juyuanzhukuangqu_hazard_level2
 			set_global_flag = jusheyandong_hazard_level1
 			add_to_variable = { global.Liyue_juyuanzhukuangqu_var = -50 }
+			set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_juyuanzhukuangqu_var         
+                }
 		    }
 		else_if = {
 			limit = {
@@ -166,6 +227,10 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag = juyuanzhukuangqu_hazard_level1
 			add_to_variable = { global.Liyue_juyuanzhukuangqu_var = -25 }
+			set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_juyuanzhukuangqu_var         
+                }
 		    }
         else_if = {
 			limit = {
@@ -174,6 +239,10 @@ cengyanjuyuankaifaxiangmu = {
 			}
 			clr_global_flag = linshizhuguangdao_hazard_level1
 			add_to_variable = { global.Liyue_linshizhukuangdao_var = -25 }
+			set_variable = {
+                var = LYU_Exploration_progress_var
+                value = global.Liyue_linshizhukuangdao_var         
+                }
 		    }
 		}
 	}
@@ -238,7 +307,7 @@ cengyanjuyuankaifaxiangmu = {
 			    }
 			add_resource = {
 				type = steel
-				amount = 22
+				amount = 44
 			    }
 			add_resource = {
 				type = tungsten
@@ -277,7 +346,7 @@ cengyanjuyuankaifaxiangmu = {
 			    }
 			add_resource = {
 				type = rubber
-				amount = 16
+				amount = 8
 			        }
 		        }
 		    }
@@ -292,23 +361,23 @@ cengyanjuyuankaifaxiangmu = {
 			156 = {
 			add_resource = {
 				type = coal
-				amount = 40
+				amount = 20
 			    }
 			add_resource = {
 				type = steel
-				amount = 64
+				amount = 32
 			    }
 			add_resource = {
 				type = tungsten
-				amount = 48
+				amount = 16
 			    }
 			add_resource = {
 				type = chromium
-				amount = 12
+				amount = 4
 			    }
 			add_resource = {
 				type = rubber
-				amount = 16
+				amount = 12
 			        }
 		        }
 		    }
@@ -335,6 +404,28 @@ cengyanjuyuankaifaxiangmu = {
 			set_country_flag = Liyue_Priority_miningluxuryores1
 			hidden_effect = {
 			    add_ideas = Liyue_prioritize_resourceextraction_ideas1
+				156 = {
+			add_resource = {
+				type = coal
+				amount = -54
+			    }
+			add_resource = {
+				type = steel
+				amount = -9
+			    }
+			add_resource = {
+				type = tungsten
+				amount = -6
+			    }
+			add_resource = {
+				type = chromium
+				amount = -2
+			    }
+			add_resource = {
+				type = rubber
+				amount = -18
+			        }
+		        }
 			}
 		}
 		else_if = {
@@ -344,6 +435,24 @@ cengyanjuyuankaifaxiangmu = {
 			set_country_flag = Liyue_Priority_miningluxuryores2
 			hidden_effect = {
 			    add_ideas = Liyue_prioritize_resourceextraction_ideas2
+				156 = {
+			add_resource = {
+				type = coal
+				amount = -18
+			    }
+			add_resource = {
+				type = steel
+				amount = -33
+			    }
+			add_resource = {
+				type = tungsten
+				amount = -42
+			    }
+			add_resource = {
+				type = rubber
+				amount = -18
+			        }
+		        }
 			}
 		    }
         else_if = {
@@ -353,6 +462,28 @@ cengyanjuyuankaifaxiangmu = {
 			set_country_flag = Liyue_Priority_miningluxuryores3
 			hidden_effect = {
 			    add_ideas = Liyue_prioritize_resourceextraction_ideas3
+				156 = {
+			add_resource = {
+				type = coal
+				amount = -30
+			    }
+			add_resource = {
+				type = steel
+				amount = -48
+			    }
+			add_resource = {
+				type = tungsten
+				amount = -36
+			    }
+			add_resource = {
+				type = chromium
+				amount = -9
+			    }
+			add_resource = {
+				type = rubber
+				amount = -12
+			        }
+		        }
 			}
 		    }
         else_if = {
@@ -362,6 +493,28 @@ cengyanjuyuankaifaxiangmu = {
 			set_country_flag = Liyue_Priority_miningluxuryores4
 			hidden_effect = {
 			    add_ideas = Liyue_prioritize_resourceextraction_ideas4
+				156 = {
+			add_resource = {
+				type = coal
+				amount = -15
+			    }
+			add_resource = {
+				type = steel
+				amount = -24
+			    }
+			add_resource = {
+				type = tungsten
+				amount = -12
+			    }
+			add_resource = {
+				type = chromium
+				amount = -3
+			    }
+			add_resource = {
+				type = rubber
+				amount = -9
+			        }
+		        }
 			}
 		    }
 		}
@@ -383,24 +536,120 @@ cengyanjuyuankaifaxiangmu = {
 				check_variable = { LYU_Selected_Area_bianliang = 1 }
 			}
 			set_country_flag = Liyue_Prioritize_resourceextraction1
+			hidden_effect = {
+			    remove_ideas = Liyue_prioritize_resourceextraction_ideas1
+				156 = {
+			add_resource = {
+				type = coal
+				amount = 72
+			    }
+			add_resource = {
+				type = steel
+				amount = 12
+			    }
+			add_resource = {
+				type = tungsten
+				amount = 32
+			    }
+			add_resource = {
+				type = chromium
+				amount = 8
+			    }
+			add_resource = {
+				type = rubber
+				amount = 24
+			        }
+		        }
+			}
 		}
 		else_if = {
 			limit = {
 				check_variable = { LYU_Selected_Area_bianliang = 2 }
 			}
 			set_country_flag = Liyue_Prioritize_resourceextraction2
+			hidden_effect = {
+			    remove_ideas = Liyue_prioritize_resourceextraction_ideas2
+				156 = {
+			add_resource = {
+				type = coal
+				amount = 24
+			    }
+			add_resource = {
+				type = steel
+				amount = 44
+			    }
+			add_resource = {
+				type = tungsten
+				amount = 56
+			    }
+			add_resource = {
+				type = rubber
+				amount = 24
+			        }
+		        }
+			}
 		    }
         else_if = {
 			limit = {
 				check_variable = { LYU_Selected_Area_bianliang = 3 }
 			}
 			set_country_flag = Liyue_Prioritize_resourceextraction3
+			hidden_effect = {
+			    remove_ideas = Liyue_prioritize_resourceextraction_ideas3
+				156 = {
+			add_resource = {
+				type = coal
+				amount = 40
+			    }
+			add_resource = {
+				type = steel
+				amount = 64
+			    }
+			add_resource = {
+				type = tungsten
+				amount = 48
+			    }
+			add_resource = {
+				type = chromium
+				amount = 12
+			    }
+			add_resource = {
+				type = rubber
+				amount = 8
+			        }
+		        }
+			}
 		    }
         else_if = {
 			limit = {
 				check_variable = { LYU_Selected_Area_bianliang = 4 }
 			}
 			set_country_flag = Liyue_Prioritize_resourceextraction4
+			hidden_effect = {
+			    remove_ideas = Liyue_prioritize_resourceextraction_ideas4
+				156 = {
+			add_resource = {
+				type = coal
+				amount = 20
+			    }
+			add_resource = {
+				type = steel
+				amount = 32
+			    }
+			add_resource = {
+				type = tungsten
+				amount = 16
+			    }
+			add_resource = {
+				type = chromium
+				amount = 4
+			    }
+			add_resource = {
+				type = rubber
+				amount = 12
+			        }
+		        }
+			}
 		    }
 		}
 	}

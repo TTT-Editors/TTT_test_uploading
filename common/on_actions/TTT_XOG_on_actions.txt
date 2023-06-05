@@ -6,7 +6,28 @@ on_actions = {
 				limit = {
 					has_country_flag = XOG_mechanism_mandrills
 				}
-				add_to_variable = { XOG_yezhangdu = 1.0 }
+				if = {
+					limit = { 
+						any_country = {
+							is_nominate_liyue = yes
+							has_war_with = XOG
+						}
+					}
+					add_to_variable = { XOG_yezhangdu = 2 }	# War with liyue warlords(include ZDG)
+				}
+				if = {
+					limit = {
+						has_war_with = ZDG
+					}
+					add_to_variable = { XOG_yezhangdu = -1 } # War with ZDG
+				}
+				if = {
+					limit = {
+						check_variable = { XOG_yezhangdu > 80 }
+					}
+					add_to_variable = { XOG_yezhangdu = 1 }
+				}
+				add_to_variable = { XOG_yezhangdu = 1.0 }	#base
                 clamp_variable = {
 					var = XOG_yezhangdu
 					max = 100.0
@@ -26,32 +47,12 @@ on_actions = {
 					50 = {
 						country_event = {
 							id = XOG_events.3
-							days = 1
 						}				
 					}
-					50 = {
-					
-					}				
+					50 = { }				
 				}	
 			}
 		}
-	}
-	on_monthly_XOG = {
-		effect = {
-			#每月增加的业障度
-			if = {
-				limit = {
-					has_country_flag = XOG_mechanism_mandrills
-					has_war = yes					
-				}
-				add_to_variable = { XOG_yezhangdu = 0.5 }
-                clamp_variable = {
-					var = XOG_yezhangdu
-					max = 100.0
-					min = 0.0
-				}				
-			}			
-		}	
 	}
 	on_monthly_XOG = {
 		effect = {

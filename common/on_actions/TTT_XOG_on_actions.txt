@@ -7,6 +7,25 @@ on_actions = {
 					has_country_flag = XOG_mechanism_mandrills   #每月检测业障度，增加buff		
 				}
 				XOG = { TTT_XOG_scripted_effects1 = yes	}	
+				
+				#检测业障是否超过100
+				if = {
+					limit = { check_variable = { XOG_yezhangdu > 99.9 } }
+					every_country_division = {
+						destroy_unit = yes
+					}
+					set_country_flag = XOG_yezhangdubaozha_flag
+					clr_country_flag = XOG_mechanism_mandrills
+					if = {
+						limit = { has_dynamic_modifier = { modifier = XOG_yezhangdu_buff } }
+						remove_dynamic_modifier = { modifier = XOG_yezhangdu_buff }
+					}
+					if = {
+						limit = { NOT = { has_idea = XOG_aftermath } }
+						add_ideas = XOG_aftermath
+					}
+				}
+				
 				if = {
 					limit = { 
 						any_country = {
@@ -58,7 +77,7 @@ on_actions = {
 							}
 						}
 					}
-				}				
+				}
 			}   			
 		}	
 	}

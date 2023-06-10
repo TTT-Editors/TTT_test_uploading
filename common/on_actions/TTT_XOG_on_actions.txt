@@ -4,61 +4,62 @@ on_actions = {
 			#每月增加的业障度
 			if = {
 				limit = {
-					has_country_flag = XOG_mechanism_mandrills
+					has_country_flag = XOG_mechanism_mandrills   #每月检测业障度，增加buff		
 				}
-				add_to_variable = { XOG_yezhangdu = 1.0 }
+				XOG = { TTT_XOG_scripted_effects1 = yes	}	
+				if = {
+					limit = { 
+						any_country = {
+							is_nominate_liyue = yes
+							has_war_with = XOG
+						}
+					}
+					add_to_variable = { XOG_yezhangdu = 2 }	# War with liyue warlords(include ZDG)
+				}
+				if = {
+					limit = {
+						has_war_with = ZDG
+					}
+					add_to_variable = { XOG_yezhangdu = -1 } # War with ZDG
+				}
+				if = {
+					limit = {
+						check_variable = { XOG_yezhangdu > 80 }
+					}
+					add_to_variable = { XOG_yezhangdu = 1 }
+				}
+				add_to_variable = { XOG_yezhangdu = 1.0 }	#base
                 clamp_variable = {
 					var = XOG_yezhangdu
 					max = 100.0
 					min = 0.0
-				}				
-			}   			
-		}	
-	}
-	on_monthly_XOG = {
-		effect = {
-			#每月触发随机事件
-			if = {
-				limit = {
-					has_country_flag = XOG_mechanism_mandrills					
 				}
-				random_list = {
-					50 = {
+				
+				#每月触发随机事件——丘丘人作乱
+				if = {
+					limit = { NOT = { has_idea = XOG_furious_monsters } }
+					if = {
+						limit = {
+							check_variable = { XOG_yezhangdu > 80 }
+						}
 						country_event = {
 							id = XOG_events.3
-							days = 1
-						}				
+						}	
 					}
-					50 = {
-					
-					}				
-				}	
-			}
-		}
-	}
-	on_monthly_XOG = {
-		effect = {
-			#每月增加的业障度
-			if = {
-				limit = {
-					has_country_flag = XOG_mechanism_mandrills
-					has_war = yes					
-				}
-				add_to_variable = { XOG_yezhangdu = 0.5 }
-                clamp_variable = {
-					var = XOG_yezhangdu
-					max = 100.0
-					min = 0.0
+					else = {
+						set_temp_variable = { XOG_yezhang_triggers = random }
+						multiply_temp_variable = { XOG_yezhang_triggers = 100 }
+						if = {
+							limit = { 
+								check_variable = { XOG_yezhangdu > XOG_yezhang_triggers }
+							}
+							country_event = {
+								id = XOG_events.3
+							}
+						}
+					}
 				}				
-			}			
-		}	
-	}
-	on_monthly_XOG = {
-		effect = {
-		    #每月检测业障度，增加buff
-			XOG = {
-				TTT_XOG_scripted_effects1 = yes	
-            }			
+			}   			
 		}	
 	}
 }

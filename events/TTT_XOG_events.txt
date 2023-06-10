@@ -44,20 +44,40 @@ country_event = {
 	
 	option = {
 	    name = XOG_events.3.a
-		 random_list = {
-			50 = {
-				country_event = {
-					id = XOG_events.4
-					days = 14
-			    }
-		    }
-			50 = {
-				country_event = {
-					id = XOG_events.5
-					days = 14
-			    }
-		    }
+		ai_chance = {
+			base = 50
 		}
+		add_manpower = -1000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -50
+		}
+		set_temp_variable = { XOG_yezhang_triggers = random }
+		multiply_temp_variable = { XOG_yezhang_triggers = 100 }
+		if = {
+			limit = {
+				check_variable = { XOG_yezhangdu > XOG_yezhang_triggers }
+			}
+			country_event = {
+				id = XOG_events.5
+				days = 7
+			}
+		}
+		else = {
+			country_event = {
+				id = XOG_events.4
+				days = 7
+			}
+		}
+	}
+	
+	option = {
+	    name = XOG_events.3.b
+		ai_chance = {
+			base = 50
+		}
+		add_stability = -0.03
+		add_war_support = -0.02
 	}
 }
 
@@ -72,8 +92,7 @@ country_event = {
 	option = {
 	    name = XOG_events.4.a
 		add_stability = 0.05
-		add_political_power = 50
-		add_to_variable = { XOG_yezhangdu = 0.1 }
+		add_to_variable = { XOG_yezhangdu = -0.2 }
 	}
 }
 
@@ -87,10 +106,33 @@ country_event = {
 	
 	option = {
 	    name = XOG_events.5.a
-		add_stability = -0.05
-		add_political_power = -50
-		add_war_support = -0.05
-		add_to_variable = { XOG_yezhangdu = -0.1 }
+		ai_chance = {
+			base = 28
+		}
+		add_timed_idea = {
+			idea = XOG_furious_monsters
+			days = 60
+		}
+	}
+	
+	option = {
+	    name = XOG_events.5.b
+		ai_chance = {
+			base = 70
+		}
+		add_manpower = -5000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -300
+		}
+	}
+	
+	option = {
+	    name = XOG_events.5.c
+		ai_chance = {
+			base = 2
+		}
+		add_to_variable = { XOG_yezhangdu = 0.2 }
 	}
 }
 
@@ -645,5 +687,66 @@ country_event = {
 		name = XOG_events.120.a
 		add_stability = 0.05
 		add_to_variable = { XOG_yezhangdu = -2 }
+	}
+}
+
+#决议→仙人的帮助
+country_event = {
+    id = XOG_events.121
+	title = XOG_events.121.t
+    desc = XOG_events.121.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#help him
+	option = {
+		name = XOG_events.121.a
+		ai_chance = {
+			base = 75
+		}
+		add_political_power = -50
+		XOG = { add_to_variable = { XOG_yezhangdu = -2 } }
+		hidden_effect = {
+			XOG = { country_event = { id = XOG_events.122 } }
+		}
+	}
+	
+	#Nah
+	option = {
+		name = XOG_events.121.b
+		ai_chance = {
+			base = 25
+		}
+		hidden_effect = {
+			XOG = { country_event = { id = XOG_events.123 } }
+		}
+	}
+}
+
+#仙人同意伸出援手
+country_event = {
+    id = XOG_events.122
+	title = XOG_events.122.t
+    desc = XOG_events.122.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = XOG_events.122.a
+		add_opinion_modifier = { target = XRG modifier = triggered_improved_relation_small }
+		XRG = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation_small } }
+	}
+}
+
+#仙人不同意伸出援手
+country_event = {
+    id = XOG_events.123
+	title = XOG_events.123.t
+    desc = XOG_events.123.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = XOG_events.123.a
 	}
 }

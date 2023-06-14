@@ -13,11 +13,48 @@ scripted_gui = {
                 tag = FXE       
                 tag = ALS
             }
-		}
+		} 
+        effects = {
+            MOT_Common_ui_button1_click = {
+                add_political_power = -10
+                set_country_flag = { flag = MOT_Common_ui_button_is_cooling value = 1 days = 60 }
+                MOT = {
+                    country_event = {days = 2 id = MOT_event.21}
+                }
+            }
+            MOT_Common_ui_button2_click = {
+                add_political_power = -10
+                set_country_flag = { flag = MOT_Common_ui_button_is_cooling value = 1 days = 60 }
+                MOT = {
+                    country_event = {days = 2 id = MOT_event.22}
+                }
+            }
+        }
         triggers = {
+            MOT_Common_ui_button1_click_enabled = {
+                not = {
+                    has_country_flag = MOT_Common_ui_button_is_cooling
+                }
+                has_political_power > 10
+                not = {
+                    has_war_with = MOT
+                }
+            }
+            MOT_Common_ui_button2_click_enabled = {
+                not = {
+                    has_country_flag = MOT_Common_ui_button_is_cooling
+                }
+                has_political_power > 10
+                not = {
+                    has_war_with = MOT
+                }
+            }
+
+
             MOT_Common_ui_MDQ_background_visible = {
                 check_variable ={MOT_Standpoint_country_num = 7}
             }
+
             MOT_Common_ui_background_icon_visible = {
                 not = {
                     tag = MDQ
@@ -26,46 +63,46 @@ scripted_gui = {
             MOT_Common_ui_declare_war_button_visible = {
                 tag = MDQ
             }
-            MOT_Common_ui_background = {
-                tag = MDQ
+
+            MOT_Common_ui_button1_visible= {
+                or = {
+                    tag = MDQ
+                    tag = TWL
+                    tag = FXE
+                }
+            }
+            MOT_Common_ui_button2_visible= {
+                or = {
+                    tag = MDQ
+                    tag = TWL
+                    tag = FXE
+                }
             }
             MOT_Common_ui_standpoint_sign1_visible= {
+                not = {
+                    has_country_flag = MOT_Standpoint_decision_locked
+                }
                 has_country_flag = MOT_Standpoint_choose_decision_01
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
+                }
             }
             MOT_Common_ui_standpoint_sign2_visible= {
+                not = {
+                    has_country_flag = MOT_Standpoint_decision_locked
+                }
                 has_country_flag = MOT_Standpoint_choose_decision_02
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
+                }
             }
             MOT_Common_ui_standpoint_sign3_visible= {
-                has_country_flag = MOT_Standpoint_choose_decision_03
-            }
-            MOT_Common_ui_declare_war_button_visible = {
-                tag = MDQ
-            }
-            MOT_Common_ui_standpoint_flag1_click_enable= {
-                not = {
-                    has_country_flag = MOT_Standpoint_decision_locked
-                }
-                has_country_flag = MOT_Standpoint_choose_decision_01
-                or = {
-                    has_global_flag = MOT_dragon_crisis
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_military_reform
-                }
-            }
-            MOT_Common_ui_standpoint_flag2_click_enable= {
-                not = {
-                    has_country_flag = MOT_Standpoint_decision_locked
-                }
-                has_country_flag = MOT_Standpoint_choose_decision_02
-                or = {
-                    has_global_flag = MOT_dragon_crisis
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_military_reform
-                }
-            }
-            MOT_Common_ui_standpoint_flag3_click_enable= {
                 not = {
                     has_country_flag = MOT_Standpoint_decision_locked
                 }

@@ -192,11 +192,41 @@ country_event = {
 		From = {
 			country_event = {days = 3 id = MOT_event.23}
 		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -2000
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = ttt_uniform_eq
+			amount = -1000
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = grain_conversion_0
+			amount = -3000
+			producer = MOT
+		}
 	}
 	option = {
 		name = MOT_event.21.b
 		From = {
 			country_event = {days = 3 id = MOT_event.24}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = ttt_uniform_eq
+			amount = -500
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = grain_conversion_0
+			amount = -1500
+			producer = MOT
 		}
 	}
 	option = {
@@ -220,12 +250,14 @@ country_event = {
 		From = {
 			country_event = {days = 3 id = MOT_event.26}
 		}
+		add_manpower = -20000
 	}
 	option = {
 		name = MOT_event.22.b
 		From = {
 			country_event = {days = 3 id = MOT_event.27}
 		}
+		add_manpower = -10000
 	}
 	option = {
 		name = MOT_event.22.c
@@ -245,6 +277,46 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.23.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2000
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = ttt_uniform_eq
+			amount = 1000
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = grain_conversion_0
+			amount = 3000
+			producer = MOT
+		}
+		custom_effect_tooltip = MOT_event.23_tooltip
+		if = {
+			limit = {
+				ROOT = {
+					tag = TWL
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_TWL = 10}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = MDQ
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_MDQ = 10}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = FXE
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_FXE = 10}
+		}
 	}
 }
 ###事件名：军事装备抵达？
@@ -258,9 +330,49 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.24.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = ttt_uniform_eq
+			amount = 500
+			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = grain_conversion_0
+			amount = 1500
+			producer = MOT
+		}
+		custom_effect_tooltip = MOT_event.24_tooltip
+		if = {
+			limit = {
+				ROOT = {
+					tag = TWL
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_TWL = 5}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = MDQ
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_MDQ = 5}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = FXE
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_FXE = 5}
+		}
 	}
 }
-###事件名：军事装备
+###事件名：军事装备...
 country_event = {
 	id = MOT_event.25
 	immediate = {}
@@ -284,6 +396,32 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.26.a
+		add_manpower = 20000
+		custom_effect_tooltip = MOT_event.26_tooltip
+		if = {
+			limit = {
+				ROOT = {
+					tag = TWL
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_TWL = 10}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = MDQ
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_MDQ = 10}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = FXE
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_FXE = 10}
+		}
 	}
 }
 ###事件名：新兵入伍？
@@ -297,6 +435,32 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.27.a
+		add_manpower = 10000
+		custom_effect_tooltip = MOT_event.27_tooltip
+		if = {
+			limit = {
+				ROOT = {
+					tag = TWL
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_TWL = 5}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = MDQ
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_MDQ = 5}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = FXE
+				}
+			}
+			add_to_variable = {global.MOT_Expectation_FXE = 5}
+		}
 	}
 }
 ###事件名：新兵……

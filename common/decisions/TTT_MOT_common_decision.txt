@@ -1,215 +1,393 @@
 
-    ####蒙德通用决议
-    MOT_Standpoint_decision_category= {
-        MOT_Standpoint_decision_category_01 = {
-            allowed = {
-                or = {
-                    tag = BLL
-                    tag = DLK
-                    tag = DSC
-                    tag = ALS
-                    tag = FXE
-                    tag = QQZ
-                    tag = MDQ
-                    tag = TWL
-                }
-            }
-            visible = {
-                or = {
-                    has_global_flag = MOT_dragon_crisis
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_military_reform
-                }
-            }
-            available = {
-                or = {
-                    has_global_flag = MOT_dragon_crisis
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_military_reform
-                }
-                not = {
-                    has_country_flag =MOT_Standpoint_decision_locked
-                    has_global_flag =MOT_dragon_crisis_standpoint_is_locked
-                }
-            }
-            cost = 0
-            days_re_enable = 30
-            days_remove = 0
-            ai_will_do = {
-                base = 20
-                factor = 1
-            }
-            complete_effect = {
-                
-                if = {
-                    limit={
-                        not = {
-                            is_in_array = {
-                                array = global.MOT_Standpoint_flag_array_01
-                                value = MOT_Standpoint_country_num
-                            }
-                        }
-                    }
-                    MOT_Standpoint_clear_flag_02=YES
-                    MOT_Standpoint_clear_flag_03=YES
-                    MOT_Standpoint_config_flag_01 =YES
-                }
-                set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
-                if = {
-                    limit={
-                        has_country_flag = MOT_Standpoint_choose_decision_02
-                    }
-                    clr_country_flag = MOT_Standpoint_choose_decision_02
-                }
-                if = {
-                    limit={
-                        has_country_flag = MOT_Standpoint_choose_decision_03
-                    }
-                    clr_country_flag = MOT_Standpoint_choose_decision_03
-                }
-                set_country_flag = MOT_Standpoint_choose_decision_01
+####蒙德通用决议
+MOT_Standpoint_decision_category= {
+    MOT_Standpoint_decision_category_01 = {
+        allowed = {
+            or = {
+                tag = BLL
+                tag = DLK
+                tag = DSC
+                tag = ALS
+                tag = FXE
+                tag = QQZ
+                tag = MDQ
+                tag = TWL
             }
         }
-        MOT_Standpoint_decision_category_02 = {
-            allowed = {
-                or = {
-                    tag = BLL
-                    tag = DLK
-                    tag = DSC
-                    tag = ALS
-                    tag = FXE
-                    tag = QQZ
-                    tag = MDQ
-                    tag = TWL
-                }
-            }
-            visible = {
-                or = {
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_military_reform
-                }
-            }
-            available = {
-                or = {
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_military_reform
-                }
-                not = {
-                    has_country_flag =MOT_Standpoint_decision_locked
-                    has_global_flag =MOT_dragon_crisis_standpoint_is_locked
-                }
-            }
-            ai_will_do = {
-                base = 10
-                factor = 1
-            }
-            cost = 0
-            days_re_enable = 30
-            days_remove = 0
-            complete_effect = {
-                
-                if = {
-                    limit={
-                        not = {
-                            is_in_array = {
-                                array = global.MOT_Standpoint_flag_array_02
-                                value = MOT_Standpoint_country_num
-                            }
-                        }
-                    }
-                    MOT_Standpoint_clear_flag_01=YES
-                    MOT_Standpoint_clear_flag_03=YES
-                    MOT_Standpoint_config_flag_02=YES
-                }
-                set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
-                if = {
-                    limit={
-                        has_country_flag = MOT_Standpoint_choose_decision_01
-                    }
-                    clr_country_flag = MOT_Standpoint_choose_decision_01
-                }
-                if = {
-                    limit={
-                        has_country_flag = MOT_Standpoint_choose_decision_03
-                    }
-                    clr_country_flag = MOT_Standpoint_choose_decision_03
-                }
-                set_country_flag = MOT_Standpoint_choose_decision_02
+        visible = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
             }
         }
-        MOT_Standpoint_decision_category_03 = {
-            allowed = {
-                or = {
-                    tag = BLL
-                    tag = DLK
-                    tag = DSC
-                    tag = ALS
-                    tag = FXE
-                    tag = QQZ
-                    tag = MDQ
-                    tag = TWL
-                }
+        available = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
             }
-            visible = {
-                or = {
-                    has_global_flag = MOT_dragon_crisis
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_military_reform
-                }
+            not = {
+                has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
             }
-            available = {
-                or = {
-                    has_global_flag = MOT_dragon_crisis
-                    has_global_flag = MOT_federal_route
-                    has_global_flag = MOT_industrialization_program
-                    has_global_flag = MOT_military_reform
-                }
-                not = {
-                    has_country_flag =MOT_Standpoint_decision_locked
-                    has_global_flag =MOT_dragon_crisis_standpoint_is_locked
-                }
-            }
-            ai_will_do = {
-                base = 10
-                factor = 1
-            }
-            cost = 0
-            days_re_enable = 30
-            days_remove = 0
-            complete_effect = {
-                
-                if = {
-                    limit={
-                        not = {
-                            is_in_array = {
-                                array = global.MOT_Standpoint_flag_array_03
-                                value = MOT_Standpoint_country_num
-                            }
+        }
+        cost = 0
+        days_re_enable = 30
+        days_remove = 0
+        ai_will_do = {
+            base = 20
+            factor = 1
+        }
+        complete_effect = {
+            
+            if = {
+                limit={
+                    not = {
+                        is_in_array = {
+                            array = global.MOT_Standpoint_flag_array_01
+                            value = MOT_Standpoint_country_num
                         }
                     }
-                    MOT_Standpoint_clear_flag_01=YES
-                    MOT_Standpoint_clear_flag_02=YES
-                    MOT_Standpoint_config_flag_03 =YES
                 }
-                set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
-                if = {
-                    limit={
-                        has_country_flag = MOT_Standpoint_choose_decision_01
-                    }
-                    clr_country_flag = MOT_Standpoint_choose_decision_01
-                }
-                if = {
-                    limit={
-                        has_country_flag = MOT_Standpoint_choose_decision_02
-                    }
-                    clr_country_flag = MOT_Standpoint_choose_decision_02
-                }
-                set_country_flag = MOT_Standpoint_choose_decision_03
+                MOT_Standpoint_clear_flag_02=YES
+                MOT_Standpoint_clear_flag_03=YES
+                MOT_Standpoint_config_flag_01 =YES
             }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
+            if = {
+                limit={
+                    has_country_flag = MOT_Standpoint_choose_decision_02
+                }
+                clr_country_flag = MOT_Standpoint_choose_decision_02
+            }
+            if = {
+                limit={
+                    has_country_flag = MOT_Standpoint_choose_decision_03
+                }
+                clr_country_flag = MOT_Standpoint_choose_decision_03
+            }
+            set_country_flag = MOT_Standpoint_choose_decision_01
         }
     }
+    MOT_Standpoint_decision_category_02 = {
+        allowed = {
+            or = {
+                tag = BLL
+                tag = DLK
+                tag = DSC
+                tag = ALS
+                tag = FXE
+                tag = QQZ
+                tag = MDQ
+                tag = TWL
+            }
+        }
+        visible = {
+            or = {
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+        }
+        available = {
+            or = {
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+            not = {
+                has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
+            }
+        }
+        ai_will_do = {
+            base = 10
+            factor = 1
+        }
+        cost = 0
+        days_re_enable = 30
+        days_remove = 0
+        complete_effect = {
+            
+            if = {
+                limit={
+                    not = {
+                        is_in_array = {
+                            array = global.MOT_Standpoint_flag_array_02
+                            value = MOT_Standpoint_country_num
+                        }
+                    }
+                }
+                MOT_Standpoint_clear_flag_01=YES
+                MOT_Standpoint_clear_flag_03=YES
+                MOT_Standpoint_config_flag_02=YES
+            }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
+            if = {
+                limit={
+                    has_country_flag = MOT_Standpoint_choose_decision_01
+                }
+                clr_country_flag = MOT_Standpoint_choose_decision_01
+            }
+            if = {
+                limit={
+                    has_country_flag = MOT_Standpoint_choose_decision_03
+                }
+                clr_country_flag = MOT_Standpoint_choose_decision_03
+            }
+            set_country_flag = MOT_Standpoint_choose_decision_02
+        }
+    }
+    MOT_Standpoint_decision_category_03 = {
+        allowed = {
+            or = {
+                tag = BLL
+                tag = DLK
+                tag = DSC
+                tag = ALS
+                tag = FXE
+                tag = QQZ
+                tag = MDQ
+                tag = TWL
+            }
+        }
+        visible = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+        }
+        available = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+            not = {
+                has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
+            }
+        }
+        ai_will_do = {
+            base = 10
+            factor = 1
+        }
+        cost = 0
+        days_re_enable = 30
+        days_remove = 0
+        complete_effect = {
+            
+            if = {
+                limit={
+                    not = {
+                        is_in_array = {
+                            array = global.MOT_Standpoint_flag_array_03
+                            value = MOT_Standpoint_country_num
+                        }
+                    }
+                }
+                MOT_Standpoint_clear_flag_01=YES
+                MOT_Standpoint_clear_flag_02=YES
+                MOT_Standpoint_config_flag_03 =YES
+            }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
+            if = {
+                limit={
+                    has_country_flag = MOT_Standpoint_choose_decision_01
+                }
+                clr_country_flag = MOT_Standpoint_choose_decision_01
+            }
+            if = {
+                limit={
+                    has_country_flag = MOT_Standpoint_choose_decision_02
+                }
+                clr_country_flag = MOT_Standpoint_choose_decision_02
+            }
+            set_country_flag = MOT_Standpoint_choose_decision_03
+        }
+    }
+}
+#####################################################################################
+####################################################################################
+##########################################################################################
+ ####蒙德通用立场国策
+MOT_Standpoint_decision_category= {
+    MOT_Standpoint_decision_category_01 = {
+        allowed = {
+            or = {
+                tag = BLL
+                tag = DLK
+                tag = DSC
+                tag = ALS
+                tag = FXE
+                tag = QQZ
+                tag = MDQ
+                tag = TWL
+            }
+        }
+        visible = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+        }
+        available = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+            not = {
+                has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
+            }
+        }
+        cost = 0
+        days_re_enable = 30
+        days_remove = 0
+        ai_will_do = {
+            base = 20
+            factor = 1
+        }
+        complete_effect = {
+            
+            if = {
+                limit={
+                    not = {
+                        is_in_array = {
+                            array = global.MOT_Standpoint_flag_array_01
+                            value = MOT_Standpoint_country_num
+                        }
+                    }
+                }
+                MOT_Standpoint_clear_flag_02=YES
+                MOT_Standpoint_clear_flag_03=YES
+                MOT_Standpoint_config_flag_01 =YES
+            }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
+        }
+    }
+    MOT_Standpoint_decision_category_02 = {
+        allowed = {
+            or = {
+                tag = BLL
+                tag = DLK
+                tag = DSC
+                tag = ALS
+                tag = FXE
+                tag = QQZ
+                tag = MDQ
+                tag = TWL
+            }
+        }
+        visible = {
+            or = {
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+        }
+        available = {
+            or = {
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+            not = {
+                has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
+            }
+        }
+        ai_will_do = {
+            base = 10
+            factor = 1
+        }
+        cost = 0
+        days_re_enable = 30
+        days_remove = 0
+        complete_effect = {
+            
+            if = {
+                limit={
+                    not = {
+                        is_in_array = {
+                            array = global.MOT_Standpoint_flag_array_02
+                            value = MOT_Standpoint_country_num
+                        }
+                    }
+                }
+                MOT_Standpoint_clear_flag_01=YES
+                MOT_Standpoint_clear_flag_03=YES
+                MOT_Standpoint_config_flag_02=YES
+            }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
+        }
+    }
+    MOT_Standpoint_decision_category_03 = {
+        allowed = {
+            or = {
+                tag = BLL
+                tag = DLK
+                tag = DSC
+                tag = ALS
+                tag = FXE
+                tag = QQZ
+                tag = MDQ
+                tag = TWL
+            }
+        }
+        visible = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+        }
+        available = {
+            or = {
+                has_global_flag = MOT_dragon_crisis
+                has_global_flag = MOT_federal_route
+                has_global_flag = MOT_industrialization_program
+                has_global_flag = MOT_military_reform
+            }
+            not = {
+                has_country_flag =MOT_Standpoint_decision_locked
+                has_global_flag =MOT_dragon_crisis_standpoint_is_locked
+            }
+        }
+        ai_will_do = {
+            base = 10
+            factor = 1
+        }
+        cost = 0
+        days_re_enable = 30
+        days_remove = 0
+        complete_effect = {
+            
+            if = {
+                limit={
+                    not = {
+                        is_in_array = {
+                            array = global.MOT_Standpoint_flag_array_03
+                            value = MOT_Standpoint_country_num
+                        }
+                    }
+                }
+                MOT_Standpoint_clear_flag_01=YES
+                MOT_Standpoint_clear_flag_02=YES
+                MOT_Standpoint_config_flag_03 =YES
+            }
+            set_country_flag = {flag=MOT_Standpoint_decision_locked value = 1 days = 90 }
+        }
+    }
+}

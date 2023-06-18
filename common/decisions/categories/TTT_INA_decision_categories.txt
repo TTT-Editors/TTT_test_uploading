@@ -6,12 +6,19 @@ INA_Vision_hunt_decision = {
 	scripted_gui = Vision_hunt_window
 	
 	allowed = {
-		always = yes
+		#has_country_flag = INA_Vision_hunt_decision
+		NOT = 
+		{
+			has_country_flag = INA_Vision_hunt_paused
+		}
 	}
 	
 	visible_when_empty = yes
 
-	visible = { always = yes }
+	visible = { 
+		always = yes
+		#has_country_flag = INA_Vision_hunt_decision 
+	}
 	priority = 120
 } 
 
@@ -54,9 +61,10 @@ INA_pianzhi_test =
 	allowed = 
 	{
 		original_tag = INA
+		is_debug = yes
 	}
 	visible = 
 	{
-		always = yes
+		is_debug = yes
 	}
 }

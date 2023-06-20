@@ -177,6 +177,14 @@ country_event = {
 	option = {
 	    name = retuo_juanshu.6.a
 		RTG = { add_to_faction = XRG }
+		hidden_effect = {
+			RTG = {
+				news_event = {
+					id = global_news.47
+					days = 1
+				}
+			}
+		}
 	}
 }
 
@@ -313,6 +321,41 @@ country_event = {
 			    target = RTG
 		        modifier = huge_increase
 		    }
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					LYU = {
+						has_country_leader = { 
+							character = LYU_Ganyu  
+							ruling_only = yes 
+						}
+					}
+					RTG = { new_event = { id = global_news.48 } }
+				}
+			}
+			else_if = {
+				limit = {
+					LYU = {
+						has_country_leader = { 
+							character = LYU_Yanfei  
+							ruling_only = yes 
+						}
+					}
+					RTG = { new_event = { id = global_news.49 } }
+				}
+			}
+			else_if = {
+				limit = {
+					LYU = {
+						has_country_leader = { 
+							character = LYU_Baizhu  
+							ruling_only = yes 
+						}
+					}
+					RTG = { new_event = { id = global_news.50 } }
+				}
+			}
 		}
 		ai_chance = {
 			base = 35

@@ -12,98 +12,142 @@ liyue_civil_war_decisions = {
 			factor = 100			
 		}
 		visible = {
+			is_nominate_liyue = yes
 		    is_subject = no
-			every_other_country = {
+			#please replace to any_other_country
+			XOG = {
+				is_nominate_liyue = yes
 			    is_subject_of = ROOT
 			}
 		}
 		remove_effect = {
-		every_other_country = {
-					limit = {
-						is_subject_of = ROOT
-					}
-					XOG = {
-		            every_unit_leader = {
-			        set_nationality = ROOT
-		            }
-			        ROOT = {
-                   annex_country = { target = XOG transfer_troops = yes }
-                    }			
-		        }
+			every_other_country = {
+				limit = {
+					is_nominate_liyue = yes
+					is_subject_of = ROOT
+				}
+				every_unit_leader = {
+					set_nationality = ROOT
+				}	
+				ROOT = {
+					annex_country = { target = PREV transfer_troops = yes }
+				}
 		    }
 	    }
     }
 }
 
 XOG_special_categories2 = {
-    XOG_yezhangdubaozha = {     
-		activation = {                         
-			check_variable = { XOG_yezhangdu > 99.9 }
-		}                                    
-		available = {                           
-			has_country_flag = XOG_yezhangdubaozha_flag
-		}
-		
-		is_good = no                        
 	
-		days_mission_timeout = 1
+	#杏仁豆腐→特制布丁
+	XOG_almond_tofu = {
+		cost = 25
+		days_remove = 15
+		days_re_enable = 30
 		
-		timeout_effect = {
-            hidden_effect = {		
-			every_country_division = {
-			    destroy_unit = yes
-            }
+		fire_only_once = no
+		
+		available = {
+			XOG_yanxiao = {
+				is_political_advisor = yes
 			}
-			set_country_flag = XOG_yezhangdubaozha_flag
 		}
 		
-		complete_effect = {                    
-			          
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				has_political_power > 50
+			}
+			modifier = {
+				add = 100
+				has_political_power > 25
+				check_variable = { XOG_yezhangdu > 75 } #No, please
+			}
 		}
+		remove_effect = {
+			add_to_variable = { XOG_yezhangdu = -2 }
+	    }
 	}
-	XOG_Pointer_change = {  #切换指针    
-		activation = {                         
-			check_variable = { XOG_yezhangdu > 49.0 }
-			check_variable = { XOG_yezhangdu < 79.9 }
-		}                                    
-		available = {                           
-			has_country_flag = XOG_Pointer_change_1
-		}
-		
-		is_good = no                        
 	
-		days_mission_timeout = 1
+	#仙人的帮助
+	XOG_immortal_help = {
+		cost = 10
+		days_remove = 10
+		days_re_enable = 80
 		
-		timeout_effect = {                      
-			set_variable = { XOG_zhizheng_var = 25.0 }
-			set_country_flag = { flag = XOG_Pointer_change_1 value = 1 days = 60 }
+		fire_only_once = no
+		
+		visible = {
+			XRG = { exists = yes }
 		}
 		
-		complete_effect = {                    
-			          
+		available = {
+			NOT = { has_war_with = XRG }
 		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				has_political_power > 50
+			}
+			modifier = {
+				add = 100
+				has_political_power > 25
+				check_variable = { XOG_yezhangdu > 75 } #No, please
+			}
+		}
+		remove_effect = {
+			XRG = { country_event = { id = XOG_events.121 } }
+	    }
 	}
-	XOG_Pointer_change1 = {  #切换指针1     
-		activation = {                         
-			check_variable = { XOG_yezhangdu > 79.0 }
-			check_variable = { XOG_yezhangdu < 100.0 }
-		}                                    
-		available = {                           
-			has_country_flag = XOG_Pointer_change_0
-		}
-		
-		is_good = no                        
 	
-		days_mission_timeout = 1
+	#请大圣出手
+	XOG_xiao_help = {
+		days_remove = 30
+		days_re_enable = 90
 		
-		timeout_effect = {                      
-			set_variable = { XOG_zhizheng_var = 50.0 }
-			set_country_flag = { flag = XOG_Pointer_change_0 value = 1 days = 60 }
+		fire_only_once = no
+
+		custom_cost_trigger = {
+			command_power > 10
 		}
 		
-		complete_effect = {                    
-			          
+		visible = {
+			ZDG = { exists = yes }
 		}
+		
+		available = {
+			has_war_with = ZDG
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = -10
+				check_variable = { XOG_yezhangdu > 65 }
+			}
+			modifier = {
+				add = 50
+				surrender_progress > 0.65
+			}
+		}
+		complete_effect = {
+			add_to_variable = { XOG_yezhangdu = 2 }
+		}
+		remove_effect = {
+			custom_effect_tooltip = XOG_infect_on_ZDG_tt
+			hidden_effect = {
+				ZDG = {
+					add_timed_idea = {
+						idea = XOG_infect_on_ZDG
+						days = 40
+					}
+				}
+			}
+	    }
 	}
 }
+
 

@@ -1,74 +1,36 @@
 add_namespace = XOG_events
 
-#解决璃月内部事宜
-country_event = {
+#开局事件→现状
+unit_leader_event = {
     id = XOG_events.1
 	title = XOG_events.1.t
     desc = XOG_events.1.d
-    fire_only_once=yes
+	picture = GFX_report_event_royal_parade
 	is_triggered_only = yes
 	
 	option = {
 	    name = XOG_events.1.a
-		trigger = {
-             country_exists = LYU
-             LYU = {
-				has_government = reformism 
-             }
-			NOT = { has_country_flag = XOG_refuse_LYU }
-        }
-		set_country_flag = XOG_Choice_Ganyu
-		LYU = {
-			country_event = { days = 7  id = XOG_events.2  }
+		LYU_Xiao = {
+			unit_leader_event = {
+				id = XOG_events.2
+				days = 1
+			}
 		}
-	}
-	option = {
-	    name = XOG_events.1.b
-		trigger = {
-             country_exists = RTG
-             RTG = {
-				has_government = reformism 
-             }	
-			NOT = { has_country_flag = XOG_refuse_RTG }		 
-        }
-		set_country_flag = XOG_Choice_Ruotuo
-		RTG = {
-			country_event = { days = 7  id = XOG_events.2  }
-		}
-	}
-	option = {
-	    name = XOG_events.1.c
-		trigger = {
-             country_exists = XRG
-			NOT = { has_country_flag = XOG_refuse_XRG }			 
-        }
-		set_country_flag =  XOG_Choice_XRG
-		XRG = {
-			country_event = { days = 7  id = XOG_events.2  }
-		}
-	}
-	option = {
-	    name = XOG_events.1.d
-		set_country_flag = XOG_Choice_XOG
 	}
 }
 
-#同意
-country_event = {
+
+#开局事件→暗潮
+unit_leader_event = {
     id = XOG_events.2
 	title = XOG_events.2.t
     desc = XOG_events.2.d
-    fire_only_once=yes
+	picture = GFX_report_event_royal_parade
 	is_triggered_only = yes
 	
 	option = {
 	    name = XOG_events.2.a
-		ROOT = {
-		set_autonomy = {
-			target = XOG
-			autonomy_state = autonomy_dominion
-	        }
-		}
+		XOG = { add_political_power = 5 }
 	}
 }
 
@@ -82,20 +44,40 @@ country_event = {
 	
 	option = {
 	    name = XOG_events.3.a
-		 random_list = {
-			50 = {
-				country_event = {
-					id = XOG_events.4
-					days = 14
-			    }
-		    }
-			50 = {
-				country_event = {
-					id = XOG_events.5
-					days = 14
-			    }
-		    }
+		ai_chance = {
+			base = 50
 		}
+		add_manpower = -1000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -50
+		}
+		set_temp_variable = { XOG_yezhang_triggers = random }
+		multiply_temp_variable = { XOG_yezhang_triggers = 100 }
+		if = {
+			limit = {
+				check_variable = { XOG_yezhangdu > XOG_yezhang_triggers }
+			}
+			country_event = {
+				id = XOG_events.5
+				days = 7
+			}
+		}
+		else = {
+			country_event = {
+				id = XOG_events.4
+				days = 7
+			}
+		}
+	}
+	
+	option = {
+	    name = XOG_events.3.b
+		ai_chance = {
+			base = 50
+		}
+		add_stability = -0.03
+		add_war_support = -0.02
 	}
 }
 
@@ -110,8 +92,7 @@ country_event = {
 	option = {
 	    name = XOG_events.4.a
 		add_stability = 0.05
-		add_political_power = 50
-		add_to_variable = { XOG_yezhangdu = 0.1 }
+		add_to_variable = { XOG_yezhangdu = -0.2 }
 	}
 }
 
@@ -125,9 +106,647 @@ country_event = {
 	
 	option = {
 	    name = XOG_events.5.a
-		add_stability = -0.05
+		ai_chance = {
+			base = 28
+		}
+		add_timed_idea = {
+			idea = XOG_furious_monsters
+			days = 60
+		}
+	}
+	
+	option = {
+	    name = XOG_events.5.b
+		ai_chance = {
+			base = 70
+		}
+		add_manpower = -5000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -300
+		}
+	}
+	
+	option = {
+	    name = XOG_events.5.c
+		ai_chance = {
+			base = 2
+		}
+		add_to_variable = { XOG_yezhangdu = 0.2 }
+	}
+}
+
+####################################################################
+
+#    #   ####  #####  ###   ####   #    #   ####   #
+##   #  #    #   #     #   #    #  ##   #  #    #  #
+# #  #  #    #   #     #   #    #  # #  #  #    #  #
+# ## #  ######   #     #   #    #  # ## #  ######  #
+#  # #  #    #   #     #   #    #  #  # #  #    #  #
+#   ##  #    #   #     #   #    #  #   ##  #    #  #
+#    #  #    #   #    ###   ####   #    #  #    #  ######
+
+######  ####    ####   #    #   ####
+#      #    #  #    #  #    #  #    #
+#      #    #  #       #    #  #
+#####  #    #  #       #    #   ####
+#      #    #  #       #    #       #
+#      #    #  #    #  #    #  #    #
+#       ####    ####    ####    ####
+
+####################################################################
+
+#甘雨来信
+country_event = {
+    id = XOG_events.101
+	title = XOG_events.101.t
+    desc = XOG_events.101.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.101.a
+		add_opinion_modifier = { target = LYU modifier = triggered_improved_relation }
+		LYU = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation } }
+		add_popularity = { ideology = reformism popularity = 0.02 }
+	}
+}
+
+#龙王来信
+country_event = {
+    id = XOG_events.102
+	title = XOG_events.102.t
+    desc = XOG_events.102.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.102.a
+		ai_chance = {
+			base = 50
+		}
+		add_opinion_modifier = { target = RTG modifier = triggered_improved_relation }
+		RTG = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation } }
+		add_popularity = { ideology = reformism popularity = 0.02 }
+	}
+	
+	option = {
+	    name = XOG_events.102.b
+		ai_chance = {
+			base = 50
+		}
+		add_opinion_modifier = { target = RTG modifier = triggered_break_relation }
+		RTG = { add_opinion_modifier = { target = XOG modifier = triggered_break_relation } }
+		add_popularity = { ideology = reformism popularity = -0.02 }
+	}
+}
+
+#仙人来信
+country_event = {
+    id = XOG_events.103
+	title = XOG_events.103.t
+    desc = XOG_events.103.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.103.a
+		ai_chance = {
+			base = 50
+		}
+		add_opinion_modifier = { target = XRG modifier = triggered_improved_relation }
+		XRG = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation } }
+		add_popularity = { ideology = authoritarianism popularity = 0.02 }
+	}
+	
+	option = {
+	    name = XOG_events.103.b
+		ai_chance = {
+			base = 50
+		}
+		add_opinion_modifier = { target = XRG modifier = triggered_break_relation }
+		XRG = { add_opinion_modifier = { target = XOG modifier = triggered_break_relation } }
+		add_popularity = { ideology = liberalism popularity = 0.02 }
+	}
+}
+
+#国策和解——夜叉
+country_event = {
+    id = XOG_events.104
+	title = XOG_events.104.t
+    desc = XOG_events.104.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.104.a
+		XOG = {
+			every_unit_leader = {
+				set_nationality = RTG
+			}
+		}
+		RTG = {
+			annex_country = { target = XOG transfer_troops = yes }
+		}
+	}
+}
+
+#国策恢复秩序——恢复秩序
+country_event = {
+    id = XOG_events.100
+	title = XOG_events.100.t
+    desc = XOG_events.100.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.100.a
+		XOG = {
+			every_unit_leader = {
+				set_nationality = LYU
+			}
+		}
+		LYU = {
+			annex_country = { target = XOG transfer_troops = yes }
+		}
+	}
+}
+
+#击败干涉军——解决璃月内部事宜
+#这个事件测试完成后请删除或修改XOG_events.1（已完成），以及璃月港、龙王、仙人可以通过国策或决议拉拢魈的所有内容
+country_event = {
+    id = XOG_events.105
+	title = XOG_events.105.t
+    desc = XOG_events.105.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.105.a
+		hidden_effect = {
+			XRG = { country_event = { id = XOG_events.106 } }
+			LYU = { country_event = { id = XOG_events.106 } }
+			RTG = { country_event = { id = XOG_events.106 } }
+			if = {
+				limit = {
+					country_exists = XRG
+					XRG = {
+						is_subject = no
+						OR = {
+							is_in_faction = no
+							is_faction_leader = yes
+						}
+					}
+					XOG = { is_in_faction = no }
+				}
+				country_event = { id = XOG_events.107 days = 3 }
+			}
+			if = {
+				limit = {
+					country_exists = LYU
+					LYU = {
+						is_subject = no
+						OR = {
+							is_in_faction = no
+							is_faction_leader = yes
+						}
+					}
+					XOG = { is_in_faction = no }
+				}
+				country_event = { id = XOG_events.109 days = 7 }
+			}
+			if = {
+				limit = {
+					country_exists = RTG
+					RTG = {
+						is_subject = no
+						OR = {
+							is_in_faction = no
+							is_faction_leader = yes
+						}
+					}
+					RTG = { has_government = reformism }
+					XOG = { is_in_faction = no }
+				}
+				country_event = { id = XOG_events.108 days = 5 }
+			}
+			country_event = {
+				id = XOG_events.112 days = 35
+			}
+		}
+	}
+}
+
+#派出使者
+country_event = {
+    id = XOG_events.106
+	title = XOG_events.106.t
+    desc = XOG_events.106.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.106.a
+		add_political_power = -10
+	}
+}
+
+#群仙会议的使者到来
+country_event = {
+    id = XOG_events.107
+	title = XOG_events.107.t
+    desc = XOG_events.107.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.107.a
+		trigger = {
+			country_exists = XRG
+			XRG = {
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+			XOG = { is_in_faction = no }
+		}
+		ai_chance = {
+			base = 50
+		}
+		set_country_flag = XOG_Choice_XRG
+		set_country_flag = xrg_has_tried_to_cooperate_with_xog
+		XRG = {
+			country_event = { days = 7 id = XOG_events.110 }
+			if = {
+				limit = { XRG = { is_in_faction = no } }
+				create_faction = qunxianfangxian
+			}
+			add_to_faction = XOG
+		}
+	}
+	
+	option = {
+	    name = XOG_events.107.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = -50
+				XOG = { has_opinion = { target = XRG value > 74 } }
+			}
+		}
+	}
+}
+
+#若陀龙王的使者到来
+country_event = {
+    id = XOG_events.108
+	title = XOG_events.108.t
+    desc = XOG_events.108.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.108.a
+		trigger = {
+			country_exists = RTG
+			RTG = {
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+			XOG = { is_in_faction = no }
+		}
+		ai_chance = {
+			base = 50
+		}
+		set_country_flag =  XOG_Choice_RTG
+		set_country_flag = xrg_has_tried_to_cooperate_with_xog
+		RTG = {
+			country_event = { days = 7 id = XOG_events.110 }
+			if = {
+				limit = { RTG = { is_in_faction = no } }
+				create_faction = south_liyue_alliance
+			}
+			add_to_faction = XOG
+		}
+	}
+	
+	option = {
+	    name = XOG_events.109.b
+		ai_chance = {
+			base = 50
+		}
+		RTG = {
+			country_event = { days = 7 id = XOG_events.111 }
+		}
+	}
+}
+
+#甘雨的使者到来
+country_event = {
+    id = XOG_events.109
+	title = XOG_events.109.t
+    desc = XOG_events.109.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.109.a
+		trigger = {
+			country_exists = LYU
+			LYU = {
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+			LYU = { is_in_faction = no }
+		}
+		ai_chance = {
+			base = 50
+		}
+		set_country_flag = XOG_Choice_LYU
+		set_country_flag = xrg_has_tried_to_cooperate_with_xog
+		LYU = {
+			country_event = { days = 7 id = XOG_events.110 }
+			if = {
+				limit = { LYU = { is_in_faction = no } }
+				create_faction = liyuehepingtongyizhanxian
+			}
+			add_to_faction = XOG
+		}
+	}
+	
+	option = {
+	    name = XOG_events.109.b
+		ai_chance = {
+			base = 50
+		}
+		LYU = {
+			country_event = { days = 7 id = XOG_events.111 }
+		}
+	}
+}
+
+#同意
+country_event = {
+    id = XOG_events.110
+	title = XOG_events.110.t
+    desc = XOG_events.110.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.110.a
+	}
+}
+
+#拒绝
+country_event = {
+    id = XOG_events.111
+	title = XOG_events.111.t
+    desc = XOG_events.111.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = XOG_events.111.a
+	}
+}
+
+#新的路线？
+country_event = {
+    id = XOG_events.112
+	title = XOG_events.112.t
+    desc = XOG_events.112.d
+	is_triggered_only = yes
+	trigger = {
+		country_exists = XOG
+		XOG = {
+			is_subject = no
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+		}
+	}
+	
+	immediate = {
+		XOG = { set_country_flag = xrg_has_tried_to_cooperate_with_xog }
+	}
+	
+	option = {
+	    name = XOG_events.112.a
+		ai_chance = {
+			base = 85
+		}
+		set_country_flag = XOG_Choice_XOG
+		XRG = {
+			country_event = { days = 7 id = XOG_events.111 }
+		}
+	}
+	
+	option = {
+	    name = XOG_events.112.b
+		trigger = {
+			country_exists = XRG
+			XRG = {
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+			XOG = { is_in_faction = no }
+		}
+		ai_chance = {
+			base = 15
+		}
+		set_country_flag = XOG_Choice_XRG
+		XRG = {
+			country_event = { days = 7 id = XOG_events.110 }
+			if = {
+				limit = { XRG = { is_in_faction = no } }
+				create_faction = qunxianfangxian
+			}
+			add_to_faction = XOG
+		}
+	}
+}
+
+#国策来自龙王的援助——旧日之敌，今日之友
+country_event = {
+    id = XOG_events.113
+	title = XOG_events.113.t
+    desc = XOG_events.113.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.113.a
+		swap_ideas = {
+			remove_idea = XOG_Protect_the_homeland
+			add_idea = XOG_Protect_the_homeland_RTG
+		}
+	}
+}
+
+#国策契约之璃月——降魔大圣
+country_event = {
+    id = XOG_events.114
+	title = XOG_events.114.t
+    desc = XOG_events.114.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.114.a
+		swap_ideas = {
+			remove_idea = XOG_Protect_the_homeland
+			add_idea = XOG_Protect_the_homeland_LYU
+		}
+	}
+}
+
+#国策守护和平——回归
+country_event = {
+    id = XOG_events.115
+	title = XOG_events.115.t
+    desc = XOG_events.115.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.115.a
+		XOG = {
+			every_character = {
+				set_nationality = XRG
+			}
+		}
+		every_state = {
+			limit = { is_core_of = XOG }
+			add_core_of = RTG
+			remove_core_of = XOG
+		}
+		XRG = { annex_country = { target = XOG transfer_troops = yes } }
+	}
+}
+
+#国策四面皆敌——南下
+country_event = {
+    id = XOG_events.116
+	title = XOG_events.116.t
+    desc = XOG_events.116.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.116.a
+	}
+}
+
+#群仙会议的新人
+country_event = {
+    id = XOG_events.117
+	title = XOG_events.117.t
+    desc = XOG_events.117.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.117.a
+		swap_ideas = {
+			remove_idea = XOG_Protect_the_homeland
+			add_idea = XOG_Protect_the_homeland_XRG
+		}
+	}
+}
+
+#国策重返璃月港——历史
+country_event = {
+    id = XOG_events.118
+	title = XOG_events.118.t
+    desc = XOG_events.118.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.118.a
+	}
+}
+
+#随机事件→吹笛人
+country_event = {
+    id = XOG_events.119
+	title = XOG_events.119.t
+    desc = XOG_events.119.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.119.a
+		add_to_variable = { XOG_yezhangdu = -5 }
+	}
+}
+
+#占领事件→庙
+country_event = {
+    id = XOG_events.120
+	title = XOG_events.120.t
+    desc = XOG_events.120.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = XOG_events.120.a
+		add_stability = 0.05
+		add_to_variable = { XOG_yezhangdu = -2 }
+	}
+}
+
+#决议→仙人的帮助
+country_event = {
+    id = XOG_events.121
+	title = XOG_events.121.t
+    desc = XOG_events.121.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#help him
+	option = {
+		name = XOG_events.121.a
+		ai_chance = {
+			base = 75
+		}
 		add_political_power = -50
-		add_war_support = -0.05
-		add_to_variable = { XOG_yezhangdu = -0.1 }
+		XOG = { add_to_variable = { XOG_yezhangdu = -2 } }
+		hidden_effect = {
+			XOG = { country_event = { id = XOG_events.122 } }
+		}
+	}
+	
+	#Nah
+	option = {
+		name = XOG_events.121.b
+		ai_chance = {
+			base = 25
+		}
+		hidden_effect = {
+			XOG = { country_event = { id = XOG_events.123 } }
+		}
+	}
+}
+
+#仙人同意伸出援手
+country_event = {
+    id = XOG_events.122
+	title = XOG_events.122.t
+    desc = XOG_events.122.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = XOG_events.122.a
+		add_opinion_modifier = { target = XRG modifier = triggered_improved_relation_small }
+		XRG = { add_opinion_modifier = { target = XOG modifier = triggered_improved_relation_small } }
+	}
+}
+
+#仙人不同意伸出援手
+country_event = {
+    id = XOG_events.123
+	title = XOG_events.123.t
+    desc = XOG_events.123.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = XOG_events.123.a
 	}
 }

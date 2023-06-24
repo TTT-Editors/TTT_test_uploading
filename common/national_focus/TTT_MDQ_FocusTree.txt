@@ -14,18 +14,17 @@ focus = {
         icon = GFX_goal_unknown
         x = 5.0
         y = 1.0
-        
-       
         cost = 35.0
         available = { 
             
         }
         ai_will_do = {
-                factor = 1.0
+            factor = 1.0
         }
         completion_reward = {
-            add_war_support = 0.4
+            add_war_support = 0.2
             add_ideas = MDQ_Endless_battle_1
+
         }
     }
 
@@ -47,12 +46,12 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            hidden_effect = {
-                remove_ideas = MDQ_Endless_battle_1
-                add_ideas = MDQ_Endless_battle_2
+            swap_ideas= {
+                add_idea = MDQ_Endless_battle_2
+                remove_idea = MDQ_Endless_battle_1
             }
-            add_war_support = 0.1
-            custom_effect_tooltip = MDQ_Night_offensive_tooltip        
+            unlock_decision_tooltip = MDQ_dadaupa_War_decision_12
+            add_war_support = 0.1       
         }
     }
 
@@ -74,12 +73,12 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            custom_effect_tooltip = MDQ_Train_militia_tooltip
-            hidden_effect = {
-                remove_ideas = MDQ_Endless_battle_2
-                add_ideas = MDQ_Endless_battle_3
+            swap_ideas= {
+                add_idea = MDQ_Endless_battle_3
+                remove_idea = MDQ_Endless_battle_2
             }
-            set_country_flag =MDQ_Train_militia_decisions_enable
+            unlock_decision_tooltip = MDQ_dadaupa_War_decision_13
+            unlock_decision_tooltip = MDQ_dadaupa_War_decision_15
         }
     }
 
@@ -104,11 +103,16 @@ focus = {
             399 = {
                 add_building_construction = {
                     type = bunker
-                    level = 2
+                    level = 3
                     instant_build = yes
                     province = 4796
                 }
             }
+            swap_ideas = {
+                add_idea = MDQ_Endless_battle_4
+                remove_idea = MDQ_Endless_battle_3
+            }
+            unlock_decision_tooltip = MDQ_dadaupa_War_decision_11
             add_war_support = 0.1
         }
     }
@@ -157,8 +161,8 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            custom_effect_tooltip = MDQ_White_sun_offensive_tooltip
-            set_country_flag = MDQ_White_sun_offensive_decisions_enable
+            unlock_decision_tooltip = MDQ_dadaupa_War_decision_16
+            add_war_support = 0.1
         }
     }
 
@@ -180,27 +184,17 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {###此处国策效果内创建编制，并用create_unit语句创建单位
-            division_template = {
-                name = "达达乌帕谷山地师" 				
-                division_names_group = MDQ_02
-                regiments = {
-                    mountaineers = { x = 0 y = 0 }
-                    mountaineers = { x = 0 y = 1 }
-                    mountaineers = { x = 0 y = 2 }
-                    mountaineers = { x = 0 y = 3 }
-                }
-            }
             capital_scope = {
 					create_unit = {
-						division = "name = \"达达乌帕谷山地师01\" division_template = \"达达乌帕谷山地师\" start_experience_factor = 0.5"  
+						division = "name = \"达达乌帕谷特战旅01\" division_template = \"达达乌帕谷特战旅\" start_experience_factor = 0.5"  
 						owner = ROOT
 					}
                     create_unit = {
-						division = "name = \"达达乌帕谷山地师02\" division_template = \"达达乌帕谷山地师\" start_experience_factor = 0.5"  
+						division = "name = \"达达乌帕谷特战旅02\" division_template = \"达达乌帕谷特战旅\" start_experience_factor = 0.5"  
 						owner = ROOT
 					}
                     create_unit = {
-						division = "name = \"达达乌帕谷山地师03\" division_template = \"达达乌帕谷山地师\" start_experience_factor = 0.5"  
+						division = "name = \"达达乌帕谷特战旅03\" division_template = \"达达乌帕谷特战旅\" start_experience_factor = 0.5"  
 						owner = ROOT
 					}
             }
@@ -226,7 +220,7 @@ focus = {
         }
         completion_reward = {
             add_dynamic_modifier = {modifier = MDQ_the_warriors_of_dadaupa}
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_pocket_penalty = -0.1}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_pocket_penalty = -0.05}
             add_to_variable = {MDQ_the_warriors_of_dadaupa_out_of_supply_factor = -0.05}
             custom_effect_tooltip = MDQ_Rejuvenate_the_warriors_of_dadaupa_tooltip
         }
@@ -251,15 +245,11 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            add_to_variable = {MDQ_the_warriors_of_dadaupa_army_org_factor =0.05}
+            add_to_variable = {MDQ_the_warriors_of_dadaupa_army_org_factor = 0.05}
             add_equipment_to_stockpile = {
                 type = infantry_equipment
-                amount = 1000
+                amount = 2000
                 producer = MDQ
-            }
-            hidden_effect = {
-                remove_ideas = MDQ_Endless_battle_3
-                add_ideas = MDQ_Endless_battle_4
             }
             ##此处触发事件
             country_event = {id =MDQ_event.4 days = 1}
@@ -288,8 +278,6 @@ focus = {
         }
         completion_reward = {
             custom_effect_tooltip = MDQ_Continue_attack_tooltip
-            set_country_flag = MDQ_Continue_attack_decisions_enable
-            add_war_support = 0.1
             add_stability = 0.1
         }
     }
@@ -626,10 +614,14 @@ focus = {
         }
         cost = 35.0
         available = { 
-            has_war = yes
+            has_war_with = QQR
+            has_country_flag = MDQ_dadaupa_War_flag
+            not = {
+				has_country_flag = MDQ_dadaupa_peace_flag
+			}
         }
         ai_will_do = {
-                factor = 1.0
+            factor = 0
         }
         completion_reward = {
             white_peace = {
@@ -663,92 +655,6 @@ focus = {
             load_focus_tree = TTT_MDQ_focustree2
         }
     }
-
-###国策名：骑士团的女仆
-focus = {
-    id = MDQ_The_maid_of_the_MOT_knight
-        icon = GFX_goal_unknown
-        x = 13.0
-        y = 1.0
-        
-        
-        cost = 70.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            
-        }
-    }
-
-###国策名：委员会一大
-focus = {
-    id = MDQ_Committee_1
-        icon = GFX_goal_unknown
-        x = 13.0
-        y = 2.0
-        prerequisite = {
-            focus =MDQ_The_maid_of_the_MOT_knight
-        }
-        
-        cost = 70.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            
-        }
-    }
-
-###国策名：骑士修行之道
-focus = {
-    id = MDQ_The_way_of_chivalry
-        icon = GFX_goal_unknown
-        x = 13.0
-        y = 3.0
-        prerequisite = {
-            focus =MDQ_Committee_1
-        }
-        
-        cost = 70.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            
-        }
-    }
-
-###国策名：骑士管理之道
-focus = {
-    id = MDQ_The_rule_of_chivalry
-        icon = GFX_goal_unknown
-        x = 13.0
-        y = 4.0
-        prerequisite = {
-            focus =MDQ_The_way_of_chivalry
-        }
-        
-        cost = 70.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            
-        }
-    }
 }
 #####################################################################################################################################
 ##################################################################################################################################
@@ -772,7 +678,7 @@ focus = {
         y = 1.0
         
         
-        cost = 35.0
+        cost = 15
         available = { 
         }
         ai_will_do = {
@@ -795,8 +701,7 @@ focus = {
         prerequisite = {
             focus =MDQ_The_Great_Wall_of_Beacon_Fire
         }
-        
-        cost = 35.0
+        cost = 15
         available = { 
         }
         ai_will_do = {
@@ -819,7 +724,7 @@ focus = {
             focus =MDQ_Finally_stable
         }
         
-        cost = 70.0
+        cost = 35
         available = { 
         }
         ai_will_do = {
@@ -827,7 +732,6 @@ focus = {
         }
         completion_reward = {
             add_timed_idea = { idea = MDQ_Economic_refrom days = 180 }
-            ###开始为期180日的经济重组任务，完成任务送稳定度+10%，建造速度+15%
         }
     }
 
@@ -1348,7 +1252,7 @@ focus = {
             focus =MDQ_Finally_stable
         }
         
-        cost = 70.0
+        cost =35
         available = { 
         }
         ai_will_do = {
@@ -1650,9 +1554,8 @@ focus = {
         x = 14.0
         y = 1.0
         cost = 7
-        
         trigger = {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1672,10 +1575,9 @@ focus = {
         prerequisite = {
             focus =MDQ_The_second_dadawupa_war_1
         }
-        
         cost = 7
         trigger = {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1699,7 +1601,7 @@ focus = {
         cost = 7
         
         trigger= {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1723,7 +1625,7 @@ focus = {
         cost = 7
         
         trigger = {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1747,7 +1649,7 @@ focus = {
         cost = 7
         
         trigger= {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1771,7 +1673,7 @@ focus = {
         cost = 7
         
         trigger= {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1796,7 +1698,7 @@ focus = {
         cost =7
         
         trigger= {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1820,7 +1722,7 @@ focus = {
         cost = 7
         
         trigger= {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1
@@ -1844,7 +1746,7 @@ focus = {
         cost = 7
         
         trigger= {
-            has_country_flag =MDQ_second_dadaupa_War_flag
+            has_country_flag = MDQ_dadaupa_War_flag
         }
         ai_will_do = {
                 factor = 1

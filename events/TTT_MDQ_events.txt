@@ -1,24 +1,5 @@
 add_namespace = MDQ_event
-###转换为蒙德骑士团
-country_event = {
-    id = MDQ_event.99
-    title = MDQ_event.99.t
-    desc = MDQ_event.99.d
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = { 
-		name = MDQ_event.99.a
-        MOT = {
-            change_tag_from = ROOT 
-        }
-		MOT = {
-			annex_country = {
-				target = MDQ
-				transfer_troops = yes
-			}
-		}
-	}
-}
+
 ###事件名：达达乌帕谷战争
 country_event = {
 	id = MDQ_event.1
@@ -97,10 +78,16 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.11.a
+		ai_chance = {
+			base = 0
+		}
 		custom_effect_tooltip = MDQ_event.11.a_tooltip
 	}
 	option = {
 		name = MDQ_event.11.b
+		ai_chance = {
+			base = 10
+		}
 		hidden_effect = {
 			country_event = {id = MDQ_event.12 days = 3}
 		}
@@ -117,10 +104,16 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.12.a
+		ai_chance = {
+			base = 0
+		}
 		custom_effect_tooltip = MDQ_event.12.a_tooltip
 	}
 	option = {
 		name = MDQ_event.12.b
+		ai_chance = {
+			base = 10
+		}
 		hidden_effect = {
 			country_event = {id = MDQ_event.13 days = 3}
 		}
@@ -137,6 +130,9 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.13.a
+		ai_chance = {
+			base = 10
+		}
 		hidden_effect = {
 			country_event = {id = MDQ_event.14 days = 3}
 		}
@@ -154,9 +150,18 @@ country_event = {
 	option = {
 		name = MDQ_event.14.a
 		custom_effect_tooltip = MDQ_event.14.a_tooltip
+		ai_chance = {
+			base = 10
+		}
 		hidden_effect = {
 			MDQ = {
 				country_event = {id = MDQ_event.15 days = 5}
+			}
+			MDQ_Noelle = {
+				set_nationality = MDQ
+			}
+			MDQ_Noelle2 = {
+				set_nationality = MDQ
 			}
 		}
 	}
@@ -172,9 +177,14 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.15.a
+		ai_chance = {
+			base = 10
+		}
 		custom_effect_tooltip = MDQ_event.15.a_tooltip
 		hidden_effect = {
 			country_event = {id = MDQ_event.16 days = 14}
+			activate_advisor = MDQ_Noelle
+			activate_advisor = MDQ_Noelle2
 		}
 	}
 }
@@ -319,5 +329,79 @@ country_event = {
 	option = {
 		name = MDQ_event.23.b
 		custom_effect_tooltip = MDQ_event.23.b_tooltip
+	}
+}
+
+#######################################
+#######################################
+##########################################
+###转换为蒙德骑士团
+country_event = {
+    id = MDQ_event.99
+    title = MDQ_event.99.t
+    desc = MDQ_event.99.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = MDQ_event.99.a
+        MOT = {
+            change_tag_from = ROOT 
+        }
+		MOT = {
+			annex_country = {
+				target = MDQ
+				transfer_troops = yes
+			}
+		}
+	}
+}
+####军区覆灭（新闻）
+news_event = {
+    id = MDQ_event.98
+    title = MDQ_event.98.t
+    desc = MDQ_event.98.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = MDQ_event.98.a
+	}
+}
+####军区覆灭（蒙德）
+country_event = {
+    id = MDQ_event.97
+    title = MDQ_event.97.t
+    desc = MDQ_event.97.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = MDQ_event.97.a
+        add_manpower = 20000
+		MDQ_Dr_Livingstone = {
+				set_nationality = MOT
+			}
+		MDQ_Mike = {
+				set_nationality = MOT
+			}
+		MDQ_Elon_Musk= {
+				set_nationality = MOT
+			}
+		MDQ_Sternberg= {
+				set_nationality = MOT
+			}
+		MDQ_Zhuang_Yang= {
+				set_nationality = MOT
+			}
+		MDQ_Damut= {
+				set_nationality = MOT
+			}
+		MDQ_Egidito_von_Page= {
+				set_nationality = MOT
+			}
+		MDQ_Noelle2= {
+				set_nationality = MOT
+			}
+		MDQ_Noelle= {
+				set_nationality = MOT
+			}
 	}
 }

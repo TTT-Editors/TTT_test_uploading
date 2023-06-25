@@ -9,5 +9,67 @@ on_actions = {
                 country_event = {id = MDQ_event.99 days = 3}
             }
         }
+        effect = {
+            if = {
+                limit = {
+                    ROOT = {tag = QQR}
+                    FROM = {tag = MDQ}
+                }
+                news_event = {id =MDQ_event.98 days = 3}
+                MOT = {
+                    country_event = {id = MDQ_event.97 days = 5}
+                }
+            }
+        }
+    }
+    on_weekly_MDQ = {
+        effect = {
+            if = {
+                limit = {
+                    not = {
+                        has_war = yes
+                    }
+                }
+                add_to_variable = {global.MDQ_abandon_num = 2}
+            }
+            else_if = {
+                limit = {
+                    has_war = yes
+                }
+                add_to_variable = {global.MDQ_abandon_num = -2}
+            }
+        }
+    }
+    on_state_control_changed = { 
+        effect = {
+            if = {
+                limit = {
+                    MDQ ={
+                        has_war_with = QQR
+                        has_country_flag = MDQ_dadaupa_War_flag
+                    }
+                    ROOT = {tag = QQR}
+                    FROM = {tag = MDQ}
+                    FROM.FROM = {
+						state = 282
+					}
+                }
+                add_to_variable = {global.MDQ_abandon_num = -10}
+            }
+            if = {
+                limit = {
+                    MDQ ={
+                        has_war_with = QQR
+                        has_country_flag = MDQ_dadaupa_War_flag
+                    }
+                    ROOT = {tag = QQR}
+                    FROM = {tag = MDQ}
+                    FROM.FROM = {
+						state = 399
+					}
+                }
+                add_to_variable = {global.MDQ_abandon_num = -10}
+            }
+        } 
     }
 }

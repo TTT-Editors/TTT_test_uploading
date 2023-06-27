@@ -14,6 +14,11 @@ MOT_Standpoint_decision_category ={
 			not = {
 				has_war_with = QQR
 			}
+			not = {
+				QQR = {
+					exists = Yes
+				}
+			}
         }
         available = {
 			always = no
@@ -31,12 +36,10 @@ MOT_Standpoint_decision_category ={
 				QQR = {
 					transfer_state = 280
 					transfer_state = 281
-					transfer_state = 284
 					transfer_state = 398
 					transfer_state = 400
 					transfer_state = 402
 					transfer_state = 283
-					transfer_state = 286
 					load_oob = "QQR"
 				}
 			}
@@ -108,6 +111,11 @@ MOT_Standpoint_decision_category ={
 				not = {
 					has_country_flag = MDQ_dadaupa_peace_flag
 				}
+				check_variable = {
+					var = global.MDQ_abandon_num
+					value = 1
+					compare = less_than_or_equals
+				}
 			}
 			available = {
 				always = no
@@ -118,6 +126,11 @@ MOT_Standpoint_decision_category ={
 					has_country_flag = MDQ_dadaupa_peace_flag
 				}
 				has_war_with = QQR
+				check_variable = {
+					var = global.MDQ_abandon_num
+					value = 1
+					compare = less_than_or_equals
+				}
 			}
 			is_good = no
 			selectable_mission = no
@@ -130,12 +143,16 @@ MOT_Standpoint_decision_category ={
 					QQR = {
 						transfer_state = 285
 						transfer_state = 14
+						transfer_state = 286
+						transfer_state = 401
 						add_state_core = 285
 						add_state_core = 14
+						add_state_core = 286
+						add_state_core = 401
 					}
 					load_focus_tree = TTT_MDQ_focustree2
-				}
-				if = {
+					transfer_dynamic_modifiers = yes
+					if = {
 						limit = {
 							has_idea = MDQ_Endless_battle_1
 						}
@@ -159,6 +176,7 @@ MOT_Standpoint_decision_category ={
 						}
 						remove_ideas = MDQ_Endless_battle_4
 					}
+				}
 				white_peace = {
 					tag = QQR
 					message = while_peace_with_QQR_1
@@ -392,6 +410,30 @@ MOT_Standpoint_decision_category ={
 				custom_effect_tooltip = MDQ_dadaupa_War_decision_9_tooltip
 			}
 		}
+		###战斗号召
+		MDQ_dadaupa_War_decision_10 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_completed_focus =MDQ_The_black_sun_rises_in_the_east
+				has_war_with = QQR
+				original_tag = MDQ
+		   	}
+			visible = {
+				has_completed_focus =MDQ_The_black_sun_rises_in_the_east
+				has_war_with = QQR
+				original_tag = MDQ
+			}
+			cancel_if_invalid = yes
+			fire_only_once = no
+			cost = 100
+			days_remove = 70
+			days_re_enable = 210
+			modifier = {
+				war_support_factor = 0.03
+			}
+		}
 
 
 		###清除盗宝团影响的决议1
@@ -571,7 +613,7 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			fire_only_once = no
-			cost = 30
+			cost = 60
 			days_remove = 100
 			days_re_enable = 100
 			complete_effect = {
@@ -579,10 +621,202 @@ MOT_Standpoint_decision_category ={
 			}
 			modifier = {
 				political_power_cost = 0.2
-				civilian_factory_use = 1
 			}
 			remove_effect = {
 				add_offsite_building = { type = arms_factory level = -3 }
+			}
+		}
+		####紧急制定作战计划
+		MDQ_dadaupa_War_decision_17 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_completed_focus = MDQ_Continue_attack
+				original_tag = MDQ
+		   	}
+			visible = {
+				has_completed_focus = MDQ_Continue_attack
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 60
+			days_remove = 100
+			days_re_enable = 100
+			complete_effect = {
+				add_ideas = MDQ_Continue_attack_determine_war_plan
+			}
+			remove_effect = {
+				remove_ideas = MDQ_Continue_attack_determine_war_plan
+			}
+		}
+		##启动突击攻势
+		MDQ_dadaupa_War_decision_18 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_completed_focus = MDQ_Take_the_lead
+				original_tag = MDQ
+		   	}
+			visible = {
+				has_completed_focus = MDQ_Take_the_lead
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 60
+			days_remove = 100
+			days_re_enable = 200
+			modifier = {
+				army_attack_factor = 0.05
+				breakthrough_factor = 0.05
+				army_org_factor = 0.1
+				land_reinforce_rate = -0.02
+			}
+		}
+		###启动夜间攻势
+		MDQ_dadaupa_War_decision_19 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_completed_focus = MDQ_Invisible_stab
+				original_tag = MDQ
+		   	}
+			visible = {
+				has_completed_focus = MDQ_Invisible_stab
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 30
+			days_remove = 30
+			days_re_enable = 60
+			modifier = {
+				land_night_attack = 0.2
+			}
+		}
+		###派出空中侦察小队
+		MDQ_dadaupa_War_decision_20 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_completed_focus = MDQ_aerial_reconnaissance
+				original_tag = MDQ
+		   	}
+			visible = {
+				has_completed_focus = MDQ_aerial_reconnaissance
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 60
+			days_remove = 60
+			days_re_enable = 60
+			modifier = {
+				recon_factor = 0.1
+				recon_factor_while_entrenched = 0.2
+			}
+		}
+
+		###女仆决议
+		MDQ_dadaupa_War_decision_21 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+				not = {
+					has_war_with = QQR
+				}
+				not = {
+					has_country_flag = MDQ_Noelle_decisions_is_cooling
+				}
+		   	}
+			visible = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+			}
+			fire_only_once = yes
+			cancel_if_invalid = yes 
+			complete_effect = {
+				set_country_flag ={flag =MDQ_Noelle_decisions_is_cooling value = 1 days = 15 }
+				country_event = {id = MDQ_event.17 days = 1}
+			}
+		}
+		MDQ_dadaupa_War_decision_22 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+				not = {
+					has_war_with = QQR
+				}
+				not = {
+					has_country_flag = MDQ_Noelle_decisions_is_cooling
+				}
+		   	}
+			visible = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+			}
+			fire_only_once = yes
+			cancel_if_invalid = yes 
+			complete_effect = {
+				set_country_flag ={flag =MDQ_Noelle_decisions_is_cooling value = 1 days = 15 }
+				country_event = {id = MDQ_event.19 days = 1}
+			}
+		}
+		MDQ_dadaupa_War_decision_23 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+				not = {
+					has_war_with = QQR
+				}
+				not = {
+					has_country_flag = MDQ_Noelle_decisions_is_cooling
+				}
+		   	}
+			visible = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+			}
+			fire_only_once = yes
+			cancel_if_invalid = yes 
+			complete_effect = {
+				set_country_flag ={flag =MDQ_Noelle_decisions_is_cooling value = 1 days = 15 }
+				country_event = {id = MDQ_event.21 days = 1}
+			}
+		}
+		MDQ_dadaupa_War_decision_24 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+				not = {
+					has_war_with = QQR
+				}
+				not = {
+					has_country_flag = MDQ_Noelle_decisions_is_cooling
+				}
+		   	}
+			visible = {
+				has_country_flag = Noelle_in_dadawupa
+				original_tag = MDQ
+			}
+			fire_only_once = yes
+			cancel_if_invalid = yes 
+			complete_effect = {
+				set_country_flag ={flag =MDQ_Noelle_decisions_is_cooling value = 1 days = 15 }
+				country_event = {id = MDQ_event.23 days = 1}
 			}
 		}
 

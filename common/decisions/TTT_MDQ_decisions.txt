@@ -9,7 +9,7 @@ MOT_Standpoint_decision_category ={
 				has_country_flag = MDQ_dadaupa_War_flag
 			}
 			not = {
-				has_country_flag = MDQ_dadaupa_peace_flag
+				has_country_flag = MDQ_dadaupa_second_war_flag
 			}
 			not = {
 				has_war_with = QQR
@@ -55,7 +55,7 @@ MOT_Standpoint_decision_category ={
 				has_country_flag = MDQ_dadaupa_War_flag
 			}
 			not = {
-				has_country_flag = MDQ_dadaupa_peace_flag
+				has_country_flag = MDQ_dadaupa_second_war_flag
 			}
 			not = {
 				has_war_with = QQR
@@ -73,7 +73,7 @@ MOT_Standpoint_decision_category ={
 				has_country_flag = MDQ_dadaupa_War_flag
 			}
 			not = {
-				has_country_flag = MDQ_dadaupa_peace_flag
+				has_country_flag = MDQ_dadaupa_second_war_flag
 			}
 			not = {
 				has_war_with = QQR
@@ -83,10 +83,10 @@ MOT_Standpoint_decision_category ={
 			}
 		}
         is_good = no
+		fire_only_once = yes
         selectable_mission = no
         days_mission_timeout = 30
 		war_with_on_timeout = QQR
-		fire_only_once = yes
         timeout_effect = {
 			set_country_flag = MDQ_dadaupa_War_flag
             declare_war_on = {
@@ -109,7 +109,7 @@ MOT_Standpoint_decision_category ={
 				has_war_with = QQR
 				has_country_flag = MDQ_dadaupa_War_flag
 				not = {
-					has_country_flag = MDQ_dadaupa_peace_flag
+					has_country_flag = MDQ_dadaupa_second_war_flag
 				}
 				check_variable = {
 					var = global.MDQ_abandon_num
@@ -123,7 +123,7 @@ MOT_Standpoint_decision_category ={
 			visible = {
 				has_country_flag = MDQ_dadaupa_War_flag
 				not = {
-					has_country_flag = MDQ_dadaupa_peace_flag
+					has_country_flag = MDQ_dadaupa_second_war_flag
 				}
 				has_war_with = QQR
 				check_variable = {
@@ -133,12 +133,13 @@ MOT_Standpoint_decision_category ={
 				}
 			}
 			is_good = no
+			fire_only_once = yes
 			selectable_mission = no
 			days_mission_timeout = 15
 			timeout_effect = {
 				hidden_effect = {
 					clr_country_flag = MDQ_dadaupa_War_flag
-					set_country_flag = MDQ_dadaupa_peace_flag
+					set_country_flag = MDQ_dadaupa_second_war_flag
 					MOT = {add_to_faction = MDQ}
 					QQR = {
 						transfer_state = 285
@@ -189,7 +190,7 @@ MOT_Standpoint_decision_category ={
 		}
 
 
-		#####经济改革计划
+		#####经济改革计划1\2\3\4
 		MDQ_dadaupa_War_decision_3 = {
 			allowed = {
 				original_tag = MDQ
@@ -198,7 +199,10 @@ MOT_Standpoint_decision_category ={
 				not = {
 					has_country_flag = MDQ_dadaupa_War_flag
 				}
-				has_completed_focus = MDQ_Economic_reform_plan
+				or = {
+					has_completed_focus = MDQ_Economic_reform_plan
+					has_country_flag = MDQ_dadaupa_second_war_flag
+				}
 			}
 			cost = 50
 			fixed_random_seed = no
@@ -232,7 +236,10 @@ MOT_Standpoint_decision_category ={
 				not = {
 					has_country_flag = MDQ_dadaupa_War_flag
 				}
-				has_completed_focus = MDQ_Economic_reform_plan
+				or = {
+					has_completed_focus = MDQ_Economic_reform_plan
+					has_country_flag = MDQ_dadaupa_second_war_flag
+				}
 				has_country_flag = unlock_MDQ_dadaupa_War_decision_4
 			}
 			cost = 50
@@ -268,7 +275,10 @@ MOT_Standpoint_decision_category ={
 				not = {
 					has_country_flag = MDQ_dadaupa_War_flag
 				}
-				has_completed_focus = MDQ_Economic_reform_plan
+				or = {
+					has_completed_focus = MDQ_Economic_reform_plan
+					has_country_flag = MDQ_dadaupa_second_war_flag
+				}
 				has_country_flag = unlock_MDQ_dadaupa_War_decision_5
 			}
 			cost = 50
@@ -304,7 +314,10 @@ MOT_Standpoint_decision_category ={
 				not = {
 					has_country_flag = MDQ_dadaupa_War_flag
 				}
-				has_completed_focus = MDQ_Economic_reform_plan
+				or = {
+					has_completed_focus = MDQ_Economic_reform_plan
+					has_country_flag = MDQ_dadaupa_second_war_flag
+				}
 				has_country_flag = unlock_MDQ_dadaupa_War_decision_6
 			}
 			cost = 50
@@ -331,26 +344,34 @@ MOT_Standpoint_decision_category ={
 				custom_effect_tooltip = MDQ_dadaupa_War_decision_6_tooltip
 			}
 		}
+		###改良武器
 		MDQ_dadaupa_War_decision_7 = {
 			allowed = {
 				original_tag = MDQ
-				has_completed_focus = MDQ_Retrofit
 			}
 			available = {
 				has_political_power > 50
+				or = {
+					has_completed_focus = MDQ_Retrofit
+					has_country_flag = MDQ_dadaupa_second_war_flag
+				}
 		   	}
 			visible = {
-				has_completed_focus = MDQ_Retrofit
+				or = {
+					has_completed_focus = MDQ_Retrofit
+					has_country_flag = MDQ_dadaupa_second_war_flag
+				}
 			}
-			cost = 5
-			days_remove = 300
+			cost = 70
+			days_remove = 100
+			days_re_enable = 100
 			fire_only_once = no
 			modifier = {
-				soft_attack = -0.1
+				soft_attack = 0.05
 				breakthrough_factor = -0.05
 				army_defence_factor = 0.05
-				industrial_capacity_factory = 0.1
-				##步兵装备杀伤力-10%，突破-5%，防御+5%，生产效率+10%
+				industrial_capacity_factory = 0.05
+				##步兵装备杀伤力 +5%，突破-5%，防御+5%，生产效率+0.05%
 		   	}
 		}
 
@@ -365,10 +386,23 @@ MOT_Standpoint_decision_category ={
 				not = {
 					has_war_with = QQR
 				}
-				has_completed_focus =MDQ_Celebrate_the_wine_Festival
+				or = {
+					has_completed_focus = MDQ_Retrofit
+					has_country_flag = MDQ_dadaupa_second_war_flag
+				}
 		   	}
 			visible = {
-				has_completed_focus =MDQ_Celebrate_the_wine_Festival
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus =MDQ_Celebrate_the_wine_Festival
+				}
+			}
+			ai_will_do = {
+    			base = 0
+				modifier = {check_variable = {global.MDQ_abandon_num > 90} factor = }
+				modifier = {has_completed_focus = MDQ_Dawn_in_Dadaupa_military_district add = 5}
+				modifier = {has_completed_focus = MDQ_Construction_in_mountainous_areas add = 5}
+				modifier = {num_divisions > 25 add = 5 factor = 1.25}
 			}
 			fire_only_once = yes
 			remove_effect = {
@@ -377,7 +411,6 @@ MOT_Standpoint_decision_category ={
 					id = MDQ_event.5
 					days = 3
 				}
-				set_country_flag = MDQ_second_dadaupa_War_flag
             	declare_war_on = {
 					target = QQR
 					type = annex_everything
@@ -386,6 +419,7 @@ MOT_Standpoint_decision_category ={
 					threat = 1.8
 					name = MDQ_dadaupa_War
 				}
+				country_event = {id = MDQ_event.1 days = 3}
 			}
 		}
 		###开局向骑士团请求援助，触发女仆事件链
@@ -442,21 +476,27 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_South_wing_castle
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_South_wing_castle
+				}
 				original_tag = MDQ
 				check_variable = {
 					var = MDQ_The_Legend_of_the_Three_Musketeers_industrial_capacity_factory
 					value = 0
-					compare = less_than_or_equals
+					compare = less_than
 				}
 		   	}
 			visible = {
-				has_completed_focus = MDQ_South_wing_castle
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_South_wing_castle
+				}
 				original_tag = MDQ
 				check_variable = {
 					var = MDQ_The_Legend_of_the_Three_Musketeers_industrial_capacity_factory
 					value = 0
-					compare = less_than_or_equals
+					compare = less_than
 				}
 			}
 			cancel_if_invalid = yes
@@ -466,7 +506,6 @@ MOT_Standpoint_decision_category ={
 			days_re_enable = 60
 			modifier = {
 				political_power_gain = -0.1
-				stability_weekly_factor = 0.02
 			}
 			remove_effect = {
 				add_to_variable = {MDQ_The_Legend_of_the_Three_Musketeers_industrial_capacity_factory = 0.05}
@@ -484,21 +523,27 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_Night_offensive
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Night_offensive
+				}
 				original_tag = MDQ
 				check_variable = {
 					var = MDQ_The_Legend_of_the_Three_Musketeers_production_factory_max_efficiency_factor
 					value = 0
-					compare = less_than_or_equals
+					compare = less_than
 				}
 		   	}
 			visible = {
-				has_completed_focus = MDQ_Night_offensive
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Night_offensive
+				}
 				original_tag = MDQ
 				check_variable = {
 					var = MDQ_The_Legend_of_the_Three_Musketeers_production_factory_max_efficiency_factor
 					value = 0
-					compare = less_than_or_equals
+					compare = less_than
 				}
 			}
 			cancel_if_invalid = yes
@@ -508,7 +553,6 @@ MOT_Standpoint_decision_category ={
 			days_re_enable = 60
 			modifier = {
 				political_power_gain = -0.1
-				stability_weekly_factor = 0.02
 			}
 			remove_effect = {
 				add_to_variable = {MDQ_The_Legend_of_the_Three_Musketeers_production_factory_max_efficiency_factor = 0.05}
@@ -526,21 +570,27 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_Train_militia
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Train_militia
+				}
 				original_tag = MDQ
 				check_variable = {
 					var = MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor
-					value = 0
-					compare = greater_than_or_equals
+					value = 0.05
+					compare = greater_than
 				}
 		   	}
 			visible = {
-				has_completed_focus = MDQ_Train_militia
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Train_militia
+				}
 				original_tag = MDQ
 				check_variable = {
 					var = MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor
 					value = 0
-					compare = greater_than_or_equals
+					compare = greater_than
 				}
 			}
 			cancel_if_invalid = yes
@@ -550,7 +600,6 @@ MOT_Standpoint_decision_category ={
 			days_re_enable = 60
 			modifier = {
 				political_power_gain = -0.1
-				stability_weekly_factor = 0.02
 			}
 			remove_effect = {
 				add_to_variable = {MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor = -0.05}
@@ -561,7 +610,61 @@ MOT_Standpoint_decision_category ={
 				}
 				custom_effect_tooltip = MDQ_dadaupa_War_decision_13_tooltip
 			}
-			
+		}
+		########清除盗宝团修正的决议
+		MDQ_dadaupa_War_decision_14 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Train_militia
+				}
+				original_tag = MDQ
+				check_variable = {
+					var = MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor
+					value = 0
+					compare = equals
+				}
+				check_variable = {
+					var = MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor
+					value = 0
+					compare = equals
+				}
+				check_variable = {
+					var = MDQ_The_Legend_of_the_Three_Musketeers_production_factory_max_efficiency_factor
+					value = 0
+					compare = equals
+				}
+		   	}
+			visible = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Train_militia
+				}
+				original_tag = MDQ
+				check_variable = {
+					var = MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor
+					value = 0
+					compare = equals
+				}
+				check_variable = {
+					var = MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor
+					value = 0
+					compare = equals
+				}
+				check_variable = {
+					var = MDQ_The_Legend_of_the_Three_Musketeers_production_factory_max_efficiency_factor
+					value = 0
+					compare = equals
+				}
+			}
+			cancel_if_invalid = yes
+			fire_only_once = yes
+			complete_effect ={
+				remove_dynamic_modifier = {modifier = MDQ_The_Legend_of_the_Three_Musketeers}
+			}
 		}
 		###加急训练部队
 		MDQ_dadaupa_War_decision_15 = {
@@ -569,7 +672,10 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_Train_militia
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Train_militia
+				}
 				original_tag = MDQ
 				has_manpower > 3000
 				has_equipment = {
@@ -577,7 +683,10 @@ MOT_Standpoint_decision_category ={
 				}
 		   	}
 			visible = {
-				has_completed_focus = MDQ_Train_militia
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Train_militia
+				}
 				original_tag = MDQ
 			}
 			fire_only_once = no
@@ -605,11 +714,17 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_White_sun_offensive
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_White_sun_offensive
+				}
 				original_tag = MDQ
 		   	}
 			visible = {
-				has_completed_focus = MDQ_White_sun_offensive
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_White_sun_offensive
+				}
 				original_tag = MDQ
 			}
 			fire_only_once = no
@@ -632,11 +747,17 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_Continue_attack
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Continue_attack
+				}
 				original_tag = MDQ
 		   	}
 			visible = {
-				has_completed_focus = MDQ_Continue_attack
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Continue_attack
+				}
 				original_tag = MDQ
 			}
 			fire_only_once = no
@@ -656,11 +777,17 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_Take_the_lead
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Take_the_lead
+				}
 				original_tag = MDQ
 		   	}
 			visible = {
-				has_completed_focus = MDQ_Take_the_lead
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Take_the_lead
+				}
 				original_tag = MDQ
 			}
 			fire_only_once = no
@@ -680,11 +807,17 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_Invisible_stab
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Invisible_stab
+				}
 				original_tag = MDQ
 		   	}
 			visible = {
-				has_completed_focus = MDQ_Invisible_stab
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Invisible_stab
+				}
 				original_tag = MDQ
 			}
 			fire_only_once = no
@@ -701,11 +834,17 @@ MOT_Standpoint_decision_category ={
 				original_tag = MDQ
 			}
 			available = {
-				has_completed_focus = MDQ_aerial_reconnaissance
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_aerial_reconnaissance
+				}
 				original_tag = MDQ
 		   	}
 			visible = {
-				has_completed_focus = MDQ_aerial_reconnaissance
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_aerial_reconnaissance
+				}
 				original_tag = MDQ
 			}
 			fire_only_once = no
@@ -819,6 +958,118 @@ MOT_Standpoint_decision_category ={
 				country_event = {id = MDQ_event.23 days = 1}
 			}
 		}
+		#####二阶段国策与雪山和骑士团的求援和交易
+		MDQ_dadaupa_War_decision_25 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Our_backer
+				}
+				original_tag = MDQ
+		   	}
+			visible = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Our_backer
+				}
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 30
+			days_remove = 5
+			days_re_enable = 60
+			remove_effect = {
+				MOT = {
+					country_event = {id = MDQ_event.6}
+				}
+			}
+		}
+		MDQ_dadaupa_War_decision_26 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Our_backer
+				}
+				original_tag = MDQ
+		   	}
+			visible = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Our_backer
+				}
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 20
+			days_remove = 20
+			days_re_enable = 20
+			complete_effect = {
+				clr_country_flag = MOT_Common_ui_button_is_cooling
+			}
+		}
+
+		MDQ_dadaupa_War_decision_27 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Our_backer
+				}
+				original_tag = MDQ
+		   	}
+			visible = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_Our_backer
+				}
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 30
+			days_remove = 5
+			days_re_enable = 60
+			remove_effect = {
+
+			}
+		}
+		###向阿贝多要饭
+		MDQ_dadaupa_War_decision_28 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_To_Abedo
+				}
+				original_tag = MDQ
+		   	}
+			visible = {
+				or = {
+					has_country_flag = MDQ_dadaupa_second_war_flag
+					has_completed_focus = MDQ_To_Abedo
+				}
+				original_tag = MDQ
+			}
+			fire_only_once = no
+			cost = 50
+			days_remove = 60
+			days_re_enable = 60
+			complete_effect = {
+				DSC = {
+                	country_event = {id = MDQ_event.9 days = 2}
+            	}
+			}
+		}
+
 
 }
 MDQ_ask_for_help_from_others_decision_category= {

@@ -17,7 +17,6 @@ country_event = {
 country_event = {
 	id = MDQ_event.2
 	immediate = {}
-	
 	title = MDQ_event.2.t
 	desc = MDQ_event.2.d
 	is_triggered_only =yes
@@ -63,9 +62,121 @@ news_event = {
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.5.a
+		
+	}
+	option = {
+		name = MDQ_event.5.b
+		
+	}
+}
+###事件名：向蒙德请求火炮援助
+country_event = {
+	id = MDQ_event.6
+	immediate = {}
+	title = MDQ_event.6.t
+	desc = MDQ_event.6.d
+	is_triggered_only =yes
+	fire_only_once = no
+	option = {
+		name = MDQ_event.6.a
+		ai_will_do = {
+			base = 3
+			modifier = {has_equipment = {bow_eq > 800} add = 2 factor = 2}
+		}
+		add_equipment_to_stockpile = {
+			type = bow_eq
+			amount = -800
+			producer = MOT
+		}
+		MDQ = {
+			country_event = {id = MDQ_event.7 days = 5}
+		}
+		
+	}
+	option = {
+		name = MDQ_event.6.b
+		ai_will_do = {
+			base = 3
+			modifier = {has_equipment = {bow_eq < 800} add = 1 factor = 2}
+			modifier = {has_equipment = {bow_eq > 200} add = 1 factor = 2}
+			modifier = {MDQ = {num_divisions > 20} factor = 0.75}
+			modifier = {MDQ = {num_divisions > 30} add = -2 factor = 0.75}
+		}
+		MDQ = {
+			country_event = {id = MDQ_event.8 days = 5}
+		}
+		add_equipment_to_stockpile = {
+			type = bow_eq
+			amount = -200
+			producer = MOT
+		}
+	}
+}
+###事件名：向蒙德请求火炮援助\回复1
+country_event = {
+	id = MDQ_event.7
+	immediate = {}
+	title = MDQ_event.7.t
+	desc = MDQ_event.7.d
+	is_triggered_only =yes
+	fire_only_once = no
+	option = {
+		name = MDQ_event.7.a
+		add_equipment_to_stockpile = {
+			type = bow_eq
+			amount = 800
+			producer = MOT
+		}
+	}
+}
+###事件名：向蒙德请求火炮援助\回复2
+country_event = {
+	id = MDQ_event.8
+	immediate = {}
+	title = MDQ_event.8.t
+	desc = MDQ_event.8.d
+	is_triggered_only =yes
+	fire_only_once = no
+	option = {
+		name = MDQ_event.8.a
+		add_equipment_to_stockpile = {
+			type = bow_eq
+			amount = 200
+			producer = MOT
+		}
 	}
 }
 
+####向雪山请求资源援助
+country_event = {
+	id = MDQ_event.9
+	immediate = {}
+	title = MDQ_event.9.t
+	desc = MDQ_event.9.d
+	is_triggered_only =yes
+	fire_only_once = no
+	option = {
+		name = MDQ_event.9.a
+		MDQ = {
+			country_event = {id = MDQ_event.10 days = 2}
+		}
+		give_resource_rights = { receiver = MDQ state = 39 }
+	}
+}
+####向雪山请求资源援助\回复
+country_event = {
+	id = MDQ_event.10
+	immediate = {}
+	title = MDQ_event.10.t
+	desc = MDQ_event.10.d
+	is_triggered_only =yes
+	fire_only_once = no
+	option = {
+		name = MDQ_event.10.a
+		
+	}
+}
+#################################################################################################
 #######女仆修行事件链
 ###事件名：来自[MDQ.getname]求助：军区请求骑士团帮助
 country_event = {

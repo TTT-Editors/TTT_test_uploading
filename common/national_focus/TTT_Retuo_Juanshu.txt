@@ -830,41 +830,41 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = RTG_yu_anarchist_tanpan
-		icon = GFX_goal_RTG_yu_anarchist_tanpan
-		cost = 7
-		ai_will_do = {
-		    base = 20
-		}
-		prerequisite = {
-			focus = RTG_diandengren
-		}
-		x = 19
-		y = 11
-		bypass = {
-		   OR={
-				ANG = {exists = no}
-			is_in_faction_with = ANG
-			has_war_with = ANG
-			}
-	    }
-		cancel = { 
-			OR={
-				ANG = {exists = no}
-			    is_in_faction_with = ANG
-			    has_war_with = ANG
-			} 
-			}
-		completion_reward = {
-		    ANG = {
-			    country_event = {
-				    id = retuo_juanshu.8
-					hours = 12
-				}
-			}
-		}
-	}
+	#focus = {
+	#	id = RTG_yu_anarchist_tanpan
+	#	icon = GFX_goal_RTG_yu_anarchist_tanpan
+	#	cost = 7
+	#	ai_will_do = {
+	#	    base = 20
+	#	}
+	#	prerequisite = {
+	#		focus = RTG_diandengren
+	#	}
+	#	x = 19
+	#	y = 11
+	#	bypass = {
+	#	   OR={
+	#			ANG = {exists = no}
+	#		is_in_faction_with = ANG
+	#		has_war_with = ANG
+	#		}
+	 #   }
+	#	cancel = { 
+	#		OR={
+	#			ANG = {exists = no}
+	#		    is_in_faction_with = ANG
+	#		    has_war_with = ANG
+	#		} 
+	#		}
+	#	completion_reward = {
+	#	    ANG = {
+	#		    country_event = {
+	#			    id = retuo_juanshu.8
+	#				hours = 12
+	#			}
+	#		}
+	#	}
+	#}
 	
 	focus = {
 		id = RTG_yu_xianren_jiaoshe
@@ -876,7 +876,7 @@ focus_tree = {
 		prerequisite = {
 			focus = RTG_diandengren
 		}
-		x = 23
+		x = 21
 		y = 11
 		bypass = {
 		   OR={
@@ -909,9 +909,9 @@ focus_tree = {
 		prerequisite = {
 			focus = RTG_yu_xianren_jiaoshe
 		}
-		prerequisite = {
-			focus = RTG_yu_anarchist_tanpan
-		}
+		#prerequisite = {
+		#	focus = RTG_yu_anarchist_tanpan
+		#}
 		x = 21
 		y = 12
 		bypass = {
@@ -1132,7 +1132,17 @@ focus_tree = {
 	        } 
 		}
 		completion_reward = {
-		    Liyue_rebirth = yes
+		Liyue_rebirth = yes
+		set_variable = { LYU_Selected_Area_bianliang = 1 }
+		set_variable = { global.Liyue_dixiashuize_var = 21  }
+		set_variable = { global.Liyue_jushenyandong_var = 13  }
+		set_variable = { global.Liyue_juyuanzhukuangqu_var = 40 }
+		set_variable = { global.Liyue_linshizhukuangdao_var = 60 }
+		set_global_flag = linshizhuguangdao_hazard_level1  #临时主矿道 
+		set_global_flag = juyuanzhukuangqu_hazard_level2   #巨渊主矿区 
+		set_global_flag = dixiashuize_hazard_level3        #地下水泽 
+		set_global_flag = jusheyandong_hazard_level3       #巨蛇岩洞
+		unlock_decision_category_tooltip = cengyanjuyuankaifaxiangmu
 		}
 	}
 	

@@ -5,34 +5,48 @@ Turning_Point_check_country = {
         limit = {
             exists = yes
             is_ai = yes
-            is_major = yes
-            NOT = {
-                tag = CEL
-                tag = CUG
-                tag = EKM
+            OR = {
+                AND = {
+                    is_major = yes
+                    NOT = {
+                        tag = CEL
+                        tag = CUG
+                        tag = EKM
+                        tag = EMP
+                        tag = GAP
+                        tag = TRM
+                        tag = HIL
+                        tag = SRI
+                    }
+                }
                 tag = EMP
-                tag = GAP
-                tag = TRM
-                tag = HIL
-                tag = SRI
             }
+            
         }
         add_to_array = { global.turning_point_country_major = THIS }
     }
+#    SUM = {
+#        add_to_array = { global.turning_point_country_major = THIS }
+#    }
     every_country = {
         limit = {
             exists = yes
             is_ai = yes
-            is_major = no
-            NOT = {
-                tag = CEL
-                tag = CUG
-                tag = EKM
+            OR = {
+                AND = {
+                    is_major = no
+                    NOT = {
+                        tag = CEL
+                        tag = CUG
+                        tag = EKM
+                        tag = EMP
+                        tag = GAP
+                        tag = TRM
+                        tag = HIL
+                        tag = SRI
+                    }
+                }
                 tag = EMP
-                tag = GAP
-                tag = TRM
-                tag = HIL
-                tag = SRI
             }
         }
         add_to_array = { global.turning_point_country_normal = THIS }

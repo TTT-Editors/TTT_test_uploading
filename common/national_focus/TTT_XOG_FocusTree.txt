@@ -37,7 +37,18 @@ focus_tree = {
 			focus = XOG_1
 		}
 		completion_reward = {
-		
+			country_event = {
+				id = XOG_events.103
+				days = 7
+			}
+			country_event = {
+				id = XOG_events.101
+				days = 17
+			}
+			country_event = {
+				id = XOG_events.102
+				days = 35
+			}
 		}	
 	}
 	focus = { #战争的脚步
@@ -361,7 +372,7 @@ focus_tree = {
 			NOT = { country_exists = ZDG }
 		}
 		completion_reward = {
-			country_event = { days = 7  id = XOG_events.1  }
+			country_event = { days = 7  id = XOG_events.105  }
 		}	
 	}
 
@@ -380,9 +391,6 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = XOG_11
-		}
-        bypass = { 
-			has_country_flag =  XOG_Choice_XRG
 		}
 		mutually_exclusive= {
 			focus = XOG_14
@@ -412,9 +420,6 @@ focus_tree = {
 		prerequisite = {
 			focus = XOG_11
 		}
-        bypass = { 
-			has_country_flag =  XOG_Choice_Ruotuo
-		}
 		mutually_exclusive= {
 			focus = XOG_13
 		}
@@ -425,6 +430,7 @@ focus_tree = {
 			focus = XOG_16
 		}
 		completion_reward = {
+			country_event = { id = XOG_events.113 }
 		}	
 	}
 	focus = { #契约之璃月
@@ -443,9 +449,6 @@ focus_tree = {
 		prerequisite = {
 			focus = XOG_11
 		}
-		bypass = {
-			has_country_flag =  XOG_Choice_Ganyu
-		}
 		mutually_exclusive= {
 			focus = XOG_13
 		}
@@ -456,6 +459,9 @@ focus_tree = {
 			focus = XOG_16
 		}
 		completion_reward = {
+			country_event = {
+				id = XOG_events.114
+			}
 		}	
 	}
 	focus = { #四面皆敌
@@ -471,9 +477,6 @@ focus_tree = {
 		available = {
 			has_country_flag =  XOG_Choice_XOG
 		}
-		bypass = {
-			has_country_flag =  XOG_Choice_XOG
-		}
 		prerequisite = {
 			focus = XOG_11
 		}
@@ -487,6 +490,9 @@ focus_tree = {
 			focus = XOG_15
 		}
 		completion_reward = {
+			country_event = {
+				id = XOG_events.116
+			}
 		}	
 	}
 	focus = { #仙治的璃月
@@ -503,6 +509,7 @@ focus_tree = {
 			focus = XOG_13
 		}
 		completion_reward = {
+			add_ideas = XOG_immortal_rules
 		}	
 	}
 	focus = { #守护和平
@@ -519,6 +526,21 @@ focus_tree = {
 			focus = XOG_17
 		}
 		completion_reward = {
+			custom_effect_tooltip = GAME_OVER_TT
+			custom_effect = {
+				XRG = { annex_country = { target = XOG transfer_troops = yes } }
+			}
+			hidden_effect = {
+				XRG = {
+					country_event = {
+						id = XOG_events.115
+					}
+				}
+				if = {
+					limit = { XOG = { is_ai = no } }
+					XRG = { change_tag_from = ROOT }
+				}
+			}
 		}	
 	}
 	focus = { #经济合作
@@ -568,6 +590,7 @@ focus_tree = {
 			focus = XOG_14
 		}
 		completion_reward = {
+			add_ideas = XOG_retuo_rules
 		}	
 	}
 	focus = { #和解
@@ -584,6 +607,13 @@ focus_tree = {
 			focus = XOG_21
 		}
 		completion_reward = {
+			custom_effect_tooltip = GAME_OVER_TT
+			RTG = {
+				country_event = {
+					id = XOG_events.104
+					days = 2
+				}
+			}
 		}	
 	}
 	focus = { #扩大交流
@@ -632,6 +662,7 @@ focus_tree = {
 			focus = XOG_15
 		}
 		completion_reward = {
+			add_ideas = XOG_people_rules
 		}	
 	}
 	focus = { #恢复秩序
@@ -648,6 +679,13 @@ focus_tree = {
 			focus = XOG_25
 		}
 		completion_reward = {
+			custom_effect_tooltip = GAME_OVER_TT
+			LYU = {
+				country_event = {
+					id = XOG_events.100
+					days = 2
+				}
+			}
 		}	
 	}
 	focus = { #重返璃月港
@@ -664,6 +702,9 @@ focus_tree = {
 			focus = XOG_16
 		}
 		completion_reward = {
+			country_event = {
+				id = XOG_events.118
+			}
 		}	
 	}
 	focus = { #魔神战争的经验
@@ -901,7 +942,12 @@ focus_tree = {
 			focus = XOG_42
 		}
 		completion_reward = {
-			custom_effect_tooltip = XOG_39_tt
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = XOG_39ideas_tooltip
+					remove_idea = XOG_4ideas_tooltip
+				}
+			}
 			hidden_effect = {
 				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
 				add_to_variable = { XOG_army_attack_factor = 0.05 }
@@ -922,7 +968,12 @@ focus_tree = {
 			focus = XOG_39
 		}
 		completion_reward = {
-			custom_effect_tooltip = XOG_40_tt
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = XOG_40ideas_tooltip
+					remove_idea = XOG_39ideas_tooltip
+				}
+			}
 			hidden_effect = {
 				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
 				add_to_variable = { XOG_max_command_power = 50 }
@@ -945,7 +996,12 @@ focus_tree = {
 			focus = XOG_39
 		}
 		completion_reward = {
-            custom_effect_tooltip = XOG_41_tt
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = XOG_41ideas_tooltip
+					remove_idea = XOG_39ideas_tooltip
+				}
+			}
 			hidden_effect = {
 				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
 				add_to_variable = { XOG_training_time_army_factor = -0.20 }
@@ -973,7 +1029,12 @@ focus_tree = {
 			focus = XOG_39
 		}
 		completion_reward = {
-			custom_effect_tooltip = XOG_42_tt
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = XOG_42ideas_tooltip
+					remove_idea = XOG_4ideas_tooltip
+				}
+			}
 			hidden_effect = {
 				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
 				add_to_variable = { XOG_army_defence_factor = 0.05}
@@ -994,7 +1055,12 @@ focus_tree = {
 			focus = XOG_42
 		}
 		completion_reward = {
-			custom_effect_tooltip = XOG_43_tt
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = XOG_43ideas_tooltip
+					remove_idea = XOG_42ideas_tooltip
+				}
+			}
 			hidden_effect = {
 				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
 				add_to_variable = { XOG_land_reinforce_rate = 0.03 }
@@ -1016,7 +1082,12 @@ focus_tree = {
 			focus = XOG_42
 		}
 		completion_reward = {
-			custom_effect_tooltip = XOG_44_tt
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = XOG_44ideas_tooltip
+					remove_idea = XOG_42ideas_tooltip
+				}
+			}
 			hidden_effect = {
 				add_dynamic_modifier = { modifier = XOG_Qianyan_Army }
 				add_to_variable = { XOG_experience_gain_army_unit_factor = 0.20 }

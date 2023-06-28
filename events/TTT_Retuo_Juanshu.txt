@@ -291,23 +291,7 @@ country_event = {
 		}
 		set_country_flag = clique_in_Retuo_faction
 		ai_chance = {
-			base = 2
-			modifier = {
-			    add = -1
-				XRG = { has_country_flag = clique_in_Retuo_faction }
-				ANG = { has_country_flag = clique_in_Retuo_faction }
-				has_country_leader = {
-                    character = LYU_Yanfei
-                    ruling_only = yes
-                } 
-			}
-			modifier = {
-			    factor = 0
-			    OR = {
-				    XRG = { NOT = { has_country_flag = clique_in_Retuo_faction } }
-				    ANG = { NOT = { has_country_flag = clique_in_Retuo_faction } }
-				}
-			}
+			base = 10
 		}
 	}
 	option = {
@@ -331,7 +315,7 @@ country_event = {
 		    }
 		}
 		ai_chance = {
-			base = 2
+			base = 35
 		}
 	}
 	option = {
@@ -352,20 +336,31 @@ country_event = {
 			}
 		    country_event = {
 			    id = retuo_juanshu.12
-				hours = 12
+				hours = 35
 			}
 		}
 		ai_chance = {
-			base = 6
-			modifier = {
-			    add = 1
-				XRG = { has_country_flag = clique_in_Retuo_faction }
-				ANG = { has_country_flag = clique_in_Retuo_faction }
-				has_country_leader = {
-                    character = LYU_Yanfei
-                    ruling_only = yes
-                } 
-		    }
+			base = 35
+		}
+	}
+	option = {
+	    name = retuo_juanshu.11.e
+		add_opinion_modifier = {
+			target = RTG
+		    modifier = medium_decrease
+	    }
+		RTG = {
+		    add_opinion_modifier = {
+			    target = LYU
+				modifier = medium_decrease
+			}
+		    country_event = {
+			    id = retuo_juanshu.10
+				hours = 35
+			}
+		}
+		ai_chance = {
+			base = 20
 		}
 	}
 }

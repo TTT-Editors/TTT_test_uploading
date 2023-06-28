@@ -52,14 +52,35 @@ Turning_Point_THIS_set_event = {
         value = 1
     }
     for_loop_effect = {
-        start = -1
-        end = 100
+        start = 0
+        end = global.turning_point_event_array^num
         set_variable = {
             var = global.turning_point_event_id^v
             value = THIS.turning_point_event_id^v
         }
     }
-    
+}
+Turning_Point_choose_event = {
+    set_variable = {
+        var = global.turning_point_event_index
+        value = turning_point_event_array_index
+    }
+    set_variable = {
+        var = global.turning_point_event_index_index
+        value = global.turning_point_event_id^turning_point_event_array_index
+    }
+}
+Turning_Point_clear_event = {
+    set_variable = {
+        var = global.turning_point_event_index
+        value = 114514
+    }
+    set_variable = {
+        var = global.turning_point_event_index_index
+        value = 1972
+    }
+#    clear_variable = global.turning_point_event_index
+#    clear_variable = global.turning_point_event_index_index
 }
 Turning_Point_restart_for_all_country = {
     every_country = {

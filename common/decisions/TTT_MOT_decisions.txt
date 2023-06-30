@@ -35,6 +35,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = TWL
         }
         days_re_enable = 30
 		days_remove = 10
@@ -64,6 +65,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = TWL
         }
         days_re_enable = 30
 		days_remove = 10
@@ -100,6 +102,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = TWL
         }
         days_re_enable = 30
 		days_remove = 10
@@ -134,6 +137,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = MDQ
         }
         days_re_enable = 30
 		days_remove = 10
@@ -162,6 +166,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = MDQ
         }
         days_re_enable = 30
 		days_remove = 10
@@ -197,6 +202,7 @@ MOT_Political_decision_category = {
         }
         visible = {
             has_completed_focus = MOT_tree_0_06
+            country_exists = MDQ
             has_country_flag = MOT_open_gui_map1
         }
         days_re_enable = 30
@@ -232,6 +238,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = FXE
         }
         days_re_enable = 30
 		days_remove = 10
@@ -260,6 +267,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = FXE
         }
         days_re_enable = 30
 		days_remove = 10
@@ -296,6 +304,7 @@ MOT_Political_decision_category = {
         visible = {
             has_completed_focus = MOT_tree_0_06
             has_country_flag = MOT_open_gui_map1
+            country_exists = FXE
         }
         days_re_enable = 30
 		days_remove = 10
@@ -331,6 +340,10 @@ MOT_Political_decision_category = {
         visible = {
             has_country_flag = MOT_open_gui_map1
             has_completed_focus = MOT_tree_0_11
+        }
+        ai_will_do = {
+            base = 10
+            factor = 10
         }
 		days_remove = 30
         fire_only_once = yes
@@ -385,6 +398,10 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             has_completed_focus = MOT_tree_0_15
         }
+        ai_will_do = {
+            base = 10
+            factor = 10
+        }
 		days_remove = 30
         fire_only_once = yes
         cost = 50
@@ -432,7 +449,6 @@ MOT_Political_decision_category = {
         available = {
             hidden_trigger = {
                 ##goal   
-                has_completed_focus = MOT_tree_0_09
                 check_variable = {
                     var = MOT_Progress_num
                     value = 31
@@ -453,21 +469,21 @@ MOT_Political_decision_category = {
         is_good = no
         fire_only_once =yes
         timeout_effect = {
-            ###失败结果未写
-            hidden_effect = {
-                set_temp_variable = { MOT_m = 1 }
-                MOT_Political_overtime_mission = yes
-            }
-            
+            add_stability = -0.05
+            add_war_support = -0.05
+            activate_mission = MOT_Progress_decision_mission_01     
         }
         complete_effect = {
             hidden_effect ={
+                ##减进度值
                 add_to_variable = {MOT_Progress_num = -30}
                 add_to_variable = {MOT_Progress_num_localization = -30}
-                Clear_Progress_num =yes
+                ###奖励
                 TWL = {
                     add_war_support = 0.05
                 }
+
+                ##显示任务完成
                 set_temp_variable = { MOT_m = 1 }
                 MOT_Political_complete_mission = yes
             }
@@ -486,7 +502,6 @@ MOT_Political_decision_category = {
                         is_ai = yes
                     }
                 }
-                has_completed_focus = MOT_tree_0_10
                 check_variable = {
                     var = MOT_Progress_num
                     value = 31
@@ -500,7 +515,6 @@ MOT_Political_decision_category = {
                         is_ai = no
                     }
                 }
-                has_completed_focus = MOT_tree_0_10
                 check_variable = {
                     var = MOT_Progress_num
                     value = 31
@@ -525,14 +539,14 @@ MOT_Political_decision_category = {
         is_good = no
         fire_only_once =yes
         timeout_effect = {
-            ###失败结果未写
-            set_temp_variable = { MOT_m = 2 }
-            MOT_Political_overtime_mission = yes
+            add_stability = -0.05
+            add_war_support = -0.05
+            activate_mission = MOT_Progress_decision_mission_02
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
             add_to_variable = {MOT_Progress_num_localization = -30}
-            Clear_Progress_num =yes
+            
             set_temp_variable = { MOT_m = 2 }
             MOT_Political_complete_mission = yes
         }
@@ -575,7 +589,6 @@ MOT_Political_decision_category = {
                 }
                 check_variable = { global.MOT_naionalfocus_mission^2 = 3}
             }
-            custom_effect_tooltip = MOT_Progress_decision_mission_03_tooltip
         }
         activation = {
             has_completed_focus = MOT_tree_0_10
@@ -588,14 +601,14 @@ MOT_Political_decision_category = {
         is_good = no
         fire_only_once =yes
         timeout_effect = {
-            ###失败结果未写
-            set_temp_variable = { MOT_m = 3 }
-            MOT_Political_overtime_mission = yes
+            add_stability = -0.05
+            add_war_support = -0.05
+            activate_mission = MOT_Progress_decision_mission_03
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -50}
             add_to_variable = {MOT_Progress_num_localization = -50}
-            Clear_Progress_num =yes
+            
             set_temp_variable = { MOT_m = 3 }
             MOT_Political_complete_mission = yes
         }
@@ -609,14 +622,12 @@ MOT_Political_decision_category = {
             tag = MOT
         }
         available = {
-            has_completed_focus =MOT_tree_0_13
             check_variable = {
                 var = MOT_Progress_num
                 value = 31
                 compare = greater_than_or_equals
             }
             check_variable = { global.MOT_naionalfocus_mission^0 = 4}
-            custom_effect_tooltip = MOT_Progress_decision_mission_04_tooltip
         }
         activation = {
             has_completed_focus = MOT_tree_0_12
@@ -629,14 +640,14 @@ MOT_Political_decision_category = {
         is_good = no
         fire_only_once =yes
         timeout_effect = {
-            ###失败结果未写
-            set_temp_variable = { MOT_m = 6 }
-            MOT_Political_overtime_mission = yes
+            add_stability = -0.05
+            add_war_support = -0.05
+            activate_mission = MOT_Progress_decision_mission_04
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
             add_to_variable = {MOT_Progress_num_localization = -30}
-            Clear_Progress_num =yes
+            
             set_temp_variable = { MOT_m = 6 }
             MOT_Political_complete_mission = yes
         }
@@ -646,14 +657,12 @@ MOT_Political_decision_category = {
             tag = MOT
         }
         available = {
-            has_completed_focus =MOT_tree_0_14
             check_variable = {
                 var = MOT_Progress_num
                 value = 31
                 compare = greater_than_or_equals
             }
             check_variable = { global.MOT_naionalfocus_mission^1 = 4}
-            custom_effect_tooltip = MOT_Progress_decision_mission_05_tooltip
         }
         activation = {
             has_completed_focus = MOT_tree_0_13
@@ -666,14 +675,13 @@ MOT_Political_decision_category = {
         is_good = no
         fire_only_once =yes
         timeout_effect = {
-            ###失败结果未写
-            set_temp_variable = { MOT_m = 7 }
-            MOT_Political_overtime_mission = yes
+            add_stability = -0.05
+            add_war_support = -0.05
+            activate_mission = MOT_Progress_decision_mission_05
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
-            add_to_variable = {MOT_Progress_num_localization = -30}
-            Clear_Progress_num =yes
+            add_to_variable = {MOT_Progress_num_localization = -30}        
             TWL = {
                 add_war_support = 0.05
             }
@@ -686,14 +694,12 @@ MOT_Political_decision_category = {
             tag = MOT
         }
         available = {
-            has_completed_focus =MOT_tree_0_15
             check_variable = {
                 var = MOT_Progress_num
                 value = 31
                 compare = greater_than_or_equals
             }
             check_variable = { global.MOT_naionalfocus_mission^2 = 4}
-            custom_effect_tooltip = MOT_Progress_decision_mission_06_tooltip
         }
         activation = {
             has_completed_focus = MOT_tree_0_14
@@ -706,14 +712,14 @@ MOT_Political_decision_category = {
         is_good = no
         fire_only_once =yes
         timeout_effect = {
-            ###失败结果未写
-            set_temp_variable = { MOT_m = 8 }
-            MOT_Political_overtime_mission = yes
+            add_stability = -0.05
+            add_war_support = -0.05
+            activate_mission = MOT_Progress_decision_mission_06
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
             add_to_variable = {MOT_Progress_num_localization = -30}
-            Clear_Progress_num =yes
+            
             TWL = {
                 add_war_support = 0.05
             }

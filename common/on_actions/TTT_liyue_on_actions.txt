@@ -110,9 +110,10 @@ on_actions = {
 		        controls_state = 156
 				}
 				add_to_variable = { global.Liyue_linshizhukuangdao_var = -2 }
-				set_variable = {
-                var = LYU_Exploration_progress_var
-                value = global.Liyue_linshizhukuangdao_var				
+				clamp_variable = {
+	            var = global.Liyue_linshizhukuangdao_var
+	            min = 0
+	            max = 100
                 }
 			}
         }
@@ -130,7 +131,12 @@ on_actions = {
 		        controls_state = 207
 		        controls_state = 156
 				}
-				add_to_variable = { global.Liyue_juyuanzhukuangqu_var = -4 }				
+				add_to_variable = { global.Liyue_juyuanzhukuangqu_var = -4 }
+                clamp_variable = {
+	            var = global.Liyue_juyuanzhukuangqu_var
+	            min = 0
+	            max = 100
+                }				
 			}
 			else_if = {
 			limit = {
@@ -141,9 +147,14 @@ on_actions = {
 		        controls_state = 209
 		        controls_state = 206
 		        controls_state = 207
-		        controls_state = 156				 
+		        controls_state = 156				
 			}
 			add_to_variable = { global.Liyue_juyuanzhukuangqu_var = -2 }
+			clamp_variable = {
+	            var = global.Liyue_juyuanzhukuangqu_var
+	            min = 0
+	            max = 100
+                }
 		    }
         }
 	}
@@ -151,7 +162,8 @@ on_actions = {
         effect = {
 		    #地下水泽
 			if = {
-				limit = { has_global_flag = dixiashuize_hazard_level3 
+				limit = { 
+				has_global_flag = dixiashuize_hazard_level3 
 				controls_state = 155
 		        controls_state = 205
 		        controls_state = 208
@@ -159,8 +171,14 @@ on_actions = {
 		        controls_state = 206
 		        controls_state = 207
 		        controls_state = 156
+				check_variable = { global.Liyue_dixiashuize_var > 0 }
 				}
-				add_to_variable = { global.Liyue_linshizhukuangdao_var = -6 }				
+				add_to_variable = { global.Liyue_dixiashuize_var = -6 }
+                clamp_variable = {
+	            var = global.Liyue_dixiashuize_var
+	            min = 0
+	            max = 100
+                }				
 			}
 			else_if = {
 			limit = {
@@ -172,8 +190,14 @@ on_actions = {
 		        controls_state = 206
 		        controls_state = 207
 		        controls_state = 156
+				check_variable = { global.Liyue_dixiashuize_var > 0 }
 			}
-			add_to_variable = { global.Liyue_linshizhukuangdao_var = -4  }
+			add_to_variable = { global.Liyue_dixiashuize_var = -4  }
+			clamp_variable = {
+	            var = global.Liyue_dixiashuize_var
+	            min = 0
+	            max = 100
+                }
 		    }
 			else_if = {
 			limit = {
@@ -185,8 +209,14 @@ on_actions = {
 		        controls_state = 206
 		        controls_state = 207
 		        controls_state = 156
+				check_variable = { global.Liyue_dixiashuize_var > 0 }
 			}
-			add_to_variable = { global.Liyue_linshizhukuangdao_var = -2  }
+			add_to_variable = { global.Liyue_dixiashuize_var = -2  }
+			clamp_variable = {
+	            var = global.Liyue_dixiashuize_var
+	            min = 0
+	            max = 100
+                }
 		    }
         }
 	}
@@ -201,9 +231,14 @@ on_actions = {
 		        controls_state = 209
 		        controls_state = 206
 		        controls_state = 207
-		        controls_state = 156
+		        controls_state = 156				
 				}
-				add_to_variable = { global.Liyue_jushenyandong_var = -6 }				
+				add_to_variable = { global.Liyue_jushenyandong_var = -6 }
+                clamp_variable = {
+	            var = global.Liyue_jushenyandong_var
+	            min = 0
+	            max = 100
+                }				
 			}
 			else_if = {
 			limit = {
@@ -214,9 +249,14 @@ on_actions = {
 		        controls_state = 209
 		        controls_state = 206
 		        controls_state = 207
-		        controls_state = 156				 
+		        controls_state = 156               				
 			}
 			add_to_variable = { global.Liyue_jushenyandong_var = -4 }
+			clamp_variable = {
+	            var = global.Liyue_jushenyandong_var
+	            min = 0
+	            max = 100
+                }
 		    }
 			else_if = {
 			limit = {
@@ -227,9 +267,15 @@ on_actions = {
 		        controls_state = 209
 		        controls_state = 206
 		        controls_state = 207
-		        controls_state = 156				 
+		        controls_state = 156
+                check_variable = { global.Liyue_jushenyandong_var > 0 }				
 			}
 			add_to_variable = { global.Liyue_jushenyandong_var = -2 }
+			clamp_variable = {
+	            var = global.Liyue_jushenyandong_var
+	            min = 0
+	            max = 100
+                }
 		    }
         }
 	}

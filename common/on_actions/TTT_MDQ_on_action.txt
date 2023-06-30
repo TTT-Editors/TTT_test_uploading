@@ -6,6 +6,7 @@ on_actions = {
                     ROOT = {tag = MDQ}
                     FROM = {tag = QQR}
                 }
+                news_event = {id =MDQ_event.3  days = 1}
                 country_event = {id = MDQ_event.99 days = 3}
             }
         }
@@ -15,6 +16,7 @@ on_actions = {
                     ROOT = {tag = QQR}
                     FROM = {tag = MDQ}
                 }
+                news_event = {id = MDQ_event.26 days = 1}
                 news_event = {id =MDQ_event.98 days = 3}
                 MOT = {
                     country_event = {id = MDQ_event.97 days = 5}
@@ -39,37 +41,5 @@ on_actions = {
                 add_to_variable = {global.MDQ_abandon_num = -2}
             }
         }
-    }
-    on_state_control_changed = { 
-        effect = {
-            if = {
-                limit = {
-                    MDQ ={
-                        has_war_with = QQR
-                        has_country_flag = MDQ_dadaupa_War_flag
-                    }
-                    ROOT = {tag = QQR}
-                    FROM = {tag = MDQ}
-                    FROM.FROM = {
-						state = 282
-					}
-                }
-                add_to_variable = {global.MDQ_abandon_num = -10}
-            }
-            if = {
-                limit = {
-                    MDQ ={
-                        has_war_with = QQR
-                        has_country_flag = MDQ_dadaupa_War_flag
-                    }
-                    ROOT = {tag = QQR}
-                    FROM = {tag = MDQ}
-                    FROM.FROM = {
-						state = 399
-					}
-                }
-                add_to_variable = {global.MDQ_abandon_num = -10}
-            }
-        } 
     }
 }

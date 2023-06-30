@@ -40,6 +40,7 @@ MOT_Standpoint_decision_category ={
 					transfer_state = 400
 					transfer_state = 402
 					transfer_state = 283
+					transfer_state = 284
 					load_oob = "QQR"
 				}
 			}
@@ -93,6 +94,7 @@ MOT_Standpoint_decision_category ={
                 target = QQR
                 type = annex_everything
             }
+			news_event = {id = MDQ_event.1 days = 1}
             add_named_threat = { 
                 threat = 1.8
                 name = MDQ_dadaupa_War
@@ -177,6 +179,7 @@ MOT_Standpoint_decision_category ={
 						}
 						remove_ideas = MDQ_Endless_battle_4
 					}
+					news_event = {id = MDQ_event.25 days = 1}
 				}
 				white_peace = {
 					tag = QQR
@@ -372,10 +375,6 @@ MOT_Standpoint_decision_category ={
 			fire_only_once = yes
 			remove_effect = {
 				leave_faction = yes
-				news_event = {
-					id = MDQ_event.5
-					days = 3
-				}
             	declare_war_on = {
 					target = QQR
 					type = annex_everything
@@ -384,7 +383,6 @@ MOT_Standpoint_decision_category ={
 					threat = 1
 					name = MDQ_dadaupa_War
 				}
-				country_event = {id = MDQ_event.1 days = 3}
 			}
 		}
 		###开局向骑士团请求援助，触发女仆事件链
@@ -433,10 +431,16 @@ MOT_Standpoint_decision_category ={
 			cancel_if_invalid = yes
 			fire_only_once = no
 			cost = 100
-			days_remove = 70
-			days_re_enable = 210
-			modifier = {
-				war_support_factor = 0.03
+			days_remove = 14
+			days_re_enable = 70
+			complete_effect ={
+				add_to_variable = {global.MDQ_abandon_num = 20}
+				custom_effect_tooltip = MDQ_dadaupa_War_decision_10_tooltip
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = -500
+					producer = MDQ
+				}
 			}
 		}
 

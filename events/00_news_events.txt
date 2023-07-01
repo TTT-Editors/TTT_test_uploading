@@ -1,4 +1,5 @@
 add_namespace = global_news
+add_namespace = occupation_news
 
 #??????
 news_event = {
@@ -609,4 +610,76 @@ news_event = {
     option = {
         name = global_news.46.a 
     } 
+}
+
+############################################################################################################################################################################
+
+ #####    #####   #####  #     #  ######    #####   #######  #####   #####   #     #
+#     #  #       #       #     #  #     #  #     #     #       #    #     #  ##    #
+#     #  #       #       #     #  #     #  #     #     #       #    #     #  # #   #
+#     #  #       #       #     #  ######   #######     #       #    #     #  #  #  #
+#     #  #       #       #     #  #        #     #     #       #    #     #  #   # #
+#     #  #       #       #     #  #        #     #     #       #    #     #  #    ##
+ #####    #####   #####   #####   #        #     #     #     #####   #####   #     #
+
+############################################################################################################################################################################
+
+#Good Retuo Occupies Liyue Harbor
+news_event = {
+	id = occupation_news.1
+	title = occupation_news.1.t
+	desc = occupation_news.1.d
+	is_triggered_only = yes
+    picture= GFX_occupation_liyue_harbor
+    major = yes 
+	
+	#Victory
+	option = {
+		name = occupation_news.1.a
+		trigger = {
+			OR = {
+				tag = RTG
+				is_ally_with = RTG
+			}
+		}
+	}
+	
+	#Bad News
+	option = {
+		name = occupation_news.1.b
+		trigger = {
+			NOT = {
+				OR = {
+					tag = RTG
+					is_ally_with = RTG
+				}
+			}
+			OR = {
+				is_nominate_liyue = yes
+				has_war_with = RTG
+				AND = {
+					ZDG = { exists = yes }
+					tag = SNE
+				}
+			}
+		}
+	}
+	
+	#Neutral
+	option = {
+		name = occupation_news.1.c
+		trigger = {
+			NOT = {
+				OR = {
+					is_ally_with = RTG
+					is_nominate_liyue = yes
+					has_war_with = RTG
+					AND = {
+						ZDG = { exists = yes }
+						tag = SNE
+					}
+				}
+			}
+		}
+	}
 }

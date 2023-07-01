@@ -63,14 +63,13 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-            effect_tooltip = {
-				swap_ideas = {
-					add_idea = CLSIA_dui_dangdiren_huaiyi4_toolip
-					remove_idea = CLSIA_dui_dangdiren_huaiyi_toolip
-				}
+            custom_effect_tooltip = ZDG_beifangyuanzhu_tt1
+			add_to_variable = { ZDG_dituwaigongchang = 1 }
+			add_to_variable = { ZDG_dituwaigongchang1 = 1 }
+			hidden_effect = {
+			add_offsite_building = { type = arms_factory level = 1 }
+			add_offsite_building = { type = industrial_complex level = 1 }
 			}
-			add_to_variable = { ZDG_industrial_capacity_factory = 0.10 }
-			add_to_variable = { ZDG_production_lack_of_resource_penalty_factor = -0.15 }
 		}
 		prerequisite = {
 			focus = ZDG_3
@@ -241,7 +240,30 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-
+            if = {
+				limit = {
+					NOT = { has_template = "愚人众先遣军" }
+				}		
+			division_template = {
+				name = "愚人众先遣军"
+				priority = 2
+				is_locked = yes
+				division_names_group = ZDG_INF_01
+				regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 1 y = 0 }
+				}
+		    }
+		}
+			222 = {
+				create_unit = {
+					division = "division_template = \"愚人众先遣军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = ZDG
+					count = 8
+				}
+			}
 		}
 		prerequisite = {
 			focus = ZDG_32
@@ -312,7 +334,10 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-
+            swap_ideas = {
+				add_idea = CLSIA_yuanzhengjun1
+				remove_idea = CLSIA_yuanzhengjun
+			}
 		}
 		prerequisite = {
 			focus = ZDG_13
@@ -334,7 +359,13 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = CLSIA_dui_dangdiren_huaiyi6_toolip
+					remove_idea = CLSIA_dui_dangdiren_huaiyi_toolip
+				}
+			}
+			add_to_variable = { ZDG_weekly_manpower = 1000 }
 		}
 		prerequisite = {
 			focus = ZDG_32
@@ -350,7 +381,10 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-
+            swap_ideas = {
+			add_idea = CLSIA_bujibuzu1
+			remove_idea = CLSIA_bujibuzu
+		    }
 		}
 		prerequisite = {
 			focus = ZDG_13
@@ -413,7 +447,7 @@ focus_tree = {
 		completion_reward = {
             add_stability = 0.10
 	        add_war_support = 0.10
-			124 = {
+			222 = {
 				add_resource = {
 					type = rubber
 					amount = 5
@@ -435,11 +469,7 @@ focus_tree = {
 					amount = 5
 				}
 				add_resource = {
-					type = woo 
-					amount = 5
-				}
-				add_resource = {
-					type = coal
+					type = wood 
 					amount = 5
 				}
 			}
@@ -562,7 +592,7 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-
+            army_experience = 50
 		}
 		prerequisite = {
 			focus = ZDG_2
@@ -578,7 +608,38 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-
+            if = {
+				limit = {
+					NOT = { has_template = "愚人众先遣军" }
+				}
+		division_template = {
+			name = "愚人众先遣军"
+			priority = 2
+			is_locked = yes
+			division_names_group = ZDG_INF_01
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				artillery_brigade = { x = 2 y = 0 }
+		
+			}
+			support = {
+				engineer = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+			}
+		}
+	}
+		222 = {
+		create_unit = {
+			division = "division_template = \"愚人众先遣军\" start_experience_factor = 0.4"
+			owner = ZDG
+			count = 3
+		    }
+	    }   
 		}
 		prerequisite = {
 			focus = ZDG_31
@@ -610,7 +671,10 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-
+            swap_ideas = {
+				add_idea = CLSIA_bujibuzu2
+				remove_idea = CLSIA_bujibuzu1
+			}
 		}
 		prerequisite = {
 			focus = ZDG_16

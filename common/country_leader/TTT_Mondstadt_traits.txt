@@ -511,13 +511,19 @@ leader_traits = {
 	BLL_Razor_traits = {
 		random = no
 		#-5%稳定，-10%日pp
-        ai_will_do = {
+		stability_factor = -0.05
+		political_power_cost = 0.1
+		ai_will_do = {
 			factor = 1
 		}
 	}
 	BLL_Razor2_traits = {
 		random = no
 		#+0.05日调和主义支持，+10%日pp，+10%战争中稳定
+		BLL_reformism_party_drift = 0.05
+		political_power_gain = 0.1
+		offensive_war_stability_factor = 0.1
+		defensive_war_stability_factor = 0.1
         ai_will_do = {
 			factor = 1
 		}
@@ -525,6 +531,7 @@ leader_traits = {
 	BLL_Razor3_traits = {
 		random = no
 		#-15%学说花费
+		land_doctrine_cost_factor = -0.15
         ai_will_do = {
 			factor = 1
 		}
@@ -532,6 +539,9 @@ leader_traits = {
 	BLL_Razor4_traits = {
 		random = no
 		#+0.2日陆军经验，+5%陆军攻击，+5%突破
+		experience_gain_army = 0.2
+		army_attack_factor = 0.05
+		breakthrough_factor = 0.05
         ai_will_do = {
 			factor = 1
 		}
@@ -539,6 +549,8 @@ leader_traits = {
 	BLL_Razor5_traits = {
 		random = no
 		#+10%陆军组织度恢复，+5%步兵防御
+		army_morale_factor = 0.1
+		army_defence_factor = 0.05
         ai_will_do = {
 			factor = 1
 		}
@@ -554,6 +566,9 @@ leader_traits = {
 	BLL_andrius_traits = {
 		random = no
 		#+20%稳定，+20%战争支持，+20%日pp（需求：狼王已苏醒）
+		stability_factor = 0.1
+		war_support_factor = 0.1
+		political_power_gain = 0.1
         ai_will_do = {
 			factor = 1
 		}
@@ -561,6 +576,10 @@ leader_traits = {
 	BLL_loert_traits = {
 		random = no
 		#+0.03日威权主义、专制主义支持，+15%政党对稳定度的修正，+5%战争支持
+		BLL_authoritarianism_party_drift = 0.03
+		BLL_despotism_party_drift= 0.03
+		party_popularity_stability_factor = 0.15
+		war_support_factor = 0.05
         ai_will_do = {
 			factor = 1
 		}
@@ -568,6 +587,10 @@ leader_traits = {
 	BLL_skandervin_traits = {
 		random = no
 		#+1间谍槽位，-15%间谍机构升级时间，-10%对外泄露的情报，+15%加密
+		operative_slot = 1
+		agency_upgrade_time = -0.15
+		civilian_intel_to_others = -0.1
+		encryption_factor = 0.15
         ai_will_do = {
 			factor = 1
 		}
@@ -575,6 +598,9 @@ leader_traits = {
 	BLL_earl_curran_traits = {
 		random = no
 		#+25%贸易协定关系修正，+7%建造速度，-3%消费品工厂，+3%研究速度
+		trade_opinion_factor = 0.25
+		production_speed_buildings_factor = 0.07
+		consumer_goods_factor = -0.03
         ai_will_do = {
 			factor = 1
 		}
@@ -582,6 +608,9 @@ leader_traits = {
 	BLL_frostbloom_traits = {	
 		random = no
 		#+2%非核心人力，-10%驻军需求，-15%驻军所受伤害
+		non_core_manpower = 0.02
+		required_garrison_factor = -0.1
+		RESISTANCE_DAMAGE_TO_GARRISONS = -0.15
         ai_will_do = {
 			factor = 1
 		}
@@ -589,6 +618,9 @@ leader_traits = {
 	BLL_momsen_miller_traits = {
 		random = no
 		#+5%核心领土防御，+10%战争支持，+10%我们被敌人占领的地区的抵抗度增长速度
+		army_core_attack_factor = 0.05
+		war_support_factor = 0.1
+		resistance_damage_to_garrison_on_our_occupied_states = 0.1
         ai_will_do = {
 			factor = 1
 		}
@@ -596,6 +628,11 @@ leader_traits = {
 	BLL_rudolph_miller_traits = {
 		random = no
 		#+5%出口资源，-5%消费品工厂，+5%建造速度，+5%民用工厂建造速度，-30%贸易法案修改花费
+		min_export = 0.05
+		consumer_goods_factor = -0.05
+		production_speed_buildings_factor = 0.05
+		production_speed_industrial_complex_factor = 0.05
+		trade_laws_cost_factor = -0.3
         ai_will_do = {
 			factor = 1
 		}
@@ -603,6 +640,9 @@ leader_traits = {
 	BLL_offert_cowen_traits = {
 		random = no
 		#+0.01日人民主义支持，+10%每月人口，+7%生产效率，+10%生产效率保持
+		BLL_communism_party_drift = 0.01
+		monthly_population = 0.1
+		production_factory_max_efficiency_factor = 0.07
         ai_will_do = {
 			factor = 1
 		}
@@ -610,6 +650,11 @@ leader_traits = {
 	BLL_greif_cowen_traits = {
 		random = no
 		#+10%日pp，-10%修改法案花费，-5%顾问花费
+		political_power_factor = 0.1
+		political_advisor_cost_factor = -0.05
+		mobilization_laws_cost_factor = -0.1
+		trade_laws_cost_factor = -0.1
+		economy_cost_factor = -0.1
         ai_will_do = {
 			factor = 1
 		}
@@ -617,6 +662,12 @@ leader_traits = {
 	BLL_cavingus_cowan_traits = {
 		random = no
 		#-0.02日极权主义、人民主义、人治主义、调和主义支持，+10%动员速度，+5%军用工厂建造速度
+		mobilization_speed = 0.1
+		production_speed_arms_factory_factor = 0.05
+		BLL_totalitarianism_party_drift = -0.02
+		BLL_communism_party_drift = -0.02
+		BLL_reformism_party_drift = -0.02
+		BLL_populism_party_drift = -0.02
         ai_will_do = {
 			factor = 1
 		}
@@ -624,6 +675,7 @@ leader_traits = {
 	BLL_loert2_traits = {
 		random = no
 		#-10%陆军学说花费
+		land_doctrine_cost_factor = -0.1
         ai_will_do = {
 			factor = 1
 		}
@@ -631,6 +683,9 @@ leader_traits = {
 	BLL_loert3_traits = {
 		random = no
 		#+0.35日陆军经验，+10陆军移动速度，-5%部队训练时间
+		experience_gain_army= 0.35
+		army_speed_factor = 0.1
+		training_time_army_factor = -0.05
         ai_will_do = {
 			factor = 1
 		}
@@ -638,6 +693,8 @@ leader_traits = {
 	BLL_nicolai_miller2_traits = {
 		random = no
 		#+0.2日陆军经验，-10%步兵装备生产花费
+		experience_gain_army= 0.2
+
         ai_will_do = {
 			factor = 1
 		}
@@ -645,6 +702,8 @@ leader_traits = {
 	BLL_loert4_traits = {
 		random = no
 		#-10%陆军损耗，-10%移动中损失组织度
+		attrition = -0.1
+		org_loss_when_moving = 0.1
         ai_will_do = {
 			factor = 1
 		}
@@ -652,6 +711,8 @@ leader_traits = {
 	BLL_offert_cowen2_traits = {
 		random = no
 		#+10%陆军核心领土防御，+5%陆军核心领土攻击
+		army_core_defence_factor = 0.1
+		army_core_attack_factor= 0.05
         ai_will_do = {
 			factor = 1
 		}
@@ -659,6 +720,13 @@ leader_traits = {
 	BLL_andriu2_traits = {
 		random = no
 		#+10%陆军攻防，-10%训练时间，+20%部队移动速度，+25%战斗获取经验，+10%陆军核心领土攻防（需求：王狼已苏醒）
+		army_attack_factor = 0.05
+		army_defence_factor = 0.05
+		training_time_army_factor = -0.05
+		army_speed_factor = 0.1
+		experience_gain_army = 0.25
+		army_core_attack_factor= 0.05
+		army_core_defence_factor = 0.05
         ai_will_do = {
 			factor = 1
 		}
@@ -666,9 +734,21 @@ leader_traits = {
 	BLL_nicolai_miller3_traits = {
 		random = no
 		#+10%计划速度，+5%计划加成
+		planning_speed = 0.1
+		max_planning = 0.05        
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	###卢皮卡贸易集会特质
+	BLL_trade_conference_trait = {
+		random = no
+		#+5%出口资源，+5%研究速度
+		min_export = 0.05
+		research_speed_factor = 0.05
+		political_power_gain = 0.1
         ai_will_do = {
 			factor = 1
 		}
 	}
-
 }

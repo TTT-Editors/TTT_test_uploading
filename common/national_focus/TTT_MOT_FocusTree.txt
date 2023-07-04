@@ -214,10 +214,25 @@ focus_tree = {
 			always = no
 		}
 		completion_reward = {
-			news_event = {
-			    id = global_news.28#事件id
-				days = 1#几天后触发
-			}#此为触发世界新闻
+			if = {
+				limit ={
+					has_country_flag = Lock_MOT_Standpoint_decision_1
+				}
+				news_event = {
+					id = global_news.28#事件id
+					days = 1#几天后触发
+				}#此为触发世界新闻
+			}
+			else_if = {
+				limit ={
+					has_country_flag = Lock_MOT_Standpoint_decision_3
+				}
+				news_event = {
+					id = global_news.29#事件id
+					days = 1#几天后触发
+				}#此为触发世界新闻
+			}
+			
             hidden_effect = { #此为隐藏效果
 				country_event = { days = 70  id = MOT_event.8 }
 				news_event = {
@@ -367,9 +382,9 @@ focus_tree = {
 		cost = 35
 		search_filters = {  }
 		available = {
-			check_variable = {MOT_Political_grid_array^3 = 6}
+			check_variable = {MOT_Political_grid_array^2 = 6}
 			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^3 = 6}
+				check_variable = {MOT_Political_grid_array^2 = 6}
 				tooltip = MOT_tree_0_11_trigger_tooltip
 			}
 		}

@@ -1,0 +1,58 @@
+
+ZDG_build_intel_network_in_Northern_Liyue_strat = {
+	allowed = {
+		tag = ZDG
+	}
+	
+	enable = {
+		tag = ZDG
+		has_global_flag = Liyue_Civil_War
+	}
+	
+	abort_when_not_enabled = yes
+		
+	ai_strategy = {
+		type = operative_mission
+		mission = build_intel_network
+		value = 1000
+		mission_target = XRG
+	}
+		
+	ai_strategy = {
+		type = operative_mission
+		mission = build_intel_network
+		value = 1000
+		mission_target = XOG
+	}
+}
+
+ZDG_detectintelligence_immortalfamily_strat = {
+	allowed = {
+		tag = ZDG
+	}
+	
+	enable = {
+		tag = ZDG
+		has_completed_focus = ZDG_23
+		OR = {
+			XRG = { exists = yes }
+			XOG = { exists = yes }
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = operative_operation
+		operation = ZDG_detectintelligence_immortalfamily
+		value = 1200
+		operation_target = XRG
+	}
+	
+	ai_strategy = {
+		type = operative_operation
+		operation = ZDG_detectintelligence_immortalfamily
+		value = 1200
+		operation_target = XOG
+	}
+}

@@ -1,0 +1,62 @@
+ZDG_detectintelligence_immortalfamily = { 
+	icon = GFX_murder_trotsky
+	map_icon = GFX_murder_trotsky_map
+	name = ZDG_detectintelligence_immortalfamily
+	desc = ZDG_detectintelligence_immortalfamily_desc
+	days = 270
+
+	priority = 10
+
+	allowed = {
+		original_tag = ZDG
+	}
+	available = {
+        original_tag = ZDG
+	}
+	visible = {
+		has_completed_focus = ZDG_23
+		country_exists = XOG
+		country_exists = XRG
+	}
+
+	operatives = 1    #需要的特工人数
+
+	
+	network_strength = 50 #情报网络强度
+
+	on_start = { 
+		
+	}
+
+	outcome_modifiers = { operation_outcome operation_infiltrate_outcome }
+	cost_modifiers = { operation_cost operation_infiltrate_cost }
+	risk_modifiers = { operation_risk operation_infiltrate_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = murder_trotsky_outcome_tt
+	}
+	risk_chance = 0.25     #风险强度
+	experience = 5
+	
+	outcome_execute = { 
+		ZDG = {
+		    add_timed_idea = { idea = ZDG_intelligenceadvantages_overimmortals days = 120 }
+		}
+	}
+	
+	
+	phases = { #infiltration 
+		ZDG_detectintelligence_immortalfamily_infiltration = { base = 100 }
+	}
+	phases = { 
+		ZDG_detectintelligence_immortalfamily_attack = { base = 100 }
+	}
+	phases = { 
+		exfiltration_border = { base = 40 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 20 }
+		exfiltration_air_pickup = { 
+			base = 10
+		}
+	}
+}

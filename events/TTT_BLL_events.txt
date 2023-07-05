@@ -163,7 +163,6 @@ country_event = {
 		remove_ideas = BLL_nanminchao
 		261 = { set_demilitarized_zone = yes }
 		262 = { set_demilitarized_zone = yes }
-		##效果
 	}
 }
 ###事件名：奔狼领暴乱（蒙德版）
@@ -177,7 +176,9 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.10.a
-		##效果
+		MOT = {
+			set_character_flag =MOT_Lisa_engage_in_BLL
+		}
 		QQZ = {
 			country_event = {id = BLL_event.11 days = 2}
 		}
@@ -194,11 +195,16 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.11.a
+		add_political_power = -10
+		BLL = {
+			country_event = {id = BLL_event.12 days = 2}
+		}
 	}
 	option = {
 		name = BLL_event.11.b
 		custom_effect_tooltip = BLL_event.11.b_tooltip
-		MOT = {
+		add_political_power = -50
+		BLL = {
 			country_event = {id = BLL_event.12 days = 2}
 		}
 	}
@@ -233,7 +239,7 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.13.a
-		##效果
+
 		hidden_effect = {
 			news_event = {id = BLL_event.14 days = 1}
 		}
@@ -267,12 +273,10 @@ country_event = {
 	option = {
 		name = BLL_event.15.a
 		custom_effect_tooltip = BLL_event.15.a_tooltip
-		set_country_flag = bll_15_is_visible
 	}
 	option = {
 		name = BLL_event.15.b
 		custom_effect_tooltip = BLL_event.15.b_tooltip
-		set_country_flag = bll_16_is_visible
 	}
 }
 ###事件名：一个意见
@@ -357,17 +361,41 @@ country_event = {
 		BLL = {
 			country_event = {id = BLL_event.22 days =7}
 		}
+		swap_ideas = {
+			remove_idea = QQZ_cooperate_with_wolvedom
+			add_idea = QQZ_cooperate_with_wolvedom1
+		}
+		swap_ideas = {
+			remove_idea = QQZ_growing_refugees
+			add_idea = QQZ_growing_refugees1
+		}
 	}
 	option = {
 		name = BLL_event.21.b
 		BLL = {
 			country_event = {id = BLL_event.23 days =7}
 		}
+		swap_ideas = {
+			remove_idea = QQZ_cooperate_with_wolvedom
+			add_idea = QQZ_cooperate_with_wolvedom2
+		}
+		swap_ideas = {
+			remove_idea = QQZ_growing_refugees
+			add_idea = QQZ_growing_refugees1
+		}
 	}
 	option = {
 		name = BLL_event.21.c
 		BLL = {
 			country_event = {id = BLL_event.24 days =7}
+		}
+		swap_ideas = {
+			remove_idea = QQZ_cooperate_with_wolvedom
+			add_idea = QQZ_cooperate_with_wolvedom3
+		}
+		swap_ideas = {
+			remove_idea = QQZ_growing_refugees
+			add_idea = QQZ_growing_refugees1
 		}
 	}
 }
@@ -382,7 +410,10 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.22.a
-
+		swap_ideas = {
+			remove_idea = BLL_QQZ_trade_treaty
+			add_idea = BLL_QQZ_trade_treaty2
+		}
 	}
 }
 ###事件名：清泉镇要求扩大狩猎
@@ -396,6 +427,10 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.23.a
+		swap_ideas = {
+			remove_idea = BLL_QQZ_trade_treaty
+			add_idea = BLL_QQZ_trade_treaty2
+		}
 	}
 }
 ###事件名：清泉镇的好意
@@ -409,6 +444,10 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.24.a
+		swap_ideas = {
+			remove_idea = BLL_QQZ_trade_treaty
+			add_idea = BLL_QQZ_trade_treaty2
+		}
 	}
 }
 ###事件名：奥弗特的演讲
@@ -422,6 +461,10 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.25.a
+		add_popularity = {
+			ideology = communism_subtype
+			popularity = 0.1
+		}
 	}
 }
 ###事件名：米勒在行动
@@ -435,6 +478,10 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.26.a
+		add_popularity = {
+			ideology = liberalism_subtype
+			popularity = 0.1
+		}
 	}
 }
 ###事件名：林下会议
@@ -489,7 +536,7 @@ country_event = {
 	option = {
 		name = BLL_event.30.a
 		custom_effect_tooltip = BLL_event.30.a_tooltip
-		set_country_flag = BLL_event_30_choice1
+		set_country_flag = BLL_event_30_choice2
 		ai_chance = {
 			factor = 2
 		}
@@ -497,7 +544,7 @@ country_event = {
 	option = {
 		name = BLL_event.30.b
 		custom_effect_tooltip = BLL_event.30.b_tooltip
-		set_country_flag = BLL_event_30_choice2
+		set_country_flag = BLL_event_30_choice1
 		ai_chance = {
 			factor = 8
 		}
@@ -510,22 +557,32 @@ country_event = {
 	picture =GFX_BLL_event_01
 	title = BLL_event.31.t
 	desc = BLL_event.31.d
-	is_triggered_only =yes
+	is_triggered_only =no
 	fire_only_once =yes
+	trigger = {
+		focus_progress = {
+			focus = bll_12
+			progress > 0.1
+		}
+		original_tag =BLL
+	}
 	option = {
 		name = BLL_event.31.a
-		add_political_power = 20 
-		hidden_effect ={
+		add_political_power = 10
+		hidden_effect={
 			if = {
-			limit = {
-				has_country_flag = BLL_event_30_choice1
-			}
-			country_event = {id = BLL_event.32 days = 2}
+				limit = {
+					has_country_flag = BLL_event_30_choice1
+				}
+				country_event = {id = BLL_event.32 days = 2}
 			}
 			else_if = {
 				limit = {
 					has_country_flag = BLL_event_30_choice2
 				}
+				country_event = {id = BLL_event.36 days = 2}
+			}
+			else = {
 				country_event = {id = BLL_event.36 days = 2}
 			}
 		}
@@ -560,7 +617,29 @@ country_event = {
 		name = BLL_event.33.a
 		custom_effect_tooltip =BLL_event.33.a_tooltip
 		set_country_flag = bll_14_is_visible
-		#效果
+		add_stability = 0.1
+		set_politics = {
+			ruling_party = reformism_subtype
+		}
+		hidden_effect = {
+			set_temp_variable = {BLL_temp_party_popularity_authoritarianism_subtype = party_popularity@authoritarianism_subtype}
+			set_temp_variable = {BLL_temp_party_popularity_despotism_subtype = party_popularity@despotism_subtype}
+			set_temp_variable = {BLL_temp_party_popularity_reformism_subtype = 0}
+			add_to_temp_variable = {BLL_temp_party_popularity_reformism_subtype = BLL_temp_party_popularity_authoritarianism_subtype}
+			add_to_temp_variable = {BLL_temp_party_popularity_reformism_subtype = BLL_temp_party_popularity_despotism_subtype}
+			add_popularity = {
+				ideology = despotism_subtype
+				popularity = -BLL_temp_party_popularity_despotism_subtype
+			}
+			add_popularity = {
+				ideology = authoritarianism_subtype
+				popularity = -BLL_temp_party_popularity_authoritarianism_subtype
+			}
+			add_popularity = {
+				ideology = reformism_subtype
+				popularity = BLL_temp_party_popularity_reformism_subtype
+			}
+		}
 	}
 }
 ###事件名：方案通过
@@ -575,12 +654,12 @@ country_event = {
 	option = {
 		name = BLL_event.34.a
 		custom_effect_tooltip = BLL_event.34.a_tooltip
-		set_country_flag = bll_15_is_available
+		set_country_flag = bll_15_is_visible
 	}
 	option = {
 		name = BLL_event.34.b
 		custom_effect_tooltip = BLL_event.34.b_tooltip
-		set_country_flag = bll_16_is_available
+		set_country_flag = bll_16_is_visible
 	}
 }
 ###事件名：泉边低语

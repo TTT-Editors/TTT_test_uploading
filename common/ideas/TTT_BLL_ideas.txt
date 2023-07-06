@@ -158,11 +158,10 @@ ideas = {
 			allowed_civil_war = {
 				tag = BLL
 			}
-			on_add = {
-				country_lock_all_division_template = no
-			}
 			removal_cost = -1
-			
+			on_add = {
+				country_lock_all_division_template = yes
+			}
 			modifier = {
 				liberalism_drift = 0.03
 				reformism_drift = 0.01
@@ -174,26 +173,32 @@ ideas = {
 				production_speed_buildings_factor = -0.2
 				industrial_capacity_factory = -0.2
 				political_power_cost = 0.1
-				resistance_damage_to_garrison_on_our_occupied_states = 0.5
+				resistance_damage_to_garrison = 0.5
+				disabled_ideas = 1
 			}
         }
 	}
 	
 	industrial_concern = { 
-		designer = yes
 		##卢皮卡贸易集会
 		BLL_trade_conference = {
+			name = BLL_trade_conference
 			picture = generic_naval_manufacturer_2
+            designer = yes
+            cost = 150
 			allowed = {
                  original_tag = BLL
 			}
-			cost = 150
-			removal_cost = -1
-			
+
+			available = {
+			     original_tag = BLL
+			}
+
 			research_bonus = {
 				industry = 0.05
 			}
-			traits = { BLL_trade_conference_trait }
+
+			traits = { BLL_trade_conference_traits }
 		}
 	}
 }

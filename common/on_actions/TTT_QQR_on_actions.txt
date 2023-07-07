@@ -1,0 +1,29 @@
+on_actions = {
+    on_state_control_changed = { 
+        effect = {
+            if = {
+                limit = {
+                    ROOT = QQR
+                    FROM = MDQ
+                }
+                FROM.FROM = {
+                    if = {
+                        limit = {
+                            has_state_flag = the_state_is_occupy_by_MDQ
+                        }
+                        clr_state_flag =the_state_is_occupy_by_MDQ
+                    }
+                    else_if = {
+                        limit = {
+                            not = {
+                                has_state_flag = the_state_is_occupy_by_MDQ
+                            }
+                            set_state_flag = the_state_is_occupy_by_QQR
+                        }
+                    }    
+                    
+                }
+            }
+        } 
+    }
+}

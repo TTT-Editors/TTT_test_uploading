@@ -18,7 +18,38 @@ on_actions = {
                 }
                 news_event = {id = MDQ_event.26 days = 1}
                 news_event = {id =MDQ_event.98 days = 3}
+                ##转移顾问
+                MDQ_Dr_Livingstone = {
+			        set_nationality = MOT
+                }
+                MDQ_Mike = {
+                    set_nationality = MOT
+                }
+                MDQ_Elon_Musk= {
+                    set_nationality = MOT
+                }
+                MDQ_Sternberg= {
+                    set_nationality = MOT
+                }
+                MDQ_Zhuang_Yang= {
+                    set_nationality = MOT
+                }
+                MDQ_Damut= {
+                    set_nationality = MOT
+                }
+                if = {
+                    limit = {
+                        has_country_flag = Noelle_in_dadawupa
+                    }
+                    MDQ_Noelle2= {
+                        set_nationality = MOT
+                    }
+                    MDQ_Noelle= {
+                        set_nationality = MOT
+                    }
+                }
                 MOT = {
+                    add_manpower = 20000
                     country_event = {id = MDQ_event.97 days = 5}
                 }
             }
@@ -41,5 +72,31 @@ on_actions = {
                 add_to_variable = {global.MDQ_abandon_num = -2}
             }
         }
+    }
+    on_state_control_changed = { 
+        effect = {
+            if ={
+                limit = {
+                    ROOT = MDQ
+                    FROM = QQR
+                }
+                FROM.FROM = {
+                    if = {
+                        limit = {
+                            has_state_flag = the_state_is_occupy_by_QQR
+                        }
+                        clr_state_flag =the_state_is_occupy_by_QQR
+                    }       
+                    else_if = {
+                        limit = {
+                            not = {
+                                has_state_flag = the_state_is_occupy_by_QQR
+                            }
+                            set_state_flag = the_state_is_occupy_by_MDQ
+                        }
+                    } 
+                }
+            }
+        } 
     }
 }

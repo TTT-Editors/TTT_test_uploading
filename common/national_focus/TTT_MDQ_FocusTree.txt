@@ -660,44 +660,46 @@ focus = {
                 target = QQR
                 days = 270
             }
-            clr_country_flag = MDQ_dadaupa_War_flag
-            set_country_flag = MDQ_dadaupa_second_war_flag
-            MOT = {add_to_faction = MDQ}
-            QQR = {
-                transfer_state = 285
-                transfer_state = 14
-                transfer_state = 286
-                transfer_state = 401
-                add_state_core = 285
-                add_state_core = 14
-                add_state_core = 286
-                add_state_core = 401
-            }
-            if = {
-                limit = {
-                    has_idea = MDQ_Endless_battle_1
-                }
-                remove_ideas = MDQ_Endless_battle_1
-            }
-            else_if = {
-                limit = {
-                    has_idea = MDQ_Endless_battle_2
-                }
-                remove_ideas = MDQ_Endless_battle_2
-            }
-            else_if = {
-                limit = {
-                    has_idea = MDQ_Endless_battle_3
-                }
-                remove_ideas = MDQ_Endless_battle_3
-            }
-            else_if = {
-                limit = {
-                    has_idea = MDQ_Endless_battle_4
-                }
-                remove_ideas = MDQ_Endless_battle_4
-            }
             hidden_effect = {
+                clr_country_flag = MDQ_dadaupa_War_flag
+                set_country_flag = MDQ_dadaupa_second_war_flag
+                MOT = {add_to_faction = MDQ}
+                every_state = {
+                    limit = {
+                        has_state_flag = the_state_is_occupy_by_MDQ
+                    }
+                    transfer_state_to = MDQ
+                }
+                every_state = {
+                    limit = {
+                        has_state_flag = the_state_is_occupy_by_QQR
+                    }
+                    transfer_state_to = QQR
+                }
+                if = {
+                    limit = {
+                        has_idea = MDQ_Endless_battle_1
+                    }
+                    remove_ideas = MDQ_Endless_battle_1
+                }
+                else_if = {
+                    limit = {
+                        has_idea = MDQ_Endless_battle_2
+                    }
+                    remove_ideas = MDQ_Endless_battle_2
+                }
+                else_if = {
+                    limit = {
+                        has_idea = MDQ_Endless_battle_3
+                    }
+                    remove_ideas = MDQ_Endless_battle_3
+                }
+                else_if = {
+                    limit = {
+                        has_idea = MDQ_Endless_battle_4
+                    }
+                    remove_ideas = MDQ_Endless_battle_4
+                }
                 load_focus_tree = TTT_MDQ_focustree2
                 transfer_dynamic_modifiers = yes
             }

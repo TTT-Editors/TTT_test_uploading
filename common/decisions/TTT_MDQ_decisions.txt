@@ -152,10 +152,10 @@ MOT_Standpoint_decision_category ={
 					set_country_flag = MDQ_dadaupa_second_war_flag
 					MOT = {add_to_faction = MDQ}
 					every_state = {
-						limit = {
+                    	limit = {
 							has_state_flag = the_state_is_occupy_by_MDQ
 						}
-                    	transfer_state_to = MDQ
+						transfer_state_to = MDQ
 					}
 					every_state = {
 						limit = {
@@ -1042,4 +1042,130 @@ MOT_Standpoint_decision_category ={
 				add_offsite_building = { type = arms_factory level = -4 }
 			}
 		}
+}
+MDQ_IS_DEBUG= {
+	MDQ_IS_DEBUG_01 = {
+		allowed = {
+			original_tag = MDQ
+		}
+		available = {
+			is_debug = yes
+		}
+		visible = {
+			is_debug = yes
+			original_tag = MDQ
+		}
+		fire_only_once = no
+		complete_effect = {
+			leave_faction = yes
+			QQR = {
+				transfer_state = 280
+				transfer_state = 281
+				transfer_state = 398
+				transfer_state = 400
+				transfer_state = 402
+				transfer_state = 283
+				transfer_state = 284
+				load_oob = "QQR"
+			}
+			280 = { set_demilitarized_zone = no }
+			398 = { set_demilitarized_zone = no }
+			281 = { set_demilitarized_zone = no }
+			400 = { set_demilitarized_zone = no }
+			402 = { set_demilitarized_zone = no }
+			283 = { set_demilitarized_zone = no }
+			400 = { set_demilitarized_zone = no }
+			284 = { set_demilitarized_zone = no }
+		}
+	}
+	MDQ_IS_DEBUG_02 = {
+		allowed = {
+			original_tag = MDQ
+		}
+		available = {
+			is_debug = yes
+		}
+		visible = {
+			is_debug = yes
+			original_tag = MDQ
+		}
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = MDQ_dadaupa_War_flag
+            declare_war_on = {
+                target = QQR
+                type = annex_everything
+            }
+			news_event = {id = MDQ_event.1 days = 1}
+            add_named_threat = { 
+                threat = 1.8
+                name = MDQ_dadaupa_War
+            }
+		}
+	}
+	MDQ_IS_DEBUG_03 = {
+		allowed = {
+			original_tag = MDQ
+		}
+		available = {
+			is_debug = yes
+		}
+		visible = {
+			is_debug = yes
+			original_tag = MDQ
+		}
+		fire_only_once = no
+		complete_effect = {
+			clr_country_flag = MDQ_dadaupa_War_flag
+			set_country_flag = MDQ_dadaupa_second_war_flag
+			MOT = {add_to_faction = MDQ}
+			every_state = {
+				limit = {
+					has_state_flag = the_state_is_occupy_by_MDQ
+				}
+				transfer_state_to = MDQ
+			}
+			every_state = {
+				limit = {
+					has_state_flag = the_state_is_occupy_by_QQR
+				}
+				transfer_state_to = QQR
+			}
+			load_focus_tree = TTT_MDQ_focustree2
+			transfer_dynamic_modifiers = yes
+			if = {
+				limit = {
+					has_idea = MDQ_Endless_battle_1
+				}
+				remove_ideas = MDQ_Endless_battle_1
+			}
+			else_if = {
+				limit = {
+					has_idea = MDQ_Endless_battle_2
+				}
+				remove_ideas = MDQ_Endless_battle_2
+			}
+			else_if = {
+				limit = {
+					has_idea = MDQ_Endless_battle_3
+				}
+				remove_ideas = MDQ_Endless_battle_3
+			}
+			else_if = {
+				limit = {
+					has_idea = MDQ_Endless_battle_4
+				}
+				remove_ideas = MDQ_Endless_battle_4
+			}
+			news_event = {id = MDQ_event.25 days = 1}
+			white_peace = {
+				tag = QQR
+				message = while_peace_with_QQR_1
+			}
+			set_truce = {
+				target = QQR
+				days = 300
+			}
+		}
+	}
 }

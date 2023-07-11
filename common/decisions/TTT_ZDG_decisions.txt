@@ -102,41 +102,57 @@ ZDG_decision_category = {
             }			
 		}		
 	}
-	ZDG_destroytheXianjia_workshop_XOG = {   #破坏仙家工坊
+	ZDG_scale_usevileyes = {   #增加干涉军内部邪眼的使用规模
 		cost = 10
 		days_remove = 30	
-		fire_only_once = yes
+		fire_only_once = no
         visible= {
-			has_country_flag = ZDG_detectintelligence_flag_XOG
+			has_completed_focus = ZDG_11
 		}		
 		available = {
-		    network_strength = {
-            target = XOG
-            value > 45
-            }
-			num_of_operatives > 0
-			has_equipment = { support_equipment > 99 }
+		   command_power > 10
 		}
 		ai_will_do = {
 			factor = 10
 		}
-		remove_effect = {
-		  XOG = {
-		    random_owned_controlled_state = {
-			damage_building = {
-            type = arms_factory
-            damage = 1
-                }
-			damage_building = {
-            type = industrial_complex
-            damage = 1
-                }
+		complete_effect = {
+		    add_command_power = -10
+			if = {
+			limit = {
+				has_idea = ZDG_Scaleusevileyes_limitedtrial
+			}
+			swap_ideas = {
+			add_idea = ZDG_Scaleusevileyes_limitedtrial2
+			remove_idea = ZDG_Scaleusevileyes_limitedtrial
+		        }
 		    }
-	    }
-		   add_equipment_to_stockpile = {
-		   type = support_equipment
-		   amount = -100
-	        }
+			else_if = {
+			limit = {
+				has_idea = ZDG_Scaleusevileyes_limitedtrial2
+			}
+			swap_ideas = {
+			add_idea = ZDG_Scaleusevileyes_limitedtrial3
+			remove_idea = ZDG_Scaleusevileyes_limitedtria2
+		        }
+		    }
+			else_if = {
+			limit = {
+				has_idea = ZDG_Scaleusevileyes_limitedtrial2
+			}
+			swap_ideas = {
+			add_idea = ZDG_Scaleusevileyes_limitedtrial3
+			remove_idea = ZDG_Scaleusevileyes_limitedtria2
+		        }
+		    }
+			else_if = {
+			limit = {
+				has_idea = ZDG_Scaleusevileyes_limitedtrial3
+			}
+			swap_ideas = {
+			add_idea = ZDG_Scaleusevileyes_limitedtrial4
+			remove_idea = ZDG_Scaleusevileyes_limitedtria3
+		        }
+		    }
 		}		
 	}
 }

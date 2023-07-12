@@ -108,6 +108,7 @@ ZDG_decision_category = {
 		fire_only_once = no
         visible= {
 			has_completed_focus = ZDG_11
+			NOT = { has_country_flag = ZDG_scale_usevileyes_flag }
 		}		
 		available = {
 		   command_power > 10
@@ -148,11 +149,32 @@ ZDG_decision_category = {
 			limit = {
 				has_idea = ZDG_Scaleusevileyes_limitedtrial3
 			}
+			set_country_flag = ZDG_scale_usevileyes_flag
 			swap_ideas = {
 			add_idea = ZDG_Scaleusevileyes_limitedtrial4
 			remove_idea = ZDG_Scaleusevileyes_limitedtria3
 		        }
 		    }
+		}		
+	}
+}
+ZDG_decision_category2 = {
+    ZDG_extreme_northern_test = {   
+		cost = 0
+		days_remove = 0	
+		fire_only_once = no
+        		
+		available = {
+		   is_debug = yes
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+	    add_power_balance_value = {
+        id = ZDG_extreme_northern_palace
+        value = -0.3
+            }
 		}		
 	}
 }

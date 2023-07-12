@@ -10,6 +10,8 @@ on_actions = {
                     not = {
                         has_global_flag = MOT_dragon_crisis_is_over
                     }
+                    NOT = { has_idea = MOT_crisis_of_Tewalin } 
+				    NOT = { has_idea = MOT_crisis_of_Tewalin2 }
                 }
                 if = {
                     limit = {
@@ -19,20 +21,75 @@ on_actions = {
                             compare = greater_than_or_equals
                         }
                     }
-                    
-                    set_global_flag = MOT_dragon_crisis_is_over
-                    clr_country_flag = MOT_Deadline_is_unlocked
-                    clr_country_flag = MOT_Progress_is_unlocked
-                    clear_variable = MOT_Progress_num 
-                    clear_variable = MOT_Deadline_num
-                    set_variable = {MOT_Progress_num = 1}
-                    set_variable = {MOT_Deadline_num = 1}
-                    set_variable = {MOT_Progress_num_localization = 0}
-                    set_variable = {MOT_Deadline_num_localization = 0}
-                    clr_global_flag = MOT_dragon_crisis
-                    clr_global_flag = MOT_dragon_crisis_is_locked
+                ###风魔龙危机失败
+
+                ###清除风魔龙危机民族精神
+                if = {
+                    limit = {
+                        has_idea = MOT_crisis_of_Tewalin
+                    }
+                    remove_ideas = MOT_crisis_of_Tewalin
+                }
+                else_if = {
+                    limit = {
+                        has_idea = MOT_crisis_of_Tewalin2
+                    }
+                    remove_ideas = MOT_crisis_of_Tewalin2
+                }
+                TWL = {
+                    remove_ideas = TWL_frightening_strikes_of_windy_dargons
+                }
+                BLL = {
+                    remove_ideas = BLL_fengmolongweiji
+                }
+                ##清除条件FLAG
+				clr_global_flag = MOT_dragon_crisis
+				set_global_flag = MOT_dragon_crisis_is_over
+				##清除倒计时
+				set_variable = {
+					var = MOT_dragon_crisis_deadline_num
+					value = 0
+				}
+                set_variable = {MOT_Progress_num = 1}
+                set_variable = {MOT_Deadline_num = 1}
+                set_variable = {MOT_Progress_num_localization = 0}
+                set_variable = {MOT_Deadline_num_localization = 0}
+				###解锁立场选择
+				clr_global_flag = MOT_dragon_crisis_standpoint_is_locked
+				##解除进度条和倒计时机制
+				clr_country_flag = MOT_Deadline_is_unlocked
+				clr_country_flag = MOT_Progress_is_unlocked
+				###清除立场
+				if = {
+					limit = {
+						has_country_flag = Lock_MOT_Standpoint_decision_1
+					}
+					clr_country_flag = Lock_MOT_Standpoint_decision_1
+				}
+				else_if = {
+					limit = {
+						has_country_flag = Lock_MOT_Standpoint_decision_2
+					}
+					clr_country_flag = Lock_MOT_Standpoint_decision_2
+				}
+				else_if = {
+					limit = {
+						has_country_flag = Lock_MOT_Standpoint_decision_3
+					}
+					clr_country_flag = Lock_MOT_Standpoint_decision_3
+				}
+				##清除国家和任务
+				clear_array = global.MOT_Standpoint_flag_array_01
+				clear_array = global.MOT_Standpoint_flag_array_02
+				clear_array = global.MOT_Standpoint_flag_array_03
+				clear_array = global.MOT_naionalfocus_mission
+				clear_array = MOT_Political_grid_array
+
+                ###触发失败事件
+                country_event = {id = MOT_event.15}
                 }
                 else = {
+                    ###继续倒计时
                     add_to_variable = {MOT_dragon_crisis_deadline_num = 7}
                     if = {
                         limit = {
@@ -45,7 +102,16 @@ on_actions = {
                         add_to_variable = {MOT_dragon_crisis_deadline_num = -36.5}
                         add_to_variable = {MOT_Deadline_num =1}
                         add_to_variable = {MOT_Deadline_num_localization = 1}
-                        
+                        clamp_temp_variable = {
+                            var = MOT_Deadline_num
+                            min = 1
+                            max = 11
+                        }
+                        clamp_temp_variable = {
+                            var = MOT_Deadline_num_localization
+                            min =0
+                            max = 10
+                        }
                     }
                 }            
             }
@@ -83,23 +149,17 @@ on_actions = {
                 clear_variable = MOT_Standpoint_total_country_num_01
                 clear_variable = MOT_Standpoint_total_country_num_02
                 clear_variable = MOT_Standpoint_total_country_num_03
+                clamp_temp_variable = {
+                    var = MOT_Progress_num
+                    min = 1
+                    max = 11
+                }
+                clamp_temp_variable = {
+                    var = MOT_Progress_num_localization
+                    min = 0
+                    max = 10
+                }
             }
         }
     }
-    #on_monthly_MOT = {
-      #  ##change_refugee_mood
-     #   effect ={
-      #      if = {
-      #          limit = {
-      #              check_variable = {
-      #                  var = MOT_Refugee_mood_num 
-      #                  value = 1
-      #                  compare = greater_than
-      #              }
-      #          }
-       #         add_to_variable = {MOT_Refugee_mood_num = -1}
-        #        MOT_flush_Refugee_mood = yes
-       #     }
-        #}
-    #}
 }

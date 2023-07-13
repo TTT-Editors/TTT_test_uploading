@@ -20,7 +20,21 @@ focus_tree = {
 		ai_will_do = {
 		    base = 15
 		}
-
+		available = {
+			NOT = {has_global_flag = MOT_dragon_crisis_is_over}
+			has_idea = MOT_crisis_of_Tewalin
+			NOT = {has_global_flag = MOT_dragon_crisis}
+			NOT = {has_global_flag = MOT_federal_route}
+			NOT = {has_global_flag = MOT_industrialization_program}
+			NOT = {has_global_flag = MOT_military_reform}
+			custom_trigger_tooltip = {
+				NOT = {has_global_flag = MOT_dragon_crisis_is_over}
+				NOT = {has_global_flag = MOT_dragon_crisis}
+				NOT = {has_global_flag = MOT_federal_route}
+				NOT = {has_global_flag = MOT_industrialization_program}
+				NOT = {has_global_flag = MOT_military_reform}
+            }
+		}
 		search_filters = {  }
 		completion_reward = {
 			swap_ideas = {
@@ -611,10 +625,14 @@ focus_tree = {
 			NOT = { has_idea = MOT_crisis_of_Tewalin } 
 			NOT = { has_idea = MOT_crisis_of_Tewalin2 }
 			NOT = {has_global_flag = MOT_dragon_crisis}
+			NOT = {has_global_flag = MOT_federal_route}
+			NOT = {has_global_flag = MOT_industrialization_program}
+			NOT = {has_global_flag = MOT_military_reform}
 			custom_trigger_tooltip = {
-				NOT = { has_idea = MOT_crisis_of_Tewalin } 
-				NOT = { has_idea = MOT_crisis_of_Tewalin2 }
 				NOT = {has_global_flag = MOT_dragon_crisis}
+				NOT = {has_global_flag = MOT_federal_route}
+				NOT = {has_global_flag = MOT_industrialization_program}
+				NOT = {has_global_flag = MOT_military_reform}
 				has_global_flag = MOT_dragon_crisis_is_over
             }
         }
@@ -975,16 +993,22 @@ focus_tree = {
 			NOT = { has_idea = MOT_crisis_of_Tewalin } 
 			NOT = { has_idea = MOT_crisis_of_Tewalin2 }
 			NOT = {has_global_flag = MOT_dragon_crisis}
+			NOT = {has_global_flag = MOT_federal_route}
+			NOT = {has_global_flag = MOT_industrialization_program}
+			NOT = {has_global_flag = MOT_military_reform}
 			custom_trigger_tooltip = {
-				NOT = { has_idea = MOT_crisis_of_Tewalin } 
-				NOT = { has_idea = MOT_crisis_of_Tewalin2 }
 				NOT = {has_global_flag = MOT_dragon_crisis}
+				NOT = {has_global_flag = MOT_federal_route}
+				NOT = {has_global_flag = MOT_industrialization_program}
+				NOT = {has_global_flag = MOT_military_reform}
 				has_global_flag = MOT_dragon_crisis_is_over
             }
         }
 		search_filters = {  }
 		completion_reward = {
 			set_global_flag = MOT_military_reform
+			army_experience = 10
+			country_event = {id = MOT_event.41}
 		}
 	}
 
@@ -998,6 +1022,8 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#49天后触发“回信”
+			country_event = {id = MOT_event.45 days = 4}
 		}
 	}
 
@@ -1011,6 +1037,21 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#顾问“西风骑士团”追加：+10%部队攻击，+10%突破，-10%适役人口修正
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_1
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_2
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_41_tooltip
 		}
 	}
 
@@ -1024,6 +1065,20 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#顾问“西风骑士团”追加：+15%适役人口修正，-10%训练时间，-10%最小训练程度，-5%部队攻击、部队防御
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_1
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_7
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_42_tooltip
 		}
 	}
 
@@ -1038,6 +1093,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#解锁决议：“测绘地图”
 		}
 	}
 
@@ -1052,6 +1108,9 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			###我们将给还在为蒙德战斗的军区伙伴们必要的支持。
+####（7天后三军区触发“来自骑士团的支援”）
+
 		}
 	}
 
@@ -1066,6 +1125,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			##我们将向其他各地方保证尽快解决《蒙德防御条例》带来的问题。
 		}
 	}
 
@@ -1080,6 +1140,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			##三军区获得额外的三个步兵师（按军区原来的编制）
 		}
 	}
 
@@ -1094,6 +1155,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#三军区获得额外的五个民兵师（相比之下更弱），获得民族精神：“民兵权力暂时下放”：+0.5%适役人口，-5%训练时间
 		}
 	}
 
@@ -1108,7 +1170,9 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#触发事件“签字笔”
 		}
+		
 	}
 
 	focus = {
@@ -1122,6 +1186,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#获得民族精神：蒙德军事学院——开始起步：-0.1日pp，+5%动员速度，+5%陆军经验增长，+5%战争支持
 		}
 	}
 
@@ -1136,6 +1201,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#风起地、伴风地与东蒙德军区相邻的区域增加3级要塞，其余与东蒙德军区相邻的边境以及风起地的胜利点处添加1级要塞
 		}
 	}
 
@@ -1150,6 +1216,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#在龙脊镇辖区与达达乌帕谷的边界上添加3级要塞，在龙脊镇的胜利点上添加1级要塞。
 		}
 	}
 
@@ -1164,6 +1231,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#我们将加大对风龙废墟军区的支持，以防军区委员会以外的人能够在风龙废墟坐大。（这个我会和风龙废墟的配合，暂时先给风龙废墟+5%稳定）
 		}
 	}
 
@@ -1179,6 +1247,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#56天后触发“回信”
 		}
 	}
 
@@ -1192,6 +1261,7 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#获得民族精神：“自由的教诲”：+10%核心领土防御
 		}
 	}
 
@@ -1205,6 +1275,8 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#获得民族精神：“反抗的高歌”：+10%核心领土攻击
+			#解锁决议：“自由，反抗，诗文”，若同时拥有民族精神“自由的教诲”与“反抗的高歌”，可花费100pp与180天将其合并为：“自由，反抗，诗文”：+15%核心领土攻击，+15%核心领土防御，+15%战争中稳定度修正，+15%投降倾向
 		}
 	}
 
@@ -1218,6 +1290,21 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#顾问“西风骑士团”追加：+10%计划速度，+10%计划加成上限，+10%训练时间
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_2
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_3
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_56_tooltip
 		}
 	}
 
@@ -1231,6 +1318,21 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#-20%有经验的士兵损失，+10%陆军组织度，+10%陆军组织度恢复，-10%适役人口，+10%训练时间
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_3
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_4
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_57_tooltip
 		}
 	}
 
@@ -1244,6 +1346,21 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#顾问“西风骑士团”追加：+2%增援率，-5%陆军学说花费
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_4
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_5
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_58_tooltip
 		}
 	}
 
@@ -1257,6 +1374,8 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#获得民族精神：“细分化小队”： +10%动员速度，+5%适役人口修正，+5%陆军速度，+10%战争支持
+			add_ideas = MOT_Subdivision_squad
 		}
 	}
 
@@ -1270,6 +1389,13 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			add_research_slot = 1
+			add_tech_bonus = {
+				name = land_doctrine
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
 		}
 	}
 
@@ -1284,6 +1410,14 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.5
+				uses = 1
+				technology = tech_special_forces
+			}
+			#顾问“西风骑士团”追加：+10%特种部队上限，+5%特种部队攻击，特种部队防御
+			custom_effect_tooltip = MOT_tree_0_61_tooltip
 		}
 	}
 
@@ -1297,6 +1431,22 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#触发事件：“临时会议——辅助军队可行性”
+			country_event = {id = MOT_event.43}
+			#顾问“西风骑士团”追加：+15%适役人口修正，-10%训练时间，+10%动员速度，-10%部队组织度、部队组织度恢复
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_7
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_8
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_62_tooltip
 		}
 	}
 
@@ -1310,6 +1460,20 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#顾问“西风骑士团”追加：+25%适役人口修正，-10%训练时间，-10%陆军经验增长
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_8
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_9
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_63_custion
 		}
 	}
 
@@ -1323,6 +1487,8 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#获得民族精神：“改革过后的骑士团军事等级”： -20%晋升花费，+5%陆军速度，+10%堑壕速度，+10%战争支持
+			add_ideas = MOT_The_reformed_military_hierarchy_of_the_Order
 		}
 	}
 
@@ -1336,6 +1502,20 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			#顾问“西风骑士团”追加：+5%部队速度，-15%移动中组织度损失
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_9
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_10
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_65_toolip
 		}
 	}
 
@@ -1349,6 +1529,27 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			add_equipment_to_stockpile = {
+                type = convoy
+                amount = 100
+                producer = MOT
+            }
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 500
+				producer = MOT 
+			}
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 30
+				producer = MOT 
+			}
+			add_tech_bonus = {
+				name = motorized_equipment
+				bonus = 0.5
+				uses = 1
+				category =  motorized_equipment
+			}
 		}
 	}
 
@@ -1363,6 +1564,32 @@ focus_tree = {
 
 		search_filters = {  }
 		completion_reward = {
+			add_tech_bonus = {
+				name = support_tech
+				bonus = 0.3
+				uses = 1
+				category = support_tech
+			}
+			add_tech_bonus = {
+				name = infantry_weapons
+				bonus = 0.3
+				uses = 1
+				category = infantry_weapons
+			}
+			#顾问“西风骑士团”追加：-10%步兵装备生产花费，-10%口粮生产花费，-5%支援装备生产花费
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_10
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_11
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_67_toolip
 		}
 	}
 
@@ -1395,7 +1622,4 @@ focus_tree = {
 		completion_reward = {
 		}
 	}
-        
-        
-        
-        }
+}

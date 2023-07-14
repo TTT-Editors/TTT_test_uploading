@@ -159,22 +159,319 @@ ZDG_decision_category = {
 	}
 }
 ZDG_decision_category2 = {
-    ZDG_extreme_northern_test = {   
-		cost = 0
+   ZDG_decision_3 = {	
+		fire_only_once = no
+		visible = {
+			has_country_flag = ZDG_complete_failure 
+		}
+		activation = {
+			has_country_flag = ZDG_complete_failure 
+		}	
+		days_mission_timeout = 60
+		is_good = no
+		cost = 0	
+		cancel_trigger = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		timeout_effect = {
+			country_event = ZDG_events.10
+		}	
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+ZDG_decision_category3 = {
+    ZDG_expandmilitary_supportitems = {       #展开军事支援条目
+        cost = 0
 		days_remove = 0	
 		fire_only_once = no
-        		
-		available = {
-		   is_debug = yes
+        visible= {
+			tag = ZDG 
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		complete_effect = {
-	    add_power_balance_value = {
-        id = ZDG_extreme_northern_palace
-        value = -0.3
-            }
+		    set_country_flag = ZDG_expandmilitary_flag
+			
+		}		
+	}
+	ZDG_close_expandmilitary_supportitems = {       #关闭军事支援条目
+        cost = 0
+		days_remove = 0	
+		fire_only_once = no
+        visible= {
+			tag = ZDG 
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    clr_country_flag = ZDG_expandmilitary_flag
+		}		
+	}
+	ZDG_militaryfactory_assistancerequest = {       #提交军用工厂援助要求
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible= {
+			tag = ZDG
+            has_country_flag = ZDG_expandmilitary_flag	
+		}
+		available = {
+		    custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available
+			check_variable = { ZDG_militaryfactory_value > 6 }
+	        }
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available1
+			check_variable = { ZDG_military_share > 0 }
+	        }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_militaryfactory_value = 1 }
+			add_to_variable = { ZDG_military_share = -1 }
+			custom_effect_tooltip = ZDG_beifangyuanzhu_tt1
+			add_to_variable = { ZDG_dituwaigongchang = 1 }
+			add_to_variable = { ZDG_dituwaigongchang1 = 1 }
+			hidden_effect = {
+			add_offsite_building = { type = arms_factory level = 1 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+			}			
+		}		
+	}
+	ZDG_submitrequest_troopassistance = {       #提交部队援助要求
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible= {
+			tag = ZDG
+            has_country_flag = ZDG_expandmilitary_flag	
+		}
+		available = {
+		    custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available
+			check_variable = { ZDG_submitrequest_value < 6 }
+	        }
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available1
+			check_variable = { ZDG_military_share > 0 }
+	        }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_military_share = -1 }
+		    add_to_variable = { ZDG_submitrequest_value = 1 }
+			 if = {
+				limit = {
+					NOT = { has_template = "愚人众先遣军" }
+				}
+		division_template = {
+			name = "愚人众先遣军"
+			priority = 2
+			is_locked = yes
+			division_names_group = ZDG_INF_01
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				artillery_brigade = { x = 2 y = 0 }
+		
+			}
+			support = {
+				engineer = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+			}
+		}
+	}
+		222 = {
+		create_unit = {
+			division = "division_template = \"愚人众先遣军\" start_experience_factor = 0.4"
+			owner = ZDG
+			count = 1
+		    }
+	    }			
+		}		
+	}
+	ZDG_submit_requestassistance = {       #提交“志愿军”援助要求
+        cost = 0
+		days_remove = 30
+		fire_only_once = no
+        visible= {
+			tag = ZDG
+            has_country_flag = ZDG_expandmilitary_flag	
+		}
+		available = {
+		    custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available
+			check_variable = { ZDG_submit_requestassistance_value > 6 }
+	        }
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available1
+			check_variable = { ZDG_military_share > 0 }
+	        }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_military_share = -1 }
+		    add_to_variable = { ZZDG_submit_requestassistance_value = 1 }
+			 effect_tooltip = {
+				swap_ideas = {
+					add_idea = CLSIA_dui_dangdiren_huaiyi6_toolip
+					remove_idea = CLSIA_dui_dangdiren_huaiyi_toolip
+				}
+			}
+			add_to_variable = { ZDG_weekly_manpower = 1000 }			
+		}		
+	}
+	ZDG_submitreserve_assistancerequest = {       #提交预备役援助要求
+        cost = 0
+		days_remove = 0	
+		fire_only_once = no
+        visible= {
+			tag = ZDG
+            has_country_flag = ZDG_expandmilitary_flag	
+		}
+		available = {
+		    custom_trigger_tooltip = {
+		    tooltip = ZDG_submit_requestassistance_available
+			check_variable = { ZDG_submitreserve_value > 11 }
+	        }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_submitreserve_value = 1 }
+			add_manpower = 20000			
+		}		
+	}
+	ZDG_equipment_assistancerequirements = {       #提交装备援助要求
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible= {
+			tag = ZDG
+            has_country_flag = ZDG_expandmilitary_flag	
+		}
+		available = { 
+		    custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available1
+			check_variable = { ZDG_military_share > 0 }
+	        }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_military_share = -1 }
+		    if = {
+			limit = {
+				NOT = { has_completed_focus = ZDG_8 }
+			}
+			add_equipment_to_stockpile = {
+		    type = artillery_equipment
+		    amount = 100
+	        }
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = ZDG_8
+			}
+			add_equipment_to_stockpile = {
+		    type = artillery_equipment
+		    amount = 250
+	        }
+		    }			
+		}		
+	}
+	ZDG_logistics_assistancerequirements = {       #提交后勤援助要求
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible= {
+			tag = ZDG
+            has_country_flag = ZDG_expandmilitary_flag	
+		}
+		available = { 
+		    custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available1
+			check_variable = { ZDG_military_share > 0 }
+	        }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_military_share = -1 }
+		    if = {
+			limit = {
+				NOT = { has_completed_focus = ZDG_8 }
+			}
+			add_equipment_to_stockpile = {
+		    type = motorized_equipment
+		    amount = 30
+	        }
+			add_equipment_to_stockpile = {
+		    type = grain_conversion_eq
+		    amount = 300
+	        }
+			add_equipment_to_stockpile = {
+		    type = train_equipment
+		    amount = 5
+	        }
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = ZDG_8
+			}
+			add_equipment_to_stockpile = {
+		    type = motorized_equipment
+		    amount = 80
+	        }
+			add_equipment_to_stockpile = {
+		    type = grain_conversion_eq
+		    amount = 700
+	        }
+			add_equipment_to_stockpile = {
+		    type = train_equipment
+		    amount = 5
+	        }
+		    }			
+		}		
+	}
+	ZDG_submit_military_guidanceequirements = {       #提交军事指导要求
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible= {
+			tag = ZDG
+            has_country_flag = ZDG_expandmilitary_flag	
+		}
+		available = {
+		    NOT = { has_idea = ZDG_military_guidance }
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available1
+			check_variable = { ZDG_military_share > 0 }
+	        }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_military_share = -1 }
+		    add_timed_idea = { idea = ZDG_military_guidance days = 90 }	
 		}		
 	}
 }

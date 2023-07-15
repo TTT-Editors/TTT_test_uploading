@@ -186,23 +186,24 @@ ZDG_decision_category3 = {
         cost = 0
 		days_remove = 0	
 		fire_only_once = no
-        visible= {
-			tag = ZDG 
+        visible = {
+			tag = ZDG
+			NOT = { has_country_flag = ZDG_expandmilitary_flag }
 		}
 		ai_will_do = {
 			factor = 10
 		}
 		complete_effect = {
-		    set_country_flag = ZDG_expandmilitary_flag
-			
+		    set_country_flag = ZDG_expandmilitary_flag		
 		}		
 	}
 	ZDG_close_expandmilitary_supportitems = {       #关闭军事支援条目
         cost = 0
 		days_remove = 0	
 		fire_only_once = no
-        visible= {
-			tag = ZDG 
+        visible = {
+			tag = ZDG
+			has_country_flag = ZDG_expandmilitary_flag
 		}
 		ai_will_do = {
 			factor = 10
@@ -215,7 +216,7 @@ ZDG_decision_category3 = {
         cost = 0
 		days_remove = 30	
 		fire_only_once = no
-        visible= {
+        visible = {
 			tag = ZDG
             has_country_flag = ZDG_expandmilitary_flag	
 		}
@@ -232,15 +233,13 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
+		remove_effect = {
 		    add_to_variable = { ZDG_militaryfactory_value = 1 }
 			add_to_variable = { ZDG_military_share = -1 }
-			custom_effect_tooltip = ZDG_beifangyuanzhu_tt1
+			custom_effect_tooltip = ZDG_militaryfactory_assistancerequest_tt
 			add_to_variable = { ZDG_dituwaigongchang = 1 }
-			add_to_variable = { ZDG_dituwaigongchang1 = 1 }
 			hidden_effect = {
 			add_offsite_building = { type = arms_factory level = 1 }
-			add_offsite_building = { type = industrial_complex level = 1 }
 			}			
 		}		
 	}
@@ -265,7 +264,7 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
+		remove_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
 		    add_to_variable = { ZDG_submitrequest_value = 1 }
 			 if = {
@@ -300,8 +299,8 @@ ZDG_decision_category3 = {
 			count = 1
 		    }
 	    }			
-		}		
-	}
+		}
+    }
 	ZDG_submit_requestassistance = {       #提交“志愿军”援助要求
         cost = 0
 		days_remove = 30
@@ -323,7 +322,7 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
+		remove_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
 		    add_to_variable = { ZZDG_submit_requestassistance_value = 1 }
 			 effect_tooltip = {
@@ -352,7 +351,7 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
+		remove_effect = {
 		    add_to_variable = { ZDG_submitreserve_value = 1 }
 			add_manpower = 20000			
 		}		
@@ -374,7 +373,7 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
+		remove_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
 		    if = {
 			limit = {
@@ -413,7 +412,7 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		complete_effect = {
+		remove_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
 		    if = {
 			limit = {
@@ -472,6 +471,332 @@ ZDG_decision_category3 = {
 		complete_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
 		    add_timed_idea = { idea = ZDG_military_guidance days = 90 }	
+		}		
+	}
+	ZDG_expand_politicaleconomic_supportitems = {       #展开政治经济支援条目
+        cost = 0
+		days_remove = 0	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+			NOT = { has_country_flag = ZDG_politicaleconomic_supportitems_flag }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    set_country_flag = ZDG_politicaleconomic_supportitems_flag	
+		}		
+	}
+	ZDG_close_politicaleconomic_supportitems = {       #关闭政治经济支援条目
+        cost = 0
+		days_remove = 0	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+			has_country_flag = ZDG_politicaleconomic_supportitems_flag
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+		    clr_country_flag = ZDG_politicaleconomic_supportitems_flag
+		}		
+	}
+	ZDG_submitrequest_civilianfactory = {       #提交民用工厂援助要求
+        cost = 0
+		days_remove = 30
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available
+		    check_variable = { ZDG_submitrequest_civilianfacvalue < 6 } 
+	        }
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+		    add_to_variable = { ZDG_submitrequest_civilianfacvalue = 1 }
+			add_to_variable = { ZDG_economicpolitical_share = -1 }
+			custom_effect_tooltip = ZDG_submitrequest_civilianfactory_tt
+			add_to_variable = { ZDG_dituwaigongchang1 = 1 }
+			hidden_effect = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			}
+		}		
+	}
+	ZDG_submitrequest_politicalassistance = {       #提交政治援助要求
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available
+		    check_variable = { ZDG_submitrequest_politicalassivalue < 6 } 
+	        }
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+		    add_to_variable = { ZDG_submitrequest_politicalassivalue = 1 }
+			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+			add_to_variable = { ZDG_stability_factor = 0.05 }
+			effect_tooltip = {
+			    swap_ideas = {
+					add_idea = CLSIA_dui_dangdiren_huaiyi7_toolip
+					remove_idea = CLSIA_dui_dangdiren_huaiyi_toolip
+				}
+			}
+		}		
+	}
+	ZDG_requesting_empress_commendation = {       #请求女皇的嘉奖
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available
+		    check_variable = { ZDG_requesting_empress_comvaluen < 6 } 
+	        }
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+		    add_to_variable = { ZDG_requesting_empress_comvaluen = 1 }
+			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+			add_to_variable = { ZDG_war_support_factor = 0.05 }
+			effect_tooltip = {
+			    swap_ideas = {
+					add_idea = CLSIA_dui_dangdiren_huaiyi8_toolip
+					remove_idea = CLSIA_dui_dangdiren_huaiyi_toolip
+				}
+			}
+		}		
+	}
+	ZDG_requesting_foolssuppress = {       #请求愚人众对地方的镇压
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available
+		    check_variable = { ZZDG_requesting_foolssuppressvaluen < 6 } 
+	        }
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+		    add_to_variable = { ZDG_requesting_foolssuppressvaluen = 1 }
+			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+			add_to_variable = { ZDG_stability_factor = 0.05 }
+			effect_tooltip = {
+			    swap_ideas = {
+					add_idea = CLSIA_dui_dangdiren_huaiyi9_toolip
+					remove_idea = CLSIA_dui_dangdiren_huaiyi_toolip
+				}
+			}
+		}		
+	}
+	ZDG_requestsnetechnician = {       #请求至冬技师
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05  
+                }
+			add_timed_idea = { idea = ZDG_winter_technician_support days = 60 } 
+		}		
+	}
+	ZDG_requesteconomic_assistance_untilwinter = {       #请求至冬经济援助
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05  
+                }
+			add_timed_idea = { idea = ZDG_economic_support_untilsne days = 60 } 
+		}		
+	}
+	ZDG_requestingappease_localsuntilsne = {       #请求至冬出面安抚当地人
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_requestingappease_loavailable
+		    check_variable = { ZDG_requestingappease_loavalue < 4 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+			add_to_variable = { ZDG_requestingappease_loavalue = 1 }
+			effect_tooltip = {
+			    swap_ideas = {
+					add_idea = CLSIA_dui_dangdiren_huaiyi10_toolip
+					remove_idea = CLSIA_dui_dangdiren_huaiyi_toolip
+				}
+			}
+			add_to_variable = { conscription = 0.005 }
+		}		
+	}
+	ZDG_requestscientific_researchsupport = {       #请求科研支持 
+        cost = 0
+		days_remove = 30	
+		fire_only_once = no
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05  
+                }
+			add_timed_idea = { idea = ZDG_winter_technology_support days = 60 } 
+		}		
+	}
+	ZDG_requestjoin_researchalliance = {       #请求加入至冬科研同盟  
+        cost = 0
+		days_remove = 30	
+		fire_only_once = yes
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_to_variable = { ZDG_economicpolitical_share = -1 }
+			SNE = {
+			add_to_tech_sharing_group = sne_research
+			}
+			ZDG = {
+			add_to_tech_sharing_group = sne_research
+			}
+		}		
+	}
+	ZDG_applyingvolunteer_armyconcessionordert = {       #申请志愿军特许令 
+        cost = 0
+		days_remove = 30	
+		fire_only_once = yes
+        visible = {
+			tag = ZDG
+            has_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		}
+		available = {
+            custom_trigger_tooltip = {
+		    tooltip = ZDG_economicpolitical_share_available
+		    check_variable = { ZDG_economicpolitical_share > 0 } 
+	        }			
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_to_variable = { ZDG_economicpolitical_share = -1 }
+			SNE = {
+			add_ideas = ZDG_action_liyue
+			}
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05  
+            }
 		}		
 	}
 }

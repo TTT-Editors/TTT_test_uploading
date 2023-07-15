@@ -5,28 +5,11 @@ on_actions = {
 			limit = {
 				has_any_power_balance = yes
 			}
-			set_variable = { ZDG_military_share = 1 }
-			set_variable = { ZDG_economicpolitical_share = 1 }
+			add_to_variable = { ZDG_military_share = 1 }
+			add_to_variable = { ZDG_economicpolitical_share = 1 }
 		    }
 	    }
 	}
-	on_monthly_ZDG = {      #有仍未使用的援助名额，提高0.1
-		effect = {
-	    if = {
-			limit = {
-				has_any_power_balance = yes
-				or = {
-				check_variable = { ZDG_military_share > 0 }
-				check_variable = { ZDG_economicpolitical_share > 0 }
-				}
-			}
-			add_power_balance_value = {
-            id = ZDG_extreme_northern_palace
-            value = 0.1  
-               }
-		    }
-	    }
-    }
 	on_monthly_ZDG = {      #每月扣0.05
 		effect = {
 	    if = {

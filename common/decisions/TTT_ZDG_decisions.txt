@@ -157,6 +157,357 @@ ZDG_decision_category = {
 		    }
 		}		
 	}
+	ZDG_killheimmortalsect = {   #消灭仙人派璃月
+		fire_only_once = yes
+		available = {
+			XRG = { exists= NO }
+		}
+		visible = {
+			XRG = { exists= yes }
+		}
+		activation = {
+			XRG = { exists= yes }
+		}
+		days_mission_timeout = 270
+		is_good = no
+		complete_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = 0.10 
+            }
+		}		
+		cancel_trigger = {
+			ZDG = { exists= NO }
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.10 
+            }
+		}		
+		ai_will_do = {
+			base = 100
+		}		
+	}
+	ZDG_eliminate_militarygovernment = {   #消灭北璃月军政府
+		fire_only_once = yes
+		available = {
+			XOG = { exists= NO }
+		}
+		visible = {
+			XOG = { exists= yes }
+		}
+		activation = {
+			XOG = { exists= yes }
+		}
+		days_mission_timeout = 270
+		is_good = no
+		complete_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = 0.10 
+            }
+		}		
+		cancel_trigger = {
+			has_country_flag = ZDG_complete_failure
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.10 
+            }
+		}		
+		ai_will_do = {
+			base = 100
+		}		
+	}
+	ZDG_occupyvast_cloudspace = {   #占领绝云间
+		fire_only_once = yes
+		available = {
+		   159 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			} 
+		}
+		visible = {
+		    NOT = {
+			159 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		activation = {
+			NOT = {
+			159 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		days_mission_timeout = 90
+		is_good = no
+		complete_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = 0.05 
+            }
+			set_country_flag = ZDG_occupytianqiuflag
+		}		
+		cancel_trigger = {
+			has_country_flag = ZDG_complete_failure
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05 
+            }
+			set_country_flag = ZDG_occupytianqiuflag
+		}		
+		ai_will_do = {
+			base = 100
+		}		
+	}
+	ZDG_occupy_tianqiu_valley = {   #占领天遒谷
+		fire_only_once = yes
+		available = {
+		   157 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			} 
+		}
+		visible = {
+		    has_country_flag = ZDG_occupytianqiuflag
+		    NOT = {
+			157 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		activation = {
+		    has_country_flag = ZDG_occupytianqiuflag
+			NOT = {
+			157 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		days_mission_timeout = 120
+		is_good = no
+		complete_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = 0.05 
+            }
+			set_country_flag = ZDG_occupy_qingce_villflag
+		}		
+		cancel_trigger = {
+			has_country_flag = ZDG_complete_failure
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05 
+            }
+			set_country_flag = ZDG_occupy_qingce_villflag
+		}		
+		ai_will_do = {
+			base = 100
+		}		
+	}
+	ZDG_occupy_qingce_village = {   #占领轻策庄
+		fire_only_once = yes
+		available = {
+		   132 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			} 
+		}
+		visible = {
+		    has_country_flag = ZDG_occupy_qingce_villflag
+		    NOT = {
+			132 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		activation = {
+		    has_country_flag = ZDG_occupy_qingce_villflag
+			NOT = {
+			157 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		days_mission_timeout = 90
+		is_good = no
+		complete_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = 0.05 
+            }
+			set_country_flag = ZDG_occupy_wangshu_flag
+		}		
+		cancel_trigger = {
+			has_country_flag = ZDG_complete_failure
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05 
+            }
+			set_country_flag = ZDG_occupy_wangshu_flag
+		}		
+		ai_will_do = {
+			base = 100
+		}		
+	}
+	ZDG_occupy_wangshu_inn = {   #占领望舒客栈
+		fire_only_once = yes
+		available = {
+		   138 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			} 
+		}
+		visible = {
+		    has_country_flag = ZDG_occupy_qingce_villflag
+		    NOT = {
+			138 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		activation = {
+		    has_country_flag = ZDG_occupy_qingce_villflag
+			NOT = {
+			157 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			}
+		}
+		days_mission_timeout = 120
+		is_good = no
+		complete_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = 0.05 
+            }
+			set_country_flag = ZDG_occupy_wangshu_flag
+		}		
+		cancel_trigger = {
+			has_country_flag = ZDG_complete_failure
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05 
+            }
+			set_country_flag = ZDG_occupy_wangshu_flag
+		}		
+		ai_will_do = {
+			base = 100
+		}		
+	}
+	ZDG_establishing_goodwill_government = {  #建立仙人管理区  
+		available = {
+			controls_state = 165
+			controls_state = 164
+			controls_state = 163
+			controls_state = 142
+			controls_state = 162
+			controls_state = 161
+			controls_state = 171
+			controls_state = 195
+			controls_state = 196
+			controls_state = 157
+			controls_state = 158
+			controls_state = 159
+			controls_state = 244
+			controls_state = 223
+			controls_state = 168
+			controls_state = 204
+			controls_state = 203
+			controls_state = 199
+			controls_state = 198
+			controls_state = 167
+			XRG = { exists = NO }
+		}
+		cost = 200
+		ai_will_do = {
+			factor = 100
+		}
+		visible = {
+			original_tag = ZDG
+		}
+		complete_effect = {
+				XRG = {
+					transfer_state = 165
+					transfer_state = 164
+					transfer_state = 163
+					transfer_state = 142
+					transfer_state = 110
+					transfer_state = 142
+					transfer_state = 162
+					transfer_state = 161
+					transfer_state = 171
+					transfer_state = 195
+					transfer_state = 196
+					transfer_state = 157
+					transfer_state = 158
+					transfer_state = 159
+					transfer_state = 244
+					transfer_state = 223
+					transfer_state = 168
+					transfer_state = 204
+					transfer_state = 203
+					transfer_state = 199
+					transfer_state = 198
+					transfer_state = 167
+					set_cosmetic_tag = XRG_reichskommissariat
+					create_country_leader = {
+						name = "SNE_Childe"
+						desc = "SNE_Childe_desc"
+						picture = GFX_portrait_large_Snezhnaya_Childe
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+						}
+					}
+				}
+			set_autonomy = { target = XRG autonomy_state = ZDG_autonomus_states }
+		}
+	}
 }
 ZDG_decision_category2 = {
    ZDG_decision_3 = {	

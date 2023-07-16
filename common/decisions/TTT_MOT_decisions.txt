@@ -1,4 +1,7 @@
 MOT_Political_decision_category = {
+    ##################################################################################
+    #################################################################################
+    ############风魔龙危机决议
     MOT_Political_decision_category_focustree_MOT_tree_0_07 = {
         allowed = {
             tag = MOT
@@ -727,19 +730,460 @@ MOT_Political_decision_category = {
             MOT_Political_complete_mission = yes
         }
     }
-}
+
 ##########################################################################
 #######################################################################
 ###########################################################################
+####跳过风魔龙
+    MOT_Political_decision_category_passby_crisis_of_dargon = {
+        allowed = {
+            tag = MOT
+        }
+        visible = {
+            is_debug = yes
+        }
+        available = {
+            is_debug = yes
+        }
+        fire_only_once = yes
+        complete_effect = {
+            ###清除风魔龙危机民族精神
+			if = {
+				limit = {
+					has_idea = MOT_crisis_of_Tewalin
+				}
+				remove_ideas = MOT_crisis_of_Tewalin
+			}
+			else_if = {
+				limit = {
+					has_idea = MOT_crisis_of_Tewalin2
+				}
+				remove_ideas = MOT_crisis_of_Tewalin2
+			}
+			TWL = {
+				remove_ideas = TWL_frightening_strikes_of_windy_dargons
+			}
+			BLL = {
+				remove_ideas = BLL_fengmolongweiji
+			}
+			hidden_effect = {
+				news_event = {
+					id = global_news.30#事件id
+					days = 7#几天后触发
+				}#此为触发世界新闻
+				##清除条件FLAG
+				clr_global_flag = MOT_dragon_crisis
+				set_global_flag = MOT_dragon_crisis_is_over
+				##清除倒计时
+				set_variable = {
+					var = MOT_dragon_crisis_deadline_num
+					value = 0
+				}
+                set_variable = {MOT_Progress_num = 1}
+                set_variable = {MOT_Deadline_num = 1}
+                set_variable = {MOT_Progress_num_localization = 0}
+                set_variable = {MOT_Deadline_num_localization = 0}
+				###解锁立场选择
+				clr_global_flag = MOT_dragon_crisis_standpoint_is_locked
+				##解除进度条和倒计时机制
+				clr_country_flag = MOT_Deadline_is_unlocked
+				clr_country_flag = MOT_Progress_is_unlocked
+				###清除立场
+				if = {
+					limit = {
+						has_country_flag = Lock_MOT_Standpoint_decision_1
+					}
+					clr_country_flag = Lock_MOT_Standpoint_decision_1
+				}
+				else_if = {
+					limit = {
+						has_country_flag = Lock_MOT_Standpoint_decision_2
+					}
+					clr_country_flag = Lock_MOT_Standpoint_decision_2
+				}
+				else_if = {
+					limit = {
+						has_country_flag = Lock_MOT_Standpoint_decision_3
+					}
+					clr_country_flag = Lock_MOT_Standpoint_decision_3
+				}
+				##清除国家和任务
+				clear_array = global.MOT_Standpoint_flag_array_01
+				clear_array = global.MOT_Standpoint_flag_array_02
+				clear_array = global.MOT_Standpoint_flag_array_03
+				clear_array = global.MOT_naionalfocus_mission
+				clear_array = MOT_Political_grid_array
+            }
+        }
+    }
+}
+##军事线改革决议
+###绘测地图
+
+MOT_Political_decision_category = {
+    ##蒙德城
+    MOT_Political_decision_category_MOT_tree_0_43_01 = {
+        allowed = {
+            origin_tag = MOT
+        }
+        visible = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+        }
+        available = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+            1 = {
+                is_owned_or_subject_trigger = yes
+            }
+            2 = {
+                is_owned_or_subject_trigger = yes
+            }
+            288 = {
+                is_owned_or_subject_trigger = yes
+            }
+            command_power > 15
+            not = {
+                has_country_flag = MOT_Survey_map_is_locking_flag
+            }
+            has_country_flag = MOT_mika_is_activating
+        }
+        fire_only_once = yes
+        cost = 50
+        days_remove = 150
+        complete_effect = {
+            add_command_power = -15
+        }
+        remove_effect = {
+            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
+            1 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            2 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            288 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+        }
+    }
+    ##风起地
+    MOT_Political_decision_category_MOT_tree_0_43_02 = {
+        allowed = {
+            origin_tag = MOT
+        }
+        visible = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+        }
+        available = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+            278 = {
+                is_owned_or_subject_trigger = yes
+            }
+            274 = {
+                is_owned_or_subject_trigger = yes
+            }
+            9 = {
+                is_owned_or_subject_trigger = yes
+            }
+            279 = {
+                is_owned_or_subject_trigger = yes
+            }
+            7 = {
+                is_owned_or_subject_trigger = yes
+            }
+            command_power > 15
+            not = {
+                has_country_flag = MOT_Survey_map_is_locking_flag
+            }
+            has_country_flag = MOT_mika_is_activating
+        }
+        fire_only_once = yes
+        cost = 50
+        days_remove = 150
+        complete_effect = {
+            add_command_power = -15
+            278 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            274 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            9 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            279 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            7 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+        }
+        remove_effect = {
+            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
+        }
+    }
+    ##奔狼领
+    MOT_Political_decision_category_MOT_tree_0_43_03 = {
+        allowed = {
+            origin_tag = MOT
+        }
+        visible = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+        }
+        available = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+            259 = {
+                is_owned_or_subject_trigger = yes
+            }
+            27 = {
+                is_owned_or_subject_trigger = yes
+            }
+            245 = {
+                is_owned_or_subject_trigger = yes
+            }
+            262 = {
+                is_owned_or_subject_trigger = yes
+            }
+            261 = {
+                is_owned_or_subject_trigger = yes
+            }
+            command_power > 15
+            not = {
+                has_country_flag = MOT_Survey_map_is_locking_flag
+            }
+            has_country_flag = MOT_mika_is_activating
+        }
+        fire_only_once = yes
+        cost = 50
+        days_remove = 150
+        complete_effect = {
+            add_command_power = -15
+            259 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            27 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            245 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            262 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            261 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+        }
+        remove_effect = {
+            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
+        }
+    }
+    ##晨曦酒庄
+    MOT_Political_decision_category_MOT_tree_0_43_04 = {
+        allowed = {
+            origin_tag = MOT
+        }
+        visible = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+        }
+        available = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+            26 = {
+                is_owned_or_subject_trigger = yes
+            }
+            264 = {
+                is_owned_or_subject_trigger = yes
+            }
+            263 = {
+                is_owned_or_subject_trigger = yes
+            }
+            265 = {
+                is_owned_or_subject_trigger = yes
+            }
+            267 = {
+                is_owned_or_subject_trigger = yes
+            }
+            266 = {
+                is_owned_or_subject_trigger = yes
+            }
+            command_power > 15
+            not = {
+                has_country_flag = MOT_Survey_map_is_locking_flag
+            }
+            has_country_flag = MOT_mika_is_activating
+        }
+        fire_only_once = yes
+        cost = 50
+        days_remove = 150
+        complete_effect = {
+            add_command_power = -15
+            26 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            264 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            263 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            265 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            267 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            266 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+        }
+        remove_effect = {
+            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
+        }
+    }
+    ##清泉镇
+   MOT_Political_decision_category_MOT_tree_0_43_05 = {
+        allowed = {
+            origin_tag = MOT
+        }
+        visible = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+        }
+        available = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+            268 = {
+                is_owned_or_subject_trigger = yes
+            }
+            8 = {
+                is_owned_or_subject_trigger = yes
+            }
+            269 = {
+                is_owned_or_subject_trigger = yes
+            }
+            271 = {
+                is_owned_or_subject_trigger = yes
+            }
+            273 = {
+                is_owned_or_subject_trigger = yes
+            }
+            270 = {
+                is_owned_or_subject_trigger = yes
+            }
+            272 = {
+                is_owned_or_subject_trigger = yes
+            }
+            command_power > 15
+            not = {
+                has_country_flag = MOT_Survey_map_is_locking_flag
+            }
+            has_country_flag = MOT_mika_is_activating
+        }
+        fire_only_once = yes
+        cost = 50
+        days_remove = 150
+        complete_effect = {
+            add_command_power = -15
+            268 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            8 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            269 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            271 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            273 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            270 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            272 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+        }
+        remove_effect = {
+            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
+        }
+    }
+    ##龙脊镇
+   MOT_Political_decision_category_MOT_tree_0_43_06 = {
+        allowed = {
+            origin_tag = MOT
+        }
+        visible = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+        }
+        available = {
+            origin_tag = MOT
+            has_completed_focus = MOT_tree_0_43
+            275 = {
+                is_owned_or_subject_trigger = yes
+            }
+            276 = {
+                is_owned_or_subject_trigger = yes
+            }
+            command_power > 15
+            not = {
+                has_country_flag = MOT_Survey_map_is_locking_flag
+            }
+            has_country_flag = MOT_mika_is_activating
+        }
+        fire_only_once = yes
+        cost = 50
+        days_remove = 150
+        complete_effect = {
+            add_command_power = -15
+            275 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+            276 = {
+                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
+            }
+        }
+        remove_effect = {
+            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
+        }
+    }
+    ##自由，反抗，诗文
+    MOT_Political_decision_category_Freedom_resistance_poetry = {
+        allowed = {
+            origin_tag = MOT
+        }
+        visible = {
+            origin_tag = MOT
+            has_idea = MOT_A_song_of_defiance
+            has_idea = MOT_The_teachings_of_freedom
+        }
+        available = {
+            origin_tag = MOT
+            has_idea = MOT_A_song_of_defiance
+            has_idea = MOT_The_teachings_of_freedom
+        }
+        fire_only_once = yes
+        complete_effect = {
+            remove_ideas = MOT_A_song_of_defiance
+            remove_ideas = MOT_The_teachings_of_freedom
+            add_ideas = MOT_Freedom_resistance_poetry
+        }
+    }
 
 
 
 
-
-
-
-
-
+}
 ###########################################################################
 #########################################################################
 ##########################################################################

@@ -1094,6 +1094,12 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#解锁决议：“测绘地图”
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_01
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_02
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_03
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_04
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_05
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_06
 		}
 	}
 
@@ -1110,7 +1116,36 @@ focus_tree = {
 		completion_reward = {
 			###我们将给还在为蒙德战斗的军区伙伴们必要的支持。
 ####（7天后三军区触发“来自骑士团的支援”）
-
+				if = {
+					limit = {
+						TWL = {
+							exists = yes
+						}
+					}
+					TWL = {
+						country_event = {id = MOT_event.47 days = 7}
+					}
+				}
+				if = {
+					limit = {
+						MDQ = {
+							exists = yes
+						}
+					}
+					MDQ = {
+						country_event = {id = MOT_event.47 days = 7}
+					}
+				}
+				if = {
+					limit = {
+						FXE = {
+							exists = yes
+						}
+					}
+					FXE = {
+						country_event = {id = MOT_event.47 days = 7}
+					}
+				}
 		}
 	}
 
@@ -1122,10 +1157,69 @@ focus_tree = {
 		prerequisite = { focus = MOT_tree_0_43 }
 		
 		cost = 7
-
+		available = {
+			has_idea = MOD_the_rule_of_mondstad_defease_MOT
+		}
 		search_filters = {  }
 		completion_reward = {
 			##我们将向其他各地方保证尽快解决《蒙德防御条例》带来的问题。
+			custom_effect_tooltip =MOT_tree_0_45_toolip
+				if = {
+					limit = {
+						QQZ = {
+							exists = yes
+						}
+					}
+					QQZ = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
+				if = {
+					limit = {
+						DLK = {
+							exists = yes
+						}
+					}
+					DLK = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
+				if = {
+					limit = {
+						DSC = {
+							exists = yes
+						}
+					}
+					DSC = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
+				if = {
+					limit = {
+						ALS = {
+							exists = yes
+						}
+					}
+					ALS = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
 		}
 	}
 
@@ -1141,6 +1235,75 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			##三军区获得额外的三个步兵师（按军区原来的编制）
+				if = {
+					limit = {
+						TWL = {
+							exists = yes
+						}
+					}
+					TWL = {
+						capital_scope = {
+							create_unit = {
+								division = "division_template = \"风龙废墟军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"风龙废墟军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"风龙废墟军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						MDQ = {
+							exists = yes
+						}
+					}
+					MDQ = {
+						capital_scope = {
+							create_unit = {
+								division = "division_template = \"达达乌帕谷驻防旅\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"达达乌帕谷驻防旅\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"达达乌帕谷驻防旅\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						FXE = {
+							exists = yes
+						}
+					}
+					FXE = {
+						capital_scope = {
+							create_unit = {
+								division = "division_template = \"东蒙德军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"东蒙德军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"东蒙德军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+						}
+					}
+				}
 		}
 	}
 
@@ -1156,6 +1319,52 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#三军区获得额外的五个民兵师（相比之下更弱），获得民族精神：“民兵权力暂时下放”：+0.5%适役人口，-5%训练时间
+			add_ideas = MOT_Temporary_decentralization_of_militia_power
+			if = {
+					limit = {
+						TWL = {
+							exists = yes
+						}
+					}
+					TWL = {
+						add_manpower = 15000
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 1500
+							producer = MOT
+						}
+					}
+				}
+				if = {
+					limit = {
+						MDQ = {
+							exists = yes
+						}
+					}
+					MDQ = {
+						add_manpower = 15000
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 1500
+							producer = MOT
+						}
+					}
+				}
+				if = {
+					limit = {
+						FXE = {
+							exists = yes
+						}
+					}
+					FXE = {
+						add_manpower = 15000
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 1500
+							producer = MOT
+						}
+					}
+				}
 		}
 	}
 
@@ -1171,6 +1380,7 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#触发事件“签字笔”
+			country_event = {id = MOT_event.42}
 		}
 		
 	}
@@ -1187,6 +1397,7 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#获得民族精神：蒙德军事学院——开始起步：-0.1日pp，+5%动员速度，+5%陆军经验增长，+5%战争支持
+			add_ideas = MOT_Maunder_Military_Academy01
 		}
 	}
 
@@ -1202,6 +1413,51 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#风起地、伴风地与东蒙德军区相邻的区域增加3级要塞，其余与东蒙德军区相邻的边境以及风起地的胜利点处添加1级要塞
+			278 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			274 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			9 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 2551
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 3681
+				}
+			}
 		}
 	}
 
@@ -1217,6 +1473,70 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#在龙脊镇辖区与达达乌帕谷的边界上添加3级要塞，在龙脊镇的胜利点上添加1级要塞。
+			275 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9475
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9540
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9520
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9587
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 1776
+				}
+			}
+			276 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 3433
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9432
+				}
+			}
 		}
 	}
 
@@ -1232,6 +1552,10 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#我们将加大对风龙废墟军区的支持，以防军区委员会以外的人能够在风龙废墟坐大。（这个我会和风龙废墟的配合，暂时先给风龙废墟+5%稳定）
+			TWL = {
+				add_stability = 0.05
+			}
+			custom_effect_tooltip = MOT_tree_0_52_tooltip
 		}
 	}
 
@@ -1248,6 +1572,7 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#56天后触发“回信”
+			country_event = {id = MOT_event.46 days = 5}
 		}
 	}
 
@@ -1262,6 +1587,7 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			#获得民族精神：“自由的教诲”：+10%核心领土防御
+			add_ideas = MOT_The_teachings_of_freedom
 		}
 	}
 
@@ -1277,6 +1603,7 @@ focus_tree = {
 		completion_reward = {
 			#获得民族精神：“反抗的高歌”：+10%核心领土攻击
 			#解锁决议：“自由，反抗，诗文”，若同时拥有民族精神“自由的教诲”与“反抗的高歌”，可花费100pp与180天将其合并为：“自由，反抗，诗文”：+15%核心领土攻击，+15%核心领土防御，+15%战争中稳定度修正，+15%投降倾向
+			add_ideas = MOT_A_song_of_defiance
 		}
 	}
 
@@ -1415,6 +1742,19 @@ focus_tree = {
 				bonus = 0.5
 				uses = 1
 				technology = tech_special_forces
+			}
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_5
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_6
+				}
 			}
 			#顾问“西风骑士团”追加：+10%特种部队上限，+5%特种部队攻击，特种部队防御
 			custom_effect_tooltip = MOT_tree_0_61_tooltip

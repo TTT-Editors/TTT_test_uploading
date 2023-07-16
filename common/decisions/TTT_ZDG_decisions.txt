@@ -1,4 +1,55 @@
 ZDG_decision_category = {
+    ZDG_offensive_in_one_year = {     #刺探仙家情报
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_has_win_the_northern_war
+				original_tag = ZDG
+				XOG = { exists = no }
+				XRG = { exists = no }
+			}
+		}
+
+		days_mission_timeout = 365
+
+		fire_only_once = yes
+
+		activation = {
+			original_tag = ZDG
+			OR = {
+				has_war_with = XOG
+				has_war_with = XRG
+			}
+		}
+
+		is_good = no
+
+		timeout_effect = {
+			custom_effect_tooltip = ZDG_we_lost
+			hidden_effect = {
+				ZDG = { add_ideas = complete_collapse }
+				ZDG = {
+					transfer_units_fraction = {
+						target = SNE
+						size = 1
+						keep_unit_leaders = {}
+						keep_unit_leaders_trigger = {
+							always = no
+						}
+					}
+				}
+			}
+		}
+		
+		complete_effect = {
+			add_political_power = 200
+			set_global_flag = liyue_in_danger
+		}
+	}
     ZDG_detectintelligence_immortalfamily_XRG = {   #刺探仙家情报
 		cost = 10
 		days_remove = 30	
@@ -177,7 +228,7 @@ ZDG_decision_category = {
             }
 		}		
 		cancel_trigger = {
-			ZDG = { exists= NO }
+			has_country_flag = ZDG_complete_failure
 		}
 		timeout_effect = {
 			add_power_balance_value = {
@@ -232,6 +283,7 @@ ZDG_decision_category = {
 			} 
 		}
 		visible = {
+		    has_war = yes
 		    NOT = {
 			159 = { 
 		  	OR = {
@@ -242,6 +294,7 @@ ZDG_decision_category = {
 			}
 		}
 		activation = {
+		    has_war = yes
 			NOT = {
 			159 = { 
 		  	OR = {
@@ -497,6 +550,11 @@ ZDG_decision_category = {
 					every_owned_state = {
 			        add_core_of = XRG
 	  	            }
+					hidden_effect = {
+					every_character = {
+						set_nationality = EMP
+					    }
+					}
 					set_cosmetic_tag = XRG_reichskommissariat
 					create_country_leader = {
 						name = "SNE_Childe"
@@ -507,8 +565,357 @@ ZDG_decision_category = {
 						traits = {
 						}
 					}
+					add_popularity = { ideology = despotism popularity = 1.0 }
+					set_party_name = {
+				    ideology = despotism
+				    long_name = XRG_despotism_front_party_long
+				    name = XRG_despotism_front_party
+			        }
+					hidden_effect = {
+					    load_oob = "XRG_kuilei" 
+					}
 				}
 			set_autonomy = { target = XRG autonomy_state = ZDG_autonomus_states }
+			add_popularity = { ideology = despotism popularity = 1.0 }
+		}
+	}
+	ZDG_establishing_beiliyue_government = {  #建立北璃月管理区  
+		available = {
+			controls_state = 138
+			controls_state = 139
+			controls_state = 137
+			controls_state = 131
+			controls_state = 194
+			controls_state = 133
+			controls_state = 130
+			controls_state = 134
+			controls_state = 135
+			controls_state = 132
+			controls_state = 136
+			XOG = { exists = NO }
+		}
+		cost = 200
+		ai_will_do = {
+			factor = 100
+		}
+		visible = {
+			original_tag = ZDG
+		}
+		complete_effect = {
+				XOG = {
+					transfer_state = 138
+					transfer_state = 139
+					transfer_state = 137
+					transfer_state = 131
+					transfer_state = 194
+					transfer_state = 133
+					transfer_state = 130
+					transfer_state = 134
+					transfer_state = 135
+					transfer_state = 132
+					transfer_state = 136
+					every_owned_state = {
+			        add_core_of = XOG
+	  	            }
+					hidden_effect = {
+					every_character = {
+						set_nationality = EMP
+					    }
+					}
+					set_cosmetic_tag = XOG_reichskommissariat
+					create_country_leader = {
+						name = "SNE_Childe"
+						desc = "SNE_Childe_desc"
+						picture = GFX_portrait_large_Snezhnaya_Childe
+						expire = "1965.1.1"
+						ideology = despotism_subtype
+						traits = {
+						}
+					}
+					add_popularity = { ideology = despotism popularity = 1.0 }
+					set_party_name = {
+				    ideology = despotism
+				    long_name = XRG_despotism_front_party_long
+				    name = XRG_despotism_front_party
+			        }
+					hidden_effect = {
+					    load_oob = "XOG_kuilei" 
+					}
+				}
+			set_autonomy = { target = XOG autonomy_state = ZDG_autonomus_states }
+		}
+	}
+	ZDG_establishing_guiliyuan_government = {  #建立归离原管理区  
+		available = {
+			controls_state = 145
+			controls_state = 126
+			controls_state = 148
+			controls_state = 146
+			controls_state = 149
+			controls_state = 405
+			controls_state = 406
+			controls_state = 150
+			controls_state = 242
+			controls_state = 147
+			controls_state = 160
+			controls_state = 166
+			controls_state = 144
+			controls_state = 143
+			controls_state = 141
+			controls_state = 121
+			controls_state = 243
+			controls_state = 403
+			controls_state = 404
+			controls_state = 143
+			KQG = { exists = NO }
+			NNG = { exists = NO }
+		}
+		cost = 200
+		ai_will_do = {
+			factor = 100
+		}
+		visible = {
+			original_tag = ZDG
+		}
+		complete_effect = {
+				KQG = {
+					transfer_state = 145
+					transfer_state = 126
+					transfer_state = 148
+					transfer_state = 146
+					transfer_state = 149
+					transfer_state = 405
+					transfer_state = 406
+					transfer_state = 150
+					transfer_state = 242
+					transfer_state = 147
+					transfer_state = 160
+					transfer_state = 166
+					transfer_state = 144
+					transfer_state = 141
+					transfer_state = 121
+					transfer_state = 243
+					transfer_state = 403
+					transfer_state = 404
+					transfer_state = 143
+					every_owned_state = {
+			        add_core_of = KQG
+	  	            }
+					hidden_effect = {
+					every_character = {
+						set_nationality = EMP
+					    }
+					}
+					set_cosmetic_tag = KQG_reichskommissariat
+					create_country_leader = {
+						name = "SNE_Childe"
+						desc = "SNE_Childe_desc"
+						picture = GFX_portrait_large_Snezhnaya_Childe
+						expire = "1965.1.1"
+						ideology = despotism_subtype
+						traits = {
+						}
+					}
+					add_popularity = { ideology = despotism popularity = 1.0 }
+					set_party_name = {
+				    ideology = despotism
+				    long_name = XRG_despotism_front_party_long
+				    name = XRG_despotism_front_party
+			        }
+					hidden_effect = {
+					    load_oob = "KNG_kuilei" 
+					}
+				}
+			set_autonomy = { target = KQG autonomy_state = ZDG_autonomus_states }
+		}
+	}
+	ZDG_establishing_cengyan_government = {  #建立巨渊管理区  
+		available = {
+			controls_state = 155
+			controls_state = 156
+			controls_state = 154
+			controls_state = 197
+			controls_state = 205
+			controls_state = 206
+			controls_state = 207
+			controls_state = 208
+			controls_state = 209
+			RTG = { exists = NO }
+		}
+		cost = 200
+		ai_will_do = {
+			factor = 100
+		}
+		visible = {
+			original_tag = ZDG
+		}
+		complete_effect = {
+				RTG = {
+					transfer_state = 155
+					transfer_state = 156
+					transfer_state = 154
+					transfer_state = 197
+					transfer_state = 205
+					transfer_state = 206
+					transfer_state = 207
+					transfer_state = 208
+					transfer_state = 209
+					every_owned_state = {
+			        add_core_of = RTG
+	  	            }
+					hidden_effect = {
+					every_character = {
+						set_nationality = EMP
+					    }
+					}
+					set_cosmetic_tag = RTG_reichskommissariat
+					create_country_leader = {
+						name = "SNE_Childe"
+						desc = "SNE_Childe_desc"
+						picture = GFX_portrait_large_Snezhnaya_Childe
+						expire = "1965.1.1"
+						ideology = despotism_subtype
+						traits = {
+						}
+					}
+					add_popularity = { ideology = despotism popularity = 1.0 }
+					set_party_name = {
+				    ideology = despotism
+				    long_name = XRG_despotism_front_party_long
+				    name = XRG_despotism_front_party
+			        }
+					hidden_effect = {
+					    load_oob = "RTG_kuilei" 
+					}
+				}
+			set_autonomy = { target = RTG autonomy_state = ZDG_autonomus_states }
+		}
+	}
+	ZDG_establishing_liyuegang_government = {  #建立璃月港管理区 
+		available = {
+			controls_state = 3
+			controls_state = 151
+			controls_state = 152
+			controls_state = 170
+			controls_state = 210
+			controls_state = 211
+			controls_state = 153
+			controls_state = 129
+			controls_state = 128
+			controls_state = 123
+			controls_state = 124
+			controls_state = 122
+			controls_state = 127
+			controls_state = 125
+			controls_state = 169
+			LYU = { exists = NO }
+			ANG = { exists = NO }
+		}
+		cost = 200
+		ai_will_do = {
+			factor = 100
+		}
+		visible = {
+			original_tag = ZDG
+		}
+		complete_effect = {
+				LYU = {
+					transfer_state = 3
+					transfer_state = 151
+					transfer_state = 152
+					transfer_state = 170
+					transfer_state = 210
+					transfer_state = 211
+					transfer_state = 153
+					transfer_state = 129
+					transfer_state = 128
+					transfer_state = 123
+					transfer_state = 124
+					transfer_state = 122
+					transfer_state = 127
+					transfer_state = 125
+					transfer_state = 169
+					every_owned_state = {
+			        add_core_of = RTG
+	  	            }
+					set_cosmetic_tag = LYU_reichskommissariat
+					hidden_effect = {
+					every_character = {
+						set_nationality = EMP
+					    }
+					}
+					create_country_leader = {
+						name = "SNE_Childe"
+						desc = "SNE_Childe_desc"
+						picture = GFX_portrait_large_Snezhnaya_Childe
+						expire = "1965.1.1"
+						ideology = despotism_subtype
+						traits = {
+						}
+					}
+					add_popularity = { ideology = despotism popularity = 1.0 }
+					set_party_name = {
+				    ideology = despotism
+				    long_name = XRG_despotism_front_party_long
+				    name = XRG_despotism_front_party
+			        }
+					hidden_effect = {
+					    load_oob = "LYU_kuilei" 
+					}
+				}
+			set_autonomy = { target = LYU autonomy_state = ZDG_autonomus_states }
+		}
+	}
+	ZDG_recruit_troops = {      #招募部队  
+	    fire_only_once = no
+		available = {
+	        has_equipment = { infantry_equipment > 999 }
+            NOT = { has_country_flag = ZDG_recruit_trooflag	}	
+		}	
+		allowed = {
+			original_tag = ZDG
+		}
+		custom_cost_trigger = {
+			tag = ZDG
+		}
+		custom_cost_text = ZDG_Strengthen_5000_tooltip
+		cost = 20
+		days_remove = 30
+		complete_effect = {
+		add_equipment_to_stockpile = {
+		type = infantry_equipment
+		amount = -1000
+	        }
+		}
+		remove_effect = {
+		    set_country_flag = { flag = ZDG_recruit_trooflag value = 1 days = 30 }
+			if = {
+				limit = {
+					NOT = { has_template = "雪之协防军" }
+				}		
+			division_template = {
+				name = "雪之协防军"
+				priority = 2
+				is_locked = yes
+				division_names_group = ZDG_INF_01
+				regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 1 y = 0 }
+				}
+		    }
+		}
+			222 = {
+				create_unit = {
+					division = "division_template = \"雪之协防军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = ZDG
+					count = 1
+				}
+			}
+		}	
+		ai_will_do = {
+			base = 100
 		}
 	}
 }

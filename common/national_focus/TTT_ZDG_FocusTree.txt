@@ -17,9 +17,25 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
+		cancel_if_invalid = no
 		completion_reward = {
             add_war_support = 0.05
 			country_event =  { id = ZDG_events.1 }
+			set_power_balance = {
+				id = ZDG_extreme_northern_palace
+				left_side = ZDG_empire_failure
+				right_side = ZDG_crown_treasure
+			}
+			add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.1
+			}
 		}
 	}
 	focus = {
@@ -30,6 +46,12 @@ focus_tree = {
 		y = 2
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             country_event =  { id = ZDG_events.4 }
@@ -47,8 +69,15 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
-
+            set_country_flag = ZDG_4_flag
+			custom_effect_tooltip = ZDG_4_tt
 		}
 		prerequisite = {
 			focus = ZDG_3
@@ -62,6 +91,12 @@ focus_tree = {
 		y = 3
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             custom_effect_tooltip = ZDG_beifangyuanzhu_tt1
@@ -86,8 +121,18 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
-
+            add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.1
+			}
+			country_event =  { days = 21 id = ZDG_events.5 }
 		}
 		prerequisite = {
 			focus = ZDG_3
@@ -101,6 +146,12 @@ focus_tree = {
 		y = 4
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             effect_tooltip = {
@@ -125,8 +176,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
-			country_event =  { days = 21 id = ZDG_events.4 }
 			effect_tooltip = {
 				swap_ideas = {
 					add_idea = CLSIA_dui_dangdiren_huaiyi3_toolip
@@ -150,6 +206,12 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
             effect_tooltip = {
 				swap_ideas = {
@@ -172,6 +234,12 @@ focus_tree = {
 		y = 5
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             add_research_slot = 1
@@ -198,6 +266,12 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
             add_ideas = ZDG_Scaleusevileyes_limitedtrial
 			unlock_decision_tooltip = ZDG_scale_usevileyes
@@ -221,7 +295,20 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
+			ZDG_valeria = {
+				set_character_flag = ZDG_exiled_flag
+			}
+			ZDG_nastasia = {
+				set_character_flag = ZDG_exiled_flag
+			}
+			custom_effect_tooltip = ZDG_12_tt
             add_advisor_role = {
 				character = ZDG_valeria
 				activate = no
@@ -272,6 +359,7 @@ focus_tree = {
 					}
 				}
 			}
+
 		}
 		prerequisite = {
 			focus = ZDG_11
@@ -288,6 +376,12 @@ focus_tree = {
 		y = 4
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             if = {
@@ -377,8 +471,22 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+			custom_trigger_tooltip = {
+				tooltip = ZDG_promise_trigger	
+				check_variable = { ZDG_promise_valuen < 6 }
+			}
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
-
+            add_to_variable = { ZDG_promise_valuen = 1 }
+			add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.1
+			}
 		}
 	}
 	focus = {
@@ -389,6 +497,12 @@ focus_tree = {
 		y = 5
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             swap_ideas = {
@@ -415,6 +529,12 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
 			effect_tooltip = {
 				swap_ideas = {
@@ -436,6 +556,12 @@ focus_tree = {
 		y = 5
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             swap_ideas = {
@@ -462,6 +588,12 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
             if =  {
 				limit =  { has_intelligence_agency = no }
@@ -480,6 +612,12 @@ focus_tree = {
 		y = 3
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             add_political_power = -50
@@ -500,6 +638,12 @@ focus_tree = {
 		y = 4
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             add_stability = 0.10
@@ -544,10 +688,20 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
             swap_ideas = {
 				add_idea = CLSIA_chulaizhadao4
 				remove_idea = CLSIA_chulaizhadao3
+			}
+			add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.05
 			}
 		}
 		prerequisite = {
@@ -575,8 +729,15 @@ focus_tree = {
 			country_exists = XRG
 		    }
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
-
+            unlock_decision_tooltip = ZDG_detectintelligence_immortalfamily_XRG
+			unlock_decision_tooltip = ZDG_detectintelligence_immortalfamily_XOG
 		}
 		prerequisite = {
 			focus = ZDG_22
@@ -597,8 +758,16 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
-
+            set_country_flag = ZDG_24_flag
+			custom_effect_tooltip = ZDG_24_tt
+			country_event = { days = 30  id = ZDG_events.3 }
 		}
 		prerequisite = {
 			focus = ZDG_19
@@ -612,6 +781,12 @@ focus_tree = {
 		y = 4
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             swap_ideas = {
@@ -631,6 +806,12 @@ focus_tree = {
 		y = 5
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
 			add_ideas = ZDG_assembly_controlorder
@@ -654,6 +835,12 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
             army_experience = 50
 			country_event =  { id = ZDG_events.6 }
@@ -670,6 +857,12 @@ focus_tree = {
 		y = 3
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             if = {
@@ -718,8 +911,25 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
+		}
 		completion_reward = {
 			country_event =  { days = 270 id = ZDG_events.7 }
+			add_research_slot = 1
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = artillery
+			}
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				category = support_tech
+			}
 		}
 		prerequisite = {
 			focus = ZDG_31
@@ -733,6 +943,12 @@ focus_tree = {
 		y = 6
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+		}
+		cancel = {
+			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
             swap_ideas = {

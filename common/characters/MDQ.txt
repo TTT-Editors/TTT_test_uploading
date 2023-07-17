@@ -310,4 +310,54 @@ MDQ_Sternberg={
             }
         }
     }
+    MDQ_Treasure_Gang = {
+        name =MDQ_Treasure_Gang
+        portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+        advisor = {
+            available = {
+                has_charecter_flag = MDQ_Treasure_Gang_is_available
+                not = {
+                    has_dynamic_modifier = {modifier = MDQ_The_Legend_of_the_Three_Musketeers}
+                }
+                custom_trigger_tooltip = {
+                    MDQ = {
+                        has_charecter_flag = MDQ_Treasure_Gang_is_available
+                    }
+                }
+            }
+            slot = high_command           
+            idea_token = MDQ_Treasure_Gang
+            cost = 150
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+                MDQ_Treasure_Gang_traits                
+            }
+        }
+        corps_commander={
+            visible = {
+                has_charecter_flag = MDQ_Treasure_Gang_is_available
+                not = {
+                    has_dynamic_modifier = {modifier = MDQ_The_Legend_of_the_Three_Musketeers}
+                }
+            }
+            traits = { guerilla_fighter scavenger }
+	        skill = 3
+	        attack_skill = 3
+	        defense_skill = 3
+	        planning_skill = 3
+	        logistics_skill = 4
+            legacy_id=-1
+        }
+    }
 }

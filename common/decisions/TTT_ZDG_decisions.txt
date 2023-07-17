@@ -139,6 +139,202 @@ ZDG_decision_category = {
             }			
 		}		
 	}
+	ZDG_searching_forheart = {      #寻找神之心，xqg和xog投降
+		fire_only_once = yes
+		available = {
+			has_country_flag = ZDG_14_flag
+		}
+		visible = {
+			XOG = { exists = no }
+		    XRG = { exists = no }
+		    original_tag = ZDG
+			138 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			157 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}
+		activation = {
+			XOG = { exists = no }
+		    XRG = { exists = no }
+		    original_tag = ZDG
+			138 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+			157 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}	
+		days_mission_timeout = 7
+		is_good = yes
+		cost = 0
+		cancel_trigger = {
+			has_country_flag = ZDG_14_flag
+		}
+		timeout_effect = {
+		random_list = {
+        40 = {
+        country_event = { days = 14  id = ZDG_events.12 }
+            }
+        60 = {
+         country_event = { days = 14  id = ZDG_events.13 }
+            }
+        }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ZDG_searching_forheart1 = {      #寻找神之心，kqg和nng投降
+		fire_only_once = yes
+		available = {
+			has_country_flag = ZDG_14_flag
+		}
+		visible = {
+			KQG = { exists = no }
+		    NNG = { exists = no }
+		    original_tag = ZDG
+			147 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}
+		activation = {
+			KQG = { exists = no }
+		    NNG = { exists = no }
+		    original_tag = ZDG
+			147 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}	
+		days_mission_timeout = 7
+		is_good = yes
+		cost = 0
+		cancel_trigger = {
+			has_country_flag = ZDG_14_flag2
+		}
+		timeout_effect = {
+		random_list = {
+        40 = {
+        country_event = { days = 14  id = ZDG_events.12 }
+            }
+        60 = {
+         country_event = { days = 14  id = ZDG_events.14 }
+            }
+        }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ZDG_searching_forheart2 = {      #寻找神之心，rtg投降
+		fire_only_once = yes
+		available = {
+			has_country_flag = ZDG_14_flag
+		}
+		visible = {
+			RTG = { exists = no }
+		    original_tag = ZDG
+			155 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}
+		activation = {
+			RTG = { exists = no }
+		    original_tag = ZDG
+			155 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}	
+		days_mission_timeout = 7
+		is_good = yes
+		cost = 0
+		cancel_trigger = {
+			has_country_flag = ZDG_14_flag2
+		}
+		timeout_effect = {
+		random_list = {
+        40 = {
+        country_event = { days = 14  id = ZDG_events.12 }
+            }
+        60 = {
+         country_event = { days = 14  id = ZDG_events.14 }
+            }
+        }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ZDG_searching_forheart3 = {      #寻找神之心，lyu投降
+		fire_only_once = yes
+		available = {
+			has_country_flag = ZDG_14_flag
+		}
+		visible = {
+			RTG = { exists = no }
+		    original_tag = ZDG
+			124 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}
+		activation = {
+			RTG = { exists = no }
+		    original_tag = ZDG
+			124 = { 
+		  	OR = {
+				is_controlled_by = ROOT
+				CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}	
+		days_mission_timeout = 7
+		is_good = yes
+		cost = 0
+		cancel_trigger = {
+			has_country_flag = ZDG_14_flag2
+		}
+		timeout_effect = {
+		random_list = {
+        60 = {
+        country_event = { days = 14  id = ZDG_events.12 }
+            }
+        40 = {
+         country_event = { days = 14  id = ZDG_events.14 }
+            }
+        }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
 	ZDG_scale_usevileyes = {   #增加干涉军内部邪眼的使用规模
 		cost = 10
 		days_remove = 30	
@@ -154,6 +350,7 @@ ZDG_decision_category = {
 			factor = 10
 		}
 		complete_effect = {
+		    custom_effect_tooltip = ZDG_scale_usevileyes_tt
 		    add_command_power = -10
 			if = {
 			limit = {
@@ -290,7 +487,7 @@ ZDG_decision_category = {
 			}
 			}
 		}
-		days_mission_timeout = 90
+		days_mission_timeout = 180
 		is_good = no
 		complete_effect = {
 			add_power_balance_value = {
@@ -537,21 +734,21 @@ ZDG_decision_category = {
 			        add_core_of = XRG
 	  	            }
 					hidden_effect = {
+					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
 						set_nationality = EMP
 					    }
 					}
 					set_cosmetic_tag = XRG_reichskommissariat
 					create_country_leader = {
-						name = "SNE_Childe"
-						desc = "SNE_Childe_desc"
-						picture = GFX_portrait_large_Snezhnaya_Childe
+						name = "ZDG_puppet_government"
+						desc = ""
+						picture = GFX_portrait_ZDG_puppet_government
 						expire = "1965.1.1"
 						ideology = despotism_subtype
 						traits = {
 						}
 					}
-					add_popularity = { ideology = despotism popularity = 1.0 }
 					set_party_name = {
 				    ideology = despotism
 				    long_name = XRG_despotism_front_party_long
@@ -604,21 +801,21 @@ ZDG_decision_category = {
 			        add_core_of = XOG
 	  	            }
 					hidden_effect = {
+					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
 						set_nationality = EMP
 					    }
 					}
 					set_cosmetic_tag = XOG_reichskommissariat
 					create_country_leader = {
-						name = "SNE_Childe"
-						desc = "SNE_Childe_desc"
-						picture = GFX_portrait_large_Snezhnaya_Childe
+						name = "ZDG_puppet_government"
+						desc = ""
+						picture = GFX_portrait_ZDG_puppet_government
 						expire = "1965.1.1"
 						ideology = despotism_subtype
 						traits = {
 						}
 					}
-					add_popularity = { ideology = despotism popularity = 1.0 }
 					set_party_name = {
 				    ideology = despotism
 				    long_name = XRG_despotism_front_party_long
@@ -688,21 +885,21 @@ ZDG_decision_category = {
 			        add_core_of = KQG
 	  	            }
 					hidden_effect = {
+					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
 						set_nationality = EMP
 					    }
 					}
 					set_cosmetic_tag = KQG_reichskommissariat
 					create_country_leader = {
-						name = "SNE_Childe"
-						desc = "SNE_Childe_desc"
-						picture = GFX_portrait_large_Snezhnaya_Childe
+						name = "ZDG_puppet_government"
+						desc = ""
+						picture = GFX_portrait_ZDG_puppet_government
 						expire = "1965.1.1"
 						ideology = despotism_subtype
 						traits = {
 						}
 					}
-					add_popularity = { ideology = despotism popularity = 1.0 }
 					set_party_name = {
 				    ideology = despotism
 				    long_name = XRG_despotism_front_party_long
@@ -750,21 +947,21 @@ ZDG_decision_category = {
 			        add_core_of = RTG
 	  	            }
 					hidden_effect = {
+					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
 						set_nationality = EMP
 					    }
 					}
 					set_cosmetic_tag = RTG_reichskommissariat
 					create_country_leader = {
-						name = "SNE_Childe"
-						desc = "SNE_Childe_desc"
-						picture = GFX_portrait_large_Snezhnaya_Childe
+						name = "ZDG_puppet_government"
+						desc = ""
+						picture = GFX_portrait_ZDG_puppet_government
 						expire = "1965.1.1"
 						ideology = despotism_subtype
 						traits = {
 						}
 					}
-					add_popularity = { ideology = despotism popularity = 1.0 }
 					set_party_name = {
 				    ideology = despotism
 				    long_name = XRG_despotism_front_party_long
@@ -826,6 +1023,7 @@ ZDG_decision_category = {
 	  	            }
 					set_cosmetic_tag = LYU_reichskommissariat
 					hidden_effect = {
+					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
 						set_nationality = EMP
 					    }
@@ -936,6 +1134,7 @@ ZDG_decision_category3 = {
         visible = {
 			tag = ZDG
 			NOT = { has_country_flag = ZDG_expandmilitary_flag }
+			is_ai = no
 		}
 		ai_will_do = {
 			factor = 10
@@ -951,6 +1150,7 @@ ZDG_decision_category3 = {
         visible = {
 			tag = ZDG
 			has_country_flag = ZDG_expandmilitary_flag
+			is_ai = no
 		}
 		ai_will_do = {
 			factor = 10
@@ -980,9 +1180,11 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_military_share = -1 }
+		}
 		remove_effect = {
 		    add_to_variable = { ZDG_militaryfactory_value = 1 }
-			add_to_variable = { ZDG_military_share = -1 }
 			custom_effect_tooltip = ZDG_militaryfactory_assistancerequest_tt
 			add_to_variable = { ZDG_dituwaigongchang = 1 }
 			hidden_effect = {
@@ -1011,8 +1213,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		remove_effect = {
+		complete_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
+		}
+		remove_effect = {
 		    add_to_variable = { ZDG_submitrequest_value = 1 }
 			 if = {
 				limit = {
@@ -1069,8 +1273,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		remove_effect = {
+		complete_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
+		}
+		remove_effect = {
 		    add_to_variable = { ZZDG_submit_requestassistance_value = 1 }
 			 effect_tooltip = {
 				swap_ideas = {
@@ -1094,9 +1300,16 @@ ZDG_decision_category3 = {
 		    tooltip = ZDG_submit_requestassistance_available
 			check_variable = { ZDG_submitreserve_value > 11 }
 	        }
+			custom_trigger_tooltip = {
+		    tooltip = ZDG_militaryfactory_available1
+			check_variable = { ZDG_military_share > 0 }
+	        }
 		}
 		ai_will_do = {
 			factor = 10
+		}
+		complete_effect = {
+		    add_to_variable = { ZDG_military_share = -1 }
 		}
 		remove_effect = {
 		    add_to_variable = { ZDG_submitreserve_value = 1 }
@@ -1120,8 +1333,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		remove_effect = {
+		complete_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
+		}
+		remove_effect = {
 		    if = {
 			limit = {
 				NOT = { has_completed_focus = ZDG_8 }
@@ -1159,8 +1374,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		remove_effect = {
+		complete_effect = {
 		    add_to_variable = { ZDG_military_share = -1 }
+		}
+		remove_effect = {
 		    if = {
 			limit = {
 				NOT = { has_completed_focus = ZDG_8 }
@@ -1216,9 +1433,11 @@ ZDG_decision_category3 = {
 			factor = 10
 		}
 		complete_effect = {
-		    add_to_variable = { ZDG_military_share = -1 }
-		    add_timed_idea = { idea = ZDG_military_guidance days = 90 }	
-		}		
+		    add_to_variable = { ZDG_military_share = -1 }	
+		}
+        remove_effect = {
+		    add_timed_idea = { idea = ZDG_military_guidance days = 90 }
+		}
 	}
 	ZDG_expand_politicaleconomic_supportitems = {       #展开政治经济支援条目
         cost = 0
@@ -1271,9 +1490,11 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
 		    add_to_variable = { ZDG_submitrequest_civilianfacvalue = 1 }
-			add_to_variable = { ZDG_economicpolitical_share = -1 }
 			custom_effect_tooltip = ZDG_submitrequest_civilianfactory_tt
 			add_to_variable = { ZDG_dituwaigongchang1 = 1 }
 			hidden_effect = {
@@ -1302,8 +1523,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-		    add_to_variable = { ZDG_submitrequest_politicalassivalue = 1 }
 			add_to_variable = { ZDG_economicpolitical_share = -1 }		
 			add_to_variable = { ZDG_stability_factor = 0.05 }
 			effect_tooltip = {
@@ -1335,9 +1558,11 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-		    add_to_variable = { ZDG_requesting_empress_comvaluen = 1 }
-			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+		    add_to_variable = { ZDG_requesting_empress_comvaluen = 1 } 
 			add_to_variable = { ZDG_war_support_factor = 0.05 }
 			effect_tooltip = {
 			    swap_ideas = {
@@ -1368,9 +1593,11 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-		    add_to_variable = { ZDG_requesting_foolssuppressvaluen = 1 }
-			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+		    add_to_variable = { ZDG_requesting_foolssuppressvaluen = 1 }	
 			add_to_variable = { ZDG_stability_factor = 0.05 }
 			effect_tooltip = {
 			    swap_ideas = {
@@ -1397,8 +1624,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-			add_to_variable = { ZDG_economicpolitical_share = -1 }		
 			add_power_balance_value = {
             id = ZDG_extreme_northern_palace
             value = -0.05  
@@ -1423,8 +1652,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-			add_to_variable = { ZDG_economicpolitical_share = -1 }		
 			add_power_balance_value = {
             id = ZDG_extreme_northern_palace
             value = -0.05  
@@ -1453,8 +1684,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-			add_to_variable = { ZDG_economicpolitical_share = -1 }		
 			add_to_variable = { ZDG_requestingappease_loavalue = 1 }
 			effect_tooltip = {
 			    swap_ideas = {
@@ -1482,8 +1715,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
-		remove_effect = {
-			add_to_variable = { ZDG_economicpolitical_share = -1 }		
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
+		remove_effect = {		
 			add_power_balance_value = {
             id = ZDG_extreme_northern_palace
             value = -0.05  
@@ -1508,8 +1743,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-			add_to_variable = { ZDG_economicpolitical_share = -1 }
 			SNE = {
 			add_to_tech_sharing_group = sne_research
 			}
@@ -1535,8 +1772,10 @@ ZDG_decision_category3 = {
 		ai_will_do = {
 			factor = 10
 		}
+		complete_effect = {
+		    add_to_variable = { ZDG_economicpolitical_share = -1 }
+		}
 		remove_effect = {
-			add_to_variable = { ZDG_economicpolitical_share = -1 }
 			SNE = {
 			add_ideas = ZDG_action_liyue
 			}

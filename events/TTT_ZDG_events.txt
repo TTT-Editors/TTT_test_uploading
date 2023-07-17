@@ -150,6 +150,22 @@ country_event = {
 	
 	option = {
 	    name = ZDG_events.8.a
+		hidden_effect = {
+			ZDG = { add_ideas = ZDG_likewhen_tathagatacame }
+				ZDG = {
+					transfer_units_fraction = {
+						target = SNE
+						size = 1
+						keep_unit_leaders = {}
+						keep_unit_leaders_trigger = {
+							always = no
+					}
+			    }
+				every_character = {
+						set_nationality = SNE
+			    }
+		    }
+		}
 	}
 }
 #东眺岩港
@@ -174,32 +190,18 @@ country_event = {
 	
 	option = {
 	    name = ZDG_events.10.a
-	}
-}
-#判断神之心（xog和xrg投降）
-country_event = {
-	id = ZDG_events.11 
-	title = ZDG_events.11.t
-	desc = ZDG_events.11.d
-	fire_only_once = yes 
-	trigger = {
-		XOG = { exists = no }
-		XRG = { exists = no }
-		original_tag = ZDG
-	}
-	hidden = yes
-	option = {
-		name = ZDG_events.12.a 
-		random_list = {
-        40 = {
-        country_event = { days = 14  id = ZDG_events.12 }
-            }
-        60 = {
-         country_event = { days = 14  id = ZDG_events.13 }
-            }
-        }
-		ai_chance = {
-			base = 100
+		hidden_effect = {
+			ZDG = { add_ideas = complete_collapse }
+				ZDG = {
+					transfer_units_fraction = {
+						target = SNE
+						size = 1
+						keep_unit_leaders = {}
+						keep_unit_leaders_trigger = {
+							always = no
+					}
+			    }
+		    }
 		}
 	}
 }
@@ -231,108 +233,17 @@ country_event = {
 		set_country_flag = ZDG_15_flag
 	}
 }
-#判定神之心（阿晴投降的判定）
+#找到神之心二阶段
 country_event = {
-	id = ZDG_events.14 
-	title = ZDG_events.14.t
-	desc = ZDG_events.14.d
-	fire_only_once = yes 
-	trigger = {
-		KQG = { exists = no }
-		original_tag = ZDG
-	}
-	hidden = yes
+    id = ZDG_events.14
+	title = ZDG_events.12.t
+    desc = ZDG_events.12.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
 	option = {
-		name = ZDG_events.14.a 
-		random_list = {
-        40 = {
-        country_event = { days = 14  id = ZDG_events.12 }
-            }
-        60 = {
-         country_event = { days = 14  id = ZDG_events.13 }
-            }
-        }
-		ai_chance = {
-			base = 100
-		}
-	}
-}
-#判定神之心（nng的判定）
-country_event = {
-	id = ZDG_events.16 
-	title = ZDG_events.16.t
-	desc = ZDG_events.16.d
-	fire_only_once = yes 
-	trigger = {
-		NNG = { exists = no }
-		original_tag = ZDG
-	}
-	hidden = yes
-	option = {
-		name = ZDG_events.16.a 
-		random_list = {
-        40 = {
-        country_event = { days = 14  id = ZDG_events.12 }
-            }
-        60 = {
-         country_event = { days = 14  id = ZDG_events.13 }
-            }
-        }
-		ai_chance = {
-			base = 100
-		}
-	}
-}
-#判定神之心（rtg的判定）
-country_event = {
-	id = ZDG_events.17 
-	title = ZDG_events.17.t
-	desc = ZDG_events.17.d
-	fire_only_once = yes 
-	trigger = {
-		RTG = { exists = no }
-		original_tag = ZDG
-	}
-    hidden = yes	
-	option = {
-		name = ZDG_events.16.a 
-		random_list = {
-        40 = {
-        country_event = { days = 14  id = ZDG_events.12 }
-            }
-        60 = {
-         country_event = { days = 14  id = ZDG_events.13 }
-            }
-        }
-		ai_chance = {
-			base = 100
-		}
-	}
-}
-#判定神之心（lyu的判定）
-country_event = {
-	id = ZDG_events.18 
-	title = ZDG_events.18.t
-	desc = ZDG_events.18.d
-	fire_only_once = yes 
-	trigger = {
-		LYU = { exists = no }
-		original_tag = ZDG
-	}
-     hidden = yes	
-	option = {
-		name = ZDG_events.18.a 
-		random_list = {
-        60 = {
-        country_event = { days = 14  id = ZDG_events.12 }
-            }
-        40 = {
-         country_event = { days = 14  id = ZDG_events.13 }
-            }
-        }
-		ai_chance = {
-			base = 100
-		}
+	    name = ZDG_events.12.a
+		set_country_flag = ZDG_14_flag2
 	}
 }
 #百分比找到神之心
@@ -361,8 +272,8 @@ country_event = {
 	}
     hidden = yes	
 	option = {
-		name = ZDG_events.18.a 	
-        country_event = { days = 14  id = ZDG_events.12 }
+		name = ZDG_events.19.a 	
+        country_event = { days = 14  id = ZDG_events.14 }
 		ai_chance = {
 			base = 100
 		}

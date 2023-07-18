@@ -1,274 +1,260 @@
 KQG_special_categories1 = {
-
-    KQG_test = {
-	on_map_mode = map_only
-	
+	KQG_test = {
+		on_map_mode = map_only
 		priority = 20
-		
-  		icon = Factory_resolution_icon_small
-
+		icon = Factory_resolution_icon_small
 		visible = {
 			#拥有
-			ROOT = { has_full_control_of_state = FROM }
-		}
-		
-        target_trigger = {
-			FROM = {
-				NOT = { has_state_flag = KQG_state_flag1 }				
+			ROOT = {
+				has_full_control_of_state = FROM
 			}
 		}
-		
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_state_flag = KQG_state_flag1
+				}
+			}
+		}
 		available = {
 			is_subject = no
 			ROOT = {
 				controls_state = FROM
 			}
 		}
-		
 		ai_will_do = {
 			factor = 60
-		}		
+		}
 		cancel_if_not_visible = yes
-		
 		cost = 25
-
 		state_target = yes
-
 		highlight_color_while_active = yes
-		        
 		target_array = core_states
-		
 		fire_only_once = yes
-		
 		days_remove = 30
-		
-        modifier = {
-        POLITICAL_POWER_COST = 0.25		
-	   	}
-		
+		modifier = {
+			POLITICAL_POWER_COST = 0.25
+		}
 		remove_effect = {
-		    random_list = {
-			50 = {
-			    FROM = {
-				set_state_flag = { flag = KQG_state_flag1 value = 1 days = 30 } 
+			random_list = {
+				50 = {
+					FROM = {
+						set_state_flag = {
+							flag = KQG_state_flag1
+							value = 1
+							days = 30
+						}
+					}
+					country_event = {
+						id = KQG_events.23
+						days = 1
+					}
 				}
-				country_event = {
-					id = KQG_events.23
-					days = 1
-			    }
-		    }
-			50 = {
-			    hidden_effect = {					 
-			    FROM = {
-				add_dynamic_modifier = { modifier = KQG_state_modifier_1 }
-				set_state_flag = KQG_state_flag2
+				50 = {
+					hidden_effect = {
+						FROM = {
+							add_dynamic_modifier = {
+								modifier = KQG_state_modifier_1
+							}
+							set_state_flag = KQG_state_flag2
+						}
+					}
+					country_event = {
+						id = KQG_events.22
+						days = 1
+					}
 				}
-                }
-				country_event = {
-					id = KQG_events.22
-					days = 1
-			        }
-		        }
-		    }
+			}
 		}
 	}
-	
 	KQG_test3 = {
 		priority = 20
-		
-  	    icon = Factory_resolution_icon_small
-
+		icon = Factory_resolution_icon_small
 		ai_will_do = {
 			base = 50
 		}
-		
 		cost = 0
-        
 		fire_only_once = yes
 		available = {
-		custom_trigger_tooltip = {
-		tooltip = KQG_test3_text	
-        NOT =  {		
-	    any_state = {  		
-			has_state_flag = is_Liyues_territory
-			NOT =  {
-			has_state_flag = KQG_state_flag2
-                        }			
-	                }
-			    }
-            }
-        }		
+			custom_trigger_tooltip = {
+				tooltip = KQG_test3_text
+				NOT = {
+					any_state = {
+						has_state_flag = is_Liyues_territory
+						NOT = {
+							has_state_flag = KQG_state_flag2
+						}
+						NOT = {
+							has_state_flag = KQG_state_flag1
+						}
+					}
+				}
+			}
+		}
 		remove_effect = {
-		    every_owned_state = {  		
-			remove_dynamic_modifier = { modifier = KQG_state_modifier_1 }			
-	        }   
-		   add_ideas = KQG1_4
+			every_owned_state = {
+				remove_dynamic_modifier = {
+					modifier = KQG_state_modifier_1
+				}
+			}
+			add_ideas = KQG1_4
 		}
 	}
 }
 
-
 KQG_special_categories2 = {
-
-   KQG_test5 = {
-		
+	KQG_test5 = {
 		cost = 75
-		
 		icon = GFX_decision_spr_political_assassination
-				
 		days_remove = 30
-		
 		available = {
-	     tag = KQG
-		 NOT = { has_country_flag = keqing555 }
-	    }
-		
-		fire_only_once = yes
-		
-		complete_effect = {  
-			set_country_flag = {
-			    flag = keqing555
-				days = 30
-				value= 1
-		  }
+			tag = KQG
+			NOT = {
+				has_country_flag = keqing555
+			}
 		}
-		
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = {
+				flag = keqing555
+				days = 30
+				value = 1
+			}
+		}
 		remove_effect = {
-						
-		add_tech_bonus = {
+			add_tech_bonus = {
 				name = KQG_test5
 				bonus = 0.25
 				uses = 1
-				category = infantry_weapons 
+				category = infantry_weapons
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { has_country_flag = KQG_event_8_has_triggered } }
-					country_event = { id = KQG_events.5 days = 14 }
+					limit = {
+						NOT = {
+							has_country_flag = KQG_event_8_has_triggered
+						}
+					}
+					country_event = {
+						id = KQG_events.5
+						days = 14
+					}
 					set_country_flag = KQG_event_8_has_triggered
 				}
 			}
-		}		
-	}
-	
-	KQG_test6 = {
-	
-	    icon = GFX_decision_category_SOV_merge_designers
-		
-		cost = 100
-		
-		days_remove = 30
-		
-		available = {
-	      tag = KQG
-		  NOT = { has_country_flag = keqing555 }
-	    }
-		
-		complete_effect = {  
-			set_country_flag = {
-			    flag = keqing555
-				days = 30
-				value= 1
-		  }
 		}
-		
+	}
+	KQG_test6 = {
+		icon = GFX_decision_category_SOV_merge_designers
+		cost = 100
+		days_remove = 30
+		available = {
+			tag = KQG
+			NOT = {
+				has_country_flag = keqing555
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = keqing555
+				days = 30
+				value = 1
+			}
+		}
 		fire_only_once = yes
-		
 		remove_effect = {
-		
-		add_tech_bonus = {
+			add_tech_bonus = {
 				name = KQG_test6
 				bonus = 0.25
 				uses = 1
-				category = industry 
+				category = industry
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { has_country_flag = KQG_event_8_has_triggered } }
-					country_event = { id = KQG_events.5 days = 14 }
+					limit = {
+						NOT = {
+							has_country_flag = KQG_event_8_has_triggered
+						}
+					}
+					country_event = {
+						id = KQG_events.5
+						days = 14
+					}
 					set_country_flag = KQG_event_8_has_triggered
 				}
 			}
-	}
-	}
-	
-	KQG_test7 = {
-	
-	    icon = GFX_decision_category_SOV_propaganda
-		
-		cost = 50
-		
-		days_remove = 30
-		
-		available = {
-	      tag = KQG		 	      
-		  NOT = { has_country_flag = keqing555 }	    
-	    }
-		
-		complete_effect = {  
-			set_country_flag = {
-			    flag = keqing555
-				days = 30
-				value= 1
-		  }
 		}
-		
-		fire_only_once = yes
-		
-		remove_effect = {
-		set_country_flag = {
-			    flag = keqing555
+	}
+	KQG_test7 = {
+		icon = GFX_decision_category_SOV_propaganda
+		cost = 50
+		days_remove = 30
+		available = {
+			tag = KQG
+			NOT = {
+				has_country_flag = keqing555
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = keqing555
 				days = 30
-				value= 1
-		  }
-		  
+				value = 1
+			}
+		}
+		fire_only_once = yes
+		remove_effect = {
+			set_country_flag = {
+				flag = keqing555
+				days = 30
+				value = 1
+			}
 			add_tech_bonus = {
 				name = KQG_test7
 				bonus = 0.25
 				uses = 1
 				category = electronics
 			}
-		
 			hidden_effect = {
 				if = {
-					limit = { NOT = { has_country_flag = KQG_event_8_has_triggered } }
-					country_event = { id = KQG_events.5 days = 14 }
+					limit = {
+						NOT = {
+							has_country_flag = KQG_event_8_has_triggered
+						}
+					}
+					country_event = {
+						id = KQG_events.5
+						days = 14
+					}
 					set_country_flag = KQG_event_8_has_triggered
 				}
 			}
 		}
 	}
-	
 	KQG_test8 = {
-	
-	    icon = GFX_decision_SOV_academy_of_sciences
-		
+		icon = GFX_decision_SOV_academy_of_sciences
 		cost = 50
-		
 		days_remove = 30
-		
 		available = {
-	      tag = KQG
-		  NOT = { has_country_flag = keqing555 }
-	    }
-		
-		fire_only_once = yes
-		
-		complete_effect = {  
-			set_country_flag = {
-			    flag = keqing555
-				days = 30
-				value= 1
-		  }
+			tag = KQG
+			NOT = {
+				has_country_flag = keqing555
+			}
 		}
-		
-		remove_effect = {
-		set_country_flag = {
-			    flag = keqing555
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = {
+				flag = keqing555
 				days = 30
-				value= 1
-		  }
-		  
+				value = 1
+			}
+		}
+		remove_effect = {
+			set_country_flag = {
+				flag = keqing555
+				days = 30
+				value = 1
+			}
 			add_tech_bonus = {
 				name = KQG_test7
 				bonus = 0.25
@@ -277,95 +263,89 @@ KQG_special_categories2 = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { has_country_flag = KQG_event_8_has_triggered } }
-					country_event = { id = KQG_events.5 days = 14 }
+					limit = {
+						NOT = {
+							has_country_flag = KQG_event_8_has_triggered
+						}
+					}
+					country_event = {
+						id = KQG_events.5
+						days = 14
+					}
 					set_country_flag = KQG_event_8_has_triggered
 				}
 			}
 		}
 	}
-
 }
 
 KQG_special_categories3 = {
-
-   
-KQG_test9 = {
-        icon = GFX_decision_category_SOV_merge_designers
-		
+	KQG_test9 = {
+		icon = GFX_decision_category_SOV_merge_designers
 		cost = 100
-
-		
 		available = {
-	      check_variable = { kqg_test1<8 }
-	    }
-		
-		fire_only_once = no
-		
-		remove_effect = {
-		add_offsite_building = {
-		type = industrial_complex
-		level = 1
+			check_variable = {
+				kqg_test1<8
+			}
 		}
-
-        hidden_effect = {
-        add_to_variable = {
-        var = kqg_test1
-        value = 1
-       }
-    }		
+		fire_only_once = no
+		remove_effect = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = kqg_test1
+					value = 1
+				}
+			}
+		}
 	}
-	}
-	
-KQG_test10 = {
-        icon = GFX_decision_category_SOV_soviet_academy_of_sciences
-		
+	KQG_test10 = {
+		icon = GFX_decision_category_SOV_soviet_academy_of_sciences
 		cost = 100
-
-		
 		available = {
-	      check_variable = { kqg_test2<3 }
-	    }
-		
-		fire_only_once = no
-		
-		remove_effect = {
-		add_offsite_building = {
-		type = arms_factory
-		level = 1
+			check_variable = {
+				kqg_test2<3
+			}
 		}
-
-        hidden_effect = {
-        add_to_variable = {
-        var = kqg_test2
-        value = 1
-       }
-    }		
+		fire_only_once = no
+		remove_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = kqg_test2
+					value = 1
+				}
+			}
+		}
 	}
-	}
-
 }
 
 liyue_civil_war_decisions = {
-KQG_redarmy1 = {                      #刻晴内战招民兵
+	KQG_redarmy1 = {
+		#刻晴内战招民兵
 		icon = TTT_Recruit_icon_Small
 		on_map_mode = map_only
 		priority = 200
-
 		visible = {
 			#拥有
-			ROOT = { has_full_control_of_state = FROM }
+			ROOT = {
+				has_full_control_of_state = FROM
+			}
 			tag = KQG
-			has_global_flag=Liyue_Civil_War
+			has_global_flag = Liyue_Civil_War
 		}
-        
 		available = {
 			is_subject = no
 			ROOT = {
 				controls_state = FROM
 			}
 		}
-				
 		cancel_if_not_visible = yes
 		highlight_color_while_active = yes
 		cost = 25
@@ -373,33 +353,43 @@ KQG_redarmy1 = {                      #刻晴内战招民兵
 		target_array = owned_states
 		fire_only_once = yes
 		days_remove = 15
-							
 		ai_will_do = {
 			factor = 1145
 		}
-		
 		complete_effect = {
-		
 		}
-         
 		remove_effect = {
-            if = {
+			if = {
 				limit = {
-					NOT = { has_template = "人民赤卫队" }
-				}		
-			division_template = {
-				name = "人民赤卫队"
-				priority = 2
-				is_locked = yes
-				division_names_group = KQG_INF_02
-				regiments = {
-					militia = { x = 0 y = 0 }
-					militia = { x = 0 y = 1 }
-					militia = { x = 0 y = 2 }
-					militia = { x = 1 y = 0 }
+					NOT = {
+						has_template = "人民赤卫队"
+					}
 				}
-		    }
-		}
+				division_template = {
+					name = "人民赤卫队"
+					priority = 2
+					is_locked = yes
+					division_names_group = KQG_INF_02
+					regiments = {
+						militia = {
+							x = 0
+							y = 0
+						}
+						militia = {
+							x = 0
+							y = 1
+						}
+						militia = {
+							x = 0
+							y = 2
+						}
+						militia = {
+							x = 1
+							y = 0
+						}
+					}
+				}
+			}
 			FROM = {
 				create_unit = {
 					division = "division_template = \"人民赤卫队\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
@@ -409,5 +399,4 @@ KQG_redarmy1 = {                      #刻晴内战招民兵
 			}
 		}
 	}
-}	
-
+}

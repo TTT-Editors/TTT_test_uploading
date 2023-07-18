@@ -409,7 +409,7 @@ ideas = {
         }
 		ZDG_military_guidance = {            #军事指导
             removal_cost = -1
-            picture = ZDG_bujibuzu
+            picture = ZDG_military_guidance
 			available = {
 			    NOT = { has_country_flag = ZDG_14_flag }
 			}
@@ -423,7 +423,7 @@ ideas = {
         }
 		ZDG_winter_technician_support = {            #至冬技师支援
             removal_cost = -1
-            picture = ZDG_bujibuzu
+            picture = ZDG_winter_technician_support
 			available = {
 			    NOT = { has_country_flag = ZDG_14_flag }
 			}
@@ -433,7 +433,7 @@ ideas = {
         }
 		ZDG_economic_support_untilsne = {            #至冬经济支援
             removal_cost = -1
-            picture = ZDG_bujibuzu
+            picture = ZDG_economic_support_untilsne
 			available = {
 			    NOT = { has_country_flag = ZDG_14_flag }
 			}
@@ -443,7 +443,7 @@ ideas = {
         }
 		ZDG_winter_technology_support = {            #至冬科技支援
             removal_cost = -1
-            picture = ZDG_bujibuzu
+            picture = ZDG_winter_technology_support
 			available = {
 			    NOT = { has_country_flag = ZDG_14_flag }
 			}
@@ -453,7 +453,7 @@ ideas = {
         }
 		ZDG_action_liyue = {            #在璃月的行动
             removal_cost = -1
-            picture = ZDG_bujibuzu
+            picture = ZDG_action_liyue
 			available = {
 			    NOT = { has_country_flag = ZDG_14_flag }
 			}
@@ -463,15 +463,70 @@ ideas = {
         }
 		ZDG_likewhen_tathagatacame = {            #如来时那样……
             removal_cost = -1
-            picture = ZDG_bujibuzu
-			country_lock_all_division_template = yes
+            picture = ZDG_likewhen_tathagatacame
             modifier = {
+			   custom_modifier_tooltip = SPR_military_disloyalty_tt
                stability_factor = -0.5
 			   war_support_factor = -0.5
             }
 			on_add = {
 				country_lock_all_division_template = yes
 			}
+        }
+		ZDG_tongpao_ze = {            #同袍之泽
+            removal_cost = -1
+            picture = ZDG_tongpao_ze
+            modifier = {
+              conscription_factor = -0.50
+			  army_infantry_attack_factor = -0.35
+	          army_infantry_defence_factor = -0.35
+			  army_speed_factor = -0.35
+			  army_org_factor = -0.30
+	          army_morale_factor = -0.30
+			  org_loss_when_moving = 0.25
+			  supply_consumption_factor = 0.25
+			  land_reinforce_rate = -0.01
+			  planning_speed = -0.25
+	          max_planning = -0.25
+			  custom_modifier_tooltip = SPR_military_disloyalty_tt
+            }
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+        }
+		ZDG_lackeygovernment = {            #人尽皆知的走狗政府
+            removal_cost = -1
+            picture = ZDG_lackeygovernment
+            modifier = {
+                disabled_ideas = 1
+				stability_factor = -0.40
+				political_power_gain = -0.50
+				war_support_factor = -0.40
+				surrender_limit = 0.30
+            }		
+        }
+		ZDG_dilapidated_economy = {            #破败的经济
+            removal_cost = -1
+            picture = ZDG_dilapidated_economy
+            modifier = {
+                production_speed_buildings_factor = -0.30
+				industry_repair_factor = -0.3
+				consumer_goods_factor = 0.20
+				local_resources_factor = -0.25
+				global_building_slots_factor = -0.25
+				industrial_capacity_factory = -0.20
+			    production_factory_max_efficiency_factor = -0.20
+	            production_factory_efficiency_gain_factor = -0.20
+				min_export = 0.25
+            }
+            targeted_modifier = {
+				tag = SNE
+				trade_cost_for_target_factor = -0.5
+			}
+            targeted_modifier = {
+				tag = ZDG
+				trade_cost_for_target_factor = -0.5
+			}			
         }
 	}
 }

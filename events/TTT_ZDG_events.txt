@@ -164,6 +164,24 @@ country_event = {
 				every_character = {
 						set_nationality = SNE
 			    }
+				every_country = {
+				    limit = {
+					    is_subject_of = ZDG
+					}
+					ZDG = {
+					    annex_country = {
+						   target = PREV
+						}
+					}
+				}
+				every_neighbor_country = {
+				    limit = {
+					    is_nominate_liyue = yes
+					}
+					ZDG = {
+					    declare_war_on = { target = PREV type = annex_everything }
+					}
+			    } 
 		    }
 		}
 	}
@@ -277,4 +295,68 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
+}
+#消灭仙人派璃月失败
+country_event = {
+    id = ZDG_events.20
+	title = ZDG_events.20.t
+    desc = ZDG_events.20.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.20.a
+		add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = -0.2
+		}
+	}
+}
+#消灭仙人派璃月成功
+country_event = {
+    id = ZDG_events.21
+	title = ZDG_events.21.t
+    desc = ZDG_events.21.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.21.a
+		add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.1
+		}
+	}
+}
+#消灭北璃月军政府成功
+country_event = {
+    id = ZDG_events.22
+	title = ZDG_events.22.t
+    desc = ZDG_events.22.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.22.a
+		add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.1
+		}
+	}
+}
+#消灭北璃月军政府失败
+country_event = {
+    id = ZDG_events.23
+	title = ZDG_events.23.t
+    desc = ZDG_events.23.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.23.a
+		add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = -0.2
+		}
+	}
 }

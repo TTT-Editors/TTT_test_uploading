@@ -36,6 +36,13 @@ focus_tree = {
 				id = ZDG_extreme_northern_palace
 				value = 0.1
 			}
+			if = {
+			limit = {
+				is_ai = yes
+			}
+			set_country_flag = ZDG_expandmilitary_flag
+            set_country_flag = ZDG_politicaleconomic_supportitems_flag			
+		    }
 		}
 	}
 	focus = {
@@ -384,6 +391,7 @@ focus_tree = {
 			has_country_flag = ZDG_complete_failure
 		}
 		completion_reward = {
+			unlock_decision_tooltip = ZDG_recruit_troops
             if = {
 				limit = {
 					NOT = { has_template = "雪之协防军" }
@@ -476,7 +484,7 @@ focus_tree = {
 			NOT = { has_country_flag = ZDG_complete_failure }
 			custom_trigger_tooltip = {
 				tooltip = ZDG_promise_trigger	
-				check_variable = { ZDG_promise_valuen < 6 }
+				check_variable = { ZDG_promise_valuen < 5 }
 			}
 		}
 		cancel = {
@@ -487,6 +495,10 @@ focus_tree = {
 			add_power_balance_value = {
 				id = ZDG_extreme_northern_palace
 				value = 0.1
+			}
+			if = {
+				limit = { check_variable = { ZDG_promise_valuen < 5 } }
+				hidden_effect = { uncomplete_national_focus = { focus = ZDG_promise_queen } }
 			}
 		}
 	}

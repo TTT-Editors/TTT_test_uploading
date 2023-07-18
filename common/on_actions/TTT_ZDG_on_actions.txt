@@ -1,4 +1,37 @@
 on_actions = {
+    on_monthly_ZDG = {   #每月检测大于0就清0
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				or = {
+				check_variable = { ZDG_military_share > 0 }
+				check_variable = { ZDG_economicpolitical_share > 0 }
+                }				
+			}
+			if = {
+			limit = {
+			check_variable = { ZDG_military_share > 0 }
+			}
+			set_variable = { ZDG_military_share = 0 }
+		    }
+			else_if = {
+			limit = {
+				check_variable = { ZDG_economicpolitical_share > 0 }
+			}
+			set_variable = { ZDG_economicpolitical_share = 0 }
+		        }
+			else_if = {
+			limit = {
+				check_variable = { ZDG_economicpolitical_share > 0 }
+				check_variable = { ZDG_military_share > 0 }
+			}
+			set_variable = { ZDG_economicpolitical_share = 0 }
+			set_variable = { ZDG_military_share = 0 }
+		        }
+		    }
+	    }
+	}
 	on_monthly_ZDG = {   #每月默认给两份援助
 		effect = {
 	    if = {

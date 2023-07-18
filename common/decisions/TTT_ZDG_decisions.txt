@@ -160,13 +160,19 @@ ZDG_decision_category = {
 			has_country_flag = ZDG_14_flag
 		}
 		visible = {
-			XOG = {
-				exists = no
-			}
-			XRG = {
-				exists = no
-			}
 			original_tag = ZDG
+			XRG = {
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
+			}
+			XOG = {
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
+			}
 			138 = {
 				OR = {
 					is_controlled_by = ROOT
@@ -185,13 +191,18 @@ ZDG_decision_category = {
 			}
 		}
 		activation = {
-			XOG = {
-				exists = no
-			}
 			XRG = {
-				exists = no
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
-			original_tag = ZDG
+			XOG = {
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
+			}
 			138 = {
 				OR = {
 					is_controlled_by = ROOT
@@ -209,7 +220,7 @@ ZDG_decision_category = {
 				}
 			}
 		}
-		days_mission_timeout = 7
+		days_mission_timeout = 1
 		is_good = yes
 		cost = 0
 		cancel_trigger = {
@@ -218,16 +229,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				40 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.12
-					}
+					country_event = ZDG_events.12
 				}
 				60 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.13
-					}
+					country_event = ZDG_events.13
 				}
 			}
 		}
@@ -243,10 +248,16 @@ ZDG_decision_category = {
 		}
 		visible = {
 			KQG = {
-				exists = no
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			NNG = {
-				exists = no
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			original_tag = ZDG
 			147 = {
@@ -260,10 +271,16 @@ ZDG_decision_category = {
 		}
 		activation = {
 			KQG = {
-				exists = no
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			NNG = {
-				exists = no
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			original_tag = ZDG
 			147 = {
@@ -284,16 +301,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				40 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.12
-					}
+					country_event = ZDG_events.12
 				}
 				60 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.14
-					}
+					country_event = ZDG_events.14
 				}
 			}
 		}
@@ -309,7 +320,10 @@ ZDG_decision_category = {
 		}
 		visible = {
 			RTG = {
-				exists = no
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			original_tag = ZDG
 			155 = {
@@ -323,7 +337,10 @@ ZDG_decision_category = {
 		}
 		activation = {
 			RTG = {
-				exists = no
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			original_tag = ZDG
 			155 = {
@@ -344,16 +361,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				40 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.12
-					}
+					country_event = ZDG_events.12
 				}
 				60 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.14
-					}
+					country_event = ZDG_events.14
 				}
 			}
 		}
@@ -368,8 +379,11 @@ ZDG_decision_category = {
 			has_country_flag = ZDG_14_flag
 		}
 		visible = {
-			RTG = {
-				exists = no
+			LYU = {
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			original_tag = ZDG
 			124 = {
@@ -382,8 +396,11 @@ ZDG_decision_category = {
 			}
 		}
 		activation = {
-			RTG = {
-				exists = no
+			LYU = {
+				OR = {
+					exists = no
+					is_subject_of = ZDG
+				}
 			}
 			original_tag = ZDG
 			124 = {
@@ -404,16 +421,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				60 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.12
-					}
+					country_event = ZDG_events.12
 				}
 				40 = {
-					country_event = {
-						days = 14
-						id = ZDG_events.14
-					}
+					country_event = ZDG_events.14
 				}
 			}
 		}
@@ -501,10 +512,7 @@ ZDG_decision_category = {
 		days_mission_timeout = 270
 		is_good = no
 		complete_effect = {
-			add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = 0.1
-			}
+			country_event = ZDG_events.21
 			hidden_effect = {
 				if = {
 					limit = {
@@ -523,10 +531,7 @@ ZDG_decision_category = {
 			has_country_flag = ZDG_complete_failure
 		}
 		timeout_effect = {
-			add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = -0.1
-			}
+			country_event = ZDG_events.20
 		}
 		ai_will_do = {
 			base = 100
@@ -553,10 +558,7 @@ ZDG_decision_category = {
 		days_mission_timeout = 270
 		is_good = no
 		complete_effect = {
-			add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = 0.1
-			}
+			country_event = ZDG_events.22
 			hidden_effect = {
 				if = {
 					limit = {
@@ -575,10 +577,7 @@ ZDG_decision_category = {
 			has_country_flag = ZDG_complete_failure
 		}
 		timeout_effect = {
-			add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = -0.1
-			}
+			country_event = ZDG_events.23
 		}
 		ai_will_do = {
 			base = 100
@@ -898,6 +897,19 @@ ZDG_decision_category = {
 					every_character = {
 						set_nationality = EMP
 					}
+					add_ideas = ZDG_tongpao_ze
+					add_ideas = ZDG_lackeygovernment
+					add_ideas = ZDG_dilapidated_economy
+					add_ideas = war_economy
+					add_ideas = extensive_conscription
+					add_ideas = limited_exports
+					add_ideas = Better_errmiss
+					add_ideas = Acquit_oneself_words
+					add_ideas = emerge_itself_perish_itself
+					add_ideas = Command_entertainment
+					add_ideas = Armed_police
+					add_ideas = Smooth_operation
+					add_ideas = ideological_imprint
 				}
 				set_cosmetic_tag = XRG_reichskommissariat
 				create_country_leader = {
@@ -974,6 +986,19 @@ ZDG_decision_category = {
 					every_character = {
 						set_nationality = EMP
 					}
+					add_ideas = ZDG_tongpao_ze
+					add_ideas = ZDG_lackeygovernment
+					add_ideas = ZDG_dilapidated_economy
+					add_ideas = war_economy
+					add_ideas = extensive_conscription
+					add_ideas = limited_exports
+					add_ideas = Better_errmiss
+					add_ideas = Acquit_oneself_words
+					add_ideas = emerge_itself_perish_itself
+					add_ideas = Command_entertainment
+					add_ideas = Armed_police
+					add_ideas = Smooth_operation
+					add_ideas = ideological_imprint
 				}
 				set_cosmetic_tag = XOG_reichskommissariat
 				create_country_leader = {
@@ -1066,6 +1091,19 @@ ZDG_decision_category = {
 					every_character = {
 						set_nationality = EMP
 					}
+					add_ideas = ZDG_tongpao_ze
+					add_ideas = ZDG_lackeygovernment
+					add_ideas = ZDG_dilapidated_economy
+					add_ideas = war_economy
+					add_ideas = extensive_conscription
+					add_ideas = limited_exports
+					add_ideas = Better_errmiss
+					add_ideas = Acquit_oneself_words
+					add_ideas = emerge_itself_perish_itself
+					add_ideas = Command_entertainment
+					add_ideas = Armed_police
+					add_ideas = Smooth_operation
+					add_ideas = ideological_imprint
 				}
 				set_cosmetic_tag = KQG_reichskommissariat
 				create_country_leader = {
@@ -1134,6 +1172,19 @@ ZDG_decision_category = {
 					every_character = {
 						set_nationality = EMP
 					}
+					add_ideas = ZDG_tongpao_ze
+					add_ideas = ZDG_lackeygovernment
+					add_ideas = ZDG_dilapidated_economy
+					add_ideas = war_economy
+					add_ideas = extensive_conscription
+					add_ideas = limited_exports
+					add_ideas = Better_errmiss
+					add_ideas = Acquit_oneself_words
+					add_ideas = emerge_itself_perish_itself
+					add_ideas = Command_entertainment
+					add_ideas = Armed_police
+					add_ideas = Smooth_operation
+					add_ideas = ideological_imprint
 				}
 				set_cosmetic_tag = RTG_reichskommissariat
 				create_country_leader = {
@@ -1218,6 +1269,19 @@ ZDG_decision_category = {
 					every_character = {
 						set_nationality = EMP
 					}
+					add_ideas = ZDG_tongpao_ze
+					add_ideas = ZDG_lackeygovernment
+					add_ideas = ZDG_dilapidated_economy
+					add_ideas = war_economy
+					add_ideas = extensive_conscription
+					add_ideas = limited_exports
+					add_ideas = Better_errmiss
+					add_ideas = Acquit_oneself_words
+					add_ideas = emerge_itself_perish_itself
+					add_ideas = Command_entertainment
+					add_ideas = Armed_police
+					add_ideas = Smooth_operation
+					add_ideas = ideological_imprint
 				}
 				create_country_leader = {
 					name = "SNE_Childe"
@@ -1257,6 +1321,9 @@ ZDG_decision_category = {
 			NOT = {
 				has_country_flag = ZDG_recruit_trooflag
 			}
+		}
+		visible = {
+			has_completed_focus = ZDG_13
 		}
 		allowed = {
 			original_tag = ZDG
@@ -1400,7 +1467,7 @@ ZDG_decision_category3 = {
 			custom_trigger_tooltip = {
 				tooltip = ZDG_militaryfactory_available
 				check_variable = {
-					ZDG_militaryfactory_value > 6
+					ZDG_militaryfactory_value < 6
 				}
 			}
 			custom_trigger_tooltip = {
@@ -1544,7 +1611,7 @@ ZDG_decision_category3 = {
 			custom_trigger_tooltip = {
 				tooltip = ZDG_militaryfactory_available
 				check_variable = {
-					ZDG_submit_requestassistance_value > 6
+					ZDG_submit_requestassistance_value < 6
 				}
 			}
 			custom_trigger_tooltip = {
@@ -1590,7 +1657,7 @@ ZDG_decision_category3 = {
 			custom_trigger_tooltip = {
 				tooltip = ZDG_submit_requestassistance_available
 				check_variable = {
-					ZDG_submitreserve_value > 11
+					ZDG_submitreserve_value < 11
 				}
 			}
 			custom_trigger_tooltip = {

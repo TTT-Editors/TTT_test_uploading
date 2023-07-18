@@ -166,6 +166,58 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = MOT_event.14.a
+		every_country = {
+			limit = {
+				is_puppet_of = MOT
+			}
+			random_owned_controlled_state = {
+				limit = {
+					or = {
+						industrial_complex > 0
+						arms_factory > 0
+					}
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 5
+				}
+				damage_building = {
+					type = rail_way
+					damage = 5
+				}
+				damage_building = {
+					type = arms_factory
+					damage = 5
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 5
+				}
+				owner = {
+					country_event = {id = MOT_event.16}
+				}
+			}		
+		}
+		MOT = {
+			capital_scope = {
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+				damage_building = {
+					type = rail_way
+					damage = 3
+				}
+				damage_building = {
+					type = arms_factory
+					damage = 3
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 3
+				}
+			}
+		}
 	}
 }
 ###事件名：风魔龙危机——溃败
@@ -179,11 +231,125 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = MOT_event.15.a
+		every_country = {
+			limit = {
+				is_puppet_of = MOT
+			}
+			random_owned_controlled_state = {
+				limit = {
+					or = {
+						industrial_complex > 0
+						arms_factory > 0
+					}
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 5
+				}
+				damage_building = {
+					type = rail_way
+					damage = 5
+				}
+				damage_building = {
+					type = arms_factory
+					damage = 5
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 5
+				}
+				owner = {
+					country_event = {id = MOT_event.16}
+				}
+			}		
+		}
+		MOT = {
+			capital_scope = {
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+				damage_building = {
+					type = rail_way
+					damage = 3
+				}
+				damage_building = {
+					type = arms_factory
+					damage = 3
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 3
+				}
+			}
+		}
 	}
 }
-
-
-
+###风魔龙行动后续1
+##风魔龙的大肆破坏（蒙德其他国家）
+country_event = {
+	id = MOT_event.16
+	immediate = {}
+	picture =null
+	title = MOT_event.16.t
+	desc = MOT_event.16.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.16.a
+		MOT = {
+			country_event = {id = MOT_event.17}
+		}
+	}
+}
+###风魔龙行动后续1
+##风魔龙大肆破坏（蒙德）
+country_event = {
+	id = MOT_event.17
+	immediate = {}
+	picture =null
+	title = MOT_event.17.t
+	desc = MOT_event.17.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.17.a
+	}
+}
+####风魔龙会议的承诺
+country_event = {
+	id = MOT_event.18
+	immediate = {}
+	picture =null
+	title = MOT_event.18.t
+	desc = MOT_event.18.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.18.a
+		if = {
+			limit = {
+				has_global_flag = Lock_MOT_Standpoint_decision_1
+				has_country_flag = MOT_Standpoint_choose_decision_01
+			}
+			add_ideas = MOT_The_promise_of_the_Wind_Dragon_meeting
+		}
+		else_if = {
+			limit = {
+				has_global_flag = Lock_MOT_Standpoint_decision_2
+				has_country_flag = MOT_Standpoint_choose_decision_02
+			}
+			add_ideas = MOT_The_promise_of_the_Wind_Dragon_meeting
+		}
+		else_if = {
+			limit = {
+				has_global_flag = Lock_MOT_Standpoint_decision_3
+				has_country_flag = MOT_Standpoint_choose_decision_03
+			}
+			add_ideas = MOT_The_promise_of_the_Wind_Dragon_meeting
+		}
+		else = {
+			add_ideas = MOT_The_promise_of_the_Wind_Dragon_meeting2
+		}
+	}
+}
 ################################################
 #################################################
 ###事件名：向蒙德城要求军事装备
@@ -564,9 +730,11 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = MOT_event.45.a
+		set_country_flag = MOT_MOT_tree_0_40_Select_the_quality_troops_flag
 	}
 		option = {
 		name = MOT_event.45.b
+		set_country_flag = MOT_MOT_tree_0_40_Select_the_quanlity_troops_flag
 	}
 }
 ###事件名：回信2

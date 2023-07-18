@@ -30,7 +30,123 @@ MOT_open_gui_map_clr_country_flag = {
         clr_country_flag = MOT_open_gui_map5
     }
 }
-
+#######################################################################
+MOT_check_MOT_Prestige_num = {
+    if = {
+        limit = {
+            check_variable = {
+                var = MOT_Prestige_num
+                value = 6
+                compare = less_than_or_equals
+            }
+            remove_idea = mot_lead_by_wind_d
+            remove_idea = mot_lead_by_wind_c
+            remove_idea = mot_lead_by_wind_b
+            add_ideas = mot_lead_by_wind_a
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = MOT_Prestige_num
+                value = 5
+                compare = less_than
+            }
+            remove_idea = mot_lead_by_wind_d
+            remove_idea = mot_lead_by_wind_c
+            remove_idea = mot_lead_by_wind_a
+            add_ideas = mot_lead_by_wind_b
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = MOT_Prestige_num
+                value = 3
+                compare = less_than
+            }
+            remove_idea = mot_lead_by_wind_d
+            remove_idea = mot_lead_by_wind_b
+            remove_idea = mot_lead_by_wind_a
+            add_ideas = mot_lead_by_wind_c
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = MOT_Prestige_num
+                value = 0
+                compare = equals
+            }
+            remove_idea = mot_lead_by_wind_c
+            remove_idea = mot_lead_by_wind_b
+            remove_idea = mot_lead_by_wind_a
+            add_ideas = mot_lead_by_wind_d
+        }
+    }
+}
+######################################################################
+#重置倒计时、立场选择、解除进度条和倒计时机制、清除立场、清除国家和任务
+MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = {
+    ###清除风魔龙危机民族精神
+    if = {
+        limit = {
+            has_idea = MOT_crisis_of_Tewalin
+        }
+        remove_ideas = MOT_crisis_of_Tewalin
+    }
+    else_if = {
+        limit = {
+            has_idea = MOT_crisis_of_Tewalin2
+        }
+        remove_ideas = MOT_crisis_of_Tewalin2
+    }
+    TWL = {
+        remove_ideas = TWL_frightening_strikes_of_windy_dargons
+    }
+    BLL = {
+        remove_ideas = BLL_fengmolongweiji
+    }
+    ##清除倒计时
+    set_variable = {
+        var = MOT_dragon_crisis_deadline_num
+        value = 0
+    }
+    set_variable = {MOT_Progress_num = 1}
+    set_variable = {MOT_Deadline_num = 1}
+    set_variable = {MOT_Progress_num_localization = 0}
+    set_variable = {MOT_Deadline_num_localization = 0}
+    ###解锁立场选择
+    clr_global_flag = MOT_dragon_crisis_standpoint_is_locked
+    ##解除进度条和倒计时机制
+    clr_country_flag = MOT_Deadline_is_unlocked
+    clr_country_flag = MOT_Progress_is_unlocked
+    ###清除立场
+    if = {
+        limit = {
+            has_global_flag = Lock_MOT_Standpoint_decision_1
+        }
+        clr_global_flag = Lock_MOT_Standpoint_decision_1
+    }
+    else_if = {
+        limit = {
+            has_global_flag = Lock_MOT_Standpoint_decision_2
+        }
+        clr_global_flag = Lock_MOT_Standpoint_decision_2
+    }
+    else_if = {
+        limit = {
+            has_global_flag = Lock_MOT_Standpoint_decision_3
+        }
+        clr_global_flag = Lock_MOT_Standpoint_decision_3
+    }
+    ##清除国家和任务
+    clear_array = global.MOT_Standpoint_flag_array_01
+    clear_array = global.MOT_Standpoint_flag_array_02
+    clear_array = global.MOT_Standpoint_flag_array_03
+    clear_array = global.MOT_naionalfocus_mission
+    clear_array = MOT_Political_grid_array
+}
 #####################################################################
 MOT_Political_clr_character_flag = {
     if = {

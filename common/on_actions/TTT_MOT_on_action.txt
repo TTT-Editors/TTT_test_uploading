@@ -10,8 +10,6 @@ on_actions = {
                     not = {
                         has_global_flag = MOT_dragon_crisis_is_over
                     }
-                    NOT = { has_idea = MOT_crisis_of_Tewalin } 
-				    NOT = { has_idea = MOT_crisis_of_Tewalin2 }
                 }
                 if = {
                     limit = {
@@ -21,72 +19,9 @@ on_actions = {
                             compare = greater_than_or_equals
                         }
                     }
-                ###风魔龙危机失败
-
-                ###清除风魔龙危机民族精神
-                if = {
-                    limit = {
-                        has_idea = MOT_crisis_of_Tewalin
-                    }
-                    remove_ideas = MOT_crisis_of_Tewalin
-                }
-                else_if = {
-                    limit = {
-                        has_idea = MOT_crisis_of_Tewalin2
-                    }
-                    remove_ideas = MOT_crisis_of_Tewalin2
-                }
-                TWL = {
-                    remove_ideas = TWL_frightening_strikes_of_windy_dargons
-                }
-                BLL = {
-                    remove_ideas = BLL_fengmolongweiji
-                }
-                ##清除条件FLAG
-				clr_global_flag = MOT_dragon_crisis
-				set_global_flag = MOT_dragon_crisis_is_over
-				##清除倒计时
-				set_variable = {
-					var = MOT_dragon_crisis_deadline_num
-					value = 0
-				}
-                set_variable = {MOT_Progress_num = 1}
-                set_variable = {MOT_Deadline_num = 1}
-                set_variable = {MOT_Progress_num_localization = 0}
-                set_variable = {MOT_Deadline_num_localization = 0}
-				###解锁立场选择
-				clr_global_flag = MOT_dragon_crisis_standpoint_is_locked
-				##解除进度条和倒计时机制
-				clr_country_flag = MOT_Deadline_is_unlocked
-				clr_country_flag = MOT_Progress_is_unlocked
-				###清除立场
-				if = {
-					limit = {
-						has_global_flag = Lock_MOT_Standpoint_decision_1
-					}
-					clr_global_flag = Lock_MOT_Standpoint_decision_1
-				}
-				else_if = {
-					limit = {
-						has_global_flag = Lock_MOT_Standpoint_decision_2
-					}
-					clr_global_flag = Lock_MOT_Standpoint_decision_2
-				}
-				else_if = {
-					limit = {
-						has_global_flag = Lock_MOT_Standpoint_decision_3
-					}
-					clr_global_flag = Lock_MOT_Standpoint_decision_3
-				}
-				##清除国家和任务
-				clear_array = global.MOT_Standpoint_flag_array_01
-				clear_array = global.MOT_Standpoint_flag_array_02
-				clear_array = global.MOT_Standpoint_flag_array_03
-				clear_array = global.MOT_naionalfocus_mission
-				clear_array = MOT_Political_grid_array
-
-                ###触发失败事件
-                country_event = {id = MOT_event.15}
+                    ###风魔龙危机失败
+                    ###触发失败事件
+                    country_event = {id = MOT_event.14}
                 }
                 else = {
                     ###继续倒计时

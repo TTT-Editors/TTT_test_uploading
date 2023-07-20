@@ -39,37 +39,6 @@ country_event = {
 			factor = 100
         }	        
 	}
-
-	#option = {   切换政党模板(给某些小笨蛋抄)
-	#	name = liyue.1.b
-	#	custom_effect_tooltip = LYU_deal_with_mess  
-	#	set_country_flag = Ganyu_linshi_leader 
-	#	hidden_effect = {
-	#		set_popularities = {
-	#			reformism = 35
-	#			communism = 25
-	#			authoritarianism = 27
-	#			liberalism = 13
-	#		}
-	#	}	
-	#}
-	#option = { 
-	#	name = liyue.1.c
-    #    set_politics = {
-    #        ruling_party = communism                            
-	#	}
-	#	add_popularity = {
-	#	    ideology = communism
-	#	    popularity = 1
-	#	}
-    #    promote_character = LYU_Keqing
-    #    set_party_name = { 
-    #        ideology = communism 
-    #        long_name = LYU_communism_Keqing_party_long 
-    #        name = LYU_communism_Keqing_party 
-    #    }
-	#	set_cosmetic_tag = LYUKQ		
-	#}
 }
  
 #country_event = {
@@ -131,6 +100,17 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
+		    create_country_leader = {
+					name = "LYU_Ganyu"
+					desc = "LYU_Ganyu_desc"
+					picture = GFX_portrait_large_Liyue_Ganyu
+					expire = "1965.1.1"
+					ideology = moraxism
+					traits = {
+					obey_rule_law
+					}
+				}
+		    add_political_power = -1000
 			add_ideas = panic_fills_land
 			add_ideas = blocked_harbour
 			if = {
@@ -445,6 +425,7 @@ country_event = {
 	desc = liyue.9.d
 	fire_only_once = yes
 	is_triggered_only = yes
+	picture = GFX_country_event_countryevent_007pshemeima
 	immediate = {
 		hidden_effect = {
 			ZDG = { transfer_state = 176 } 
@@ -464,8 +445,10 @@ country_event = {
 			
 			ZDG = {
 				inherit_technology = SNE
-				set_research_slots = 2
+				set_research_slots = 3
 				load_oob = "ZDG"
+				add_offsite_building = { type = arms_factory level = 1 }
+			    add_offsite_building = { type = industrial_complex level = 1 }
 			}
 
 			SNE = {
@@ -543,6 +526,7 @@ country_event = {
 	desc = liyue.10.d
 	fire_only_once = yes
 	is_triggered_only = yes
+	picture = GFX_country_event_countryevent_003
 	immediate = {
 		hidden_effect = {
 			XRG = { transfer_state = 165 }
@@ -607,6 +591,7 @@ country_event = {
 	desc = liyue.11.d
 	fire_only_once = yes
 	is_triggered_only = yes
+	picture = GFX_country_event_countryevent_006pshemeima
 	immediate = {
 		hidden_effect = {
 			ANG = { 
@@ -693,7 +678,7 @@ country_event = {
 			}
 			country_event = {
 				id = liyue.9
-				days = 15
+				days = 1
 			}
 		}
 	}

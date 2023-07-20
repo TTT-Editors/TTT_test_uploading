@@ -1,18 +1,53 @@
 characters = {
-    MOT_Jean = {
-        name = MOT_Jean
-        portraits = {
-            civilian = {
-                large = GFX_portrait_large_Mondstadt_Jean
-                small = GFX_portrait_small_Mondstadt_Jean
+
+	###琴
+	MOT_Jean={
+		name = MOT_Jean
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/Jean.png
+				small = gfx/characters/small/Mondstadt/Jean.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/Jean.png
+				small = gfx/characters/small/Mondstadt/Jean.png
+			}
+		}
+		country_leader = {
+            ideology = authoritarian_democracy
+            traits = { 
+                MOT_Jean_traits
             }
-            army = {
-                large = GFX_portrait_large_Mondstadt_Jean
-                small = GFX_portrait_small_Mondstadt_Jean
+            expire = "2022.10.20.1"
+            id = -1
+            desc = MOT_Jean_desc
+        }
+        country_leader = {
+            ideology = classical_liberalism
+            traits = { 
+                MOT_Jean_traits  
+            }
+            expire = "2022.10.20.1"
+            id = -1
+            desc = MOT_Jean_desc
+        }
+        advisor = {
+			available = {
+				has_character_flag = MOT_Jean_is_available
+			}
+            slot = political_advisor
+            idea_token = MOT_Jean
+            ai_will_do = {
+                factor = 10
+            }
+            traits = {
+                MOT_Jean_traits                
             }
         }
-		
-		field_marshal={
+        field_marshal={
+			visible = {
+				has_character_flag = MOT_Jean_is_available
+			}
 		    traits = { 
 				cavalry_officer defensive_doctrine organizer cavalry_leader trait_mountaineer
 			}
@@ -23,20 +58,7 @@ characters = {
 	        logistics_skill = 4
 			legacy_id=-1
 		}
-
-        country_leader = {
-            ideology = authoritarian_democracy
-            traits = {  }
-            expire = "2022.10.20.1"
-            id = -1
-        }
-        country_leader = {
-            ideology = classical_liberalism
-            traits = {  }
-            expire = "2022.10.20.1"
-            id = -1
-        }
-    }
+    } 
 
     MOT_Diluc = {
         name = MOT_Diluc
@@ -51,7 +73,9 @@ characters = {
 
         country_leader = {
             ideology = market_liberalism
-            traits = {  }
+            traits = { 
+                MOT_Diluc_trait
+            }
             expire = "2022.10.20.1"
             id = -1
         }
@@ -127,7 +151,8 @@ characters = {
 		}
 	}
 
-    MOT_Klee={
+	###可莉
+	MOT_Klee={
 	    name=MOT_Klee
 		portraits={
 		    civilian={
@@ -147,11 +172,11 @@ characters = {
 
         corps_commander={
             traits = {  }
-	        skill = 7
-	        attack_skill = 7
-	        defense_skill = 7
-	        planning_skill = 7
-	        logistics_skill = 7
+	        skill = 3
+	        attack_skill = 3
+	        defense_skill = 3
+	        planning_skill = 3
+	        logistics_skill = 3
             legacy_id=-1
         }
 	}
@@ -185,90 +210,130 @@ characters = {
         }
 	}
 
-    MOT_Kayae={
-	    name=MOT_Kayae
+
+	###凯亚
+	MOT_Kayae={
+		name = MOT_Kayae
 		portraits={
 		    civilian={
-				large = GFX_portrait_large_Mondstadt_Kayae
+				large = gfx/characters/large/Mondstadt/kayae.png
+				small = gfx/characters/small/Mondstadt/kayae.png
 			}
-		    army={
-				large = GFX_portrait_large_Mondstadt_Kayae
+			army={
+				large = gfx/characters/large/Mondstadt/kayae.png
+				small = gfx/characters/small/Mondstadt/kayae.png
 			}
 		}
-
-		country_leader={
+        country_leader={
 			ideology=despotism_subtype
 			expire="2022.10.20.1"
 			id=-1
 			traits = {  }
 		}
-
-        corps_commander={
-            traits = {  }
-	        skill = 6
-	        attack_skill = 6
-	        defense_skill = 6
-	        planning_skill = 6
-	        logistics_skill = 6
-            legacy_id=-1
+        advisor = {
+            slot = army_chief
+            idea_token = MOT_Kayae
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Kayae_traits                
+            }
+        }
+        corps_commander = {
+            traits = {
+            }
+            skill = 4
+            attack_skill = 5
+            defense_skill = 4
+            planning_skill = 1
+            logistics_skill = 1
         }
 	}
 
-    MOT_Barbara={
-	    name=MOT_Barbara
+	###芭芭拉
+	MOT_Barbara={
+		name = MOT_Barbara
 		portraits={
 		    civilian={
-				large = GFX_portrait_large_Mondstadt_Barbara
+				large = gfx/characters/large/Mondstadt/Barbara.png
+				small = gfx/characters/small/Mondstadt/Barbara.png
 			}
-		    army={
-				large = GFX_portrait_large_Mondstadt_Barbara
+			army={
+				large = gfx/characters/large/Mondstadt/Barbara.png
+				small = gfx/characters/small/Mondstadt/Barbara.png
 			}
 		}
-
-		country_leader={
+        country_leader={
 			ideology=despotism_subtype
 			expire="2022.10.20.1"
 			id=-1
 			traits = {  }
 		}
-	}
+        advisor = {
+            slot = political_advisor
+            idea_token = MOT_Barbara
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Barbara_traits                
+            }
+        }
+    }
 
-    MOT_Lisa={
-	    name=MOT_Lisa
+	###丽莎
+	MOT_Lisa={
+		name = MOT_Lisa
 		portraits={
 		    civilian={
-				large = GFX_portrait_large_Mondstadt_Lisa
+				large = gfx/characters/large/Mondstadt/lisa.png
+				small = gfx/characters/small/Mondstadt/lisa.png
 			}
-		    army={
-				large = GFX_portrait_large_Mondstadt_Lisa
+			army={
+				large = gfx/characters/large/Mondstadt/lisa.png
+				small = gfx/characters/small/Mondstadt/lisa.png
 			}
 		}
-
-		country_leader={
+        country_leader={
 			ideology=reformism_subtype
 			expire="2022.10.20.1"
 			id=-1
 			traits = {  }
 		}
-
-        corps_commander={
-            traits = {  }
-            skill = 3
-            attack_skill = 3
-            defense_skill = 3
+        advisor = {
+			available = {
+				NOT = { has_character_flag = MOT_Lisa_engage_in_BLL }
+			}
+            slot = political_advisor
+            idea_token = MOT_Lisa
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Lisa_traits                
+            }
+        }
+        corps_commander = {
+			visible = { NOT = { has_character_flag = MOT_Lisa_engage_in_BLL } }
+            traits = {
+            }
+            skill = 4
+            attack_skill = 2
+            defense_skill = 2
             planning_skill = 3
-            logistics_skill = 3
-            legacy_id=-1
+            logistics_skill = 5
         }
 	}
 
+	###莫娜
     MOT_Mona={
-	    name=MOT_Mona
+		name=MOT_Mona
 		portraits={
-		    civilian={
+			civilian={
 				large = GFX_portrait_large_Mondstadt_Mona
 			}
-		    army={
+			army={
 				large = GFX_portrait_large_Mondstadt_Mona
 			}
 		}
@@ -280,15 +345,15 @@ characters = {
 			traits = {  }
 		}
 
-        corps_commander={
-            traits = {  }
-            skill = 3
-            attack_skill = 3
-            defense_skill = 3
-            planning_skill = 3
-            logistics_skill = 3
-            legacy_id=-1
-        }
+		corps_commander={
+			traits = {  }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id=-1
+		}
 	}
 
     MOT_Amber={
@@ -320,34 +385,71 @@ characters = {
         }
 	}
 
-    MOT_Noelle={
-	    name=MOT_Noelle
-		portraits={
-		    civilian={
-				large = GFX_portrait_large_Mondstadt_Noelle
-			}
-		    army={
-				large = GFX_portrait_large_Mondstadt_Noelle
-			}
-		}
-
-		country_leader={
-			ideology=reformism_subtype
-			expire="2022.10.20.1"
-			id=-1
-			traits = {  }
-		}
+    ###诺艾尔
+    MDQ_Noelle={
+        name = MDQ_Noelle
+        portraits={
+            civilian={
+                large = GFX_portrait_large_Mondstadt_Noelle
+                small = gfx/characters/small/Mondstadt/Noelle.png
+            }
+            army={
+                large = GFX_portrait_large_Mondstadt_Noelle
+                small = gfx/characters/small/Mondstadt/Noelle.png
+            }
+        }
+        country_leader={
+            ideology=reformism_subtype
+            expire="2022.10.20.1"
+            id=-1
+            traits = {  }
+        }
 
         corps_commander={
-            traits = {  }
-	        skill = 4
-	        attack_skill = 4
-	        defense_skill = 4
-	        planning_skill = 4
-	        logistics_skill = 4
+            traits = {trait_cautious infantry_officer}
+            skill = 4
+            attack_skill = 4
+            defense_skill = 4
+            planning_skill = 1
+            logistics_skill = 2
             legacy_id=-1
         }
-	}
+        advisor = {
+            slot = political_advisor           
+            idea_token = MDQ_Noelle
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+                MDQ_Noelle_traits                
+            }
+        }
+    }
+	
+    ###诺艾尔2
+    MDQ_Noelle2={
+        name = MDQ_Noelle2
+        portraits={
+            civilian={
+                large = GFX_portrait_large_Mondstadt_Noelle
+                small = gfx/characters/small/Mondstadt/Noelle.png
+            }
+            army={
+                large = GFX_portrait_large_Mondstadt_Noelle
+                small = gfx/characters/small/Mondstadt/Noelle.png
+            }
+        }
+        advisor = {
+            slot = high_command            
+            idea_token = MDQ_Noelle2
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+                MDQ_Noelle_traits_2                
+            }
+        }
+    }
 
     MOT_Razor={
 	    name=MOT_Razor
@@ -634,6 +736,42 @@ characters = {
 			traits = {  }
 		}
 	}
+	
+	###罗莎莉亚
+	MOT_Rosary={
+		name = MOT_Rosary
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/Rosary.png
+				small = gfx/characters/small/Mondstadt/Rosary.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/Rosary.png
+				small = gfx/characters/small/Mondstadt/Rosary.png
+			}
+		}
+ 
+        advisor = {
+            slot = political_advisor
+            idea_token = MOT_Rosary
+            cost = 150
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Rosary_traits                
+            }
+        }
+        corps_commander = {
+            traits = {
+            }
+            skill = 4
+            attack_skill = 5
+            defense_skill = 1
+            planning_skill = 2
+            logistics_skill = 3
+        }
+	}
 
     MOT_TWL={
 	    name=MOT_TWL
@@ -717,13 +855,28 @@ characters = {
 		advisor={
 			slot = high_command						#占用的槽，这里是总参谋部
 			idea_token = westwind_knights_1
+			can_be_fired = no
 			removal_cost = -1
 			ledger = army
 			allowed = {
 				original_tag = MOT
 			}
 			traits = {
-				mot_knight_1
+				####mot_knight_1
+			}
+			modifier = {
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_speed_factor = 0.05
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				planning_speed = 0.1
+				supply_consumption_factor = -0.05
+				experience_gain_army_factor = 0.1
+				conscription_factor = -0.3
+				training_time_army_factor = 0.2
+				experience_gain_army = 0.05
+				command_cap = 30
 			}
 		}
 	}
@@ -849,6 +1002,247 @@ characters = {
 				}
 			}
             traits = { harmless_sweet }
+        }
+	}
+	
+	###安德利卡
+	MOT_Andlika={
+		name = MOT_Andlika
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/Andlika.png
+				small = gfx/characters/small/Mondstadt/Andlika.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/Andlika.png
+				small = gfx/characters/small/Mondstadt/Andlika.png
+			}
+		}
+ 
+        advisor = {
+            slot = political_advisor
+            idea_token = MOT_Andlika
+            cost = 150
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Andlika_traits                
+            }
+        }
+        corps_commander = {
+            traits = {
+            }
+            skill = 2
+            attack_skill = 1
+            defense_skill = 2
+            planning_skill = 3
+            logistics_skill = 2
+        }
+	}
+	
+	###塞琉斯
+	MOT_Selius={
+		name = MOT_Selius
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+ 
+        advisor = {
+            slot = political_advisor
+            idea_token = MOT_Selius
+            cost = 150
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Selius_traits                
+            }
+        }
+    }
+	
+	###歌德
+	MOT_Goethe={
+		name = MOT_Goethe
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+ 
+        advisor = {
+            slot = political_advisor
+            idea_token = MOT_Goethe
+            cost = 150
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Goethe_traits                
+            }
+        }
+    }
+	
+	###赫塔
+	MOT_Hertha={
+		name = MOT_Hertha
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+ 
+        advisor = {
+            slot = army_chief
+            idea_token = MOT_Hertha
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+            MOT_Hertha_traits                
+            }
+        }
+        corps_commander = {
+            traits = {
+            }
+            skill = 2
+            attack_skill = 1
+            defense_skill = 2
+            planning_skill = 3
+            logistics_skill = 3
+        }
+	}
+	
+	###斯万
+	MOT_Swann={
+		name = MOT_Swann
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+ 
+ 
+		corps_commander = {
+            traits = {
+            }
+            skill = 1
+            attack_skill = 1
+            defense_skill = 2
+            planning_skill = 1
+            logistics_skill = 1
+        }
+	}
+	
+	###劳伦斯
+	MOT_Lawrence={
+		name = MOT_Lawrence
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+ 
+		corps_commander = {
+			traits = {
+            }
+            skill = 1
+            attack_skill = 1
+            defense_skill = 1
+            planning_skill = 1
+            logistics_skill = 2
+        }
+	}
+	###米卡
+	MOT_mika = {
+		name = MOT_mika
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+		advisor = {
+			on_add = {
+				set_country_flag = MOT_mika_is_activating
+			}
+			on_remove = {
+				clr_country_flag = MOT_mika_is_activating
+			}
+            slot = political_advisor
+            idea_token = MOT_mika
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+				MOT_mika_traits
+            }
+        }
+		corps_commander = {
+            traits = {
+				cryo_element
+				organizer
+            }
+            skill = 3
+            attack_skill = 2
+            defense_skill = 3
+            planning_skill = 4
+            logistics_skill = 4
+        }
+	}
+	###米卡2(陆军部长)
+	MOT_mika2 = {
+		name = MOT_mika
+		portraits={
+		    civilian={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+			army={
+				large = gfx/characters/large/Mondstadt/empty_leader.png
+				small = gfx/characters/small/Mondstadt/empty_leader.png
+			}
+		}
+        advisor = {
+            slot = army_chief
+            idea_token = MOT_mika2
+            ai_will_do = {
+                factor = 1
+            }
+            traits = {
+				MOT_mika2_traits                
+            }
         }
 	}
 }

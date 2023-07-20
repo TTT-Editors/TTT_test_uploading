@@ -6,7 +6,107 @@ on_actions = {
                     ROOT = {tag = MDQ}
                     FROM = {tag = QQR}
                 }
+                news_event = {id =MDQ_event.3  days = 1}
                 country_event = {id = MDQ_event.99 days = 3}
+                every_state = {
+                    limit = {
+                        is_core_of = QQR
+                    }
+                    remove_core_of = QQR
+                }
+            }
+        }
+        effect = {
+            if = {
+                limit = {
+                    ROOT = {tag = QQR}
+                    FROM = {tag = MDQ}
+                }
+                every_state = {
+                    limit = {
+                        is_core_of = MDQ
+                        is_core_of = MOT
+                    } 
+                    remove_core_of = MDQ
+                    remove_core_of = MOT
+                    add_core_of = QQR
+                }
+                ##转移顾问
+                MDQ = {
+                    hidden_effect = {
+                        MDQ_Dr_Livingstone = {
+                            set_nationality = MOT
+                        }
+                        MDQ_Dr_Livingstone2 = {
+                            set_nationality = MOT
+                        }
+                        MDQ_Mike = {
+                            set_nationality = MOT
+                        }
+                        MDQ_Mike2 = {
+                            set_nationality = MOT
+                        }
+                        MDQ_Elon_Musk= {
+                            set_nationality = MOT
+                        }
+                        MDQ_Sternberg= {
+                            set_nationality = MOT
+                        }
+                        MDQ_Zhuang_Yang= {
+                            set_nationality = MOT
+                        }
+                        MDQ_Damut= {
+                            set_nationality = MOT
+                        }
+                        MDQ_Damut2= {
+                            set_nationality = MOT
+                        }
+                        if = {
+                            limit = {
+                                has_country_flag = Noelle_in_dadawupa
+                            }
+                            MDQ_Noelle2= {
+                                set_nationality = MOT
+                            }
+                            MDQ_Noelle= {
+                                set_nationality = MOT
+                            }
+                        } 
+                    }
+                }
+                MOT = {
+                    country_event = {id = MDQ_event.97 days = 5}
+                }
+                news_event = {id = MDQ_event.26 days = 1}
+                news_event = {id =MDQ_event.98 days = 3}
+            }
+        }
+    }
+    on_weekly_MDQ = {
+        effect = {
+            if = {
+                limit = {
+                    not = {
+                        has_war = yes
+                    }
+                }
+                add_to_variable = {global.MDQ_abandon_num = 2}
+                clamp_variable = {
+                    var = global.MDQ_abandon_num
+                    min = 1
+                    max = 101
+                }
+            }
+            else_if = {
+                limit = {
+                    has_war = yes
+                }
+                add_to_variable = {global.MDQ_abandon_num = -2}
+                clamp_variable = {
+                    var = global.MDQ_abandon_num
+                    min = 1
+                    max = 101
+                }
             }
         }
     }

@@ -1,0 +1,117 @@
+on_actions = {
+    on_monthly_ZDG = {   #每月检测大于0就清0
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				or = {
+				check_variable = { ZDG_military_share > 0 }
+				check_variable = { ZDG_economicpolitical_share > 0 }
+                }				
+			}
+			if = {
+			limit = {
+			check_variable = { ZDG_military_share > 0 }
+			}
+			set_variable = { ZDG_military_share = 0 }
+		    }
+			else_if = {
+			limit = {
+				check_variable = { ZDG_economicpolitical_share > 0 }
+			}
+			set_variable = { ZDG_economicpolitical_share = 0 }
+		        }
+			else_if = {
+			limit = {
+				check_variable = { ZDG_economicpolitical_share > 0 }
+				check_variable = { ZDG_military_share > 0 }
+			}
+			set_variable = { ZDG_economicpolitical_share = 0 }
+			set_variable = { ZDG_military_share = 0 }
+		        }
+		    }
+	    }
+	}
+	on_monthly_ZDG = {   #每月默认给两份援助
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+			}
+			add_to_variable = { ZDG_military_share = 1 }
+			add_to_variable = { ZDG_economicpolitical_share = 1 }
+		    }
+	    }
+	}
+	on_monthly_ZDG = {      #每月扣0.05
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				NOT = { has_completed_focus = ZDG_15 }
+			}
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = -0.05  
+               }
+		    }
+	    }
+    }
+	on_monthly_ZDG = {      #横眉冷对的bop效果
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				has_country_flag = ZDG_empire_failure_bflag
+			}
+			set_variable = { ZDG_military_share = 1 }
+			set_variable = { ZDG_economicpolitical_share = 0 }
+		    }
+	    }
+    }
+	on_monthly_ZDG = {      #信任有加的bop效果
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				has_country_flag = ZDG_crown_treasure_aflag
+			}
+			add_to_variable = { ZDG_military_share = 1 }
+		    }
+	    }
+    }
+	on_monthly_ZDG = {      #冠上珍宝的bop效果
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				has_country_flag = ZDG_crown_treasure_bflag
+			}
+			add_to_variable = { ZDG_military_share = 2 }
+			add_to_variable = { ZDG_economicpolitical_share = 1 }
+		    }
+	    }
+    }
+	on_monthly_ZDG = {      #搜刮军费增加军事援助
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				has_country_flag = ZDG_24_flag
+			}
+			add_to_variable = { ZDG_military_share = 1 }
+		    }
+	    }
+    }
+	on_monthly_ZDG = {      #潘塔罗涅的支援增加经济政治援助
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				has_country_flag = ZDG_4_flag
+			}
+			add_to_variable = { ZDG_economicpolitical_share = 1 }
+		    }
+	    }
+    }
+}

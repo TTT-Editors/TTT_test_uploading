@@ -1,112 +1,122 @@
 ideas = {
-
-	hidden_ideas = {
-		complete_collapse = {
-            removal_cost = -1
-            modifier = {
-               surrender_limit = -0.95
-            }
+    materiel_manufacturer = {   #军需制造商	
+		designer = yes
+	    ZDG_specialoperations_infantry  = {		#特别行动步兵装备研发小组
+		    name = ZDG_specialoperations_infantry		
+		    picture = ZDG_specialoperations_infantry
+			cost = 150
+			allowed = {
+				original_tag = ZDG
+			}
+            visible = {
+		        has_completed_focus = ZDG_10
+				NOT = { has_country_flag = ZDG_14_flag }
+	        }			
+			traits = { materiel_manufacturer }			
+			ai_will_do = {
+				factor = 20
+			}
+		    equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+			research_bonus = {
+		    infantry_weapons = 0.15
+	        }
+		}
+		ZDG_specialoperations_artillery  = {		#特别行动火炮研发小组
+		    name = ZDG_specialoperations_artillery		
+		    picture = ZDG_specialoperations_artillery
+			cost = 150
+			allowed = {
+				original_tag = ZDG
+			}
+            visible = {
+		        has_completed_focus = ZDG_10
+				NOT = { has_country_flag = ZDG_14_flag }
+	        }			
+			traits = { materiel_manufacturer }			
+			ai_will_do = {
+				factor = 20
+			}
+		    equipment_bonus = {
+				artillery = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+			research_bonus = {
+		    artillery = 0.15
+	        }
 		}
 	}
-
-    country = {
-		ZDG_Economic_collapse = {      #经济崩溃
-            removal_cost = -1
-            picture = ZDG_jingjibengkui
-            modifier = {
-               consumer_goods_factor = 0.35
-            }
-        }
-		
+    country = {	
         CLSIA_chulaizhadao1 = {   #初来乍到
             removal_cost = -1
             picture = ZDG_chulaizhadao
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-			    production_factory_max_efficiency_factor = -0.05
-	            production_factory_efficiency_gain_factor = -0.05
-				line_change_production_efficiency_factor = -0.05
                 stability_factor = -0.4
+				resistance_target = 0.25
+				resistance_growth = 0.20
                 war_support_factor = -0.2
-                industrial_capacity_factory = -0.1 
-				conscription_factor = -0.01
-				consumer_goods_factor = 0.05
+                resistance_damage_to_garrison = 0.15
+				conscription_factor = -0.80
+				consumer_goods_factor = 0.15
             }
         }
-
-        CLSIA_chulaizhadao2 = {
-            removal_cost = -1
-            picture = generic_disjointed_gov
-            modifier = {
-                stability_factor = -0.2
-                war_support_factor = -0.3
-                industrial_capacity_factory = -0.2
-                production_speed_buildings_factor = -0.2
-                political_power_gain = -0.5
-            }
-        }
-
-        CLSIA_chulaizhadao3 = {
-            removal_cost = -1
-            picture = generic_disjointed_gov
-            modifier = {
-                stability_factor = -0.1
-                war_support_factor = -0.3
-                industrial_capacity_factory = -0.2
-                production_speed_buildings_factor = -0.2
-                political_power_gain = -0.5
-            }
-        }
-
-        CLSIA_chulaizhadao4 = {
-            removal_cost = -1
-            picture = generic_disjointed_gov
-            modifier = {
-                stability_factor = -0.1
-                war_support_factor = -0.3
-                industrial_capacity_factory = -0.1
-                production_speed_buildings_factor = -0.1
-                political_power_gain = -0.5
-            }
-        }
-
-        CLSIA_chulaizhadao5 = {
-            removal_cost = -1
-            picture = generic_disjointed_gov
-            modifier = {
-                stability_factor = -0.1
-                war_support_factor = -0.2
-                industrial_capacity_factory = -0.1
-                production_speed_buildings_factor = -0.1
-                political_power_gain = -0.5
-            }
-        }
-
-        CLSIA_chulaizhadao6 = {
-            removal_cost = -1
-            picture = generic_disjointed_gov
-            modifier = {
-                stability_factor = -0.1
-                war_support_factor = -0.1
-                industrial_capacity_factory = -0.1
-                production_speed_buildings_factor = -0.1
-                political_power_gain = -0.5
-            }
-        }
-
-        CLSIA_dui_dangdiren_huaiyi1 = {    #对当地人的怀疑
+        CLSIA_chulaizhadao2 = {    #初来乍到
             removal_cost = -1
             picture = ZDG_duidangdiren
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-                stability_factor = -0.1
-                war_support_factor = -0.6
-                monthly_population = -0.1
-                army_morale_factor = -0.03
-			    land_reinforce_rate = -0.05
+                stability_factor = -0.35
+				resistance_target = 0.15
+				resistance_growth = 0.10
+                war_support_factor = -0.15
+                resistance_damage_to_garrison = 0.10
+				conscription_factor = -0.80
+				consumer_goods_factor = 0.10
+            }
+        }
+		CLSIA_chulaizhadao3 = {    #初来乍到
+            removal_cost = -1
+            picture = ZDG_duidangdiren
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+                stability_factor = -0.30
+                war_support_factor = -0.10
+				conscription_factor = -0.50
+				consumer_goods_factor = 0.10
+            }
+        }
+		CLSIA_chulaizhadao4 = {    #初来乍到
+            removal_cost = -1
+            picture = ZDG_duidangdiren
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+                stability_factor = -0.10
+                war_support_factor = -0.05
+				conscription_factor = -0.50
+				consumer_goods_factor = 0.10
             }
         }
         CLSIA_dui_dangdiren_huaiyi2 = {      #对当地人的怀疑
             removal_cost = -1
             picture = ZDG_duidangdiren
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
                 stability_factor = -0.05
                 war_support_factor = -0.05
@@ -115,116 +125,408 @@ ideas = {
                 army_defence_factor = 0.1
             }
         }
-        CLSIA_dui_dangdiren_huaiyi3 = {
+        
+        CLSIA_yuanzhengjun = { #至冬干涉军
             removal_cost = -1
-            picture = prc_low_popular_support3
+            picture = ZDG_yuanzhengjun
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-                monthly_population = -0.5
-                army_org_factor = 0.1
-                army_defence_factor = 0.1
+                army_attack_factor = 0.2
+                army_defence_factor = 0.2
+                army_org_factor = 0.15
+				army_morale_factor = 0.15
+                experience_gain_army_factor = 0.10
+				army_speed_factor = 0.10
+				org_loss_when_moving = -0.10
             }
         }
-        
-        CLSIA_yuanzhengjun = { #远征军
+		CLSIA_yuanzhengjun = { #至冬干涉军
+            removal_cost = -1
+            picture = ZDG_yuanzhengjun
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+                army_attack_factor = 0.2
+                army_defence_factor = 0.2
+                army_org_factor = 0.15
+				army_morale_factor = 0.15
+                experience_gain_army_factor = 0.10
+				army_speed_factor = 0.10
+				org_loss_when_moving = -0.10
+            }
+        }
+        CLSIA_yuanzhengjun1= { #至冬干涉军
+		    name = CLSIA_yuanzhengjun
+			desc = CLSIA_yuanzhengjun_desc
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             removal_cost = -1
             picture = ZDG_yuanzhengjun
             modifier = {
                 army_attack_factor = 0.2
                 army_defence_factor = 0.2
-                army_org_factor = 0.3
-                experience_gain_army_factor = 0.2
+                army_org_factor = 0.15
+				army_morale_factor = 0.15
+                experience_gain_army_factor = 0.10
+				army_speed_factor = 0.10
+				org_loss_when_moving = -0.10
+				army_core_attack_factor = 0.10
+	            army_core_defence_factor = 0.10
+				consumer_goods_factor = 0.05
+				dig_in_speed_factor = 0.10
+				experience_loss_factor = -0.10
+				supply_consumption_factor = -0.05
             }
         }
-        
         CLSIA_bujibuzu = {            #补给不足
             removal_cost = -1
             picture = ZDG_bujibuzu
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-                attrition = 0.2
-                supply_consumption_factor = 0.2
+                 production_speed_rail_way_factor = -0.10
+	             production_speed_supply_node_factor = -0.10
+				 attrition = 0.10
+				 supply_consumption_factor = 0.10
             }
         }
-
-        CLSIA_chenggong_weiwen = {
+		CLSIA_bujibuzu1 = {            #补给不足
             removal_cost = -1
-            picture = generic_reserve_divisions
+			name = CLSIA_bujibuzu
+            picture = ZDG_bujibuzu
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-                army_org_factor = 0.05
-                stability_factor = 0.05
+                 production_speed_rail_way_factor = -0.10
+	             production_speed_supply_node_factor = -0.10
+            }
+        }
+		CLSIA_bujibuzu2 = {            #延长补给链
+            removal_cost = -1
+            picture = CLSIA_bujibuzu2
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+                production_speed_rail_way_factor = 0.10
+	            production_speed_supply_node_factor = 0.10
+				no_supply_grace = 0.24
+				attrition = -0.05
+				supply_consumption_factor = -0.05
+            }
+        }
+		ZDG_assembly_controlorder = {            #集会管制令
+            removal_cost = -1
+            picture = ZDG_assembly_controlorder
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+                political_power_factor = -0.02
+				stability_factor = 0.10
+				drift_defence_factor = 0.50
+				required_garrison_factor = -0.10
+            }
+        }
+		CLSIA_dui_dangdiren_huaiyi_toolip = {            #来自北方的援助
+            removal_cost = -1
+            picture = ZDG_bujibuzu
+            modifier = {
+                
+            }
+        }
+		CLSIA_dui_dangdiren_huaiyi2_toolip = {            #来自北方的援助
+            removal_cost = -1
+            picture = ZDG_bujibuzu
+            modifier = {
+				production_speed_buildings_factor = 0.10
+				industry_repair_factor = 0.10
+				
+            }
+        }
+		CLSIA_dui_dangdiren_huaiyi3_toolip = {            #来自北方的援助
+            removal_cost = -1
+            picture = ZDG_bujibuzu
+            modifier = {
+				industrial_capacity_factory = 0.10
+				production_lack_of_resource_penalty_factor = -0.15
+            }
+        }
+		CLSIA_dui_dangdiren_huaiyi4_toolip = {            #来自北方的援助
+            removal_cost = -1
+            picture = ZDG_bujibuzu
+            modifier = {
+                political_power_gain = 0.10
+				weekly_manpower = 1000
+            }
+        }
+		CLSIA_dui_dangdiren_huaiyi5_toolip = {            #来自北方的援助
+            removal_cost = -1
+            picture = ZDG_bujibuzu
+            modifier = {
+                custom_modifier_tooltip = ZDG_beifangyuanzhu_tt1
+            }
+        }
+		CLSIA_dui_dangdiren_huaiyi7_toolip = {            #来自北方的援助
+            removal_cost = -1
+			name = CLSIA_dui_dangdiren_huaiyi5_toolip
+            picture = ZDG_bujibuzu
+            modifier = {
+                political_power_gain = 0.10
+            }
+        }
+		CLSIA_dui_dangdiren_huaiyi8_toolip = {            #来自北方的援助
+            removal_cost = -1
+			name = CLSIA_dui_dangdiren_huaiyi5_toolip
+            picture = ZDG_bujibuzu
+            modifier = {
                 war_support_factor = 0.05
             }
         }
-
-        CLSIA_yongyou_tiankong = {
+		CLSIA_dui_dangdiren_huaiyi9_toolip = {            #来自北方的援助
             removal_cost = -1
-            picture = generic_air_bonus
+			name = CLSIA_dui_dangdiren_huaiyi5_toolip
+            picture = ZDG_bujibuzu
             modifier = {
-                air_superiority_efficiency = 0.1
-                air_strategic_bomber_bombing_factor= 0.05
-                air_ace_generation_chance_factor = 0.1
+                stability_factor = 0.05
             }
         }
-
-        CLSIA_changshi_hepinggongchu = {
+		CLSIA_dui_dangdiren_huaiyi10_toolip  = {            #来自北方的援助
             removal_cost = -1
-            picture = gre_schachtplan
+			name = CLSIA_dui_dangdiren_huaiyi5_toolip
+            picture = ZDG_bujibuzu
             modifier = {
-                stability_factor = -0.2
-                war_support_factor = -0.2
-                monthly_population = -0.2
-                industrial_capacity_factory  = -0.2
-                production_speed_buildings_factor = -0.2
+                conscription = 0.005
             }
         }
-
-        CLSIA_bingyan_gongzhi = {
+		ZDG_Scaleusevileyes_limitedtrial = {            #邪眼使用规模——有限试用
             removal_cost = -1
-            picture = generic_victors_of_ww1
+            picture = ZDG_Scaleusevileyes_limitedtrial
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-                stability_factor = 0.1
-                war_support_factor = 0.1
-                monthly_population = 0.1
-                industrial_capacity_factory  = 0.1
-                production_speed_buildings_factor = 0.1
+               army_infantry_attack_factor = 0.02
+			   army_org_factor = 0.02
+			   army_speed_factor = 0.02
+			   breakthrough_factor = 0.02
+			   supply_consumption_factor = -0.02
             }
         }
-
-        CLSIA_xieyanzhijun = {
+		CLSIA_dui_dangdiren_huaiyi6_toolip = {            #来自北方的援助
             removal_cost = -1
-            picture = tur_disorganised_armed_forces
+            picture = ZDG_bujibuzu
             modifier = {
-                army_attack_factor = 0.2
-                army_defence_factor = 0.2
-                army_org_factor = 0.2
-                wounded_chance_factor = 0.2
-                monthly_population = -0.4
+                weekly_manpower = 1000
             }
         }
-
-        CLSIA_renru_caojie = {
+		ZDG_detectintelligence_XRG = {            #对仙人的情报优势
             removal_cost = -1
-            picture = SPR_political_violence
+            picture = ZDG_bujibuzu
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            targeted_modifier = {
+		    tag = XRG
+		    attack_bonus_against = 0.10
+		    defense_bonus_against = 0.10	
+	            }
+        }
+		ZDG_detectintelligence_XOG = {            #对魈的情报优势
+            removal_cost = -1
+            picture = ZDG_bujibuzu
+            available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            targeted_modifier = {
+		    tag = XOG
+		    attack_bonus_against = 0.10
+		    defense_bonus_against = 0.10	
+	        }
+        }
+		ZDG_Scaleusevileyes_limitedtrial2 = {            #邪眼使用规模——大规模试用
+            removal_cost = -1
+            picture = ZDG_Scaleusevileyes_limitedtrial2
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-                stability_factor = -0.2
-                war_support_factor = -0.2
-                monthly_population = -0.3
-                industrial_capacity_factory = 0.2
-                production_speed_buildings_factor = 0.2
-                production_factory_max_efficiency_factor = 0.2
+               army_infantry_attack_factor = 0.05
+			   army_org_factor = 0.05
+			   army_speed_factor = 0.05
+			   breakthrough_factor = 0.05
+			   supply_consumption_factor = -0.05
+			   army_defence_factor = -0.05
+			   army_morale_factor = -0.05
+			   experience_loss_factor = 0.10
+			   experience_gain_army_factor = -0.05
+			   monthly_population = -0.10
             }
         }
-		
-        CLSIA_junshi_zhihui_tixi = {
+		ZDG_Scaleusevileyes_limitedtrial3 = {            #邪眼使用规模——积极推广
             removal_cost = -1
-            picture = POL_ideology_drift_defence
+            picture = ZDG_Scaleusevileyes_limitedtrial3
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
             modifier = {
-                max_command_power = 20
-                experience_gain_army_factor = 0.1
-                experience_gain_air_factor = 0.1
-                experience_gain_navy_factor = 0.1
-                consumer_goods_factor = 0.05
-                political_power_gain = -0.25
+               army_infantry_attack_factor = 0.10
+			   army_org_factor = 0.10
+			   army_speed_factor = 0.10
+			   breakthrough_factor = 0.10
+			   supply_consumption_factor = -0.10
+			   army_defence_factor = -0.10
+			   army_morale_factor = -0.10
+			   experience_loss_factor = 0.20
+			   experience_gain_army_factor = -0.10
+			   monthly_population = -0.20
             }
         }
-    }
+		ZDG_Scaleusevileyes_limitedtrial4 = {            #邪眼使用规模——列装使用
+            removal_cost = -1
+            picture = ZDG_Scaleusevileyes_limitedtrial4
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+               army_infantry_attack_factor = 0.20
+			   army_org_factor = 0.20
+			   army_speed_factor = 0.20
+			   breakthrough_factor = 0.20
+			   supply_consumption_factor = -0.20
+			   army_defence_factor = -0.20
+			   army_morale_factor = -0.20
+			   experience_loss_factor = 0.30
+			   experience_gain_army_factor = -0.20
+			   monthly_population = -0.30
+            }
+        }
+		ZDG_military_guidance = {            #军事指导
+            removal_cost = -1
+            picture = ZDG_military_guidance
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+                army_attack_factor = 0.03
+	            army_defence_factor = 0.03
+				land_reinforce_rate = 0.01
+				experience_loss_factor = -0.05
+				planning_speed = 0.05
+            }
+        }
+		ZDG_winter_technician_support = {            #至冬技师支援
+            removal_cost = -1
+            picture = ZDG_winter_technician_support
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+                production_speed_arms_factory_factor = 0.05
+            }
+        }
+		ZDG_economic_support_untilsne = {            #至冬经济支援
+            removal_cost = -1
+            picture = ZDG_economic_support_untilsne
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+               consumer_goods_factor = -0.05
+            }
+        }
+		ZDG_winter_technology_support = {            #至冬科技支援
+            removal_cost = -1
+            picture = ZDG_winter_technology_support
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+               research_speed_factor = 0.15
+            }
+        }
+		ZDG_action_liyue = {            #在璃月的行动
+            removal_cost = -1
+            picture = ZDG_action_liyue
+			available = {
+			    NOT = { has_country_flag = ZDG_14_flag }
+			}
+            modifier = {
+               send_volunteer_size = 2
+            }
+        }
+		ZDG_likewhen_tathagatacame = {            #如来时那样……
+            removal_cost = -1
+            picture = ZDG_likewhen_tathagatacame
+            modifier = {
+			   custom_modifier_tooltip = SPR_military_disloyalty_tt
+               stability_factor = -0.5
+			   war_support_factor = -0.5
+            }
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+        }
+		ZDG_tongpao_ze = {            #同袍之泽
+            removal_cost = -1
+            picture = ZDG_tongpao_ze
+            modifier = {
+              conscription_factor = -0.50
+			  army_infantry_attack_factor = -0.35
+	          army_infantry_defence_factor = -0.35
+			  army_speed_factor = -0.35
+			  army_org_factor = -0.30
+	          army_morale_factor = -0.30
+			  org_loss_when_moving = 0.25
+			  supply_consumption_factor = 0.25
+			  land_reinforce_rate = -0.01
+			  planning_speed = -0.25
+	          max_planning = -0.25
+			  custom_modifier_tooltip = SPR_military_disloyalty_tt
+            }
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+        }
+		ZDG_lackeygovernment = {            #人尽皆知的走狗政府
+            removal_cost = -1
+            picture = ZDG_lackeygovernment
+            modifier = {
+                disabled_ideas = 1
+				stability_factor = -0.40
+				political_power_gain = -0.50
+				war_support_factor = -0.40
+				surrender_limit = -0.30
+            }		
+        }
+		ZDG_dilapidated_economy = {            #破败的经济
+            removal_cost = -1
+            picture = ZDG_dilapidated_economy
+            modifier = {
+                production_speed_buildings_factor = -0.30
+				industry_repair_factor = -0.3
+				consumer_goods_factor = 0.20
+				local_resources_factor = -0.25
+				global_building_slots_factor = -0.25
+				industrial_capacity_factory = -0.20
+			    production_factory_max_efficiency_factor = -0.20
+	            production_factory_efficiency_gain_factor = -0.20
+				min_export = 0.25
+            }
+            targeted_modifier = {
+				tag = SNE
+				trade_cost_for_target_factor = -0.5
+			}
+            targeted_modifier = {
+				tag = ZDG
+				trade_cost_for_target_factor = -0.5
+			}			
+        }
+	}
 }

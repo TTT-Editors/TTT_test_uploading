@@ -1,0 +1,36 @@
+
+SOV_build_intel_network_in_MEX_strat = {
+	allowed = {
+		tag = ZDG
+	}
+	
+	enable = {
+		tag = ZDG
+		OR = {
+			XRG = {
+				exists = yes
+				NOT = { is_subject_of = ZDG }
+			}
+			XOG = {
+				exists = yes
+				NOT = { is_subject_of = ZDG }
+			}
+		}
+	}
+	
+	abort_when_not_enabled = yes
+		
+	ai_strategy = {
+		type = operative_mission
+		mission = build_intel_network
+		value = 1000
+		mission_target = XRG
+	}
+
+	ai_strategy = {
+		type = operative_mission
+		mission = build_intel_network
+		value = 1000
+		mission_target = XOG
+	}
+}

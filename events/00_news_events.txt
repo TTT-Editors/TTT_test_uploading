@@ -664,6 +664,45 @@ news_event = {
     } 
 }
 
+#至冬润了
+news_event = {
+    id = global_news.51
+    title = global_news.51.t
+    desc = global_news.51.d
+    is_triggered_only = yes 
+    picture= GFX_news_event_liyue07
+    major = yes 
+	
+	#Victory
+	option = {
+		name = global_news.51.a
+		trigger = {
+			OR = {
+				tag = SNE
+				tag = ZDG
+			}
+		}
+	}
+	
+	#Bad News
+	option = {
+		name = global_news.51.b
+		trigger = {
+			is_nominate_liyue = yes
+			NOT = { tag = ZDG }
+		}
+	}
+	
+	#Neutral
+	option = {
+		name = global_news.51.c
+		trigger = {
+			is_nominate_liyue = no
+			NOT = { tag = SNE }
+		}
+	}
+}
+
 ############################################################################################################################################################################
 
  #####    #####   #####  #     #  ######    #####   #######  #####   #####   #     #

@@ -47,6 +47,7 @@ country_event = {
 	
 	option = {
 	    name = ZDG_events.4.a
+		add_political_power = 120
 	}
 }
 #支援到达
@@ -150,8 +151,11 @@ country_event = {
 	
 	option = {
 	    name = ZDG_events.8.a
+		custom_effect_tooltip = ZDG_victory_tt
+		custom_effect_tooltip = ttt_end_game_tt
 		hidden_effect = {
 		    remove_dynamic_modifier = {  modifier = CLSIA_dui_dangdiren_huaiyi1 }
+			news_event = { id =  global_news.51 days = 2 }
 			set_country_flag = ZDG_events10flag
 			ZDG = { add_ideas = ZDG_likewhen_tathagatacame }
 				ZDG = {
@@ -180,11 +184,10 @@ country_event = {
 				    limit = {
 					    is_nominate_liyue = yes
 					}
-					ZDG = {
-					    declare_war_on = { target = PREV type = annex_everything }
-					}
+					declare_war_on = { target = ZDG type = annex_everything }
 			    } 
 		    }
+			SNE = { change_tag_from = ROOT }
 		}
 	}
 }
@@ -367,6 +370,40 @@ country_event = {
 		add_power_balance_value = {
 				id = ZDG_extreme_northern_palace
 				value = -0.2
+		}
+	}
+}
+
+#占领成功
+country_event = {
+    id = ZDG_events.24
+	title = ZDG_events.24.t
+    desc = ZDG_events.24.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.24.a
+		add_power_balance_value = {
+			id = ZDG_extreme_northern_palace
+			value = 0.05
+		}
+	}
+}
+
+#占领失败
+country_event = {
+    id = ZDG_events.25
+	title = ZDG_events.25.t
+    desc = ZDG_events.25.d
+    fire_only_once=yes
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.25.a
+		add_power_balance_value = {
+			id = ZDG_extreme_northern_palace
+			value = -0.05
 		}
 	}
 }

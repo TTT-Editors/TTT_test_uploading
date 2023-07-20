@@ -229,10 +229,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				40 = {
-					country_event = ZDG_events.12
+					country_event = { dyas = 1 id = ZDG_events.12 }
 				}
 				60 = {
-					country_event = ZDG_events.13
+					country_event = { dyas = 1 id = ZDG_events.13 }
 				}
 			}
 		}
@@ -244,7 +244,7 @@ ZDG_decision_category = {
 		#寻找神之心，kqg和nng投降
 		fire_only_once = yes
 		available = {
-			has_country_flag = ZDG_14_flag
+			has_country_flag = ZDG_14_flag2
 		}
 		visible = {
 			KQG = {
@@ -301,10 +301,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				40 = {
-					country_event = ZDG_events.12
+					country_event = { dyas = 1 id = ZDG_events.13 }
 				}
 				60 = {
-					country_event = ZDG_events.14
+					country_event = { dyas = 1 id = ZDG_events.14 }
 				}
 			}
 		}
@@ -316,7 +316,7 @@ ZDG_decision_category = {
 		#寻找神之心，rtg投降
 		fire_only_once = yes
 		available = {
-			has_country_flag = ZDG_14_flag
+			has_country_flag = ZDG_14_flag2
 		}
 		visible = {
 			RTG = {
@@ -361,10 +361,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				40 = {
-					country_event = ZDG_events.12
+					country_event = { dyas = 1 id = ZDG_events.13 }
 				}
 				60 = {
-					country_event = ZDG_events.14
+					country_event = { dyas = 1 id = ZDG_events.14 }
 				}
 			}
 		}
@@ -376,7 +376,7 @@ ZDG_decision_category = {
 		#寻找神之心，lyu投降
 		fire_only_once = yes
 		available = {
-			has_country_flag = ZDG_14_flag
+			has_country_flag = ZDG_14_flag2
 		}
 		visible = {
 			LYU = {
@@ -421,10 +421,10 @@ ZDG_decision_category = {
 		timeout_effect = {
 			random_list = {
 				60 = {
-					country_event = ZDG_events.12
+					country_event = { dyas = 1 id =  ZDG_events.14 }
 				}
 				40 = {
-					country_event = ZDG_events.14
+					country_event = { dyas = 1 id = ZDG_events.12 }
 				}
 			}
 		}
@@ -519,7 +519,7 @@ ZDG_decision_category = {
 		days_mission_timeout = 270
 		is_good = no
 		complete_effect = {
-			country_event = { id = ZDG_events.21 }
+			country_event = { days = 1 id = ZDG_events.21 }
 			hidden_effect = {
 				if = {
 					limit = {
@@ -705,7 +705,6 @@ ZDG_decision_category = {
 				id = ZDG_extreme_northern_palace
 				value = 0.05
 			}
-			set_country_flag = ZDG_occupy_qingce_villflag
 		}
 		cancel_trigger = {
 			has_country_flag = ZDG_complete_failure
@@ -715,7 +714,6 @@ ZDG_decision_category = {
 				id = ZDG_extreme_northern_palace
 				value = -0.05
 			}
-			set_country_flag = ZDG_occupy_qingce_villflag
 		}
 		ai_will_do = {
 			base = 100
@@ -735,7 +733,7 @@ ZDG_decision_category = {
 			}
 		}
 		visible = {
-			has_country_flag = ZDG_occupy_qingce_villflag
+		    has_war = yes
 			NOT = {
 				132 = {
 					OR = {
@@ -748,7 +746,7 @@ ZDG_decision_category = {
 			}
 		}
 		activation = {
-			has_country_flag = ZDG_occupy_qingce_villflag
+		    has_war = yes
 			NOT = {
 				157 = {
 					OR = {
@@ -1033,21 +1031,6 @@ ZDG_decision_category = {
 					long_name = XRG_despotism_front_party_long
 					name = XRG_despotism_front_party
 				}
-				set_party_name = {
-					ideology = reformism
-					long_name = XOG_ZDG_reformism_party_long
-					name = XOG_ZDG_reformism_party
-				}
-				set_party_name = {
-					ideology = national_socialism
-					long_name = ZDG_occupied_national_socialism_party_long
-					name = ZDG_occupied_national_socialism_party
-				}
-				set_party_name = {
-					ideology = esotericism
-					long_name = XOG_ZDG_esotericism_party_long
-					name = XOG_ZDG_esotericism_party
-				}
 				set_stability = 0.3
 				set_war_support = 0.3
 				hidden_effect = {
@@ -1060,10 +1043,7 @@ ZDG_decision_category = {
 			}
 			XOG = {
 				set_popularities = {
-					reformism = 7
-					national_socialism = 3
-					esotericism = 6
-					despotism = 84
+					despotism = 100
 				}
 			}
 		}
@@ -1158,26 +1138,6 @@ ZDG_decision_category = {
 					traits = {
 					}
 				}
-				set_party_name = {
-					ideology = despotism
-					long_name = XRG_despotism_front_party_long
-					name = XRG_despotism_front_party
-				}
-				set_party_name = {
-					ideology = communism
-					long_name = ZDG_occupied_communism_party_long
-					name = ZDG_occupied_communism_party
-				}
-				set_party_name = {
-					ideology = liberalism
-					long_name = ZDG_occupied_liberalism_party_long
-					name = ZDG_occupied_liberalism_party
-				}
-				set_party_name = {
-					ideology = national_socialism
-					long_name = ZDG_occupied_national_socialism_party_long
-					name = ZDG_occupied_national_socialism_party
-				}
 				set_stability = 0.3
 				set_war_support = 0.3
 				hidden_effect = {
@@ -1190,10 +1150,7 @@ ZDG_decision_category = {
 			}
 			KQG = {
 				set_popularities = {
-					communism = 9
-					liberalism = 7
-					national_socialism = 2
-					despotism = 82
+					despotism = 100
 				}
 			}
 		}
@@ -1360,9 +1317,9 @@ ZDG_decision_category = {
 					add_ideas = ideological_imprint
 				}
 				create_country_leader = {
-					name = "SNE_Childe"
-					desc = "SNE_Childe_desc"
-					picture = GFX_portrait_large_Snezhnaya_Childe
+					name = "ZDG_puppet_government"
+					desc = ""
+					picture = GFX_portrait_ZDG_puppet_government
 					expire = "1965.1.1"
 					ideology = despotism_subtype
 					traits = {
@@ -1400,7 +1357,7 @@ ZDG_decision_category = {
 		fire_only_once = no
 		available = {
 			has_equipment = {
-				infantry_equipment > 999
+				infantry_equipment > 499
 			}
 			NOT = {
 				has_country_flag = ZDG_recruit_trooflag
@@ -1421,7 +1378,7 @@ ZDG_decision_category = {
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = -1000
+				amount = -500
 			}
 		}
 		remove_effect = {

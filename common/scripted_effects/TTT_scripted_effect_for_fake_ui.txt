@@ -805,8 +805,9 @@ recalculate_button_values = {
 		set_variable = { liyue_button_frames^5 = 1 }
 		set_variable = { liyue_button_frames^6 = 1 }
 	}
-	else_if = {
+	if = {
 		limit = {
+			has_global_flag = Liyue_Civil_War
 			check_variable = { liyue_region_milita_usable^ttt_ui_region_selection = 0 }
 		}
 		set_variable = { liyue_button_frames^6 = 3 }
@@ -1044,12 +1045,40 @@ tlcw_button_6_click_effect = {
 			}
 		}
 	}
+	if = {
+		limit = {
+			NOT = { is_subject_of = ZDG }
+		}
+		every_state = {
+			limit = { is_in_array = { liyue_marked_states = THIS } }
+			create_unit = {
+				division = "division_template = \"民兵\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
+				owner = ROOT
+				count = 1
+			}
+		}
+	}
+#	让刻晴再爱你一次
+#	if = {
+#		limit = {
+#			NOT = { is_subject_of = ZDG }
+#			tag = KQG
+#		}
+#		every_state = {
+#			limit = { is_in_array = { liyue_marked_states = THIS } }
+#			create_unit = {
+#				division = "division_template = \"民兵\" start_experience_factor = 0.3 start_equipment_factor = 0.9"
+#				owner = ROOT
+#				count = 2
+#			}
+#		}
+#	}
 	every_state = {
 		limit = { is_in_array = { liyue_marked_states = THIS } }
 		create_unit = {
 			division = "division_template = \"民兵\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
 			owner = ROOT
-			count = 2
+			count = 1
 		}
 	}
 }

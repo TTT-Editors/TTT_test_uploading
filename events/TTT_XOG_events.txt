@@ -696,7 +696,6 @@ country_event = {
 	title = XOG_events.121.t
     desc = XOG_events.121.d
 	is_triggered_only = yes
-	fire_only_once = yes
 	
 	#help him
 	option = {
@@ -729,7 +728,6 @@ country_event = {
 	title = XOG_events.122.t
     desc = XOG_events.122.d
 	is_triggered_only = yes
-	fire_only_once = yes
 	
 	option = {
 		name = XOG_events.122.a
@@ -744,9 +742,156 @@ country_event = {
 	title = XOG_events.123.t
     desc = XOG_events.123.d
 	is_triggered_only = yes
-	fire_only_once = yes
 	
 	option = {
 		name = XOG_events.123.a
+	}
+}
+
+#战败事件
+country_event = {
+    id = XOG_events.124
+	title = XOG_events.124.t
+    desc = XOG_events.124.d
+	trigger = {
+		OR = {
+			surrender_progress > 0.9
+			AND = {
+				135 = { is_controlled_by = ZDG }
+				137 = { is_controlled_by = ZDG }
+			}
+		}
+		has_war_with = ZDG
+		tag = XOG
+		has_country_leader = LYU_Xiao
+		XRG = {
+			exists = yes
+			NOT = { has_cosmetic_tag = XRG_reichskommissariat }
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	
+	immediate = {
+		set_temp_variable = { XOG_yezhang_triggers = random }
+		multiply_temp_variable = { XOG_yezhang_triggers = 100 }
+		if = {
+			limit = {
+				check_variable = { XOG_yezhangdu > XOG_yezhang_triggers }
+			}
+			set_country_flag = ai_XOG_choose_b
+		}
+	}
+	
+	#牛逼，打不过，润了润了
+	option = {
+		name = XOG_events.124.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				has_country_flag = ai_XOG_choose_b
+			}
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+		XRG = { country_event = { id = XOG_events.125 days = 3 } }
+		KQG = { country_event = { id = XOG_events.125 days = 3 } }
+		if = {
+			limit = { has_country_flag = ai_XOG_choose_b }
+			clr_country_flag = ai_XOG_choose_b
+		}
+		hidden_effect = {
+			ZDG = { annex_country = { target = XOG transfer_troops = no } }
+		}
+	}
+	
+	#与其苟且图存，遗羞万古，孰若大张挞伐，一决雌雄！
+	#老子看他好牛啤
+	option = {
+		name = XOG_events.124.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 40
+				has_country_flag = ai_XOG_choose_b
+			}
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+		ZDG = { country_event = { id = XOG_events.126 days = 1 } }
+		if = {
+			limit = { has_country_flag = ai_XOG_choose_b }
+			clr_country_flag = ai_XOG_choose_b
+		}
+		hidden_effect = {
+			ZDG = { annex_country = { target = XOG transfer_troops = no } }
+		}
+	}
+}
+
+#战败后续（仙人、刻晴视角）→来自北方的难民
+country_event = {
+    id = XOG_events.125
+	title = XOG_events.125.t
+    desc = XOG_events.125.d
+	is_triggered_only = yes
+	
+	option = {
+		name = XOG_events.125.a
+		if = {
+			limit = { tag = XRG }
+			XOG = {
+				LYU_Xiao = { set_nationality = XRG }
+			}
+			division_template = {
+				name = "Xiaos army in exile"
+				is_locked = no
+				template_counter = 6
+				division_names_group = LYU_INF_02
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					artillery_brigade  = { x = 2 y = 0 }
+					artillery_brigade  = { x = 2 y = 1 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_capital = yes
+				}
+				create_unit = {
+					division = "division_template = \"Xiaos army in exile\" start_experience_factor = 0.95" 
+					owner = XRG
+					allow_spawning_on_enemy_provs = yes
+					count = 4
+				}		
+			}
+			add_manpower = 100000
+		}
+		if = {
+			limit = { tag = KQG }
+			add_manpower = 50000
+		}
+	}
+}
+
+#战败事件→最后的决斗
+country_event = {
+    id = XOG_events.126
+	title = XOG_events.126.t
+    desc = XOG_events.126.d
+	is_triggered_only = yes
+	
+	#你们会后悔的，我将永远存在！
+	option = {
+		name = XOG_events.126.a
+		add_ideas = ZDG_aftermath_annex_XOG
 	}
 }

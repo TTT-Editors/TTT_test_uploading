@@ -1,6 +1,6 @@
 capital = 1
 oob = "MOT"
-set_research_slots = 5
+set_research_slots = 3
 
 set_technology = {
 	infantry_weapons = 1
@@ -15,19 +15,21 @@ set_technology = {
 
 recruit_character = MOT_Jean
 recruit_character = MOT_westwind_knights_1
-recruit_character =MDQ_Noelle
-recruit_character =MOT_Lisa
-recruit_character =MOT_Swann
-recruit_character =MOT_Lawrence
-recruit_character =MOT_Mona
-recruit_character =MOT_Barbara
-recruit_character =MOT_Rosary
-recruit_character =MOT_Andlika
-recruit_character =MOT_Selius
-recruit_character =MOT_Goethe
-recruit_character =MOT_Kayae
-recruit_character =MOT_Hertha
-
+recruit_character = MDQ_Noelle
+recruit_character = MOT_Lisa
+recruit_character = MOT_Swann
+recruit_character = MOT_Lawrence
+recruit_character = MOT_Mona
+recruit_character = MOT_Barbara
+recruit_character = MOT_Rosary
+recruit_character = MOT_Andlika
+recruit_character = MOT_Selius
+recruit_character = MOT_Goethe
+recruit_character = MOT_Kayae
+recruit_character = MOT_Hertha
+recruit_character = MDQ_Noelle2
+recruit_character = MOT_mika
+recruit_character = MOT_mika2
 add_ideas = {
 	Low_tax
 	Freedom_first
@@ -43,22 +45,19 @@ add_ideas = {
 	MOT_crisis_of_Tewalin
 	MOT_confederation
 	MOT_wave_of_refugee
+	MOD_the_rule_of_mondstad_defease_MOT
 }
+###mot_lead_by_wind
+set_variable = {MOT_Prestige_num = 6}
+MOT_check_MOT_Prestige_num = yes
+set_character_flag = MOT_Jean_is_available
 ###MOT_Political
 set_country_flag = MOT_open_gui_map1
 set_country_flag = MOT_Political_character1_is_locking
-add_to_array = {
-	array = MOT_Political_character_map_array
-	value = 0
-	index = 0
-}
-set_temp_variable = { i = 1 }
-while_loop_effect = {
-	limit = {
-		check_variable = { i = 5 compare =less_than_or_equals }
-	}
-	add_to_array = { MOT_Political_character_map_array = 0 }
-	add_to_temp_variable = { i = 1 }
+resize_array = {
+    array = MOT_Political_character_map_array
+    value = 0
+    size = 5
 }
 set_variable = {character_num = 0}
 set_variable = {map_num = 0}
@@ -74,10 +73,66 @@ add_to_array = {
 }
 MOT_Political_character_is_visible =yes
 
+###MOT_nationalfocus_mission
+##publish moderate's mission when the variable is "1".publish radical's mission when the variable is "2".
+##complete moderate's mission when the variable is "3".complete radical's mission when the variable is "4"
+resize_array = {
+    array = global.MOT_naionalfocus_mission
+    value = 0
+    size = 3
+}
+
+
+
+##Refugee_mood
+#set_variable = {MOT_Refugee_mood_num = 3}
+#add_to_array ={
+#	array = MOT_Political_grid_array
+#	value = MOT_Refugee_mood_num
+#	index = 0
+#}
+
 ####MOT_Progress
-set_variable = {MOT_Deadline_num_1 = 1}
-set_variable = {MOT_Deadline_num_2 = -4}
+##country_flag:MOT_Deadline_is_unlocked\MOT_Progress_is_unlocked
+set_variable = {MOT_Deadline_num = 1}
 set_variable = {MOT_Progress_num = 1}
+set_variable = {MOT_Deadline_num_localization = 0}
+set_variable = {MOT_Progress_num_localization = 0}
+clamp_temp_variable = {
+    var = MOT_Deadline_num
+    min = 1
+	max = 11
+}
+clamp_temp_variable = {
+    var = MOT_Deadline_num_localization
+    min =0
+	max = 10
+}
+clamp_temp_variable = {
+    var = MOT_Progress_num
+    min = 1
+	max = 11
+}
+clamp_temp_variable = {
+    var = MOT_Progress_num_localization
+    min = 0
+	max = 10
+}
+###MOT_Standpoint
+set_variable = {MOT_Standpoint_total_country_num_01 = 0}
+set_variable = {MOT_Standpoint_total_country_num_02 = 0}
+set_variable = {MOT_Standpoint_total_country_num_03 = 0}
+set_variable = {MOT_Standpoint_country_num = 3}
+
+set_variable = {global.MOT_Expectation_TWL = 10}
+set_variable = {global.MOT_Expectation_MDQ = 0}
+set_variable = {global.MOT_Expectation_FXE = 20}
+#global_flag:MOT_dragon_crisis、MOT_dragon_crisis_is_over、MOT_dragon_crisis_is_locked、MOT_dragon_crisis_deadline
+#global_flag:MOT_federal_route
+#global_flag:MOT_industrialization_program
+#global_flag:MOT_military_reform
+
+
 
 set_stability = 0.50
 set_war_support = 0.10

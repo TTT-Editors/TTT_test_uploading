@@ -64,57 +64,6 @@ liyue_civil_war_decisions = {
 	}
 
 	#First Stage of Liyue Civil War ----- Northern
-	ZDG_offensive_in_one_year = {
-
-		priority = 10
-
-		icon = generic_ignite_civil_war
-
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = ZDG_has_win_the_northern_war
-				original_tag = ZDG
-				XOG = { exists = no }
-				XRG = { exists = no }
-			}
-		}
-
-		days_mission_timeout = 365
-
-		fire_only_once = yes
-
-		activation = {
-			original_tag = ZDG
-			OR = {
-				has_war_with = XOG
-				has_war_with = XRG
-			}
-		}
-
-		is_good = no
-
-		timeout_effect = {
-			custom_effect_tooltip = ZDG_we_lost
-			hidden_effect = {
-				ZDG = { add_ideas = complete_collapse }
-				ZDG = {
-					transfer_units_fraction = {
-						target = SNE
-						size = 1
-						keep_unit_leaders = {}
-						keep_unit_leaders_trigger = {
-							always = no
-						}
-					}
-				}
-			}
-		}
-		
-		complete_effect = {
-			add_political_power = 200
-			set_global_flag = liyue_in_danger
-		}
-	}
 	
 	#reverse mission against invaders
 	anti_ZDG_offensive_in_one_year = {
@@ -130,7 +79,7 @@ liyue_civil_war_decisions = {
 			}
 		}
 
-		days_mission_timeout = 365
+		days_mission_timeout = 270
 
 		fire_only_once = yes
 
@@ -1021,6 +970,7 @@ liyue_civil_war_decisions = {
 			has_global_flag = liyue_in_danger
 			NOT = { has_global_flag = liyue_unified }
 			NOT = { tag = ZDG }
+			ZDG = { has_country_flag = ZDG_15_flag }
 		}
 
 		fire_only_once = yes
@@ -1048,8 +998,6 @@ liyue_civil_war_decisions = {
 			base = 1000
 			#Really really important
 		}
-		
-		cost = 50
 
 		days_remove = 6
 
@@ -1110,12 +1058,7 @@ liyue_civil_war_decisions = {
 			167 = { is_core_of = ZDG }
 			owns_state = 167
 			NOT = { country_exists = ZDG }
-			NOT = { tag = ZDG }
-			NOT = {
-				any_other_country = {
-					original_tag = ZDG
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1154,13 +1097,7 @@ liyue_civil_war_decisions = {
 			161 = { is_core_of = XRG }
 			owns_state = 161
 			NOT = { country_exists = XRG }
-			NOT = { tag = XRG }
-			NOT = { tag = ZDG }
-			NOT = {
-				any_other_country = {
-					original_tag = XRG
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1228,13 +1165,7 @@ liyue_civil_war_decisions = {
 			155 = { is_core_of = RTG }
 			owns_state = 155
 			NOT = { country_exists = RTG }
-			NOT = { tag = ZDG }
-			NOT = { tag = RTG }
-			NOT = {
-				any_other_country = {
-					original_tag = RTG
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1294,13 +1225,7 @@ liyue_civil_war_decisions = {
 			211 = { is_core_of = ANG }
 			owns_state = 211
 			NOT = { country_exists = ANG }
-			NOT = { tag = ANG }
-			NOT = { tag = ZDG }
-			NOT = {
-				any_other_country = {
-					original_tag = ANG
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1339,13 +1264,7 @@ liyue_civil_war_decisions = {
 			127 = { is_core_of = LYU }
 			owns_state = 127
 			NOT = { country_exists = LYU }
-			NOT = { tag = LYU }
-			NOT = { tag = ZDG }
-			NOT = {
-				any_other_country = {
-					original_tag = LYU
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1405,13 +1324,7 @@ liyue_civil_war_decisions = {
 			147 = { is_core_of = KQG }
 			owns_state = 147
 			NOT = { country_exists = KQG }
-			NOT = { tag = KQG }
-			NOT = { tag = ZDG }
-			NOT = {
-				any_other_country = {
-					original_tag = KQG
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1471,13 +1384,7 @@ liyue_civil_war_decisions = {
 			126 = { is_core_of = NNG }
 			owns_state = 126
 			NOT = { country_exists = NNG }
-			NOT = { tag = NNG }
-			NOT = { tag = ZDG }
-			NOT = {
-				any_other_country = {
-					original_tag = NNG
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1548,13 +1455,7 @@ liyue_civil_war_decisions = {
 			131 = { is_core_of = XOG }
 			owns_state = 131
 			NOT = { country_exists = XOG }
-			NOT = { tag = XOG }
-			NOT = { tag = ZDG }
-			NOT = {
-				any_other_country = {
-					original_tag = XOG
-				}
-			}
+			is_liyue_bad_warlords = no
 		}
 		
 		highlight_states = {
@@ -1603,6 +1504,36 @@ liyue_civil_war_decisions = {
 				}
 				custom_effect_tooltip = ANG_defeat_tooltip
 			}
+		}
+	}
+	
+	rebuild_education_system = {
+		icon = generic_civil_support
+		
+		available = {
+			num_of_factories > 34
+		}
+		
+		visible = {
+			num_of_factories > 24
+			amount_research_slots < 3
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+		
+		cost = 50
+
+		days_remove = 120
+
+		modifier = {
+			political_power_gain = -0.2
+			consumer_goods_factor = 0.1
+		}
+		
+		complete_effect = {
+			add_research_slot = 1
 		}
 	}
 }

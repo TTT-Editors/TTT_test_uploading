@@ -10,311 +10,308 @@ focus_tree = {
     default = no
 
     focus = {
-        id = bll_01
-            icon = GFX_goal_unknown
-            x = 17.0
-            y = 2.0
-            cost = 35.0
-            available = { 
-                
+        id = bll_01 #北风之傲
+        icon = GFX_goal_bll_01_01
+        x = 7.0
+        y = 2.0
+        cost = 35.0
+        ai_will_do = {
+                factor = 10.0
+        }     
+        completion_reward = {
+            add_political_power =100
+            add_war_support =0.05
+            add_stability =0.05
+            hidden_effect = {
+                country_event = {id = BLL_event.1 days = 3}
             }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            #available = { #自定义前提条件
-			#custom_trigger_tooltip = {
-            #tooltip = bll_0_01
-	        #country_event = { days = 3 id = BLL_event.1 }
-            #}
-            
-            completion_reward = {
-			add_political_power =100 add_war_support =0.05 add_stability =0.05
-			country_event = { days = 3 id = BLL_event.1 }
-		}
         }
+    }
             
         
 
-		focus = {
-        id = bll_02
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_01 }
-            x = 17.0
-            y = 3.0
-            cost = 35.0
-            available = { 
-                
+    focus = {
+    id = bll_02 #风，贯通南北
+        icon = GFX_goal_bll_01_02
+        prerequisite = { focus = bll_01 }
+        x = 7.0
+        y = 3.0
+        cost = 35.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            hidden_effect = {
+                country_event = {id = BLL_event.16 days = 1}
             }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
+            add_opinion_modifier = {
+                target = QQZ
+                modifier = bll_02_opinion_modifiers
             }
         }
+    }
 
-		focus = {
-        id = bll_03
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_02 }
-            x = 19.0
-            y = 4.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+    focus = {
+    id = bll_03 #向东方
+        icon = GFX_goal_bll_01_03
+        prerequisite = { focus = bll_02 }
+        x = 9.0
+        y = 4.0
+        cost = 35.0
+        available = { 
+            
         }
-
-		focus = {
-        id = bll_04
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_02 }
-            x = 15.0
-            y = 4.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        ai_will_do = {
+                factor = 10.0
         }
-
-		focus = {
-        id = bll_05
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_04 }
-            x = 14.0
-            y = 5.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        completion_reward = {
+            country_event = {id = BLL_event.17}
         }
+    }
 
-		focus = {
-        id = bll_06
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_04 }
-            x = 16.0
-            y = 5.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+    focus = {
+    id = bll_04 #大会的意见
+        icon = GFX_goal_bll_01_04
+        prerequisite = { focus = bll_02 }
+        x = 5.0
+        y = 4.0
+        cost = 35.0
+        available = { 
+            
         }
-
-		focus = {
-        id = bll_07
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_05 focus = bll_06 }
-            x = 15.0
-            y = 6.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        ai_will_do = {
+                factor = 10.0
         }
-
-		focus = {
-        id = bll_08
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_03 }
-            x = 18.0
-            y = 5.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        completion_reward = {
+            country_event = {id = BLL_event.27}
         }
+    }
 
-		focus = {
-        id = bll_09
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_08 }
-            x = 18.0
-            y = 6.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+    focus = {
+    id = bll_05 #我们的想法？
+        icon = GFX_goal_bll_01_05
+        prerequisite = { focus = bll_04 }
+        x = 4.0
+        y = 5.0
+        cost = 35.0
+        available = { 
+            
         }
-
-		focus = {
-        id = bll_10
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_03 }
-            x = 20.0
-            y = 5.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        ai_will_do = {
+                factor = 10.0
         }
-
-		focus = {
-        id = bll_11
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_10 }
-            x = 20.0
-            y = 6.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        completion_reward = {
+            country_event = {id = BLL_event.28}
+            custom_effect_tooltip = bll_05_tooltip
         }
+    }
 
-		focus = {
-        id = bll_12
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_11 focus = bll_07 }
-            x = 17.0
-            y = 7.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+    focus = {
+    id = bll_06 #部族的立场
+        icon = GFX_goal_bll_01_06
+        prerequisite = { focus = bll_04 }
+        x = 6.0
+        y = 5.0
+        cost = 35.0
+        available = { 
+            
         }
-
-		focus = {
-        id = bll_13
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_12 }
-            x = 17.0
-            y = 8.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        ai_will_do = {
+                factor = 10.0
         }
-
-		focus = {
-        id = bll_14
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_13 }
-			mutually_exclusive = { focus = bll_15 }
-			mutually_exclusive = { focus = bll_16 }
-            x = 17.0
-            y = 9.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        completion_reward = {
+            country_event = {id = BLL_event.29}
         }
+    }
 
-		focus = {
-        id = bll_15
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_13 }
-			mutually_exclusive = { focus = bll_14 }
-			mutually_exclusive = { focus = bll_16 }
-            x = 10.0
-            y = 9.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+    focus = {
+    id = bll_07 #北风的低语
+        icon = GFX_goal_bll_01_07
+        prerequisite = { focus = bll_05 }
+        prerequisite = { focus = bll_06 }
+        x = 5.0
+        y = 6.0
+        cost = 35.0
+        available = { 
+            
         }
-
-		focus = {
-        id = bll_16
-            icon = GFX_goal_unknown
-			prerequisite = { focus = bll_13 }
-			mutually_exclusive = { focus = bll_14 }
-			mutually_exclusive = { focus = bll_15 }
-            x = 24.0
-            y = 9.0
-            cost = 35.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                    factor = 10.0
-            }
-            completion_reward = {
-                add_war_support = 0.05
-            }
+        ai_will_do = {
+                factor = 10.0
         }
+        completion_reward = {
+            unlock_decision_tooltip = BLL_07_decision
+        }
+    }
 
+    focus = {
+    id = bll_08 #贸易事项
+        icon = GFX_goal_bll_01_08
+        prerequisite = { focus = bll_03 }
+        x = 8.0
+        y = 5.0
+        cost = 35.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            QQZ = {
+                country_event = {id = BLL_event.18 days = 1}
+            }
+            custom_effect_tooltip = bll_08_tooltip
+        }
+    }
 
+    focus = {
+    id = bll_09 #修订条例
+        icon = GFX_goal_bll_01_09
+        prerequisite = { focus = bll_08 }
+        x = 8.0
+        y = 6.0
+        cost = 35.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            custom_effect_tooltip = bll_09_tooltip
+        }
+    }
 
+    focus = {
+    id = bll_10 #可那里是家吗？
+        icon = GFX_goal_bll_01_10
+        prerequisite = { focus = bll_03 }
+        x = 10.0
+        y = 5.0
+        cost = 35.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            country_event = {id = BLL_event.25}
+        }
+    }
+
+    focus = {
+    id = bll_11 #也许吧
+        icon = GFX_goal_bll_01_11
+        prerequisite = { focus = bll_10 }
+        x = 10.0
+        y = 6.0
+        cost = 35.0
+        available = { 
+            
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            country_event = {id = BLL_event.26}
+        }
+    }
+
+    focus = {
+    id = bll_12 #最终的形态
+        icon = GFX_goal_bll_01_12
+        prerequisite = { focus = bll_11 }
+        prerequisite = { focus = bll_09 }
+        prerequisite = { focus = bll_07 }
+        x = 7.0
+        y = 7.0
+        cost = 35
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            custom_effect_tooltip = bll_12_tooltip
+            ###效果
+        }
+    }
 
     
+    focus = {
+    id = bll_14 #或许，北风是柔和的
+        icon = GFX_goal_bll_01_13
+        prerequisite = { focus = bll_12 }
+        mutually_exclusive = { focus = bll_15 }
+        mutually_exclusive = { focus = bll_16 }
+        x = 7.0
+        y = 8.0
+        cost = 35.0
+        allow_branch = {
+            has_country_flag = bll_14_is_visible
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = bll_14_trigger_tooltip
+            }
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            custom_effect_tooltip = bll_14_tooltip
+        }
+    }
+
+    focus = {
+        id = bll_15 #沿此路者，毋须更改
+        icon = GFX_goal_bll_01_15
+        prerequisite = { focus = bll_12 }
+        mutually_exclusive = { focus = bll_14 }
+        mutually_exclusive = { focus = bll_16 }
+        x = 7.0
+        y = 8.0
+        cost = 35.0
+        allow_branch = {
+            has_country_flag = bll_15_is_visible
+        }
+        available = {
+            has_country_flag = bll_15_is_visible 
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            custom_effect_tooltip = bll_15_tooltip
+            country_event = {id = BLL_event.9 days = 60}
+        }
+    }
+
+    focus = {
+    id = bll_16 #奔狼领的改变
+        icon = GFX_goal_bll_01_14
+        prerequisite = { focus = bll_12 }
+        mutually_exclusive = { focus = bll_14 }
+        mutually_exclusive = { focus = bll_15 }
+        x = 7.0
+        y = 8.0
+        cost = 35.0
+        allow_branch = {
+            has_country_flag = bll_16_is_visible
+        }
+        available = {
+            has_country_flag = bll_16_is_visible 
+        }
+        ai_will_do = {
+                factor = 10.0
+        }
+        completion_reward = {
+            custom_effect_tooltip = bll_16_tooltip
+            country_event = {id = BLL_event.9 days = 60}
+        }
+    }
 }
 
             

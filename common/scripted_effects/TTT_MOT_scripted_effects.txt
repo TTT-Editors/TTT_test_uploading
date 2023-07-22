@@ -36,12 +36,14 @@ MOT_check_MOT_Prestige_num = {
         limit = {
             check_variable = {
                 var = MOT_Prestige_num
-                value = 6
-                compare = less_than_or_equals
+                value = 5
+                compare = greater_than_or_equals
             }
-            remove_idea = mot_lead_by_wind_d
-            remove_idea = mot_lead_by_wind_c
-            remove_idea = mot_lead_by_wind_b
+        }
+        hidden_effect = {
+            remove_ideas = mot_lead_by_wind_d
+            remove_ideas = mot_lead_by_wind_c
+            remove_ideas = mot_lead_by_wind_b
             add_ideas = mot_lead_by_wind_a
         }
     }
@@ -52,9 +54,16 @@ MOT_check_MOT_Prestige_num = {
                 value = 5
                 compare = less_than
             }
-            remove_idea = mot_lead_by_wind_d
-            remove_idea = mot_lead_by_wind_c
-            remove_idea = mot_lead_by_wind_a
+            check_variable = {
+                var = MOT_Prestige_num
+                value = 3
+                compare = greater_than_or_equals
+            }
+        }
+        hidden_effect = {
+            remove_ideas = mot_lead_by_wind_d
+            remove_ideas = mot_lead_by_wind_c
+            remove_ideas = mot_lead_by_wind_a
             add_ideas = mot_lead_by_wind_b
         }
     }
@@ -65,9 +74,16 @@ MOT_check_MOT_Prestige_num = {
                 value = 3
                 compare = less_than
             }
-            remove_idea = mot_lead_by_wind_d
-            remove_idea = mot_lead_by_wind_b
-            remove_idea = mot_lead_by_wind_a
+            check_variable = {
+                var = MOT_Prestige_num
+                value = 0
+                compare = greater_than
+            }
+        }
+        hidden_effect = {
+            remove_ideas = mot_lead_by_wind_d
+            remove_ideas = mot_lead_by_wind_b
+            remove_ideas = mot_lead_by_wind_a
             add_ideas = mot_lead_by_wind_c
         }
     }
@@ -78,9 +94,11 @@ MOT_check_MOT_Prestige_num = {
                 value = 0
                 compare = equals
             }
-            remove_idea = mot_lead_by_wind_c
-            remove_idea = mot_lead_by_wind_b
-            remove_idea = mot_lead_by_wind_a
+        }
+        hidden_effect = {
+            remove_ideas = mot_lead_by_wind_c
+            remove_ideas = mot_lead_by_wind_b
+            remove_ideas = mot_lead_by_wind_a
             add_ideas = mot_lead_by_wind_d
         }
     }
@@ -88,25 +106,6 @@ MOT_check_MOT_Prestige_num = {
 ######################################################################
 #重置倒计时、立场选择、解除进度条和倒计时机制、清除立场、清除国家和任务
 MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = {
-    ###清除风魔龙危机民族精神
-    if = {
-        limit = {
-            has_idea = MOT_crisis_of_Tewalin
-        }
-        remove_ideas = MOT_crisis_of_Tewalin
-    }
-    else_if = {
-        limit = {
-            has_idea = MOT_crisis_of_Tewalin2
-        }
-        remove_ideas = MOT_crisis_of_Tewalin2
-    }
-    TWL = {
-        remove_ideas = TWL_frightening_strikes_of_windy_dargons
-    }
-    BLL = {
-        remove_ideas = BLL_fengmolongweiji
-    }
     ##清除倒计时
     set_variable = {
         var = MOT_dragon_crisis_deadline_num

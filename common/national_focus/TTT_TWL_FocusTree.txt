@@ -8,864 +8,970 @@ focus_tree = {
 		}
 	}
     default = no
-    ###国策名：召开军区委员会
+    ###国策名称：召开紧急会议
 focus = {
-    id = TWL_Hold_a_regional_military_committee
+    id = TWL_focus_0_1
         icon = GFX_goal_unknown
-        x = 7.0
-        y = 2.0
-        
+        x = 6.0
+        y = 1.0
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+                factor = 1
         }
         completion_reward = {
-            ###触发事件“新的军区委员长”政治点数+50
-            add_political_power  = 50
-            hidden_effect = {
-                country_event = {id = TWL_event.10 days = 3}
+            ##触发事件“军区紧急会议”,政治点数+50
+            country_event = {id = TWL_event.21}
+            add_political_power = 50
+        }
+    }
+###宣布进入紧急状态
+focus = {
+    id = TWL_focus_0_32
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 2.0
+        cost = 70.0
+        prerequisite = {
+            focus = TWL_focus_0_1
+        }
+        available = { 
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = my_idea
+                days = 210
             }
-           
         }
     }
 
-###国策名：解决人力短缺
+###国策名称：精简化管理机构
 focus = {
-    id = TWL_Solve_manpower_shortage
+    id = TWL_focus_0_2
         icon = GFX_goal_unknown
         x = 2.0
         y = 3.0
         prerequisite = {
-            focus =TWL_Hold_a_regional_military_committee
+            focus =TWL_focus_0_32
         }
-        
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+            factor = 1
         }
         completion_reward = {
-            ###获得民族精神 强制征募（稳定度-5% 每周人口+50）
-            add_ideas = TWL_Compulsory_Recuritment_1
+           # #军区政府追加效果：政治点数+5%战争支持度+5%
+           swap_ideas = {
+                remove_idea = TWL_military_government
+                add_idea = TWL_military_government_2
+            }
         }
     }
 
-###国策名：解决工厂产量
+
+###国策名称：重组情报部门
 focus = {
-    id = TWL_Plant_output
+    id = TWL_focus_0_3
         icon = GFX_goal_unknown
-        x = 7.0
+        x = 4.0
         y = 3.0
         prerequisite = {
-            focus =TWL_Hold_a_regional_military_committee
+            focus =TWL_focus_0_32
         }
-        
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+            factor = 1
         }
         completion_reward = {
-            ###隐蔽工厂 追加效果：工厂产出+5%
-            add_to_variable = {TWL_hidden_factories_industrial_capacity_factory = 0.05}
-            custom_effect_tooltip =TWL_Plant_output_tooltip
+            #（蒙德城）触发事件“风龙废墟请求情报专家！”
+            MOT = {
+                country_event = {id = TWL_event.22 days = 5}
+            }
         }
     }
 
-###国策名：解决治安问题
+
+###国策名称：改良生产环境
 focus = {
-    id = TWL_Solve_the_security_problem
+    id = TWL_focus_0_4
         icon = GFX_goal_unknown
-        x = 12.0
-        y = 3.0
+        x = 1.0
+        y = 4.0
         prerequisite = {
-            focus =TWL_Hold_a_regional_military_committee
+            focus =TWL_focus_0_3
         }
-        
+        prerequisite = {
+            focus =TWL_focus_0_2
+        }
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+            factor = 1
         }
         completion_reward = {
-            ###（其他人）基础稳定度+5%（加尔文）触发事件“致尊敬的代理团长”
+            #民族精神 隐蔽工厂追加效果：生产效率增长+15%工厂产出+5%
+            swap_ideas = {
+                remove_idea = TWL_hidden_factories
+                add_idea = TWL_hidden_factories2
+            }
+        }
+    }
+
+
+###国策名称：调查委员会腐败
+focus = {
+    id = TWL_focus_0_5
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_focus_0_3
+        }
+        prerequisite = {
+            focus =TWL_focus_0_2
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            #触发事件“一场额外调查？”,军区政府追加效果：政治点数+5%每周稳定度+0.10%战争支持度+10%
+            country_event = {id = TWL_event.23}
+            swap_ideas = {
+                remove_idea = TWL_military_government_2
+                add_idea = TWL_military_government_3
+            }
+        }
+    }
+
+
+###国策名称：重建募兵系统
+focus = {
+    id = TWL_focus_0_6
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 4.0
+        prerequisite = {
+            focus =TWL_focus_0_3
+        }
+        prerequisite = {
+            focus =TWL_focus_0_2
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            #（蒙德城）触发事件“群情激奋”获得民族精神 军队改革适役人口+2.00%动员速度+15.00%
+            country_event = {
+                id = TWL_event.24
+            }
+            add_ideas = TWL_reform_the_army
+        }
+    }
+
+
+###国策名称：委员会幕僚化
+focus = {
+    id = TWL_focus_0_7
+        icon = GFX_goal_unknown
+        x = 2.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_focus_0_4
+        }
+        prerequisite = {
+            focus =TWL_focus_0_5
+        }
+        prerequisite = {
+            focus =TWL_focus_0_6
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #（蒙德城）触发事件“风龙废墟要求集权！”
+            MOT = {
+                country_event = {id = TWL_event.25}
+            }
+        }
+    }
+
+
+###国策名称：建立工兵队
+focus = {
+    id = TWL_focus_0_8
+        icon = GFX_goal_unknown
+        x = 4.0
+        y = 5.0
+        prerequisite = {
+            focus =TWL_focus_0_4
+        }
+        prerequisite = {
+            focus =TWL_focus_0_5
+        }
+        prerequisite = {
+            focus =TWL_focus_0_6
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #获得支援装备 200 单位（没有科技）获得科技 工兵连I（拥有科技）获得 工兵科技 100% 加成卡
             if = {
-                limit= {
-                    has_country_leader = TWL_Evalister_Galvan
+                limit = {
+                    not = {
+                        has_tech = support_equipment_1
+                    }
                 }
-                MOT = {
-                    country_event = {id = TWL_event.11}
-                }
-            }else = {
-                add_stability = 0.05
-            }
-            hidden_effect = {
-                DSC ={
-                    country_event = {id = TWL_event.6 days = 35}
+                set_technology = {
+                    support_equipment_1 = 1
                 }
             }
-        }
-    }
-
-###国策名：重塑行政机关
-focus = {
-    id = TWL_Commission_of_inquiry_corruption
-        icon = GFX_goal_unknown
-        x = 1.0
-        y = 4.0
-        prerequisite = {
-            focus =TWL_Solve_manpower_shortage
-        }
-        mutually_exclusive = {
-            focus =TWL_These_are_far_from_enough
-        }
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###民族精神 军区政府追加效果：政治点数+10%
-            hidden_effect = {
-                remove_ideas = TWL_military_government
-                add_ideas = TWL_military_government_2
-            }
-            custom_effect_tooltip = TWL_Commission_of_inquiry_corruption_tooltip
-        }
-    }
-
-###国策名：精简化管理机构
-focus = {
-    id = TWL_Streamline_the_management_structure
-        icon = GFX_goal_unknown
-        x = 1.0
-        y = 5.0
-        prerequisite = {
-            focus =TWL_Commission_of_inquiry_corruption
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###民族精神 军区政府追加效果： 政治点数+15%（蒙德城）触发事件“废墟军区军队改革案”
-            hidden_effect = {
-                remove_ideas = TWL_military_government_2
-                add_ideas = TWL_military_government_3
-            }
-            custom_effect_tooltip =TWL_Streamline_the_management_structure_tooltip
-            ###事件“废墟军区军队改革案”没写
-        }
-    }
-
-###国策名：降低骑士招收资格
-focus = {
-    id = TWL_Reduce_the_eligibility_for_knighthood
-        icon = GFX_goal_unknown
-        x = 1.0
-        y = 6.0
-        prerequisite = {
-            focus =TWL_Streamline_the_management_structure
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###民族精神 强制征募 追加效果（每周人口+50）
-            hidden_effect = {
-                remove_ideas = TWL_Compulsory_Recuritment_1
-                add_ideas = TWL_Compulsory_Recuritment_2
-            }
-            custom_effect_tooltip =TWL_Reduce_the_eligibility_for_knighthood_tooltip
-        }
-    }
-
-###国策名：这些远远不够
-focus = {
-    id = TWL_These_are_far_from_enough
-        icon = GFX_goal_unknown
-        x = 3.0
-        y = 4.0
-        prerequisite = {
-            focus =TWL_Solve_manpower_shortage
-        }
-        mutually_exclusive = {
-            focus =TWL_Commission_of_inquiry_corruption
-        }
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###获得3支民兵队伍（三营）
-            division_template = {
-                name = "风龙废墟军区民兵师" 				
-                division_names_group = TWL_INF_01
-                regiments = {
-                    infantry = { x = 0 y = 0 }
-                    infantry = { x = 0 y = 1 }
-                    infantry = { x = 0 y = 2 }
+            else = {
+                add_tech_bonus = {
+                    bonus = 1
+                    uses = 1
+                    category = support_tech
                 }
             }
-            capital_scope = {
-					create_unit = {
-						division = "name = \"风龙废墟军区民兵师01\" division_template = \"风龙废墟军区民兵师\" start_experience_factor = 1"  
-						owner = ROOT
-					}
-                    create_unit = {
-						division = "name = \"风龙废墟军区民兵师02\" division_template = \"风龙废墟军区民兵师\" start_experience_factor = 1"  
-						owner = ROOT
-					}
-                    create_unit = {
-						division = "name = \"风龙废墟军区民兵师03\" division_template = \"风龙废墟军区民兵师\" start_experience_factor = 1"  
-						owner = ROOT
-					}
-            }
-        }
-    }
 
-###国策名：最低限度的武装
-focus = {
-    id = TWL_Minimal_arming
-        icon = GFX_goal_unknown
-        x = 3.0
-        y = 5.0
-        prerequisite = {
-            focus =TWL_These_are_far_from_enough
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###获得2000步枪120支援装备
-            add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = 2000
-                producer = TWL
+
+            if = {
+                limit = {
+                    not = {
+                        has_tech = tech_engineers
+                    }
+                }
+                set_technology = {
+                    tech_engineers = 1
+                }
+            }
+            else = {
+                add_tech_bonus = {
+                    bonus = 1
+                    uses = 1
+                    category = tech_engineers
+                }
             }
             add_equipment_to_stockpile = {
                 type = support_equipment
-                amount = 120
+                amount = 500
                 producer = TWL
             }
         }
     }
 
-###国策名：最低程度的训练
+
+###国策名称：保卫交通路线
 focus = {
-    id = TWL_Minimal_training
+    id = TWL_focus_0_9
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_focus_0_8
+            focus =TWL_focus_0_7
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #基础稳定度+7.00%获得一个地图外民用工厂
+            add_stability = 0.07
+            add_offsite_building = { type = industrial_complex level = 1 }
+
+        }
+    }
+
+
+###国策名称：进一步扩大生产
+focus = {
+    id = TWL_focus_0_10
         icon = GFX_goal_unknown
         x = 3.0
         y = 6.0
         prerequisite = {
-            focus =TWL_Minimal_arming
+            focus =TWL_focus_0_8
+            focus =TWL_focus_0_7
         }
-        
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+                factor = 1
         }
         completion_reward = {
-            ###政治点数-100民族精神 强制征募 追加效果（训练时间-10% 陆军组织度-10%）
-            add_political_power = -100
-            hidden_effect = {
-                remove_ideas = TWL_Compulsory_Recuritment_1
-                add_ideas = TWL_Compulsory_Recuritment_3
+            #民族精神 地下工厂追加效果：工厂产出+5%
+            swap_ideas = {
+                remove_idea = TWL_hidden_factories2
+                add_idea =TWL_hidden_factories3
             }
-            custom_effect_tooltip = TWL_Minimal_training_tooltip
         }
     }
 
-###国策名：外国雇佣军
+
+###国策名称：动员地方民兵
 focus = {
-    id = TWL_Foreign_mercenary
+    id = TWL_focus_0_11
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 6.0
+        prerequisite = {
+            focus =TWL_focus_0_8
+            focus =TWL_focus_0_7
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #获得6支民兵队伍（三营）民族精神 军队改革 追加效果：陆军组织度-10%训练时间-10%
+            capital_scope = {
+				create_unit = {
+					division = "division_template = \"风龙废墟军区民兵\" start_experience_factor = 0.1"
+					count = 6
+					owner = TWL
+				}		
+			}
+            swap_ideas = {
+                remove_idea =TWL_reform_the_army
+                add_idea = TWL_reform_the_army2
+            }
+        }
+    }
+
+
+###国策名称：翻新防御阵线
+focus = {
+    id = TWL_focus_0_12
+        icon = GFX_goal_unknown
+        x = 1.0
+        y = 7.0
+        prerequisite = {
+            focus =TWL_focus_0_9
+            focus =TWL_focus_0_10
+            focus =TWL_focus_0_11
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #[增加陆上要塞]
+        }
+    }
+
+
+###国策名称：提高工人待遇
+focus = {
+    id = TWL_focus_0_13
+        icon = GFX_goal_unknown
+        x = 3.0
+        y = 7.0
+        prerequisite = {
+            focus =TWL_focus_0_9
+            focus =TWL_focus_0_10
+            focus =TWL_focus_0_11
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #基础稳定度+5.00%
+            #触发事件“给他们一个说法”
+            add_stability = 0.05
+            country_event = {id = TWL_event.26}
+        }
+    }
+
+
+###国策名称：军事化史莱姆气球
+focus = {
+    id = TWL_focus_0_14
+        icon = GFX_goal_unknown
+        x = 5.0
+        y = 7.0
+        prerequisite = {
+            focus =TWL_focus_0_9
+            focus =TWL_focus_0_10
+            focus =TWL_focus_0_11
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #获得科技 侦察连I
+            #军事改革 追加效果：
+            #侦察+1.0
+            if = {
+                limit = {
+                    not = {
+                        has_tech = tech_recon
+                    }
+                }
+                set_technology = {
+                    tech_recon = 1
+                }
+            }
+            else = {
+                add_tech_bonus = {
+                    bonus = 1
+                    uses = 1
+                    category = tech_recon
+                }
+            }
+            swap_ideas = {
+                remove_idea = TWL_reform_the_army2
+                add_idea = TWL_reform_the_army3
+            }
+        }
+    }
+
+
+###国策名称：专注改良工业生产
+focus = {
+    id = TWL_focus_0_15
         icon = GFX_goal_unknown
         x = 2.0
-        y = 7.0
+        y = 8.0
         prerequisite = {
-            focus =TWL_Reduce_the_eligibility_for_knighthood
-            focus =TWL_Minimal_training
+            focus =TWL_focus_0_14
         }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###民族精神 人口问题 追加效果 （生活消费品-5% 陆军组织度+5% 每周人口+150)
-            hidden_effect = {
-                remove_ideas = TWL_population_problem
-                add_ideas = TWL_population_problem_1
-            }
-            custom_effect_tooltip = TWL_Foreign_mercenary_tooltip
-        }
-    }
-
-###国策名：改善生产环境
-focus = {
-    id = TWL_Improve_the_production_environment
-        icon = GFX_goal_unknown
-        x = 6.0
-        y = 4.0
         prerequisite = {
-            focus =TWL_Plant_output
+            focus =TWL_focus_0_13
+        }
+        prerequisite = {
+            focus =TWL_focus_0_12
         }
         mutually_exclusive = {
-            focus =TWL_Structural_line_of_defense
+            focus =TWL_focus_0_16
         }
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+                factor = 1
         }
         completion_reward = {
-            ###政治点数-100民族精神 隐蔽工厂追加效果：工厂产出+5%工厂修复速度+10%
-            add_political_power = -100
-            add_to_variable = {TWL_hidden_factories_industrial_capacity_factory = 0.05}
-            add_to_variable = {TWL_hidden_factories_industry_repair_factor = 0.1}
-            custom_effect_tooltip = TWL_Improve_the_production_environment_tooltip
+            #地下工厂追加效果：
+            #基础生产效率+15%
+            #生产效率保持+15%
+            #生产效率增长+15%
+            #缺乏战略资源惩罚-25%
+            swap_ideas = {
+                remove_idea = TWL_hidden_factories3
+                add_idea = TWL_hidden_factories4
+            }
+
         }
     }
 
-###国策名：专注生产
-focus = {
-    id = TWL_Focus_on_production
-        icon = GFX_goal_unknown
-        x = 6.0
-        y = 5.0
-        prerequisite = {
-            focus =TWL_Improve_the_production_environment
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###民族精神 隐蔽工厂追加效果：生产效率上限+5%生产效率保持-10%
-            add_to_variable = {TWL_hidden_factories_production_factory_max_efficiency_factor = 0.05}
-            add_to_variable = {TWL_hidden_factories_production_factory_start_efficiency_factor = -0.1}
-            custom_effect_tooltip = TWL_Focus_on_production_tooltip
-        }
-    }
 
-###国策名：提高工人待遇
+###国策名称：为安全添砖加瓦
 focus = {
-    id = TWL_Improve_the_treatment_of_workers
+    id = TWL_focus_0_16
         icon = GFX_goal_unknown
-        x = 6.0
-        y = 6.0
+        x = 4.0
+        y = 8.0
         prerequisite = {
-            focus =TWL_Focus_on_production
+            focus =TWL_focus_0_14
         }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###稳定度+5%民族精神 隐蔽工厂追加效果：生活消费品-3%生产效率上限+5%
-            add_stability = 0.05
-            add_to_variable = {TWL_hidden_factories_consumer_goods_factor = -0.03}
-            add_to_variable = {TWL_hidden_factories_production_factory_max_efficiency_factor = 0.05}
-            custom_effect_tooltip = TWL_Improve_the_treatment_of_workers_tooltip
-        }
-    }
-
-###国策名：构造防线
-focus = {
-    id = TWL_Structural_line_of_defense
-        icon = GFX_goal_unknown
-        x = 8.0
-        y = 4.0
         prerequisite = {
-            focus =TWL_Plant_output
+            focus =TWL_focus_0_13
+        }
+        prerequisite = {
+            focus =TWL_focus_0_12
         }
         mutually_exclusive = {
-            focus =TWL_Improve_the_production_environment
+            focus =TWL_focus_0_15
         }
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+                factor = 1
         }
         completion_reward = {
-            ###风魔龙袭击的烈度降低获得民族精神 新战略(核心领土单位防御+5%)在部分地区获得一级要塞
-            add_ideas = TWL_New_Strategy_1
-        }
-    }
-
-###国策名：尝试运用热气球
-focus = {
-    id = TWL_Try_a_hot_air_balloon
-        icon = GFX_goal_unknown
-        x = 8.0
-        y = 5.0
-        prerequisite = {
-            focus =TWL_Structural_line_of_defense
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###风魔龙袭击的频率降低民族精神 新战略 追加效果（主动性+3% 侦察+5%）
-            hidden_effect = {
-               remove_ideas = TWL_New_Strategy_1
-               add_ideas = TWL_New_Strategy_2
+            #军区政府追加效果：
+            #战争支持度+25%
+            #政治点数+5%
+            swap_ideas = {
+                remove_idea = TWL_military_government_3
+                add_idea = TWL_military_government_4
             }
-            custom_effect_tooltip = TWL_Try_a_hot_air_balloon_tooltip
         }
     }
 
-###国策名：堑壕战与地道战
+
+###国策名称：雇佣挑战者
 focus = {
-    id = TWL_Trench_warfare_and_tunnel_warfare
+    id = TWL_focus_0_17
         icon = GFX_goal_unknown
-        x = 8.0
-        y = 6.0
+        x = 3.0
+        y = 9.0
         prerequisite = {
-            focus =TWL_Try_a_hot_air_balloon
+            focus =TWL_focus_0_15
         }
-        
+        prerequisite = {
+            focus =TWL_focus_0_16
+        }
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+                factor = 1
         }
         completion_reward = {
-            ###民族精神 新战略 追加效果（堑壕上限+5.0 堑壕速度+10%）
-            hidden_effect = {
-                remove_ideas = TWL_New_Strategy_2
-               add_ideas = TWL_New_Strategy_3
-            }
-            custom_effect_tooltip = TWL_Trench_warfare_and_tunnel_warfare_tooltip
+            #我们可以通过决议来招募雇佣兵了。（150pp 获得5k人力）
+            unlock_decision_tooltip = TWL_focus_0_17_decision
         }
     }
 
-###国策名：降低武器水准
-focus = {
-    id = TWL_depress_level_weapons
-        icon = GFX_goal_unknown
-        x = 7.0
-        y = 7.0
-        prerequisite = {
-            focus =TWL_Trench_warfare_and_tunnel_warfare
-            focus =TWL_Improve_the_treatment_of_workers
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###解锁工业企业 军区地下工厂（工厂产出+10%）获得工业企业 军区地下工厂
-            add_ideas = TWL_Underground_Factory
-        }
-    }
 
-###国策名：解除限制
+###国策名称：逮捕激进分子
 focus = {
-    id = TWL_unrestrict
+    id = TWL_focus_0_18
         icon = GFX_goal_unknown
-        x = 11.0
-        y = 4.0
+        x = 9.0
+        y = 2.0
         prerequisite = {
-            focus =TWL_Solve_the_security_problem
-        }
-        mutually_exclusive = {
-            focus =TWL_Reorganize_the_intelligence_community
+            focus =TWL_focus_0_1
         }
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+            factor = 1
         }
         completion_reward = {
-            ###基础稳定度+10.00%指挥点数+50.0
-            add_stability = 0.1
-            add_command_power = 50
-        }
-    }
-
-###国策名：改良火焰生成装置
-focus = {
-    id = TWL_Improved_flame_generation_device
-        icon = GFX_goal_unknown
-        x = 11.0
-        y = 5.0
-        prerequisite = {
-            focus =TWL_unrestrict
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###民族精神 火焰喷射装置 追加效果（稳定度-5% 陆军损耗+5% 补给消耗+5% 对人员杀伤+10% 突破+5%）
-            hidden_effect = {
-                remove_ideas = TWL_Fire_Jet_Device
-                add_ideas =TWL_Fire_Jet_Device_1
-            }
-            custom_effect_tooltip = TWL_Improved_flame_generation_device_tooltip
-            
-        }
-    }
-
-###国策名：爱国青年团
-focus = {
-    id = TWL_Patriotic_youth_league
-        icon = GFX_goal_unknown
-        x = 11.0
-        y = 6.0
-        prerequisite = {
-            focus =TWL_Improved_flame_generation_device
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###（所有拥有『难民危机』民族精神的蒙德势力）触发事件“爱国青年团吸纳过剩人口”（隐藏效果-只有完成该国策之后，才能解锁国家新兴主义线）获得民族精神 爱国青年团（反间谍+1.00 生活消费品+5% 每日获得的政治点数+0.30 适役人口+2.00% 意识形态变化抵制力度+75% 党派支持度对稳定度影响+15% 指挥点数增长+8% 每周战争支持度+0.10%[人员损伤]）国家新兴主义支持率变化 +12%
-            add_political_power = 200
-            add_ideas = TWL_Patriotic_Youngman
-            ###事件：没写
+            add_political_power = 20
+            #自由十字军的势力 -2其他准军事组织的势力 -1
             add_popularity = {
                 ideology = national_socialism
-                popularity = 0.12
+                popularity = -0.02
+            }
+            add_popularity = {
+                ideology = despotism
+                popularity = -0.01
             }
         }
     }
 
-###国策名：重组情报部门
+
+###国策名称：利用传媒工具
 focus = {
-    id = TWL_Reorganize_the_intelligence_community
+    id = TWL_focus_0_19
         icon = GFX_goal_unknown
-        x = 13.0
+        x = 8.0
+        y = 3.0
+        prerequisite = {
+            focus = TWL_focus_0_18
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #自由十字军的势力+1
+##基础稳定度+7.00%
+#基础战争支持度+8.00%
+#政治点数+98
+            add_stability = 0.07
+            add_war_support = 0.08
+            add_political_power = 100
+            add_popularity = {
+                ideology = national_socialism
+                popularity = 0.01
+            }
+        }
+    }
+
+
+###国策名称：配置火焰喷射器
+focus = {
+    id = TWL_focus_0_20
+        icon = GFX_goal_unknown
+        x = 10.0
+        y = 3.0
+        prerequisite = {
+            focus = TWL_focus_0_18
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #民族精神 火焰喷射装置 追加效果（稳定度-15% 陆军损耗+20% 补给消耗+10% 对人员杀伤+50% 突破+15%）
+            add_ideas = TWL_Fire_Jet_Device
+        }
+    }
+
+
+###国策名称：勾肩搭背
+focus = {
+    id = TWL_focus_0_21
+        icon = GFX_goal_unknown
+        x = 8.0
         y = 4.0
         prerequisite = {
-            focus =TWL_Solve_the_security_problem
+            focus = TWL_focus_0_20
+        }
+        prerequisite = {
+            focus = TWL_focus_0_19
         }
         mutually_exclusive = {
-            focus =TWL_unrestrict
+            focus =TWL_focus_0_26
         }
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+                factor = 1
         }
         completion_reward = {
-            ###获得民族精神 情报局（每日获得的政治点数-0.20 特工位+1 反间谍+1.50）
-            add_ideas = TWL_Intelligence_Bureau_1
-
-        }
-    }
-
-###国策名：配装生成装置
-focus = {
-    id = TWL_Install_the_generating_device
-        icon = GFX_goal_unknown
-        x = 13.0
-        y = 5.0
-        prerequisite = {
-            focus =TWL_Reorganize_the_intelligence_community
-        }
-        
-        cost = 70.0
-        available = { 
-            tag = TWL
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            ###民族精神 火焰喷射装置 追加效果（对人员杀伤+5%）政治点数-50
-            
-            hidden_effect = {
-                remove_ideas = TWL_Fire_Jet_Device
-                add_ideas = TWL_Fire_Jet_Device_2
+            #基础稳定度+5.00%
+#人力+8000
+#获得一座民用工厂 一个建筑槽
+            add_stability = 0.05
+            add_manpower = 8000
+            capital_scope = {
+                add_building_construction =
+                {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
             }
-            custom_effect_tooltip = TWL_Install_the_generating_device_tooltip
-            add_political_power = -50
         }
     }
 
-###国策名：制造隔离带
+
+###国策名称：合法走私证明
 focus = {
-    id = TWL_Manufacturing_barrier
+    id = TWL_focus_0_22
         icon = GFX_goal_unknown
-        x = 13.0
+        x = 8.0
         y = 6.0
         prerequisite = {
-            focus =TWL_Install_the_generating_device
+            focus = TWL_focus_0_24
+            focus = TWL_focus_0_31
+            focus = TWL_focus_0_29
         }
-        
         cost = 70.0
         available = { 
-            tag = TWL
         }
         ai_will_do = {
-                factor = 1.0
+                factor = 1
         }
         completion_reward = {
-            ###民族精神 情报局 追加效果 （每日获得的政治点数+0.20 反间谍-0.50 特工位+1）政治点数+100基础稳定度+5%
-            add_stability = 0.05
-            add_political_power = 100
-            hidden_effect = {
-                remove_ideas = TWL_Intelligence_Bureau_1
-                add_ideas = TWL_Intelligence_Bureau_2
-            }
-            custom_effect_tooltip = TWL_Manufacturing_barrier_tooltip
+           # 触发事件 “欢迎你....”,获得民族精神 合法走私行为 （生活消费品-5% 稳定度-10% 战争支持度-15%）获得2个地图外民用工厂
+           country_event = {id = TWL_event.27}
+           add_ideas = TWL_Lawful_smuggling
+           add_offsite_building = { type = industrial_complex level = 2 }
         }
     }
 
-####风魔龙危机国策
-    ##诗人的建议
-    focus = {
-        id = TWL_Advices_from_poet
+
+###国策名称：利用他们的敌人
+focus = {
+    id = TWL_focus_0_23
         icon = GFX_goal_unknown
-            x = 13.0
-            y = 8.0
-            cost = 35
-            available = { 
-                tag = TWL
+        x = 8.0
+        y = 8.0
+        prerequisite = {
+            focus = TWL_focus_0_25
+        }
+        prerequisite = {
+            focus = TWL_focus_0_30
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #基础战争支持度+8.00%
+#军区委员会的势力+3
+#自由十字军的势力-3
+#其他准军事组织的势力-3
+            add_stability = 0.08
+            add_popularity = {
+                ideology = authoritarianism
+                popularity = 0.03
             }
-            trigger = {
-                MOT= {
-                    has_completed_focus = MOT_tree_0_07
-                }
+            add_popularity = {
+                ideology = national_socialism
+                popularity = -0.03
             }
-            ai_will_do = {
-                factor = 10
+            add_popularity = {
+                ideology = despotism
+                popularity = -0.03
             }
-            completion_reward = {
-                add_political_power = 10
-            }
-    }
-
-    ###深入风龙废墟
-    focus = {
-        id =TWL_Into_the_ruins_of_the_Wind_Dragon
-            icon = GFX_goal_unknown
-            x = 12.0
-            y = 9.0
-            cost = 35.0
-            available = { 
-                tag = TWL
-            }
-            prerequisite = {
-                focus = TWL_Advices_from_poet
-            }
-            trigger = {
-                MOT= {
-                    has_completed_focus = MOT_tree_0_07
-                    has_global_flag = Lock_MOT_Standpoint_decision_1
-                }
-            }
-            ai_will_do = {
-                factor = 10
-            }
-            completion_reward = {
-                add_political_power = 10
-            }
-    }
-    ##调查特瓦林的行踪
-    focus = {
-        id =TWL_Inspect_Trevalin_whereabouts
-            icon = GFX_goal_unknown
-            x = 12.0
-            y = 10.0
-            cost = 35.0
-            prerequisite = {
-                focus = TWL_Into_the_ruins_of_the_Wind_Dragon
-            }
-            trigger = {
-                MOT= {
-                    has_completed_focus = MOT_tree_0_07
-                    has_global_flag = Lock_MOT_Standpoint_decision_1
-                }
-            }
-            available = { 
-                tag = TWL
-            }
-            ai_will_do = {
-                factor = 10
-            }
-            completion_reward = {
-                add_political_power = 10
-            }
-    }
-    ##清理深渊
-    focus = {
-        id =TWL_Clearing_the_Abyss
-            icon = GFX_goal_unknown
-            x = 12.0
-            y = 11.0
-            cost = 35.0
-            prerequisite = {
-                focus = TWL_Inspect_Trevalin_whereabouts
-            }
-            trigger = {
-                MOT= {
-                    has_completed_focus = MOT_tree_0_07
-                    has_global_flag = Lock_MOT_Standpoint_decision_1
-                }
-            }
-            available = { 
-                tag = TWL
-            }
-            ai_will_do = {
-                factor = 10
-            }
-            completion_reward = {
-                add_political_power = 10
-            }
+        }
     }
 
 
-    ####风魔龙危机国策2
-    ###战争后勤准备
-     focus = {
-        id =TWL_War_logistics_preparation
-            icon = GFX_goal_unknown
-            x = 14.0
-            y = 9.0
-            cost = 35.0
-            prerequisite = {
-                focus = TWL_Advices_from_poet
-            }
-            trigger = {
-                MOT= {
-                    has_completed_focus = MOT_tree_0_07
-                    has_global_flag = Lock_MOT_Standpoint_decision_3
-                }
-            }
-            available = { 
-                tag = TWL
-            }
-            ai_will_do = {
-                factor = 10
-            }
-            completion_reward = {
-                add_political_power = 10
-            }
+###国策名称：扩编准军事组织
+focus = {
+    id = TWL_focus_0_24
+        icon = GFX_goal_unknown
+        x = 7.0
+        y = 5.0
+        prerequisite = {
+            focus = TWL_focus_0_21
+            focus = TWL_focus_0_26
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #可以通过决议来获得陆军单位了人力+10000政治点数+80基础稳定度+5.00%基础战争支持度+7.00%
+            unlock_decision_tooltip = TWL_focus_0_24_decision
+        }
     }
-    ###来自过往的经验
-    focus = {
-        id =TWL_From_past_experience
-            icon = GFX_goal_unknown
-            x = 14.0
-            y = 10.0
-            cost = 35.0
-            prerequisite = {
-                focus = TWL_War_logistics_preparation
-            }
-            trigger = {
-                MOT= {
-                    has_completed_focus = MOT_tree_0_07
-                    has_global_flag = Lock_MOT_Standpoint_decision_3
-                }
-            }
-            available = { 
-                tag = TWL
-            }
-            ai_will_do = {
-                factor = 10
-            }
-            completion_reward = {
-                add_political_power = 10
-            }
+
+
+###国策名称：合法化爱国青年团
+focus = {
+    id = TWL_focus_0_25
+        icon = GFX_goal_unknown
+        x = 8.0
+        y = 7.0
+        prerequisite = {
+            focus = TWL_focus_0_22
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #获得民族精神 爱国青年团（反间谍+1.00 生活消费品+5% 每日获得的政治点数+0.30 适役人口+2.00% 意识形态变化抵制#力度+75% 党派支持度对稳定度影响+15% 指挥点数增长+8% 每周战争支持度+0.10%[人员损伤]）国家新兴主义支持率变化 #+12%政治点数+200
+            add_ideas = TWL_Patriotic_Youngman
+            add_political_power = 200
+        }
     }
-   ###为反抗高歌
-    focus = {
-        id =TWL_Sing_for_rebellion
-            icon = GFX_goal_unknown
-            x = 14.0
-            y = 11.0
-            cost = 35.0
-            prerequisite = {
-                focus =TWL_From_past_experience
-            }
-            trigger = {
-                MOT= {
-                    has_completed_focus = MOT_tree_0_07
-                    has_global_flag = Lock_MOT_Standpoint_decision_3
+
+
+###国策名称：毫不留情
+focus = {
+    id = TWL_focus_0_26
+        icon = GFX_goal_unknown
+        x = 10.0
+        y = 4.0
+        prerequisite = {
+            focus = TWL_focus_0_20
+        }
+        prerequisite = {
+            focus = TWL_focus_0_19
+        }
+        mutually_exclusive = {
+            focus =TWL_focus_0_21
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #自由十字军的势力-3基础稳定度+4.00%陆军经验+15获得一座军用工厂 一个建筑槽
+            capital_scope = {
+                add_building_construction =
+                {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
                 }
             }
-            available = { 
-                tag = TWL
+            add_popularity = {
+                ideology = national_socialism
+                popularity = -0.03
             }
-            ai_will_do = {
-                factor = 10
+        }
+    }
+
+
+###国策名称：放权情报部门
+focus = {
+    id = TWL_focus_0_27
+        icon = GFX_goal_unknown
+        x = 10.0
+        y = 6.0
+        prerequisite = {
+            focus = TWL_focus_0_24
+            focus = TWL_focus_0_31
+            focus = TWL_focus_0_29
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #民族精神 情报局 追加效果 （稳定度+15% 每周人口-15）
+            swap_ideas = {
+                remove_idea = TWL_Intelligence_Bureau_1
+                add_idea = TWL_Intelligence_Bureau_2
             }
-            completion_reward = {
-                add_political_power = 10
+        }
+    }
+
+
+###国策名称：管控非官方媒体
+focus = {
+    id = TWL_focus_0_28
+        icon = GFX_goal_unknown
+        x = 10.0
+        y = 8.0
+        prerequisite = {
+            focus = TWL_focus_0_25
+        }
+        prerequisite = {
+            focus = TWL_focus_0_30
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #自由十字军的势力变化：-5娱乐政策 变更为 禁止娱乐文化政策 变更为 仅限官方
+            add_popularity = {
+                ideology = national_socialism
+                popularity = -0.05
             }
+            add_ideas = Cancel_entertainment
+            add_ideas= Authoritative_release
+        }
+    }
+
+
+###国策名称：强化边境审查
+focus = {
+    id = TWL_focus_0_29
+        icon = GFX_goal_unknown
+        x = 11.0
+        y = 5.0
+        prerequisite = {
+            focus = TWL_focus_0_21
+            focus = TWL_focus_0_26
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #基础稳定度+10.0%人力-2000自由十字军的势力-5其他准军事组织的势力-5
+            add_manpower = -2000
+            add_stability = 0.1
+            add_popularity = {
+                ideology = national_socialism
+                popularity = -0.05
+            }
+            add_popularity = {
+                ideology = despotism
+                popularity = -0.05
+            }
+        }
+    }
+
+
+###国策名称：“千夫所指”
+focus = {
+    id = TWL_focus_0_30
+        icon = GFX_goal_unknown
+        x = 10.0
+        y = 7.0
+        prerequisite = {
+            focus = TWL_focus_0_27
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #基础稳定度+5.00%军区委员会的势力+2自由十字军的势力-4
+            add_stability = 0.05
+            add_popularity = {
+                ideology = national_socialism
+                popularity = 0.02
+            }
+            add_popularity = {
+                ideology = despotism
+                popularity = -0.04
+            }
+        }
+    }
+
+
+###国策名称：降低武器水准
+focus = {
+    id = TWL_focus_0_31
+        icon = GFX_goal_unknown
+        x = 9.0
+        y = 5.0
+        prerequisite = {
+            focus = TWL_focus_0_21
+            focus = TWL_focus_0_26
+        }
+        cost = 70.0
+        available = { 
+        }
+        ai_will_do = {
+                factor = 1
+        }
+        completion_reward = {
+            #解锁工业企业 军区地下工厂（工厂产出+15%）获得工业企业 军区地下工厂
+            add_ideas = TWL_Underground_Factory
+        }
     }
 }
 

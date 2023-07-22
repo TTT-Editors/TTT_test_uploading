@@ -422,7 +422,7 @@ INA_war_beginning = {
 		
 		days_remove = 15
 		
-		fire_only_once = yes
+		fire_only_once = no
 		
 		allowed = {
 		    original_tag = INA
@@ -468,7 +468,7 @@ INA_war_beginning = {
 		remove_effect = {
 			if = 
 			{
-				limit = {INA_Island_choice = 1}
+				limit = {check_variable = {INA_Island_choice = 1}}
 				88 = 
 				{
 					add_manpower = -2000
@@ -476,7 +476,7 @@ INA_war_beginning = {
 			}
 			else if = 
 			{
-				limit = {INA_Island_choice = 2}
+				limit = {check_variable = {INA_Island_choice = 2}}
 				83 = 
 				{
 					add_manpower = -2000
@@ -484,7 +484,7 @@ INA_war_beginning = {
 			}
 			else if = 
 			{
-				limit = {INA_Island_choice = 3}
+				limit = {check_variable = {INA_Island_choice = 3}}
 				373 = 
 				{
 					add_manpower = -2000
@@ -492,7 +492,7 @@ INA_war_beginning = {
 			}
 			else if = 
 			{
-				limit = {INA_Island_choice = 4}
+				limit = {check_variable = {INA_Island_choice = 4}}
 				372 = 
 				{
 					add_manpower = -2000
@@ -500,7 +500,7 @@ INA_war_beginning = {
 			}
 			else if = 
 			{
-				limit = {INA_Island_choice = 5}
+				limit = {check_variable = {INA_Island_choice = 5}}
 				86 = 
 				{
 					add_manpower = -2000
@@ -508,7 +508,7 @@ INA_war_beginning = {
 			}
 			else if = 
 			{
-				limit = {INA_Island_choice = 6}
+				limit = {check_variable = {INA_Island_choice = 6}}
 				85 = 
 				{
 					add_manpower = -2000
@@ -516,7 +516,7 @@ INA_war_beginning = {
 			}
 			else if = 
 			{
-				limit = {INA_Island_choice = 7}
+				limit = {check_variable = {INA_Island_choice = 7}}
 				87 = 
 				{
 					add_manpower = -2000
@@ -529,193 +529,279 @@ INA_war_beginning = {
 			custom_effect_tooltip = INA_Volience_num_subtract_less
 			custom_effect_tooltip = INA_State_Impact_decrease
             subtract_from_variable = { global.INA_Conflict_Volience = 5 }
-			INA_reduce_Impact_State_1 = yes
 		}
 	}
 	 #挑拨对立
 	 INA_Provoke_Opposition = 
 	 {
+           icon = GFX_INA_prepare_war_small
+
+		   cost = 14
+
+		   days_remove = 20
+
+		   fire_only_once = no
+
+		   allowed = {
+			   original_tag = INA 
+			   check_variable = 
+				{
+					INA_Island_choice = 1
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 2
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 3
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 4
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 5
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 6
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 7
+				}
+		   }
+
+		   visible = {
+			  always = yes
+		   }
+		   ai_will_do = {
+			  factor = 50
+		   }
+		   complete_effect = {}
+		   remove_effect = {
+			if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 1}}
+				INA_add_Impact_State_1 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 2}}
+				INA_add_Impact_State_2 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 3}}
+				INA_add_Impact_State_3 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 4}}
+				INA_add_Impact_State_4 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 5}}
+				INA_add_Impact_State_5 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 6}}
+				INA_add_Impact_State_6 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 7}}
+				INA_add_Impact_State_7 = yes
+			}
+			add_to_variable = {
+				global.INA_Conflict_Volience = 5
+			}
+			custom_effect_tooltip = INA_Volience_num_add_less
+			custom_effect_tooltip = INA_State_Impact_increase
+		   }
 
 	 }
 	 #训练民兵
-	 #修建堡垒
+	 INA_Training_army = 
+	 {
+		icon = GFX_INA_prepare_war_small
 
+		cost = 20
 
-    
-	INA_Jiutiaojia_Elite = {     #九条家精锐上场
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 50
-		
-		days_remove = 35
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
+		days_remove = 14
+
+		fire_only_once = no
+
+		allowed = 
+		{
+			original_tag = INA
+			check_variable = {
+				INA_Island_choice = 1
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_1 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 2
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_2 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 3
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_3 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 4
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_4 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 5
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_5 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 6
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_6 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 7
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_7 = 1
+			}
 		}
-		
+
 		visible = {
-		   has_completed_focus = INA_WAR_BEG_7
-		}
-		available = {
-		   command_power < 49
-           INA_scripted_tiggers = yes
-           custom_trigger_tooltip = {
-		   tooltip = INA_Compulsory_conscription_text	
-		   check_variable = { INA_junshizhichidu > 14 }
-		   check_variable = { INA_minjianzhichidu > 14 }
-	        }		   
+			always = yes
 		}
 		ai_will_do = {
 			factor = 50
 		}
-		
-		modifier = {
-			
-	   	}
-		
-		complete_effect = {  
-			add_command_power = -50
-		}
-		
-		remove_effect = {
-		    set_country_flag = INA_Jiutiaojia_Elite_test
-			custom_effect_tooltip = INA_Jiutiaojia_Elite_tt
-			add_to_variable = { INA_junshizhichidu = -15 }
-			add_to_variable = { INA_minjianzhichidu = -15 }
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 35 }
-		}
-	}
-	INA_Investment_inoutlying_islands = {     #离岛投资
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 50
-		
-		days_remove = 35
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
-		}
-		
-		visible = {
-		    has_completed_focus = INA_WAR_BEG_2
-		}
-		available = {
-		   INA_scripted_tiggers = yes
-           custom_trigger_tooltip = {
-		   tooltip = INA_Investment_inoutlying_islands_text	
-		   check_variable = { INA_junshizhichidu > 19 }
-		   check_variable = { INA_minjianzhichidu > 19 }
-	        } 
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-			
-	   	}
-		
-		complete_effect = {  
-			add_command_power = -50
-		}
-		
-		remove_effect = {
-			add_to_variable = { INA_junshizhichidu = -20 }
-			add_to_variable = { INA_minjianzhichidu = -20 }
-			set_country_flag = KUJ_Investment_inoutlying_islands
-			custom_effect_tooltip = INA_Investment_inoutlying_islands_tt
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 35 }
-		}
-	}
-	INA_War_propaganda = {     #战争宣传
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 40
-		
-		days_remove = 35
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
-		}
-		
-		visible = {
-		   has_completed_focus = INA_WAR_BEG_4
-		}
-		
-		available = {
-			INA_scripted_tiggers = yes
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-			consumer_goods_factor = 0.05
-			political_power_gain = 0.20
-	   	}
-		
-		
 		remove_effect = {
 			add_to_variable = {
-				INA_war_add_weekly = 2
+				KJG_add_new_army = 1
 			}
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 35 }
-			set_country_flag = KUJ_War_propaganda1
-			custom_effect_tooltip = INA_War_propaganda_tt
+			custom_effect_tooltip = KJG_new_army
 		}
-	}
-	INA_Weapons_acquisition = {     #武器获取
-		
+
+	 }
+	 #修建堡垒
+	 INA_new_temporary_bunker = 
+	 {
 		icon = GFX_INA_prepare_war_small
-		
-		cost = 100
-		
-		days_remove = 50
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
+
+		cost = 20
+
+		days_remove = 14
+
+		fire_only_once = no
+
+		allowed = 
+		{
+			original_tag = INA
+			check_variable = {
+				INA_Island_choice = 1
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_1 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 2
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_2 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 3
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_3 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 4
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_4 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 5
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_5 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 6
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_6 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 7
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_7 = 1
+			}
 		}
-		
+
 		visible = {
-		   has_completed_focus = INA_WAR_BEG_5 
-		}
-		
-		available = { 
-		   INA_scripted_tiggers = yes
-           custom_trigger_tooltip = {
-		   tooltip = INA_Compulsory_conscription_text	
-		   check_variable = { INA_junshizhichidu > 14 }
-		   check_variable = { INA_minjianzhichidu > 14 }
-	        }
+			always = yes
 		}
 		ai_will_do = {
 			factor = 50
 		}
-		
-		modifier = {
-			
-	   	}
-		
-		
 		remove_effect = {
-		    add_to_variable = { INA_junshizhichidu = -15 }
-			add_to_variable = { INA_minjianzhichidu = -15 }
-			custom_effect_tooltip = INA_Weapons_acquisition_tt
-			set_country_flag = { flag = INA_NO_Same_type value = 1 days = 50 }
-			set_country_flag = KUJ_get_weapons
+			if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 1}}
+				INA_add_Impact_State_1 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 2}}
+				INA_add_Impact_State_2 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 3}}
+				INA_add_Impact_State_3 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 4}}
+				INA_add_Impact_State_4 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 5}}
+				INA_add_Impact_State_5 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 6}}
+				INA_add_Impact_State_6 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 7}}
+				INA_add_Impact_State_7 = yes
+			}
+			custom_effect_tooltip = KJG_temporary_bunker
 		}
-	}
+
+	 }
+	#风雨欲来
 	INA_Declare_war = {     
 		activation = {
 			INA_triggers_Declare_war = yes
@@ -781,46 +867,10 @@ INA_war_beginning = {
 						create_unit = {
 						division = "division_template = \"足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 						owner = KUJ
-						count = 8
+						count = KJG_add_new_army
 						}
 					}				
 				}
-				if = {
-					limit = {
-						NOT = { has_template = "精锐足轻" }
-						has_country_flag = INA_Jiutiaojia_Elite_test
-						original_tag = KUJ
-					}
-						KUJ = {			
-							division_template = {
-									name = "精锐足轻"
-									priority = 2
-									is_locked = no
-									division_names_group = INA_INF_01
-									regiments = {
-										infantry = { x = 0 y = 0 }
-										infantry = { x = 0 y = 1 }
-										infantry = { x = 0 y = 2 }
-										infantry = { x = 0 y = 3 }
-										infantry = { x = 0 y = 4 }
-										infantry = { x = 1 y = 0 }
-										infantry = { x = 1 y = 1 }
-										artillery_brigade  = { x = 2 y = 1 }
-										artillery_brigade  = { x = 2 y = 0 }
-									}
-								}
-								random_state = {
-									limit = {
-									is_core_of = KUJ
-									 }
-									create_unit = {
-									division = "division_template = \"精锐足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
-									owner = KUJ
-									count = 3
-								}
-							}
-						 }
-					}
 			}
 		}
 	}

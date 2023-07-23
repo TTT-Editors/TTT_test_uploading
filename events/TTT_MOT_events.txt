@@ -115,17 +115,17 @@ country_event = {
 ##################################################################
 ################################################################
 ###事件名：东风守护回归
-country_event = {
+news_event = {
 	id = MOT_event.11
 	immediate = {}
-	picture =null
+	picture= GFX_MOT_news_event_02
 	title = MOT_event.11.t
 	desc = MOT_event.11.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
 		name = MOT_event.11.a
-		country_event = {
+		news_event = {
 			id = MOT_event.12 days = 720
 		}
 		if = {
@@ -154,10 +154,10 @@ country_event = {
 	}
 }
 ###事件名：东风守护回归
-country_event = {
+news_event = {
 	id = MOT_event.12
 	immediate = {}
-	picture =null
+	picture= GFX_MOT_news_event_02
 	title = MOT_event.12.t
 	desc = MOT_event.12.d
 	is_triggered_only =yes
@@ -167,13 +167,21 @@ country_event = {
 		####风魔龙已经可用
 		set_country_flag = MOT_Wind_Dragon_is_available
 		custom_effect_tooltip = MOT_event_12_tooltip
+		every_country = {
+			limit = {
+				not = {
+					original_tag = MOT
+				}
+			}
+			country_event = {days = 1 id = MOT_event.1202}
+		}
 	}
 }
 ###事件名：风魔龙的陨落
-country_event = {
+news_event = {
 	id = MOT_event.13
 	immediate = {}
-	picture =null
+	picture= GFX_MOT_news_event_02
 	title = MOT_event.13.t
 	desc = MOT_event.13.d
 	is_triggered_only =yes
@@ -221,7 +229,7 @@ country_event = {
 country_event = {
 	id = MOT_event.14
 	immediate = {}
-	picture =null
+	picture= unkown
 	title = MOT_event.14.t
 	desc = MOT_event.14.d
 	is_triggered_only =yes
@@ -342,127 +350,64 @@ country_event = {
 	}
 }
 ###事件名：风魔龙危机——溃败
-country_event = {
+news_event = {
 	id = MOT_event.15
 	immediate = {}
-	picture =null
+	picture= MOT_news_event_08
 	title = MOT_event.15.t
 	desc = MOT_event.15.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
 		name = MOT_event.15.a
-		##阴影
-		MOT = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		BLL = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		TWL = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		TWL = {add_timed_idea = {idea = MOT_Wind_Dragon_ruins_reconstruction_grant days = 365}}
-		DLK = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		DSC = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		MDQ = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		FXE = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		ALS = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		QQZ = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		add_to_variable = {MOT_Prestige_num = -4}
-		MOT_check_MOT_Prestige_num = yes
-		hidden_effect = {
-			#####为领袖添加额外特质，有与顾问不同的写法
-			add_trait = {
-				character = MOT_Jean
-				ideology = authoritarian_democracy
-				trait = MOT_Jean2_traits 
-			}
-			add_trait = {
-				character = MOT_Jean
-				ideology = classical_liberalism
-				trait = MOT_Jean2_traits 
-			}
-
-			if = {
-				limit = {
-					has_idea = MOT_crisis_of_Tewalin
-				}
-				remove_ideas = MOT_crisis_of_Tewalin
-			}
-			else_if = {
-				limit = {
-					has_idea = MOT_crisis_of_Tewalin2
-				}
-				remove_ideas = MOT_crisis_of_Tewalin2
-			}
-			TWL = {
-				remove_ideas = TWL_frightening_strikes_of_windy_dargons
-			}
-			BLL = {
-				remove_ideas = BLL_fengmolongweiji
-			}
-		}
-		add_trait = {
-			character = MOT_Jean
-			slot = country_leader
-			trait = MOT_Jean2_traits 
-		}
-		###清除flag
-		clr_character_flag = MOT_Jean_is_available
-		custom_effect_tooltip = MOT_event_14_tooltip
-		clr_global_flag = MOT_dragon_crisis
-		hidden_effect = {
-			MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = yes
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			random_owned_controlled_state = {
-				limit = {
-					or = {
-						industrial_complex > 0
-						arms_factory > 0
-					}
-				}
-				damage_building = {
-					type = infrastructure
-					damage = 5
-				}
-				damage_building = {
-					type = rail_way
-					damage = 5
-				}
-				damage_building = {
-					type = arms_factory
-					damage = 5
-				}
-				damage_building = {
-					type = industrial_complex
-					damage = 5
-				}
-				owner = {
-					country_event = {id = MOT_event.16}
-				}
-			}		
-		}
-		MOT = {
-			capital_scope = {
-				damage_building = {
-					type = infrastructure
-					damage = 3
-				}
-				damage_building = {
-					type = rail_way
-					damage = 3
-				}
-				damage_building = {
-					type = arms_factory
-					damage = 3
-				}
-				damage_building = {
-					type = industrial_complex
-					damage = 3
-				}
-			}
-		}
 	}
 }
+###############################################风魔龙结局，其他国家特供
+news_event = {
+	id = MOT_event.1102
+	immediate = {}
+	picture= GFX_MOT_news_event_02
+	title = MOT_event.1102.t
+	desc = MOT_event.1102.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1102.a
+	}
+}
+news_event = {
+	id = MOT_event.1202
+	immediate = {}
+	picture= GFX_MOT_news_event_02
+	title = MOT_event.1202.t
+	desc = MOT_event.1202.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1202.a
+	}
+}
+news_event = {
+	id = MOT_event.1302
+	immediate = {}
+	picture= GFX_MOT_news_event_02
+	title = MOT_event.1302.t
+	desc = MOT_event.1302.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1302.a
+	}
+}
+news_event = {
+	id = MOT_event.1402
+	immediate = {}
+	picture= MOT_news_event_08
+	title = MOT_event.1402.t
+	desc = MOT_event.1402.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1402.a
+	}
+}
+###############################################
 ###风魔龙行动后续1
 ##风魔龙的大肆破坏（蒙德其他国家）
 country_event = {

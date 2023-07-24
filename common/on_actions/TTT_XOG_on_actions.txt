@@ -46,6 +46,13 @@ on_actions = {
 						check_variable = { XOG_yezhangdu > 80 }
 					}
 					add_to_variable = { XOG_yezhangdu = 1 }
+					if = {
+						limit = {
+							NOT = { has_country_flag = XOG_turn_bad }
+						}
+						set_country_flag = XOG_turn_bad
+						mark_focus_tree_layout_dirty = yes
+					}
 				}
 				add_to_variable = { XOG_yezhangdu = 1.0 }	#base
                 clamp_variable = {

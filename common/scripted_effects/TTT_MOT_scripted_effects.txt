@@ -272,6 +272,7 @@ MOT_Political_modifier_array_character_num = {
     if = {
         limit = {
             has_country_flag = MOT_open_gui_map1
+            1 = {is_owned_or_subject_trigger = yes}
         }
         clear_variable = array_value
         add_to_variable = {array_value = MOT_Political_character_map_array^0}
@@ -284,11 +285,15 @@ MOT_Political_modifier_array_character_num = {
             value = character_num
             index = 0
         }
+        1 = {
+            MOT_Political_add_modifier_by_character_02 = yes
+        }
         MOT_Political_check_character_num =yes
     }
     if = {
         limit = {
             has_country_flag = MOT_open_gui_map2
+            2 = {is_owned_or_subject_trigger = yes}
         }
         clear_variable = array_value
         add_to_variable = {array_value = MOT_Political_character_map_array^1}
@@ -301,11 +306,15 @@ MOT_Political_modifier_array_character_num = {
             value = character_num
             index = 1
         }
+        2 = {
+            MOT_Political_add_modifier_by_character_02 = yes
+        }
         MOT_Political_check_character_num =yes
     }
     if = {
         limit = {
             has_country_flag = MOT_open_gui_map3
+            276 = {is_owned_or_subject_trigger = yes}
         }
         clear_variable = array_value
         add_to_variable = {array_value = MOT_Political_character_map_array^2}
@@ -319,11 +328,15 @@ MOT_Political_modifier_array_character_num = {
             value = character_num
             index = 2
         }
+        276 = {
+            MOT_Political_add_modifier_by_character_02 = yes
+        }
         MOT_Political_check_character_num =yes
     }
     if = {
         limit = {
             has_country_flag = MOT_open_gui_map4
+            8 = {is_owned_or_subject_trigger = yes}
         }
         clear_variable = array_value
         add_to_variable = {array_value = MOT_Political_character_map_array^3}
@@ -336,11 +349,15 @@ MOT_Political_modifier_array_character_num = {
             value = character_num
             index = 3
         }
+        8 = {
+            MOT_Political_add_modifier_by_character_02 = yes
+        }
         MOT_Political_check_character_num =yes
     }
     if = {
         limit = {
             has_country_flag = MOT_open_gui_map5
+            263 = {is_owned_or_subject_trigger = yes}
         }
         clear_variable = array_value
         add_to_variable = {array_value = MOT_Political_character_map_array^4}
@@ -352,6 +369,9 @@ MOT_Political_modifier_array_character_num = {
             array = MOT_Political_character_map_array
             value = character_num
             index = 4
+        }
+        263 = {
+            MOT_Political_add_modifier_by_character_02 = yes
         }
         MOT_Political_check_character_num =yes
     }
@@ -408,7 +428,7 @@ MOT_Political_check_character_num = {
     }
 }
 #############################################################
-
+###########################################################
 ###切换成已完成任务
 MOT_Political_complete_mission = {
     set_temp_variable = { MOT_n = 0 }
@@ -602,6 +622,340 @@ MOT_Standpoint_check_total_country_num_03 = {
         multiply_variable = {
             var = MOT_Standpoint_total_country_num_03
             value = 0.25
+        }
+    }
+}
+####################################################################################
+################################################################################
+###根据角色给省份添加修正
+MOT_Political_add_modifier_by_character_01 = {
+    if = {
+        limit = {
+            check_variable = {character_num = 1}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character1_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 2}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character2_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 3}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character3_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 4}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character4_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 5}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character5_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 6}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character6_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 7}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character7_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 8}
+        }
+        1 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character8_modifier}
+        }
+    }
+}
+
+MOT_Political_add_modifier_by_character_02 = {
+    if = {
+        limit = {
+            check_variable = {character_num = 1}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character1_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 2}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character2_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 3}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character3_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 4}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character4_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 5}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character5_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 6}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character6_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 7}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character7_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 8}
+        }
+        THIS = {
+            add_dynamic_modifier = { modifier = MOT_Political_character8_modifier}
+        }
+    }
+}
+MOT_Political_add_modifier_by_character_03 = {
+    if = {
+        limit = {
+            check_variable = {character_num = 1}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character1_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 2}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character2_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 3}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character3_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 4}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character4_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 5}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character5_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 6}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character6_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 7}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character7_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 8}
+        }
+        276 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character8_modifier}
+        }
+    }
+}
+MOT_Political_add_modifier_by_character_04 = {
+    if = {
+        limit = {
+            check_variable = {character_num = 1}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character1_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 2}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character2_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 3}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character3_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 4}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character4_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 5}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character5_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 6}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character6_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 7}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character7_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 8}
+        }
+        8 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character8_modifier}
+        }
+    }
+}
+MOT_Political_add_modifier_by_character_04 = {
+    if = {
+        limit = {
+            check_variable = {character_num = 1}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character1_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 2}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character2_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 3}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character3_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 4}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character4_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 5}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character5_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 6}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character6_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 7}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character7_modifier}
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {character_num = 8}
+        }
+        263 = {
+            add_dynamic_modifier = { modifier = MOT_Political_character8_modifier}
         }
     }
 }

@@ -9,7 +9,7 @@ focus_tree = {
 	}
 	default = no
 	focus = {
-		id = NNG_Establishline_rule_byman  #确立人治路线
+		id = NNG_Establishline_rule_byman  #重申人治路线
 		icon = GFX_goal_NNG_quelirenzhiluxian
 		
 		available_if_capitulated = no
@@ -21,7 +21,8 @@ focus_tree = {
 			factor = 10
 		}		
         completion_reward = {
-		    add_political_power = 150
+		    add_political_power = 25
+			add_popularity = { ideology = liberalism popularity = 0.10 }
 		}	
 	}
 	focus = {
@@ -32,7 +33,7 @@ focus_tree = {
 		
 		x = 5
 		y = 1
-		cost = 35
+		cost = 14
 		ai_will_do = {
 			factor = 10
 		}
@@ -62,7 +63,7 @@ focus_tree = {
 			create_unit = {
 				division = "division_template = \"千岩军\" start_experience_factor = 0.4"
 				owner = NNG
-				count = 4
+				count = 3
 				}
 			}
 		}	
@@ -75,69 +76,69 @@ focus_tree = {
 		
 		x = 5
 		y = 2
-		cost = 35
+		cost = 28
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Integrate_loyal_troops }		
         completion_reward = {
 	    242 = {
-		add_extra_state_shared_building_slots = 2
+		add_extra_state_shared_building_slots = 1
 		add_building_construction = {
 			type = arms_factory
-			level = 2
+			level = 1
 			instant_build = yes
 		        }
 	        }
 		126 = {
-		add_extra_state_shared_building_slots = 2
+		add_extra_state_shared_building_slots = 1
 		add_building_construction = {
 			type = industrial_complex
-			level = 2
+			level = 1
 			instant_build = yes
 		        }
 	        }
 		}	
 	}
 	focus = {
-		id = NNG_Debateover_securityroutes  #安保路线的争论
+		id = NNG_Debateover_securityroutes  #解决舆论问题
 		icon = GFX_goal_NNG_anbaoluxianzhenduan
 		
 		available_if_capitulated = no
 		
 		x = 5
 		y = 3
-		cost = 35
+		cost = 28
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Absorb_local_industries }		
         completion_reward = {
-		    add_political_power = 50
+		    swap_ideas = {
+				add_idea = NNG_Trialofnew_judicial_system
+				remove_idea = NNG_Promise
+			}
 		}	
 	}
 	focus = {
-		id = NNG_Training_armedpolice  #训练武装警察
+		id = NNG_Training_armedpolice  #看那人间的苦难
 		icon = GFX_goal_NNG_xunlianwuzhuangjingcha
 		
 		available_if_capitulated = no
 		
 		x = 3
 		y = 4
-		cost = 35
+		cost = 14
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Debateover_securityroutes }
-		mutually_exclusive = { focus = NNG_Deploy_lethalweapons  }
         completion_reward = {
-		    add_political_power = 25
-			add_popularity = { ideology = liberalism popularity = 0.12 }
-			add_popularity = { ideology = communism popularity = 0.05 } 
+			add_stability = 0.05
 		}	
 	}
 	focus = {
-		id = NNG_Establishtrial_courtruledbyman  #建立人治审判庭
+		id = NNG_Establishtrial_courtruledbyman  #看那暴风正激荡
 		icon = GFX_goal_NNG_jianlirenzhishenpanting
 		
 		available_if_capitulated = no
@@ -150,67 +151,74 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Training_armedpolice }		
         completion_reward = {
-		    add_ideas = NNG_Trialofnew_judicial_system
+			add_war_support = 0.05
 		}	
 	}
 	focus = {
-		id = NNG_Thecitizens_arearmed  #公民们武装起来
+		id = NNG_Thecitizens_arearmed  #来吧，加入我们！
 		icon = GFX_goal_NNG_gonmingmenwuzhuangqilai
 		
 		available_if_capitulated = no
 		
 		x = 3
 		y = 6
-		cost = 14
+		cost = 7
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Establishtrial_courtruledbyman }		
         completion_reward = {
+			add_ideas = extensive_conscription
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 10000
+				amount = 1000
 			}
-			add_ideas = NNG_Revolutionary_mobilization_order
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 500
+			}
 		}	
 	}
 	focus = {
-		id = NNG_Setup_laborgroup #组建人治劳动兵团
+		id = NNG_Setup_laborgroup #为了自由，为了璃月！
 		icon = GFX_goal_NNG_zujianrenzhi
 		
 		available_if_capitulated = no
 		
 		x = 3
 		y = 7
-		cost = 14
+		cost = 7
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Thecitizens_arearmed }		
         completion_reward = {
-		    add_ideas = NNG_Peoples_Government_LaborCorps
+		    add_ideas = NNG_Revolutionary_mobilization_order
 		}	
 	}
 	focus = {
-		id = NNG_Deploy_lethalweapons #部署致命武器
+		id = NNG_Deploy_lethalweapons #听听人民的呐喊
 		icon = GFX_goal_NNG_bushuzhimiwuqi
 		
 		available_if_capitulated = no
 		
 		x = 7
 		y = 4
-		cost = 7
+		cost = 14
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Debateover_securityroutes }
-		mutually_exclusive = { focus =  NNG_Training_armedpolice }		
+	
         completion_reward = {
-		      add_timed_idea = { idea = NNG_Fearlesssacrifice days = 730 }
+		    swap_ideas = {
+				add_idea = NNG_Peoples_Government_LaborCorps
+				remove_idea = NNG_Dense_transmission
+			}
 		}	
 	}
 	focus = {
-		id = NNG_Enlarged_militarycourt #扩大化军事法庭
+		id = NNG_Enlarged_militarycourt #推翻旧有之世
 		icon = GFX_goal_NNG_kuodahuajunshifating
 		
 		available_if_capitulated = no
@@ -223,92 +231,67 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_Deploy_lethalweapons }
         completion_reward = {
-		    add_timed_idea = { idea = NNG_theprocessof_social_consolidation days = 730 }
+			swap_ideas = {
+				add_idea = NNG_Fearlesssacrifice
+				remove_idea = NNG_Peoples_Government_LaborCorps
+			}
 		}	
 	}
 	focus = {
-		id = NNG_Serve_forLiyue #为璃月而服役
+		id = NNG_Serve_forLiyue #进行神圣的战争
 		icon = GFX_goal_NNG_weiliyuefuyi
 		
 		available_if_capitulated = no
 		
 		x = 7
 		y = 6
-		cost = 14
+		cost = 21
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Enlarged_militarycourt }
         completion_reward = {
-		    add_ideas = NNG_Revolutionary_propaganda
+		    add_ideas = war_economy
 		}	
 	}
     focus = {
-		id = NNG_Setup_deathsquads #设立敢死队
+		id = NNG_Setup_deathsquads #使四季遍布自由
 		icon = GFX_goal_NNG_sheligansidui
 		
 		available_if_capitulated = no
 		
 		x = 7
 		y = 7
-		cost = 28
+		cost = 14
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_Serve_forLiyue }
         completion_reward = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 15000
-			}
-			if = {
-				limit = {
-					NOT = { has_template = "千岩军" }
-				}
-			}
-		division_template = {
-			name = "千岩军"
-			priority = 2
-			is_locked = yes
-			division_names_group = LYU_INF_01
-			regiments = {
-				infantry = { x = 0 y = 0 }
-				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }
-				infantry = { x = 1 y = 0 }
-				infantry = { x = 1 y = 1 }
-				infantry = { x = 1 y = 2 }
-				artillery_brigade = { x = 0 y = 3 }
-			}
-		}
-		145 = {
-			create_unit = {
-				division = "division_template = \"千岩军\" start_experience_factor = 0.4"
-				owner = NNG
-				count = 6
-				}
+			swap_ideas = {
+				add_idea = NNG_Fearlesssacrifice
+				remove_idea = NNG_Peoples_Government_LaborCorps
 			}
 		}	
 	}
 	focus = {
-		id = NNG_Reestablish_order #重建秩序
+		id = NNG_Reestablish_order #万民所向
 		icon = GFX_goal_NNG_chongjianzhixu
 		
 		available_if_capitulated = no
 		
 		x = 5
 		y = 8
-		cost = 49
+		cost = 28
 		ai_will_do = {
 			factor = 10
 		}
-		available = {
-		has_country_flag = NOT_Strengthen_patrol
-		}
 		prerequisite = { focus = NNG_Setup_laborgroup focus = NNG_Setup_deathsquads }
         completion_reward = {
-		    add_stability = 0.10
-	        add_war_support = 0.10
+		    swap_ideas = {
+				add_idea = NNG_Fearlesssacrifice
+				remove_idea = NNG_Peoples_Government_LaborCorps
+			}
 		}	
 	}
 }

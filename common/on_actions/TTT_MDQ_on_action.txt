@@ -46,19 +46,19 @@ on_actions = {
                         MDQ_Mike2 = {
                             set_nationality = MOT
                         }
-                        MDQ_Elon_Musk= {
+                        MDQ_Elon_Musk = {
                             set_nationality = MOT
                         }
-                        MDQ_Sternberg= {
+                        MDQ_Sternberg = {
                             set_nationality = MOT
                         }
-                        MDQ_Zhuang_Yang= {
+                        MDQ_Zhuang_Yang = {
                             set_nationality = MOT
                         }
-                        MDQ_Damut= {
+                        MDQ_Damut = {
                             set_nationality = MOT
                         }
-                        MDQ_Damut2= {
+                        MDQ_Damut2 = {
                             set_nationality = MOT
                         }
                         if = {
@@ -77,8 +77,11 @@ on_actions = {
                 MOT = {
                     country_event = {id = MDQ_event.97 days = 5}
                 }
-                news_event = {id = MDQ_event.26 days = 1}
-                news_event = {id =MDQ_event.98 days = 3}
+                every_country = {
+                    news_event = {id = MDQ_event.26 days = 1}
+                    news_event = {id =MDQ_event.98 days = 3}
+                }
+                
             }
         }
     }
@@ -96,6 +99,42 @@ on_actions = {
                     min = 1
                     max = 101
                 }
+                add_to_variable = {MDQ_dadaupa_second_war_org_loss_at_low_org_factor = -0.002}
+                add_to_variable = {MDQ_dadaupa_second_war_army_breakthrough_against_minor_factor = 0.001}
+                add_to_variable = {MDQ_dadaupa_second_war_experience_gain_infantry_combat_factor= 0.002}
+                add_to_variable = {MDQ_dadaupa_second_war_experience_gain_artillery_combat_factor = 0.002}
+                add_to_variable = {MDQ_dadaupa_second_war_grant_medal_cost_factor = -0.006}
+                add_to_variable = {MDQ_dadaupa_second_war_supply_combat_penalties_on_core_factor = -0.002}
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_org_loss_at_low_org_factor
+                    min = -0.1
+                    max = 0
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_army_breakthrough_against_minor_factor
+                    min = 0
+                    max = 0.05
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_experience_gain_infantry_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_experience_gain_artillery_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_grant_medal_cost_factor
+                    min = -0.3
+                    max = 0
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_supply_combat_penalties_on_core_factor
+                    min = -0.1
+                    max = 0
+                }
             }
             else_if = {
                 limit = {
@@ -106,6 +145,42 @@ on_actions = {
                     var = global.MDQ_abandon_num
                     min = 1
                     max = 101
+                }
+                add_to_variable = {MDQ_dadaupa_second_war_org_loss_at_low_org_factor = 0.002}
+                add_to_variable = {MDQ_dadaupa_second_war_army_breakthrough_against_minor_factor = -0.001}
+                add_to_variable = {MDQ_dadaupa_second_war_experience_gain_infantry_combat_factor= -0.002}
+                add_to_variable = {MDQ_dadaupa_second_war_experience_gain_artillery_combat_factor = -0.002}
+                add_to_variable = {MDQ_dadaupa_second_war_grant_medal_cost_factor = 0.006}
+                add_to_variable = {MDQ_dadaupa_second_war_supply_combat_penalties_on_core_factor = 0.002}
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_org_loss_at_low_org_factor
+                    min = -0.1
+                    max = 0
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_army_breakthrough_against_minor_factor
+                    min = 0
+                    max = 0.05
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_experience_gain_infantry_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_experience_gain_artillery_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_grant_medal_cost_factor
+                    min = -0.3
+                    max = 0
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_supply_combat_penalties_on_core_factor
+                    min = -0.1
+                    max = 0
                 }
             }
         }

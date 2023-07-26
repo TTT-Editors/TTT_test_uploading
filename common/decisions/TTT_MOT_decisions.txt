@@ -27,6 +27,9 @@ MOT_Political_decision_category = {
             political_power_cost = 1
         }
     }
+    ##########################################################################
+    #########################################################################
+    ###########################################################################
     ##支援军区决议
     MOT_Political_decision_support_military_region_01= {
         allowed = {
@@ -34,7 +37,7 @@ MOT_Political_decision_category = {
         }
         available = {
             tag = MOT
-            has_manpower > 5000
+            has_manpower > 1000
             country_exists = TWL
             has_completed_focus = MOT_tree_0_06
         }
@@ -49,20 +52,27 @@ MOT_Political_decision_category = {
                 TWL = {
                     has_war = yes
                 }
-                add = 10
-                factor = 1.5
+                has_war = no
+                add = 5
+            }
+            modifier = {
+                TWL = {
+                    surrender_progress >0.5
+                }
+                has_war = no
+                add = 5
+                factor = 2
             }
         }
-        days_re_enable = 30
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
-        cost = 20
-        complete_effect = {
-            add_manpower = -5000
-			TWL = {
-                add_war_support = 0.01
-                add_manpower = 5000
+        cost = 10
+        remove_effect = {
+            TWL = {
+                country_event = {id = MOT_event.201 days = 4}
             }
+            add_manpower = -1000
 		}
 
     }
@@ -89,31 +99,28 @@ MOT_Political_decision_category = {
                 TWL = {
                     has_war = yes
                 }
+                has_war = no
                 add = 5
                 factor = 2
             }
             modifier = {
-                has_equipment = {infantry_equipment > 5000}
+                has_equipment = {infantry_equipment > 10000}
+                has_war = no
                 add = 5
             }
         }
         days_re_enable = 30
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = infantry_equipment
                 amount = -500
                 producer = MOT
             }
-			TWL = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 500
-					producer = MOT
-				}
+            TWL = {
+                country_event = {id = MOT_event.202 days = 4}
             }
 		}
     }
@@ -124,7 +131,7 @@ MOT_Political_decision_category = {
         available = {
             tag = MOT
             has_equipment = {
-                grain_conversion_eq > 1000
+                grain_conversion_eq > 500
             }
             country_exists = TWL
             has_completed_focus = MOT_tree_0_06
@@ -140,31 +147,28 @@ MOT_Political_decision_category = {
                 TWL = {
                     has_war = yes
                 }
+                has_war = no
                 add = 5
                 factor = 2
             }
             modifier = {
-                has_equipment = {grain_conversion_eq > 5000}
+                has_equipment = {grain_conversion_eq > 10000}
+                has_war = no
                 add = 5
             }
         }
         days_re_enable = 30
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = grain_conversion_eq
-                amount = -1000
+                amount = -500
                 producer = MOT
             }
-			TWL = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = grain_conversion_eq
-					amount = 1000
-					producer = MOT
-				}
+            TWL = {
+                country_event = {id = MOT_event.203 days = 4}
             }
 		}
     }
@@ -174,7 +178,7 @@ MOT_Political_decision_category = {
         }
         available = {
             tag = MOT
-            has_manpower > 5000
+            has_manpower > 1000
             country_exists = MDQ
             has_completed_focus = MOT_tree_0_06
         }
@@ -189,20 +193,27 @@ MOT_Political_decision_category = {
                 MDQ = {
                     has_war = yes
                 }
-                add = 10
-                factor = 1.2
+                has_war = no
+                add = 5
+            }
+            modifier = {
+                MDQ = {
+                    surrender_progress >0.5
+                }
+                has_war = no
+                add = 5
+                factor = 1.5
             }
         }
-        days_re_enable = 30
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
-        cost = 20
-        complete_effect = {
-            add_manpower = -5000
-			MDQ = {
-                add_war_support = 0.01
-                add_manpower = 5000
+        cost = 10
+        remove_effect = {
+            MDQ = {
+                country_event = {id = MOT_event.201 days = 3}
             }
+            add_manpower = -1000
 		}
     }
     MOT_Political_decision_support_military_region_05= {
@@ -228,31 +239,28 @@ MOT_Political_decision_category = {
                 MDQ = {
                     has_war = yes
                 }
+                has_war = no
                 add = 5
                 factor = 1.8
             }
             modifier = {
                 has_equipment = {infantry_equipment > 10000}
+                has_war = no
                 add = 5
             }
         }
         days_re_enable = 30
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = infantry_equipment
                 amount = -500
                 producer = MOT
             }
-			MDQ = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 500
-					producer = MOT
-				}
+            MDQ = {
+                country_event = {id = MOT_event.202 days = 3}
             }
 		}
     }
@@ -263,7 +271,7 @@ MOT_Political_decision_category = {
         available = {
             tag = MOT
             has_equipment = {
-                grain_conversion_eq > 1000
+                grain_conversion_eq > 500
             }
             country_exists = MDQ
             has_completed_focus = MOT_tree_0_06
@@ -279,31 +287,28 @@ MOT_Political_decision_category = {
                 MDQ = {
                     has_war = yes
                 }
+                has_war = no
                 add = 5
                 factor = 1.8
             }
             modifier = {
-                has_equipment = {grain_conversion_eq > 5000}
+                has_equipment = {grain_conversion_eq > 10000}
+                has_war = no
                 add = 5
             }
         }
         days_re_enable = 30
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = grain_conversion_eq
-                amount = -1000
+                amount = -500
                 producer = MOT
             }
 			MDQ = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = grain_conversion_eq
-					amount = 1000
-					producer = MOT
-				}
+                country_event = {id = MOT_event.203 days = 3}
             }
 		}
     }
@@ -313,7 +318,7 @@ MOT_Political_decision_category = {
         }
         available = {
             tag = MOT
-            has_manpower > 5000
+            has_manpower > 1000
             country_exists = FXE
             has_completed_focus = MOT_tree_0_06
         }
@@ -328,19 +333,26 @@ MOT_Political_decision_category = {
                 FXE = {
                     has_war = yes
                 }
-                add = 10
-                factor = 1
+                has_war = no
+                add = 5
+            }
+            modifier = {
+                FXE = {
+                    surrender_progress > 0.5
+                }
+                has_war = no
+                add = 5
+                factor = 1.5
             }
         }
-        days_re_enable = 30
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 20
-        complete_effect = {
-            add_manpower = -5000
+        remove_effect = {
+            add_manpower = -1000
 			FXE = {
-                add_war_support = 0.01
-                add_manpower = 5000
+                country_event = {id = MOT_event.201 days = 2}
             }
 		}
     }
@@ -367,11 +379,13 @@ MOT_Political_decision_category = {
                 FXE = {
                     has_war = yes
                 }
+                has_war = no
                 add = 5
                 factor = 1.5
             }
             modifier = {
                 has_equipment = {infantry_equipment > 10000}
+                has_war = no
                 add = 5
             }
         }
@@ -379,19 +393,14 @@ MOT_Political_decision_category = {
 		days_remove = 10
         fire_only_once = no
         cost = 30
-        complete_effect = {
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = infantry_equipment
                 amount = -500
                 producer = MOT
             }
 			FXE = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 500
-					producer = MOT
-				}
+                country_event = {id = MOT_event.202 days = 2}
             }
 		}
     }
@@ -402,7 +411,7 @@ MOT_Political_decision_category = {
         available = {
             tag = MOT
             has_equipment = {
-                grain_conversion_eq > 1000
+                grain_conversion_eq > 500
             }
             country_exists = FXE
             has_completed_focus = MOT_tree_0_06
@@ -418,11 +427,13 @@ MOT_Political_decision_category = {
                 FXE = {
                     has_war = yes
                 }
+                has_war = no
                 add = 5
                 factor = 1.5
             }
             modifier = {
-                has_equipment = {grain_conversion_eq > 5000}
+                has_equipment = {grain_conversion_eq > 10000}
+                has_war = no
                 add = 5
             }
         }
@@ -430,22 +441,21 @@ MOT_Political_decision_category = {
 		days_remove = 10
         fire_only_once = no
         cost = 30
-        complete_effect = {
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = grain_conversion_eq
-                amount = -1000
+                amount = -500
                 producer = MOT
             }
 			FXE = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = grain_conversion_eq
-					amount = 1000
-					producer = MOT
-				}
+                country_event = {id = MOT_event.203 days = 2}
             }
 		}
     }
+    ################################################################################
+    ################################################################################
+    ################################################################################
+    ##风魔龙决议
     ###净化风魔龙
     MOT_Progress_decision_mission_07 = {
         allowed = {
@@ -949,6 +959,9 @@ MOT_Political_decision_category = {
         }
     }
 }
+##############################################################################################
+############################################################################################
+##############################################################################################
 ##军事线改革决议
 ###绘测地图
 

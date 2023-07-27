@@ -350,6 +350,7 @@ country_event = {
 				}
 			}
 		}
+		MOT_Upgrade_country_focustree = YES
 	}
 }
 ###事件名：风魔龙危机——溃败
@@ -501,23 +502,35 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.21.a
+		trigger = {
+			has_equipment = {grain_conversion_eq > 1000}
+			has_equipment = {infantry_equipment > 2000}
+			has_equipment = {ttt_uniform_eq > 1000}
+		}
 		From = {
 			country_event = {days = 3 id = MOT_event.23}
 		}
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = -2000
-			producer = MOT
-		}
-		add_equipment_to_stockpile = {
-			type = ttt_uniform_eq
-			amount = -1000
-			producer = MOT
-		}
-		add_equipment_to_stockpile = {
-			type = grain_conversion_eq
-			amount = -3000
-			producer = MOT
+		ai_chance = {
+			base = 2
+			modifier = {#5#14
+				has_equipment = {grain_conversion_eq > 3000}
+				has_equipment = {infantry_equipment > 6000}
+				has_equipment = {ttt_uniform_eq > 3000}
+				add = 3
+			}
+			modifier = {#20
+				has_equipment = {grain_conversion_eq > 5000}
+				has_equipment = {infantry_equipment > 10000}
+				has_equipment = {ttt_uniform_eq > 5000}
+				add = 3
+			}
+			modifier = {#6
+				FROM = {
+					has_war = yes
+				}
+				add = 2
+				factor = 2
+			}
 		}
 	}
 	option = {
@@ -525,26 +538,56 @@ country_event = {
 		From = {
 			country_event = {days = 3 id = MOT_event.24}
 		}
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = -1000
-			producer = MOT
+		trigger = {
+			has_equipment = {grain_conversion_eq > 500}
+			has_equipment = {infantry_equipment > 1000}
+			has_equipment = {ttt_uniform_eq > 500}
 		}
-		add_equipment_to_stockpile = {
-			type = ttt_uniform_eq
-			amount = -500
-			producer = MOT
-		}
-		add_equipment_to_stockpile = {
-			type = grain_conversion_eq
-			amount = -1500
-			producer = MOT
+		ai_chance = {
+			base = 2
+			modifier = {#5#10#40
+				has_equipment = {grain_conversion_eq > 1500}
+				has_equipment = {infantry_equipment > 3000}
+				has_equipment = {ttt_uniform_eq > 1500}
+				add = 3
+			}
+			modifier = {
+				FROM = {#4
+					has_war = yes
+					factor = 2
+				}
+			}
+			modifier = {#14
+				has_war = yes
+				add = 5
+				factor = 2
+			}
 		}
 	}
 	option = {
 		name = MOT_event.21.c
 		From = {
 			country_event = {days = 3 id = MOT_event.25}
+		}
+		ai_chance = {
+			base = 2
+			modifier = {#7#40
+				has_equipment = {grain_conversion_eq < 1000}
+				has_equipment = {infantry_equipment < 2000}
+				has_equipment = {ttt_uniform_eq < 1000}
+				add = 3
+			}
+			modifier = {
+				FROM = {#4
+					has_war = no
+					factor = 2
+				}
+			}
+			modifier = {
+				has_war = yes
+				add = 5
+				factor = 2
+			}
 		}
 	}
 }
@@ -562,19 +605,84 @@ country_event = {
 		From = {
 			country_event = {days = 3 id = MOT_event.26}
 		}
-		add_manpower = -20000
+		trigger = {
+			has_manpower > 3000
+		}
+		add_manpower = -3000
+		ai_chance = {
+			base = 2
+			modifier = {
+				FROM = {#4
+					has_war = yes
+					add = 5
+				}
+			}
+			modifier = {
+				has_manpower < 50000
+				factor = 0
+			}
+			modifier = {
+				FROM = {
+					surrender_progress > 0.5
+				}
+				add = 5
+			}
+			modifier = {
+				has_war = yes
+				factor = 0
+			}
+		}
 	}
 	option = {
 		name = MOT_event.22.b
 		From = {
 			country_event = {days = 3 id = MOT_event.27}
 		}
-		add_manpower = -10000
+		add_manpower = -1500
+		trigger = {
+			has_manpower > 1500
+		}
+		ai_chance = {
+			base = 2
+			modifier = {
+				FROM = {#4
+					has_war = yes
+					add = 5
+				}
+			}
+			modifier = {
+				has_manpower < 25000
+				factor = 0
+			}
+			modifier = {
+				FROM = {
+					surrender_progress < 0.5
+				}
+				add = 5
+			}
+			modifier = {
+				has_war = yes
+				factor = 0
+			}
+		}
 	}
 	option = {
 		name = MOT_event.22.c
 		From = {
 			country_event = {days = 3 id = MOT_event.28}
+		}
+		ai_chance = {
+			base = 2
+			modifier = {
+				FROM = {#4
+					has_war = no
+					add = 2
+				}
+				FROM = {#4
+					num_divisions > 35
+					add = 3
+				}
+			}
 		}
 	}
 }
@@ -601,7 +709,7 @@ country_event = {
 		}
 		add_equipment_to_stockpile = {
 			type = grain_conversion_eq
-			amount = 3000
+			amount = 1000
 			producer = MOT
 		}
 		custom_effect_tooltip = MOT_event.23_tooltip
@@ -654,7 +762,7 @@ country_event = {
 		}
 		add_equipment_to_stockpile = {
 			type = grain_conversion_eq
-			amount = 1500
+			amount = 500
 			producer = MOT
 		}
 		custom_effect_tooltip = MOT_event.24_tooltip
@@ -708,7 +816,7 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.26.a
-		add_manpower = 20000
+		add_manpower = 3000
 		custom_effect_tooltip = MOT_event.26_tooltip
 		if = {
 			limit = {
@@ -747,7 +855,7 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.27.a
-		add_manpower = 10000
+		add_manpower = 1500
 		custom_effect_tooltip = MOT_event.27_tooltip
 		if = {
 			limit = {
@@ -818,7 +926,7 @@ country_event = {
 		add_war_support = 0.01
 		add_equipment_to_stockpile = {
 			type = infantry_equipment
-			amount = 500
+			amount = 1000
 			producer = MOT
 		}
 	}
@@ -836,7 +944,7 @@ country_event = {
 		add_war_support = 0.01
 		add_equipment_to_stockpile = {
 			type = grain_conversion_eq
-			amount = 500
+			amount = 1000
 			producer = MOT
 		}
 	}

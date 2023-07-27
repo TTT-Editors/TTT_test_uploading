@@ -16,6 +16,12 @@ focus_tree = {
 		x = 2
 		y = 0
 		cost = 35
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = XOG_yezhang_too_high
+				check_variable = { XOG_yezhangdu > 99.9 }
+			}
+		}
 		ai_will_do = {
 			factor = 10
 		}
@@ -32,6 +38,12 @@ focus_tree = {
 		x = 2
 		y = 1
 		cost = 35
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = XOG_yezhang_too_high
+				check_variable = { XOG_yezhangdu > 99.9 }
+			}
+		}
 		ai_will_do = {
 			factor = 10
 		}
@@ -51,6 +63,12 @@ focus_tree = {
 		x = 2
 		y = 2
 		cost = 35
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = XOG_yezhang_too_high
+				check_variable = { XOG_yezhangdu > 99.9 }
+			}
+		}
 		ai_will_do = {
 			factor = 10
 		}
@@ -80,7 +98,14 @@ focus_tree = {
 			focus = XOG_49
 		}
 		completion_reward = {
-
+			#王平安线
+			hidden_effect = {
+				if = {
+					limit = { has_dynamic_modifier = { modifier = XOG_yezhangdu_buff } }
+					clr_country_flag = XOG_mechanism_mandrills
+					remove_dynamic_modifier = { modifier = XOG_yezhangdu_buff }
+				}
+			}
 		}
 	}
 
@@ -92,6 +117,12 @@ focus_tree = {
 		x = 4
 		y = 3
 		cost = 35
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = XOG_yezhang_too_high
+				check_variable = { XOG_yezhangdu > 99.9 }
+			}
+		}
 		ai_will_do = {
 			factor = 10
 		}
@@ -102,7 +133,22 @@ focus_tree = {
 			focus = XOG_48
 		}
 		completion_reward = {
-
+			#崩溃
+			hidden_effect = {
+				if = {
+					limit = { has_dynamic_modifier = { modifier = XOG_yezhangdu_buff } }
+					clr_country_flag = XOG_mechanism_mandrills
+					remove_dynamic_modifier = { modifier = XOG_yezhangdu_buff }
+				}
+				every_country_division = {
+					destroy_unit = yes
+				}
+				set_country_flag = XOG_yezhangdubaozha_flag
+				if = {
+					limit = { NOT = { has_idea = XOG_aftermath } }
+					add_ideas = XOG_aftermath
+				}
+			}
 		}
 	}
 }

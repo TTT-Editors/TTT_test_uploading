@@ -102,7 +102,9 @@ MOT_Standpoint_decision_category ={
                 target = QQR
                 type = annex_everything
             }
-			news_event = {id = MDQ_event.1 days = 1}
+			every_country = {
+				news_event = {id = MDQ_event.1 days = 3}
+			}
             add_named_threat = { 
                 threat = 1.8
                 name = MDQ_dadaupa_War
@@ -150,6 +152,7 @@ MOT_Standpoint_decision_category ={
 				hidden_effect = {
 					clr_country_flag = MDQ_dadaupa_War_flag
 					set_country_flag = MDQ_dadaupa_second_war_flag
+					add_dynamic_modifier = { modifier = MDQ_dadaupa_second_war }
 					MOT = {add_to_faction = MDQ}
 					MDQ = {
 						every_controlled_state = {
@@ -163,8 +166,6 @@ MOT_Standpoint_decision_category ={
 							add_core_of= QQR
 						}
 					}
-					load_focus_tree = TTT_MDQ_focustree2
-					transfer_dynamic_modifiers = yes
 					if = {
 						limit = {
 							has_idea = MDQ_Endless_battle_1
@@ -189,7 +190,9 @@ MOT_Standpoint_decision_category ={
 						}
 						remove_ideas = MDQ_Endless_battle_4
 					}
-					news_event = {id = MDQ_event.25 days = 1}
+					every_country = {
+						news_event = {id = MDQ_event.25 days = 1}
+					}
 				}
 				white_peace = {
 					tag = QQR
@@ -199,6 +202,7 @@ MOT_Standpoint_decision_category ={
 					target = QQR
 					days = 300
 				}
+				MOT_Upgrade_country_focustree = YES
 			}
 		}
 
@@ -214,6 +218,19 @@ MOT_Standpoint_decision_category ={
 			cost = 50
 			fixed_random_seed = no
 			days_remove = 20
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 0.5
+					has_war = yes
+				}
+				modifier = {
+					factor = 2
+					has_political_power >50
+					has_war = no
+				}
+			}
+			
 			remove_effect = {
 				hidden_effect = {
 					random_list = {
@@ -246,6 +263,19 @@ MOT_Standpoint_decision_category ={
 			cost = 50
 			fixed_random_seed = no
 			days_remove = 20
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 0.5
+					add = -5
+					has_war = yes
+				}
+				modifier = {
+					factor = 2
+					has_political_power >50
+					has_war = no
+				}
+			}
 			remove_effect = {
 				hidden_effect = {
 					random_list = {
@@ -279,6 +309,19 @@ MOT_Standpoint_decision_category ={
 			cost = 50
 			fixed_random_seed = no
 			days_remove = 20
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 0.5
+					add = -5
+					has_war = yes
+				}
+				modifier = {
+					factor = 2
+					has_political_power >50
+					has_war = no
+				}
+			}
 			remove_effect = {
 				hidden_effect = {
 					random_list = {
@@ -312,6 +355,19 @@ MOT_Standpoint_decision_category ={
 			cost = 50
 			fixed_random_seed = no
 			days_remove = 20
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 0.5
+					add = -5
+					has_war = yes
+				}
+				modifier = {
+					factor = 2
+					has_political_power >50
+					has_war = no
+				}
+			}
 			remove_effect = {
 				hidden_effect = {
 					random_list = {
@@ -344,6 +400,19 @@ MOT_Standpoint_decision_category ={
 		   	}
 			visible = {
 				has_completed_focus = MDQ_Retrofit
+			}
+			ai_will_do = {
+				base = 0
+				modifier = {
+					factor = 0
+					has_war = no
+				}
+				modifier = {
+					factor = 2
+					add = 10
+					has_political_power > 70
+					has_war = yes
+				}
 			}
 			cost = 70
 			days_remove = 100
@@ -383,7 +452,7 @@ MOT_Standpoint_decision_category ={
 				modifier = {num_divisions > 25 add = 5 factor = 1.25}
 			}
 			fire_only_once = yes
-			remove_effect = {
+			complete_effect = {
 				leave_faction = yes
             	declare_war_on = {
 					target = QQR
@@ -393,6 +462,7 @@ MOT_Standpoint_decision_category ={
 					threat = 1
 					name = MDQ_dadaupa_War
 				}
+				MOT_Upgrade_country_focustree = YES
 			}
 		}
 		###开局向骑士团请求援助，触发女仆事件链
@@ -407,6 +477,10 @@ MOT_Standpoint_decision_category ={
 		   	}
 			visible = {
 				original_tag = MDQ
+			}
+			ai_will_do = {
+				base = 10
+				factor = 10
 			}
 			cancel_if_invalid = yes
 			fire_only_once = yes
@@ -435,6 +509,18 @@ MOT_Standpoint_decision_category ={
 			cancel_if_invalid = yes
 			fire_only_once = no
 			cost = 100
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 2
+					has_war = yes
+					check_variable = {
+						var = global.MDQ_abandon_num 
+						value = 50
+						compare = less_than_or_equals
+					}
+				}
+			}
 			days_remove = 14
 			days_re_enable = 70
 			complete_effect ={
@@ -463,6 +549,14 @@ MOT_Standpoint_decision_category ={
 					compare = less_than
 				}
 		   	}
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 10
+					has_war = no
+					has_political_power >30
+				}
+			}
 			visible = {
 				has_completed_focus = MDQ_South_wing_castle
 				original_tag = MDQ
@@ -513,6 +607,14 @@ MOT_Standpoint_decision_category ={
 					compare = less_than
 				}
 			}
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 10
+					has_war = no
+					has_political_power >30
+				}
+			}
 			cancel_if_invalid = yes
 			fire_only_once = no
 			cost = 30
@@ -553,6 +655,14 @@ MOT_Standpoint_decision_category ={
 					var = MDQ_The_Legend_of_the_Three_Musketeers_consumer_goods_factor
 					value = 0.05
 					compare = greater_than
+				}
+			}
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 10
+					has_war = no
+					has_political_power >30
 				}
 			}
 			cancel_if_invalid = yes
@@ -616,6 +726,13 @@ MOT_Standpoint_decision_category ={
 					compare = equals
 				}
 			}
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 10
+					has_war = no
+				}
+			}
 			cancel_if_invalid = yes
 			cost = 60
 			fire_only_once = yes
@@ -639,6 +756,30 @@ MOT_Standpoint_decision_category ={
 			visible = {
 				has_completed_focus = MDQ_Train_militia
 				original_tag = MDQ
+			}
+			ai_will_do = {
+				base = 0
+				modifier = {
+					has_war = yes
+					add = 5 
+					factor = 1
+				}
+				modifier = {
+					factor = 2
+					num_divisions < 25
+				}
+				modifier = {
+					factor = 1.5
+					has_manpower > 30000
+				}
+				modifier = {
+					has_war = no
+					add = 5
+				}
+				modifier = {
+					factor = 0
+					has_manpower < 10000
+				}
 			}
 			fire_only_once = no
 			cost = 30
@@ -672,6 +813,28 @@ MOT_Standpoint_decision_category ={
 				has_completed_focus = MDQ_White_sun_offensive
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 0
+				modifier = {
+					surrender_progress > 0.5
+					factor = 10
+				}
+				modifier = {
+					has_war = yes
+					add = 10
+					factor = 2
+				}
+				modifier = {
+					has_war = no
+					factor = 0
+				}
+				modifier = {
+					num_of_military_factories < 6
+					factor = 2
+					add = 10
+				}
+				
+			}
 			fire_only_once = no
 			cost = 60
 			days_remove = 100
@@ -700,6 +863,29 @@ MOT_Standpoint_decision_category ={
 				has_completed_focus = MDQ_Continue_attack
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 0
+				modifier = {
+					surrender_progress > 0.5
+					factor = 10
+				}
+				modifier = {
+					has_war = yes
+					add = 10
+					factor = 1.5
+				}
+				modifier = {
+					stockpile_ratio = {
+						archetype = infantry_equipment
+						ratio > 1
+					}
+					factor = 2
+				}
+				modifier = {
+					has_war = no
+					factor = 0
+				}
+			}
 			fire_only_once = no
 			cost = 60
 			days_remove = 100
@@ -723,6 +909,25 @@ MOT_Standpoint_decision_category ={
 			visible = {
 				has_completed_focus = MDQ_Take_the_lead
 				original_tag = MDQ
+			}
+			ai_will_do = {
+				base = 0
+				modifier = {
+					has_war = yes
+					add = 10
+					factor = 1
+				}
+				modifier = {
+					stockpile_ratio = {
+						archetype = infantry_equipment
+						ratio > 1
+					}
+					factor = 10
+				}
+				modifier = {
+					has_war = no
+					factor = 0
+				}
 			}
 			fire_only_once = no
 			cost = 60
@@ -748,12 +953,28 @@ MOT_Standpoint_decision_category ={
 				has_completed_focus = MDQ_Invisible_stab
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 0
+				modifier = {
+					has_war = yes
+					add = 10
+					factor = 1
+				}
+				modifier = {
+					has_political_power > 60
+					factor = 1.5
+				}
+				modifier = {
+					has_war = no
+					factor = 0
+				}
+			}
 			fire_only_once = no
-			cost = 30
+			cost = 60
 			days_remove = 30
 			days_re_enable = 60
 			modifier = {
-				land_night_attack = 0.2
+				land_night_attack = 0.1
 			}
 		}
 		###派出空中侦察小队
@@ -769,13 +990,29 @@ MOT_Standpoint_decision_category ={
 				has_completed_focus = MDQ_aerial_reconnaissance
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 0
+				modifier = {
+					has_war = yes
+					add = 10
+					factor = 1
+				}
+				modifier = {
+					has_political_power > 60
+					factor = 1.5
+				}
+				modifier = {
+					has_war = no
+					factor = 0
+				}
+			}
 			fire_only_once = no
 			cost = 60
-			days_remove = 60
+			days_remove = 30
 			days_re_enable = 60
 			modifier = {
 				recon_factor = 0.1
-				recon_factor_while_entrenched = 0.2
+				recon_factor_while_entrenched = 0.1
 			}
 		}
 
@@ -797,6 +1034,10 @@ MOT_Standpoint_decision_category ={
 			visible = {
 				has_country_flag = Noelle_in_dadawupa
 				original_tag = MDQ
+			}
+			ai_will_do = {
+				base = 10
+				factor = 10
 			}
 			fire_only_once = yes
 			cancel_if_invalid = yes 
@@ -823,6 +1064,10 @@ MOT_Standpoint_decision_category ={
 				has_country_flag = Noelle_in_dadawupa
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 10
+				factor = 10
+			}
 			fire_only_once = yes
 			cancel_if_invalid = yes 
 			complete_effect = {
@@ -847,6 +1092,10 @@ MOT_Standpoint_decision_category ={
 			visible = {
 				has_country_flag = Noelle_in_dadawupa
 				original_tag = MDQ
+			}
+			ai_will_do = {
+				base = 10
+				factor = 10
 			}
 			fire_only_once = yes
 			cancel_if_invalid = yes 
@@ -873,6 +1122,10 @@ MOT_Standpoint_decision_category ={
 				has_country_flag = Noelle_in_dadawupa
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 10
+				factor = 10
+			}
 			fire_only_once = yes
 			cancel_if_invalid = yes 
 			complete_effect = {
@@ -881,6 +1134,7 @@ MOT_Standpoint_decision_category ={
 			}
 		}
 		#####二阶段国策与雪山和骑士团的求援和交易
+		##要大炮
 		MDQ_dadaupa_War_decision_25 = {
 			allowed = {
 				original_tag = MDQ
@@ -893,6 +1147,26 @@ MOT_Standpoint_decision_category ={
 				has_completed_focus = MDQ_Our_backer
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 5
+				modifier = {
+					surrender_progress >0.5
+					factor = 10
+				}
+				modifier = {
+					has_war = yes
+					add = 5
+					factor = 2
+				}
+				modifier = {
+					has_political_power > 30
+					factor = 2
+				}
+				modifier = {
+					has_war = no
+					factor = 1
+				}
+			}
 			fire_only_once = no
 			cost = 30
 			days_remove = 5
@@ -903,6 +1177,7 @@ MOT_Standpoint_decision_category ={
 				}
 			}
 		}
+
 		MDQ_dadaupa_War_decision_26 = {
 			allowed = {
 				original_tag = MDQ
@@ -914,6 +1189,30 @@ MOT_Standpoint_decision_category ={
 			visible = {
 				has_completed_focus = MDQ_Our_backer
 				original_tag = MDQ
+			}
+			ai_will_do = {
+				base = 5
+				modifier = {
+					surrender_progress >0.5
+					factor = 10
+				}
+				modifier = {
+					has_war = yes
+					add = 5
+					factor = 2
+				}
+				modifier = {
+					has_political_power > 20
+					factor = 2
+				}
+				modifier = {
+					has_country_flag = MOT_Common_ui_button_is_cooling
+					factor = 1
+				}
+				modifier = {
+					has_war = no
+					factor = 0
+				}
 			}
 			fire_only_once = no
 			cost = 20
@@ -938,6 +1237,17 @@ MOT_Standpoint_decision_category ={
 				has_completed_focus = MDQ_To_Abedo
 				original_tag = MDQ
 			}
+			ai_will_do = {
+				base = 5
+				modifier = {
+					has_political_power > 50
+					factor = 2
+				}
+				modifier = {
+					has_war = no
+					add = 5
+				}
+			}
 			fire_only_once = no
 			cost = 50
 			days_remove = 60
@@ -960,6 +1270,18 @@ MOT_Standpoint_decision_category ={
 			visible = {
 				has_completed_focus = MDQ_To_Abedo
 				original_tag = MDQ
+			}
+			ai_will_do = {
+				base = 5
+				modifier = {
+					has_political_power > 50
+					factor = 2
+				}
+				modifier = {
+					has_war = yes
+					factor = 1.5
+					add = 5
+				}
 			}
 			fire_only_once = no
 			cost = 50
@@ -1032,7 +1354,9 @@ MDQ_IS_DEBUG= {
                 target = QQR
                 type = annex_everything
             }
-			news_event = {id = MDQ_event.1 days = 1}
+			every_country = {
+				news_event = {id = MDQ_event.1 days = 3}
+			}
             add_named_threat = { 
                 threat = 1.8
                 name = MDQ_dadaupa_War
@@ -1054,6 +1378,7 @@ MDQ_IS_DEBUG= {
 		complete_effect = {
 			clr_country_flag = MDQ_dadaupa_War_flag
 			set_country_flag = MDQ_dadaupa_second_war_flag
+			add_dynamic_modifier = { modifier = MDQ_dadaupa_second_war }
 			MOT = {add_to_faction = MDQ}
 			MDQ = {
 				every_controlled_state = {
@@ -1065,8 +1390,6 @@ MDQ_IS_DEBUG= {
 					transfer_state_to = QQR
 				}
 			}
-			load_focus_tree = TTT_MDQ_focustree2
-			transfer_dynamic_modifiers = yes
 			if = {
 				limit = {
 					has_idea = MDQ_Endless_battle_1
@@ -1091,7 +1414,9 @@ MDQ_IS_DEBUG= {
 				}
 				remove_ideas = MDQ_Endless_battle_4
 			}
-			news_event = {id = MDQ_event.25 days = 1}
+			every_country = {
+				news_event = {id = MDQ_event.25 days = 1}
+			}
 			white_peace = {
 				tag = QQR
 				message = while_peace_with_QQR_1

@@ -40,18 +40,24 @@ TTT_XOG_scripted_effects = {
 	}
 }
 
+#monthly calculation
 TTT_XOG_scripted_effects1 = {
-   set_temp_variable = { XOG_Operational_variable = XOG_yezhangdu }
-   divide_temp_variable={ XOG_Operational_variable = 500 }
-   set_variable = { XOG_army_attack_factor1 = XOG_Operational_variable }
-   set_variable = { XOG_army_speed_factor1 = XOG_Operational_variable }
-   set_variable = { XOG_army_org_factor1 = XOG_Operational_variable }
-   
-   set_temp_variable = { XOG_Operational_variable1 = XOG_yezhangdu }
-   divide_temp_variable={ XOG_Operational_variable1 = 1000 }
-   multiply_temp_variable = { XOG_Operational_variable1 = -1 }
-   set_variable = { XOG_army_defence_factor1 = XOG_Operational_variable1 }
-   set_variable = { XOG_army_morale_factor1 = XOG_Operational_variable1 }
-   set_variable = { XOG_stability_factor = XOG_Operational_variable1 }
-   
+	set_temp_variable = { XOG_Operational_variable = XOG_yezhangdu }
+	divide_temp_variable={ XOG_Operational_variable = 500 }
+	set_variable = { XOG_yezhang_conscription = 0 }
+	set_variable = { XOG_army_attack_factor1 = XOG_Operational_variable }
+	set_variable = { XOG_army_speed_factor1 = XOG_Operational_variable }
+	set_variable = { XOG_army_org_factor1 = XOG_Operational_variable }
+
+	set_temp_variable = { XOG_Operational_variable1 = XOG_yezhangdu }
+	divide_temp_variable={ XOG_Operational_variable1 = 1000 }
+	multiply_temp_variable = { XOG_Operational_variable1 = -1 }
+	set_variable = { XOG_army_defence_factor1 = XOG_Operational_variable1 }
+	set_variable = { XOG_army_morale_factor1 = XOG_Operational_variable1 }
+	set_variable = { XOG_stability_factor = XOG_Operational_variable1 }
+	if = {
+		limit = { has_country_flag = XOG_turn_bad }
+		set_variable = { XOG_yezhang_conscription = -0.02 }
+		add_to_variable = { XOG_army_attack_factor1 = 0.05 }
+	}
 }

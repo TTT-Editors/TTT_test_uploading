@@ -9,6 +9,123 @@ on_actions =
                 add_ideas = shefeng
                 add_ideas = kanding
                 add_ideas = tianling
+				set_country_flag = INA_PingDing_adjourment
+				set_country_flag = INA_mei_not_Awakening
+				add_to_variable = { PianZhi_Amount = 5 }
+				clamp_variable = { var = PianZhi_Amount min = 0 max = 100 }
+				add_to_variable = { 
+            		TTT_pingding_1 = 1
+        		}
+
+				add_to_variable = { 
+            		TTT_pingding_2 = 1
+        		}
+
+				add_to_variable = { 
+            		TTT_pingding_3 = 1
+       			 }
+
+       			 add_to_variable = { 
+          			  TTT_pingding_4 = 1
+        		}
+
+				add_to_variable = { 
+           			 TTT_pingding_5 = 1
+       			 }
+
+       			 add_to_variable = { 
+            		TTT_pingding_6 = 1
+       			 }
+
+      			  add_to_variable = { 
+            		TTT_pingding_7 = 1
+        		}
+
+        		add_to_variable = { 
+           			 TTT_pingding_8 = 2
+      			  }
+
+				add_to_variable = { 
+           		 	TTT_pingding_9 = 2
+       			 }
+
+				add_to_variable = { 
+            		TTT_pingding_10 = 2
+       			 }
+
+				add_to_variable = { 
+            		TTT_pingding_11 = 3
+       			 }
+
+				add_to_variable = { 
+            		TTT_pingding_12 = 3
+        		}
+				#鸣神岛持有神之眼数量
+				#其他岛屿
+				set_variable = {
+					INA_state_15_eyes = 10
+				}
+				#天守阁
+				set_variable = {
+					INA_state_14_eyes = 60
+				}
+				#稻妻城
+				set_variable = {
+					INA_state_13_eyes = 175
+				}
+				#长野原
+				set_variable = {
+					INA_state_12_eyes = 150
+				}
+				#甘金岛
+				set_variable = {
+					INA_state_11_eyes = 15
+				}
+				#白狐之野
+				set_variable = {
+					INA_state_10_eyes = 95
+				}
+				#绀田村
+				set_variable = {
+					INA_state_9_eyes = 70
+				}
+				#离岛
+				set_variable = {
+					INA_state_8_eyes = 120
+				}
+				#北绀田
+				set_variable = {
+					INA_state_7_eyes = 45
+				}
+				#影向山下
+				set_variable = {
+					INA_state_6_eyes = 40
+				}
+				#影向山
+				set_variable = {
+					INA_state_5_eyes = 75
+				}
+				#荒海
+				set_variable = {
+					INA_state_4_eyes = 8
+				}
+				#镇守之森
+				set_variable = {
+					INA_state_3_eyes = 25
+				}
+				#神里屋敷
+				set_variable = {
+					INA_state_2_eyes = 100
+				}
+				#刃连岛
+				set_variable = {
+					INA_state_1_eyes = 12
+				}
+				#得到的神之眼数量
+				set_variable = 
+				{
+					INA_get_eyes = 0
+				}
             }
         }
     }
@@ -18,12 +135,12 @@ on_actions =
 			if = {
 				limit = {
 					has_country_flag = INA_Compulsory_conscription_budui
-					NOT = { has_template = "同心" }
+					NOT = { has_template = "足轻" }
 					original_tag = KUJ
 				}
 				KUJ = {				
 				 division_template = {
-					name = "同心"
+					name = "足轻"
 					priority = 2
 					is_locked = no
 					division_names_group = INA_INF_01
@@ -41,7 +158,7 @@ on_actions =
 			        is_core_of = KUJ
 		            }
 					create_unit = {
-					division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					division = "division_template = \"足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = KUJ
 					count = 8
 				    }
@@ -52,42 +169,42 @@ on_actions =
 	on_war = {
 	effect = {
 	#九条家获得精锐部队
-	if = {		
+	if = {
 		limit = {
-			original_tag = INA
-			NOT = { has_template = "同心" }
+			NOT = { has_template = "精锐足轻" }
 			has_country_flag = INA_Jiutiaojia_Elite_test
 			original_tag = KUJ
-		}
-            KUJ = {			
-		    division_template = {
-					name = "同心"
-					priority = 2
-					is_locked = no
-					division_names_group = INA_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-		                infantry = { x = 0 y = 1 }
-		                infantry = { x = 0 y = 2 }
-		                infantry = { x = 0 y = 3 }
-		                infantry = { x = 0 y = 4 }
-		                infantry = { x = 1 y = 0 }
-		                infantry = { x = 1 y = 1 }
-		                artillery_brigade  = { x = 2 y = 1 }
-		                artillery_brigade  = { x = 2 y = 0 }
+			}	
+			KUJ = {			
+				division_template = {
+						name = "精锐足轻"
+						priority = 2
+						is_locked = no
+						division_names_group = KUJ_INF_01
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 0 y = 4 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							artillery_brigade  = { x = 2 y = 1 }
+							artillery_brigade  = { x = 2 y = 0 }
+						}
+					}
+					random_state = {
+						limit = {
+						is_core_of = KUJ
+						 }
+						create_unit = {
+						division = "division_template = \"精锐足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = KUJ
+						count = 3
 					}
 				}
 			}
-				random_state = {
-				    limit = {
-			        is_core_of = INA
-		            }
-					create_unit = {
-					division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
-					owner = INA
-					count = 3
-				}
-		    }
+			}
 		}
 	}
 }
@@ -120,6 +237,8 @@ on_actions =
 					max = 100
 					min = 0
 				}							
-		}	
+			}	
 	}
-}
+
+
+

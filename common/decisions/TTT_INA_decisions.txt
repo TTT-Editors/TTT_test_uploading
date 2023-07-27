@@ -151,6 +151,7 @@ X_INA_propaganda_campaigns = {
 
 }
 
+#八酝岛冲突
 INA_war_beginning = {
 	INA_fenge =
 	{
@@ -168,8 +169,912 @@ INA_war_beginning = {
 		}
 
 	}
-	INA_Folk_propaganda = { #民间宣传
+	#战争宣传
+	INA_War_Propaganda = 
+	{
+        icon = GFX_prepare_war_generic
+		 
+		 cost = 20
+		 
+		 days_remove = 14
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		}
+		 available = {
+			INA_scripted_tiggers_generic = yes
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type_generic value = 1 days = 7 }  
+		 }
+		 remove_effect = {
+			 KJG = 
+			 {
+				add_war_support = 0.05
+				army_experience = 20
+			 	add_equipment_to_stockpile = {
+			 		type = grain_conversion_eq
+			 		amount = 60
+			 	}
+			 } 
+		 }
+	}
+	INA_transport_arms = {    #武器运输
 		icon = GFX_prepare_war_generic
+		 
+		 cost = 20
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 available = {
+			INA_scripted_tiggers_generic = yes
+		 }
+		 modifier = {
+			 command_power_gain_mult = -0.01
+		 }
+		 
+		 available = {
+			 command_power > 29
+		 }
+		 
+		 complete_effect = {
+			 add_command_power = -30
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type_generic value = 1 days = 7 }  
+		 }
+		 remove_effect = {
+			 KJG = 
+			 {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 400
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 100
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 50
+				}
+			 }
+			 custom_effect_tooltip = INA_Volience_num_add_less 
+			 add_to_variable = { global.INA_Conflict_Volience = 5 }
+		 }  
+	 }
+	INA_emergent_Mils_Contruction = {    #修建工坊
+		icon = GFX_prepare_war_generic
+		 
+		 cost = 40
+		 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 
+		 days_remove = 30
+										 
+		 fire_only_once = no
+		 available = {
+			INA_scripted_tiggers_generic = yes
+		 }	
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 
+		 modifier = {
+			consumer_goods_factor = 0.1
+			production_factory_max_efficiency_factor =  -0.1
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type_generic value = 1 days = 30 }  
+		 }		
+		 remove_effect = {
+			 custom_effect_tooltip = INA_Volience_num_add_medium
+			 add_to_variable = { global.INA_Conflict_Volience = 10}
+             KJG = 
+			 {
+				random_owned_state = {
+					limit = { is_core_of = ROOT}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+					    instant_build = yes 
+					}
+			 	}
+			}
+		}
+	}  
+	INA_Violent_Repression = {    #招募部队
+		icon = GFX_prepare_war_generic
+			
+		 cost = 30
+		 
+		 days_remove = 30
+		 
+		 fire_only_once = no
+		 
+		 available = {
+			INA_scripted_tiggers_generic = yes
+		 }
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 complete_effect = {
+			 set_country_flag = { flag = INA_NO_Same_type_generic value = 1 days = 30 }  
+		 }				
+		 remove_effect = {	
+			 if = 
+			 {
+				limit = { 
+					check_variable = {
+						global.TTT_BYI_Conflict_State_1 = 1
+					}
+			    }
+				INA_add_Impact_State_1 = yes
+			 }
+			 else if = 
+			 {
+				limit = { 
+					check_variable = {
+						global.TTT_BYI_Conflict_State_2 = 1
+					}
+			    }
+				INA_add_Impact_State_2 = yes
+			 }
+			 else if = 
+			 {
+				limit = { 
+					check_variable = {
+						global.TTT_BYI_Conflict_State_3 = 1
+					}
+			    }
+				INA_add_Impact_State_3 = yes
+			 }
+			 else if = 
+			 {
+				limit = { 
+					check_variable = {
+						global.TTT_BYI_Conflict_State_4 = 1
+					}
+			    }
+				INA_add_Impact_State_4 = yes
+			 }
+			 else if = 
+			 {
+				limit = { 
+					check_variable = {
+						global.TTT_BYI_Conflict_State_5 = 1 
+					}
+			    }
+				INA_add_Impact_State_5 = yes
+			 }
+			 else if = 
+			 {
+				limit = { 
+					check_variable = {
+						global.TTT_BYI_Conflict_State_6 = 1
+					}
+			    }
+				INA_add_Impact_State_6 = yes
+			 }
+			 else if = 
+			 {
+				limit = { 
+					check_variable = {
+						global.TTT_BYI_Conflict_State_7 = 1
+					}
+			    }
+				INA_add_Impact_State_7 = yes
+			 }
+			 KJG = 
+			 {
+				add_manpower = -3000
+				add_stability = -0.05
+			 }
+			 set_country_flag = Impact_give_large
+			 custom_effect_tooltip = INA_Volience_num_add_medium
+			 add_to_variable = { global.INA_Conflict_Volience = 10}
+		 }		  
+	 }
+	INA_fenge_2 = 
+	 {
+		icon = null
+		cost = 0
+		fire_only_once = no
+		available = {
+			always = no
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+		}
+	 }
+	 #无名地区决议
+	 #强制迁移
+	 INA_Force_Migration_law = { 
+		
+		icon = GFX_INA_prepare_war_small
+		
+		cost = 20
+		
+		days_remove = 15
+		
+		fire_only_once = no
+		
+		allowed = {
+		    original_tag = INA
+			check_variable = 
+			{
+				INA_Island_choice = 1
+			}
+			check_variable = 
+			{
+				INA_Island_choice = 2
+			}
+			check_variable = 
+			{
+				INA_Island_choice = 3
+			}
+			check_variable = 
+			{
+				INA_Island_choice = 4
+			}
+			check_variable = 
+			{
+				INA_Island_choice = 5
+			}
+			check_variable = 
+			{
+				INA_Island_choice = 6
+			}
+			check_variable = 
+			{
+				INA_Island_choice = 7
+			}
+		}
+		
+		visible = {
+		   always = yes 
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		complete_effect = {  
+		}
+		
+		remove_effect = {
+			if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 1}}
+				88 = 
+				{
+					add_manpower = -2000
+				}
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 2}}
+				83 = 
+				{
+					add_manpower = -2000
+				}
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 3}}
+				373 = 
+				{
+					add_manpower = -2000
+				}
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 4}}
+				372 = 
+				{
+					add_manpower = -2000
+				}
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 5}}
+				86 = 
+				{
+					add_manpower = -2000
+				}
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 6}}
+				85 = 
+				{
+					add_manpower = -2000
+				}
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 7}}
+				87 = 
+				{
+					add_manpower = -2000
+				}
+			}
+            KJG = 
+			{
+				add_manpower = 2000
+			}
+			custom_effect_tooltip = INA_Volience_num_subtract_less
+			custom_effect_tooltip = INA_State_Impact_decrease
+            subtract_from_variable = { global.INA_Conflict_Volience = 5 }
+		}
+	}
+	 #挑拨对立
+	 INA_Provoke_Opposition = 
+	 {
+           icon = GFX_INA_prepare_war_small
+
+		   cost = 14
+
+		   days_remove = 20
+
+		   fire_only_once = no
+
+		   allowed = {
+			   original_tag = INA 
+			   check_variable = 
+				{
+					INA_Island_choice = 1
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 2
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 3
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 4
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 5
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 6
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 7
+				}
+		   }
+
+		   visible = {
+			  always = yes
+		   }
+		   ai_will_do = {
+			  factor = 50
+		   }
+		   complete_effect = {}
+		   remove_effect = {
+			if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 1}}
+				INA_add_Impact_State_1 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 2}}
+				INA_add_Impact_State_2 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 3}}
+				INA_add_Impact_State_3 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 4}}
+				INA_add_Impact_State_4 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 5}}
+				INA_add_Impact_State_5 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 6}}
+				INA_add_Impact_State_6 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 7}}
+				INA_add_Impact_State_7 = yes
+			}
+			add_to_variable = {
+				global.INA_Conflict_Volience = 5
+			}
+			custom_effect_tooltip = INA_Volience_num_add_less
+			custom_effect_tooltip = INA_State_Impact_increase
+		   }
+
+	 }
+	 #训练民兵
+	 INA_Training_army = 
+	 {
+		icon = GFX_INA_prepare_war_small
+
+		cost = 20
+
+		days_remove = 14
+
+		fire_only_once = no
+
+		allowed = 
+		{
+			original_tag = INA
+			check_variable = {
+				INA_Island_choice = 1
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_1 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 2
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_2 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 3
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_3 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 4
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_4 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 5
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_5 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 6
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_6 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 7
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_7 = 1
+			}
+		}
+
+		visible = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		remove_effect = {
+			add_to_variable = {
+				KJG_add_new_army = 1
+			}
+			custom_effect_tooltip = KJG_new_army
+		}
+
+	 }
+	 #修建堡垒
+	 INA_new_temporary_bunker = 
+	 {
+		icon = GFX_INA_prepare_war_small
+
+		cost = 20
+
+		days_remove = 14
+
+		fire_only_once = no
+
+		allowed = 
+		{
+			original_tag = INA
+			check_variable = {
+				INA_Island_choice = 1
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_1 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 2
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_2 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 3
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_3 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 4
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_4 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 5
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_5 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 6
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_6 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 7
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_7 = 1
+			}
+		}
+
+		visible = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		remove_effect = {
+			if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 1}}
+				INA_add_Impact_State_1 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 2}}
+				INA_add_Impact_State_2 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 3}}
+				INA_add_Impact_State_3 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 4}}
+				INA_add_Impact_State_4 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 5}}
+				INA_add_Impact_State_5 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 6}}
+				INA_add_Impact_State_6 = yes
+			}
+			else if = 
+			{
+				limit = {check_variable = {INA_Island_choice = 7}}
+				INA_add_Impact_State_7 = yes
+			}
+			custom_effect_tooltip = KJG_temporary_bunker
+		}
+
+	 }
+	#风雨欲来
+	INA_Declare_war = {     
+		activation = {
+			INA_triggers_Declare_war = yes
+			NOT = {SNA = {has_War_with = KUJ}}
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		is_good = no
+		days_mission_timeout = 25
+		fire_only_once = yes
+		timeout_effect = {
+			INA = {
+				set_autonomy = {
+					target = SNA
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = {
+					target = KUJ
+					autonomy_state = autonomy_free
+				}
+			}
+			SNA = { 
+				leave_faction = yes 
+			    country_event = XinHai.10
+			}
+			KUJ = { 
+				leave_faction = yes
+				declare_war_on = {target = SNA type = annex_everything} 
+			}
+			clr_country_flag = INA_34_flag
+			SNA = {clr_country_flag = INA_34_flag}
+			KUJ = 
+			{
+				if = {
+					limit = {
+						has_country_flag = INA_Compulsory_conscription_budui
+						NOT = { has_template = "足轻" }
+						original_tag = KUJ
+					}
+					KUJ = {				
+					 division_template = {
+						name = "足轻"
+						priority = 2
+						is_locked = no
+						division_names_group = INA_INF_01
+						regiments = {
+							militia = { x = 0 y = 0 }
+							militia = { x = 0 y = 1 }
+							militia = { x = 0 y = 2 }
+							militia = { x = 1 y = 0 }
+							militia = { x = 1 y = 1 }
+						}
+					}
+				}
+					random_state = {
+						limit = {
+						is_core_of = KUJ
+						}
+						create_unit = {
+						division = "division_template = \"足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = KUJ
+						count = KJG_add_new_army
+						}
+					}				
+				}
+			}
+		}
+	}
+
+}
+
+#测试用决议
+INA_pianzhi_test = 
+{
+	INA_pianzhi_add = 
+	{
+         icon = null
+         cost = 0
+		 remove_effect = 
+		 {
+			add_to_variable = 
+			{
+				PianZhi_Amount = 5
+			}
+		 }
+	}
+	INA_pianzhi_subtract = 
+	{
+		 icon = null
+		 cost = 0
+		 remove_effect = 
+		 {
+		    subtract_from_variable = 
+		    {
+			    PianZhi_Amount = 5
+		    }
+		 }
+	}
+	INA_seats_add = 
+	{
+		icon = null
+		cost = 0
+		remove_effect = {
+			
+			add_to_variable = {
+				TTT_pingding_1 = 1
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_1
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_3
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_4
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_5
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_6
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_7
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_8
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_9
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_10
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_11
+				max = 5
+				min = 0
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_12
+				max = 5
+				min = 0
+			}
+		}
+	}
+	INA_seats_add_2 = 
+	{
+         icon = null
+		 cost = 0
+		 remove_effect = {
+			add_to_variable = {
+				TTT_pingding_2 = 1
+			}
+			clamp_variable = 
+			{
+				var = TTT_pingding_2
+				max = 5
+				min = 0
+			}
+		 }
+	}
+	INA_seats_add_3 = 
+	{
+		
+	}
+	INA_seats_add_4 = 
+	{
+		
+	}
+	INA_seats_add_5 = 
+	{
+		
+	}
+	INA_seats_add_6 = 
+	{
+		
+	}
+	INA_seats_add_7 = 
+	{
+		
+	}
+}
+
+#眼狩令
+INA_Vision_hunt_decision = 
+{
+	#眼狩令阶段成果
+	INA_Vision_hunt_stage =
+	{
+		activation = {
+	        has_country_flag = INA_start_Vision_hunt
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			has_country_flag = INA_start_Vision_hunt
+		}
+		is_good = yes
+		days_mission_timeout = 300
+		fire_only_once = yes
+		timeout_effect = 
+		{
+			custom_effect_tooltip = "INA_Vision_result"
+		}
+	}
+	#眼狩令阶段成果
+	INA_Vision_hunt_stage_1 =
+	{
+		activation = {
+	        has_country_flag = INA_continue_Vision_hunt
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			has_country_flag = INA_continue_Vision_hunt
+		}
+		is_good = yes
+		days_mission_timeout = 60
+		fire_only_once = yes
+		timeout_effect = 
+		{
+			custom_effect_tooltip = "INA_Vision_result"
+		}
+	}
+	#刃连岛
+	INA_vision_hunt_state_1_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 1
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
 		 
 		 cost = 30
 		 
@@ -185,20 +1090,25 @@ INA_war_beginning = {
 		 }
 		 modifier = {
 			 political_power_gain = -0.05
-			}
-		 available = {
-			INA_scripted_tiggers = yes
 		 }
 		 complete_effect = {
-			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 7 }  
 		 }
 		 remove_effect = {
-			 custom_effect_tooltip = INA_Folk_propaganda_tt
-			 add_to_variable = { INA_minjianzhichidu = 5 }
+			add_political_power = 20
 		 }
-	 }
-	 INA_military_propaganda = {    #军事宣传
-		icon = GFX_prepare_war_generic
+	}#出动足轻
+	INA_vision_hunt_state_1_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 1
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
 		 
 		 cost = 30
 		 
@@ -212,505 +1122,2099 @@ INA_war_beginning = {
 		 ai_will_do = {
 			 factor = 50
 		 }
-		 available = {
-			INA_scripted_tiggers = yes
-		 }
 		 modifier = {
-			 command_power_gain_mult = -0.01
-		 }
-		 
-		 available = {
-			 command_power > 29
-		 }
-		 
-		 complete_effect = {
-			 add_command_power = -30
+			 political_power_gain = -0.05
 		 }
 		 complete_effect = {
-			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 7 }  
 		 }
 		 remove_effect = {
-			 custom_effect_tooltip = INA_military_propaganda_tt 
-			 add_to_variable = { INA_junshizhichidu = 5 }
-		 }  
-	 }
-	 INA_Construction_workshop = {    #修建工坊
-		icon = GFX_prepare_war_generic
-		 
-		 cost = 30
-		 
-		 allowed = {
-			  original_tag = INA
+			add_political_power = 20
 		 }
-		 
-		 days_remove = 30
-										 
-		 fire_only_once = no
-		 available = {
-			INA_scripted_tiggers = yes
-		 }	
-		 ai_will_do = {
-			 factor = 50
-		 }
-		 
-		 modifier = {
-			production_factory_max_efficiency_factor =  -0.05
-		 }
-		 complete_effect = {
-			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 30 }  
-		 }		
-		 remove_effect = {
-			 custom_effect_tooltip = INA_Construction_workshop_tt
-			 add_to_variable = { INA_junshizhichidu = 10 }
-			 random_owned_state = {
-						limit = { is_core_of = ROOT}
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = arms_factory
-							 level = 1
-						instant_build = yes 
-						}
-			 	}
-			}
-	}  
-	INA_Recruit_troops = {    #招募部队
-		icon = GFX_prepare_war_generic
-			
-		 cost = 30
-		 
-		 days_remove = 30
-		 
-		 fire_only_once = no
-		 
-		 available = {
-			INA_scripted_tiggers = yes
-		 }
-		 allowed = {
-			  original_tag = INA
-		 }
-		 ai_will_do = {
-			 factor = 50
-		 }
-		 complete_effect = {
-			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 30 }  
-		 }				
-		 remove_effect = {	
-			 division_template = {
-					 name = "同心"
-					 priority = 2
-					 is_locked = no
-					 division_names_group = INA_INF_01
-					 regiments = {
-						 militia = { x = 0 y = 0 }
-						 militia = { x = 0 y = 1 }
-						 militia = { x = 0 y = 2 }
-						 militia = { x = 1 y = 0 }
-						 militia = { x = 1 y = 1 }
-					 }
-				 }
-			 
-				 random_owned_state = {
-					 limit = {is_core_of = ROOT}
-					 create_unit = {
-					 division = "division_template = \"同心\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
-					 owner = INA
-					 count = 1
-				 	}
-				}	
-		   }		  
-	 }
-	INA_Appease_thepeople = {    #安抚民心
-		icon = GFX_prepare_war_generic
-		 
-		 cost = 30
-		 
-		 days_remove = 28
-		 
-		 fire_only_once = no
- 
-		 allowed = {
-			  original_tag = INA
-		 }
-		 ai_will_do = {
-			 factor = 50
-		 }
-		 available = {
-			INA_scripted_tiggers = yes
-		 }
-				 
-		 modifier = {
-			 stability_weekly = 0.01
-			 line_change_production_efficiency_factor = -0.05
-			 production_factory_max_efficiency_factor = -0.05
-			 production_factory_efficiency_gain_factor = -0.05
-		 }
-		 complete_effect = {
-			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 28 }  
-		 }		
-		 remove_effect = {
-			 add_to_variable = { INA_minjianzhichidu = 10 }
-			 add_war_support = -0.02
-		 }  
-	 }
-	 INA_Collect_military_provisions = {    #收纳军粮
-		icon = GFX_prepare_war_generic
-		 
-		 cost = 30
-		 
-		 days_remove = 28
-		 
-		 fire_only_once = no
- 
-		 allowed = {
-			  original_tag = INA
-		 }
-		 ai_will_do = {
-			 factor = 50
-		 }
-		 available = {
-			INA_scripted_tiggers = yes
-		 }
-		 modifier = {
-			 line_change_production_efficiency_factor = -0.05
-			 production_factory_max_efficiency_factor = -0.05
-			 production_factory_efficiency_gain_factor = -0.05
-		 }
-		 complete_effect = {
-			 set_country_flag = { flag = INA_NO_Same_type value = 1 days = 28 }  
-		 }		
-		 remove_effect = {
-			 add_stability = -0.01
-			 add_equipment_to_stockpile = {
-			 type = grain_conversion_eq
-			 amount = 5000
-			 }
-		 }  
-	 }
-	 INA_fenge_2 = 
-	 {
-		icon = null
-		cost = 0
-		fire_only_once = no
-		available = {
-			always = no
-		}
-		complete_effect = {
-			
-		}
-		remove_effect = {
-			
-		}
-	 }
-    INA_Compulsory_conscription = {   #强制征兵
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 50
-		
-		days_remove = 35
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
-		}
-		
-		visible = {
-		   #has_completed_focus = INA_WAR_BEG_6 
-		}
-		available = {
-		   NOT = { has_country_flag = INA_NO_Same_type1 }
-		   NOT = { has_country_flag = INA_NO_Same_type } 
-		   command_power > 49
-           custom_trigger_tooltip = {
-		   tooltip = INA_Compulsory_conscription_text	
-		   check_variable = { INA_junshizhichidu > 14 }
-		   check_variable = { INA_minjianzhichidu > 14 }
-	        }		   
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-			
-	   	}
-		
-		complete_effect = {  
-			add_command_power = -50
-		}
-		
-		remove_effect = {
-		    set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
-		    custom_effect_tooltip = INA_Compulsory_conscription_tt
-			set_country_flag = INA_Compulsory_conscription_budui
-			add_to_variable = { INA_junshizhichidu = -15 }
-			add_to_variable = { INA_minjianzhichidu = -15 }
-		}
-	}
-	INA_Jiutiaojia_Elite = {     #九条家精锐上场
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 50
-		
-		days_remove = 35
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
-		}
-		
-		visible = {
-		   #has_completed_focus = INA_WAR_BEG_7
-		}
-		available = {
-		   command_power < 49
-           NOT = { has_country_flag = INA_NO_Same_type1 }
-		   NOT = { has_country_flag = INA_NO_Same_type }
-           custom_trigger_tooltip = {
-		   tooltip = INA_Compulsory_conscription_text	
-		   check_variable = { INA_junshizhichidu > 14 }
-		   check_variable = { INA_minjianzhichidu > 14 }
-	        }		   
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-			
-	   	}
-		
-		complete_effect = {  
-			add_command_power = -50
-		}
-		
-		remove_effect = {
-		    set_country_flag = INA_Jiutiaojia_Elite_test
-			custom_effect_tooltip = INA_Jiutiaojia_Elite_tt
-			add_to_variable = { INA_junshizhichidu = -15 }
-			add_to_variable = { INA_minjianzhichidu = -15 }
-			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
-		}
-	}
-	INA_Investment_inoutlying_islands = {     #离岛投资
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 50
-		
-		days_remove = 35
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
-		}
-		
-		visible = {
-		    #has_completed_focus = INA_WAR_BEG_2
-		}
-		available = {
-		   NOT = { has_country_flag = INA_NO_Same_type1 }
-		   NOT = { has_country_flag = INA_NO_Same_type }
-           custom_trigger_tooltip = {
-		   tooltip = INA_Investment_inoutlying_islands_text	
-		   check_variable = { INA_junshizhichidu > 19 }
-		   check_variable = { INA_minjianzhichidu > 19 }
-	        } 
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-			
-	   	}
-		
-		complete_effect = {  
-			add_command_power = -50
-		}
-		
-		remove_effect = {
-			add_to_variable = { INA_junshizhichidu = -20 }
-			add_to_variable = { INA_minjianzhichidu = -20 }
-			set_country_flag = KUJ_Investment_inoutlying_islands
-			custom_effect_tooltip = INA_Investment_inoutlying_islands_tt
-			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
-		}
-	}
-	INA_War_propaganda = {     #战争宣传
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 0
-		
-		days_remove = 35
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
-		}
-		
-		visible = {
-		   #has_completed_focus = INA_WAR_BEG_4
-		}
-		
-		available = {
-		  	
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-			consumer_goods_factor = 0.05
-			political_power_gain = 0.20
-	   	}
-		
-		
-		remove_effect = {
-			add_to_variable = {
-				INA_war_add_weekly = 2
-			}
-			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 35 }
-			set_country_flag = KUJ_War_propaganda1
-			custom_effect_tooltip = INA_War_propaganda_tt
-		}
-	}
-	INA_Weapons_acquisition = {     #武器获取
-		
-		icon = GFX_INA_prepare_war_small
-		
-		cost = 100
-		
-		days_remove = 50
-		
-		fire_only_once = yes
-		
-		allowed = {
-		    original_tag = INA
-		}
-		
-		visible = {
-		   #has_completed_focus = INA_WAR_BEG_5 
-		}
-		
-		available = { 
-		   NOT = { has_country_flag = INA_NO_Same_type1 }
-		   NOT = { has_country_flag = INA_NO_Same_type } 
-           custom_trigger_tooltip = {
-		   tooltip = INA_Compulsory_conscription_text	
-		   check_variable = { INA_junshizhichidu > 14 }
-		   check_variable = { INA_minjianzhichidu > 14 }
-	        }
-		}
-		ai_will_do = {
-			factor = 50
-		}
-		
-		modifier = {
-			
-	   	}
-		
-		
-		remove_effect = {
-		    add_to_variable = { INA_junshizhichidu = -15 }
-			add_to_variable = { INA_minjianzhichidu = -15 }
-			custom_effect_tooltip = INA_Weapons_acquisition_tt
-			set_country_flag = { flag = INA_NO_Same_type1 value = 1 days = 50 }
-			add_equipment_to_stockpile = {
-		    type = infantry_equipment 
-		    amount = 1000
-	        }
-            add_equipment_to_stockpile = {
-		    type = support_equipment
-		    amount = 100
-	        }
-            add_equipment_to_stockpile = {
-		    type = artillery_equipment 
-		    amount = 500
-	        }
-            add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
-		    amount = 400
-	        }
-			add_equipment_to_stockpile = {
-		    type = grain_conversion_eq
-		    amount = 1000
-	        }
-		}
-	}
-	ISA_Declare_war = {     
-		activation = {                         
-			ISA_triggers_Declare_war = yes
-		}                                    
-		available = {
-            or = {		
-				NOT = {has_war_with = INA}
-				NOT = {has_war_with = SNA}
-			INA = 
+	}#抓捕海乱鬼
+	INA_vision_hunt_state_1_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
 			{
-				has_completed_focus = INA_WAR_BEG_8
+				INA_choice_state = 1
 			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#一个不留
+	INA_vision_hunt_state_1_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 1
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#焦土政策
+	#神里屋敷
+	INA_vision_hunt_state_2_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 2
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#与神里家交涉
+	INA_vision_hunt_state_2_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 2
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#要求加强宣传攻势
+	INA_vision_hunt_state_2_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 2
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#要挟该地官员加入
+	INA_vision_hunt_state_2_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 2
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#逼迫终末番出动
+	INA_vision_hunt_state_2_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 2
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#接管社奉行领地
+	#镇守之森
+	INA_vision_hunt_state_3_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 3
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#与神里家交涉
+	INA_vision_hunt_state_3_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 3
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#要求加强宣传攻势
+	INA_vision_hunt_state_3_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 3
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#要挟该地官员加入
+	INA_vision_hunt_state_3_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 3
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#逼迫终末番出动
+	INA_vision_hunt_state_3_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 3
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#接管社奉行领地
+	#荒海
+	INA_vision_hunt_state_4_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 4
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#出动足轻
+	INA_vision_hunt_state_4_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 4
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#抓捕海乱鬼
+	INA_vision_hunt_state_4_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 4
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#一个不留
+	INA_vision_hunt_state_4_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 4
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#焦土政策
+    #影向山
+	INA_vision_hunt_state_5_operation = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 5
 			}
 		}
-		visible = {
-		   always = yes
-		}
-		
-		is_good = no 
-		
-	    fire_only_once = yes
-		
-		days_mission_timeout = 25
-		
-		timeout_effect = {                      
-			if = {
-			limit = {
-				original_tag = INA
-			}
-			INA = {
-			set_autonomy = {
-				target = SNA
-				autonomy_state = autonomy_free
-			    }
-			}
-			SNA = { leave_faction = yes  #add_ideas = SNA_war_start_hidden_idea}
-			INA = { 
-				leave_faction = yes
-				set_autonomy = {
-					target = KUJ
-					autonomy_state = autonomy_free
-				}
-			}
-			declare_war_on = { target = SNA type = annex_everything }
-			clr_country_flag = INA_34_flag
-		}
-		else_if = {
-			limit = {
-				original_tag = SNA
-			}
-			INA = {
-			set_autonomy = {
-				target = SNA
-				autonomy_state = autonomy_free
-			    }
-			}
-			INA = { 
-				leave_faction = yes
-				set_autonomy = {
-					target = KUJ
-					autonomy_state = autonomy_free
-				}
-			}
-			SNA = { leave_faction = yes  #add_ideas = SNA_war_start_hidden_idea }
-			declare_war_on = { target = INA type = annex_everything }
-			clr_country_flag = INA_34_flag
-		    }           
-		}		
+
+		 icon = GFX_prepare_war_generic
+		 
+		 
+		 fire_only_once = no
+		 available = 
+		 {
+			always = no
+		 }
+		 complete_effect = {
+			custom_effect_tooltip = "INA_not_disturb"
+		 }
 	}
+	#影向山下
+	INA_vision_hunt_state_6_operation = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 6
+			}
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 fire_only_once = no
+		 available = 
+		 {
+			always = no
+		 }
+		 complete_effect = {
+			custom_effect_tooltip = "INA_not_disturb"
+		 }
+	}
+	#北绀田
+	INA_vision_hunt_state_7_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 7
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#与离岛官员联动
+	INA_vision_hunt_state_7_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 7
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#鼓励参与眼狩令者
+	INA_vision_hunt_state_7_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 7
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#获取逮捕特权
+	INA_vision_hunt_state_7_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 7
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#接管勘定奉行领地
+	INA_vision_hunt_state_7_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 7
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#宣布军事戒严
+	#离岛
+	INA_vision_hunt_state_8_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 8
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#与离岛官员联动
+	INA_vision_hunt_state_8_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 8
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#鼓励参与眼狩令者
+	INA_vision_hunt_state_8_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 8
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#获取逮捕特权
+	INA_vision_hunt_state_8_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 8
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#接管勘定奉行领地
+	INA_vision_hunt_state_8_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 8
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#宣布军事戒严
+	#绀田村
+	INA_vision_hunt_state_9_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 9
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#与离岛官员联动
+	INA_vision_hunt_state_9_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 9
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#鼓励参与眼狩令者
+	INA_vision_hunt_state_9_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 9
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#获取逮捕特权
+	INA_vision_hunt_state_9_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 9
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#接管勘定奉行领地
+	INA_vision_hunt_state_9_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 9
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#宣布军事戒严
+    #白狐之野
+	INA_vision_hunt_state_10_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 10
+			}
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#加强安保力量
+	INA_vision_hunt_state_10_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 10
+			}
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#出动私家侦探
+	INA_vision_hunt_state_10_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 10
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#颁布稻妻城眼狩令法案
+	INA_vision_hunt_state_10_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 10
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#全盘搜查
+	INA_vision_hunt_state_10_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 10
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#军事戒严
+	#甘金岛
+	INA_vision_hunt_state_11_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 11
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#与神里家交涉
+	INA_vision_hunt_state_11_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 11
+			}
+			has_country_flag = INA_Vision_hunt_privilege
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#要求加强宣传攻势
+	INA_vision_hunt_state_11_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 11
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#要挟该地官员加入
+	INA_vision_hunt_state_11_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 11
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#逼迫终末番出动
+	INA_vision_hunt_state_11_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 11
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#接管社奉行领地
+	#长野原
+	INA_vision_hunt_state_12_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 12
+			}
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#加强安保力量
+	INA_vision_hunt_state_12_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 12
+			}
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#出动私家侦探
+	INA_vision_hunt_state_12_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 12
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#颁布长野原眼狩令法案
+	INA_vision_hunt_state_12_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 12
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#全盘搜查
+	INA_vision_hunt_state_12_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 12
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#军事戒严
+	#稻妻城
+	INA_vision_hunt_state_13_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 13
+			}
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#加强安保力量
+	INA_vision_hunt_state_13_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 13
+			}
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#出动私家侦探
+	INA_vision_hunt_state_13_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 13
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#颁布稻妻城眼狩令法案
+	INA_vision_hunt_state_13_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 13
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#全盘搜查
+	INA_vision_hunt_state_13_operation_5 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 13
+			}
+			has_country_flag = INA_continue_Vision_hunt
+			has_country_flag = INA_Vision_hunt_in_city
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#军事戒严
+	#天守阁
+	INA_vision_hunt_state_14_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 14
+			}
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#加强安保力量
+	INA_vision_hunt_state_14_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 14
+			}
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#天守阁大臣调查
+	INA_vision_hunt_state_14_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 14
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#与奥诘众联动
+	INA_vision_hunt_state_14_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 14
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#大规模身份筛查
+
+	#稻妻其他岛屿
+	INA_vision_hunt_state_15_operation_1 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 15
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#出动足轻调查
+	INA_vision_hunt_state_15_operation_2 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 15
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#抓捕海乱鬼
+	INA_vision_hunt_state_15_operation_3 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 15
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#一个不留
+	INA_vision_hunt_state_15_operation_4 = 
+	{
+		visible = 
+		{
+			check_variable = 
+			{
+				INA_choice_state = 15
+			}
+			has_country_flag = INA_continue_Vision_hunt
+		}
+
+		 icon = GFX_prepare_war_generic
+		 
+		 cost = 30
+		 
+		 days_remove = 7
+		 
+		 fire_only_once = no
+ 
+		 allowed = {
+			  original_tag = INA
+		 }
+		 ai_will_do = {
+			 factor = 50
+		 }
+		 modifier = {
+			 political_power_gain = -0.05
+		 }
+		 complete_effect = {
+		 }
+		 remove_effect = {
+			add_political_power = 20
+		 }
+	}#荒土政策
 }

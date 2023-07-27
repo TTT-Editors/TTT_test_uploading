@@ -1,10 +1,392 @@
 scripted_gui = {
-INA_decision_ui = {
+    war_beginning_ui = {
         context_type = decision_category
-        window_name = "INA_decision_ui_window"    
+        window_name = "INA_conflict_SNA_ui"
+        dirty = TTT_INA_conflict_SNA_ui_dirty
+
+        properties = {
+            BYI_Conflict_state_1 = 
+            {
+                frame = global.TTT_BYI_Conflict_State_1
+            }
+            BYI_Conflict_state_2 = 
+            {
+                frame = global.TTT_BYI_Conflict_State_2
+            }
+            BYI_Conflict_state_3 = 
+            {
+                frame = global.TTT_BYI_Conflict_State_3
+            }
+            BYI_Conflict_state_4 = 
+            {
+                frame = global.TTT_BYI_Conflict_State_4
+            }
+            BYI_Conflict_state_5 = 
+            {
+                frame = global.TTT_BYI_Conflict_State_5
+            }
+            BYI_Conflict_state_6 = 
+            {
+                frame = global.TTT_BYI_Conflict_State_6
+            }
+            BYI_Conflict_state_7 = 
+            {
+                frame = global.TTT_BYI_Conflict_State_7
+            }
+        }
+
+        effects = 
+        {
+            BYI_Conflict_state_1_button_click = 
+            {
+                set_variable = {
+                    INA_Island_choice = 1
+                }
+                add_political_power = 10
+            }
+            BYI_Conflict_state_2_button_click = 
+            {
+                set_variable = {
+                    INA_Island_choice = 2
+                }
+            }
+            BYI_Conflict_state_3_button_click = 
+            {
+                set_variable = {
+                    INA_Island_choice = 3
+                }
+            }
+            BYI_Conflict_state_4_button_click = 
+            {
+                set_variable = {
+                    INA_Island_choice = 4
+                }
+            }
+            BYI_Conflict_state_5_button_click = 
+            {
+                set_variable = {
+                    INA_Island_choice = 5
+                }
+            }
+            BYI_Conflict_state_6_button_click = 
+            {
+                set_variable = {
+                    INA_Island_choice = 6
+                }
+            }
+            BYI_Conflict_state_7_button_click = 
+            {
+                set_variable = {
+                    INA_Island_choice = 7
+                }
+            }
+        }
     }
-war_beginning_ui = {
-    context_type = decision_category
-    window_name = "war_beginning_ui"
+    INA_PingDing_use = 
+    {
+        window_name = "INA_PingDing_use"
+        context_type = player_context
+        parent_window_token = politics_tab
+
+        visible = {
+            tag = INA
+            NOT = {has_country_flag = INA_raiden_EI_leads_new_inazuma}
+        }
+        effects = {
+            INA_PingDing_use_button_click = 
+            {
+                if = {
+					limit = { NOT = {has_country_flag = PingDing_Gui_open}}
+					set_country_flag = PingDing_Gui_open
+				}
+				else_if = {
+					limit = { has_country_flag = PingDing_Gui_open}
+					clr_country_flag = PingDing_Gui_open
+				}
+            }
+        }
+    }
+    INA_PingDing_background = 
+    {
+        window_name = "INA_PingDing_background"
+        context_type = player_context
+
+        visible = {
+            has_country_flag = PingDing_Gui_open
+        }
+        effects = {
+            INA_PingDing_exit_click =
+            {
+                clr_country_flag = PingDing_Gui_open
+            }
+        }
+    }
+
+    INA_PingDing_laws_display_screen = 
+    {
+        window_name = INA_PingDing_laws_display_screen
+        context_type = player_context
+        parent_window_name = INA_PingDing_background
+
+        visible = {
+            always = yes
+        }
+    }
+    INA_PingDing_laws_history_window = 
+    {
+        window_name = INA_PingDing_laws_history_window
+        context_type = player_context
+        parent_window_name = INA_PingDing_background
+
+        visible = {
+            always = yes
+        }
+        dynamic_lists = {
+            laws_history_list = {
+                array = INA_laws_history_list
+                index = INA_laws_history_list_i
+                entry_container = INA_laws_history_list
+                value = INA_laws_history_list_id
+             }
+        }
+    }
+
+
+
+    INA_pingDing_main = 
+    {
+        window_name = "INA_pingDing_main"
+        context_type = player_context
+        parent_window_name = INA_PingDing_background
+
+        visible = {
+            always = yes
+        }
+
+        properties = {
+            INA_pingding_1 = {
+                frame = TTT_pingding_1
+            }
+
+            INA_pingding_2 = {
+                frame = TTT_pingding_2
+            }
+
+            INA_pingding_3 = {
+                frame = TTT_pingding_3
+            }
+
+            INA_pingding_4 = {
+                frame = TTT_pingding_4
+            }
+
+            INA_pingding_5 = {
+                frame = TTT_pingding_5
+            }
+
+            INA_pingding_6 = {
+                frame = TTT_pingding_6
+            }
+
+            INA_pingding_7 = {
+                frame = TTT_pingding_7
+            }
+
+            INA_pingding_8 = {
+                frame = TTT_pingding_8
+            }
+
+            INA_pingding_9 = {
+                frame = TTT_pingding_9
+            }
+
+            INA_pingding_10 = {
+                frame = TTT_pingding_10
+            }
+
+            INA_pingding_11 = {
+                frame = TTT_pingding_11
+            }
+
+            INA_pingding_12 = {
+                frame = TTT_pingding_12
+            }
+        }
+
+    }
+
+
+
+
+
+    INA_PianCha_use = 
+    {
+        window_name = "INA_PianCha_use"
+        context_type = player_context
+        parent_window_token = politics_tab
+
+        visible = {
+            original_tag = INA
+        }
+        effects = {
+            INA_PianCha_use_button_click = 
+            {
+                if = {
+					limit = { NOT = {has_country_flag = PianCha_Gui_open}}
+					set_country_flag = PianCha_Gui_open
+				}
+				else_if = {
+					limit = { has_country_flag = PianCha_Gui_open}
+					clr_country_flag = PianCha_Gui_open
+				}
+            }
+        }
+    }
+    INA_PianCha_window = 
+    {
+        window_name = "INA_PianCha_window"
+        context_type = player_context
+
+        visible = {
+            has_country_flag = PianCha_Gui_open
+        }
+
+        effects = {
+            left_button_left_click = 
+            {
+                add_to_variable = {
+                    PianZhi_Amount = 1
+                }
+                clamp_variable = { var = PianZhi_Amount min = 0 max = 100 }
+            }
+            left_button_right_click = 
+            {
+                add_to_variable = {
+                    PianZhi_Amount = 5
+                }
+                clamp_variable = { var = PianZhi_Amount min = 0 max = 100 }
+            }
+            right_button_left_click = 
+            {
+                subtract_from_variable = {
+                    PianZhi_Amount = 1
+                }
+                clamp_variable = { var = PianZhi_Amount min = 0 max = 100 }
+            }
+            right_button_right_click = 
+            {
+                subtract_from_variable = {
+                    PianZhi_Amount = 5
+                }
+                clamp_variable = { var = PianZhi_Amount min = 0 max = 100 }
+            }
+        }
+
+        properties = {
+            INA_PianZhi_dial = {
+                frame = PianZhi_Amount
+            }
+        }
+
+    }
+
+    Vision_hunt_window = 
+    {
+        context_type = decision_category
+        window_name = "Vision_hunt_window"
+
+        effects = 
+        {
+            INA_vision_hunt_state_1_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 1
+                }
+            }
+            INA_vision_hunt_state_2_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 2
+                }
+            }
+            INA_vision_hunt_state_3_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 3
+                }
+            }
+            INA_vision_hunt_state_4_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 4
+                }
+            }
+            INA_vision_hunt_state_5_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 5
+                }
+            }
+            INA_vision_hunt_state_6_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 6
+                }
+            }
+            INA_vision_hunt_state_7_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 7
+                }
+            }
+            INA_vision_hunt_state_8_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 8
+                }
+            }
+            INA_vision_hunt_state_9_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 9
+                }
+            }
+            INA_vision_hunt_state_10_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 10
+                }
+            }
+            INA_vision_hunt_state_11_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 11
+                }
+            }
+            INA_vision_hunt_state_12_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 12
+                }
+            }
+            INA_vision_hunt_state_13_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 13
+                }
+            }
+            INA_vision_hunt_state_14_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 14
+                }
+            }
+            INA_vision_hunt_state_15_click = 
+            {
+                set_variable = {
+                    INA_choice_state = 15
+                }
+            }
+        }
     }
 }	

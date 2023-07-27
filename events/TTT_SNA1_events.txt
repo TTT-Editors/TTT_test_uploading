@@ -205,23 +205,16 @@ country_event =
 					create_unit = {
 						division = " division_template = \"Sangonomiya Milita\" start_experience_factor = 0" 
 						owner = SNA
-						count = 2
+						count = 1
 					}
 				}
 				89 = {
 					create_unit = {
 						division = " division_template = \"Sangonomiya Milita\" start_experience_factor = 0" 
 						owner = SNA
-						count = 2
+						count = 1
 					}
-				}
-				90 = {
-					create_unit = {
-						division = " division_template = \"Sangonomiya Milita\" start_experience_factor = 0" 
-						owner = SNA
-						count = 2
-					}
-				}		   
+				}	   
 	   }
 }
 
@@ -239,7 +232,8 @@ country_event = {
 	       name = XinHai.10.a
 		   leave_faction = yes
 		   set_cosmetic_tag = kokomi_SNA
-           random_owned_controlled_state=
+		#if = {limit = {is_ai = yes} add_ideas = SNA_war_start_hidden_idea}
+		   random_owned_controlled_state=
 			 {
 			      add_extra_state_shared_building_slots = 2
 				  add_building_construction = {
@@ -259,12 +253,7 @@ country_event = {
             load_focus_tree = Second_Stage
 			set_country_flag = Second_Stage
 			#load_focus_tree = INA_Second_Stage
-			KUJ = {
-				declare_war_on = {
-					target = SNA
-					type = annex_everything 
-				}
-		    }			
+			#KUJ = { declare_war_on = { target = SNA type = annex_everything } }			
 			hidden_effect = {
 				news_event = { id = global_news.9 hours = 2 }
 			} 

@@ -136,7 +136,6 @@ ideas = {
 
 		}
 		Folk_power = {      #乌合之众
-			
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
@@ -156,124 +155,42 @@ ideas = {
 			   land_doctrine_cost_factor = 0.20
 			   experience_gain_army_unit_factor = -0.05
 			}
-			
-			
-			
 			cancel_if_invalid = no
-
 		}
-	}
-
-    Publicity_policy = { #法治建设
-		law = yes
-		use_list_view = yes
-	
-		National_supremacy = {   #人权至上  
-			
+		###狼群与部落（奔狼领特色法案）
+		Wolves_and_Hordes = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = you_degree_of_social_development_no
 					always = no
 				}
 			}
-			
+			allowed = {
+				always = no
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			visible = {
+				tag = BLL
+			}	
 			cost = 500
-			
 			removal_cost = -1
-			
 			modifier = {
+				experience_gain_army_factor = -0.02
+				army_org_factor = -0.05
+				army_attack_factor = -0.05
+				army_defence_factor = -0.05
+				land_reinforce_rate = -0.02
+				LAND_DOCTRINE_COST_FACTOR = 0.2
+				ARMY_SPEED_FACTOR = 0.05
+				supply_consumption_factor = -0.15
+				org_loss_when_moving = -0.1
+				army_morale_factor = 0.1
+				experience_loss_factor = -0.15
 			}
-			
-			
-			
 			cancel_if_invalid = no
-
 		}
-		Freedom_first = {   #德主刑辅  
-			
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
-			}
-			
-			cost = 500
-			
-			removal_cost = -1
-			
-			modifier = {
-			}
-			
-			default = yes
-			
-			cancel_if_invalid = no
-
-		}
-		People_first = {     #以法治国
-			
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
-			}
-			
-			cost = 500
-			
-			removal_cost = -1
-			
-			modifier = {
-			}
-			
-			
-			
-			cancel_if_invalid = no
-
-		}
-		Gonewith_Wind = {  #乱世重典
-			
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
-			}
-			
-			cost = 500
-			
-			removal_cost = -1
-			
-			modifier = {
-			}
-			
-			
-			
-			cancel_if_invalid = no
-
-		}
-		severe_law = {  #严刑峻法
-			
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
-			}
-			
-			cost = 500
-			
-			removal_cost = -1
-			
-			modifier = {
-			}
-			
-			
-			
-			cancel_if_invalid = no
-
-		}
-
 	}
 	
     Right_to_vote = {  #科研教育 
@@ -376,7 +293,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		Lack_education = {   #基本学术
+		Lack_education = {   #教育缺失
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -398,7 +315,7 @@ ideas = {
 			cancel_if_invalid = no
 
 		}
-		ideological_imprint = {   #基础教育
+		ideological_imprint = {   #思想烙印
 			
 			available = {
 				custom_trigger_tooltip = {
@@ -413,6 +330,7 @@ ideas = {
 			
 			modifier = {
 			    research_speed_factor = -0.10
+				stability_factor = 0.05
 			}
 			
 			
@@ -434,6 +352,7 @@ ideas = {
 			
 			modifier = {
 			    research_speed_factor = -0.20
+				stability_factor = 0.1
 			}
 			
 			cancel_if_invalid = no
@@ -459,6 +378,7 @@ ideas = {
 			
 			modifier = {
 			    industrial_capacity_factory = 0.40
+				industrial_capacity_dockyard = 0.40
 				production_speed_buildings_factor = 0.30
 				global_building_slots_factor = 0.30
 				conscription_factor = -0.20
@@ -484,6 +404,7 @@ ideas = {
 			
 			modifier = {
 			    industrial_capacity_factory = 0.30
+				industrial_capacity_dockyard = 0.30
 				production_speed_buildings_factor = 0.20
 				global_building_slots_factor = 0.20
 				conscription_factor = -0.15
@@ -509,6 +430,7 @@ ideas = {
 			
 			modifier = {
 			    industrial_capacity_factory = 0.20
+				industrial_capacity_dockyard = 0.20
 				production_speed_buildings_factor = 0.10
 				global_building_slots_factor = 0.10
 				conscription_factor = -0.10
@@ -534,6 +456,7 @@ ideas = {
 			
 			modifier = {
 			    industrial_capacity_factory = 0.10
+				industrial_capacity_dockyard = 0.10
 				production_speed_buildings_factor = 0.05
 				global_building_slots_factor = 0.05
 				conscription_factor = -0.05
@@ -557,11 +480,17 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+				stability_factor = 0.025
 			    industrial_capacity_factory = -0.10
+				industrial_capacity_dockyard = -0.10
 				production_speed_buildings_factor = -0.05
 				global_building_slots_factor = -0.05
 				conscription_factor = 0.05
 				industry_repair_factor = -0.05
+				airforce_intel_to_others = -5
+				army_intel_to_others = -5
+				civilian_intel_to_others = -5
+				navy_intel_to_others = -5
 			}
 			
 			
@@ -582,11 +511,17 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+				stability_factor = 0.05
 			    industrial_capacity_factory = -0.20
+				industrial_capacity_dockyard = -0.20
 				production_speed_buildings_factor = -0.10
 				global_building_slots_factor = -0.10
 				conscription_factor = 0.10
 				industry_repair_factor = -0.10
+				airforce_intel_to_others = -10
+				army_intel_to_others = -10
+				civilian_intel_to_others = -10
+				navy_intel_to_others = -10
 			}
 			
 			
@@ -607,11 +542,17 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+				stability_factor = 0.075
 			    industrial_capacity_factory = -0.30
+				industrial_capacity_dockyard = -0.30
 				production_speed_buildings_factor = -0.20
 				global_building_slots_factor = -0.20
 				conscription_factor = 0.15
 				industry_repair_factor = -0.15
+				airforce_intel_to_others = -15
+				army_intel_to_others = -15
+				civilian_intel_to_others = -15
+				navy_intel_to_others = -15
 			}
 			
 			
@@ -632,11 +573,17 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+				stability_factor = 0.1
 			    industrial_capacity_factory = -0.40
+				industrial_capacity_dockyard = -0.40
 				production_speed_buildings_factor = -0.30
 				global_building_slots_factor = -0.30
 				conscription_factor = 0.20
 				industry_repair_factor = -0.20
+				airforce_intel_to_others = -20
+				army_intel_to_others = -20
+				civilian_intel_to_others = -20
+				navy_intel_to_others = -20
 			}
 			
 			

@@ -1,19 +1,24 @@
-##MOT_Standpoint_decision_category= {
+MOT_Standpoint_decision_category= {
+	priority = 1
+	allowed = {
+		or = {
+			tag = BLL
+			tag = DLK
+			tag = DSC
+			tag = ALS
+			tag = FXE
+			tag = QQZ
+			tag = MDQ
+			tag = TWL
+		}
+	}
+	visible = {
+       always = yes
+	}
+	scripted_gui = MOT_Common_ui
+	visible_when_empty = yes
+}
 
-##	priority = 3
-
-##	scripted_gui = MOT_Standpoint_ui
-
-##	allowed = {
-##		original_tag = MOT
-##	}
-
-##	visible = {
-   ##    always = yes
-	###}
-
-	##visible_when_empty = yes
-##}
 MOT_open_gui_map_decision_category = {
 	priority = 2
 	allowed = {
@@ -45,6 +50,16 @@ MOT_Progress_decision_category = {
 	scripted_gui = MOT_Progress
 	visible = {
        always = yes
+	}
+	visible_when_empty = yes
+}
+MOT_test_decision_category = {
+	priority = 10
+	allowed = {
+		original_tag = MOT
+	}
+	visible = {
+       is_debug = yes
 	}
 	visible_when_empty = yes
 }

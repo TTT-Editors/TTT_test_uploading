@@ -1,0 +1,112 @@
+ZDG_extreme_northern_palace = {
+	initial_value = 0.1
+	left_side = ZDG_empire_failure
+	right_side = ZDG_crown_treasure
+	decision_category = ZDG_decision_category2
+	range = {
+			id = ZDG_extreme_northern_range
+		    min = -0.1
+		    max = 0.3
+			modifier = {
+				stability_factor = 0.05
+			    war_support_factor = 0.05
+			    custom_modifier_tooltip = ZDG_extreme_northern_range_tt
+			}
+		}
+	side = {
+		id = ZDG_empire_failure
+		icon = GFX_idea_ZDG_empire_failure_bop
+		range = {
+			id = ZDG_empire_failure_a
+			min = -1
+			max = -0.81
+			modifier = {
+				stability_factor = -0.5
+			    war_support_factor = -0.5
+				custom_modifier_tooltip = ZDG_empire_failure_a_tt
+			}
+			on_activate = {
+			    hidden_effect = {
+			    set_country_flag = ZDG_complete_failure
+		        }
+				custom_effect_tooltip = ZDG_empire_failure_tt
+			}
+			on_deactivate = {			    
+			    hidden_effect = {
+			    clr_country_flag = ZDG_complete_failure
+		        }
+		    }
+		}
+		range = {
+			id = ZDG_empire_failure_b
+			min = -0.8
+			max = -0.51
+			modifier = {
+				stability_factor = -0.2
+			    war_support_factor = -0.2
+				custom_modifier_tooltip = ZDG_empire_failure_b_tt
+			}
+			on_activate = {			   
+			    set_country_flag = ZDG_empire_failure_bflag
+				custom_effect_tooltip = ZDG_empire_failure_bflag
+			}
+			on_deactivate = {			    
+			    hidden_effect = {
+			    clr_country_flag = ZDG_empire_failure_bflag
+		        }
+		    }
+		}
+		range = {
+			id = ZDG_empire_failure_c
+			min = -0.5
+			max = -0.11
+			modifier = {
+				stability_factor = -0.05
+			    war_support_factor = -0.05
+				custom_modifier_tooltip = ZDG_empire_failure_c_tt
+			}
+		}
+	}
+	side = {
+		id = ZDG_crown_treasure
+		icon = GFX_idea_ZDG_crown_treasure_bop
+		range = {
+			id = ZDG_crown_treasure_a
+			min = 0.31
+			max = 0.7
+			modifier = {
+				stability_factor = 0.10
+			    war_support_factor = 0.10
+				custom_modifier_tooltip = ZDG_crown_treasure_a_tt
+			}
+			on_activate = {			   
+			    set_country_flag = ZDG_crown_treasure_aflag
+				custom_effect_tooltip = ZDG_crown_treasure_aflage
+			}
+			on_deactivate = {			    
+			    hidden_effect = {
+			    clr_country_flag = ZDG_crown_treasure_aflag
+		        }
+		    }
+		}
+		range = {
+			id = ZDG_crown_treasure_b
+			min = 0.71
+			max = 1
+			modifier = {
+				stability_factor = 0.10
+			    war_support_factor = 0.10
+				custom_modifier_tooltip = ZDG_crown_treasure_b_tt
+			}
+			on_activate = {			   
+			    set_country_flag = ZDG_crown_treasure_bflag
+				custom_effect_tooltip = ZDG_crown_treasure_bflag
+			}
+			on_deactivate = {			    
+			    hidden_effect = {
+			    clr_country_flag = ZDG_crown_treasure_bflag
+		        }
+		    }
+		}
+	}
+}

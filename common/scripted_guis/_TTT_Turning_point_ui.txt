@@ -40,6 +40,23 @@ scripted_gui = {
             has_global_flag = Turning_point_enable 
         }
 
+        triggers = {
+            turning_point_event_page_down_visible = {
+                check_variable = {
+                    var = global.turning_point_event_array_index
+                    value = 0 
+                    compare = greater_than
+                }
+            }
+            turning_point_event_page_up_visible = {
+                check_variable = {
+                    var = global.turning_point_event_array_index
+                    value = global.turning_point_event_array^num 
+                    compare = less_than
+                }
+            }
+        }
+
         effects = {
             close_button_click = {
                 clr_global_flag = Turning_point_enable
@@ -63,15 +80,27 @@ scripted_gui = {
             turning_point_event_button_click = {
                 Turning_Point_choose_event = yes
             }
+            turning_point_event_page_up_click = {
+                add_to_variable = {
+                    var = global.turning_point_event_array_index
+                    value = 1
+                }
+            }
+            turning_point_event_page_down_click = {
+                add_to_variable = {
+                    var = global.turning_point_event_array_index
+                    value = -1
+                }
+            }
         }
 
         dynamic_lists = {
-			turning_point_event_gird = {
-				array = global.turning_point_event_array
-				change_scope = yes
-				entry_container = turning_point_event_window
-				index  = turning_point_event_array_index
-			}
+			# turning_point_event_gird = {
+			# 	array = global.turning_point_event_array
+			# 	change_scope = yes
+			# 	entry_container = turning_point_event_window
+			# 	index  = turning_point_event_array_index
+			# }
             turning_point_country_major_gird = {
 				array = global.turning_point_country_major
 				change_scope = yes
@@ -86,7 +115,7 @@ scripted_gui = {
 
         properties = {
 			turning_point_event_icon = { 
-                image = "GFX_[?global.Turning_Point_event.GetTag]_[?turning_point_event_array_index]_[?global.turning_point_event_id^turning_point_event_array_index]_icon" 
+                image = "GFX_[?global.Turning_Point_event.GetTag]_[?global.turning_point_event_array_index]_[?global.turning_point_event_id^turning_point_event_array_index]_icon" 
             }
             turning_point_country_major_icon = { 
                 image = [THIS.GetFlag]

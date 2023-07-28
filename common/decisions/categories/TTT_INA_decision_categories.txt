@@ -1,4 +1,25 @@
 #genshin_countries
+#眼狩令
+INA_Vision_hunt_decision = {
+	icon = power_struggle
+    
+	scripted_gui = Vision_hunt_window
+	
+	allowed = {
+		#has_country_flag = INA_Vision_hunt_decision
+		#NOT = { has_country_flag = INA_Vision_hunt_paused }
+		is_debug = yes
+	}
+	
+	visible_when_empty = yes
+
+	visible = { 
+		tag = INA
+		#has_country_flag = INA_Vision_hunt_decision 
+	}
+	priority = 120
+} 
+
 X_INA_propaganda_campaigns = {
 	priority = 100
 	icon = SOV_propaganda
@@ -15,19 +36,33 @@ X_INA_propaganda_campaigns = {
 
 INA_war_beginning = 
 {
-	priority = 100
+	priority = 1000
 	icon = GFX_prepare_war
     allowed = {
 		original_tag = INA
-		has_country_flag = INA_34_flag
 		#消除条件：内战结束
 		#NOT = { has_country_flag = INA_war_end }
 	}
 
 	visible = 
 	{
-        has_country_flag = INA_34_flag
+        always = yes
 		#NOT = { has_country_flag = INA_war_end }
 	}
 	scripted_gui = war_beginning_ui
+}
+
+INA_pianzhi_test = 
+{
+	priority = 30
+	icon = null
+	allowed = 
+	{
+		original_tag = INA
+		is_debug = yes
+	}
+	visible = 
+	{
+		is_debug = yes
+	}
 }

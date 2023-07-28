@@ -1,0 +1,926 @@
+shared_focus =
+{
+	id = INA_First_stage#百年后
+	icon = GFX_INA_goal_1
+    allow_branch = {
+		NOT = 
+		{
+			has_country_flag = INA_War_Beginning_stage
+		}
+	}
+	x = 1
+	y = 1
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		add_political_power = 50
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_1#评定所
+	icon = GFX_INA_goal_2
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage
+	}
+	x = -1
+	y = 1
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		country_event = INA_events.1 
+		add_political_power = 10
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_2 #三大奉行
+	icon = GFX_INA_goal_3
+	relative_position_id = INA_First_stage
+	x = 1
+	y = 1
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = INA_First_stage
+	}
+	completion_reward = {
+		add_stability = 0.01
+	}
+	select_effect = {
+		country_event = {id = INA_events.2 days = 5}
+		country_event = {id = INA_events.3 days = 10}
+		country_event = {id = INA_events.4 days = 15}
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_3 #解决问题
+	icon = GFX_INA_goal_5
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_1
+	}
+	prerequisite = {
+		focus = INA_First_stage_2
+	}
+	x = 0
+	y = 2
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		add_political_power = 20
+		add_stability = 0.01
+		add_war_support = 0.01
+		custom_effect_tooltip = INA_first_problen
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_4 #增加工资
+	icon = GFX_INA_goal_12
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_3
+	}
+	x = -3
+	y = 3
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = INA_reduce_army_pressure
+		custom_effect_tooltip = INA_add_ecomony_pressure
+		hidden_effect = {
+			INA_army_conscription_easier = yes
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_5 #隐形之手
+	icon = GFX_INA_goal_7
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_3
+	}
+	x = 3
+	y = 3
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = INA_reduce_ecomony_pressure
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_6#安抚八酝岛鸣神民
+	icon = GFX_INA_goal_22
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_3
+	}
+	mutually_exclusive = {
+		focus = INA_First_stage_7
+	}
+	x = -1
+	y = 4
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = INA_mild
+		custom_effect_tooltip = INA_add_ecomony_pressure
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_7 #抓壮丁！
+	icon = GFX_INA_goal_4
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_3
+	}
+	mutually_exclusive = {
+		focus = INA_First_stage_6
+	}
+	x = 1
+	y = 4
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = INA_harshly
+		custom_effect_tooltip = INA_reduce_army_pressure
+		custom_effect_tooltip = INA_reduce_army_quality
+		custom_effect_tooltip = INA_conscription_low_action_on_War_extend
+		hidden_effect = 
+		{
+			INA_army_conscription_easier = yes
+		}
+		set_country_flag = INA_conscription_law_flag_extend
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_8 #抓捕寻衅滋事者
+	icon = GFX_INA_goal_10
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_6
+		focus = INA_First_stage_7
+	}
+	x = 0
+	y = 5
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		add_stability = 0.05
+		add_manpower = -8000
+		custom_effect_tooltip = INA_bayun_north_order
+		hidden_effect = {
+			country_event = 
+			{
+				id = INA_events.13
+			}
+			88 = 
+			{
+				add_compliance = 15
+				add_resistance = -15
+			}
+			82 = 
+			{
+				add_compliance = 15
+				add_resistance = -15
+			}
+			83 = 
+			{
+				add_compliance = 15
+				add_resistance = -15
+			}
+			85 = 
+			{
+				add_compliance = 15
+				add_resistance = -15
+			}
+			373 = 
+			{
+				add_compliance = 15
+				add_resistance = -15
+			}
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_9 #眼狩之令
+	icon = GFX_INA_goal_33
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_8
+	}
+	prerequisite = {
+		focus = INA_First_stage_10
+	}
+	prerequisite = {
+		focus = INA_First_stage_11
+	}
+	x = 0
+	y = 6
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		set_country_flag = INA_start_Vision_hunt
+		custom_effect_tooltip = INA_Vision_hunt_law
+		hidden_effect = 
+		{
+			country_event = 
+			{
+				id = INA_events.12
+			}
+			swap_ideas = 
+			{
+				add_idea = INA_putrid_Shogunate_Army_quality_1
+				remove_idea = INA_putrid_Shogunate_Army_quality_2
+			}
+		}
+	}
+	select_effect = {
+		country_event = 
+		{
+			id = INA_events.15
+			days = 15
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_10 #征兵法案
+	icon = GFX_INA_goal_9
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_4
+	}
+	x = -3
+	y = 5
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		army_experience = 10
+	    add_war_support = 0.01
+		add_ideas = INA_short_conscription_law
+		set_country_flag = INA_conscription_law_flag
+	}
+}
+
+shared_focus =
+{
+	id = INA_First_stage_11 #绛票扩印
+	icon = GFX_INA_goal_6
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_5
+	}
+	x = 3
+	y = 5
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		add_ideas = INA_purple_cash
+		custom_effect_tooltip = INA_reduce_ecomony_pressure
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree #眼狩令开始
+	icon = GFX_INA_goal_11
+    
+	allow_branch = {has_country_flag = INA_start_Vision_hunt}
+	x = 9
+	y = 1
+	cost = 35.00
+	ai_will_do = {
+		factor = 100 
+	}
+	completion_reward = {
+		add_stability = 0.01
+		add_war_support = 0.01
+		add_manpower = -50
+		custom_effect_tooltip = INA_Vision_hunt_first_day
+		custom_effect_tooltip = INA_reduce_army_quality
+		hidden_effect = {
+			INA_reduce_army_quality = yes
+		}
+		subtract_from_variable = {
+			INA_state_14_eyes = 30
+		}
+		add_to_variable = {
+			INA_get_eyes = 30
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_1 #出动同心
+	icon = GFX_INA_goal_13
+	relative_position_id = INA_Vision_Hunt_Decree
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree
+	}
+	x = 0
+	y = 1
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		add_political_power = 25
+		custom_effect_tooltip = INA_chudong_tongxin
+        set_country_flag = INA_Vision_hunt_in_city
+		subtract_from_variable = {
+			INA_state_13_eyes = 12
+		}
+		subtract_from_variable = {
+			INA_state_12_eyes = 8
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_2 #眼狩重心·稻妻城
+	icon = GFX_INA_goal_14
+	relative_position_id = INA_Vision_Hunt_Decree
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree_1
+	}
+	mutually_exclusive =
+	{
+		focus = INA_Vision_Hunt_Decree_3
+	}
+	x = -1
+	y = 2
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = INA_focus_inazuma_city
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_3 #眼狩中心·鸣神岛
+	icon = GFX_INA_goal_15
+	relative_position_id = INA_Vision_Hunt_Decree
+	available = {
+		has_country_flag = INA_Vision_hunt_extend
+	}
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree_1
+	}
+	mutually_exclusive =
+	{
+		focus = INA_Vision_Hunt_Decree_2
+	}
+	x = 1
+	y = 2
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = INA_focus_all_inazuma
+		set_country_flag = "INA_Vision_hunt_privilege"
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_4 #动用私刑
+	icon = GFX_INA_goal_16
+	relative_position_id = INA_Vision_Hunt_Decree
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree_2
+	}
+	x = -1
+	y = 4
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = "INA_SiXing"
+		country_event = 
+		{
+             id = INA_events.16
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_5 #就地裁决
+	icon = GFX_INA_goal_17
+	relative_position_id = INA_Vision_Hunt_Decree
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree_3
+	}
+	x = 1
+	y = 4
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = "INA_Kill_Them"
+		country_event = 
+		{
+             id = INA_events.17
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_6 #千手百眼
+	icon = GFX_INA_goal_34
+	relative_position_id = INA_Vision_Hunt_Decree
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree_4
+		focus = INA_Vision_Hunt_Decree_5
+	}
+	x = 0
+	y = 6
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = INA_eternity
+			add_idea = INA_eternity_extend_1
+		}
+		custom_effect_tooltip = INA_get_success_result
+		custom_effect_tooltip = INA_Vision_hunt_paused
+		country_event = 
+		{
+			id = INA_events.14
+	    }
+		set_temp_variable = {
+			INA_get_eyes_stability = INA_get_eyes
+		}
+		divide_temp_variable = {
+			INA_get_eyes_stability = 1000
+		}
+		add_political_power = INA_get_eyes
+		add_stability = INA_get_eyes_stability
+	    hidden_effect = {
+			add_political_power = INA_get_eyes
+		}
+	}
+}
+
+shared_focus =
+{
+	id = INA_Vision_Hunt_Decree_7 #一阶段成果
+	icon = GFX_INA_goal_21
+	relative_position_id = INA_Vision_Hunt_Decree
+	prerequisite = {
+		focus = INA_Vision_Hunt_Decree_2
+		focus = INA_Vision_Hunt_Decree_3
+	}
+	available = {
+		OR = {
+		   has_completed_focus = INA_Vision_Hunt_Decree_4
+		   has_completed_focus = INA_Vision_Hunt_Decree_5
+		}
+	}
+	x = 0
+	y = 3
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	completion_reward = {
+		custom_effect_tooltip = INA_Vision_hunt_result_first
+		set_country_flag = INA_Vision_hunt_paused
+		country_event = 
+		{
+			id = INA_events.18
+		}
+
+
+		set_country_flag = INA_War_Beginning_stage
+		clr_country_flag = INA_start_Vision_hunt
+	}
+}
+
+#内战开始
+shared_focus = {
+	id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+    allow_branch = {
+		has_country_flag = INA_War_Beginning_stage
+	}
+	x = 3
+	y = 0
+	completion_reward={ 
+		custom_effect_tooltip = "INA_war_beginning_for_SNA"
+	}
+}
+shared_focus = {
+	id = INA_war_beginning_1
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning}
+	x = 0
+	y = 1
+	completion_reward={ 
+		country_event = INA_events.9
+	}
+}
+shared_focus = {
+	id = INA_war_beginning_2
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning}
+	x = 2
+	y = 1
+	completion_reward={ 
+		custom_effect_tooltip = "zhuanyi"
+		372 = 
+		{
+			add_building_construction =
+			{
+				  type = arms_factory
+				  level = -2
+				  instant_build = yes
+			}
+			add_manpower = -1000000
+		}
+		84 = 
+		{
+			add_building_construction =
+			{
+				  type = industrial_complex
+				  level = -2
+				  instant_build = yes
+			 }
+			add_manpower = -200000
+		}
+		370 = 
+		{
+			add_building_construction =
+			{
+				  type = industrial_complex
+				  level = -2
+				  instant_build = yes
+			}
+			add_manpower = -200000
+		}
+		76 = 
+		{
+			add_extra_state_shared_building_slots = 2
+				 add_building_construction = {
+				  type = arms_factory
+				  level = 2
+				  instant_build = yes
+			  }
+			add_manpower = 1000000
+		}
+		78 = 
+		{
+			add_extra_state_shared_building_slots = 2
+				 add_building_construction = {
+				  type = arms_factory
+				  level = 2
+				  instant_build = yes
+			  }
+			add_manpower = 200000
+		}
+		365 = 
+		{
+			add_extra_state_shared_building_slots = 2
+				 add_building_construction = {
+				  type = arms_factory
+				  level = 2
+				  instant_build = yes
+			  }
+			add_manpower = 200000
+		}
+		add_war_support = -0.05
+		add_stability = -0.05
+	}
+}
+shared_focus = {
+	id = INA_war_beginning_3
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning_1 }
+	x = 0
+	y = 2
+	completion_reward={ 
+		country_event = INA_events.10
+	}
+}
+shared_focus = {
+	id = INA_war_beginning_4
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning_2 }
+	x = 2
+	y = 2
+	completion_reward={ 
+	}
+}
+shared_focus = {
+	id = INA_war_beginning_5
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning_3}
+	mutually_exclusive = {focus = INA_war_beginning_6}
+	x = -1
+	y = 3
+	completion_reward={ 
+	}
+}
+shared_focus = {
+	id = INA_war_beginning_6
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning_3 }
+	mutually_exclusive = {focus = INA_war_beginning_5}
+	x = 1
+	y = 3
+	completion_reward={ 
+	}
+}
+
+shared_focus = {       
+	id = INA_war_beginning_7
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning_4}
+	x = 2
+	y = 4
+	completion_reward={ 
+		INA = {
+			end_puppet = SNA
+			release_autonomy = {
+				target = KUJ
+				autonomy_state = autonomy_inazuma
+				freedom_level = 0.5
+		 }
+		 hidden_effect = 
+		 {
+			KUJ = { transfer_state = 76 } 
+			KUJ = { transfer_state = 80 } 
+			KUJ = { transfer_state = 78 } 
+			KUJ = { transfer_state = 365 } 
+			KUJ = { transfer_state = 364 } 
+			KUJ = { transfer_state = 367 } 
+			KUJ = { transfer_state = 79 } 
+			KUJ = { transfer_state = 369 } 
+			KUJ = { transfer_state = 81 } 
+			KUJ = { transfer_state = 87 } 
+			KUJ = { transfer_state = 372 } 
+			KUJ = { transfer_state = 84 } 
+			KUJ = { transfer_state = 371 } 
+			KUJ = { transfer_state = 370 } 
+			KUJ = { transfer_state = 86 } 
+			KUJ = { transfer_state = 77 } 
+			KUJ = { add_state_core = 76 } 
+			KUJ = { add_state_core = 80 } 
+			KUJ = { add_state_core = 78 } 
+			KUJ = { add_state_core = 365 } 
+			KUJ = { add_state_core = 364 } 
+			KUJ = { add_state_core = 367 } 
+			KUJ = { add_state_core = 79 } 
+			KUJ = { add_state_core = 369 } 
+			KUJ = { add_state_core = 81 } 
+			KUJ = { add_state_core = 87 } 
+			KUJ = { add_state_core = 371 } 
+			KUJ = { add_state_core = 370 } 
+			KUJ = { add_state_core = 86 } 
+			KUJ = { add_state_core = 77 } 
+			KUJ = { add_state_core = 372 } 
+			KUJ = { add_state_core = 84 } 
+			KUJ = {load_oob = "KUJ"}
+			if = { 
+				limit = {has_country_flag = KUJ_get_weapons}
+				KUJ = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment 
+						amount = 1000
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 100
+					}
+					add_equipment_to_stockpile = {
+						type = artillery_equipment 
+						amount = 500
+					}
+					add_equipment_to_stockpile = {
+						type = ttt_uniform_eq
+						amount = 400
+					}
+					add_equipment_to_stockpile = {
+						type = grain_conversion_eq
+						amount = 1000
+					}
+				}
+			}
+			if = {
+				limit = {has_variable = KUJ_wapons_are_stolen}
+				multiply_variable = { KUJ_wapons_are_stolen = -400}
+				KUJ = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment 
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = -400}
+				multiply_variable = { KUJ_wapons_are_stolen = -40}
+				KUJ = 
+				{
+					add_equipment_to_stockpile = {
+						type = support_equipment 
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = -40}
+				multiply_variable = { KUJ_wapons_are_stolen = -500}
+				KUJ = 
+				{
+					add_equipment_to_stockpile = {
+						type = artillery_equipment 
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = -500}
+				multiply_variable = { KUJ_wapons_are_stolen = -80}
+				KUJ = 
+				{
+					add_equipment_to_stockpile = {
+						type = ttt_uniform_eq
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = -80}
+				multiply_variable = { KUJ_wapons_are_stolen = -400}
+				KUJ = 
+				{
+					add_equipment_to_stockpile = {
+						type = grain_conversion_eq
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = -400}
+				multiply_variable = { KUJ_wapons_are_stolen = 400}
+				SNA = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment 
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = 400}
+				multiply_variable = { KUJ_wapons_are_stolen = 40}
+				SNA = 
+				{
+					add_equipment_to_stockpile = {
+						type = support_equipment 
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = 40}
+				multiply_variable = { KUJ_wapons_are_stolen = 500}
+				SNA = 
+				{
+					add_equipment_to_stockpile = {
+						type = artillery_equipment 
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = 500}
+				multiply_variable = { KUJ_wapons_are_stolen = 80}
+				SNA = 
+				{
+					add_equipment_to_stockpile = {
+						type = ttt_uniform_eq
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+				subtract_from_variable = {KUJ_wapons_are_stolen = 80}
+				multiply_variable = { KUJ_wapons_are_stolen = 400}
+				SNA = 
+				{
+					add_equipment_to_stockpile = {
+						type = grain_conversion_eq
+						amount = KUJ_wapons_are_stolen
+					}
+				}
+			}
+		 }
+	  }
+   }
+}
+
+shared_focus = {
+	id = INA_war_beginning_8
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning_5 focus = INA_war_beginning_6 }
+	x = 0
+	y = 4
+	completion_reward={ 
+		country_event = INA_events.11
+	}
+}
+
+shared_focus = {
+	id = INA_war_beginning_9
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA
+	cost = 30.00
+	prerequisite={ focus = INA_war_beginning_7}
+	prerequisite={ focus = INA_war_beginning_8}
+	x = 1
+	y = 5
+	completion_reward={ 
+		KUJ = { #declare_war_on = { target = SNA type = annex_everything }
+			random_owned_controlled_state=
+			{
+			  add_extra_state_shared_building_slots = 2
+			  add_building_construction = {
+				  type = arms_factory
+				  level = 2
+				  instant_build = yes
+				 }
+			}
+			random_owned_controlled_state= {
+			  add_extra_state_shared_building_slots = 2
+			  add_building_construction = {
+				  type = arms_factory
+				  level = 2
+				  instant_build = yes
+			  }
+		   }
+		}
+	}
+}
+
+
+

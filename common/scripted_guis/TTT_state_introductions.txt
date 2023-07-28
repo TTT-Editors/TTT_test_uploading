@@ -2,34 +2,34 @@ scripted_gui = {
 	
 	TTT_show_introduction_button = {
 		
-		#ËÄÖÖcontext_type£¬·Ö±ðÊÇplayer_context£¨Ä¬ÈÏ£¬±ÈÈçtop_bar£©,selected_country_context£¨Õë¶ÔÑ¡ÖÐµÄ¹ú¼Ò£¬¶àÓÃÓÚÌØÊâµÄ¹ú¼Ò½»»¥£©£»
-		#selected_state_context£¨Õë¶ÔÑ¡ÖÐµÄÊ¡·Ý£¬¶àÓÃÓÚÌØÊâµÄÊ¡·Ý½»»¥£©£¬decision_category£¨¾öÒéGUI£©
+		#ï¿½ï¿½ï¿½ï¿½context_typeï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½player_contextï¿½ï¿½Ä¬ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½top_barï¿½ï¿½,selected_country_contextï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ÐµÄ¹ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		#selected_state_contextï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ðµï¿½Ê¡ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½decision_categoryï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GUIï¿½ï¿½
 		context_type = selected_state_context
 		window_name = "TTT_show_introduction_button"
 		parent_window_token = selected_state_view
 
-		#AIÄÜ²»ÄÜÓÃ£¿
+		#AIï¿½Ü²ï¿½ï¿½ï¿½ï¿½Ã£ï¿½
 		ai_enabled = {
 			always = no
 		}
 
 		visible = {
-			#Ê¡·ÝÓµÓÐÆæ¹Û
+			#Ê¡ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
 			state_has_wonder = yes
-			#Ö÷½çÃæÃ»ÓÐÕ¹¿ª
+			#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Õ¹ï¿½ï¿½
 			NOT = { has_global_flag = states_introduction_on_show }
 		}
 
 		effects = {
 			show_state_wonder_button_click = {
-				#Õ¹¿ªÖ÷½çÃæ
+				#Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				set_global_flag = states_introduction_on_show
 			}
 		}
 		
 	}
 	
-	#µØÇø½éÉÜÖ÷½çÃæ
+	#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	TTT_state_wonder_main_view = {
 		
 		context_type = selected_state_context
@@ -41,15 +41,15 @@ scripted_gui = {
 		}
 
 		visible = {
-			#Ê¡·ÝÓµÓÐÆæ¹Û
+			#Ê¡ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
 			state_has_wonder = yes
-			#Ö÷½çÃæÒÑ¾­Õ¹¿ª
+			#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Õ¹ï¿½ï¿½
 			has_global_flag = states_introduction_on_show
 		}
 
 		effects = {
 			close_state_wonder_button_click = {
-				#¹Ø±ÕÖ÷½çÃæ
+				#ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				clr_global_flag = states_introduction_on_show
 			}
 		}
@@ -59,5 +59,68 @@ scripted_gui = {
 			TTT_State_Wonder_Picture = { image = "[ROOT_GetStatePicture]" }
 		}
 	}
-	
+	##é£Žé­”é¾™è½°ç‚¸
+	TTT_MOT_dragon_bombardment = {
+		context_type = selected_state_context
+		window_name = "TTT_MOT_dragon_bombardment"
+		parent_window_token = selected_state_view
+		visible = {
+			is_debug = yes
+			Root = {
+				tag = MOT
+			}
+		}
+		effects = {
+			TTT_MOT_dragon_bombardment_button_click = {
+				damage_building = {
+					type = infrastructure
+					damage = 5
+				}
+				damage_building = {
+					type = rail_way
+					damage = 5
+				}
+				damage_building = {
+					type = arms_factory
+					damage = 5
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 5
+				}
+				damage_building = {
+					type = bunker
+					damage = 10
+				}
+				damage_building = {
+					type = coastal_bunker
+					damage = 10
+				}
+				damage_building = {
+					type = dockyard
+					damage = 10
+				}
+				damage_building = {
+					type = anti_air_building
+					damage = 10
+				}
+				damage_building = {
+					type = naval_base
+					damage = 10
+				}
+			}
+		}
+		triggers = {
+			TTT_MOT_dragon_bombardment_button_click_enabled = {
+				or = {
+					owner = {
+						has_war_with = MOT
+					}
+					controller = {
+						has_war_with = MOT
+					}
+				}
+			}
+		}
+	}
 }

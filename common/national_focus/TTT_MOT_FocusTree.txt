@@ -17,23 +17,41 @@ focus_tree = {
 		y = 1
 		
 		cost = 7
-
+		ai_will_do = {
+		    base = 15
+		}
+		available = {
+			NOT = {has_global_flag = MOT_dragon_crisis_is_over}
+			has_idea = MOT_crisis_of_Tewalin
+			NOT = {has_global_flag = MOT_dragon_crisis}
+			NOT = {has_global_flag = MOT_federal_route}
+			NOT = {has_global_flag = MOT_industrialization_program}
+			NOT = {has_global_flag = MOT_military_reform}
+			custom_trigger_tooltip = {
+				NOT = {has_global_flag = MOT_dragon_crisis_is_over}
+				NOT = {has_global_flag = MOT_dragon_crisis}
+				NOT = {has_global_flag = MOT_federal_route}
+				NOT = {has_global_flag = MOT_industrialization_program}
+				NOT = {has_global_flag = MOT_military_reform}
+            }
+		}
 		search_filters = {  }
 		completion_reward = {
 			swap_ideas = {
-			add_idea = MOT_crisis_of_Tewalin2 #风魔龙危机2
-			remove_idea = MOT_crisis_of_Tewalin #风魔龙危机
-		}
-		hidden_effect = { #此为隐藏效果
-			news_event = {
-			    id = global_news.39#事件id
-				days = 7#几天后触发
-			}#此为触发世界新闻
-			news_event = {
-			    id = global_news.41#事件id
-				days = 35#几天后触发
-			}#此为触发世界新闻
-		}
+				add_idea = MOT_crisis_of_Tewalin2 #风魔龙危机2
+				remove_idea = MOT_crisis_of_Tewalin #风魔龙危机
+			}
+			hidden_effect = { #此为隐藏效果
+				news_event = {
+					id = global_news.39#事件id
+					days = 7#几天后触发
+				}#此为触发世界新闻
+				news_event = {
+					id = global_news.41#事件id
+					days = 35#几天后触发
+				}#此为触发世界新闻
+			}
+			set_global_flag = MOT_dragon_crisis
 		}
 	}
 
@@ -45,51 +63,54 @@ focus_tree = {
 		y = 2
 		
 		cost = 7
+		ai_will_do = {
+		    base = 15
+		}
 		search_filters = {  }
 		completion_reward = {
 			custom_effect_tooltip = mot_0_02
 			hidden_effect = { #此为隐藏效果
-        MOT = {
-			country_event = { 
-				days = 21 id = MOT_event.3
-		}
-		}
-		TWL = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        BLL = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        DLK = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        QQZ = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        FXE = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        DSC = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-        MDQ = {
-			country_event = { 
-				days = 3 id = MOT_event.1
-		}
-		}
-		}
+				MOT = {
+					country_event = { 
+						days = 21 id = MOT_event.3
+					}
+				}
+				TWL = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				BLL = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				DLK = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				QQZ = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				FXE = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				DSC = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+				MDQ = {
+					country_event = { 
+						days = 3 id = MOT_event.1
+					}
+				}
+			}
 		}
 	}
 
@@ -101,14 +122,15 @@ focus_tree = {
 		y = 2
 		
 		cost = 14
+		ai_will_do = {
+		    base = 15
+		}
 		search_filters = {  }
 		completion_reward = {
 			add_stability = 0.05
 			custom_effect_tooltip = mot_0_03
 			hidden_effect = { #此为隐藏效果
-			country_event = { 
-				days = 1 id = MOT_event.2
-		    }
+				country_event = {days = 1 id = MOT_event.2}
 			}
 		}
 	}
@@ -121,17 +143,20 @@ focus_tree = {
 		y = 2
 		
 		cost = 14
+		ai_will_do = {
+		    base = 15
+		}
 		search_filters = {  }
 		completion_reward = {
 			add_political_power = -100
             swap_ideas = {
-			add_idea = MOT_wave_of_refugee2 #难民潮2
-			remove_idea = MOT_wave_of_refugee #难民潮
-		}
-		hidden_effect = { #此为隐藏效果
-			country_event = { 
-				days = 1 id = MOT_event.5
-		    }
+				add_idea = MOT_wave_of_refugee2 #难民潮2
+				remove_idea = MOT_wave_of_refugee #难民潮
+			}
+			hidden_effect = { #此为隐藏效果
+				country_event = { 
+					days = 1 id = MOT_event.5
+				}
 			}
 		}
 	}
@@ -147,6 +172,9 @@ focus_tree = {
 		y = 3
 		
 		cost = 7
+		ai_will_do = {
+		    base = 15
+		}
 		search_filters = {  }
 		completion_reward = {
 			add_stability = 0.05
@@ -165,9 +193,21 @@ focus_tree = {
 		y = 3
 		
 		cost = 14
+		ai_will_do = {
+		    base = 15
+		}
 		search_filters = {  }
 		completion_reward = {
-            add_war_support = 0.05
+            ##解锁支援军区的决议
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_01
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_02
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_03
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_04
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_05
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_06
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_07
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_08
+			unlock_decision_tooltip = MOT_Political_decision_support_military_region_09
 		}
 	}
 
@@ -180,25 +220,90 @@ focus_tree = {
 		y = 4
 		
 		cost = 35
+		ai_will_do = {
+		    base = 15
+		}
 		search_filters = {  }
+		available ={
+			always = no
+		}
 		completion_reward = {
-			news_event = {
-			    id = global_news.28#事件id
-				days = 1#几天后触发
-			}#此为触发世界新闻
+			if = {
+				limit ={
+					has_global_flag = Lock_MOT_Standpoint_decision_1
+				}
+				news_event = {
+					id = global_news.28#事件id
+					days = 1#几天后触发
+				}#此为触发世界新闻
+			}
+			else_if = {
+				limit ={
+					has_global_flag = Lock_MOT_Standpoint_decision_3
+				}
+				news_event = {
+					id = global_news.29#事件id
+					days = 1#几天后触发
+				}#此为触发世界新闻
+			}
+			
             hidden_effect = { #此为隐藏效果
-			news_event = {
-			    id = global_news.40#事件id
-				days = 7#几天后触发
-			}#此为触发世界新闻
-			news_event = {
-			    id = global_news.42#事件id
-				days = 70#几天后触发
-			}#此为触发世界新闻
+				country_event = { days = 70  id = MOT_event.8 }
+				news_event = {
+					id = global_news.40#事件id
+					days = 7#几天后触发
+				}#此为触发世界新闻
+				news_event = {
+					id = global_news.42#事件id
+					days = 70#几天后触发
+				}#此为触发世界新闻
+				set_global_flag = MOT_dragon_crisis_standpoint_is_locked
+				###此处解锁倒计时
+				set_variable = {
+					var = MOT_dragon_crisis_deadline_num
+					value = 0
+				}
+				##为蒙德自动选择
+				if = {
+					limit = {
+						ROOT = {
+							not = {
+								has_global_flag = Lock_MOT_Standpoint_decision_1
+								has_global_flag = Lock_MOT_Standpoint_decision_3
+							}
+						}
+					}
+					set_global_flag = Lock_MOT_Standpoint_decision_1
+					if = {
+						limit={
+							not = {
+								is_in_array = {
+									array = global.MOT_Standpoint_flag_array_01
+									value = MOT_Standpoint_country_num
+								}
+							}
+						}
+						MOT_Standpoint_config_flag_01 =YES
+					}
+				}
+				##为地方国家自动选择
+				every_country = {
+					limit = {
+						is_puppet_of = MOT
+					}
+					set_country_flag = MOT_Standpoint_choose_decision_01
+				}
+				##解锁进度条和倒计时
+				set_country_flag = MOT_Deadline_is_unlocked
+				set_country_flag = MOT_Progress_is_unlocked
+				every_country = {
+					limit = {
+						is_puppet_of = MOT
+					}
+					country_event = {id = MOT_event.18 days = 3}
+				}
 		    }
-            select_effect = {
-				 #国策不可取消，内填效果为国策持续时触发的效果
-            }
+			custom_effect_tooltip = MOT_tree_0_07_tooltip
 		}
 	}
 
@@ -213,13 +318,24 @@ focus_tree = {
 		cost = 42
 
 		ai_will_do = {
-		    base = 60
+		    base = 60 
+		}
+		available = {
+			has_global_flag = Lock_MOT_Standpoint_decision_1
 		}
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			##发布任务：观察
+			add_to_array = {
+				array = MOT_Political_grid_array
+				value = 1
+			}
+			add_to_array = {
+				array = global.MOT_naionalfocus_mission
+				value = 1
+				index = 0
+			}
+			custom_effect_tooltip = MOT_tree_0_08_tooltip
 		}
 	}
 
@@ -229,13 +345,28 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_08 }
 		x = 10
 		y = 6
+		available = {
+			check_variable = {MOT_Political_grid_array^0 = 4}
+			custom_trigger_tooltip = {
+				check_variable = {MOT_Political_grid_array^0 = 4}
+				tooltip =MOT_tree_0_09_trigger_tooltip
+			}
+		}
 		
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：探寻
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 2
+            }
+			add_to_array = {
+				array = global.MOT_naionalfocus_mission
+				value = 1
+				index = 1
+			}
+			custom_effect_tooltip = MOT_tree_0_09_tooltip
 		}
 	}
 
@@ -245,13 +376,27 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_09 }
 		x = 10
 		y = 7
-		
+		available = {
+			check_variable = {MOT_Political_grid_array^1 = 5}
+			custom_trigger_tooltip = {
+				check_variable = {MOT_Political_grid_array^1 = 5}
+				tooltip = MOT_tree_0_10_trigger_tooltip
+			}
+		}
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：准备净化
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 3
+            }
+			add_to_array = {
+				array = global.MOT_naionalfocus_mission
+				value = 1
+				index = 2
+			}
+			custom_effect_tooltip = MOT_tree_0_10_tooltip
 		}
 	}
 
@@ -261,13 +406,18 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_10 }
 		x = 10
 		y = 8
-		
 		cost = 35
 		search_filters = {  }
+		available = {
+			check_variable = {MOT_Political_grid_array^2 = 6}
+			custom_trigger_tooltip = {
+				check_variable = {MOT_Political_grid_array^2 = 6}
+				tooltip = MOT_tree_0_11_trigger_tooltip
+			}
+		}
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#解锁决议：净化风魔龙
+			unlock_decision_tooltip = MOT_Progress_decision_mission_07
 		}
 	}
 
@@ -284,11 +434,22 @@ focus_tree = {
 		ai_will_do = {
 		    base = 0
 		}
+		available = {
+			has_global_flag = Lock_MOT_Standpoint_decision_3
+		}
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：战争准备
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 1
+            }
+			add_to_array = {
+				array = global.MOT_naionalfocus_mission
+				value = 2
+				index = 0
+			}
+			custom_effect_tooltip = MOT_tree_0_12_tooltip
 		}
 	}
 
@@ -298,13 +459,27 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_12 }
 		x = 14
 		y = 6
-		
+		available = {
+			check_variable = {MOT_Political_grid_array^0 = 9}
+			custom_trigger_tooltip = {
+				check_variable = {MOT_Political_grid_array^0 = 9}
+				tooltip = MOT_tree_0_13_trigger_tooltip
+			}
+		}
 		cost = 21
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：修建设施
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 2
+            }
+			add_to_array = {
+				array = global.MOT_naionalfocus_mission
+				value = 2
+				index = 1
+			}
+			custom_effect_tooltip = MOT_tree_0_13_tooltip
 		}
 	}
 
@@ -314,13 +489,27 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_13 }
 		x = 14
 		y = 7
-		
+		available = {
+			check_variable = {MOT_Political_grid_array^1 = 10}
+			custom_trigger_tooltip = {
+				check_variable = {MOT_Political_grid_array^1 = 10}
+				tooltip =MOT_tree_0_14_trigger_tooltip
+			}
+		}
 		cost = 21
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#发布任务：启动烈风之印
+            add_to_array = {
+                array = MOT_Political_grid_array
+                value = 3
+            }
+			add_to_array = {
+				array = global.MOT_naionalfocus_mission
+				value = 2
+				index = 2
+			}
+			custom_effect_tooltip = MOT_tree_0_14_tooltip
 		}
 	}
 
@@ -330,13 +519,18 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_14 }
 		x = 14
 		y = 8
-		
+		available = {
+			check_variable = {MOT_Political_grid_array^2 = 11}
+			custom_trigger_tooltip = {
+				check_variable = {MOT_Political_grid_array^2 = 11}
+				tooltip =MOT_tree_0_15_trigger_tooltip
+			}
+		}
 		cost = 21
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			#解锁决议：消灭风魔龙
+			unlock_decision_tooltip = MOT_Progress_decision_mission_08
 		}
 	}
 
@@ -350,9 +544,7 @@ focus_tree = {
 		cost = 70
 		search_filters = {  }
 		completion_reward = {
-			add_stability = 0.05
-            add_war_support = 0.05
-            add_political_power = 25
+			custom_effect_tooltip = MOT_tree_0_16_tooltip
 		}
 	}
 
@@ -362,15 +554,46 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_11 focus = MOT_tree_0_15 }
 		x = 12
 		y = 9
-		
-		cost = 7
+		available = {
+			always = no
+		}
+		allow_branch = {
+			not = {
+				has_idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+			}
+		}
+		cost = 1
 		search_filters = {  }
 		completion_reward = {
-			remove_ideas = MOT_crisis_of_Tewalin2
-			news_event = {
-			    id = global_news.30#事件id
-				days = 7#几天后触发
-			}#此为触发世界新闻
+			hidden_effect = {
+				news_event = {
+					id = global_news.30#事件id
+					days = 7#几天后触发
+				}#此为触发世界新闻
+				##风魔龙危机结束
+				set_global_flag = MOT_dragon_crisis_is_over
+			}
+		}
+	}
+	###风魔龙危机的余波
+	focus = {
+		id = MOT_tree_0_17_2
+		icon = GFX_goal_mot_01_gaotianzhige
+        prerequisite = { focus = MOT_tree_0_11 focus = MOT_tree_0_15 }
+		x = 12
+		y = 9
+		allow_branch = {
+			has_idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+		}
+		cost = 180
+		search_filters = {  }
+		completion_reward = {
+			set_global_flag = MOT_dragon_crisis_is_over
+			remove_trait = {
+				character = MOT_Jean
+				slot = country_leader
+				trait = MOT_Jean2_traits 
+			}
 		}
 	}
 
@@ -380,12 +603,21 @@ focus_tree = {
 		x = 28
 		y = 1
 		available = { #自定义前提条件
-			custom_trigger_tooltip = {
-            tooltip = mot_0_01
-	        NOT = { has_idea = MOT_crisis_of_Tewalin } 
+			has_global_flag = MOT_dragon_crisis_is_over
+			NOT = { has_idea = MOT_crisis_of_Tewalin } 
 			NOT = { has_idea = MOT_crisis_of_Tewalin2 }
+			NOT = {has_global_flag = MOT_dragon_crisis}
+			NOT = {has_global_flag = MOT_federal_route}
+			NOT = {has_global_flag = MOT_industrialization_program}
+			NOT = {has_global_flag = MOT_military_reform}
+			custom_trigger_tooltip = {
+				NOT = {has_global_flag = MOT_dragon_crisis}
+				NOT = {has_global_flag = MOT_federal_route}
+				NOT = {has_global_flag = MOT_industrialization_program}
+				NOT = {has_global_flag = MOT_military_reform}
+				has_global_flag = MOT_dragon_crisis_is_over
             }
-         }
+        }
 		cost = 7
 
 		search_filters = {  }
@@ -440,7 +672,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_21 #看得见的风
-		icon = 0
+		icon = GFX_goal_mot_kandejiandefeng
 		x = 21
 		y = 3
 		prerequisite = {focus = MOT_tree_0_19 }
@@ -456,7 +688,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_22 #农业储备
-		icon = 0
+		icon = GFX_goal_mot_nongyechubei
 		x = 21
 		y = 4
 		prerequisite = {focus = MOT_tree_0_21 }
@@ -472,7 +704,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_23 #蒙德城不需要污染
-		icon = 0
+		icon = GFX_goal_mot_buxuwuran
 		x = 23
 		y = 3
 		prerequisite = {focus = MOT_tree_0_19 }
@@ -488,7 +720,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_24 #继续迁移
-		icon = 0
+		icon = GFX_goal_mot_jixuqianyi
 		x = 23
 		y = 4
 		prerequisite = {focus = MOT_tree_0_23 }
@@ -504,7 +736,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_25 #看不见的风
-		icon = 0
+		icon = GFX_goal_mot_kanbujiandefeng
 		x = 25
 		y = 3
 		prerequisite = {focus = MOT_tree_0_19 }
@@ -520,7 +752,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_26 #赋生之法
-		icon = 0
+		icon = GFX_goal_mot_fushengzhifa
 		x = 25
 		y = 4
 		prerequisite = {focus = MOT_tree_0_25 }
@@ -536,7 +768,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_27 #告苦难者
-		icon = 0
+		icon = GFX_goal_mot_gaokunanzhe
 		x = 23
 		y = 5
 		prerequisite = {focus = MOT_tree_0_22 }
@@ -554,7 +786,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_28 #富足之风
-		icon = 0
+		icon = GFX_goal_mot_fuzuzhifeng
 		x = 23
 		y = 6
 		prerequisite = {focus = MOT_tree_0_27 }
@@ -570,7 +802,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_29 #发展之约
-		icon = 0
+		icon = GFX_goal_mot_fazhanzhiyue
 		x = 35
 		y = 3
 		prerequisite = { focus = MOT_tree_0_20 }
@@ -586,7 +818,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_30 #炼金之法
-		icon = 0
+		icon = GFX_goal_mot_lianjinzhifa
 		x = 35
 		y = 4
 		prerequisite = { focus = MOT_tree_0_29 }
@@ -602,7 +834,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_31 #我们的目光
-		icon = 0
+		icon = GFX_goal_mot_womendemuguang
 		x = 33
 		y = 3
 		prerequisite = { focus = MOT_tree_0_20 }
@@ -618,7 +850,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_32 #金烟滚滚
-		icon = 0
+		icon = GFX_goal_mot_jinyangungun
 		x = 33
 		y = 4
 		prerequisite = { focus = MOT_tree_0_31 }
@@ -634,7 +866,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_33 #地图作业
-		icon = 0
+		icon = GFX_goal_mot_dituzuoye
 		x = 31
 		y = 3
 		prerequisite = { focus = MOT_tree_0_20 }
@@ -650,7 +882,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_34 #风吹水波
-		icon = 0
+		icon = GFX_goal_mot_fengchuishuibo
 		x = 31
 		y = 4
 		prerequisite = { focus = MOT_tree_0_33 }
@@ -666,7 +898,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_35 #伟大之路
-		icon = 0
+		icon = GFX_goal_mot_weidazhilu
 		x = 33
 		y = 5
 		prerequisite = { focus = MOT_tree_0_34 }
@@ -684,7 +916,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_36 #富强之风
-		icon = 0
+		icon = GFX_goal_mot_fuqiangzhifeng
 		x = 33
 		y = 6
 		prerequisite = { focus = MOT_tree_0_35 }
@@ -700,7 +932,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_37 #蒙德工业理事会
-		icon = 0
+		icon = GFX_goal_mot_gongyelishihui
 		x = 28
 		y = 7
 		prerequisite = { focus = MOT_tree_0_28 focus = MOT_tree_0_36 }
@@ -716,7 +948,7 @@ focus_tree = {
 
 	focus = {
 		id = MOT_tree_0_38 #重启工业化
-		icon = 0
+		icon = GFX_goal_mot_chongqigongyehua
 		x = 28
 		y = 8
 		prerequisite = { focus = MOT_tree_0_37 }
@@ -730,7 +962,990 @@ focus_tree = {
 			}#此为触发世界新闻
 		}
 	}
-        
-        
-        
+
+	focus = {
+		id = MOT_tree_0_39 #骑士团的现状
+		icon = GFX_goal_mot_qishituanxianzhuang
+		x = 45
+		y = 1
+		
+		cost = 7
+		available = { #自定义前提条件
+			has_global_flag = MOT_dragon_crisis_is_over
+			NOT = { has_idea = MOT_crisis_of_Tewalin } 
+			NOT = { has_idea = MOT_crisis_of_Tewalin2 }
+			NOT = {has_global_flag = MOT_dragon_crisis}
+			NOT = {has_global_flag = MOT_federal_route}
+			NOT = {has_global_flag = MOT_industrialization_program}
+			NOT = {has_global_flag = MOT_military_reform}
+			custom_trigger_tooltip = {
+				NOT = {has_global_flag = MOT_dragon_crisis}
+				NOT = {has_global_flag = MOT_federal_route}
+				NOT = {has_global_flag = MOT_industrialization_program}
+				NOT = {has_global_flag = MOT_military_reform}
+				has_global_flag = MOT_dragon_crisis_is_over
+            }
         }
+		search_filters = {  }
+		completion_reward = {
+			set_global_flag = MOT_military_reform
+			army_experience = 10
+			country_event = {id = MOT_event.41}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_40 #第一封信
+		icon = GFX_goal_mot_diyifengxin
+		x = 45
+		y = 2
+		prerequisite = { focus = MOT_tree_0_39 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#49天后触发“回信”
+			country_event = {id = MOT_event.45 days = 49}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_41 #呼啸的锐利之风
+		icon = GFX_goal_mot_ruilizhifeng
+		x = 40
+		y = 3
+		prerequisite = { focus = MOT_tree_0_40 }
+		cost = 7
+		available = {
+			has_country_flag = MOT_MOT_tree_0_40_Select_the_quality_troops_flag
+		}
+		search_filters = {  }
+		completion_reward = {
+			#顾问“西风骑士团”追加：+10%部队攻击，+10%突破，-10%适役人口修正
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_1
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_2
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_41_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_42 #兼容的合力之风
+		icon = GFX_goal_mot_jianrongdehelizhifeng
+		x = 50
+		y = 3
+		prerequisite = { focus = MOT_tree_0_40 }
+		cost = 7
+		available = {
+			has_country_flag = MOT_MOT_tree_0_40_Select_the_quanlity_troops_flag
+		}
+		search_filters = {  }
+		completion_reward = {
+			#顾问“西风骑士团”追加：+15%适役人口修正，-10%训练时间，-10%最小训练程度，-5%部队攻击、部队防御
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_1
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_7
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_42_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_43 #规范化地图
+		icon = GFX_goal_mot_guifanhuaditu
+		x = 45
+		y = 3
+		prerequisite = { focus = MOT_tree_0_40 }
+		
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#解锁决议：“测绘地图”
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_01
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_02
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_03
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_04
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_05
+			unlock_decision_tooltip = MOT_Political_decision_category_MOT_tree_0_43_06
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_44 #瞻前......
+		icon = GFX_goal_mot_zhanqian
+		x = 42
+		y = 4
+		prerequisite = { focus = MOT_tree_0_43 }
+		
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			###我们将给还在为蒙德战斗的军区伙伴们必要的支持。
+####（7天后三军区触发“来自骑士团的支援”）
+				if = {
+					limit = {
+						TWL = {
+							exists = yes
+						}
+					}
+					TWL = {
+						country_event = {id = MOT_event.47 days = 7}
+					}
+				}
+				if = {
+					limit = {
+						MDQ = {
+							exists = yes
+						}
+					}
+					MDQ = {
+						country_event = {id = MOT_event.47 days = 7}
+					}
+				}
+				if = {
+					limit = {
+						FXE = {
+							exists = yes
+						}
+					}
+					FXE = {
+						country_event = {id = MOT_event.47 days = 7}
+					}
+				}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_45 #也要顾后
+		icon = GFX_goal_mot_yeyaoguhou
+		x = 48
+		y = 4
+		prerequisite = { focus = MOT_tree_0_43 }
+		
+		cost = 7
+		available = {
+			has_idea = MOD_the_rule_of_mondstad_defease_MOT
+		}
+		search_filters = {  }
+		completion_reward = {
+			##我们将向其他各地方保证尽快解决《蒙德防御条例》带来的问题。
+			custom_effect_tooltip =MOT_tree_0_45_toolip
+				if = {
+					limit = {
+						QQZ = {
+							exists = yes
+						}
+					}
+					QQZ = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
+				if = {
+					limit = {
+						DLK = {
+							exists = yes
+						}
+					}
+					DLK = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
+				if = {
+					limit = {
+						DSC = {
+							exists = yes
+						}
+					}
+					DSC = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
+				if = {
+					limit = {
+						ALS = {
+							exists = yes
+						}
+					}
+					ALS = {
+						add_war_support = 0.05
+						swap_ideas = {
+							remove_idea = MOD_the_rule_of_mondstad_defease_Others
+							add_idea = MOD_the_rule_of_mondstad_defease_Others2
+						}
+					}
+				}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_46 #增派骑士
+		icon = GFX_goal_mot_zengpaiqishi
+		x = 41
+		y = 5
+		prerequisite = { focus = MOT_tree_0_44 }
+		mutually_exclusive = { focus = MOT_tree_0_47 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			##三军区获得额外的三个步兵师（按军区原来的编制）
+				if = {
+					limit = {
+						TWL = {
+							exists = yes
+						}
+					}
+					TWL = {
+						capital_scope = {
+							create_unit = {
+								division = "division_template = \"风龙废墟军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"风龙废墟军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"风龙废墟军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						MDQ = {
+							exists = yes
+						}
+					}
+					MDQ = {
+						capital_scope = {
+							create_unit = {
+								division = "division_template = \"达达乌帕谷驻防旅\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"达达乌帕谷驻防旅\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"达达乌帕谷驻防旅\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						FXE = {
+							exists = yes
+						}
+					}
+					FXE = {
+						capital_scope = {
+							create_unit = {
+								division = "division_template = \"东蒙德军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"东蒙德军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+							create_unit = {
+								division = "division_template = \"东蒙德军区驻防军\"start_experience_factor = 0.5"  
+								owner = ROOT
+							}
+						}
+					}
+				}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_47 #放宽民兵权力
+		icon = GFX_goal_mot_fangkuanminbingquanli
+		x = 43
+		y = 5
+		prerequisite = { focus = MOT_tree_0_44 }
+		mutually_exclusive = { focus = MOT_tree_0_46 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#三军区获得额外的五个民兵师（相比之下更弱），获得民族精神：“民兵权力暂时下放”：+0.5%适役人口，-5%训练时间
+			add_ideas = MOT_Temporary_decentralization_of_militia_power
+			if = {
+					limit = {
+						TWL = {
+							exists = yes
+						}
+					}
+					TWL = {
+						add_manpower = 15000
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 1500
+							producer = MOT
+						}
+					}
+				}
+				if = {
+					limit = {
+						MDQ = {
+							exists = yes
+						}
+					}
+					MDQ = {
+						add_manpower = 15000
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 1500
+							producer = MOT
+						}
+					}
+				}
+				if = {
+					limit = {
+						FXE = {
+							exists = yes
+						}
+					}
+					FXE = {
+						add_manpower = 15000
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 1500
+							producer = MOT
+						}
+					}
+				}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_48 #修订蒙德防御条例
+		icon = GFX_goal_mot_xiudingtiaoli
+		x = 42
+		y = 6
+		prerequisite = { focus = MOT_tree_0_46 focus = MOT_tree_0_47 }
+		
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#触发事件“签字笔”
+			country_event = {id = MOT_event.42}
+		}
+		
+	}
+
+	focus = {
+		id = MOT_tree_0_49 #蒙德军事学院
+		icon = GFX_goal_mot_junshixueyuan
+		x = 45
+		y = 5
+		prerequisite = { focus = MOT_tree_0_43 }
+		
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#获得民族精神：蒙德军事学院——开始起步：-0.1日pp，+5%动员速度，+5%陆军经验增长，+5%战争支持
+			add_ideas = MOT_Maunder_Military_Academy01
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_50 #保卫风起地
+		icon = GFX_goal_mot_baoweifengqidi
+		x = 47
+		y = 5
+		prerequisite = { focus = MOT_tree_0_45 }
+		
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#风起地、伴风地与东蒙德军区相邻的区域增加3级要塞，其余与东蒙德军区相邻的边境以及风起地的胜利点处添加1级要塞
+			278 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			274 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			9 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 2551
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 3681
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_51 #龙脊镇防御
+		icon = GFX_goal_mot_longjizhenfangyu
+		x = 49
+		y = 5
+		prerequisite = { focus = MOT_tree_0_45 }
+		
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#在龙脊镇辖区与达达乌帕谷的边界上添加3级要塞，在龙脊镇的胜利点上添加1级要塞。
+			275 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9475
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9540
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9520
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9587
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 1776
+				}
+			}
+			276 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 3433
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 9432
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_52 #风龙废墟的支援
+		icon = GFX_goal_mot_fenglongfeixudezhiyuan
+		x = 48
+		y = 6
+		prerequisite = { focus = MOT_tree_0_50 focus = MOT_tree_0_51 }
+		
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#我们将加大对风龙废墟军区的支持，以防军区委员会以外的人能够在风龙废墟坐大。（这个我会和风龙废墟的配合，暂时先给风龙废墟+5%稳定）
+			TWL = {
+				add_stability = 0.05
+			}
+			custom_effect_tooltip = MOT_tree_0_52_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_53 #第二封信
+		icon = GFX_goal_mot_diyifengxin
+		x = 45
+		y = 7
+		prerequisite = { focus = MOT_tree_0_48 }
+		prerequisite = { focus = MOT_tree_0_52 }
+		prerequisite = { focus = MOT_tree_0_49 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#56天后触发“回信”
+			country_event = {id = MOT_event.46 days = 56}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_54 #捍卫自由的精神
+		icon = GFX_goal_mot_ziyou
+		x = 43
+		y = 7
+		prerequisite = { focus = MOT_tree_0_48 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#获得民族精神：“自由的教诲”：+10%核心领土防御
+			add_ideas = MOT_The_teachings_of_freedom
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_55 #高歌反抗的精神
+		icon = GFX_goal_mot_fankang
+		x = 47
+		y = 7
+		prerequisite = { focus = MOT_tree_0_52 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#获得民族精神：“反抗的高歌”：+10%核心领土攻击
+			#解锁决议：“自由，反抗，诗文”，若同时拥有民族精神“自由的教诲”与“反抗的高歌”，可花费100pp与180天将其合并为：“自由，反抗，诗文”：+15%核心领土攻击，+15%核心领土防御，+15%战争中稳定度修正，+15%投降倾向
+			add_ideas = MOT_A_song_of_defiance
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_56 #强化小队职能
+		icon = GFX_goal_mot_qianghuaxiaoduizhineng
+		x = 38
+		y = 4
+		prerequisite = { focus = MOT_tree_0_41 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#顾问“西风骑士团”追加：+10%计划速度，+10%计划加成上限，+10%训练时间
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_2
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_3
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_56_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_57 #精锐化小队
+		icon = GFX_goal_mot_jingruihuaxiaodui
+		x = 39
+		y = 5
+		prerequisite = { focus = MOT_tree_0_56 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#-20%有经验的士兵损失，+10%陆军组织度，+10%陆军组织度恢复，-10%适役人口，+10%训练时间
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_3
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_4
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_57_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_58 #配合大于一切
+		icon = GFX_goal_mot_peihedayuyiqie
+		x = 39
+		y = 6
+		prerequisite = { focus = MOT_tree_0_57 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#顾问“西风骑士团”追加：+2%增援率，-5%陆军学说花费
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_4
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_5
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_58_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_59 #再次细分小队职能
+		icon = GFX_goal_mot_zaicixifen
+		x = 37
+		y = 5
+		prerequisite = { focus = MOT_tree_0_56 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#获得民族精神：“细分化小队”： +10%动员速度，+5%适役人口修正，+5%陆军速度，+10%战争支持
+			add_ideas = MOT_Subdivision_squad
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_60 #精益求精
+		icon = GFX_goal_mot_jingyiqiujing
+		x = 37
+		y = 6
+		prerequisite = { focus = MOT_tree_0_59 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			add_research_slot = 1
+			add_tech_bonus = {
+				name = land_doctrine
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_61 #引入特种部队概念
+		icon = GFX_goal_mot_yinru
+		x = 38
+		y = 7
+		prerequisite = { focus = MOT_tree_0_60 }
+		prerequisite = { focus = MOT_tree_0_58 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.5
+				uses = 1
+				technology = tech_special_forces
+			}
+			hidden_effect = {
+				
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_5
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_6
+				}
+			}
+			#顾问“西风骑士团”追加：+10%特种部队上限，+5%特种部队攻击，特种部队防御
+			custom_effect_tooltip = MOT_tree_0_61_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_62 #临时会议
+		icon = GFX_goal_mot_linshihuiyi
+		x = 52
+		y = 4
+		prerequisite = { focus = MOT_tree_0_42 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#触发事件：“临时会议——辅助军队可行性”
+			country_event = {id = MOT_event.43}
+			#顾问“西风骑士团”追加：+15%适役人口修正，-10%训练时间，+10%动员速度，-10%部队组织度、部队组织度恢复
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_7
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_8
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_62_tooltip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_63 #放宽招收标准
+		icon = GFX_goal_mot_fangkuanbiaozhun
+		x = 51
+		y = 5
+		prerequisite = { focus = MOT_tree_0_62 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#顾问“西风骑士团”追加：+25%适役人口修正，-10%训练时间，-10%陆军经验增长
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_8
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_9
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_63_custion
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_64 #改革骑士团军事等级
+		icon = GFX_goal_mot_gaigedengji
+		x = 53
+		y = 5
+		prerequisite = { focus = MOT_tree_0_62 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#获得民族精神：“改革过后的骑士团军事等级”： -20%晋升花费，+5%陆军速度，+10%堑壕速度，+10%战争支持
+			add_ideas = MOT_The_reformed_military_hierarchy_of_the_Order
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_65 #新编军事用语
+		icon = GFX_goal_mot_junshiyongyu
+		x = 51
+		y = 6
+		prerequisite = { focus = MOT_tree_0_63 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			#顾问“西风骑士团”追加：+5%部队速度，-15%移动中组织度损失
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_9
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_10
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_65_toolip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_66 #新式运输
+		icon = GFX_goal_mot_xinshiyunshu
+		x = 53
+		y = 6
+		prerequisite = { focus = MOT_tree_0_64 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			add_equipment_to_stockpile = {
+                type = convoy
+                amount = 100
+                producer = MOT
+            }
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 500
+				producer = MOT 
+			}
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 30
+				producer = MOT 
+			}
+			add_tech_bonus = {
+				name = motorized_equipment
+				bonus = 0.5
+				uses = 1
+				category =  motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_67 #扩大武器生产
+		icon = GFX_goal_mot_kuodawuqishengchan
+		x = 52
+		y = 7
+		prerequisite = { focus = MOT_tree_0_65 }
+		prerequisite = { focus = MOT_tree_0_66 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+			add_tech_bonus = {
+				name = support_tech
+				bonus = 0.3
+				uses = 1
+				category = support_tech
+			}
+			add_tech_bonus = {
+				name = infantry_weapons
+				bonus = 0.3
+				uses = 1
+				category = infantry_weapons
+			}
+			#顾问“西风骑士团”追加：-10%步兵装备生产花费，-10%口粮生产花费，-5%支援装备生产花费
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_10
+				}
+				add_trait = {
+					character = MOT_westwind_knights_1
+					slot = high_command
+					trait = mot_knight_11
+				}
+			}
+			custom_effect_tooltip = MOT_tree_0_67_toolip
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_68 #经久之风
+		icon = GFX_goal_mot_jingjiuzhifeng
+		x = 42
+		y = 8
+		prerequisite = { focus = MOT_tree_0_53 }
+		prerequisite = { focus = MOT_tree_0_61 }
+		mutually_exclusive = { focus = MOT_tree_0_69 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = MOT_tree_0_69 #新生之风
+		icon = GFX_goal_mot_xinshengzhifeng
+		x = 48
+		y = 8
+		prerequisite = { focus = MOT_tree_0_53 }
+		prerequisite = { focus = MOT_tree_0_67 }
+		mutually_exclusive = { focus = MOT_tree_0_68 }
+		cost = 7
+
+		search_filters = {  }
+		completion_reward = {
+		}
+	}
+}

@@ -8,33 +8,74 @@ scripted_gui = {
 		}
         effects = {
             MOT_Standpoint_decision1_click = {
-                set_country_flag = Lock_MOT_Standpoint_decision_1
+                set_global_flag = Lock_MOT_Standpoint_decision_1
+                
+                if = {
+                    limit={
+                        not = {
+                            is_in_array = {
+                                array = global.MOT_Standpoint_flag_array_01
+                                value = MOT_Standpoint_country_num
+                            }
+                        }
+                    }
+                    MOT_Standpoint_config_flag_01 =YES
+                }
             }
             MOT_Standpoint_decision2_click = {
-                set_country_flag = Lock_MOT_Standpoint_decision_2
+                set_global_flag = Lock_MOT_Standpoint_decision_2
+                
+                if = {
+                    limit={
+                        not = {
+                            is_in_array = {
+                                array = global.MOT_Standpoint_flag_array_02
+                                value = MOT_Standpoint_country_num
+                            }
+                        }
+                    }
+                    MOT_Standpoint_config_flag_02 =YES
+                }
             }
             MOT_Standpoint_decision3_click = {
-                set_country_flag = Lock_MOT_Standpoint_decision_3
+                set_global_flag = Lock_MOT_Standpoint_decision_3
+                
+                if = {
+                    limit={
+                        not = {
+                            is_in_array= {
+                                array = global.MOT_Standpoint_flag_array_03
+                                value = MOT_Standpoint_country_num
+                            }
+                        }
+                    }
+                    MOT_Standpoint_config_flag_03 =YES
+                }
             }
             MOT_Standpoint_transfer_click = {
                 if = {
                     limit = {
-                        has_country_flag = Lock_MOT_Standpoint_decision_1
+                        has_global_flag = Lock_MOT_Standpoint_decision_1
                     }
-                    clr_country_flag = Lock_MOT_Standpoint_decision_1
+                    clr_global_flag = Lock_MOT_Standpoint_decision_1
                 }
                 if = {
                     limit = {
-                        has_country_flag = Lock_MOT_Standpoint_decision_2
+                        has_global_flag = Lock_MOT_Standpoint_decision_2
                     }
-                    clr_country_flag = Lock_MOT_Standpoint_decision_2
+                    clr_global_flag = Lock_MOT_Standpoint_decision_2
                 }
                 if = {
                     limit = {
-                        has_country_flag = Lock_MOT_Standpoint_decision_3
+                        has_global_flag = Lock_MOT_Standpoint_decision_3
                     }
-                    clr_country_flag = Lock_MOT_Standpoint_decision_3
+                    clr_global_flag = Lock_MOT_Standpoint_decision_3
                 }
+                
+                MOT_Standpoint_clear_flag_01 =YES
+                MOT_Standpoint_clear_flag_02 =YES
+                MOT_Standpoint_clear_flag_03 =YES
+                add_political_power = -50
             }
             MOT_Standpoint_close2_click = {
                 clr_country_flag = Open_MOT_Standpoint_ui_window
@@ -43,49 +84,128 @@ scripted_gui = {
 
         triggers = {
             MOT_Standpoint_decision1_click_enabled = {
-                not = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_2
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
                 }
                 not = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_3
+                    has_global_flag = Lock_MOT_Standpoint_decision_2
+                }
+                not = {
+                    has_global_flag = Lock_MOT_Standpoint_decision_3
                 }
             }
             MOT_Standpoint_decision2_click_enabled = {
-                not = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_1
+                or = {
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
                 }
                 not = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_3
+                    has_global_flag = Lock_MOT_Standpoint_decision_1
+                }
+                not = {
+                    has_global_flag = Lock_MOT_Standpoint_decision_3
                 }
             }
             MOT_Standpoint_decision3_click_enabled = {
-                not = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_1
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
                 }
                 not = {
-                    has_country_flag = Lock_MOT_Standpoint_decision_2
+                    has_global_flag = Lock_MOT_Standpoint_decision_1
+                }
+                not = {
+                    has_global_flag = Lock_MOT_Standpoint_decision_2
                 }
             }
-            MOT_Standpoint_sign1_visible = {
-                has_country_flag = Lock_MOT_Standpoint_decision_1
-            }
-            MOT_Standpoint_sign2_visible = {
-                has_country_flag = Lock_MOT_Standpoint_decision_2
-            }
-            MOT_Standpoint_sign3_visible = {
-                has_country_flag = Lock_MOT_Standpoint_decision_3
+        
+            MOT_Standpoint_transfer_click_enabled = {
+                or = {
+                    has_global_flag = MOT_dragon_crisis
+                    has_global_flag = MOT_industrialization_program
+                    has_global_flag = MOT_federal_route
+                    has_global_flag = MOT_military_reform
+                }
+                not = {
+                    has_global_flag = MOT_dragon_crisis_standpoint_is_locked
+                }
+                has_political_power > 50
             }
 
+            MOT_Standpoint_sign1_visible = {
+                has_global_flag = Lock_MOT_Standpoint_decision_1
+            }
+            MOT_Standpoint_sign2_visible = {
+                has_global_flag = Lock_MOT_Standpoint_decision_2
+            }
+            MOT_Standpoint_sign3_visible = {
+                has_global_flag = Lock_MOT_Standpoint_decision_3
+            }
+            MOT_Standpoint_bg4_visible = {
+                not = {
+                    has_global_flag = Lock_MOT_Standpoint_decision_2
+                }
+                not = {
+                    has_global_flag = Lock_MOT_Standpoint_decision_3
+                }
+            }
+            MOT_Standpoint_bg5_visible = {
+                has_global_flag = Lock_MOT_Standpoint_decision_3
+            }
+            MOT_Standpoint_bg6_visible = {
+                has_global_flag = Lock_MOT_Standpoint_decision_2
+            }
         }
+
+        dynamic_lists ={
+            MOT_Standpoint_flag_list_grid_01= {
+                array = global.MOT_Standpoint_flag_array_01
+                change_scope = no
+                entry_container = MOT_Standpoint_flag_list_model_01
+                index = MOT_Standpoint_flag_array_index_01
+                value = MOT_Standpoint_flag_array_value_01
+            }
+            MOT_Standpoint_flag_list_grid_02= {
+                array = global.MOT_Standpoint_flag_array_02
+                change_scope = no
+                entry_container = MOT_Standpoint_flag_list_model_02
+                index = MOT_Standpoint_flag_array_index_02
+                value = MOT_Standpoint_flag_array_value_02
+            }
+            MOT_Standpoint_flag_list_grid_03= {
+                array = global.MOT_Standpoint_flag_array_03
+                change_scope = no
+                entry_container = MOT_Standpoint_flag_list_model_03
+                index = MOT_Standpoint_flag_array_index_03
+                value = MOT_Standpoint_flag_array_value_03
+            }
+        }
+
+
         properties = {
             MOT_Expectation_circle1 = {
-                frame = 25
+                frame = global.MOT_Expectation_TWL
             }
             MOT_Expectation_circle2 = {
-                frame = 65
+                frame = global.MOT_Expectation_MDQ
             }
             MOT_Expectation_circle3 = {
-                frame = 95
+                frame = global.MOT_Expectation_FXE
+            }
+            MOT_Standpoint_flag_list_model_icon_01 = {
+                frame = MOT_Standpoint_flag_array_value_01
+            }
+            MOT_Standpoint_flag_list_model_icon_02 = {
+                frame = MOT_Standpoint_flag_array_value_02
+            }
+            MOT_Standpoint_flag_list_model_icon_03 = {
+                frame = MOT_Standpoint_flag_array_value_03
             }
         }
 	}

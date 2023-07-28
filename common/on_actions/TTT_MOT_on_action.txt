@@ -1,0 +1,99 @@
+on_actions = {
+    on_weekly_MOT = { 
+        ###check variable number weekly
+        effect ={
+            if = {
+                limit = {
+                    has_country_flag = MOT_Deadline_is_unlocked
+                    ##条件以后再做修改
+                    has_global_flag = MOT_dragon_crisis
+                    not = {
+                        has_global_flag = MOT_dragon_crisis_is_over
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = MOT_Deadline_num
+                            value = 11
+                            compare = greater_than_or_equals
+                        }
+                    }
+                    ###风魔龙危机失败
+                    ###触发失败事件
+                    country_event = {id = MOT_event.14}
+                }
+                else = {
+                    ###继续倒计时
+                    add_to_variable = {MOT_dragon_crisis_deadline_num = 7}
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = MOT_dragon_crisis_deadline_num
+                                value = 36.5
+                                compare = greater_than_or_equals
+                            }
+                        }
+                        add_to_variable = {MOT_dragon_crisis_deadline_num = -36.5}
+                        add_to_variable = {MOT_Deadline_num =1}
+                        add_to_variable = {MOT_Deadline_num_localization = 1}
+                        clamp_temp_variable = {
+                            var = MOT_Deadline_num
+                            min = 1
+                            max = 11
+                        }
+                        clamp_temp_variable = {
+                            var = MOT_Deadline_num_localization
+                            min =0
+                            max = 10
+                        }
+                    }
+                }            
+            }
+            ##清除多余标记
+            if = {
+                limit = {
+                    not = {
+                        has_global_flag = MOT_dragon_crisis
+                    }
+                    has_country_flag = MOT_Deadline_is_unlocked
+                }
+                clr_country_flag = MOT_Deadline_is_unlocked
+                
+            }
+            ##进度条
+            if = {
+                limit = {
+                    has_country_flag = MOT_Progress_is_unlocked
+                    ##条件以后再做修改
+                    has_global_flag = MOT_dragon_crisis
+                    not = {
+                        has_global_flag = MOT_dragon_crisis_is_over
+                    }
+                }
+                MOT_Standpoint_check_total_country_num_01 = Yes
+                MOT_Standpoint_check_total_country_num_02 = Yes
+                MOT_Standpoint_check_total_country_num_03 = Yes
+                add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_01}
+                add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_02}
+                add_to_variable ={MOT_Progress_num = MOT_Standpoint_total_country_num_03}
+                add_to_variable ={MOT_Progress_num_localization = MOT_Standpoint_total_country_num_01}
+                add_to_variable ={MOT_Progress_num_localization = MOT_Standpoint_total_country_num_02}
+                add_to_variable ={MOT_Progress_num_localization = MOT_Standpoint_total_country_num_03}
+                clear_variable = MOT_Standpoint_total_country_num_01
+                clear_variable = MOT_Standpoint_total_country_num_02
+                clear_variable = MOT_Standpoint_total_country_num_03
+                clamp_temp_variable = {
+                    var = MOT_Progress_num
+                    min = 1
+                    max = 11
+                }
+                clamp_temp_variable = {
+                    var = MOT_Progress_num_localization
+                    min = 0
+                    max = 10
+                }
+            }
+        }
+    }
+}

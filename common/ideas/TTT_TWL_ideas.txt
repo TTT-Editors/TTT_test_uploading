@@ -33,7 +33,7 @@ ideas = {
 			modifier = {
 				political_power_factor = 0.05
 				stability_weekly = 0.001
-				war_support_factor = -0.35
+				war_support_factor = -0.3
 				ai_focus_defense_factor = 0.5
 			}
 		}
@@ -51,8 +51,27 @@ ideas = {
 			
 			modifier = {
 				political_power_factor = 0.1
-				stability_weekly = 0.001
-				war_support_factor = -0.35
+				stability_weekly = 0.002
+				war_support_factor = -0.2
+				ai_focus_defense_factor = 0.5
+			}
+		}
+		###军区政府4
+		TWL_military_government_4 = {
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_factor = 0.15
+				stability_weekly = 0.002
+				war_support_factor = 0.05
 				ai_focus_defense_factor = 0.5
 			}
 		}
@@ -66,7 +85,6 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
 			on_remove = {
 				country_lock_all_division_template = no
 			}
@@ -114,6 +132,7 @@ ideas = {
 
 			removal_cost = -1
 			
+
 			modifier = {
 				supply_consumption_factor = 0.3
 				production_speed_buildings_factor = -0.35
@@ -140,134 +159,6 @@ ideas = {
 			}
 		}
 
-
-		###强制征募1
-		TWL_Compulsory_Recuritment_1= {
-
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				##稳定度-5% 每周人口+50
-				stability_factor = -0.05
-				weekly_manpower = 50
-			}
-		}
-
-		###强制征募2
-		TWL_Compulsory_Recuritment_2= {
-
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				##追加：每周人口加50
-				stability_factor = -0.05
-				weekly_manpower = 100
-			}
-		}
-
-		###强制征募3
-		TWL_Compulsory_Recuritment_3= {
-
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				##（训练时间-10% 陆军组织度-10%）
-				stability_factor = -0.05
-				weekly_manpower = 50
-				training_time_army_factor = -0.1
-				army_org_factor = -0.05
-			}
-		}
-
-
-		###新战略1\2\3
-		TWL_New_Strategy_1= {
-
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				##核心领土单位防御+5%
-				army_core_defence_factor = 0.05
-			}
-		}
-		TWL_New_Strategy_2= {
-
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				##追加效果（主动性+3% 侦察+5%）
-				army_core_defence_factor = 0.05
-				recon_factor = 0.05
-				initiative_factor = 0.03
-			}
-		}
-		TWL_New_Strategy_3= {
-
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				###（堑壕上限+5.0 堑壕速度+10%）
-				army_core_defence_factor = 0.05
-				recon_factor = 0.05
-				initiative_factor = 0.03
-				dig_in_speed_factor = 0.1
-				max_dig_in = 5
-			}
-		}
 		###火焰喷射装置
 		TWL_Fire_Jet_Device= {
 
@@ -283,51 +174,11 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				soft_attack = 0.05
-				army_attack_factor = 0.05
-			}
-		}
-
-		###火焰喷射装置1
-		TWL_Fire_Jet_Device_1= {
-
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				army_attack_factor = 0.05
-				stability_factor = 0.05
-				attrition = 0.05
-				supply_consumption_factor = 0.05
-				soft_attack = 0.15
-				breakthrough_factor = 0.05
-			}
-		}
-
-		###火焰喷射装置2
-		TWL_Fire_Jet_Device_2 = {
-			allowed = {
-				original_tag = TWL
-				always = no
-			}
-
-			allowed_civil_war = {
-				tag = TWL
-			}
-
-			removal_cost = -1
-			
-			modifier = {
-				soft_attack = 0.1
-				army_attack_factor = 0.05
+				stability_factor = 0.15
+				attrition = 0.2
+				supply_consumption_factor = 0.1
+				soft_attack = 0.5
+				breakthrough_factor =0.15
 			}
 		}
 		###爱国青年团
@@ -389,12 +240,15 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				encryption= 2
+				political_power_gain = -0.2
+				encryption = 1.5
 				operative_slot = 1
+				stability_factor = 0.05
+				agency_upgrade_time = -0.1
 			}
 		}
-		###事件触发精神：后勤补充
-		TWL_logistics_supplyment= {
+		###隐蔽工厂
+		TWL_hidden_factories= {
 			allowed = {
 				original_tag = TWL
 				always = no
@@ -407,12 +261,170 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				consumer_goods_factor=0.05
+				industrial_capacity_factory = -0.2
+				line_change_production_efficiency_factor = -0.3
+				production_factory_efficiency_gain_factor = -0.3
+				production_factory_start_efficiency_factor = -0.1
 			}
 		}
+		###隐蔽工厂2
+		TWL_hidden_factories2= {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
 
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_factory = -0.15
+				line_change_production_efficiency_factor = -0.3
+				production_factory_efficiency_gain_factor = -0.15
+				production_factory_start_efficiency_factor = -0.1
+			}
+		}
+		###隐蔽工厂3
+		TWL_hidden_factories3= {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_factory = -0.1
+				line_change_production_efficiency_factor = -0.3
+				production_factory_efficiency_gain_factor = -0.15
+				production_factory_start_efficiency_factor = -0.1
+			}
+		}
+		###隐蔽工厂4
+		TWL_hidden_factories4= {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_factory = -0.1
+				line_change_production_efficiency_factor = -0.15
+				production_factory_start_efficiency_factor = 0.05
+				production_lack_of_resource_penalty_factor = -0.25
+			}
+		}
+		##军队改革
+		TWL_reform_the_army = {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.002
+				mobilization_speed = 0.15
+			}
+		}
+		##军队改革2
+		TWL_reform_the_army2 = {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.002
+				mobilization_speed = 0.15
+				army_org_factor = -0.05
+				training_time_army_factor = -0.1
+			}
+		}
+		##军队改革3
+		TWL_reform_the_army3 = {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				support_equipment = {
+					recon = 1
+				}
+				conscription = 0.002
+				mobilization_speed = 0.15
+				army_org_factor = -0.05
+				training_time_army_factor = -0.1
+			}
+		}
+		##合法走私行为
+		TWL_Lawful_smuggling = {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+				stability_factor = -0.05
+			}
+		}
+		##紧急状态
+		TWL_the_state_of_mercenary = {
+			allowed = {
+				original_tag = TWL
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = TWL
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_weekly = -0.001
+			}
+		}
 	}
-		###工业企业
+	###工业企业
 	industrial_concern = {
 		TWL_Underground_Factory= {
             name = TWL_Underground_Factory
@@ -423,11 +435,11 @@ ideas = {
 			}
 
 			available = {
-				has_completed_focus = TWL_depress_level_weapons
+				has_completed_focus =TWL_focus_0_31
 			}
 
 			research_bonus = {
-				industry = 0.1
+				industry = 0.15
 			}
 
 			traits = {  TWL_Underground_Factory_traist }

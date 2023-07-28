@@ -25,7 +25,7 @@ focus_tree ={
         x = 2
         y = 1
         completion_reward={ 
-			country_event = ina.9
+			country_event = INA_events.9
         }
     }
 	focus = {
@@ -109,7 +109,7 @@ focus_tree ={
         x = 2
         y = 2
         completion_reward={ 
-			country_event = ina.10
+			country_event = INA_events.10
         }
     }
 	focus = {
@@ -195,6 +195,121 @@ focus_tree ={
 				KUJ = { add_state_core = 372 } 
 				KUJ = { add_state_core = 84 } 
 				KUJ = {load_oob = "KUJ"}
+				if = { 
+					limit = {has_country_flag = KUJ_get_weapons}
+					KUJ = {
+					    add_equipment_to_stockpile = {
+							type = infantry_equipment 
+							amount = 1000
+						}
+						add_equipment_to_stockpile = {
+							type = support_equipment
+							amount = 100
+						}
+						add_equipment_to_stockpile = {
+							type = artillery_equipment 
+							amount = 500
+						}
+						add_equipment_to_stockpile = {
+							type = ttt_uniform_eq
+							amount = 400
+						}
+						add_equipment_to_stockpile = {
+							type = grain_conversion_eq
+							amount = 1000
+						}
+					}
+			    }
+				if = {
+					limit = {has_variable = KUJ_wapons_are_stolen}
+					multiply_variable = { KUJ_wapons_are_stolen = -400}
+					KUJ = {
+                        add_equipment_to_stockpile = {
+							type = infantry_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -400}
+					multiply_variable = { KUJ_wapons_are_stolen = -40}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = support_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -40}
+					multiply_variable = { KUJ_wapons_are_stolen = -500}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = artillery_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -500}
+					multiply_variable = { KUJ_wapons_are_stolen = -80}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = ttt_uniform_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -80}
+					multiply_variable = { KUJ_wapons_are_stolen = -400}
+					KUJ = 
+					{
+						add_equipment_to_stockpile = {
+							type = grain_conversion_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = -400}
+					multiply_variable = { KUJ_wapons_are_stolen = 400}
+					SNA = {
+                        add_equipment_to_stockpile = {
+							type = infantry_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 400}
+					multiply_variable = { KUJ_wapons_are_stolen = 40}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = support_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 40}
+					multiply_variable = { KUJ_wapons_are_stolen = 500}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = artillery_equipment 
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 500}
+					multiply_variable = { KUJ_wapons_are_stolen = 80}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = ttt_uniform_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+					subtract_from_variable = {KUJ_wapons_are_stolen = 80}
+					multiply_variable = { KUJ_wapons_are_stolen = 400}
+					SNA = 
+					{
+						add_equipment_to_stockpile = {
+							type = grain_conversion_eq
+							amount = KUJ_wapons_are_stolen
+						}
+					}
+				}
 			 }
           }
 	   }
@@ -208,7 +323,7 @@ focus_tree ={
         x = 2
         y = 4
         completion_reward={ 
-			country_event = ina.11
+			country_event = INA_events.11
         }
     }
 
@@ -221,11 +336,7 @@ focus_tree ={
         x = 3
         y = 5
         completion_reward={ 
-			KUJ = {
-				declare_war_on = {
-					target = SNA
-					type = annex_everything 
-			    }
+			KUJ = { #declare_war_on = { target = SNA type = annex_everything }
 				random_owned_controlled_state=
 			    {
 			      add_extra_state_shared_building_slots = 2

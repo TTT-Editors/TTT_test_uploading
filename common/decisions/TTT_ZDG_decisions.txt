@@ -472,21 +472,12 @@ ZDG_decision_category = {
 			}
 			else_if = {
 				limit = {
-					has_idea = ZDG_Scaleusevileyes_limitedtrial2
-				}
-				swap_ideas = {
-					add_idea = ZDG_Scaleusevileyes_limitedtrial3
-					remove_idea = ZDG_Scaleusevileyes_limitedtria2
-				}
-			}
-			else_if = {
-				limit = {
 					has_idea = ZDG_Scaleusevileyes_limitedtrial3
 				}
 				set_country_flag = ZDG_scale_usevileyes_flag
 				swap_ideas = {
 					add_idea = ZDG_Scaleusevileyes_limitedtrial4
-					remove_idea = ZDG_Scaleusevileyes_limitedtria3
+					remove_idea = ZDG_Scaleusevileyes_limitedtrial3
 				}
 			}
 		}
@@ -1270,9 +1261,10 @@ ZDG_decision_category = {
 				transfer_state = 125
 				transfer_state = 169
 				every_owned_state = {
-					add_core_of = RTG
+					add_core_of = LYU
 				}
 				set_cosmetic_tag = LYU_reichskommissariat
+				set_country_flag = ZDG_zhenghexiashuxiaqu_flag
 				hidden_effect = {
 					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
@@ -1291,6 +1283,7 @@ ZDG_decision_category = {
 					add_ideas = Armed_police
 					add_ideas = Smooth_operation
 					add_ideas = ideological_imprint
+					mark_focus_tree_layout_dirty = yes
 				}
 				create_country_leader = {
 					name = "ZDG_puppet_government"
@@ -1398,7 +1391,7 @@ ZDG_decision_category = {
 				create_unit = {
 					division = "division_template = \"雪之协防军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = ZDG
-					count = 1
+					count = 2
 				}
 			}
 		}
@@ -1420,6 +1413,9 @@ ZDG_decision_category2 = {
 		days_mission_timeout = 60
 		is_good = no
 		cost = 0
+		available = {
+			always = no
+		}
 		cancel_trigger = {
 			NOT = {
 				has_country_flag = ZDG_complete_failure
@@ -1701,6 +1697,70 @@ ZDG_decision_category3 = {
 	}
 	ZDG_equipment_assistancerequirements = {
 		#提交装备援助要求
+		cost = 0
+		days_remove = 30
+		fire_only_once = no
+		visible = {
+			tag = ZDG
+			has_country_flag = ZDG_expandmilitary_flag
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_militaryfactory_available1
+				check_variable = {
+					ZDG_military_share > 0
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			add_to_variable = {
+				ZDG_military_share = -1
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = ZDG_8
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 100
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 500
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 100
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = ZDG_8
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 200
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1000
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 200
+				}
+			}
+		}
+	}
+	ZDG_equipment_huopao_assistancerequirements = {
+		#提交火炮援助要求
 		cost = 0
 		days_remove = 30
 		fire_only_once = no
@@ -2179,7 +2239,7 @@ ZDG_decision_category3 = {
 				}
 			}
 			add_to_variable = {
-				conscription = 0.005
+				ZDG_conscription = 0.005
 			}
 		}
 	}

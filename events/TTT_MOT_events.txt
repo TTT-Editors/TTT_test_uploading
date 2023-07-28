@@ -1,5 +1,7 @@
 add_namespace = MOT_event
-
+##################################################################
+################################################################
+###风魔龙危机阶段（1——8）
 country_event = {
 	id = MOT_event.1 #骑士团邀请我们共同解决风魔龙问题
 	title = MOT_event.1.t
@@ -114,28 +116,51 @@ country_event = {
 
 ##################################################################
 ################################################################
+####风魔龙危机结束（11——15）
 ###事件名：东风守护回归
-country_event = {
+news_event = {
 	id = MOT_event.11
 	immediate = {}
-	picture =null
+	picture= GFX_MOT_news_event_02
 	title = MOT_event.11.t
 	desc = MOT_event.11.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
 		name = MOT_event.11.a
-		country_event = {
+		news_event = {
 			id = MOT_event.12 days = 720
+		}
+		if = {
+			limit = {
+				has_idea = MOT_crisis_of_Tewalin
+			}
+			remove_ideas = MOT_crisis_of_Tewalin
+		}
+		else_if = {
+			limit = {
+				has_idea = MOT_crisis_of_Tewalin2
+			}
+			remove_ideas = MOT_crisis_of_Tewalin2
+		}
+		TWL = {
+			remove_ideas = TWL_frightening_strikes_of_windy_dargons
+		}
+		BLL = {
+			remove_ideas = BLL_fengmolongweiji
+		}
+		clr_global_flag = MOT_dragon_crisis
+		hidden_effect = {
+			MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = yes
 		}
 		complete_national_focus = MOT_tree_0_17
 	}
 }
 ###事件名：东风守护回归
-country_event = {
+news_event = {
 	id = MOT_event.12
 	immediate = {}
-	picture =null
+	picture= GFX_MOT_news_event_02
 	title = MOT_event.12.t
 	desc = MOT_event.12.d
 	is_triggered_only =yes
@@ -145,13 +170,21 @@ country_event = {
 		####风魔龙已经可用
 		set_country_flag = MOT_Wind_Dragon_is_available
 		custom_effect_tooltip = MOT_event_12_tooltip
+		every_country = {
+			limit = {
+				not = {
+					original_tag = MOT
+				}
+			}
+			country_event = {days = 1 id = MOT_event.1202}
+		}
 	}
 }
 ###事件名：风魔龙的陨落
-country_event = {
+news_event = {
 	id = MOT_event.13
 	immediate = {}
-	picture =null
+	picture= GFX_MOT_news_event_02
 	title = MOT_event.13.t
 	desc = MOT_event.13.d
 	is_triggered_only =yes
@@ -166,9 +199,31 @@ country_event = {
 		}
 		MOT = {
 			add_timed_idea = {
-				idea = MOT_Wind_Dragon_ruins_reconstruction_grant
+				idea = MOT_Wind_Dragon_ruins_reconstruction
 				days = 365
 			}
+		}
+		if = {
+			limit = {
+				has_idea = MOT_crisis_of_Tewalin
+			}
+			remove_ideas = MOT_crisis_of_Tewalin
+		}
+		else_if = {
+			limit = {
+				has_idea = MOT_crisis_of_Tewalin2
+			}
+			remove_ideas = MOT_crisis_of_Tewalin2
+		}
+		TWL = {
+			remove_ideas = TWL_frightening_strikes_of_windy_dargons
+		}
+		BLL = {
+			remove_ideas = BLL_fengmolongweiji
+		}
+		clr_global_flag = MOT_dragon_crisis
+		hidden_effect = {
+			MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = yes
 		}
 		complete_national_focus = MOT_tree_0_17
 	}
@@ -177,7 +232,7 @@ country_event = {
 country_event = {
 	id = MOT_event.14
 	immediate = {}
-	picture =null
+	picture= unkown
 	title = MOT_event.14.t
 	desc = MOT_event.14.d
 	is_triggered_only =yes
@@ -188,7 +243,7 @@ country_event = {
 		MOT = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
 		BLL = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
 		TWL = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		TWL = {add_timed_idea = {idea =  days = 365}}
+		TWL = {add_timed_idea = {idea = MOT_Wind_Dragon_ruins_reconstruction_grant days = 365}}
 		DLK = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
 		DSC = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
 		MDQ = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
@@ -197,6 +252,39 @@ country_event = {
 		QQZ = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
 		add_to_variable = {MOT_Prestige_num = -4}
 		MOT_check_MOT_Prestige_num = yes
+
+		hidden_effect = {
+			#####为领袖添加额外特质，有与顾问不同的写法
+			add_trait = {
+				character = MOT_Jean
+				ideology = authoritarian_democracy
+				trait = MOT_Jean2_traits 
+			}
+			add_trait = {
+				character = MOT_Jean
+				ideology = classical_liberalism
+				trait = MOT_Jean2_traits 
+			}
+			
+			if = {
+				limit = {
+					has_idea = MOT_crisis_of_Tewalin
+				}
+				remove_ideas = MOT_crisis_of_Tewalin
+			}
+			else_if = {
+				limit = {
+					has_idea = MOT_crisis_of_Tewalin2
+				}
+				remove_ideas = MOT_crisis_of_Tewalin2
+			}
+			TWL = {
+				remove_ideas = TWL_frightening_strikes_of_windy_dargons
+			}
+			BLL = {
+				remove_ideas = BLL_fengmolongweiji
+			}
+		}
 		add_trait = {
 			character = MOT_Jean
 			slot = country_leader
@@ -262,99 +350,69 @@ country_event = {
 				}
 			}
 		}
+		MOT_Upgrade_country_focustree = YES
 	}
 }
 ###事件名：风魔龙危机——溃败
-country_event = {
+news_event = {
 	id = MOT_event.15
 	immediate = {}
-	picture =null
+	picture= MOT_news_event_08
 	title = MOT_event.15.t
 	desc = MOT_event.15.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
 		name = MOT_event.15.a
-		##阴影
-		MOT = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		BLL = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		TWL = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		TWL = {add_timed_idea = {idea =  days = 365}}
-		DLK = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		DSC = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		MDQ = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		FXE = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		ALS = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		QQZ = {add_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
-		add_to_variable = {MOT_Prestige_num = -4}
-		MOT_check_MOT_Prestige_num = yes
-		add_trait = {
-			character = MOT_Jean
-			slot = country_leader
-			trait = MOT_Jean2_traits 
-		}
-		###清除flag
-		clr_character_flag = MOT_Jean_is_available
-		custom_effect_tooltip = MOT_event_14_tooltip
-		clr_global_flag = MOT_dragon_crisis
-		hidden_effect = {
-			MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = yes
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			random_owned_controlled_state = {
-				limit = {
-					or = {
-						industrial_complex > 0
-						arms_factory > 0
-					}
-				}
-				damage_building = {
-					type = infrastructure
-					damage = 5
-				}
-				damage_building = {
-					type = rail_way
-					damage = 5
-				}
-				damage_building = {
-					type = arms_factory
-					damage = 5
-				}
-				damage_building = {
-					type = industrial_complex
-					damage = 5
-				}
-				owner = {
-					country_event = {id = MOT_event.16}
-				}
-			}		
-		}
-		MOT = {
-			capital_scope = {
-				damage_building = {
-					type = infrastructure
-					damage = 3
-				}
-				damage_building = {
-					type = rail_way
-					damage = 3
-				}
-				damage_building = {
-					type = arms_factory
-					damage = 3
-				}
-				damage_building = {
-					type = industrial_complex
-					damage = 3
-				}
-			}
-		}
 	}
 }
-###风魔龙行动后续1
+###############################################风魔龙结局，其他国家特供
+news_event = {
+	id = MOT_event.1102
+	immediate = {}
+	picture= GFX_MOT_news_event_02
+	title = MOT_event.1102.t
+	desc = MOT_event.1102.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1102.a
+	}
+}
+news_event = {
+	id = MOT_event.1202
+	immediate = {}
+	picture= GFX_MOT_news_event_02
+	title = MOT_event.1202.t
+	desc = MOT_event.1202.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1202.a
+	}
+}
+news_event = {
+	id = MOT_event.1302
+	immediate = {}
+	picture= GFX_MOT_news_event_02
+	title = MOT_event.1302.t
+	desc = MOT_event.1302.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1302.a
+	}
+}
+news_event = {
+	id = MOT_event.1402
+	immediate = {}
+	picture= MOT_news_event_08
+	title = MOT_event.1402.t
+	desc = MOT_event.1402.d
+	is_triggered_only =yes
+	option = {
+		name = MOT_event.1402.a
+	}
+}
+###############################################
+###风魔龙行动后续1（16——18）
 ##风魔龙的大肆破坏（蒙德其他国家）
 country_event = {
 	id = MOT_event.16
@@ -433,7 +491,7 @@ country_event = {
 }
 ################################################
 #################################################
-###事件名：向蒙德城要求军事装备
+###事件名：向蒙德城要求军事装备（21——28）
 country_event = {
 	id = MOT_event.21
 	immediate = {}
@@ -444,23 +502,35 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.21.a
+		trigger = {
+			has_equipment = {grain_conversion_eq > 1000}
+			has_equipment = {infantry_equipment > 2000}
+			has_equipment = {ttt_uniform_eq > 1000}
+		}
 		From = {
 			country_event = {days = 3 id = MOT_event.23}
 		}
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = -2000
-			producer = MOT
-		}
-		add_equipment_to_stockpile = {
-			type = ttt_uniform_eq
-			amount = -1000
-			producer = MOT
-		}
-		add_equipment_to_stockpile = {
-			type = grain_conversion_eq
-			amount = -3000
-			producer = MOT
+		ai_chance = {
+			base = 2
+			modifier = {#5#14
+				has_equipment = {grain_conversion_eq > 3000}
+				has_equipment = {infantry_equipment > 6000}
+				has_equipment = {ttt_uniform_eq > 3000}
+				add = 3
+			}
+			modifier = {#20
+				has_equipment = {grain_conversion_eq > 5000}
+				has_equipment = {infantry_equipment > 10000}
+				has_equipment = {ttt_uniform_eq > 5000}
+				add = 3
+			}
+			modifier = {#6
+				FROM = {
+					has_war = yes
+				}
+				add = 2
+				factor = 2
+			}
 		}
 	}
 	option = {
@@ -468,26 +538,56 @@ country_event = {
 		From = {
 			country_event = {days = 3 id = MOT_event.24}
 		}
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = -1000
-			producer = MOT
+		trigger = {
+			has_equipment = {grain_conversion_eq > 500}
+			has_equipment = {infantry_equipment > 1000}
+			has_equipment = {ttt_uniform_eq > 500}
 		}
-		add_equipment_to_stockpile = {
-			type = ttt_uniform_eq
-			amount = -500
-			producer = MOT
-		}
-		add_equipment_to_stockpile = {
-			type = grain_conversion_eq
-			amount = -1500
-			producer = MOT
+		ai_chance = {
+			base = 2
+			modifier = {#5#10#40
+				has_equipment = {grain_conversion_eq > 1500}
+				has_equipment = {infantry_equipment > 3000}
+				has_equipment = {ttt_uniform_eq > 1500}
+				add = 3
+			}
+			modifier = {
+				FROM = {#4
+					has_war = yes
+					factor = 2
+				}
+			}
+			modifier = {#14
+				has_war = yes
+				add = 5
+				factor = 2
+			}
 		}
 	}
 	option = {
 		name = MOT_event.21.c
 		From = {
 			country_event = {days = 3 id = MOT_event.25}
+		}
+		ai_chance = {
+			base = 2
+			modifier = {#7#40
+				has_equipment = {grain_conversion_eq < 1000}
+				has_equipment = {infantry_equipment < 2000}
+				has_equipment = {ttt_uniform_eq < 1000}
+				add = 3
+			}
+			modifier = {
+				FROM = {#4
+					has_war = no
+					factor = 2
+				}
+			}
+			modifier = {
+				has_war = yes
+				add = 5
+				factor = 2
+			}
 		}
 	}
 }
@@ -505,19 +605,84 @@ country_event = {
 		From = {
 			country_event = {days = 3 id = MOT_event.26}
 		}
-		add_manpower = -20000
+		trigger = {
+			has_manpower > 3000
+		}
+		add_manpower = -3000
+		ai_chance = {
+			base = 2
+			modifier = {
+				FROM = {#4
+					has_war = yes
+					add = 5
+				}
+			}
+			modifier = {
+				has_manpower < 50000
+				factor = 0
+			}
+			modifier = {
+				FROM = {
+					surrender_progress > 0.5
+				}
+				add = 5
+			}
+			modifier = {
+				has_war = yes
+				factor = 0
+			}
+		}
 	}
 	option = {
 		name = MOT_event.22.b
 		From = {
 			country_event = {days = 3 id = MOT_event.27}
 		}
-		add_manpower = -10000
+		add_manpower = -1500
+		trigger = {
+			has_manpower > 1500
+		}
+		ai_chance = {
+			base = 2
+			modifier = {
+				FROM = {#4
+					has_war = yes
+					add = 5
+				}
+			}
+			modifier = {
+				has_manpower < 25000
+				factor = 0
+			}
+			modifier = {
+				FROM = {
+					surrender_progress < 0.5
+				}
+				add = 5
+			}
+			modifier = {
+				has_war = yes
+				factor = 0
+			}
+		}
 	}
 	option = {
 		name = MOT_event.22.c
 		From = {
 			country_event = {days = 3 id = MOT_event.28}
+		}
+		ai_chance = {
+			base = 2
+			modifier = {
+				FROM = {#4
+					has_war = no
+					add = 2
+				}
+				FROM = {#4
+					num_divisions > 35
+					add = 3
+				}
+			}
 		}
 	}
 }
@@ -544,7 +709,7 @@ country_event = {
 		}
 		add_equipment_to_stockpile = {
 			type = grain_conversion_eq
-			amount = 3000
+			amount = 1000
 			producer = MOT
 		}
 		custom_effect_tooltip = MOT_event.23_tooltip
@@ -597,7 +762,7 @@ country_event = {
 		}
 		add_equipment_to_stockpile = {
 			type = grain_conversion_eq
-			amount = 1500
+			amount = 500
 			producer = MOT
 		}
 		custom_effect_tooltip = MOT_event.24_tooltip
@@ -651,7 +816,7 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.26.a
-		add_manpower = 20000
+		add_manpower = 3000
 		custom_effect_tooltip = MOT_event.26_tooltip
 		if = {
 			limit = {
@@ -690,7 +855,7 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.27.a
-		add_manpower = 10000
+		add_manpower = 1500
 		custom_effect_tooltip = MOT_event.27_tooltip
 		if = {
 			limit = {
@@ -731,7 +896,64 @@ country_event = {
 		name = MOT_event.28.a
 	}
 }
+###############################################
+#####################################################
+###援助军区事件（201——203）
+country_event = {
+	id = MOT_event.201
+	immediate = {}
+	picture =null
+	title = MOT_event.201.t
+	desc = MOT_event.201.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = MOT_event.201.a
+		add_war_support = 0.01
+        add_manpower = 1000
+	}
+}
+country_event = {
+	id = MOT_event.202
+	immediate = {}
+	picture =null
+	title = MOT_event.202.t
+	desc = MOT_event.202.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = MOT_event.202.a
+		add_war_support = 0.01
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = MOT
+		}
+	}
+}
+country_event = {
+	id = MOT_event.203
+	immediate = {}
+	picture =null
+	title = MOT_event.203.t
+	desc = MOT_event.203.d
+	is_triggered_only =yes
+	fire_only_once =no
+	option = {
+		name = MOT_event.203.a
+		add_war_support = 0.01
+		add_equipment_to_stockpile = {
+			type = grain_conversion_eq
+			amount = 1000
+			producer = MOT
+		}
+	}
+}
 
+
+###############################################
+#####################################################
+###难民事件链
 country_event = {
 	id = MOT_event.29 #新的生活（难民事件链其一）
 	title = MOT_event.29.t

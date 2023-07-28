@@ -1,138 +1,141 @@
-SNA_smuggling_scale = {
-	set_temp_variable={SNA_smuggle = SNA_MATERIALS}
-    add_to_temp_variable={SNA_smuggle = SNA_ARMAMENT}
-if={
-limit={
- check_variable={
-  var = SNA_smuggle 
-  value = 200
-  compare = greater_than_or_equals
-     }
+SNA_MATERIALS_add_effects = 
+{
+  if = { 
+    limit = {
+      check_variable = { SNA_Kamisato_Clan_morale < 25 } 
+      check_variable = { SNA_Kamisato_Clan_morale > -1 } 
+      }
+      set_variable = {SNA_Kamisato_Clan_use = 0}
    }
- subtract_from_variable = {SNA_smuggling_morale = 1}
+   if = { 
+    limit = {
+      check_variable = { SNA_Kamisato_Clan_morale < 50 } 
+      check_variable = { SNA_Kamisato_Clan_morale > 24 } 
+      }
+      set_variable = {SNA_Kamisato_Clan_use = 1}
+      multiply_variable ={ SNA_Kamisato_Clan_use = 10}
+   }
+   if = { 
+    limit = {
+      check_variable = { SNA_Kamisato_Clan_morale < 75 } 
+      check_variable = { SNA_Kamisato_Clan_morale > 49 } 
+      }
+      set_variable = { SNA_Kamisato_Clan_use = 2}
+      multiply_variable ={ SNA_Kamisato_Clan_use = 10}
+   }
+   if = { 
+    limit = {
+      check_variable = { SNA_Kamisato_Clan_morale < 100 } 
+      check_variable = { SNA_Kamisato_Clan_morale > 74 } 
+      }
+      set_variable = {SNA_Kamisato_Clan_use = 3}
+      multiply_variable ={ SNA_Kamisato_Clan_use = 10}
+   }
+   set_variable = { SNA_MATERIALS_add = smuggle_net_scale}
+   multiply_variable = { SNA_MATERIALS_add = 25 }
+   add_to_variable = { SNA_MATERIALS_add = SNA_Kamisato_Clan_use }
+}
+
+SNA_Resources_check_effects = 
+{
+  if =  {
+    limit = {check_variable = {SNA_MATERIALS > 500}}
+    set_variable = {SNA_MATERIALS = 500}
+  }
+  if =  {
+    limit = {check_variable = {SNA_MATERIALS > 500}}
+    set_variable = {SNA_ARMAMENT = 500}
   }
 }
 
-SNA_foolishi_morale = {
- if={
- limit={
-    check_variable = { SNA_Fatui_morale < 50 }
-	check_variable = { SNA_Fatui_morale > 25 }
-   }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
+SNA_relation_checks = 
+{
+  clamp_variable = {
+     var = SNA_Kamisato_Clan_morale 
+     max = 100
+     min = 0
   }
-
-if={
- limit={
-    check_variable = { SNA_Fatui_morale < 75 }
-	check_variable = { SNA_Fatui_morale > 49 }
-   }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
-
-if={
- limit={
-    check_variable = { SNA_Fatui_morale < 100 }
-	check_variable = { SNA_Fatui_morale > 74 }
-   }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
-  
-if={
- limit={
-    check_variable = { SNA_Fatui_morale > 126 }
-	check_variable = { SNA_Fatui_morale > 100 }
-   }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
+  clamp_variable = {
+    var = SNA_Fatui_morale 
+    max = 100
+    min = 0
+ }
 }
 
-SNA_Kamisato_Clan_morale = { 
-if={
- limit={
-    check_variable = { SNA_Kamisato_Clan_morale > -1 }
-	check_variable = { SNA_Kamisato_Clan_morale < 25 }
+SNA_ARMAMENT_add_effects = 
+{
+  if = { 
+    limit = {
+      check_variable = { SNA_Fatui_morale < 25 } 
+      check_variable = { SNA_Fatui_morale > -1 } 
+      }
+      set_variable = {SNA_Fatui_morale_use = 0}
    }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
-  
-if={
- limit={
-   check_variable = { SNA_Kamisato_Clan_morale < 50 }
-   check_variable = { SNA_Kamisato_Clan_morale > 25 }
+   if = { 
+    limit = {
+      check_variable = { SNA_Fatui_morale < 50 } 
+      check_variable = { SNA_Fatui_morale > 24 } 
+      }
+      set_variable = {SNA_Fatui_morale_use = 1}
+      multiply_variable ={ SNA_Fatui_morale_use = 10}
    }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
-  
-if={
- limit={
-  check_variable = { SNA_Kamisato_Clan_morale < 75 }
-  check_variable = { SNA_Kamisato_Clan_morale > 49 }
+   if = { 
+    limit = {
+      check_variable = { SNA_Fatui_morale < 75 } 
+      check_variable = { SNA_Fatui_morale > 49 } 
+      }
+      set_variable = {SNA_Fatui_morale_use = 2}
+      multiply_variable ={ SNA_Fatui_morale_use = 10}
    }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
-  
-if={
- limit={
-  check_variable = { SNA_Kamisato_Clan_morale < 100 }
-  check_variable = { SNA_Kamisato_Clan_morale > 74 }
+   if = { 
+    limit = {
+      check_variable = { SNA_Fatui_morale < 100 } 
+      check_variable = { SNA_Fatui_morale > 74 } 
+      }
+      set_variable = {SNA_Fatui_morale_use = 3}
+      multiply_variable ={ SNA_Fatui_morale_use = 10}
    }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
-  
-if={
- limit={
-  check_variable = { SNA_Kamisato_Clan_morale > 126 }
-  check_variable = { SNA_Kamisato_Clan_morale > 100 }
-   }
-    add_to_variable = {SNA_ARMAMENT = 10}
-	add_to_variable = {SNA_MATERIALS = 10}
-  }
+  set_variable = { SNA_ARMAMENT_add = smuggle_net_scale}
+  multiply_variable = { SNA_ARMAMENT_add = 25 }
+  add_to_variable = { SNA_ARMAMENT_add = SNA_Fatui_morale_use }
 }
 
-SNA_ideasxinhai = {
-if={
- limit={
-    check_variable = { SNA_smuggling_morale = 1 }	
-   }
-    add_ideas = SNA_summggle_net_1
+SNA_Smuggle_decision_add_idea = {
+  if={
+  limit={
+      check_variable = { smuggle_net_scale = 1 }	
+      }
+      add_ideas = SNA_summggle_net_1
   }
 
-if={
+  if={
  limit={
-    check_variable = { SNA_smuggling_morale = 2 }	
-   }
-    swap_ideas = {
-	remove_idea = SNA_summggle_net_1
-	add_idea = SNA_summggle_net_2
+     check_variable = { smuggle_net_scale = 2 }	
+      }
+      swap_ideas = {
+	      remove_idea = SNA_summggle_net_1
+	      add_idea = SNA_summggle_net_2
    	}	
   }
 
-if={
+  if={
  limit={
-    check_variable = { SNA_smuggling_morale = 3 }	
+    check_variable = { smuggle_net_scale = 3 }	
    }
    swap_ideas = {
-	remove_idea = SNA_summggle_net_2
-	add_idea = SNA_summggle_net_3
+	    remove_idea = SNA_summggle_net_2
+	    add_idea = SNA_summggle_net_3
    	}
   }
   
-if={
+  if={
  limit={
-    check_variable = { SNA_smuggling_morale > 3 }
+    check_variable = { smuggle_net_scale = 4  }
    } 
 	swap_ideas = {
-	remove_idea = SNA_summggle_net_3
-	add_idea = SNA_summggle_net_4
+	      remove_idea = SNA_summggle_net_3
+	      add_idea = SNA_summggle_net_4
    	}
   }
 }
+

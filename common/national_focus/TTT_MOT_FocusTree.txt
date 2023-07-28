@@ -218,7 +218,11 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_06 }
 		x = 12
 		y = 4
-		
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
+			}
+		}
 		cost = 35
 		ai_will_do = {
 		    base = 15
@@ -316,7 +320,11 @@ focus_tree = {
 		y = 5
 		
 		cost = 42
-
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
+			}
+		}
 		ai_will_do = {
 		    base = 60 
 		}
@@ -352,7 +360,11 @@ focus_tree = {
 				tooltip =MOT_tree_0_09_trigger_tooltip
 			}
 		}
-		
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
+			}
+		}
 		cost = 35
 		search_filters = {  }
 		completion_reward = {
@@ -381,6 +393,11 @@ focus_tree = {
 			custom_trigger_tooltip = {
 				check_variable = {MOT_Political_grid_array^1 = 5}
 				tooltip = MOT_tree_0_10_trigger_tooltip
+			}
+		}
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
 			}
 		}
 		cost = 35
@@ -415,6 +432,11 @@ focus_tree = {
 				tooltip = MOT_tree_0_11_trigger_tooltip
 			}
 		}
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
+			}
+		}
 		completion_reward = {
 			#解锁决议：净化风魔龙
 			unlock_decision_tooltip = MOT_Progress_decision_mission_07
@@ -430,7 +452,11 @@ focus_tree = {
 		y = 5
 		
 		cost = 35
-
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
+			}
+		}
 		ai_will_do = {
 		    base = 0
 		}
@@ -460,10 +486,15 @@ focus_tree = {
 		x = 14
 		y = 6
 		available = {
-			check_variable = {MOT_Political_grid_array^0 = 9}
+			check_variable = {MOT_Political_grid_array^0 = 4}
 			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^0 = 9}
+				check_variable = {MOT_Political_grid_array^0 = 4}
 				tooltip = MOT_tree_0_13_trigger_tooltip
+			}
+		}
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
 			}
 		}
 		cost = 21
@@ -490,10 +521,15 @@ focus_tree = {
 		x = 14
 		y = 7
 		available = {
-			check_variable = {MOT_Political_grid_array^1 = 10}
+			check_variable = {MOT_Political_grid_array^1 = 5}
 			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^1 = 10}
+				check_variable = {MOT_Political_grid_array^1 = 5}
 				tooltip =MOT_tree_0_14_trigger_tooltip
+			}
+		}
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
 			}
 		}
 		cost = 21
@@ -520,10 +556,15 @@ focus_tree = {
 		x = 14
 		y = 8
 		available = {
-			check_variable = {MOT_Political_grid_array^2 = 11}
+			check_variable = {MOT_Political_grid_array^2 = 6}
 			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^2 = 11}
+				check_variable = {MOT_Political_grid_array^2 = 6}
 				tooltip =MOT_tree_0_15_trigger_tooltip
+			}
+		}
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
 			}
 		}
 		cost = 21
@@ -540,7 +581,11 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_08 focus = MOT_tree_0_12 }
 		x = 12
 		y = 6
-		
+		bypass = {
+			not = {
+				has_global_flag = MOT_dragon_crisis
+			}
+		}
 		cost = 70
 		search_filters = {  }
 		completion_reward = {
@@ -556,6 +601,9 @@ focus_tree = {
 		y = 9
 		available = {
 			always = no
+		}
+		bypass = {
+			has_global_flag = MOT_dragon_crisis_is_over
 		}
 		allow_branch = {
 			not = {
@@ -579,10 +627,13 @@ focus_tree = {
 	focus = {
 		id = MOT_tree_0_17_2
 		icon = GFX_goal_mot_01_gaotianzhige
-        prerequisite = { focus = MOT_tree_0_11 focus = MOT_tree_0_15 }
 		x = 12
 		y = 9
+		prerequisite = { focus = MOT_tree_0_11 focus = MOT_tree_0_15 }
 		allow_branch = {
+			has_idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+		}
+		available = {
 			has_idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
 		}
 		cost = 180
@@ -594,6 +645,27 @@ focus_tree = {
 				slot = country_leader
 				trait = MOT_Jean2_traits 
 			}
+			hidden_effect = {
+				remove_trait = {
+					character = MOT_Jean
+					ideology = authoritarian_democracy
+					trait = MOT_Jean2_traits 
+				}
+				remove_trait = {
+					character = MOT_Jean
+					ideology = classical_liberalism
+					trait = MOT_Jean2_traits 
+				}
+			}
+			MOT = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			BLL = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			TWL = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			DLK = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			DSC = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			MDQ = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			FXE = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			ALS = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
+			QQZ = {remove_ideas = MOT_The_shadow_of_the_Demon_Dragon_crisis}
 		}
 	}
 

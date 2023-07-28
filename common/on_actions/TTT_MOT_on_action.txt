@@ -22,6 +22,16 @@ on_actions = {
                     ###风魔龙危机失败
                     ###触发失败事件
                     country_event = {id = MOT_event.14}
+                    news_event = {days = 2 id = MOT_event.15}
+                    every_country = {
+                        limit = {
+                            not = {
+                                original_tag = MOT
+                            }
+                        }
+                        news_event = {days = 2 id = MOT_event.1402}
+                    }
+                    
                 }
                 else = {
                     ###继续倒计时
@@ -37,12 +47,12 @@ on_actions = {
                         add_to_variable = {MOT_dragon_crisis_deadline_num = -36.5}
                         add_to_variable = {MOT_Deadline_num =1}
                         add_to_variable = {MOT_Deadline_num_localization = 1}
-                        clamp_temp_variable = {
+                        clamp_variable = {
                             var = MOT_Deadline_num
                             min = 1
                             max = 11
                         }
-                        clamp_temp_variable = {
+                        clamp_variable = {
                             var = MOT_Deadline_num_localization
                             min =0
                             max = 10
@@ -83,15 +93,15 @@ on_actions = {
                 clear_variable = MOT_Standpoint_total_country_num_01
                 clear_variable = MOT_Standpoint_total_country_num_02
                 clear_variable = MOT_Standpoint_total_country_num_03
-                clamp_temp_variable = {
+                clamp_variable = {
                     var = MOT_Progress_num
                     min = 1
-                    max = 11
+                    max = 101
                 }
-                clamp_temp_variable = {
+                clamp_variable = {
                     var = MOT_Progress_num_localization
                     min = 0
-                    max = 10
+                    max = 100
                 }
             }
         }

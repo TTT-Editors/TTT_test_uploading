@@ -52,17 +52,24 @@ MOT_check_MOT_Prestige_num = yes
 set_country_flag = MOT_Jean_is_available
 set_country_flag = MOT_Lisa_is_available
 ###MOT_Political
+set_country_flag = MOT_Jean_is_ruler
 set_country_flag = MOT_open_gui_map1
 set_country_flag = MOT_Political_character1_is_locking
+set_country_flag = MOT_Political_character2_is_locking
 set_country_flag = MOT_Political_character7_is_locking
+add_ideas = MOT_Political_click_character1
+add_ideas = MOT_Political_click_character2
+1 = {
+	add_dynamic_modifier = { modifier = MOT_Political_character_modifier}
+}
 resize_array = {
     array = MOT_Political_character_map_array
     value = 0
     size = 5
 }
-set_variable = {character_num = 0}
+set_variable = {global.MOT_character_num = 0}
 set_variable = {map_num = 0}
-set_variable = {array_value = 0}
+set_variable = {global.MOT_character_array_value = 0}
 remove_from_array = {
 	array = MOT_Political_character_map_array
 	index = 0
@@ -72,6 +79,7 @@ add_to_array = {
 	value = 1
 	index = 0
 }
+
 remove_from_array = {
 	array = MOT_Political_character_map_array
 	index = 2
@@ -82,6 +90,15 @@ add_to_array = {
 	index = 2
 }
 
+remove_from_array = {
+	array = MOT_Political_character_map_array
+	index = 1
+}
+add_to_array = {
+	array = MOT_Political_character_map_array
+	value = 2
+	index = 1
+}
 MOT_Political_character_is_visible =yes
 
 ###MOT_nationalfocus_mission

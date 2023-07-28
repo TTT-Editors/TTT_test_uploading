@@ -4,19 +4,15 @@ MOT_Standardize_military_planning = {
 	}
 	remove_trigger = {
 		FROM = {
-			NOT = {
-				original_tag  = MOT
-				
-			}
-		}
-		FROM = {
 			OWNER = {
 				NOT = {
-					is_puppet_of = MOT
+					or = {
+						is_puppet_of = MOT
+						original_tag = MOT
+					}
 				}
 			}
 		}
-		
 	}
 	icon = GFX_MOT_Standardize_military_planning
     army_speed_factor_for_controller = 0.05
@@ -31,21 +27,18 @@ MOT_Political_character_modifier = {
 	}
 	remove_trigger = {
 		FROM = {
-			NOT = {
-				original_tag  = MOT
-			}
-		}
-		FROM = {
 			OWNER = {
 				NOT = {
-					is_puppet_of = MOT
+					or = {
+						is_puppet_of = MOT
+						original_tag = MOT
+					}
 				}
 			}
 		}
 	}
 	icon = GFX_MOT_Standardize_military_planning
 	local_manpower = 0.05
-	recruitable_population = 0.01
 	local_intel_to_enemies = -0.1
 	enemy_intel_network_gain_factor_over_occupied_tag = -0.1
 	local_resources = 0.05

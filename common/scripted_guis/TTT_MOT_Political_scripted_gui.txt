@@ -8,68 +8,74 @@ scripted_gui = {
         
         effects = {
             MOT_Political_character_icon1_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 1}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 1}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character1_is_locking
                 MOT_Political_character_is_visible =yes
             }
             MOT_Political_character_icon2_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 2}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 2}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character2_is_locking
                 MOT_Political_character_is_visible =yes
+                set_country_flag = MOT_Political_Lock_characters_flag
             }
             MOT_Political_character_icon3_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 3}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 3}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character3_is_locking
                 MOT_Political_character_is_visible =yes
             }
             MOT_Political_character_icon4_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 4}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 4}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character4_is_locking
                 MOT_Political_character_is_visible =yes
+                set_country_flag = MOT_Political_Lock_characters_flag
             }
             MOT_Political_character_icon5_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 5}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 5}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character5_is_locking
                 MOT_Political_character_is_visible =yes
+                set_country_flag = MOT_Political_Lock_characters_flag
             }
             MOT_Political_character_icon6_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 6}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 6}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character6_is_locking
                 MOT_Political_character_is_visible =yes
+                set_country_flag = MOT_Political_Lock_characters_flag
             }
             MOT_Political_character_icon7_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 7}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 7}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character7_is_locking
                 MOT_Political_character_is_visible =yes
+                set_country_flag = MOT_Political_Lock_characters_flag
             }
             MOT_Political_character_icon8_click = {
-                clear_variable = character_num 
-                add_to_variable = {character_num = 8}
+                clear_variable = global.MOT_character_num 
+                add_to_variable = {global.MOT_character_num = 8}
                 MOT_Political_clr_character_flag = yes
                 MOT_Political_modifier_array_character_num = yes
                 set_country_flag = MOT_Political_character8_is_locking
                 MOT_Political_character_is_visible =yes
+                set_country_flag = MOT_Political_Lock_characters_flag
             }
             
         }
@@ -118,28 +124,18 @@ scripted_gui = {
                 has_country_flag = MOT_Political_character8_is_visible
             }
 
+
             MOT_Political_character_icon1_click_enabled = {
-                not = {
-                    has_country_flag = MOT_open_gui_map1
-                }
                 not = {
                     has_country_flag = MOT_Political_character1_is_locking
                 }
-                MOT = {
-                    not = {
-                        has_country_leader={
-                            name = "MOT_Jean"
-                            ruling_only = yes
-                        }
-                    }
+                not = {
+                    has_country_flag = MOT_Jean_is_ruler
                 }
             }
             MOT_Political_character_icon2_click_enabled = {
                 not = {
                     has_country_flag = MOT_Political_character2_is_locking
-                }
-                not = {
-                    has_country_flag = MOT_open_gui_map1
                 }
                 not = {
                     has_country_flag = MOT_open_gui_map3
@@ -149,6 +145,9 @@ scripted_gui = {
                 }
                 not = {
                     has_country_flag = MOT_open_gui_map5
+                }
+                not = {
+                    has_country_flag = MOT_open_gui_map1
                 }
             }
             MOT_Political_character_icon3_click_enabled = {
@@ -175,19 +174,13 @@ scripted_gui = {
             }
             MOT_Political_character_icon5_click_enabled = {
                 not = {
-                    has_country_flag = MOT_Political_character5_is_locking
-                }
-                not = {
                     has_country_flag = MOT_open_gui_map1
                 }
                 not = {
-                    has_country_flag = MOT_open_gui_map3
+                    has_country_flag = MOT_Political_character5_is_locking
                 }
                 not = {
-                    has_country_flag = MOT_open_gui_map4
-                }
-                not = {
-                    has_country_flag = MOT_open_gui_map5
+                    has_country_flag = MOT_open_gui_map2
                 }
             }
             MOT_Political_character_icon6_click_enabled = {

@@ -291,7 +291,19 @@ country_event = {
 			trait = MOT_Jean2_traits 
 		}
 		###清除flag
-		clr_character_flag = MOT_Jean_is_available
+		clr_country_flag = MOT_Jean_is_available
+
+		hidden_effect={
+			MOT_Jean = {
+				set_nationality = XQG
+			}
+			PREV = {
+				MOT_Jean = {
+					set_nationality = MOT
+				}
+			}
+		}
+
 		custom_effect_tooltip = MOT_event_14_tooltip
 		clr_global_flag = MOT_dragon_crisis
 		hidden_effect = {
@@ -357,7 +369,7 @@ country_event = {
 news_event = {
 	id = MOT_event.15
 	immediate = {}
-	picture= MOT_news_event_08
+	picture= GFX_MOT_news_event_08
 	title = MOT_event.15.t
 	desc = MOT_event.15.d
 	is_triggered_only =yes
@@ -403,7 +415,7 @@ news_event = {
 news_event = {
 	id = MOT_event.1402
 	immediate = {}
-	picture= MOT_news_event_08
+	picture= GFX_MOT_news_event_08
 	title = MOT_event.1402.t
 	desc = MOT_event.1402.d
 	is_triggered_only =yes
@@ -528,8 +540,7 @@ country_event = {
 				FROM = {
 					has_war = yes
 				}
-				add = 2
-				factor = 2
+				add = 4
 			}
 		}
 	}
@@ -553,9 +564,9 @@ country_event = {
 			}
 			modifier = {
 				FROM = {#4
-					has_war = yes
-					factor = 2
+					has_war = yes	
 				}
+				add = 2
 			}
 			modifier = {#14
 				has_war = yes
@@ -579,14 +590,13 @@ country_event = {
 			}
 			modifier = {
 				FROM = {#4
-					has_war = no
-					factor = 2
+					has_war = no	
 				}
+				factor = 2
 			}
 			modifier = {
 				has_war = yes
-				add = 5
-				factor = 2
+				add = 2
 			}
 		}
 	}
@@ -614,8 +624,8 @@ country_event = {
 			modifier = {
 				FROM = {#4
 					has_war = yes
-					add = 5
 				}
+				add = 5
 			}
 			modifier = {
 				has_manpower < 50000
@@ -647,8 +657,8 @@ country_event = {
 			modifier = {
 				FROM = {#4
 					has_war = yes
-					add = 5
 				}
+				add = 5
 			}
 			modifier = {
 				has_manpower < 25000
@@ -676,12 +686,14 @@ country_event = {
 			modifier = {
 				FROM = {#4
 					has_war = no
-					add = 2
 				}
+				add = 3
+			}
+			modifier = {
 				FROM = {#4
 					num_divisions > 35
-					add = 3
 				}
+				add = 3
 			}
 		}
 	}

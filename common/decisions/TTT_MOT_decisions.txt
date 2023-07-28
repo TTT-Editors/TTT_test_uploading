@@ -61,7 +61,7 @@ MOT_Political_decision_category = {
                 factor = 2
             }
         }
-        days_re_enable = 90
+        days_re_enable = 120
 		days_remove = 10
         fire_only_once = no
         cost = 10
@@ -106,7 +106,7 @@ MOT_Political_decision_category = {
                 add = 5
             }
         }
-        days_re_enable = 60
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 10
@@ -154,7 +154,7 @@ MOT_Political_decision_category = {
                 add = 5
             }
         }
-        days_re_enable = 60
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 10
@@ -202,7 +202,7 @@ MOT_Political_decision_category = {
                 factor = 1.5
             }
         }
-        days_re_enable = 90
+        days_re_enable = 120
 		days_remove = 10
         fire_only_once = no
         cost = 10
@@ -246,7 +246,7 @@ MOT_Political_decision_category = {
                 add = 5
             }
         }
-        days_re_enable = 60
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 10
@@ -254,7 +254,7 @@ MOT_Political_decision_category = {
             add_equipment_to_stockpile = {
                 type = infantry_equipment
                 amount = -1000
-                producer  MOT
+                producer = MOT
             }
             MDQ = {
                 country_event = {id = MOT_event.202 days = 3}
@@ -294,7 +294,7 @@ MOT_Political_decision_category = {
                 add = 5
             }
         }
-        days_re_enable = 60
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 10
@@ -342,7 +342,7 @@ MOT_Political_decision_category = {
                 factor = 1.5
             }
         }
-        days_re_enable = 90
+        days_re_enable = 120
 		days_remove = 10
         fire_only_once = no
         cost = 20
@@ -386,7 +386,7 @@ MOT_Political_decision_category = {
                 add = 5
             }
         }
-        days_re_enable = 60
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 30
@@ -434,7 +434,7 @@ MOT_Political_decision_category = {
                 add = 5
             }
         }
-        days_re_enable = 60
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 30
@@ -487,6 +487,11 @@ MOT_Political_decision_category = {
             add_to_variable = {MOT_Progress_num = -10}
             add_to_variable = {MOT_Progress_num_localization = -10}
             custom_effect_tooltip = MOT_Progress_decision_mission_07_tooltip
+		}
+        remove_trigger = {
+			not = {
+                has_global_flag = MOT_dragon_crisis
+            }
 		}
         remove_effect = {
             if = {
@@ -571,6 +576,11 @@ MOT_Political_decision_category = {
             add_to_variable = {MOT_Progress_num_localization = -10}
             add_command_power = -50
             custom_effect_tooltip = MOT_Progress_decision_mission_08_tooltip
+		}
+        remove_trigger = {
+			not = {
+                has_global_flag = MOT_dragon_crisis
+            }
 		}
         remove_effect = {
             if = {
@@ -1416,7 +1426,7 @@ MOT_open_gui_map_decision_category = {
 			FROM = { state =1 }
 		}
         visible = {
-            1 = {is_owned_or_subject_trigger = yes}
+                1 = {is_owned_or_subject_trigger = yes}
         }
         days_re_enable = 0
 		days_remove = 0

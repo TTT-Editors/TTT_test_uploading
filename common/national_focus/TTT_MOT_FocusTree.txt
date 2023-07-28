@@ -1379,50 +1379,53 @@ focus_tree = {
 			#三军区获得额外的五个民兵师（相比之下更弱），获得民族精神：“民兵权力暂时下放”：+0.5%适役人口，-5%训练时间
 			add_ideas = MOT_Temporary_decentralization_of_militia_power
 			if = {
-					limit = {
-						TWL = {
-							exists = yes
-						}
-					}
+				limit = {
 					TWL = {
-						add_manpower = 15000
-						add_equipment_to_stockpile = {
-							type = infantry_equipment
-							amount = 1500
-							producer = MOT
-						}
+						exists = yes
 					}
 				}
-				if = {
-					limit = {
-						MDQ = {
-							exists = yes
-						}
+				TWL = {
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"风龙废墟军区民兵旅\" start_experience_factor = 0.1"
+							count = 5
+							owner = TWL
+						}		
 					}
+				}
+			}
+			if = {
+				limit = {
 					MDQ = {
-						add_manpower = 15000
-						add_equipment_to_stockpile = {
-							type = infantry_equipment
-							amount = 1500
-							producer = MOT
-						}
+						exists = yes
 					}
 				}
-				if = {
-					limit = {
-						FXE = {
-							exists = yes
-						}
+				MDQ = {
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"达达乌帕谷民兵旅\" start_experience_factor = 0.1"
+							count = 5
+							owner = MDQ
+						}		
 					}
+				}
+			}
+			if = {
+				limit = {
 					FXE = {
-						add_manpower = 15000
-						add_equipment_to_stockpile = {
-							type = infantry_equipment
-							amount = 1500
-							producer = MOT
-						}
+						exists = yes
 					}
 				}
+				FXE = {
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"东蒙德军区民兵旅\" start_experience_factor = 0.1"
+							count = 5
+							owner = FXE
+						}		
+					}
+				}
+			}
 		}
 	}
 

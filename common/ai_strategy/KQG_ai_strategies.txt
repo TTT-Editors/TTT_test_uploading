@@ -189,47 +189,6 @@ KQG_anti_armor = {
 	}
 }
 
-KQG_armored_production = {
-	allowed = {
-		original_tag = KQG
-	}
-	enable = {
-		date > 2001.8.1
-		ai_wants_divisions > 10 #Decreasing the amount of tanks the AI wants
-	}
-	abort = {
-		ai_wants_divisions < 10 #Decreasing the amount of tanks the AI wants
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = armor
-		value = 4
-	}
-}
-
-KQG_halt_light_armor_production_in_transitioning = {
-	allowed = {
-		original_tag = KQG
-	}
-	enable = {
-		has_template_majority_unit = medium_armor
-		OR = {
-			has_equipment = { light_tank_chassis > 600 }
-			date > 2001.8.1
-		}
-	}
-	abort = {
-		# once we start we never go back to light armor
-	}
-
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = light_tank_chassis
-		value = -100
-	}
-}
-
 KQG_stockpile_less_early_game = {
 	allowed = {
 		original_tag = KQG
@@ -332,66 +291,13 @@ KQG_super_boost_light_for_med_armor = {
 	}
 }
 
-KQG_template_design = {
-	allowed = {
-		original_tag = KQG
-	}
-	enable = {
-		date < 2003.1.1
-	}
-	abort = {
-		date > 2003.1.1
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = infantry
-		value = 20
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = artillery
-		value = 20
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = motorized
-		value = -50
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = cavalry
-		value = -100
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = light_armor
-		value = 30
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = heavy_armor
-		value = -50
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = paratroopers
-		value = -50
-	}
-}
-
 war_with_ningguang = {
 	allowed = {
 		original_tag = KQG
 	}
 	enable = {
 		country_exists = NNG
+		NNG = { has_war_with = KQG }
 	}
 	abort = {
 		NOT = { country_exists = NNG }
@@ -402,6 +308,16 @@ war_with_ningguang = {
 		id = "NNG"
 		value = 200
 	}
+	
+	ai_strategy = {
+		type = front_control
+		tag = NNG
+		ratio = 0.75
+		priority = 100
+		ordertype = front
+		execution_type = rush_weak
+		manual_attack = yes
+	}
 }
 
 battle_of_guiliyuan_preparation = {
@@ -410,6 +326,7 @@ battle_of_guiliyuan_preparation = {
 	}
 	enable = {
 		country_exists = NNG
+		NNG = { NOT = { has_war_with = KQG } }
 	}
 
 	abort = {
@@ -438,5 +355,50 @@ KQG_onto_the_beaches = {
 	ai_strategy = {
 		type = naval_invasion_focus
 		value = 25
+	}
+}
+
+Keqing_finds_she_need_to_push_the_line_so_hard = {
+	allowed = {
+		tag = KQG
+	}
+	
+	enable = {
+		has_war_with = NNG
+		date < 2003.1.1
+	}
+	
+	abort = {
+		OR = {
+			date > 2003.1.1
+			NNG = { exists = no }
+			AND = {
+				126 = { is_controlled_by = KQG }
+				242 = { is_controlled_by = KQG }
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+
+		order_id = 2
+		
+		states = {
+			145
+			144
+			141
+			147
+		}
+
+		ratio = 0.15
+
+		subtract_invasions_from_need = no
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "NNG"
+		value = 500
 	}
 }

@@ -13,13 +13,13 @@ Liyue_you_should_be_prepared_for_war = {
 	ai_strategy = {
 		type = ignore
 		id = "DSC"
-		value = 100
+		value = 200
 	}
 	
 	ai_strategy = {
 		type = ignore
 		id = "SUM"
-		value = 100
+		value = 200
 	}
 }
 
@@ -52,90 +52,6 @@ Xiao_likes_Xianren = {
 		type = befriend
 		id = "XRG"
 		value = 200
-	}
-}
-
-Keqing_wants_to_beat_Ningguang = {
-	allowed = {
-		tag = KQG
-	}
-	
-	enable = {	
-		NNG = {
-			exists = yes
-			NOT = { has_country_flag = defeated_ningguang }
-			NOT = { is_in_faction_with = KQG }
-		}
-	}
-
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = antagonize
-		id = "NNG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "NNG"
-		value = 200
-	}
-}
-
-Keqing_finds_she_doesnt_need_to_push_the_line_so_hard = { #fake, really really need
-	allowed = {
-		tag = KQG
-	}
-	
-	enable = {
-		has_war_with = NNG
-		date < 2003.1.1
-	}
-	
-	abort = {
-		OR = {
-			date > 2003.1.1
-			NNG = { exists = no }
-			AND = {
-				126 = { is_controlled_by = KQG }
-				242 = { is_controlled_by = KQG }
-			}
-		}
-	}
-
-	ai_strategy = {
-		type = put_unit_buffers
-
-		order_id = 2
-		
-		states = {
-			145
-			144
-			141
-			147
-		}
-
-		ratio = 0.15
-
-		subtract_invasions_from_need = no
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "NNG"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = front_control
-		tag = NNG
-		ratio = 0.75
-		priority = 200
-		ordertype = front
-		execution_type = balanced
-		execute_order = yes
-		manual_attack = yes
 	}
 }
 
@@ -182,109 +98,6 @@ let_northern_warlords_kill_themselves = {
 		type = ignore
 		id = "XRG"
 		value = 100
-	}
-}
-
-NingGuang_and_Xingqiu_also_wants_to_beat_Keqing = {
-	allowed = {
-		tag = NNG
-	}
-	
-	enable = {	
-		KQG = {
-			exists = yes
-		}
-		NOT = { is_in_faction_with = KQG }
-	}
-
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = antagonize
-		id = "KQG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "KQG"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = consider_weak
-		id = "KQG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = front_control
-		tag = KQG
-		ratio = 0.75
-		priority = 200
-		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes
-	}
-}
-
-NingGuang_is_landing = {
-	allowed = {
-		#tag = NNG
-		is_nominate_liyue = yes
-	}
-	
-	enable = {
-		#has_country_flag = defeated_ningguang
-		has_war = yes
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "KQG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "NNG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "LYU"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "RTG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "ZDG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "ANG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "XRG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "XOG"
-		value = 200
 	}
 }
 
@@ -403,6 +216,37 @@ watch_out_north = {
 	}
 }
 
+ready_to_conquer_north = {
+	allowed = {
+		is_nominate_liyue = yes
+	}
+	
+	enable = {
+		has_country_flag = center_victor
+		has_global_flag = Liyue_Civil_War
+	}
+	
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "XRG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "XOG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "ZDG"
+		value = 200
+	}
+}
+
 Ganyu_s_little_tricks = {
 	allowed = {
 		tag = LYU
@@ -459,44 +303,65 @@ Xianren_and_Xiao_not_mess_up_with_southern_warlords = {
 	abort = { ZDG = { exists = no } }
 	
 	ai_strategy = {
-		type = antagonize
-		id = "XOG"
-		value = -100
-	}
-	
-	ai_strategy = {
-		type = antagonize
-		id = "XRG"
-		value = -100
-	}
-	
-	ai_strategy = {
 		type = ignore
 		id = "KQG"
-		value = 100
+		value = 200
 	}
 	
 	ai_strategy = {
 		type = ignore
 		id = "NNG"
-		value = 100
+		value = 200
 	}
 	
 	ai_strategy = {
 		type = ignore
 		id = "RTG"
-		value = 100
+		value = 200
 	}
 	
 	ai_strategy = {
 		type = ignore
 		id = "ANG"
-		value = 100
+		value = 200
 	}
 	
 	ai_strategy = {
 		type = ignore
 		id = "LYU"
-		value = 100
+		value = 200
+	}
+}
+
+XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend while germany has buffs.
+	allowed = {
+		OR = { 
+			original_tag = XRG
+			original_tag = XOG
+		}
+	}
+
+	enable = {
+		date < 2003.1.1 #To space!
+		has_war_with = ZDG
+		ZDG = {
+			NOT = { has_country_flag = ZDG_complete_failure }
+			NOT = { has_country_flag = ZDG_14_flag }
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+
+		tag = ZDG
+
+		ratio = 0.85
+
+		priority = 100
+		ordertype = front
+		execution_type = careful
+		execute_order = no
 	}
 }

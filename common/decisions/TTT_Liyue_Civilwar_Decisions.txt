@@ -568,12 +568,46 @@ liyue_civil_war_decisions = {
 		fire_only_once = yes
 		
 		ai_will_do = {
-			base = 1000
+			#Really important
+			base = 100
+			
+			#We have more important things...
 			modifier = {
 				factor = 0
 				surrender_progress > 0.2
 			}
-			#Really really important
+			
+			#We have not enough troops
+			modifier = {
+				add = -150
+				OR = {
+					has_army_manpower = { size < 449999 }
+					check_variable = { num_equipment_in_armies_k@infantry_equipment > 40 }
+				}
+			}
+			
+			#Zhidong has retreated
+			modifier = {
+				add = 500
+				ZDG = {
+					OR = {
+						has_country_flag = ZDG_complete_failure
+						has_country_flag = ZDG_14_flag
+					}
+				}
+				XRG = {
+					OR = {
+						is_subject_of = ZDG
+						exists = no
+					}
+				}
+				XOG = {
+					OR = {
+						is_subject_of = ZDG
+						exists = no
+					}
+				}
+			}
 		}
 
 		visible = {
@@ -872,10 +906,22 @@ liyue_civil_war_decisions = {
 		}
 	
 		ai_will_do = {
-			factor = 1000
+			#Really important
+			base = 100
+			
+			#We have more important things...
 			modifier = {
 				factor = 0
 				surrender_progress > 0.2
+			}
+			
+			#We have not enough troops
+			modifier = {
+				add = -150
+				OR = {
+					has_army_manpower = { size < 449999 }
+					check_variable = { num_equipment_in_armies_k@infantry_equipment > 40 }
+				}
 			}
 		}
 

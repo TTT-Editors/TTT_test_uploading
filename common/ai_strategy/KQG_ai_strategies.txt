@@ -402,3 +402,25 @@ Keqing_finds_she_need_to_push_the_line_so_hard = {
 		value = 500
 	}
 }
+
+KQG_pause_attack = {
+	allowed = {
+		tag = KQG
+	}
+	
+	enable = {
+		has_war_with = NNG
+		date < 2002.1.1
+	}
+	
+	abort = {
+		OR = {
+			date > 2002.1.1
+			NNG = { exists = no }
+			AND = {
+				126 = { is_controlled_by = KQG }
+				242 = { is_controlled_by = KQG }
+			}
+		}
+	}
+}

@@ -26,6 +26,10 @@ on_actions = {
 			if = {
 				limit = { FROM.FROM = { has_RTG_network = yes } }
 				FROM.FROM = { RTG_remove_network = yes }
+				if = {
+					limit = { FROM.FROM = { is_liyue_region_eight_states = yes } }
+					RTG = { add_to_variable = { used_network_states = 1 } }
+				}
 				RTG = { add_to_variable = { used_network_states = -1 } }
 			}
 		}

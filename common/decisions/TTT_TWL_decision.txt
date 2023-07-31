@@ -341,19 +341,7 @@ MOT_dragon_crisis_decision_category = {
         cost = 100
         remove_effect = {
             add_to_variable = {global.MOT_dragon_crisis_twl_scout_num = 1}
-            add_to_variable = {global.MOT_dragon_crisis_mot_scout_num = 1}
-            if = {
-                limit = {
-                    not = {
-                        has_dynamic_modifier = {modifier = MOT_Political_maintain_the_scout}
-                    }
-                }
-                add_dynamic_modifier = { modifier = MOT_Political_maintain_the_scout }
-                add_to_variable = { MOT_Political_maintain_the_scout_political_power_cost = 0.4 }
-            }
-            else = {
-                add_to_variable = { MOT_Political_maintain_the_scout_political_power_cost = 0.4 }
-            }
+            add_to_variable = { MOT_Political_maintain_the_scout_political_power_cost = 0.4 }
             country_event = {id = MOT_event.208}
 		}
     }
@@ -522,6 +510,9 @@ MOT_dragon_crisis_decision_category = {
         target_root_trigger = {
             has_global_flag = MOT_dragon_crisis
             check_variable = { global.MOT_naionalfocus_mission^2 = 1}
+            not = {
+                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
+            }
             or = {
                 original_tag = MOT
                 is_subject_of = MOT

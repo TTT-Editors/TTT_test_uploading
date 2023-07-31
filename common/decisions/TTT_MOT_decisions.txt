@@ -1674,7 +1674,7 @@ MOT_dragon_crisis_decision_category = {
         }
 		days_remove = 20
         fire_only_once = no
-        cost = 50
+        cost = 30
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -20}
             add_to_variable = {MOT_Progress_num_localization = -20}
@@ -1691,21 +1691,12 @@ MOT_dragon_crisis_decision_category = {
         }
         remove_effect = {
             add_to_variable = {global.MOT_dragon_crisis_mot_scout_num = 1}
-            if = {
-                limit = {
-                    not = {
-                        has_dynamic_modifier = {modifier = MOT_Political_maintain_the_scout}
-                    }
-                }
-                add_dynamic_modifier = { modifier = MOT_Political_maintain_the_scout }
-                add_to_variable = { MOT_Political_maintain_the_scout_political_power_cost = 0.4 }
-            }
-            else = {
-                add_to_variable = { MOT_Political_maintain_the_scout_political_power_cost = 0.4 }
-            }
+            add_to_variable = { MOT_Political_maintain_the_scout_political_power_cost = 0.4 }
             country_event = {id = MOT_event.208}
 		}
     }
+
+
     ##支援风龙废墟军区
     MOT_dragon_crisis_decision_category_04 = {
         allowed = {
@@ -1714,9 +1705,13 @@ MOT_dragon_crisis_decision_category = {
         available = {
             original_tag = MOT
             has_global_flag = MOT_dragon_crisis
-            ##要求50政治点数和20点进度
             has_political_power > 50
             has_completed_focus = MOT_tree_0_08
+            check_variable = {MOT_Progress_num> 10 }
+            custom_trigger_tooltip = {
+                tooltip = MOT_dragon_crisis_decision_category_04_tooltip
+                check_variable = {MOT_Progress_num > 10 }
+            }
         }
         visible = {
             original_tag = MOT
@@ -1737,7 +1732,6 @@ MOT_dragon_crisis_decision_category = {
                 has_political_power > 50
                 factor = 5
             }
-
         }
 		days_remove = 5
         fire_only_once = no
@@ -1762,6 +1756,8 @@ MOT_dragon_crisis_decision_category = {
             }
 		}
     }
+
+
     ####探寻
     ##风龙废墟指定省份
     MOT_dragon_crisis_decision_category_02 = {
@@ -1827,7 +1823,7 @@ MOT_dragon_crisis_decision_category = {
             }
         }
         days_remove = 40
-        cost = 50
+        cost = 30
         on_map_mode = map_and_decisions_view
         complete_effect = {
             FROM = {
@@ -1940,6 +1936,9 @@ MOT_dragon_crisis_decision_category = {
         target_root_trigger = {
             has_global_flag = MOT_dragon_crisis
             check_variable = { global.MOT_naionalfocus_mission^2 = 1}
+            not = {
+                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
+            }
             or = {
                 original_tag = MOT
                 is_subject_of = MOT
@@ -1956,7 +1955,7 @@ MOT_dragon_crisis_decision_category = {
             }
         }
         days_remove = 30
-        cost = 50
+        cost = 30
         on_map_mode = map_and_decisions_view
         complete_effect = {
             From = {

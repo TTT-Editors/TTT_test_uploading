@@ -424,7 +424,7 @@ INA_war_beginning = {
 		
 		cost = 20
 		
-		days_remove = 15
+		days_remove = 14
 		
 		fire_only_once = no
 		
@@ -433,34 +433,76 @@ INA_war_beginning = {
 		}
 		
 		visible = {
-			check_variable = 
+			if = 
 			{
-				INA_Island_choice = 1
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 1
+					}
+				}
 			}
-			check_variable = 
+			else_if = 
 			{
-				INA_Island_choice = 2
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 2
+					}
+				}
 			}
-			check_variable = 
+			else_if = 
 			{
-				INA_Island_choice = 3
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 3
+					}
+				}
 			}
-			check_variable = 
+			else_if = 
 			{
-				INA_Island_choice = 4
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 4
+					}
+				}
 			}
-			check_variable = 
+			else_if = 
 			{
-				INA_Island_choice = 5
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 5
+					}
+				}
 			}
-			check_variable = 
+			else_if = 
 			{
-				INA_Island_choice = 6
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 6
+					}
+				}
 			}
-			check_variable = 
+			else_if = 
 			{
-				INA_Island_choice = 7
-			} 
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 7
+					}
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 50
@@ -547,46 +589,87 @@ INA_war_beginning = {
 	 {
            icon = GFX_INA_prepare_war_small
 
-		   cost = 14
+		   cost = 20
 
-		   days_remove = 20
+		   days_remove = 14
 
 		   fire_only_once = no
 
 		   allowed = {
 			   original_tag = INA 
-			   check_variable = 
-				{
-					INA_Island_choice = 1
-				}
-				check_variable = 
-				{
-					INA_Island_choice = 2
-				}
-				check_variable = 
-				{
-					INA_Island_choice = 3
-				}
-				check_variable = 
-				{
-					INA_Island_choice = 4
-				}
-				check_variable = 
-				{
-					INA_Island_choice = 5
-				}
-				check_variable = 
-				{
-					INA_Island_choice = 6
-				}
-				check_variable = 
-				{
-					INA_Island_choice = 7
-				}
 		   }
 
 		   visible = {
-			  always = yes
+			if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 1
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 2
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 3
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 4
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 5
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 6
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 7
+					}
+				}
+			}
 		   }
 		   ai_will_do = {
 			  factor = 50
@@ -649,55 +732,132 @@ INA_war_beginning = {
 
 		fire_only_once = no
 
-		allowed = 
+		available = 
 		{
 			original_tag = INA
-			check_variable = {
-				INA_Island_choice = 1
+			if = {
+				limit = {
+					check_variable = {
+						global.TTT_BYI_Conflict_State_1 = 1
+					}
+				}
 			}
-			check_variable = {
-				global.TTT_BYI_Conflict_State_1 = 1
+
+			else_if = {
+				limit = {
+					check_variable = {
+						global.TTT_BYI_Conflict_State_2 = 1
+					}
+				}
 			}
-			check_variable = {
-				INA_Island_choice = 2
+			else_if = {
+				limit = {
+					check_variable = {
+						global.TTT_BYI_Conflict_State_3 = 1
+					}
+				}
 			}
-			check_variable = {
-				global.TTT_BYI_Conflict_State_2 = 1
+			else_if = {
+				limit = {
+					check_variable = {
+						global.TTT_BYI_Conflict_State_4 = 1
+					}
+				}
 			}
-			check_variable = {
-				INA_Island_choice = 3
+			else_if = {
+				limit = {
+					check_variable = {
+						global.TTT_BYI_Conflict_State_5 = 1
+					}
+				}
 			}
-			check_variable = {
-				global.TTT_BYI_Conflict_State_3 = 1
+			else_if = {
+				limit = {
+					check_variable = {
+						global.TTT_BYI_Conflict_State_6 = 1
+					}
+				}
 			}
-			check_variable = {
-				INA_Island_choice = 4
-			}
-			check_variable = {
-				global.TTT_BYI_Conflict_State_4 = 1
-			}
-			check_variable = {
-				INA_Island_choice = 5
-			}
-			check_variable = {
-				global.TTT_BYI_Conflict_State_5 = 1
-			}
-			check_variable = {
-				INA_Island_choice = 6
-			}
-			check_variable = {
-				global.TTT_BYI_Conflict_State_6 = 1
-			}
-			check_variable = {
-				INA_Island_choice = 7
-			}
-			check_variable = {
-				global.TTT_BYI_Conflict_State_7 = 1
+			else_if = {
+				limit = {
+					check_variable = {
+						global.TTT_BYI_Conflict_State_7 = 1
+					}
+				}
 			}
 		}
 
 		visible = {
-			always = yes
+			if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 1
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 2
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 3
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 4
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 5
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 6
+					}
+				}
+			}
+			else_if = 
+			{
+				limit = 
+				{
+					check_variable = 
+					{
+						INA_Island_choice = 7
+					}
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 50
@@ -855,13 +1015,13 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 6}}
 				INA_add_Impact_State_6 = yes
-				373 = 
+				85 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
 					}
 				}
-				84 = 
+				82 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
@@ -872,13 +1032,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 7}}
 				INA_add_Impact_State_7 = yes
-				85 = 
-				{
-					add_dynamic_modifier = {
-						modifier = INA_state_modifier_bunker
-					}
-				}
-				82 = 
+				87 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker

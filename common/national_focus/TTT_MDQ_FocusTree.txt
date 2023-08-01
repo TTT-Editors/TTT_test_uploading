@@ -661,6 +661,37 @@ focus = {
             hidden_effect = {
                 clr_country_flag = MDQ_dadaupa_War_flag
                 set_country_flag = MDQ_dadaupa_second_war_flag
+                add_dynamic_modifier = { modifier = MDQ_dadaupa_second_war_modifier }
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_org_loss_at_low_org_factor = 0 }
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_army_breakthrough_against_minor_factor = 0 }
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_experience_gain_infantry_combat_factor= 0 }
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_experience_gain_artillery_combat_factor = 0 }
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_supply_combat_penalties_on_core_factor = 0 }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_org_loss_at_low_org_factor
+                    min = -0.1
+                    max = 0
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_army_breakthrough_against_minor_factor
+                    min = 0
+                    max = 0.05
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_experience_gain_infantry_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_experience_gain_artillery_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_supply_combat_penalties_on_core_factor
+                    min = -0.1
+                    max = 0
+                }
                 MOT = {add_to_faction = MDQ}
                 MDQ = {
                     every_controlled_state = {
@@ -792,6 +823,7 @@ focus = {
         }
         completion_reward = {
             ###开始经济改革决议：支付50政治点，每次持续20日，完成后需从生产效率+5%、工厂产出+5%、建筑速度+5%中随机选择一项
+            set_country_flag = unlock_MDQ_dadaupa_War_decision_3
             unlock_decision_tooltip = MDQ_dadaupa_War_decision_3
         }
     }
@@ -1462,6 +1494,12 @@ focus = {
                 factor = 1
         }
         completion_reward = {
+            if = {
+                limit = {
+                    has_dynamic_modifier = { modifier = MDQ_The_Legend_of_the_Three_Musketeers }
+                }
+                remove_dynamic_modifier = { modifier = MDQ_The_Legend_of_the_Three_Musketeers }
+            }
             add_war_support = 0.05
         }
     }
@@ -1481,7 +1519,10 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            industrial_capacity_dockyard = 0.05
+            swap_ideas = {
+                remove_idea = MDQ_The_situation_of_the_army_and_the_people0
+                add_idea = MDQ_The_situation_of_the_army_and_the_people1
+            }
         }
     }
 
@@ -1501,7 +1542,10 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            
+            swap_ideas = {
+                remove_idea = MDQ_The_situation_of_the_army_and_the_people1
+                add_idea = MDQ_The_situation_of_the_army_and_the_people2
+            }
         }
     }
 
@@ -1522,7 +1566,9 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            
+            add_to_variable = {MDQ_military_reform_army_attack_factor = 0.03}
+            add_to_variable = {MDQ_military_reform_army_defence_factor = 0.03}
+            custom_effect_tooltip = MDQ_The_second_dadawupa_war_4_tooltip
         }
     }
 
@@ -1542,7 +1588,10 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            
+            swap_ideas = {
+                remove_idea = MDQ_The_situation_of_the_army_and_the_people2
+                add_idea = MDQ_The_situation_of_the_army_and_the_people4
+            }
         }
     }
 
@@ -1556,13 +1605,18 @@ focus = {
         prerequisite = {
             focus =MDQ_The_second_dadawupa_war_4
         }
-        
+        mutually_exclusive = {
+            focus = MDQ_The_second_dadawupa_war_5
+        }
         cost = 7
         ai_will_do = {
                 factor = 1
         }
         completion_reward = {
-            
+            swap_ideas = {
+                remove_idea = MDQ_The_situation_of_the_army_and_the_people2
+                add_idea = MDQ_The_situation_of_the_army_and_the_people3
+            }
         }
     }
 
@@ -1583,7 +1637,24 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            
+            if = {
+                limit = {
+                    has_idea = MDQ_The_situation_of_the_army_and_the_people3
+                }
+                swap_ideas = {
+                    remove_idea = MDQ_The_situation_of_the_army_and_the_people3
+                    add_idea = MDQ_The_situation_of_the_army_and_the_people5
+                }
+            }
+            if = {
+                limit = {
+                    has_idea = MDQ_The_situation_of_the_army_and_the_people4
+                }
+                swap_ideas = {
+                    remove_idea = MDQ_The_situation_of_the_army_and_the_people4
+                    add_idea = MDQ_The_situation_of_the_army_and_the_people5
+                }
+            }
         }
     }
 
@@ -1603,7 +1674,8 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            
+            add_to_variable = { MDQ_military_reform_pocket_penalty = -0.05 }
+            custom_effect_tooltip = MDQ_The_second_dadawupa_war_7_tooltip
         }
     }
 
@@ -1623,7 +1695,43 @@ focus = {
                 factor = 1
         }
         completion_reward = {
-            
+            country_event = { id = MDQ_event.31 }
+                add_to_variable = {global.MDQ_abandon_num = 100}
+                clamp_variable = {
+                    var = global.MDQ_abandon_num
+                    min = 1
+                    max = 101
+                }
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_org_loss_at_low_org_factor = -0.1}
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_army_breakthrough_against_minor_factor = 0.05}
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_experience_gain_infantry_combat_factor= 0.01}
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_experience_gain_artillery_combat_factor = 0.01}
+                add_to_variable = {MDQ_dadaupa_second_war_modifier_supply_combat_penalties_on_core_factor = -0.01}
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_org_loss_at_low_org_factor
+                    min = -0.1
+                    max = 0
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_army_breakthrough_against_minor_factor
+                    min = 0
+                    max = 0.05
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_experience_gain_infantry_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_experience_gain_artillery_combat_factor
+                    min = 0
+                    max = 0.1
+                }
+                clamp_variable = {
+                    var = MDQ_dadaupa_second_war_modifier_supply_combat_penalties_on_core_factor
+                    min = -0.1
+                    max = 0
+                }
         }
     }
 }

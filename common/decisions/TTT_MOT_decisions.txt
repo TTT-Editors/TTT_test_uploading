@@ -23,10 +23,10 @@ MOT_Political_decision_category = {
         timeout_effect = {
             complete_national_focus = MOT_tree_0_07
         }
-        modifier = {
-            political_power_cost = 1
-        }
     }
+    ##########################################################################
+    #########################################################################
+    ###########################################################################
     ##支援军区决议
     MOT_Political_decision_support_military_region_01= {
         allowed = {
@@ -34,7 +34,7 @@ MOT_Political_decision_category = {
         }
         available = {
             tag = MOT
-            has_manpower > 5000
+            has_manpower > 1000
             country_exists = TWL
             has_completed_focus = MOT_tree_0_06
         }
@@ -43,16 +43,33 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = TWL
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                TWL = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+            }
+            modifier = {
+                TWL = {
+                    surrender_progress >0.5
+                }
+                has_war = no
+                add = 5
+                factor = 2
+            }
+        }
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
-        cost = 20
-        complete_effect = {
-            add_manpower = -5000
-			TWL = {
-                add_war_support = 0.01
-                add_manpower = 5000
+        cost = 10
+        remove_effect = {
+            TWL = {
+                country_event = {id = MOT_event.201 days = 4}
             }
+            add_manpower = -1000
 		}
 
     }
@@ -63,7 +80,7 @@ MOT_Political_decision_category = {
         available = {
             tag = MOT
             has_equipment = {
-                infantry_equipment > 500
+                infantry_equipment > 1000
             }
             country_exists = TWL
             has_completed_focus = MOT_tree_0_06
@@ -73,23 +90,34 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = TWL
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                TWL = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+                factor = 2
+            }
+            modifier = {
+                has_equipment = {infantry_equipment > 10000}
+                has_war = no
+                add = 5
+            }
+        }
+        days_re_enable = 60
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = infantry_equipment
-                amount = -500
+                amount = -1000
                 producer = MOT
             }
-			TWL = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 500
-					producer = MOT
-				}
+            TWL = {
+                country_event = {id = MOT_event.202 days = 4}
             }
 		}
     }
@@ -110,23 +138,34 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = TWL
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                TWL = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+                factor = 2
+            }
+            modifier = {
+                has_equipment = {grain_conversion_eq > 10000}
+                has_war = no
+                add = 5
+            }
+        }
+        days_re_enable = 60
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = grain_conversion_eq
                 amount = -1000
                 producer = MOT
             }
-			TWL = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = grain_conversion_eq
-					amount = 1000
-					producer = MOT
-				}
+            TWL = {
+                country_event = {id = MOT_event.203 days = 4}
             }
 		}
     }
@@ -136,7 +175,7 @@ MOT_Political_decision_category = {
         }
         available = {
             tag = MOT
-            has_manpower > 5000
+            has_manpower > 1000
             country_exists = MDQ
             has_completed_focus = MOT_tree_0_06
         }
@@ -145,16 +184,33 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = MDQ
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                MDQ = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+            }
+            modifier = {
+                MDQ = {
+                    surrender_progress >0.5
+                }
+                has_war = no
+                add = 5
+                factor = 1.5
+            }
+        }
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
-        cost = 20
-        complete_effect = {
-            add_manpower = -5000
-			MDQ = {
-                add_war_support = 0.01
-                add_manpower = 5000
+        cost = 10
+        remove_effect = {
+            MDQ = {
+                country_event = {id = MOT_event.201 days = 3}
             }
+            add_manpower = -1000
 		}
     }
     MOT_Political_decision_support_military_region_05= {
@@ -164,7 +220,7 @@ MOT_Political_decision_category = {
         available = {
             tag = MOT
             has_equipment = {
-                infantry_equipment > 500
+                infantry_equipment > 1000
             }
             country_exists = MDQ
             has_completed_focus = MOT_tree_0_06
@@ -174,23 +230,34 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = MDQ
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                MDQ = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+                factor = 1.8
+            }
+            modifier = {
+                has_equipment = {infantry_equipment > 10000}
+                has_war = no
+                add = 5
+            }
+        }
+        days_re_enable = 60
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = infantry_equipment
-                amount = -500
-                producer = MOT
+                amount = -1000
+                producer  MOT
             }
-			MDQ = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 500
-					producer = MOT
-				}
+            MDQ = {
+                country_event = {id = MOT_event.202 days = 3}
             }
 		}
     }
@@ -211,23 +278,34 @@ MOT_Political_decision_category = {
             country_exists = MDQ
             has_country_flag = MOT_open_gui_map1
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                MDQ = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+                factor = 1.8
+            }
+            modifier = {
+                has_equipment = {grain_conversion_eq > 10000}
+                has_war = no
+                add = 5
+            }
+        }
+        days_re_enable = 60
 		days_remove = 10
         fire_only_once = no
-        cost = 30
-        complete_effect = {
+        cost = 10
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = grain_conversion_eq
                 amount = -1000
                 producer = MOT
             }
 			MDQ = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = grain_conversion_eq
-					amount = 1000
-					producer = MOT
-				}
+                country_event = {id = MOT_event.203 days = 3}
             }
 		}
     }
@@ -237,7 +315,7 @@ MOT_Political_decision_category = {
         }
         available = {
             tag = MOT
-            has_manpower > 5000
+            has_manpower > 1000
             country_exists = FXE
             has_completed_focus = MOT_tree_0_06
         }
@@ -246,15 +324,32 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = FXE
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                FXE = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+            }
+            modifier = {
+                FXE = {
+                    surrender_progress > 0.5
+                }
+                has_war = no
+                add = 5
+                factor = 1.5
+            }
+        }
+        days_re_enable = 90
 		days_remove = 10
         fire_only_once = no
         cost = 20
-        complete_effect = {
-            add_manpower = -5000
+        remove_effect = {
+            add_manpower = -1000
 			FXE = {
-                add_war_support = 0.01
-                add_manpower = 5000
+                country_event = {id = MOT_event.201 days = 2}
             }
 		}
     }
@@ -265,7 +360,7 @@ MOT_Political_decision_category = {
         available = {
             tag = MOT
             has_equipment = {
-                infantry_equipment > 500
+                infantry_equipment > 1000
             }
             country_exists = FXE
             has_completed_focus = MOT_tree_0_06
@@ -275,23 +370,34 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = FXE
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                FXE = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+                factor = 1.5
+            }
+            modifier = {
+                has_equipment = {infantry_equipment > 10000}
+                has_war = no
+                add = 5
+            }
+        }
+        days_re_enable = 60
 		days_remove = 10
         fire_only_once = no
         cost = 30
-        complete_effect = {
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = infantry_equipment
-                amount = -500
+                amount = -1000
                 producer = MOT
             }
 			FXE = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = 500
-					producer = MOT
-				}
+                country_event = {id = MOT_event.202 days = 2}
             }
 		}
     }
@@ -312,26 +418,41 @@ MOT_Political_decision_category = {
             has_country_flag = MOT_open_gui_map1
             country_exists = FXE
         }
-        days_re_enable = 30
+        ai_will_do = {
+            base = 0
+            modifier = {
+                FXE = {
+                    has_war = yes
+                }
+                has_war = no
+                add = 5
+                factor = 1.5
+            }
+            modifier = {
+                has_equipment = {grain_conversion_eq > 10000}
+                has_war = no
+                add = 5
+            }
+        }
+        days_re_enable = 60
 		days_remove = 10
         fire_only_once = no
         cost = 30
-        complete_effect = {
+        remove_effect = {
             add_equipment_to_stockpile = {
                 type = grain_conversion_eq
                 amount = -1000
                 producer = MOT
             }
 			FXE = {
-                add_war_support = 0.01
-                add_equipment_to_stockpile = {
-					type = grain_conversion_eq
-					amount = 1000
-					producer = MOT
-				}
+                country_event = {id = MOT_event.203 days = 2}
             }
 		}
     }
+    ################################################################################
+    ################################################################################
+    ################################################################################
+    ##风魔龙决议
     ###净化风魔龙
     MOT_Progress_decision_mission_07 = {
         allowed = {
@@ -341,11 +462,19 @@ MOT_Political_decision_category = {
             tag = MOT
             has_completed_focus = MOT_tree_0_11
             has_political_power > 200
-            check_variable = {MOT_Progress_num > 81}
+            check_variable = {MOT_Progress_num > 11}
+            has_global_flag = MOT_dragon_crisis
+            not = {
+                has_global_flag = MOT_dragon_crisis_is_over
+            }
         }
         visible = {
             has_country_flag = MOT_open_gui_map1
             has_completed_focus = MOT_tree_0_11
+            has_global_flag = MOT_dragon_crisis
+            not = {
+                has_global_flag = MOT_dragon_crisis_is_over
+            }
         }
         ai_will_do = {
             base = 10
@@ -355,8 +484,8 @@ MOT_Political_decision_category = {
         fire_only_once = yes
         cost = 200
         complete_effect = {
-            add_to_variable = {MOT_Progress_num = -80}
-            add_to_variable = {MOT_Progress_num_localization = -80}
+            add_to_variable = {MOT_Progress_num = -10}
+            add_to_variable = {MOT_Progress_num_localization = -10}
             custom_effect_tooltip = MOT_Progress_decision_mission_07_tooltip
 		}
         remove_effect = {
@@ -364,22 +493,40 @@ MOT_Political_decision_category = {
                 limit={
                     has_completed_focus = MOT_tree_0_16
                 }
-                random_list = {
-                    80 = {
-                        country_event = {days = 2 id = MOT_event.11}
+                news_event = {days = 1 id = MOT_event.11}
+                every_country = {
+                    limit = {
+                        not = {
+                            original_tag = MOT
+                        }
                     }
-                    20 = {
-                        country_event = {days = 2 id = MOT_event.14}
-                    }
+                    news_event = {days = 3 id = MOT_event.1102}
                 }
             }
             else = {
                 random_list = {
                     60 = {
-                        country_event = {days = 2 id = MOT_event.11}
+                        news_event = {days = 1 id = MOT_event.11}
+                        every_country = {
+                            limit = {
+                                not = {
+                                    original_tag = MOT
+                                }
+                            }
+                            news_event = {days = 2 id = MOT_event.1102}
+                        }
                     }
                     40 = {
-                        country_event = {days = 2 id = MOT_event.14}
+                        country_event = {days = 1 id = MOT_event.14}
+                        news_event = {days = 2 id = MOT_event.15}
+                        every_country = {
+                            limit = {
+                                not = {
+                                    original_tag = MOT
+                                }
+                            }
+                            news_event = {days = 2 id = MOT_event.1402}
+                        }
                     }
                 }
             }
@@ -394,15 +541,23 @@ MOT_Political_decision_category = {
             tag = MOT
             has_completed_focus = MOT_tree_0_15
             has_political_power > 50
-            check_variable = {MOT_Progress_num > 81}
+            check_variable = {MOT_Progress_num > 11}
             has_equipment = {
                 infantry_equipment > 5000
             }
             command_power > 50
+            has_global_flag = MOT_dragon_crisis
+            not = {
+                has_global_flag = MOT_dragon_crisis_is_over
+            }
         }
         visible = {
             has_country_flag = MOT_open_gui_map1
             has_completed_focus = MOT_tree_0_15
+            has_global_flag = MOT_dragon_crisis
+            not = {
+                has_global_flag = MOT_dragon_crisis_is_over
+            }
         }
         ai_will_do = {
             base = 10
@@ -412,8 +567,8 @@ MOT_Political_decision_category = {
         fire_only_once = yes
         cost = 50
         complete_effect = {
-            add_to_variable = {MOT_Progress_num = -80}
-            add_to_variable = {MOT_Progress_num_localization = -80}
+            add_to_variable = {MOT_Progress_num = -10}
+            add_to_variable = {MOT_Progress_num_localization = -10}
             add_command_power = -50
             custom_effect_tooltip = MOT_Progress_decision_mission_08_tooltip
 		}
@@ -422,22 +577,41 @@ MOT_Political_decision_category = {
                 limit={
                     has_completed_focus = MOT_tree_0_16
                 }
-                random_list = {
-                    90 = {
-                        country_event = {days = 2 id = MOT_event.13}
+                news_event = {days = 1 id = MOT_event.13}
+                every_country = {
+                    limit = {
+                        not = {
+                            original_tag = MOT
+                        }
                     }
-                    10 = {
-                        country_event = {days = 2 id = MOT_event.15}
-                    }
+                    country_event = {days = 2 id = MOT_event.1302}
                 }
+                
             }
             else = {
                 random_list = {
-                    70 = {
-                        country_event = {days = 2 id = MOT_event.13}
+                    90 = {
+                        news_event = {days = 1 id = MOT_event.13}
+                        every_country = {
+                            limit = {
+                                not = {
+                                    original_tag = MOT
+                                }
+                            }
+                            country_event = {days = 2 id = MOT_event.1302}
+                        }
                     }
-                    30 = {
-                        country_event = {days = 2 id = MOT_event.15}
+                    10 = {
+                        country_event = {days = 1 id = MOT_event.14}
+                        news_event = {days = 2 id = MOT_event.15}
+                        every_country = {
+                            limit = {
+                                not = {
+                                    original_tag = MOT
+                                }
+                            }
+                            news_event = {days = 2 id = MOT_event.1402}
+                        }
                     }
                 }
             }
@@ -463,12 +637,10 @@ MOT_Political_decision_category = {
                 check_variable = { global.MOT_naionalfocus_mission^0 = 3}
             }
         }
-        
+
         activation = {
             has_completed_focus = MOT_tree_0_08
-        }
-        visible = {
-            always = no
+            has_global_flag = MOT_dragon_crisis
         }
         selectable_mission = no
         days_mission_timeout = 70
@@ -477,7 +649,12 @@ MOT_Political_decision_category = {
         timeout_effect = {
             add_stability = -0.05
             add_war_support = -0.05
-            activate_mission = MOT_Progress_decision_mission_01     
+            if = {
+                limit = {
+                    has_global_flag = MOT_dragon_crisis
+                }
+                activate_mission = MOT_Progress_decision_mission_01
+            }
         }
         complete_effect = {
             hidden_effect ={
@@ -486,7 +663,7 @@ MOT_Political_decision_category = {
                 add_to_variable = {MOT_Progress_num_localization = -30}
                 ###奖励
                 TWL = {
-                    add_war_support = 0.05
+                    add_stability = 0.05
                 }
 
                 ##显示任务完成
@@ -536,9 +713,7 @@ MOT_Political_decision_category = {
         }
         activation = {
             has_completed_focus = MOT_tree_0_09
-        }
-        visible = {
-            always = no
+            has_global_flag = MOT_dragon_crisis
         }
         selectable_mission = no
         days_mission_timeout = 70
@@ -547,7 +722,12 @@ MOT_Political_decision_category = {
         timeout_effect = {
             add_stability = -0.05
             add_war_support = -0.05
-            activate_mission = MOT_Progress_decision_mission_02
+            if = {
+                limit = {
+                    has_global_flag = MOT_dragon_crisis
+                }
+                activate_mission = MOT_Progress_decision_mission_02
+            }
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
@@ -598,9 +778,7 @@ MOT_Political_decision_category = {
         }
         activation = {
             has_completed_focus = MOT_tree_0_10
-        }
-        visible = {
-            always = no
+            has_global_flag = MOT_dragon_crisis
         }
         selectable_mission = no
         days_mission_timeout = 70
@@ -609,7 +787,12 @@ MOT_Political_decision_category = {
         timeout_effect = {
             add_stability = -0.05
             add_war_support = -0.05
-            activate_mission = MOT_Progress_decision_mission_03
+            if = {
+                limit = {
+                    has_global_flag = MOT_dragon_crisis
+                }
+                activate_mission = MOT_Progress_decision_mission_03
+            }
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -50}
@@ -623,6 +806,7 @@ MOT_Political_decision_category = {
 
 
     ###强硬线任务
+    ##战争准备
     MOT_Progress_decision_mission_04 = {
         allowed = {
             tag = MOT
@@ -637,9 +821,7 @@ MOT_Political_decision_category = {
         }
         activation = {
             has_completed_focus = MOT_tree_0_12
-        }
-        visible = {
-            always = no
+            has_global_flag = MOT_dragon_crisis
         }
         selectable_mission = no
         days_mission_timeout = 70
@@ -648,13 +830,18 @@ MOT_Political_decision_category = {
         timeout_effect = {
             add_stability = -0.05
             add_war_support = -0.05
-            activate_mission = MOT_Progress_decision_mission_04
+            if = {
+                limit = {
+                    has_global_flag = MOT_dragon_crisis
+                }
+                activate_mission = MOT_Progress_decision_mission_04
+            }
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
             add_to_variable = {MOT_Progress_num_localization = -30}
             
-            set_temp_variable = { MOT_m = 6 }
+            set_temp_variable = { MOT_m = 1 }
             MOT_Political_complete_mission = yes
         }
     }
@@ -672,9 +859,7 @@ MOT_Political_decision_category = {
         }
         activation = {
             has_completed_focus = MOT_tree_0_13
-        }
-        visible = {
-            always = no
+            has_global_flag = MOT_dragon_crisis
         }
         selectable_mission = no
         days_mission_timeout = 70
@@ -683,7 +868,12 @@ MOT_Political_decision_category = {
         timeout_effect = {
             add_stability = -0.05
             add_war_support = -0.05
-            activate_mission = MOT_Progress_decision_mission_05
+            if = {
+                limit = {
+                    has_global_flag = MOT_dragon_crisis
+                }
+                activate_mission = MOT_Progress_decision_mission_05
+            }
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
@@ -691,7 +881,7 @@ MOT_Political_decision_category = {
             TWL = {
                 add_war_support = 0.05
             }
-            set_temp_variable = { MOT_m = 7 }
+            set_temp_variable = { MOT_m = 2 }
             MOT_Political_complete_mission = yes
         }
     }
@@ -709,9 +899,7 @@ MOT_Political_decision_category = {
         }
         activation = {
             has_completed_focus = MOT_tree_0_14
-        }
-        visible = {
-            always = no
+            has_global_flag = MOT_dragon_crisis
         }
         selectable_mission = no
         days_mission_timeout = 70
@@ -720,7 +908,12 @@ MOT_Political_decision_category = {
         timeout_effect = {
             add_stability = -0.05
             add_war_support = -0.05
-            activate_mission = MOT_Progress_decision_mission_06
+            if = {
+                limit = {
+                    has_global_flag = MOT_dragon_crisis
+                }
+                activate_mission = MOT_Progress_decision_mission_06
+            }
         }
         complete_effect = {
             add_to_variable = {MOT_Progress_num = -30}
@@ -729,7 +922,7 @@ MOT_Political_decision_category = {
             TWL = {
                 add_war_support = 0.05
             }
-            set_temp_variable = { MOT_m = 8 }
+            set_temp_variable = { MOT_m = 3 }
             MOT_Political_complete_mission = yes
         }
     }
@@ -777,50 +970,14 @@ MOT_Political_decision_category = {
 				##清除条件FLAG
 				clr_global_flag = MOT_dragon_crisis
 				set_global_flag = MOT_dragon_crisis_is_over
-				##清除倒计时
-				set_variable = {
-					var = MOT_dragon_crisis_deadline_num
-					value = 0
-				}
-                set_variable = {MOT_Progress_num = 1}
-                set_variable = {MOT_Deadline_num = 1}
-                set_variable = {MOT_Progress_num_localization = 0}
-                set_variable = {MOT_Deadline_num_localization = 0}
-				###解锁立场选择
-				clr_global_flag = MOT_dragon_crisis_standpoint_is_locked
-				##解除进度条和倒计时机制
-				clr_country_flag = MOT_Deadline_is_unlocked
-				clr_country_flag = MOT_Progress_is_unlocked
-				###清除立场
-				if = {
-					limit = {
-						has_global_flag = Lock_MOT_Standpoint_decision_1
-					}
-					clr_global_flag = Lock_MOT_Standpoint_decision_1
-
-				}
-				else_if = {
-					limit = {
-						has_global_flag = Lock_MOT_Standpoint_decision_2
-					}
-					clr_global_flag = Lock_MOT_Standpoint_decision_2
-				}
-				else_if = {
-					limit = {
-						has_global_flag = Lock_MOT_Standpoint_decision_3
-					}
-					clr_global_flag = Lock_MOT_Standpoint_decision_3
-				}
-				##清除国家和任务
-				clear_array = global.MOT_Standpoint_flag_array_01
-				clear_array = global.MOT_Standpoint_flag_array_02
-				clear_array = global.MOT_Standpoint_flag_array_03
-				clear_array = global.MOT_naionalfocus_mission
-				clear_array = MOT_Political_grid_array
+                MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = yes
             }
         }
     }
 }
+##############################################################################################
+############################################################################################
+##############################################################################################
 ##军事线改革决议
 ###绘测地图
 
@@ -851,6 +1008,14 @@ MOT_Political_decision_category = {
                 has_country_flag = MOT_Survey_map_is_locking_flag
             }
             has_country_flag = MOT_mika_is_activating
+        }
+        ai_will_do = {
+            base = 5
+            modifier={
+                has_political_power > 150
+                add = 5
+                factor = 2
+            }
         }
         fire_only_once = yes
         cost = 50
@@ -903,6 +1068,14 @@ MOT_Political_decision_category = {
                 has_country_flag = MOT_Survey_map_is_locking_flag
             }
             has_country_flag = MOT_mika_is_activating
+        }
+        ai_will_do = {
+            base = 5
+            modifier={
+                has_political_power > 150
+                add = 5
+                factor = 2
+            }
         }
         fire_only_once = yes
         cost = 50
@@ -961,6 +1134,14 @@ MOT_Political_decision_category = {
                 has_country_flag = MOT_Survey_map_is_locking_flag
             }
             has_country_flag = MOT_mika_is_activating
+        }
+        ai_will_do = {
+            base = 5
+            modifier={
+                has_political_power > 150
+                add = 5
+                factor = 2
+            }
         }
         fire_only_once = yes
         cost = 50
@@ -1022,6 +1203,14 @@ MOT_Political_decision_category = {
                 has_country_flag = MOT_Survey_map_is_locking_flag
             }
             has_country_flag = MOT_mika_is_activating
+        }
+        ai_will_do = {
+            base = 5
+            modifier={
+                has_political_power > 150
+                add = 5
+                factor = 2
+            }
         }
         fire_only_once = yes
         cost = 50
@@ -1090,6 +1279,14 @@ MOT_Political_decision_category = {
             }
             has_country_flag = MOT_mika_is_activating
         }
+        ai_will_do = {
+            base = 5
+            modifier={
+                has_political_power > 150
+                add = 5
+                factor = 2
+            }
+        }
         fire_only_once = yes
         cost = 50
         days_remove = 150
@@ -1145,6 +1342,14 @@ MOT_Political_decision_category = {
             }
             has_country_flag = MOT_mika_is_activating
         }
+        ai_will_do = {
+            base = 5
+            modifier={
+                has_political_power > 150
+                add = 5
+                factor = 2
+            }
+        }
         fire_only_once = yes
         cost = 50
         days_remove = 150
@@ -1175,6 +1380,10 @@ MOT_Political_decision_category = {
             original_tag = MOT
             has_idea = MOT_A_song_of_defiance
             has_idea = MOT_The_teachings_of_freedom
+        }
+        ai_will_do = {
+            base = 10
+            factor = 10
         }
         fire_only_once = yes
         complete_effect = {

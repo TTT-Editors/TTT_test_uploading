@@ -88,13 +88,11 @@ on_actions = {
 				limit = {
 					is_in_faction_with = LYU
 					LYU = { has_country_flag = LYU_great_union }
-					all_country = {
-						limit = { 
-							OR = {
-								is_in_faction_with = LYU
-							}
+					NOT = {
+						any_country = {
+							is_in_faction_with = LYU
+							has_capitulated = no
 						}
-						has_capitulated = yes
 					}
 				}
 				LYU = { clr_country_flag = LYU_great_union }
@@ -189,9 +187,11 @@ on_actions = {
 						has_country_flag = LYU_great_union
 					}
 					ROOT = { has_country_flag = people_alliance_menbers }
-					all_country = {
-						limit = { has_country_flag = people_alliance_menbers }
-						has_capitulated = yes
+					NOT = {
+						any_country = {
+							has_country_flag = people_alliance_menbers
+							has_capitulated = no
+						}
 					}
 				}
 				every_possible_country = {

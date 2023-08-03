@@ -43,9 +43,11 @@ ARF_yuanzhu = {
 				has_country_flag = bianjing_1_flag
 			}
 		}
-		available = {
-			command_power > 25
+
+		custom_cost_trigger = {
+			command_power > 24.9
 		}
+		
 		complete_effect = {
 			add_command_power = -25
 			random_state = {
@@ -119,13 +121,34 @@ ARF_yuanzhu = {
 			has_country_flag = ARF_yes
 		}
 		available = {
-			command_power > 50
-			ARF = {
-				has_war = has_war_with
+			any_neighbor_state = {
+				is_controlled_by = RTG
 			}
 		}
+		ai_will_do = {
+			factor = 100			
+		}
+		custom_cost_trigger = {
+			command_power > 49.9
+		}
+		available = {
+			ARF = {
+				has_war = RTG
+			}
+		}
+		war_with_on_remove = RTG
 		complete_effect = {
 			add_command_power = -50
+			RTG = { country_event = { id = liyue_civil_war.101 } }
+			RTG = { country_event = { id = dikangjun.9 days = 20 } }
+			hidden_effect = {
+				set_country_flag = will_war_with_RTG
+				add_ai_strategy = {
+					type = prepare_for_war
+					id = RTG
+					value = 200
+				}
+			}
 		}
 	}
 }

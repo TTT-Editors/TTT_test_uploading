@@ -152,3 +152,105 @@ country_event = { #边境战争胜利
 		set_country_flag = bianjing_1_flag
 	}
 }
+country_event = { #对龙王开战（RTG视角）
+	id = dikangjun.9
+	title = dikangjun.9.t
+	desc = dikangjun.9.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.9.a
+		FROM = {
+			declare_war_on = { target = RTG type = annex_everything }
+		}
+	}
+}
+country_event = { #对龙王开战（RTG视角）
+	id = dikangjun.9
+	title = dikangjun.9.t
+	desc = dikangjun.9.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.9.a
+		FROM = {
+			declare_war_on = { target = RTG type = annex_everything }
+		}
+	}
+}
+
+country_event = {	#抵抗军要地皮（ARF视角）
+	id = dikangjun.10
+	title = dikangjun.10.t
+	desc = dikangjun.10.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.10.a
+		every_country = {
+			limit = { has_country_flag = will_war_with_RTG }
+			country_event = { id = dikangjun.11 days = 2 }
+		}
+	}
+}
+
+country_event = {	#ARF seek for land in Juyuan which you occupied.
+	id = dikangjun.11
+	title = dikangjun.11.t
+	desc = dikangjun.11.d
+	is_triggered_only = yes
+	option = {	#Agree
+		name = dikangjun.11.a
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 10
+				surrender_progress > 0.2
+			}
+		}
+		ARF = { country_event = { id = dikangjun.12 days = 2 } }
+		every_owned_state = {
+			limit = { is_core_of = ARF }
+			ARF = { transfer_state = PREV }
+		}
+	}
+	
+	option = {	#No way
+		name = dikangjun.11.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				surrender_progress > 0.2
+			}
+		}
+		ARF = { country_event = { id = dikangjun.13 days = 2 } }
+		create_wargoal = {
+  			type = annex_everything
+  			target = ARF
+  		}
+		ARF = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ROOT
+			}
+		}
+	}
+}
+
+country_event = {	#对面同意（ARF视角）
+	id = dikangjun.12
+	title = dikangjun.12.t
+	desc = dikangjun.12.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.12.a
+	}
+}
+
+country_event = {	#对面拒绝（ARF视角）
+	id = dikangjun.13
+	title = dikangjun.13.t
+	desc = dikangjun.13.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.13.a
+	}
+}

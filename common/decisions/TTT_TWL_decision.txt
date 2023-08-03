@@ -1,134 +1,6 @@
 ####蒙德通用决议
 MOT_Standpoint_decision_category= {
-    #TWL_MOT_nationalfocus_mission1 = {
-    #    allowed = {
-    #        tag = TWL
-    #    }
-    #    available = {
-    #        always = no
-    #    }
-    #    
-    #    activation = {
-    #        check_variable = { global.MOT_naionalfocus_mission^0 = 1}
-    #        has_global_flag = MOT_dragon_crisis
-    #    }
-    #    selectable_mission = no
-    #    days_mission_timeout = 70
-    #    is_good = no
-    #    fire_only_once =yes
-    #    timeout_effect = {
-    #        if = {
-    #            limit = {
-    #                has_global_flag = MOT_dragon_crisis
-    #                check_variable = {
-    #                    var = global.MOT_naionalfocus_mission^0
-    #                    value = 3
-    #                    compare = not_equals
-    #                }
-    #            }
-    #            activate_mission = TWL_MOT_nationalfocus_mission1
-    #        }
-    #        if = {
-    #            limit = {
-    #                has_global_flag = MOT_dragon_crisis
-    #                check_variable = {
-    #                    var = global.MOT_naionalfocus_mission^0
-    #                    value = 3
-    #                    compare = equals
-    #                }
-    #            }
-    #            country_event = {id = MOT_event.210}
-    #        } 
-    #    }
-    #}
-    #TWL_MOT_nationalfocus_mission2 = {
-    #    allowed = {
-    #        tag = TWL
-    #    }
-    #    available = {
-    #        check_variable = {
-    #            var = global.MOT_dragon_crisis_complete_state_num
-    #            value = 13
-    #            compare = equals
-    #        }
-    #    }            
-    #    activation = {
-    #        check_variable = { global.MOT_naionalfocus_mission^1 = 1}
-    #        has_global_flag = MOT_dragon_crisis
-    #    }
-    #    selectable_mission = no
-    #    days_mission_timeout = 140
-    #    is_good = no
-    #    fire_only_once =yes
-    #    timeout_effect = {
-    #        if = {
-    #            limit = {
-    #                has_global_flag = MOT_dragon_crisis
-    #            }
-    #            activate_mission = TWL_MOT_nationalfocus_mission2
-    #        }
-    #    }
-    #}
-    #TWL_MOT_nationalfocus_mission3 = {
-    #    allowed = {
-    #        tag = TWL
-    #    }
-    #    available = {
-    #        ##goal
-    #        if = {
-    #            limit = {
-    #                TWL = {
-    #                    is_ai = yes
-    #                }
-    #            }
-    #            has_war_support > 0.1
-    #            has_stability > 0.1
-    #        }
-    #        if = {
-    #            limit = {
-    #                TWL = {
-    #                    is_ai = no
-    #                }
-    #            }
-    #            divisions_in_state = {
-    #                type = infantry
-    #                size > 0
-    #                state = 28
-    #            }
-    #            has_war_support > 0.1
-    #            has_stability > 0.1
-    #        }
-    #    }            
-    #    activation = {
-    #        check_variable = { global.MOT_naionalfocus_mission^2 = 1}
-    #        has_global_flag = MOT_dragon_crisis
-    #    }
-    #    selectable_mission = no
-    #    days_mission_timeout = 70
-    #    is_good = no
-    #    fire_only_once =yes
-    #    timeout_effect = {
-    #        add_stability = -0.05
-    #        add_war_support = -0.05
-    #        if = {
-    #            limit = {
-    #                has_global_flag = MOT_dragon_crisis
-    #            }
-    #            activate_mission = TWL_MOT_nationalfocus_mission3
-    #        }
-    #    }
-    #    complete_effect = {
-    #        remove_from_array = {
-    #            array = global.MOT_naionalfocus_mission
-    #            index = 2
-    #        }
-    #        add_to_array = {
-    #            array = global.MOT_naionalfocus_mission
-    #            value = 3
-    #            index = 2
-    #        }
-    #    }
-    #}
+    
     TWL_MOT_nationalfocus_mission4 = {
         allowed = {
             tag = TWL
@@ -336,6 +208,8 @@ MOT_dragon_crisis_decision_category = {
                 check_variable = { global.MOT_naionalfocus_mission^0 = 3}##任务结束
             }
 		}
+        cancel_if_not_visible = yes
+        cancel_if_invalid = yes
 		days_remove = 20
         fire_only_once = no
         cost = 100
@@ -391,13 +265,13 @@ MOT_dragon_crisis_decision_category = {
                 check_variable = { global.MOT_naionalfocus_mission^1 = 1}
                 check_variable = { global.MOT_naionalfocus_mission^1 = 3}
             }
-            not = {
-                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
-            }
             is_subject_of = MOT
         }
         available = {
             check_variable = { global.MOT_dragon_crisis_twl_scout_num > 0 }
+            not = {
+                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
+            }
             has_political_power > 50
             command_power > 5
             FROM = {
@@ -406,6 +280,8 @@ MOT_dragon_crisis_decision_category = {
                 }
             }
         }
+        cancel_if_not_visible = yes
+        cancel_if_invalid = yes
         days_remove = 40
         cost = 50
         on_map_mode = map_and_decisions_view
@@ -472,13 +348,10 @@ MOT_dragon_crisis_decision_category = {
         }
     }
     ####准备净化
-    MOT_dragon_crisis_decision_category_03 = {
+    TWL_dragon_crisis_decision_category_03 = {
         icon = GFX_UNKNOW
         allowed = {
-            or = {
-                tag = MOT
-                tag = TWL
-            }
+            original_tag = TWL
         }
         ai_will_do = {
             base = 10
@@ -510,9 +383,6 @@ MOT_dragon_crisis_decision_category = {
         target_root_trigger = {
             has_global_flag = MOT_dragon_crisis
             check_variable = { global.MOT_naionalfocus_mission^2 = 1}
-            not = {
-                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
-            }
             or = {
                 original_tag = MOT
                 is_subject_of = MOT
@@ -521,6 +391,9 @@ MOT_dragon_crisis_decision_category = {
         available = {
             check_variable = { global.MOT_dragon_crisis_twl_scout_num > 0 }
             has_political_power > 50
+            not = {
+                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
+            }
             has_equipment = { infantry_equipment > 500 }
             FROM = {
                 not = {
@@ -528,6 +401,8 @@ MOT_dragon_crisis_decision_category = {
                 }
             }
         }
+        cancel_if_not_visible = yes
+        cancel_if_invalid = yes
         days_remove = 30
         cost = 50
         on_map_mode = map_and_decisions_view

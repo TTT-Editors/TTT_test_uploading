@@ -8,6 +8,9 @@ shared_focus =
 		{
 			has_country_flag = INA_War_Beginning_stage
 		}
+		OR = {
+			NOT = { has_country_flag = INA_Kujyou_win_the_war }
+		}
 	}
 	x = 1
 	y = 1
@@ -1032,8 +1035,9 @@ shared_focus =
 {
 	id = INA_The_crisis_of_Inazuma
 	icon = GFX_INA
-	available = {
-		always = yes
+	allow_branch = 
+	{
+		has_country_flag = INA_NO_country_flag
 	}
 	cost = 30
 	x = 0
@@ -1046,14 +1050,14 @@ shared_focus =
 #九条家家主
 shared_focus = 
 {
-	id = INA_Kujyous_tenure
+	id = INA_Kujyous_tenure #分支父国策
 	icon = GFX_INA
-	available = {
-		has_country_flag = INA_Kujyou_win_the_war
-	}
+	allow_branch = {
+		has_country_flag = INA_Kujyou_win_the_war #解锁该分支条件
+	} 
 	cost = 30
-	x = 0
-	y = 8
+	x = 8 #父国策的xy坐标是绝对坐标
+	y = 0
 	completion_reward = {
 		add_political_power = 10
 	}
@@ -1061,16 +1065,121 @@ shared_focus =
 
 shared_focus = 
 {
-	id = INA_Kujyous_tenure_1
+	id = INA_Kujyous_tenure_1#分支子国策
 	icon = GFX_INA
-	relative_position_id = INA_Kujyous_tenure
+	relative_position_id = INA_Kujyous_tenure#父国策
+	prerequisite = {
+		focus = INA_Kujyous_tenure#子国策必须与父国策相连
+	}
 	cost = 30
-	x = 0
+	x = 1 #子国策的坐标是相对于父国策的坐标
 	y = 1
 	completion_reward = {
 		add_political_power = 10
 	}
 }
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_2
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure
+	}
+	cost = 30
+	x = -1
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_3
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_1
+	}prerequisite = {
+		focus = INA_Kujyous_tenure_2
+	}
+	cost = 30
+	x = 0
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+#政治线 包含与柊家的联姻 与社奉行的强制联合 合并奉行成立联合奉行 削减部分部门的人数  
+#继续推广眼狩令 以及推行《稻妻阶级平等法案》
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_3
+	}
+	cost = 30
+	x = -8
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics
+	}
+	cost = 30
+	x = -12
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+#经济线 包括开放新的通商埠 修建跨鸣神岛铁路 土地改革 建设工业区 修复御影炉心 
+#推广稻妻城电气化 为建设稻妻城做铺垫
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_3
+	}
+	cost = 30
+	x = 0
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+#军备线 包括陆地部队新型武器的使用 薪资改革 以及稻妻城内同心改革 打击黑恶势力和新式军工建设
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_3
+	}
+	cost = 30
+	x = 8
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
 
 
 

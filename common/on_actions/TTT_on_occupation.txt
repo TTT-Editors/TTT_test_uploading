@@ -19,26 +19,26 @@ on_actions = {
 			if = {
 				limit = {
 					has_global_flag = Liyue_Civil_War
-					if = {
-						limit = {
-							tag = RTG
-							RTG = { has_government = reformism }
-							FROM = {
-								controller = { has_war_with = RTG }
-							}
-							FROM.FROM = 124
-							NOT = { has_global_flag = RTG_occupies_liyue_harbor }
+				}
+				if = {
+					limit = {
+						tag = RTG
+						RTG = { has_government = reformism }
+						FROM = {
+							controller = { has_war_with = RTG }
 						}
-						set_global_flag = RTG_occupies_liyue_harbor
-						RTG = { news_event = { id = occupation_news.1 } }
+						FROM.FROM = { state = 124 }
+						NOT = { has_global_flag = RTG_occupies_liyue_harbor }
 					}
-					if = {
-						limit = {
-							ROOT = { is_nominate_liyue = yes }
-							ROOT = { NOT = { has_country_flag = special_occupy_flag } }
-						}
-						ROOT = { country_event = { id = rule_explantion.1 } }
+					set_global_flag = RTG_occupies_liyue_harbor
+					RTG = { news_event = { id = occupation_news.1 } }
+				}
+				if = {
+					limit = {
+						ROOT = { is_nominate_liyue = yes }
+						ROOT = { NOT = { has_country_flag = special_occupy_flag } }
 					}
+					ROOT = { country_event = { id = rule_explantion.1 } }
 				}
 			}
 		}

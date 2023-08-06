@@ -98,17 +98,7 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			create_country_leader = {
-				name = "LYU_Ganyu"
-				desc = "LYU_Ganyu_desc"
-				picture = GFX_portrait_large_Liyue_Ganyu
-				expire = "2023.7.29"
-				ideology = moraxism
-				traits = {
-					obey_rule_law
-				}
-			}
-			add_political_power = -1000
+			#add_political_power = -1000
 			add_ideas = panic_fills_land
 			add_ideas = blocked_harbour
 			if = {
@@ -126,29 +116,13 @@ country_event = {
 			}
 			NNG = {
 				transfer_state = 145
-			}
-			NNG = {
 				transfer_state = 126
-			}
-			NNG = {
 				transfer_state = 148
-			}
-			NNG = {
 				transfer_state = 146
-			}
-			NNG = {
 				transfer_state = 149
-			}
-			NNG = {
 				transfer_state = 405
-			}
-			NNG = {
 				transfer_state = 406
-			}
-			NNG = {
 				transfer_state = 150
-			}
-			NNG = {
 				transfer_state = 242
 			}
 			NNG = {
@@ -173,46 +147,86 @@ country_event = {
 			log = "Units has been released"
 			if = {
 				limit = {
-					has_idea = LYU_NingGuang
+					has_idea = idea_LYU_Ningguang
 				}
-				remove_ideas = LYU_NingGuang
+				remove_ideas = idea_LYU_Ningguang
 			}
-			LYU_NingGuang = {
-				set_nationality = NNG
-			}
+			LYU_Ningguang = { set_nationality = NNG }
 			LYU_Yelan = {
-				set_nationality = NNG
+				set_nationality = {
+					target_country = NNG
+				}
 			}
 			LYU_BeiDou = {
-				set_nationality = NNG
+				set_nationality = {
+					target_country = NNG
+				}
 			}
 			LYU_Xinyan = {
-				set_nationality = NNG
+				set_nationality = {
+					target_country = NNG
+				}
 			}
 			LYU_Chongyun = {
-				set_nationality = NNG
+				set_nationality = {
+					target_country = NNG
+				}
 			}
-			LYU_Xingqiu = {
-				set_nationality = NNG
-			}
+			#LYU_Xingqiu = {
+			#	set_nationality = NNG
+			#}
 			log = "Characters has been divided"
 			NNG = {
 				inherit_technology = LYU
-				promote_character = {
-					character = LYU_BeiDou
-					ideology = market_liberalism
-				}
-				promote_character = {
-					Character = LYU_Xinyan
-					ideology = anarcho_syndicalism
-				}
-				promote_character = {
-					Character = LYU_NingGuang
-					ideology = classical_liberalism
-				}
+				#promote_character = LYU_BeiDou
+				#promote_character = LYU_Xinyan
+				#promote_character = LYU_Ningguang
+				#promote_character = {
+				#	character = LYU_BeiDou
+				#	ideology = market_liberalism
+				#}
+				#promote_character = {
+				#	Character = LYU_Xinyan
+				#	ideology = anarcho_syndicalism
+				#}
 			}
 			NNG = {
 				load_oob = "NNG"
+			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = NNG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = NNG
+				}
+			}
+			create_country_leader = {
+				name = "LYU_Ganyu"
+				desc = "LYU_Ganyu_desc"
+				picture = GFX_portrait_large_Liyue_Ganyu
+				expire = "2023.7.29.1"
+				ideology = moraxism
+				traits = {
+					obey_rule_law
+				}
+			}
+			NNG = {
+				create_country_leader = {
+					name = "LYU_Ningguang"
+					desc = "Ningguang_desc"
+					picture = GFX_portrait_large_Liyue_NingGuang
+					expire = "2023.8.7.1"
+					ideology = classical_liberalism
+					traits = {
+						LiYueisthe_pioneerhumangovernance
+					}
+				}
 			}
 			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
 		}
@@ -304,9 +318,9 @@ country_event = {
 			}
 			if = {
 				limit = {
-					has_idea = LYU_Keqing
+					has_idea = idea_LYU_Keqing
 				}
-				remove_ideas = LYU_Keqing
+				remove_ideas = idea_LYU_Keqing
 			}
 			LYU_Keqing = {
 				set_nationality = {
@@ -316,6 +330,12 @@ country_event = {
 			KQG = {
 				inherit_technology = LYU
 				promote_character = LYU_Keqing
+				LYU_Keqing = {
+					unit_leader_event = {
+						id = liyue_civil_war.31
+						days = 15
+					}
+				}
 			}
 			KQG = {
 				load_oob = "KQG"
@@ -334,6 +354,19 @@ country_event = {
 				activate_mission = NNG_ready_to_attack_KQG
 			}
 			#NNG = { activate_mission = battle_of_yaoguang_shoal_reverse }
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = KQG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = KQG
+				}
+			}
 		}
 	}
 	option = {
@@ -450,6 +483,19 @@ country_event = {
 					days = 259
 				}
 			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = XOG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = XOG
+				}
+			}
 		}
 	}
 	option = {
@@ -551,6 +597,19 @@ country_event = {
 				size = 0.2
 				keep_unit_leaders_trigger = {
 					always = yes
+				}
+			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = RTG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = RTG
 				}
 			}
 		}
@@ -840,6 +899,19 @@ country_event = {
 			}
 			XRG_Shenhe = {
 				set_nationality = XRG
+			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = XRG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = XRG
+				}
 			}
 		}
 	}

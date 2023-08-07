@@ -138,10 +138,14 @@ liyue_civil_war_SNE_intervention = {
 	}
 	enable = {
 		country_exists = ZDG
+		ZDG = { NOT = { has_idea = ZDG_likewhen_tathagatacame } }
 	}
 
 	abort = {
-		NOT = { country_exists = ZDG }
+		OR = {
+			NOT = { country_exists = ZDG }
+			ZDG = { has_idea = ZDG_likewhen_tathagatacame }
+		}
 	}
 
 	ai_strategy = {

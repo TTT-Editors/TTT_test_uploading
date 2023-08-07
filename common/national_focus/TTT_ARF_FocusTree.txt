@@ -22,9 +22,28 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 100
-			ANG = { country_event = { id = dikangjun.1 } }
-			LYU = { country_event = { id = dikangjun.1 } }
-			XRG = { country_event = { id = dikangjun.1 } }
+			if = {
+				limit = {
+					country_exists = ANG
+				}
+				country_event = { id = dikangjun.1 }
+			}
+			if = {
+				limit = {
+					country_exists = LYU
+				}
+				country_event = { id = dikangjun.1 }
+			}
+			if = {
+				limit = {
+					country_exists = XRG
+				}
+				country_event = { id = dikangjun.1 }
+			}
+		    set_province_name = {
+				id = 154
+				name = ARF_liuwangzhezhudi
+			}
 		}
 	}
 	focus = {
@@ -67,12 +86,12 @@ focus_tree = {
 			154 ={ 
 				add_building_construction = {
 					type = arms_factory
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 				add_building_construction = {
 					type = industrial_complex
-					level = -2
+					level = -1
 					instant_build = yes
 				}
 			}
@@ -97,6 +116,9 @@ focus_tree = {
 		completion_reward = {
 			add_war_support = 0.05
 			add_popularity = { ideology = national_socialism popularity = 0.1 } 
+			RTG = {
+			country_event = { id = dikangjun.7 }
+		    }
 		}
 		prerequisite = {
 			focus = ARF_1
@@ -117,6 +139,10 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.25
 			add_war_support = 0.25
+			swap_ideas = {
+				remove_idea = ARF_3c_a
+				add_idea = ARF_3c_c
+			}
 		}
 		prerequisite = {
 			focus = ARF_3
@@ -135,10 +161,9 @@ focus_tree = {
 			factor = 50
 		}
 		completion_reward = {
-			swap_ideas = {
-			remove_idea = ARF_3c_a
-			add_idea = ARF_3c_b
-			}
+			add_political_power = 100
+			add_stability = 0.20
+	        add_war_support = 0.20
 		}
 		
 		prerequisite = {
@@ -160,13 +185,7 @@ focus_tree = {
 		completion_reward = {
 			add_war_support = 0.10
 			add_popularity = { ideology = national_socialism popularity = 0.1 } 
-			154 ={ 
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
+		    custom_effect_tooltip = ARF_7_tt
 		}
 		prerequisite = {
 			focus = ARF_4
@@ -246,13 +265,12 @@ focus_tree = {
 		completion_reward = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 2000
-				producer = ANG
+				amount = 2000		
 			}
 			add_equipment_to_stockpile = {
 				type = grain_conversion_eq
-				amount = 1000
-				producer = ANG
+		        amount = 1000
+				
 			}
 			add_manpower = 25000
 			add_state_core = 207 
@@ -262,6 +280,8 @@ focus_tree = {
 			add_state_core = 208 
 			add_state_core = 155 
 			add_state_core = 209
+			add_ideas = war_economy
+			add_ideas = Mercenary_army
 		}
 		prerequisite = {
 			focus = ARF_8
@@ -283,17 +303,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			declare_war_on = { target = RTG type = take_state_focus }
-			if = {
-				limit = {has_completed_focus = ARF_8}
-				RTG = {
-				add_timed_idea = {idea= RTG_Hive_curdling days = 120}
-				}
-			}
 			division_template = {
 				name = "Minbing Budui"
 				priority = 2
 				is_locked = yes
-				division_names_group = ARF_M_1
+				division_names_group = ARF_INF_01
 				regiments = {
 					militia = { x = 0 y = 0 }
 					militia = { x = 0 y = 1 }
@@ -311,9 +325,807 @@ focus_tree = {
 				}		
 			}
 			custom_effect_tooltip = ARF_11m
+			if = {
+				limit = {
+					NOT = { has_country_flag = ARF_11_flag }
+				}
+				set_country_flag = ARF_11_flag
+				mark_focus_tree_layout_dirty = yes
+			}
 		}
 		prerequisite = {
 			focus = ARF_10
 		}
 	}
+	focus = {
+		id = ARF_binlinchengxia #兵临城下
+		icon = GFX_goal_ARF_binglingchengxia
+		x = 15
+		y = 0
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		allow_branch = {
+			has_country_flag = ARF_11_flag
+		}
+		completion_reward = {
+			add_timed_idea = { idea = ARF_binglinchengxia days = 180 }
+			country_event = { days = 1  id = dikangjun.14 }
+	    }
+	}
+	focus = {
+		id = ARF_fengxudefangan #凤墟的方案
+		icon = GFX_goal_ARF_fengxu
+		x = 13
+		y = 1
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			has_completed_focus = ARF_fengxudefangan
+		}
+		prerequisite = {
+			focus = ARF_binlinchengxia
+		}
+		mutually_exclusive = { focus = ARF_mingbodejihua }
+		completion_reward = {
+			country_event = { days = 7  id = dikangjun.15 }
+	    }
+	}
+	focus = {
+		id = ARF_xiaohaozhanlue #消耗战略
+		icon = unknown
+		x = 13
+		y = 2
+		cost = 14
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_fengxudefangan
+		}
+		completion_reward = {
+			add_ideas = ARF_xiaohaozhanlue
+	    }
+	}
+	focus = {
+		id = ARF_zhandicanmoou #战地参谋速成班
+		icon = unknown
+		x = 14
+		y = 3
+		cost = 7
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_xiaohaozhanlue
+		}
+		completion_reward = {
+			add_ideas = ARF_zhandicanmou
+	    }
+	}
+	focus = {
+		id = ARF_guifanyezhangongshi #规范野战工事
+		icon = unknown
+		x = 14
+		y = 4
+		cost = 7
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_zhandicanmoou
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2.0
+				uses = 1
+				category = engineers_tech
+			}
+	    }
+	}
+	focus = {
+		id = ARF_xianjiayishu #仙家医术
+		icon = unknown
+		x = 14
+		y = 5
+		cost = 7
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_guifanyezhangongshi
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = hospital_tech
+			}
+			add_ideas = ARF_xianjiayishu
+	    }
+	}
+	focus = {
+		id = ARF_gongxinweishang #攻心为上
+		icon = unknown
+		x = 14
+		y = 6
+		cost = 14
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_xianjiayishu
+		}
+		completion_reward = {
+			RTG = {
+				add_political_power = -50
+                add_stability = -0.10
+	            add_war_support = -0.15
+			}
+			country_event = { days = 1 id = dikangjun.16 }
+			set_country_flag = ARF_gongxinweishang_flag
+	    }
+	}
+	focus = {
+		id = ARF_juyuanjinghunye #巨渊惊魂夜
+		icon = unknown
+		x = 14
+		y = 7
+		cost = 14
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			has_country_flag = {
+				flag = ARF_gongxinweishang_flag
+				days > 49
+			}
+		}
+		prerequisite = {
+			focus = ARF_gongxinweishang
+		}
+		completion_reward = {
+			RTG = {
+				add_ideas = ARF_huabian
+			}
+	    }
+	}
+	focus = {
+		id = ARF_xiongshijuexing #雄狮觉醒
+		icon = unknown
+		x = 15
+		y = 8
+		cost = 14
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_juyuanjinghunye
+			focus = ARF_liuxiayanjing
+		}
+		prerequisite = {
+			focus = ARF_zhiyuanjundui
+			focus = ARF_rendingshengtian
+		}
+		completion_reward = {
+			add_ideas = ARF_xiongshijuexing
+	    }
+	}
+	focus = {
+		id = ARF_womenbuhuifangqiguxiang #我们不会放弃故乡
+		icon = unknown
+		x = 15
+		y = 9
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			RTG = { exists = no }
+		}
+		prerequisite = {
+			focus = ARF_xiongshijuexing		
+		}
+		completion_reward = {
+			add_political_power = 200
+            add_stability = 0.10
+	        add_war_support = 0.10
+			country_event = { days = 1 id = dikangjun.19 }
+	    }
+	}
+	focus = {
+		id = ARF_hofangzhanxian #后方战线
+		icon = unknown
+		x = 20
+		y = 0
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			or = {
+			has_completed_focus = ARF_fengxudefangan
+			has_completed_focus = ARF_mingbodejihua
+			}
+		}
+		allow_branch = {
+			has_country_flag = ARF_11_flag
+		}
+		completion_reward = {
+			country_event = { days = 1 id = dikangjun.20 }
+	    }
+	}
+	focus = {
+		id = ARF_juyuanrenmin #巨渊的人民，为家乡献身
+		icon = unknown
+		x = 20
+		y = 1
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_hofangzhanxian		
+		}
+		completion_reward = {
+			
+	    }
+	}
+	focus = {
+		id = ARF_zuihodeliangshi #最后的粮食
+		icon = unknown
+		x = 20
+		y = 2
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_juyuanrenmin		
+		}
+		completion_reward = {
+			country_event = { days = 1 id = dikangjun.21 }
+	    }
+	}
+	focus = {
+		id = ARF_zuihodebupi #最后的布匹
+		icon = unknown
+		x = 20
+		y = 3
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_zuihodeliangshi		
+		}
+		completion_reward = {
+			
+	    }
+	}
+	focus = {
+		id = ARF_zuihodeqingnian #最后的青年
+		icon = unknown
+		x = 20
+		y = 4
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_zuihodebupi		
+		}
+		completion_reward = {
+			
+	    }
+	}
+	focus = {
+		id = ARF_zuihodenulin #最后的努力
+		icon = unknown
+		x = 20
+		y = 5
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_zuihodeqingnian		
+		}
+		completion_reward = {
+			country_event = { days = 1 id = dikangjun.22 }
+	    }
+	}
+	focus = {
+		id = ARF_xiangbaozhouyiyang #像煲粥一样简单
+		icon = unknown
+		x = 20
+		y = 6
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_zuihodenulin		
+		}
+		completion_reward = {
+			country_event = { days = 1 id = dikangjun.23 }
+	    }
+	}
+	focus = {
+		id = ARF_diandengren #点灯人
+		icon = unknown
+		x = 20
+		y = 7
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_xiangbaozhouyiyang		
+		}
+		completion_reward = {
+			country_event = { days = 1 id = dikangjun.24 }
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = hospital_tech
+			}
+	    }
+	}
+	focus = {
+		id = ARF_feijiechuzuozhan #非接触作战
+		icon = unknown
+		x = 12
+		y = 3
+		cost = 14
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_xiaohaozhanlue
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 1000
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = -0.3
+				uses = 2
+				category = cat_superior_firepower
+			}
+	    }
+	}
+	focus = {
+		id = ARF_shechengzhineijiezhenli #射程之内皆真理
+		icon = unknown
+		x = 12
+		y = 4
+		cost = 14
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_feijiechuzuozhan
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = ARF_xiaohaozhanlue2
+				remove_idea = ARF_xiaohaozhanlue
+			}	
+	    }
+	}
+	focus = {
+		id = ARF_zhubuchanshi #逐步蚕食
+		icon = unknown
+		x = 12
+		y = 5
+		cost = 14
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_feijiechuzuozhan
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = ARF_xiaohaozhanlue3
+				remove_idea = ARF_xiaohaozhanlue2
+			}
+	    }
+	}
+	focus = {
+		id = ARF_xianjiacanmou #仙家参谋
+		icon = unknown
+		x = 12
+		y = 6
+		cost = 35
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_zhubuchanshi
+		}
+		completion_reward = {
+			add_ideas = ARF_xianjiacanmou
+	    }
+	}
+	focus = {
+		id = ARF_zhiyuanjundui #“志愿”军队
+		icon = unknown
+		x = 12
+		y = 7
+		cost = 21
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_xianjiacanmou
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = { has_template = "步兵部队" }
+				}
+		division_template = {
+			name = "步兵部队"
+			priority = 2
+			is_locked = yes
+			division_names_group = TTT_INF_01
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				artillery_brigade = { x = 0 y = 3 }
+			}
+		}
+	}
+	capital_scope = {
+		create_unit = {
+			division = "division_template = \"步兵部队\" start_experience_factor = 0.4"
+			owner = ARF
+			count = 4
+		    }
+	    }
+	    }
+	}
+	focus = {
+		id = ARF_mingbodejihua #明泊的计划
+		icon = GFX_goal_ARF_mingbo
+		x = 17
+		y = 1
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			has_completed_focus = ARF_mingbodejihua
+		}
+		prerequisite = {
+			focus = ARF_binlinchengxia
+		}
+		mutually_exclusive = { focus = ARF_fengxudefangan }
+		completion_reward = {
+			country_event = { days = 1 id = dikangjun.17 }
+	    }
+	}
+	focus = {
+		id = ARF_jingongjingong #进攻进攻再进攻
+		icon = unknown
+		x = 17
+		y = 2
+		cost = 7
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_mingbodejihua
+		}
+		completion_reward = {
+			add_ideas = ARF_qianglijingong
+	    }
+	}
+	focus = {
+		id = ARF_fuchouzhuyixuanchuan #复仇主义宣传
+		icon = unknown
+		x = 18
+		y = 3
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_jingongjingong
+		}
+		completion_reward = {
+			add_ideas = ARF_fuchouzhuyixuanchuan
+	    }
+	}
+	focus = {
+		id = ARF_chihouxianxing #斥候先行
+		icon = unknown
+		x = 18
+		y = 4
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_fuchouzhuyixuanchuan
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2.0
+				uses = 1
+				category = recon_tech
+			}
+	    }
+	}
+	focus = {
+		id = ARF_juyuanqiangxizhe #巨渊强袭者
+		icon = unknown
+		x = 18
+		y = 5
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_chihouxianxing
+		}
+		completion_reward = {
+			add_ideas = ARF_juyuanqiangxizhe
+	    }
+	}
+	focus = {
+		id = ARF_dihouzhanhuo #敌后战火
+		icon = unknown
+		x = 18
+		y = 6
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			has_political_power > 49
+		}
+		prerequisite = {
+			focus = ARF_juyuanqiangxizhe
+		}
+		completion_reward = {
+			add_political_power = -50
+			RTG = {
+				add_stability = -0.10
+				add_war_support = -0.10
+				add_manpower = -500
+			}
+	    }
+	}
+	focus = {
+		id = ARF_liuxiayanjing #留下眼睛，用来哭泣
+		icon = unknown
+		x = 18
+		y = 7
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_dihouzhanhuo
+		}
+		completion_reward = {
+			country_event = { days = 1 id = dikangjun.18 }
+	    }
+	}
+	focus = {
+		id = ARF_xiangxinwmdelijian #相信我们的利剑
+		icon = unknown
+		x = 16
+		y = 3
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_jingongjingong
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+			}
+			swap_ideas = {
+				add_idea = ARF_qianglijingong2
+				remove_idea = ARF_qianglijingong
+			}
+	    }
+	}
+	focus = {
+		id = ARF_quantouerfeibazhang #拳头而非巴掌
+		icon = unknown
+		x = 16
+		y = 4
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_xiangxinwmdelijian
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_mobile_warfare
+			}
+	    }
+	}
+	focus = {
+		id = ARF_bingguishensu #兵贵神速
+		icon = unknown
+		x = 16
+		y = 5
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_quantouerfeibazhang
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = ARF_qianglijingong3
+				remove_idea = ARF_qianglijingong2
+			}
+	    }
+	}
+	focus = {
+		id = ARF_renuwshizhihui #任务式指挥
+		icon = unknown
+		x = 16
+		y = 6
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_bingguishensu
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = ARF_qianglijingong4
+				remove_idea = ARF_qianglijingong3
+			}
+	    }
+	}
+	focus = {
+		id = ARF_rendingshengtian #人定胜天
+		icon = unknown
+		x = 16
+		y = 7
+		cost = 28
+		ai_will_do = { 
+			base = 10
+		}
+		available = {
+			
+		}
+		prerequisite = {
+			focus = ARF_renuwshizhihui
+		}
+		completion_reward = {
+			division_template = {
+				name = "步兵部队"
+				priority = 2
+				is_locked = yes
+				division_names_group = TTT_INF_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+				}
+			}
+		}
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"步兵部队\" start_experience_factor = 0.4"
+				owner = ARF
+				count = 4
+			}
+	    }
+	}
 }
+

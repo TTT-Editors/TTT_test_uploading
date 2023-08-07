@@ -52,6 +52,8 @@ country_event = { #同意援助
 		ARF = {
 			add_war_support = 0.03
 		}
+		set_country_flag = ARF_yes
+		unlock_decision_category_tooltip = ARF_yuanzhu
 	}
 }
 
@@ -125,5 +127,345 @@ country_event = { #绯珀会谈
 	is_triggered_only = yes
 	option = {
 		name = dikangjun.6.a
+	}
+}
+country_event = { #反抗潮起
+	id = dikangjun.7
+	title = dikangjun.7.t
+	desc = dikangjun.7.d
+	fire_only_once = yes 
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.7.a
+		add_stability = -0.05
+	    add_war_support = -0.05
+	}
+}
+country_event = { #边境战争胜利
+	id = dikangjun.8
+	title = dikangjun.8.t
+	desc = dikangjun.8.d
+	fire_only_once = yes 
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.8.a
+		set_country_flag = bianjing_1_flag
+	}
+}
+country_event = { #对龙王开战（RTG视角）
+	id = dikangjun.9
+	title = dikangjun.9.t
+	desc = dikangjun.9.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.9.a
+		FROM = {
+			declare_war_on = { target = RTG type = annex_everything }
+		}
+	}
+}
+
+country_event = {	#抵抗军要地皮（ARF视角）
+	id = dikangjun.10
+	title = dikangjun.10.t
+	desc = dikangjun.10.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.10.a
+		every_country = {
+			limit = { has_country_flag = will_war_with_RTG }
+			country_event = { id = dikangjun.11 days = 2 }
+		}
+	}
+}
+
+country_event = {	#ARF seek for land in Juyuan which you occupied.
+	id = dikangjun.11
+	title = dikangjun.11.t
+	desc = dikangjun.11.d
+	is_triggered_only = yes
+	option = {	#Agree
+		name = dikangjun.11.a
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 10
+				surrender_progress > 0.2
+			}
+		}
+		ARF = { country_event = { id = dikangjun.12 days = 2 } }
+		every_owned_state = {
+			limit = { is_core_of = ARF }
+			ARF = { transfer_state = PREV }
+		}
+	}
+	
+	option = {	#No way
+		name = dikangjun.11.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				surrender_progress > 0.2
+			}
+		}
+		ARF = { country_event = { id = dikangjun.13 days = 2 } }
+		create_wargoal = {
+  			type = annex_everything
+  			target = ARF
+  		}
+		ARF = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ROOT
+			}
+		}
+	}
+}
+
+country_event = {	#对面同意（ARF视角）
+	id = dikangjun.12
+	title = dikangjun.12.t
+	desc = dikangjun.12.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.12.a
+	}
+}
+
+country_event = {	#对面拒绝（ARF视角）
+	id = dikangjun.13
+	title = dikangjun.13.t
+	desc = dikangjun.13.d
+	is_triggered_only = yes
+	option = {
+		name = dikangjun.13.a
+	}
+}
+
+country_event = {	#军事会议
+	id = dikangjun.14
+	title = dikangjun.14.t
+	desc = dikangjun.14.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.14.a
+		complete_national_focus = ARF_fengxudefangan
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = dikangjun.14.b
+		complete_national_focus = ARF_mingbodejihua
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#计算赢得战争！
+	id = dikangjun.15
+	title = dikangjun.15.t
+	desc = dikangjun.15.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.15.a
+		every_army_leader = {
+		    add_planning = 1
+			add_logistics = 1
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#背后捅刀
+	id = dikangjun.16
+	title = dikangjun.16.t
+	desc = dikangjun.16.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.16.a
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#盲井
+	id = dikangjun.17
+	title = dikangjun.17.t
+	desc = dikangjun.17.d
+	picture = GFX_country_event_liujin
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.17.a
+		every_army_leader = {
+		    add_attack = 1
+			add_defense = 1
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#天火焚魔
+	id = dikangjun.18
+	title = dikangjun.18.t
+	desc = dikangjun.18.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.18.a
+		custom_effect_tooltip = ARF_wuchabiehongzha_tt
+		RTG = {
+			add_timed_idea = { idea = ARF_wuchabiehongzha days = 120 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#晨光熹微
+	id = dikangjun.19
+	title = dikangjun.19.t
+	desc = dikangjun.19.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.19.a
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#勇敢的心
+	id = dikangjun.20
+	title = dikangjun.20.t
+	desc = dikangjun.20.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.20.a
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#粮食要务
+	id = dikangjun.21
+	title = dikangjun.21.t
+	desc = dikangjun.21.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.21.a
+		add_political_power = 150
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = dikangjun.21.b
+		add_political_power = -50
+		add_equipment_to_stockpile = {
+			type = grain_conversion_eq
+			amount = 1000
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = dikangjun.21.c
+		add_political_power = -150
+		add_equipment_to_stockpile = {
+			type = grain_conversion_eq
+			amount = 2000
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#粮食要务
+	id = dikangjun.22
+	title = dikangjun.22.t
+	desc = dikangjun.22.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.22.a
+		add_political_power = 150
+		add_ideas = ARF_xingongzuofaling
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = dikangjun.22.b
+		add_political_power = -50
+		add_ideas = ARF_xingongzuofaling2
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = dikangjun.22.c
+		add_political_power = -100
+		add_ideas = ARF_xingongzuofaling3
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#让妇女工作！
+	id = dikangjun.23
+	title = dikangjun.23.t
+	desc = dikangjun.23.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.23.a
+		add_political_power = 150
+		add_stability = 0.05
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = dikangjun.23.b
+		add_political_power = -50
+		add_manpower = 5000
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {	#一次救护
+	id = dikangjun.24
+	title = dikangjun.24.t
+	desc = dikangjun.24.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = dikangjun.24.a
+		add_manpower = 1
+		ai_chance = {
+			base = 10
+		}
 	}
 }

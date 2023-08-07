@@ -1,0 +1,1306 @@
+NNG_special_categories1 = {
+	NNG_zhengzhicouhua = {
+		#政治筹划
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+		   has_country_flag = NNG_special_categories1_flag
+	    }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+			add_political_power = 50
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = 1
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_junbeicouhua_tt
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_junbeicouhua = {
+		#军备筹划
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_jianlilaodonbintuan
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+			has_equipment = {
+				infantry_equipment > 499
+			}
+		}
+		cost = 15
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			}
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = 1
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_junbeicouhua_tt
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_zhengyonmingongchang = {
+		#征用私营民用工厂
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_genggaitudisuoyouzhi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available
+				check_variable = {
+					NNG_yongyoulishuidianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 5
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -1
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_zhengzhicouhua_tt
+			add_stability = -0.01
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_kuojianlinshibgc = {
+		#扩建临时军用工厂
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_genggaitudisuoyouzhi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available
+				check_variable = {
+					NNG_yongyoulishuidianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 5
+		days_remove = 45
+		modifier = {
+		}
+		complete_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -1
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_zhengzhicouhua_tt
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_jiajinshengchazhiling = {
+		#加急生产指令
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_zhanyouzhanshifa
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available
+				check_variable = {
+					NNG_yongyoulishuidianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 20
+		days_remove = 60
+		modifier = {
+			industrial_capacity_factory = 0.15
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -1
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_zhengzhicouhua_tt
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_luzhanduigaizu = {
+		#陆战队改组
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_sheligonminjunshi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available
+				check_variable = {
+					NNG_yongyoulishuidianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -1
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_special_forces_cap = 24
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip2
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_zhoushenqinxijihua = {
+		#纵深侵袭计划
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_shelijunguanxuexiao
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_special_forces_attack_factor = 0.05
+				}
+				add_to_variable = {
+					NNG_breakthrough_factor = 0.05
+				}
+				add_to_variable = {
+					NNG_experience_gain_army_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip3
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_dihozuozhanyanlian = {
+		#敌后作战演练
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_junduijunguanwenti
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_special_forces_no_supply_grace = 24
+				}
+				add_to_variable = {
+					NNG_special_forces_out_of_supply_factor = -0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip4
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_daguimoqinxi = {
+		#大规模侵袭
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_ruhuoyanban
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_invasion_preparation = -0.3
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip5
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_gonminjungaizu = {
+		#公民军改组
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_sheligonminjunshi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available
+				check_variable = {
+					NNG_yongyoulishuidianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -1
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_army_infantry_defence_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip6
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_difangchizhizhanshu = {
+		#地方迟滞战术
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_junduijunguanwenti
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_army_org_factor = 0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip7
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_hoqinluxiandajian = {
+		#后勤路线搭建
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_chilunjiasuzhuandon
+		} 
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_production_speed_supply_node_factor = 0.1
+				}
+				add_to_variable = {
+					NNG_production_speed_rail_way_factor = 0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip7
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_dafangongjihua = {
+		#大反攻计划
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_shelijunguanxuexiao
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_max_planning = 0.1
+				}
+				add_to_variable = {
+					NNG_planning_speed = 0.1
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip9
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_ziyouyizhidenahan = {
+		#自由意志的呐喊！
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_zhegangtiebandejundui
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_army_morale_factor = 0.05
+				}
+				add_to_variable = {
+					NNG_army_org_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip10
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_keburonghuandeweiji = {
+		#刻不容缓的危机！
+		fire_only_once = yes
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_wmbijiangshengli
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available3
+				check_variable = {
+					NNG_yongyoulishuidianshu > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 35
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -2
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip = NNG_luzhanduigaizu_tt
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = NNG_lishihuijunshigaige
+				}
+				add_to_variable = {
+					NNG_army_morale_factor = 0.05
+				}
+				add_to_variable = {
+					NNG_army_org_factor = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NNG_lishihuijunshigaige_tooltip11
+					remove_idea = NNG_lishihuijunshigaige_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_gongminmenwuzhuangqilai = {
+		#公民们！武装起来！
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_wmbijiangshengli
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available4
+				check_variable = {
+					NNG_yongyoulishuidianshu > 2
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = NNG_zhengzhicouhua_available2
+				check_variable = {
+					NNG_shengyulanwei < NNG_kezhixingzhengce
+				}
+			}
+		}
+		cost = 0
+		days_remove = 90
+		modifier = {
+		    army_infantry_attack_factor = 0.10
+			special_forces_attack_factor = 0.10
+			breakthrough_factor = 0.05
+			training_time_army_factor = -0.20
+		}
+		complete_effect = {
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = -3
+			}
+			add_to_variable = {
+				NNG_shengyulanwei = 1
+			}
+			custom_effect_tooltip =NNG_gongminmenwuzhuangqilai_tt
+		}
+		remove_effect = {
+			add_to_variable = {
+				NNG_shengyulanwei = -1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+
+NNG_special_categories2 = {
+	NNG_baitieyunshuxain = {
+		#白铁运输线
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_pobudeyidexuanze
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+		}
+		cost = 25
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+		    add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			126 = {
+				add_resource = {
+					type = steel
+					amount = 4
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_jingheyunshuxian = {
+		#晶核运输线
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_pobudeyidexuanze
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+		}
+		cost = 25
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+		    add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			126 = {
+				add_resource = {
+					type = oil
+					amount = 4
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_mucaiyunshuxain = {
+		#木材运输线
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_wmenhaixuyaogengduo
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+		}
+		cost = 25
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+		    add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			126 = {
+				add_resource = {
+					type = wood
+					amount = 4
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_shuijingyunshuxian = {
+		#水晶运输线
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_wmenhaixuyaogengduo
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+		}
+		cost = 25
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+		    add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			126 = {
+				add_resource = {
+					type = tungsten
+					amount = 4
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_dianqishuijingyunshuxian = {
+		#电气水晶运输线
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_wmenhaixuyaogengduo
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+		}
+		cost = 25
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+		    add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			126 = {
+				add_resource = {
+					type = chromium
+					amount = 4
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_zousibubingzhuangbei = {
+		#走私步兵装备
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_fengxianyueda
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+			has_navy_size = {
+				size > 9
+				unit = destroyer
+			}
+		}
+		cost = 50
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 10
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_zousijunliang = {
+		#走私军粮
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_pobudeyidexuanze
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+			has_navy_size = {
+				size > 4
+				unit = destroyer
+			}
+		}
+		cost = 50
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 2000
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 10
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_zousijunyonhujia = {
+		#走私军用护甲
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_pobudeyidexuanze
+		}
+		available = {
+			has_equipment = {
+				convoy > 9
+			}
+			has_navy_size = {
+				size > 9
+				unit = destroyer
+			}
+		}
+		cost = 50
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = -10
+			}
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = 1000
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 10
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	NNG_yunshuguyongbing = {
+		#运输雇佣兵
+		fire_only_once = no
+		allowed = {
+			original_tag = NNG
+		}
+		visible = {
+			has_completed_focus = NNG_fengxianyueda
+		}
+		available = {
+			has_equipment = {
+				convoy > 19
+			}
+			has_navy_size = {
+				size > 49
+				unit = destroyer
+			}
+		}
+		cost = 50
+		days_remove = 30
+		modifier = {
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = -50
+			}
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 50
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_template = "雇佣兵团"
+					}
+				}
+				division_template = {
+					name = "雇佣兵团"
+					is_locked = no
+					priority = 2
+					division_names_group = NNG_INF_03
+					regiments = {
+						infantry = {
+							x = 0
+							y = 0
+						}
+						infantry = {
+							x = 0
+							y = 1
+						}
+						infantry = {
+							x = 0
+							y = 2
+						}
+						infantry = {
+							x = 1
+							y = 0
+						}
+						infantry = {
+							x = 1
+							y = 1
+						}
+						infantry = {
+							x = 1
+							y = 2
+						}
+						infantry = {
+							x = 1
+							y = 3
+						}
+						infantry = {
+							x = 1
+							y = 4
+						}
+						artillery_brigade = {
+							x = 3
+							y = 0
+						}
+						artillery_brigade = {
+							x = 3
+							y = 1
+						}
+						artillery_brigade = {
+							x = 3
+							y = 2
+						}
+					}
+				}
+			}
+			126 = {
+				create_unit = {
+					division = "division_template = \"雇佣兵团\" start_experience_factor = 1"
+					owner = NNG
+					count = 3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

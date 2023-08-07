@@ -1,0 +1,223 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+# contain
+# area_priority
+# building_target
+
+
+NNG_template_design = {
+	allowed = { original_tag = NNG }
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = 10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = cavalry
+		value = -100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = light_armor
+		value = 50
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = -10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = heavy_armor
+		value = -50
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = paratroopers
+		value = -50
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = 60
+	}
+}
+
+NNG_garrison_production = {
+	allowed = { original_tag = NNG }
+	enable = {
+		ai_wants_divisions >  12 #Massively decreasing the amount of paratroopers the AI wants
+	}
+	abort = {
+		ai_wants_divisions < 13 #Massively decreasing the amount of paratroopers the AI wants
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 3
+	}
+}
+
+NNG_onto_the_beaches = {
+	allowed = {
+		original_tag = NNG
+	}
+	enable = {
+		has_war = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 55
+	}
+}
+
+KQG_is_bad = {
+	allowed = {
+		tag = NNG
+	}
+
+	enable = {
+		KQG = {
+			exists = yes
+		}
+		NOT = { is_ally_with = KQG }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = KQG
+		value = 100
+	}
+}
+
+NingGuang_wants_to_beat_Keqing = {
+	allowed = {
+		tag = NNG
+	}
+	
+	enable = {	
+		KQG = {
+			exists = yes
+		}
+		NOT = { is_in_faction_with = KQG }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = antagonize
+		id = "KQG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "KQG"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = "KQG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = front_control
+		tag = KQG
+		ratio = 0.75
+		priority = 200
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+NingGuang_is_landing = {
+	allowed = {
+		#tag = NNG
+		is_nominate_liyue = yes
+	}
+	
+	enable = {
+		#has_country_flag = defeated_ningguang
+		has_war = yes
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "KQG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "NNG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "LYU"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "RTG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "ZDG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "ANG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "XRG"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "XOG"
+		value = 200
+	}
+}

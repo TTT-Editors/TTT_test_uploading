@@ -22,26 +22,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 100
-			if = {
-				limit = {
-					country_exists = ANG
-				}
-				country_event = { id = dikangjun.1 }
-			}
-			if = {
-				limit = {
-					country_exists = LYU
-				}
-				country_event = { id = dikangjun.1 }
-			}
-			if = {
-				limit = {
-					country_exists = XRG
-				}
-				country_event = { id = dikangjun.1 }
-			}
+			ANG = { country_event = { id = dikangjun.1 } }
+			LYU = { country_event = { id = dikangjun.1 } }
+			XRG = { country_event = { id = dikangjun.1 } }
 		    set_province_name = {
-				id = 154
+				id = 235
 				name = ARF_liuwangzhezhudi
 			}
 		}
@@ -521,7 +506,16 @@ focus_tree = {
 			base = 10
 		}
 		available = {
-			
+		    or = {
+			and = {
+			has_completed_focus = ARF_juyuanjinghunye
+			has_completed_focus = ARF_zhiyuanjundui
+			    }
+			and = {
+			has_completed_focus = ARF_liuxiayanjing
+			has_completed_focus = ARF_rendingshengtian
+			    }
+			}
 		}
 		prerequisite = {
 			focus = ARF_juyuanjinghunye
@@ -577,10 +571,14 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = { days = 1 id = dikangjun.20 }
+			unlock_decision_category_tooltip = ARF_hofangzhanxian
+			set_variable = { ARF_wuzisoujiyundon_value = 1 }
+			set_variable = { ARF_wuzisoujiyundon_cost = 50 }
+			set_variable = { ARF_jianyijungongjianshe_value = 0 }
 	    }
 	}
 	focus = {
-		id = ARF_juyuanrenmin #巨渊的人民，为家乡献身
+		id = ARF_juyuanrenmin #巨渊的人民,为家乡献身
 		icon = unknown
 		x = 20
 		y = 1
@@ -595,7 +593,10 @@ focus_tree = {
 			focus = ARF_hofangzhanxian		
 		}
 		completion_reward = {
-			
+			unlock_decision_tooltip = ARF_huobijinronguanzhi
+			unlock_decision_tooltip = ARF_jianyijungongjianshe
+			unlock_decision_tooltip = ARF_zhandiyulunguanzhi
+			unlock_decision_tooltip = ARF_yanchangzhengbingdongyuan
 	    }
 	}
 	focus = {
@@ -615,6 +616,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = { days = 1 id = dikangjun.21 }
+			custom_effect_tooltip = ARF_zuihodeliangshi_tt
 	    }
 	}
 	focus = {
@@ -633,7 +635,7 @@ focus_tree = {
 			focus = ARF_zuihodeliangshi		
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ARF_zuihodebupi_tt
 	    }
 	}
 	focus = {
@@ -652,7 +654,7 @@ focus_tree = {
 			focus = ARF_zuihodebupi		
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ARF_zuihodeqingnian_tt
 	    }
 	}
 	focus = {

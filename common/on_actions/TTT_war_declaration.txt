@@ -299,6 +299,7 @@ on_actions = {
 						has_country_flag = ARF_7_flag
 					}
 				}
+				ARF = { 
 				set_country_flag = ARF_7_flag
 				add_offsite_building = {
 					type = arms_factory
@@ -341,7 +342,8 @@ on_actions = {
 						division = "division_template = \"Minbing Budui\" start_experience_factor = 0.2"
 						count = 3
 						owner = ARF
-					}
+					    }
+				    }
 				}
 			}
 			#抵抗军宣战龙王，并且完成了国策ARF_11
@@ -350,17 +352,22 @@ on_actions = {
 					original_tag = ARF
 					has_war_with = RTG
 					has_completed_focus = ARF_11
+					ARF = {
 					NOT = {
 						has_country_flag = ARF_11_flag
+					    }
 					}
 				}
+				ARF = {
 				set_country_flag = ARF_11_flag
+				}
 				RTG = {
 					add_timed_idea = {
 						idea = RTG_Hive_curdling
 						days = 120
 					}
 				}
+				ARF = {
 				division_template = {
 					name = "元素抵抗军"
 					priority = 2
@@ -410,17 +417,21 @@ on_actions = {
 						division = "division_template = \"元素抵抗军\" start_experience_factor = 0.2"
 						count = 2
 						owner = ARF
-					}
+					    }
+				    }
 				}
 			}
 			#抵抗军和龙王进入战争状态，立刻完成国策兵临城下
 			if = {
 			limit = {
+			    original_tag = ARF
 				ARF = {has_war_with = RTG }
 			}
+			ARF = {
 			set_country_flag = ARF_11_flag
 			mark_focus_tree_layout_dirty = yes
-            complete_national_focus = ARF_binlinchengxia			
+            complete_national_focus = ARF_binlinchengxia
+            }			
 		}
 	}
 }
@@ -430,14 +441,18 @@ on_actions = {
 				limit = {
 					original_tag = ARF
 					has_completed_focus = ARF_7
+					ARF = {
 					NOT = {
 						has_country_flag = ARF_7_flag2
+					    }
 					}
 				}
+				ARF = {
 				set_country_flag = ARF_7_flag2
 				add_offsite_building = {
 					type = arms_factory
 					level = -1
+				    }
 				}
 			}
 		}

@@ -1057,6 +1057,8 @@ shared_focus =
 	icon = GFX_INA
 	allow_branch = {
 		has_country_flag = INA_Kujyou_win_the_war #解锁该分支条件
+		NOT = {has_country_flag = INA_Kujyou_tenure_end}
+		NOT = {has_country_flag = INA_Uprising_begin}
 	} 
 	cost = 30
 	x = 8 #父国策的xy坐标是绝对坐标
@@ -2473,7 +2475,10 @@ shared_focus =
 	id = INA_Kujyou_next_tenure_Fake
 	icon = GFX_INA
 	relative_position_id = INA_Kujyou_died
-	allow_branch = {NOT = {has_country_flag = INA_the_next_crisis}}
+	allow_branch = {
+		has_country_flag = INA_Kujyou_tenure_end
+		NOT = {has_country_flag = INA_the_next_crisis}
+	}
 	prerequisite = {focus = INA_Kujyou_died_2 }
 	prerequisite = {focus = INA_Kujyou_died_3 }
 	prerequisite = {focus = INA_Kujyou_died_4 }
@@ -2826,8 +2831,11 @@ shared_focus = {
 	prerequisite = {focus = INA_Kujyou_died_2}
 	prerequisite = {focus = INA_Kujyou_died_3}
 	prerequisite = {focus = INA_Kujyou_died_4}
-	allow_branch = {has_country_flag = INA_the_next_crisis 
-					NOT = {has_country_flag = INA_Uprising_begin}}
+	allow_branch = {
+		has_country_flag = INA_Kujyou_tenure_end
+		has_country_flag = INA_the_next_crisis 
+		NOT = {has_country_flag = INA_Uprising_begin}
+	}
 	x = 0
 	y = 3
 	completion_reward = { 
@@ -2981,6 +2989,7 @@ shared_focus = {
 		add_political_power = 10
 	}
 }
+#起义大爆发
 shared_focus = {
 	id = INA_uprising
 	icon = GFX_INA
@@ -2988,6 +2997,46 @@ shared_focus = {
 	allow_branch = {
 		has_country_flag = INA_Uprising_begin
 	}
+	x = 4
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#动用铁拳狠狠的镇压这群闹事的人
+shared_focus = {
+	id = INA_uprising_1
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	x = 4
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#与他们的主要成员进行谈判，进行斡旋
+shared_focus = {
+	id = INA_uprising_2
+	icon = GFX_INA
+	cost = 30
+	allow_branch = 
+	{
+		has_country_flag = INA_Takashi_has_new_idea
+	}
+	relative_position_id = INA_uprising
+	x = 4
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#动用至冬国的人脉，先进的武器以及大把的钱来培养工贼
+shared_focus = {
+	id = INA_uprising_3
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
 	x = 4
 	y = 0
 	completion_reward = {

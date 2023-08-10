@@ -496,3 +496,92 @@ country_event = {
 	    name = ZDG_events.29.a
 	}
 }
+
+#风雪再起-1
+country_event = {
+    id = ZDG_events.30
+	title = ZDG_events.30.t
+    desc = ZDG_events.30.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.30.a
+		country_event = { id = ZDG_events.31 days = 1 }
+	}
+}
+
+#风雪再起-2
+country_event = {
+    id = ZDG_events.31
+	title = ZDG_events.31.t
+    desc = ZDG_events.31.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.31.a
+		custom_effect_tooltip = total_war_tt
+		country_event = { id = ZDG_events.32 days = 1 }
+	}
+}
+
+#风雪再起-3
+country_event = {
+    id = ZDG_events.32
+	title = ZDG_events.32.t
+    desc = ZDG_events.32.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.32.a
+		hidden_effect = {
+			LYU = { country_event = { id = liyue_civil_war.23 } }
+		}
+	}
+}
+
+#志愿军抵达
+country_event = {
+    id = ZDG_events.33
+	title = ZDG_events.33.t
+    desc = ZDG_events.33.d
+	is_triggered_only = yes
+	
+	option = {
+	    name = ZDG_events.33.a
+		if = {
+			limit = {
+				NOT = {
+					has_template = "Snezhnaya volunteer army"
+					#This template will disband after the war, so please DO NOT change this template name into CHINESE CHARACTERS!
+				}
+			}
+			division_template = {
+				name = "Snezhnaya volunteer army"
+				priority = 2
+				is_locked = yes
+				division_names_group = ZDG_INF_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					artillery_brigade = { x = 2 y = 0 }
+			
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+				}
+			}
+		}
+		222 = {
+			create_unit = {
+				division = "division_template = \"Snezhnaya volunteer army\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+				owner = ZDG
+				count = 2
+			}
+		}
+	}
+}

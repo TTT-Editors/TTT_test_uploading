@@ -525,7 +525,10 @@ ideas = {
 			picture = generic_tank_manufacturer_1
 			
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
+				NOT = { 
+					is_nominate_mondstadt = yes
+					is_nominate_liyue = yes 
+				}
 				NOT = {
 					has_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }
 				}
@@ -551,7 +554,10 @@ ideas = {
 			picture = generic_naval_manufacturer_1
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
+				NOT = { 
+					is_nominate_mondstadt = yes
+					is_nominate_liyue = yes 
+				}
 				NOT = {
 					has_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }
 				}
@@ -577,7 +583,10 @@ ideas = {
 			picture = generic_air_manufacturer_1
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
+				NOT = { 
+					is_nominate_mondstadt = yes
+					is_nominate_liyue = yes 
+				}
 				NOT = {
 					has_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
 				}
@@ -598,7 +607,10 @@ ideas = {
 			picture = generic_air_manufacturer_3
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
+				NOT = { 
+					is_nominate_mondstadt = yes
+					is_nominate_liyue = yes 
+				}
 				NOT = {
 					has_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
 				}
@@ -619,7 +631,10 @@ ideas = {
 			picture = generic_air_manufacturer_2
 			
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
+				NOT = { 
+					is_nominate_mondstadt = yes
+					is_nominate_liyue = yes 
+				}
 				NOT = {
 					has_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
 				}
@@ -640,7 +655,10 @@ ideas = {
 			picture = generic_naval_manufacturer_2
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
+				NOT = { 
+					is_nominate_mondstadt = yes
+					is_nominate_liyue = yes 
+				}
 				NOT = {
 					has_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
 				}
@@ -658,47 +676,67 @@ ideas = {
 	}
 
 	industrial_concern = {
-	
+	    ###勘探小组
 		generic_industrial_concern = {
-			
-			picture = generic_industrial_concern_1
+			name = generic_industrial_concern_TTT
+			picture = TTT_kantanzhizaoshang
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
-				NOT = {
-					has_available_idea_with_traits = { idea = industrial_concern limit = 1 }
-				}
+				
 			}
 			
 			cost = 150
 			removal_cost = 10
 			
 			research_bonus = {
-				industry = 0.15
+				industry = 0.05
 			}
-			
+			modifier = {
+				local_resources_factor = 0.20
+			}
 			traits = { industrial_concern }
 		}
-
+        ###规划小组
 		generic_electronics_concern = {
-			
-			picture = generic_electronics_concern_1
+			name = generic_industrial_concern_TTT2
+			picture = TTT_guihuadezhizaoshang
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
-				NOT = {
-					has_available_idea_with_traits = { idea = electronics_concern limit = 1 }
-				}
+				
 			}
 			
 			cost = 150
 			removal_cost = 10
 			
 			research_bonus = {
-				electronics = 0.15
+				industry = 0.10
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.05
+			}
+			traits = { industrial_concern }
+		}
+		###战时保护委员会
+		generic_industrial_concern_TTT = {
+			name = generic_industrial_concern_TTT3
+			picture = TTT_zhanshibaohuzhizaoshang
+
+			allowed = {
+				
 			}
 			
-			traits = { electronics_concern }
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				industry = 0.05
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industry_free_repair_factor = 0.2
+				industry_air_damage_factor = -0.2
+			}
+			traits = { industrial_concern }
 		}
 	}
 
@@ -711,7 +749,10 @@ ideas = {
 			picture = generic_motorized_equipment_manufacturer_3
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
+				NOT = { 
+					is_nominate_mondstadt = yes
+					is_nominate_liyue = yes 
+				}
 				NOT = {
 					has_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
 				}
@@ -726,16 +767,34 @@ ideas = {
 			
 			traits = { motorized_equipment_manufacturer }
 		}
-		
+		##维修小组
 		generic_infantry_equipment_manufacturer = {
-			
-			picture = generic_infantry_equipment_manufacturer_2
+			name = generic_infantry_equipment_manufacturer_ttt
+			picture = TTT_weixiuzhizaoshang
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
-				NOT = {
-					has_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
-				}
+				
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				infantry_weapons = 0.10
+			}
+			modifier = {
+				equipment_capture_factor = 0.05 
+                equipment_conversion_speed = 0.10
+			}
+			traits = { infantry_equipment_manufacturer }
+		}
+		##后勤小组
+		generic_infantry_equipment_manufacturer_TTT = {
+			name = TTT_generic_infantry_equipment_manufacturer
+			picture = TTT_hoqinzhizaoshang
+
+			allowed = {
+				
 			}
 			
 			cost = 150
@@ -744,28 +803,62 @@ ideas = {
 			research_bonus = {
 				infantry_weapons = 0.15
 			}
-			
+			equipment_bonus = {
+				ttt_uniform_eq = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+				grain_conversion_eq = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
 			traits = { infantry_equipment_manufacturer }
 		}
-		
-		generic_artillery_manufacturer = {
-			
-			picture = generic_artillery_manufacturer_2
+		##武器小组
+		generic_infantry_equipment_manufacturer_TTT2 = {
+			name = TTT_generic_infantry_equipment_manufacturer2
+			picture = TTT_wuqizhizaoshang
 
 			allowed = {
-				NOT = { OR = { tag = LYU tag = RTG tag = ZDG tag = BLL} }
-				NOT = {
-					has_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
-				}
+				
 			}
 			
 			cost = 150
 			removal_cost = 10
 			
 			research_bonus = {
-				artillery = 0.15
+				infantry_weapons = 0.15
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
+			traits = { infantry_equipment_manufacturer }
+		}
+		##烈焰小组
+		generic_artillery_manufacturer = {
+			name = generic_artillery_manufacturer_TTT
+			picture = TTT_lieyanzhizaoshang
+
+			allowed = {
+				
 			}
 			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				artillery = 0.10
+			}
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = -0.05
+					instant = yes
+				}
+			}
 			traits = { artillery_manufacturer }
 		}
 	}

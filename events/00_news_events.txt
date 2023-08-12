@@ -702,7 +702,140 @@ news_event = {
 		}
 	}
 }
+#璃月港的易主
+news_event = { 
+	id = global_news.52
+	title = global_news.52.t
+	desc = global_news.52.d
+	picture = GFX_TTT_liyuegangxianluo_neweventpicture
+	major = yes
+	trigger = {
+		124 = { is_controlled_by = controller }
+		124 = { is_owned_by = owner }
 
+		124 = { Controller = { has_war_with = 124.owner } }
+
+		124 = {
+			meta_trigger = {
+				text = {
+					NOT = { has_global_flag = fall_of_CityName_[Get_Controller_Tag] }
+				}
+				Get_Controller_Tag = "[124.controller.GetTag]"
+			}	
+		}
+		124 = {
+			NOT = {
+				controller = {
+					tag = 124.owner
+				}
+			}
+		}
+	}
+	immediate = {
+		meta_effect = {
+			text = {
+				set_global_flag = fall_of_CityName_[Get_Controller_Tag]
+			}
+			Get_Controller_Tag = "[124.controller.GetTag]"
+		}
+	}
+	mean_time_to_happen = {
+		days = 2 
+	}
+	option = { 
+		#中立国
+		name = global_news.52.a
+		trigger = {
+			NOT = {
+				OR = {
+					tag = 124.controller
+					tag = 124.owner
+				}
+			}
+		}
+	}
+	option = { 
+		#沦陷者选项
+		name = global_news.52.b
+		trigger = {
+			tag = 124.owner
+		}
+	}
+	option = { 
+		#攻占者选项
+		name = global_news.52.c
+		trigger = {
+			tag = 124.controller
+		}
+	}
+}
+#孤云阁的日落
+news_event = { 
+	id = global_news.53
+	title = global_news.53.t
+	desc = global_news.53.d
+	picture = GFX_TTT_guyungexianluo_neweventpicture
+	major = yes
+	trigger = {
+		126 = { is_controlled_by = controller }
+		126 = { is_owned_by = owner }
+
+		126 = { Controller = { has_war_with = 126.owner } }
+
+		126 = {
+			meta_trigger = {
+				text = {
+					NOT = { has_global_flag = fall_of_CityName_[Get_Controller_Tag] }
+				}
+				Get_Controller_Tag = "[126.controller.GetTag]"
+			}	
+		}
+		126 = {
+			NOT = {
+				controller = {
+					tag = 126.owner
+				}
+			}
+		}
+	}
+	immediate = {
+		meta_effect = {
+			text = {
+				set_global_flag = fall_of_CityName_[Get_Controller_Tag]
+			}
+			Get_Controller_Tag = "[124.controller.GetTag]"
+		}
+	}
+	mean_time_to_happen = {
+		days = 2 
+	}
+	option = { 
+		#中立国
+		name = global_news.53.a
+		trigger = {
+			NOT = {
+				OR = {
+					tag = 126.controller
+					tag = 126.owner
+				}
+			}
+		}
+	}
+	option = { 
+		#沦陷者选项
+		name = global_news.53.b
+		trigger = {
+			tag = 126.owner
+		}
+	}
+	option = { 
+		#攻占者选项
+		name = global_news.53.c
+		trigger = {
+			tag = 126.controller
+		}
+	}
+}
 ############################################################################################################################################################################
 
  #####    #####   #####  #     #  ######    #####   #######  #####   #####   #     #

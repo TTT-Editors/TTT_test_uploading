@@ -423,18 +423,21 @@ on_actions = {
 			}
 			#抵抗军和龙王进入战争状态，立刻完成国策兵临城下
 			if = {
-			limit = {
-			    original_tag = ARF
-				ARF = {has_war_with = RTG }
+				limit = {
+			    	original_tag = ARF
+					FROM = {
+						tag = RTG
+					}
+				}
+				news_event = { id = global_news.59 }
+				set_country_flag = ARF_11_flag
+				mark_focus_tree_layout_dirty = yes
+            	complete_national_focus = ARF_binlinchengxia
+				set_country_flag = ARF_zuobijueyi_flag	
 			}
-			ARF = {
-			set_country_flag = ARF_11_flag
-			mark_focus_tree_layout_dirty = yes
-            complete_national_focus = ARF_binlinchengxia
-            }			
 		}
 	}
-}
+	
 	on_peace = {
 		effect = {
 			if = {

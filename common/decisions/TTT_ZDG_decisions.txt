@@ -2360,3 +2360,139 @@ ZDG_decision_category3 = {
 		}
 	}
 }
+
+ZDG_decision_category4 = {
+	ZDG_kaiqimowangwuzhuanng_name = {
+		#开启魔王武装(有问题，待修复)
+		cost = ZDG_kaiqimowangwuzhuanng_cost
+		days_remove = 60
+		fire_only_once = no
+		visible = {
+			tag = ZDG
+		}
+		available = {
+			command_power > ZDG_kaiqimowangwuzhuanng_cp
+            NOT = { has_country_flag = ZDG_kaiqimowangwuzhuanng_flag }
+			ZDG_kaiqimowangwuzhuanng_tiaojie = yes
+			NOT = {
+				SNE_Childe = {
+					has_trait = wounded
+				}
+			}
+			is_ai = no
+			is_debug = yes
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			hidden_effect = {
+				SNE_Childe = {
+					remove_unit_leader_role = yes
+				}
+				SNE_Childe = {
+					set_country_leader_portrait = { portrait = "gfx/characters/large/Snezhnaya/SNE_mowangwuzhuang.png" }
+				}
+				set_portraits = {
+					character = SNE_Childe
+					army = { large ="GFX_portrait_large_Snezhnaya_Childe2" }
+				}				
+				add_corps_commander_role = {
+				Character = SNE_Childe
+				traits = { electro_element logistics_wizard extreme_evilskill2 demonking_armorrampage2 aggressive_assaulter }
+				skill = 7
+				attack_skill = 8
+				defense_skill = 7
+				planning_skill = 4
+				logistics_skill = 4
+				}
+			}
+			custom_effect_tooltip = ZDG_kaiqimowangwuzhuanng_tt
+		}
+		modifier = {
+			army_attack_factor = 0.05
+			breakthrough_factor = 0.05
+			army_org_factor = -0.05
+			political_power_gain = -0.25
+		}
+		remove_effect = {
+			hidden_effect = {
+				SNE_Childe = {
+					remove_unit_leader_role = yes	
+				}
+				set_portraits = {
+					character = SNE_Childe
+					army = { large ="GFX_portrait_large_Snezhnaya_Childe" }
+				}
+				SNE_Childe = {
+				add_timed_unit_leader_trait = {
+					trait = wounded
+					days = 90
+					}
+				}
+                add_corps_commander_role = {
+					Character = SNE_Childe
+					traits = { hydro_element logistics_wizard extreme_evilskill demonking_armorrampage aggressive_assaulter }
+					skill = 6
+					attack_skill = 6
+					defense_skill = 6
+					planning_skill = 4
+					logistics_skill = 4
+					}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						ZDG_kaiqimowangwuzhuanng_value = 1
+					}
+				}
+				set_country_flag = { flag = ZDG_kaiqimowangwuzhuanng_flag value = 1 days = 30 }
+				set_variable = {
+					ZDG_kaiqimowangwuzhuanng_value = 2
+				}
+				set_variable = {
+                    ZDG_kaiqimowangwuzhuanng_cost = 40
+				}
+				add_to_variable = {
+					ZDG_kaiqimowangwuzhuanng_cp = 15
+				}
+				add_command_power = -15
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						ZDG_kaiqimowangwuzhuanng_value = 2
+					}
+				}
+				set_variable = {
+					ZDG_kaiqimowangwuzhuanng_value = 3
+				}
+				add_to_variable = {
+					ZDG_kaiqimowangwuzhuanng_cp = 15
+				}
+				set_variable = {
+                    ZDG_kaiqimowangwuzhuanng_cost = 60
+				}
+				set_country_flag = { flag = ZDG_kaiqimowangwuzhuanng_flag value = 1 days = 60 }
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						ZDG_kaiqimowangwuzhuanng_value = 3
+					}
+				}
+				add_to_variable = {
+					ZDG_kaiqimowangwuzhuanng_cp = 15
+				}
+				set_variable = {
+                    ZDG_kaiqimowangwuzhuanng_cost = 80
+				}
+				set_variable = {
+					ZDG_kaiqimowangwuzhuanng_value = 4
+				}
+			}
+		}
+	}
+}
+
+

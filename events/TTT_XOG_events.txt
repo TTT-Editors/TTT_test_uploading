@@ -899,3 +899,93 @@ country_event = {
 		add_ideas = ZDG_aftermath_annex_XOG
 	}
 }
+
+#骚乱的魔物
+country_event = {    
+	id = XOG_events.127
+	title = XOG_events.127.t
+	desc = XOG_events.127.d
+	picture = GFX_report_event_german_speech
+	fire_only_once = yes
+	trigger = {
+		tag = XOG
+		XOG_yezhangdu > 79.9
+	}
+		option = {
+	    		name = XOG_events.127.a 
+			XOG = {   
+				load_focus_tree = XOG_bad_FocusTree
+				complete_national_focus = XOG_45
+		}
+	}
+}
+
+#令人不安的猜想
+country_event = {    
+	id = XOG_events.128
+	title = XOG_events.128.t
+	desc = XOG_events.128.d
+	trigger = {
+		tag = XOG
+		XOG_yezhangdu > 99.9
+	}
+	fire_only_once = yes
+	
+		option = {
+	    		name = XOG_events.128.a    
+			country_event = { id = XOG_events.129 }
+			XOG = {
+				remove_ideas = XOG_aftermath
+				remove_targeted_decision = {
+    				decision = XOG_special_categories2
+				}
+			}
+			
+		}
+		option = {
+	    	name = XOG_events.128.b  
+	}
+}
+
+#一个奇怪的人
+country_event = {    
+	id = XOG_events.129
+	title = XOG_events.129.t
+	desc = XOG_events.129.d
+	is_triggered_only = yes
+	
+		option = {
+	    		name = XOG_events.129.a   
+			country_event = { id = XOG_events.130 }
+			add_popularity = {
+   				ideology = populism
+				popularity = 0.1
+		}
+	}
+}
+
+#直面天君
+country_event = {    
+	id = XOG_events.130
+	title = XOG_events.130.t
+	desc = XOG_events.130.d
+	is_triggered_only = yes
+	
+		option = {
+	    		name = XOG_events.130.a  
+			add_country_leader_role = {
+    				character = unknow    #掇星攫辰
+    				promote_leader = yes
+   				country_leader = {
+        					ideology = populism
+        					expire = "2555.1.1"
+        					traits = { 
+				 }
+   			 }
+			set_political_party = {
+    				ideology = populism
+			}
+		}  
+			
+	}
+}

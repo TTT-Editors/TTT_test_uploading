@@ -1,5 +1,5 @@
 ###########################
-# Xingqiu Events
+# Xianren Events
 ###########################
 
 add_namespace = XRG_EVENTS_QXHY
@@ -180,6 +180,7 @@ country_event = {
 	option = { 
 		name = XRG_EVENTS_QXHY.11.a
 		add_ideas = XRG_BUFF_2_ONE
+		add_ideas = XRG_BUFF_JJ_1_ONE
 		country_event = { days = 5 id = XRG_EVENTS_QXHY.12 }
 	}
 }
@@ -193,11 +194,6 @@ country_event = {
 	option = { 
 		name = XRG_EVENTS_QXHY.12.a
 		set_country_flag = XRG_FLAG_1
-		country_event = { days = 5 id = XRG_EVENTS_QXHY.15 }
-	}
-	option = { 
-		name = XRG_EVENTS_QXHY.12.b
-		set_country_flag = XRG_FLAG_2
 		country_event = { days = 5 id = XRG_EVENTS_QXHY.15 }
 	}
 }
@@ -235,7 +231,6 @@ country_event = {
 	option = { 
 		name = XRG_EVENTS_QXHY.15.a
 		remove_ideas = XRG_BUFF_1
-		set_country_flag = manufacturer_enabled
 	}
 }
 
@@ -246,7 +241,6 @@ news_event = {
 	desc = XRG_NEWS_0.1.d
 	major = yes
 	is_triggered_only = yes
-	picture = GFX_news_event_liyue11
 	option = { 
 		name = XRG_NEWS_0.1.a
 	}
@@ -257,7 +251,6 @@ news_event = {
 	desc = XRG_NEWS_0.2.d
 	major = yes
 	is_triggered_only = yes
-	picture = GFX_news_event_liyue11
 	option = { 
 		name = XRG_NEWS_0.2.a
 	}
@@ -454,61 +447,67 @@ country_event = {
 	}	
 }
 
-#country_event = {
-#	id = XRG_EVENTS_0.8
-#	title = XRG_EVENTS_0.8.t
-#	desc = XRG_EVENTS_0.8.d
-#	
-#	is_triggered_only = yes
-#	fire_only_once = yes
-#	
-#	immediate = {
-#		XOG = { set_country_flag = xrg_has_tried_to_cooperate_with_xog }
-#	}
-#	
-#	option = { 
-#		name = XRG_EVENTS_0.8.a
-#		XRG = {
-#			country_event = { days = 5 id = XRG_EVENTS_0.9 }
-#		}
-#	}
-#	option = { 
-#		name = XRG_EVENTS_0.8.b
-#		XRG = {
-#			country_event = { days = 5 id = XRG_EVENTS_0.10 }
-#		}
-#	}
-#}
-#
-#country_event = {
-#	id = XRG_EVENTS_0.9
-#	title = XRG_EVENTS_0.9.t
-#	desc = XRG_EVENTS_0.9.d
-#	
-#	is_triggered_only = yes
-#	fire_only_once = yes
-#	
-#	option = { 
-#		name = XRG_EVENTS_0.9.a
-#	}
-#}
-#
-#country_event = {
-#	id = XRG_EVENTS_0.10
-#	title = XRG_EVENTS_0.10.t
-#	desc = XRG_EVENTS_0.10.d
-#	
-#	is_triggered_only = yes
-#	fire_only_once = yes
-#	
-#	option = { 
-#		name = XRG_EVENTS_0.10.a
-#		create_faction = qunxianfangxian
-#		XRG = {
-#			add_to_faction = XOG
-#		}
-#	}
-#}
+country_event = {
+	id = XRG_EVENTS_0.8
+	title = XRG_EVENTS_0.8.t
+	desc = XRG_EVENTS_0.8.d
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = XRG_EVENTS_0.8.a
+		XRG = {
+			country_event = { days = 5 id = XRG_EVENTS_0.9 }
+		}
+	}
+	option = { 
+		name = XRG_EVENTS_0.8.b
+		XRG = {
+			country_event = { days = 5 id = XRG_EVENTS_0.10 }
+		}
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_0.9
+	title = XRG_EVENTS_0.9.t
+	desc = XRG_EVENTS_0.9.d
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = XRG_EVENTS_0.9.a
+		set_country_flag = XRG_FLAG_DL
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_0.10
+	title = XRG_EVENTS_0.10.t
+	desc = XRG_EVENTS_0.10.d
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = XRG_EVENTS_0.10.a
+		create_faction = qunxianfangxian
+		XRG = {
+			add_to_faction = XOG
+		}
+		set_country_flag = XRG_FLAG_DL
+	}
+	option = { 
+		name = XRG_EVENTS_0.10.b
+		create_faction = qunxianfangxian
+		XRG = {
+			add_to_faction = XOG
+		}
+		set_country_flag = XRG_FLAG_HZ
+	}
+}
 
 country_event = {
 	id = XRG_EVENTS_0.11
@@ -535,7 +534,7 @@ country_event = {
 	trigger = {
 		original_tag = XRG
 		XRG = {
-	   		has_completed_focus = XR_L3
+	   		has_completed_focus = XR_L8
 			NOT = { has_idea = XRG_DEBUFF_1 }
 		}
 	}
@@ -547,6 +546,7 @@ country_event = {
 				remove = XRG_QXHY_ONE
 				add = XRG_QXHY_TWO
 			}
+		set_country_flag = XRG_QXHY_FLAG
 	}
 }
 
@@ -568,16 +568,306 @@ country_event = {
 	id = XRG_EVENTS_0.14
 	title = XRG_EVENTS_0.14.t
 	desc = XRG_EVENTS_0.14.d
-	
 	is_triggered_only = yes
 	fire_only_once = yes
 	
 	option = { 
 		name = XRG_EVENTS_0.14.a
-		
+		add_ideas = XRG_BUFF_FXC
+		set_country_flag = XRG_FXC_FLAG
 	}
 }
 
+country_event = {
+	id =  XRG_EVENTS_0.15
+	title = XRG_EVENTS_0.15.t
+	desc = XRG_EVENTS_0.15.d
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = { 
+		name = XRG_EVENTS_0.15.a
+		remove_ideas = XRG_BUFF_FXC
+		add_timed_idea = { 
+			idea = XRG_BUFF_FXC_L
+			days = 30
+		}
+		set_country_flag = XRG_FXC_L_FLAG
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_0.16
+	title = XRG_EVENTS_0.16.t
+	desc = XRG_EVENTS_0.16.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = XRG_EVENTS_0.16.a
+		clr_country_flag = XRG_FXC_FLAG
+		142 = {
+			set_state_category = city
+			set_state_name = STATE_FXC
+			set_province_name = {
+				id = 10023
+				name = STATE_FXC
+			}
+			add_victory_points = {
+				province = 10023
+				value = 5
+			}
+			
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_country_flag = XRG_FXC_FLAG_1
+	}
+}
+
+country_event = {
+	id =  XRG_EVENTS_0.17
+	title = XRG_EVENTS_0.17.t
+	desc = XRG_EVENTS_0.17.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = XRG_EVENTS_0.17.a
+		annex_country = {
+    		target = XOG
+    		transfer_troops = yes
+		}
+	}
+}
+
+country_event = {
+	id =  XRG_EVENTS_0.18
+	title = XRG_EVENTS_0.18.t
+	desc = XRG_EVENTS_0.18.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = XRG_EVENTS_0.18.a
+	}
+}
+
+add_namespace = XRG_EVENTS_JS
+country_event = {
+	id = XRG_EVENTS_JS.1
+	title = XRG_EVENTS_JS.1.t
+	desc = XRG_EVENTS_JS.1.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = XRG_EVENTS_JS.1.a
+		set_country_flag = XRG_FLAG_JS_L1
+	}
+	option = {
+		name = XRG_EVENTS_JS.1.b
+		set_country_flag = XRG_FLAG_JS_R1
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_JS.2
+	title = XRG_EVENTS_JS.2.t
+	desc = XRG_EVENTS_JS.2.d
+	trigger = {
+        tag = XRG
+		has_completed_focus = XR_JS_3
+		NOT = { 
+			has_idea = XRG_BUFF_JS_2 
+		}
+    }
+	fire_only_once = yes
+	option = { 
+		name = XRG_EVENTS_JS.2.a
+		add_ideas = XRG_BUFF_JS_3
+	}
+}
+
+add_namespace = XRG_EVENTS_WAR
+country_event = {
+	id = XRG_EVENTS_WAR.1
+	title = XRG_EVENTS_WAR.1.t
+	desc = XRG_EVENTS_WAR.1.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = XRG_EVENTS_WAR.1.a
+		add_ideas = XRG_BUFF_WAR_1
+	}
+	option = { 
+		name = XRG_EVENTS_WAR.1.b
+		add_ideas = XRG_BUFF_WAR_2
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_WAR.2
+	title = XRG_EVENTS_WAR.2.t
+	desc = XRG_EVENTS_WAR.2.d
+	trigger = {
+        tag = XRG
+		has_war_with = ZDG 
+    }
+	fire_only_once = yes
+	option = { 
+		name =XRG_EVENTS_WAR.2.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = XRG
+		}
+		add_timed_idea = { 
+			idea = XRG_BUFF_WAR_3
+			days = 30
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_WAR.3
+	title = XRG_EVENTS_WAR.3.t
+	desc = XRG_EVENTS_WAR.3.d
+	trigger = {
+        tag = XRG
+		has_war_with = ZDG
+		has_manpower < 20000
+    }
+	fire_only_once = no
+	
+	option = { 
+		name = XRG_EVENTS_WAR.3.a
+		add_manpower = 2500
+		add_ideas = XRG_BUFF_WAR_4
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_WAR.4
+	title = XRG_EVENTS_WAR.4.t
+	desc = XRG_EVENTS_WAR.4.d
+	trigger = {
+        tag = XRG
+		has_war_with = ZDG
+		NOT = { 
+			has_idea = XRG_BUFF_WAR_3
+		}
+    }
+	fire_only_once = no
+	
+	option = { 
+		name =XRG_EVENTS_WAR.4.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 300
+			producer = XRG
+		}
+		add_timed_idea = { 
+			idea = XRG_BUFF_WAR_3
+			days = 30
+		}
+	}	
+}
+
+add_namespace = XRG_EVENTS_HZ
+country_event = {
+	id = XRG_EVENTS_HZ.1
+	title = XRG_EVENTS_HZ.1.t
+	desc = XRG_EVENTS_HZ.1.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HZ.1.a
+		trigger = {
+			XOG = {
+				exists = yes
+				has_country_flag = XRG_ALLIEDS
+			}
+		}
+		XOG = {
+			country_event = XRG_EVENTS_HZ.2
+		}
+	}
+	option = { 
+		name = XRG_EVENTS_HZ.1.b
+		trigger = {
+			RTG = {
+				exists = yes
+				has_country_flag = XRG_ALLIEDS
+			}
+		}
+		RTG = {
+			country_event = XRG_EVENTS_HZ.2
+		}
+	}
+	option = { 
+		name = XRG_EVENTS_HZ.1.C
+		trigger = {
+			LYU = {
+				exists = yes
+				has_country_flag = XRG_ALLIEDS
+			}
+		}
+		LYU = {
+			country_event = XRG_EVENTS_HZ.2
+		}
+	}
+}
+country_event = {
+	id = XRG_EVENTS_HZ.2
+	title = XRG_EVENTS_HZ.2.t
+	desc = XRG_EVENTS_HZ.2.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HZ.2.a
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	option = { 
+		name = XRG_EVENTS_HZ.2.b
+		add_war_support = 0.05
+		add_stability = 0.05
+	}
+	option = { 
+		name = XRG_EVENTS_HZ.2.c
+		add_political_power = 150
+	}
+}
+country_event = {
+	id = XRG_EVENTS_HZ.3
+	title = XRG_EVENTS_HZ.3.t
+	desc = XRG_EVENTS_HZ.3.d
+	trigger = {
+		has_country_flag = XRG_ALLIEDS
+		not = {
+			is_in_faction_with = XRG
+		}
+	}
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HZ.3.a
+		clr_country_flag = XRG_ALLIEDS
+	}
+}
 add_namespace = XRG_EVENTS_LY
 country_event = {
 	id = XRG_EVENTS_LY.1
@@ -646,5 +936,4 @@ country_event = {
 		}
 	}	
 }
-
 

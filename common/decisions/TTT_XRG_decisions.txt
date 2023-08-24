@@ -1,20 +1,58 @@
 XRG_QXHY_decisions = {
-    XRG_chufangyecha = {	#出访夜叉
-		cost = 10
-		days_remove = 5
+    XRG_fengxiancheng_1 = {	#继续城市建设工程
+		cost = 50
+		days_remove = 10
+		fire_only_once = no
 		visible = {
-			country_exists = XOG
+			has_country_flag = XRG_FXC_FLAG_1
+		}
+		available = {
+			has_full_control_of_state = 142
+			has_country_flag = XRG_FXC_L_FLAG
 	    }
-		fire_only_once = yes
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				surrender_progress < 0.2
+				factor = 20
+			}
+		}
 		remove_effect = {
-			XOG = { country_event = { id = XRG_EVENTS_0.1 }	}
+			clr_country_flag = XRG_FXC_L_FLAG
+			add_ideas = XRG_BUFF_FXC
 	    }
+	}
+
+	fengxiancheng_build = {  #新城建设中
+		activation = {
+			tag = XRG
+			NOT = { 
+				has_idea = XRG_BUFF_FXC_L
+				has_country_flag = XRG_FXC_L_FLAG
+			}                         
+			has_full_control_of_state = 142
+			has_idea = XRG_BUFF_FXC
+		}                                    
+		available = {                           
+			not = { has_full_control_of_state = 142 }
+		}
+		is_good = yes                   
+		days_mission_timeout = 100
+		timeout_effect = {                      
+			country_event = XRG_EVENTS_0.16        
+		}
+		complete_effect = {                    
+			country_event = XRG_EVENTS_0.15
+		}
 	}
 	
 	XRG_heguiguli = {	#鹤归故里
 		cost = 10
 		days_remove = 5
 		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
 		remove_effect = {
 			XRG = { country_event = { id = XRG_EVENTS_0.2 }	}
 		}		
@@ -26,6 +64,9 @@ XRG_QXHY_decisions = {
 		visible = {
 			country_exists = LYU
 	    }
+		ai_will_do = {
+			factor = 10
+		}
 		fire_only_once = yes
 		remove_effect = {
 			XRG = { country_event = { id = XRG_EVENTS_0.3 }	}
@@ -33,46 +74,361 @@ XRG_QXHY_decisions = {
 	}
 
 	XRG_xianjiagongfang = {	#仙家工坊
-		cost = 50
-		days_remove = 30
-		fire_only_once = yes
+		cost = 30
+		days_remove = 90
+		fire_only_once = no
+		days_re_enable = 5
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				has_war = yes
+				factor = 50
+			}
+		}
 		remove_effect = {
 			random_state = {
 				limit = {
 					is_core_of = XRG
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 				type = arms_factory
-				level = 3
+				level = 1
 				instant_build = yes
 				}
 			}
 		}
 	}	
 
-	XRG_diyuwaidi = {	#抵御外敌
+	XRG_fanminzuofang = {	#凡民作坊
 		cost = 30
-		days_remove = 10
+		days_remove = 90
+		fire_only_once = no
+		days_re_enable = 5
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			random_state = {
+				limit = {
+					is_core_of = XRG
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+				}
+			}
+		}
+	}
+
+	XRG_diyuwaidi = {	#抵御外敌
+		cost = 50
+		days_remove = 15
 		visible = {
 			has_war_with = ZDG
 	    }
 		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				has_war_with = ZDG
+				factor = 100
+			}
+		}
 		remove_effect = {
-			add_ideas = XRG_WAR_1
+			country_event = { id = XRG_EVENTS_WAR.1 }
 		}
 	}
-
+	XRG_tizhenjingji = {	#提振经济
+		cost = 150
+		days_remove = 50
+		available = {                           
+			has_idea = XRG_BUFF_JJ_1_EIGHT
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				has_idea = XRG_BUFF_JJ_1_EIGHT
+				factor = 20
+			}
+		}
+		fire_only_once = yes
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_JJ_1_EIGHT
+				add_idea = XRG_BUFF_JJ_1_NINE
+			}
+			if = {
+				limit = {
+					has_country_flag = XRG_FXC_FLAG_1
+					has_full_control_of_state = 142
+				}
+				142 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	XRG_jieshuguanzhi = {	#结束管制
+		cost = 100
+		days_remove = 30
+		visible = {                           
+			has_idea = XRG_BUFF_JJ_1_NINE
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				has_idea = XRG_BUFF_JJ_1_NINE
+				factor = 20
+			}
+		}
+		remove_effect = {
+			remove_ideas = XRG_BUFF_JJ_1_NINE
+			if = {
+				limit = {
+					has_country_flag = XRG_FXC_FLAG_1
+					has_full_control_of_state = 142
+				}
+				142 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	XRG_yongbaoduoyuan = {	#拥抱多元
+		cost = 50
+		days_remove = 30
+		visible = {                           
+			has_completed_focus = XR_HZ_6
+		}
+		available = {
+			any_allied_country = {
+				exists = yes
+				not = {
+					has_country_flag = XRG_ALLIEDS
+				}
+			}
+		}
+		fire_only_once = NO
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			every_other_country = {
+				if = {
+					limit = {
+						is_in_faction_with = XRG
+						has_completed_focus = XR_HZ_7
+						NOT = { 
+							has_idea = XRG_BUFF_HZ_M3
+						}
+						add_ideas = XRG_BUFF_HZ_M3
+						else_if = {
+							limit = {
+								is_in_faction_with = XRG
+								NOT = { 
+									has_idea = XRG_BUFF_HZ_M2
+								}
+							}
+							add_ideas = XRG_BUFF_HZ_M2
+						}
+					}
+				}
+			}
+		}
+	}
+	XRG_xiezhumengyou= {	#协助盟友
+		cost = 50
+		days_remove = 100
+		visible = {                           
+			has_completed_focus = XR_HZ_5
+		}
+		available = {
+			any_allied_country = {
+				exists = yes
+				has_country_flag = XRG_ALLIEDS
+			}
+		}
+		fire_only_once = NO
+		ai_will_do = {
+			factor = 10
+		}
+		days_re_enable = 30
+		remove_effect = {
+			country_event = XRG_EVENTS_HZ.1
+		}
+	}
+	XRG_juebuhoutui = {	#绝不后退
+		cost = 50
+		days_remove = 60
+		visible = {                           
+			has_completed_focus = XR_DL_5
+		}
+		available = {
+			has_country_flag =  XRG_FLAG_ZL
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				has_war = yes
+				factor = 50
+			}
+		}
+		fire_only_once = NO
+		days_re_enable = 30
+		modifier = {
+			army_morale_factor = -0.05
+			army_attack_factor = 0.05
+			army_defence_factor = 0.05
+	   	}
+		complete_effect = {  
+			add_stability = -0.05
+			set_country_flag = XRG_FLAG_ZL
+		}
+		remove_effect = {
+			clr_country_flag = XRG_FLAG_ZL
+		}
+	}
+	XRG_fangsongguankong = {	#放松管控
+		cost = 50
+		days_remove = 60
+		visible = {                           
+			has_completed_focus = XR_DL_5
+		}
+		available = {
+			has_country_flag =  XRG_FLAG_ZL
+		}
+		fire_only_once = NO
+		days_re_enable = 30
+		ai_will_do = {
+			factor = 10
+		}
+		modifier = {
+			army_org_factor = -0.05
+			weekly_manpower = 2000
+			land_reinforce_rate = -0.02
+	   	}
+		complete_effect = {  
+			add_stability = -0.05
+			set_country_flag = XRG_FLAG_ZL
+		}
+		remove_effect = {
+			clr_country_flag = XRG_FLAG_ZL
+		}
+	}
+	XRG_zuidijiuji = {	#最低救济
+		cost = 150
+		days_remove = 35
+		visible = {                           
+			has_completed_focus = XR_DL_6
+		}
+		available = {
+			has_country_flag =  XRG_FLAG_ZL
+		}
+		fire_only_once = NO
+		days_re_enable = 30
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				has_stability < 0.5
+				factor = 50
+			}
+		}
+		modifier = {
+			stability_weekly = 0.02
+	   	}
+		complete_effect = {  
+			set_country_flag = XRG_FLAG_ZL
+		}
+		remove_effect = {
+			clr_country_flag = XRG_FLAG_ZL
+		}
+	}
+	XRG_jingjiguanzhi = {	#经济管制
+		cost = 150
+		days_remove = 60
+		visible = {                           
+			has_completed_focus = XR_DL_6
+		}
+		available = {
+			has_country_flag =  XRG_FLAG_ZL
+		}
+		fire_only_once = NO
+		days_re_enable = 30
+		ai_will_do = {
+			factor = 10
+		}
+		modifier = {
+			consumer_goods_factor = -0.05
+			production_speed_buildings_factor = 0.1
+	   	}
+		complete_effect = {  
+			set_country_flag = XRG_FLAG_ZL
+		}
+		remove_effect = {
+			clr_country_flag = XRG_FLAG_ZL
+		}
+	}
+	XRG_liyueyitong = {	#璃月一统
+		cost = 0
+		days_remove = 30
+		visible = {
+			or = {
+				has_country_flag =  XRG_FLAG_ZL
+				has_country_flag =  XRG_FLAG_HZ
+			}                           	
+		}
+		available = {
+			KQG = { exists= NO}
+			RTG = { exists= NO}
+			XOG = { exists= NO}
+			ZDG = { exists= NO}
+			LYU = { exists= NO}
+			ANG = { exists= NO}
+			ARF = { exists= NO}
+			NNG = { exists= NO}
+			or = {
+				XOG = { exists= NO}
+				XOG = { 
+					exists= YES
+					is_in_faction_with = XRG
+				}
+			}         
+		}
+		fire_only_once = YES
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					XOG = { 
+						exists= YES
+						is_in_faction_with = XRG
+					}
+				}
+				country_event = XRG_EVENTS_0.17
+			}
+			if = {
+				limit = {
+					XOG = { exists= NO}
+				}
+				country_event = XRG_EVENTS_0.18
+			}
+		}
+	}
 }
+
+
 

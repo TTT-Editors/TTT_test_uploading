@@ -149,17 +149,6 @@ NingGuang_wants_to_beat_Keqing = {
 		id = "KQG"
 		value = 200
 	}
-
-	ai_strategy = {
-		type = front_control
-		tag = KQG
-		ratio = 0.75
-		priority = 200
-		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes
-		manual_attack = yes
-	}
 }
 
 NingGuang_is_landing = {
@@ -220,4 +209,55 @@ NingGuang_is_landing = {
 		id = "XOG"
 		value = 200
 	}
+}
+
+Ningguang_KQG_isbad = {
+	allowed = {
+		tag = NNG
+	}
+	enable = {
+		country_exists = KQG
+	}
+	ai_strategy = {
+	type = front_unit_request
+	tag = KQG
+ 	value = 9999
+    }
+}
+Yaoguangtan_isbad = {
+	allowed = {
+		tag = NNG
+	}
+	enable = {
+		country_exists = KQG 
+	}
+	ai_strategy = {
+	type = front_unit_request
+	tag = KQG
+	country_trigger = { tag = KQG }
+    state = 126
+	value = -1000
+    }
+}
+Ningguang_KQG_isbad_two = {
+	allowed = {
+		tag = NNG
+	}
+	enable = {
+		country_exists = KQG
+	}
+	ai_strategy = {
+	type = front_control
+	tag = KQG  
+	ratio = 0.1
+    state = 146
+	state = 149
+	state = 405
+	state = 406
+	priority = 1000  
+	ordertype = front  
+	execution_type = careful  
+	execute_order = no 
+	manual_attack = no 
+    }
 }

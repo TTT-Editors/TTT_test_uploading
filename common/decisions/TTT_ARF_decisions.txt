@@ -43,6 +43,23 @@ ARF_yuanzhu = {
 				has_country_flag = bianjing_1_flag
 			}
 		}
+		available = {
+			any_owned_state = {
+				is_fully_controlled_by = ROOT
+				hidden_trigger = {
+					NOT = {
+						has_state_flag = border_incident_active
+					}
+				}
+				has_ROOT_at_least_1_div_in_current_state_scope = yes
+				any_neighbor_state = {
+					is_fully_controlled_by = RTG
+					NOT = {
+						has_state_flag = border_incident_active
+					}
+				}
+			}
+		}
 		custom_cost_trigger = {
 			command_power > 24.9
 		}
@@ -50,19 +67,14 @@ ARF_yuanzhu = {
 			add_command_power = -25
 			random_state = {
 				limit = {
-					is_core_of = RTG
 					any_neighbor_state = {
-						is_fully_controlled_by = ROOT
-						hidden_trigger = {
-							NOT = {
-								has_state_flag = border_incident_active
-							}
-						}
+						is_fully_controlled_by = RTG
+						NOT = { has_state_flag = border_incident_active }
 					}
 				}
 				hidden_effect = {
 					save_event_target_as = defender_state
-					set_ = {
+					set_variable = {
 						FROM.defender_state_vs_@ROOT = id
 					}
 					set_temp_variable = {
@@ -119,8 +131,11 @@ ARF_yuanzhu = {
 			has_country_flag = ARF_yes
 		}
 		available = {
-			any_neighbor_state = {
-				is_controlled_by = RTG
+			any_owned_state = {
+				is_fully_controlled_by = ROOT
+				any_neighbor_state = {
+					is_controlled_by = RTG
+				}
 			}
 		}
 		ai_will_do = {
@@ -131,7 +146,7 @@ ARF_yuanzhu = {
 		}
 		available = {
 			ARF = {
-				has_war = RTG
+				has_war_with = RTG
 			}
 		}
 		war_with_on_remove = RTG

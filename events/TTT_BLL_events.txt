@@ -154,23 +154,6 @@ country_event = {
 		MOT = {
 			country_event = {id = BLL_event.10 days = 7}
 		}
-		hidden_effect={
-			every_character = {
-				if = {
-					limit = {
-						is_advisor = yes
-					}
-					if = {
-						limit = {
-							is_character_slot = political_advisor
-						}
-						set_nationality = XQG
-						set_nationality = BLL
-					}
-				}
-			}
-		}
-		custom_effect_tooltip = BLL_event_9_tooltip
 		add_stability = -0.1
 		add_war_support = -0.1
 		add_political_power = -150
@@ -193,21 +176,7 @@ country_event = {
 	fire_only_once =yes
 	option = {
 		name = BLL_event.10.a
-		clr_country_flag = MOT_Lisa_is_available
-
-		#####
-		hidden_effect={
-			MOT_Lisa={
-				set_nationality = XQG
-			}
-			PREV = {
-				MOT_Lisa={
-					set_nationality = MOT
-				}
-			}
-		}
-		
-		
+		clr_character_flag = MOT_Lisa_is_available
 		custom_effect_tooltip = BLL_event_10_tooltip
 		QQZ = {
 			country_event = {id = BLL_event.11 days = 2}
@@ -303,13 +272,22 @@ country_event = {
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
-		name = BLL_event.15.a
-		custom_effect_tooltip = BLL_event.15.a_tooltip
+		if = {
+			limit= {
+				has_country_flag = bll_15_is_visible
+			}
+		    name = BLL_event.15.a
+		    custom_effect_tooltip = BLL_event.15.a_tooltip
+		else_if = {
+			limit = {
+				has_country_flag = bll_16_is_visible
+			}
+		    name = BLL_event.15.b
+		    custom_effect_tooltip = BLL_event.15.b_tooltip
+		}
+		}
 	}
-	option = {
-		name = BLL_event.15.b
-		custom_effect_tooltip = BLL_event.15.b_tooltip
-	}
+			
 }
 ###事件名：一个意见
 country_event = {

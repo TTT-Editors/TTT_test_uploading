@@ -1,751 +1,117 @@
 recalculate_region_values = {
 	#######################################################
-	#index = 1
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_one_states = yes
+	
+	for_loop_effect = {
+		start = 1
+		end = 13
+		value = j
+				
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						check_variable = { j = 6 }
+						check_variable = { j = 13 }
+					}
 				}
 			}
-		}
-		set_variable = { liyue_region_frames^1 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_one_states = yes
-					NOT = { is_controlled_by = ROOT }
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							any_country = {
+								has_war_with = ROOT
+								any_controlled_state = {
+									is_liyue_region_[REGION_NUMBER]_states = yes
+								}
+							}
+						}
+						REGION_NUMBER = "[get_j_to_word]"
+					}
 				}
+				set_variable = { liyue_region_frames^j = 1 }
 			}
-		}
-		set_variable = { liyue_region_frames^1 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_one_states = yes
+			else_if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								any_state = {
+									is_liyue_region_[REGION_NUMBER]_states = yes
+									NOT = { is_controlled_by = ROOT }
+								}
+							}
+						}
+						REGION_NUMBER = "[get_j_to_word]"
+					}
 				}
+				set_variable = { liyue_region_frames^j = 5 }
 			}
-			any_controlled_state = {
-				is_liyue_region_one_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^1 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_one_states = yes
+			else_if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							any_country = {
+								NOT = { tag = ROOT }
+								NOT = { is_ally_with = ROOT }
+								any_controlled_state = {
+									is_liyue_region_[REGION_NUMBER]_states = yes
+								}
+							}
+							any_controlled_state = {
+								is_liyue_region_[REGION_NUMBER]_states = yes
+							}
+						}
+						REGION_NUMBER = "[get_j_to_word]"
+					}
 				}
+				set_variable = { liyue_region_frames^j = 2 }
 			}
-		}
-		set_variable = { liyue_region_frames^1 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_one_states = yes
+			else_if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							any_country = {
+								NOT = { tag = ROOT }
+								NOT = { is_ally_with = ROOT }
+								any_controlled_state = {
+									is_liyue_region_[REGION_NUMBER]_states = yes
+								}
+							}
+						}
+						REGION_NUMBER = "[get_j_to_word]"
+					}
 				}
+				set_variable = { liyue_region_frames^j = 3 }
 			}
-		}
-		set_variable = { liyue_region_frames^1 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^1 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_1_has_been_recalculated"
-
-	#######################################################
-	#index = 2
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_two_states = yes
+			else_if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							any_country = {
+								is_ally_with = ROOT
+								any_controlled_state = {
+									is_liyue_region_[REGION_NUMBER]_states = yes
+								}
+							}
+						}
+						REGION_NUMBER = "[get_j_to_word]"
+					}
 				}
+				set_variable = { liyue_region_frames^j = 4 }
 			}
+			#default
+			else = {
+				set_variable = { liyue_region_frames^j = 3 }
+			}
+			#meta_effect = {
+			#	text = {
+			#		log = "[GetDateText]: [Root.GetName]: Liyue_Region_[REGION_NUMBER]_has_been_recalculated_META"
+			#	}
+			#	REGION_NUMBER = "[get_j_to_word]"
+			#}
 		}
-		set_variable = { liyue_region_frames^2 = 1 }
 	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_two_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^2 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_two_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_two_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^2 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_two_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^2 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_two_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^2 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^2 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_2_has_been_recalculated as "
-
-	#######################################################
-	#index = 3
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_three_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^3 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_three_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^3 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_three_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_three_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^3 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_three_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^3 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_three_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^3 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^3 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_3_has_been_recalculated"
-
-	#######################################################
-	#index = 4
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_four_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^4 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_four_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^4 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_four_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_four_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^4 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_four_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^4 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_four_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^4 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^4 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_4_has_been_recalculated"
-
-	#######################################################
-	#index = 5
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_five_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^5 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_five_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^5 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_five_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_five_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^5 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_five_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^5 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_five_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^5 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^5 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_5_has_been_recalculated"
-
-	#######################################################
-	#index = 7
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_seven_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^7 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_seven_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^7 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_seven_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_seven_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^7 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_seven_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^7 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_seven_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^7 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^7 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_7_has_been_recalculated"
-
-	#######################################################
-	#index = 8
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_eight_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^8 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_eight_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^8 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_eight_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_eight_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^8 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_eight_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^8 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_eight_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^8 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^8 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_8_has_been_recalculated"
-
-	#######################################################
-	#index = 9
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_nine_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^9 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_nine_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^9 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_nine_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_nine_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^9 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_nine_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^9 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_nine_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^9 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^9 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_9_has_been_recalculated"
-
-	#######################################################
-	#index = 10
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_ten_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^10 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_ten_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^10 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_ten_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_ten_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^10 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_ten_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^10 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_ten_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^10 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^10 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_10_has_been_recalculated"
-
-	#######################################################
-	#index = 11
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_eleven_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^11 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_eleven_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^11 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_eleven_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_eleven_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^11 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_eleven_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^11 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_eleven_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^11 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^11 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_11_has_been_recalculated"
-
-	#######################################################
-	#index = 12
-	if = {
-		limit = {
-			any_country = {
-				has_war_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_twelve_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^12 = 1 }
-	}
-	else_if = {
-		limit = {
-			NOT = {
-				any_state = {
-					is_liyue_region_twelve_states = yes
-					NOT = { is_controlled_by = ROOT }
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^12 = 5 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_twelve_states = yes
-				}
-			}
-			any_controlled_state = {
-				is_liyue_region_twelve_states = yes
-			}
-		}
-		set_variable = { liyue_region_frames^12 = 2 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				NOT = { tag = ROOT }
-				NOT = { is_ally_with = ROOT }
-				any_controlled_state = {
-					is_liyue_region_twelve_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^12 = 3 }
-	}
-	else_if = {
-		limit = {
-			any_country = {
-				is_ally_with = ROOT
-				any_controlled_state = {
-					is_liyue_region_twelve_states = yes
-				}
-			}
-		}
-		set_variable = { liyue_region_frames^12 = 4 }
-	}
-	#default
-	else = {
-		set_variable = { liyue_region_frames^12 = 3 }
-	}
-	log = "[GetDateText]: [Root.GetName]: Liyue_Region_12_has_been_recalculated"
 }
 
 recalculate_button_values = {
@@ -948,7 +314,7 @@ set_marked_states = {
 			add_to_array = { liyue_marked_states = THIS }
 		}
 	}
-	log = "[GetDateText]: [Root.liyue_marked_states^0]: Liyue_Region_has_been_marked"
+	log = "[GetDateText]: Liyue_Region_[get_selection_to_word]_has_been_marked"
 	#No log no game!
 }
 
@@ -1054,6 +420,7 @@ tlcw_button_6_click_effect = {
 			create_unit = {
 				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
 				owner = ROOT
+				allow_spawning_on_enemy_provs = yes
 				count = 1
 			}
 		}
@@ -1067,8 +434,9 @@ tlcw_button_6_click_effect = {
 #		every_state = {
 #			limit = { is_in_array = { liyue_marked_states = THIS } }
 #			create_unit = {
-#				division = "division_template = \"民兵\" start_experience_factor = 0.3 start_equipment_factor = 0.9"
+#				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.3 start_equipment_factor = 0.9"
 #				owner = ROOT
+#				allow_spawning_on_enemy_provs = yes
 #				count = 2
 #			}
 #		}
@@ -1076,8 +444,9 @@ tlcw_button_6_click_effect = {
 	every_state = {
 		limit = { is_in_array = { liyue_marked_states = THIS } }
 		create_unit = {
-			division = "division_template = \"民兵\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
+			division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
 			owner = ROOT
+			allow_spawning_on_enemy_provs = yes
 			count = 1
 		}
 	}

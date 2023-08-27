@@ -73,6 +73,12 @@ NNG_template_design = {
 	
 	ai_strategy = {
 	type = build_army
+	id = infantry
+	value = 5000
+    }
+	
+	ai_strategy = {
+	type = build_army
 	id = motorized
 	value = -9000
     }
@@ -267,12 +273,12 @@ Ningguang_KQG_isbad_two = {
 		country_exists = KQG
 		NOT = {
 		    NNG = {
-		        has_completed_focus = NNG_qilaizhandou
+		        has_completed_focus = NNG_wmbijiangshengli
 		    }
 		}
 	}
 	abort = {
-		has_completed_focus = NNG_qilaizhandou
+		has_completed_focus = NNG_wmbijiangshengli
 	}
 	ai_strategy = {
 	type = front_control
@@ -296,7 +302,7 @@ Ningguang_KQG_isbad_three = {
 	enable = {
 		country_exists = KQG	
 		NNG = {
-		    has_completed_focus = NNG_qilaizhandou
+		    has_completed_focus = NNG_wmbijiangshengli
 	    }
 	}
 	ai_strategy = {
@@ -316,5 +322,22 @@ Ningguang_KQG_isbad_three = {
 	type = invasion_unit_request
 	tag = KQG  
 	value = 100
+    }
+}
+Ningguang_shoujia_ai = {
+	allowed = {
+		tag = NNG
+	}
+	enable = {
+		has_war = yes
+	}
+	ai_strategy = {
+	type = put_unit_buffers
+    ratio = 0.05
+	states = {
+ 		126
+ 	    }
+	subtract_invasions_from_need = no	
+	subtract_fronts_from_need = no
     }
 }

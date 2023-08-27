@@ -72,18 +72,30 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_Xiaozhanbai
 	}
-	text = { #璃月港
+	text = { #璃月港战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
 			}
 			event_target:losing_country = {
 				original_tag = LYU
+				NOT = { has_global_flag = liyue_unified }
 			}
 		}
 		localization_key = TTT_Liyuegangzhanbai
 	}
-	text = { #龙王
+	text = { ##璃月抵抗同盟战败
+		trigger = {
+			event_target:winning_country = {
+				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				original_tag = LYU
+			}
+		}
+		localization_key = TTT_Liyuegangdikangtongmengzhanbai
+	}
+	text = { #好龙王战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -97,7 +109,7 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_Longwangzhanbai
 	}
-	text = { #龙王
+	text = { #坏龙王战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -111,7 +123,7 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_Longwangbadzhanbai
 	}
-	text = { #黑岩军
+	text = { #黑岩军战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -122,7 +134,7 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_Heiyanjunzhanbai
 	}
-	text = { #抵抗军
+	text = { #抵抗军战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -133,9 +145,55 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_dikangjunzhanbai
 	}
-	
-	#Default
+	#通用结语
 	text = {
 		localization_key = TTT_zhanbaitonyonjieyu
+	}
+}
+defined_text = { #战争描述
+	name = TTT_Getwapeace_description
+	text = { #联合阵线成功
+		trigger = {
+			event_target:winning_country = {
+				has_global_flag = liyue_unified
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+	localization_key = TTT_lianhezhenxianchenggon
+	}
+	#通用描述
+	text = {
+		localization_key = TTT_wapeace_description_tonyon
+	}
+}
+defined_text = { #战争描述
+	name = TTT_Getwapeace_description
+	text = { #联合阵线成功
+		trigger = {
+			event_target:winning_country = {
+				has_global_flag = liyue_unified
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+	localization_key = TTT_lianhezhenxianchenggon
+	}
+	text = { #联合阵线战败
+		trigger = {
+			event_target:winning_country = {
+				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				has_global_flag = liyue_unified
+			}
+		}
+	localization_key = TTT_lianhezhenxianzhanbai
+	}
+	#通用描述
+	text = {
+		localization_key = TTT_wapeace_description_tonyon
 	}
 }

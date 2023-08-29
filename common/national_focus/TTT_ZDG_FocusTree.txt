@@ -737,9 +737,6 @@ focus_tree = {
 		prerequisite = {
 			focus = ZDG_26
 		}
-		prerequisite = {
-			focus = ZDG_29
-		}
 	}
 	focus = {
 		id = ZDG_24    #搜刮军费
@@ -944,19 +941,23 @@ focus_tree = {
 	focus = {
 		id = ZDG_xuebeng #雪崩
 		icon = unknown
-		x = 15
+		x = 14
 		y = 10
 		cost = 7
 		ai_will_do = { 
 			base = 10
 		}
 		available = {
+			always = no
 		}
 		allow_branch = {
 			has_completed_focus = ZDG_15
 		}
 		completion_reward = {
-			
+			add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 1.0
+			}
 	    }
 	}
 	focus = {
@@ -1020,7 +1021,7 @@ focus_tree = {
 		y = 13
 		cost = 7
 		ai_will_do = { 
-			base = 10
+			base = 0
 		}
 		available = {
 		}
@@ -1041,6 +1042,7 @@ focus_tree = {
 			base = 10
 		}
 		available = {
+			has_completed_focus = ZDG_16 
 		}
 		completion_reward = {
 			
@@ -1059,9 +1061,15 @@ focus_tree = {
 			base = 10
 		}
 		available = {
+			or = {
+				has_idea = ZDG_Scaleusevileyes_limitedtrial
+				has_idea = ZDG_Scaleusevileyes_limitedtrial2
+				has_idea = ZDG_Scaleusevileyes_limitedtrial3
+				has_idea = ZDG_Scaleusevileyes_limitedtrial4
+			}
 		}
 		completion_reward = {
-			
+			add_manpower = -12000
 	    }
 		prerequisite = {
 			focus = ZDG_dajishiqi
@@ -1091,9 +1099,9 @@ focus_tree = {
 	focus = {
 		id = ZDG_fangquankuilei #放权傀儡
 		icon = unknown
-		x = 10
+		x = 9
 		y = 11
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1103,13 +1111,25 @@ focus_tree = {
 			focus = ZDG_xuebeng
 		}
 		completion_reward = {
-			
+			add_advisor_role = {
+				character = ZDG_liyuehezuoshiyixiaozu
+				activate = no
+				advisor = {
+					slot = political_advisor
+					cost = 200
+					idea_token = ZDG_liyuehezuoshiyixiaozu
+					traits = {
+						ZDG_liyuehezuoshiyixiaozu_tezhi
+					}
+					can_be_fired = no
+				}
+			}
 	    }
 	}
 	focus = {
 		id = ZDG_chonzuxiefangjun #重组协防军
 		icon = unknown
-		x = 11
+		x = 10
 		y = 12
 		cost = 7
 		ai_will_do = { 
@@ -1121,13 +1141,13 @@ focus_tree = {
 			focus = ZDG_fangquankuilei
 		}
 		completion_reward = {
-			
+			add_ideas = ZDG_zuzhihuadexiefangjun
 	    }
 	}
 	focus = {
 		id = ZDG_geitamenwuqi #给他们武器
 		icon = unknown
-		x = 10
+		x = 9
 		y = 13
 		cost = 7
 		ai_will_do = { 
@@ -1145,7 +1165,7 @@ focus_tree = {
 	focus = {
 		id = ZDG_maijinxueli #埋进雪里
 		icon = unknown
-		x = 12
+		x = 11
 		y = 13
 		cost = 7
 		ai_will_do = { 
@@ -1157,13 +1177,18 @@ focus_tree = {
 			focus = ZDG_chonzuxiefangjun
 		}
 		completion_reward = {
-			
+			every_other_country = {
+				limit = {
+					is_subject_of = ROOT
+				}
+				add_ideas = ZDG_neizhantebieguanzhifaan
+			}
 	    }
 	}
 	focus = {
 		id = ZDG_paoguyugou #抛骨予狗
 		icon = unknown
-		x = 11
+		x = 10
 		y = 14
 		cost = 7
 		ai_will_do = { 
@@ -1178,13 +1203,24 @@ focus_tree = {
 			focus = ZDG_maijinxueli
 		}
 		completion_reward = {
-			
+			every_other_country = {
+				limit = {
+					is_subject_of = ROOT
+				}
+				add_political_power = 50
+				add_stability = 0.10
+				add_war_support = 0.10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2500
+					}
+			}
 	    }
 	}
 	focus = {
 		id = ZDG_bielaiaishi #别来碍事
 		icon = unknown
-		x = 13
+		x = 12
 		y = 15
 		cost = 7
 		ai_will_do = { 
@@ -1208,7 +1244,7 @@ focus_tree = {
 	focus = {
 		id = ZDG_langdeliaoya #狼的獠牙
 		icon = unknown
-		x = 17
+		x = 16
 		y = 15
 		cost = 7
 		ai_will_do = { 
@@ -1226,13 +1262,13 @@ focus_tree = {
 		    focus = ZDG_yinhezhike
 		}
 		completion_reward = {
-			
+			add_ideas = ZDG_bingxueliaoya
 	    }
 	}
 	focus = {
 		id = ZDG_jingxianliyue #敬献璃月
 		icon = unknown
-		x = 15
+		x = 14
 		y = 16
 		cost = 7
 		ai_will_do = { 
@@ -1253,7 +1289,7 @@ focus_tree = {
 	focus = {
 		id = ZDG_xuexsezhoncheng #血色忠诚
 		icon = unknown
-		x = 9
+		x = 8
 		y = 12
 		cost = 7
 		ai_will_do = { 
@@ -1265,13 +1301,14 @@ focus_tree = {
 			focus = ZDG_fangquankuilei
 		}
 		completion_reward = {
-			
+			add_ideas = ZDG_xuesezhongcheng
+			custom_effect_tooltip = ZDG_xuexsezhoncheng_tt
 	    }
 	}
 	focus = {
 		id = ZDG_duanliu #断流
 		icon = unknown
-		x = 8
+		x = 7
 		y = 13
 		cost = 7
 		ai_will_do = { 
@@ -1283,13 +1320,17 @@ focus_tree = {
 			focus = ZDG_xuexsezhoncheng
 		}
 		completion_reward = {
-			
+			swap_ideas = {
+				add_idea = ZDG_xuesezhongcheng
+				remove_idea = ZDG_xuesezhongcheng2
+			}
+			custom_effect_tooltip = ZDG_duanliu_tt
 	    }
 	}
 	focus = {
 		id = ZDG_qinaidekaluowen #亲爱的卡格文
 		icon = unknown
-		x = 15
+		x = 14
 		y = 11
 		cost = 7
 		ai_will_do = { 
@@ -1302,13 +1343,37 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			
+			add_political_power = 150
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 5000
+			}
+            add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 1000
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 1000
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = 3000
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 3000
+			}
+			add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.10
+			}
 	    }
 	}
 	focus = {
 		id = ZDG_yifefexin #一封封信
 		icon = unknown
-		x = 15
+		x = 14
 		y = 12
 		cost = 7
 		ai_will_do = { 
@@ -1321,13 +1386,14 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			
+			add_manpower = 15000
+			army_experience = 25
 	    }
 	}
 	focus = {
 		id = ZDG_yigegexiaoxin #一个个消息
 		icon = unknown
-		x = 15
+		x = 14
 		y = 13
 		cost = 7
 		ai_will_do = { 
@@ -1340,13 +1406,16 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			
+			SNE_Elizabeth = {
+				add_planning = 1
+				add_logistics = 1
+			}
 	    }
 	}
 	focus = {
 		id = ZDG_yicicishengli #一次次胜利
 		icon = unknown
-		x = 15
+		x = 14
 		y = 14
 		cost = 7
 		ai_will_do = { 
@@ -1359,7 +1428,11 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			
+			add_political_power = 150
+			add_power_balance_value = {
+				id = ZDG_extreme_northern_palace
+				value = 0.10
+			}
 	    }
 	}
 }

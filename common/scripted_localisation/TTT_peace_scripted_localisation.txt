@@ -164,24 +164,6 @@ defined_text = { #战争描述
 		}
 	localization_key = TTT_lianhezhenxianchenggon
 	}
-	#通用描述
-	text = {
-		localization_key = TTT_wapeace_description_tonyon
-	}
-}
-defined_text = { #战争描述
-	name = TTT_Getwapeace_description
-	text = { #联合阵线成功
-		trigger = {
-			event_target:winning_country = {
-				has_global_flag = liyue_unified
-			}
-			event_target:losing_country = {
-				original_tag = ZDG
-			}
-		}
-	localization_key = TTT_lianhezhenxianchenggon
-	}
 	text = { #联合阵线战败
 		trigger = {
 			event_target:winning_country = {
@@ -192,6 +174,40 @@ defined_text = { #战争描述
 			}
 		}
 	localization_key = TTT_lianhezhenxianzhanbai
+	}
+	text = { #干涉军胜利描述
+		trigger = {
+			event_target:winning_country = {
+				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				is_nominate_liyue = yes
+			}
+		}
+	localization_key = TTT_ganshejunshenglimiaoshu
+	}
+	text = { #干涉军失败描述
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+				NOT = { has_global_flag = liyue_unified }
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+	localization_key = TTT_ganshejunshibaimiaoshu
+	}
+	text = { #LYU内战通用描述
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				is_nominate_liyue = yes
+			}
+		}
+	localization_key = TTT_liyueneizhanmiaoshu
 	}
 	#通用描述
 	text = {

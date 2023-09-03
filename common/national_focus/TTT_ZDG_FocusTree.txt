@@ -972,7 +972,21 @@ focus_tree = {
 		available = {
 		}
 		completion_reward = {
-			
+			every_country  {
+				if = {
+					limit = {
+						is_nominate_liyue = yes
+						FROM = {
+							has_war_with = ZDG
+						}
+					}
+					FROM = {
+					add_stability = -0.15
+	                add_war_support = -0.15
+					add_manpower = -1000
+				    }
+				}
+			}
 	    }
 		prerequisite = {
 			focus = ZDG_xuebeng
@@ -990,7 +1004,12 @@ focus_tree = {
 		available = {
 		}
 		completion_reward = {
-			
+			every_country  {		
+					limit = {					
+						has_war_with = ROOT
+					}				
+				add_timed_idea = { idea = ZDG_yurenzhoudeshentou days = 120 } 
+			}
 	    }
 		prerequisite = {
 			focus = ZDG_wulikonghe
@@ -1090,7 +1109,29 @@ focus_tree = {
 		available = {
 		}
 		completion_reward = {
-			
+			random_list = { 
+				40 = {
+					every_country = {
+						limit = {							
+							has_war_with = ROOT
+						}
+						add_stability = -0.15
+						add_war_support = -0.15
+						add_manpower = -1000
+					}
+				} 
+				30 = { 
+				
+				}
+				30 = { 	    
+					every_country = {
+						limit = {
+							has_war_with = ROOT
+						}						
+						add_timed_idea = { idea = ZDG_shiqikonghuang days = 120 } 
+					}
+				}
+			}
 	    }
 		prerequisite = {
 			focus = ZDG_shentougefang
@@ -1142,6 +1183,61 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = ZDG_zuzhihuadexiefangjun
+			if = {
+				limit = {
+					 has_template = "雪之协防军" 
+				}		
+				delete_unit_template_and_units = {
+					division_template = "雪之协防军"
+					disband = yes 
+				}
+		    }
+            if = {
+				limit = {
+					NOT = {
+						has_template = "干涉行动协防军"
+					}
+				}
+				division_template = {
+					name = "干涉行动协防军"
+					priority = 2
+					is_locked = yes
+					division_names_group = ZDG_INF_02
+					regiments = {
+						militia = {
+							x = 0
+							y = 0
+						}
+						militia = {
+							x = 0
+							y = 1
+						}
+						militia = {
+							x = 0
+							y = 2
+						}
+						militia = {
+							x = 1
+							y = 0
+						}
+						militia = {
+							x = 1
+							y = 1
+						}
+					}
+					support = {
+                    artillery = { x = 0 y = 0 }
+                    }
+				}
+			}
+			222 = {
+				create_unit = {
+					division = "division_template = \"干涉行动协防军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = ZDG
+					count = 12
+				}
+			}
+			custom_effect_tooltip = ZDG_chonzuxiefangjun_tt
 	    }
 	}
 	focus = {

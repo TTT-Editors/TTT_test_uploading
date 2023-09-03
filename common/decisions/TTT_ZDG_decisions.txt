@@ -1340,6 +1340,9 @@ ZDG_decision_category = {
 		}
 		visible = {
 			has_completed_focus = ZDG_13
+			NOT = {
+			   has_completed_focus = ZDG_chonzuxiefangjun 
+			}
 		}
 		allowed = {
 			original_tag = ZDG
@@ -1403,6 +1406,91 @@ ZDG_decision_category = {
 		}
 		ai_will_do = {
 			base = 100
+		}
+	}
+	ZDG_recruit_troops_2 = {
+		#招募部队  
+		fire_only_once = no
+		available = {
+			has_equipment = {
+				infantry_equipment > 600
+			}
+			has_equipment = {
+				artillery_equipment > 10
+			}
+			has_manpower > 1000
+		}
+		visible = {
+			has_completed_focus = ZDG_chonzuxiefangjun
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		custom_cost_trigger = {
+			tag = ZDG
+		}
+		custom_cost_text = ZDG_Strengthen_500_tooltip
+		days_remove = 60
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -600
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -10
+			}
+			add_manpower = -1000
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "干涉行动协防军"
+					}
+				}
+				division_template = {
+					name = "干涉行动协防军"
+					priority = 2
+					is_locked = yes
+					division_names_group = ZDG_INF_02
+					regiments = {
+						militia = {
+							x = 0
+							y = 0
+						}
+						militia = {
+							x = 0
+							y = 1
+						}
+						militia = {
+							x = 0
+							y = 2
+						}
+						militia = {
+							x = 1
+							y = 0
+						}
+						militia = {
+							x = 1
+							y = 1
+						}
+					}
+					support = {
+                    artillery = { x = 0 y = 0 }
+                    }
+				}
+			}
+			222 = {
+				create_unit = {
+					division = "division_template = \"干涉行动协防军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = ZDG
+					count = 3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
 		}
 	}
 }

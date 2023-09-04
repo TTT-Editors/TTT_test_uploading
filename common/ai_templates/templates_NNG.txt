@@ -1,4 +1,4 @@
-armored_NNG= {
+armor_NNG = {
 
 	available_for = {
 		NNG
@@ -7,9 +7,7 @@ armored_NNG= {
 	roles = {
 		armor
 	}
-	
-	match_to_count = 0.5
-	
+
 	upgrade_prio = {
 		factor = 2.17
 
@@ -17,9 +15,7 @@ armored_NNG= {
 			factor = 7
 			OR = {
 				has_tech = basic_medium_tank
-				has_tech = basic_light_tank
 				has_tech = basic_medium_tank_chassis
-				has_tech = basic_light_tank_chassis
 			}
 		}
 		
@@ -31,6 +27,8 @@ armored_NNG= {
 			}
 		}
 	}
+	
+	match_to_count = 0.5
 
 	light_armor_default_NNG = {
 	
@@ -38,114 +36,15 @@ armored_NNG= {
 			factor = 2
 
 			modifier = {
-				factor = 10
-				OR = {
-					has_tech = improved_light_tank
-					has_tech = improved_light_tank_chassis
-				}
-			}
-		}
-
-		production_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 2
-				has_war = yes
-			}
-		}
-	
-		target_width = 18.0
-		width_weight = 1.0
-		column_swap_factor = 0.1
-		
-		stat_weights = {
-			0.00 #-- default_morale
-			1.10 #-- defense
-			1.10 #-- breakthrough
-			0.60 #-- hardness
-			1.00 #-- soft_attack
-			0.00 #-- hard_attack
-			0.10 #-- recon
-			0.01 #-- entrenchment
-			0.10 #-- initiative
-			0.01 #-- casualty_trickleback
-			-0.05 #-- supply_consumption_factor
-			-0.01 #-- supply_consumption
-			0.00 #-- suppression
-			0.00 #-- suppression_factor
-			0.01 #-- experience_loss_factor
-			0.00 #-- equipment_capture_factor
-			0.00 #-- fuel_capacity
-			#-- Air Values
-			0.02 #-- air_attack
-			#-- Common Values
-			30.00 #-- max_organisation
-			0.80 #-- max_strength
-			2.0 #-- maximum_speed
-			0.20 #-- armor_value
-			0.05 #-- ap_attack
-			0.10 #-- reliability
-			0.10 #-- reliability_factor
-			0.00 #-- weight
-			0.00 #-- fuel_consumption
-			0.00 #-- fuel_consumption_factor
-			0.00 #-- strat_attack
-			0.00 #-- carrier_size
-			0.00 #-- acc_hot_gain
-			0.00 #-- acc_cold_gain
-			0.00 #-- build_cost_ic
-		}
-		
-		target_template = {
-			weight = 0.9
-			match_value = 3000.0
-			
-			support = {
-				artillery = 1
-				mot_recon = 1
-			}
-			
-			regiments = {
-				light_armor = 3
-				motorized = 3
-			}
-		}
-		
-		allowed_types = {
-			light_armor
-			motorized
-			engineer
-			mot_recon
-			armored_car_recon
-			light_tank_recon
-			artillery
-		}
-		
-		replace_at_match = 0.4
-		replace_with = light_armor_2_NNG
-		target_min_match = 0.5
-	}
-
-	light_armor_2_NNG = {
-	
-		upgrade_prio = {
-			factor = 2
-
-			modifier = {
-				factor = 10
-				OR = {
-					has_tech = improved_light_tank
-					has_tech = improved_light_tank_chassis
-				}
+				factor = 1
 			}
 		}
 		
 		can_upgrade_in_field = {
 			has_equipment = { light_tank_chassis < 500 } 
 		}
-	
-		target_width = 18.0
+		
+		target_width = 20.0
 		width_weight = 1.0
 		column_swap_factor = 0.1
 		
@@ -154,7 +53,7 @@ armored_NNG= {
 			1.10 #-- defense
 			1.10 #-- breakthrough
 			0.60 #-- hardness
-			1.00 #-- soft_attack
+			2.00 #-- soft_attack
 			0.00 #-- hard_attack
 			0.10 #-- recon
 			0.01 #-- entrenchment
@@ -193,7 +92,7 @@ armored_NNG= {
 			
 			support = {
 				engineer = 1
-				mot_recon = 1
+				recon = 1
 				artillery = 1
 			}
 			
@@ -207,9 +106,7 @@ armored_NNG= {
 			light_armor
 			motorized
 			engineer
-			mot_recon
-			armored_car_recon
-			light_tank_recon
+			recon
 			artillery
 		}
 		
@@ -277,7 +174,7 @@ armored_NNG= {
 			
 			support = {
 				engineer = 1
-				mot_recon = 1
+				recon = 1
 				logistics_company = 1
 				maintenance_company = 1
 			}
@@ -303,9 +200,7 @@ armored_NNG= {
 			motorized_rocket_brigade 
 
 			engineer
-			mot_recon
-			armored_car_recon
-			light_tank_recon
+			recon
 			signal_company
 			maintenance_company
 			logistics_company
@@ -328,20 +223,7 @@ armored_NNG= {
 			factor = 2
 
 			modifier = {
-				factor = 10
-				OR = {
-					has_tech = basic_medium_tank
-					has_tech = basic_medium_tank_chassis
-				}
-			}
-		}
-
-		production_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 2
-				has_war = yes
+				factor = 1
 			}
 		}
 		
@@ -394,15 +276,14 @@ armored_NNG= {
 			
 			support = {
 				engineer = 1
-				mot_recon = 1
+				recon = 1
 				maintenance_company = 1
 				logistics_company = 1
-				artillery = 1
 			}
 			
 			regiments = {
 				medium_armor = 6
-				motorized = 4
+				motorized = 5
 			}
 		}
 
@@ -412,120 +293,7 @@ armored_NNG= {
 			motorized
 			mechanized
 			infantry
-			motorized_rocket_brigade 
 
-			engineer
-			mot_recon
-			armored_car_recon
-			light_tank_recon
-			signal_company
-			maintenance_company
-			logistics_company
-
-			anti_tank
-			military_police
-			artillery
-			anti_air
-			rocket_artillery
-		}
-		
-		replace_at_match = 0.65
-		replace_with = medium_armor_2_NNG
-		target_min_match = 0.5
-	}
-
-	medium_armor_2_NNG = {
-	
-		upgrade_prio = {
-			factor = 2
-
-			modifier = {
-				factor = 10
-				OR = {
-					has_tech = improved_medium_tank
-					has_tech = improved_medium_tank_chassis
-				}
-			}
-		}
-		production_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 2
-				has_war = yes
-			}
-		}
-		target_width = 19.9
-		width_weight = 3.0
-		column_swap_factor = 0.1
-		
-		stat_weights = {
-			0.00 #-- default_morale
-			1.10 #-- defense
-			1.10 #-- breakthrough
-			1.60 #-- hardness
-			1.00 #-- soft_attack
-			2.00 #-- hard_attack
-			0.10 #-- recon
-			0.01 #-- entrenchment
-			0.10 #-- initiative
-			0.01 #-- casualty_trickleback
-			-0.05 #-- supply_consumption_factor
-			-0.01 #-- supply_consumption
-			0.00 #-- suppression
-			0.00 #-- suppression_factor
-			0.01 #-- experience_loss_factor
-			0.00 #-- equipment_capture_factor
-			0.00 #-- fuel_capacity
-			#-- Air Values
-			0.02 #-- air_attack
-			#-- Common Values
-			50.00 #-- max_organisation
-			0.80 #-- max_strength
-			1.0 #-- maximum_speed
-			10.0 #-- armor_value
-			0.05 #-- ap_attack
-			0.10 #-- reliability
-			0.10 #-- reliability_factor
-			0.00 #-- weight
-			0.00 #-- fuel_consumption
-			0.00 #-- fuel_consumption_factor
-			0.00 #-- strat_attack
-			0.00 #-- carrier_size
-			0.00 #-- acc_hot_gain
-			0.00 #-- acc_cold_gain
-			0.00 #-- build_cost_ic
-		}
-		
-
-		target_template = {
-			weight = 0.9
-			match_value = 6000.0
-			
-			support = {
-				engineer = 1
-				recon = 1
-				maintenance_company = 1
-				logistics_company = 1
-				artillery = 1
-			}
-			
-			regiments = {
-				medium_armor = 3
-				medium_sp_artillery_brigade = 1
-				medium_tank_destroyer_brigade = 1
-				mechanized = 4
-			}
-		}
-
-		allowed_types = {
-			modern_armor
-			medium_armor
-			medium_sp_artillery_brigade
-			medium_tank_destroyer_brigade
-			motorized
-			mechanized
-			infantry
 			motorized_rocket_brigade 
 
 			engineer
@@ -541,118 +309,7 @@ armored_NNG= {
 			rocket_artillery
 		}
 		
-		replace_at_match = 0.65
-		replace_with = medium_armor_3_NNG
-		target_min_match = 0.5
-	}
-
-	medium_armor_3_NNG = {
-	
-		upgrade_prio = {
-			factor = 2
-
-			modifier = {
-				factor = 10
-				has_tech = armored_car1
-			}
-		}
-		production_prio = {
-			factor = 1
-
-			modifier = {
-				factor = 2
-				has_war = yes
-			}
-		}
-		target_width = 19.9
-		width_weight = 3.0
-		column_swap_factor = 0.1
-		
-		stat_weights = {
-			0.00 #-- default_morale
-			1.10 #-- defense
-			1.10 #-- breakthrough
-			1.60 #-- hardness
-			1.00 #-- soft_attack
-			2.00 #-- hard_attack
-			0.10 #-- recon
-			0.01 #-- entrenchment
-			0.10 #-- initiative
-			0.01 #-- casualty_trickleback
-			-0.05 #-- supply_consumption_factor
-			-0.01 #-- supply_consumption
-			0.00 #-- suppression
-			0.00 #-- suppression_factor
-			0.01 #-- experience_loss_factor
-			0.00 #-- equipment_capture_factor
-			0.00 #-- fuel_capacity
-			#-- Air Values
-			0.02 #-- air_attack
-			#-- Common Values
-			50.00 #-- max_organisation
-			0.80 #-- max_strength
-			1.0 #-- maximum_speed
-			10.0 #-- armor_value
-			0.05 #-- ap_attack
-			0.10 #-- reliability
-			0.10 #-- reliability_factor
-			0.00 #-- weight
-			0.00 #-- fuel_consumption
-			0.00 #-- fuel_consumption_factor
-			0.00 #-- strat_attack
-			0.00 #-- carrier_size
-			0.00 #-- acc_hot_gain
-			0.00 #-- acc_cold_gain
-			0.00 #-- build_cost_ic
-		}
-		
-
-		target_template = {
-			weight = 0.9
-			match_value = 8000.0
-			
-			support = {
-				engineer = 1
-				armored_car_recon = 1
-				maintenance_company = 1
-				logistics_company = 1
-				artillery = 1
-			}
-			
-			regiments = {
-				medium_armor = 3
-				medium_sp_artillery_brigade = 1
-				medium_tank_destroyer_brigade = 1
-				mechanized = 4
-			}
-		}
-
-		allowed_types = {
-			modern_armor
-			medium_armor
-			medium_sp_artillery_brigade
-			medium_tank_destroyer_brigade
-			motorized
-			mechanized
-			infantry
-			motorized_rocket_brigade 
-
-			engineer
-			mot_recon
-			armored_car_recon
-			light_tank_recon
-			signal_company
-			maintenance_company
-			logistics_company
-
-			anti_tank
-			military_police
-			artillery
-			anti_air
-			rocket_artillery
-		}
-		
-		replace_at_match = 0.65
+		replace_at_match = 0.8
 		replace_with = modern_armor_default_NNG
 		target_min_match = 0.5
 	}
@@ -667,6 +324,7 @@ armored_NNG= {
 				factor = 1
 			}
 		}
+		
 		
 		target_width = 19.9
 		width_weight = 3.0
@@ -712,11 +370,11 @@ armored_NNG= {
 
 		target_template = {
 			weight = 0.9
-			match_value = 10000.0
+			match_value = 5000.0
 			
 			support = {
 				engineer = 1
-				mot_recon = 1
+				recon = 1
 				maintenance_company = 1
 				logistics_company = 1
 			}
@@ -750,110 +408,6 @@ armored_NNG= {
 	}
 }
 
-
-garrison_NNG = {
-
-	available_for = {
-		NNG
-	}
-	
-	roles = {
-		garrison
-	}
-	
-	upgrade_prio = {
-		factor = 80
-
-		modifier = {
-			factor = 0
-			ai_has_role_template = garrison
-		}
-	}
-	
-	match_to_count = 0.8
-
-
-	garrison_NNG = {
-	
-		reinforce_prio = 0
-		custom_icon = 7
-	
-		upgrade_prio = {
-			factor = 2
-
-			modifier = {
-				factor = 1
-			}
-		}
-		
-		reinforce_prio = 0
-		custom_icon = 7
-		
-		target_width = 5.0
-		width_weight = 1.0
-		column_swap_factor = 0.5
-		
-		stat_weights = {
-			0.00 #-- default_morale
-			0.00 #-- defense
-			0.00 #-- breakthrough
-			0.00 #-- hardness
-			4.00 #-- soft_attack
-			0.00 #-- hard_attack
-			0.00 #-- recon
-			3.00 #-- entrenchment
-			0.00 #-- initiative
-			0.00 #-- casualty_trickleback
-			0.00 #-- supply_consumption_factor
-			0.00 #-- supply_consumption
-			0.00 #-- suppression
-			0.00 #-- suppression_factor
-			0.00 #-- experience_loss_factor
-			0.00 #-- equipment_capture_factor
-			0.00 #-- fuel_capacity
-			#-- Air Values
-			0.00 #-- air_attack
-			#-- Common Values
-			0.60 #-- max_organisation
-			0.40 #-- max_strength
-			0.00 #-- maximum_speed
-			0.00 #-- armor_value
-			0.20 #-- ap_attack
-			0.00 #-- reliability
-			0.00 #-- reliability_factor
-			0.00 #-- weight
-			0.00 #-- fuel_consumption
-			0.00 #-- fuel_consumption_factor
-			0.00 #-- strat_attack
-			0.00 #-- carrier_size
-			0.00 #-- acc_hot_gain
-			0.00 #-- acc_cold_gain
-			0.00 #-- build_cost_ic
-		}
-		
-		target_template = {
-			weight = 0.9
-			match_value = 3000.0
-			
-			support = {
-				military_police = 1
-			}
-			
-			regiments = {
-				infantry = 4
-			}
-		}
-		
-		allowed_types = {
-			infantry		
-			engineer
-			field_hospital
-			anti_tank
-			military_police
-		}
-	}
-}
-
 infantry_NNG = {
 
 	available_for = {
@@ -865,19 +419,37 @@ infantry_NNG = {
 	}
 	
 	upgrade_prio = {
-		factor = 50
+		factor = 2
+
+		modifier = {
+			factor = 40
+			OR = {
+				NOT = {
+					NNG = { has_war_with = LYU }
+				}
+				
+			}
+		}
 	}
 	
-	match_to_count = 0.45
+	match_to_count = 0.60 #0.45 to 0.70 to 0.6
 
 	infantry_default_NNG = {
 	
 		upgrade_prio = {
-			factor = 900
+			factor = 5
+
+			modifier = {
+				factor = 2
+				OR = {
+					KQG = { has_capitulated = no }
+					country_exists = KQG
+				}
+			}
 		}
 		
-		target_width = 20.0
-		width_weight = 1.0
+		target_width = 19.0
+		width_weight = 1.5
 		column_swap_factor = 0.5
 		
 		stat_weights = {
@@ -920,11 +492,11 @@ infantry_NNG = {
 		
 		target_template = {
 			weight = 0.9
-			match_value = 9000.0
+			match_value = 3000.0
 			
 			support = {
 				engineer = 1
-				artillery = 1				
+				artillery = 1
 			}
 			
 			regiments = {
@@ -940,12 +512,122 @@ infantry_NNG = {
 			signal_company
 			field_hospital
 			logistics_company
-			anti_tank
 			artillery
 			anti_tank_brigade
 			artillery_brigade
 		}
-	}
+
+		#replace_at_match = 0.6
+		#replace_with = infantry_NNG_2
+		#target_min_match = 0.5
+	}	
+
+	infantry_NNG_2 = {
+	
+		upgrade_prio = {
+			factor = 20
+
+			modifier = {
+				factor = 0
+				
+				date < 2002.1.1
+				KQG = {
+					is_ai = yes
+					has_capitulated = no
+					exists = yes
+					NOT = { is_subject_of = NNG	}
+				}
+			}
+		}
+		
+		# more expensive infantry template. we save it for later
+		enable = {
+			#date > 2002.1.1
+			KQG = {
+				OR = {
+					is_ai = no
+					has_capitulated = yes
+					exists = no
+					is_subject_of = NNG
+				}
+			}
+		}
+
+		target_width = 26.0
+		width_weight = 5.0
+		column_swap_factor = 0.5
+		
+		stat_weights = {
+			0.00 #-- default_morale
+			0.00 #-- defense
+			1.00 #-- breakthrough
+			0.00 #-- hardness
+			4.00 #-- soft_attack
+			0.00 #-- hard_attack
+			0.00 #-- recon
+			1.00 #-- entrenchment
+			0.00 #-- initiative
+			0.00 #-- casualty_trickleback
+			0.00 #-- supply_consumption_factor
+			0.00 #-- supply_consumption
+			0.00 #-- suppression
+			0.00 #-- suppression_factor
+			0.00 #-- experience_loss_factor
+			0.00 #-- equipment_capture_factor
+			0.00 #-- fuel_capacity
+			#-- Air Values
+			0.00 #-- air_attack
+			#-- Common Values
+			0.60 #-- max_organisation
+			0.40 #-- max_strength
+			0.00 #-- maximum_speed
+			0.00 #-- armor_value
+			0.20 #-- ap_attack
+			0.00 #-- reliability
+			0.00 #-- reliability_factor
+			0.00 #-- weight
+			0.00 #-- fuel_consumption
+			0.00 #-- fuel_consumption_factor
+			0.00 #-- strat_attack
+			0.00 #-- carrier_size
+			0.00 #-- acc_hot_gain
+			0.00 #-- acc_cold_gain
+			0.00 #-- build_cost_ic
+		}
+		
+		target_template = {
+			weight = 0.9
+			match_value = 6000.0
+			
+			support = {
+				engineer = 1
+				recon = 1
+				artillery = 1
+				anti_tank = 1
+			}
+			
+			regiments = {
+				infantry = 12
+				artillery_brigade = 1
+			}
+		}
+		
+		allowed_types = {
+			infantry		
+			engineer
+			recon
+			signal_company
+			field_hospital
+			logistics_company
+			anti_tank
+			military_police
+			artillery
+			rocket_artillery
+			anti_tank_brigade
+			artillery_brigade
+			rocket_artillery_brigade
+		}
+	}	
 }
 
 mountaineers_NNG = {
@@ -1013,7 +695,7 @@ mountaineers_NNG = {
 			0 #-- ap_attack
 			0 #-- reliability
 			0 #-- reliability_factor
-			0 #-- weight
+			0.00 #-- weight
 			0.00 #-- fuel_consumption
 			0.00 #-- fuel_consumption_factor
 			0.00 #-- strat_attack
@@ -1082,10 +764,10 @@ marines_NNG = {
 
 			modifier = {
 				factor = 2
-				has_war_with = JAP
+				has_war_with = LYU
 			}
 		}
-		
+	
 		target_width = 20.0
 		width_weight = 1.0
 		column_swap_factor = 0.1
@@ -1149,7 +831,6 @@ marines_NNG = {
 			logistics_company
 		}
 	}
-
 	marine_armored_NNG = {
 	
 		upgrade_prio = {
@@ -1157,7 +838,11 @@ marines_NNG = {
 
 			modifier = {
 				factor = 2
-				has_war_with = JAP
+				has_war_with = LYU
+			}
+			modifier = {
+				not = { has_tech = amphibious_tank }
+				factor = 0
 			}
 		}
 		
@@ -1209,15 +894,13 @@ marines_NNG = {
 			
 			support = {
 				recon = 1
-				logistics_company = 1
-				maintenance_company = 1
 				engineer = 1
 				artillery = 1
 			}
 			
 			regiments = {
-				amphibious_armor = 4
-				amphibious_mechanized = 6
+				amphibious_armor = 2
+				marine = 8
 			}
 		}
 
@@ -1225,17 +908,14 @@ marines_NNG = {
 		allowed_types = {
 			marine
 			amphibious_armor
-			amphibious_mechanized
 			engineer
-			logistics_company
-			maintenance_company
 			recon
 			artillery
 		}
 	}
 }
 
-paratroopers_NNG = {
+paratrooper_NNG = {
 
 	available_for = {
 		NNG
@@ -1267,7 +947,7 @@ paratroopers_NNG = {
 				factor = 1
 			}
 		}
-		
+	
 		target_width = 9.9
 		width_weight = 3.0
 		column_swap_factor = 0.1
@@ -1338,10 +1018,106 @@ paratroopers_NNG = {
 			anti_air
 			rocket_artillery
 		}
-	}	
+	}
 }
 
 
+garrison_NNG = {
+
+	available_for = {
+		NNG
+	}
+	
+	roles = {
+		garrison
+	}
+	
+	upgrade_prio = {
+		factor = 2
+
+		modifier = {
+			factor = 10
+			date < "2001.1.1"
+		}
+	}
+	
+	match_to_count = 0.5
+
+
+	garrison_NNG = {
+	
+		reinforce_prio = 0
+		custom_icon = 7
+	
+		upgrade_prio = {
+			factor = 200
+
+			modifier = {
+				factor = 1
+			}
+		}
+		
+		target_width = 10.0
+		width_weight = 3.0
+		column_swap_factor = 0.5
+		
+		stat_weights = {
+			0.00 #-- default_morale
+			0.00 #-- defense
+			0.00 #-- breakthrough
+			0.00 #-- hardness
+			4.00 #-- soft_attack
+			0.00 #-- hard_attack
+			0.00 #-- recon
+			3.00 #-- entrenchment
+			0.00 #-- initiative
+			0.00 #-- casualty_trickleback
+			0.00 #-- supply_consumption_factor
+			0.00 #-- supply_consumption
+			0.00 #-- suppression
+			0.00 #-- suppression_factor
+			0.00 #-- experience_loss_factor
+			0.00 #-- equipment_capture_factor
+			0.00 #-- fuel_capacity
+			#-- Air Values
+			0.00 #-- air_attack
+			#-- Common Values
+			0.60 #-- max_organisation
+			0.40 #-- max_strength
+			0.00 #-- maximum_speed
+			0.00 #-- armor_value
+			0.20 #-- ap_attack
+			0.00 #-- reliability
+			0.00 #-- reliability_factor
+			0.00 #-- weight
+			0.00 #-- fuel_consumption
+			0.00 #-- fuel_consumption_factor
+			0.00 #-- strat_attack
+			0.00 #-- carrier_size
+			0.00 #-- acc_hot_gain
+			0.00 #-- acc_cold_gain
+			0.00 #-- build_cost_ic
+		}
+		
+		target_template = {
+			weight = 0.9
+			match_value = 5000.0
+			
+			support = {
+				military_police = 1
+			}
+			
+			regiments = {
+				infantry = 5
+			}
+		}
+		
+		allowed_types = {
+			infantry
+			military_police
+		}
+	}
+}
 
 	# REGIMENTS:
 	#infantry

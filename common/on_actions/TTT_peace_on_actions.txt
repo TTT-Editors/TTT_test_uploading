@@ -227,80 +227,114 @@ on_actions = {
 				}
 			}
 			
-			#default
-			if = { 
+			#achievements
+			if = {
 				limit = {
-					OR = {
-						AND = { 
-							any_country = { NOT = { is_ally_with = ROOT } }
-							ROOT = { is_subject = no }
+					ROOT = {
+						OR = {
+							tag = XRG
+							tag = XOG
 						}
-						all_country = { 
-							if = { 
-								limit = { is_ally_with = ROOT } 
-								has_capitulated = yes
-							} 
+						has_war_with = ZDG
+					}
+					FROM = {
+						is_nominate_liyue = yes
+						NOT = { has_country_flag = LYU_prioritize_the_interior_flag }
+					}
+				}
+				FROM = { set_country_flag = LYU_prioritize_the_interior_flag }
+			}
+			
+			if = {
+				limit = {
+					ROOT = {
+						tag = ZDG
+					}
+					FROM = {
+						is_nominate_liyue = yes
+						NOT = {
+							tag = XRG
+							tag = XOG
 						}
-                    }
+					}
 				}
 				every_country = {
 					limit = {
 						OR = {
-							tag = ROOT
-							is_ally_with = ROOT
-							is_subject_of = ROOT
+							tag = XRG
+							tag = XOG
 						}
+						has_war_with = ZDG
+						NOT = { has_country_flag = LYU_hold_on_and_win_flag }
 					}
-					every_owned_state = {
-						set_state_flag = defeated_states
-					}
+					set_country_flag = LYU_hold_on_and_win_flag
 				}
-				ROOT = { transfer_navy = { target = FROM } }
-				ROOT = {
-					every_owned_state = {
-						limit = {
-							industrial_complex > 0
-						}
-						remove_building = {
-							type = industrial_complex
-							level = 1
-						}
-					}
-					every_owned_state = {
-						limit = {
-							arms_factory > 0
-						}
-						remove_building = {
-							type = arms_factory
-							level = 1
-						}
-					}
-					every_owned_state = {
-						limit = {
-							dockyard > 0
-						}
-						remove_building = {
-							type = dockyard
-							level = 1
+			}
+			
+			#default
+			if = {
+				limit = {
+					OR = {
+						ROOT = { is_in_faction = no }
+						ROOT = {
+							all_allied_country = {
+								has_capitulated = yes
+							}
 						}
 					}
 				}
-				every_state = {	
-					limit = { has_state_flag = defeated_states }						
-					every_country = {
-						limit = {
-							NOT = { is_ally_with = ROOT }
-							controls_state = PREV							
-						}
-						transfer_state = PREV
-					}
-					clr_state_flag = defeated_states
-				}
-				FROM = { white_peace = ROOT }
 				FROM = {
-					annex_country = {
-						target = ROOT
-						transfer_troops = no
+					every_enemy_country = {
+						limit = {
+							OR = {
+								original_tag = ROOT
+								is_in_faction_with = ROOT
+								is_subject_of = ROOT
+							}
+						}
+						every_owned_state = {
+							limit = {
+								industrial_complex > 0
+							}
+							remove_building = {
+								type = industrial_complex
+								level = 1
+							}
+						}
+						every_owned_state = {
+							limit = {
+								arms_factory > 0
+							}
+							remove_building = {
+								type = arms_factory
+								level = 1
+							}
+						}
+						every_owned_state = {
+							limit = {
+								dockyard > 0
+							}
+							remove_building = {
+								type = dockyard
+								level = 1
+							}
+						}
+						every_owned_state = {			
+							every_country = {
+								limit = {
+									NOT = { is_ally_with = ROOT }
+									controls_state = PREV							
+								}
+								transfer_state = PREV
+							}
+						}
+						transfer_navy = { target = FROM }
+						FROM = {
+							annex_country = {
+								target = PREV
+								transfer_troops = no
+							}
+						}
 					}
 				}
 			}

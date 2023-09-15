@@ -1484,7 +1484,6 @@ RTG_underground_networks = {
 			#拥有
 			RTG = { has_full_control_of_state = FROM }
 			FROM = { has_RTG_network = no }
-			FROM = { NOT = { state = 156 } }
 		}
 		
         state_target = yes
@@ -1509,6 +1508,10 @@ RTG_underground_networks = {
 		days_re_enable = 30
 
 		complete_effect = {
+			if = {
+				FROM = { is_liyue_region_eight_states = yes }
+				add_to_variable = { used_network_states = -1 }
+			}
 			add_to_variable = { used_network_states = 1 }
 		}
 		
@@ -1530,7 +1533,7 @@ RTG_underground_networks = {
 		visible = {
 			#拥有
 			FROM = { has_RTG_network = yes }
-			FROM = { NOT = { state = 156 } }
+			FROM = { NOT = { is_liyue_region_eight_states = yes } }
 		}
 		
         state_target = yes

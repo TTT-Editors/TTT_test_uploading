@@ -2,6 +2,7 @@ defined_text = {
 	name = GetWarlordLeaderPortrait
 	text = {
 		trigger = {
+			tag = LYU
 			has_country_leader = {
 				character = LYU_Baizhu
 				ruling_only = yes
@@ -11,6 +12,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
+			tag = LYU
 			has_country_leader = {
 				character = LYU_changzhuyishi
 				ruling_only = yes
@@ -20,6 +22,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
+			tag = LYU
 			has_country_leader = {
 				character = LYU_Yanfei
 				ruling_only = yes
@@ -29,19 +32,13 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			has_country_leader = {
-				character = LYU_Ganyu
-				ruling_only = yes
-			}
+			tag = LYU
 		}
 		localization_key = "Liyue_Ganyu_Leader"
 	}
 	text = {
 		trigger = {
-			has_country_leader = {
-				character = LYU_Keqing
-				ruling_only = yes
-			}
+			tag = KQG
 		}
 		localization_key = "Liyue_Keqing_Leader"
 	}
@@ -56,10 +53,7 @@ defined_text = {
 	}
 	text = {
 		trigger = {
-			has_country_leader = {
-				character = LYU_NingGuang
-				ruling_only = yes
-			}
+			tag = NNG
 		}
 		localization_key = "Liyue_NingGuang_Leader"
 	}
@@ -128,16 +122,6 @@ defined_text = {
 		trigger = {
 			tag = LYU
 			has_country_leader = {
-				character = LYU_Ganyu
-				ruling_only = yes
-			}
-		}
-		localization_key = "Liyue_LYU_Ganyu_Desc"
-	}
-	text = {
-		trigger = {
-			tag = LYU
-			has_country_leader = {
 				character = LYU_Yanfei
 				ruling_only = yes
 			}
@@ -153,6 +137,12 @@ defined_text = {
 			}
 		}
 		localization_key = "Liyue_LYU_Baizhu_Desc"
+	}
+	text = {
+		trigger = {
+			tag = LYU
+		}
+		localization_key = "Liyue_LYU_Ganyu_Desc"
 	}
 	text = {
 		trigger = {
@@ -242,6 +232,35 @@ defined_text = {
 	}
 	text = {
 		localization_key = "Liyue_Default_Text"
+	}
+}
+
+defined_text = {
+	name = GetRelationDesc
+	text = {
+		trigger = { tag = FROM }
+		localization_key = "relation_you_tooltip"
+	}
+	
+	text = {
+		trigger = { exists = no }
+		localization_key = "relation_extinct_tooltip"
+	}
+	
+	text = {
+		trigger = {
+			is_ally_with = FROM
+			NOT = { tag = FROM }
+		}
+		localization_key = "relation_alliance_tooltip"
+	}
+	
+	text = {
+		trigger = { has_war_with = FROM }
+		localization_key = "relation_rival_tooltip"
+	}
+	text = {
+		localization_key = "relation_default_tooltip"
 	}
 }
 

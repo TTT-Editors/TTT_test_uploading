@@ -1,5 +1,6 @@
-#Á§ÔÂÄÚÕ½µÚÒ»½×¶Î£ºÖÐ²¿¾ü·§»ìÕ½
+#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½Ò»ï¿½×¶Î£ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½
 kickstart_of_liyue_civil_war = { 
+	LYU = { add_named_threat = { threat = 35 name = liyue_civil_war_tt } }
 	KQG = {
 		declare_war_on = {
 			target = NNG
@@ -10,7 +11,7 @@ kickstart_of_liyue_civil_war = {
 
 unlock_liyue_advisors = {
 	set_can_be_fired_in_advisor_role = {
-		character = LYU_NingGuang 
+		character = LYU_Ningguang 
 		value = yes
 	}
 	set_can_be_fired_in_advisor_role = {
@@ -24,12 +25,38 @@ unlock_liyue_advisors = {
 }
 
 reset_core_of_liyue = {
-	ROOT = { add_research_slot = 1 }
+	ROOT = { set_research_slots = 4 }
+	ROOT = { set_capital = { state = 124 } }
+	ROOT = { add_named_threat = { threat = -35 name = liyue_civil_war_end_tt } }
+	if = {
+		limit = {
+			has_template = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+		}
+		delete_unit_template_and_units = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+		disband = yes
+	}
+	if = {
+		limit = {
+			has_template = "ï¿½ï¿½ï¿½"
+		}
+		delete_unit_template_and_units = "ï¿½ï¿½ï¿½"
+		disband = yes
+	}
 	every_possible_country = {
 		limit = { is_nominate_liyue = yes }
 		every_state = {
 			limit = { has_state_flag = is_Liyues_territory }
 			remove_core_of = PREV
 		}
+	}
+	
+	#achievements
+	if = {
+		limit = {
+			ROOT = { tag = NNG }
+			has_country_flag = defeated_ningguang
+		}
+		set_country_flag = LYU_a_new_hope_flag
+		clr_country_flag = defeated_ningguang
 	}
 }

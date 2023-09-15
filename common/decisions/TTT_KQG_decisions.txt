@@ -345,6 +345,15 @@ liyue_civil_war_decisions = {
 			ROOT = {
 				controls_state = FROM
 			}
+			hidden_trigger = {
+				OR = {
+					is_ai = no
+					AND = {
+						is_ai = yes
+						KQG = { has_army_manpower = { size < 600000 } }
+					}
+				}
+			}
 		}
 		cancel_if_not_visible = yes
 		highlight_color_while_active = yes
@@ -354,7 +363,11 @@ liyue_civil_war_decisions = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 1145
+			factor = 50
+			modifier = {
+				factor = 0
+				KQG = { has_army_manpower = { size > 499999 } }
+			}
 		}
 		complete_effect = {
 		}

@@ -1,0 +1,426 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+# contain
+# area_priority
+# building_target
+
+
+KQG_unit_production = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 4
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = paratroopers
+		value = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = 2
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = cavalry
+		value = -100
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = motorized
+		value = 0 #because doctrine this = 2
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = mechanized
+		value = -5 #because doctrine this = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = -17 #because doctrine this = 3
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 75 #88 to 70
+	}
+
+	# Naval unit factors
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = 15
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = submarine
+		value = -50 #because doctrine this = 50
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = screen_ship
+		value = 20
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 20
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = naval_bomber
+		value = -50
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry
+		value = 5 #30 to 50
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = anti_tank
+		value = 20
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = anti_air
+		value = 25
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = artillery
+		value = 100 #20 to 40
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = -10
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = motorized
+		value = -10
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories #Build these up over time, don't stall
+		id = anti_air
+		value = 2
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = artillery
+		value = 4
+	}
+
+	ai_strategy = { #added to railway gun define (set to 0 by default, increased in default strategies)
+		type = railway_gun_divisions_ratio
+		value = 1
+	}
+
+}
+
+KQG_anti_armor = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		ai_wants_divisions > 5 #Decreasing the amount of motorized the AI wants
+
+		any_enemy_country = {
+			ROOT = {
+				estimated_intel_max_armor = {
+					tag = PREV
+					value > 25
+				}
+			}
+		}
+	}
+	abort = {
+		ai_wants_divisions < 6 #Decreasing the amount of motorized the AI wants
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = motorized
+		value = 15
+	}
+}
+
+KQG_stockpile_less_early_game = {
+	allowed = {
+		original_tag = KQG
+	}
+
+	enable = {
+		date < 2003.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_stockpile_surplus_ratio
+		value = -20 # reduce while we build up in case of CZE or Austria issues
+	}
+}
+
+KQG_highered_armored_production = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		num_of_military_factories > 109
+	}
+	abort = {
+		num_of_military_factories < 110
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = 10
+	}
+}
+
+KQG_dont_waste_xp_until_medium_armor = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		has_template_majority_unit = medium_armor
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = paratrooper
+		value = -100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = mountaineers
+		value = -100
+	}
+}
+
+KQG_super_boost_light_for_med_armor = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		OR = {
+			has_tech = basic_medium_tank
+			has_tech = basic_medium_tank_chassis
+		}
+		NOT = { has_template_ai_majority_unit = medium_armor }
+	}
+
+	abort = {
+		has_template_ai_majority_unit = medium_armor
+	}
+
+	# lets do changes more often during this period too
+	ai_strategy = {
+		type = land_xp_spend_priority
+		id = division_template
+		value = 100
+	}
+
+	# this is gateway
+	ai_strategy = {
+		type = template_prio
+		id = light_armor
+		value = 100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = 150
+	}
+
+	# Germany is set up to change their SS division into medium armor.
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = 200
+	}
+}
+
+war_with_ningguang = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		country_exists = NNG
+		NNG = { has_war_with = KQG }
+	}
+	abort = {
+		NOT = { country_exists = NNG }
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "NNG"
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = front_control
+		tag = NNG
+		ratio = 0.75
+		priority = 100
+		ordertype = front
+		execution_type = rush_weak
+		manual_attack = yes
+	}
+}
+
+battle_of_guiliyuan_preparation = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		country_exists = NNG
+		NNG = { NOT = { has_war_with = KQG } }
+	}
+
+	abort = {
+		OR = {
+			NOT = { country_exists = NNG }
+			KQG = { has_war_with = NNG }
+		}
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = "NNG"
+		value = 100
+	}
+}
+
+KQG_onto_the_beaches = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		has_war = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 25
+	}
+}
+
+Keqing_finds_she_need_to_push_the_line_so_hard = {
+	allowed = {
+		tag = KQG
+	}
+	
+	enable = {
+		has_war_with = NNG
+		date < 2002.1.1
+	}
+	
+	abort = {
+		OR = {
+			date > 2002.1.1
+			NNG = { exists = no }
+			AND = {
+				126 = { is_controlled_by = KQG }
+				242 = { is_controlled_by = KQG }
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+
+		order_id = 2
+		
+		states = {
+			145
+			144
+			141
+			147
+		}
+
+		ratio = 0.15
+
+		subtract_invasions_from_need = no
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "NNG"
+		value = 500
+	}
+}
+
+KQG_pause_attack = {
+	allowed = {
+		tag = KQG
+	}
+	
+	enable = {
+		has_war_with = NNG
+		date < 2002.1.1
+	}
+	
+	abort = {
+		OR = {
+			date > 2002.1.1
+			NNG = { exists = no }
+			AND = {
+				126 = { is_controlled_by = KQG }
+				242 = { is_controlled_by = KQG }
+			}
+		}
+	}
+}

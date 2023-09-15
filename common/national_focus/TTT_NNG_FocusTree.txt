@@ -135,6 +135,18 @@ focus_tree = {
 		prerequisite = { focus = NNG_Debateover_securityroutes }
         completion_reward = {
 			add_stability = 0.05
+			add_advisor_role = {
+				character = NNG_QunyuPavilion_Secretary_Group
+				activate = no
+				advisor = {
+					slot = political_advisor
+					cost = 150
+					idea_token = idea_NNG_QunyuPavilion_Secretary_Group2
+					traits = {
+						NNG_gongmingdiaochayuan
+					}
+				}
+			}
 		}	
 	}
 	focus = {
@@ -152,6 +164,10 @@ focus_tree = {
 		prerequisite = { focus = NNG_Training_armedpolice }		
         completion_reward = {
 			add_war_support = 0.05
+			custom_effect_tooltip = NNG_Establishtrial_courtruledbyman_tt
+			NNG_gongming = {
+				set_character_flag = NNG_exiled_flag
+			}
 		}	
 	}
 	focus = {
@@ -269,8 +285,8 @@ focus_tree = {
 		prerequisite = { focus = NNG_Serve_forLiyue }
         completion_reward = {
 			swap_ideas = {
-				add_idea = NNG_Fearlesssacrifice
-				remove_idea = NNG_Peoples_Government_LaborCorps
+				add_idea = NNG_theprocessof_social_consolidation
+				remove_idea = NNG_Fearlesssacrifice
 			}
 		}	
 	}
@@ -294,7 +310,10 @@ focus_tree = {
 				remove_idea = NNG_Trialofnew_judicial_system
 			}
 			set_country_flag = Ningguang_two_flag
+			hidden_effect = {
 			load_focus_tree = Ningguang_two_FocusTree
+		    }
+			custom_effect_tooltip = NNG_Reestablish_order_tt
 		}	
 	}
 }
@@ -310,7 +329,7 @@ focus_tree = {
 	default = no
 	focus = {
 		id = NNG_wmjdztj  #我们将锻造团结
-		icon = unknown
+		icon = GFX_goal_NNG_duanzaotuanjie
 		x = 5
 		y = 0
 		cost = 14
@@ -322,13 +341,34 @@ focus_tree = {
 				add_idea = NNG_Revolutionary_propaganda4
 				remove_idea = NNG_Revolutionary_propaganda
 			}
-			add_political_power = 25
-			add_stability = 0.02
+			add_naval_commander_role = {
+				Character = LYU_BeiDou
+				traits = {
+					electro_element
+				}
+				skill = 3
+				attack_skill = 4
+				defense_skill = 2
+				maneuvering_skill = 3
+				coordination_skill = 4
+			}
+            add_advisor_role = {
+				character = LYU_BeiDou
+				activate = no
+				advisor = {
+					slot = navy_chief
+					cost = 150
+					idea_token = idea_LYU_BeiDou
+					traits = {
+						NNG_wumiandelongwang
+					}
+				}
+			}
 		}	
 	}
 	focus = {
 		id = NNG_wmenjiangyitongqianjin  #我们将一同前进
-		icon = unknown
+		icon = GFX_goal_NNG_yitongqianjin
 		x = 5
 		y = 1
 		cost = 14
@@ -338,13 +378,23 @@ focus_tree = {
 		prerequisite = { focus = NNG_wmjdztj }		
         completion_reward = {
 		    remove_ideas = NNG_Revolutionary_propaganda4
-            add_political_power = 5
-			add_stability = 0.02
+            add_advisor_role = {
+				character = LYU_Xinyan
+				activate = no
+				advisor = {
+					slot = political_advisor
+					cost = 150
+					idea_token = idea_LYU_Xinyan
+					traits = {
+						NNG_ziyoudeyaogunyueshou
+					}
+				}
+			}
 		}	
 	}
 	focus = {
 		id = NNG_qilaizhandou  #起来，战斗
-		icon = unknown
+		icon = GFX_goal_NNG_qilai
 		x = 5
 		y = 2
 		cost = 28
@@ -358,7 +408,7 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_renminzouxiangshengli  #为了我们所追求的理想
-		icon = unknown
+		icon = GFX_goal_NNG_weilelixiang
 		x = 5
 		y = 3
 		cost = 70
@@ -375,7 +425,7 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_zhanyouzhanshifa  #战有战时法
-		icon = unknown
+		icon = GFX_goal_NNG_zhanshifa
 		x = 9
 		y = 3
 		cost = 14
@@ -385,11 +435,12 @@ focus_tree = {
 		prerequisite = { focus = NNG_qilaizhandou }		
         completion_reward = {
 		    add_ideas = NNG_zhanshifanling
+			unlock_decision_tooltip = NNG_jiajinshengchazhiling
 		}	
 	}
 	focus = {
 		id = NNG_jianlihaishang  #建立海上生命线
-		icon = unknown
+		icon = GFX_goal_NNG_haishang
 		x = 10
 		y = 4
 		cost = 21
@@ -402,11 +453,14 @@ focus_tree = {
 				type = convoy
 				amount = 50
 			}
+			unlock_decision_category_tooltip = NNG_special_categories2
+			unlock_decision_tooltip = NNG_baitieyunshuxain
+			unlock_decision_tooltip = NNG_jingheyunshuxian
 		}	
 	}
 	focus = {
 		id = NNG_pobudeyidexuanze  #迫不得已的选择
-		icon = unknown
+		icon = GFX_goal_NNG_zousi
 		x = 10
 		y = 5
 		cost = 21
@@ -415,11 +469,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_jianlihaishang }		
         completion_reward = {
+			unlock_decision_tooltip = NNG_zousijunliang
+			unlock_decision_tooltip = NNG_zousijunyonhujia
 		}	
 	}
 	focus = {
 		id = NNG_wmenhaixuyaogengduo  #我们还需要更多！
-		icon = unknown
+		icon = GFX_goal_NNG_gengduo
 		x = 10
 		y = 6
 		cost = 35
@@ -428,12 +484,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_pobudeyidexuanze }		
         completion_reward = {
-		
+		    unlock_decision_tooltip = NNG_mucaiyunshuxain
+			unlock_decision_tooltip = NNG_shuijingyunshuxian
+			unlock_decision_tooltip = NNG_dianqishuijingyunshuxian
 		}	
 	}
 	focus = {
 		id = NNG_fengxianyueda  #风险越大，回报更高
-		icon = unknown
+		icon = GFX_goal_NNG_wuqi
 		x = 10
 		y = 7
 		cost = 35
@@ -442,12 +500,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_wmenhaixuyaogengduo }		
         completion_reward = {
-		
+		    unlock_decision_tooltip = NNG_yunshuguyongbing
+			unlock_decision_tooltip = NNG_zousibubingzhuangbei
 		}	
 	}
 	focus = {
 		id = NNG_chuanboziyoudequanli  #传播自由的权力
-		icon = unknown
+		icon = GFX_goal_NNG_quanli
 		x = 9
 		y = 8
 		cost = 14
@@ -457,12 +516,15 @@ focus_tree = {
 		prerequisite = { focus = NNG_wanshanzhanshitizhi }
 		prerequisite = { focus = NNG_fengxianyueda }		
         completion_reward = {
-		
+		    custom_effect_tooltip = NNG_junbeicouhua_tt
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = 1
+			}
 		}	
 	}
 	focus = {
 		id = NNG_tuanjiezairenzhi  #团结在人治旗帜之下
-		icon = unknown
+		icon = GFX_goal_NNG_tuanjie
 		x = 9
 		y = 9
 		cost = 14
@@ -475,11 +537,18 @@ focus_tree = {
 				add_idea = NNG_Freedom_arrived2
 				remove_idea = NNG_Freedom_arrived
 			}
+			custom_effect_tooltip = NNG_junbeicouhua_tt2
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = 1
+			}
+			add_to_variable = {
+				NNG_kezhixingzhengce = 1
+			}
 		}	
 	}
 	focus = {
 		id = NNG_ziyouyupingdeng  #自由与平等
-		icon = unknown
+		icon = GFX_goal_NNG_ziyoupingdeng
 		x = 9
 		y = 10
 		cost = 35
@@ -492,11 +561,15 @@ focus_tree = {
 				add_idea = NNG_Freedom_arrived3
 				remove_idea = NNG_Freedom_arrived2
 			}
+			custom_effect_tooltip = NNG_junbeicouhua_tt
+			add_to_variable = {
+				NNG_yongyoulishuidianshu = 1
+			}
 		}	
 	}
 	focus = {
 		id = NNG_jianlilaodonbintuan  #建立劳动兵团
-		icon = unknown
+		icon = GFX_goal_NNG_laodong
 		x = 8
 		y = 4
 		cost = 28
@@ -509,11 +582,12 @@ focus_tree = {
 				add_idea = NNG_zhanshifanling2
 				remove_idea = NNG_zhanshifanling
 			}
+			unlock_decision_tooltip = NNG_junbeicouhua
 		}	
 	}
 	focus = {
 		id = NNG_genggaitudisuoyouzhi  #更改土地所有制
-		icon = unknown
+		icon = GFX_goal_NNG_tudi
 		x = 8
 		y = 5
 		cost = 35
@@ -526,11 +600,13 @@ focus_tree = {
 				add_idea = NNG_zhanshifanling3
 				remove_idea = NNG_zhanshifanling2
 			}
+			unlock_decision_tooltip = NNG_zhengyonmingongchang
+			unlock_decision_tooltip = NNG_kuojianlinshibgc
 		}	
 	}
 	focus = {
 		id = NNG_jianlilinshikeyansuo  #建立临时科研所
-		icon = unknown
+		icon = GFX_goal_NNG_keyan
 		x = 8
 		y = 6
 		cost = 21
@@ -548,7 +624,7 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_wanshanzhanshitizhi  #完善战时体制
-		icon = unknown
+		icon = GFX_goal_NNG_tizhi
 		x = 8
 		y = 7
 		cost = 35
@@ -565,24 +641,30 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_sheligonminjunshi  #设立公民军事指导部
-		icon = unknown
+		icon = GFX_goal_NNG_shelijunzhibu
 		x = 1
 		y = 3
-		cost = 28
+		cost = 21
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = NNG_qilaizhandou }		
         completion_reward = {
 		    add_ideas = NNG_junshizhuibu
+			remove_ideas = NNG_Government_confusion
+			unlock_decision_tooltip = NNG_luzhanduigaizu
+			unlock_decision_tooltip = NNG_gonminjungaizu
+			add_dynamic_modifier = {
+				modifier = NNG_lishihuijunshigaige
+			}
 		}	
 	}
 	focus = {
 		id = NNG_junduijunguanwenti  #军队军官问题
-		icon = unknown
+		icon = GFX_goal_NNG_junguan
 		x = 2
 		y = 4
-		cost = 35
+		cost = 28
 		ai_will_do = {
 			factor = 10
 		}
@@ -592,11 +674,25 @@ focus_tree = {
 				add_idea = NNG_junshizhuibu2
 				remove_idea = NNG_junshizhuibu
 			}
+			add_advisor_role = {
+				character = NNG_yunlan
+				activate = no
+				advisor = {
+					slot = high_command
+					cost = 150
+					idea_token = idea_NNG_yunlan
+					traits = {
+						NNG_yunlan_traits
+					}
+				}
+			}
+			unlock_decision_tooltip = NNG_difangchizhizhanshu
+			unlock_decision_tooltip = NNG_dihozuozhanyanlian
 		}	
 	}
 	focus = {
 		id = NNG_qiyonjiujunguan  #启用旧军官
-		icon = unknown
+		icon = GFX_goal_NNG_jiujunguan
 		x = 2
 		y = 5
 		cost = 35
@@ -605,15 +701,21 @@ focus_tree = {
 		}
 		prerequisite = { focus = NNG_junduijunguanwenti }		
         completion_reward = {
-		
+		    NNG_nande = {
+				set_character_flag = NNG_exiled_flag2
+			}
+			NNG_lier = {
+				set_character_flag = NNG_exiled_flag2
+			}
+			custom_effect_tooltip = NNG_qiyonjiujunguan_tt
 		}	
 	}
 	focus = {
 		id = NNG_shelijunguanxuexiao  #设立军官学校
-		icon = unknown
+		icon = GFX_goal_NNG_junxiao
 		x = 2
 		y = 6
-		cost = 7
+		cost = 21
 		ai_will_do = {
 			factor = 10
 		}
@@ -623,11 +725,13 @@ focus_tree = {
 				add_idea = NNG_junshizhuibu3
 				remove_idea = NNG_junshizhuibu2
 			}
+			unlock_decision_tooltip = NNG_dafangongjihua
+			unlock_decision_tooltip = NNG_zhoushenqinxijihua
 		}	
 	}
 	focus = {
 		id = NNG_tibaqinnianjunguan  #提拔青年军官
-		icon = unknown
+		icon = GFX_goal_NNG_xinjun
 		x = 2
 		y = 7
 		cost = 28
@@ -640,11 +744,27 @@ focus_tree = {
 				add_idea = NNG_junshizhuibu4
 				remove_idea = NNG_junshizhuibu3
 			}
+			custom_effect_tooltip = NNG_tibaqinnianjunguan_tt
+			NNG_huochi = {
+				set_character_flag = NNG_exiled_flag3
+			}
+			add_advisor_role = {
+				character = NNG_liujiaoyuan
+				activate = no
+				advisor = {
+					slot = high_command
+					cost = 150
+					idea_token = idea_NNG_liujiaoyuan
+					traits = {
+						NNG_liujiaoyuan_traits
+					}
+				}
+			}
 		}	
 	}
 	focus = {
 		id = NNG_ruhuoyanban  #如火焰般
-		icon = unknown
+		icon = GFX_goal_NNG_huoyan
 		x = 1
 		y = 8
 		cost = 49
@@ -658,11 +778,13 @@ focus_tree = {
 				add_idea = NNG_zhengyilixingzhijun
 				remove_idea = NNG_junshizhuibu4
 			}
+			unlock_decision_tooltip = NNG_daguimoqinxi
+			unlock_decision_tooltip = NNG_gongminmenwuzhuangqilai
 		}	
 	}
 	focus = {
 		id = NNG_zhegangtiebandejundui  #这钢铁的军队
-		icon = unknown
+		icon = GFX_goal_NNG_gangtie
 		x = 1
 		y = 9
 		cost = 49
@@ -675,11 +797,12 @@ focus_tree = {
 				add_idea = NNG_zhengyilixingzhijun2
 				remove_idea = NNG_zhengyilixingzhijun
 			}
+			unlock_decision_tooltip = NNG_ziyouyizhidenahan
 		}	
 	}
 	focus = {
 		id = NNG_wmbijiangshengli  #我们必将胜利
-		icon = unknown
+		icon = GFX_goal_NNG_bisheng
 		x = 1
 		y = 10
 		cost = 49
@@ -691,12 +814,13 @@ focus_tree = {
 			swap_ideas = {
 				add_idea = NNG_zhengyilixingzhijun3
 				remove_idea = NNG_zhengyilixingzhijun2
-			}		
+			}
+			unlock_decision_tooltip = NNG_keburonghuandeweiji
 		}	
 	}
 	focus = {
 		id = NNG_chilunjiasuzhuandon  #齿轮加速转动
-		icon = unknown
+		icon = GFX_goal_NNG_chilun
 		x = 0
 		y = 4
 		cost = 28
@@ -726,14 +850,15 @@ focus_tree = {
 				type = grain_conversion_eq
 				amount = 500
 				}
+				unlock_decision_tooltip = NNG_hoqinluxiandajian
 		}	
 	}
 	focus = {
 		id = NNG_bingliangcunduan  #兵粮寸断
-		icon = unknown
+		icon = GFX_goal_NNG_bingliang
 		x = 0
 		y = 5
-		cost = 7
+		cost = 14
 		ai_will_do = {
 			factor = 10
 		}
@@ -744,14 +869,14 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_shiqidjdkz  #拾起帝君的馈赠
-		icon = unknown
+		icon = GFX_goal_NNG_shiqi
 		x = 0
 		y = 6
-		cost = 7
+		cost = 28
 		ai_will_do = {
 			factor = 10
 		}
-		prerequisite = { focus = NNG_chilunjiasuzhuandon }		
+		prerequisite = { focus = NNG_bingliangcunduan }		
         completion_reward = {
 		    swap_ideas = {
 				add_idea = NNG_bandits_rage2
@@ -761,10 +886,10 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_dasaojiurechenai  #打扫旧日的尘埃
-		icon = unknown
+		icon = GFX_goal_NNG_dasao
 		x = 0
 		y = 7
-		cost = 7
+		cost = 28
 		ai_will_do = {
 			factor = 10
 		}
@@ -778,7 +903,7 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_weilewmszqdpd  #为了我们所追求的平等
-		icon = unknown
+		icon = GFX_goal_NNG_weilepingdeng
 		x = 5
 		y = 4
 		cost = 70
@@ -795,10 +920,10 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_weilewmszqdzy  #为了我们所追求的自由
-		icon = unknown
+		icon = GFX_goal_NNG_weileziyou
 		x = 5
 		y = 5
-		cost = 7
+		cost = 70
 		ai_will_do = {
 			factor = 10
 		}
@@ -812,7 +937,7 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_weilewmszqdrendejiazhi  #为了我们生而为人的价值
-		icon = unknown
+		icon = GFX_goal_NNG_weileren
 		x = 5
 		y = 6
 		cost = 70
@@ -829,7 +954,7 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_weilewmszhaoliangzhepiandadi  #为了照亮这片大地
-		icon = unknown
+		icon = GFX_goal_NNG_zhaoliang
 		x = 5
 		y = 7
 		cost = 70
@@ -846,7 +971,7 @@ focus_tree = {
 	}
 	focus = {
 		id = NNG_gulaodetudi  #古老的土地终将迎来新生曙光
-		icon = unknown
+		icon = GFX_goal_NNG_xinsheng
 		x = 5
 		y = 11
 		cost = 70

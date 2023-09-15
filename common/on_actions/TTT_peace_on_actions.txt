@@ -249,9 +249,48 @@ on_actions = {
 				}
 			}
 			
+			#achievements
 			if = {
-				limit = { ROOT = { has_variable = ttt_liyue_civil_war_decision_ui_dirty } }
-				ROOT = { clear_variable = ttt_liyue_civil_war_decision_ui_dirty }
+				limit = {
+					ROOT = {
+						OR = {
+							tag = XRG
+							tag = XOG
+						}
+						has_war_with = ZDG
+					}
+					FROM = {
+						is_nominate_liyue = yes
+						NOT = { has_country_flag = LYU_prioritize_the_interior_flag }
+					}
+				}
+				FROM = { set_country_flag = LYU_prioritize_the_interior_flag }
+			}
+			
+			if = {
+				limit = {
+					ROOT = {
+						tag = ZDG
+					}
+					FROM = {
+						is_nominate_liyue = yes
+						NOT = {
+							tag = XRG
+							tag = XOG
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						OR = {
+							tag = XRG
+							tag = XOG
+						}
+						has_war_with = ZDG
+						NOT = { has_country_flag = LYU_hold_on_and_win_flag }
+					}
+					set_country_flag = LYU_hold_on_and_win_flag
+				}
 			}
 			
 			#default

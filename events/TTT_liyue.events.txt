@@ -1,10 +1,9 @@
 add_namespace = liyue
-	
 country_event = {
 	id = liyue.1
 	title = liyue.1.t
 	desc = liyue.1.d
-    picture = GFX_report_event_djqs
+	picture = GFX_report_event_djqs
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
@@ -18,29 +17,29 @@ country_event = {
 			mark_focus_tree_layout_dirty = yes
 		}
 	}
-	option = { 
+	option = {
 		name = liyue.1.a
-		add_stability = -0.20
-		complete_national_focus = drop_the_oracle 
+		add_stability = -0.2
+		complete_national_focus = drop_the_oracle
 		unlock_decision_category_tooltip = Liyue_political_crisis
-        set_country_flag = Liyue_crisis
+		set_country_flag = Liyue_crisis
 		set_country_flag = Financial_collapse
-		activate_mission = liyue_civilwar_is_coming	
-		add_ideas = Liyue_social_unrest 
+		activate_mission = liyue_civilwar_is_coming
+		add_ideas = Liyue_social_unrest
 		remove_ideas = a_dying_morax
 		remove_ideas = a_torn_society
 		set_country_flag = Ningguang_Dominant
 		swap_ideas = {
-			add_idea = Smooth_operation
+			add_idea = Barely_satisfactory
 			remove_idea = balance_laws
 		}
 		custom_effect_tooltip = Liyue_1_tt
 		ai_chance = {
 			factor = 100
-        }	        
+		}
 	}
 }
- 
+
 #country_event = {
 #	id = liyue.3
 #	title = liyue.3.t
@@ -90,122 +89,166 @@ country_event = {
 #		}
 #	}
 #}
-
 country_event = {
 	id = liyue.4
 	title = liyue.4.t
 	desc = liyue.4.d
-    picture = GFX_report_event_ngzf
+	picture = GFX_report_event_ngzf
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-		    create_country_leader = {
-					name = "LYU_Ganyu"
-					desc = "LYU_Ganyu_desc"
-					picture = GFX_portrait_large_Liyue_Ganyu
-					expire = "1965.1.1"
-					ideology = moraxism
-					traits = {
-					obey_rule_law
-					}
-				}
-		    add_political_power = -1000
+			#add_political_power = -1000
 			add_ideas = panic_fills_land
 			add_ideas = blocked_harbour
 			if = {
-			limit = {
-			    NNG = { has_country_flag = Ideological_attraction }
-			}
-			    NNG = { add_timed_idea = { idea = Liyue_Ideological_attraction days = 180 } }  
-		    }
-		    NNG = { transfer_state = 145 } 
-		    NNG = { transfer_state = 126 } 
-		    NNG = { transfer_state = 148 } 
-		    NNG = { transfer_state = 146 } 
-		    NNG = { transfer_state = 149 }
-            NNG = { transfer_state = 405 }
-            NNG = { transfer_state = 406 }			
-		    NNG = { transfer_state = 150 }  
-		    NNG = { transfer_state = 242 } 
-			NNG = { 
-			    every_owned_state = {
-			        add_core_of = NNG
-					remove_core_of = LYU
-	  	        } 
-		    }				
-			transfer_units_fraction = {
-				target = NNG
-				size = 0.16
-				keep_unit_leaders = { }
-				keep_unit_leaders_trigger = {
-					always = yes
+				limit = {
+					NNG = {
+						has_country_flag = Ideological_attraction
+					}
 				}
-			}     			
-			log = "Units has been released"
-			
-			if = {
-				limit = { has_idea = LYU_NingGuang }
-				remove_ideas = LYU_NingGuang
-			}
-			
-			LYU_NingGuang = { set_nationality = NNG }
-			LYU_Yunjin = { set_nationality = NNG }
-			LYU_Yelan = { set_nationality = NNG }
-			LYU_BeiDou = { set_nationality = NNG }
-			LYU_Xinyan = { set_nationality = NNG }
-			LYU_Chongyun = { set_nationality = NNG }
-			
-			log = "Characters has been divided"
-			
-			NNG = {
-				inherit_technology = LYU
-				promote_character = {
-					character = LYU_BeiDou
-					ideology = market_liberalism
-				}
-				promote_character = { 
-					Character = LYU_Xinyan
-					ideology = anarcho_syndicalism
-				}
-				promote_character = { 
-					Character = LYU_NingGuang
-					ideology = classical_liberalism
-				}
-			    promote_character = { 
-					Character = LYU_NingGuang
-					ideology = classical_liberalism
-				}
-				create_country_leader = {
-					name = "LYU_NingGuang"
-					desc = "Ningguang_desc"
-					picture = GFX_portrait_large_Liyue_NingGuang
-					expire = "1965.1.1"
-					ideology = classical_liberalism
-					traits = {
-					LiYueisthe_pioneerhumangovernance
+				NNG = {
+					add_timed_idea = {
+						idea = Liyue_Ideological_attraction
+						days = 180
 					}
 				}
 			}
-			
-			NNG = { load_oob = "NNG" }
+			NNG = {
+				transfer_state = 145
+				transfer_state = 126
+				transfer_state = 148
+				transfer_state = 146
+				transfer_state = 149
+				transfer_state = 405
+				transfer_state = 406
+				transfer_state = 150
+				transfer_state = 242
+			}
+			NNG = {
+				every_owned_state = {
+					add_core_of = NNG
+					remove_core_of = LYU
+				}
+				country_event = {
+					days = 15
+					id = NNG_event.1
+				}
+			}
+			transfer_units_fraction = {
+				target = NNG
+				size = 0.08
+				keep_unit_leaders = {
+				}
+				keep_unit_leaders_trigger = {
+					always = yes
+				}
+			}
+			log = "Units has been released"
+			if = {
+				limit = {
+					has_idea = idea_LYU_Ningguang
+				}
+				remove_ideas = idea_LYU_Ningguang
+			}
+			LYU_Ningguang = { set_nationality = NNG }
+			LYU_Yelan = {
+				set_nationality = {
+					target_country = NNG
+				}
+			}
+			LYU_BeiDou = {
+				set_nationality = {
+					target_country = NNG
+				}
+			}
+			LYU_Xinyan = {
+				set_nationality = {
+					target_country = NNG
+				}
+			}
+			LYU_Chongyun = {
+				set_nationality = {
+					target_country = NNG
+				}
+			}
+			#LYU_Xingqiu = {
+			#	set_nationality = NNG
+			#}
+			log = "Characters has been divided"
+			NNG = {
+				inherit_technology = LYU
+				#promote_character = LYU_BeiDou
+				#promote_character = LYU_Xinyan
+				#promote_character = LYU_Ningguang
+				#promote_character = {
+				#	character = LYU_BeiDou
+				#	ideology = market_liberalism
+				#}
+				#promote_character = {
+				#	Character = LYU_Xinyan
+				#	ideology = anarcho_syndicalism
+				#}
+			}
+			NNG = {
+				load_oob = "NNG"
+			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = NNG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = NNG
+				}
+			}
+			create_country_leader = {
+				name = "LYU_Ganyu"
+				desc = "LYU_Ganyu_desc"
+				picture = GFX_portrait_large_Liyue_Ganyu
+				expire = "2023.7.29.1"
+				ideology = moraxism
+				traits = {
+					obey_rule_law
+				}
+			}
+			NNG = {
+				create_country_leader = {
+					name = "LYU_Ningguang"
+					desc = "Ningguang_desc"
+					picture = GFX_portrait_large_Liyue_NingGuang
+					expire = "2023.8.7.1"
+					ideology = classical_liberalism
+					traits = {
+						LiYueisthe_pioneerhumangovernance
+					}
+				}
+			}
 			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
-        }
+		}
 	}
-	option = { 
+	option = {
 		name = liyue.4.a
 		ai_chance = {
 			factor = 1
-        } 
-    }
-	option = { 
-		name = liyue.4.b  
+		}
+	}
+	option = {
+		name = liyue.4.b
 		ai_chance = {
 			factor = 0
-        } 
-		NNG = { change_tag_from = ROOT }
-		NNG = { TTT_open_book = yes }
-    }
+		}
+		NNG = {
+			change_tag_from = ROOT
+		}
+		NNG = {
+			TTT_open_book = yes
+		}
+	}
 }
 
 country_event = {
@@ -215,72 +258,139 @@ country_event = {
 	picture = GFX_report_event_kqzf
 	fire_only_once = yes
 	is_triggered_only = yes
-
 	immediate = {
-		hidden_effect = {	
-            if = {
-			limit = {
-			    KQG = { has_country_flag = Ideological_attraction }
+		hidden_effect = {
+			if = {
+				limit = {
+					KQG = {
+						has_country_flag = Ideological_attraction
+					}
+				}
+				KQG = {
+					add_timed_idea = {
+						idea = Liyue_Ideological_attraction
+						days = 180
+					}
+				}
 			}
-			    KQG = { add_timed_idea = { idea = Liyue_Ideological_attraction days = 180 } }
-		    }
-			KQG = { transfer_state = 147 }  
-			KQG = { transfer_state = 160 }  
-			KQG = { transfer_state = 166 } 
-			KQG = { transfer_state = 144 }
-			KQG = { transfer_state = 143 }
-			KQG = { transfer_state = 141 }
-			KQG = { transfer_state = 121 }
-			KQG = { transfer_state = 243 }
-			KQG = { transfer_state = 403 }
-			KQG = { transfer_state = 404 }
-			KQG = { 
-			    every_owned_state = {
-			        add_core_of = KQG
+			KQG = {
+				transfer_state = 147
+			}
+			KQG = {
+				transfer_state = 160
+			}
+			KQG = {
+				transfer_state = 166
+			}
+			KQG = {
+				transfer_state = 144
+			}
+			KQG = {
+				transfer_state = 143
+			}
+			KQG = {
+				transfer_state = 141
+			}
+			KQG = {
+				transfer_state = 121
+			}
+			KQG = {
+				transfer_state = 243
+			}
+			KQG = {
+				transfer_state = 403
+			}
+			KQG = {
+				transfer_state = 404
+			}
+			KQG = {
+				every_owned_state = {
+					add_core_of = KQG
 					remove_core_of = LYU
-	  	        } 
-		    }   
+				}
+			}
 			transfer_units_fraction = {
 				target = KQG
-				size = 0.2
+				size = 0.1
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
 			}
 			if = {
-				limit = { has_idea = LYU_Keqing }
-				remove_ideas = LYU_Keqing
+				limit = {
+					has_idea = idea_LYU_Keqing
+				}
+				remove_ideas = idea_LYU_Keqing
 			}
-			LYU_Keqing = { set_nationality = { target_country = KQG } }			
-			
-		    KQG = {
+			LYU_Keqing = {
+				set_nationality = {
+					target_country = KQG
+				}
+			}
+			KQG = {
 				inherit_technology = LYU
-			    promote_character = LYU_Keqing				
-		    } 	
-			KQG = { load_oob = "KQG" }
-			KQG = { activate_mission = KQG_ready_to_attack_NNG }
-			KQG = { country_event = { days = 30  id = KQG_events.15 } }
+				promote_character = LYU_Keqing
+				LYU_Keqing = {
+					unit_leader_event = {
+						id = liyue_civil_war.31
+						days = 15
+					}
+				}
+			}
+			KQG = {
+				load_oob = "KQG"
+			}
+			KQG = {
+				activate_mission = KQG_ready_to_attack_NNG
+			}
+			KQG = {
+				country_event = {
+					days = 30
+					id = KQG_events.15
+				}
+			}
 			#KQG = { activate_mission = battle_of_yaoguang_shoal }
-			NNG = { activate_mission = NNG_ready_to_attack_KQG }
+			NNG = {
+				activate_mission = NNG_ready_to_attack_KQG
+			}
 			#NNG = { activate_mission = battle_of_yaoguang_shoal_reverse }
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = KQG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = KQG
+				}
+			}
 		}
 	}
-	
-	option = { 
+	option = {
 		name = liyue.6.a
 		ai_chance = {
 			factor = 1
-        } 
+		}
 	}
-	option = { 
+	option = {
 		name = liyue.6.b
 		ai_chance = {
 			factor = 0
-        } 
-		KQG = { change_tag_from = ROOT }    
-		KQG = { TTT_open_book = yes }
+		}
 		KQG = {
-			country_event = {hours = 12 id = KQG_events.32}
+			change_tag_from = ROOT
+		}
+		KQG = {
+			TTT_open_book = yes
+		}
+		KQG = {
+			country_event = {
+				hours = 12
+				id = KQG_events.32
+			}
 		}
 	}
 }
@@ -289,87 +399,138 @@ country_event = {
 	id = liyue.7
 	title = liyue.7.t
 	desc = liyue.7.d
-    picture = GFX_report_event_xozf
+	picture = GFX_report_event_xozf
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			XOG = { inherit_technology = LYU }
-			XOG = { transfer_state = 138 }
-			XOG = { transfer_state = 139 }   
-			XOG = { transfer_state = 137 }  
-			XOG = { transfer_state = 131 }  
-			XOG = { transfer_state = 194 }  
-			XOG = { transfer_state = 133 }  
-			XOG = { transfer_state = 130 } 
-			XOG = { transfer_state = 134 } 
-			XOG = { transfer_state = 135 } 
-			XOG = { transfer_state = 132 } 
-			XOG = { transfer_state = 136 }   
-			XOG = { load_oob = "XOG" } 
+			XOG = {
+				inherit_technology = LYU
+			}
+			XOG = {
+				transfer_state = 138
+			}
+			XOG = {
+				transfer_state = 139
+			}
+			XOG = {
+				transfer_state = 137
+			}
+			XOG = {
+				transfer_state = 131
+			}
+			XOG = {
+				transfer_state = 194
+			}
+			XOG = {
+				transfer_state = 133
+			}
+			XOG = {
+				transfer_state = 130
+			}
+			XOG = {
+				transfer_state = 134
+			}
+			XOG = {
+				transfer_state = 135
+			}
+			XOG = {
+				transfer_state = 132
+			}
+			XOG = {
+				transfer_state = 136
+			}
+			XOG = {
+				load_oob = "XOG"
+			}
 			transfer_units_fraction = {
 				target = XOG
-				size = 0.25
+				size = 0.2
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
 			}
-			
-			LYU_Xiao = { set_nationality = XOG }
-			
-		    XOG = {
-			    set_country_flag = XOG_mechanism_mandrills
+			LYU_Xiao = {
+				set_nationality = XOG
+			}
+			XOG = {
+				set_country_flag = XOG_mechanism_mandrills
 				add_to_variable = {
 					var = XOG_yezhangdu
 					value = 50
-			    }
+				}
 				add_to_variable = {
 					var = XOG_zhizheng_var
 					value = 25
-			    }
+				}
 				inherit_technology = LYU
-			    promote_character = LYU_Xiao
-		    }
-			
-			XOG = { 
-			    every_owned_state = {
-			        add_core_of = XOG
+				promote_character = LYU_Xiao
+			}
+			XOG = {
+				every_owned_state = {
+					add_core_of = XOG
 					remove_core_of = LYU
-	  	        } 
-		    }
-			
+				}
+			}
 			if = {
-				limit = { XOG = { has_country_flag = XOG_lucky_yes } }
+				limit = {
+					XOG = {
+						has_country_flag = XOG_lucky_yes
+					}
+				}
 				country_event = {
 					id = XOG_events.119
 					days = 259
 				}
 			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = XOG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = XOG
+				}
+			}
 		}
 	}
-	option = { 
+	option = {
 		name = liyue.7.a
 		ai_chance = {
 			factor = 1
-        } 
+		}
 		hidden_effect = {
 			LYU_Xiao = {
-				unit_leader_event = { id = XOG_events.1 days = 3 }
+				unit_leader_event = {
+					id = XOG_events.1
+					days = 3
+				}
 			}
 		}
 	}
-	option = { 
-		name = liyue.7.b 
+	option = {
+		name = liyue.7.b
 		ai_chance = {
 			factor = 0
-        } 
+		}
 		hidden_effect = {
 			LYU_Xiao = {
-				unit_leader_event = { id = XOG_events.1 days = 3 }
+				unit_leader_event = {
+					id = XOG_events.1
+					days = 3
+				}
 			}
 		}
-		XOG = { change_tag_from = ROOT }  
-		XOG = { TTT_open_book = yes }
+		XOG = {
+			change_tag_from = ROOT
+		}
+		XOG = {
+			TTT_open_book = yes
+		}
 	}
 }
 
@@ -382,50 +543,94 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-		      if = {
-			limit = {
-			    LYU = { has_country_flag = Ideological_attraction }
+			if = {
+				limit = {
+					LYU = {
+						has_country_flag = Ideological_attraction
+					}
+				}
+				LYU = {
+					add_timed_idea = {
+						idea = Liyue_Ideological_attraction
+						days = 180
+					}
+				}
 			}
-			    LYU = { add_timed_idea = { idea = Liyue_Ideological_attraction days = 180 } }
-		    }
-			RTG = { transfer_state = 155 } 
-			RTG = { transfer_state = 156 } 
-			RTG = { transfer_state = 154 } 
-			RTG = { transfer_state = 197 }  
-			RTG = { transfer_state = 205 } 
-			RTG = { transfer_state = 206 } 
-			RTG = { transfer_state = 207 } 
-			RTG = { transfer_state = 208 } 
-			RTG = { transfer_state = 209 }      
-			RTG = { load_oob = "RTG" } 
-			RTG = { 
-			    every_owned_state = {
-			        add_core_of = RTG
+			RTG = {
+				transfer_state = 155
+			}
+			RTG = {
+				transfer_state = 156
+			}
+			RTG = {
+				transfer_state = 154
+			}
+			RTG = {
+				transfer_state = 197
+			}
+			RTG = {
+				transfer_state = 205
+			}
+			RTG = {
+				transfer_state = 206
+			}
+			RTG = {
+				transfer_state = 207
+			}
+			RTG = {
+				transfer_state = 208
+			}
+			RTG = {
+				transfer_state = 209
+			}
+			RTG = {
+				load_oob = "RTG"
+			}
+			RTG = {
+				every_owned_state = {
+					add_core_of = RTG
 					remove_core_of = LYU
-	  	        } 
-		    } 
+				}
+			}
 			transfer_units_fraction = {
 				target = RTG
-				size = 0.25
+				size = 0.2
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
 			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = RTG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = RTG
+				}
+			}
 		}
 	}
-	option = { 
+	option = {
 		name = liyue.8.a
 		ai_chance = {
 			factor = 1
-        } 
+		}
 	}
-	option = { 
+	option = {
 		name = liyue.8.b
 		ai_chance = {
 			factor = 0
-        } 
-		RTG = { change_tag_from = ROOT } 
-		RTG = { TTT_open_book = yes }
+		}
+		RTG = {
+			change_tag_from = ROOT
+		}
+		RTG = {
+			TTT_open_book = yes
+		}
 	}
 }
 
@@ -438,95 +643,167 @@ country_event = {
 	picture = GFX_country_event_countryevent_007pshemeima
 	immediate = {
 		hidden_effect = {
-			ZDG = { transfer_state = 176 } 
-			ZDG = { transfer_state = 212 } 
-			ZDG = { transfer_state = 213 } 
-			ZDG = { transfer_state = 214 } 
-			ZDG = { transfer_state = 215 } 
-			ZDG = { transfer_state = 216 } 
-			ZDG = { transfer_state = 217 } 
-			ZDG = { transfer_state = 218 } 
-			ZDG = { transfer_state = 219 } 
-			ZDG = { transfer_state = 220 } 
-			ZDG = { transfer_state = 221 } 
-			ZDG = { transfer_state = 222 }
+			ZDG = {
+				transfer_state = 176
+			}
+			ZDG = {
+				transfer_state = 212
+			}
+			ZDG = {
+				transfer_state = 213
+			}
+			ZDG = {
+				transfer_state = 214
+			}
+			ZDG = {
+				transfer_state = 215
+			}
+			ZDG = {
+				transfer_state = 216
+			}
+			ZDG = {
+				transfer_state = 217
+			}
+			ZDG = {
+				transfer_state = 218
+			}
+			ZDG = {
+				transfer_state = 219
+			}
+			ZDG = {
+				transfer_state = 220
+			}
+			ZDG = {
+				transfer_state = 221
+			}
+			ZDG = {
+				transfer_state = 222
+			}
 			#ZDG = { transfer_state = 167 }
 			#ZDG = { transfer_state = 134 }
-			
 			ZDG = {
 				inherit_technology = SNE
 				set_research_slots = 3
 				load_oob = "ZDG"
-				add_offsite_building = { type = arms_factory level = 1 }
-			    add_offsite_building = { type = industrial_complex level = 1 }
+				add_offsite_building = {
+					type = arms_factory
+					level = 1
+				}
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
 			}
-
 			SNE = {
 				transfer_units_fraction = {
 					target = ZDG
 					size = 0.16
-					keep_unit_leaders = {}
+					keep_unit_leaders = {
+					}
 					keep_unit_leaders_trigger = {
 						always = yes
 					}
 				}
 			}
-			167 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			134 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			136 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			141 = { set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned }
-			ZDG = { 
-			    every_owned_state = {
-			        add_core_of = ZDG
-					remove_core_of = SNE
-	  	        } 
-		    } 
-			
-			SNE = {
-				SNE_Childe = { set_nationality = ZDG }
-				SNE_Pavlovic = { set_nationality = ZDG }
-				SNE_Elizabeth = { set_nationality = ZDG }
+			167 = {
+				set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned
 			}
-			
+			134 = {
+				set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned
+			}
+			136 = {
+				set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned
+			}
+			141 = {
+				set_state_flag = liyue_civilwar_origianl_state_SCLIA_owned
+			}
+			ZDG = {
+				every_owned_state = {
+					add_core_of = ZDG
+					remove_core_of = SNE
+				}
+			}
+			SNE = {
+				SNE_Childe = {
+					set_nationality = ZDG
+				}
+				SNE_Pavlovic = {
+					set_nationality = ZDG
+				}
+				SNE_Elizabeth = {
+					set_nationality = ZDG
+				}
+			}
 			ZDG = {
 				promote_character = {
 					character = SNE_Childe
 					ideology = despotism_subtype
 				}
 			}
-			news_event = { id = global_news.3 hours = 12 }
-			XOG = { country_event = { id = liyue_civil_war.5 days = 20 } }
-			XRG = { country_event = { id = liyue_civil_war.5 days = 20 } }
+			news_event = {
+				id = global_news.3
+				hours = 12
+			}
+			XOG = {
+				country_event = {
+					id = liyue_civil_war.5
+					days = 20
+				}
+			}
+			XRG = {
+				country_event = {
+					id = liyue_civil_war.5
+					days = 20
+				}
+			}
 			every_possible_country = {
 				limit = {
 					is_nominate_liyue = yes
-					NOT = { is_in_array = { liyue_warlords_array = ZDG } }
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = ZDG
+						}
+					}
 				}
-				add_to_array = { liyue_warlords_array = ZDG }
+				add_to_array = {
+					liyue_warlords_array = ZDG
+				}
 			}
 		}
 	}
-	option = { 
+	option = {
 		name = liyue.9.a
 		ai_chance = {
 			factor = 1
-        }
-        hidden_effect = {
-        ZDG = { transfer_state = 167 }
-	    ZDG = { transfer_state = 134 }
-        }		
+		}
+		hidden_effect = {
+			ZDG = {
+				transfer_state = 167
+			}
+			ZDG = {
+				transfer_state = 134
+			}
+		}
 	}
-	option = { 
+	option = {
 		name = liyue.9.b
 		ai_chance = {
 			factor = 0
-        }
+		}
 		hidden_effect = {
-        ZDG = { transfer_state = 167 }
-	    ZDG = { transfer_state = 134 }
-        }		
-		ZDG = { change_tag_from = ROOT }  
-		ZDG = { TTT_open_book = yes }
+			ZDG = {
+				transfer_state = 167
+			}
+			ZDG = {
+				transfer_state = 134
+			}
+		}
+		ZDG = {
+			change_tag_from = ROOT
+		}
+		ZDG = {
+			TTT_open_book = yes
+		}
 	}
 }
 
@@ -539,59 +816,122 @@ country_event = {
 	picture = GFX_country_event_countryevent_003
 	immediate = {
 		hidden_effect = {
-			XRG = { transfer_state = 165 }
-			XRG = { transfer_state = 164 } 
-			XRG = { transfer_state = 163 } 
-			XRG = { transfer_state = 142 } 
-			XRG = { transfer_state = 162 } 
-			XRG = { transfer_state = 161 }
-			XRG = { transfer_state = 171 } 
-			XRG = { transfer_state = 195 } 
-			XRG = { transfer_state = 196 }  
-			XRG = { transfer_state = 157 } 
-			XRG = { transfer_state = 158 } 
-			XRG = { transfer_state = 159 }
-			XRG = { transfer_state = 244 }
-			XRG = { transfer_state = 223 } 
-			XRG = { transfer_state = 168 } 
-			XRG = { transfer_state = 204 } 
-			XRG = { transfer_state = 203 } 
-			XRG = { transfer_state = 199 } 
-			XRG = { transfer_state = 198 }
-			XRG = { transfer_state = 167 }   
-			XRG = { inherit_technology = LYU }  
-			XRG = { load_oob = "XRG" } 
-			
+			XRG = {
+				transfer_state = 165
+			}
+			XRG = {
+				transfer_state = 164
+			}
+			XRG = {
+				transfer_state = 163
+			}
+			XRG = {
+				transfer_state = 142
+			}
+			XRG = {
+				transfer_state = 162
+			}
+			XRG = {
+				transfer_state = 161
+			}
+			XRG = {
+				transfer_state = 171
+			}
+			XRG = {
+				transfer_state = 195
+			}
+			XRG = {
+				transfer_state = 196
+			}
+			XRG = {
+				transfer_state = 157
+			}
+			XRG = {
+				transfer_state = 158
+			}
+			XRG = {
+				transfer_state = 159
+			}
+			XRG = {
+				transfer_state = 244
+			}
+			XRG = {
+				transfer_state = 223
+			}
+			XRG = {
+				transfer_state = 168
+			}
+			XRG = {
+				transfer_state = 204
+			}
+			XRG = {
+				transfer_state = 203
+			}
+			XRG = {
+				transfer_state = 199
+			}
+			XRG = {
+				transfer_state = 198
+			}
+			XRG = {
+				transfer_state = 167
+			}
+			XRG = {
+				inherit_technology = LYU
+			}
+			XRG = {
+				load_oob = "XRG"
+			}
 			transfer_units_fraction = {
 				target = XRG
-				size = 0.15
-				keep_unit_leaders = {}
+				size = 0.4
+				keep_unit_leaders = {
+				}
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
 			}
-			XRG = { 
-			    every_owned_state = {
-			        add_core_of = XRG
+			XRG = {
+				every_owned_state = {
+					add_core_of = XRG
 					remove_core_of = LYU
-	  	        } 
-		    } 
-			XRG_Shenhe = { set_nationality = XRG }
+				}
+			}
+			XRG_Shenhe = {
+				set_nationality = XRG
+			}
+			every_possible_country = {
+				limit = {
+					is_nominate_liyue = yes
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = XRG
+						}
+					}
+				}
+				add_to_array = {
+					liyue_warlords_array = XRG
+				}
+			}
 		}
 	}
-	option = { 
+	option = {
 		name = liyue.10.a
 		ai_chance = {
 			factor = 1
-        } 
+		}
 	}
-	option = { 
+	option = {
 		name = liyue.10.b
 		ai_chance = {
 			factor = 0
-        } 
-		XRG = { change_tag_from = ROOT } 
-		XRG = { TTT_open_book = yes }
+		}
+		XRG = {
+			change_tag_from = ROOT
+		}
+		XRG = {
+			TTT_open_book = yes
+		}
 	}
 }
 
@@ -604,14 +944,14 @@ country_event = {
 	picture = GFX_country_event_countryevent_006pshemeima
 	immediate = {
 		hidden_effect = {
-			ANG = { 
+			ANG = {
 				inherit_technology = LYU
 				transfer_state = 3
 				transfer_state = 151
 				transfer_state = 152
-				transfer_state = 170 
-				transfer_state = 210 
-				transfer_state = 211 
+				transfer_state = 170
+				transfer_state = 210
+				transfer_state = 211
 				load_oob = "ANG"
 				every_owned_state = {
 					add_core_of = ANG
@@ -625,39 +965,45 @@ country_event = {
 				add_ideas = disorganized_army
 				add_ideas = unstable_mora_system
 				add_ideas = closed_economy
-				add_ideas = low_economic_mobilisation           
+				add_ideas = low_economic_mobilisation
 				transfer_units_fraction = {
 					target = ANG
-					size = 0.35
+					size = 0.25
 					keep_unit_leaders_trigger = {
 						always = yes
 					}
-				} 
+				}
 			}
 			every_possible_country = {
 				limit = {
 					is_nominate_liyue = yes
-					NOT = { is_in_array = { liyue_warlords_array = ANG } }
+					NOT = {
+						is_in_array = {
+							liyue_warlords_array = ANG
+						}
+					}
 				}
-				add_to_array = { liyue_warlords_array = ANG }
+				add_to_array = {
+					liyue_warlords_array = ANG
+				}
 			}
 		}
 	}
-	option = { 
+	option = {
 		name = liyue.11.a
 		ai_chance = {
 			factor = 1
-        } 
+		}
 	}
-	option = { 
+	option = {
 		name = liyue.11.b
 		ai_chance = {
 			factor = 0
-        } 
+		}
 		ANG = {
 			change_tag_from = ROOT
 			TTT_open_book = yes
-		}         	
+		}
 	}
 }
 
@@ -667,20 +1013,23 @@ country_event = {
 	desc = liyue.12.d
 	fire_only_once = yes
 	hidden = yes
-	
 	is_triggered_only = yes
-
-	option = { 
-		name = liyue.12.a 
+	option = {
+		name = liyue.12.a
 		kickstart_of_liyue_civil_war = yes
-		add_country_leader_trait = sinner_ofLiyue    
+		add_country_leader_trait = sinner_ofLiyue
 		set_global_flag = Liyue_Civil_War
 		clr_global_flag = Liyue_Civil_War_Coming
-		
 		hidden_effect = {
 			if = {
-				limit = { LYU = { is_ai = no } }
-				LYU = { TTT_open_book = yes }
+				limit = {
+					LYU = {
+						is_ai = no
+					}
+				}
+				LYU = {
+					TTT_open_book = yes
+				}
 			}
 			log = "[GetDateText], [Root.GetName]: Liyue Civil War Begins"
 			country_event = {
@@ -699,20 +1048,37 @@ country_event = {
 	title = liyue.40.t
 	desc = liyue.40.d
 	fire_only_once = yes
-	 
-	
 	is_triggered_only = yes
-
-	option = { 
+	option = {
 		name = liyue.40.a
-		annex_country = { target = RTG transfer_troops = yes }          
-		annex_country = { target = LYU transfer_troops = yes }  
-		annex_country = { target = ZDG transfer_troops = yes }          
-		annex_country = { target = ANG transfer_troops = yes }           
-		annex_country = { target = KQG transfer_troops = yes }             
-		annex_country = { target = XOG transfer_troops = yes }            
-        set_capital = { state = 127 }
-    }
+		annex_country = {
+			target = RTG
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = LYU
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = ZDG
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = ANG
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = KQG
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = XOG
+			transfer_troops = yes
+		}
+		set_capital = {
+			state = 127
+		}
+	}
 }
 
 country_event = {
@@ -720,13 +1086,10 @@ country_event = {
 	title = liyue.41.t
 	desc = liyue.41.d
 	fire_only_once = yes
-	 
-	
 	is_triggered_only = yes
-
-	option = { 
+	option = {
 		name = liyue.41.a
-        add_to_faction = LYU                              
+		add_to_faction = LYU
 	}
 }
 
@@ -736,22 +1099,22 @@ country_event = {
 	desc = liyue.46.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.46.a
-        add_popularity = {
-		    ideology = communism
+	option = {
+		name = liyue.46.a
+		add_popularity = {
+			ideology = communism
 			popularity = 0.15
-        }
-        set_party_name = { 
-             ideology = communism 
-             long_name = LYU_communism_Keqing_party_long 
-             name = LYU_communism_Keqing_party 
-        }
-        set_country_flag = Keqing_become_leader	
-        clr_country_flag = Ganyu_linshi_leader
-        hidden_effect = {
-		    set_cosmetic_tag = LYUKQ
-        }		
+		}
+		set_party_name = {
+			ideology = communism
+			long_name = LYU_communism_Keqing_party_long
+			name = LYU_communism_Keqing_party
+		}
+		set_country_flag = Keqing_become_leader
+		clr_country_flag = Ganyu_linshi_leader
+		hidden_effect = {
+			set_cosmetic_tag = LYUKQ
+		}
 	}
 }
 
@@ -761,21 +1124,21 @@ country_event = {
 	desc = liyue.47.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.47.a
-        set_politics = {
-		    ruling_party = authoritarianism
-        }
-        add_popularity = {
-		    ideology = authoritarianism
+	option = {
+		name = liyue.47.a
+		set_politics = {
+			ruling_party = authoritarianism
+		}
+		add_popularity = {
+			ideology = authoritarianism
 			popularity = 0.11
-        }	
-        add_popularity = {
-		    ideology = liberalism
+		}
+		add_popularity = {
+			ideology = liberalism
 			popularity = 0.07
-        }
-        set_country_flag = NingGuang_become_leader
-        clr_country_flag = Ganyu_linshi_leader					
+		}
+		set_country_flag = NingGuang_become_leader
+		clr_country_flag = Ganyu_linshi_leader
 	}
 }
 
@@ -785,23 +1148,35 @@ country_event = {
 	desc = liyue.48.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.48.a
+	option = {
+		name = liyue.48.a
 		custom_effect_tooltip = increase_Keqing_power
-        add_to_variable = { Keqing_PP = 3 }
-        add_to_variable = { Keqing_PS = 2 }		
+		add_to_variable = {
+			Keqing_PP = 3
+		}
+		add_to_variable = {
+			Keqing_PS = 2
+		}
 	}
-	option = { 
-	    name = liyue.48.b
+	option = {
+		name = liyue.48.b
 		custom_effect_tooltip = increase_Ganyu_power
-        add_to_variable = { Ganyu_PP = 3 }
-        add_to_variable = { Ganyu_PS = 2 }		
+		add_to_variable = {
+			Ganyu_PP = 3
+		}
+		add_to_variable = {
+			Ganyu_PS = 2
+		}
 	}
-	option = { 
-	    name = liyue.48.c
+	option = {
+		name = liyue.48.c
 		custom_effect_tooltip = increase_NingGuang_power
-        add_to_variable = { NingGuang_PP = 3 }
-        add_to_variable = { NingGuang_PS = 2 }		
+		add_to_variable = {
+			NingGuang_PP = 3
+		}
+		add_to_variable = {
+			NingGuang_PS = 2
+		}
 	}
 }
 
@@ -811,23 +1186,35 @@ country_event = {
 	desc = liyue.49.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.49.a
+	option = {
+		name = liyue.49.a
 		custom_effect_tooltip = increase_Keqing_power
-        add_to_variable = { Keqing_PP = 3 }
-        add_to_variable = { Keqing_PS = 2 }		
+		add_to_variable = {
+			Keqing_PP = 3
+		}
+		add_to_variable = {
+			Keqing_PS = 2
+		}
 	}
-	option = { 
-	    name = liyue.49.b
+	option = {
+		name = liyue.49.b
 		custom_effect_tooltip = increase_Ganyu_power
-        add_to_variable = { Ganyu_PP = 3 }
-        add_to_variable = { Ganyu_PS = 2 }		
+		add_to_variable = {
+			Ganyu_PP = 3
+		}
+		add_to_variable = {
+			Ganyu_PS = 2
+		}
 	}
-	option = { 
-	    name = liyue.49.c
+	option = {
+		name = liyue.49.c
 		custom_effect_tooltip = increase_NingGuang_power
-        add_to_variable = { NingGuang_PP = 3 }
-        add_to_variable = { NingGuang_PS = 2 }		
+		add_to_variable = {
+			NingGuang_PP = 3
+		}
+		add_to_variable = {
+			NingGuang_PS = 2
+		}
 	}
 }
 
@@ -837,8 +1224,8 @@ country_event = {
 	desc = liyue.50.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.50.a		
+	option = {
+		name = liyue.50.a
 	}
 }
 
@@ -848,101 +1235,136 @@ country_event = {
 	desc = liyue.51.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.51.a	
-        hidden_effect = {
-		    if = {
-			    limit =  {
-				    check_variable = { Ganyu_PP > Keqing_PP }
-					check_variable = { Ganyu_PP > NingGuang_PP }
+	option = {
+		name = liyue.51.a
+		hidden_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						Ganyu_PP > Keqing_PP
+					}
+					check_variable = {
+						Ganyu_PP > NingGuang_PP
+					}
 				}
 				country_event = {
-				    id = liyue.52
-					days = 7 
-				}
-			}
-		    else_if = {
-			    limit =  {
-				    has_country_flag = Keqing_take_over_power
-				}
-				country_event = {
-				    id = liyue.46
+					id = liyue.52
 					days = 7
 				}
 			}
 			else_if = {
-			    limit =  {
-				    has_country_flag = NingGuang_take_over_power
+				limit = {
+					has_country_flag = Keqing_take_over_power
 				}
 				country_event = {
-				    id = liyue.47
-					days = 7 
-				}
-			}
-			else_if = {
-			    limit =  {
-				    check_variable = { Keqing_PP > Ganyu_PP }
-					check_variable = { Keqing_PP > NingGuang_PP }
-				}
-				country_event = {
-				    id = liyue.46
+					id = liyue.46
 					days = 7
 				}
 			}
 			else_if = {
-			    limit =  {
-				    check_variable = { NingGuang_PP > Ganyu_PP }
-					check_variable = { NingGuang_PP > Keqing_PP }
+				limit = {
+					has_country_flag = NingGuang_take_over_power
 				}
 				country_event = {
-				    id = liyue.47
-					days = 7 
-				}
-			}
-			else_if = {
-			    limit =  {
-				    OR = {
-				        check_variable = { Ganyu_PP = Keqing_PP }
-					    check_variable = { Ganyu_PP = NingGuang_PP }
-					}
-					check_variable = { Ganyu_PS > Keqing_PS }
-					check_variable = { Ganyu_PS > NingGuang_PS }
-				}
-				country_event = {
-				    id = liyue.47
-					days = 7 
-				}
-			}
-			else_if = {
-			    limit =  {
-				    OR = {
-				        check_variable = { Keqing_PP = Ganyu_PP }
-					    check_variable = { Keqing_PP = NingGuang_PP }
-					}
-					check_variable = { Keqing_PS > Ganyu_PS }
-					check_variable = { Keqing_PS > NingGuang_PS }
-				}
-				country_event = {
-				    id = liyue.46
+					id = liyue.47
 					days = 7
 				}
 			}
 			else_if = {
-			    limit =  {
-				    OR = {
-				        check_variable = { NingGuang_PP = Ganyu_PP }
-					    check_variable = { NingGuang_PP = Keqing_PP }
+				limit = {
+					check_variable = {
+						Keqing_PP > Ganyu_PP
 					}
-					check_variable = { NingGuang_PS > Ganyu_PS }
-					check_variable = { NingGuang_PS > Keqing_PS }
+					check_variable = {
+						Keqing_PP > NingGuang_PP
+					}
 				}
 				country_event = {
-				    id = liyue.47
-					days = 7 
+					id = liyue.46
+					days = 7
 				}
 			}
-			
-        }		
+			else_if = {
+				limit = {
+					check_variable = {
+						NingGuang_PP > Ganyu_PP
+					}
+					check_variable = {
+						NingGuang_PP > Keqing_PP
+					}
+				}
+				country_event = {
+					id = liyue.47
+					days = 7
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						check_variable = {
+							Ganyu_PP = Keqing_PP
+						}
+						check_variable = {
+							Ganyu_PP = NingGuang_PP
+						}
+					}
+					check_variable = {
+						Ganyu_PS > Keqing_PS
+					}
+					check_variable = {
+						Ganyu_PS > NingGuang_PS
+					}
+				}
+				country_event = {
+					id = liyue.47
+					days = 7
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						check_variable = {
+							Keqing_PP = Ganyu_PP
+						}
+						check_variable = {
+							Keqing_PP = NingGuang_PP
+						}
+					}
+					check_variable = {
+						Keqing_PS > Ganyu_PS
+					}
+					check_variable = {
+						Keqing_PS > NingGuang_PS
+					}
+				}
+				country_event = {
+					id = liyue.46
+					days = 7
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						check_variable = {
+							NingGuang_PP = Ganyu_PP
+						}
+						check_variable = {
+							NingGuang_PP = Keqing_PP
+						}
+					}
+					check_variable = {
+						NingGuang_PS > Ganyu_PS
+					}
+					check_variable = {
+						NingGuang_PS > Keqing_PS
+					}
+				}
+				country_event = {
+					id = liyue.47
+					days = 7
+				}
+			}
+		}
 	}
 }
 
@@ -952,10 +1374,10 @@ country_event = {
 	desc = liyue.52.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.52.a
-        set_country_flag = Ganyu_become_leader
-        clr_country_flag = Ganyu_linshi_leader					
+	option = {
+		name = liyue.52.a
+		set_country_flag = Ganyu_become_leader
+		clr_country_flag = Ganyu_linshi_leader
 	}
 }
 
@@ -965,29 +1387,29 @@ country_event = {
 	desc = liyue.53.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.53.a
+	option = {
+		name = liyue.53.a
 		FROM = {
-            country_event = {
-			    id = liyue.54
-			    days = 3
-		    }
-	    }	
+			country_event = {
+				id = liyue.54
+				days = 3
+			}
+		}
 		ai_chance = {
 			base = 1
-		}		
+		}
 	}
-	option = { 
-	    name = liyue.53.b
+	option = {
+		name = liyue.53.b
 		FROM = {
-            country_event = {
-			    id = liyue.55
-			    days = 3
-		    }	
-	    }	
+			country_event = {
+				id = liyue.55
+				days = 3
+			}
+		}
 		ai_chance = {
 			base = 9
-		}	
+		}
 	}
 }
 
@@ -997,13 +1419,17 @@ country_event = {
 	desc = liyue.54.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.54.a
-		annex_country = { 
+	option = {
+		name = liyue.54.a
+		annex_country = {
 			target = NNG
-			transfer_troops = yes 
+			transfer_troops = yes
 		}
-		FROM = { transfer_navy = { target = ROOT } }
+		FROM = {
+			transfer_navy = {
+				target = ROOT
+			}
+		}
 	}
 }
 
@@ -1013,21 +1439,23 @@ country_event = {
 	desc = liyue.55.d
 	fire_only_once = yes
 	is_triggered_only = yes
-	option = { 
-	    name = liyue.55.a
-        hidden_effect = {
-            every_state = {
-                limit = { 
-				    is_controlled_by = ROOT 
-			    }
-			    ROOT = { transfer_state = PREV }
-		    }
+	option = {
+		name = liyue.55.a
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_controlled_by = ROOT
+				}
+				ROOT = {
+					transfer_state = PREV
+				}
+			}
 		}
 		white_peace = NNG
-		clr_country_flag = Guyun_Stone_Forest_scheme_has_been_given		
+		clr_country_flag = Guyun_Stone_Forest_scheme_has_been_given
 	}
-	option = { 
-	    name = liyue.55.b
+	option = {
+		name = liyue.55.b
 		unlock_decision_tooltip = force_landing_Guyun_Stone_Forest
 		set_country_flag = {
 			flag = allowed_to_force_landing_Guyun_Stone_Forest
@@ -1045,19 +1473,26 @@ country_event = {
 	is_triggered_only = no
 	trigger = {
 		has_country_flag = is_landing_Guyun_Stone_Forest
-		NOT = { has_country_flag = rest_time_landing_Guyun_Stone_Forest }
-		NNG = { has_full_control_of_state = 126  has_full_control_of_state = 242 }
-	}
-	option = { 
-	    name = liyue.56.a
-		hidden_effect = {
-            every_state = {
-                limit = { 
-				    is_controlled_by = ROOT 
-			    }
-			    ROOT = { transfer_state = PREV }
-		    }
+		NOT = {
+			has_country_flag = rest_time_landing_Guyun_Stone_Forest
 		}
-		white_peace = NNG	
+		NNG = {
+			has_full_control_of_state = 126
+			has_full_control_of_state = 242
+		}
+	}
+	option = {
+		name = liyue.56.a
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_controlled_by = ROOT
+				}
+				ROOT = {
+					transfer_state = PREV
+				}
+			}
+		}
+		white_peace = NNG
 	}
 }

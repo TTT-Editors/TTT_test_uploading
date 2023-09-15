@@ -79,10 +79,18 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = 0.35
-				production_speed_industrial_complex_factor = -0.3
+
+				stability_factor = 0.1
+				stability_weekly = 0.002
+				research_speed_factor = 0.1
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_buildings_factor = 0.15
+				conversion_cost_mil_to_civ_factor = -0.3
+
 				production_speed_arms_factory_factor = -0.3
-				conversion_cost_civ_to_mil_factor= 0.3
-				conversion_cost_mil_to_civ_factor = 0.3
+				conversion_cost_civ_to_mil_factor= 0.5
+				war_stability_factor = -0.15
+				war_support_factor = -0.15
 				max_fuel_factor = -0.25
 				fuel_gain_factor = -0.4
 			}
@@ -96,10 +104,7 @@ ideas = {
 
 			available = {
 				has_war_support > 0.15
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
+
 			}
 
 			cost = 500
@@ -107,6 +112,15 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = 0.3
+
+				stability_factor = 0.05
+				stability_weekly = 0.001
+				research_speed_factor = 0.05
+				production_speed_industrial_complex_factor = 0.075
+				production_speed_buildings_factor = 0.075
+				conversion_cost_mil_to_civ_factor = -0.1
+
+				war_support_factor = -0.05
 				production_speed_industrial_complex_factor = -0.1
 				production_speed_arms_factory_factor = -0.1
 				fuel_gain_factor = -0.25
@@ -133,10 +147,7 @@ ideas = {
 
 			available = {
 				has_war_support > 0.25
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
+
 			}
 
 			cost = 500
@@ -147,7 +158,7 @@ ideas = {
 				production_speed_arms_factory_factor = 0.1
 				conversion_cost_civ_to_mil_factor= -0.1
 				conversion_cost_mil_to_civ_factor = -0.1
-				fuel_gain_factor = -0.1
+				# fuel_gain_factor = -0.1
 			}
 
 			cancel_if_invalid = no
@@ -166,10 +177,7 @@ ideas = {
 
 			available = {
 				has_war_support > 0.5
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
+
 				OR = {
 					has_a_fascist_ideology = yes
 					has_a_pro_communism_ideology = yes
@@ -190,6 +198,14 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = 0.2
+
+				stability_factor = -0.1
+				stability_weekly = -0.001
+				production_speed_industrial_complex_factor = -0.1
+				production_speed_buildings_factor = 0.05
+				conversion_cost_mil_to_civ_factor = 0.3
+
+				war_support_factor = 0.1
 				production_speed_arms_factory_factor = 0.2
 				conversion_cost_civ_to_mil_factor= -0.2
 				conversion_cost_mil_to_civ_factor = -0.2
@@ -235,10 +251,7 @@ ideas = {
 
 			available = {
 				has_war = yes
-				custom_trigger_tooltip = {
-					tooltip = you_degree_of_social_development_no
-					always = no
-				}
+
 				has_war_support > 0.8
 				any_enemy_country = {
 					ic_ratio = {
@@ -279,70 +292,19 @@ ideas = {
 			modifier = {
 				consumer_goods_factor = 0.10
 				conscription = -0.03
+
+				stability_factor = -0.2
+				stability_weekly = -0.002
+				production_speed_industrial_complex_factor = -0.15
+				production_speed_buildings_factor = 0.1
+				conversion_cost_mil_to_civ_factor = 0.5
+
 				production_speed_arms_factory_factor = 0.3
 				conversion_cost_civ_to_mil_factor= -0.3
 				conversion_cost_mil_to_civ_factor = -0.3
 			}
 
 			cancel_if_invalid = no
-		}
-
-		new_economic_policy = {
-
-			picture = new_economic_policy
-
-			allowed = {
-				always = no
-			}
-			allowed_to_remove = {
-				OR = {
-					surrender_progress > 0.75
-					NOT = { has_a_pro_communism_ideology = yes }
-				}
-			}
-
-			removal_cost = -1
-
-			modifier = {
-				consumer_goods_factor = 0.15
-				production_speed_buildings_factor = -0.15
-
-			}
-
-			cancel_if_invalid = no
-
-			ai_will_do = {
-   				factor = 0
-   			}
-		}
-		new_economic_policy_2 = {
-			name = new_economic_policy
-
-			picture = new_economic_policy
-
-			allowed = {
-				always = no
-			}
-			allowed_to_remove = {
-				OR = {
-					surrender_progress > 0.75
-					NOT = { has_a_pro_communism_ideology = yes }
-				}
-			}
-
-			removal_cost = -1
-
-			modifier = {
-				consumer_goods_factor = 0.10
-				production_speed_buildings_factor = -0.2
-				global_building_slots_factor = 0.1
-			}
-
-			cancel_if_invalid = no
-
-			ai_will_do = {
-   				factor = 0
-   			}
 		}
 		
 	}

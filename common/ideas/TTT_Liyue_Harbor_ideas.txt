@@ -19,9 +19,17 @@ ideas = {
 			available = { NOT = { is_subject_of = ZDG } }
 			picture = LYU_qixingzhidubengkui
 			modifier = {
-			    stability_factor = -0.1
-			    war_support_factor = -0.1
-			    political_advisor_cost_factor = 0.5
+			    stability_factor = -0.15
+				custom_modifier_tooltip = LYU_connot_do_anything_tt
+				hidden_modifier = {
+					disabled_ideas = 1
+				}
+			}
+			on_add = {
+				set_can_be_fired_in_advisor_role = {
+					character = LYU_Ganyu
+					value = no
+				}
 			}
 		}
 
@@ -86,32 +94,56 @@ ideas = {
 
 		blocked_harbour = {    #受封之港
             removal_cost = -1
-			available = { NOT = { is_subject_of = ZDG } }
 			picture = LYU_shoufezhigang
+			available = {
+				NOT = { is_subject_of = ZDG }
+				NNG = {
+					OR = {
+						exists = yes
+						NOT = {
+							has_country_flag = defeated_ningguang
+						}
+					}
+				}
+			}
 			modifier = {
 				consumer_goods_factor = 0.2
-				production_factory_max_efficiency_factor = -0.2
-				industrial_capacity_factory = -0.2
 			}
 		}
 		blocked_harbour1 = {   #受封之港2
             removal_cost = -1
-			available = { NOT = { is_subject_of = ZDG } }
 			picture = LYU_shoufezhigang
+			available = {
+				NOT = { is_subject_of = ZDG }
+				NNG = {
+					OR = {
+						exists = yes
+						NOT = {
+							has_country_flag = defeated_ningguang
+						}
+					}
+				}
+			}
 			modifier = {
 				consumer_goods_factor = 0.15
-				production_factory_max_efficiency_factor = -0.15
-				industrial_capacity_factory = -0.15
 			}
 		}
 		blocked_harbour2 = {  #受封之港3
             removal_cost = -1
-			available = { NOT = { is_subject_of = ZDG } }
 			picture = LYU_shoufezhigang
+			available = {
+				NOT = { is_subject_of = ZDG }
+				NNG = {
+					OR = {
+						exists = yes
+						NOT = {
+							has_country_flag = defeated_ningguang
+						}
+					}
+				}
+			}
 			modifier = {
 				consumer_goods_factor = 0.07
-				production_factory_max_efficiency_factor = -0.08
-				industrial_capacity_factory = -0.07
 			}
 		}
 		LH_allow_smuggle = {  #允许走私
@@ -212,7 +244,7 @@ ideas = {
 		}
     }
 
-	naval_manufacturer = { 
+	naval_manufacturer = { #海军制造商
 	
 		designer = yes
 	
@@ -239,7 +271,113 @@ ideas = {
 					build_cost_ic = -0.2
 					instant = yes
 				}
+				convoy = {
+					build_cost_ic = -0.2
+					instant = yes
+				}
 			}
+		}
+	}
+	materiel_manufacturer = {   #军需制造商	
+		designer = yes
+		LH_Military_Industry_Enterprises = {
+
+			name = LH_Military_Industry_Enterprises
+
+			picture = generic_infantry_equipment_manufacturer_2
+
+			cost = 150
+			allowed = {
+				original_tag = LYU
+			}
+			visible = {
+
+			}
+
+			ai_will_do = {
+				factor = 50
+			}
+
+			traits = { infantry_equipment_manufacturer }
+
+			research_bonus = {
+				infantry_weapons = 0.15
+			}			
+			
+			modifier = {
+				attrition = -0.5
+				production_lack_of_resource_penalty_factor = -1
+			}
+
+			equipment_bonus = {
+				infantry_equipment = {
+					soft_attack = 0.15
+					instant = yes
+				}
+			}
+		}
+	}
+	industrial_concern = {#工业企业
+
+		LH_United_Chamber = {
+            name = LH_United_Chamber
+			picture = generic_industrial_concern_2
+			
+			allowed = {
+				tag = LYU
+			}
+
+			visible = {
+
+			} 
+
+			cost = 150 
+			
+			ai_will_do = {
+				factor = 200
+			}
+
+			traits = { industrial_concern }
+
+			research_bonus = {
+				industry = 0.15
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				local_resources_factor = 0.1
+			}
+			
+		}
+
+		LH_Architectural_Association = {
+            name = LH_Architectural_Association
+			picture = generic_industrial_concern_3
+			
+			allowed = {
+				tag = LYU
+			}
+
+			visible = {
+
+			} 
+
+			cost = 150 
+			
+			ai_will_do = {
+				factor = 200
+			}
+
+			traits = { industrial_concern }
+
+			research_bonus = {
+				industry = 0.15
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+			
 		}
 	}
 

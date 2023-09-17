@@ -1,0 +1,408 @@
+LH_debug_decision = {
+	LH_ganyu_prestige_up = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = troika_prestige^1
+				value = 2
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_yanfei_prestige_up = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = troika_prestige^0
+				value = 2
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_baizhu_prestige_up = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = troika_prestige^2
+				value = 2
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_prestige = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			LH_troika_sort = yes
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_prestige_reset = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			clear_array = troika_cha_array
+			clear_array = troika_prestige_array
+			clear_array = troika_prestige
+			resize_array = {
+				array = troika_cha_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige
+				size = 3
+				value = 0
+			}
+			
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_ganyu = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		modifier = {
+
+		}
+		complete_effect = {
+			LYU_Ganyu = {
+				promote_character = yes
+				
+			}
+			remove_trait = {
+				trait = sinner_ofLiyue
+				character = LYU_Ganyu
+			}
+			add_trait = {
+				trait = obey_rule_law
+				character = LYU_Ganyu
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_yanfei = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		
+		modifier = {
+
+		}
+		complete_effect = {
+			LYU_yanfei = {
+				promote_character = yes
+				
+			}
+			set_popularities = {
+				reformism = 60
+				authoritarianism = 20
+				communism = 10
+				liberalism = 10
+			}
+			set_politics = {
+				ruling_party = authoritarianism
+				elections_allowed = no
+			}
+			set_party_name = { 
+				ideology = authoritarianism
+				long_name = LH_party_Xianren_long 
+				name = LH_party_Xianren
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_baizhu = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		
+		modifier = {
+
+		}
+		complete_effect = {
+			LYU_baizhu = {
+				promote_character = yes
+				
+			}
+			set_popularities = {
+				reformism = 20
+				despotism = 40
+				authoritarianism = 20
+				communism = 10
+				
+				liberalism = 10
+			}
+			set_politics = {
+				ruling_party = despotism
+				elections_allowed = no
+			}
+			set_party_name = { 
+				ideology = despotism
+				long_name = LH_party_Xianren_long 
+				name = LH_party_Xianren
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+}
+
+
+LH_solve_problem_decision = {
+	LH_breakthough_blockade_decision = { #冲击封锁线
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		visible = {
+			has_completed_focus = LH_Jisuijiasuo
+			has_idea = blocked_harbour
+			
+		}
+		custom_cost_trigger = {
+			command_power > 24
+			has_equipment = {
+				convoy > 99
+			}
+		}
+		available = {
+			has_equipment = {
+				convoy > 99
+			}
+		}
+		custom_cost_text = LH_breakthough_blockade_decision_cost_tt
+
+		days_remove = 7
+		fire_only_once = yes
+		
+		remove_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				add_equipment_to_stockpile = {
+					type = convoy
+					amount = -100
+				}
+			}
+			NNG = {
+				country_event = {
+					id = LHPG.1
+					days = 4
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+	}
+
+	LH_zousi_texu_decision = { #扩大走私范围
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		visible = {
+			has_completed_focus = LH_Zousitexu
+			OR = { 
+                has_idea = blocked_harbour
+				has_idea = blocked_harbour1
+				has_idea = blocked_harbour2
+			}
+		}
+
+		cost = 0
+
+		days_remove = 60
+		
+		remove_effect = {
+			if = {
+				limit = { has_idea = blocked_harbour }
+				swap_ideas = {
+					remove_idea = blocked_harbour
+					add_idea = blocked_harbour1
+				}
+			}
+			else_if = {
+				limit = { has_idea = blocked_harbour1 }
+				swap_ideas = {
+					remove_idea = blocked_harbour1
+					add_idea = blocked_harbour2
+				}
+			}
+			else = {
+				remove_ideas = blocked_harbour2
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+	}
+	
+	
+	# LH_ban_zousi = {
+
+	# 	icon = GFX_LH_increase_shiwu_peiji
+
+	# 	available = {
+	# 		custom_trigger_tooltip = {
+	# 			tooltip = zi_yunxuzousi_yijingguoqu_120tian
+	# 		    NOT = { has_country_flag = Baizhu_yunxu_kaishi_zousi }
+	# 		}
+	# 	}
+
+	# 	cost = 20
+	# 	fire_only_once = yes
+	# 	days_remove = 90
+		
+	# 	modifier = {
+	# 		civilian_factory_use = 3
+	# 	}
+
+	# 	remove_effect = {
+	# 		clr_country_flag = Baizhu_yunxu_zousi
+	# 		clr_country_flag = Baizhu_yunxu_kaishi_zousi
+	# 		remove_ideas = LH_allow_smuggle
+	# 		remove_opinion_modifier = {
+    #             target = XOG
+    #             modifier = Liyue_Harbor_dip7
+    #         }
+	# 		remove_opinion_modifier = {
+    #             target = XRG
+    #             modifier = Liyue_Harbor_dip7
+    #         }
+	# 		remove_opinion_modifier = {
+    #             target = KQG
+    #             modifier = Liyue_Harbor_dip7
+    #         }
+	# 		remove_opinion_modifier = {
+    #             target = RTG
+    #             modifier = Liyue_Harbor_dip7
+    #         }
+	# 		remove_opinion_modifier = {
+    #             target = XQG
+    #             modifier = Liyue_Harbor_dip8
+    #         }
+	# 		remove_opinion_modifier = {
+    #             target = NNG
+    #             modifier = Liyue_Harbor_dip8
+    #         }
+	# 	}
+
+	# 	ai_will_do = {
+	# 		factor = 10
+	# 	}
+
+	# }
+}

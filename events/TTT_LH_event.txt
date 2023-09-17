@@ -12,17 +12,43 @@ country_event = {
 
 	option = { 
 		name = LHPG.1.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				add = 10
+				NNG = {
+					surrender_progress > 0.1
+				}
+			}
+			modifier = {
+				add = 5
+				NNG = {
+					num_of_factories < LYU.num_of_factories
+				}
+			}
+			modifier = {
+				add = 5
+				NNG = {
+					num_divisions < LYU.num_divisions
+				}
+			}
+		}
 		LYU = {
 			country_event = {
 				id = LHPG.2
 				days = 4
 			}
 		}
-		custom_effect_tooltip = Beidou_accept_require
 	}
 
 	option = { 
 		name = LHPG.1.b
+		ai_chance = {
+			base = 5
+		}
+		add_stability = -0.15
+		add_war_support = -0.15
 		LYU = {
 			country_event = {
 				id = LHPG.3
@@ -43,25 +69,12 @@ country_event = {
 
 	option = { 
 		name = LHPG.1.a
+		add_to_variable = {
+					var = troika_prestige^0
+					value = 2
+				} #烟绯威望
 		remove_ideas = blocked_harbour
-		add_timed_idea = {
-		    idea = connection_with_Beidou
-			days = 365
-	    }
-		add_opinion_modifier = {
-            target = NNG
-            modifier = Liyue_Harbor_dip6
-        }
-		NNG = {
-		    add_timed_idea = {
-			    idea = secret_benefit
-			    days = 365
-	        }
-			add_opinion_modifier = {
-                target = LYU
-                modifier = Liyue_Harbor_dip6
-            }
-	    }
+		add_stability = 0.05
 	}
 
 }
@@ -76,13 +89,7 @@ country_event = {
 
 	option = { 
 		name = LHPG.3.a
-		hidden_effect = {
-			remove_ideas = blocked_harbour
-			add_timed_idea = {
-				idea = blocked_harbour
-				days = 365
-			}
-		}
+		add_war_support = 0.1
 	}
 
 }
@@ -98,16 +105,54 @@ country_event = {
 	option = { 
 		name = LHPG.4.a
 		trigger = {
-			check_variable = { troika_Yanfei > 1 }
-        }
-		clear_variable = troika_Yanfei
-		clear_variable = troika_Ganyu
-		clear_variable = troika_Baizhu
+			NOT = {
+				has_country_flag = Yanfei_assassinated #不被刺杀
+			}
+			OR = {
+				check_variable = { #如果是第一
+					var = troika_cha_array^0
+					value = 0
+					compare = equals
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^1 }
+					check_variable = { troika_cha_array^1 = 0 } #如果第一和第二相等，且为第二
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^2 }
+					check_variable = { troika_cha_array^2 = 0 } #如果第一和第三相等，且为第三
+				}
+				AND = { #如果其他人被刺杀并且被刺杀的是第一
+					OR = {
+						AND = {
+							has_country_flag = Ganyu_assassinated 
+							check_variable = { troika_cha_array^0 = 1 }
+						}
+						AND = {
+							has_country_flag = Baizhu_assassinated 
+							check_variable = { troika_cha_array^0 = 2 }
+						}
+					}
+					OR = { 
+						check_variable = { troika_cha_array^1 = 0 }
+						AND = {
+							check_variable = { troika_prestige_array^1 = troika_prestige_array^2 }
+							check_variable = { troika_cha_array^2 = 0 } #如果第二和第三相等，且为第三
+						}
+					}
+					
+				}
+        	}
+		}
 		retire_character = LYU_troika
+		LYU_yanfei = {
+			promote_character = yes
+			
+		}
 		set_politics = {
-	        ruling_party = authoritarianism
-            elections_allowed = no
-        }
+			ruling_party = authoritarianism
+			elections_allowed = no
+		}
 		set_party_name = { 
             ideology = reformism
             long_name = LH_party_Yuehaiting_long 
@@ -139,11 +184,44 @@ country_event = {
 	option = { 
 		name = LHPG.4.b
 		trigger = {
-			check_variable = { troika_Ganyu > 1 }
+			NOT = {
+				has_country_flag = Ganyu_assassinated #不被刺杀
+			}
+			OR = {
+				check_variable = { #如果是第一
+					var = troika_cha_array^0 
+					value = 1
+					compare = equals
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^1 }
+					check_variable = { troika_cha_array^1 = 1 } #如果第一和第二相等，且为第二
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^2 }
+					check_variable = { troika_cha_array^2 = 1 } #如果第一和第三相等，且为第三
+				}
+				AND = { #如果其他人被刺杀并且被刺杀的是第一
+					OR = {
+						AND = {
+							has_country_flag = Yanfei_assassinated 
+							check_variable = { troika_cha_array^0 = 0 }
+						}
+						AND = {
+							has_country_flag = Baizhu_assassinated 
+							check_variable = { troika_cha_array^0 = 2 }
+						}
+					}
+					OR = { 
+						check_variable = { troika_cha_array^1 = 1 }
+						AND = {
+							check_variable = { troika_prestige_array^1 = troika_prestige_array^2 }
+							check_variable = { troika_cha_array^2 = 1 } #如果第二和第三相等，且为第三
+						}
+					}
+				}
+        	}
         }
-		clear_variable = troika_Yanfei
-		clear_variable = troika_Ganyu
-		clear_variable = troika_Baizhu
 		retire_character = LYU_troika
 		set_politics = {
 	        ruling_party = reformism
@@ -167,6 +245,14 @@ country_event = {
 		LYU_Ganyu = {
 			promote_character = yes
 		}
+		remove_trait = {
+			trait = sinner_ofLiyue
+			character = LYU_Ganyu
+		}
+		add_trait = {
+			trait = obey_rule_law
+			character = LYU_Ganyu
+		}
 		hidden_effect = {
 			set_popularities = {
 				reformism = 40
@@ -189,15 +275,53 @@ country_event = {
 	option = { 
 		name = LHPG.4.c
 		trigger = {
-			check_variable = { troika_Baizhu > 1 }
+			NOT = {
+				has_country_flag = Baizhu_assassinated #不被刺杀
+			}
+			OR = {
+				check_variable = { #如果是第一
+					var = troika_cha_array^0
+					value = 2
+					compare = equals
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^1 }
+					check_variable = { troika_cha_array^1 = 2 } #如果第一和第二相等，且为第二
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^2 }
+					check_variable = { troika_cha_array^2 = 2 } #如果第一和第三相等，且为第三
+				}
+				AND = { #如果其他人被刺杀并且被刺杀的是第一
+					OR = {
+						AND = {
+							has_country_flag = Yanfei_assassinated 
+							check_variable = { troika_cha_array^0 = 0 }
+						}
+						AND = {
+							has_country_flag = Ganyu_assassinated 
+							check_variable = { troika_cha_array^0 = 1 }
+						}
+					}
+					OR = { 
+						check_variable = { troika_cha_array^1 = 2 }
+						AND = {
+							check_variable = { troika_prestige_array^1 = troika_prestige_array^2 }
+							check_variable = { troika_cha_array^2 = 2 } #如果第二和第三相等，且为第三
+						}
+					}
+				}
+        	}
         }
-		clear_variable = troika_Yanfei
-		clear_variable = troika_Ganyu
-		clear_variable = troika_Baizhu
+		LYU_baizhu = {
+			promote_character = yes
+			
+		}
+		
 		set_politics = {
-	        ruling_party = despotism
-            elections_allowed = no
-        }
+			ruling_party = despotism
+			elections_allowed = no
+		}
 		set_party_name = { 
             ideology = reformism
             long_name = LH_party_Yuehaiting_long 
@@ -215,6 +339,14 @@ country_event = {
         }
 		set_country_flag = baizhu_victory
 		hidden_effect = {
+			set_popularities = {
+				reformism = 20
+				despotism = 40
+				authoritarianism = 20
+				communism = 10
+				
+				liberalism = 10
+			}
 		news_event = {
 			    id = global_news.26#事件id
 				days = 7#几天后触发
@@ -272,6 +404,17 @@ country_event = {
 
 	option = { 
 		name = LHPG.7.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				add = 5
+				has_completed_focus = LH_ZhaiXing
+			}
+			modifier = {
+				factor = 0
+				has_completed_focus = LH_Chongyang
+			}
+		}
 	    LYU = {
 			country_event = {
 				id = LHPG.8
@@ -282,6 +425,9 @@ country_event = {
 
 	option = { 
 		name = LHPG.7.b
+		ai_chance = {
+			base = 5
+		}
 	    LYU = {
 			country_event = {
 				id = LHPG.9
@@ -302,6 +448,10 @@ country_event = {
 
 	option = { 
 		name = LHPG.8.a
+		add_to_variable = {
+					var = troika_prestige^1
+					value = 2
+				} #甘雨威望
 	    add_political_power = -100
 		remove_ideas = unstable_mora_system
 		XRG = {

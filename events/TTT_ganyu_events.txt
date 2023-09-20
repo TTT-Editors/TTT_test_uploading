@@ -1889,8 +1889,14 @@ country_event = {
     picture=GFX_report_event_ganyu_70
     option ={
         name = ganyu.70.a 
-        LYU = { country_event = { days = 1 id = ganyu.75 } } 
-        clear_variable = ganyu_assassination_weapon
+        LYU = { country_event = { days = 7 id = ganyu.75 } } 
+        add_ideas = ganyu_assassination_idea_1
+        custom_effect_tooltip = LH_ganyu_assassination_tt
+        hidden_effect = {
+            LYU_Ganyu = {
+                set_nationality = EMP
+            }
+        }
     }
 }
 
@@ -1962,19 +1968,17 @@ country_event = {
         custom_effect_tooltip = ganyu.75.a.d
         hidden_effect = {
             LYU = {
-				kill_country_leader = yes
-				create_country_leader = {
-					name = "LYU_YueHaiTing"
-					picture = "gfx/leaders/LY/LYU_YueHaiTing.dds"
-					ideology = reformism_subtype
-					traits = {
-					}
-				}
-				load_focus_tree = YueHaiTing
                 news_event = { id = ganyu_news.1 }
-                country_event = { days = 3 id = ganyu.83 }
-                country_event = { days = 1 id = ganyu.87 }
-                country_event = { days = 90 id = ganyu.88 }
+                if = {
+                    limit = {
+                        has_country_flag = LH_assassinate_crazy_tt
+                    }
+                    country_event = { id = ganyu.76 days = 7 }
+                    set_country_flag = Ganyu_assassinated
+                }
+                else = {
+                    country_event = { id = ganyu.78 days = 7 }
+                }
 			}
         }
     }
@@ -1989,13 +1993,8 @@ country_event = {
     picture=GFX_report_event_ganyu_76
     option ={
         name = ganyu.76.a 
-        hidden_effect = {
-            LYU = { country_event = { days = 1 id = ganyu.77 } }
-        }
-        add_stability = -0.3
-        add_war_support = -0.3
-        add_manpower = -1537
         add_ideas = ganyu_assassination_idea_1
+        custom_effect_tooltip = ganyu.76.a.d
     }
 }
 
@@ -2030,15 +2029,11 @@ country_event = {
     picture=GFX_report_event_ganyu_78
     option ={
         name = ganyu.78.a
+        custom_effect_tooltip = ganyu.78.a_tt
+        remove_ideas = ganyu_assassination_idea_1
         hidden_effect = {
-            LYU = { country_event = { days = 1 id = ganyu.79 } }
+            country_event = { id = LHPG.27 days = 180 }
         }
-        add_stability = 0.4
-        add_war_support = 0.4
-        swap_ideas = {
-            remove_idea = ganyu_assassination_idea_2
-            add_idea = ganyu_assassination_idea_3
-        } 
     }
 }
 

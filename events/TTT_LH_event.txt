@@ -567,7 +567,7 @@ country_event = {
 			country_event = { id = LHPG.12 days = 3 }
 			set_variable = {
 				var = Patience_decreasing_time
-				value = 180
+				value = 210
 			}
 			set_variable = {
 				var = Extremists_action_time
@@ -582,7 +582,7 @@ country_event = {
 			country_event = { id = LHPG.12 days = 3 }
 			set_variable = {
 				var = Patience_decreasing_time
-				value = 150
+				value = 180
 			}
 			set_variable = {
 				var = Extremists_action_time
@@ -597,7 +597,7 @@ country_event = {
 			country_event = { id = LHPG.12 days = 3 }
 			set_variable = {
 				var = Patience_decreasing_time
-				value = 90
+				value = 120
 			}
 			clear_array = LH_Security_forces_array #重设安保
 			resize_array = {
@@ -618,7 +618,7 @@ country_event = {
 			country_event = { id = LHPG.12 days = 3 }
 			set_variable = {
 				var = Patience_decreasing_time
-				value = 90
+				value = 120
 			}
 			clear_array = LH_Security_forces_array #重设安保
 			resize_array = {
@@ -652,17 +652,21 @@ country_event = { #开启机制事件
 }
 
 country_event = { #极端组织事件链
-	id = LHPG.15
-	title = LHPG.15.t
-	desc = LHPG.15.d
+	id = LHPG.13
+	title = LHPG.13.t
+	desc = LHPG.13.d
 
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = { 
-		name = LHPG.15.a
-		country_event = { id = LHPG.14 days = 14 }
-
+		name = LHPG.13.a
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.14 days = 14 }
+		}
 	}
 
 }
@@ -675,7 +679,12 @@ country_event = { #极端组织事件链
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			country_event = { id = LHPG.15 days = 14 }
+			if = {
+				limit = {
+					has_country_flag = LH_has_informer
+				}
+				country_event = { id = LHPG.15 days = 14 }
+			}
 		}
 	}
 
@@ -704,7 +713,12 @@ country_event = { #极端组织事件链
 
 	option = { 
 		name = LHPG.15.a
-		country_event = { id = LHPG.16 days = 14 }
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.16 days = 14 }
+		}
 
 	}
 
@@ -719,7 +733,12 @@ country_event = { #极端组织事件链
 
 	option = { 
 		name = LHPG.16.a
-		country_event = { id = LHPG.17 days = 14 }
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.17 days = 14 }
+		}
 
 	}
 
@@ -734,7 +753,12 @@ country_event = { #极端组织事件链
 
 	option = { 
 		name = LHPG.17.a
-		country_event = { id = LHPG.18 days = 7 }
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.18 days = 7 }
+		}
 
 	}
 
@@ -762,7 +786,7 @@ country_event = { #极端组织事件链
 		name = LHPG.18.b
 	}
 }
-country_event = { #极端组织事件链
+country_event = { #极端组织事件链 被雷普
 	id = LHPG.19
 	title = LHPG.19.t
 	desc = LHPG.19.d
@@ -781,7 +805,7 @@ country_event = { #极端组织事件链
 	}
 
 }
-country_event = { #极端组织事件链
+country_event = { #极端组织事件链 成功
 	id = LHPG.20
 	title = LHPG.20.t
 	desc = LHPG.20.d
@@ -791,7 +815,297 @@ country_event = { #极端组织事件链
 
 	option = { 
 		name = LHPG.20.a
-		set_country_flag = LH_can_Assault
+		clr_country_flag = LH_has_informer
+		set_country_flag = LH_informer_success
+	}
+
+}
+
+country_event = { #烟绯演讲
+	id = LHPG.21
+	title = LHPG.21.t
+	desc = LHPG.21.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.21.a
+	}
+
+}
+
+country_event = { #甘雨演讲
+	id = LHPG.22
+	title = LHPG.22.t
+	desc = LHPG.22.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.22.a
+	}
+
+}
+
+country_event = { #白术演讲
+	id = LHPG.23
+	title = LHPG.23.t
+	desc = LHPG.23.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.23.a
+	}
+
+}
+
+country_event = { #阴霾散去
+	id = LHPG.24
+	title = LHPG.24.t
+	desc = LHPG.24.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.24.a
+		add_political_power = 50
+		add_stability = 0.1
+	}
+
+}
+
+country_event = { #极端分子行踪消失
+	id = LHPG.25
+	title = LHPG.25.t
+	desc = LHPG.25.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.25.a
+		custom_effect_tooltip = LHPG.25.a_tt
+		hidden_effect = {
+			country_event = { id = LHPG.26  }
+		}
+	}
+
+}
+
+country_event = { #测试事件
+	id = LHPG.26
+	title = LHPG.26.t
+	desc = LHPG.26.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  #烟绯
+		name = LHPG.26.a
+		country_event = { id = LHPG.28 }
+	}
+
+	option = {  #甘雨
+		name = LHPG.26.b
+		country_event = { id = ganyu.70 }
+	}
+
+	option = {  #白术
+		name = LHPG.26.c
+		country_event = { id = LHPG.33 }
+	}
+}
+
+country_event = { #重返事件
+	id = LHPG.27
+	title = LHPG.27.t
+	desc = LHPG.27.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			EMP = {
+				LYU_Yanfei = {
+					set_nationality = LYU
+				}
+				LYU_Ganyu = {
+					set_nationality = LYU
+				}
+				LYU_Baizhu = {
+					set_nationality = LYU
+				}
+			}
+		}
+	}
+	option = { 
+		name = LHPG.27.a
+		add_stability = 0.01
+		add_political_power = 15
+	}
+
+}
+
+country_event = { #烟绯遇刺
+	id = LHPG.28
+	title = LHPG.28.t
+	desc = LHPG.28.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.28.a
+		country_event = { id = LHPG.29 days = 7 }
+		add_ideas = ganyu_assassination_idea_1
+		custom_effect_tooltip = LH_yanfei_assassination_tt
+		hidden_effect = {
+			LYU_Yanfei = {
+				set_nationality = EMP
+			}
+		}
+	}
+
+}
+
+country_event = { #烟绯遇刺
+	id = LHPG.29
+	title = LHPG.29.t
+	desc = LHPG.29.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.29.a
+		if = {
+			limit = {
+				has_country_flag = LH_assassinate_crazy
+			}
+			country_event = { id = LHPG.30 days = 7 }
+		}
+		else = {
+			country_event = { id = LHPG.31 days = 7 }
+		}
+		
+	}
+
+}
+
+country_event = { #烟绯遇刺 死亡
+	id = LHPG.30
+	title = LHPG.30.t
+	desc = LHPG.30.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.30.a
+	}
+
+}
+
+country_event = { #烟绯遇刺 返回
+	id = LHPG.31
+	title = LHPG.31.t
+	desc = LHPG.31.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.31.a
+		hidden_effect = {
+			country_event = { id = LHPG.27 days = 180 }
+		}
+		custom_effect_tooltip = LHPG.31.a_tt
+		remove_ideas = ganyu_assassination_idea_1
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.32
+	title = LHPG.32.t
+	desc = LHPG.32.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.32.a
+		country_event = { id = LHPG.33 days = 7 }
+		add_ideas = ganyu_assassination_idea_1
+		custom_effect_tooltip = LH_baizhu_assassination_tt
+		hidden_effect = {
+			LYU_Baizhu = {
+				set_nationality = EMP
+			}
+		}
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.33
+	title = LHPG.33.t
+	desc = LHPG.33.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.33.a
+		if = {
+			limit = {
+				has_country_flag = LH_assassinate_crazy
+			}
+			country_event = { id = LHPG.34 days = 7 }
+		}
+		else = {
+			country_event = { id = LHPG.35 days = 7 }
+		}
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.34
+	title = LHPG.34.t
+	desc = LHPG.34.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.34.a
+
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.35
+	title = LHPG.35.t
+	desc = LHPG.35.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.35.a
+		hidden_effect = {
+			country_event = { id = LHPG.27 days = 180 }
+		}
+		custom_effect_tooltip = LHPG.35.a_tt
+		remove_ideas = ganyu_assassination_idea_1
 	}
 
 }

@@ -73,6 +73,7 @@ focus_tree = {
 			base = 5
 		}
 		completion_reward = {
+			hidden_effect = {
 			129 = {
 				add_building_construction = {
 					type = bunker
@@ -193,7 +194,9 @@ focus_tree = {
 					province = 11437
 				}
 			}
-			army_experience = 25
+		}
+		custom_effect_tooltip = YFX04_tt
+		army_experience = 25
 		}
 	}
 	focus = {
@@ -258,16 +261,6 @@ focus_tree = {
 		prerequisite = {
 			focus = YFX06
 		}
-		available = {
-			ANG = { exists = yes }
-			has_war = no
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = ANG
-				}
-			}
-		}
-		will_lead_to_war_with = ANG
 		x = 4
 		y = 4
 		cost = 28
@@ -278,10 +271,6 @@ focus_tree = {
 			swap_ideas = {
 				add_idea = YZSN				#战时特别法（再加强）
 				remove_idea = ZHZL				#战时特别法（加强）
-			}
-			declare_war_on = {
-				target = ANG
-				type = annex_everything
 			}
 		}
 	}
@@ -422,13 +411,7 @@ focus_tree = {
 			focus = YFX09
 		}
 		available = {
-			RTG = { exists = yes }
-			has_war = no
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = RTG
-				}
-			}
+			
 		}
 		bypass = {
 			RTG = {
@@ -443,10 +426,7 @@ focus_tree = {
 		y = 6
 		cost = 7
 		completion_reward = {
-			declare_war_on = {
-				target = RTG
-				type = annex_everything
-			}
+
 		}
 	}
 	focus = {
@@ -455,32 +435,12 @@ focus_tree = {
 		prerequisite = {
 			focus = YFX12
 		}
-		will_lead_to_war_with = KQG
-		available = {
-			KQG = { exists = yes }
-			has_war = no
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = KQG
-				}
-			}
-		}
-		bypass = {
-			KQG = {
-				OR = {
-					exists = NO
-					has_war_with = LYU
-				}
-			}
-		}
+		
 		x = 6
 		y = 7
 		cost = 7
 		completion_reward = {
-			declare_war_on = {
-				target = KQG
-				type = annex_everything
-			}
+			
 		}
 	}
 	focus = {
@@ -493,48 +453,9 @@ focus_tree = {
 		x = 4
 		y = 8
 		cost = 49
-		will_lead_to_war_with = ANG
-		will_lead_to_war_with = KQG
-		will_lead_to_war_with = XRG
-		will_lead_to_war_with = RTG
-		will_lead_to_war_with = XOG
-		will_lead_to_war_with = ZDG
-		will_lead_to_war_with = ARF
-		bypass = {
-			OR = {
-				is_subject = yes
-				AND = {
-					is_in_faction = yes
-					is_faction_leader = no
-				}
-				NOT = {
-					any_country = {
-						is_nominate_liyue = yes
-						NOT = { tag = LYU }
-						NOT = { is_ally_with = LYU }
-						NOT = { has_war_with = LYU }
-					}
-				}
-			}
-		}
-		available = {		
-			has_war = no
-		}
 		completion_reward = {
-			every_other_country = {
-				limit = {
-					is_nominate_liyue = yes
-					NOT = { tag = LYU }
-					NOT = { is_ally_with = LYU }
-					NOT = { has_war_with = LYU }
-				}
-				LYU = {
-					create_wargoal = {
-						target = PREV
-						type = annex_everything
-					}
-				}
-			}
+			custom_effect_tooltip = YFX14_tt
+			set_country_flag = YFX14_flag
 		}
 	}
 	focus = {

@@ -1968,13 +1968,13 @@ country_event = {
         custom_effect_tooltip = ganyu.75.a.d
         hidden_effect = {
             LYU = {
-                news_event = { id = ganyu_news.1 }
                 if = {
                     limit = {
                         has_country_flag = LH_assassinate_crazy_tt
                     }
                     country_event = { id = ganyu.76 days = 7 }
                     set_country_flag = Ganyu_assassinated
+                    news_event = { id = ganyu_news.1 }
                 }
                 else = {
                     country_event = { id = ganyu.78 days = 7 }
@@ -2022,7 +2022,7 @@ country_event = {
 
 country_event = {
     id = ganyu.78
-    title = ganyu.78.t #甘雨存活事件三：邯郸梦断
+    title = ganyu.78.t #甘雨存活事件三：邯郸梦断 返回
     desc = ganyu.78.d
     is_triggered_only = yes
     fire_only_once    = yes
@@ -2033,6 +2033,12 @@ country_event = {
         remove_ideas = ganyu_assassination_idea_1
         hidden_effect = {
             country_event = { id = LHPG.27 days = 180 }
+            LYU = { #获取名称
+			set_variable = {
+				var = assassination_leader
+				value = token:LYU_Ganyu
+			}
+		}
         }
     }
 }

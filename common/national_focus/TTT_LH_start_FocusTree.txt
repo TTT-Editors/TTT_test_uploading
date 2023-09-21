@@ -2,6 +2,10 @@ focus_tree = {
 	id = LH_start
 	country = {
 		factor = 0
+		modifier = {
+			tag = LYU
+			add = 1000
+		}
 
 	}
 	default = no
@@ -39,7 +43,24 @@ focus_tree = {
 					}
 				}
 			}
-
+			clear_array = troika_cha_array
+			clear_array = troika_prestige_array
+			clear_array = troika_prestige
+			resize_array = {
+				array = troika_cha_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige
+				size = 3
+				value = 0
+			}
 			
 
 		}
@@ -150,7 +171,7 @@ focus_tree = {
 					var = troika_prestige^1
 					value = 2
 				} #甘雨威望
-			add_political_power = -100
+			add_political_power = -50
 			add_stability = 0.05
 			NNG = {
 				add_opinion_modifier = {
@@ -434,7 +455,7 @@ focus_tree = {
 					value = 2
 				} #白术威望		
 			custom_effect_tooltip = LH_Jinlimibu_effect_tt
-			add_political_power = -100
+			add_political_power = -50
 			add_stability = -0.05
 			add_war_support = -0.05
 			hidden_effect = {
@@ -461,18 +482,19 @@ focus_tree = {
 			focus = LH_Jinjifaling
 			focus = LH_Jinlimibu
 		}
-		select_effect = { #读取威望，对威望进行从高到低的排序
-			LH_troika_sort = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_final_election_tt
+				NOT = {
+					has_country_flag = LH_assassinate_begin
+				}
+			}
+			
 		}
 		completion_reward = { 
+			#读取威望，对威望进行从高到低的排序
+			LH_troika_sort = yes
 			custom_effect_tooltip = LH_Menliuqingqing_effect_tt
-			#三个领导人判定
-			if = { #如果前两个威望相同
-					limit = {
-						check_variable = { troika_prestige_array^0 = troika_prestige_array^1 }
-					}
-					
-				}
 			hidden_effect = {
 				country_event = { id = LHPG.4 days = 4 }
 			}

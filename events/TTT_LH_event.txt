@@ -249,17 +249,20 @@ country_event = {
 			trait = sinner_ofLiyue
 			character = LYU_Ganyu
 		}
-		add_trait = {
-			trait = obey_rule_law
-			character = LYU_Ganyu
-		}
+		# add_trait = {
+		# 	trait = obey_rule_law
+		# 	character = LYU_Ganyu
+		# }
+
+		
 		hidden_effect = {
-			set_popularities = {
-				reformism = 40
-				liberalism = 10
-				authoritarianism = 25
-				despotism = 25
-			}
+			add_country_leader_trait = obey_rule_law
+			# set_popularities = {
+			# 	reformism = 40
+			# 	liberalism = 10
+			# 	authoritarianism = 25
+			# 	despotism = 25
+			# }
 			set_country_flag = ganyu_victory
 			news_event = {
 			    id = global_news.25#事件id
@@ -339,14 +342,14 @@ country_event = {
         }
 		set_country_flag = baizhu_victory
 		hidden_effect = {
-			set_popularities = {
-				reformism = 20
-				despotism = 40
-				authoritarianism = 20
-				communism = 10
+			# set_popularities = {
+			# 	reformism = 20
+			# 	despotism = 40
+			# 	authoritarianism = 20
+			# 	communism = 10
 				
-				liberalism = 10
-			}
+			# 	liberalism = 10
+			# }
 		news_event = {
 			    id = global_news.26#事件id
 				days = 7#几天后触发
@@ -890,6 +893,7 @@ country_event = { #极端分子行踪消失
 	option = { 
 		name = LHPG.25.a
 		custom_effect_tooltip = LHPG.25.a_tt
+		remove_mission = Patience_decreasing
 		remove_mission = Extremists_conspiracy
 		remove_mission = Extremists_power_expande
 		hidden_effect = {
@@ -1018,6 +1022,10 @@ country_event = { #测试事件
 	option = {  #没有人
 		name = LHPG.26.a
 		clr_country_flag = LH_assassinate_begin
+		remove_mission = Extremists_conspiracy
+		remove_mission = Extremists_power_expande
+		remove_mission = Patience_decreasing
+		remove_decision = LH_Flipped_informer
 	}
 }
 
@@ -1257,6 +1265,9 @@ country_event = { #极端分子被雷普
 		add_political_power = 50
 		add_stability = 0.1
 		clr_country_flag = LH_assassinate_begin
+		remove_mission = Extremists_conspiracy
+		remove_mission = Extremists_power_expande
+		remove_mission = Patience_decreasing
 	}
 
 }

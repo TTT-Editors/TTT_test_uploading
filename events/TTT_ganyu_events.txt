@@ -1966,6 +1966,13 @@ country_event = {
     option ={
         name = ganyu.75.a 
         custom_effect_tooltip = ganyu.75.a.d
+        LYU = { #获取名称
+            set_variable = {
+                var = assassination_leader
+                value = token:LYU_Ganyu
+            }
+        }
+        news_event = { id = ganyu_news.1 days = 3 }
         hidden_effect = {
             LYU = {
                 if = {
@@ -1974,7 +1981,6 @@ country_event = {
                     }
                     country_event = { id = ganyu.76 days = 7 }
                     set_country_flag = Ganyu_assassinated
-                    news_event = { id = ganyu_news.1 }
                 }
                 else = {
                     country_event = { id = ganyu.78 days = 7 }
@@ -2033,12 +2039,7 @@ country_event = {
         remove_ideas = ganyu_assassination_idea_1
         hidden_effect = {
             country_event = { id = LHPG.27 days = 180 }
-            LYU = { #获取名称
-			set_variable = {
-				var = assassination_leader
-				value = token:LYU_Ganyu
-			}
-		}
+
         }
     }
 }
@@ -2149,10 +2150,35 @@ news_event = {
     desc = ganyu_news.1.d
     is_triggered_only = yes
     fire_only_once    = yes
-    picture=GFX_report_news_ganyu_1
+    # picture=GFX_report_news_ganyu_1 图片需要更换
     major = yes
     option = {
         name = ganyu_news.1.a
+        trigger = {
+            NOT = {
+                tag = LYU 
+                tag = KQG
+                tag = NNG
+                tag = XOG
+                tag = RTG
+                tag = XRG
+                tag = ANG
+            }
+        }
+    } 
+    option = {
+        name = ganyu_news.1.b
+        trigger = {
+            OR = {
+                tag = LYU 
+                tag = KQG
+                tag = NNG
+                tag = XOG
+                tag = RTG
+                tag = XRG
+                tag = ANG
+            }
+        }
     } 
 }
 

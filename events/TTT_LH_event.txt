@@ -891,7 +891,7 @@ country_event = { #极端分子行踪消失
 		name = LHPG.25.a
 		custom_effect_tooltip = LHPG.25.a_tt
 		hidden_effect = {
-			country_event = { id = LHPG.26  }
+			country_event = { id = LHPG.26 days = 7 }
 		}
 	}
 
@@ -901,22 +901,134 @@ country_event = { #测试事件
 	id = LHPG.26
 	title = LHPG.26.t
 	desc = LHPG.26.d
+	hidden = yes
+	immediate = { #进行刺杀判定
+		#根据安保和阴谋等级进行算数 
+		set_temp_variable = {
+			var = yanfei_assassination_chance_temp
+			value = LH_Security_forces_array^0
+		}
+		set_temp_variable = {
+			var = ganyu_assassination_chance_temp
+			value = LH_Security_forces_array^1
+		}
+		set_temp_variable = {
+			var = baizhu_assassination_chance_temp
+			value = LH_Security_forces_array^2
+		}
 
+		subtract_from_temp_variable  = { 
+			var = yanfei_assassination_chance_temp
+			value = Extremists_plot_level
+		}
+		subtract_from_temp_variable  = { 
+			var = ganyu_assassination_chance_temp
+			value = Extremists_plot_level
+		}
+		subtract_from_temp_variable  = { 
+			var = baizhu_assassination_chance_temp
+			value = Extremists_plot_level
+		}
+
+		subtract_from_temp_variable  = { 
+			var = yanfei_assassination_chance_temp
+			value = 1
+		}
+		subtract_from_temp_variable  = { 
+			var = ganyu_assassination_chance_temp
+			value = 1
+		}
+		subtract_from_temp_variable  = { 
+			var = baizhu_assassination_chance_temp
+			value = 1
+		}
+
+		multiply_temp_variable = {
+			var = yanfei_assassination_chance_temp
+			value = -20
+		}
+		multiply_temp_variable = {
+			var = ganyu_assassination_chance_temp
+			value = -20
+		}
+		multiply_temp_variable = {
+			var = baizhu_assassination_chance_temp
+			value = -20
+		}
+
+
+		set_temp_variable = {
+			var = yanfei_assassination_chance_temp_1
+			value = 100
+		}
+		set_temp_variable = {
+			var = ganyu_assassination_chance_temp_1
+			value = 100
+		}
+		set_temp_variable = {
+			var = baizhu_assassination_chance_temp_1
+			value = 100
+		}
+		subtract_from_temp_variable  = { 
+			var = yanfei_assassination_chance_temp_1
+			value = yanfei_assassination_chance_temp
+		}
+		subtract_from_temp_variable  = { 
+			var = ganyu_assassination_chance_temp_1
+			value = ganyu_assassination_chance_temp
+		}
+		subtract_from_temp_variable  = { 
+			var = baizhu_assassination_chance_temp_1
+			value = baizhu_assassination_chance_temp
+		}
+
+
+		random_list = { #从烟绯到白术依次判定
+			yanfei_assassination_chance_temp = { #烟绯判定
+				country_event = { id = LHPG.28 days = 7 }
+			}
+			yanfei_assassination_chance_temp_1 = {
+				random_list = {
+					ganyu_assassination_chance_temp = { #甘雨判定
+						country_event = { id = ganyu.70 days = 7 }
+					}
+					ganyu_assassination_chance_temp_1 = {
+						random_list = { 
+							baizhu_assassination_chance_temp = { #白术判定
+								country_event = { id = LHPG.32 days = 7 }
+							}
+							baizhu_assassination_chance_temp_1 = {
+								country_event = { id = LHPG.36 days = 7 }
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		
+
+	}
 	fire_only_once = yes
 	is_triggered_only = yes
 
-	option = {  #烟绯
+	option = {  #没有人
 		name = LHPG.26.a
+		
+	}
+
+	option = {  #烟绯
+		name = LHPG.26.b
 		country_event = { id = LHPG.28 }
 	}
 
 	option = {  #甘雨
-		name = LHPG.26.b
+		name = LHPG.26.c
 		country_event = { id = ganyu.70 }
 	}
 
 	option = {  #白术
-		name = LHPG.26.c
+		name = LHPG.26.e
 		country_event = { id = LHPG.32 }
 	}
 }
@@ -984,6 +1096,13 @@ country_event = { #烟绯遇刺
 
 	option = {  
 		name = LHPG.29.a
+		news_event = { id = ganyu_news.1 days = 3 }
+		LYU = { #获取名称
+			set_variable = {
+				var = assassination_leader
+				value = token:LYU_Yanfei
+			}
+		}
 		if = {
 			limit = {
 				has_country_flag = LH_assassinate_crazy
@@ -1027,12 +1146,7 @@ country_event = { #烟绯遇刺 返回
 		}
 		custom_effect_tooltip = LHPG.31.a_tt
 		remove_ideas = ganyu_assassination_idea_1
-		LYU = { #获取名称
-		set_variable = {
-			var = assassination_leader
-			value = token:LYU_Yanfei
-		}
-	}
+
 	}
 
 }
@@ -1069,6 +1183,13 @@ country_event = { #白术遇刺
 
 	option = {  
 		name = LHPG.33.a
+		news_event = { id = ganyu_news.1 days = 3 }
+		LYU = { #获取名称
+			set_variable = {
+				var = assassination_leader
+				value = token:LYU_Baizhu
+			}
+		}
 		if = {
 			limit = {
 				has_country_flag = LH_assassinate_crazy
@@ -1112,12 +1233,22 @@ country_event = { #白术遇刺
 		}
 		custom_effect_tooltip = LHPG.35.a_tt
 		remove_ideas = ganyu_assassination_idea_1
-		LYU = { #获取名称
-			set_variable = {
-				var = assassination_leader
-				value = token:LYU_Baizhu
-			}
-		}
+
+		
+	}
+
+}
+
+country_event = { #无人遇刺
+	id = LHPG.36
+	title = LHPG.36.t
+	desc = LHPG.36.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.36.a
 		
 	}
 

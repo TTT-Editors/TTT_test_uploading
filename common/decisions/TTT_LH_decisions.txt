@@ -466,7 +466,7 @@ LH_assassinate = {
 
 
 	#决议
-	LH_Collecting_Intelligence = {
+	LH_Collecting_Intelligence = { #收集情报
 		# icon = GFX_LH_increase_shiwu_peiji
 
 		cost = 5
@@ -476,6 +476,7 @@ LH_assassinate = {
 			
 		}
 		complete_effect = {
+			custom_effect_tooltip = LH_Collecting_Intelligence_tt
 			for_loop_effect = {
 				end = 3
 				value = v
@@ -487,13 +488,14 @@ LH_assassinate = {
 		}
 	}
 	LH_Infiltrate_extremists = {
-		cost = 15
+		cost = 10
 		days_re_enable = 14
 		days_remove = 0
 		available = {
 			
 		}
 		complete_effect = {
+			custom_effect_tooltip = LH_Infiltrate_extremists_tt
 			set_variable = {
 				var = Extremists_plot_level_visible
 				value = Extremists_plot_level
@@ -515,7 +517,7 @@ LH_assassinate = {
 		}
 	}
 	LH_Flipped_informer = {
-		cost = 50
+		cost = 25
 		days_re_enable = 14
 		days_remove = -1
 		available = {
@@ -567,7 +569,7 @@ LH_assassinate = {
 	}
 	#加强安保
 	LH_Strengthen_security_forces_yanfei = {
-		cost = 15
+		cost = 10
 		days_remove = 0
 		days_re_enable = 21
 		available = {
@@ -600,7 +602,7 @@ LH_assassinate = {
 		}
 	}
 	LH_Strengthen_security_forces_ganyu = {
-		cost = 15
+		cost = 10
 		days_remove = 0
 		days_re_enable = 21
 		available = {
@@ -633,7 +635,7 @@ LH_assassinate = {
 		}
 	}
 	LH_Strengthen_security_forces_baizhu = {
-		cost = 15
+		cost = 10
 		days_remove = 0
 		days_re_enable = 21
 		available = {
@@ -667,7 +669,7 @@ LH_assassinate = {
 	}
 	#安排演讲
 	LH_Arrange_speech_yanfei = {
-		cost = 35
+		cost = 25
 		days_remove = 0
 		days_re_enable = 35
 		available = {
@@ -720,7 +722,7 @@ LH_assassinate = {
 		}
 	}
 	LH_Arrange_speech_ganyu = { 
-		cost = 35
+		cost = 25
 		days_remove = 0
 		days_re_enable = 35
 		available = {
@@ -773,7 +775,7 @@ LH_assassinate = {
 		}
 	}
 	LH_Arrange_speech_baizhu = { 
-		cost = 35
+		cost = 25
 		days_remove = 0
 		days_re_enable = 35
 		available = {
@@ -825,10 +827,10 @@ LH_assassinate = {
 			}
 		}
 	}
-	LH_Anti_extremist_propaganda ={
+ 	LH_Anti_extremist_propaganda ={ #反极端宣传
 		cost = 15
 		days_remove = 0
-		days_re_enable = 21
+		days_re_enable = 14
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = LH_Anti_extremist_propaganda_tt
@@ -853,6 +855,11 @@ LH_assassinate = {
 				var = Extremists_plot_level
 				value = -1
 			}
+			clamp_variable = {
+				var = Extremists_plot_level
+				min = 0
+				max = 5
+			}
 			if = {
 				limit = {
 					has_country_flag = LH_has_informer
@@ -866,7 +873,7 @@ LH_assassinate = {
 	}
 
 
-	LH_Assault_extremists = {
+	LH_Assault_extremists = { #突袭极端份子
 		custom_cost_trigger = {
 			command_power > 24
 			has_manpower > 100
@@ -876,20 +883,25 @@ LH_assassinate = {
 		}
 		custom_cost_text = LH_Assault_extremist_decision_cost_tt
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_Assault_extremists_tt
+				check_variable = {
+					var = Extremists_plot_level
+					value = 0
+					compare = equals
+				}
+			}
 			has_equipment = {
 				infantry_equipment > 99
 			}
-			check_variable = {
-				var = Extremists_plot_level
-				value = 0
-				compare = equals
-			}
+			
 		}
 		visible = {
 			has_country_flag = LH_informer_success
 		}
 		fire_only_once = yes
 		complete_effect = {
+			
 			hidden_effect = {
 				add_command_power = -25
 			}
@@ -897,7 +909,10 @@ LH_assassinate = {
 				type = infantry_equipment
 				amount = -100
 			}
-			
+			clr_country_flag = LH_assassinate_begin
+			remove_mission = Patience_decreasing
+			remove_mission = Extremists_power_expande
+			remove_mission = Extremists_conspiracy
 		}
 	}
 }

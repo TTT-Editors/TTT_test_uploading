@@ -263,7 +263,7 @@ focus_tree = {
 		}
 		x = 4
 		y = 4
-		cost = 28
+		cost = 14
 		ai_will_do = {
 			base = 4
 		}
@@ -272,32 +272,6 @@ focus_tree = {
 				add_idea = YZSN				#战时特别法（再加强）
 				remove_idea = ZHZL				#战时特别法（加强）
 			}
-		}
-	}
-	focus = {
-		id = YFX08		#鸽羽寄令
-		icon = GFX_goal_YFX08
-		prerequisite = {
-			focus = YFX07
-		}
-		bypass = {
-			OR = {
-				is_subject = yes
-				is_in_faction = yes
-			}
-		}
-		mutually_exclusive = {
-			focus = YFX09
-		}
-		x = 2
-		y = 5
-		ai_will_do = {
-			base = 20
-		}
-		cost = 28
-		completion_reward = {
-			add_stability = 0.05
-			create_faction = liyuehepingtongyizhanxian
 			news_event = {
 				id = global_news.27				#事件id
 				days = 7				#几天后触发
@@ -310,152 +284,23 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = YFX09		#鸦羽寄令
-		icon = GFX_goal_YFX09
+		id = YFX14		#面面俱到
+		icon = GFX_goal_YFX14
 		prerequisite = {
 			focus = YFX07
+			focus = YFX13
 		}
-		mutually_exclusive = {
-			focus = YFX08
-		}
-		x = 6
+		x = 4
 		y = 5
-		ai_will_do = {
-			base = 10
-		}
-		cost = 14
+		cost = 49
 		completion_reward = {
+			custom_effect_tooltip = YFX14_tt
+			set_country_flag = Liyue_Nanbu_xuanzhan_flag
 			add_war_support = 0.05
 			country_event = {
 				days = 3
 				id = YFX_event.13
 			}
-		}
-	}
-	focus = {
-		id = YFX10		#庆云之约
-		icon = GFX_goal_YFX10
-		prerequisite = {
-			focus = YFX08
-		}
-		x = 2
-		y = 6
-		cost = 14
-		bypass = {
-			OR = {
-				XRG = {
-					exists = NO
-				}
-				has_war_with = XRG
-				XRG = {
-					is_in_faction_with = RTG
-				}
-				XRG = {
-					is_in_faction_with = XOG
-				}
-				XRG = {
-					is_subject = yes
-				}
-			}
-		}
-		#仙人派不存在或与仙人在战争中或仙人与龙王\魈在同一阵营或是傀儡
-		completion_reward = {
-			XRG = {
-				country_event = {
-					days = 3
-					id = YFX_event.3
-				}
-			}
-		}
-	}
-	focus = {
-		id = YFX11		#云海盟来
-		icon = GFX_goal_YFX11
-		prerequisite = {
-			focus = YFX10
-		}
-		x = 2
-		y = 7
-		cost = 14
-		bypass = {
-			OR = {
-				XOG = {
-					exists = NO
-				}
-				has_war_with = XOG
-				XOG = {
-					is_in_faction_with = RTG
-				}
-				XOG = {
-					is_in_faction_with = XRG
-				}
-				XOG = {
-					is_subject = yes
-				}
-			}
-		}
-		#魈不存在或与魈在战争中
-		completion_reward = {
-			XOG = {
-				country_event = {
-					days = 3
-					id = YFX_event.6					#（魈）烟绯来信 
-				}
-			}
-		}
-	}
-	focus = {
-		id = YFX12		#青墟之主
-		icon = GFX_goal_YFX12
-		prerequisite = {
-			focus = YFX09
-		}
-		available = {
-			
-		}
-		bypass = {
-			RTG = {
-				OR = {
-					exists = NO
-					has_war_with = LYU
-				}
-			}
-		}
-		will_lead_to_war_with = RTG
-		x = 6
-		y = 6
-		cost = 7
-		completion_reward = {
-
-		}
-	}
-	focus = {
-		id = YFX13		#归离俯首
-		icon = GFX_goal_YFX13
-		prerequisite = {
-			focus = YFX12
-		}
-		
-		x = 6
-		y = 7
-		cost = 7
-		completion_reward = {
-			
-		}
-	}
-	focus = {
-		id = YFX14		#面面俱到
-		icon = GFX_goal_YFX14
-		prerequisite = {
-			focus = YFX11
-			focus = YFX13
-		}
-		x = 4
-		y = 8
-		cost = 49
-		completion_reward = {
-			custom_effect_tooltip = YFX14_tt
-			set_country_flag = YFX14_flag
 		}
 	}
 	focus = {
@@ -479,7 +324,7 @@ focus_tree = {
 			}
 		}
 		x = 4
-		y = 9
+		y = 6
 		cost = 70
 		ai_will_do = {
 			base = 30
@@ -499,7 +344,7 @@ focus_tree = {
 			focus = YFX15
 		}
 		x = 4
-		y = 10
+		y = 7
 		cost = 70
 		completion_reward = {
 			remove_ideas = YZSN			#战时特别法（再加强）
@@ -701,9 +546,19 @@ focus_tree = {
 			base = 15
 		}
 		completion_reward = {
-			remove_ideas = liyuexianfaxiuzhengan5			#璃月宪法修正案5
-			remove_ideas = liyuexianfaxiuzhengan4			#璃月宪法修正案4
-			add_ideas = liyueguoxianfa			#璃月国宪法
+			custom_effect_tooltip = YFX26_tt
+			if = {
+				limit = {
+					has_idea = liyuexianfaxiuzhengan4
+				}
+				add_ideas = liyueguoxianfa
+			}
+			else_if = {
+				limit = {
+					has_idea = liyuexianfaxiuzhengan5
+				}
+				add_ideas = liyueguoxianfa2
+			}
 		}
 	}
 	focus = {
@@ -1100,6 +955,17 @@ focus_tree = {
 		prerequisite = {
 			focus = YFX52
 		}
+		available = {
+		XQG = { exists= NO}
+		XRG = { exists= NO}
+		RTG = { exists= NO}
+		XOG = { exists= NO}
+		ZDG = { exists= NO}
+		KQG = { exists= NO}
+		ANG = { exists= NO}
+		ARF = { exists= NO}
+		NNG = { exists= NO}
+		} 
 		x = 21
 		y = 7
 		cost = 49
@@ -1117,6 +983,12 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {
 			base = 0
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = YFX54_tt	
+				always = no
+			}
 		}
 		completion_reward = {
 		}
@@ -1155,6 +1027,9 @@ focus_tree = {
 		}
 		cost = 7
 		completion_reward = {
+			army_experience = 25
+	        navy_experience = 25
+	        air_experience = 25
 		}
 	}
 	focus = {
@@ -1168,6 +1043,12 @@ focus_tree = {
 		ai_will_do = {
 			base = 0
 		}
+		available = {
+		custom_trigger_tooltip = {
+			tooltip = YFX54_tt	
+			always = no
+		    }
+	    }
 		cost = 49
 		completion_reward = {
 		}
@@ -1246,6 +1127,12 @@ focus_tree = {
 		ai_will_do = {
 			base = 0
 		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = YFX54_tt	
+				always = no
+				}
+			}
 		cost = 49
 		completion_reward = {
 		}
@@ -1302,7 +1189,7 @@ focus_tree = {
 			focus = YFX69
 		}
 		x = 2
-		y = 11
+		y = 8
 		cost = 7
 		completion_reward = {
 		}
@@ -1317,7 +1204,7 @@ focus_tree = {
 			focus = YFX68
 		}
 		x = 6
-		y = 11
+		y = 8
 		cost = 7
 		completion_reward = {
 		}

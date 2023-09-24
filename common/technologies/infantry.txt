@@ -14,6 +14,10 @@ technologies = {
 
 	infantry_weapons = {
 
+		enable_subunits = {
+			marine
+		}
+
 		enable_equipments = {
 			infantry_equipment_0
 		}
@@ -52,8 +56,7 @@ technologies = {
 	infantry_weapons_improvement = {
 
 		dependencies = {
-			concentrated_industry = 1
-			dispersed_industry = 1
+			basic_machine_tools = 1
 		}
 
 		category_all_infantry = { 
@@ -67,7 +70,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1990
 		
 		folder = {
@@ -99,7 +102,7 @@ technologies = {
 			research_cost_coeff = 1
 		}	
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1995
 		
 		folder = {
@@ -130,7 +133,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1999
 		
 		folder = {
@@ -157,7 +160,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1999
 		
 		folder = {
@@ -176,6 +179,10 @@ technologies = {
 	}
 
 	infantry_weapons_1 = {
+
+		enable_subunits = {
+			mountaineers
+		}
 
 		enable_equipments = {
 			infantry_equipment_1
@@ -240,7 +247,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2002
 		
 		folder = {
@@ -329,7 +336,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2007
 		
 		folder = {
@@ -372,7 +379,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2007
 		
 		folder = {
@@ -468,7 +475,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2012
 		
 		folder = {
@@ -511,7 +518,7 @@ technologies = {
 			research_cost_coeff = 1
 		}		
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2012
 		
 		folder = {
@@ -744,11 +751,11 @@ technologies = {
 		}
 
 		path = {
-			leads_to_tech = ttt_special_track_design
+			leads_to_tech = special_track_design
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2002
 		folder = {
 			name = infantry_folder
@@ -832,7 +839,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2007
 		folder = {
 			name = infantry_folder
@@ -917,7 +924,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2012
 		folder = {
 			name = infantry_folder
@@ -991,76 +998,12 @@ technologies = {
 	}
 
 	special_track_design = {
-
-		enable_subunits = {
-			motorized
-		}
-
-        enable_equipments = {
-			motorized_equipment_3
-		}  
-		enable_equipment_modules = {
-			tank_wheeled_suspension
-		}
-
-		on_research_complete_limit = {
-			NOT = {
-				has_template_containing_unit = motorized
-			}
-		}
-		on_research_complete = {
-			hidden_effect = {
-				load_oob = "unlock_motorized"
-			}			
-			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
-		}
-
-		path = {
-			leads_to_tech = mechanised_infantry
-			research_cost_coeff = 1
-		}
-
-		path = {
-			leads_to_tech = armored_car1
-			research_cost_coeff = 1
-		}
-
-		research_cost = 2
-		start_year = 2000
-		folder = {
-			name = infantry_folder
-			position = { x = 0 y = @2000 }
-		}
-		
-		categories = {
-			motorized_equipment
-			infantry_tech
-		}
-		
-		ai_will_do = {
-			factor = 2
-						
-			modifier = {
-				factor = 2
-				date > "2000.1.1"
-			}		
-			modifier = {
-				factor = 0.2
-				date < "2000.1.1"
-			}
-
-			modifier = {
-				is_major = no
-				factor = 0.5
-			}
-		}
-	}
-
-	ttt_special_track_design = {
 		
 		motorized = {
 			hardness = 0.5
 		}
+
+		terrain_penalty_reduction = 0.05
 
 		enable_equipment_modules = {
 			tank_half_track_suspension
@@ -1076,7 +1019,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2002
 		folder = {
 			name = infantry_folder
@@ -1175,7 +1118,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2007
 		folder = {
 			name = infantry_folder
@@ -1256,12 +1199,14 @@ technologies = {
 
 	armored_car_improvement_2 = {
 
-		equipment_bonus = {
-			armored_car_equipment = {
-				maximum_speed = 0.05
-				reliability = 0.05
-				instant = yes
-			}
+		armored_car = {
+			supply_consumption_factor = -0.1
+			fuel_consumption_factor = -0.05
+		}
+
+		armored_car_recon = {
+			supply_consumption_factor = -0.1
+			fuel_consumption_factor = -0.05
 		}
 
 		path = {
@@ -1269,7 +1214,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2012
 		folder = {
 			name = infantry_folder
@@ -1406,20 +1351,18 @@ technologies = {
 
 	amphibious_mechanized_infantry_improvement = {
 
-		equipment_bonus = {
-			amphibious_mechanized_equipment = {
-				maximum_speed = 0.1
-				reliability = 0.05
-				instant = yes
-			}
+		amphibious_mechanized = {
+			maximum_speed = 0.1
 		}
+
+		invasion_preparation = -0.05
 
 		path = {
 			leads_to_tech = amphibious_mechanized_infantry_2
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2007
 		folder = {
 			name = infantry_folder
@@ -1503,20 +1446,18 @@ technologies = {
 
 	amphibious_mechanized_infantry_improvement_2 = {
 
-		equipment_bonus = {
-			amphibious_mechanized_equipment = {
-				armor_value = 0.1
-				reliability = 0.1
-				instant = yes
-			}
+		amphibious_mechanized = {
+			maximum_speed = 0.15
 		}
+
+		truck_attrition_factor = -0.05
 
 		path = {
 			leads_to_tech = amphibious_mechanized_infantry_3
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2012
 		folder = {
 			name = infantry_folder
@@ -1551,19 +1492,18 @@ technologies = {
 
 	amphibious_mechanized_infantry_improvement_3 = {
 
-		equipment_bonus = {
-			amphibious_mechanized_equipment = {
-				maximum_speed = 0.1
-				instant = yes
-			}
+		amphibious_mechanized = {
+			maximum_speed = 0.15
 		}
+
+		truck_attrition_factor = -0.05
 
 		path = {
 			leads_to_tech = amphibious_mechanized_infantry_3
 			research_cost_coeff = 1
 		}
 
-		research_cost = 2
+		research_cost = 1
 		start_year = 2012
 		folder = {
 			name = infantry_folder
@@ -1935,7 +1875,7 @@ technologies = {
 		enable_equipments = {
 			railway_gun_equipment_1
 		}
-		research_cost = 2
+		research_cost = 1
 		start_year = 2015
 		folder = {
 			name = infantry_folder
@@ -1992,19 +1932,15 @@ technologies = {
 
 	ttt_uniform_improvement_1 = {
 
-		equipment_bonus = {
-			ttt_uniform_eq = {
-				build_cost_ic = -0.1
-				instant = yes
-			}
-		}
+		industrial_capacity_factory = 0.02
+		attrition = -0.02
 
 		path = {
 			leads_to_tech = ttt_uniform_tech_2
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1990
 		folder = {
 			name = infantry_folder
@@ -2067,7 +2003,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1999
 		folder = {
 			name = infantry_folder
@@ -2088,6 +2024,11 @@ technologies = {
 	ttt_uniform_tech_3 = {
 		enable_equipments = {
 			ttt_uniform_eq_2
+		}
+
+		category_all_infantry = {
+			max_organisation = 2
+			default_morale = 0.02
 		}
 
 		path = {
@@ -2123,7 +2064,7 @@ technologies = {
 			ttt_uniform_eq_special
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1999
 		folder = {
 			name = infantry_folder
@@ -2137,7 +2078,7 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 0.5
+			factor = 0.1	#Not really needed
 		}
 	}
 
@@ -2153,7 +2094,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2002
 		folder = {
 			name = infantry_folder
@@ -2173,19 +2114,15 @@ technologies = {
 
 	ttt_uniform_improvement_4 = {
 
-		equipment_bonus = {
-			ttt_uniform_eq = {
-				build_cost_ic = -0.1
-				instant = yes
-			}
-		}
+		industrial_capacity_factory = 0.02
+		attrition = -0.02
 
 		path = {
 			leads_to_tech = ttt_uniform_tech_4
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2002
 		folder = {
 			name = infantry_folder
@@ -2256,7 +2193,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2007
 		folder = {
 			name = infantry_folder
@@ -2276,19 +2213,15 @@ technologies = {
 
 	ttt_uniform_improvement_6 = {
 
-		equipment_bonus = {
-			ttt_uniform_eq = {
-				build_cost_ic = -0.1
-				instant = yes
-			}
-		}
+		industrial_capacity_factory = 0.02
+		attrition = -0.02
 
 		path = {
 			leads_to_tech = ttt_uniform_tech_5
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2007
 		folder = {
 			name = infantry_folder
@@ -2354,7 +2287,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2012
 		folder = {
 			name = infantry_folder
@@ -2439,7 +2372,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1990
 		folder = {
 			name = infantry_folder
@@ -2495,7 +2428,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 1999
 		folder = {
 			name = infantry_folder
@@ -2555,7 +2488,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2002
 		folder = {
 			name = infantry_folder
@@ -2585,7 +2518,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2002
 		folder = {
 			name = infantry_folder
@@ -2645,7 +2578,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2007
 		folder = {
 			name = infantry_folder
@@ -2667,13 +2600,13 @@ technologies = {
 	}
 
 	grain_tech_improvement_6 = {
+		
+		supply_consumption_factor = -0.1
+		attrition = -0.05
 
-		equipment_bonus = {
-			grain_conversion_eq = {
-				build_cost_ic = -0.1
-				reliability = 0.05
-				instant = yes
-			}
+		infantry = {
+			max_organisation = 3
+			default_morale = 0.05
 		}
 
 		path = {
@@ -2716,7 +2649,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2012
 		folder = {
 			name = infantry_folder
@@ -2746,7 +2679,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		research_cost = 1.5
+		research_cost = 1
 		start_year = 2012
 		folder = {
 			name = infantry_folder
@@ -2790,6 +2723,103 @@ technologies = {
 				factor = 2
 				date > "2015.1.1"
 			}
+		}
+	}
+
+	#invaild
+	
+	
+	paratroopers = {
+
+		enable_subunits = {
+			paratrooper
+		}
+
+		research_cost = 2
+		start_year = 1936
+		
+		on_research_complete_limit = {
+			NOT = {
+				has_template_containing_unit = paratrooper
+			}
+		}
+		on_research_complete = {
+			hidden_effect = {
+				load_oob = "unlock_paratroopers"
+			}
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}
+		
+		categories = {
+			para_tech
+			cat_special_forces_generic
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	tech_mountaineers = {
+
+		enable_subunits = {
+			mountaineers
+		}
+
+		on_research_complete_limit = {
+			NOT = {
+				has_template_containing_unit = mountaineers
+			}
+		}
+		on_research_complete = {
+			hidden_effect = {
+				load_oob = "unlock_mountineers"
+			}
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}
+
+		research_cost = 2
+		start_year = 1936
+		
+		categories = {
+			infantry_tech
+			mountaineers_tech
+			cat_special_forces_generic
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	marines = {
+
+		enable_subunits = {
+			marine
+		}
+		
+		on_research_complete_limit = {
+			NOT = {
+				has_template_containing_unit = marine
+			}
+		}
+		on_research_complete = {
+			hidden_effect = {
+				load_oob = "unlock_marines"
+			}			
+			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
+		}
+
+		research_cost = 2
+		start_year = 1936
+		
+		categories = {
+			marine_tech
+			cat_special_forces_generic
+		}
+		
+		ai_will_do = {
+			factor = 0
 		}
 	}
 }

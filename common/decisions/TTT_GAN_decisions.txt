@@ -1,175 +1,196 @@
 Liyuetongyi = {
-	GANYU_war_targeted_decision_1 = {
-		target_root_trigger = {
-			has_completed_focus = GAN2_11
-		}
-		targets = { ANG RTG ARF }
-		targets_dynamic = yes
-		target_trigger = {
-			FROM = {
-				is_neighbor_of = ROOT
-			}
-		}
-		cost = 0
-		days_remove = 7
-		ai_will_do = {
-			base = 50
-		}
-		fire_only_once = yes
-		war_with_target_on_complete = yes
-		complete_effect = {
-			FROM = {
-				country_event = { id = liyue_civil_war.101 }
-			}
-		}
-		remove_effect = {
-			declare_war_on = {
-				target = FROM
-				type = annex_everything
-			}
-		}
-	}
-	GANYU_war_targeted_decision_2 = {
-		target_root_trigger = {
-			has_completed_focus = GAN2_18
-		}
-		targets = { NNG KQG XQG XRG XOG ZDG ARF }
-		targets_dynamic = yes
-		target_trigger = {
-			OR = {
-				FROM = {
-				is_neighbor_of = ROOT
-				}
-				FROM = {
-					tag = NNG
-				}
-			}
+# 	GANYU_war_targeted_decision_1 = {
+# 		target_root_trigger = {
+# 			has_completed_focus = GAN2_11
+# 		}
+# 		targets = { ANG RTG ARF }
+# 		targets_dynamic = yes
+# 		target_trigger = {
+# 			FROM = {
+# 				is_neighbor_of = ROOT
+# 			}
+# 		}
+# 		cost = 0
+# 		days_remove = 7
+# 		ai_will_do = {
+# 			base = 50
+# 		}
+# 		fire_only_once = yes
+# 		war_with_target_on_complete = yes
+# 		complete_effect = {
+# 			FROM = {
+# 				country_event = { id = liyue_civil_war.101 }
+# 			}
+# 		}
+# 		remove_effect = {
+# 			declare_war_on = {
+# 				target = FROM
+# 				type = annex_everything
+# 			}
+# 		}
+# 	}
+# 	GANYU_war_targeted_decision_2 = {
+# 		target_root_trigger = {
+# 			has_completed_focus = GAN2_18
+# 		}
+# 		targets = { NNG KQG XQG XRG XOG ZDG ARF }
+# 		targets_dynamic = yes
+# 		target_trigger = {
+# 			OR = {
+# 				FROM = {
+# 				is_neighbor_of = ROOT
+# 				}
+# 				FROM = {
+# 					tag = NNG
+# 				}
+# 			}
 			
+# 		}
+# 		cost = 0
+# 		days_remove = 7
+# 		ai_will_do = {
+# 			base = 50
+# 		}
+# 		fire_only_once = yes
+# 		war_with_target_on_complete = yes
+# 		complete_effect = {
+# 			FROM = {
+# 				country_event = { id = liyue_civil_war.101 }
+# 			}
+# 		}
+# 		remove_effect = {
+# 			declare_war_on = {
+# 				target = FROM
+# 				type = annex_everything
+# 			}
+# 		}
+# 	}
+	Mission_tuiguangyujingtaizhiwuzhi = {
+		activation = {
+			always = no
 		}
-		cost = 0
-		days_remove = 7
-		ai_will_do = {
-			base = 50
+		available = {
+			always = no
 		}
-		fire_only_once = yes
-		war_with_target_on_complete = yes
-		complete_effect = {
-			FROM = {
-				country_event = { id = liyue_civil_war.101 }
-			}
-		}
-		remove_effect = {
-			declare_war_on = {
-				target = FROM
-				type = annex_everything
+		is_good = yes
+		days_remove = 0
+		days_mission_timeout = 180
+		timeout_effect = {
+			128 = {
+				add_extra_state_shared_building_slots = 2
+				add_resource = {
+					type = grain
+					amount = 18
+				}
 			}
 		}
 	}
 }
 
 debug_LYU_civil_war = {
-	debug_parliament_start = { 
-			icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
-			cost = 0
-			fire_only_once = no
-			days_re_enable = 0
-			days_remove = 0
-			ai_will_do = {
-			base = 0
-				}
-			available = {
-				always = yes
-			}
-			visible = {
-				is_debug = yes
-			}
-			complete_effect = {
-				LYU = {
-					set_variable = {
-						var = ganyu_parliament_confidence_max
-						value = 1.2
-					}
-					set_variable = {
-						var = ganyu_parliament_confidence
-						value = ganyu_parliament_confidence_max
-					}
-					set_variable = {
-						var = ganyu_parliament_progress
-						value = 0
-					}
-					set_variable = {
-						var = ganyu_parliament_struggle
-						value = 0
-					}
-					set_variable = {
-						var = ganyu_parliament_policy
-						value = 0
-					}
-					set_variable = {
-						var = ganyu_parliament_progress_frame
-						value = 1
-					}
-					set_variable = {
-						var = ganyu_parliament_policy_frame
-						value = 3
-					}
-					set_variable = {
-						var = ganyu_parliament_struggle_frame
-						value = 1
-					}
-					set_variable = {
-						var = ganyu_parliament_frame
-						value = 8
-					}				
-					ganyu_parliamenteff_progress_add_recalculate = yes
-					set_country_flag = Ganyu_parliamentflag_start
-					add_ideas = ganyu_parliament_struggle_idea
-				}
-			}
-	}
+	# debug_parliament_start = { 
+	# 		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+	# 		cost = 0
+	# 		fire_only_once = no
+	# 		days_re_enable = 0
+	# 		days_remove = 0
+	# 		ai_will_do = {
+	# 		base = 0
+	# 			}
+	# 		available = {
+	# 			always = yes
+	# 		}
+	# 		visible = {
+	# 			is_debug = yes
+	# 		}
+	# 		complete_effect = {
+	# 			LYU = {
+	# 				set_variable = {
+	# 					var = ganyu_parliament_confidence_max
+	# 					value = 1.2
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_confidence
+	# 					value = ganyu_parliament_confidence_max
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_progress
+	# 					value = 0
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_struggle
+	# 					value = 0
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_policy
+	# 					value = 0
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_progress_frame
+	# 					value = 1
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_policy_frame
+	# 					value = 3
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_struggle_frame
+	# 					value = 1
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_frame
+	# 					value = 8
+	# 				}				
+	# 				ganyu_parliamenteff_progress_add_recalculate = yes
+	# 				set_country_flag = Ganyu_parliamentflag_start
+	# 				add_ideas = ganyu_parliament_struggle_idea
+	# 			}
+	# 		}
+	# }
 
-	# debug_focustree_1 = { 
-	# 		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
-	# 		cost = 0
-	# 		fire_only_once = no
-	# 		days_re_enable = 0
-	# 		days_remove = 0
-	# 		ai_will_do = {
-	# 		base = 0
-	# 			}
-	# 		available = {
-	# 			always = yes
-	# 		}
-	# 		visible = {
-	# 			is_debug = yes
-	# 		}
-	# 		complete_effect = {
-	# 			LYU = {
-	# 				load_focus_tree = GAN
-	# 				}
-	# 			}
-	# 		}
-	# debug_focustree_2 = { 
-	# 		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
-	# 		cost = 0
-	# 		fire_only_once = no
-	# 		days_re_enable = 0
-	# 		days_remove = 0
-	# 		ai_will_do = {
-	# 		base = 0
-	# 			}
-	# 		available = {
-	# 			always = yes
-	# 		}
-	# 		visible = {
-	# 			is_debug = yes
-	# 		}
-	# 		complete_effect = {
-	# 			LYU = {
-	# 				load_focus_tree = GAN2
-	# 				}
-	# 			}
-	# 		}
+	debug_focustree_1 = { 
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			LYU = {
+				# load_focus_tree = GAN
+				set_country_flag = GAN_civil_war
+			}
+		}
+	}
+	debug_focustree_2 = { 
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			LYU = {
+				clr_country_flag = GAN_civil_war
+				set_country_flag = GAN_rebuild_country
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
 	debug_civilwar = {
 		cost = 0
 		fire_only_once = yes

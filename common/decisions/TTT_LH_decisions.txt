@@ -355,9 +355,10 @@ LH_assassinate = {
 	Patience_decreasing = { #耐心减少 ——主要结束方式
 		icon = decision_icon_ganyu_assassination_1
 		activation = {
-			LYU = {
-				has_country_flag = LH_assassinate_begin
-			}
+			# LYU = {
+			# 	has_country_flag = LH_assassinate_begin
+			# }
+			always = no
 		}
 		available = {
 			always = no
@@ -378,9 +379,7 @@ LH_assassinate = {
 	Extremists_power_expande = {
 		icon = decision_icon_ganyu_assassination_1
 		activation = {
-			LYU = {
-				has_country_flag = LH_assassinate_begin
-			}
+			always = no
 		}
 		available = {
 			always = no
@@ -389,6 +388,9 @@ LH_assassinate = {
 		days_remove = 0
 		days_mission_timeout = Extremists_action_time
 		timeout_effect = {
+			hidden_effect = {
+				activate_mission = Extremists_power_expande
+			}
 			add_to_variable = {
 				var = Extremists_plot_level
 				value = 1
@@ -412,9 +414,7 @@ LH_assassinate = {
 	Extremists_conspiracy = {
 		icon = decision_icon_ganyu_assassination_1
 		activation = {
-			LYU = {
-				has_country_flag = LH_assassinate_begin
-			}
+			always = no
 		}
 		available = {
 			always = no
@@ -423,6 +423,9 @@ LH_assassinate = {
 		days_remove = 0
 		days_mission_timeout = Extremists_action_time
 		timeout_effect = {
+			hidden_effect = {
+				activate_mission = Extremists_conspiracy
+			}
 			random_list = {
 				30 = {
 					custom_effect_tooltip = LH_Security_forces_yanfei_down
@@ -470,7 +473,7 @@ LH_assassinate = {
 		# icon = GFX_LH_increase_shiwu_peiji
 
 		cost = 5
-		days_re_enable = 14
+		days_re_enable = 10
 		days_remove = 0
 		available = {
 			
@@ -489,7 +492,7 @@ LH_assassinate = {
 	}
 	LH_Infiltrate_extremists = {
 		cost = 10
-		days_re_enable = 14
+		days_re_enable = 10
 		days_remove = 0
 		available = {
 			
@@ -504,7 +507,7 @@ LH_assassinate = {
 	}
 	LH_Infiltrate_extremists = {
 		cost = 15
-		days_re_enable = 14
+		days_re_enable = 10
 		days_remove = 0
 		available = {
 			
@@ -518,7 +521,7 @@ LH_assassinate = {
 	}
 	LH_Flipped_informer = { #安插线人
 		cost = 25
-		days_re_enable = 14
+		days_re_enable = 10
 		days_remove = -1
 		available = {
 			
@@ -572,7 +575,7 @@ LH_assassinate = {
 	LH_Strengthen_security_forces_yanfei = {
 		cost = 10
 		days_remove = 0
-		days_re_enable = 21
+		days_re_enable = 14
 		available = {
 			has_equipment = {
 				infantry_equipment > 14
@@ -605,7 +608,7 @@ LH_assassinate = {
 	LH_Strengthen_security_forces_ganyu = {
 		cost = 10
 		days_remove = 0
-		days_re_enable = 21
+		days_re_enable = 14
 		available = {
 			has_equipment = {
 				infantry_equipment > 14
@@ -623,7 +626,7 @@ LH_assassinate = {
 				type = infantry_equipment
 				amount = -15
 			}
-			custom_effect_tooltip = LH_Strengthen_security_forces_yanfei_effect_tt
+			custom_effect_tooltip = LH_Strengthen_security_forces_ganyu_effect_tt
 			add_to_variable = {
 				var = LH_Security_forces_array^1
 				value = 1
@@ -638,7 +641,7 @@ LH_assassinate = {
 	LH_Strengthen_security_forces_baizhu = {
 		cost = 10
 		days_remove = 0
-		days_re_enable = 21
+		days_re_enable = 14
 		available = {
 			has_equipment = {
 				infantry_equipment > 14
@@ -656,7 +659,7 @@ LH_assassinate = {
 				type = infantry_equipment
 				amount = -15
 			}
-			custom_effect_tooltip = LH_Strengthen_security_forces_yanfei_effect_tt
+			custom_effect_tooltip = LH_Strengthen_security_forces_baizhu_effect_tt
 			add_to_variable = {
 				var = LH_Security_forces_array^2
 				value = 1
@@ -831,7 +834,7 @@ LH_assassinate = {
  	LH_Anti_extremist_propaganda ={ #反极端宣传
 		cost = 15
 		days_remove = 0
-		days_re_enable = 14
+		days_re_enable = 10
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = LH_Anti_extremist_propaganda_tt

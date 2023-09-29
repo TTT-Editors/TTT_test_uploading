@@ -13,7 +13,9 @@ country_event = {
 				id = global_news.1
 				hours = 12
 			}
+
 			country_event = { days = 120 id = ZDG_events.29 }
+			country_event = { days = 60 id = liyue.101 }
 			set_research_slots = 2
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -207,16 +209,21 @@ country_event = {
 					liyue_warlords_array = NNG
 				}
 			}
-			create_country_leader = {
-				name = "LYU_Ganyu"
-				desc = "LYU_Ganyu_desc"
-				picture = GFX_portrait_large_Liyue_Ganyu
-				expire = "2023.7.29.1"
-				ideology = moraxism
-				traits = {
-					obey_rule_law
+			LYU = {
+				LYU_Ganyu = {
+					promote_character = yes
 				}
 			}
+			# create_country_leader = {
+			# 	name = "LYU_Ganyu"
+			# 	desc = "LYU_Ganyu_desc"
+			# 	picture = GFX_portrait_large_Liyue_Ganyu
+			# 	expire = "2023.7.29.1"
+			# 	ideology = moraxism
+			# 	traits = {
+			# 		obey_rule_law
+			# 	}
+			# }
 			NNG = {
 				create_country_leader = {
 					name = "LYU_Ningguang"
@@ -1538,5 +1545,85 @@ country_event = {
 			}
 		}
 		white_peace = NNG
+	}
+}
+
+country_event = { #北国银行
+	id = liyue.101
+	title = liyue.101.t
+	desc = liyue.101.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.101.a
+		custom_effect_tooltip = liyue.101.a_TT
+		country_event = { id = liyue.102 days = 1 }
+	}
+	option = {
+		name = liyue.101.b
+		custom_effect_tooltip = liyue.101.b_TT
+		country_event = { id = liyue.103 days = 1 }
+	}
+	option = {
+		name = liyue.101.c
+		custom_effect_tooltip = liyue.101.c_TT
+		country_event = { id = liyue.104 days = 1 }
+	}
+}
+country_event = { #锐意的改革者
+	id = liyue.102
+	title = liyue.102.t
+	desc = liyue.102.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.102.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		add_stability = -0.1
+	}
+}
+country_event = { #不拘小节，方成大事
+	id = liyue.103
+	title = liyue.103.t
+	desc = liyue.103.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.103.a
+		add_popularity = {
+			ideology = liberalism
+			popularity = 0.05
+		}
+		add_political_power = -80
+	}
+}
+country_event = { #集中精神
+	id = liyue.104
+	title = liyue.104.t
+	desc = liyue.104.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.104.a
+		add_popularity = {
+			ideology = reformism
+			popularity = 0.1
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = { #青雀归乡
+	id = liyue.105
+	title = liyue.105.t
+	desc = liyue.105.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.105.a
+		add_political_power = 5
 	}
 }

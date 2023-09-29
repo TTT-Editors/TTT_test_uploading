@@ -245,18 +245,10 @@ country_event = {
 		LYU_Ganyu = {
 			promote_character = yes
 		}
-		remove_trait = {
-			trait = sinner_ofLiyue
-			character = LYU_Ganyu
-		}
-		# add_trait = {
-		# 	trait = obey_rule_law
-		# 	character = LYU_Ganyu
-		# }
-
 		
 		hidden_effect = {
 			add_country_leader_trait = obey_rule_law
+			remove_country_leader_trait = sinner_ofLiyue
 			# set_popularities = {
 			# 	reformism = 40
 			# 	liberalism = 10
@@ -650,7 +642,9 @@ country_event = { #开启机制事件
 	option = { 
 		name = LHPG.12.a
 		set_country_flag = LH_assassinate_begin
-
+		activate_mission = Patience_decreasing
+		activate_mission = Extremists_power_expande
+		activate_mission = Extremists_conspiracy
 	}
 
 }
@@ -1007,6 +1001,7 @@ country_event = { #测试事件
 							}
 							baizhu_assassination_chance_temp_1 = {
 								country_event = { id = LHPG.36 days = 7 }
+								clr_country_flag = LH_assassinate_begin
 							}
 						}
 					}
@@ -1250,14 +1245,20 @@ country_event = { #无人遇刺
 
 	option = {  
 		name = LHPG.36.a
-		
+		hidden_effect = {
+			clr_country_flag = LH_assassinate_begin
+			remove_mission = Extremists_conspiracy
+			remove_mission = Extremists_power_expande
+			remove_mission = Patience_decreasing
+		}
+
 	}
 
 }
 
 country_event = { #极端分子被雷普
 	id = LHPG.37
-	title = LHPG.76.t
+	title = LHPG.37.t
 	desc = LHPG.37.d
 
 	fire_only_once = yes
@@ -1271,6 +1272,21 @@ country_event = { #极端分子被雷普
 		remove_mission = Extremists_conspiracy
 		remove_mission = Extremists_power_expande
 		remove_mission = Patience_decreasing
+	}
+
+}
+
+country_event = { #好雨知时节
+	id = LHPG.38
+	title = LHPG.38.t
+	desc = LHPG.38.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.38.a
+		add_political_power = 75
 	}
 
 }

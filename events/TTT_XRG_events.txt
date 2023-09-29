@@ -12,7 +12,7 @@ country_event = {
 	option = { 
 		name = XRG_EVENTS_QXHY.1.a
 		add_ideas = XRG_BUFF_1
-		country_event = { days = 10 id = XRG_EVENTS_QXHY.2 }
+		country_event = { days = 5 id = XRG_EVENTS_QXHY.2 }
 	}
 }
 
@@ -22,6 +22,9 @@ country_event = {
 	desc = XRG_EVENTS_QXHY.2.d
 	is_triggered_only = yes
 	fire_only_once = no
+	immediate = { 
+		set_country_flag = XRG_FLAG_0
+	}
 	option = { 
 		name = XRG_EVENTS_QXHY.2.a
 		country_event = XRG_EVENTS_QXHY.3
@@ -100,8 +103,7 @@ country_event = {
 	}
 	option = { 
 		name = XRG_EVENTS_QXHY.6.c
-		set_country_flag = XRG_FLAG_0
-		country_event = { days = 10 id = XRG_EVENTS_QXHY.10 }
+		country_event = { days = 5 id = XRG_EVENTS_QXHY.10 }
 	}
 }
 
@@ -194,6 +196,9 @@ country_event = {
 	option = { 
 		name = XRG_EVENTS_QXHY.12.a
 		set_country_flag = XRG_FLAG_1
+		recruit_character = XRG_wenhepaixianren
+		recruit_character = XRG_zhonglipaixianren
+		recruit_character = XRG_jijinpaixianren
 		country_event = { days = 5 id = XRG_EVENTS_QXHY.15 }
 	}
 }
@@ -231,6 +236,9 @@ country_event = {
 	option = { 
 		name = XRG_EVENTS_QXHY.15.a
 		remove_ideas = XRG_BUFF_1
+		set_country_flag = XRG_FLAG_JJ_1
+		custom_effect_tooltip = XRG_QXHY_JQ_tooltip
+		complete_national_focus = XR_START
 	}
 }
 
@@ -340,7 +348,7 @@ country_event = {
 	
 	option = { 
 		name = XRG_EVENTS_0.3.a
-		country_event = { days = 7 XRG_EVENTS_0.4 }
+		country_event = { days = 7 id = XRG_EVENTS_0.4 }
 	}
 }
 
@@ -379,7 +387,7 @@ country_event = {
 			XRG = { recruit_character = LYU_Pinglaolao }
 			set_character_name = {
 	            character = LYU_Pinglaolao
-	            name = XRG_Gechenlangshi
+	            name = "歌尘浪世真君"
             }
 			remove_advisor_role = {
                 character = LYU_Pinglaolao
@@ -400,6 +408,10 @@ country_event = {
                 }
                 activate = no
             }
+			country_event = { 
+				days = 50
+				id = XRG_EVENTS_0.19
+			}	
 		}
 	}	
 }
@@ -456,17 +468,22 @@ country_event = {
 	
 	trigger = {
 		original_tag = XRG
-       	has_country_flag = north_victor
+       	has_idea = XRG_hidden_ideas_1
+		NOT = { country_exists = ZDG }
     }
 	fire_only_once = yes
 	
 	option = { 
 		name = XRG_EVENTS_0.8.a
 		set_country_flag = XRG_FLAG_DL
+		remove_ideas =  XRG_hidden_ideas_1
+		country_event = XRG_EVENTS_0.14
 	}
 	option = { 
 		name = XRG_EVENTS_0.8.b
 		set_country_flag = XRG_FLAG_HZ
+		remove_ideas =  XRG_hidden_ideas_1
+		country_event = XRG_EVENTS_0.14
 	}
 }
 
@@ -523,8 +540,8 @@ country_event = {
 	
 	option = { 
 		name = XRG_EVENTS_0.11.a
+		add_ideas = XRG_hidden_ideas_1
 	}
-	
 }
 
 country_event = {
@@ -575,7 +592,7 @@ country_event = {
 	option = { 
 		name = XRG_EVENTS_0.14.a
 		add_ideas = XRG_BUFF_FXC
-		set_country_flag = XRG_FXC_FLAG
+		unlock_decision_category_tooltip = fengxiancheng_build
 	}
 }
 
@@ -606,7 +623,6 @@ country_event = {
 	
 	option = { 
 		name = XRG_EVENTS_0.16.a
-		clr_country_flag = XRG_FXC_FLAG
 		142 = {
 			set_state_category = city
 			set_state_name = STATE_FXC
@@ -618,7 +634,6 @@ country_event = {
 				province = 10023
 				value = 5
 			}
-			
 			add_building_construction = {
 				type = industrial_complex
 				level = 2
@@ -630,6 +645,7 @@ country_event = {
 				instant_build = yes
 			}
 		}
+		remove_ideas = XRG_BUFF_FXC
 		set_country_flag = XRG_FXC_FLAG_1
 	}
 }
@@ -662,7 +678,32 @@ country_event = {
 	}
 }
 
+country_event = {
+	id =  XRG_EVENTS_0.19
+	title = XRG_EVENTS_0.19.t
+	desc = XRG_EVENTS_0.19.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = XRG_EVENTS_0.19.a
+		create_country_leader = {
+			name = "歌尘浪世真君"
+			expire = "2022.10.20.1"
+			ideology = reformism_subtype
+			traits = {
+				XRG_GW_GC
+			}
+		}
+		add_popularity = { 
+			ideology = reformism
+			popularity = 0.1
+		}
+	}
+}
+
 add_namespace = XRG_EVENTS_JS
+
 country_event = {
 	id = XRG_EVENTS_JS.1
 	title = XRG_EVENTS_JS.1.t
@@ -702,7 +743,10 @@ country_event = {
 	id = XRG_EVENTS_WAR.1
 	title = XRG_EVENTS_WAR.1.t
 	desc = XRG_EVENTS_WAR.1.d
-	is_triggered_only = yes
+	trigger = {
+        tag = XRG
+		has_war_with =ZDG
+    }
 	fire_only_once = yes
 	option = { 
 		name = XRG_EVENTS_WAR.1.a

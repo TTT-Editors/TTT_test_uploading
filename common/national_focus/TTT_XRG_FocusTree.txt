@@ -26,7 +26,7 @@ focus_tree = {
 	focus = {
 		id = XR_L1	#群仙会议#
 		icon = GFX_goal_XRG02
-		cost = 15.00
+		cost = 20.00
 		visible = {
 			has_country_flag = XRG_FLAG_1
 		}
@@ -43,6 +43,7 @@ focus_tree = {
 				remove = XRG_CSZX
 				add = XRG_QXHY_ONE
 			}
+			custom_effect_tooltip = XRG_QXHY_tooltip
 		}
 	}
 	focus = {
@@ -62,7 +63,7 @@ focus_tree = {
 	focus = {
 		id = XR_L3 #仙家入世#
 		icon = GFX_goal_XRG04
-		cost = 15.00
+		cost = 20.00
 		prerequisite = {
 			focus = XR_L1
 		}
@@ -70,7 +71,8 @@ focus_tree = {
 		y = 2
 		completion_reward = {
 			add_political_power = 100
-			custom_effect_tooltip = XRG_QXHY_tooltip
+			add_stability = 0.1
+			add_war_support = 0.1
 		}
 	}
 	focus = {
@@ -107,7 +109,7 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = XR_L6 #奉仙之城#
+		id = XR_L6 #难民管制#
 		icon = GFX_goal_XRG07
 		cost = 30.00
 		prerequisite = {
@@ -116,7 +118,23 @@ focus_tree = {
 		x = 11
 		y = 3
 		completion_reward = {
-			country_event = XRG_EVENTS_0.14
+			add_stability = 0.05
+			add_manpower = 20000
+			random_state = {
+				limit = {
+					is_owned_and_controlled_by = XRG
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -150,6 +168,7 @@ focus_tree = {
 				idea =  XRG_DEBUFF_1
 				days = 50
 			}
+			custom_effect_tooltip = XRG_QXHY_GG_tooltip
 		}
 	}
 	focus = {
@@ -542,6 +561,7 @@ focus_tree = {
 				has_country_flag = XRG_FLAG_1
 				has_country_flag = XRG_FLAG_2
 			}
+			has_completed_focus = XR_L1
 		}
 		completion_reward = {
 			swap_ideas = {
@@ -680,7 +700,6 @@ focus_tree = {
 		x = 17
 		y = 2
 		completion_reward = {
-			set_country_flag = manufacturer_enabled
 			add_research_slot = 1
 			if = {
 				limit = {
@@ -709,6 +728,8 @@ focus_tree = {
 					add_idea = XRG_BUFF_JJ_1_EIGHT
 				}
 			}
+			set_country_flag = XRG_FLAG_4
+			custom_effect_tooltip = XRG_JJ_1_tooltip
 		}
 	}
 	focus = {
@@ -717,9 +738,6 @@ focus_tree = {
 		cost = 30.00
 		prerequisite = {
 			focus = XR_JJ_3
-		}
-		available = {
-			has_idea = XRG_BUFF_JJ_1_EIGHT
 		}
 		x = 15
 		y = 3
@@ -733,9 +751,6 @@ focus_tree = {
 		cost = 30.00
 		prerequisite = {
 			focus = XR_JJ_3
-		}
-		available = {
-			has_idea = XRG_BUFF_JJ_1_EIGHT
 		}
 		x = 19
 		y = 3
@@ -836,8 +851,14 @@ focus_tree = {
 				has_country_flag = XRG_FLAG_1
 				has_country_flag = XRG_FLAG_2
 			}
+			has_completed_focus = XR_L1
 		}
 		completion_reward = {
+			recruit_character = XRG_guqinzhang
+			recruit_character = XRG_tangwu
+			recruit_character = XRG_ludajia
+			recruit_character = XRG_luanjunfeng
+			recruit_character = XRG_hongshengcai
 			swap_ideas = {
 				remove_idea = XRG_BUFF_2_ONE
 				add_idea = XRG_BUFF_2_TWO
@@ -879,6 +900,9 @@ focus_tree = {
 		x = 24
 		y = 2
 		completion_reward = {
+			every_army_leader = {
+				add_attack = 1		
+			}
 			swap_ideas = {
 				remove_idea = XRG_BUFF_2_TWO
 				add_idea = XRG_BUFF_2_L1
@@ -902,6 +926,9 @@ focus_tree = {
 		x = 28
 		y = 2
 		completion_reward = {
+			every_army_leader = {
+				add_defense = 1		
+			}
 			swap_ideas = {
 				remove_idea = XRG_BUFF_2_TWO
 				add_idea = XRG_BUFF_2_R1

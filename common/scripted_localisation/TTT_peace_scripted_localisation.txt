@@ -22,17 +22,6 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_Ningguangzhanbai
 	}
-	text = { #凝光战败
-		trigger = {
-			event_target:winning_country = {
-				is_nominate_liyue = yes
-			}
-			event_target:losing_country = {
-				original_tag = NNG
-			}
-		}
-		localization_key = TTT_Ningguangzhanbai
-	}
 	text = { #至冬战败
 		trigger = {
 			event_target:winning_country = {
@@ -79,8 +68,10 @@ defined_text = { #战争结语
 			}
 			event_target:losing_country = {
 				original_tag = LYU
+				or = {
 				NOT = { has_global_flag = liyue_unified }
 				NOT = { country_exists = ZDG }
+				}
 			}
 		}
 		localization_key = TTT_Liyuegangzhanbai

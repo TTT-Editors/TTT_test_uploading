@@ -51,6 +51,15 @@ ZDG_gongzhizhe_buffjisuan = {    #共治者效果计算
 		multiply_variable = { ZDG_stability_factor_two = -0.5 }
 		multiply_variable = { ZDG_war_support_factor_two = -0.5 }
 	}
+	if = {
+		limit = {
+			check_variable = { ZDG_gongzhizheyingxiangli_value = 3 }
+		}
+		multiply_variable = { ZDG_consumer_goods_factor = 0 }
+		multiply_variable = { ZDG_production_speed_buildings_factor_two = 0 }
+		multiply_variable = { ZDG_stability_factor_two = 0 }
+		multiply_variable = { ZDG_war_support_factor_two = 0 }
+	}
 }
 
 ZDG_toujizhe_buffjisuan = {
@@ -102,8 +111,8 @@ ZDG_toujizhe_buffjisuan = {
 		}
 		multiply_variable = { ZDG_consumer_goods_factor = -1 }
 		multiply_variable = { ZDG_production_speed_buildings_factor_two = -1 }
-		multiply_variable = { ZDG_stability_factor_two = -1 }
-		multiply_variable = { ZDG_war_support_factor_two = -1 }
+		multiply_variable = { ZDG_stability_factor_three = -1 }
+		multiply_variable = { ZDG_war_support_factor_three = -1 }
 	}
 	if = {
 		limit = {
@@ -111,7 +120,150 @@ ZDG_toujizhe_buffjisuan = {
 		}
 		multiply_variable = { ZDG_consumer_goods_factor = -0.5 }
 		multiply_variable = { ZDG_production_speed_buildings_factor_two = -0.5 }
-		multiply_variable = { ZDG_stability_factor_two = -0.5 }
-		multiply_variable = { ZDG_war_support_factor_two = -0.5 }
+		multiply_variable = { ZDG_stability_factor_three = -0.5 }
+		multiply_variable = { ZDG_war_support_factor_three = -0.5 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_gongzhizheyingxiangli_value = 3 }
+		}
+		multiply_variable = { ZDG_stability_factor_three = 0 }
+		multiply_variable = { ZDG_war_support_factor_three = 0 }
+	}
+}
+
+ZDG_baoshoupai_buffjisuan = {
+	#保守派效果计算
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaiyingxiangli_value = 1 }
+		}
+		set_variable = { ZDG_local_resources_factor = 0.00 }
+		set_variable = { ZDG_army_morale_factor = 0.00 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaiyingxiangli_value = 2 }
+		}
+		set_variable = { ZDG_local_resources_factor = 0.05 }
+		set_variable = { ZDG_army_morale_factor = 0.02 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaiyingxiangli_value = 3 }
+		}
+		set_variable = { ZDG_local_resources_factor = 0.10 }
+		set_variable = { ZDG_army_morale_factor = 0.04 }
+		set_variable = { ZDG_stability_factor_four = 0.05 }
+		set_variable = { ZDG_war_support_factor_four = 0.05 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaiyingxiangli_value = 4 }
+		}
+		set_variable = { ZDG_local_resources_factor = 0.15 }
+		set_variable = { ZDG_army_morale_factor = 0.06 }
+		set_variable = { ZDG_stability_factor_four = 0.10 }
+		set_variable = { ZDG_war_support_factor_four = 0.10 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaiyingxiangli_value = 5 }
+		}
+		set_variable = { ZDG_local_resources_factor = 0.20 }
+		set_variable = { ZDG_army_morale_factor = 0.08 }
+		set_variable = { ZDG_stability_factor_four = 0.15 }
+		set_variable = { ZDG_war_support_factor_four = 0.15 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaihezuodu_value = 1 }
+		}
+		multiply_variable = { ZDG_local_resources_factor = -1 }
+		multiply_variable = { ZDG_army_morale_factor = -1 }
+		multiply_variable = { ZDG_stability_factor_four = -1 }
+		multiply_variable = { ZDG_war_support_factor_four = -1 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaihezuodu_value = 2 }
+		}
+		multiply_variable = { ZDG_local_resources_factor = -1 }
+		multiply_variable = { ZDG_army_morale_factor = -1 }
+		multiply_variable = { ZDG_stability_factor_four = -1 }
+		multiply_variable = { ZDG_war_support_factor_four = -1 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_baoshoupaihezuodu_value = 3 }
+		}
+		multiply_variable = { ZDG_stability_factor_four = 0 }
+		multiply_variable = { ZDG_war_support_factor_four = 0 }
+	}
+}
+
+ZDG_dikangzhe_buffjisuan = {
+	#抵抗者效果计算
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzheyingxiangli_value = 1 }
+		}
+		set_variable = { ZDG_resistance_growth = 0.00 }
+		set_variable = { ZDG_required_garrison_factor = 0.00 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzheyingxiangli_value = 2 }
+		}
+		set_variable = { ZDG_resistance_growth = 0.10 }
+		set_variable = { ZDG_required_garrison_factor = 0.12 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzheyingxiangli_value = 3 }
+		}
+		set_variable = { ZDG_resistance_growth = 0.10 }
+		set_variable = { ZDG_required_garrison_factor = 0.12 }
+		set_variable = { ZDG_stability_factor_five = 0.05 }
+		set_variable = { ZDG_war_support_factor_five = 0.05 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzheyingxiangli_value = 4 }
+		}
+		set_variable = { ZDG_resistance_growth = 0.20 }
+		set_variable = { ZDG_required_garrison_factor = 0.24 }
+		set_variable = { ZDG_stability_factor_five = 0.10 }
+		set_variable = { ZDG_war_support_factor_five = 0.10 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzheyingxiangli_value = 5 }
+		}
+		set_variable = { ZDG_resistance_growth = 0.30 }
+		set_variable = { ZDG_required_garrison_factor = 0.36 }
+		set_variable = { ZDG_stability_factor_five = 0.15 }
+		set_variable = { ZDG_war_support_factor_five = 0.15 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzhehezuodu_value = 1 }
+		}
+		multiply_variable = { ZDG_stability_factor_five = -1 }
+		multiply_variable = { ZDG_war_support_factor_five = -1 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzhehezuodu_value = 2 }
+		}
+		multiply_variable = { ZDG_stability_factor_five = -0.5 }
+		multiply_variable = { ZDG_war_support_factor_five = -0.5 }
+	}
+	if = {
+		limit = {
+			check_variable = { ZDG_dikangzhehezuodu_value = 3 }
+		}
+		multiply_variable = { ZDG_stability_factor_five = 0 }
+		multiply_variable = { ZDG_war_support_factor_five = 0 }
 	}
 }

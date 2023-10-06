@@ -22,26 +22,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 100
-			if = {
-				limit = {
-					country_exists = ANG
-				}
-				country_event = { id = dikangjun.1 }
-			}
-			if = {
-				limit = {
-					country_exists = LYU
-				}
-				country_event = { id = dikangjun.1 }
-			}
-			if = {
-				limit = {
-					country_exists = XRG
-				}
-				country_event = { id = dikangjun.1 }
-			}
+			ANG = { country_event = { id = dikangjun.1 } }
+			LYU = { country_event = { id = dikangjun.1 } }
+			XRG = { country_event = { id = dikangjun.1 } }
 		    set_province_name = {
-				id = 154
+				id = 235
 				name = ARF_liuwangzhezhudi
 			}
 		}
@@ -135,6 +120,9 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {
 			factor = 50
+		}
+		available = {
+			has_idea = ARF_3c_a 
 		}
 		completion_reward = {
 			add_stability = 0.25
@@ -320,7 +308,7 @@ focus_tree = {
 			154 = {
 				create_unit = {
 					division = "division_template = \"Minbing Budui\" start_experience_factor = 0.2"
-					count = 3
+					count = 6
 					owner = ARF
 				}		
 			}
@@ -354,7 +342,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = { idea = ARF_binglinchengxia days = 180 }
-			country_event = { days = 1  id = dikangjun.14 }
+			country_event = { days = 1 id = dikangjun.14 }
 	    }
 	}
 	focus = {
@@ -379,7 +367,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_xiaohaozhanlue #消耗战略
-		icon = unknown
+		icon = GFX_goal_ARF_xh
 		x = 13
 		y = 2
 		cost = 14
@@ -398,7 +386,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_zhandicanmoou #战地参谋速成班
-		icon = unknown
+		icon = GFX_goal_ARF_sucheng
 		x = 14
 		y = 3
 		cost = 7
@@ -417,7 +405,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_guifanyezhangongshi #规范野战工事
-		icon = unknown
+		icon = GFX_goal_ARF_gf
 		x = 14
 		y = 4
 		cost = 7
@@ -440,7 +428,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_xianjiayishu #仙家医术
-		icon = unknown
+		icon = GFX_goal_ARF_xy
 		x = 14
 		y = 5
 		cost = 7
@@ -464,7 +452,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_gongxinweishang #攻心为上
-		icon = unknown
+		icon = GFX_goal_ARF_gx
 		x = 14
 		y = 6
 		cost = 14
@@ -489,7 +477,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_juyuanjinghunye #巨渊惊魂夜
-		icon = unknown
+		icon = GFX_goal_ARF_y
 		x = 14
 		y = 7
 		cost = 14
@@ -507,13 +495,13 @@ focus_tree = {
 		}
 		completion_reward = {
 			RTG = {
-				add_ideas = ARF_huabian
+				add_timed_idea = { idea = ARF_huabian days = 180 }
 			}
 	    }
 	}
 	focus = {
 		id = ARF_xiongshijuexing #雄狮觉醒
-		icon = unknown
+		icon = GFX_goal_ARF_xsjx
 		x = 15
 		y = 8
 		cost = 14
@@ -521,7 +509,16 @@ focus_tree = {
 			base = 10
 		}
 		available = {
-			
+		    or = {
+			and = {
+			has_completed_focus = ARF_juyuanjinghunye
+			has_completed_focus = ARF_zhiyuanjundui
+			    }
+			and = {
+			has_completed_focus = ARF_liuxiayanjing
+			has_completed_focus = ARF_rendingshengtian
+			    }
+			}
 		}
 		prerequisite = {
 			focus = ARF_juyuanjinghunye
@@ -537,7 +534,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_womenbuhuifangqiguxiang #我们不会放弃故乡
-		icon = unknown
+		icon = GFX_goal_ARF_guxiang
 		x = 15
 		y = 9
 		cost = 28
@@ -559,7 +556,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_hofangzhanxian #后方战线
-		icon = unknown
+		icon = GFX_goal_ARF_hfzx
 		x = 20
 		y = 0
 		cost = 28
@@ -577,11 +574,15 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = { days = 1 id = dikangjun.20 }
+			unlock_decision_category_tooltip = ARF_hofangzhanxian
+			set_variable = { ARF_wuzisoujiyundon_value = 1 }
+			set_variable = { ARF_wuzisoujiyundon_cost = 50 }
+			set_variable = { ARF_jianyijungongjianshe_value = 0 }
 	    }
 	}
 	focus = {
-		id = ARF_juyuanrenmin #巨渊的人民，为家乡献身
-		icon = unknown
+		id = ARF_juyuanrenmin #巨渊的人民,为家乡献身
+		icon = GFX_goal_ARF_j
 		x = 20
 		y = 1
 		cost = 28
@@ -595,12 +596,15 @@ focus_tree = {
 			focus = ARF_hofangzhanxian		
 		}
 		completion_reward = {
-			
+			unlock_decision_tooltip = ARF_huobijinronguanzhi
+			unlock_decision_tooltip = ARF_jianyijungongjianshe
+			unlock_decision_tooltip = ARF_zhandiyulunguanzhi
+			unlock_decision_tooltip = ARF_yanchangzhengbingdongyuan
 	    }
 	}
 	focus = {
 		id = ARF_zuihodeliangshi #最后的粮食
-		icon = unknown
+		icon = GFX_goal_ARF_ls
 		x = 20
 		y = 2
 		cost = 28
@@ -615,11 +619,12 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = { days = 1 id = dikangjun.21 }
+			custom_effect_tooltip = ARF_zuihodeliangshi_tt
 	    }
 	}
 	focus = {
 		id = ARF_zuihodebupi #最后的布匹
-		icon = unknown
+		icon = GFX_goal_ARF_b
 		x = 20
 		y = 3
 		cost = 28
@@ -633,12 +638,12 @@ focus_tree = {
 			focus = ARF_zuihodeliangshi		
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ARF_zuihodebupi_tt
 	    }
 	}
 	focus = {
 		id = ARF_zuihodeqingnian #最后的青年
-		icon = unknown
+		icon = GFX_goal_ARF_qn
 		x = 20
 		y = 4
 		cost = 28
@@ -652,12 +657,12 @@ focus_tree = {
 			focus = ARF_zuihodebupi		
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ARF_zuihodeqingnian_tt
 	    }
 	}
 	focus = {
 		id = ARF_zuihodenulin #最后的努力
-		icon = unknown
+		icon = GFX_goal_ARF_l
 		x = 20
 		y = 5
 		cost = 28
@@ -676,7 +681,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_xiangbaozhouyiyang #像煲粥一样简单
-		icon = unknown
+		icon = GFX_goal_ARF_z
 		x = 20
 		y = 6
 		cost = 28
@@ -695,7 +700,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_diandengren #点灯人
-		icon = unknown
+		icon = GFX_goal_ARF_d
 		x = 20
 		y = 7
 		cost = 28
@@ -719,7 +724,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_feijiechuzuozhan #非接触作战
-		icon = unknown
+		icon = GFX_goal_ARF_fjc
 		x = 12
 		y = 3
 		cost = 14
@@ -738,7 +743,7 @@ focus_tree = {
 				amount = 1000
 			}
 			add_doctrine_cost_reduction = {
-				cost_reduction = -0.3
+				cost_reduction = 0.3
 				uses = 2
 				category = cat_superior_firepower
 			}
@@ -746,7 +751,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_shechengzhineijiezhenli #射程之内皆真理
-		icon = unknown
+		icon = GFX_goal_ARF_sc
 		x = 12
 		y = 4
 		cost = 14
@@ -768,7 +773,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_zhubuchanshi #逐步蚕食
-		icon = unknown
+		icon = GFX_goal_ARF_zb
 		x = 12
 		y = 5
 		cost = 14
@@ -779,7 +784,7 @@ focus_tree = {
 			
 		}
 		prerequisite = {
-			focus = ARF_feijiechuzuozhan
+			focus = ARF_shechengzhineijiezhenli
 		}
 		completion_reward = {
 			swap_ideas = {
@@ -790,7 +795,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_xianjiacanmou #仙家参谋
-		icon = unknown
+		icon = GFX_goal_ARF_xj
 		x = 12
 		y = 6
 		cost = 35
@@ -809,7 +814,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_zhiyuanjundui #“志愿”军队
-		icon = unknown
+		icon = GFX_goal_ARF_zy
 		x = 12
 		y = 7
 		cost = 21
@@ -874,7 +879,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_jingongjingong #进攻进攻再进攻
-		icon = unknown
+		icon = GFX_goal_ARF_jingong
 		x = 17
 		y = 2
 		cost = 7
@@ -893,7 +898,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_fuchouzhuyixuanchuan #复仇主义宣传
-		icon = unknown
+		icon = GFX_goal_ARF_fuchou
 		x = 18
 		y = 3
 		cost = 28
@@ -912,7 +917,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_chihouxianxing #斥候先行
-		icon = unknown
+		icon = GFX_goal_ARF_chihou
 		x = 18
 		y = 4
 		cost = 28
@@ -935,7 +940,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_juyuanqiangxizhe #巨渊强袭者
-		icon = unknown
+		icon = GFX_goal_ARF_qiangxi
 		x = 18
 		y = 5
 		cost = 28
@@ -954,7 +959,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_dihouzhanhuo #敌后战火
-		icon = unknown
+		icon = GFX_goal_ARF_dihou
 		x = 18
 		y = 6
 		cost = 28
@@ -978,7 +983,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_liuxiayanjing #留下眼睛，用来哭泣
-		icon = unknown
+		icon = GFX_goal_ARF_liuxia
 		x = 18
 		y = 7
 		cost = 28
@@ -997,7 +1002,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_xiangxinwmdelijian #相信我们的利剑
-		icon = unknown
+		icon = GFX_goal_ARF_lijian
 		x = 16
 		y = 3
 		cost = 28
@@ -1024,7 +1029,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_quantouerfeibazhang #拳头而非巴掌
-		icon = unknown
+		icon = GFX_goal_ARF_quantou
 		x = 16
 		y = 4
 		cost = 28
@@ -1047,7 +1052,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_bingguishensu #兵贵神速
-		icon = unknown
+		icon = GFX_goal_ARF_sudu
 		x = 16
 		y = 5
 		cost = 28
@@ -1069,7 +1074,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_renuwshizhihui #任务式指挥
-		icon = unknown
+		icon = GFX_goal_ARF_zhihui
 		x = 16
 		y = 6
 		cost = 28
@@ -1091,7 +1096,7 @@ focus_tree = {
 	}
 	focus = {
 		id = ARF_rendingshengtian #人定胜天
-		icon = unknown
+		icon = GFX_goal_ARF_rending
 		x = 16
 		y = 7
 		cost = 28
@@ -1118,14 +1123,14 @@ focus_tree = {
 					infantry = { x = 1 y = 1 }
 				}
 			}
-		}
 		capital_scope = {
 			create_unit = {
 				division = "division_template = \"步兵部队\" start_experience_factor = 0.4"
 				owner = ARF
 				count = 4
-			}
-	    }
+			    }
+	        }
+		}
 	}
 }
 

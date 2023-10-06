@@ -114,4 +114,44 @@ on_actions = {
 		    }
 	    }
     }
+	on_monthly_ZDG = {      #每月加0.05
+		effect = {
+	    if = {
+			limit = {
+				has_any_power_balance = yes
+				has_completed_focus = ZDG_xuebeng
+			}
+			add_power_balance_value = {
+            id = ZDG_extreme_northern_palace
+            value = 0.05  
+               }
+		    }
+	    }
+    }
+	on_weekly_ZDG = {      #检测合作度以及影响力是否会触发事件草蛇灰线
+		effect = {
+	    if = {
+			limit = {
+				check_variable = { ZDG_dikangzheyingxiangli_value = 5 }
+				check_variable = { ZDG_baoshoupaihezuodu_value < 5 }
+				check_variable = { ZDG_toujizhehezuodu_value < 5 }
+				check_variable = { ZDG_gongzhizhehezuodu_value < 5 }
+				NOT = { has_country_flag = ZDG_events34_flag }
+			}
+			country_event = { days = 1  id = ZDG_events.34 }
+		    }
+	    }
+    }
+	on_declare_war = {      #被宣战完成国策雪崩
+		effect = {
+	    if = {
+			limit = {
+				has_global_flag = liyue_unified
+			}
+			ZDG = {
+			complete_national_focus = ZDG_xuebeng
+		        }
+			}
+	    }
+    }
 }

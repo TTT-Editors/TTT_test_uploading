@@ -1,0 +1,209 @@
+defined_text = { #战争结语
+	name = TTT_Getwarpeacet
+	text = { #刻晴战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = KQG
+			}
+		}
+		localization_key = TTT_Keqingzhanbai
+	}
+	text = { #凝光战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = NNG
+			}
+		}
+		localization_key = TTT_Ningguangzhanbai
+	}
+	text = { #至冬战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+		localization_key = TTT_Zhidongzhanbai
+	}
+	text = { #仙人战败
+		trigger = {
+			event_target:winning_country = {
+			    or = {
+				is_nominate_liyue = yes
+				original_tag = ZDG
+				}
+			}
+			event_target:losing_country = {
+				original_tag = XRG
+			}
+		}
+		localization_key = TTT_Xianrenzhanbai
+	}
+	text = { #魈战败
+		trigger = {
+			event_target:winning_country = {
+			    or = {
+				is_nominate_liyue = yes
+				original_tag = ZDG
+				}
+			}
+			event_target:losing_country = {
+				original_tag = XOG
+			}
+		}
+		localization_key = TTT_Xiaozhanbai
+	}
+	text = { #璃月港战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = LYU
+				or = {
+				NOT = { has_global_flag = liyue_unified }
+				NOT = { country_exists = ZDG }
+				}
+			}
+		}
+		localization_key = TTT_Liyuegangzhanbai
+	}
+	text = { ##璃月抵抗同盟战败
+		trigger = {
+			event_target:winning_country = {
+				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				original_tag = LYU
+				has_global_flag = liyue_unified
+			}
+		}
+		localization_key = TTT_Liyuegangdikangtongmengzhanbai
+	}
+	text = { #好龙王战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = RTG
+				RTG = {
+				has_government = reformism
+				}
+			}
+		}
+		localization_key = TTT_Longwangzhanbai
+	}
+	text = { #坏龙王战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = RTG
+				RTG = {
+				has_government = hive_mind
+				}
+			}
+		}
+		localization_key = TTT_Longwangbadzhanbai
+	}
+	text = { #黑岩军战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = ANG
+			}
+		}
+		localization_key = TTT_Heiyanjunzhanbai
+	}
+	text = { #抵抗军战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				original_tag = ARF
+			}
+		}
+		localization_key = TTT_dikangjunzhanbai
+	}
+	#通用结语
+	text = {
+		localization_key = TTT_zhanbaitonyonjieyu
+	}
+}
+defined_text = { #战争描述
+	name = TTT_Getwapeace_description
+	text = { #联合阵线成功
+		trigger = {
+			event_target:winning_country = {
+				has_global_flag = liyue_unified
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+	localization_key = TTT_lianhezhenxianchenggon
+	}
+	text = { #联合阵线战败
+		trigger = {
+			event_target:winning_country = {
+				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				has_global_flag = liyue_unified
+				country_exists = ZDG
+			}
+		}
+	localization_key = TTT_lianhezhenxianzhanbai
+	}
+	text = { #干涉军胜利描述
+		trigger = {
+			event_target:winning_country = {
+				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				is_nominate_liyue = yes
+			}
+		}
+	localization_key = TTT_ganshejunshenglimiaoshu
+	}
+	text = { #干涉军失败描述
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+				NOT = { has_global_flag = liyue_unified }
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+	localization_key = TTT_ganshejunshibaimiaoshu
+	}
+	text = { #LYU内战通用描述
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				is_nominate_liyue = yes
+			}
+		}
+	localization_key = TTT_liyueneizhanmiaoshu
+	}
+	#通用描述
+	text = {
+		localization_key = TTT_wapeace_description_tonyon
+	}
+}

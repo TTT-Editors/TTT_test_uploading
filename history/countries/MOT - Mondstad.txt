@@ -4,6 +4,7 @@ set_research_slots = 3
 
 set_technology = {
 	infantry_weapons = 1
+	infantry_weapons1 = 1
 	ttt_uniform = 1
 	z_1999_grain_tech = 1
 	tech_support = 1
@@ -11,22 +12,35 @@ set_technology = {
 	bow_1 = 1
 	bow_2 = 1
 	bow_3 = 1
+	tech_engineers = 1
+	tech_recon = 1
 }
 
 recruit_character = MOT_Jean
-recruit_character = MOT_westwind_knights_1
+recruit_character = MOT_Jean2
+recruit_character = MOT_Jean3
+recruit_character = MOT_westwind_knights
 recruit_character = MDQ_Noelle
 recruit_character = MOT_Lisa
+recruit_character = MOT_Lisa2
 recruit_character = MOT_Swann
 recruit_character = MOT_Lawrence
 recruit_character = MOT_Mona
 recruit_character = MOT_Barbara
+recruit_character = MOT_Barbara2
 recruit_character = MOT_Rosary
+recruit_character = MOT_Rosary2
 recruit_character = MOT_Andlika
+recruit_character = MOT_Andlika2
+recruit_character = MOT_Andlika3
+recruit_character = MOT_Andlika4
 recruit_character = MOT_Selius
 recruit_character = MOT_Goethe
 recruit_character = MOT_Kayae
+recruit_character = MOT_Kayae2
+recruit_character = MOT_Kayae3
 recruit_character = MOT_Hertha
+recruit_character = MOT_Hertha2
 recruit_character = MDQ_Noelle2
 recruit_character = MOT_mika
 recruit_character = MOT_mika2
@@ -39,7 +53,7 @@ add_ideas = {
 	war_machines
     free_trade
 	westwind_knights_1
-	mot_lead_by_wind_a
+	MOT_lead_by_wind_a
 	MOT_partial_industrialization_1
 	MOT_shadow_of_snezhnaya
 	MOT_crisis_of_Tewalin
@@ -47,23 +61,33 @@ add_ideas = {
 	MOT_wave_of_refugee
 	MOD_the_rule_of_mondstad_defease_MOT
 }
-###mot_lead_by_wind
+###MOT_lead_by_wind
 set_variable = {MOT_Prestige_num = 6}
 MOT_check_MOT_Prestige_num = yes
-set_character_flag = MOT_Jean_is_available
-set_character_flag = MOT_Lisa_is_available
+set_country_flag = MOT_Jean_is_available
+set_country_flag = MOT_Lisa_is_available
 ###MOT_Political
+set_country_flag = MOT_Jean_is_ruler
 set_country_flag = MOT_open_gui_map1
 set_country_flag = MOT_Political_character1_is_locking
+set_country_flag = MOT_Political_character2_is_locking
 set_country_flag = MOT_Political_character7_is_locking
+add_ideas = MOT_Political_click_character1
+add_ideas = MOT_Political_click_character2
+1 = {
+	add_dynamic_modifier = { modifier = MOT_Political_character_modifier}
+}
+2 = {
+	add_dynamic_modifier = { modifier = MOT_Political_character_modifier}
+}
 resize_array = {
     array = MOT_Political_character_map_array
     value = 0
     size = 5
 }
-set_variable = {character_num = 0}
+set_variable = {global.MOT_character_num = 0}
 set_variable = {map_num = 0}
-set_variable = {array_value = 0}
+set_variable = {global.MOT_character_array_value = 0}
 remove_from_array = {
 	array = MOT_Political_character_map_array
 	index = 0
@@ -73,6 +97,7 @@ add_to_array = {
 	value = 1
 	index = 0
 }
+
 remove_from_array = {
 	array = MOT_Political_character_map_array
 	index = 2
@@ -83,6 +108,15 @@ add_to_array = {
 	index = 2
 }
 
+remove_from_array = {
+	array = MOT_Political_character_map_array
+	index = 1
+}
+add_to_array = {
+	array = MOT_Political_character_map_array
+	value = 2
+	index = 1
+}
 MOT_Political_character_is_visible =yes
 
 ###MOT_nationalfocus_mission
@@ -99,25 +133,25 @@ set_variable = {MOT_Deadline_num = 1}
 set_variable = {MOT_Progress_num = 1}
 set_variable = {MOT_Deadline_num_localization = 0}
 set_variable = {MOT_Progress_num_localization = 0}
-clamp_temp_variable = {
+clamp_variable = {
     var = MOT_Deadline_num
     min = 1
 	max = 11
 }
-clamp_temp_variable = {
+clamp_variable = {
     var = MOT_Deadline_num_localization
     min =0
 	max = 10
 }
-clamp_temp_variable = {
+clamp_variable = {
     var = MOT_Progress_num
     min = 1
-	max = 11
+	max = 101
 }
-clamp_temp_variable = {
+clamp_variable = {
     var = MOT_Progress_num_localization
     min = 0
-	max = 10
+	max = 100
 }
 ###MOT_Standpoint
 set_variable = {MOT_Standpoint_total_country_num_01 = 0}
@@ -132,7 +166,6 @@ set_variable = {global.MOT_Expectation_FXE = 20}
 #global_flag:MOT_federal_route
 #global_flag:MOT_industrialization_program
 #global_flag:MOT_military_reform
-
 
 
 set_stability = 0.50

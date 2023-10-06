@@ -272,13 +272,22 @@ country_event = {
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
-		name = BLL_event.15.a
-		custom_effect_tooltip = BLL_event.15.a_tooltip
+		if = {
+			limit= {
+				has_country_flag = bll_15_is_visible
+			}
+		    name = BLL_event.15.a
+		    custom_effect_tooltip = BLL_event.15.a_tooltip
+		else_if = {
+			limit = {
+				has_country_flag = bll_16_is_visible
+			}
+		    name = BLL_event.15.b
+		    custom_effect_tooltip = BLL_event.15.b_tooltip
+		}
+		}
 	}
-	option = {
-		name = BLL_event.15.b
-		custom_effect_tooltip = BLL_event.15.b_tooltip
-	}
+			
 }
 ###事件名：一个意见
 country_event = {

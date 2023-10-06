@@ -77,7 +77,7 @@ country_event = {
 			modifier = {has_equipment = {bow > 800} add = 2 factor = 2}
 		}
 		add_equipment_to_stockpile = {
-			type = bow
+			type = artillery_equipment
 			amount = -800
 			producer = MOT
 		}
@@ -90,8 +90,8 @@ country_event = {
 		name = MDQ_event.6.b
 		ai_chance = {
 			base = 3
-			modifier = {has_equipment = {bow < 800} add = 1 factor = 2}
-			modifier = {has_equipment = {bow > 200} add = 1 factor = 2}
+			modifier = {has_equipment = {artillery_equipment < 800} add = 1 factor = 2}
+			modifier = {has_equipment = {artillery_equipment > 200} add = 1 factor = 2}
 			modifier = {MDQ = {num_divisions > 20} factor = 0.75}
 			modifier = {MDQ = {num_divisions > 35} add = -2 factor = 0.5}
 		}
@@ -99,7 +99,7 @@ country_event = {
 			country_event = {id = MDQ_event.8 days = 5}
 		}
 		add_equipment_to_stockpile = {
-			type = bow
+			type = artillery_equipment
 			amount = -200
 			producer = MOT
 		}
@@ -116,7 +116,7 @@ country_event = {
 	option = {
 		name = MDQ_event.7.a
 		add_equipment_to_stockpile = {
-			type = bow
+			type = artillery_equipment
 			amount = 800
 			producer = MOT
 		}
@@ -133,7 +133,7 @@ country_event = {
 	option = {
 		name = MDQ_event.8.a
 		add_equipment_to_stockpile = {
-			type = bow
+			type = artillery_equipment
 			amount = 200
 			producer = MOT
 		}
@@ -174,7 +174,7 @@ country_event = {
 country_event = {
 	id = MDQ_event.11
 	immediate = {}
-	picture =null
+	
 	title = MDQ_event.11.t
 	desc = MDQ_event.11.d
 	is_triggered_only =yes
@@ -201,7 +201,7 @@ country_event = {
 country_event = {
 	id = MDQ_event.12
 	immediate = {}
-	picture =null
+	
 	title = MDQ_event.12.t
 	desc = MDQ_event.12.d
 	is_triggered_only =yes
@@ -228,7 +228,7 @@ country_event = {
 country_event = {
 	id = MDQ_event.13
 	immediate = {}
-	picture =null
+	
 	title = MDQ_event.13.t
 	desc = MDQ_event.13.d
 	is_triggered_only =yes
@@ -247,7 +247,7 @@ country_event = {
 country_event = {
 	id = MDQ_event.14
 	immediate = {}
-	picture =null
+	
 	title = MDQ_event.14.t
 	desc = MDQ_event.14.d
 	is_triggered_only =yes
@@ -275,7 +275,7 @@ country_event = {
 country_event = {
 	id = MDQ_event.15
 	immediate = {}
-	picture =null
+	
 	title = MDQ_event.15.t
 	desc = MDQ_event.15.d
 	is_triggered_only =yes
@@ -298,7 +298,6 @@ country_event = {
 country_event = {
 	id = MDQ_event.17
 	immediate = {}
-	picture =null
 	title = MDQ_event.17.t
 	desc = MDQ_event.17.d
 	is_triggered_only =yes
@@ -326,7 +325,6 @@ country_event = {
 country_event = {
 	id = MDQ_event.19
 	immediate = {}
-	picture =null
 	title = MDQ_event.19.t
 	desc = MDQ_event.19.d
 	is_triggered_only =yes
@@ -370,7 +368,6 @@ country_event = {
 country_event = {
 	id = MDQ_event.21
 	immediate = {}
-	picture =null
 	title = MDQ_event.21.t
 	desc = MDQ_event.21.d
 	is_triggered_only =yes
@@ -400,7 +397,6 @@ country_event = {
 country_event = {
 	id = MDQ_event.23
 	immediate = {}
-	picture =null
 	title = MDQ_event.23.t
 	desc = MDQ_event.23.d
 	is_triggered_only =yes
@@ -431,6 +427,21 @@ country_event = {
 
 #######################################
 #######################################
+###丰碑
+country_event = {
+	id = MDQ_event.31
+	immediate = {}
+	title = MDQ_event.31.t
+	desc = MDQ_event.31.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = MDQ_event.31.a
+	}
+}
+
+
+##########################################
 ##########################################
 ###转换为蒙德骑士团
 country_event = {
@@ -441,43 +452,61 @@ country_event = {
 	fire_only_once = yes
 	option = { 
 		name = MDQ_event.99.a
-        MOT = {
+        
+		##转移顾问
+		hidden_effect = {
+			MDQ_Dr_Livingstone = {
+				set_nationality = MOT
+			}
+			MDQ_Dr_Livingstone2 = {
+				set_nationality = MOT
+			}
+			MDQ_Mike = {
+				set_nationality = MOT
+			}
+			MDQ_Mike2 = {
+				set_nationality = MOT
+			}
+			MDQ_Elon_Musk = {
+				set_nationality = MOT
+			}
+			MDQ_Sternberg = {
+				set_nationality = MOT
+			}
+			MDQ_Zhuang_Yang = {
+				set_nationality = MOT
+			}
+			MDQ_Damut = {
+				set_nationality = MOT
+			}
+			MDQ_Damut2 = {
+				set_nationality = MOT
+			}
+			MDQ_Egidito_von_Page = {
+				set_nationality = MOT
+			}
+			MDQ_Egidito_von_Page2 = {
+				set_nationality = MOT
+			}
+			if = {
+				limit = {
+					has_country_flag = Noelle_in_dadawupa
+				}
+				MDQ_Noelle2= {
+					set_nationality = MOT
+				}
+				MDQ_Noelle= {
+					set_nationality = MOT
+				}
+			} 
+        }
+		MOT = {
             change_tag_from = ROOT 
         }
 		MOT = {
 			annex_country = {
 				target = MDQ
 				transfer_troops = yes
-			}
-		}
-		##转移顾问
-		MDQ_Dr_Livingstone = {
-			set_nationality = MOT
-		}
-		MDQ_Mike = {
-			set_nationality = MOT
-		}
-		MDQ_Elon_Musk= {
-			set_nationality = MOT
-		}
-		MDQ_Sternberg= {
-			set_nationality = MOT
-		}
-		MDQ_Zhuang_Yang= {
-			set_nationality = MOT
-		}
-		MDQ_Damut= {
-			set_nationality = MOT
-		}
-		if = {
-			limit = {
-				has_country_flag = Noelle_in_dadawupa
-			}
-			MDQ_Noelle2= {
-				set_nationality = MOT
-			}
-			MDQ_Noelle= {
-				set_nationality = MOT
 			}
 		}
 	}

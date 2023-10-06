@@ -53,6 +53,33 @@ MOT_Progress_decision_category = {
 	}
 	visible_when_empty = yes
 }
+
+MOT_dragon_crisis_decision_category = {
+	priority = 3
+	###用于开局检测的条件不要加太多
+	allowed = {
+		or = {
+			original_tag = MOT
+			original_tag = TWL
+		}
+	}
+	visible = {
+		or = {
+			tag = MOT
+			tag = TWL
+		}
+		has_global_flag = MOT_dragon_crisis
+		MOT = {
+			not = {
+				is_puppet = yes
+			}
+		}
+		has_global_flag = Lock_MOT_Standpoint_decision_1
+		has_global_flag = MOT_dragon_crisis_standpoint_is_locked
+
+	}
+	visible_when_empty = yes
+}
 MOT_test_decision_category = {
 	priority = 10
 	allowed = {

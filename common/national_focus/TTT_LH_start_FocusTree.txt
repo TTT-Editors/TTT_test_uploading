@@ -1,0 +1,1050 @@
+focus_tree = {
+	id = LH_start
+	country = {
+		factor = 0
+		modifier = {
+			tag = LYU
+			# add = 1000
+		}
+
+	}
+	default = no
+
+	focus = { #苦雪冥冥
+		id = LH_Kuxue_mingming
+		icon = GFX_goal_LYU_shouxuzhiyue
+		cost = 35
+		x = 8
+		y = 0
+
+		completion_reward = {
+			remove_ideas = panic_fills_land
+			add_political_power = 100
+			hidden_effect = {
+				news_event = {
+					id = global_news.23 #事件id
+					days = 7 #几天后触发
+				}#此为触发世界新闻
+				country_event = {
+					id = ganyu.56
+					days = 15
+				}
+				country_event = { id = LHPG.38 days = 3 }
+				set_party_name = { 
+					ideology = reformism 
+					long_name = LH_party_linshi_zhengfu_long 
+					name = LH_party_linshi_zhengfu
+				}
+				add_country_leader_role = {
+					character = LYU_troika
+					promote_leader = yes
+					
+					country_leader = {
+						ideology = moraxism
+						desc = LYU_troika_desc
+						expire = "2022.10.20.1"
+						traits = { Liyue_Harbor_troika }
+					}
+				}
+			}
+			clear_array = troika_cha_array
+			clear_array = troika_prestige_array
+			clear_array = troika_prestige
+			resize_array = {
+				array = troika_cha_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige
+				size = 3
+				value = 0
+			}
+			
+
+		}
+	}
+	focus = {
+		id = LH_ZhaiXing #摘星 --烟绯
+		icon = GFX_goal_LYU_xuanbufeichuqixing
+		cost = 35
+
+		relative_position_id = LH_Kuxue_mingming
+		x = -2
+		y = 1
+		
+		prerequisite = {
+			focus = LH_Kuxue_mingming
+		}
+		mutually_exclusive = {
+			focus = LH_Shouyue
+			focus = LH_Chongyang
+		}
+
+		available = {
+			has_idea = collapse_ofqixing_system
+		}
+		bypass_if_unavailable = yes
+		completion_reward = {
+			remove_ideas = collapse_ofqixing_system
+			add_to_variable = {
+				var = troika_prestige^0
+				value = 2
+			} #烟绯威望
+			add_stability = -0.1
+			add_war_support = -0.1
+			add_political_power = 100
+			
+			hidden_effect = {
+				NNG = {
+					add_opinion_modifier = {
+						target = LYU
+						modifier = Liyue_Harbor_dip2
+					}
+				}
+				KQG = {
+					add_opinion_modifier = {
+						target = LYU
+						modifier = Liyue_Harbor_dip2
+					}
+				}
+				XRG = {
+					add_opinion_modifier = {
+						target = LYU
+						modifier = Liyue_Harbor_dip3
+					}
+				}
+				RTG = {
+					add_opinion_modifier = {
+						target = LYU
+						modifier = Liyue_Harbor_dip3
+					}
+				}
+				XOG = {
+					add_opinion_modifier = {
+						target = LYU
+						modifier = Liyue_Harbor_dip3
+					}
+				}
+			}
+			add_opinion_modifier = {
+                target = NNG
+                modifier = Liyue_Harbor_dip2
+            }
+		    add_opinion_modifier = {
+                target = KQG
+                modifier = Liyue_Harbor_dip2
+            }
+
+		    add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip3
+            }
+			add_opinion_modifier = {
+                target = RTG
+                modifier = Liyue_Harbor_dip3
+            }
+			add_opinion_modifier = {
+                target = XOG
+                modifier = Liyue_Harbor_dip3
+            }
+		}
+	}
+
+	focus = {
+		id = LH_Shouyue #守月 --甘雨
+		icon = GFX_goal_LYU_zantingqixingzhiwu
+		cost = 70
+
+		relative_position_id = LH_Kuxue_mingming
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = LH_Kuxue_mingming
+		}
+		mutually_exclusive = {
+			focus = LH_ZhaiXing
+			focus = LH_Chongyang
+		}
+		
+		completion_reward = { 
+			remove_ideas = collapse_ofqixing_system
+			add_to_variable = {
+					var = troika_prestige^1
+					value = 2
+				} #甘雨威望
+			add_political_power = -50
+			add_stability = 0.05
+			hidden_effect = {
+				NNG = {
+					add_opinion_modifier = {
+						target = LYU
+						modifier = Liyue_Harbor_dip1
+					}
+				}
+				KQG = {
+					add_opinion_modifier = {
+						target = LYU
+						modifier = Liyue_Harbor_dip1
+					}
+				}
+			}
+			
+			add_opinion_modifier = {
+                target = NNG
+                modifier = Liyue_Harbor_dip1
+            }
+		    add_opinion_modifier = {
+                target = KQG
+                modifier = Liyue_Harbor_dip1
+            }
+		}
+	}
+
+	focus = {
+		id = LH_Chongyang #重阳 --白术
+		icon = GFX_goal_LYU_chonjianqixing
+		cost = 70
+
+		relative_position_id = LH_Kuxue_mingming
+		x = 2
+		y = 1
+
+		prerequisite = {
+			focus = LH_Kuxue_mingming
+		}
+		mutually_exclusive = {
+			focus = LH_ZhaiXing
+			focus = LH_Shouyue
+		}
+
+		completion_reward = { 
+			remove_ideas = collapse_ofqixing_system
+			add_to_variable = {
+					var = troika_prestige^2
+					value = 2
+				} #白术威望
+			add_political_power = 10
+			add_popularity = {
+				ideology = authoritarianism
+				popularity = -0.05
+			}
+			XRG = {
+				add_opinion_modifier = {
+					target = LYU
+					modifier = Liyue_Harbor_dip5
+				}
+			}
+			RTG = {
+				add_opinion_modifier = {
+					target = LYU
+					modifier = Liyue_Harbor_dip5
+				}
+			}
+			XOG = {
+				add_opinion_modifier = {
+					target = LYU
+					modifier = Liyue_Harbor_dip5
+				}
+			}
+			add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip5
+            }
+			add_opinion_modifier = {
+                target = RTG
+                modifier = Liyue_Harbor_dip5
+            }
+			add_opinion_modifier = {
+                target = XOG
+                modifier = Liyue_Harbor_dip5
+            }
+		}
+	}
+
+	focus = {
+		id = LH_Jisuijiasuo #击碎枷锁 --烟绯
+		icon = GFX_goal_LYU_tonguoshiwupeiji
+		cost = 70
+
+		relative_position_id = LH_ZhaiXing
+		x = 0
+		y = 1
+		
+		prerequisite = {
+			focus = LH_ZhaiXing
+			focus = LH_Shouyue
+			focus = LH_Chongyang
+		}
+		mutually_exclusive = {
+			focus = LH_Haishanglongwang
+			focus = LH_Zousitexu
+		}
+		completion_reward = {
+			
+			unlock_decision_tooltip = LH_breakthough_blockade_decision
+		}
+	}
+
+	focus = {
+		id = LH_Haishanglongwang #海上龙王 --甘雨
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 70
+
+		relative_position_id = LH_Shouyue
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = LH_ZhaiXing
+			focus = LH_Shouyue
+			focus = LH_Chongyang
+		}
+		mutually_exclusive = {
+			focus = LH_Jisuijiasuo
+			focus = LH_Zousitexu
+		}
+
+		available = {
+			has_idea = blocked_harbour
+		}
+		bypass_if_unavailable = yes
+
+		completion_reward = { 
+			remove_ideas = blocked_harbour
+			random_owned_controlled_state = {
+				limit = {
+					industrial_complex > 1
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+			add_to_variable = {
+					var = troika_prestige^1
+					value = 2
+				} #甘雨威望
+		}
+	}
+
+	focus = {
+		id = LH_Zousitexu #走私特许 --白术
+		icon = GFX_goal_LYU_zousitexuling
+		cost = 35
+
+		relative_position_id = LH_Chongyang
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = LH_ZhaiXing
+			focus = LH_Shouyue
+			focus = LH_Chongyang
+		}
+		mutually_exclusive = {
+			focus = LH_Jisuijiasuo
+			focus = LH_Haishanglongwang
+		}
+
+		available = {
+			has_idea = blocked_harbour
+		}
+		bypass_if_unavailable = yes
+		
+		completion_reward = { 
+			unlock_decision_tooltip = LH_zousi_texu_decision
+			add_to_variable = {
+					var = troika_prestige^2
+					value = 2
+				} #白术威望
+		}
+	}
+
+	focus = {
+		id = LH_Jinjifaling #紧急法令 --烟绯
+		icon = GFX_goal_LYU_shelizuigaojunshi
+		cost = 70
+
+		relative_position_id = LH_Jisuijiasuo
+		x = 0
+		y = 1
+		
+		prerequisite = {
+			focus = LH_Jisuijiasuo
+			focus = LH_Haishanglongwang
+			focus = LH_Zousitexu
+		}
+		mutually_exclusive = {
+			focus = LH_Jinlimibu
+			focus = LH_Zaofangqunxian
+		}
+
+		available = {
+			has_idea = unstable_mora_system
+		}
+		bypass_if_unavailable = yes
+
+		completion_reward = {
+			add_to_variable = {
+					var = troika_prestige^0
+					value = 2
+				} #烟绯威望
+			swap_ideas = {
+				remove_idea = unstable_mora_system
+				add_idea = LH_price_in_fortune
+			}
+		}
+	}
+
+	focus = {
+		id = LH_Zaofangqunxian #造访群仙 --甘雨
+		icon = GFX_goal_LYU_xiangxianrenqiuzhu
+		cost = 70
+
+		relative_position_id = LH_Haishanglongwang
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = LH_Jisuijiasuo
+			focus = LH_Haishanglongwang
+			focus = LH_Zousitexu
+		}
+		mutually_exclusive = {
+			focus = LH_Jinjifaling
+			focus = LH_Jinlimibu
+		}
+		
+		available = {
+			has_idea = unstable_mora_system
+		}
+		bypass_if_unavailable = yes
+
+		completion_reward = { 
+			XRG = {
+				country_event = { id = LHPG.7 days = 2 }
+			}
+			custom_effect_tooltip = LH_Zaofangqunxian_effect_tt
+		}
+	}
+
+	focus = {
+		id = LH_Jinlimibu #尽力弥补 --白术
+		icon = GFX_goal_LYU_mibumolatixi
+		cost = 70
+
+		relative_position_id = LH_Zousitexu
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = LH_Jisuijiasuo
+			focus = LH_Haishanglongwang
+			focus = LH_Zousitexu
+		}
+		mutually_exclusive = {
+			focus = LH_Jinjifaling
+			focus = LH_Zaofangqunxian
+		}
+
+		available = {
+			has_idea = unstable_mora_system
+		}
+		bypass_if_unavailable = yes
+
+
+		completion_reward = { 
+			add_to_variable = {
+					var = troika_prestige^2
+					value = 2
+				} #白术威望		
+			custom_effect_tooltip = LH_Jinlimibu_effect_tt
+			add_political_power = -50
+			add_stability = -0.05
+			add_war_support = -0.05
+			hidden_effect = {
+				remove_ideas = unstable_mora_system
+				add_timed_idea = {
+					idea = unstable_mora_system
+					days = 120
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LH_Menliuqingqing #门柳青青
+		icon = GFX_goal_LYU_zuizhongxieyi
+		cost = 70
+
+		relative_position_id = LH_Zaofangqunxian
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = LH_Zaofangqunxian
+			focus = LH_Jinjifaling
+			focus = LH_Jinlimibu
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_final_election_tt
+				NOT = {
+					has_country_flag = LH_assassinate_begin
+					has_idea = ganyu_assassination_idea_1
+				}
+			}
+			
+		}
+		completion_reward = { 
+			#读取威望，对威望进行从高到低的排序
+			LH_troika_sort = yes
+			custom_effect_tooltip = LH_Menliuqingqing_effect_tt
+			hidden_effect = {
+				country_event = { id = LHPG.4 days = 4 }
+			}
+
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 	focus = {
+# 		id = LH_xuanbufeichuqixing #摘星
+# 		icon = GFX_goal_LYU_xuanbufeichuqixing
+# 		cost = 56
+
+# 		x = 6
+# 		y =11
+        
+
+
+# 		ai_will_do = {
+# 		    base = 10
+# 		}
+		
+# 		completion_reward = {
+# 			remove_ideas = collapse_ofqixing_system
+# 			add_political_power = -200
+# 			add_stability = -0.2
+# 			add_war_support = -0.2
+# 		    add_opinion_modifier = {
+#                 target = NNG
+#                 modifier = Liyue_Harbor_dip2
+#             }
+# 		    add_opinion_modifier = {
+#                 target = KQG
+#                 modifier = Liyue_Harbor_dip2
+#             }
+# 		    add_opinion_modifier = {
+#                 target = XRG
+#                 modifier = Liyue_Harbor_dip3
+#             }
+            
+# 		}
+# 	}
+
+# 	focus = {
+# 		id = LH_zanting_qixing_zhiwu
+# 		icon = GFX_goal_LYU_zantingqixingzhiwu
+# 		cost = 56
+
+# 		x = 8
+# 		y =11
+
+
+
+# 		ai_will_do = {
+# 		    base = 15
+# 		}
+		
+# 		completion_reward = {
+# 			remove_ideas = collapse_ofqixing_system
+# 			add_political_power = -100
+# 			add_stability = -0.1
+# 		    add_opinion_modifier = {
+#                 target = NNG
+#                 modifier = Liyue_Harbor_dip1
+#             }
+# 		    add_opinion_modifier = {
+#                 target = KQG
+#                 modifier = Liyue_Harbor_dip1
+#             }
+# 		 	set_variable = { troika_Ganyu = 1 }
+# 		}
+
+# 	}
+# 	focus = {
+# 		id = LH_chongjian_qixing_zhidu
+# 		icon = GFX_goal_LYU_chonjianqixing
+# 		cost = 28
+
+# 		x = 10
+# 		y =11
+
+# 		ai_will_do = {
+# 		    base = 5
+# 		}
+		
+#         completion_reward = {
+# 			remove_ideas = collapse_ofqixing_system
+# 			add_political_power = -100
+# 			XRG = {
+# 				country_event = {
+# 					id = LHPG.5
+# 					days = 3
+# 				}
+# 			}
+# 			add_opinion_modifier = {
+#                 target = NNG
+#                 modifier = Liyue_Harbor_dip4
+#             }
+# 			add_opinion_modifier = {
+#                 target = KQG
+#                 modifier = Liyue_Harbor_dip4
+#             }
+# 			add_opinion_modifier = {
+#                 target = XRG
+#                 modifier = Liyue_Harbor_dip5
+#             }
+# 			custom_effect_tooltip = LH_xianren_qianglie_buman
+# 			set_variable = { troika_Baizhu = 1 }
+# 		}
+# 	}
+
+# 	focus = {
+# 		id = LH_sheli_zuigao_junshifating
+# 		icon = GFX_goal_LYU_shelizuigaojunshi
+# 		cost = 28
+# 		mutually_exclusive = {
+# 			focus = LH_xiang_jundui_fasong_jintie
+# 			focus = LH_zaici_junshi_gaige
+# 		}
+# 		x = 6
+# 		y =12
+
+# 		ai_will_do = {
+# 		    base = 10
+# 		}
+		
+#         completion_reward = {
+# 			swap_ideas = {
+# 			    remove_idea = disorganized_army
+# 			    add_idea = LH_general_court_martial
+# 			} 
+# 			hidden_effect = {
+# 			    country_lock_all_division_template = no
+# 		    }
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Yanfei }
+# 				}
+# 			    set_variable = { troika_Yanfei = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Yanfei = 1 }
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = LH_xiang_jundui_fasong_jintie
+# 		icon = GFX_goal_LYU_xiangjunduifasong
+# 		cost = 56
+
+# 		mutually_exclusive = {
+# 			focus = LH_sheli_zuigao_junshifating
+# 			focus = LH_zaici_junshi_gaige
+# 		}
+# 		x = 8
+# 		y =12
+
+# 		ai_will_do = {
+# 		    base = 5
+# 		}
+		
+#         completion_reward = {
+# 			remove_ideas = disorganized_army
+# 			hidden_effect = {
+# 			    country_lock_all_division_template = no
+# 		    }
+# 			add_war_support = -0.1
+# 			add_timed_idea = {
+# 				idea = LH_troops_allowance
+# 				days = 180
+# 			}
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Ganyu }
+# 				}
+# 			    set_variable = { troika_Ganyu = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Ganyu = 1 }
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = LH_zaici_junshi_gaige
+# 		icon = GFX_goal_LYU_zaicijunshigaige
+# 		cost = 56
+
+
+# 		mutually_exclusive = {
+# 			focus = LH_sheli_zuigao_junshifating
+# 			focus = LH_xiang_jundui_fasong_jintie
+# 		}
+
+# 		ai_will_do = {
+# 		    base = 5
+# 		}
+		
+# 		x = 10
+# 		y =12
+
+#         completion_reward = {
+# 			remove_ideas = disorganized_army
+# 			hidden_effect = {
+# 			    country_lock_all_division_template = no
+# 		    }
+# 			add_timed_idea = {
+# 			    idea = LH_quanmian_military_reform
+# 				days = 365
+# 			}
+
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Baizhu }
+# 				}
+# 			    set_variable = { troika_Baizhu = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Baizhu = 1 }
+# 			}
+# 		}
+# 	}
+
+# 	focus = {
+# 		id = LH_tongguo_shiwu_peijifa
+# 		icon = GFX_goal_LYU_tonguoshiwupeiji
+# 		cost = 56
+
+# 		prerequisite = {
+# 			focus = LH_sheli_zuigao_junshifating
+# 			focus = LH_xiang_jundui_fasong_jintie
+# 			focus = LH_zaici_junshi_gaige
+# 		}
+
+# 		mutually_exclusive = {
+# 			focus = LH_yu_beidou_tuoxie
+# 			focus = LH_zousi_texuling
+# 		}
+
+# 		ai_will_do = {
+# 		    base = 5
+# 		}
+		
+# 		x = 6
+# 		y =13
+
+#         completion_reward = {
+# 			set_country_flag = jiesuo_shiwu_peijifa_decision
+# 			unlock_decision_category_tooltip = LH_shiwu_peiji_decision
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Yanfei }
+# 				}
+# 			    set_variable = { troika_Yanfei = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Yanfei = 1 }
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = LH_yu_beidou_tuoxie
+# 		icon = GFX_goal_LYU_yubeidoutuoxie
+# 		cost = 56
+
+# 		prerequisite = {
+# 			focus = LH_sheli_zuigao_junshifating
+# 			focus = LH_xiang_jundui_fasong_jintie
+# 			focus = LH_zaici_junshi_gaige
+# 		}
+
+# 		mutually_exclusive = {
+# 			focus = LH_tongguo_shiwu_peijifa
+# 			focus = LH_zousi_texuling
+# 		}
+
+# 		ai_will_do = {
+# 		    base = 10
+# 		}
+		
+# 		x = 8
+# 		y =13
+        
+# 		available = {
+# 			NNG = { exists = yes }
+# 		}
+#         completion_reward = {
+# 			NNG = {
+# 				country_event = {
+# 					id = LHPG.1
+# 					days = 4
+# 				}
+# 			}
+# 			custom_effect_tooltip = LH_yinian_fengsuo_yingxiang
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Ganyu }
+# 				}
+# 			    set_variable = { troika_Ganyu = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Ganyu = 1 }
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = LH_xiang_xianren_qiuzhu
+# 		icon = GFX_goal_LYU_xiangxianrenqiuzhu
+# 		cost = 28
+
+# 		prerequisite = {
+# 			focus = LH_tongguo_shiwu_peijifa
+# 			focus = LH_yu_beidou_tuoxie
+# 			focus = LH_zousi_texuling
+# 		}
+
+# 		mutually_exclusive = {
+# 			focus = LH_mibu_mola_tixi
+# 			focus = LH_yubei_faxing_zhibi
+# 		}
+
+# 		x = 6
+# 		y =14
+
+# 		ai_will_do = {
+# 		    base = 10
+# 		}
+		
+#         completion_reward = {
+# 			XRG = {
+# 				country_event = {
+# 					id = LHPG.7
+# 					days = 3
+# 				}
+# 			}
+# 			custom_effect_tooltip = LH_changqi_baoliu_molatixibuwen
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Yanfei }
+# 				}
+# 			    set_variable = { troika_Yanfei = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Yanfei = 1 }
+# 			}
+# 			hidden_effect = {
+# 				mark_focus_tree_layout_dirty = yes
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = LH_mibu_mola_tixi
+# 		icon = GFX_goal_LYU_mibumolatixi
+# 		cost = 56
+
+# 		prerequisite = {
+# 			focus = LH_tongguo_shiwu_peijifa
+# 			focus = LH_yu_beidou_tuoxie
+# 			focus = LH_zousi_texuling
+# 		}
+
+# 		mutually_exclusive = {
+# 			focus = LH_xiang_xianren_qiuzhu
+# 			focus = LH_yubei_faxing_zhibi
+# 		}
+
+# 		ai_will_do = {
+# 		    base = 10
+# 		}
+		
+# 		x = 8
+# 		y =14
+
+#         completion_reward = {
+# 			remove_ideas = unstable_mora_system
+# 			add_timed_idea = { 
+# 				idea = LH_price_in_fortune 
+# 				days = 365
+# 			}  
+# 			add_political_power = -100
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Ganyu }
+# 				}
+# 			    set_variable = { troika_Ganyu = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Ganyu = 1 }
+# 			}
+# 			hidden_effect = {
+# 				mark_focus_tree_layout_dirty = yes
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = LH_zousi_texuling
+# 		icon = GFX_goal_LYU_zousitexuling
+# 		cost = 28
+
+# 		prerequisite = {
+# 			focus = LH_sheli_zuigao_junshifating
+# 			focus = LH_xiang_jundui_fasong_jintie
+# 			focus = LH_zaici_junshi_gaige
+# 		}
+
+# 		mutually_exclusive = {
+# 			focus = LH_tongguo_shiwu_peijifa
+# 			focus = LH_yu_beidou_tuoxie
+# 		}
+
+# 		ai_will_do = {
+# 		    base = 5
+# 		}
+		
+# 		x = 10
+# 		y =13
+
+#         completion_reward = {
+# 			unlock_decision_category_tooltip = LH_zousi_texu_decision
+# 			swap_ideas = {
+# 				remove_idea = blocked_harbour
+# 			    add_idea = LH_allow_smuggle
+# 			}
+# 			add_opinion_modifier = {
+#                 target = XOG
+#                 modifier = Liyue_Harbor_dip7
+#             }
+# 			add_opinion_modifier = {
+#                 target = XRG
+#                 modifier = Liyue_Harbor_dip7
+#             }
+# 			add_opinion_modifier = {
+#                 target = KQG
+#                 modifier = Liyue_Harbor_dip7
+#             }
+# 			add_opinion_modifier = {
+#                 target = RTG
+#                 modifier = Liyue_Harbor_dip7
+#             }
+# 			add_opinion_modifier = {
+#                 target = NNG
+#                 modifier = Liyue_Harbor_dip8
+#             }
+# 			set_country_flag = Baizhu_yunxu_zousi
+# 			set_country_flag = {
+# 				flag = Baizhu_yunxu_kaishi_zousi
+# 				days = 120
+# 				value = 1
+# 			}
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Baizhu }
+# 				}
+# 			    set_variable = { troika_Baizhu = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Baizhu = 1 }
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = LH_yubei_faxing_zhibi
+# 		icon = GFX_goal_LYU_yubeifaxinghuobi
+# 		cost = 56
+
+# 		prerequisite = {
+# 			focus = LH_tongguo_shiwu_peijifa
+# 			focus = LH_yu_beidou_tuoxie
+# 			focus = LH_zousi_texuling
+# 		}
+
+# 		mutually_exclusive = {
+# 			focus = LH_xiang_xianren_qiuzhu
+# 			focus = LH_mibu_mola_tixi
+# 		}
+
+# 		ai_will_do = {
+# 		    base = 5
+# 		}
+		
+# 		x = 10
+# 		y =14
+
+#         completion_reward = {
+# 			swap_ideas = {
+# 				remove_idea = unstable_mora_system
+# 				add_idea = Liyue_paper_currency1
+# 			}
+# 			if = {
+# 				limit = { 
+# 					NOT = { has_variable = troika_Baizhu }
+# 				}
+# 			    set_variable = { troika_Baizhu = 1 }
+# 			}
+# 			else = {
+# 				add_to_variable = { troika_Baizhu = 1 }
+# 			}
+# 		}
+# 	}
+
+# 	focus = {
+# 		id = LH_liyue_xinhangxiang
+# 		icon = GFX_goal_LYU_zuizhongxieyi
+# 		cost = 56
+
+# 		prerequisite = {
+# 			focus = LH_xiang_xianren_qiuzhu
+# 			focus = LH_mibu_mola_tixi
+# 			focus = LH_yubei_faxing_zhibi
+# 		}
+
+# 		x = 8
+# 		y =15
+
+#         completion_reward = {
+# 			country_event = {
+# 				id = LHPG.4
+# 				days = 3
+# 			}
+# 			set_country_flag = jieshusantoutongmeng
+# 			hidden_effect = {
+# 				mark_focus_tree_layout_dirty = yes
+# 			}
+# 		}
+# 	}
+# }

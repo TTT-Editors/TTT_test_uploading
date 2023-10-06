@@ -1,0 +1,921 @@
+LH_debug_decision = {
+	LH_ganyu_prestige_up = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = troika_prestige^1
+				value = 2
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_yanfei_prestige_up = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = troika_prestige^0
+				value = 2
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_baizhu_prestige_up = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = troika_prestige^2
+				value = 2
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_prestige = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			LH_troika_sort = yes
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_prestige_reset = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			clear_array = troika_cha_array
+			clear_array = troika_prestige_array
+			clear_array = troika_prestige
+			resize_array = {
+				array = troika_cha_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige_array
+				size = 3
+				value = 0
+			}
+			resize_array = {
+				array = troika_prestige
+				size = 3
+				value = 0
+			}
+			
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_ganyu = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		modifier = {
+
+		}
+		complete_effect = {
+			LYU_Ganyu = {
+				promote_character = yes
+				
+			}
+			remove_trait = {
+				trait = sinner_ofLiyue
+				character = LYU_Ganyu
+			}
+			add_trait = {
+				trait = obey_rule_law
+				character = LYU_Ganyu
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_yanfei = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		
+		modifier = {
+
+		}
+		complete_effect = {
+			LYU_yanfei = {
+				promote_character = yes
+				
+			}
+			set_popularities = {
+				reformism = 60
+				authoritarianism = 20
+				communism = 10
+				liberalism = 10
+			}
+			set_politics = {
+				ruling_party = authoritarianism
+				elections_allowed = no
+			}
+			set_party_name = { 
+				ideology = authoritarianism
+				long_name = LH_party_Xianren_long 
+				name = LH_party_Xianren
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	LH_baizhu = {
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		
+		modifier = {
+
+		}
+		complete_effect = {
+			LYU_baizhu = {
+				promote_character = yes
+				
+			}
+			set_popularities = {
+				reformism = 20
+				despotism = 40
+				authoritarianism = 20
+				communism = 10
+				
+				liberalism = 10
+			}
+			set_politics = {
+				ruling_party = despotism
+				elections_allowed = no
+			}
+			set_party_name = { 
+				ideology = despotism
+				long_name = LH_party_Xianren_long 
+				name = LH_party_Xianren
+			}
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+}
+
+
+LH_solve_problem_decision = {
+	LH_breakthough_blockade_decision = { #冲击封锁线
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		visible = {
+			has_completed_focus = LH_Jisuijiasuo
+			has_idea = blocked_harbour
+			
+		}
+		custom_cost_trigger = {
+			command_power > 24
+			has_equipment = {
+				convoy > 99
+			}
+		}
+		available = {
+			has_equipment = {
+				convoy > 99
+			}
+		}
+		custom_cost_text = LH_breakthough_blockade_decision_cost_tt
+
+		days_remove = 7
+		fire_only_once = yes
+		
+		remove_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				add_equipment_to_stockpile = {
+					type = convoy
+					amount = -100
+				}
+			}
+			NNG = {
+				country_event = {
+					id = LHPG.1
+					days = 4
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+	}
+
+	LH_zousi_texu_decision = { #扩大走私范围
+
+		icon = GFX_LH_increase_shiwu_peiji
+
+		visible = {
+			has_completed_focus = LH_Zousitexu
+			OR = { 
+                has_idea = blocked_harbour
+				has_idea = blocked_harbour1
+				has_idea = blocked_harbour2
+			}
+		}
+
+		cost = 0
+
+		days_remove = 60
+		
+		remove_effect = {
+			if = {
+				limit = { has_idea = blocked_harbour }
+				swap_ideas = {
+					remove_idea = blocked_harbour
+					add_idea = blocked_harbour1
+				}
+			}
+			else_if = {
+				limit = { has_idea = blocked_harbour1 }
+				swap_ideas = {
+					remove_idea = blocked_harbour1
+					add_idea = blocked_harbour2
+				}
+			}
+			else = {
+				remove_ideas = blocked_harbour2
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+	}
+	
+}
+LH_assassinate = {
+	Patience_decreasing = { #耐心减少 ——主要结束方式
+		icon = decision_icon_ganyu_assassination_1
+		activation = {
+			# LYU = {
+			# 	has_country_flag = LH_assassinate_begin
+			# }
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_remove = 0
+		days_mission_timeout = Patience_decreasing_time
+		timeout_effect = {
+			country_event = { id = LHPG.25 days = 2 }
+			remove_mission = Patience_decreasing
+			remove_mission = Extremists_power_expande
+			remove_mission = Extremists_conspiracy
+		}
+		complete_effect = {
+
+		}
+	}
+	Extremists_power_expande = {
+		icon = decision_icon_ganyu_assassination_1
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_remove = 0
+		days_mission_timeout = Extremists_action_time
+		timeout_effect = {
+			hidden_effect = {
+				activate_mission = Extremists_power_expande
+			}
+			add_to_variable = {
+				var = Extremists_plot_level
+				value = 1
+			}
+			clamp_variable = {
+				var = Extremists_plot_level
+				min = 0
+				max = 5
+			}
+			if = {
+				limit = {
+					has_country_flag = LH_has_informer
+				}
+				set_variable = {
+					var = Extremists_plot_level_visible
+					value = Extremists_plot_level
+				}
+			}
+		}
+	}
+	Extremists_conspiracy = {
+		icon = decision_icon_ganyu_assassination_1
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_remove = 0
+		days_mission_timeout = Extremists_action_time
+		timeout_effect = {
+			hidden_effect = {
+				activate_mission = Extremists_conspiracy
+			}
+			random_list = {
+				30 = {
+					custom_effect_tooltip = LH_Security_forces_yanfei_down
+					add_to_variable = {
+						var = LH_Security_forces_array^0
+						value = -1
+					}
+					clamp_variable = {
+						var = LH_Security_forces_array^0
+						min = 0
+						max = 5
+					}
+				}
+				40 = {
+					custom_effect_tooltip = LH_Security_forces_ganyu_down
+					add_to_variable = {
+						var = LH_Security_forces_array^1
+						value = -1
+					}
+					clamp_variable = {
+						var = LH_Security_forces_array^1
+						min = 0
+						max = 5
+					}
+				}
+				30 = {
+					custom_effect_tooltip = LH_Security_forces_baizhu_down
+					add_to_variable = {
+						var = LH_Security_forces_array^2
+						value = -1
+					}
+					clamp_variable = {
+						var = LH_Security_forces_array^2
+						min = 0
+						max = 5
+					}
+				}
+			}
+		}
+	}
+
+
+	#决议
+	LH_Collecting_Intelligence = { #收集情报
+		# icon = GFX_LH_increase_shiwu_peiji
+
+		cost = 5
+		days_re_enable = 10
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			custom_effect_tooltip = LH_Collecting_Intelligence_tt
+			for_loop_effect = {
+				end = 3
+				value = v
+				set_variable = {
+					var = LH_Security_forces_array_visible^v
+					value = LH_Security_forces_array^v
+				}
+			}
+		}
+	}
+	LH_Infiltrate_extremists = {
+		cost = 10
+		days_re_enable = 10
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			custom_effect_tooltip = LH_Infiltrate_extremists_tt
+			set_variable = {
+				var = Extremists_plot_level_visible
+				value = Extremists_plot_level
+			}
+		}
+	}
+	LH_Infiltrate_extremists = {
+		cost = 15
+		days_re_enable = 10
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			set_variable = {
+				var = Extremists_plot_level_visible
+				value = Extremists_plot_level
+			}
+		}
+	}
+	LH_Flipped_informer = { #安插线人
+		cost = 25
+		days_re_enable = 10
+		days_remove = -1
+		available = {
+			
+		}
+		modifier = {
+			custom_modifier_tooltip = LH_has_informer_tt
+		}
+		remove_trigger = {
+			custom_trigger_tooltip = {
+				tooltip = Flipped_informer_trigger_tt
+				NOT = { has_country_flag = LH_has_informer }
+				NOT = { has_country_flag = LH_assassinate_begin }
+			}
+			
+		}
+		complete_effect = {
+			custom_effect_tooltip = LH_Flipped_informer_tt
+			set_country_flag = LH_has_informer
+		}
+	}
+	LH_informer_search = {
+		cost = 10
+		days_remove = 0
+		fire_only_once = yes
+		available = {
+			
+		}
+		visible = {
+			has_country_flag = LH_has_informer
+		}
+		complete_effect = {
+			country_event = { id = LHPG.13 }
+		}
+	}
+	LH_informants_evacuate = {
+		cost = 0
+		days_remove = 0
+		fire_only_once = yes
+		available = {
+			
+		}
+		visible = {
+			has_country_flag = LH_has_informer
+		}
+		complete_effect = {
+			clr_country_flag = LH_has_informer
+			custom_effect_tooltip = LH_informants_evacuate_tt
+		}
+	}
+	#加强安保
+	LH_Strengthen_security_forces_yanfei = {
+		cost = 10
+		days_remove = 0
+		days_re_enable = 14
+		available = {
+			has_equipment = {
+				infantry_equipment > 14
+			}
+		}
+		visible = {
+			check_variable = {
+				var = LH_Security_forces_array_visible^0
+				value = 5
+				compare = less_than
+			}
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -15
+			}
+			custom_effect_tooltip = LH_Strengthen_security_forces_yanfei_effect_tt
+			add_to_variable = {
+				var = LH_Security_forces_array^0
+				value = 1
+			}
+			clamp_variable = {
+				var = LH_Security_forces_array^0
+				min = 0
+				max = 5
+			}
+		}
+	}
+	LH_Strengthen_security_forces_ganyu = {
+		cost = 10
+		days_remove = 0
+		days_re_enable = 14
+		available = {
+			has_equipment = {
+				infantry_equipment > 14
+			}
+		}
+		visible = {
+			check_variable = {
+				var = LH_Security_forces_array_visible^1
+				value = 5
+				compare = less_than
+			}
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -15
+			}
+			custom_effect_tooltip = LH_Strengthen_security_forces_ganyu_effect_tt
+			add_to_variable = {
+				var = LH_Security_forces_array^1
+				value = 1
+			}
+			clamp_variable = {
+				var = LH_Security_forces_array^1
+				min = 0
+				max = 5
+			}
+		}
+	}
+	LH_Strengthen_security_forces_baizhu = {
+		cost = 10
+		days_remove = 0
+		days_re_enable = 14
+		available = {
+			has_equipment = {
+				infantry_equipment > 14
+			}
+		}
+		visible = {
+			check_variable = {
+				var = LH_Security_forces_array_visible^2
+				value = 5
+				compare = less_than
+			}
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -15
+			}
+			custom_effect_tooltip = LH_Strengthen_security_forces_baizhu_effect_tt
+			add_to_variable = {
+				var = LH_Security_forces_array^2
+				value = 1
+			}
+			clamp_variable = {
+				var = LH_Security_forces_array^2
+				min = 0
+				max = 5
+			}
+		}
+	}
+	#安排演讲
+	LH_Arrange_speech_yanfei = {
+		cost = 25
+		days_remove = 0
+		days_re_enable = 35
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_Arrange_speech_available_tt
+				check_variable = {
+					var = LH_speech_time
+					value = 3
+					compare = less_than_or_equals
+				}
+			}
+		}
+		visible = {
+			check_variable = {
+				var = LH_speech_time
+				value = 3
+				compare = less_than_or_equals
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				country_event = { id = LHPG.21 days = 2 }
+			}
+			custom_effect_tooltip = LH_Arrange_speec_yanfei_effect_tt
+			add_to_variable = {
+				var = troika_prestige^0
+				value = 1
+			}
+			add_to_variable = {
+				var = LH_speech_time
+				value = 1
+			}
+			random_list = {
+				60 = {
+					custom_effect_tooltip = LH_Arrange_speec_yanfei_effect_down_tt
+					add_to_variable = {
+						var = LH_Security_forces_array^0
+						value = -1
+					}
+					clamp_variable = {
+						var = LH_Security_forces_array^0
+						min = 0
+						max = 5
+					}
+				}
+				40 = {
+
+				}
+			}
+		}
+	}
+	LH_Arrange_speech_ganyu = { 
+		cost = 25
+		days_remove = 0
+		days_re_enable = 35
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_Arrange_speech_available_tt
+				check_variable = {
+					var = LH_speech_time
+					value = 3
+					compare = less_than_or_equals
+				}
+			}
+		}
+		visible = {
+			check_variable = {
+				var = LH_speech_time
+				value = 3
+				compare = less_than_or_equals
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				country_event = { id = LHPG.22 days = 2 }
+			}
+			custom_effect_tooltip = LH_Arrange_speec_ganyu_effect_tt
+			add_to_variable = {
+				var = troika_prestige^1
+				value = 1
+			}
+			add_to_variable = {
+				var = LH_speech_time
+				value = 1
+			}
+			random_list = {
+				60 = {
+					custom_effect_tooltip = LH_Arrange_speec_ganyu_effect_down_tt
+					add_to_variable = {
+						var = LH_Security_forces_array^1
+						value = -1
+					}
+					clamp_variable = {
+						var = LH_Security_forces_array^1
+						min = 0
+						max = 5
+					}
+				}
+				40 = {
+
+				}
+			}
+		}
+	}
+	LH_Arrange_speech_baizhu = { 
+		cost = 25
+		days_remove = 0
+		days_re_enable = 35
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_Arrange_speech_available_tt
+				check_variable = {
+					var = LH_speech_time
+					value = 3
+					compare = less_than_or_equals
+				}
+			}
+		}
+		visible = {
+			check_variable = {
+				var = LH_speech_time
+				value = 3
+				compare = less_than_or_equals
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				country_event = { id = LHPG.23 days = 2 }
+			}
+			custom_effect_tooltip = LH_Arrange_speec_baizhu_effect_tt
+			add_to_variable = {
+				var = troika_prestige^2
+				value = 1
+			}
+			add_to_variable = {
+				var = LH_speech_time
+				value = 1
+			}
+			random_list = {
+				60 = {
+					custom_effect_tooltip = LH_Arrange_speec_baizhu_effect_down_tt
+					add_to_variable = {
+						var = LH_Security_forces_array^2
+						value = -1
+					}
+					clamp_variable = {
+						var = LH_Security_forces_array^2
+						min = 0
+						max = 5
+					}
+				}
+				40 = {
+
+				}
+			}
+		}
+	}
+ 	LH_Anti_extremist_propaganda ={ #反极端宣传
+		cost = 15
+		days_remove = 0
+		days_re_enable = 10
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_Anti_extremist_propaganda_tt
+				check_variable = {
+					var = Extremists_plot_level_visible
+					value = 0
+					compare = greater_than
+				}
+				
+			}
+		}
+		visible = {
+			check_variable = {
+				var = Extremists_plot_level_visible
+				value = 0
+				compare = greater_than
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = LH_Anti_extremist_propaganda_effect_tt
+			add_to_variable = {
+				var = Extremists_plot_level
+				value = -1
+			}
+			clamp_variable = {
+				var = Extremists_plot_level
+				min = 0
+				max = 5
+			}
+			if = {
+				limit = {
+					has_country_flag = LH_has_informer
+				}
+				set_variable = {
+					var = Extremists_plot_level_visible
+					value = Extremists_plot_level					
+				}
+			}
+		}
+	}
+
+
+	LH_Assault_extremists = { #突袭极端份子
+		custom_cost_trigger = {
+			command_power > 24
+			has_manpower > 100
+			has_equipment = {
+				infantry_equipment > 99
+			}
+		}
+		custom_cost_text = LH_Assault_extremist_decision_cost_tt
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LH_Assault_extremists_tt
+				check_variable = {
+					var = Extremists_plot_level
+					value = 0
+					compare = equals
+				}
+			}
+			has_equipment = {
+				infantry_equipment > 99
+			}
+			
+		}
+		visible = {
+			has_country_flag = LH_informer_success
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = { id = LHPG.37 days = 7 }
+			hidden_effect = {
+				add_command_power = -25
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+			}
+			remove_mission = Patience_decreasing
+			remove_mission = Extremists_power_expande
+			remove_mission = Extremists_conspiracy
+		}
+	}
+}

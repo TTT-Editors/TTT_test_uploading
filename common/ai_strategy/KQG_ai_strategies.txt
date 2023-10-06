@@ -145,11 +145,6 @@ KQG_unit_production = {
 		value = -10
 	}
 	ai_strategy = {
-		type = equipment_production_min_factories #Build these up over time, don't stall
-		id = anti_air
-		value = 2
-	}
-	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
 		value = 4
@@ -188,7 +183,41 @@ KQG_anti_armor = {
 		value = 15
 	}
 }
-
+#刻晴进攻凝光
+Keqing_anti_Ningguang = {
+	allowed = {
+		tag = KQG
+	}
+	enable = {
+		country_exists = NNG
+        NOT = {		
+		    has_completed_focus = KQG_21
+		}
+	}
+	abort = {	
+		NOT = {
+		or = {
+		country_exists = NNG
+		has_completed_focus = KQG_21
+		    }
+		}	 
+	}
+	ai_strategy = {
+	type = front_control
+	tag = NNG  
+	ratio = 0.1
+    state = 160
+	state = 144
+	state = 141
+	state = 403
+	state = 404
+	priority = 900  
+	ordertype = front  
+	execution_type = rush_weak 
+	manual_attack = yes
+	execute_order = yes
+    }
+}
 KQG_stockpile_less_early_game = {
 	allowed = {
 		original_tag = KQG
@@ -201,7 +230,7 @@ KQG_stockpile_less_early_game = {
 
 	ai_strategy = {
 		type = equipment_stockpile_surplus_ratio
-		value = -20 # reduce while we build up in case of CZE or Austria issues
+		value = -20 # reduce while we build up in case of NNG issues
 	}
 }
 
@@ -247,118 +276,7 @@ KQG_dont_waste_xp_until_medium_armor = {
 	}
 }
 
-KQG_super_boost_light_for_med_armor = {
-	allowed = {
-		original_tag = KQG
-	}
-	enable = {
-		OR = {
-			has_tech = basic_medium_tank
-			has_tech = basic_medium_tank_chassis
-		}
-		NOT = { has_template_ai_majority_unit = medium_armor }
-	}
-
-	abort = {
-		has_template_ai_majority_unit = medium_armor
-	}
-
-	# lets do changes more often during this period too
-	ai_strategy = {
-		type = land_xp_spend_priority
-		id = division_template
-		value = 100
-	}
-
-	# this is gateway
-	ai_strategy = {
-		type = template_prio
-		id = light_armor
-		value = 100
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = medium_armor
-		value = 150
-	}
-
-	# Germany is set up to change their SS division into medium armor.
-	ai_strategy = {
-		type = template_prio
-		id = motorized
-		value = 200
-	}
-}
-
-war_with_ningguang = {
-	allowed = {
-		original_tag = KQG
-	}
-	enable = {
-		country_exists = NNG
-		NNG = { has_war_with = KQG }
-	}
-	abort = {
-		NOT = { country_exists = NNG }
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "NNG"
-		value = 200
-	}
-	
-	ai_strategy = {
-		type = front_control
-		tag = NNG
-		ratio = 0.75
-		priority = 100
-		ordertype = front
-		execution_type = rush_weak
-		manual_attack = yes
-	}
-}
-
-battle_of_guiliyuan_preparation = {
-	allowed = {
-		original_tag = KQG
-	}
-	enable = {
-		country_exists = NNG
-		NNG = { NOT = { has_war_with = KQG } }
-	}
-
-	abort = {
-		OR = {
-			NOT = { country_exists = NNG }
-			KQG = { has_war_with = NNG }
-		}
-	}
-
-	ai_strategy = {
-		type = conquer
-		id = "NNG"
-		value = 100
-	}
-}
-
-KQG_onto_the_beaches = {
-	allowed = {
-		original_tag = KQG
-	}
-	enable = {
-		has_war = yes
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = naval_invasion_focus
-		value = 25
-	}
-}
-
-Keqing_finds_she_need_to_push_the_line_so_hard = {
+Keqing_finds_she_need_to_look_out_the_sea = {
 	allowed = {
 		tag = KQG
 	}
@@ -391,7 +309,7 @@ Keqing_finds_she_need_to_push_the_line_so_hard = {
 			147
 		}
 
-		ratio = 0.15
+		ratio = 0.1
 
 		subtract_invasions_from_need = no
 	}
@@ -403,24 +321,127 @@ Keqing_finds_she_need_to_push_the_line_so_hard = {
 	}
 }
 
-KQG_pause_attack = {
+attack_ningguang = {
 	allowed = {
-		tag = KQG
+		original_tag = KQG
+	}
+	enable = {
+		country_exists = NNG
+		NNG = { has_war_with = KQG }
+		OR = {
+			strength_ratio = {
+				tag = NNG
+				ratio > 2
+			}
+			KQG = { enemies_strength_ratio < 0.85 }
+		}
+	}
+	abort = {
+		OR = {
+			NOT = { country_exists = NNG }
+			AND = {
+				strength_ratio = {
+					tag = NNG
+					ratio < 1.5
+				}
+				KQG = { enemies_strength_ratio > 1 }
+			}
+		}
 	}
 	
+	ai_strategy = {
+		type = front_control
+		tag = NNG
+		ratio = 0.75
+		priority = 100
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes 
+		manual_attack = yes
+	}
+}
+
+attack_ningguang_but_pause = {
+	allowed = {
+		original_tag = KQG
+	}
 	enable = {
-		has_war_with = NNG
-		date < 2002.1.1
+		country_exists = NNG
+		strength_ratio = {
+			tag = NNG
+			ratio < 1.5
+		}
+		KQG = { enemies_strength_ratio > 1 }
+	}
+	abort = {
+		OR = {
+			NOT = { country_exists = NNG }
+			NOT = { NNG = { has_war_with = KQG } }
+			strength_ratio = {
+				tag = NNG
+				ratio > 2
+			}
+			KQG = { enemies_strength_ratio < 0.85 }
+		}
+	}
+	
+	ai_strategy = {
+		type = front_control
+		tag = NNG
+		ratio = 0.75
+		priority = 50
+		ordertype = front
+		execution_type = careful  
+		execute_order = no 
+		manual_attack = yes 
+	}
+}
+
+KQG_onto_the_beaches = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		has_war = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 35
+	}
+}
+
+KQG_try_to_land_ningguang = {
+	allowed = {
+		original_tag = KQG
+	}
+	enable = {
+		country_exists = NNG
+		NNG = { has_war_with = KQG }
+		NNG = { has_country_flag = defeated_ningguang }
+		naval_strength_ratio = {
+			tag = NNG
+			ratio > 1.2
+		}
 	}
 	
 	abort = {
-		OR = {
-			date > 2002.1.1
-			NNG = { exists = no }
-			AND = {
-				126 = { is_controlled_by = KQG }
-				242 = { is_controlled_by = KQG }
-			}
-		}
+		NOT = { country_exists = NNG }
+	}
+
+	ai_strategy = {
+		type = invade
+		id = NNG
+		value = 200
+	}
+	ai_strategy = {
+		type = invasion_unit_request
+		tag = NNG
+		value = 40
+	}
+	ai_strategy = {
+		type = naval_invasion_supremacy_weight
+		value = 40
 	}
 }

@@ -491,10 +491,16 @@ RTG_yuan_kun_she = {
 RTG_declare_war = {
     RTG_Declare_war_on_zdgqinluejun = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = ZDG } 
 			ZDG = { exists = yes }
+			has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = ZDG
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -512,10 +518,16 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_Keqing = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = KQG }
-            KQG = { exists = yes }			
+            KQG = { exists = yes }
+            has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = KQG
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -533,10 +545,16 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_huguojun = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = XOG }
-            XOG = { exists = yes }			
+            XOG = { exists = yes }
+			has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = XOG
+				}
+			}	
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -554,10 +572,16 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_liberal = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = NNG }
-            NNG = { exists = yes }			
+            NNG = { exists = yes }
+			has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = NNG
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -575,12 +599,18 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_Xianren = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = XRG }
+			has_war = no
             XRG = { 
 			    exists = yes 
 				NOT = { is_in_faction_with = RTG }
+			}
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = XRG
+				}
 			}			
 		}
 		fire_only_once = yes
@@ -599,12 +629,18 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_liyue_anachist = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = ANG }
+			has_war = no
             ANG = { 
 			    exists = yes 
 				NOT = { is_in_faction_with = ANG }
+			}
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = ANG
+				}
 			}			
 		}
 		fire_only_once = yes

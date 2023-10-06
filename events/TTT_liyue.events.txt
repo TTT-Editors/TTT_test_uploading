@@ -13,7 +13,9 @@ country_event = {
 				id = global_news.1
 				hours = 12
 			}
+
 			country_event = { days = 120 id = ZDG_events.29 }
+			country_event = { days = 60 id = liyue.101 }
 			set_research_slots = 2
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -207,16 +209,21 @@ country_event = {
 					liyue_warlords_array = NNG
 				}
 			}
-			create_country_leader = {
-				name = "LYU_Ganyu"
-				desc = "LYU_Ganyu_desc"
-				picture = GFX_portrait_large_Liyue_Ganyu
-				expire = "2023.7.29.1"
-				ideology = moraxism
-				traits = {
-					obey_rule_law
+			LYU = {
+				LYU_Ganyu = {
+					promote_character = yes
 				}
 			}
+			# create_country_leader = {
+			# 	name = "LYU_Ganyu"
+			# 	desc = "LYU_Ganyu_desc"
+			# 	picture = GFX_portrait_large_Liyue_Ganyu
+			# 	expire = "2023.7.29.1"
+			# 	ideology = moraxism
+			# 	traits = {
+			# 		obey_rule_law
+			# 	}
+			# }
 			NNG = {
 				create_country_leader = {
 					name = "LYU_Ningguang"
@@ -958,21 +965,62 @@ country_event = {
 					remove_core_of = LYU
 				}
 			}
-			LYU = {
-				set_cosmetic_tag = GANYULY
-				load_focus_tree = LH_start
-				add_ideas = collapse_ofqixing_system
-				add_ideas = disorganized_army
-				add_ideas = unstable_mora_system
-				add_ideas = closed_economy
-				add_ideas = low_economic_mobilisation
-				transfer_units_fraction = {
-					target = ANG
-					size = 0.25
-					keep_unit_leaders_trigger = {
-						always = yes
-					}
+			hidden_effect = {
+				LYU = { load_focus_tree = LH_start }
+				LYU = { 
+					add_ideas = collapse_ofqixing_system #七星无光
+					add_ideas = unstable_mora_system #金叶寥落
+					add_ideas = GANYU0 #合法政府
+	
+					add_ideas = closed_economy #封闭经济
+					add_ideas = low_economic_mobilisation #前期动员
+					add_ideas = Tosuppress_bandits #进剿匪寇
+					add_ideas = free_speech #言论自由
+					add_ideas = Urban_rural_coordination #城乡协调
+					add_ideas = Literary_artistic_protection #文艺保护
+					add_ideas = Gear_operation #齿轮周转
+					add_ideas = Barely_satisfactory #差强人意
 				}
+				LYU = { 			
+					set_cosmetic_tag = GANYULY
+					set_politics = {
+						ruling_party = reformism
+						elections_allowed = no
+					}
+
+					set_party_name = { 
+						ideology = authoritarianism
+						long_name = LH_party_Xianren_long 
+						name = LH_party_Xianren
+					}
+					set_party_name = { 
+						ideology = communism
+						long_name = LH_party_KQ_rest_long 
+						name = LH_party_KQ_rest
+					}
+					set_party_name = { 
+						ideology = liberalism
+						long_name = LH_party_NG_rest_long 
+						name = LH_party_NG_rest
+					}
+					set_popularities = {
+						reformism = 60
+						authoritarianism = 20
+						communism = 10
+						liberalism = 10
+					}
+					
+					add_country_leader_trait = sinner_ofLiyue
+					LYU_Keqing_fake = {
+						promote_leader = yes
+					}
+					LYU_Ningguang_fake = {
+						promote_leader = yes
+					}
+					LYU_Xianren_fake = {
+						promote_leader = yes
+					}
+				} 
 			}
 			every_possible_country = {
 				limit = {
@@ -1007,7 +1055,7 @@ country_event = {
 	}
 }
 
-country_event = {
+country_event = { #内战爆发事件 LYU触发
 	id = liyue.12
 	title = liyue.12.t
 	desc = liyue.12.d
@@ -1017,7 +1065,6 @@ country_event = {
 	option = {
 		name = liyue.12.a
 		kickstart_of_liyue_civil_war = yes
-		add_country_leader_trait = sinner_ofLiyue
 		set_global_flag = Liyue_Civil_War
 		clr_global_flag = Liyue_Civil_War_Coming
 		hidden_effect = {
@@ -1038,6 +1085,10 @@ country_event = {
 			country_event = {
 				id = liyue.9
 				days = 1
+			}
+			country_event = {
+				id = LHPG.10 
+				days = 14
 			}
 		}
 	}
@@ -1494,5 +1545,85 @@ country_event = {
 			}
 		}
 		white_peace = NNG
+	}
+}
+
+country_event = { #北国银行
+	id = liyue.101
+	title = liyue.101.t
+	desc = liyue.101.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.101.a
+		custom_effect_tooltip = liyue.101.a_TT
+		country_event = { id = liyue.102 days = 1 }
+	}
+	option = {
+		name = liyue.101.b
+		custom_effect_tooltip = liyue.101.b_TT
+		country_event = { id = liyue.103 days = 1 }
+	}
+	option = {
+		name = liyue.101.c
+		custom_effect_tooltip = liyue.101.c_TT
+		country_event = { id = liyue.104 days = 1 }
+	}
+}
+country_event = { #锐意的改革者
+	id = liyue.102
+	title = liyue.102.t
+	desc = liyue.102.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.102.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		add_stability = -0.1
+	}
+}
+country_event = { #不拘小节，方成大事
+	id = liyue.103
+	title = liyue.103.t
+	desc = liyue.103.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.103.a
+		add_popularity = {
+			ideology = liberalism
+			popularity = 0.05
+		}
+		add_political_power = -80
+	}
+}
+country_event = { #集中精神
+	id = liyue.104
+	title = liyue.104.t
+	desc = liyue.104.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.104.a
+		add_popularity = {
+			ideology = reformism
+			popularity = 0.1
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = { #青雀归乡
+	id = liyue.105
+	title = liyue.105.t
+	desc = liyue.105.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = liyue.105.a
+		add_political_power = 5
 	}
 }

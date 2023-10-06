@@ -4,11 +4,21 @@ XRG_QXHY_decisions = {
 		days_remove = 10
 		fire_only_once = no
 		visible = {
-			has_country_flag = XRG_FXC_FLAG_1
+			original_tag = XRG
+			has_country_flag = XRG_FXC_L_FLAG
+			not = { 
+				has_country_flag = XRG_FXC_FLAG_1 
+			}
+			NOT = { 
+				has_idea =  XRG_BUFF_FXC_L
+			}
 		}
 		available = {
 			has_full_control_of_state = 142
 			has_country_flag = XRG_FXC_L_FLAG
+			NOT = { 
+				has_idea = XRG_BUFF_FXC
+			}
 	    }
 		ai_will_do = {
 			factor = 0
@@ -16,22 +26,24 @@ XRG_QXHY_decisions = {
 				surrender_progress < 0.2
 				factor = 20
 			}
+			modifier = {
+				has_war = no
+				factor = 50
+			}
 		}
 		remove_effect = {
-			clr_country_flag = XRG_FXC_L_FLAG
 			add_ideas = XRG_BUFF_FXC
+			unlock_decision_category_tooltip = fengxiancheng_build
 	    }
 	}
 
 	fengxiancheng_build = {  #新城建设中
-		activation = {
-			tag = XRG
-			NOT = { 
-				has_idea = XRG_BUFF_FXC_L
-				has_country_flag = XRG_FXC_L_FLAG
-			}                         
-			has_full_control_of_state = 142
-			has_idea = XRG_BUFF_FXC
+		activation = {                         
+			original_tag = XRG
+			has_idea =  XRG_BUFF_FXC
+			not = { 
+				has_country_flag = XRG_FXC_FLAG_1 
+			}
 		}                                    
 		available = {                           
 			not = { has_full_control_of_state = 142 }
@@ -123,24 +135,6 @@ XRG_QXHY_decisions = {
 		}
 	}
 
-	XRG_diyuwaidi = {	#抵御外敌
-		cost = 50
-		days_remove = 15
-		visible = {
-			has_war_with = ZDG
-	    }
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				has_war_with = ZDG
-				factor = 100
-			}
-		}
-		remove_effect = {
-			country_event = { id = XRG_EVENTS_WAR.1 }
-		}
-	}
 	XRG_tizhenjingji = {	#提振经济
 		cost = 150
 		days_remove = 50

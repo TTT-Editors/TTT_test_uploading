@@ -9,42 +9,32 @@ focus_tree = {
 	}
 	default = no
 	focus = {
-		id = XR_0 #群仙出世#
-		icon = GFX_adeptus_conference
+		id = XR_START	#众仙云集#
+		icon = GFX_goal_XRG01
 		cost = 50.00
-		x = 18
+		x = 8
 		y = 0
 		select_effect={
 			country_event = XRG_EVENTS_QXHY.1
 		}
 		completion_reward = {
-			if = {
-				limit = {
-					has_country_flag = XRG_FLAG_1
-				}
-				news_event = { 
-					id = XRG_NEWS_0.1
-				}
-			}
-			if = {
-				limit = {
-					has_country_flag = XRG_FLAG_2
-				}
-				news_event = { 
-					id = XRG_NEWS_0.2
-				}
+			news_event = { 
+				id = XRG_NEWS_0.1
 			}
 		}
 	}
 	focus = {
-		id = XR_L1 #群仙会议#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_0 
+		id = XR_L1	#群仙会议#
+		icon = GFX_goal_XRG02
+		cost = 20.00
+		visible = {
+			has_country_flag = XRG_FLAG_1
 		}
 		available = {
 			has_country_flag = XRG_FLAG_1
+		}
+		prerequisite = {
+			focus = XR_START
 		}
 		x = 8
 		y = 1
@@ -53,52 +43,180 @@ focus_tree = {
 				remove = XRG_CSZX
 				add = XRG_QXHY_ONE
 			}
+			custom_effect_tooltip = XRG_QXHY_tooltip
 		}
 	}
 	focus = {
-		id = XR_L2 #群仙之治#
-		icon = GFX_adeptus_conference
+		id = XR_L2	#仙众归位#
+		icon = GFX_goal_XRG03
 		cost = 30.00
+		prerequisite = {
+			focus = XR_L1
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = XRG_BUFF_5
+		}
+	}
+	focus = {
+		id = XR_L3 #仙家入世#
+		icon = GFX_goal_XRG04
+		cost = 20.00
 		prerequisite = {
 			focus = XR_L1
 		}
 		x = 8
 		y = 2
 		completion_reward = {
-			add_political_power = 200
-			custom_effect_tooltip = XRG_QXHY_tooltip
+			add_political_power = 100
+			add_stability = 0.1
+			add_war_support = 0.1
 		}
-		
 	}
 	focus = {
-		id = XR_L3 #会议改制#
-		icon = GFX_adeptus_conference
+		id = XR_L4 #凡人助力#
+		icon = GFX_goal_XRG05
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L1
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+			add_tech_bonus = {
+				name = industry
+				bonus = 1
+				uses = 2
+				category = industry
+			}
+			add_ideas = XRG_BUFF_7_ONE
+		}
+	}
+	focus = {
+		id = XR_L5 #复古之治#
+		icon = GFX_goal_XRG06
 		cost = 30.00
 		prerequisite = {
 			focus = XR_L2
 		}
-		x = 8
+		x = 5
 		y = 3
 		completion_reward = {
-			add_timed_idea = { 
-				idea =  XRG_DEBUFF_1
-				days =  50
+			add_war_support = 0.05
+			add_ideas = XRG_BUFF_6_ONE
+		}
+	}
+	focus = {
+		id = XR_L6 #难民管制#
+		icon = GFX_goal_XRG07
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L4
+		}
+		x = 11
+		y = 3
+		completion_reward = {
+			add_stability = 0.05
+			add_manpower = 20000
+			random_state = {
+				limit = {
+					is_owned_and_controlled_by = XRG
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
 			}
 		}
 	}
 	focus = {
-		id = XR_L4 #高效治理#
-		icon = GFX_adeptus_conference
+		id = XR_L7 #群仙之战#
+		icon = GFX_goal_XRG08
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L5
+		}
+		x = 5
+		y = 4
+		completion_reward = {
+			add_war_support = 0.1
+			swap_ideas = {
+				remove_idea = XRG_BUFF_6_ONE
+				add_idea = XRG_BUFF_6_TWO
+			}
+		}
+	}
+	focus = {
+		id = XR_L8  #会议改制#
+		icon = GFX_goal_XRG09
 		cost = 30.00
 		prerequisite = {
 			focus = XR_L3
 		}
-		available = {
-			NOT = { 
-				has_idea = XRG_DEBUFF_1
-			} 
-		}
 		x = 8
+		y = 4
+		completion_reward = {
+			add_timed_idea = { 
+				idea =  XRG_DEBUFF_1
+				days = 50
+			}
+			custom_effect_tooltip = XRG_QXHY_GG_tooltip
+		}
+	}
+	focus = {
+		id = XR_L9 #仙人共战#
+		icon = GFX_goal_XRG10
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L6
+		}
+		x = 11
+		y = 4
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_7_ONE
+				add_idea = XRG_BUFF_7_TWO
+			}
+		}
+	}
+	focus = {
+		id = XR_L10 #三仙为首#
+		icon = GFX_goal_XRG11
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L7
+		}
+		prerequisite = {
+			focus = XR_L8
+		}
+		x = 6
+		y = 5
+		completion_reward = {
+			add_ideas = XRG_BUFF_8
+		}
+	}
+	focus = {
+		id = XR_L11 #精英幕僚#
+		icon = GFX_goal_XRG12
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L8
+		}
+		prerequisite = {
+			focus = XR_L9
+		}
+		available = {
+			has_country_flag = XRG_QXHY_FLAG
+		}
+		x = 10
 		y = 5
 		completion_reward = {
 			swap_ruler_traits = {
@@ -108,405 +226,17 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = XR_L5 #仙家伟力#
-		icon = GFX_adeptus_conference
+		id = XR_L12 #高效治理#
+		icon = GFX_goal_XRG13
 		cost = 30.00
-		prerequisite = {
-			focus = XR_L2
-		}
-		x = 5
-		y = 3
-		completion_reward = {
-			add_political_power = 150
-			add_ideas = XRG_BUFF_5_ONE
-		}
-	}
-	focus = {
-		id = XR_L6 #发放武器#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L5
-		}
-		x = 5
-		y = 4
-		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment 
-				amount = 5000
-				producer = XRG
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = 1000
-				producer = XRG
-			}
-		}
-	}
-	focus = {
-		id = XR_L7 #群仙之战#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L6
-		}
-		prerequisite = {
-			focus = XR_L6
-		}
-		x = 5
-		y = 5
-		completion_reward = {
-			army_experience = 50
-			add_offsite_building = { 
-				type = arms_factory
-				level = 3
-			}
-			swap_ideas = {
-				remove_idea = XRG_BUFF_5_ONE
-				add_idea = XRG_BUFF_5_TWO
-			}
-		}
-	}
-	focus = {
-		id = XR_L8 #凡人助力#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		available={
-			has_idea = XRG_BUFF_5_TWO
-			NOT = { 
-				has_idea =  XRG_DEBUFF_1
-			}
-		}
-		prerequisite = {
-			focus = XR_L2
-		}
-		x = 11
-		y = 3
-		completion_reward = {
-			add_tech_bonus = {
-				name = industry
-				bonus = 1
-				uses = 2
-				category = industry
-			}
-			swap_ideas = {
-				remove_idea = XRG_BUFF_5_TWO
-				add_idea = XRG_BUFF_5_THREE
-			}
-		}
-	}
-	focus = {
-		id = XR_L9 #重构秩序#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L8
-		}
-		x = 11
-		y = 4
-		completion_reward = {
-			add_political_power = 150
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-	focus = {
-		id = XR_L10 #仙人共战#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L9
-		}
-		x = 11
-		y = 5
-		completion_reward = {
-			add_research_slot = 1
-			swap_ideas = {
-				remove_idea = XRG_BUFF_5_THREE
-				add_idea = XRG_BUFF_5_FOUR
-			}
-		}
-	}
-	
-	focus = {
-		id = XR_L11 #坐镇边疆#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L1
-		}
-		x = 1
-		y = 2
-		completion_reward = {
-			add_war_support = 0.1
-			swap_ideas = {
-				remove_idea = XRG_BUFF_2_ONE
-				add_idea = XRG_BUFF_2_TWO
-			}
-		}
-	}
-	focus = {
-		id = XR_L12 #接管军队#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L11
-		}
-		x = 1
-		y = 3
-		completion_reward = {
-			army_experience = 50
-			swap_ideas = {
-				remove_idea = XRG_BUFF_2_TWO
-				add_idea = XRG_BUFF_2_THREE
-			}
-		}
-	}
-	focus = {
-		id = XR_L13 #仙家军备#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L12
-		}
-		x = 1
-		y = 4
-		completion_reward = {
-			show_ideas_tooltip = XRG_AZXF
-			show_ideas_tooltip = XRG_JYZG
-			show_ideas_tooltip = XRG_HLKY
-			set_country_flag = XRG_FLAG_4
-			add_tech_bonus = {
-				name = infantry_weapons
-				bonus = 1
-				uses = 1
-				category = infantry_weapons
-			}
-			add_tech_bonus = {
-				name = land_doctrine
-				bonus = 0.5
-				uses = 2
-				category = land_doctrine
-			}
-		}
-	}
-	focus = {
-		id = XR_L14 #垒墙高筑#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L13
-		}
-		x = 1
-		y = 5
-		completion_reward = {
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					size < 5
-					instant_build = yes
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					size < 5
-					instant_build = yes
-				}
-			}
-		}
-	}
-	focus = {
-		id = XR_L15 #平定内乱#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L1
-		}
-		x = 15
-		y = 2
-		completion_reward = {
-			add_political_power = 150
-			add_stability = 0.1
-		}
-	}
-	focus = {
-		id = XR_L16 #安定人心#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L15
-		}
-		x = 15
-		y = 3
-		completion_reward = {
-			add_timed_idea = { 
-				idea = XRG_BUFF_6
-				days = 70
-			}
-		}
-	}
-	focus = {
-		id = XR_L17 #改进机巧#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L16
-		}
-		available={
-			not = {
-				has_idea = XRG_BUFF_6
-			}
-		}
-		x = 15
-		y = 4
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-	focus = {
-		id = XR_L18 #紧急工坊#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L17
-		}
-		x = 15
-		y = 5
-		completion_reward = {
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					size < 5
-					instant_build = yes
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					size < 5
-					instant_build = yes
-				}
-			}
-		}
-	}
-	focus = {
-		id = XR_L19 #万事俱备#
-		icon = GFX_adeptus_conference
-		cost = 50.00
 		prerequisite = {
 			focus = XR_L10
 		}
 		prerequisite = {
-			focus = XR_L7
-		}
-		prerequisite = {
-			focus = XR_L4
+			focus = XR_L11
 		}
 		x = 8
 		y = 6
-		completion_reward = {
-			add_war_support = 0.1
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_resource = {
-					type = steel
-					amount = 30
-				}
-			}
-			random_state = {
-				limit = {
-					is_core_of = XRG
-				}
-				add_resource = {
-					type = oil
-					amount = 10
-				}
-			}
-		}
-	}
-	focus = {
-		id = XR_L20 #简化会议#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L19 
-		}
-		x = 6
-		y = 7
 		completion_reward = {
 			swap_ruler_traits = {
 				remove = XRG_QXHY_THREE
@@ -514,366 +244,858 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = XR_L21 #三仙为首#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L19 
-		}
-		x = 10
-		y = 7
-		completion_reward = {
-			add_ideas = XRG_BUFF_8
-		}
-	}
-	focus = {
-		id = XR_L22 #仙家军备#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L7
-		}
-		prerequisite = {
-			focus = XR_L14
-		}
-		x = 3
-		y = 7
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = XRG_BUFF_2_THREE
-				add_idea = XRG_BUFF_2_FOUR
-			}
-		}
-	}
-	focus = {
-		id = XR_L23 #仙迹重现#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L18
-		}
-		prerequisite = {
-			focus = XR_L10
-		}
-		x = 13
-		y = 7
-		completion_reward = {
-			add_ideas = XRG_BUFF_9
-		}
-	}
-	focus = {
-		id = XR_L24 #以仙之名#
-		icon = GFX_adeptus_conference
-		cost = 30.00
-		prerequisite = {
-			focus = XR_L21
-		}
-		prerequisite = {
-			focus = XR_L20
-		}
-		prerequisite = {
-			focus = XR_L22
-		}
-		prerequisite = {
-			focus = XR_L23
-		}
-		x = 8
-		y = 8
-		completion_reward = {
-			add_timed_idea = { 
-				idea =  XRG_BUFF_10
-				days =  100
-			}
-		}
-	}
-	focus = {
-		id = XR_R1 #三仙为尊#
-		icon = GFX_goal_tripartite_pact
-		cost = 0.00
-		prerequisite = {
-			focus = XR_0 
-		}
-		available = {
-			has_country_flag = XRG_FLAG_2
-		}
-		x = 28
-		y = 1
-
-	}
-	focus = {
-		id = XR_R2 #留云借风#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R1
-		}
-		x = 23
-		y = 2
-
-	}
-	focus = {
-		id = XR_R3 #理水叠山#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R1
-		}
-		x = 28
-		y = 2
-
-	}
-	focus = {
-		id = XR_R4 #削月筑阳#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R1
-		}
-		x = 33
-		y = 2
-
-	}
-	focus = {
-		id = XR_R5 #仙家机巧#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R2
-		}
-		x = 21
-		y = 3
-
-	}
-	focus = {
-		id = XR_R6 #经济规划#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R5
-		}
-		x = 21
-		y = 4
-
-	}
-	focus = {
-		id = XR_R7 #仙家馈赠#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R2
-		}
-		x = 25
-		y = 3
-
-	}
-	focus = {
-		id = XR_R8 #救济凡民#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R7
-		}
-		x = 25
-		y = 4
-
-	}
-	focus = {
-		id = XR_R9 #平和纷争#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R3
-		}
-		x = 28
-		y = 3
-
-	}
-	focus = {
-		id = XR_R10 #实干至上#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R9
-		}
-		x = 28
-		y = 4
-
-	}
-	focus = {
-		id = XR_R11 #言论管制#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R4
-		}
-		x = 31
-		y = 3
-
-	}
-	focus = {
-		id = XR_R12 #军事指导#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R11
-		}
-		x = 31
-		y = 4
-
-	}
 	
 	focus = {
-		id = XR_R13 #千岩之武#
-		icon = GFX_goal_unknown
-		cost = 0.00
+		id = XR_END #以仙之名#
+		icon = GFX_goal_XRG28
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R4
+			focus = XR_L12
 		}
-		x = 35
+		x = 8
+		y = 12
+		completion_reward = {
+			add_timed_idea = { 
+				idea = XRG_BUFF_10
+				days = 180
+			} 
+		}
+	}
+	focus = {
+		id = XR_HZ_1 #共赴璃月危难
+		icon = GFX_goal_XRG14
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L12
+		}
+		bypass = {
+			has_country_flag =  XRG_FLAG_HZ
+		}	
+		available = {
+			always = no
+		}
+		mutually_exclusive = { 
+			focus = XR_DL_1 
+		}
+		x = 4
+		y = 7
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = XR_HZ_2 #集合虔信者
+		icon = GFX_goal_XRG16
+		cost = 20.00
+		prerequisite = {
+			focus = XR_HZ_1
+		}
+		x = 2
+		y = 8
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_5
+				add_idea = XRG_BUFF_5_HZ
+			}
+		}
+	}
+
+	focus = {
+		id = XR_HZ_3
+		icon = GFX_goal_XRG17
+		cost = 20.00
+		prerequisite = {
+			focus = XR_HZ_1
+		}
+		available = {
+			has_country_flag = XRG_FXC_FLAG_1
+		}
+		x = 6
+		y = 8
+		completion_reward = {
+			add_ideas = XRG_BUFF_HZ_W1
+			every_other_country = {
+				limit = {
+					is_in_faction_with = XRG
+				}
+				add_ideas = XRG_BUFF_HZ_M1
+				set_country_flag = XRG_ALLIEDS
+			}
+		}
+	}
+	focus = {
+		id = XR_HZ_4
+		icon = GFX_goal_XRG18
+		cost = 30.00
+		prerequisite = {
+			focus = XR_HZ_2
+		}
+		prerequisite = {
+			focus = XR_HZ_3
+		}
+		x = 4
+		y = 9
+		completion_reward = {
+			add_offsite_building = { 
+				type = industrial_complex
+				level = 2
+			}
+			every_other_country = {
+				limit = {
+					is_in_faction_with = XRG
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_HZ_M1
+					add_idea = XRG_BUFF_HZ_M2
+				}
+				set_country_flag = XRG_ALLIEDS
+			}
+		}
+	}
+	focus = {
+		id = XR_HZ_5
+		icon = GFX_goal_XRG19
+		cost = 15.00
+		prerequisite = {
+			focus = XR_HZ_4
+		}
+		x = 2
+		y = 10
+		completion_reward = {
+			custom_effect_tooltip = XRG_HZ_1_tooltip
+		}
+	}
+	focus = {
+		id = XR_HZ_6
+		icon = GFX_goal_XRG20
+		cost = 15.00
+		prerequisite = {
+			focus = XR_HZ_4
+		}
+		x = 6
+		y = 10
+		completion_reward = {
+			custom_effect_tooltip = XRG_HZ_2_tooltip
+		}
+	}
+	focus = {
+		id = XR_HZ_7
+		icon = GFX_goal_XRG21
+		cost = 30.00
+		prerequisite = {
+			focus = XR_HZ_5
+		}
+		prerequisite = {
+			focus = XR_HZ_6
+		}
+		x = 4
+		y = 11
+		completion_reward = {
+			add_research_slot = 1
+			every_other_country = {
+				limit = {
+					is_in_faction_with = XRG
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_HZ_M2
+					add_idea = XRG_BUFF_HZ_M3
+				}
+				set_country_flag = XRG_ALLIEDS
+			}
+		}
+	}
+	focus = {
+		id = XR_DL_1 #独守璃月边疆
+		icon = GFX_goal_XRG15
+		cost = 30.00
+		prerequisite = {
+			focus = XR_L12
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag =  XRG_FLAG_DL
+		}	
+		mutually_exclusive = { 
+			focus = XR_HZ_1 
+		}
+		x = 12
+		y = 7
+		completion_reward = {
+			
+		}
+	}
+
+	focus = {
+		id = XR_DL_2
+		icon = GFX_goal_XRG22
+		cost = 20.00
+		prerequisite = {
+			focus = XR_DL_1
+		}
+		x = 10
+		y = 8
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_5
+				add_idea = XRG_BUFF_5_DL
+			}
+		}
+	}
+	focus = {
+		id = XR_DL_3
+		icon = GFX_goal_XRG23
+		cost = 20.00
+		prerequisite = {
+			focus = XR_DL_1
+		}
+		available = {
+			has_full_control_of_state = 157
+			has_full_control_of_state = 159
+		}
+		x = 14
+		y = 8
+		completion_reward = {
+			if = {
+				limit = {
+					157 = {
+						is_controlled_by = XRG
+					}
+				}
+				157 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+					type = arms_factory
+					level = 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					159 = {
+						is_controlled_by = XRG
+					}
+				}
+				159 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+					type = arms_factory
+					level = 2
+					}
+				}
+			}
+
+		}
+	}
+	focus = {
+		id = XR_DL_4
+		icon = GFX_goal_XRG24
+		cost = 30.00
+		prerequisite = {
+			focus = XR_DL_2
+		}
+		prerequisite = {
+			focus = XR_DL_3
+		}
+		x = 12
+		y = 9
+		completion_reward = {
+			add_ideas = XRG_BUFF_DL_1
+		}
+	}
+	focus = {
+		id = XR_DL_5
+		icon = GFX_goal_XRG25
+		cost = 15.00
+		prerequisite = {
+			focus = XR_DL_4
+		}
+		x = 10
+		y = 10
+		completion_reward = {
+			custom_effect_tooltip = XRG_DL_1_tooltip
+		}
+	}
+	focus = {
+		id = XR_DL_6
+		icon = GFX_goal_XRG26
+		cost = 15.00
+		prerequisite = {
+			focus = XR_DL_4
+		}
+		x = 14
+		y = 10
+		completion_reward = {
+			custom_effect_tooltip = XRG_DL_2_tooltip
+		}
+	}
+	focus = {
+		id = XR_DL_7
+		icon = GFX_goal_XRG27
+		cost = 30.00
+		prerequisite = {
+			focus = XR_DL_5
+		}
+		prerequisite = {
+			focus = XR_DL_6
+		}
+		x = 12
+		y = 11
+		completion_reward = {
+			add_research_slot = 1
+			swap_ideas = {
+					remove_idea = XRG_BUFF_DL_1
+					add_idea = XRG_BUFF_DL_2
+				}
+		}
+	}
+	focus = {
+		id = XR_JJ_START
+		icon = GFX_goal_XRG29
+		cost = 10.00
+		x = 17
+		y = 0
+		available = {
+			or = {
+				has_country_flag = XRG_FLAG_1
+				has_country_flag = XRG_FLAG_2
+			}
+			has_completed_focus = XR_L1
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_JJ_1_ONE
+				add_idea = XRG_BUFF_JJ_1_TWO
+			}
+		}
+	}
+	focus = {
+		id = XR_JJ_1
+		icon = GFX_goal_XRG30
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JJ_START
+		}
+		x = 15
+		y = 1
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_core_of = XRG
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_TWO
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_TWO
+					add_idea = XRG_BUFF_JJ_1_THREE
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_FOUR
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_FOUR
+					add_idea = XRG_BUFF_JJ_1_FIVE
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_SEVEN
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_SEVEN
+					add_idea = XRG_BUFF_JJ_1_EIGHT
+				}
+			}
+		}
+	}
+	focus = {
+		id = XR_JJ_2
+		icon = GFX_goal_XRG31
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JJ_START
+		}
+		x = 19
+		y = 1
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_core_of = XRG
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					is_core_of = XRG
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					is_core_of = XRG
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_TWO
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_TWO
+					add_idea = XRG_BUFF_JJ_1_FOUR
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_THREE
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_THREE
+					add_idea = XRG_BUFF_JJ_1_FIVE
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_SIX
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_SIX
+					add_idea = XRG_BUFF_JJ_1_EIGHT
+				}
+			}
+		}
+	}
+	focus = {
+		id = XR_JJ_3
+		icon = GFX_goal_XRG32
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JJ_1
+			focus = XR_JJ_2
+		}
+		x = 17
+		y = 2
+		completion_reward = {
+			add_research_slot = 1
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_THREE
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_THREE
+					add_idea = XRG_BUFF_JJ_1_SIX
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_FOUR
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_FOUR
+					add_idea = XRG_BUFF_JJ_1_SEVEN
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_JJ_1_FIVE
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_JJ_1_FIVE
+					add_idea = XRG_BUFF_JJ_1_EIGHT
+				}
+			}
+			set_country_flag = XRG_FLAG_4
+			custom_effect_tooltip = XRG_JJ_1_tooltip
+		}
+	}
+	focus = {
+		id = XR_JJ_4
+		icon = GFX_goal_XRG33
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JJ_3
+		}
+		x = 15
 		y = 3
-
+		completion_reward = {
+			add_ideas = XRG_BUFF_JJ_2_ONE
+		}
 	}
 	focus = {
-		id = XR_R14 #武具匠铺#
-		icon = GFX_goal_unknown
-		cost = 0.00
+		id = XR_JJ_5
+		icon = GFX_goal_XRG34
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R13
+			focus = XR_JJ_3
 		}
-		x = 35
+		x = 19
+		y = 3
+		completion_reward = {
+			add_ideas = XRG_BUFF_JJ_3_ONE
+		}
+	}
+	focus = {
+		id = XR_JJ_6
+		icon = GFX_goal_XRG35
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JJ_4
+		}
+		x = 15
 		y = 4
-
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_JJ_2_ONE
+				add_idea = XRG_BUFF_JJ_2_TWO
+			}
+		}
 	}
 	focus = {
-		id = XR_R15 #引领前路#
-		icon = GFX_goal_unknown
-		cost = 0.00
+		id = XR_JJ_7
+		icon = GFX_goal_XRG36
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R8
+			focus = XR_JJ_5
 		}
+		x = 19
+		y = 4
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_JJ_3_ONE
+				add_idea = XRG_BUFF_JJ_3_TWO
+			}
+		}
+	}
+	focus = {
+		id = XR_JJ_8
+		icon = GFX_goal_XRG37
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R6
+			focus = XR_JJ_6
 		}
-		x = 23
+		x = 15
 		y = 5
-
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_JJ_2_TWO
+				add_idea = XRG_BUFF_JJ_2_THREE
+			}
+		}
 	}
 	focus = {
-		id = XR_R16 #以战促和#
-		icon = GFX_goal_unknown
-		cost = 0.00
+		id = XR_JJ_9
+		icon = GFX_goal_XRG38
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R10
+			focus = XR_JJ_7
 		}
-		x = 28
+		x = 19
 		y = 5
-
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_JJ_3_TWO
+				add_idea = XRG_BUFF_JJ_3_THREE
+			}
+		}
 	}
 	focus = {
-		id = XR_R17 #再现荣光#
-		icon = GFX_goal_unknown
-		cost = 0.00
+		id = XR_JJ_END
+		icon = GFX_goal_XRG39
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R12
+			focus = XR_JJ_8
 		}
 		prerequisite = {
-			focus = XR_R14
+			focus = XR_JJ_9
 		}
-		x = 33
-		y = 5
-
+		x = 17
+		y = 6
+		completion_reward = {
+			remove_ideas = XRG_BUFF_JJ_2_THREE
+			remove_ideas = XRG_BUFF_JJ_3_THREE
+			add_ideas = XRG_BUFF_JJ_4
+		}
 	}
 	focus = {
-		id = XR_R18 #经济腾飞#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R16
+		id = XR_JS_START	#建立军队#
+		icon = GFX_goal_XRG40
+		cost = 10.00
+		x = 26
+		y = 0
+		available = {
+			or = {
+				has_country_flag = XRG_FLAG_1
+				has_country_flag = XRG_FLAG_2
+			}
+			has_completed_focus = XR_L1
 		}
+		completion_reward = {
+			recruit_character = XRG_guqinzhang
+			recruit_character = XRG_tangwu
+			recruit_character = XRG_ludajia
+			recruit_character = XRG_luanjunfeng
+			recruit_character = XRG_hongshengcai
+			swap_ideas = {
+				remove_idea = XRG_BUFF_2_ONE
+				add_idea = XRG_BUFF_2_TWO
+			}
+		}
+	}
+	focus = {
+		id = XR_JS_1	#千岩之辩#
+		icon = GFX_goal_XRG41
+		cost = 15.00
 		prerequisite = {
-			focus = XR_R15
+			focus = XR_JS_START
 		}
 		x = 26
-		y = 6
-
+		y = 1
+		completion_reward = {
+			country_event = XRG_EVENTS_JS.1
+			add_doctrine_cost_reduction = {
+				name = land_doctrine
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
 	}
 	focus = {
-		id = XR_R19 #精兵强将#
-		icon = GFX_goal_unknown
-		cost = 0.00
+		id = XR_JS_L1	#追古之军#
+		icon = GFX_goal_XRG42
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R17
+			focus = XR_JS_1
 		}
-		prerequisite = {
-			focus = XR_R16
+		mutually_exclusive = { 
+			focus = XR_JS_R1
 		}
-		x = 30
-		y = 6
-
-	}
-	focus = {
-		id = XR_R20 #把控命脉#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R18
+		available = {
+			has_country_flag = XRG_FLAG_JS_L1
 		}
 		x = 24
-		y = 7
-
+		y = 2
+		completion_reward = {
+			every_army_leader = {
+				add_attack = 1		
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_2_TWO
+				add_idea = XRG_BUFF_2_L1
+			}
+		}
 	}
-	focus = {
-		id = XR_R21 #人尽其才#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R18
-		}
-		x = 26
-		y = 7
 
-	}
 	focus = {
-		id = XR_R22 #激发潜力#
-		icon = GFX_goal_unknown
-		cost = 0.00
+		id = XR_JS_R1	#革新之军#
+		icon = GFX_goal_XRG43
+		cost = 30.00
 		prerequisite = {
-			focus = XR_R19
+			focus = XR_JS_1
 		}
-		x = 30
-		y = 7
-
-	}
-	focus = {
-		id = XR_R23 #军队自给#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R19
+		mutually_exclusive = { 
+			focus = XR_JS_L1
 		}
-		x = 32
-		y = 7
-
-	}
-	focus = {
-		id = XR_R24 #仙家命令#
-		icon = GFX_goal_unknown
-		cost = 0.00
-		prerequisite = {
-			focus = XR_R20
-		}
-		prerequisite = {
-			focus = XR_R21
-		}
-		prerequisite = {
-			focus = XR_R22
-		}
-		prerequisite = {
-			focus = XR_R23
+		available = {
+			has_country_flag = XRG_FLAG_JS_R1
 		}
 		x = 28
-		y = 8
+		y = 2
+		completion_reward = {
+			every_army_leader = {
+				add_defense = 1		
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_2_TWO
+				add_idea = XRG_BUFF_2_R1
+			}
+		}
+	}
 
+	focus = {
+		id = XR_JS_L2	#激发潜力#
+		icon = GFX_goal_XRG44
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_L1
+		}
+		x = 23
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_2_L1
+				add_idea = XRG_BUFF_2_L2
+			}
+		}
+	}
+
+	focus = {
+		id = XR_JS_2	#以史为鉴#
+		icon = GFX_goal_XRG45
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_L1
+			focus = XR_JS_R1
+		}
+		x = 26
+		y = 3
+		completion_reward = {
+			army_experience = 50
+			swap_ideas = {
+				remove_idea = Limited_Conscription
+				add_idea = Extensive_Conscription
+			}
+		}
+	}
+	focus = {
+		id = XR_JS_R2	#整训新军#
+		icon = GFX_goal_XRG46
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_R1
+		}
+		x = 29
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_2_R1
+				add_idea = XRG_BUFF_2_R2
+			}
+		}
+	}
+	focus = {
+		id = XR_JS_L3	#仙符庇佑#
+		icon = GFX_goal_XRG47
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_L2
+		}
+		x = 23
+		y = 4
+		completion_reward = {
+			add_ideas = XRG_BUFF_JS_L3
+		}
+	}
+	focus = {
+		id = XR_JS_3	#整编信众#
+		icon = GFX_goal_XRG48
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_2
+		}
+		x = 26
+		y = 4
+		completion_reward = {
+			add_timed_idea = { 
+				idea = XRG_BUFF_JS_2
+				days = 100
+			}
+		}
+	}
+	focus = {
+		id = XR_JS_R3	#编写守则#
+		icon = GFX_goal_XRG49
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_R2
+		}
+		x = 29
+		y = 4
+		completion_reward = {
+			add_ideas = XRG_BUFF_JS_R3
+		}
+	}
+	focus = {
+		id = XR_JS_L4	#重铸荣光#
+		icon = GFX_goal_XRG50
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_L3
+		}
+		prerequisite = {
+			focus = XR_JS_3
+		}
+		x = 24
+		y = 5
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_2_L2
+				add_idea = XRG_BUFF_2_L3
+			}
+		}
+	}
+	focus = {
+		id = XR_JS_R4	#再续新篇#
+		icon = GFX_goal_XRG51
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_R3
+		}
+		prerequisite = {
+			focus = XR_JS_3
+		}
+		x = 28
+		y = 5
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = XRG_BUFF_2_R2
+				add_idea = XRG_BUFF_2_R3
+			}
+		}
+	}
+	focus = {
+		id = XR_JS_END	#永护璃月#
+		icon = GFX_goal_XRG52
+		cost = 30.00
+		prerequisite = {
+			focus = XR_JS_L4
+			focus = XR_JS_R4
+		}
+		x = 26
+		y = 6
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_2_L3
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_2_L3
+					add_idea = XRG_BUFF_2_L4
+				}
+			}
+			if = {
+				limit = {
+					has_idea = XRG_BUFF_2_R3
+				}
+				swap_ideas = {
+					remove_idea = XRG_BUFF_2_R3
+					add_idea = XRG_BUFF_2_R4
+				}
+			}
+		}
 	}
 }

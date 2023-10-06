@@ -1,0 +1,1617 @@
+Liyuetongyi = {
+# 	GANYU_war_targeted_decision_1 = {
+# 		target_root_trigger = {
+# 			has_completed_focus = GAN2_11
+# 		}
+# 		targets = { ANG RTG ARF }
+# 		targets_dynamic = yes
+# 		target_trigger = {
+# 			FROM = {
+# 				is_neighbor_of = ROOT
+# 			}
+# 		}
+# 		cost = 0
+# 		days_remove = 7
+# 		ai_will_do = {
+# 			base = 50
+# 		}
+# 		fire_only_once = yes
+# 		war_with_target_on_complete = yes
+# 		complete_effect = {
+# 			FROM = {
+# 				country_event = { id = liyue_civil_war.101 }
+# 			}
+# 		}
+# 		remove_effect = {
+# 			declare_war_on = {
+# 				target = FROM
+# 				type = annex_everything
+# 			}
+# 		}
+# 	}
+# 	GANYU_war_targeted_decision_2 = {
+# 		target_root_trigger = {
+# 			has_completed_focus = GAN2_18
+# 		}
+# 		targets = { NNG KQG XQG XRG XOG ZDG ARF }
+# 		targets_dynamic = yes
+# 		target_trigger = {
+# 			OR = {
+# 				FROM = {
+# 				is_neighbor_of = ROOT
+# 				}
+# 				FROM = {
+# 					tag = NNG
+# 				}
+# 			}
+			
+# 		}
+# 		cost = 0
+# 		days_remove = 7
+# 		ai_will_do = {
+# 			base = 50
+# 		}
+# 		fire_only_once = yes
+# 		war_with_target_on_complete = yes
+# 		complete_effect = {
+# 			FROM = {
+# 				country_event = { id = liyue_civil_war.101 }
+# 			}
+# 		}
+# 		remove_effect = {
+# 			declare_war_on = {
+# 				target = FROM
+# 				type = annex_everything
+# 			}
+# 		}
+# 	}
+	Mission_tuiguangyujingtaizhiwuzhi = {
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = yes
+		days_remove = 0
+		days_mission_timeout = 180
+		timeout_effect = {
+			128 = {
+				add_extra_state_shared_building_slots = 2
+				add_resource = {
+					type = grain
+					amount = 18
+				}
+			}
+		}
+	}
+}
+
+debug_LYU_civil_war = {
+	# debug_parliament_start = { 
+	# 		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+	# 		cost = 0
+	# 		fire_only_once = no
+	# 		days_re_enable = 0
+	# 		days_remove = 0
+	# 		ai_will_do = {
+	# 		base = 0
+	# 			}
+	# 		available = {
+	# 			always = yes
+	# 		}
+	# 		visible = {
+	# 			is_debug = yes
+	# 		}
+	# 		complete_effect = {
+	# 			LYU = {
+	# 				set_variable = {
+	# 					var = ganyu_parliament_confidence_max
+	# 					value = 1.2
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_confidence
+	# 					value = ganyu_parliament_confidence_max
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_progress
+	# 					value = 0
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_struggle
+	# 					value = 0
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_policy
+	# 					value = 0
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_progress_frame
+	# 					value = 1
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_policy_frame
+	# 					value = 3
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_struggle_frame
+	# 					value = 1
+	# 				}
+	# 				set_variable = {
+	# 					var = ganyu_parliament_frame
+	# 					value = 8
+	# 				}				
+	# 				ganyu_parliamenteff_progress_add_recalculate = yes
+	# 				set_country_flag = Ganyu_parliamentflag_start
+	# 				add_ideas = ganyu_parliament_struggle_idea
+	# 			}
+	# 		}
+	# }
+
+	debug_focustree_1 = { 
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			LYU = {
+				load_focus_tree = GAN
+				set_country_flag = GAN_civil_war
+			}
+		}
+	}
+	debug_focustree_2 = { 
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			LYU = {
+				clr_country_flag = GAN_civil_war
+				set_country_flag = GAN_rebuild_country
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+	debug_civilwar = {
+		cost = 0
+		fire_only_once = yes
+		days_re_enable = 0
+		days_remove = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+		    set_variable = { Keqing_Alioth = 10 }
+            set_variable = { Ningguang_Tianquan_Star = 30 }
+            set_variable = { General_Affairs_Division = 20 }
+			LYU = {
+				retire_character = LYU_morax
+				set_country_flag = Liyue_crisis
+			    clr_country_flag = Financial_collapse
+			    clr_country_flag = Social_unrest
+			    clr_country_flag = Economic_reconstruction
+			    clr_country_flag = Public_opinion
+			    clr_country_flag = government_reformn
+				country_event = { id = lyu_start.7 }
+			}
+		}
+	}
+}
+ganyu_parliament = {	
+	qixingyihui_jingji_toupiao = {
+		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+		allowed = {
+			tag = LYU
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 15
+		selectable_mission = no
+
+		complete_effect = {
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+				var = ganyu_parliament_frame
+				value = 5
+				compare = greater_than_or_equals
+					}
+				}
+				LYU = { country_event = { id = ganyu.20 } }
+			}
+			else ={
+				LYU = { country_event = { id = ganyu.21 } }
+			}
+			
+		}
+
+	}
+
+	qixingyihui_wenhua_toupiao = {
+		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+		allowed = {
+			tag = LYU
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 15
+		selectable_mission = no
+
+		complete_effect = {
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+				var = ganyu_parliament_frame
+				value = 5
+				compare = greater_than_or_equals
+					}
+				}
+				LYU = { country_event = { id = ganyu.2001 } }
+			}
+			else ={
+				LYU = { country_event = { id = ganyu.21 } }
+			}
+			
+		}
+
+	}
+
+	qixingyihui_zhengzhi_toupiao = {
+		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+		allowed = {
+			tag = LYU
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 15
+		selectable_mission = no
+
+		complete_effect = {
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+				var = ganyu_parliament_frame
+				value = 5
+				compare = greater_than_or_equals
+					}
+				}
+				LYU = { country_event = { id = ganyu.2002 } }
+			}
+			else ={
+				LYU = { country_event = { id = ganyu.21 } }
+			}
+			
+		}
+
+	}
+
+	qixingyihui_junshi_toupiao = {
+		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+		allowed = {
+			tag = LYU
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 15
+		selectable_mission = no
+
+		complete_effect = {
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+				var = ganyu_parliament_frame
+				value = 5
+				compare = greater_than_or_equals
+					}
+				}
+				LYU = { country_event = { id = ganyu.2003 } }
+			}
+			else ={
+				LYU = { country_event = { id = ganyu.21 } }
+			}
+			
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#	debug_yihui_jia = {
+#			icon = 
+#			cost = 0
+#			fire_only_once = no
+#			days_re_enable = 0
+#			days_remove = 0
+#			available = {
+#				always = yes
+#			}
+#			visible = {
+#				always = yes
+#			}
+#			complete_effect = {
+#				add_to_variable = {
+#					var = ganyu_parliament_frame
+#					value = 1
+#				}
+#			}
+#	}
+#	debug_yihui_jian = {
+#		icon = 
+#		cost = 0
+#		fire_only_once = no
+#		days_re_enable = 0
+#		days_remove = 0
+#		available = {
+#			always = yes
+#		}
+#		visible = {
+#			always = yes
+#		}
+#		complete_effect = {
+#			add_to_variable = {
+#				var = ganyu_parliament_frame
+#				value = -1
+#			}
+#		}
+#	}
+#	debug_quanwei_jian = {
+#		icon = 
+#		cost = 0
+#		fire_only_once = no
+#		days_re_enable = 0
+#		days_remove = 0
+#		available = {
+#			always = yes
+#		}
+#		visible = {
+#			always = yes
+#		}
+#		complete_effect = {
+#			add_to_variable = {
+#				var = ganyu_parliament_progress_frame
+#				value = -1
+#			}
+#		}
+#	}
+#	debug_quanwei_jia = {
+#		icon = 
+#		cost = 0
+#		fire_only_once = no
+#		days_re_enable = 0
+#		days_remove = 0
+#		available = {
+#			always = yes
+#		}
+#		visible = {
+#			always = yes
+#		}
+#		complete_effect = {
+#			add_to_variable = {
+#				var = ganyu_parliament_progress_frame
+#				value = 1
+#			}
+#		}
+#	}
+
+
+
+
+	Gan_jingjijueyi_1 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_jingji
+				value = 1
+				compare = equals	
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			check_variable = {
+				var = gan_jingji
+				value = 1
+				compare = equals
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_jingjijueyi_1_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.401 } }
+		}
+	}
+	Gan_jingjijueyi_2 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_jingji
+				value = 2
+				compare = greater_than_or_equals
+				
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				
+			}
+			
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_jingji
+					value = 1
+					compare = equals
+				}
+				check_variable = {
+					var = gan_jingji
+					value = 2
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_jingjijueyi_2_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.501 } }
+		}
+	}
+	Gan_jingjijueyi_3 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_jingji
+				value = 3
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_jingji
+					value = 2
+					compare = equals
+				}
+				check_variable = {
+					var = gan_jingji
+					value = 3
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_jingjijueyi_3_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.601 } }
+		}
+	}
+	Gan_jingjijueyi_4 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_jingji
+				value = 4
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_jingji
+					value = 3
+					compare = equals
+				}
+				check_variable = {
+					var = gan_jingji
+					value = 4
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_jingjijueyi_4_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.701 } }
+		}
+	}
+	Gan_wenhuajueyi_1 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_wenhua
+				value = 1
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			check_variable = {
+				var = gan_wenhua
+				value = 1 
+				compare = equals
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_wenhua_1_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.801 } }
+		}
+	}
+	Gan_wenhuajueyi_2 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_wenhua
+				value = 2
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_wenhua
+					value = 1
+					compare = equals
+				}
+				check_variable = {
+					var = gan_wenhua
+					value = 2
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_wenhua_2_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.901 } }
+		}
+	}
+	Gan_wenhuajueyi_3 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_wenhua
+				value = 3
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_wenhua
+					value = 2
+					compare = equals
+				}
+				check_variable = {
+					var = gan_wenhua
+					value = 3
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_wenhua_3_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1001 } }
+		}
+	}
+	Gan_wenhuajueyi_4 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_wenhua
+				value = 4
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_wenhua
+					value = 3
+					compare = equals
+				}
+				check_variable = {
+					var = gan_wenhua
+					value = 4
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_wenhua_4_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1101 } }
+		}
+	}
+	Gan_zhengzhijueyi_1 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_zhengzhi
+				value = 1
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			check_variable = {
+				var = gan_zhengzhi
+				value = 1
+				compare = equals
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_zhengzhi_1_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1201 } }
+		}
+	}
+	Gan_zhengzhijueyi_2 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_zhengzhi
+				value = 2
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_zhengzhi
+					value = 1
+					compare = equals
+				}
+				check_variable = {
+					var = gan_zhengzhi
+					value = 2
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_zhengzhi_2_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1301 } }
+		}
+	}
+	Gan_zhengzhijueyi_3 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_zhengzhi
+				value = 3
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_zhengzhi
+					value = 2
+					compare = equals
+				}
+				check_variable = {
+					var = gan_zhengzhi
+					value = 3
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_zhengzhi_3_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1401 } }
+		}
+	}
+	Gan_zhengzhijueyi_4 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_zhengzhi
+				value = 4
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_zhengzhi
+					value = 3
+					compare = equals
+				}
+				check_variable = {
+					var = gan_zhengzhi
+					value = 4
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_zhengzhi_3_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1501 } }
+		}
+	}
+	Gan_junshijueyi_1 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_junshi
+				value = 1
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			check_variable = {
+				var = gan_junshi
+				value = 1
+				compare = equals
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_junshi_1_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1601 } }
+		}
+	}
+	Gan_junshijueyi_2 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_junshi
+				value = 2
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_junshi
+					value = 1
+					compare = equals
+				}
+				check_variable = {
+					var = gan_junshi
+					value = 2
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_junshi_2_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1701 } }
+		}
+	}
+	Gan_junshijueyi_3 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_junshi
+				value = 3
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_junshi
+					value = 2
+					compare = equals
+				}
+				check_variable = {
+					var = gan_junshi
+					value = 3
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_junshi_3_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1801 } }
+		}
+	}
+	Gan_junshijueyi_4 = {
+		#icon = 
+		cost = 0
+		days_re_enable = 30
+		days_remove = 0
+		ai_will_do = {
+			base = 100
+		}
+		available = {
+			
+			custom_trigger_tooltip = {
+				tooltip = jueyi_jiesuo
+				check_variable = {
+				var = gan_junshi
+				 
+				compare = greater_than_or_equals
+			}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+			}
+		}
+		visible = {
+			OR = {
+				check_variable = {
+					var = gan_junshi
+					value = 3
+					compare = equals
+				}
+				check_variable = {
+					var = gan_junshi
+					value = 4
+					compare = equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = yihui_jinxingzhong
+				yihuijinxingzhong = yes
+				NOT = {
+					has_country_flag = Gan_junshi_4_tongguo
+				}
+			}
+		}
+		complete_effect = {
+			LYU = { country_event = { id = ganyu.1901 } }
+		}
+	}
+}
+
+
+ganyu_parliament_shouduan = {
+	gan_shouduan_1 ={ #提供利益
+		#icon = 
+		cost = 100
+		days_re_enable = 0
+		days_remove = 45
+		visible = {
+			OR = {
+				LYU = { has_country_flag = gan_zuopai_jianyi}
+				LYU = { has_country_flag = gan_tiaohepai_jianyi}
+				LYU = { has_country_flag = gan_youpai_jianyi}
+			}
+		}
+		available = {
+			yihuijijiangfoujue = yes
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = ganyu_parliament_frame
+				value = 1
+			}
+		}
+	}
+	gan_shouduan_2 ={ #军事支持
+		#icon = 
+		cost = 100
+		days_re_enable = 0
+		days_remove = 45
+		visible = {
+			OR = {
+				LYU = { has_country_flag = gan_zuopai_jianyi}
+				LYU = { has_country_flag = gan_tiaohepai_jianyi}
+				LYU = { has_country_flag = gan_youpai_jianyi}
+			}
+		}
+		available = {
+			yihuijijiangfoujue = yes
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = ganyu_parliament_frame
+				value = 1
+			}
+		}
+	}
+	gan_shouduan_3 ={ #左派支持
+		#icon = 
+		cost = 100
+		days_re_enable = 0
+		days_remove = 45
+		visible = {
+			OR = {
+				LYU = { has_country_flag = gan_zuopai_jianyi}
+				LYU = { has_country_flag = gan_tiaohepai_jianyi}
+				LYU = { has_country_flag = gan_youpai_jianyi}
+			}
+			NOT = {
+				has_country_flag = yihui_zhengqiuyoupai_zhichi
+			}
+		}
+		available = {
+			yihuijijiangfoujue = yes
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = ganyu_parliament_frame
+				value = 1
+			}
+			ganyu_parliament_policy_left_15 = yes
+			set_country_flag = {
+				flag = yihui_zhengqiuzuopai_zhichi
+				value = 1
+				days = 45
+			}
+		}
+	}
+	gan_shouduan_4 ={ #右派支持
+		#icon = 
+		cost = 100
+		days_re_enable = 0
+		days_remove = 45
+		visible = {
+			OR = {
+				LYU = { has_country_flag = gan_zuopai_jianyi}
+				LYU = { has_country_flag = gan_tiaohepai_jianyi}
+				LYU = { has_country_flag = gan_youpai_jianyi}
+			}
+			NOT = {
+				has_country_flag = yihui_zhengqiuzuopai_zhichi
+			}
+		}
+		available = {
+			yihuijijiangfoujue = yes
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = ganyu_parliament_frame
+				value = 1
+			}
+			ganyu_parliament_policy_right_15 = yes
+			set_country_flag = {
+				flag = yihui_zhengqiuyoupai_zhichi
+				value = 1
+				days = 45
+			}
+		}
+	}
+	gan_shouduan_5 ={
+		#icon = 
+		cost = 100
+		days_re_enable = 0
+		days_remove = 45
+		visible = {
+			OR = {
+				LYU = { has_country_flag = gan_zuopai_jianyi}
+				LYU = { has_country_flag = gan_tiaohepai_jianyi}
+				LYU = { has_country_flag = gan_youpai_jianyi}
+			}
+		}
+		available = {
+			yihuijijiangfoujue = yes
+			custom_trigger_tooltip = {
+				tooltip = quanwei_zugou
+				check_variable = {
+				var = ganyu_parliament_progress_frame
+				value = 1
+				compare = greater_than
+			}
+			}
+			
+		}
+		complete_effect = {
+			set_variable = {
+				var = ganyu_parliament_frame
+				value = 8
+			}
+			add_to_variable = {
+				var = ganyu_parliament_progress_frame
+				value = -1
+			}
+			quanweijisuan = yes
+		}
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+# cishashijian = {
+# 	jiaqiangjingcha = { #加强警察
+# 		icon = decision_icon_ganyu_assassination_5
+# 		cost = 5
+# 		fire_only_once = no
+# 		days_re_enable = 0
+
+# 		days_remove = 14
+# 		ai_will_do = {
+# 		base = 0
+# 			}
+# 		available = {
+# 			check_variable = {
+# 				var = cisha
+# 				value = 5
+# 				compare = greater_than_or_equals
+# 			}
+# 		}
+# 		visible = {
+# 			has_variable = cisha
+# 		}
+# 		complete_effect = {
+# 			add_to_variable = {
+# 				var = anbao
+# 				value = 18
+# 			}
+# 		}
+# 	} 
+# 	gaigeliyueganganbaoxitong = { #改革璃月港安保系统
+# 	icon = decision_icon_ganyu_assassination_3
+# 	cost = 50
+# 	fire_only_once = yes
+# 	days_remove = 15
+# 	ai_will_do = {
+# 	base = 100
+# 		}
+# 	available = {
+# 		always = yes
+# 	}
+# 	visible = {
+# 		has_variable = cisha
+# 	}
+# 	complete_effect = {
+# 		add_to_variable = {
+# 			var = anbao
+# 			value = 25
+# 		} 
+# 	}
+# 	remove_effect = {
+# 		add_to_variable = {
+# 			var = anbao
+# 			value = 15
+# 		}
+# 	}
+# 	}
+# 	zhuabujiduanfenzi = { #抓捕极端分子
+# 	icon = decision_icon_ganyu_assassination_2
+# 	cost = 15
+# 	fire_only_once = no
+# 	days_re_enable = 0
+
+# 	days_remove = 14
+# 	ai_will_do = {
+# 	base = 100
+# 		}
+# 	available = {
+# 		check_variable = {
+# 			var = cisha
+# 			value = 50
+# 			compare = greater_than_or_equals
+# 		}
+# 	}
+# 	visible = {
+# 		has_variable = cisha
+# 	}
+# 	modifier = {
+
+# 	   }
+# 	complete_effect = {
+# 		add_to_variable = {
+# 			var = cisha
+# 			value = -15
+# 		}
+# 		add_to_variable = {
+# 			var = anbao
+# 			value = -5
+# 		}
+# 	}
+# 	} 
+# 	tuxijiduanpaijidi = { #突袭极端派基地
+# 	icon = decision_icon_ganyu_assassination_4
+# 	cost = 75
+# 	fire_only_once = yes
+# 	ai_will_do = {
+# 	base = 0
+# 		}
+# 	available = {
+# 		check_variable = {
+# 			var = anbao 
+# 			value = 100
+# 			compare = greater_than_or_equals
+# 		}
+# 	}
+# 	visible = {
+# 		has_variable = cisha
+# 	}
+# 	complete_effect = {
+# 		hidden_effect = {
+# 			LYU = { country_event = { id = ganyu.66 } }
+# 		}
+# 		clr_country_flag = Gan_cisha
+# 		clear_variable = cisha
+# 		clear_variable = anbao
+# 		clear_variable = ganyu_assassination_result
+# 	}
+# 	days_remove = 7
+# 	}	
+
+
+# 	cisharenwu = {   #刺杀任务
+# 	icon = decision_icon_ganyu_assassination_1
+# 	activation = {
+# 		LYU = {has_country_flag = Gan_Cisha}
+# 	}                               
+# 	available = {                           
+# 		check_variable = {
+# 			var = cisha
+# 			value = 100
+# 			compare = greater_than_or_equals
+# 		}
+# 	}
+# 	is_good = no
+# 	days_remove = 14                         
+# 	days_re_enable = 0
+# 	days_mission_timeout = 14
+# 	timeout_effect = {                
+# 		add_stability = -0.01
+# 		add_to_variable = {
+# 			var = cisha
+# 			value = 10
+# 		}
+# 		add_to_variable = {
+# 			var = anbao
+# 			value = -5
+# 		}    
+# 	}
+# 	complete_effect = {   
+# 		hidden_effect = {
+# 			LYU = { country_event = { id = ganyu.67}}
+# 		}
+# 		clear_variable = cisha
+# 		clear_variable = anbao
+# 		clr_country_flag = Gan_Cisha  
+# 		clear_variable = ganyu_assassination_result             
+# 		}
+	
+# 	}
+# 	no_more_time_for_you = { #决议时间太长了
+# 	icon = decision_icon_ganyu_assassination_1
+# 	activation = { #这是一个计时器
+# 		has_country_flag = Gan_Cisha
+# 	}
+# 	available = {
+# 		NOT = {LYU={has_country_flag=Gan_Cisha}}
+# 	} 
+# 	is_good = no
+# 	days_mission_timeout = 150  #极端分子的耐心已经耗尽
+# 	timeout_effect = {
+# 		add_to_variable = {ganyu_assassination_result = anbao}
+# 		subtract_from_variable = {ganyu_assassination_result = cisha}
+# 		clear_variable = cisha
+# 		clear_variable = anbao
+# 		clr_country_flag = Gan_Cisha
+# 		hidden_effect = {
+# 			LYU = { country_event = { id = ganyu.68 } }
+# 		}
+# 	}
+# 	days_remove = 7
+# 	} 
+# 	jiaqiangjingcha_AI = { #加强警察 给AI用的
+# 			icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+# 			cost = 0
+# 			fire_only_once = no
+# 			days_re_enable = 14
+
+# 			days_remove = 0
+# 			ai_will_do = {
+# 			base = 100
+# 			}
+# 			available = {
+# 				check_variable = {
+# 					var = cisha
+# 					value = 5
+# 					compare = greater_than_or_equals
+# 				}
+# 				is_ai = yes
+# 			}
+# 			visible = {
+# 				has_variable = cisha
+# 				is_ai = yes
+# 			}
+# 			complete_effect = {
+# 				add_to_variable = {
+# 					var = anbao
+# 					value = 15
+# 				}
+# 				add_to_variable = {
+# 					var = cisha
+# 					value = -5
+# 				}
+# 			}
+# 	} 
+
+# 	tuxijiduanpaijidi_AI = { #突袭极端派基地 给AI用的
+# 		icon = GFX_decision_icon_xinuoxiaojiepinpaichuangjian
+# 		cost = 0
+# 		fire_only_once = yes
+# 		ai_will_do = {
+# 		base = 100
+# 			}
+# 		available = {
+# 			check_variable = {
+# 				var = anbao 
+# 				value = 75
+# 				compare = greater_than_or_equals
+# 			}
+# 		}
+# 		visible = {
+# 			has_variable = cisha
+# 			is_ai = yes
+# 		}
+# 		complete_effect = {
+# 			hidden_effect = {
+# 				LYU = { country_event = { id = ganyu.66 } }
+# 			}
+# 			clr_country_flag = Gan_cisha
+# 			clear_variable = cisha
+# 			clear_variable = anbao
+# 			clear_variable = ganyu_assassination_result
+# 		}
+# 		days_remove = 7
+# 	}
+
+# }
+
+
+
+
+
+
+
+
+

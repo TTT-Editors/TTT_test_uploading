@@ -11,15 +11,21 @@ Liyue_you_should_be_prepared_for_war = {
     }
 	
 	ai_strategy = {
-		type = ignore
-		id = "DSC"
-		value = 500
+		type = front_unit_request
+		id = DSC
+		value = -500
 	}
 	
 	ai_strategy = {
-		type = ignore
-		id = "SUM"
-		value = 500
+		type = front_unit_request
+		id = SUM
+		value = -500
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = SNE
+		value = -500
 	}
 }
 
@@ -85,50 +91,19 @@ let_northern_warlords_kill_themselves = {
 	}
 	
 	ai_strategy = {
-		type = ignore
+		type = front_unit_request
 		id = "ZDG"
-		value = 100
+		value = -200
 	}
 	ai_strategy = {
-		type = ignore
+		type = front_unit_request
 		id = "XOG"
-		value = 100
+		value = -200
 	}
 	ai_strategy = {
-		type = ignore
+		type = front_unit_request
 		id = "XRG"
-		value = 100
-	}
-}
-
-beat_Ganyu_then = {
-	allowed = {
-		OR = {
-			tag = KQG
-			tag = NNG
-		}
-	}
-	
-	enable = {	
-		center_united = yes
-		NOT = { is_in_faction_with = LYU }
-	}
-	
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = antagonize
-		id = "LYU"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = front_control
-		tag = LYU
-		ratio = 0.75
-		priority = 200
-		ordertype = front
-		manual_attack = yes
+		value = -200
 	}
 }
 
@@ -198,7 +173,13 @@ watch_out_north = {
 		}
 	}
 	
-	abort_when_not_enabled = yes
+	abort = {
+		OR = {
+			has_war_with = ZDG
+			has_war_with = XRG
+			has_war_with = XOG
+		}
+	}
 
 	ai_strategy = {
 		type = contain
@@ -217,36 +198,23 @@ watch_out_north = {
 		id = "ZDG"
 		value = 200
 	}
-}
-
-ready_to_conquer_north = {
-	allowed = {
-		is_nominate_liyue = yes
+	
+	ai_strategy = {
+		type = front_unit_request
+		tag = XOG
+		value = 40
 	}
 	
-	enable = {
-		has_country_flag = center_victor
-		has_global_flag = Liyue_Civil_War
+	ai_strategy = {
+		type = front_unit_request
+		tag = XRG
+		value = 40
 	}
 	
-	abort_when_not_enabled = yes
-
 	ai_strategy = {
-		type = prepare_for_war
-		id = "XRG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = prepare_for_war
-		id = "XOG"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = prepare_for_war
-		id = "ZDG"
-		value = 200
+		type = front_unit_request
+		tag = ZDG
+		value = 40
 	}
 }
 
@@ -335,7 +303,7 @@ Xianren_and_Xiao_not_mess_up_with_southern_warlords = {
 	}
 }
 
-XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend while germany has buffs.
+XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend while sne has buffs.
 	allowed = {
 		OR = { 
 			original_tag = XRG

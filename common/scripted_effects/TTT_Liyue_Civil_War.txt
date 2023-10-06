@@ -28,18 +28,26 @@ reset_core_of_liyue = {
 	ROOT = { set_research_slots = 4 }
 	ROOT = { set_capital = { state = 124 } }
 	ROOT = { add_named_threat = { threat = -35 name = liyue_civil_war_end_tt } }
+	ROOT = { clear_variable = ttt_liyue_civil_war_decision_ui_dirty }
 	if = {
 		limit = {
-			has_template = "���������"
+			has_template = "Renmin Chiweidui"
 		}
-		delete_unit_template_and_units = "���������"
+		delete_unit_template_and_units = "Renmin Chiweidui"
 		disband = yes
 	}
 	if = {
 		limit = {
-			has_template = "���"
+			has_template = "Liyue Difang Minbing Lv"
 		}
-		delete_unit_template_and_units = "���"
+		delete_unit_template_and_units = "Liyue Difang Minbing Lv"
+		disband = yes
+	}
+	if = {
+		limit = {
+			has_template = "Snezhnaya volunteer army"
+		}
+		delete_unit_template_and_units = "Snezhnaya volunteer army"
 		disband = yes
 	}
 	every_possible_country = {
@@ -58,5 +66,38 @@ reset_core_of_liyue = {
 		}
 		set_country_flag = LYU_a_new_hope_flag
 		clr_country_flag = defeated_ningguang
+	}
+}
+LH_troika_sort = {
+	resize_array = {
+		array = troika_cha_array
+		size = 3
+		value = 0
+	}
+	resize_array = {
+		array = troika_prestige_array
+		size = 3
+		value = 0
+	}
+	for_loop_effect = {
+		end = 3
+		value = v
+		find_highest_in_array = {
+			array = troika_prestige
+			value = troika_prestige_highest_cha
+			index = troika_cha
+		}
+		set_variable = {
+			var = troika_cha_array^v
+			value = troika_cha
+		}
+		set_variable = {
+			var = troika_prestige_array^v
+			value = troika_prestige_highest_cha
+		}
+		set_variable = {
+			var = troika_prestige^troika_cha
+			value = -1
+		}
 	}
 }

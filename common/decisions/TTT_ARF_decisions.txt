@@ -43,28 +43,38 @@ ARF_yuanzhu = {
 				has_country_flag = bianjing_1_flag
 			}
 		}
-
+		available = {
+			any_owned_state = {
+				is_fully_controlled_by = ROOT
+				hidden_trigger = {
+					NOT = {
+						has_state_flag = border_incident_active
+					}
+				}
+				has_ROOT_at_least_1_div_in_current_state_scope = yes
+				any_neighbor_state = {
+					is_fully_controlled_by = RTG
+					NOT = {
+						has_state_flag = border_incident_active
+					}
+				}
+			}
+		}
 		custom_cost_trigger = {
 			command_power > 24.9
 		}
-		
 		complete_effect = {
 			add_command_power = -25
 			random_state = {
 				limit = {
-					is_core_of = RTG
 					any_neighbor_state = {
-						is_fully_controlled_by = ROOT
-						hidden_trigger = {
-							NOT = {
-								has_state_flag = border_incident_active
-							}
-						}
+						is_fully_controlled_by = RTG
+						NOT = { has_state_flag = border_incident_active }
 					}
 				}
 				hidden_effect = {
 					save_event_target_as = defender_state
-					set_ = {
+					set_variable = {
 						FROM.defender_state_vs_@ROOT = id
 					}
 					set_temp_variable = {
@@ -121,26 +131,39 @@ ARF_yuanzhu = {
 			has_country_flag = ARF_yes
 		}
 		available = {
-			any_neighbor_state = {
-				is_controlled_by = RTG
+			any_owned_state = {
+				is_fully_controlled_by = ROOT
+				any_neighbor_state = {
+					is_controlled_by = RTG
+				}
 			}
 		}
 		ai_will_do = {
-			factor = 100			
+			factor = 100
 		}
 		custom_cost_trigger = {
 			command_power > 49.9
 		}
 		available = {
 			ARF = {
-				has_war = RTG
+				has_war_with = RTG
 			}
 		}
 		war_with_on_remove = RTG
+		days_remove = 20
 		complete_effect = {
 			add_command_power = -50
-			RTG = { country_event = { id = liyue_civil_war.101 } }
-			RTG = { country_event = { id = dikangjun.9 days = 20 } }
+			RTG = {
+				country_event = {
+					id = liyue_civil_war.101
+				}
+			}
+			RTG = {
+				country_event = {
+					id = dikangjun.9
+					days = 20
+				}
+			}
 			hidden_effect = {
 				set_country_flag = will_war_with_RTG
 				add_ai_strategy = {
@@ -150,32 +173,46 @@ ARF_yuanzhu = {
 				}
 			}
 		}
+		remove_effect = {
+		    declare_war_on = {
+                target = RTG
+                type = annex_everything
+            }
+		}
 	}
 }
 
 ARF_hofangzhanxian = {
-    ARF_xuanchuanjuyuantuanjie = {  #宣扬巨渊团结！  
+	ARF_xuanchuanjuyuantuanjie = {
+		#宣扬巨渊团结！  
 		fire_only_once = no
 		available = {
-			NOT = { has_country_flag = ARF_xuanchuanjuyuantuanjie_flag }
-		}	
+			NOT = {
+				has_country_flag = ARF_xuanchuanjuyuantuanjie_flag
+			}
+		}
 		allowed = {
 			original_tag = ARF
 		}
 		visible = {
 			has_completed_focus = ARF_hofangzhanxian
 		}
-		cost = 20	
+		cost = 20
 		remove_effect = {
 			add_political_power = 50
-			set_country_flag = { flag = ARF_xuanchuanjuyuantuanjie_flag value = 1 days = 14 }
-		}	
+			set_country_flag = {
+				flag = ARF_xuanchuanjuyuantuanjie_flag
+				value = 1
+				days = 14
+			}
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
-	ARF_guxiang = {  #故乡！自由！明天！  
-		fire_only_once = yes	
+	ARF_guxiang = {
+		#故乡！自由！明天！  
+		fire_only_once = yes
 		allowed = {
 			original_tag = ARF
 		}
@@ -184,195 +221,484 @@ ARF_hofangzhanxian = {
 		}
 		cost = 30
 		remove_effect = {
-			add_stability = 0.10
-	        add_war_support = 0.10
-		}	
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
-	ARF_qianxianweiwenlaojun = {  #前线慰问劳军
-		fire_only_once = yes	
+	ARF_qianxianweiwenlaojun = {
+		#前线慰问劳军
+		fire_only_once = yes
 		allowed = {
 			original_tag = ARF
 		}
 		available = {
-		    NOT = { has_country_flag = ARF_qianxianweiwenlaojun_flag }
+			NOT = {
+				has_country_flag = ARF_qianxianweiwenlaojun_flag
+			}
 		}
 		visible = {
 			has_completed_focus = ARF_hofangzhanxian
 		}
 		cost = 10
 		remove_effect = {
-	        add_war_support = 0.02
-			set_country_flag = { flag = ARF_qianxianweiwenlaojun_flag value = 1 days = 7 }
-		}	
+			add_war_support = 0.02
+			set_country_flag = {
+				flag = ARF_qianxianweiwenlaojun_flag
+				value = 1
+				days = 7
+			}
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
-	ARF_xuanchuanzhanzhengyingxiong = {  #宣传战争英雄
-		fire_only_once = yes	
+	ARF_xuanchuanzhanzhengyingxiong = {
+		#宣传战争英雄
+		fire_only_once = yes
 		allowed = {
 			original_tag = ARF
 		}
 		available = {
-		    NOT = { has_country_flag = ARF_xuanchuanzhanzhengyingxiong_flag }
+			NOT = {
+				has_country_flag = ARF_xuanchuanzhanzhengyingxiong_flag
+			}
 		}
 		visible = {
 			has_completed_focus = ARF_hofangzhanxian
 		}
 		cost = 10
 		remove_effect = {
-	        add_political_power = 50
-			set_country_flag = { flag = ARF_xuanchuanzhanzhengyingxiong_flag value = 1 days = 7 }
-		}	
+			add_political_power = 50
+			set_country_flag = {
+				flag = ARF_xuanchuanzhanzhengyingxiong_flag
+				value = 1
+				days = 7
+			}
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
-	ARF_wuzisoujiyundon = {  #物资搜集运动
-		fire_only_once = no	
+	ARF_wuzisoujiyundon = {
+		#物资搜集运动
+		fire_only_once = no
 		allowed = {
 			original_tag = ARF
 		}
 		available = {
-		    NOT = { has_country_flag = ARF_wuzisoujiyundon_flag }
+			NOT = {
+				has_country_flag = ARF_wuzisoujiyundon_flag
+			}
 		}
 		visible = {
 			has_completed_focus = ARF_hofangzhanxian
-			check_variable = { ARF_wuzisoujiyundon_value < 3 }
+			check_variable = {
+				ARF_wuzisoujiyundon_value < 3
+			}
 		}
 		cost = ARF_wuzisoujiyundon_cost
 		remove_effect = {
-	        add_political_power = 50
-			set_country_flag = { flag = ARF_wuzisoujiyundon_flag value = 1 days = 21 }
-			add_to_variable = { ARF_wuzisoujiyundon_value = 1 }
-			set_variable = { ARF_wuzisoujiyundon_cost = 100 }
+			set_country_flag = {
+				flag = ARF_wuzisoujiyundon_flag
+				value = 1
+				days = 21
+			}
+			add_to_variable = {
+				ARF_wuzisoujiyundon_value = 1
+			}
+			set_variable = {
+				ARF_wuzisoujiyundon_cost = 100
+			}
 			if = {
-			limit = {
-				check_variable = { ARF_wuzisoujiyundon_value = 1 }
+				limit = {
+					check_variable = {
+						ARF_wuzisoujiyundon_value = 1
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 200
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 75
+				}
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = 50
+				}
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = 200
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 100
+				}
 			}
-			add_equipment_to_stockpile = {
-		    type = infantry_equipment
-		    amount = 200
-	            }
-			add_equipment_to_stockpile = {
-		    type = support_equipment
-		    amount = 75
-	            }
-			add_equipment_to_stockpile = {
-		    type = artillery_equipment
-		    amount = 50
-	            }
-			add_equipment_to_stockpile = {
-		    type = grain_conversion_eq
-		    amount = 200
-	            }
-			add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
-		    amount = 100
-	            }
-		    }
 			else_if = {
-			limit = {
-				check_variable = { ARF_wuzisoujiyundon_value = 2 }
+				limit = {
+					check_variable = {
+						ARF_wuzisoujiyundon_value = 2
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 500
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 150
+				}
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = 150
+				}
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = 500
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 200
+				}
 			}
-			add_equipment_to_stockpile = {
-		    type = infantry_equipment
-		    amount = 500
-	            }
-			add_equipment_to_stockpile = {
-		    type = support_equipment
-		    amount = 150
-	            }
-			add_equipment_to_stockpile = {
-		    type = artillery_equipment
-		    amount = 150
-	            }
-			add_equipment_to_stockpile = {
-		    type = grain_conversion_eq
-		    amount = 500
-	            }
-			add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
-		    amount = 200
-	            }
-		    }
-		}	
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
-	ARF_jinjihujiazhizuo = {  #紧急护甲制作
-		fire_only_once = no	
+	ARF_jinjihujiazhizuo = {
+		#紧急护甲制作
+		fire_only_once = no
 		allowed = {
 			original_tag = ARF
 		}
 		available = {
-		    NOT = { has_country_flag = ARF_jinjihujiazhizuo_flag }
+			NOT = {
+				has_country_flag = ARF_jinjihujiazhizuo_flag
+			}
 		}
 		visible = {
 			has_completed_focus = ARF_hofangzhanxian
 		}
 		cost = 14
 		remove_effect = {
-		    set_country_flag = { flag = ARF_jinjihujiazhizuo_flag value = 1 days = 14 }
-			add_equipment_to_stockpile = {
-		    type = ttt_uniform_eq
-		    amount = 50
-	        }
-		}	
+			set_country_flag = {
+				flag = ARF_jinjihujiazhizuo_flag
+				value = 1
+				days = 14
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = ARF_zuihodebupi
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 50
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = ARF_zuihodebupi
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = 100
+				}
+			}
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
-	ARF_koliangzhengjio = {  #口粮征集
-		fire_only_once = no	
+	ARF_koliangzhengjio = {
+		#口粮征集
+		fire_only_once = no
 		allowed = {
 			original_tag = ARF
 		}
 		available = {
-		    NOT = { has_country_flag = ARF_koliangzhengjio_flag }
+			NOT = {
+				has_country_flag = ARF_koliangzhengjio_flag
+			}
 		}
 		visible = {
 			has_completed_focus = ARF_hofangzhanxian
 		}
 		cost = 25
 		remove_effect = {
-		    set_country_flag = { flag = ARF_koliangzhengjio_flag value = 1 days = 14 }
-			add_equipment_to_stockpile = {
-		    type = grain_conversion_eq
-		    amount = 200
-	        }
-		}	
+			set_country_flag = {
+				flag = ARF_koliangzhengjio_flag
+				value = 1
+				days = 14
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = ARF_zuihodeliangshi
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = 200
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = ARF_zuihodeliangshi
+				}
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = 400
+				}
+			}
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
-	ARF_zhengchangzhanshigongshi = {  #额外延长战时工时
-		fire_only_once = no	
+	ARF_zhengchangzhanshigongshi = {
+		#额外延长战时工时
+		fire_only_once = no
 		allowed = {
 			original_tag = ARF
 		}
+		days_remove = 30
 		available = {
-		    NOT = { has_country_flag = ARF_zhengchangzhanshigongshi_flag }
+			NOT = {
+				has_country_flag = ARF_zhengchangzhanshigongshi_flag
+			}
 		}
 		visible = {
 			has_completed_focus = ARF_hofangzhanxian
 		}
 		modifier = {
-		    political_power_gain = -0.10
-            industrial_capacity_factory = 0.05
-            production_factory_max_efficiency_factor = 0.05
-         	production_factory_efficiency_gain_factor = 0.05		
+			political_power_gain = -0.1
+			industrial_capacity_factory = 0.05
+			production_factory_max_efficiency_factor = 0.05
+			production_factory_efficiency_gain_factor = 0.05
 		}
 		cost = 50
 		remove_effect = {
-		    set_country_flag = { flag = ARF_zhengchangzhanshigongshi_flag value = 1 days = 30 }
-		}	
+			set_country_flag = {
+				flag = ARF_zhengchangzhanshigongshi_flag
+				value = 1
+				days = 30
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ARF_huobijinronguanzhi = {
+		#货币金融管制
+		fire_only_once = yes
+		allowed = {
+			original_tag = ARF
+		}
+		available = {
+		}
+		days_remove = 30
+		visible = {
+			has_completed_focus = ARF_juyuanrenmin
+		}
+		modifier = {
+			consumer_goods_factor = -0.05
+			production_speed_buildings_factor = 0.1
+		}
+		cost = 50
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ARF_jianyijungongjianshe = {
+		#简易军事工厂建设
+		fire_only_once = no
+		allowed = {
+			original_tag = ARF
+		}
+		available = {
+			check_variable = {
+				ARF_jianyijungongjianshe_value < 2
+			}
+		}
+		days_remove = 7
+		visible = {
+			has_completed_focus = ARF_juyuanrenmin
+		}
+		modifier = {
+		}
+		cost = 50
+		remove_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			add_to_variable = {
+				ARF_jianyijungongjianshe_value = 1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ARF_zhandiyulunguanzhi = {
+		#战地舆论管制
+		fire_only_once = no
+		allowed = {
+			original_tag = ARF
+		}
+		available = {
+		}
+		days_remove = 120
+		visible = {
+			has_completed_focus = ARF_juyuanrenmin
+		}
+		modifier = {
+			stability_factor = 0.15
+			war_support_factor = 0.15
+			army_attack_factor = 0.1
+			army_defence_factor = 0.1
+		}
+		cost = 50
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ARF_yanchangzhengbingdongyuan = {
+		#延长征兵动员
+		fire_only_once = no
+		allowed = {
+			original_tag = ARF
+		}
+		available = {
+			NOT = {
+				has_country_flag = ARF_yanchangzhengbingdongyuan_flag
+			}
+		}
+		visible = {
+			has_completed_focus = ARF_juyuanrenmin
+		}
+		modifier = {
+		}
+		cost = 25
+		complete_effect = {
+			set_country_flag = {
+				flag = ARF_yanchangzhengbingdongyuan_flag
+				value = 1
+				days = 14
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = ARF_zuihodeqingnian
+					}
+				}
+				add_manpower = 1000
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = ARF_zuihodeqingnian
+				}
+				add_manpower = 1500
+			}
+		}
 		ai_will_do = {
 			base = 10
 		}
 	}
 }
+ARF_zuobi_jueyizu = {
+    ARF_wanjiamoshi = {
+		#玩家模式
+		fire_only_once = yes
+		name = ARF_zuobi_jueyizu
+		allowed = {
+			original_tag = ARF
+		}
+		available = {
+			is_ai = no
+		}
+		modifier = {
+		}
+		cost = 0
+		complete_effect = {
+			add_ideas = ARF_zuobi
+			add_offsite_building = { type = arms_factory level = 6 }
+			add_offsite_building = { type = industrial_complex level = 6 }
+			division_template = {
+					name = "Minbing Budui"
+					priority = 2
+					is_locked = yes
+					division_names_group = ARF_INF_01
+					regiments = {
+						militia = {
+							x = 0
+							y = 0
+						}
+						militia = {
+							x = 0
+							y = 1
+						}
+						militia = {
+							x = 0
+							y = 2
+						}
+						militia = {
+							x = 1
+							y = 0
+						}
+						militia = {
+							x = 1
+							y = 1
+						}
+						militia = {
+							x = 1
+							y = 2
+						}
+					}
+				}
+				154 = {
+					create_unit = {
+						division = "division_template = \"Minbing Budui\" start_experience_factor = 0.2"
+						count = 12
+						owner = ARF
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ARF_guanbijuezuobi = {
+		#关闭作弊决议
+		fire_only_once = yes
+		allowed = {
+			original_tag = ARF
+		}
+		available = {
+		}
+		visible = {
+		}
+		modifier = {
+		}
+		cost = 0
+		complete_effect = {
+			clr_country_flag = ARF_zuobijueyi_flag
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+

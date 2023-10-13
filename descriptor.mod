@@ -1,4 +1,4 @@
-version="0.6.11"
+version="0.6.10.1"
 tags={
 	"Alternative History"
 	"Map"
@@ -66,4 +66,4 @@ replace_path="map/strategicregions"
 replace_path="map/supplyareas"
 replace_path="portraits"
 name="Genshin Impact:The Twist of Teyvat (Github Version)"
-supported_version="1.12.*"
+supported_version="1.13.*"

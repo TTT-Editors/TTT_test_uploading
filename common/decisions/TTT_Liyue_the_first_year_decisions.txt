@@ -1,56 +1,67 @@
 Liyue_political_crisis = {
-    liyue_civilwar_is_coming = {   #内战倒计时
-	    icon = GFX_decision_hol_draw_up_staff_plans
-   
-        activation = {
-			NOT = { has_global_flag = avoid_Liyue_Civil_War }
-            custom_trigger_tooltip = { 		
+	liyue_civilwar_is_coming = {
+		#内战倒计时
+		icon = GFX_decision_TTT_decision010
+		activation = {
+			NOT = {
+				has_global_flag = avoid_Liyue_Civil_War
+			}
+			custom_trigger_tooltip = {
 				AND = {
-					NOT = { 
+					NOT = {
 						has_country_leader = {
 							character = LYU_morax
 							ruling_only = yes
 						}
 					}
 					has_country_flag = Liyue_crisis
-					NOT = { has_global_flag = Liyue_Civil_War }
-					NOT = { has_global_flag = Liyue_Civil_War_Coming }
-			    }
-            }			
-        }
-		
+					NOT = {
+						has_global_flag = Liyue_Civil_War
+					}
+					NOT = {
+						has_global_flag = Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
 		visible = {
-			NOT = { has_global_flag = avoid_Liyue_Civil_War }
-            custom_trigger_tooltip = { 		
+			NOT = {
+				has_global_flag = avoid_Liyue_Civil_War
+			}
+			custom_trigger_tooltip = {
 				AND = {
-					NOT = { 
+					NOT = {
 						has_country_leader = {
 							character = LYU_morax
 							ruling_only = yes
 						}
 					}
 					has_country_flag = Liyue_crisis
-					NOT = { has_global_flag = Liyue_Civil_War }
-					NOT = { has_global_flag = Liyue_Civil_War_Coming }
-			    }
-            }
+					NOT = {
+						has_global_flag = Liyue_Civil_War
+					}
+					NOT = {
+						has_global_flag = Liyue_Civil_War_Coming
+					}
+				}
+			}
 		}
 		cancel_trigger = {
-		    has_stability < 0.01
+			has_stability < 0.01
 		}
 		cancel_effect = {
 			clr_country_flag = Liyue_crisis
 			hidden_effect = {
 				set_can_be_fired_in_advisor_role = {
-					character = LYU_Ganyu 
+					character = LYU_Ganyu
 					value = yes
 				}
 				set_can_be_fired_in_advisor_role = {
-					character = LYU_Keqing 
+					character = LYU_Keqing
 					value = yes
 				}
 				set_can_be_fired_in_advisor_role = {
-					character = LYU_Ningguang 
+					character = LYU_Ningguang
 					value = yes
 				}
 			}
@@ -59,11 +70,13 @@ Liyue_political_crisis = {
 					has_global_flag = avoid_Liyue_Civil_War
 				}
 				clr_country_flag = Liyue_crisis
-				set_global_flag = avoid_Liyue_Civil_War 
+				set_global_flag = avoid_Liyue_Civil_War
 			}
 			else_if = {
 				limit = {
-					NOT = { has_global_flag = avoid_Liyue_Civil_War }
+					NOT = {
+						has_global_flag = avoid_Liyue_Civil_War
+					}
 				}
 				clr_country_flag = Liyue_crisis
 				country_event = {
@@ -73,30 +86,27 @@ Liyue_political_crisis = {
 			}
 		}
 		cancel_if_not_visible = yes
-		
-        is_good = no
-		
-        days_mission_timeout = 181
-		
-        available = {		    
+		is_good = no
+		days_mission_timeout = 181
+		available = {
 			or = {
 				has_global_flag = avoid_Liyue_Civil_War
 				has_global_flag = Liyue_Civil_War_Coming
-	        }
-        }
-        timeout_effect = {
-            clr_country_flag = Liyue_crisis
+			}
+		}
+		timeout_effect = {
+			clr_country_flag = Liyue_crisis
 			hidden_effect = {
 				set_can_be_fired_in_advisor_role = {
-					character = LYU_Ganyu 
+					character = LYU_Ganyu
 					value = yes
 				}
 				set_can_be_fired_in_advisor_role = {
-					character = LYU_Keqing 
+					character = LYU_Keqing
 					value = yes
 				}
 				set_can_be_fired_in_advisor_role = {
-					character = LYU_Ningguang 
+					character = LYU_Ningguang
 					value = yes
 				}
 			}
@@ -105,11 +115,13 @@ Liyue_political_crisis = {
 					has_global_flag = avoid_Liyue_Civil_War
 				}
 				clr_country_flag = Liyue_crisis
-				set_global_flag = avoid_Liyue_Civil_War 
+				set_global_flag = avoid_Liyue_Civil_War
 			}
 			else_if = {
 				limit = {
-					NOT = { has_global_flag = avoid_Liyue_Civil_War }
+					NOT = {
+						has_global_flag = avoid_Liyue_Civil_War
+					}
 				}
 				clr_country_flag = Liyue_crisis
 				country_event = {
@@ -117,13 +129,13 @@ Liyue_political_crisis = {
 					days = 3
 				}
 			}
-        }
-    }
-	
-	LYU_Financial_collapse = {     #金融崩溃
-		activation = {                         
+		}
+	}
+	LYU_Financial_collapse = {
+		#金融崩溃
+		activation = {
 			AND = {
-				NOT = { 
+				NOT = {
 					has_country_leader = {
 						character = LYU_morax
 						ruling_only = yes
@@ -131,126 +143,156 @@ Liyue_political_crisis = {
 				}
 				has_country_flag = Liyue_crisis
 				has_country_flag = Financial_collapse
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+				NOT = {
+					has_global_flag = Liyue_Civil_War
+				}
+				NOT = {
+					has_global_flag = avoid_Liyue_Civil_War
+				}
 			}
-		}                                    
-		available = {                           
-			NOT = { has_country_flag = Financial_collapse }
 		}
-		
-		is_good = no                         
-	
+		available = {
+			NOT = {
+				has_country_flag = Financial_collapse
+			}
+		}
+		icon = GFX_decision_TTT_decision010
+		is_good = no
 		days_mission_timeout = 31
-		
-		timeout_effect = {                      
+		timeout_effect = {
 			clr_country_flag = Financial_collapse
-            set_country_flag = Social_unrest
-            custom_effect_tooltip = LYU_Financial_collapse_tt
-            if = {
-				limit = {				
-					NOT = { has_country_flag = Liyue_Capital_injection_1 }
-					NOT = { has_country_flag = Liyue_Government_Intervention_1 }
+			set_country_flag = Social_unrest
+			custom_effect_tooltip = LYU_Financial_collapse_tt
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = Liyue_Capital_injection_1
+					}
+					NOT = {
+						has_country_flag = Liyue_Government_Intervention_1
+					}
 				}
 				add_stability = -0.05
-		    }			
+			}
 		}
 	}
-	
-    Liyue_Capital_injection = {                 #凝光资本变卖方案
-       icon = GFX_decision_generic_political_discourse
-		
+	Liyue_Capital_injection = {
+		#凝光资本变卖方案
+		icon = GFX_decision_TTT_decision05
 		cost = 75
-			
 		fire_only_once = yes
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Financial_collapse		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Financial_collapse
 		}
-		available  = {
-			NOT = { has_country_flag = Liyue_Government_Intervention_1 }
+		available = {
+			NOT = {
+				has_country_flag = Liyue_Government_Intervention_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Ningguang_Tianquan_Star < 40 }
+				check_variable = {
+					Ningguang_Tianquan_Star < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Ningguang_Tianquan_Star > 50 }
+				check_variable = {
+					Ningguang_Tianquan_Star > 50
+				}
 			}
 		}
 		days_remove = 90
 		modifier = {
-			consumer_goods_factor = 0.10
-	   	}
-		complete_effect = {  
+			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
 			custom_effect_tooltip = Liyue_Capital_injection_tt
 			set_country_flag = Liyue_Capital_injection_1
 			set_country_flag = Liyue_Capital_injection_12
-			add_to_variable = { Ningguang_Tianquan_Star = 15 }
-			add_to_variable = { Keqing_Alioth = -15 }
+			add_to_variable = {
+				Ningguang_Tianquan_Star = 15
+			}
+			add_to_variable = {
+				Keqing_Alioth = -15
+			}
 			Liyue_Variable_setting_upper_limit = yes
-			country_event = {id = lyu_start.50}
+			country_event = {
+				id = lyu_start.50
+			}
 		}
-		remove_effect = { 
-		add_stability = 0.05
-        clr_country_flag = Liyue_Capital_injection_12		
+		remove_effect = {
+			add_stability = 0.05
+			clr_country_flag = Liyue_Capital_injection_12
 		}
-    }
-    Liyue_Government_Intervention = {                 #刻甘政府干预方案
-        icon = GFX_decision_generic_political_discourse
-		
+	}
+	Liyue_Government_Intervention = {
+		#刻甘政府干预方案
+		icon = GFX_decision_TTT_decision04
 		cost = 75
-			
 		fire_only_once = yes
 		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Financial_collapse		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Financial_collapse
 		}
-		available  = {
-			NOT = { has_country_flag = Liyue_Capital_injection_1 }
+		available = {
+			NOT = {
+				has_country_flag = Liyue_Capital_injection_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Keqing_Alioth < 40 }
+				check_variable = {
+					Keqing_Alioth < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Keqing_Alioth > 50 }
+				check_variable = {
+					Keqing_Alioth > 50
+				}
 			}
 		}
 		modifier = {
-			political_power_cost = 0.10
-	   	}
-		complete_effect = {  
+			political_power_cost = 0.1
+		}
+		complete_effect = {
 			custom_effect_tooltip = Liyue_Government_Intervention_tt
 			set_country_flag = Liyue_Government_Intervention_1
 			set_country_flag = Liyue_Government_Intervention_12
-			add_to_variable = { Keqing_Alioth = 20 }
-			add_to_variable = { Ningguang_Tianquan_Star = -20 }
+			add_to_variable = {
+				Keqing_Alioth = 20
+			}
+			add_to_variable = {
+				Ningguang_Tianquan_Star = -20
+			}
 			Liyue_Variable_setting_upper_limit = yes
-			country_event = {id = lyu_start.51}
+			country_event = {
+				id = lyu_start.51
+			}
 		}
-		remove_effect = { 
-		add_stability = 0.05
-		clr_country_flag = Liyue_Government_Intervention_12
+		remove_effect = {
+			add_stability = 0.05
+			clr_country_flag = Liyue_Government_Intervention_12
 		}
-    }
-    Liyue_Social_unrest = {                #社会动荡
-        activation = {                         
+	}
+	Liyue_Social_unrest = {
+		#社会动荡
+		activation = {
 			AND = {
-				NOT = { 
+				NOT = {
 					has_country_leader = {
 						character = LYU_morax
 						ruling_only = yes
@@ -258,205 +300,258 @@ Liyue_political_crisis = {
 				}
 				has_country_flag = Liyue_crisis
 				has_country_flag = Social_unrest
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
+				NOT = {
+					has_global_flag = Liyue_Civil_War
+				}
+				NOT = {
+					has_global_flag = avoid_Liyue_Civil_War
+				}
 			}
-		}                                    
-		available = {           		
-			NOT = { has_country_flag = Social_unrest }
 		}
-		
-		is_good = no                         
-	
+		available = {
+			NOT = {
+				has_country_flag = Social_unrest
+			}
+		}
+		icon = GFX_decision_TTT_decision010
+		is_good = no
 		days_mission_timeout = 31
-		
-		timeout_effect = {                      
+		timeout_effect = {
 			set_country_flag = Economic_reconstruction
-            clr_country_flag = Social_unrest
-            custom_effect_tooltip = Liyue_Social_unrest_tt
-            if = {
-			limit = {				
-				NOT = { has_country_flag = Liyue_Relief_assistance_1 }
-				NOT = { has_country_flag = Liyue_Public_Department_1 }
-				NOT = { has_country_flag = Liyue_visit_activities_1 }				
+			clr_country_flag = Social_unrest
+			custom_effect_tooltip = Liyue_Social_unrest_tt
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = Liyue_Relief_assistance_1
+					}
+					NOT = {
+						has_country_flag = Liyue_Public_Department_1
+					}
+					NOT = {
+						has_country_flag = Liyue_visit_activities_1
+					}
+				}
+				add_stability = -0.05
 			}
-			add_stability = -0.05
-		    }			
 		}
-    }
-    Liyue_Relief_assistance = {                       #救济金援助计划
-	    icon = GFX_decision_generic_political_discourse
-        cost = 25
-		days_remove = 60	
+	}
+	Liyue_Relief_assistance = {
+		#救济金援助计划
+		icon = GFX_decision_TTT_decision05
+		cost = 25
+		days_remove = 60
 		fire_only_once = yes
-		
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Social_unrest		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Social_unrest
 		}
 		available = {
-		NOT = { has_country_flag = Liyue_visit_activities_1 }
-		NOT = { has_country_flag = Liyue_Public_Department_1 }
+			NOT = {
+				has_country_flag = Liyue_visit_activities_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Public_Department_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Ningguang_Tianquan_Star < 40 }
+				check_variable = {
+					Ningguang_Tianquan_Star < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Ningguang_Tianquan_Star > 60 }
+				check_variable = {
+					Ningguang_Tianquan_Star > 60
+				}
 			}
 		}
 		modifier = {
 			consumer_goods_factor = 0.15
 			stability_weekly = 0.015
-	   	}
-		complete_effect = {  
+		}
+		complete_effect = {
 			custom_effect_tooltip = Liyue_Capital_injection_tt
 			set_country_flag = Liyue_Relief_assistance_1
 			set_country_flag = Liyue_Relief_assistance_12
-			add_to_variable = { Ningguang_Tianquan_Star = 25 }
-			add_to_variable = { Keqing_Alioth = -25 }
+			add_to_variable = {
+				Ningguang_Tianquan_Star = 25
+			}
+			add_to_variable = {
+				Keqing_Alioth = -25
+			}
 			Liyue_Variable_setting_upper_limit = yes
-			country_event = {id = lyu_start.52}
+			country_event = {
+				id = lyu_start.52
+			}
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Capital_injection_12 		
+				limit = {
+					has_country_flag = Liyue_Capital_injection_12
+				}
+				clr_country_flag = Liyue_Capital_injection_12
 			}
-			clr_country_flag = Liyue_Capital_injection_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Government_Intervention_12
+				limit = {
+					has_country_flag = Liyue_Government_Intervention_12
+				}
+				clr_country_flag = Liyue_Government_Intervention_12
 			}
-			clr_country_flag = Liyue_Government_Intervention_12 
-		    }
 		}
-		remove_effect = { 
-		add_stability = 0.05 
-		clr_country_flag = Liyue_Relief_assistance_12
+		remove_effect = {
+			add_stability = 0.05
+			clr_country_flag = Liyue_Relief_assistance_12
 		}
-    }
-    Liyue_Public_Department = {                    #公共事业计划部
-	    icon = GFX_decision_generic_speech
-        cost = 25
-		days_remove = 60	
+	}
+	Liyue_Public_Department = {
+		#公共事业计划部
+		icon = GFX_decision_TTT_decision01
+		cost = 25
+		days_remove = 60
 		fire_only_once = yes
-		
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Social_unrest		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Social_unrest
 		}
 		available = {
-		NOT = { has_country_flag = Liyue_visit_activities_1 }
-		NOT = { has_country_flag = Liyue_Relief_assistance_1 }
+			NOT = {
+				has_country_flag = Liyue_visit_activities_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Relief_assistance_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Keqing_Alioth < 40 }
+				check_variable = {
+					Keqing_Alioth < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Keqing_Alioth > 60 }
+				check_variable = {
+					Keqing_Alioth > 60
+				}
 			}
 		}
 		modifier = {
 			political_power_cost = 0.15
 			stability_weekly = 0.015
-	   	}
-		complete_effect = {  
+		}
+		complete_effect = {
 			custom_effect_tooltip = Liyue_Government_Intervention_tt
 			set_country_flag = Liyue_Public_Department_1
 			set_country_flag = Liyue_Public_Department_12
-			add_to_variable = { Keqing_Alioth = 15 }
-			add_to_variable = { Ningguang_Tianquan_Star = -15 }
+			add_to_variable = {
+				Keqing_Alioth = 15
+			}
+			add_to_variable = {
+				Ningguang_Tianquan_Star = -15
+			}
 			Liyue_Variable_setting_upper_limit = yes
-			country_event = {id = lyu_start.53}
+			country_event = {
+				id = lyu_start.53
+			}
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Capital_injection_12 		
+				limit = {
+					has_country_flag = Liyue_Capital_injection_12
+				}
+				clr_country_flag = Liyue_Capital_injection_12
 			}
-			clr_country_flag = Liyue_Capital_injection_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Government_Intervention_12
+				limit = {
+					has_country_flag = Liyue_Government_Intervention_12
+				}
+				clr_country_flag = Liyue_Government_Intervention_12
 			}
-			clr_country_flag = Liyue_Government_Intervention_12
-		    }
 		}
-		remove_effect = { 
-		add_stability = 0.05 
-		clr_country_flag = Liyue_Public_Department_12
+		remove_effect = {
+			add_stability = 0.05
+			clr_country_flag = Liyue_Public_Department_12
 		}
-    }
-    Liyue_visit_activities = {                 #民间走访活动
-	    icon = GFX_decision_hol_attract_foreign_investors
-        cost = 25
-			
+	}
+	Liyue_visit_activities = {
+		#民间走访活动
+		icon = GFX_decision_TTT_decision04
+		cost = 25
 		fire_only_once = yes
 		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Social_unrest		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Social_unrest
 		}
 		available = {
-		NOT = { has_country_flag = Liyue_Public_Department_1 }
-		NOT = { has_country_flag = Liyue_Relief_assistance_1 }
+			NOT = {
+				has_country_flag = Liyue_Public_Department_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Relief_assistance_1
+			}
 		}
 		ai_will_do = {
 			factor = 10
 			modifier = {
 				factor = 10
-				check_variable = { Keqing_Alioth > 40 }
-				check_variable = { Keqing_Alioth < 60 }
-				check_variable = { Ningguang_Tianquan_Star > 40 }
-				check_variable = { Ningguang_Tianquan_Star < 60 }
+				check_variable = {
+					Keqing_Alioth > 40
+				}
+				check_variable = {
+					Keqing_Alioth < 60
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star > 40
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star < 60
+				}
 			}
 		}
 		modifier = {
-			political_power_cost = 0.20
+			political_power_cost = 0.2
 			stability_weekly = 0.02
-	   	}
-		complete_effect = {  
-			country_event = {id = lyu_start.54}
+		}
+		complete_effect = {
+			country_event = {
+				id = lyu_start.54
+			}
 			set_country_flag = Liyue_visit_activities_1
 			set_country_flag = Liyue_visit_activities_12
-            if = {
-			limit = {				
-				has_country_flag = Liyue_Capital_injection_12 		
+			if = {
+				limit = {
+					has_country_flag = Liyue_Capital_injection_12
+				}
+				clr_country_flag = Liyue_Capital_injection_12
 			}
-			clr_country_flag = Liyue_Capital_injection_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Government_Intervention_12
+				limit = {
+					has_country_flag = Liyue_Government_Intervention_12
+				}
+				clr_country_flag = Liyue_Government_Intervention_12
 			}
-			clr_country_flag = Liyue_Government_Intervention_12 
-		    }			
 		}
-		remove_effect = { 
-		add_stability = 0.05
-       	clr_country_flag = Liyue_visit_activities_12	
+		remove_effect = {
+			add_stability = 0.05
+			clr_country_flag = Liyue_visit_activities_12
 		}
 	}
-	Liyue_Economic_reconstruction = {            #经济重建
-        activation = {                         
+	Liyue_Economic_reconstruction = {
+		#经济重建
+		activation = {
 			AND = {
-				NOT = { 
+				NOT = {
 					has_country_leader = {
 						character = LYU_morax
 						ruling_only = yes
@@ -464,299 +559,351 @@ Liyue_political_crisis = {
 				}
 				has_country_flag = Liyue_crisis
 				has_country_flag = Economic_reconstruction
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
-			}
-		}                                    
-		available = {
-            OR = {		
-			NOT = { has_country_flag = Economic_reconstruction }
-			NOT = { has_country_flag = Liyue_crisis }
-			}
-		}
-		
-		is_good = no                         
-	
-		days_mission_timeout = 31
-		
-		timeout_effect = {                      
-			clr_country_flag = Economic_reconstruction
-            set_country_flag = Public_opinion
-            custom_effect_tooltip = Liyue_Social_unrest_tt
-            if = {
-			limit = {
-				or = {
-				NOT = { has_country_flag = Liyue_Capital_injection_1 }
-				NOT = { has_country_flag = Liyue_Expand_manufacturing_1 }
-				NOT = { has_country_flag = Liyue_Priority_Infrastructure_1 }
+				NOT = {
+					has_global_flag = Liyue_Civil_War
+				}
+				NOT = {
+					has_global_flag = avoid_Liyue_Civil_War
 				}
 			}
-			add_stability = -0.05
-		    }			
 		}
-    }
-    Liyue_Revitalize_maritime_transport = {        #振兴海务运输
-	    icon = GFX_decision_generic_purge
-        cost = 25
-			
+		available = {
+			OR = {
+				NOT = {
+					has_country_flag = Economic_reconstruction
+				}
+				NOT = {
+					has_country_flag = Liyue_crisis
+				}
+			}
+		}
+		icon = GFX_decision_TTT_decision010
+		is_good = no
+		days_mission_timeout = 31
+		timeout_effect = {
+			clr_country_flag = Economic_reconstruction
+			set_country_flag = Public_opinion
+			custom_effect_tooltip = Liyue_Social_unrest_tt
+			if = {
+				limit = {
+					or = {
+						NOT = {
+							has_country_flag = Liyue_Capital_injection_1
+						}
+						NOT = {
+							has_country_flag = Liyue_Expand_manufacturing_1
+						}
+						NOT = {
+							has_country_flag = Liyue_Priority_Infrastructure_1
+						}
+					}
+				}
+				add_stability = -0.05
+			}
+		}
+	}
+	Liyue_Revitalize_maritime_transport = {
+		#振兴海务运输
+		icon = GFX_decision_generic_purge
+		cost = 25
+		icon = GFX_decision_TTT_decision05
 		fire_only_once = yes
 		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Economic_reconstruction		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Economic_reconstruction
 		}
 		available = {
-		NOT = { has_country_flag = Liyue_Revitalize_maritime_transport_1 }
-		NOT = { has_country_flag = Liyue_Expand_manufacturing_1 }
+			NOT = {
+				has_country_flag = Liyue_Revitalize_maritime_transport_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Expand_manufacturing_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Priority_Infrastructure_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Ningguang_Tianquan_Star < 40 }
+				check_variable = {
+					Ningguang_Tianquan_Star < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Ningguang_Tianquan_Star > 50 }
+				check_variable = {
+					Ningguang_Tianquan_Star > 50
+				}
 			}
 		}
 		modifier = {
-			production_speed_dockyard_factor = 0.20
-	   	}
-		complete_effect = {  
+			production_speed_dockyard_factor = 0.2
+		}
+		complete_effect = {
 			custom_effect_tooltip = Liyue_Capital_injection_tt
 			set_country_flag = Liyue_Revitalize_maritime_transport_1
 			set_country_flag = Liyue_Revitalize_maritime_transport_12
-			add_to_variable = { Ningguang_Tianquan_Star = 25 }
-			add_to_variable = { Keqing_Alioth = -25 }
+			add_to_variable = {
+				Ningguang_Tianquan_Star = 25
+			}
+			add_to_variable = {
+				Keqing_Alioth = -25
+			}
 			Liyue_Variable_setting_upper_limit = yes
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Relief_assistance_12 		
+				limit = {
+					has_country_flag = Liyue_Relief_assistance_12
+				}
+				clr_country_flag = Liyue_Relief_assistance_12
 			}
-			clr_country_flag = Liyue_Relief_assistance_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_visit_activities_12
+				limit = {
+					has_country_flag = Liyue_visit_activities_12
+				}
+				clr_country_flag = Liyue_visit_activities_12
 			}
-			clr_country_flag = Liyue_visit_activities_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Public_Department_12
+				limit = {
+					has_country_flag = Liyue_Public_Department_12
+				}
+				clr_country_flag = Liyue_Public_Department_12
 			}
-			clr_country_flag = Liyue_Public_Department_12 
-		    }
 		}
 		remove_effect = {
-		clr_country_flag = Liyue_Revitalize_maritime_transport_12
-		add_stability = 0.05
-		127 = {
-		add_extra_state_shared_building_slots = 2
-		add_building_construction = {
-			type = dockyard
-			level = 2
-			instant_build = yes 
-		        }
-	        }
-		126 = {
-		add_extra_state_shared_building_slots = 2
-		add_building_construction = {
-			type = dockyard
-			level = 2
-			instant_build = yes 
-		        }
-	        }
+			clr_country_flag = Liyue_Revitalize_maritime_transport_12
+			add_stability = 0.05
+			127 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			126 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
-    }
-    Liyue_Expand_manufacturing = {         #扩大制造产业
-	    icon = GFX_decision_SOV_the_workers_dictatorship
-        cost = 25
-			
+	}
+	Liyue_Expand_manufacturing = {
+		#扩大制造产业
+		icon = GFX_decision_TTT_decision01
+		cost = 25
 		fire_only_once = yes
 		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Economic_reconstruction		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Economic_reconstruction
 		}
 		available = {
-		NOT = { has_country_flag = Liyue_Priority_Infrastructure_1 }
-		NOT = { has_country_flag = Liyue_Revitalize_maritime_transport_1 }
+			NOT = {
+				has_country_flag = Liyue_Priority_Infrastructure_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Revitalize_maritime_transport_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Keqing_Alioth < 40 }
+				check_variable = {
+					Keqing_Alioth < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Keqing_Alioth > 60 }
+				check_variable = {
+					Keqing_Alioth > 60
+				}
 			}
 		}
 		modifier = {
-			production_speed_industrial_complex_factor = 0.20
-	   	}
+			production_speed_industrial_complex_factor = 0.2
+		}
 		complete_effect = {
-		    set_country_flag = Liyue_Expand_manufacturing_12
+			set_country_flag = Liyue_Expand_manufacturing_12
 			custom_effect_tooltip = Liyue_Expand_manufacturing_tt
 			set_country_flag = Liyue_Expand_manufacturing_1
-			add_to_variable = { Keqing_Alioth = 25 }
-			add_to_variable = { Ningguang_Tianquan_Star = -25 }
+			add_to_variable = {
+				Keqing_Alioth = 25
+			}
+			add_to_variable = {
+				Ningguang_Tianquan_Star = -25
+			}
 			Liyue_Variable_setting_upper_limit = yes
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Relief_assistance_12 		
+				limit = {
+					has_country_flag = Liyue_Relief_assistance_12
+				}
+				clr_country_flag = Liyue_Relief_assistance_12
 			}
-			clr_country_flag = Liyue_Relief_assistance_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_visit_activities_12
+				limit = {
+					has_country_flag = Liyue_visit_activities_12
+				}
+				clr_country_flag = Liyue_visit_activities_12
 			}
-			clr_country_flag = Liyue_visit_activities_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Public_Department_12
+				limit = {
+					has_country_flag = Liyue_Public_Department_12
+				}
+				clr_country_flag = Liyue_Public_Department_12
 			}
-			clr_country_flag = Liyue_Public_Department_12 
-		    }
 		}
 		remove_effect = {
-		clr_country_flag = Liyue_Expand_manufacturing_12
-		add_stability = 0.05 
-		147 = {
-		add_extra_state_shared_building_slots = 2
-		add_building_construction = {
-			type = industrial_complex
-			level = 2
-			instant_build = yes 
-		        }
-	        }
-		406 = {
-		add_extra_state_shared_building_slots = 2
-		add_building_construction = {
-			type = industrial_complex
-			level = 2
-			instant_build = yes 
-		        }
-	        }
-        }		
-    }
-    Liyue_Priority_Infrastructure = {              #优先基础设施
-	    icon = GFX_decision_cash_flow
-		
-        cost = 25
-			
+			clr_country_flag = Liyue_Expand_manufacturing_12
+			add_stability = 0.05
+			147 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			406 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Liyue_Priority_Infrastructure = {
+		#优先基础设施
+		icon = GFX_decision_TTT_decision01
+		cost = 25
 		fire_only_once = yes
 		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Economic_reconstruction		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Economic_reconstruction
 		}
 		available = {
-		NOT = { has_country_flag = Liyue_Expand_manufacturing_1 }
-		NOT = { has_country_flag = Liyue_Revitalize_maritime_transport_1 }
+			NOT = {
+				has_country_flag = Liyue_Expand_manufacturing_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Revitalize_maritime_transport_1
+			}
 		}
 		ai_will_do = {
 			factor = 10
 			modifier = {
 				factor = 10
-				check_variable = { Keqing_Alioth > 40 }
-				check_variable = { Keqing_Alioth < 60 }
-				check_variable = { Ningguang_Tianquan_Star > 40 }
-				check_variable = { Ningguang_Tianquan_Star < 60 }
+				check_variable = {
+					Keqing_Alioth > 40
+				}
+				check_variable = {
+					Keqing_Alioth < 60
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star > 40
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star < 60
+				}
 			}
 		}
 		modifier = {
-			production_speed_infrastructure_factor = 0.20
-			production_speed_rail_way_factor = 0.20
-	        production_speed_supply_node_factor = 0.20
-	   	}
-		complete_effect = {  
+			production_speed_infrastructure_factor = 0.2
+			production_speed_rail_way_factor = 0.2
+			production_speed_supply_node_factor = 0.2
+		}
+		complete_effect = {
 			set_country_flag = Liyue_Priority_Infrastructure_1
 			set_country_flag = Liyue_Priority_Infrastructure_12
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Relief_assistance_12 		
+				limit = {
+					has_country_flag = Liyue_Relief_assistance_12
+				}
+				clr_country_flag = Liyue_Relief_assistance_12
 			}
-			clr_country_flag = Liyue_Relief_assistance_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_visit_activities_12
+				limit = {
+					has_country_flag = Liyue_visit_activities_12
+				}
+				clr_country_flag = Liyue_visit_activities_12
 			}
-			clr_country_flag = Liyue_visit_activities_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Public_Department_12
+				limit = {
+					has_country_flag = Liyue_Public_Department_12
+				}
+				clr_country_flag = Liyue_Public_Department_12
 			}
-			clr_country_flag = Liyue_Public_Department_12 
-		    }
 		}
 		remove_effect = {
-		clr_country_flag = Liyue_Priority_Infrastructure_12
-		add_stability = 0.05
-		134 = {
-		add_building_construction = {
-			type = infrastructure
-			level = 1
-			instant_build = yes 
-		        }
-	        }
-		132 = {
-		add_building_construction = {
-			type = infrastructure
-			level = 1
-			instant_build = yes 
-		        }
-	        }
-		135 = {
-		add_building_construction = {
-			type = infrastructure
-			level = 1
-			instant_build = yes 
-		        }
-	        }
-		133 = {
-		add_building_construction = {
-			type = infrastructure
-			level = 1
-			instant_build = yes 
-		        }
-	        }
-		165 = {
-		add_building_construction = {
-			type = infrastructure
-			level = 1
-			instant_build = yes 
-		        }
-	        }
-		166 = {
-		add_building_construction = {
-			type = infrastructure
-			level = 1
-			instant_build = yes 
-		        }
-	        }
+			clr_country_flag = Liyue_Priority_Infrastructure_12
+			add_stability = 0.05
+			134 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			132 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			135 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			133 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			165 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			166 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
-    }
-	Liyue_Public_opinion = {                     #舆论控制
-        activation = {                         
+	}
+	Liyue_Public_opinion = {
+		#舆论控制
+		activation = {
 			AND = {
-				NOT = { 
+				NOT = {
 					has_country_leader = {
 						character = LYU_morax
 						ruling_only = yes
@@ -764,221 +911,268 @@ Liyue_political_crisis = {
 				}
 				has_country_flag = Liyue_crisis
 				has_country_flag = Public_opinion
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
-			}
-		}                                    
-		available = {
-            OR = {		
-			NOT = { has_country_flag = Public_opinion }
-			NOT = { has_country_flag = Liyue_crisis }
-			}
-		}
-		
-		is_good = no                         
-	
-		days_mission_timeout = 31
-		
-		timeout_effect = {                      
-			clr_country_flag = Public_opinion
-            set_country_flag = government_reform
-            custom_effect_tooltip = Liyue_Public_opinion_tt
-            if = {
-			limit = {
-				or = {
-				NOT = { has_country_flag = Liyue_road_man_1 }
-				NOT = { has_country_flag = Liyue_turning_people_1 }
-				NOT = { has_country_flag = Liyue_emperor_livest_1 }
+				NOT = {
+					has_global_flag = Liyue_Civil_War
+				}
+				NOT = {
+					has_global_flag = avoid_Liyue_Civil_War
 				}
 			}
-			add_stability = -0.05
-		    }			
 		}
-    }
-    Liyue_road_man = {                    #迈向人治之路
-	    icon = GFX_decision_ger_mefo_bills
-        cost = 25
-			
+		available = {
+			OR = {
+				NOT = {
+					has_country_flag = Public_opinion
+				}
+				NOT = {
+					has_country_flag = Liyue_crisis
+				}
+			}
+		}
+		icon = GFX_decision_TTT_decision010
+		is_good = no
+		days_mission_timeout = 31
+		timeout_effect = {
+			clr_country_flag = Public_opinion
+			set_country_flag = government_reform
+			custom_effect_tooltip = Liyue_Public_opinion_tt
+			if = {
+				limit = {
+					or = {
+						NOT = {
+							has_country_flag = Liyue_road_man_1
+						}
+						NOT = {
+							has_country_flag = Liyue_turning_people_1
+						}
+						NOT = {
+							has_country_flag = Liyue_emperor_livest_1
+						}
+					}
+				}
+				add_stability = -0.05
+			}
+		}
+	}
+	Liyue_road_man = {
+		#迈向人治之路
+		icon = GFX_decision_TTT_decision07
+		cost = 25
 		fire_only_once = yes
 		days_remove = 60
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Public_opinion		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Public_opinion
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Ningguang_Tianquan_Star < 40 }
+				check_variable = {
+					Ningguang_Tianquan_Star < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Ningguang_Tianquan_Star > 50 }
+				check_variable = {
+					Ningguang_Tianquan_Star > 50
+				}
 			}
 		}
 		available = {
-		NOT = { has_country_flag =  Liyue_emperor_livest_1 }
-		NOT = { has_country_flag =  Liyue_turning_people_1 }
+			NOT = {
+				has_country_flag = Liyue_emperor_livest_1
+			}
+			NOT = {
+				has_country_flag = Liyue_turning_people_1
+			}
 		}
 		modifier = {
-			liberalism_drift = 0.10
-	   	}
-		complete_effect = {  
+			liberalism_drift = 0.1
+		}
+		complete_effect = {
 			custom_effect_tooltip = Liyue_road_man_tt
 			set_country_flag = Liyue_road_man_1
 			set_country_flag = Liyue_road_man_12
-			add_to_variable = { Ningguang_Tianquan_Star = 20 }
-			add_to_variable = { Keqing_Alioth = -20 }
+			add_to_variable = {
+				Ningguang_Tianquan_Star = 20
+			}
+			add_to_variable = {
+				Keqing_Alioth = -20
+			}
 			Liyue_Variable_setting_upper_limit = yes
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Priority_Infrastructure_12		
+				limit = {
+					has_country_flag = Liyue_Priority_Infrastructure_12
+				}
+				clr_country_flag = Liyue_Priority_Infrastructure_12
 			}
-			clr_country_flag = Liyue_Priority_Infrastructure_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Expand_manufacturing_12
+				limit = {
+					has_country_flag = Liyue_Expand_manufacturing_12
+				}
+				clr_country_flag = Liyue_Expand_manufacturing_12
 			}
-			clr_country_flag = Liyue_Expand_manufacturing_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Revitalize_maritime_transport_12
+				limit = {
+					has_country_flag = Liyue_Revitalize_maritime_transport_12
+				}
+				clr_country_flag = Liyue_Revitalize_maritime_transport_12
 			}
-			clr_country_flag = Liyue_Revitalize_maritime_transport_12 
-		    }
 		}
 		remove_effect = {
-		    clr_country_flag = Liyue_road_man_12
+			clr_country_flag = Liyue_road_man_12
 		}
-    }
-	Liyue_turning_people = {                     #人民的转折点
-	    icon = GFX_decision_ger_mefo_bills
-		
-        cost = 25
-		days_remove = 60	
+	}
+	Liyue_turning_people = {
+		#人民的转折点
+		icon = GFX_decision_TTT_decision07
+		cost = 25
+		days_remove = 60
 		fire_only_once = yes
-		
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Public_opinion		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Public_opinion
 		}
 		available = {
-		NOT = { has_country_flag =  Liyue_emperor_livest_1 }
-		NOT = { has_country_flag =  Liyue_road_man_1 }
+			NOT = {
+				has_country_flag = Liyue_emperor_livest_1
+			}
+			NOT = {
+				has_country_flag = Liyue_road_man_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Keqing_Alioth < 40 }
+				check_variable = {
+					Keqing_Alioth < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Keqing_Alioth > 60 }
+				check_variable = {
+					Keqing_Alioth > 60
+				}
 			}
 		}
 		modifier = {
-			communism_drift = 0.10
-	   	}
-		complete_effect = {  
+			communism_drift = 0.1
+		}
+		complete_effect = {
 			custom_effect_tooltip = Liyue_turning_people_tt
 			set_country_flag = Liyue_turning_people_1
 			set_country_flag = Liyue_turning_people_12
-			add_to_variable = { Ningguang_Tianquan_Star = -20 }
-			add_to_variable = { Keqing_Alioth = 20 }
+			add_to_variable = {
+				Ningguang_Tianquan_Star = -20
+			}
+			add_to_variable = {
+				Keqing_Alioth = 20
+			}
 			Liyue_Variable_setting_upper_limit = yes
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Priority_Infrastructure_12		
+				limit = {
+					has_country_flag = Liyue_Priority_Infrastructure_12
+				}
+				clr_country_flag = Liyue_Priority_Infrastructure_12
 			}
-			clr_country_flag = Liyue_Priority_Infrastructure_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Expand_manufacturing_12
+				limit = {
+					has_country_flag = Liyue_Expand_manufacturing_12
+				}
+				clr_country_flag = Liyue_Expand_manufacturing_12
 			}
-			clr_country_flag = Liyue_Expand_manufacturing_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Revitalize_maritime_transport_12
+				limit = {
+					has_country_flag = Liyue_Revitalize_maritime_transport_12
+				}
+				clr_country_flag = Liyue_Revitalize_maritime_transport_12
 			}
-			clr_country_flag = Liyue_Revitalize_maritime_transport_12 
-		    }
 		}
 		remove_effect = {
-		clr_country_flag = Liyue_turning_people_12
+			clr_country_flag = Liyue_turning_people_12
 		}
-    }
-	Liyue_emperor_livest = {             #帝君存于人心
-	    icon = GFX_decision_ger_mefo_bills
-		
-        cost = 25
-		days_remove = 60	
+	}
+	Liyue_emperor_livest = {
+		#帝君存于人心
+		icon = GFX_decision_TTT_decision07
+		cost = 25
+		days_remove = 60
 		fire_only_once = yes
-		
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = Liyue_crisis
-        has_country_flag = Public_opinion		
+		visible = {
+			has_country_flag = Liyue_crisis
+			has_country_flag = Public_opinion
 		}
 		available = {
-		NOT = { has_country_flag =  Liyue_turning_people_1 }
-		NOT = { has_country_flag =  Liyue_road_man_1 }
+			NOT = {
+				has_country_flag = Liyue_turning_people_1
+			}
+			NOT = {
+				has_country_flag = Liyue_road_man_1
+			}
 		}
 		ai_will_do = {
 			factor = 10
 			modifier = {
 				factor = 10
-				check_variable = { Keqing_Alioth > 40 }
-				check_variable = { Keqing_Alioth < 60 }
-				check_variable = { Ningguang_Tianquan_Star > 40 }
-				check_variable = { Ningguang_Tianquan_Star < 60 }
+				check_variable = {
+					Keqing_Alioth > 40
+				}
+				check_variable = {
+					Keqing_Alioth < 60
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star > 40
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star < 60
+				}
 			}
 		}
 		modifier = {
-		    reformism_drift = 0.10
-	   	}
-		complete_effect = {  
+			reformism_drift = 0.1
+		}
+		complete_effect = {
 			set_country_flag = Liyue_emperor_livest_1
 			set_country_flag = Liyue_emperor_livest_12
 			if = {
-			limit = {				
-				has_country_flag = Liyue_Priority_Infrastructure_12		
+				limit = {
+					has_country_flag = Liyue_Priority_Infrastructure_12
+				}
+				clr_country_flag = Liyue_Priority_Infrastructure_12
 			}
-			clr_country_flag = Liyue_Priority_Infrastructure_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Expand_manufacturing_12
+				limit = {
+					has_country_flag = Liyue_Expand_manufacturing_12
+				}
+				clr_country_flag = Liyue_Expand_manufacturing_12
 			}
-			clr_country_flag = Liyue_Expand_manufacturing_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_Revitalize_maritime_transport_12
+				limit = {
+					has_country_flag = Liyue_Revitalize_maritime_transport_12
+				}
+				clr_country_flag = Liyue_Revitalize_maritime_transport_12
 			}
-			clr_country_flag = Liyue_Revitalize_maritime_transport_12 
-		    }
 		}
 		remove_effect = {
-		    clr_country_flag = Liyue_emperor_livest_12
+			clr_country_flag = Liyue_emperor_livest_12
 		}
-    }
-	Liyue_government_reform = {             #政治协商
-        activation = {                         
+	}
+	Liyue_government_reform = {
+		#政治协商
+		activation = {
 			AND = {
-				NOT = { 
+				NOT = {
 					has_country_leader = {
 						character = LYU_morax
 						ruling_only = yes
@@ -986,674 +1180,718 @@ Liyue_political_crisis = {
 				}
 				has_country_flag = Liyue_crisis
 				has_country_flag = government_reform
-				NOT = { has_global_flag = Liyue_Civil_War }
-				NOT = { has_global_flag = avoid_Liyue_Civil_War }
-			}
-		}                                    
-		available = {
-            OR = {		
-			NOT = { has_country_flag = government_reform }
-			NOT = { has_country_flag = Liyue_crisis }
-			}
-		}
-		
-		is_good = no                         
-	
-		days_mission_timeout = 31
-		
-		timeout_effect = {                      
-			clr_country_flag = government_reform
-            custom_effect_tooltip = Liyue_government_reform_tt
-            if = {
-			limit = {
-				or = {
-				NOT = { has_country_flag = Liyue_Humanized_politics_1 }
-				NOT = { has_country_flag = Liyue_Democratization_reform_1 }
-				NOT = { has_country_flag = Liyue_Seven_restructuring_1 }
+				NOT = {
+					has_global_flag = Liyue_Civil_War
+				}
+				NOT = {
+					has_global_flag = avoid_Liyue_Civil_War
 				}
 			}
-			add_stability = -0.05
-		    }			
 		}
-    }
-	Liyue_Humanized_politics = {        #注重商业贸易
-	    icon = GFX_decision_ger_mefo_bills
-		
-        cost = 25
-			
+		available = {
+			OR = {
+				NOT = {
+					has_country_flag = government_reform
+				}
+				NOT = {
+					has_country_flag = Liyue_crisis
+				}
+			}
+		}
+		is_good = no
+		icon = GFX_decision_TTT_decision010
+		days_mission_timeout = 31
+		timeout_effect = {
+			clr_country_flag = government_reform
+			custom_effect_tooltip = Liyue_government_reform_tt
+			if = {
+				limit = {
+					or = {
+						NOT = {
+							has_country_flag = Liyue_Humanized_politics_1
+						}
+						NOT = {
+							has_country_flag = Liyue_Democratization_reform_1
+						}
+						NOT = {
+							has_country_flag = Liyue_Seven_restructuring_1
+						}
+					}
+				}
+				add_stability = -0.05
+			}
+		}
+	}
+	Liyue_Humanized_politics = {
+		#注重商业贸易
+		icon = GFX_decision_TTT_decision05
+		cost = 25
 		fire_only_once = yes
-		
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = government_reform
-        has_country_flag = Liyue_crisis		
+		visible = {
+			has_country_flag = government_reform
+			has_country_flag = Liyue_crisis
 		}
-		available = { 
-		NOT = { has_country_flag = Liyue_Seven_restructuring_1 }
-		NOT = { has_country_flag = Liyue_Democratization_reform_1 }
+		available = {
+			NOT = {
+				has_country_flag = Liyue_Seven_restructuring_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Democratization_reform_1
+			}
 		}
 		days_remove = 180
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Ningguang_Tianquan_Star < 40 }
+				check_variable = {
+					Ningguang_Tianquan_Star < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Ningguang_Tianquan_Star > 50 }
+				check_variable = {
+					Ningguang_Tianquan_Star > 50
+				}
 			}
 		}
-		complete_effect = {  
+		complete_effect = {
 			custom_effect_tooltip = Liyue_road_man_tt
 			set_country_flag = Liyue_Humanized_politics_1
 			set_country_flag = Liyue_Humanized_politics_12
-			add_to_variable = { Ningguang_Tianquan_Star = 15 }
-			add_to_variable = { Keqing_Alioth = -15 }
+			add_to_variable = {
+				Ningguang_Tianquan_Star = 15
+			}
+			add_to_variable = {
+				Keqing_Alioth = -15
+			}
 			Liyue_Variable_setting_upper_limit = yes
-            if = {
-			limit = {				
-				has_country_flag = Liyue_road_man_12		
+			if = {
+				limit = {
+					has_country_flag = Liyue_road_man_12
+				}
+				clr_country_flag = Liyue_road_man_12
 			}
-			clr_country_flag = Liyue_road_man_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_turning_people_12
+				limit = {
+					has_country_flag = Liyue_turning_people_12
+				}
+				clr_country_flag = Liyue_turning_people_12
 			}
-			clr_country_flag = Liyue_turning_people_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_emperor_livest_12
+				limit = {
+					has_country_flag = Liyue_emperor_livest_12
+				}
+				clr_country_flag = Liyue_emperor_livest_12
 			}
-			clr_country_flag = Liyue_emperor_livest_12 
-		    }
 		}
 		modifier = {
-		    research_speed_factor = 0.15
-			min_export = 0.15		
+			research_speed_factor = 0.15
+			min_export = 0.15
 		}
 		remove_effect = {
-		    clr_country_flag = Liyue_Humanized_politics_12
+			clr_country_flag = Liyue_Humanized_politics_12
 		}
-    }
-	Liyue_Democratization_reform = {      #注重工业发展
-	    icon = GFX_decision_ger_mefo_bills
-		
-        cost = 25
-			
+	}
+	Liyue_Democratization_reform = {
+		#注重工业发展
+		icon = GFX_decision_TTT_decision01
+		cost = 25
 		fire_only_once = yes
 		days_remove = 180
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = government_reform
-        has_country_flag = Liyue_crisis		
+		visible = {
+			has_country_flag = government_reform
+			has_country_flag = Liyue_crisis
 		}
-		available = { 
-		NOT = { has_country_flag = Liyue_Seven_restructuring_1 }
-		NOT = { has_country_flag = Liyue_Humanized_politics_1 }
+		available = {
+			NOT = {
+				has_country_flag = Liyue_Seven_restructuring_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Humanized_politics_1
+			}
 		}
 		ai_will_do = {
 			factor = 40
 			modifier = {
 				factor = 3
-				check_variable = { Keqing_Alioth < 40 }
+				check_variable = {
+					Keqing_Alioth < 40
+				}
 			}
 			modifier = {
 				factor = 0.25
-				check_variable = { Keqing_Alioth > 60 }
+				check_variable = {
+					Keqing_Alioth > 60
+				}
 			}
 		}
 		modifier = {
-		    industrial_capacity_factory = 0.10
-			production_speed_buildings_factor = 0.10		
+			industrial_capacity_factory = 0.1
+			production_speed_buildings_factor = 0.1
 		}
-		complete_effect = {  
+		complete_effect = {
 			set_country_flag = Liyue_Democratization_reform_1
 			set_country_flag = Liyue_Democratization_reform_12
 			custom_effect_tooltip = Liyue_turning_people_tt
-			add_to_variable = { Ningguang_Tianquan_Star = -15 }
-			add_to_variable = { Keqing_Alioth = 15 }
+			add_to_variable = {
+				Ningguang_Tianquan_Star = -15
+			}
+			add_to_variable = {
+				Keqing_Alioth = 15
+			}
 			Liyue_Variable_setting_upper_limit = yes
 			if = {
-			limit = {				
-				has_country_flag = Liyue_road_man_12		
+				limit = {
+					has_country_flag = Liyue_road_man_12
+				}
+				clr_country_flag = Liyue_road_man_12
 			}
-			clr_country_flag = Liyue_road_man_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_turning_people_12
+				limit = {
+					has_country_flag = Liyue_turning_people_12
+				}
+				clr_country_flag = Liyue_turning_people_12
 			}
-			clr_country_flag = Liyue_turning_people_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_emperor_livest_12
+				limit = {
+					has_country_flag = Liyue_emperor_livest_12
+				}
+				clr_country_flag = Liyue_emperor_livest_12
 			}
-			clr_country_flag = Liyue_emperor_livest_12 
-		    }
 		}
 		remove_effect = {
-		   clr_country_flag = Liyue_Democratization_reform_12
+			clr_country_flag = Liyue_Democratization_reform_12
 		}
-    }
-	Liyue_Seven_restructuring = {         #注重社会稳定
-	    icon = GFX_decision_ger_mefo_bills
-		
-        cost = 25
-		days_remove = 60	
+	}
+	Liyue_Seven_restructuring = {
+		#注重社会稳定
+		icon = GFX_decision_TTT_decision07
+		cost = 25
+		days_remove = 60
 		fire_only_once = yes
-		
 		allowed = {
 			tag = LYU
 		}
-		visible = { 
-		has_country_flag = government_reform
-        has_country_flag = Liyue_crisis		
+		visible = {
+			has_country_flag = government_reform
+			has_country_flag = Liyue_crisis
 		}
-		available = { 
-		NOT = { has_country_flag = Liyue_Democratization_reform_1 }
-		NOT = { has_country_flag = Liyue_Humanized_politics_1 }
+		available = {
+			NOT = {
+				has_country_flag = Liyue_Democratization_reform_1
+			}
+			NOT = {
+				has_country_flag = Liyue_Humanized_politics_1
+			}
 		}
 		ai_will_do = {
 			factor = 10
 			modifier = {
 				factor = 10
-				check_variable = { Keqing_Alioth > 40 }
-				check_variable = { Keqing_Alioth < 60 }
-				check_variable = { Ningguang_Tianquan_Star > 40 }
-				check_variable = { Ningguang_Tianquan_Star < 60 }
+				check_variable = {
+					Keqing_Alioth > 40
+				}
+				check_variable = {
+					Keqing_Alioth < 60
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star > 40
+				}
+				check_variable = {
+					Ningguang_Tianquan_Star < 60
+				}
 			}
 		}
 		modifier = {
-		    reformism_drift = 0.10
+			reformism_drift = 0.1
 			stability_weekly = 0.01
 		}
-		complete_effect = {  
+		complete_effect = {
 			set_country_flag = Liyue_Seven_restructuring_1
 			set_country_flag = Liyue_Seven_restructuring_12
 			if = {
-			limit = {				
-				has_country_flag = Liyue_road_man_12		
+				limit = {
+					has_country_flag = Liyue_road_man_12
+				}
+				clr_country_flag = Liyue_road_man_12
 			}
-			clr_country_flag = Liyue_road_man_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_turning_people_12
+				limit = {
+					has_country_flag = Liyue_turning_people_12
+				}
+				clr_country_flag = Liyue_turning_people_12
 			}
-			clr_country_flag = Liyue_turning_people_12 
-		    }
 			else_if = {
-			limit = {
-				has_country_flag = Liyue_emperor_livest_12
+				limit = {
+					has_country_flag = Liyue_emperor_livest_12
+				}
+				clr_country_flag = Liyue_emperor_livest_12
 			}
-			clr_country_flag = Liyue_emperor_livest_12 
-		    }
 		}
 		remove_effect = {
-		clr_country_flag = Liyue_Seven_restructuring_12
+			clr_country_flag = Liyue_Seven_restructuring_12
 		}
-    }
+	}
 }
 
-Prepare_coastal_defense =  {   
-	Osel_comes = {     
-		activation = {                         
+Prepare_coastal_defense = {
+	Osel_comes = {
+		activation = {
 			has_country_flag = Prepare
-		}                                    
-		available = {
-            or = {
-		    has_completed_focus = two_15
-			has_completed_focus = two_17
-	        }					
 		}
-		
+		available = {
+			or = {
+				has_completed_focus = two_15
+				has_completed_focus = two_17
+			}
+		}
 		icon = GFX_decision_category_hol_war_on_pacifism
-		
-		is_good = no                         
-	
+		is_good = no
 		days_mission_timeout = 281
 		timeout_effect = {
-		custom_effect_tooltip = two_3_text
-        set_country_flag = Secretwar		
+			custom_effect_tooltip = two_3_text
+			set_country_flag = Secretwar
 			if = {
-			limit = {
-				check_variable = { breakwater  > 0.99 }
-				check_variable = { Shoregun  > 0.99 }
-				check_variable = { logistics > 0.99 }
-				complete_national_focus = two_17
-			}			
-		}
-		else_if = {
-			limit = {
-				check_variable = { breakwater  < 0.99 }
-				check_variable = { Shoregun  < 0.99 }
-				check_variable = { logistics < 0.99 }
+				limit = {
+					check_variable = {
+						breakwater > 0.99
+					}
+					check_variable = {
+						Shoregun > 0.99
+					}
+					check_variable = {
+						logistics > 0.99
+					}
+					complete_national_focus = two_17
+				}
 			}
-			complete_national_focus = two_15
-		}           
+			else_if = {
+				limit = {
+					check_variable = {
+						breakwater < 0.99
+					}
+					check_variable = {
+						Shoregun < 0.99
+					}
+					check_variable = {
+						logistics < 0.99
+					}
+				}
+				complete_national_focus = two_15
+			}
 		}
 	}
-	
 	Construction_breakwater = {
-	icon = GFX_decision_ger_mefo_bills
-        visible = {
-		
+		icon = GFX_decision_ger_mefo_bills
+		visible = {
 		}
 		available = {
-        custom_trigger_tooltip = {
-		tooltip = Andeshuijing3	
-		check_variable = { breakwater  < 0.99 }
-	       }
-        }
-		
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing3
+				check_variable = {
+					breakwater < 0.99
+				}
+			}
+		}
 		icon = GFX_decision_eng_blackshirt_speech
-		
-        fire_only_once = no
-		
-        cost = 50
-		
-        days_remove = 30
-		
+		fire_only_once = no
+		cost = 50
+		days_remove = 30
 		ai_will_do = {
 			factor = 10
 		}
-		
-        complete_effect = {
-		   custom_effect_tooltip = breakwater_text
-           add_to_variable = { breakwater = 0.20}
-        }
+		complete_effect = {
+			custom_effect_tooltip = breakwater_text
+			add_to_variable = {
+				breakwater = 0.2
+			}
+		}
 	}
-	
 	Purchase_gun = {
-	icon = GFX_decision_ger_mefo_bills
-        visible = {
-		
+		icon = GFX_decision_ger_mefo_bills
+		visible = {
 		}
 		available = {
-		has_equipment = { artillery_equipment > 1999 }
-        custom_trigger_tooltip = {
-		tooltip = Andeshuijing4	
-		check_variable = { Shoregun  < 0.99 }
-	       }
-        }
+			has_equipment = {
+				artillery_equipment > 1999
+			}
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing4
+				check_variable = {
+					Shoregun < 0.99
+				}
+			}
+		}
 		icon = GFX_decision_gre_faction_management
-        fire_only_once = no
-		
+		fire_only_once = no
 		ai_will_do = {
 			factor = 10
 		}
-		
-        cost = 25
-				
-        days_remove = 30
-				
-        complete_effect = {
-		   custom_effect_tooltip = Shoregun_text
-           add_to_variable = { Shoregun = 0.10}
-		   add_equipment_to_stockpile = {
-		   type = artillery_equipment
-		   amount = -2000
-	    }
-        }
+		cost = 25
+		days_remove = 30
+		complete_effect = {
+			custom_effect_tooltip = Shoregun_text
+			add_to_variable = {
+				Shoregun = 0.1
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -2000
+			}
+		}
 	}
-	
-	
 	Build_logisticsline = {
-	icon = GFX_decision_ger_mefo_bills
-        visible = {
-		
+		icon = GFX_decision_ger_mefo_bills
+		visible = {
 		}
 		available = {
-        custom_trigger_tooltip = {
-		tooltip = Andeshuijing5	
-		check_variable = { logistics  < 0.99 }
-	       }
-        }
-		
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing5
+				check_variable = {
+					logistics < 0.99
+				}
+			}
+		}
 		icon = GFX_decision_hol_draw_up_staff_plans
-		
 		ai_will_do = {
 			factor = 10
 		}
-		
-        fire_only_once = no
-		
-        cost = 50
-		
-        days_remove = 30
-		
-		
-        complete_effect = {
-		   custom_effect_tooltip = logistics_text
-           add_to_variable = { logistics = 0.10}
-        }
+		fire_only_once = no
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			custom_effect_tooltip = logistics_text
+			add_to_variable = {
+				logistics = 0.1
+			}
+		}
 	}
 }
 
 Secret_war = {
-    Strengthen_security = {
-        visible = {
-		
+	Strengthen_security = {
+		visible = {
 		}
 		available = {
-		has_manpower > 1999
-		has_equipment = { infantry_equipment > 4999 }
-        custom_trigger_tooltip = {
-		tooltip = Andeshuijing2	
-		check_variable = { Operationprogress  < 0.99 }
-	       }
-        }
-		
-        fire_only_once = no
-		
+			has_manpower > 1999
+			has_equipment = {
+				infantry_equipment > 4999
+			}
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing2
+				check_variable = {
+					Operationprogress < 0.99
+				}
+			}
+		}
+		fire_only_once = no
 		ai_will_do = {
 			factor = 10
 		}
-		
 		custom_cost_trigger = {
-        tag = LYU
-        }
-		
+			tag = LYU
+		}
 		icon = GFX_decision_generic_industry
-        custom_cost_text = LYU_Strengthen_5000_tooltip
-		
-        days_remove = 30
-		
-		
-        complete_effect = {
-		   add_manpower = -2000
-		   add_equipment_to_stockpile = {
-		   type = infantry_equipment
-		   amount = -5000
-	        }
-		   custom_effect_tooltip = Operationprogress_text
-           add_to_variable = { Operationprogress = -0.30 }
-        }
-	}
-	
-    Insertion_operator = {
-        visible = {
-		    has_completed_focus = two_11
-		}
-		available = {		
-        custom_trigger_tooltip = {
-		tooltip = Andeshuijing1	
-		check_variable = { IntelligenceCollection  < 0.99 }
-	       }
-        }
-		
-        fire_only_once = no
-		
-        cost = 200
-		
-		ai_will_do = {
-			factor = 10
-		}
-		
-		icon = GFX_decision_SWI_expand_covert_operations
-		
-        days_remove = 30
-		
+		custom_cost_text = LYU_Strengthen_5000_tooltip
+		days_remove = 30
 		complete_effect = {
-            country_event = { days = 1  id = lyu_start.28 } 
-        }
-		
-        remove_effect = {
-		   custom_effect_tooltip = Operationprogress_text
-           add_to_variable = { IntelligenceCollection = 0.30 }
-		   country_event = { days = 1  id = lyu_start.28 }
-        }
+			add_manpower = -2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -5000
+			}
+			custom_effect_tooltip = Operationprogress_text
+			add_to_variable = {
+				Operationprogress = -0.3
+			}
+		}
 	}
-	
-	Assault_stronghold = {
-        visible = {
-		
+	Insertion_operator = {
+		visible = {
+			has_completed_focus = two_11
 		}
 		available = {
-		has_manpower > 499
-        has_equipment = { infantry_equipment > 999 }		
-        custom_trigger_tooltip = {
-		tooltip = Andeshuijing	
-		check_variable = { IntelligenceCollection  < 0.99 }
-	       }
-		custom_trigger_tooltip = {
-		tooltip = Andeshuijing	
-		check_variable = { Operationprogress  < 0.99 }
-	       }
-        }
-		icon = GFX_decision_generic_industry
-		
-        fire_only_once = no
-		
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing1
+				check_variable = {
+					IntelligenceCollection < 0.99
+				}
+			}
+		}
+		fire_only_once = no
+		cost = 200
 		ai_will_do = {
 			factor = 10
 		}
-		
-		custom_cost_trigger = {
-        tag = LYU
-        }
-		
-        custom_cost_text = LYU_Strengthen_100_tooltip
-		
-        days_remove = 14
-				
-        complete_effect = {
-		   add_manpower = -500
-		   custom_effect_tooltip = Operationprogress_text1
-		   add_equipment_to_stockpile = {
-		   type = infantry_equipment
-		   amount = -1000
-	        }
-			
-           add_to_variable = { IntelligenceCollection = 0.20 }
-		   add_to_variable = { Operationprogress = -0.10 }
-        }
-	}
-	
-	Diplomatic_pressure = {
-        visible = {
-		    has_completed_focus = two_11
+		icon = GFX_decision_SWI_expand_covert_operations
+		days_remove = 30
+		complete_effect = {
+			country_event = {
+				days = 1
+				id = lyu_start.28
+			}
 		}
-		available = {		
-        custom_trigger_tooltip = {
-		tooltip = Andeshuijing	
-		check_variable = { IntelligenceCollection  < 0.99 }
-	       }
-		custom_trigger_tooltip = {
-		tooltip = Andeshuijing	
-		check_variable = { Operationprogress  < 0.99 }
-	       }
-        }
-		
+		remove_effect = {
+			custom_effect_tooltip = Operationprogress_text
+			add_to_variable = {
+				IntelligenceCollection = 0.3
+			}
+			country_event = {
+				days = 1
+				id = lyu_start.28
+			}
+		}
+	}
+	Assault_stronghold = {
+		visible = {
+		}
+		available = {
+			has_manpower > 499
+			has_equipment = {
+				infantry_equipment > 999
+			}
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing
+				check_variable = {
+					IntelligenceCollection < 0.99
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing
+				check_variable = {
+					Operationprogress < 0.99
+				}
+			}
+		}
+		icon = GFX_decision_generic_industry
+		fire_only_once = no
+		ai_will_do = {
+			factor = 10
+		}
+		custom_cost_trigger = {
+			tag = LYU
+		}
+		custom_cost_text = LYU_Strengthen_100_tooltip
+		days_remove = 14
+		complete_effect = {
+			add_manpower = -500
+			custom_effect_tooltip = Operationprogress_text1
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			add_to_variable = {
+				IntelligenceCollection = 0.2
+			}
+			add_to_variable = {
+				Operationprogress = -0.1
+			}
+		}
+	}
+	Diplomatic_pressure = {
+		visible = {
+			has_completed_focus = two_11
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing
+				check_variable = {
+					IntelligenceCollection < 0.99
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = Andeshuijing
+				check_variable = {
+					Operationprogress < 0.99
+				}
+			}
+		}
 		ai_will_do = {
 			factor = 20
 		}
-		
 		icon = GFX_decision_generic_nationalism
-		
-        fire_only_once = no
-		
-        cost = 100
-		
-        days_remove = 35
-		
+		fire_only_once = no
+		cost = 100
+		days_remove = 35
 		modifier = {
-		custom_modifier_tooltip = IntelligenceCollection_text1
+			custom_modifier_tooltip = IntelligenceCollection_text1
 		}
-		
-        complete_effect = {
-           set_country_flag = { flag = Ande value = 1 days = 30 }		   
-        }
+		complete_effect = {
+			set_country_flag = {
+				flag = Ande
+				value = 1
+				days = 30
+			}
+		}
 	}
 }
 
-    Liyue_political_situation = {	
-	LYU_count_down = {     
-		activation = {                         
+Liyue_political_situation = {
+	LYU_count_down = {
+		activation = {
 			has_country_flag = Ganyu_linshi_leader
-		}                                    
-		available = {                           
-		  or = {
-		    has_country_leader = { ruling_only = yes name = LYU_Ningguang }
-			has_country_leader = { ruling_only = yes name = LYU_Keqing }
-	        }  	
 		}
-		
-		is_good = yes   
-		
-	    icon = GFX_decision_faction_tur_unaligned
-		
-		days_mission_timeout = 181
-		
-		
-		timeout_effect = {
-		custom_effect_tooltip = elected_automatically
-                set_temp_variable = { lyu_linshi }
-                add_to_variable	= { lyu_linshi = Keqing_PP }
-                add_to_variable	= { lyu_linshi = Keqing_PS }
-                set_temp_variable = { lyu_linshi1 }
-				add_to_variable	= { lyu_linshi = NingGuang_PP }
-                add_to_variable	= { lyu_linshi = NingGuang_PS }
-			if = {
-			    limit = {
-				check_variable =  { lyu_linshi < lyu_linshi1 }
-			    }
-				country_event = { 
-				days = 1
-				id = lyu_start.17
+		available = {
+			or = {
+				has_country_leader = {
+					ruling_only = yes
+					name = LYU_Ningguang
 				}
-		    }
-            else_if = {
-			limit = {
-				check_variable =  { lyu_linshi > lyu_linshi1 }
+				has_country_leader = {
+					ruling_only = yes
+					name = LYU_Keqing
+				}
 			}
-			country_event = { 
-				days = 1
-				id = lyu_start.18
+		}
+		is_good = yes
+		icon = GFX_decision_faction_tur_unaligned
+		days_mission_timeout = 181
+		timeout_effect = {
+			custom_effect_tooltip = elected_automatically
+			set_temp_variable = {
+				lyu_linshi
+			}
+			add_to_variable = {
+				lyu_linshi = Keqing_PP
+			}
+			add_to_variable = {
+				lyu_linshi = Keqing_PS
+			}
+			set_temp_variable = {
+				lyu_linshi1
+			}
+			add_to_variable = {
+				lyu_linshi = NingGuang_PP
+			}
+			add_to_variable = {
+				lyu_linshi = NingGuang_PS
+			}
+			if = {
+				limit = {
+					check_variable = {
+						lyu_linshi < lyu_linshi1
+					}
 				}
-		}			
-		}				
+				country_event = {
+					days = 1
+					id = lyu_start.17
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						lyu_linshi > lyu_linshi1
+					}
+				}
+				country_event = {
+					days = 1
+					id = lyu_start.18
+				}
+			}
+		}
 	}
-		
 	Worker_group_publicity = {
-        visible = {
-		has_country_flag = Ganyu_linshi_leader
+		visible = {
+			has_country_flag = Ganyu_linshi_leader
 		}
-		available = {		
-        
-        }
-		
-        fire_only_once = no
-		
+		available = {
+		}
+		fire_only_once = no
 		icon = GFX_decision_SOV_secure_the_administration
-		
-        cost = 50
-		
+		cost = 50
 		ai_will_do = {
 			factor = 10
 		}
-		
-        days_remove = 30
+		days_remove = 30
 		modifier = {
-		custom_modifier_tooltip = KQG_zhengzhi
+			custom_modifier_tooltip = KQG_zhengzhi
 		}
-		
-        complete_effect = {		   
-           add_to_variable = { Keqing_PP = 25 }
-		   country_event = { days = 13  id = lyu_start.21 }
-        }
+		complete_effect = {
+			add_to_variable = {
+				Keqing_PP = 25
+			}
+			country_event = {
+				days = 13
+				id = lyu_start.21
+			}
+		}
 	}
-
 	Business_Council = {
-        visible = {
-		has_country_flag = Ganyu_linshi_leader
+		visible = {
+			has_country_flag = Ganyu_linshi_leader
 		}
-		available = {		
-        
-        }
-		
-        fire_only_once = no
-		
-        cost = 50
+		available = {
+		}
+		fire_only_once = no
+		cost = 50
 		icon = decision_generic_merge_plant_ship
-        days_remove = 30
-		
+		days_remove = 30
 		ai_will_do = {
 			factor = 10
 		}
-		
 		icon = GFX_decision_generic_merge_plant_ship
-		
 		modifier = {
-		custom_modifier_tooltip = NNG_zhengzhi
+			custom_modifier_tooltip = NNG_zhengzhi
 		}
-		
-        complete_effect = {
-           add_to_variable = { NingGuang_PP = 25 }
-		   country_event = { days = 13  id = lyu_start.22 }
-        }
+		complete_effect = {
+			add_to_variable = {
+				NingGuang_PP = 25
+			}
+			country_event = {
+				days = 13
+				id = lyu_start.22
+			}
+		}
 	}
-	
 	LYU_kqg = {
-        visible = {
-		has_country_flag = Ganyu_linshi_leader
+		visible = {
+			has_country_flag = Ganyu_linshi_leader
 		}
-		available = {		
-        
-        }
-		
-        fire_only_once = no
-		
-        cost = 100
+		available = {
+		}
+		fire_only_once = no
+		cost = 100
 		icon = GFX_decision_eng_propaganda_campaigns
 		ai_will_do = {
 			factor = 10
 		}
-		
-        days_remove = 30
-		
-		modifier = 	{
-        custom_modifier_tooltip = KQG_people
-        }	
-		
-        complete_effect = {
-           add_to_variable = { Keqing_PP = 3 }
-        }
-	}
-	
-	LYU_nng = {
-        visible = {
-		has_country_flag = Ganyu_linshi_leader
-		}
-		available = {		
-        
-        }
-		
-        fire_only_once = no
-		
-		ai_will_do = {
-			factor = 10
-		}
-		
-        cost = 100
-		icon = GFX_decision_eng_propaganda_campaigns
-        days_remove = 30
-		
+		days_remove = 30
 		modifier = {
-        custom_modifier_tooltip = NNG_people
-        }
-		
-        complete_effect = {
-           add_to_variable = { NingGuang_PS = 3 }
-        }
+			custom_modifier_tooltip = KQG_people
+		}
+		complete_effect = {
+			add_to_variable = {
+				Keqing_PP = 3
+			}
+		}
 	}
-}	
-
+	LYU_nng = {
+		visible = {
+			has_country_flag = Ganyu_linshi_leader
+		}
+		available = {
+		}
+		fire_only_once = no
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 100
+		icon = GFX_decision_eng_propaganda_campaigns
+		days_remove = 30
+		modifier = {
+			custom_modifier_tooltip = NNG_people
+		}
+		complete_effect = {
+			add_to_variable = {
+				NingGuang_PS = 3
+			}
+		}
+	}
+}

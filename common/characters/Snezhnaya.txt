@@ -118,14 +118,13 @@ characters = {
         corps_commander={
             traits = { hydro_element logistics_wizard extreme_evilskill demonking_armorrampage aggressive_assaulter }
 	        skill = 6
-	        attack_skill = 7
+	        attack_skill = 6
 	        defense_skill = 6
 	        planning_skill = 4
 	        logistics_skill = 4
 			legacy_id=-1
 		}
     }
-
     SNE_La_Signora = {
         name = SNE_La_Signora
         portraits = {
@@ -422,16 +421,39 @@ characters = {
                 small = "GFX_portrait_small_Snezhnaya_Elizabeth"
             }
         }
-
-        corps_commander={
-		    desc = SNE_Elizabeth_desc
-            traits = { harsh_leader bearer_of_artillery winter_specialist adaptable ranger }
-	        skill = 2
-	        attack_skill = 3
-	        defense_skill = 1
-	        planning_skill = 2
-	        logistics_skill = 3
-			legacy_id=-1
+	    advisor = {
+        slot = high_command
+        cost = 150
+        idea_token = SNE_Elizabeth_token
+		visible = {
+		    has_character_flag = SNE_Elizabeth_flag
+	    }
+        traits = {
+            ZDG_jiurebaikui
+            }
+        }
+		advisor = {
+        slot = political_advisor
+		on_add = {
+		    add_power_balance_value = {
+			id = ZDG_extreme_northern_palace
+			value = 0.05
+		    }
 		}
+		on_remove = {
+		    add_power_balance_value = {
+			id = ZDG_extreme_northern_palace
+			value = -0.05
+		    }
+		}
+        cost = 150
+        idea_token = SNE_Elizabeth_token
+		visible = {
+		    has_character_flag = SNE_Elizabeth_flag
+	    }
+        traits = {
+            ZDG_jiurebaikui2
+            }
+        }
     }
 }

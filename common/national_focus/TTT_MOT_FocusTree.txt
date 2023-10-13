@@ -319,7 +319,7 @@ focus_tree = {
 		x = 10
 		y = 5
 		
-		cost = 42
+		cost = 30
 		bypass = {
 			not = {
 				has_global_flag = MOT_dragon_crisis
@@ -338,12 +338,22 @@ focus_tree = {
 				array = MOT_Political_grid_array
 				value = 1
 			}
+			remove_from_array = {
+				array = global.MOT_naionalfocus_mission
+				index = 0
+			}
 			add_to_array = {
 				array = global.MOT_naionalfocus_mission
 				value = 1
 				index = 0
 			}
 			custom_effect_tooltip = MOT_tree_0_08_tooltip
+			country_event = {id = MOT_event.209}
+			add_dynamic_modifier = {modifier = MOT_Political_maintain_the_scout}
+			TWL = {
+				country_event = {id = MOT_event.209}
+				add_dynamic_modifier = {modifier = MOT_Political_maintain_the_scout}
+			}
 		}
 	}
 
@@ -365,7 +375,7 @@ focus_tree = {
 				has_global_flag = MOT_dragon_crisis
 			}
 		}
-		cost = 35
+		cost = 30
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：探寻
@@ -373,12 +383,20 @@ focus_tree = {
                 array = MOT_Political_grid_array
                 value = 2
             }
+			remove_from_array = {
+				array = global.MOT_naionalfocus_mission
+				index = 1
+			}
 			add_to_array = {
 				array = global.MOT_naionalfocus_mission
 				value = 1
 				index = 1
 			}
 			custom_effect_tooltip = MOT_tree_0_09_tooltip
+			TWL = {
+				country_event = {id = MOT_event.211}
+			}
+			country_event = {id = MOT_event.212}
 		}
 	}
 
@@ -400,7 +418,7 @@ focus_tree = {
 				has_global_flag = MOT_dragon_crisis
 			}
 		}
-		cost = 35
+		cost = 30
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：准备净化
@@ -408,12 +426,20 @@ focus_tree = {
                 array = MOT_Political_grid_array
                 value = 3
             }
+			remove_from_array = {
+				array = global.MOT_naionalfocus_mission
+				index = 2
+			}
 			add_to_array = {
 				array = global.MOT_naionalfocus_mission
 				value = 1
 				index = 2
 			}
 			custom_effect_tooltip = MOT_tree_0_10_tooltip
+			TWL = {
+				country_event = {id = MOT_event.215}
+			}
+			country_event = {id = MOT_event.215}
 		}
 	}
 
@@ -423,7 +449,7 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_10 }
 		x = 10
 		y = 8
-		cost = 35
+		cost = 30
 		search_filters = {  }
 		available = {
 			check_variable = {MOT_Political_grid_array^2 = 6}
@@ -451,7 +477,7 @@ focus_tree = {
 		x = 14
 		y = 5
 		
-		cost = 35
+		cost = 30
 		bypass = {
 			not = {
 				has_global_flag = MOT_dragon_crisis
@@ -497,7 +523,7 @@ focus_tree = {
 				has_global_flag = MOT_dragon_crisis
 			}
 		}
-		cost = 21
+		cost = 30
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：修建设施
@@ -532,7 +558,7 @@ focus_tree = {
 				has_global_flag = MOT_dragon_crisis
 			}
 		}
-		cost = 21
+		cost = 30
 		search_filters = {  }
 		completion_reward = {
 			#发布任务：启动烈风之印
@@ -567,7 +593,7 @@ focus_tree = {
 				has_global_flag = MOT_dragon_crisis
 			}
 		}
-		cost = 21
+		cost = 30
 		search_filters = {  }
 		completion_reward = {
 			#解锁决议：消灭风魔龙
@@ -586,9 +612,21 @@ focus_tree = {
 				has_global_flag = MOT_dragon_crisis
 			}
 		}
+		ai_will_do = {
+			base = 0
+			factor = 0
+		}
 		cost = 70
 		search_filters = {  }
 		completion_reward = {
+			add_to_variable = {global.MOT_dragon_crisis_victory_probability = 20}
+			clamp_variable = {
+                var = global.MOT_dragon_crisis_victory_probability
+                min = 0
+                max = 100
+            }
+			set_variable = {global.MOT_dragon_crisis_fail_probability = 100}
+			subtract_from_variable = {global.MOT_dragon_crisis_fail_probability = global.MOT_dragon_crisis_victory_probability}
 			custom_effect_tooltip = MOT_tree_0_16_tooltip
 		}
 	}
@@ -676,19 +714,10 @@ focus_tree = {
 		y = 1
 		available = { #自定义前提条件
 			has_global_flag = MOT_dragon_crisis_is_over
-			NOT = { has_idea = MOT_crisis_of_Tewalin } 
-			NOT = { has_idea = MOT_crisis_of_Tewalin2 }
 			NOT = {has_global_flag = MOT_dragon_crisis}
 			NOT = {has_global_flag = MOT_federal_route}
 			NOT = {has_global_flag = MOT_industrialization_program}
 			NOT = {has_global_flag = MOT_military_reform}
-			custom_trigger_tooltip = {
-				NOT = {has_global_flag = MOT_dragon_crisis}
-				NOT = {has_global_flag = MOT_federal_route}
-				NOT = {has_global_flag = MOT_industrialization_program}
-				NOT = {has_global_flag = MOT_military_reform}
-				has_global_flag = MOT_dragon_crisis_is_over
-            }
         }
 		cost = 7
 
@@ -1044,19 +1073,10 @@ focus_tree = {
 		cost = 7
 		available = { #自定义前提条件
 			has_global_flag = MOT_dragon_crisis_is_over
-			NOT = { has_idea = MOT_crisis_of_Tewalin } 
-			NOT = { has_idea = MOT_crisis_of_Tewalin2 }
 			NOT = {has_global_flag = MOT_dragon_crisis}
 			NOT = {has_global_flag = MOT_federal_route}
 			NOT = {has_global_flag = MOT_industrialization_program}
 			NOT = {has_global_flag = MOT_military_reform}
-			custom_trigger_tooltip = {
-				NOT = {has_global_flag = MOT_dragon_crisis}
-				NOT = {has_global_flag = MOT_federal_route}
-				NOT = {has_global_flag = MOT_industrialization_program}
-				NOT = {has_global_flag = MOT_military_reform}
-				has_global_flag = MOT_dragon_crisis_is_over
-            }
         }
 		search_filters = {  }
 		completion_reward = {
@@ -1097,12 +1117,12 @@ focus_tree = {
 			hidden_effect = {
 				
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_1
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_2
 				}
@@ -1126,12 +1146,12 @@ focus_tree = {
 			#顾问“西风骑士团”追加：+15%适役人口修正，-10%训练时间，-10%最小训练程度，-5%部队攻击、部队防御
 			hidden_effect = {
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_1
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_7
 				}
@@ -1379,50 +1399,53 @@ focus_tree = {
 			#三军区获得额外的五个民兵师（相比之下更弱），获得民族精神：“民兵权力暂时下放”：+0.5%适役人口，-5%训练时间
 			add_ideas = MOT_Temporary_decentralization_of_militia_power
 			if = {
-					limit = {
-						TWL = {
-							exists = yes
-						}
-					}
+				limit = {
 					TWL = {
-						add_manpower = 15000
-						add_equipment_to_stockpile = {
-							type = infantry_equipment
-							amount = 1500
-							producer = MOT
-						}
+						exists = yes
 					}
 				}
-				if = {
-					limit = {
-						MDQ = {
-							exists = yes
-						}
+				TWL = {
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"风龙废墟军区民兵旅\" start_experience_factor = 0.1"
+							count = 5
+							owner = TWL
+						}		
 					}
+				}
+			}
+			if = {
+				limit = {
 					MDQ = {
-						add_manpower = 15000
-						add_equipment_to_stockpile = {
-							type = infantry_equipment
-							amount = 1500
-							producer = MOT
-						}
+						exists = yes
 					}
 				}
-				if = {
-					limit = {
-						FXE = {
-							exists = yes
-						}
+				MDQ = {
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"达达乌帕谷民兵旅\" start_experience_factor = 0.1"
+							count = 5
+							owner = MDQ
+						}		
 					}
+				}
+			}
+			if = {
+				limit = {
 					FXE = {
-						add_manpower = 15000
-						add_equipment_to_stockpile = {
-							type = infantry_equipment
-							amount = 1500
-							producer = MOT
-						}
+						exists = yes
 					}
 				}
+				FXE = {
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"东蒙德军区民兵旅\" start_experience_factor = 0.1"
+							count = 5
+							owner = FXE
+						}		
+					}
+				}
+			}
 		}
 	}
 
@@ -1679,12 +1702,12 @@ focus_tree = {
 			hidden_effect = {
 				
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_2
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_3
 				}
@@ -1707,12 +1730,12 @@ focus_tree = {
 			hidden_effect = {
 				
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_3
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_4
 				}
@@ -1735,12 +1758,12 @@ focus_tree = {
 			hidden_effect = {
 				
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_4
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_5
 				}
@@ -1805,12 +1828,12 @@ focus_tree = {
 			hidden_effect = {
 				
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_5
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_6
 				}
@@ -1835,12 +1858,12 @@ focus_tree = {
 			#顾问“西风骑士团”追加：+15%适役人口修正，-10%训练时间，+10%动员速度，-10%部队组织度、部队组织度恢复
 			hidden_effect = {
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_7
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_8
 				}
@@ -1862,12 +1885,12 @@ focus_tree = {
 			#顾问“西风骑士团”追加：+25%适役人口修正，-10%训练时间，-10%陆军经验增长
 			hidden_effect = {
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_8
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_9
 				}
@@ -1904,12 +1927,12 @@ focus_tree = {
 			#顾问“西风骑士团”追加：+5%部队速度，-15%移动中组织度损失
 			hidden_effect = {
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_9
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_10
 				}
@@ -1978,12 +2001,12 @@ focus_tree = {
 			#顾问“西风骑士团”追加：-10%步兵装备生产花费，-10%口粮生产花费，-5%支援装备生产花费
 			hidden_effect = {
 				remove_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_10
 				}
 				add_trait = {
-					character = MOT_westwind_knights_1
+					character = MOT_westwind_knights
 					slot = high_command
 					trait = mot_knight_11
 				}

@@ -11,15 +11,21 @@ Liyue_you_should_be_prepared_for_war = {
     }
 	
 	ai_strategy = {
-		type = ignore
-		id = "DSC"
-		value = 500
+		type = front_unit_request
+		id = DSC
+		value = -500
 	}
 	
 	ai_strategy = {
-		type = ignore
-		id = "SUM"
-		value = 500
+		type = front_unit_request
+		id = SUM
+		value = -500
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = SNE
+		value = -500
 	}
 }
 
@@ -198,7 +204,13 @@ watch_out_north = {
 		}
 	}
 	
-	abort_when_not_enabled = yes
+	abort = {
+		OR = {
+			has_war_with = ZDG
+			has_war_with = XRG
+			has_war_with = XOG
+		}
+	}
 
 	ai_strategy = {
 		type = contain
@@ -216,6 +228,24 @@ watch_out_north = {
 		type = contain
 		id = "ZDG"
 		value = 200
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		tag = XOG
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		tag = XRG
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		tag = ZDG
+		value = 40
 	}
 }
 
@@ -365,5 +395,113 @@ XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend while
 		ordertype = front
 		execution_type = careful
 		execute_order = no
+	}
+}
+
+dont_buy_and_sell_liyue_weapons = {
+	allowed = {
+		always = yes # not original_tag to avoid Vichy weirdness
+	}
+	enable = {
+		has_global_flag = Liyue_Civil_War
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = KQG
+		target = market_access_rights
+		value = -200
+	}
+	
+	ai_strategy = {
+		type = diplo_action_desire
+		id = KQG
+		target = market_access_rights
+		value = -200
+	}
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = NNG
+		target = market_access_rights
+		value = -200
+	}
+	
+	ai_strategy = {
+		type = diplo_action_desire
+		id = NNG
+		target = market_access_rights
+		value = -200
+	}
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = LYU
+		target = market_access_rights
+		value = -200
+	}
+	
+	ai_strategy = {
+		type = diplo_action_desire
+		id = LYU
+		target = market_access_rights
+		value = -200
+	}
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = XRG
+		target = market_access_rights
+		value = -200
+	}
+	
+	ai_strategy = {
+		type = diplo_action_desire
+		id = XRG
+		target = market_access_rights
+		value = -200
+	}
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = XOG
+		target = market_access_rights
+		value = -200
+	}
+	
+	ai_strategy = {
+		type = diplo_action_desire
+		id = XOG
+		target = market_access_rights
+		value = -200
+	}
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = ANG
+		target = market_access_rights
+		value = -200
+	}
+	
+	ai_strategy = {
+		type = diplo_action_desire
+		id = ANG
+		target = market_access_rights
+		value = -200
+	}
+
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = RTG
+		target = market_access_rights
+		value = -200
+	}
+	
+	ai_strategy = {
+		type = diplo_action_desire
+		id = RTG
+		target = market_access_rights
+		value = -200
 	}
 }

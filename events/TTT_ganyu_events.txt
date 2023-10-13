@@ -1546,7 +1546,7 @@ country_event = {
     option ={
         name = ganyu.58.a 
 	    hidden_effect = {
-            LYU = { country_event = { days = 56 id = ganyu.59 } }  
+            LYU = { country_event = { days = 30 id = ganyu.59 } }  
 	    }
         custom_effect_tooltip = ganyu.58.a.d
     }
@@ -1562,7 +1562,7 @@ country_event = {
     option ={
         name = ganyu.59.a 
         hidden_effect = {
-            LYU = { country_event = { days = 56 id = ganyu.60 } }  
+            LYU = { country_event = { days = 60 id = ganyu.60 } }  
 	    }
         custom_effect_tooltip = ganyu.59.a.d
     }
@@ -1580,7 +1580,7 @@ country_event = {
         name = ganyu.60.a 
         custom_effect_tooltip = ganyu.60.a.d
         hidden_effect = {
-            LYU = { country_event = { days = 56 id = ganyu.74 } }  
+            LYU = { country_event = { days = 14 id = ganyu.74 } }  
 	    }
     }
    
@@ -1596,8 +1596,13 @@ country_event = {
     option ={
         name = ganyu.61.a 
         custom_effect_tooltip = ganyu.61.a.d
+        add_stability = -0.01
+        add_equipment_to_stockpile = {
+            type = infantry_equipment
+            amount = -500
+        }
         hidden_effect = {
-            LYU = { country_event = { days = 20 id = ganyu.62 } }
+            # LYU = { country_event = { days = 20 id = ganyu.62 } }
         }
     }
    
@@ -1614,24 +1619,25 @@ country_event = {
         name = ganyu.62.a 
         custom_effect_tooltip = ganyu.62.a.d
         hidden_effect = {
-            LYU = { set_country_flag = Gan_Cisha 
-			set_variable = {
-				var = cisha
-				value = 0
-				}
-			set_variable = {
-				var = anbao
-				value = 35
-			}
-			set_variable = {
-				var = ganyu_assassination_result
-				value = 0
-			}
-			set_variable = {
-				var = ganyu_assassination_weapon
-				value = 1
-			}
-            country_event = { days = 320 id = ganyu.69 } # 320天后揭开刺杀结果
+            LYU = { 
+                set_country_flag = LH_assassinate_begin
+                set_variable = {
+                    var = cisha
+                    value = 0
+                    }
+                set_variable = {
+                    var = anbao
+                    value = 35
+                }
+                set_variable = {
+                    var = ganyu_assassination_result
+                    value = 0
+                }
+                set_variable = {
+                    var = ganyu_assassination_weapon
+                    value = 1
+                }
+                country_event = { days = 320 id = ganyu.69 } # 320天后揭开刺杀结果
 			}
         }
     }
@@ -1647,7 +1653,7 @@ country_event = {
     trigger = {
         tag = LYU
         LYU = {    
-            has_country_flag = Gan_Cisha
+            has_country_flag = LH_assassinate_begin
             has_variable = cisha
             check_variable = {
                 var = cisha
@@ -1680,7 +1686,7 @@ country_event = {
     trigger = {
         tag = LYU
         LYU = {
-            has_country_flag = Gan_Cisha
+            has_country_flag = LH_assassinate_begin
             has_variable = cisha
             check_variable = {
                 var = cisha
@@ -1717,7 +1723,7 @@ country_event = {
     trigger = {
         tag = LYU
         LYU = {
-            has_country_flag = Gan_Cisha
+            has_country_flag = LH_assassinate_begin
             has_variable = cisha
             check_variable = {
                 var = cisha
@@ -1833,7 +1839,7 @@ country_event = {
             }
         }
         name = ganyu.test.a
-        LYU = { country_event = { id = ganyu.70 } }
+        # LYU = { country_event = { id = ganyu.70 } }
         clear_variable = ganyu_live_or_die
     }
     option = {
@@ -1883,8 +1889,16 @@ country_event = {
     picture=GFX_report_event_ganyu_70
     option ={
         name = ganyu.70.a 
-        LYU = { country_event = { days = 1 id = ganyu.75 } } 
-        clear_variable = ganyu_assassination_weapon
+        LYU = { country_event = { days = 7 id = ganyu.75 } } 
+        add_ideas = ganyu_assassination_idea_1
+        custom_effect_tooltip = LH_ganyu_assassination_tt
+        set_country_flag = Ganyu_assassinated
+        clr_country_flag = LH_assassinate_begin
+        hidden_effect = {
+            LYU_Ganyu = {
+                set_nationality = EMP
+            }
+        }
     }
 }
 
@@ -1954,21 +1968,27 @@ country_event = {
     option ={
         name = ganyu.75.a 
         custom_effect_tooltip = ganyu.75.a.d
+        clr_country_flag = LH_assassinate_begin
+
+        LYU = { #获取名称
+            set_variable = {
+                var = assassination_leader
+                value = token:LYU_Ganyu
+            }
+        }
+        news_event = { id = ganyu_news.1 days = 3 }
         hidden_effect = {
             LYU = {
-				kill_country_leader = yes
-				create_country_leader = {
-					name = "LYU_YueHaiTing"
-					picture = "gfx/leaders/LY/LYU_YueHaiTing.dds"
-					ideology = reformism_subtype
-					traits = {
-					}
-				}
-				load_focus_tree = YueHaiTing
-                news_event = { id = ganyu_news.1 }
-                country_event = { days = 3 id = ganyu.83 }
-                country_event = { days = 1 id = ganyu.87 }
-                country_event = { days = 90 id = ganyu.88 }
+                if = {
+                    limit = {
+                        has_country_flag = LH_assassinate_crazy_tt
+                    }
+                    country_event = { id = ganyu.76 days = 7 }
+                    
+                }
+                else = {
+                    country_event = { id = ganyu.78 days = 7 }
+                }
 			}
         }
     }
@@ -1983,13 +2003,8 @@ country_event = {
     picture=GFX_report_event_ganyu_76
     option ={
         name = ganyu.76.a 
-        hidden_effect = {
-            LYU = { country_event = { days = 1 id = ganyu.77 } }
-        }
-        add_stability = -0.3
-        add_war_support = -0.3
-        add_manpower = -1537
         add_ideas = ganyu_assassination_idea_1
+        custom_effect_tooltip = ganyu.76.a.d
     }
 }
 
@@ -2017,22 +2032,19 @@ country_event = {
 
 country_event = {
     id = ganyu.78
-    title = ganyu.78.t #甘雨存活事件三：邯郸梦断
+    title = ganyu.78.t #甘雨存活事件三：邯郸梦断 返回
     desc = ganyu.78.d
     is_triggered_only = yes
     fire_only_once    = yes
     picture=GFX_report_event_ganyu_78
     option ={
         name = ganyu.78.a
+        custom_effect_tooltip = ganyu.78.a_tt
+        remove_ideas = ganyu_assassination_idea_1
         hidden_effect = {
-            LYU = { country_event = { days = 1 id = ganyu.79 } }
+            country_event = { id = LHPG.27 days = 180 }
+
         }
-        add_stability = 0.4
-        add_war_support = 0.4
-        swap_ideas = {
-            remove_idea = ganyu_assassination_idea_2
-            add_idea = ganyu_assassination_idea_3
-        } 
     }
 }
 
@@ -2142,10 +2154,41 @@ news_event = {
     desc = ganyu_news.1.d
     is_triggered_only = yes
     fire_only_once    = yes
-    picture=GFX_report_news_ganyu_1
+    # picture=GFX_report_news_ganyu_1 图片需要更换
     major = yes
     option = {
         name = ganyu_news.1.a
+        trigger = {
+            NOT = {
+                tag = LYU 
+                tag = KQG
+                tag = NNG
+                tag = XOG
+                tag = RTG
+                tag = XRG
+                tag = ANG
+            }
+        }
+        LYU = {
+            add_stability = -0.15
+        }
+    } 
+    option = {
+        name = ganyu_news.1.b
+        trigger = {
+            OR = {
+                tag = LYU 
+                tag = KQG
+                tag = NNG
+                tag = XOG
+                tag = RTG
+                tag = XRG
+                tag = ANG
+            }
+        }
+        LYU = {
+            add_stability = -0.15
+        }
     } 
 }
 
@@ -2194,7 +2237,6 @@ country_event = {
     picture=GFX_report_event_ganyu_1000
     option = {
         name = ganyu.1000.a
-        load_focus_tree = GAN2
     }
 }
 

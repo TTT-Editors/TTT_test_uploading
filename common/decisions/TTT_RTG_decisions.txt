@@ -491,10 +491,16 @@ RTG_yuan_kun_she = {
 RTG_declare_war = {
     RTG_Declare_war_on_zdgqinluejun = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = ZDG } 
 			ZDG = { exists = yes }
+			has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = ZDG
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -512,10 +518,16 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_Keqing = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = KQG }
-            KQG = { exists = yes }			
+            KQG = { exists = yes }
+            has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = KQG
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -533,10 +545,16 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_huguojun = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = XOG }
-            XOG = { exists = yes }			
+            XOG = { exists = yes }
+			has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = XOG
+				}
+			}	
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -554,10 +572,16 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_liberal = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = NNG }
-            NNG = { exists = yes }			
+            NNG = { exists = yes }
+			has_war = no
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = NNG
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -575,12 +599,18 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_Xianren = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = XRG }
+			has_war = no
             XRG = { 
 			    exists = yes 
 				NOT = { is_in_faction_with = RTG }
+			}
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = XRG
+				}
 			}			
 		}
 		fire_only_once = yes
@@ -599,12 +629,18 @@ RTG_declare_war = {
 	
 	RTG_declare_war_on_liyue_anachist = {
 	    icon = decision_RTG_Declare_war_on
-		visible = { 
+		available = { 
 			is_subject = no
 		    NOT = { has_war_with = ANG }
+			has_war = no
             ANG = { 
 			    exists = yes 
 				NOT = { is_in_faction_with = ANG }
+			}
+			any_owned_state = {
+				any_neighbor_state = {
+					is_controlled_by = ANG
+				}
 			}			
 		}
 		fire_only_once = yes
@@ -739,79 +775,6 @@ liyue_civil_war_decisions = {
 				    end_wars = no
 				}
 			}
-		}
-	}
-	RTG_integrate_Xianren = {
-	    icon = decision_RTG_Retuo_integrate
-		visible = { 
-			tag = RTG
-		    XRG = { has_autonomy_state = autonomy_army }			
-		}
-		fire_only_once = yes
-		days_remove = 90
-		cost = 50
-		ai_will_do = {
-			base = 10
-		}
-		remove_effect = { 
-			annex_country = { 
-		        target = XRG 
-		        transfer_troops = yes 
-			}
-			XRG = {
-				every_character = {
-					set_nationality = RTG
-				}
-			}
-		}
-	}
-	RTG_integrate_anachist_Liyue = {
-	    icon = decision_RTG_Retuo_integrate
-		visible = { 
-			tag = RTG
-		    ANG = { has_autonomy_state = autonomy_army }			
-		}
-		fire_only_once = yes
-		days_remove = 90
-		cost = 50
-		ai_will_do = {
-			base = 10
-		}
-		remove_effect = {		
-		    annex_country = { 
-		        target = ANG
-		        transfer_troops = yes 
-			}
-			ANG = {
-			    retire_character = ANG_com_zijigongshe
-			}
-			ANG_com_zijigongshe = {
-				set_nationality = RTG
-			}
-		}
-	}
-	RTG_integrate_Liyuegang = {
-	    icon = decision_RTG_Retuo_integrate
-		visible = { 
-			tag = RTG
-		    LYU = { has_autonomy_state = autonomy_army }			
-		}
-		fire_only_once = yes
-		days_remove = 90
-		cost = 50
-		ai_will_do = {
-			base = 10
-		}
-		remove_effect = {	
-		    annex_country = { 
-		        target = LYU
-		        transfer_troops = yes 
-			}
-			LYU = {
-				every_character = {
-					set_nationality = RTG
-				}
-			}	
 		}
 	}
 }
@@ -1509,7 +1472,7 @@ RTG_underground_networks = {
 
 		complete_effect = {
 			if = {
-				FROM = { is_liyue_region_eight_states = yes }
+				limit = { FROM = { is_liyue_region_eight_states = yes } }
 				add_to_variable = { used_network_states = -1 }
 			}
 			add_to_variable = { used_network_states = 1 }

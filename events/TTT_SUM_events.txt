@@ -103,10 +103,10 @@ country_event = { #判定事件
 		name = sumeru.200.a
 		random_list = {
 			50 = { 
-				news_event = { id = global_news.45 }
+				news_event = { id = global_news.44 }
 			} 
 			50 = { 
-				news_event = { id = global_news.44 } 
+				news_event = { id = global_news.45 } 
 				set_politics = {
 					ruling_party = reformism
 				}
@@ -166,34 +166,73 @@ country_event = { #死域随机事件
 	is_triggered_only = yes
 
 	immediate = {
-		
+		set_variable_to_random = {
+			var = WitheringZone_event_index
+			min = 1
+			max = 17
+			integer = yes
+		}
 	}
 
 	option = {
 		name = sumeru.10000.a
-		random_list = {
-			1 = { 
-				add_to_variable = {
-					var = WitheringZone_array_value^1
-					value = 10
-					tooltip = WitheringZone_array
-				}  
-			}
-			1 = { 
-				add_to_variable = {
-					var = WitheringZone_array_value^2
-					value = 10
-					tooltip = OVO
-				}  
-			}
-			1 = { 
-				add_to_variable = {
-					var = WitheringZone_array_value^3
-					value = 10
-					tooltip = OVO
-				}  
-			}
+		add_to_variable = {
+			var = WitheringZone_array_value^WitheringZone_event_index
+			value = 10
+			tooltip = random_WitheringZone_event_tt
+		} 
+		SUM_WitheringZone_flesh =yes
+	}
+}
+country_event = { #死域随机事件
+	id = sumeru.10001
+	title = sumeru.10001.t
+	desc = sumeru.10001.d
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_variable_to_random = {
+			var = WitheringZone_event_index
+			min = 1
+			max = 17
+			integer = yes
 		}
-		
+	}
+
+	option = {
+		name = sumeru.10001.a
+		add_to_variable = {
+			var = WitheringZone_array_value^WitheringZone_event_index
+			value = 20
+			tooltip = random_WitheringZone_event_med_tt
+		} 
+		SUM_WitheringZone_flesh =yes
+	}
+}
+country_event = { #死域随机事件
+	id = sumeru.10002
+	title = sumeru.10002.t
+	desc = sumeru.10002.d
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_variable_to_random = {
+			var = WitheringZone_event_index
+			min = 1
+			max = 17
+			integer = yes
+		}
+	}
+
+	option = {
+		name = sumeru.10002.a
+		add_to_variable = {
+			var = WitheringZone_array_value^WitheringZone_event_index
+			value = 30
+			tooltip = random_WitheringZone_event_big_tt
+		} 
+		SUM_WitheringZone_flesh =yes
 	}
 }

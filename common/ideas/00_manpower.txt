@@ -10,6 +10,10 @@ ideas = {
 			removal_cost = -1
 			level = 7
 
+			available = {
+				#has_manpower_for_recruit_change_to = { value = 0.005 group = mobilization_laws }
+			}
+
 			modifier = {
 				conscription = 0.01
 				war_support_weekly = 0.002
@@ -55,6 +59,7 @@ ideas = {
 			level = 5
 
 			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.025 group = mobilization_laws }
 				has_war_support > 0.1
 				NOT = { has_idea = undisturbed_isolation }
 				NOT = { has_idea = isolation }
@@ -75,6 +80,10 @@ ideas = {
 					#Prio if low on manpower
 					factor = 20
 					manpower_per_military_factory < 1000
+				}
+				modifier = {
+					factor = 0
+					NOT = { has_idea = volunteer_only }
 				}
 			}
 

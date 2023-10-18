@@ -1,0 +1,1294 @@
+add_namespace = LHPG
+
+#These are events about Liyue Harbor government.
+
+country_event = {
+	id = LHPG.1
+	title = LHPG.1.t
+	desc = LHPG.1.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.1.a
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				add = 10
+				NNG = {
+					surrender_progress > 0.1
+				}
+			}
+			modifier = {
+				add = 5
+				NNG = {
+					num_of_factories < LYU.num_of_factories
+				}
+			}
+			modifier = {
+				add = 5
+				NNG = {
+					num_divisions < LYU.num_divisions
+				}
+			}
+		}
+		LYU = {
+			country_event = {
+				id = LHPG.2
+				days = 4
+			}
+		}
+	}
+
+	option = { 
+		name = LHPG.1.b
+		ai_chance = {
+			base = 5
+		}
+		add_stability = -0.15
+		add_war_support = -0.15
+		LYU = {
+			country_event = {
+				id = LHPG.3
+				days = 4
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.2
+	title = LHPG.2.t
+	desc = LHPG.2.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.1.a
+		add_to_variable = {
+					var = troika_prestige^0
+					value = 2
+				} #烟绯威望
+		remove_ideas = blocked_harbour
+		add_stability = 0.05
+	}
+
+}
+
+country_event = {
+	id = LHPG.3
+	title = LHPG.3.t
+	desc = LHPG.3.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.3.a
+		add_war_support = 0.1
+	}
+
+}
+
+country_event = {
+	id = LHPG.4
+	title = LHPG.4.t
+	desc = LHPG.4.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.4.a
+		trigger = {
+			NOT = {
+				has_country_flag = Yanfei_assassinated #不被刺杀
+			}
+			OR = {
+				check_variable = { #如果是第一
+					var = troika_cha_array^0
+					value = 0
+					compare = equals
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^1 }
+					check_variable = { troika_cha_array^1 = 0 } #如果第一和第二相等，且为第二
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^2 }
+					check_variable = { troika_cha_array^2 = 0 } #如果第一和第三相等，且为第三
+				}
+				AND = { #如果其他人被刺杀并且被刺杀的是第一
+					OR = {
+						AND = {
+							has_country_flag = Ganyu_assassinated 
+							check_variable = { troika_cha_array^0 = 1 }
+						}
+						AND = {
+							has_country_flag = Baizhu_assassinated 
+							check_variable = { troika_cha_array^0 = 2 }
+						}
+					}
+					OR = { 
+						check_variable = { troika_cha_array^1 = 0 }
+						AND = {
+							check_variable = { troika_prestige_array^1 = troika_prestige_array^2 }
+							check_variable = { troika_cha_array^2 = 0 } #如果第二和第三相等，且为第三
+						}
+					}
+					
+				}
+        	}
+		}
+		retire_character = LYU_troika
+		LYU_yanfei = {
+			promote_character = yes
+			
+		}
+		# set_politics = {
+		# 	ruling_party = authoritarianism
+		# 	elections_allowed = no
+		# }
+		# set_party_name = { 
+        #     ideology = reformism
+        #     long_name = LH_party_Yuehaiting_long 
+        #     name = LH_party_Yuehaiting
+        # }
+		set_party_name = { 
+            ideology = reformism
+            long_name = LH_party_Yanfei_clique_long 
+            name = LH_party_Yanfei_clique
+        }
+		# set_party_name = { 
+        #     ideology = reformism
+        #     long_name = LH_party_Baizhu_clique_long 
+        #     name = LH_party_Baizhu_clique 
+        # }
+		hidden_effect = {
+		set_country_flag = yanfei_victory
+		news_event = {
+			    id = global_news.24#事件id
+				days = 7#几天后触发
+			}#此为触发世界新闻
+			add_political_power = 100
+			add_stability = 0.1
+			clr_country_flag = jieshusantoutongmeng
+			load_focus_tree = YFX
+		}
+	}
+
+	option = { 
+		name = LHPG.4.b
+		trigger = {
+			NOT = {
+				has_country_flag = Ganyu_assassinated #不被刺杀
+			}
+			OR = {
+				check_variable = { #如果是第一
+					var = troika_cha_array^0 
+					value = 1
+					compare = equals
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^1 }
+					check_variable = { troika_cha_array^1 = 1 } #如果第一和第二相等，且为第二
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^2 }
+					check_variable = { troika_cha_array^2 = 1 } #如果第一和第三相等，且为第三
+				}
+				AND = { #如果其他人被刺杀并且被刺杀的是第一
+					OR = {
+						AND = {
+							has_country_flag = Yanfei_assassinated 
+							check_variable = { troika_cha_array^0 = 0 }
+						}
+						AND = {
+							has_country_flag = Baizhu_assassinated 
+							check_variable = { troika_cha_array^0 = 2 }
+						}
+					}
+					OR = { 
+						check_variable = { troika_cha_array^1 = 1 }
+						AND = {
+							check_variable = { troika_prestige_array^1 = troika_prestige_array^2 }
+							check_variable = { troika_cha_array^2 = 1 } #如果第二和第三相等，且为第三
+						}
+					}
+				}
+        	}
+        }
+		retire_character = LYU_troika
+		set_politics = {
+	        ruling_party = reformism
+            elections_allowed = no
+        }
+		set_party_name = { 
+            ideology = reformism
+            long_name = LH_party_Yuehaiting_long 
+            name = LH_party_Yuehaiting
+        }
+		# set_party_name = { 
+        #     ideology = authoritarianism
+        #     long_name = LH_party_Yanfei_clique_long 
+        #     name = LH_party_Yanfei_clique
+        # }
+		# set_party_name = { 
+        #     ideology = despotism
+        #     long_name = LH_party_Baizhu_clique_long 
+        #     name = LH_party_Baizhu_clique 
+        # }
+		LYU_Ganyu = {
+			promote_character = yes
+		}
+		
+		hidden_effect = {
+			add_country_leader_trait = obey_rule_law
+			remove_country_leader_trait = sinner_ofLiyue
+			# set_popularities = {
+			# 	reformism = 40
+			# 	liberalism = 10
+			# 	authoritarianism = 25
+			# 	despotism = 25
+			# }
+			set_country_flag = ganyu_victory
+			news_event = {
+			    id = global_news.25#事件id
+				days = 7#几天后触发
+			}#此为触发世界新闻
+			add_political_power = 100
+			add_stability = 0.1
+			load_focus_tree = GAN
+			set_country_flag = GAN_civil_war
+			clr_country_flag = jieshusantoutongmeng
+		}
+	}
+
+	option = { 
+		name = LHPG.4.c
+		trigger = {
+			NOT = {
+				has_country_flag = Baizhu_assassinated #不被刺杀
+			}
+			OR = {
+				check_variable = { #如果是第一
+					var = troika_cha_array^0
+					value = 2
+					compare = equals
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^1 }
+					check_variable = { troika_cha_array^1 = 2 } #如果第一和第二相等，且为第二
+				}
+				AND = {
+					check_variable = { troika_prestige_array^0 = troika_prestige_array^2 }
+					check_variable = { troika_cha_array^2 = 2 } #如果第一和第三相等，且为第三
+				}
+				AND = { #如果其他人被刺杀并且被刺杀的是第一
+					OR = {
+						AND = {
+							has_country_flag = Yanfei_assassinated 
+							check_variable = { troika_cha_array^0 = 0 }
+						}
+						AND = {
+							has_country_flag = Ganyu_assassinated 
+							check_variable = { troika_cha_array^0 = 1 }
+						}
+					}
+					OR = { 
+						check_variable = { troika_cha_array^1 = 2 }
+						AND = {
+							check_variable = { troika_prestige_array^1 = troika_prestige_array^2 }
+							check_variable = { troika_cha_array^2 = 2 } #如果第二和第三相等，且为第三
+						}
+					}
+				}
+        	}
+        }
+		LYU_baizhu = {
+			promote_character = yes
+			
+		}
+		
+		# set_politics = {
+		# 	ruling_party = despotism
+		# 	elections_allowed = no
+		# }
+		# set_party_name = { 
+        #     ideology = reformism
+        #     long_name = LH_party_Yuehaiting_long 
+        #     name = LH_party_Yuehaiting
+        # }
+		# set_party_name = { 
+        #     ideology = authoritarianism
+        #     long_name = LH_party_Yanfei_clique_long 
+        #     name = LH_party_Yanfei_clique
+        # }
+		set_party_name = { 
+            ideology = reformism
+            long_name = LH_party_Baizhu_clique_long 
+            name = LH_party_Baizhu_clique 
+        }
+		set_country_flag = baizhu_victory
+		hidden_effect = {
+			# set_popularities = {
+			# 	reformism = 20
+			# 	despotism = 40
+			# 	authoritarianism = 20
+			# 	communism = 10
+				
+			# 	liberalism = 10
+			# }
+		news_event = {
+			    id = global_news.26#事件id
+				days = 7#几天后触发
+			}#此为触发世界新闻
+			add_political_power = 100
+			add_stability = 0.1
+			clr_country_flag = jieshusantoutongmeng
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.5
+	title = LHPG.5.t
+	desc = LHPG.5.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.5.a
+	
+	}
+
+}
+
+country_event = {
+	id = LHPG.6
+	title = LHPG.6.t
+	desc = LHPG.6.d
+
+	fire_only_once = yes
+	trigger = {
+		has_completed_focus = LH_zaici_junshi_gaige
+		NOT = { has_idea = LH_quanmian_military_reform }
+	}
+    
+	hidden = yes
+
+	option = { 
+		name = LHPG.6.a
+	    add_ideas = LH_Baizhu_military_reform
+	}
+
+}
+
+country_event = {
+	id = LHPG.7
+	title = LHPG.7.t
+	desc = LHPG.7.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.7.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				add = 5
+				has_completed_focus = LH_ZhaiXing
+			}
+			modifier = {
+				factor = 0
+				has_completed_focus = LH_Chongyang
+			}
+		}
+	    LYU = {
+			country_event = {
+				id = LHPG.8
+				days = 3
+			}
+		}
+	}
+
+	option = { 
+		name = LHPG.7.b
+		ai_chance = {
+			base = 5
+		}
+	    LYU = {
+			country_event = {
+				id = LHPG.9
+				days = 3
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.8
+	title = LHPG.8.t
+	desc = LHPG.8.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.8.a
+		add_to_variable = {
+					var = troika_prestige^1
+					value = 2
+				} #甘雨威望
+	    add_political_power = -35
+		remove_ideas = unstable_mora_system
+		XRG = {
+			add_opinion_modifier = {
+                target = LYU
+                modifier = Liyue_Harbor_dip9
+            }
+		}
+		LYU = {
+			add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip9
+            }
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.9
+	title = LHPG.9.t
+	desc = LHPG.9.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.9.a
+		XRG = {
+			add_opinion_modifier = {
+                target = LYU
+                modifier = Liyue_Harbor_dip10
+            }
+		}
+		LYU = {
+			add_opinion_modifier = {
+                target = XRG
+                modifier = Liyue_Harbor_dip10
+            }
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.10
+	title = LHPG.10.t
+	desc = LHPG.10.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.10.a
+		country_event = { id = LHPG.11 }
+		hidden_effect = {
+			country_event = { id = ganyu.58 days = 14 }
+			country_event = { id = ganyu.61 days = 35 }
+		}
+	}
+
+}
+
+country_event = {
+	id = LHPG.11
+	title = LHPG.11.t
+	desc = LHPG.11.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { #默认数值
+			resize_array = {
+				array = LH_Security_forces_array #序号对应  0——烟绯 1——甘雨 2——白术
+				size = 3
+				value = 0
+			}
+			set_variable = { #烟绯初始
+				var = LH_Security_forces_array^0
+				value = 2
+			}
+			set_variable = { #甘雨初始
+				var = LH_Security_forces_array^1
+				value = 0
+			}
+			set_variable = { #白术初始
+				var = LH_Security_forces_array^2
+				value = 1
+			}
+
+			set_variable = { #阴谋力量
+				var = Extremists_plot_level
+				value = 2
+			}
+
+			resize_array = {
+				array = LH_Security_forces_array_visible 
+				size = 3
+				value = 0
+			}
+			set_variable = { 
+				var = Extremists_plot_level_visible
+				value = 0
+			}
+		}
+	}
+
+	option = { 
+		name = LHPG.11.a #简单模式
+		custom_effect_tooltip = LH_assassinate_easy_tt
+		hidden_effect = {
+			country_event = { id = LHPG.12 days = 3 }
+			set_variable = {
+				var = Patience_decreasing_time
+				value = 210
+			}
+			set_variable = {
+				var = Extremists_action_time
+				value = 28
+			}
+		}
+	}
+	option = { 
+		name = LHPG.11.b #普通模式
+		custom_effect_tooltip = LH_assassinate_nor_tt
+		hidden_effect = {
+			country_event = { id = LHPG.12 days = 3 }
+			set_variable = {
+				var = Patience_decreasing_time
+				value = 180
+			}
+			set_variable = {
+				var = Extremists_action_time
+				value = 21
+			}
+		}
+	}
+	option = { 
+		name = LHPG.11.c #困难
+		custom_effect_tooltip = LH_assassinate_hard_tt
+		hidden_effect = {
+			country_event = { id = LHPG.12 days = 3 }
+			set_variable = {
+				var = Patience_decreasing_time
+				value = 120
+			}
+			clear_array = LH_Security_forces_array #重设安保
+			resize_array = {
+				array = LH_Security_forces_array 
+				size = 3
+				value = 0
+			}
+			set_variable = { #阴谋力量
+				var = Extremists_plot_level
+				value = 4
+			}
+		}
+	}
+	option = { 
+		name = LHPG.11.e #惩罚
+		custom_effect_tooltip = LH_assassinate_crazy_tt
+		hidden_effect = {
+			country_event = { id = LHPG.12 days = 3 }
+			set_variable = {
+				var = Patience_decreasing_time
+				value = 120
+			}
+			clear_array = LH_Security_forces_array #重设安保
+			resize_array = {
+				array = LH_Security_forces_array 
+				size = 3
+				value = 0
+			}
+			set_variable = { #阴谋力量
+				var = Extremists_plot_level
+				value = 4
+			}
+			set_country_flag = LH_assassinate_crazy #惩罚模式
+		}
+	}
+}
+
+country_event = { #开启机制事件
+	id = LHPG.12
+	title = LHPG.12.t
+	desc = LHPG.12.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.12.a
+		set_country_flag = LH_assassinate_begin
+		activate_mission = Patience_decreasing
+		activate_mission = Extremists_power_expande
+		activate_mission = Extremists_conspiracy
+	}
+
+}
+
+country_event = { #极端组织事件链
+	id = LHPG.13
+	title = LHPG.13.t
+	desc = LHPG.13.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.13.a
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.14 days = 14 }
+		}
+	}
+
+}
+country_event = { #极端组织事件链
+	id = LHPG.14
+	title = LHPG.14.t
+	desc = LHPG.14.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = LH_has_informer
+				}
+				country_event = { id = LHPG.15 days = 14 }
+			}
+		}
+	}
+
+	option = { 
+		name = LHPG.14.a
+		custom_effect_tooltip = LHPG.14_tt
+
+	}
+	option = { 
+		name = LHPG.14.b
+		custom_effect_tooltip = LHPG.14_tt
+	}
+	option = { 
+		name = LHPG.14.c
+		custom_effect_tooltip = LHPG.14_tt
+	}
+
+}
+country_event = { #极端组织事件链
+	id = LHPG.15
+	title = LHPG.15.t
+	desc = LHPG.15.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.15.a
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.16 days = 14 }
+		}
+
+	}
+
+}
+country_event = { #极端组织事件链
+	id = LHPG.16
+	title = LHPG.16.t
+	desc = LHPG.16.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.16.a
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.17 days = 14 }
+		}
+
+	}
+
+}
+country_event = { #极端组织事件链
+	id = LHPG.17
+	title = LHPG.17.t
+	desc = LHPG.17.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.17.a
+		if = {
+			limit = {
+				has_country_flag = LH_has_informer
+			}
+			country_event = { id = LHPG.18 days = 7 }
+		}
+
+	}
+
+}
+country_event = { #极端组织事件链
+	id = LHPG.18
+	title = LHPG.18.t
+	desc = LHPG.18.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.18.a
+		random_list = {
+			30 = {
+				country_event = { id = LHPG.19 days = 2 }
+			}
+			70 = {
+				country_event = { id = LHPG.20 days = 2 }
+			}
+		}
+	}
+	option = { 
+		name = LHPG.18.b
+	}
+}
+country_event = { #极端组织事件链 被雷普
+	id = LHPG.19
+	title = LHPG.19.t
+	desc = LHPG.19.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.19.a
+		custom_effect_tooltip = LHPG.19.tt
+		add_to_variable = {
+			var = Extremists_plot_level
+			value = 1
+		}
+		remove_decision = LH_Flipped_informer
+		clr_country_flag = LH_has_informer
+	}
+
+}
+country_event = { #极端组织事件链 成功
+	id = LHPG.20
+	title = LHPG.20.t
+	desc = LHPG.20.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.20.a
+		clr_country_flag = LH_has_informer
+		set_country_flag = LH_informer_success
+	}
+
+}
+
+country_event = { #烟绯演讲
+	id = LHPG.21
+	title = LHPG.21.t
+	desc = LHPG.21.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.21.a
+	}
+
+}
+
+country_event = { #甘雨演讲
+	id = LHPG.22
+	title = LHPG.22.t
+	desc = LHPG.22.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.22.a
+	}
+
+}
+
+country_event = { #白术演讲
+	id = LHPG.23
+	title = LHPG.23.t
+	desc = LHPG.23.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.23.a
+	}
+
+}
+
+country_event = { #阴霾散去
+	id = LHPG.24
+	title = LHPG.24.t
+	desc = LHPG.24.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.24.a
+		add_political_power = 50
+		add_stability = 0.1
+	}
+
+}
+
+country_event = { #极端分子行踪消失
+	id = LHPG.25
+	title = LHPG.25.t
+	desc = LHPG.25.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = LHPG.25.a
+		custom_effect_tooltip = LHPG.25.a_tt
+		remove_mission = Patience_decreasing
+		remove_mission = Extremists_conspiracy
+		remove_mission = Extremists_power_expande
+		hidden_effect = {
+
+			country_event = { id = LHPG.26 days = 7 }
+		}
+	}
+
+}
+
+country_event = { #测试事件
+	id = LHPG.26
+	title = LHPG.26.t
+	desc = LHPG.26.d
+	hidden = yes
+	immediate = { #进行刺杀判定
+		#根据安保和阴谋等级进行算数 
+		set_temp_variable = {
+			var = yanfei_assassination_chance_temp
+			value = LH_Security_forces_array^0
+		}
+		set_temp_variable = {
+			var = ganyu_assassination_chance_temp
+			value = LH_Security_forces_array^1
+		}
+		set_temp_variable = {
+			var = baizhu_assassination_chance_temp
+			value = LH_Security_forces_array^2
+		}
+
+		subtract_from_temp_variable  = { 
+			var = yanfei_assassination_chance_temp
+			value = Extremists_plot_level
+		}
+		subtract_from_temp_variable  = { 
+			var = ganyu_assassination_chance_temp
+			value = Extremists_plot_level
+		}
+		subtract_from_temp_variable  = { 
+			var = baizhu_assassination_chance_temp
+			value = Extremists_plot_level
+		}
+
+		subtract_from_temp_variable  = { 
+			var = yanfei_assassination_chance_temp
+			value = 1
+		}
+		subtract_from_temp_variable  = { 
+			var = ganyu_assassination_chance_temp
+			value = 1
+		}
+		subtract_from_temp_variable  = { 
+			var = baizhu_assassination_chance_temp
+			value = 1
+		}
+
+		multiply_temp_variable = {
+			var = yanfei_assassination_chance_temp
+			value = -20
+		}
+		multiply_temp_variable = {
+			var = ganyu_assassination_chance_temp
+			value = -20
+		}
+		multiply_temp_variable = {
+			var = baizhu_assassination_chance_temp
+			value = -20
+		}
+
+
+		set_temp_variable = {
+			var = yanfei_assassination_chance_temp_1
+			value = 100
+		}
+		set_temp_variable = {
+			var = ganyu_assassination_chance_temp_1
+			value = 100
+		}
+		set_temp_variable = {
+			var = baizhu_assassination_chance_temp_1
+			value = 100
+		}
+		subtract_from_temp_variable  = { 
+			var = yanfei_assassination_chance_temp_1
+			value = yanfei_assassination_chance_temp
+		}
+		subtract_from_temp_variable  = { 
+			var = ganyu_assassination_chance_temp_1
+			value = ganyu_assassination_chance_temp
+		}
+		subtract_from_temp_variable  = { 
+			var = baizhu_assassination_chance_temp_1
+			value = baizhu_assassination_chance_temp
+		}
+
+
+		random_list = { #从烟绯到白术依次判定
+			yanfei_assassination_chance_temp = { #烟绯判定
+				country_event = { id = LHPG.28 days = 7 }
+			}
+			yanfei_assassination_chance_temp_1 = {
+				random_list = {
+					ganyu_assassination_chance_temp = { #甘雨判定
+						country_event = { id = ganyu.70 days = 7 }
+					}
+					ganyu_assassination_chance_temp_1 = {
+						random_list = { 
+							baizhu_assassination_chance_temp = { #白术判定
+								country_event = { id = LHPG.32 days = 7 }
+							}
+							baizhu_assassination_chance_temp_1 = {
+								country_event = { id = LHPG.36 days = 7 }
+								clr_country_flag = LH_assassinate_begin
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		
+
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  #没有人
+		name = LHPG.26.a
+		
+		remove_mission = Extremists_conspiracy
+		remove_mission = Extremists_power_expande
+		remove_mission = Patience_decreasing
+		remove_decision = LH_Flipped_informer
+	}
+}
+
+country_event = { #重返事件
+	id = LHPG.27
+	title = LHPG.27.t
+	desc = LHPG.27.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			EMP = {
+				LYU_Yanfei = {
+					set_nationality = LYU
+				}
+				LYU_Ganyu = {
+					set_nationality = LYU
+				}
+				LYU_Baizhu = {
+					set_nationality = LYU
+				}
+			}
+		}
+	}
+	option = { 
+		name = LHPG.27.a
+		add_stability = 0.01
+		add_political_power = 15
+	}
+
+}
+
+country_event = { #烟绯遇刺
+	id = LHPG.28
+	title = LHPG.28.t
+	desc = LHPG.28.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.28.a
+		clr_country_flag = LH_assassinate_begin
+		country_event = { id = LHPG.29 days = 7 }
+		set_country_flag = Yanfei_assassinated
+		add_ideas = ganyu_assassination_idea_1
+		custom_effect_tooltip = LH_yanfei_assassination_tt
+		hidden_effect = {
+			LYU_Yanfei = {
+				set_nationality = EMP
+			}
+		}
+	}
+
+}
+
+country_event = { #烟绯遇刺
+	id = LHPG.29
+	title = LHPG.29.t
+	desc = LHPG.29.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.29.a
+		news_event = { id = ganyu_news.1 days = 3 }
+		LYU = { #获取名称
+			set_variable = {
+				var = assassination_leader
+				value = token:LYU_Yanfei
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = LH_assassinate_crazy
+			}
+			country_event = { id = LHPG.30 days = 7 }
+		}
+		else = {
+			country_event = { id = LHPG.31 days = 7 }
+		}
+		
+	}
+
+}
+
+country_event = { #烟绯遇刺 死亡
+	id = LHPG.30
+	title = LHPG.30.t
+	desc = LHPG.30.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.30.a
+		custom_effect_tooltip = LHPG.30.a_tt
+	}
+
+}
+
+country_event = { #烟绯遇刺 返回
+	id = LHPG.31
+	title = LHPG.31.t
+	desc = LHPG.31.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.31.a
+		hidden_effect = {
+			country_event = { id = LHPG.27 days = 180 }
+		}
+		custom_effect_tooltip = LHPG.31.a_tt
+		remove_ideas = ganyu_assassination_idea_1
+
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.32
+	title = LHPG.32.t
+	desc = LHPG.32.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.32.a
+		country_event = { id = LHPG.33 days = 7 }
+		clr_country_flag = LH_assassinate_begin
+		add_ideas = ganyu_assassination_idea_1
+		custom_effect_tooltip = LH_baizhu_assassination_tt
+		hidden_effect = {
+			LYU_Baizhu = {
+				set_nationality = EMP
+			}
+		}
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.33
+	title = LHPG.33.t
+	desc = LHPG.33.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.33.a
+		news_event = { id = ganyu_news.1 days = 3 }
+		set_country_flag = Baizhu_assassinated
+		LYU = { #获取名称
+			set_variable = {
+				var = assassination_leader
+				value = token:LYU_Baizhu
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = LH_assassinate_crazy
+			}
+			country_event = { id = LHPG.34 days = 7 }
+		}
+		else = {
+			country_event = { id = LHPG.35 days = 7 }
+		}
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.34
+	title = LHPG.34.t
+	desc = LHPG.34.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.34.a
+		custom_effect_tooltip = LHPG.34.a_tt
+	}
+
+}
+
+country_event = { #白术遇刺
+	id = LHPG.35
+	title = LHPG.35.t
+	desc = LHPG.35.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.35.a
+		hidden_effect = {
+			country_event = { id = LHPG.27 days = 180 }
+		}
+		custom_effect_tooltip = LHPG.35.a_tt
+		remove_ideas = ganyu_assassination_idea_1
+
+		
+	}
+
+}
+
+country_event = { #无人遇刺
+	id = LHPG.36
+	title = LHPG.36.t
+	desc = LHPG.36.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.36.a
+		hidden_effect = {
+			clr_country_flag = LH_assassinate_begin
+			remove_mission = Extremists_conspiracy
+			remove_mission = Extremists_power_expande
+			remove_mission = Patience_decreasing
+		}
+
+	}
+
+}
+
+country_event = { #极端分子被雷普
+	id = LHPG.37
+	title = LHPG.37.t
+	desc = LHPG.37.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.37.a
+		add_political_power = 50
+		add_stability = 0.1
+		clr_country_flag = LH_assassinate_begin
+		remove_mission = Extremists_conspiracy
+		remove_mission = Extremists_power_expande
+		remove_mission = Patience_decreasing
+	}
+
+}
+
+country_event = { #好雨知时节
+	id = LHPG.38
+	title = LHPG.38.t
+	desc = LHPG.38.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {  
+		name = LHPG.38.a
+		add_political_power = 75
+	}
+
+}

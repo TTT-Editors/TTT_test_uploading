@@ -1,28 +1,15 @@
 MOT_Standardize_military_planning = {
 	enable = {
-		or = {
-			FROM = {
-				is_controlled_by = MOT 
-			}
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
-				}
-				controls_state = FROM
-			}
-		}
+		always = yes
 	}
 	remove_trigger = {
-		or = {
-			FROM = {
-				NOT = { is_controlled_by = MOT }
-			}
-			NOT = {
-				every_country = {
-					limit = {
+		FROM = {
+			OWNER = {
+				NOT = {
+					or = {
 						is_puppet_of = MOT
+						original_tag = MOT
 					}
-					controls_state = FROM
 				}
 			}
 		}
@@ -34,209 +21,38 @@ MOT_Standardize_military_planning = {
     local_building_slots = 5
 }
 ###代表机制modifier
-##琴团长
-MOT_Political_character1_modifier = {
+MOT_Political_character_modifier = {
 	enable = {
 		always = yes
 	}
 	remove_trigger = {
 		FROM = {
-			NOT = { is_controlled_by = MOT }
-		}
-		NOT = {
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
+			OWNER = {
+				NOT = {
+					or = {
+						is_puppet_of = MOT
+						original_tag = MOT
+					}
 				}
-				controls_state = FROM
 			}
 		}
 	}
-	icon = GFX_MOT_Standardize_military_planning
-	local_manpower = 0.2
+	icon = GFX_MOT_Political_character_modifier
+	local_manpower = 0.05
+	local_intel_to_enemies = -0.1
+	enemy_intel_network_gain_factor_over_occupied_tag = -0.1
+	local_resources = 0.05
 }
-##芭芭拉
-MOT_Political_character2_modifier = {
+####侦察团维护modifier
+MOT_Political_maintain_the_scout = {
 	enable = {
-		has_country_flag = MOT_Political_character1_is_locking
-	}
-	visible = {
-		has_country_flag = MOT_Political_character1_is_locking
-	}
-	icon = GFX_MOT_Standardize_military_planning
-	recruitable_population = 0.05
-}
-##凯亚
-MOT_Political_character3_modifier = {
-	enable = {
-		FROM = {
-			is_controlled_by = MOT 
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			controls_state = FROM
-		}
+		has_global_flag = MOT_dragon_crisis
 	}
 	remove_trigger = {
-		FROM = {
-			NOT = { is_controlled_by = MOT }
-		}
-		NOT = {
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
-				}
-				controls_state = FROM
-			}
+		not = {
+			has_global_flag = MOT_dragon_crisis
 		}
 	}
-	icon = GFX_MOT_Standardize_military_planning
-	local_intel_to_enemies = -0.3
-}
-##丽莎
-MOT_Political_character4_modifier = {
-	enable = {
-		FROM = {
-			is_controlled_by = MOT 
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			controls_state = FROM
-		}
-	}
-	remove_trigger = {
-		FROM = {
-			NOT = { is_controlled_by = MOT }
-		}
-		NOT = {
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
-				}
-				controls_state = FROM
-			}
-		}
-	}
-	icon = GFX_MOT_Standardize_military_planning
-	army_speed_factor_for_controller = 0.1
-}
-##罗莎莉亚
-MOT_Political_character5_modifier = {
-	enable = {
-		FROM = {
-			is_controlled_by = MOT 
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			controls_state = FROM
-		}
-	}
-	remove_trigger = {
-		FROM = {
-			NOT = { is_controlled_by = MOT }
-		}
-		NOT = {
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
-				}
-				controls_state = FROM
-			}
-		}
-	}
-	icon = GFX_MOT_Standardize_military_planning
-	enemy_intel_network_gain_factor_over_occupied_tag = -0.3
-}
-##莫纳
-MOT_Political_character6_modifier = {
-	enable = {
-		FROM = {
-			is_controlled_by = MOT 
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			controls_state = FROM
-		}
-	}
-	remove_trigger = {
-		FROM = {
-			NOT = { is_controlled_by = MOT }
-		}
-		NOT = {
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
-				}
-				controls_state = FROM
-			}
-		}
-	}
-	icon = GFX_MOT_Standardize_military_planning
-	local_supplies_for_controller = 0.1
-}
-##阿贝多
-MOT_Political_character7_modifier = {
-	enable = {
-		FROM = {
-			is_controlled_by = MOT 
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			controls_state = FROM
-		}
-	}
-	remove_trigger = {
-		FROM = {
-			NOT = { is_controlled_by = MOT }
-		}
-		NOT = {
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
-				}
-				controls_state = FROM
-			}
-		}
-	}
-	icon = GFX_MOT_Standardize_military_planning
-	local_resources = 0.3
-}
-##安德里卡
-MOT_Political_character8_modifier = {
-	enable = {
-		FROM = {
-			is_controlled_by = MOT 
-		}
-		every_country = {
-			limit = {
-				is_puppet_of = MOT
-			}
-			controls_state = FROM
-		}
-	}
-	remove_trigger = {
-		FROM = {
-			NOT = { is_controlled_by = MOT }
-		}
-		NOT = {
-			every_country = {
-				limit = {
-					is_puppet_of = MOT
-				}
-				controls_state = FROM
-			}
-		}
-	}
-	icon = GFX_MOT_Standardize_military_planning
-	state_resource_rubber = 30
+	icon = GFX_MOT_Political_maintain_the_scout
+	political_power_cost = MOT_Political_maintain_the_scout_political_power_cost
 }

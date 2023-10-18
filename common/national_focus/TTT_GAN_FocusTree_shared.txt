@@ -1,0 +1,1428 @@
+
+	
+shared_focus = { 
+	id = GAN_lvxingshouhuqiyue	#履行守护契约
+	icon = GFX_goal_Ganyu1_shouhu_Focus
+	cost = 7.00
+	x = 7
+	y = 0
+	allow_branch = {
+		has_country_flag = GAN_civil_war
+	}
+	completion_reward = {
+		add_political_power = 100
+		swap_ideas = {
+			remove_idea = GANYU0
+			add_idea = GANYU0_1
+		}
+		custom_effect_tooltip = GAN_political_effective_up
+		# country_event = {  days = 1 id = ganyu.53} 
+	}
+}
+shared_focus = { 
+	id = GAN_taipingmengsui	#太平梦碎
+	icon = GFX_goal_Ganyu1_taiping_Focus
+	cost = 14.00
+	prerequisite = {
+	focus = GAN_lvxingshouhuqiyue	#履行守护契约
+	}
+	relative_position_id = GAN_lvxingshouhuqiyue
+	x = 5
+	y = 1
+	completion_reward = {
+		custom_effect_tooltip = GAN_army_level_up
+		add_ideas = GANYU10
+		# LYU = { country_event = {  days = 1 id = ganyu.54} }
+	}
+}
+shared_focus = { 
+	id = GAN_cangwudaiyong	#藏锋待用
+	icon = GFX_goal_Ganyu1_wuqi_Focus
+	cost = 21.00
+	prerequisite = {
+		focus = GAN_taipingmengsui	#太平梦碎
+	}
+	relative_position_id = GAN_taipingmengsui
+	x = -1
+	y = 1
+	completion_reward = {
+		custom_effect_tooltip = GAN_army_level_up
+		swap_ideas = {
+			remove_idea = GANYU10
+			add_idea = GANYU10_1
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_chongzhangbuyi	#重嶂不移
+	icon = GFX_goal_Ganyu1_heiyanchang_Focus
+	cost = 28.00
+	prerequisite = {
+		focus = GAN_cangwudaiyong	#藏武待用
+	}
+	relative_position_id = GAN_cangwudaiyong
+	x = -1
+	y = 1	
+	completion_reward = {
+		custom_effect_tooltip = GAN_army_level_up
+		if = {
+			limit = {
+				has_idea = GANYU10_3_0
+			}
+			swap_ideas = {
+				remove_idea = GANYU10_3_0
+				add_idea = GANYU10_4
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = GANYU10_1
+				add_idea = GANYU10_2_0
+			}
+		}
+		
+	}
+
+}
+shared_focus = { 
+	id = GAN_weituobubulu	#委托不卜庐
+	icon = GFX_goal_Ganyu1_weituobubulu_Focus
+	cost = 28.00
+	prerequisite = {
+		focus = GAN_zhaojiyubeiyi	
+	}
+	relative_position_id = GAN_zhaojiyubeiyi
+	x = 1
+	y = 1
+	completion_reward = {
+		if = {
+			limit = {
+				has_idea = LYU_Baizhu
+			}
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = hospital_tech
+			}
+		}
+		else = {
+			custom_effect_tooltip = GAN_weituobubulu_tt
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = hospital_tech
+			}
+		}
+		add_ideas = GANYU7
+	}
+}
+shared_focus = { 
+	id = GAN_kuojianganfengtieqi	#寒锋司造
+	icon = GFX_goal_Ganyu1_hanfeng_Focus
+	cost = 35.00
+	prerequisite = {
+		focus = GAN_weituobubulu	
+	}
+	relative_position_id = GAN_weituobubulu
+	x = -1
+	y = 1
+	completion_reward = {
+		122 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes 
+			}
+		}
+		add_tech_bonus = {
+			category = infantry_weapons
+			bonus = 0.5
+			uses = 1
+		}
+		add_tech_bonus = {
+			category = artillery
+			bonus = 0.5
+			uses = 1
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_zhaojiyubeiyi	#召集预备役
+	icon = GFX_goal_Ganyu1_zhengbing_Focus
+	cost = 21.00
+	prerequisite = {
+		focus = GAN_taipingmengsui	#太平梦碎
+	}
+	relative_position_id = GAN_taipingmengsui
+	x = 1
+	y = 1
+	completion_reward = {
+		custom_effect_tooltip = GAN_army_level_down
+		add_political_power = -150
+		add_timed_idea = {
+			idea = GANYU2
+			days = 120
+		}
+		if = {
+			limit = {
+				has_idea = LYU_Yanfei
+			}
+			add_manpower = 200000
+		}
+		else = {
+			add_manpower = 100000
+			custom_effect_tooltip = GAN_zhaojiyubeiyi_tt
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_qianyanlaogu	#千岩军牢固
+	icon = GFX_goal_Ganyu1_qianyanjun_Focus
+	cost = 28.00
+	prerequisite = {
+		focus = GAN_cangwudaiyong	#召集预备役
+	}
+	relative_position_id = GAN_cangwudaiyong
+	x = 1
+	y = 1
+
+	completion_reward = {
+		custom_effect_tooltip = GAN_army_level_up
+		if = {
+			limit = {
+				has_idea = GANYU10_2_0
+			}
+			swap_ideas = {
+				remove_idea = GANYU10_2_0
+				add_idea = GANYU10_4
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = GANYU10_1
+				add_idea = GANYU10_3_0
+			}
+		}
+		
+	}
+	
+}
+shared_focus = { 
+	id = GAN_liutiansheshu	#流天射术
+	icon = GFX_goal_Ganyu1_liutian_Focus
+	cost = 35.00
+	prerequisite = {
+		focus = GAN_qianyanlaogu	#整训千岩军
+	}
+	prerequisite = {
+		focus = GAN_chongzhangbuyi	#重启黑岩厂
+	}
+	available = {
+	
+	}
+	relative_position_id = GAN_qianyanlaogu
+	x = -1
+	y = 1
+
+	completion_reward = {
+		custom_effect_tooltip = GAN_army_level_up
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = artillery
+		}
+		add_ideas = GANYU6
+		# country_event = { id = ganyu.84 }
+	}
+	
+}
+shared_focus = { 
+	id = GAN_weiciyixin	#唯此一心
+	icon = GFX_goal_Ganyu1_weiciyixin_Focus
+	cost = 70.00
+	prerequisite = {
+		focus = GAN_liutiansheshu	
+	}
+	prerequisite = {
+		focus = GAN_kuojianganfengtieqi	
+	}
+	relative_position_id = GAN_liutiansheshu
+	x = 1
+	y = 1
+
+	completion_reward = {
+		custom_effect_tooltip = GAN_army_level_up
+		hidden_effect = {
+			add_ideas = Professional_army
+		}
+		swap_ideas = {
+			remove_idea = GANYU10_4
+			add_idea = GANYU10_5
+		}
+		# country_event = { id = ganyu.84 }
+	}
+	
+}
+
+
+shared_focus = { 
+	id = GAN_yonghengdemishu	#永恒的秘书
+	icon = GFX_goal_Ganyu1_mishu_Focus
+	cost = 14.00
+	prerequisite = {
+		focus = GAN_lvxingshouhuqiyue	#履行守护契约
+	}
+	relative_position_id = GAN_lvxingshouhuqiyue
+	x = -5
+	y = 1
+	completion_reward = {
+
+		LYU_Ganyu = {
+			add_advisor_role = {
+				advisor = {
+					slot = political_advisor
+					idea_token = idea_LYU_Ganyu
+					traits = { ganyu_kuxue_mengmeng_1 }
+				}
+			}
+		}
+		hidden_effect = {
+			add_ideas = idea_LYU_Ganyu
+		}
+		custom_effect_tooltip = GAN_political_effective_up
+		# LYU = { country_event = {  days = 1 id = ganyu.56} }
+	}
+	
+	
+
+}
+shared_focus = { 
+	id = GAN_yuehaitingshiwu	#月海亭事务
+	icon = GFX_goal_Ganyu1_jixugongzuo_Focus
+	cost = 21.00
+	prerequisite = {
+		focus = GAN_yonghengdemishu	#永恒的秘书
+	}
+	relative_position_id = GAN_yonghengdemishu
+	x = 1
+	y = 1
+	completion_reward = { 
+		custom_effect_tooltip = GAN_political_effective_up
+		add_political_power = 100
+		hidden_effect = {
+			add_ideas = balance_laws
+		}
+	}
+
+
+}
+shared_focus = { 
+	id = GAN_womenbangni	#我们帮你
+	icon = GFX_goal_Ganyu1_gengduoshi_Focus
+	cost = 28.00
+	prerequisite = {
+		focus = GAN_yuehaitingshiwu	
+	}
+	relative_position_id = GAN_yuehaitingshiwu
+	x = -1
+	y = 1
+	completion_reward = {
+		add_political_power = -150
+		add_ideas = LYU_Baizhu
+		add_ideas = LYU_Yanfei
+	}
+}
+shared_focus = { 
+	id = GAN_zaonvlixie	#再努力些
+	icon = GFX_goal_Ganyu1_gongzuo_Focus
+	cost = 28.00
+	prerequisite = {
+		focus = GAN_yuehaitingshiwu	
+	}
+	relative_position_id = GAN_yuehaitingshiwu
+	x = 1
+	y = 1
+	completion_reward = {
+		add_ideas = GANYU4
+	}
+}
+shared_focus = { 
+	id = GAN_xindeyaoqiu	#新的要求
+	icon = GFX_goal_Ganyu1_xinyaoqiu_Focus
+	cost = 35.00
+	prerequisite = {
+		focus = GAN_womenbangni	#还有更多要处理的事
+	}
+	prerequisite = {
+		focus = GAN_zaonvlixie	#延长工作时间
+	}
+	relative_position_id = GAN_womenbangni
+	x = 1
+	y = 1
+	completion_reward = {
+			swap_ideas = { 
+				remove_idea = GANYU4
+				add_idea = GANYU4_1
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_zeren	#苦雪已融，春发新条
+	icon = GFX_goal_Ganyu1_zeren_Focus
+	cost = 35.00
+	prerequisite = {
+		focus = GAN_tuiguangyujingtaizhiwuzhi
+	}
+	prerequisite = {
+		focus = GAN_shouminzhanshizhuanhuan
+	}
+	available = {
+
+	}
+	relative_position_id = GAN_yunxingershou
+	x = 0
+	y = 2
+	completion_reward = {
+		custom_effect_tooltip = YFX14_tt
+		set_country_flag = Liyue_Nanbu_xuanzhan_flag
+		add_ideas = contention_hundred_schools_thought
+		add_ideas = flowersbloom_together
+		add_stability = 0.2
+		LYU_Ganyu = {
+			hidden_effect = {
+				remove_country_leader_trait = obey_rule_law
+			}
+			add_country_leader_trait = obey_rule_law_1
+		}
+		
+		# country_event = { id = GAN_ganyu.85 }	
+	}
+}
+shared_focus = { 
+	id = GAN_tuiguangyujingtaizhiwuzhi	#推广《玉京台植物志》
+	icon = GFX_goal_Ganyu1_yujingtai_Focus
+	cost = 28.00
+	prerequisite = {
+		focus = GAN_yunxingershou	#履行守护契约
+	}
+	prerequisite = {
+		focus = GAN_zaonvlixie
+	}
+	relative_position_id = GAN_yunxingershou
+	x = -1
+	y = 1
+	completion_reward = {
+		add_political_power = -50
+		activate_mission = Mission_tuiguangyujingtaizhiwuzhi
+		# LYU = { country_event = {  days = 1 id = ganyu.57} }
+	}
+}
+shared_focus = { 
+	id = GAN_yincaozhelu	#折草饮露
+	icon = GFX_goal_Ganyu1_nongtian_Focus
+	cost = 14.00
+	prerequisite = {
+		focus = GAN_tiandijiaotai
+	}
+	relative_position_id = GAN_tiandijiaotai
+	x = 0
+	y = 1
+	completion_reward = {
+		LYU_Ganyu = {
+			add_attack = 1
+			add_defense = 1
+		}
+	}
+}
+
+shared_focus = { 
+	id = GAN_yunxingershou	#云行而狩
+	icon = GFX_goal_Ganyu1_yishanghua_Focus
+	cost = 14.00
+	prerequisite = {
+		focus = GAN_yincaozhelu	#扩建农田
+	}
+	relative_position_id = GAN_yincaozhelu
+	x = 0
+	y = 1
+	completion_reward = {
+		LYU_Ganyu = {
+			add_planning = 1
+			add_logistics = 1
+		}
+		LYU_Baizhu = {
+			add_planning = 1
+			add_logistics = 1
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_zhanzhengzhunbei	#战争准备
+	icon = GFX_goal_Ganyu1_gangyun_Focus
+	cost = 21.00
+	prerequisite = {
+		focus = GAN_yonghengdemishu	
+	}
+	relative_position_id = GAN_yonghengdemishu
+	x = -1
+	y = 1
+	completion_reward = {
+		custom_effect_tooltip = GAN_zhanzhengzhunbei_tt
+		if = {
+			limit = {
+				has_idea = war_economy
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+		}
+		else = {
+			add_ideas = war_economy
+		}
+		
+	}	
+
+
+}
+shared_focus = { 
+	id = GAN_tiandijiaotai	#天地交泰
+	icon = GFX_goal_Ganyu1_zongwusi_Focus
+	cost = 14.00
+	prerequisite = {
+		focus = GAN_lvxingshouhuqiyue
+	}
+	relative_position_id = GAN_lvxingshouhuqiyue
+	x = 0
+	y = 1
+	
+	completion_reward = {
+		add_stability = 0.05
+		add_popularity = {
+			ideology = reformism
+			popularity = 0.1
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_shouminzhanshizhuanhuan	#授命战时转换
+	icon = GFX_goal_Ganyu1_zongwusi_Focus
+	cost = 28.00
+	prerequisite = {
+		focus = GAN_yunxingershou	#
+	}
+	prerequisite = {
+		focus = GAN_chongzhangbuyi
+	}
+	relative_position_id = GAN_yunxingershou
+	x = 1
+	y = 1
+	
+	completion_reward = {
+		125 = {
+			remove_building = {
+				type = industrial_complex
+				level = 4
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 3
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_zhengtongliyuegang	#正统归于璃月港
+	icon = GFX_goal_Ganyu1_huangjinwu_Focus
+	cost = 28.00
+	prerequisite = {
+	focus = GAN_zhanzhengzhunbei	
+	}
+	relative_position_id = GAN_zhanzhengzhunbei
+	x = -1
+	y = 1
+	completion_reward = {
+		add_research_slot = 1
+		add_stability = 0.1
+		add_war_support = 0.1
+		if = {
+			limit = {
+				KQG = {
+					exists = yes
+					NOT = {
+						is_in_faction_with = LYU
+						is_subject_of = LYU
+					}
+				}
+			}
+			KQG = {
+				add_stability = -0.1
+				add_war_support = -0.1
+			}
+		}
+		if = {
+			limit = {
+				NNG = {
+					exists = yes
+					NOT = {
+						is_in_faction_with = LYU
+						is_subject_of = LYU
+					}
+				}
+			}
+			NNG = {
+				add_stability = -0.1
+				add_war_support = -0.1
+			}
+		}
+		if = {
+			limit = {
+				XRG = {
+					exists = yes
+					NOT = {
+						is_in_faction_with = LYU
+						is_subject_of = LYU
+					}
+				}
+			}
+			XRG = {
+				add_stability = -0.1
+				add_war_support = -0.1
+			}
+		}
+		if = {
+			limit = {
+				XOG = {
+					exists = yes
+					NOT = {
+						is_in_faction_with = LYU
+						is_subject_of = LYU
+					}
+				}
+			}
+			XOG = {
+				add_stability = -0.1
+				add_war_support = -0.1
+			}
+		}
+		if = {
+			limit = {
+				RTG = {
+					exists = yes
+					NOT = {
+						is_in_faction_with = LYU
+						is_subject_of = LYU
+					}
+				}
+			}
+			RTG = {
+				add_stability = -0.1
+				add_war_support = -0.1
+			}
+		}
+		if = {
+			limit = {
+				ANG = {
+					exists = yes
+					NOT = {
+						is_in_faction_with = LYU
+						is_subject_of = LYU
+					}
+				}
+			}
+			ANG = {
+				add_stability = -0.1
+				add_war_support = -0.1
+			}
+		}
+	}
+}
+shared_focus = { 
+	id = GAN_shenxianshizu	#身先士卒
+	icon = GFX_goal_Ganyu1_liyuegangfazhan_Focus
+	cost = 35.00
+	prerequisite = {
+		focus = GAN_zhengtongliyuegang	
+	}
+	available = {
+
+	}
+	relative_position_id = GAN_zhengtongliyuegang
+	x = 1
+	y = 1
+	completion_reward = {
+		add_manpower = 150000
+		add_ideas = extensive_conscription
+		add_ideas = GANYU21
+	}	
+}
+shared_focus = { 
+	id = GAN_qiannianshouwang	#千年守望
+	icon = GFX_goal_Ganyu1_qiannianshouwang_Focus
+	cost = 70.00
+	prerequisite = {
+		focus = GAN_xindeyaoqiu	
+	}
+	prerequisite = {
+		focus = GAN_shenxianshizu
+	}
+	relative_position_id = GAN_xindeyaoqiu
+	x = -1
+	y = 1
+	completion_reward = {
+		hidden_effect = {
+			LYU_Ganyu = {
+				add_advisor_role = {
+					advisor = {
+						slot = political_advisor
+						idea_token = idea_LYU_Ganyu
+						traits = { ganyu_kuxue_mengmeng_2 }
+					}
+				}
+			}
+			add_ideas = idea_LYU_Ganyu
+		}
+		custom_effect_tooltip = GAN_qiannianshouwang_tt
+		#这里应该有个枣核花费减半的效果
+		# LYU = { country_event = { id = ganyu.1000 } }	
+	}
+}
+shared_focus = { 
+	id = GAN_shengshitaiping	#盛世太平
+	icon = GFX_goal_Ganyu1_shengshitaiping_Focus
+	cost = 70.00
+	prerequisite = {
+		focus = GAN_qiannianshouwang
+	}
+	prerequisite = {
+		focus = GAN_zeren
+	}
+	prerequisite = {
+		focus = GAN_weiciyixin
+	}
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = GAN_shengshitaiping_trigger_tt
+			NOT = {
+				has_country_flag = Liyue_Civil_War
+			}
+		}
+
+	}
+	relative_position_id = GAN_zeren
+	x = 0
+	y = 1
+	completion_reward = {
+		LYU = { country_event = { id = ganyu.1000 } }	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	shared_focus = { 
+	id = GAN2_0
+	icon = GFX_goal_Ganyu2_quelixuanju_Focus
+	cost = 35.00
+	x = 10
+	y = 0
+	allow_branch = {
+		NOT = {
+			has_country_flag = GAN_civil_war
+		}
+		has_country_flag = GAN_rebuild_country
+	}
+	completion_reward = {
+		swap_ideas = {
+		remove_idea = GANYU0
+		add_idea    = GANYU0_1
+		}
+		}
+	}
+	shared_focus = { 
+	id = GAN2_1
+	icon = GFX_goal_Ganyu2_shoujiexuanju_Focus
+	cost = 35.00
+	prerequisite = {
+		focus = GAN2_0
+	}
+	x = 10
+	y = 1
+	completion_reward  = {
+		LYU = { country_event = { days = 1 id = ganyu.2000 } }
+	}
+	}
+	shared_focus = { 
+	id = GAN2_2 #经济建设
+	icon = GFX_goal_Ganyu2_jinjijianshe_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_1
+	}
+	x = 4
+	y = 2
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.4 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = jingjijueyi
+		add_ideas = ganyu_parliament_jingji
+	}
+	}
+	shared_focus = { 
+	id = GAN2_3 #企业投资
+	icon = GFX_goal_Ganyu2_gaizuguoyou_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_2
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_jingji_focus
+		value = 1
+		compare = equals
+		}
+		}
+	}
+	
+	x = 4
+	y = 3
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.5 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = jingjijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_4 #扩大工厂
+	icon = GFX_goal_Ganyu2_fuzhiqiye_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_3
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_jingji_focus
+		value = 2
+		compare = equals
+		}
+		}
+	}
+	x = 4
+	y = 4
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.6 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = jingjijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_5 #设立劳动法
+	icon = GFX_goal_Ganyu2_ezhiboxue_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_4
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_jingji_focus
+		value = 3
+		compare = equals
+		}
+		}
+	}
+	x = 4
+	y = 5
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.7 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = jingjijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_6 #整理残存书卷
+	icon = GFX_goal_Ganyu2_wenhuagongzuo_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_1
+	}
+	
+	x = 6
+	y = 2
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.8 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = wenhuajueyi
+		add_ideas = ganyu_parliament_wenhua
+	}
+	}
+	shared_focus = { 
+	id = GAN2_7 #编篡教材
+	icon = GFX_goal_Ganyu2_butiewenhua_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_6
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_wenhua_focus
+		value = 1
+		compare = equals
+		}
+		}
+	}
+	x = 6
+	y = 3
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.9 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = wenhuajueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_8 #设立学校
+	icon = GFX_goal_Ganyu2_yanjiuwenhua_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_7
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_wenhua_focus
+		value = 2
+		compare = equals
+		}
+		}
+	}
+	x = 6
+	y = 4
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.10 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = wenhuajueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_9 #普及初等教育
+	icon = GFX_goal_Ganyu2_fazhanpinshu_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_8
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_wenhua_focus
+		value = 3
+		compare = equals
+		}
+		}
+	}
+	x = 6
+	y = 5
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.11 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = wenhuajueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_10 #渡过难关
+	icon = GFX_goal_Ganyu2_xinwanhua_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_5
+	}
+	prerequisite = {
+		focus = GAN2_9
+	}
+	completion_reward = {
+		add_political_power = 150
+	}
+	x = 5
+	y = 6
+
+	}
+	shared_focus = { 
+	id = GAN2_11 #向外看
+	icon = GFX_goal_unknown
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_1
+	}
+	completion_reward = {
+		custom_effect_tooltip = GANYU_war_able_tootip
+	}
+	x = 10
+	y = 2
+
+	}
+	shared_focus = { 
+	id = GAN2_12 #跨过天衡山
+	icon = GFX_goal_Ganyu2_kuaguotianheshan_Focus
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_11
+	}
+	available = {
+
+	}
+	bypass = {
+		ANG = { exists = no }
+	}
+	x = 8
+	y = 3
+	completion_reward = {
+		add_timed_idea = {
+		idea = GANYU_idea_aginst_ANG
+		days = 90
+		}
+	}
+	}
+	shared_focus = { 
+	id = GAN2_13 #根除无执政
+	icon = GFX_goal_Ganyu2_wuzhengfuchonggui_Focus
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_12
+	}
+	available = {
+		ANG = { exists = no }
+		LYU = { has_full_control_of_state = 211 }
+	}
+	bypass_if_unavailable = yes
+	completion_reward = {
+		211 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes 
+		}
+		}
+	}
+	x = 8
+	y = 4
+
+	}
+	shared_focus = { 
+	id = GAN2_14 #斩断牵连
+	icon = GFX_goal_Ganyu2_jianshourenzhi_Focus
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_11
+	}
+	available = {
+
+	}
+	x = 10
+	y = 3
+	completion_reward = {
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_political_power = 150
+	}
+	}
+	shared_focus = { 
+	id = GAN2_15 #坚守人治
+	icon = GFX_goal_Ganyu2_liyueganghemu_Focus
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_14
+	}
+	completion_reward = {
+		add_manpower = 15000
+		add_ideas = GANYU_idea_21
+	}
+	x = 10
+	y = 4
+
+	}
+	shared_focus = { 
+	id = GAN2_16 #祸世之龙
+	icon = GFX_goal_Ganyu2_cengyan_Focus
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_11
+	}
+	available = {
+
+	}
+	bypass = {
+		RTG = { exists = no }
+	}
+	x = 12
+	y = 3
+	completion_reward = {
+		add_timed_idea = {
+		idea = GANYU_idea_aginst_RTG
+		days = 90
+		}
+	}
+	}
+	shared_focus = { 
+	id = GAN2_17 #层岩再开发
+	icon = GFX_goal_Ganyu2_kuangshi_Focus
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_16
+	}
+	available = {
+		RTG = { exists = no }
+		LYU = { has_full_control_of_state = 155 }
+	}
+	bypass_if_unavailable = yes
+	completion_reward = {
+		155 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes 
+		}		
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes 
+		}
+		}
+		
+	}
+	x = 12
+	y = 4
+
+	}
+	shared_focus = { 
+	id = GAN2_18 #向北看
+	icon = GFX_goal_unknown
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_15
+		focus = GAN2_17
+		focus = GAN2_13
+	}
+	completion_reward = {
+		custom_effect_tooltip = GANYU_war_able_tootip
+	}
+
+	x = 10
+	y = 5
+
+	}
+	shared_focus = { 
+	id = GAN2_19 #打击激进派
+	icon = GFX_goal_unknown
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_18
+	}
+	available = {
+		KQG = { exists = yes }
+	}
+	bypass_if_unavailable = yes
+	completion_reward = {
+		add_timed_idea = {
+		idea = GANYU_idea_aginst_KQG
+		days = 120
+		}
+	}
+	x = 9
+	y = 6
+
+	}
+	shared_focus = { 
+	id = GAN2_20 #清理败类
+	icon = GFX_goal_Ganyu2_renxian_Focus
+	cost = 15.00
+	prerequisite = {
+		focus = GAN2_18
+	}
+	available = {
+		NNG = { exists = yes }
+	}
+	bypass_if_unavailable = yes
+	completion_reward = {
+		add_timed_idea = {
+		idea = GANYU_idea_aginst_NNG
+		days = 120
+		}
+	}
+	x = 11
+	y = 6
+
+	}
+	shared_focus = { 
+	id = GAN2_21 #教导七星
+	icon = GFX_goal_Ganyu2_zhidaoqixing_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_1
+	}
+	x = 14
+	y = 2
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.12 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = zhengzhijueyi
+		add_ideas = ganyu_parliament_zhengzhi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_22 #压制激进分子
+	icon = GFX_goal_Ganyu2_laojimishu_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_21
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_zhengzhi_focus
+		value = 1
+		compare = equals
+		}
+		}
+	}
+	x = 14
+	y = 3
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.13 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = zhengzhijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_23 #调和矛盾
+	icon = GFX_goal_Ganyu2_baorongchayi_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_22
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_zhengzhi_focus
+		value = 2
+		compare = equals
+		}
+		}
+	}
+	x = 14
+	y = 4
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.14 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = zhengzhijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_24 #恢复七星职能
+	icon = GFX_goal_Ganyu2_minzhongdeliyuegang_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_23
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_zhengzhi_focus
+		value = 3
+		compare = equals
+		}
+		}
+	}
+	x = 14
+	y = 5
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.15 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = zhengzhijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_25 #推进军工厂建设
+	icon = GFX_goal_Ganyu2_zhengheheiyanchang_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_1
+	}
+	x = 16
+	y = 2
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.16 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = junshijueyi
+		add_ideas = ganyu_parliament_junshi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_26 #设立军事委员会
+	icon = GFX_goal_Ganyu2_junshiweiyuanhui_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_25
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_junshi_focus
+		value = 1
+		compare = equals
+		}
+		}
+	}
+	x = 16
+	y = 3
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.17 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = junshijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_27 #建立军校
+	icon = GFX_goal_Ganyu2_kuobianqianyanjun_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_26
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_junshi_focus
+		value = 2
+		compare = equals
+		}
+		}
+	}
+	x = 16
+	y = 4
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.18 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = junshijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_28 #军事演习
+	icon = GFX_goal_Ganyu2_paozhanghouqin_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_27
+	}
+	available = {
+		custom_trigger_tooltip = {
+		tooltip = jueyi_jiesuo
+		check_variable = {
+		var = gan_junshi_focus
+		value = 3
+		compare = equals
+		}
+		}
+	}
+	x = 16
+	y = 5
+	select_effect = {
+		LYU = { country_event = { days= 1 id = ganyu.19 } }
+	}
+	completion_reward = {
+		custom_effect_tooltip = junshijueyi
+	}
+	}
+	shared_focus = { 
+	id = GAN2_29 #权力交接
+	icon = GFX_goal_Ganyu2_minshengshiwu_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_24
+	}
+	prerequisite = {
+		focus = GAN2_28
+	}
+	completion_reward = {
+		add_political_power = 150
+		add_stability = 0.01
+	}
+	x = 15
+	y = 6
+
+	}
+	shared_focus = { 
+	id = GAN2_30 #璃月的新生
+	icon = GFX_goal_Ganyu2_renminminzhu_Focus
+	cost = 20.00
+	prerequisite = {
+		focus = GAN2_19
+		focus = GAN2_20
+	}
+	prerequisite = {
+		focus = GAN2_29
+	}
+	prerequisite = {
+		focus = GAN2_10
+	}
+	x = 10
+	y = 7
+
+	}

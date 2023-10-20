@@ -2559,7 +2559,7 @@ ZDG_decision_category3 = {
 		days_remove = 150
 		fire_only_once = yes
 		visible = {
-			has_country_flag = ZDG_events34_flag
+			has_country_flag = ZDG_xuebeng_flag
 		}
 		available = {
 			custom_trigger_tooltip = {
@@ -2603,7 +2603,7 @@ ZDG_decision_category3 = {
 			}
 			remove_ideas = ZDG_shengzhangyuchonshanjuling
 			set_variable = {
-				ZDG_dikangzhehezuodu_value = 6
+				ZDG_dikangzhehezuodu_value = 0
 			}
 			set_variable = {
 				ZDG_dikangzheyingxiangli_value = 1
@@ -2617,7 +2617,8 @@ ZDG_decision_category3 = {
 				type = artillery_equipment
 				amount = -1200
 			}
-			clr_country_flag = ZDG_events34_flag
+			clr_country_flag = ZDG_xuebeng_flag
+			custom_effect_tooltip = ZDG_zhenyadikangzuz_tt4
 		}
 	}
 }
@@ -2809,6 +2810,9 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+            NOT = {
+				has_country_flag = ZDG_gongzhizhetigongbaozuo_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
 			or = {
 				AND = {
@@ -2895,6 +2899,9 @@ ZDG_decision_category5 = {
 			}
 			NOT = {
 				has_country_flag = ZDG_events10flag
+			}
+			NOT = {
+				has_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
 			}
 			has_country_flag = ZDG_xuebeng_flag
 			or = {
@@ -3641,14 +3648,6 @@ ZDG_decision_category5 = {
 					compare = greater_than_or_equals
 				}
 			}
-			custom_trigger_tooltip = {
-				tooltip = ZDG_cuimianbaoshoupai_tt
-				check_variable = {
-					var = ZDG_baoshoupaihezuodu_value
-					value = 4
-					compare = less_than_or_equals
-				}
-			}
 			NOT = {
 				has_country_flag = ZDG_cuimianbaoshoupai_flag
 			}
@@ -3735,6 +3734,178 @@ ZDG_decision_category5 = {
 				ZDG_baoshoupaiyingxiangli_value = 1
 			}
 			custom_effect_tooltip = ZDG_tuanjielansezhiyan_tt3
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_gongzhizhetigongbaozuo = {
+		#向共治者提供宝座	
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_gongzhizhetigongbaozuo_tt
+				check_variable = {
+					var = ZDG_gongzhizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_gongzhizhetigongbaozuo_tt2
+				check_variable = {
+					var = ZDG_gongzhizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		cost = 0
+		days_remove = 70
+		remove_effect = {
+			set_variable = { ZDG_gongzhizhehezuodu_value = 5 }
+			set_variable = { ZDG_gongzhizheyingxiangli_value = 5 }
+			set_country_flag = ZDG_gongzhizhetigongbaozuo_flag
+			custom_effect_tooltip = ZDG_gongzhizhetigongbaozuo_tt3
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_geitoujizhedezuizhonfangan = {
+		#给投机者的最终方案	
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_geitoujizhedezuizhonfangan_tt
+				check_variable = {
+					var = ZDG_toujizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_geitoujizhedezuizhonfangan_tt2
+				check_variable = {
+					var = ZDG_toujizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			num_subjects > 2
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		cost = 20
+		days_remove = 70
+		days_re_enable = 35
+		remove_effect = {
+			set_variable = { ZDG_toujizhehezuodu_value = 5 }
+			set_variable = { ZDG_toujizheyingxiangli_value = 5 }
+			set_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
+			custom_effect_tooltip = ZDG_geitoujizhedezuizhonfangan_tt3
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_duidikangzhedequanmianjiejue = {
+		#对抵抗者的全面解决	
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt
+				check_variable = {
+					var = ZDG_dikangzheyingxiangli_value
+					value = 1
+					compare = less_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt2
+				check_variable = {
+					var = ZDG_gongzhizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt6
+				check_variable = {
+					var = ZDG_gongzhizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt3
+				check_variable = {
+					var = ZDG_toujizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt4
+				check_variable = {
+					var = ZDG_toujizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt5
+				check_variable = {
+					var = ZDG_baoshoupaihezuodu_value
+					value = 4
+					compare = greater_than_or_equals
+				}
+			}
+			has_stability > 0.5
+	        has_war_support > 0.5
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		cost = 20
+		days_remove = 70
+		days_re_enable = 35
+		remove_effect = {
+			set_variable = { ZDG_dikangzhehezuodu_value = 0 }
+			set_variable = { ZDG_dikangzheyingxiangli_value = 1 }
+			set_country_flag = ZDG_gongzhizhetigongbaozuo_flag
+			custom_effect_tooltip = ZDG_zhenyadikangzuz_tt4
 		}
 		ai_will_do = {
 			base = 20

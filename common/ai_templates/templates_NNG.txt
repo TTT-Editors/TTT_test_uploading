@@ -750,62 +750,42 @@ armored_NNG= {
 	}
 }
 
-
-garrison_NNG = {
+infantry_NNG = {
 
 	available_for = {
 		NNG
 	}
 	
 	roles = {
-		garrison
+		infantry
 	}
 	
 	upgrade_prio = {
-		factor = 60
-
-		modifier = {
-			factor = 0
-			ai_has_role_template = garrison
-		}
+		factor = 500
 	}
 	
-	match_to_count = 0.8
+	match_to_count = 0.45
 
-
-	garrison_NNG = {
-	
-		reinforce_prio = 0
-		custom_icon = 7
+	infantry_default_NNG = {
 	
 		upgrade_prio = {
-			factor = 90
-
-			modifier = {
-				factor = 10
-				OR = {
-					KQG = { has_capitulated = no }
-					country_exists = KQG
-				}
-			}
+			factor = 900
 		}
 		
-		reinforce_prio = 0
-		custom_icon = 7
-		
-		target_width = 5.0
+		target_width = 20.0
 		width_weight = 1.0
 		column_swap_factor = 0.5
+		reinforce_prio = 2
 		
 		stat_weights = {
 			0.00 #-- default_morale
 			0.00 #-- defense
-			0.00 #-- breakthrough
+			1.00 #-- breakthrough
 			0.00 #-- hardness
 			4.00 #-- soft_attack
 			0.00 #-- hard_attack
 			0.00 #-- recon
-			3.00 #-- entrenchment
+			1.00 #-- entrenchment
 			0.00 #-- initiative
 			0.00 #-- casualty_trickleback
 			0.00 #-- supply_consumption_factor
@@ -837,32 +817,35 @@ garrison_NNG = {
 		
 		target_template = {
 			weight = 0.9
-			match_value = 3000.0
+			match_value = 9000.0
 			
 			support = {
-				military_police = 1
+				engineer = 1
+	            artillery = 1
+	            recon = 1
 			}
 			
 			regiments = {
-				infantry = 4
+				infantry = 12
+				artillery_brigade = 2
 			}
 		}
 		
 		allowed_types = {
 			infantry		
 			engineer
+			recon
+			signal_company
 			field_hospital
+			logistics_company
 			anti_tank
-			military_police
+			artillery
+			anti_tank_brigade
+			artillery_brigade
 		}
 	}
 }
 
-		#replace_at_match = 0.6
-		#replace_with = infantry_NNG_2
-		#target_min_match = 0.5
-	}	
-}
 mountaineers_NNG = {
 
 	available_for = {
@@ -874,7 +857,7 @@ mountaineers_NNG = {
 	}
 	
 	upgrade_prio = {
-		factor = 2
+		factor = 0
 
 		modifier = {
 			factor = 0
@@ -978,7 +961,7 @@ marines_NNG = {
 	}
 	
 	upgrade_prio = {
-		factor = 2
+		factor = 90
 
 		modifier = {
 			factor = 0
@@ -993,11 +976,11 @@ marines_NNG = {
 	marine_default_NNG = {
 	
 		upgrade_prio = {
-			factor = 2
+			factor = 90
 
 			modifier = {
 				factor = 2
-				has_war_with = JAP
+				has_war_with = KQG
 			}
 		}
 		
@@ -1048,12 +1031,13 @@ marines_NNG = {
 			match_value = 2000.0
 			
 			support = {
-				recon = 1
-				logistics_company = 1
+				engineer = 1
+				artillery = 1
 			}
 			
 			regiments = {
-				marine = 9
+				marine = 6
+				artillery_brigade = 2
 			}
 		}
 
@@ -1068,7 +1052,7 @@ marines_NNG = {
 	marine_armored_NNG = {
 	
 		upgrade_prio = {
-			factor = 2
+			factor = 90
 
 			modifier = {
 				factor = 2
@@ -1124,15 +1108,13 @@ marines_NNG = {
 			
 			support = {
 				recon = 1
-				logistics_company = 1
-				maintenance_company = 1
 				engineer = 1
 				artillery = 1
 			}
 			
 			regiments = {
-				amphibious_armor = 4
-				amphibious_mechanized = 6
+				amphibious_armor = 2
+				marine = 8
 			}
 		}
 

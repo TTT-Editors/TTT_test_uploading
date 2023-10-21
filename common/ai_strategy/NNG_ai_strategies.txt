@@ -15,8 +15,11 @@
 
 ###这凝光AI实在太愚蠢了！！！！
 Ningguang_aizaobudui = {
+    allowed = {
+		tag = NNG
+	}
     enable = {
-		always = yes
+		tag = NNG
 	}
 	abort = {
 		always = no
@@ -26,27 +29,46 @@ Ningguang_aizaobudui = {
 	id = infantry
 	value = 500
     }
+	
+	ai_strategy = {
+	type = role_ratio
+	id = marines
+	value = 500
+    }
+	
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 30
+		value = 5
 	}
 	
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = infantry
-		value = 50
+		value = 7
 	}
 	
 	ai_strategy = {
-		type = equipment_production_min_factories
-		id = support
-		value = 30
+		type = equipment_variant_production_factor
+		id = infantry
+		value = 65
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = artillery
+		value = 50
 	}
 	
 	ai_strategy = {
 	type = build_army
 	id = infantry
+	value = 500
+    }
+	
+	ai_strategy = {
+	type = build_army
+	id = marines
 	value = 500
     }
 	
@@ -84,12 +106,7 @@ Ningguang_aizaobudui = {
 	ai_strategy = {
 	type = invade
 	id = ZDG
-	value = 100
-	}
-	ai_strategy = {
-	type = invade
-	id = KQG
-	value = 100
+	value = -500
 	}
 }
 
@@ -119,7 +136,6 @@ Yaoguangtan_isbad = {
 	abort = {
 		NOT = { country_exists = KQG }
 	}
-	
 	ai_strategy = {
 	type = front_unit_request
 	tag = KQG
@@ -160,9 +176,9 @@ Ningguang_KQG_isbad_two = {
 	state = 406
 	priority = 100  
 	ordertype = front  
-	execution_type = careful  
-	execute_order = no 
-	manual_attack = no 
+	execution_type = careful
+	manual_attack = yes
+	execute_order = no
     }
 }
 Ningguang_KQG_isbad_three = {

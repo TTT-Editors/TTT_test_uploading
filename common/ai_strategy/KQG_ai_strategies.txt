@@ -196,7 +196,7 @@ KQG_stockpile_less_early_game = {
 
 	ai_strategy = {
 		type = equipment_stockpile_surplus_ratio
-		value = -20 # reduce while we build up in case of NNG issues
+		value = -40 # reduce while we build up in case of NNG issues
 	}
 }
 
@@ -321,9 +321,10 @@ attack_ningguang = {
 		ratio = 0.75
 		priority = 30
 		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes 
-		manual_attack = yes
+		execution_type = balanced
+		
+		#Too many troops being surrounded, so rush_weak ---> balanced will be better
+		#Let AI itself to decide whether it should attack or not.
 	}
 }
 
@@ -359,7 +360,7 @@ attack_ningguang_but_pause = {
 		ordertype = front
 		execution_type = careful  
 		execute_order = no 
-		manual_attack = yes 
+		manual_attack = yes
 	}
 }
 

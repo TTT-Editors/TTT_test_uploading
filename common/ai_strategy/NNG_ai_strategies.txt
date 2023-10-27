@@ -73,31 +73,22 @@ Ningguang_aizaobudui = {
 		id = armor
 		value = -900
 	}
-	ai_strategy = {
-		type = invade
-		id = LYU
-		value = 100
-	}
-	ai_strategy = {
-		type = invade
-		id = RTG
-		value = 100
-	}
-	ai_strategy = {
-		type = invade
-		id = XOG
-		value = 100
-	}
-	ai_strategy = {
-		type = invade
-		id = XRG
-		value = 100
-	}
+	
 	ai_strategy = {
 		type = invade
 		id = ZDG
 		value = -500
 	}
+	
+	ai_strategy = {
+	type = naval_invasion_supremacy_weight
+	value = 900
+    }
+	
+	ai_strategy = {
+	type = force_build_armies
+	value = 900
+    }
 }
 
 Ningguang_KQG_isbad = {
@@ -182,6 +173,11 @@ Ningguang_KQG_isbad_two = {
 		manual_attack = yes
 		execute_order = no
 	}
+	ai_strategy = {
+		type = invade
+		id = KQG
+		value = -500
+	}
 }
 
 Ningguang_KQG_isbad_three = {
@@ -191,10 +187,14 @@ Ningguang_KQG_isbad_three = {
 	enable = {
 		country_exists = KQG
 		has_completed_focus = NNG_wmbijiangshengli
+		num_divisions > 80
 	}
 	abort = {
+	    or = {
 		NOT = {
 			country_exists = KQG
+		}
+		num_divisions < 60
 		}
 	}
 	ai_strategy = {
@@ -213,104 +213,24 @@ Ningguang_KQG_isbad_three = {
 	}
 }
 
-NNG_Squatting_an_island = {
-	###凝光蹲岛发育
+Ningguang_fangshou = {
 	allowed = {
 		tag = NNG
 	}
 	enable = {
-		AND = {
-			num_of_controlled_states < 3
-			controls_state = 126
-		}
+		num_divisions < 50
 	}
 	abort = {
-		NOT = {
-			AND = {
-				num_of_controlled_states < 3
-				controls_state = 126
-				num_divisions > 50
-			}
-		}
+		num_divisions > 50
 	}
 	ai_strategy = {
-		type = invade
-		id = LYU
-		value = -500
-	}
-	ai_strategy = {
-		type = invade
-		id = RTG
-		value = -500
-	}
-	ai_strategy = {
-		type = invade
-		id = XOG
-		value = -500
-	}
-	ai_strategy = {
-		type = invade
-		id = XRG
-		value = -500
-	}
-	ai_strategy = {
-		type = invade
-		id = ZDG
-		value = -500
-	}
-	ai_strategy = {
-		type = invade
-		id = ZDG
-		value = -500
-	}
-}
-
-NNG_Squating_Island_Gegenangriff = {
-	###凝光蹲岛发育完毕
-	allowed = {
-		tag = NNG
-	}
-	enable = {
-		AND = {
-			num_of_controlled_states > 3
-			num_divisions > 70
-		}
-	}
-	abort = {
-		AND = {
-			num_of_controlled_states < 3
-			controls_state = 126
-			num_divisions < 50
-		}
-	}
-	ai_strategy = {
-		type = invade
-		id = LYU
-		value = 500
-	}
-	ai_strategy = {
-		type = invade
-		id = RTG
-		value = 500
-	}
-	ai_strategy = {
-		type = invade
-		id = XOG
-		value = 500
-	}
-	ai_strategy = {
-		type = invade
-		id = XRG
-		value = 500
-	}
-	ai_strategy = {
-		type = put_unit_buffers
-		ratio = 1
-		states = {
-			242
-			126
-		}
-		subtract_invasions_from_need = no
-		subtract_fronts_from_need = no
+		type = front_control
+		area = Liyue
+		ratio = 0.1
+		priority = 900
+		ordertype = front
+		execution_type = balanced
+		manual_attack = yes
+		execute_order = no
 	}
 }

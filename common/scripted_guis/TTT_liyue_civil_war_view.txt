@@ -225,19 +225,6 @@ scripted_gui = {
         }
 		
 		ai_weights = {			
-			tlcw_button_1_click = {
-				ai_will_do = {
-					base = 50
-					modifier = {
-						tag = KQG
-						factor = 0.2
-					}
-					modifier = {
-						has_country_flag = tlcw_3_clicked_nearly
-						factor = 3
-					}
-				}
-			}
 			
 			tlcw_button_2_click = {
 				ai_will_do = {
@@ -266,10 +253,6 @@ scripted_gui = {
 				ai_will_do = {
 					base = 50
 					modifier = {
-						tag = KQG
-						factor = 0.2
-					}
-					modifier = {
 						surrender_progress > 0.3
 						factor = 5
 					}
@@ -282,8 +265,7 @@ scripted_gui = {
 						factor = 8
 					}
 					modifier = {
-						tag = KQG
-						KQG = { enemies_strength_ratio > 1.2 }
+						enemies_strength_ratio > 1.2
 						factor = 5
 					}
 					modifier = {
@@ -301,9 +283,33 @@ scripted_gui = {
 						factor = 2
 					}
 					modifier = {
-						has_country_flag = tlcw_2_clicked_nearly
+						NOT = { has_country_flag = tlcw_2_clicked_nearly }
+						NOT = { has_country_flag = tlcw_3_clicked_nearly }
+						factor = 0
+					}
+				}
+			}
+			
+			tlcw_button_5_click = {
+				ai_will_do = {
+					base = 50
+					modifier = {
+						tag = KQG
 						factor = 2
 					}
+					modifier = {
+						OR = {
+							has_war_support < 0.25
+							has_stability < 0.25
+						}
+						factor = 0
+					}
+				}
+			}
+			
+			tlcw_button_6_click = {
+				ai_will_do = {
+					base = 1000
 				}
 			}
 		}

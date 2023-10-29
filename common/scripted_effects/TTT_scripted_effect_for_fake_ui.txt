@@ -378,8 +378,8 @@ tlcw_button_5_click_effect = {
 	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
-			is_in_array = { liyue_marked_states = THIS }
-			is_controlled_by = ROOT
+			has_state_flag = is_Liyues_territory
+			is_fully_controlled_by = ROOT
 		}
 		ROOT = { 	
 			add_equipment_to_stockpile = {
@@ -432,12 +432,14 @@ tlcw_button_6_click_effect = {
 			NOT = { is_subject_of = ZDG }
 		}
 		every_state = {
-			limit = { is_in_array = { liyue_marked_states = THIS } }
+			limit = {
+				has_state_flag = is_Liyues_territory
+				is_fully_controlled_by = ROOT
+			}
 			create_unit = {
 				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
 				owner = ROOT
-				#allow_spawning_on_enemy_provs = yes
-				count = 1
+				count = 2
 			}
 			ROOT = {
 				add_stability = -0.005

@@ -249,12 +249,12 @@ Keqing_finds_she_need_to_look_out_the_sea = {
 	
 	enable = {
 		has_war_with = NNG
-		date < 2002.1.1
+		date > 2002.1.1
 	}
 	
 	abort = {
 		OR = {
-			date > 2002.1.1
+			date > 2005.1.1
 			NNG = { exists = no }
 			AND = {
 				126 = { is_controlled_by = KQG }
@@ -478,6 +478,8 @@ KQG_watch_out_south = {
 			RTG = { surrender_progress > 0.6 }
 		}
 	}
+	
+	abort = { NOT = { has_global_flag = Liyue_Civil_War } }
 	
 	ai_strategy = {
 		type = front_unit_request

@@ -1,4 +1,13 @@
 ZDG_decision_category = {
+	ZDG_zhijiekaiqierjieduan = {
+		allowed = {
+			is_ai = no
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = ZDG_zhijiekaiqierjieduan_flag
+		}
+	}
 	ZDG_detectintelligence_immortalfamily_XRG = {
 		#刺探仙家情报
 		cost = 10
@@ -225,6 +234,7 @@ ZDG_decision_category = {
 		cost = 0
 		cancel_trigger = {
 			has_country_flag = ZDG_14_flag
+			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
 		}
 		timeout_effect = {
 			random_list = {
@@ -313,6 +323,7 @@ ZDG_decision_category = {
 		cost = 0
 		cancel_trigger = {
 			has_country_flag = ZDG_14_flag2
+			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
 		}
 		timeout_effect = {
 			random_list = {
@@ -379,6 +390,7 @@ ZDG_decision_category = {
 		cost = 0
 		cancel_trigger = {
 			has_country_flag = ZDG_14_flag2
+			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
 		}
 		timeout_effect = {
 			random_list = {
@@ -445,6 +457,7 @@ ZDG_decision_category = {
 		cost = 0
 		cancel_trigger = {
 			has_country_flag = ZDG_14_flag2
+			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
 		}
 		timeout_effect = {
 			random_list = {
@@ -1271,9 +1284,8 @@ ZDG_decision_category = {
 				autonomy_state = ZDG_autonomus_states
 			}
 			RTG = {
-				add_popularity = {
-					ideology = despotism
-					popularity = 1
+				set_popularities = {
+					despotism = 100
 				}
 			}
 		}
@@ -1381,9 +1393,8 @@ ZDG_decision_category = {
 				autonomy_state = ZDG_autonomus_states
 			}
 			LYU = {
-				add_popularity = {
-					ideology = despotism
-					popularity = 1
+				set_popularities = {
+					despotism = 100
 				}
 			}
 		}
@@ -2964,6 +2975,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_gongzhizheyingxiangli_value = -1
 			}
+			custom_effect_tooltip = ZDG_fuchigongzhizhe_tt3
 			ZDG_gongzhizhe_buffjisuan = yes
 		}
 		ai_will_do = {
@@ -3064,6 +3076,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_toujizhehezuodu_value = -1
 			}
+			custom_effect_tooltip = ZDG_decision_5_tt
 			ZDG_toujizhe_buffjisuan = yes
 		}
 		ai_will_do = {
@@ -3121,13 +3134,15 @@ ZDG_decision_category5 = {
 					add_to_variable = {
 						ZDG_baoshoupaiyingxiangli_value = 1
 					}
+					custom_effect_tooltip = ZDG_cuimianbaoshoupai_tt3
 					ZDG_baoshoupai_buffjisuan = yes
 				}
 				30 = {
 					add_to_variable = {
-						ZDG_dikangzhehezuodu_value = 1
+						ZDG_baoshoupaihezuodu_value = 1
 					}
-					ZDG_dikangzhe_buffjisuan = yes
+					custom_effect_tooltip = ZDG_decision_6_tt2
+					ZDG_baoshoupai_buffjisuan = yes
 				}
 			}
 		}
@@ -3193,12 +3208,14 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_dikangzhehezuodu_value = -1
 			}
+			custom_effect_tooltip = ZDG_decision_7_tt2
 			ZDG_dikangzhe_buffjisuan = yes
 			random_list = {
 				75 = {
 					add_to_variable = {
 						ZDG_dikangzheyingxiangli_value = 1
 					}
+					custom_effect_tooltip = ZDG_decision_7_tt3
 				}
 				25 = {
 				}
@@ -3268,6 +3285,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_dikangzhehezuodu_value = -1
 			}
+			custom_effect_tooltip = ZDG_decision_7_tt2
 			ZDG_dikangzhe_buffjisuan = yes
 			if = {
 				limit = {
@@ -3508,6 +3526,7 @@ ZDG_decision_category5 = {
 				add_to_variable = {
 					ZDG_gongzhizheyingxiangli_value = 1
 				}
+				ZDG_gongzhizhe_buffjisuan = yes
 				custom_effect_tooltip = ZDG_fuchigongzhizhe_tt3
 			}
 			else_if = {
@@ -3559,21 +3578,25 @@ ZDG_decision_category5 = {
 						add_to_variable = {
 							ZDG_gongzhizhehezuodu_value = 1
 						}
+						ZDG_gongzhizhe_buffjisuan = yes
 					}
 					10 = {
 						add_to_variable = {
 							ZDG_toujizhehezuodu_value = 1
 						}
+						ZDG_toujizhe_buffjisuan = yes
 					}
 					10 = {
 						add_to_variable = {
 							ZDG_baoshoupaihezuodu_value = 1
 						}
+						ZDG_baoshoupai_buffjisuan = yes
 					}
 				}
 				add_to_variable = {
 					ZDG_gongzhizheyingxiangli_value = 1
 				}
+				ZDG_gongzhizhe_buffjisuan = yes
 			}
 			custom_effect_tooltip = ZDG_zhengzhiyouhuo_tt
 		}
@@ -3607,6 +3630,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_toujizhehezuodu_value = 1
 			}
+			ZDG_toujizhe_buffjisuan = yes
 			custom_effect_tooltip = ZDG_xiangtoujizhepaixiongpu_tt
 			add_command_power = -5
 		}
@@ -3648,6 +3672,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_dikangzhehezuodu_value = -1
 			}
+			ZDG_dikangzhe_buffjisuan = yes
 			custom_effect_tooltip = ZDG_zhenyadikangzhe_tt
 			add_command_power = -10
 		}
@@ -3688,15 +3713,18 @@ ZDG_decision_category5 = {
 					add_to_variable = {
 						ZDG_baoshoupaiyingxiangli_value = -1
 					}
+					ZDG_baoshoupai_buffjisuan = yes
 					custom_effect_tooltip = ZDG_xianzhibaoshoupai_tt2
 				}
 				50 = {
 					add_to_variable = {
 						ZDG_baoshoupaiyingxiangli_value = -1
 					}
+					ZDG_baoshoupai_buffjisuan = yes
 					add_to_variable = {
 						ZDG_baoshoupaihezuodu_value = -1
 					}
+					ZDG_baoshoupai_buffjisuan = yes
 					custom_effect_tooltip = ZDG_xianzhibaoshoupai_tt3
 				}
 			}
@@ -3733,6 +3761,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_toujizhehezuodu_value = 1
 			}
+			ZDG_toujizhe_buffjisuan = yes
 			custom_effect_tooltip = ZDG_shoumaitoujizhe_tt
 		}
 		ai_will_do = {
@@ -3777,6 +3806,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_baoshoupaihezuodu_value = 1
 			}
+			ZDG_baoshoupai_buffjisuan = yes
 			custom_effect_tooltip = ZDG_cuimianbaoshoupai_tt3
 			set_country_flag = {
 				flag = ZDG_cuimianbaoshoupai_flag
@@ -3788,6 +3818,7 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_baoshoupaihezuodu_value = -1
 			}
+			ZDG_baoshoupai_buffjisuan = yes
 		}
 		ai_will_do = {
 			base = 20
@@ -3837,6 +3868,8 @@ ZDG_decision_category5 = {
 			add_to_variable = {
 				ZDG_baoshoupaiyingxiangli_value = 1
 			}
+			ZDG_toujizhe_buffjisuan = yes
+			ZDG_baoshoupai_buffjisuan = yes
 			custom_effect_tooltip = ZDG_tuanjielansezhiyan_tt3
 		}
 		ai_will_do = {
@@ -3888,6 +3921,7 @@ ZDG_decision_category5 = {
 			set_variable = {
 				ZDG_gongzhizheyingxiangli_value = 5
 			}
+			ZDG_gongzhizhe_buffjisuan = yes
 			set_country_flag = ZDG_gongzhizhetigongbaozuo_flag
 			custom_effect_tooltip = ZDG_gongzhizhetigongbaozuo_tt3
 			ZDG_gongzhizhe_buffjisuan = yes
@@ -4031,6 +4065,7 @@ ZDG_decision_category5 = {
 			set_variable = {
 				ZDG_dikangzheyingxiangli_value = 1
 			}
+			ZDG_dikangzhe_buffjisuan = yes
 			set_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
 			custom_effect_tooltip = ZDG_zhenyadikangzuz_tt4
 			ZDG_dikangzhe_buffjisuan = yes

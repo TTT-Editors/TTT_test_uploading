@@ -22,8 +22,7 @@ ideas = {
 				}
 			}
 			modifier = {
-				political_power_factor = -0.1
-                stability_factor = -0.1			
+                stability_factor = -0.2			
 			}
 		}
 
@@ -1767,21 +1766,19 @@ ideas = {
 				has_war_with = ZDG
 			}
 			modifier = {
-				surrender_limit = -0.1
-				army_org_factor = 0.15
-				breakthrough_factor = 0.05
+			    hidden_modifier = {
+                surrender_limit = -0.15
+                }
+				army_org_factor = 0.10
+				dig_in_speed_factor = 0.10
+				mobilization_speed = 0.10
+				supply_consumption_factor = -0.10
+	            no_supply_grace = 24
 			}
 			targeted_modifier = {
 				tag = ZDG
-				attack_bonus_against = 0.2
-				defense_bonus_against = 0.2
-			}
-			equipment_bonus = {
-				infantry_equipment = {
-					reliability = -0.1
-					build_cost_ic = -0.1
-					instant = yes
-				}
+				attack_bonus_against = 0.10
+				defense_bonus_against = 0.10
 			}
 		}
 		XRG_BUFF_WAR_2 = {
@@ -1793,22 +1790,24 @@ ideas = {
 				has_war_with = ZDG
 			}
 			modifier = {
-				army_org_factor = 0.25
+				army_speed_factor = 0.10
 				army_morale_factor = 0.2
-				resistance_target_on_our_occupied_states = 0.2
+				resistance_target_on_our_occupied_states = 0.25
+				hidden_modifier = {
+                surrender_limit = -0.15
+                }
 			}
 			targeted_modifier = {
 				tag = ZDG
 				attack_bonus_against = 0.1
 				defense_bonus_against = 0.1
 			}
-			equipment_bonus = {
-				infantry_equipment = {
-					reliability = -0.1
-					build_cost_ic = -0.1
-					instant = yes
+			on_remove = {
+                swap_ideas = {
+					remove_idea = Lack_education
+					add_idea = Vocational_education
 				}
-			}
+            }
 		}
 		XRG_BUFF_WAR_4 = {
 			

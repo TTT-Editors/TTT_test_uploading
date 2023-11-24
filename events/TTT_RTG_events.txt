@@ -5,59 +5,6 @@ add_namespace = ruotuo
 #Don't add things that makes no sense.
 #Replace Kaz.events
 
-country_event = {
-	#tragic sight
-	id = ruotuo.1
-	title = ruotuo.1.t
-	desc = ruotuo.1.d
-	fire_only_once = yes
-	
-	trigger = { tag = RTG }
-	
-	mean_time_to_happen = {
-		days = 7
-	}
-
-	option = { 
-		name = ruotuo.1.a
-		add_popularity = {
-			ideology = hive_mind
-			popularity = 0.3
-		}
-		add_ideas = the_earth_roars
-		add_manpower = 99863		#137 were trapped.
-		hidden_effect = {
-			set_country_flag = ruotuo_going_bad
-			set_country_flag = Establish_newspaper_office  #建立报社的flag
-			set_country_flag = save_our_people_immed
-			#random_list = {
-			#	60 = { }
-			#	40 = { set_country_flag = AI_not_save }
-			#}
-			#RTG = { 
-			#	country_event = { 
-			#		id = ruotuo.2
-			#		days = 14
-			#	}
-			#}  
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_COMMON
-					}
-					is_ai = yes
-				}
-				add_ideas = ai_RTG_is_a_good_boy
-			}
-		}
-		activate_mission = the_situation_go_worse
-		activate_mission = RTG_save_our_people
-		#custom_effect_tooltip = the_situation_is_going_worse_tt
-		custom_effect_tooltip = unlock_ruotuo_special_decision_tt
-	}
-}
-
 #country_event = {
 #	#This is a temporary hidden event which will add esoteric nazism automatically
 #	#If we have solve the problem this event will never happen
@@ -488,40 +435,6 @@ country_event = {
 	}
 }
 
-#Crazy talk
-country_event = {
-	id = ruotuo.202
-	title = ruotuo.202.t
-	desc = ruotuo.202.d
-	fire_only_once = yes
-	is_triggered_only = yes
-	
-	option = {
-		#emergency relief
-		name = ruotuo.202.a
-		add_timed_idea = {
-			idea = emergency_relief
-			days = 60
-		}
-		add_popularity = {
-			ideology = reformism
-			popularity = 0.03
-		}
-		ai_chance = { factor = 70 }
-	}
-	
-	option = {
-		#ignore it
-		name = ruotuo.202.b
-		add_stability = -0.05
-		add_popularity = {
-			ideology = hive_mind
-			popularity = 0.05
-		}
-		ai_chance = { factor = 30 }
-	}
-}
-
 #senior elemental creatures?
 country_event = {
 	id = ruotuo.203
@@ -549,31 +462,6 @@ country_event = {
 		}
 		add_manpower = -500
 		ai_chance = { factor = 30 }
-	}
-}
-
-#Lucky event
-country_event = {
-	id = ruotuo.204
-	title = ruotuo.204.t
-	desc = ruotuo.204.d
-	is_triggered_only = yes
-	
-	option = {
-		name = ruotuo.204.a
-		add_popularity = {
-			ideology = reformism
-			popularity = 0.1
-		}
-		add_manpower = -1
-		hidden_effect = {
-			LYU = {
-				country_event = {
-					id = ruotuo.210
-					days = 25
-				}
-			}
-		}
 	}
 }
 
@@ -618,136 +506,6 @@ country_event = {
 	}
 }
 
-#Leyline calmed down
-country_event = {
-	id = ruotuo.206
-	title = ruotuo.206.t
-	desc = ruotuo.206.d
-	trigger = {
-		has_country_flag = ruotuo_going_bad
-		NOT = { has_country_flag = leyline_event_happened }
-	}
-	
-	mean_time_to_happen = { days = 120 }
-	immediate = {
-		hidden_effect = {
-			set_country_flag = leyline_event_happened
-		}
-	}
-	
-	option = {
-		#Good News
-		name = ruotuo.206.a
-		add_stability = 0.1
-		add_political_power = 10
-		add_popularity = {
-			ideology = reformism
-			popularity = 0.03
-		}
-	}
-}
-
-#Leyline roars again
-country_event = {
-	id = ruotuo.207
-	title = ruotuo.207.t
-	desc = ruotuo.207.d
-	trigger = {
-		has_country_flag = ruotuo_going_bad
-		NOT = { has_country_flag = leyline_event_happened }
-	}
-	
-	mean_time_to_happen = { days = 120 }
-	immediate = {
-		hidden_effect = {
-			set_country_flag = leyline_event_happened
-		}
-	}
-	
-	option = {
-		#We can do nothing
-		name = ruotuo.207.a
-		add_popularity = {
-			ideology = hive_mind
-			popularity = 0.02
-		}
-		ai_chance = { factor = 30 }
-	}
-	
-	option = {
-		#Call Fengxu!
-		name = ruotuo.207.b
-		trigger = {
-			has_idea = RTG_fengxu
-		}
-		add_political_power = -30
-		add_popularity = {
-			ideology = reformism
-			popularity = 0.02
-		}
-		ai_chance = { factor = 70 }
-	}
-}
-
-#Deal with ��ӡ
-country_event = {
-	id = ruotuo.208
-	title = ruotuo.208.t
-	desc = ruotuo.208.d
-	fire_only_once = yes
-	mean_time_to_happen = { days = 60 }
-	
-	trigger = {
-		RTG = { has_country_flag = ruotuo_going_bad }
-		tag = XRG
-	}
-	
-	#Let's strengthen it
-	option = {
-		name = ruotuo.208.a
-		ai_chance = { factor = 50 }
-		add_political_power = -150
-		custom_effect_tooltip = may_receive_supply
-		hidden_effect = {
-			#random_list = {
-			#	25 = {}
-			#	75 = {
-				RTG = {
-					country_event = { 
-						#Anonymous Supply
-						id = ruotuo.209
-						days = 21
-					}
-				}
-			#}
-		}
-	}
-	
-	#No need to do that.
-	option = {
-		name = ruotuo.208.b
-		ai_chance = { factor = 50 }
-	}
-}
-
-#Anonymous Supply
-country_event = {
-	id = ruotuo.209
-	title = ruotuo.209.t
-	desc = ruotuo.209.d
-	is_triggered_only = yes
-	
-	option = {
-		name = ruotuo.209.a
-		add_popularity = {
-			ideology = reformism
-			popularity = 0.2
-		}
-		add_political_power = 50
-		add_stability = 0.05
-		add_war_support = 0.05
-	}
-}
 
 #Extra event
 country_event = {
@@ -761,24 +519,6 @@ country_event = {
 	}
 }
 
-#Nightmare
-country_event = {
-	id = ruotuo.300
-	title = ruotuo.300.t
-	desc = ruotuo.300.d
-	fire_only_once = yes
-	
-	mean_time_to_happen = { days = 30 }
-	
-	trigger = {
-		tag = RTG
-		has_completed_focus = focus_RTG_continute_researching
-	}
-	
-	option = {
-		name = ruotuo.300.a
-	}
-}
 
 country_event = {  
     id = ruotuo.301
@@ -789,28 +529,6 @@ country_event = {
 	#mean_time_to_happen = { days = 60 }
 	option = {
 	    name = ruotuo.301.a
-	}
-}
-
-country_event = {
-	id = ruotuo.211
-	title = ruotuo.211.t
-	desc = ruotuo.211.d
-	fire_only_once = yes
-	
-	mean_time_to_happen = { days = 180 }
-	
-	trigger = {
-		tag = RTG
-		has_country_flag = ruotuo_going_bad
-	}
-	
-	option = {
-		name = ruotuo.211.a
-		add_popularity = {
-			ideology = hive_mind
-			popularity = 0.05
-		}
 	}
 }
 
@@ -1991,6 +1709,581 @@ news_event = {
         name = retuo_juanshu_news.5.a
     }	
 }
+
+add_namespace = RTG
+
+#These are events about my Chasm bro Azhdaha.
+#If you want to modify file content, please inform us in advance.
+#Don't add things that makes no sense.
+#明安二人双双前来
+country_event = {
+	id = RTG.1
+	title = RTG.1.t
+	desc = RTG.1.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.1.a
+		#recruit_character = RTG_Mingbo
+		#recruit_character = RTG_AnMozhi
+		set_country_flag = RTG1_flag
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = RTG_Mingbo
+		show_ideas_tooltip = RTG_AnMozhi
+	}
+}
+#璃月不开心巨渊
+country_event = {
+	id = RTG.2
+	title = RTG.2.t
+	desc = RTG.2.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { 
+		name = RTG.2.a
+		add_stability = -0.05
+		add_war_support = -0.05
+		RTG = {add_opinion_modifier = { target = LYU modifier = medium_decrease }}
+		add_opinion_modifier = { target = RTG modifier = medium_decrease }
+	}
+}
+#志琼来了
+country_event = {
+	id = RTG.3
+	title = RTG.3.t
+	desc = RTG.3.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { 
+		name = RTG.3.a
+		#recruit_character = RTG_Zhiqiong
+		set_country_flag = RTG3_flag
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = RTG_Zhiqiong
+	}
+}
+#风墟来了
+country_event = {
+	id = RTG.4
+	title = RTG.4.t
+	desc = RTG.4.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { 
+		name = RTG.4.a
+		#recruit_character = RTG_fengxu
+		set_country_flag = RTG4_flag
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = RTG_Fengxu
+	}
+}
+#恍神
+country_event = {
+	id = RTG.5
+	title = RTG.5.t
+	desc = RTG.5.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.5.a
+		XRG = {
+		country_event = {
+			id = RTG.8
+			days = 35
+		    }		
+	    }
+		country_event = {
+			id = RTG.9
+			days = 35
+		   }		
+	    }
+	}
+#矿工的结局(成功）
+country_event = {
+	id = RTG.6
+	title = RTG.6.t
+	desc = RTG.6.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.6.a
+		add_stability = 0.10
+		add_war_support = 0.05
+	}
+}
+#矿工的结局(失败）
+country_event = {
+	id = RTG.7
+	title = RTG.6.t
+	desc = RTG.6.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.7.a
+        add_stability = -0.10
+		add_war_support = -0.05
+	}
+}
+#若陀龙王的封印
+country_event = {
+	id = RTG.8
+	title = RTG.8.t
+	desc = RTG.8.d
+	fire_only_once = yes
+	
+	option = { 
+		name = RTG.8.a
+		add_political_power = -150
+		add_timed_idea = { idea = RTG_jiagu_fulongshu days = 180 }
+		RTG = { 
+		country_event = { days = 60  id = RTG.18 } 
+		}
+		ai_chance = {
+		    base = 70
+		}
+	}
+	option = { 
+		name = RTG.8.b
+		ai_chance = {
+		    base = 30
+		}
+	}
+}
+#心清如水
+country_event = {
+	id = RTG.9
+	title = RTG.9.t
+	desc = RTG.9.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = RTG.9.a
+		add_to_variable = { RTG_erosion_system = -15 }
+		custom_effect_tooltip = RTG9_tt
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+			}
+		hidden_effect = {
+			LYU = {
+				country_event = {
+					id = RTG.16
+					days = 25
+				    }
+			    }
+		    }
+		}	
+	}
+#巨渊外部将为我们提供粮食
+country_event = {
+	id = RTG.10
+	title = RTG.10.t
+	desc = RTG.10.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = RTG.10.a
+		154 = {
+			add_resource = {
+				type = wood
+				amount = 6
+			}
+		}
+		154 = {
+			add_resource = {
+				type = grain
+				amount = 6
+			}
+		}
+	}
+}
+#巨渊外部将为我们提供工业
+country_event = {
+	id = RTG.11
+	title = RTG.11.t
+	desc = RTG.11.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = RTG.11.a
+		154 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes 
+			}
+		}
+		154 = {
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+}
+#惨象
+country_event = {
+	id = RTG.12
+	title = ruotuo.1.t
+	desc = ruotuo.1.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { 
+		name = ruotuo.1.a
+		activate_mission = RTG_yingjiusiziruyuankuangong
+		unlock_decision_tooltip = RTG_zengjiajiuyuanduiguimo
+		unlock_decision_tooltip = RTG_paichujiuyuandui
+		set_country_flag = ruotuo_going_bad
+		set_country_flag = Establish_newspaper_office  #建立报社的flag
+		set_country_flag = save_our_people_immed
+	}
+}
+#终局（随机选择）
+country_event = {
+	id = RTG.13
+	title = RTG.13.t
+	desc = RTG.13.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.13.a
+		add_stability = 0.10
+		RTG_Retuo_good = {
+		    promote_character = yes
+		}
+		load_focus_tree = RTG_2_Juanshu
+		clr_country_flag = erosion_system_start
+		custom_effect_tooltip = RTG13_tt
+		155 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+		156 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+		hidden_effect = {
+			country_event = { days = 14 id = RTG.17 }
+		}
+		ai_chance = {
+		    base = 10
+		}
+	}
+	option = { 
+		name = RTG.13.b
+		trigger = {    
+            check_variable = { RTG_erosion_system > 80 }		
+        }
+		add_stability = 0.10
+		set_politics = {
+	    ruling_party = hive_mind
+        elections_allowed = no
+        }
+		custom_effect_tooltip = RTG13_tt2
+		load_focus_tree = TTT_Reruo_mosun
+		clr_country_flag = erosion_system_start
+		155 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+		156 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+		ai_chance = {
+		    base = 10
+			modifier = {
+			    add = 10
+				check_variable = { RTG_erosion_system > 50 }
+		    }
+		}
+	}
+}
+#终局（好龙王选项）
+country_event = {
+	id = RTG.14
+	title = RTG.13.t
+	desc = RTG.13.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.13.a
+		trigger = {	   
+            check_variable = { RTG_erosion_system < 20 }
+        }
+		add_stability = 0.10
+		RTG_Retuo_good = {
+		    promote_character = yes
+		}
+		load_focus_tree = RTG_2_Juanshu
+		clr_country_flag = erosion_system_start
+		custom_effect_tooltip = RTG13_tt
+		155 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+		156 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+		hidden_effect = {
+			country_event = { days = 14 id = RTG.17 }
+		}
+	}
+}
+#终局（坏龙王选项）
+country_event = {
+	id = RTG.15
+	title = RTG.13.t
+	desc = RTG.13.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.13.b
+		trigger = {    
+            check_variable = { RTG_erosion_system > 80 }		
+        }
+		add_stability = 0.10
+		set_politics = {
+	    ruling_party = hive_mind
+        elections_allowed = no
+        }
+		custom_effect_tooltip = RTG13_tt2
+		load_focus_tree = TTT_Reruo_mosun
+		clr_country_flag = erosion_system_start
+		155 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+		156 = {
+			remove_dynamic_modifier = { modifier = RTG_juyuanzhongxinwufajianzao }
+		}
+	}
+}
+#琉光璃彩
+country_event = {
+	id = RTG.16
+	title = ruotuo.210.t
+	desc = ruotuo.210.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = ruotuo.210.a
+	}
+}
+#雨过天晴
+country_event = {
+	id = RTG.17
+	title = RTG.17.t
+	desc = RTG.17.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.17.a
+	}
+}
+#匿名援助
+country_event = {
+	id = RTG.18
+	title = ruotuo.209.t
+	desc = ruotuo.209.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = ruotuo.209.a
+		add_stability = 0.10
+		add_war_support = 0.10
+		set_country_flag = RTG18_flag
+		custom_effect_tooltip = RTG18_tt
+		add_to_variable = { RTG_erosion_system = -40 }
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+			}
+		add_to_variable = { RTG_erosion_system_week = -2 }
+		clamp_variable = {
+		var = RTG_erosion_system_week
+		min = 0
+		max = 100
+		}
+	}
+}
+#疯话
+country_event = {
+	id = RTG.19
+	title = ruotuo.202.t
+	desc = ruotuo.202.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = ruotuo.202.a
+		add_political_power = -50
+		custom_effect_tooltip = RTG19_tt
+		add_to_variable = { RTG_erosion_system = 3 }
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+		}
+		country_event = { days = 70  id = RTG.20 }
+	}
+}
+#噩梦
+country_event = {
+	id = RTG.20
+	title = ruotuo.211.t
+	desc = ruotuo.211.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = ruotuo.211.a
+		custom_effect_tooltip = RTG20_tt
+		add_to_variable = { RTG_erosion_system = 15 }
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+		}
+	}
+}
+#走表
+country_event = {
+	id = RTG.21
+	title = ruotuo.300.t
+	desc = ruotuo.300.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = ruotuo.300.a
+		custom_effect_tooltip = RTG21_tt
+		add_to_variable = { RTG_erosion_system = -5 }
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+		}
+	}
+}
+#随机触发事件
+country_event = {
+	id = RTG.22
+	title = RTG.22.t
+	desc = RTG.22.d
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				10 = {
+					country_event = { days = 1  id = RTG.23 }
+				}
+				10 = {
+					country_event = { days = 1  id = RTG.24 }
+				}
+				10 = {
+					country_event = { days = 1  id = RTG.25 }
+				}
+			}
+		}
+	}
+	trigger = {
+		original_tag = RTG 
+		has_country_flag = erosion_system_start
+	} 
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = { 
+		name = RTG.22.a
+	}
+}
+#地脉通顺
+country_event = {
+	id = RTG.23
+	title = ruotuo.206.t
+	desc = ruotuo.206.d
+	is_triggered_only = yes
+	option = { 
+		name = ruotuo.206.a
+		custom_effect_tooltip = RTG21_tt
+		add_to_variable = { RTG_erosion_system = -5 }
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+		}
+		add_stability = 0.01
+	}
+}
+#地脉混乱
+country_event = {
+	id = RTG.24
+	title = ruotuo.207.t
+	desc = ruotuo.207.d
+	is_triggered_only = yes
+	option = { 
+		name = ruotuo.207.a
+		trigger = { NOT = { has_idea = RTG_Fengxu } }
+		custom_effect_tooltip = RTG24_tt
+		add_to_variable = { RTG_erosion_system = 5 }
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+		}
+	}
+	option = { 
+		name = ruotuo.207.b
+		trigger = { has_idea = RTG_Fengxu } 
+		add_political_power = -25
+	}
+}
+#地脉混乱
+country_event = {
+	id = RTG.25
+	title = RTG.25.t
+	desc = RTG.25.d
+	is_triggered_only = yes
+	option = { 
+		name = RTG.25.a
+		custom_effect_tooltip = RTG24_tt
+		add_to_variable = { RTG_erosion_system = 5 }
+		clamp_variable = {
+			var = RTG_erosion_system
+			min = 0
+			max = 100
+		}
+		add_manpower = -500
+	}
+}
+#衣锦还乡
+country_event = {
+	id = RTG.26
+	title = RTG.26.t
+	desc = RTG.26.d
+	is_triggered_only = yes
+	option = { 
+		name = RTG.26.a
+	}
+}
+#乐土彩蛋
+country_event = {
+	id = RTG.999
+	title = RTG.999.t
+	desc = RTG.999.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { 
+		name = RTG.999.a
+		custom_effect_tooltip = chasm_easter_egg_tt
+	}
+}
+
+
+
+
 
 
 

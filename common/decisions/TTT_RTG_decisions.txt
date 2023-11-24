@@ -58,186 +58,8 @@ RTG_special_categories = {
 		}
 	}
 	
-	#New added Missions
-	
-	RTG_save_our_people = {
-		
-		icon = hol_draw_up_staff_plans
-		
-		allowed = { always = no }
-
-		available = {
-			hidden_trigger = { always = no }
-		}
-		
-		is_good = no
-		days_mission_timeout = 28
-
-		visible = {
-			tag = RTG
-			has_country_flag = ruotuo_going_bad
-		}
-		
-		fire_only_once = yes
-		
-		cancel_if_not_visible = yes
-
-		cancel_trigger = {
-			hidden_trigger = {
-				OR = {
-					has_government = reformism
-					has_government = hive_mind
-				}
-			}
-		}
-		
-		timeout_effect = { 
-			hidden_effect = {
-				country_event = {
-					id = ruotuo.202
-					days = 15
-				}
-				random_list = {
-					30 = { set_country_flag = rescue_success }
-					30 = { set_country_flag = rescue_failed }
-					40 = {
-						if = {
-							limit = { has_country_flag = rescue_expanded }
-							set_country_flag = rescue_success
-						}
-						else = { set_country_flag = rescue_failed }
-					}
-				}
-			}
-			if = {
-				limit = { has_country_flag = rescue_expanded }
-				add_manpower = 500
-			}
-			country_event = { id = ruotuo.201 }
-			clr_country_flag = save_our_people_immed
-			clr_country_flag = AI_not_save
-			clr_country_flag = rescue_expanded
-		}   
-	}
-	
-	RTG_expand_rescue_team = {
-		
-		icon = generic_oppression
-		
-		available = {
-			has_equipment = { infantry_equipment > 499 }
-		}
-
-		visible = {
-			has_country_flag = save_our_people_immed
-		}
-
-		fire_only_once = yes
-		
-		cancel_if_not_visible = yes
-
-		days_remove = 7
-
-		cost = 40
-
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_INSANE
-					}
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_COLLAPSE
-					}
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = RTG_ai_behavior
-					option = RTG_COMMON
-				}
-			}
-		}
-
-		remove_effect = {
-			hidden_effect = { set_country_flag = rescue_expanded }
-		}
-
-		complete_effect = {
-			add_manpower = -500
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -50
-			}
-		}
-	}
 	
 	##########################
-	
-	RTG_appease_leylines = {
-		
-		icon = generic_oppression
-		
-		available = {
-			#has_country_flag = ruotuo_going_bad
-		}
-
-		visible = {
-			has_country_flag = focus_RTG_right_finish_1
-		}
-
-		fire_only_once = no
-
-		days_remove = 14
-		
-		days_re_enable = 14
-
-		cost = 30
-
-		modifier = {
-			civilian_factory_use = 2
-		}
-
-		ai_will_do = {
-			base = 1
-			
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_INSANE
-					}
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_COLLAPSE
-					}
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = RTG_ai_behavior
-					option = RTG_COMMON
-				}
-			}
-		}
-
-		remove_effect = {
-			add_popularity = {
-				ideology = hive_mind
-				popularity = -0.05
-			}
-		}
-
-		complete_effect = {
-		}
-	}
 	
 	RTG_suppress_elemental_creature_riots = {
 		
@@ -366,68 +188,6 @@ RTG_special_categories = {
 		}
 	}
 	
-	RTG_miner_corps = {
-		
-		icon = generic_oppression
-		
-		available = {
-			#has_country_flag = ruotuo_going_bad
-			has_equipment = { infantry_equipment > 999 }
-		}
-
-		visible = {
-			has_country_flag = ruotuo_going_bad
-		}
-
-		is_good = yes
-
-		fire_only_once = no
-
-		days_remove = 14
-
-		cost = 20
-
-		modifier = { }
-
-		ai_will_do = {
-			base = 1
-		}
-
-		remove_effect = {
-			division_template = {
-				name = "Miner Corps"
-				template_counter = 4
-				division_names_group = SPR_INF_06
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-				}
-				support = {
-					recon = { x = 0 y = 0 }
-				}
-			}
-			random_owned_controlled_state = {
-				create_unit = {
-					division = "division_template = \"Miner Corps\" start_experience_factor = 0.1" 
-					owner = RTG
-					count = 2
-				}
-			}
-		}
-
-		complete_effect = {
-			add_manpower = -10000
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
-	}
-	
-	#set up official media
 	
 }
 
@@ -1614,4 +1374,330 @@ RTG_underground_networks = {
 			}
 		}
 	}
+}
+
+#初始线决议
+RTG_mosun = {
+    #营救私自入渊矿工
+	RTG_yingjiusiziruyuankuangong = {
+	allowed = {
+		original_tag = RTG
+	}
+	visible = {	
+		
+	}
+	fire_only_once = yes
+	available = {
+		always = no
+	}
+    activation = {
+		has_country_flag = save_our_people_immed
+	}
+	days_mission_timeout = 70
+    is_good = no
+	timeout_effect = {
+        remove_mission = RTG_yingjiusiziruyuankuangong
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = RTG_paichujiuyuandui_yes
+				}
+			}
+			country_event = { days = 1 id = RTG.7 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = RTG_paichujiuyuandui_yes
+			}
+			random_list = {
+				50 = {
+					modifier = {
+                        add = 10
+					    has_country_flag = RTG_paichujiuyuandui_yes_two
+				    }
+					country_event = { days = 1 id = RTG.8 }
+				    }
+				50 = {
+					country_event = { days = 1 id = RTG.7 }
+				    }
+			    }
+		    }
+	    }
+    }
+	#派出救援队
+	RTG_paichujiuyuandui = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {	
+			NOT = {				
+				has_government = hive_mind			
+			}
+			has_country_flag = save_our_people_immed
+		}
+		available = {	
+			command_power > 9
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 7
+		complete_effect = {
+			set_country_flag = RTG_paichujiuyuandui_yes
+			custom_effect_tooltip = RTG_paichujiuyuandui_tt
+		}
+	}
+	#增加救援队规模
+	RTG_zengjiajiuyuanduiguimo = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {	
+			has_country_flag = save_our_people_immed
+		}
+		available = {	
+			command_power > 9
+			has_country_flag = RTG_paichujiuyuandui_yes
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 7
+		complete_effect = {
+			set_country_flag = RTG_paichujiuyuandui_yes_two
+			custom_effect_tooltip = RTG_paichujiuyuandui_tt
+		}
+	}
+	#安抚地脉
+	RTG_appease_leylines = {
+		desc = RTG_erosion_system_1_desc
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {	
+			has_country_flag = erosion_system_start
+		}
+		available = {	
+			custom_trigger_tooltip = {
+				tooltip = RTG_appease_leylines_tt
+				NOT = { has_country_flag = RTG_appease_leylines_flag }
+			}
+		}
+		cost = 20
+		fire_only_once = no
+		days_remove = 7
+		complete_effect = {
+			add_to_variable = { RTG_erosion_system = -3 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			}
+			custom_effect_tooltip = RTG_erosion_system_2_tt_three
+			set_country_flag = { flag = RTG_appease_leylines_flag value = 1 days = 14 }
+			if = {
+				limit = {
+					has_idea = RTG_Fengxu
+				}
+				add_to_variable = { RTG_erosion_system = -3 }
+				clamp_variable = {
+					var = RTG_erosion_system
+					min = 0
+					max = 100
+				}
+				custom_effect_tooltip = RTG_erosion_system_2_tt_four
+			}
+			if = {
+				limit = {
+					has_country_flag = RTG_erosion_system_3_flag
+				}
+				add_to_variable = { RTG_erosion_system = -4 }
+				clamp_variable = {
+					var = RTG_erosion_system
+					min = 0
+					max = 100
+				}
+				custom_effect_tooltip = RTG_appease_leylines_tt_five
+			}
+		}
+	}
+	#仙家术法
+    RTG_erosion_system_2 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {	
+			has_country_flag = erosion_system_start
+		}
+		available = {
+			has_idea = RTG_Fengxu
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 35
+		complete_effect = {
+			set_country_flag = RTG_erosion_system_2_flag_two
+			custom_effect_tooltip = RTG_erosion_system_3_tt
+		}
+		remove_effect = {
+			add_to_variable = { RTG_erosion_system = -3 }
+			add_to_variable = { RTG_erosion_system_week = -1 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			}
+			clamp_variable = {
+				var = RTG_erosion_system_week
+				min = 0
+				max = 100
+			}
+			custom_effect_tooltip = RTG_erosion_system_2_tt_three
+		}
+	}
+	#停止巨渊中心的建筑与开发项目
+	RTG_erosion_system_3 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {	
+			has_country_flag = erosion_system_start
+		}
+		available = {
+			
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RTG_erosion_system_3_flag
+			custom_effect_tooltip = RTG_erosion_system_3_tt
+			add_to_variable = { RTG_erosion_system_week = -1 }
+			clamp_variable = {
+				var = RTG_erosion_system_week
+				min = 0
+				max = 100
+			}
+			add_stability = -0.10
+			add_war_support = -0.15
+			155 = {
+				add_dynamic_modifier = {
+					modifier = RTG_juyuanzhongxinwufajianzao
+				}
+			}
+			156 = {
+				add_dynamic_modifier = {
+					modifier = RTG_juyuanzhongxinwufajianzao
+				}
+			}
+		}
+	}
+	#阻塞地脉
+	RTG_erosion_system_4 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {	
+			has_country_flag = erosion_system_start
+		}
+		available = {
+            custom_trigger_tooltip = {
+				tooltip = RTG_erosion_system_4_tt
+				check_variable = { RTG_erosion_system > 49 }
+			}
+		}
+		cost = 70
+		days_remove = 60
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RTG_erosion_system_4_flag
+			custom_effect_tooltip = RTG_erosion_system_3_tt
+			add_to_variable = { RTG_erosion_system_week = -1 }
+			clamp_variable = {
+				var = RTG_erosion_system_week
+				min = 0
+				max = 100
+			}
+		}
+	}
+	#饮鸩止渴
+	RTG_erosion_system_5 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {	
+			has_country_flag = erosion_system_start
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RTG_erosion_system_5_tt
+				check_variable = { RTG_erosion_system > 79 }
+			}
+		}
+		cost = 70
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = RTG_erosion_system_5_tt2
+			custom_effect_tooltip = RTG_erosion_system_5_tt3
+            add_to_variable = { RTG_erosion_system = -30 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			}
+		}
+	}
+	#终局
+	RTG_erosion_system_6 = {
+		fire_only_once = no
+		visible = {
+			has_country_flag = {
+				flag = erosion_system_start
+				days > 180
+			}
+		}
+		activation = {
+			has_country_flag = {
+				flag = erosion_system_start
+				days > 180
+			}
+		}
+		days_mission_timeout = 180
+		is_good = yes
+		cost = 0
+		available = {
+			always = no
+		}
+		cancel_trigger = {
+			
+		}
+		timeout_effect = {
+			custom_effect_tooltip = RTG_erosion_system_6_tt
+			if = {
+				limit = {
+					check_variable = { RTG_erosion_system < 20 }
+				}
+				country_event = {
+					days = 1
+					id = RTG.14
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = { RTG_erosion_system > 80 }
+				}
+				country_event = {
+					days = 1
+					id = RTG.15
+				}
+			}
+			else = {
+				country_event = {
+					days = 1
+					id = RTG.13
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	} 
 }

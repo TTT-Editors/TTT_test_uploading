@@ -33,25 +33,29 @@ country_event = {
 		ZDG = { exists = yes }
 	}
 	
+	immediate = {
+		hidden_effect = {
+			ROOT = {
+				ZDG = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+					activate_mission = ZDG_offensive_in_one_year
+				}
+				activate_mission = anti_ZDG_offensive_in_one_year
+			}
+			XOG = { add_ideas = XOG_BUFF_WAR }
+			XRG = { add_ideas = XOG_BUFF_WAR }
+		}
+	}
+	
 	option = {
 		name = liyue_civil_war.5.a
 		if = {
 			limit = { NOT = { has_global_flag = zdg_has_come } }
 			set_global_flag = zdg_has_come
 		}
-		ROOT = {
-			ZDG = {
-				declare_war_on = {
-					target = PREV
-					type = annex_everything
-				}
-				activate_mission = ZDG_offensive_in_one_year
-			}
-			activate_mission = anti_ZDG_offensive_in_one_year
-		}
-		#hidden_effect = {
-		#	add_ideas = beat_the_ZDG_invaders
-		#}
 	}
 }
 

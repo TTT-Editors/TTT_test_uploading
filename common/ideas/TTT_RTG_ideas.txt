@@ -50,21 +50,168 @@ ideas = {
 				always = yes
 			}
             
-			available = { 
-			or = {
-			NOT = { is_subject_of = ZDG }
-			check_variable = { RTG_erosion_system = 25 }
-			    }
+			available = { 		
+			NOT = { is_subject_of = ZDG }	
+			}
+			cancel = {
+				AND = {
+					check_variable = {
+					var = RTG_erosion_system
+					value = 25
+					compare = greater_than_or_equals
+					}
+					check_variable = {
+					var = RTG_erosion_system
+					value = 50
+					compare = less_than
+					}
+				}
+			}
+			on_remove = {
+			   country_event = { days = 1  id = RTG.27 }
 			}
 			removal_cost = -1
 			modifier = {
-				production_speed_buildings_factor = -0.2
-				production_factory_max_efficiency_factor = -0.2
-				industrial_capacity_factory = -0.2
-				industrial_capacity_dockyard = -0.2
+				production_speed_buildings_factor = -0.1
+				production_factory_max_efficiency_factor = -0.1
+				industrial_capacity_factory = -0.1
+				local_resources_factor = -0.2
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				political_power_factor = -0.1
 			}
 		}
-		
+		#巨渊之怒
+		the_earth_roars_2 = {
+			picture = RTG_the_earth_roars
+			name = the_earth_roars
+			desc = the_earth_roars_desc
+			allowed_civil_war = {
+				always = yes
+			}  
+			available = { 	
+			NOT = { is_subject_of = ZDG }
+			}
+            cancel = {
+				check_variable = {
+					var = RTG_erosion_system
+					value = 50
+					compare = greater_than_or_equals
+					}
+					check_variable = {
+					var = RTG_erosion_system
+					value = 75
+					compare = less_than
+					}
+			}
+			on_remove = {
+			   country_event = { days = 1  id = RTG.29 }
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.15
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_factory = -0.15
+				local_resources_factor = -0.4
+				stability_factor = -0.15
+				war_support_factor = -0.15
+				political_power_factor = -0.15
+			}
+		}
+		#巨渊之怒
+		the_earth_roars_3 = {
+			picture = RTG_the_earth_roars
+			name = the_earth_roars
+			desc = the_earth_roars_desc
+			allowed_civil_war = {
+				always = yes
+			}
+			available = { 		
+			NOT = { is_subject_of = ZDG }			  
+			}
+			cancel = {
+				check_variable = {
+					var = RTG_erosion_system
+					value = 75
+					compare = greater_than_or_equals
+					}
+					check_variable = {
+					var = RTG_erosion_system
+					value = 100
+					compare = less_than
+				}
+			}
+			on_remove = {
+			   country_event = { days = 1  id = RTG.30 }
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.20
+				production_factory_max_efficiency_factor = -0.20
+				industrial_capacity_factory = -0.20
+				local_resources_factor = -0.8
+				stability_factor = -0.20
+				war_support_factor = -0.20
+				political_power_factor = -0.20
+			}
+		}
+		#巨渊之怒
+		the_earth_roars_4 = {
+			picture = RTG_the_earth_roars
+			name = the_earth_roars
+			desc = the_earth_roars_desc
+			allowed_civil_war = {
+				always = yes
+			}
+			available = { 		
+			NOT = { is_subject_of = ZDG }	
+			}
+			cancel = {
+				check_variable = {
+				var = RTG_erosion_system
+				value = 100
+				compare = greater_than_or_equals
+				}
+			}
+			on_remove = {
+			   country_event = { days = 1  id = RTG.31 }
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.25
+				production_factory_max_efficiency_factor = -0.25
+				industrial_capacity_factory = -0.25
+				local_resources_factor = -1
+				stability_factor = -0.25
+				war_support_factor = -0.25
+				political_power_factor = -0.25
+			}
+		}
+		#巨渊之怒
+		the_earth_roars_5 = {
+			picture = RTG_the_earth_roars
+			name = the_earth_roars
+			desc = the_earth_roars_desc
+			allowed_civil_war = {
+				always = yes
+			}
+			available = { 		
+			NOT = { is_subject_of = ZDG }	
+			}
+			on_remove = {
+			   country_event = { days = 1  id = RTG.32 }
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.30
+				production_factory_max_efficiency_factor = -0.30
+				industrial_capacity_factory = -0.30
+				local_resources_factor = -1
+				stability_factor = -0.30
+				war_support_factor = -0.30
+				political_power_factor = -0.30
+			}
+		}
 		temporary_shutdown = {
 			picture = FRA_factory_strikes
 			allowed = {
@@ -1504,7 +1651,7 @@ ideas = {
 		RTG_jiagu_fulongshu= {
 			picture = RTG_the_earth_roars
 			allowed = {
-				always = no
+				always = yes
 			}
 
 			allowed_civil_war = {

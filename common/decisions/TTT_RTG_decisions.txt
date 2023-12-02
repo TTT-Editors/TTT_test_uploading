@@ -191,63 +191,6 @@ RTG_special_categories = {
 	
 }
 
-RTG_yuan_kun_she = {
-    RTG_official_media = {
-		
-		icon = decision_RTG_Retuo_integrate
-		
-		visible = { NOT = { has_idea = juyuan_daily } }
-
-		is_good = yes
-		fire_only_once = yes
-		days_remove = 30
-
-		cost = 150
-
-		modifier = { }
-
-		ai_will_do = {
-			base = 10
-			
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_INSANE
-					}
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_COLLAPSE
-					}
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = RTG_ai_behavior
-					option = RTG_COMMON
-				}
-			}
-		}
-		
-		remove_effect = { 
-		    add_ideas = juyuan_daily
-            if = {
-			limit = {
-			    has_government = authoritarianism
-			}
-			hidden_effect = {
-			    country_event = {
-				    id = ruotuo.12
-					days = 20
-				    }
-			    }
-		    }
-		}
-	}
-}
-
 RTG_declare_war = {
     RTG_Declare_war_on_zdgqinluejun = {
 	    icon = decision_RTG_Declare_war_on
@@ -1494,7 +1437,6 @@ RTG_mosun = {
 			}
 			custom_effect_tooltip = RTG_erosion_system_2_tt_three
 			custom_effect_tooltip = RTG_erosion_system_2_tt_four
-			custom_effect_tooltip = RTG_appease_leylines_tt_five
 			set_country_flag = { flag = RTG_appease_leylines_flag value = 1 days = 14 }
 			if = {
 				limit = {
@@ -1506,7 +1448,6 @@ RTG_mosun = {
 					min = 0
 					max = 100
 				}
-				custom_effect_tooltip = RTG_erosion_system_2_tt_four
 			}
 		}
 	}
@@ -1691,4 +1632,185 @@ RTG_mosun = {
 			base = 100
 		}
 	} 
+}
+
+RTG_huanghunxianli_jizhi = {
+	X_RTG_propaganda_3 = { # 建立渊坤社
+		priority = 2
+		ai_will_do = { factor = 100 }
+		icon = eng_propaganda_campaigns
+		allowed = { tag = RTG }
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+		}
+		days_remove = 60
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			set_variable = { X_RTG_new_propaganda_campaign =3 }
+			X_RTG_pick_propaganda_campaign_slot_effect = yes		
+		}
+		remove_effect = {
+			add_ideas = juyuan_daily
+			set_variable = { X_RTG_propaganda_campaign_to_remove = 3 }
+			set_variable = { RTG_xuanchuanhaibaolanwei = 1 }
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+			set_country_flag = RTG_unlock_second_stage_poster
+    		custom_effect_tooltip = RTG_unlock_second_stage_poster_tt	
+		}
+	}
+	X_RTG_propaganda_4 = { # 你我都是璃月人
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = { factor = 100 }
+		allowed = { tag = RTG }
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 140
+		cost = 20
+		modifier = {
+			stability_weekly = 0.005
+		}
+		complete_effect = {
+			set_variable = { X_RTG_new_propaganda_campaign = 4 }
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = { X_RTG_propaganda_campaign_to_remove = 4 }
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_5 = { # 坚决保卫契约，时刻准备介入
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = { factor = 100 }
+		allowed = { tag = RTG }
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+			has_war_support < 0.51
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 70
+		cost = 20
+		modifier = {
+			stability_weekly = -0.005
+			war_support_weekly = 0.015
+		}
+		complete_effect = {
+			set_variable = { X_RTG_new_propaganda_campaign = 5 }
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = { X_RTG_propaganda_campaign_to_remove = 5 }
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_6 = { #岩壁将会隔开战火
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = { factor = 100 }
+		allowed = { tag = RTG }
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+			has_war_support > 0.5
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 140
+		cost = 10
+		modifier = {
+			army_core_defence_factor = 0.10
+			production_speed_bunker_factor = 0.20
+		}
+		complete_effect = {
+			set_variable = { X_RTG_new_propaganda_campaign = 6 }
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = { X_RTG_propaganda_campaign_to_remove = 6 }
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_7 = { # 为和平而生产
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = { factor = 100 }
+		allowed = { tag = RTG }
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes	
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+			has_war = no
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 140
+		cost = 20
+		modifier = {
+			production_factory_start_efficiency_factor = 0.05
+			production_factory_efficiency_gain_factor = 0.05 
+		}
+		complete_effect = {
+			set_variable = { X_RTG_new_propaganda_campaign = 7 }
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = { X_RTG_propaganda_campaign_to_remove = 7 }
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_8 = { # 资源才是巨渊之本
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = { factor = 100 }
+		allowed = { tag = RTG }
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+		}
+		visible = {
+			
+		}
+		days_remove = 140
+		cost = 20
+		modifier = {
+			local_resources_factor = 0.2
+		}
+		complete_effect = {
+			set_variable = { X_RTG_new_propaganda_campaign = 8 }
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = { X_RTG_propaganda_campaign_to_remove = 8 }
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
 }

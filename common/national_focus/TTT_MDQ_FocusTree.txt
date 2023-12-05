@@ -63,7 +63,7 @@ focus = {
         prerequisite = {
             focus =MDQ_White_sun_offensive
         }
-        cost = 7.0
+        cost = 14.0
         available = { 
             
         }
@@ -71,7 +71,7 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-            country_event = { id = MDQ_event.101 days = 1 }    
+            country_event = { id = MDQ_event.3 days = 1 }    
             custom_effect_tooltip = MDQ_0_01
         }
     }
@@ -159,7 +159,7 @@ focus = {
         }
         completion_reward = {
             add_war_support = 0.05
-            country_event = { id = MDQ_event.102 days = 1 } 
+            country_event = { id = MDQ_event.5 days = 1 } 
         }
     }
 
@@ -180,7 +180,13 @@ focus = {
                 factor = 1.0
         }
         completion_reward = {
-
+            custom_effect_tooltip = MDQ_0_08
+            hidden_effect = {
+                swap_ideas = {
+                    add_idea = MDQ_idea_0_6
+                    remove_idea = MDQ_The_Legend_of_the_Three_Musketeers
+                }  
+              }  
         }
     }
 focus = {
@@ -307,7 +313,7 @@ focus = {
                 amount = 2000
                 producer = MDQ
             }    
-          country_event = { id = MDQ_event.103 }
+          country_event = { id = MDQ_event.6 }
         }
     }
 focus = {
@@ -324,7 +330,8 @@ focus = {
         }     
         completion_reward = {
             add_offsite_building = { type = industrial_complex level = 1 }
-            add_offsite_building = { type = arms_factory level = 1 }      
+            add_offsite_building = { type = arms_factory level = 1 }    
+            country_event = { id = MDQ_event.8 }  
         }
     }
 focus = {
@@ -363,6 +370,12 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
+            add_command_power = -20 #指挥点
+            add_manpower = -6251 
+            QQR = {
+                add_stability = -0.1
+	            add_war_support = -0.1
+            }
                         
         }
     }
@@ -395,7 +408,9 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
-                        
+               MOT = {
+                country_event = { id = MDQ_event.9 days = 1 } 
+               }         
         }
     }
 focus = {
@@ -556,9 +571,20 @@ focus = {
         ai_will_do = {
                 factor = 10.0
         }     
-        completion_reward = {
-                        
-        }
+        completion_reward = { #添加地区民族精神并限定国家
+            283 = {
+                add_dynamic_modifier = { modifier = MDQ_dynamic_modifiers_0_1 }
+                scope = MDQ
+                }
+            400 = {
+                add_dynamic_modifier = { modifier = MDQ_dynamic_modifiers_0_1 }
+                scope = MDQ
+                }
+            402 = {
+                add_dynamic_modifier = { modifier = MDQ_dynamic_modifiers_0_1 }
+                scope = MDQ
+                }
+            }
     }
 focus = {
     id = MDQ_01_18 #申请赦免
@@ -573,7 +599,8 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
-                        
+            #unlock_decision_category_tooltip = MDQ_decisions_02_01  仅仅是提示一下解锁什么决议  
+            custom_effect_tooltip = MDQ_0_07
         }
     }
 focus = {

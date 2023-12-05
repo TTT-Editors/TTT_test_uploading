@@ -23,17 +23,6 @@ country_event = {
 		name = MDQ_event.2.a
 	}
 }
-######事件名：达达乌帕谷蒙德胜利
-news_event = {
-	id = MDQ_event.3
-	immediate = {}
-	title = MDQ_event.3.t
-	desc = MDQ_event.3.d
-	is_triggered_only =yes
-	option = {
-		name = MDQ_event.3.a
-	}
-}
 ###事件名：达达乌帕谷军区与三剑客
 country_event = {
 	id = MDQ_event.4
@@ -49,66 +38,216 @@ country_event = {
 }
 ###事件名：艾吉迪托的演讲
 country_event = {
-	id = MDQ_event.101
+	id = MDQ_event.3
 	immediate = {}
 	
-	title = MDQ_event.101.t
-	desc = MDQ_event.101.d
+	title = MDQ_event.3.t
+	desc = MDQ_event.3.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
-		name = MDQ_event.101.a
+		name = MDQ_event.3.a
 		set_country_flag = MDQ_flag_01_yes
 		complete_national_focus = MDQ_01_13
 	}
 	option = {
-		name = MDQ_event.101.b
+		name = MDQ_event.3.b
 		set_country_flag = MDQ_flag_01_no
 		complete_national_focus = MDQ_The_wind_is_calling
 	}
 }
 ###事件名：达达乌帕谷军区的三大部落
 country_event = {
-	id = MDQ_event.102
+	id = MDQ_event.5
 	immediate = {}
 	
-	title = MDQ_event.102.t
-	desc = MDQ_event.102.d
+	title = MDQ_event.5.t
+	desc = MDQ_event.5.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
-		name = MDQ_event.102.a
+		name = MDQ_event.5.a
 	}
 }
 ###事件名：老兵的决意
 country_event = {
-	id = MDQ_event.103
+	id = MDQ_event.6
 	immediate = {}
 	
-	title = MDQ_event.103.t
-	desc = MDQ_event.103.d
+	title = MDQ_event.6.t
+	desc = MDQ_event.6.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
-		name = MDQ_event.103.a
+		name = MDQ_event.6.a
 		country_event = {
 			days = 14
-			id = MDQ_event.104
+			id = MDQ_event.7
 		}
 		add_war_support = 0.01
 	}
 }
 ###事件名：前线的馈赠
 country_event = {
-	id = MDQ_event.104
+	id = MDQ_event.7
 	immediate = {}
 	
-	title = MDQ_event.104.t
-	desc = MDQ_event.104.d
+	title = MDQ_event.7.t
+	desc = MDQ_event.7.d
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
-		name = MDQ_event.104.a
+		name = MDQ_event.7.a
 		add_war_support = 0.01
 	}
 }
+###事件名：工坊一瞥
+country_event = {
+	id = MDQ_event.8
+	immediate = {}
+	
+	title = MDQ_event.8.t
+	desc = MDQ_event.8.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = MDQ_event.8.a
+		add_stability = -0.01
+	}
+}
+###事件名：诺——艾——尔——
+country_event = {
+	id = MDQ_event.9
+	immediate = {}
+	title = MDQ_event.9.t
+	desc = MDQ_event.9.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.9.a
+		MDQ = {
+			country_event = {
+				days = 7
+			    id = MDQ_event.10
+		    }
+	    }
+		hidden_effect = {
+			MDQ_Noelle = { #将诺艾尔移动到MDQ，需要触发该效果的势力是拥有该角色的势力（移动顾问，移动角色）
+			set_nationality = { 
+				target_country = MDQ 
+			} 
+		}
+		}
+	}
+}
+#未授勋的花
+country_event = {
+	id = MDQ_event.10
+	immediate = {}
+	title = MDQ_event.10.t
+	desc = MDQ_event.10.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.10.a
+		country_event = {
+			days = 7
+			id = MDQ_event.11
+		}
+	}
+}
+#诺艾尔的学习笔记01
+country_event = {
+	id = MDQ_event.11
+	immediate = {}
+	title = MDQ_event.11.t
+	desc = MDQ_event.11.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.11.a
+		country_event = {
+			days = 35
+			id = MDQ_event.12
+		}
+		MDQ_Noelle = { #增加特质
+			 add_unit_leader_trait = ambusher
+	    }
+	}
+	option = {
+		name = MDQ_event.11.b
+		country_event = {
+			days = 35
+			id = MDQ_event.12
+		}
+		MDQ_Noelle = { #增加特质
+			 add_unit_leader_trait = skilled_staffer
+	    }
+	}
+}
+#诺艾尔的发言
+country_event = {
+	id = MDQ_event.12
+	immediate = {}
+	title = MDQ_event.12.t
+	desc = MDQ_event.12.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.12.a
+		country_event = {
+			days = 70
+		    id = MDQ_event.13
+		}
+	}
+	option = {
+		name = MDQ_event.12.b
+		country_event = {
+			days = 70
+			id = MDQ_event.13
+		}
+	}
+	option = {
+		name = MDQ_event.12.c
+		country_event = {
+			days = 70
+			id = MDQ_event.13
+		}
+	}
+}
+#诺艾尔的学习笔记02
+country_event = {
+	id = MDQ_event.13
+	immediate = {}
+	title = MDQ_event.13.t
+	desc = MDQ_event.13.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.13.a
+		country_event = {
+			days = 140
+		    id = MDQ_event.14
+		}
+	}
+	option = {
+		name = MDQ_event.13.b
+		country_event = {
+			days = 140
+			id = MDQ_event.14
+		}
+	}
+}
+#诺艾尔的学习笔记03
+country_event = {
+	id = MDQ_event.14
+	immediate = {}
+	title = MDQ_event.14.t
+	desc = MDQ_event.14.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.14.a
+	}
+}
+

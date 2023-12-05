@@ -10,52 +10,68 @@ MDQ_decisions_01 = {
 		    add_stability = -0.2
 	        add_war_support = -0.2
 			news_event = MDQ_event.1
-		add_ideas = closed_economy #封闭经济
+			add_ideas = closed_economy #封闭经济
 			add_ideas = extensive_conscription #广泛征兵
 			add_ideas = war_economy #战时经济
 			hidden_effect = {
-			MOT = {  #从蒙德城独立
-				set_autonomy = {
-					target = MDQ
-					autonomy_state = autonomy_free
+				if = {
+					limit = {
+						NOT = { has_completed_focus = MDQ_01_13 }
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								state = 14
+								state = 285
+								state = 286								
+							}
+						}
+						LTM = { transfer_state = PREV }
+					}
+					every_owned_state = { add_core_of = LTM }
 				}
-			}
-			leave_faction = yes #退出阵营，国家tag 
-			remove_idea = {
-				MDQ_Black_sun_crisis
-			}
-			QQR = {
-				transfer_state = 280
-			}
-			QQR = {
-				transfer_state = 398
-			}
-			QQR = {
-				transfer_state = 281
-			}
-			QQR = {
-				transfer_state = 400
-			}
-			QQR = {
-				transfer_state = 402
-			}
-			QQR = {
-				transfer_state = 283
-			}
-			QQR = {
-				transfer_state = 284
-			}
-			QQR = {
-				load_oob = "QQR"
-			}
-			QQR = {
-				declare_war_on = {
-					target = MDQ
-					type = annex_everything
+				MOT = {  #从蒙德城独立
+					set_autonomy = {
+						target = MDQ
+						autonomy_state = autonomy_free
+					}
 				}
+				leave_faction = yes #退出阵营，国家tag 
+				remove_ideas = { MDQ_Black_sun_crisis }
+				every_owned_state = {
+					add_core_of = QQR
+				}
+				every_owned_state = {
+					limit = { is_demilitarized_zone = yes }
+					QQR = { transfer_state = PREV }	
+					set_demilitarized_zone = no
+				}
+				QQR = {
+					load_oob = "QQR"
+				}
+				QQR = {
+					declare_war_on = {
+						target = MDQ
+						type = annex_everything
+					}
+				}
+				if = {
+					LTM = { exists = yes }
+					LTM = {
+						declare_war_on = {
+							target = MDQ
+							type = annex_everything
+						}
+					}
+					LTM = {
+						declare_war_on = {
+							target = QQR
+							type = annex_everything
+						}
+					}
+				}
+				load_focus_tree = TTT_MDQ_focustree_02 #国策树ID 
 			}
-			load_focus_tree = TTT_MDQ_focustree_02 #国策树ID 
-		}
 		}
 		complete_effect = { #成功效果
 			

@@ -7,29 +7,29 @@ MDQ_decisions_01 = {
 		fire_only_once = yes  #是否为一次性
 		days_mission_timeout = 240 #时间限制
 		timeout_effect = {  #失败效果
-		    add_stability = -0.2
-	        add_war_support = -0.2
-			news_event = MDQ_event.1
+			add_stability = -0.2
+			add_war_support = -0.2
+			news_event = { id = MDQ_event.1 }
 			add_ideas = closed_economy #封闭经济
 			add_ideas = extensive_conscription #广泛征兵
 			add_ideas = war_economy #战时经济
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = { has_completed_focus = MDQ_01_13 }
-					}
-					every_owned_state = {
-						limit = {
-							OR = {
-								state = 14
-								state = 285
-								state = 286								
-							}
-						}
-						LTM = { transfer_state = PREV }
-					}
-					every_owned_state = { add_core_of = LTM }
+			if = {
+				limit = {
+					NOT = { has_completed_focus = MDQ_01_13 }
 				}
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 14
+							state = 285
+							state = 286								
+						}
+					}
+					LTM = { transfer_state = PREV }
+				}
+				every_owned_state = { add_core_of = LTM }
+			}
+			hidden_effect = {
 				MOT = {  #从蒙德城独立
 					set_autonomy = {
 						target = MDQ
@@ -56,7 +56,7 @@ MDQ_decisions_01 = {
 					}
 				}
 				if = {
-					LTM = { exists = yes }
+					limit = { LTM = { exists = yes } }
 					LTM = {
 						declare_war_on = {
 							target = MDQ
@@ -72,9 +72,265 @@ MDQ_decisions_01 = {
 				}
 				load_focus_tree = TTT_MDQ_focustree_02 #国策树ID 
 			}
+			if = {
+				limit = { LTM = { exists = no } }
+				activate_mission = MDQ_240_days_to_hell_without_LTM
+			}
+			else = {
+				activate_mission = MDQ_240_days_to_hell_with_LTM
+			}
 		}
-		complete_effect = { #成功效果
-			
+	}
+	
+	MDQ_240_days_to_hell_without_LTM = {
+		icon = infiltrate_state
+
+		allowed = { always = no }
+
+		available = {
+			OR = {
+				AND = {
+					QQR = {
+						controls_state = 13
+						controls_state = 399
+					}
+				}
+				AND = {
+					MDQ = {
+						controls_state = 280
+						controls_state = 281
+					}
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 280
+					state = 281
+				}
+			}
+		}
+
+		fire_only_once = yes
+		days_mission_timeout = 240
+
+		ai_will_do = { factor = 100 }
+		cancel_trigger = {
+			OR = {
+				MOT = { has_war_with = QQR }
+				MDQ = { NOT = { has_war_with = QQR } }
+			}
+		}
+
+		complete_effect = {		
+			if = {
+				limit = {
+					MDQ = {
+						controls_state = 280
+						controls_state = 281
+					}
+				}
+				log = "[GetDateText]: [Root.GetName]: Decision MDQ has won the ddup war"
+				
+				#show peace
+				MDQ = { save_global_event_target_as = winning_country }
+				QQR = { save_global_event_target_as = losing_country }
+				MDQ = {
+					annex_country = {
+						target = QQR
+						transfer_troops = no
+					}
+				}
+				##################################################
+				#	News Event for MDQ win
+				##################################################
+			}
+			if = {
+				limit = {
+					QQR = {
+						controls_state = 13
+						controls_state = 399
+					}
+				}
+				log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
+				
+				#show peace
+				QQR = { save_global_event_target_as = winning_country }
+				MDQ = { save_global_event_target_as = losing_country }
+				MDQ = {
+					white_peace = QQR
+					set_country_flag = MDQ_has_lost_ddup_war
+					every_owned_state = {
+						limit = {
+							NOT = {
+								OR = {
+									state = 13
+									state = 399
+								}
+							}
+						}
+						QQR = { transfer_state = PREV }	
+					}
+				}
+				##################################################
+				#	News Event for MDQ lost
+				##################################################
+			}
+			set_global_flag = TTT_warpeace_show_gui
+			add_to_variable = { global.TTT_warpeace_dirty = 1 }
+			recalculate_MDQ_core = yes
+		}
+		timeout_effect = {
+			#Stalemate
+			log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
+				
+			#show peace
+			set_global_flag = TTT_warpeace_show_gui
+			QQR = { save_global_event_target_as = winning_country }
+			MDQ = { save_global_event_target_as = losing_country }
+			add_to_variable = { global.TTT_warpeace_dirty = 1 }
+			MDQ = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = QQR
+					}
+					QQR = { transfer_state = PREV }	
+				}
+			}
+			QQR = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = MDQ
+					}
+					MDQ = { transfer_state = PREV }	
+				}
+			}
+			MDQ = {
+				transfer_state = 13 
+				transfer_state = 399 
+			}
+			QQR = {
+				transfer_state = 280 
+				transfer_state = 281 
+			}
+			MDQ = { white_peace = QQR }
+			##################################################
+			#	News Event for stalemate
+			##################################################
+		}
+	}
+	
+	MDQ_240_days_to_hell_with_LTM = {
+		icon = infiltrate_state
+
+		allowed = { always = no }
+
+		available = {
+			MDQ = {
+				NOT = { controls_state = 13 }
+				NOT = { controls_state = 399 }
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 13
+					state = 399
+				}
+			}
+		}
+
+		fire_only_once = yes
+		days_mission_timeout = 240
+		is_good = no
+
+		ai_will_do = { factor = 100 }
+		cancel_trigger = {
+			OR = {
+				MOT = { has_war_with = QQR }
+				MDQ = { NOT = { has_war_with = QQR } }
+			}
+		}
+
+		complete_effect = {	
+			log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
+				
+			#show peace
+			set_global_flag = TTT_warpeace_show_gui
+			QQR = { save_global_event_target_as = winning_country }
+			MDQ = { save_global_event_target_as = losing_country }
+			add_to_variable = { global.TTT_warpeace_dirty = 1 }
+			MDQ = {
+				white_peace = QQR
+				white_peace = LTM
+				set_country_flag = MDQ_has_lost_ddup_war
+				every_owned_state = {
+					limit = {
+						NOT = {
+							OR = {
+								state = 13
+								state = 399
+							}
+						}
+					}
+					QQR = { transfer_state = PREV }	
+				}
+			}
+			##################################################
+			#	News Event for MDQ lost
+			##################################################
+			recalculate_MDQ_core = yes
+		}
+		timeout_effect = {
+			#Stalemate
+			log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
+				
+			#show peace
+			set_global_flag = TTT_warpeace_show_gui
+			QQR = { save_global_event_target_as = winning_country }
+			MDQ = { save_global_event_target_as = losing_country }
+			add_to_variable = { global.TTT_warpeace_dirty = 1 }
+			MDQ = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = QQR
+					}
+					QQR = { transfer_state = PREV }	
+				}
+			}
+			QQR = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = MDQ
+					}
+					MDQ = { transfer_state = PREV }	
+				}
+			}
+			MDQ = {
+				transfer_state = 13 
+				transfer_state = 399 
+			}
+			QQR = {
+				transfer_state = 280 
+				transfer_state = 281 
+			}
+			MDQ = { white_peace = QQR }
+			MDQ = {
+				annex_country = {
+					target = LTM
+					transfer_troops = no
+				}
+			}
+			every_state = {
+				limit = { is_core_of = LTM }
+				remove_core_of = LTM
+			}
+			##################################################
+			#	News Event for stalemate
+			##################################################
 		}
 	}
 }

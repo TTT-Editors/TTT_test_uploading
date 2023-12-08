@@ -251,3 +251,54 @@ country_event = {
 	}
 }
 
+#事件：道路断绝
+country_event = {
+	id = MDQ_event.15
+	immediate = {
+		hidden_effect = {
+			MDQ = { every_owned_state = { add_core_of = LTM } }
+			MDQ = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 14
+							state = 285
+							state = 286								
+						}
+					}
+					LTM = { transfer_state = PREV }
+				}
+				transfer_units_fraction = {
+					target = LTM
+					size = 0.6
+					keep_unit_leaders = {
+					}
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				}
+			}
+			LTM = {
+				declare_war_on = {
+					target = MDQ
+					type = annex_everything
+				}
+			}
+			LTM = {
+				declare_war_on = {
+					target = QQR
+					type = annex_everything
+				}
+			}
+		}
+	}
+	title = MDQ_event.15.t
+	desc = MDQ_event.15.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.15.a
+		set_country_flag = MDQ_event_15_happened
+	}
+}
+

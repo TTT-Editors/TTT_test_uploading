@@ -2069,3 +2069,69 @@ RTG_huanghunxianli_jizhi = {
 		}
 	}
 }
+#难民规模机制
+RTG_nanming_jizhi_jueyi = {
+	RTG_jiangdi_nanminguimo = {
+		#降低难民规模
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RTG_jiangdi_nanminguimo_tt
+				or = {
+                    check_variable = { RTG_chushixian_xianzhi = 0 }
+					check_variable = { RTG_juanshuxian_xianzhi = 1 }
+				}
+			}
+		}
+		visible = {
+			has_country_flag = erosion_system_start
+		    NOT = {
+		    has_government = hive_mind
+		    }
+		}
+		days_remove = 30
+		cost = 0
+		modifier = {
+			
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo
+				}
+				swap_ideas = {
+					remove_idea = RTG_nanmin_guimo
+					add_idea = RTG_nanmin_guimo_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_2
+				}
+				swap_ideas = {
+					remove_idea = RTG_nanmin_guimo_2
+					add_idea = RTG_nanmin_guimo_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_3
+				}
+				swap_ideas = {
+					remove_idea = RTG_nanmin_guimo_3
+					add_idea = RTG_nanmin_guimo_4
+				}
+			}
+		}
+	}
+}

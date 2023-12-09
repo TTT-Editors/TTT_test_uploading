@@ -1871,6 +1871,9 @@ RTG_huanghunxianli_jizhi = {
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 			set_country_flag = RTG_unlock_second_stage_poster
 			custom_effect_tooltip = RTG_unlock_second_stage_poster_tt
+			hidden_effect = {
+				country_event = { days = 7  id = RTG.34 }
+			}
 		}
 	}
 	X_RTG_propaganda_4 = {
@@ -2107,19 +2110,10 @@ RTG_nanming_jizhi_jueyi = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_idea = RTG_nanmin_guimo
+					has_idea = RTG_nanmin_guimo_4
 				}
 				swap_ideas = {
-					remove_idea = RTG_nanmin_guimo
-					add_idea = RTG_nanmin_guimo_2
-				}
-			}
-			else_if = {
-				limit = {
-					has_idea = RTG_nanmin_guimo_2
-				}
-				swap_ideas = {
-					remove_idea = RTG_nanmin_guimo_2
+					remove_idea = RTG_nanmin_guimo_4
 					add_idea = RTG_nanmin_guimo_3
 				}
 			}
@@ -2129,8 +2123,23 @@ RTG_nanming_jizhi_jueyi = {
 				}
 				swap_ideas = {
 					remove_idea = RTG_nanmin_guimo_3
-					add_idea = RTG_nanmin_guimo_4
+					add_idea = RTG_nanmin_guimo_2
 				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_2
+				}
+				swap_ideas = {
+					remove_idea = RTG_nanmin_guimo_2
+					add_idea = RTG_nanmin_guimo
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo
+				}		
+				remove_ideas = RTG_nanmin_guimo			
 			}
 		}
 	}

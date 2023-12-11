@@ -441,7 +441,7 @@ on_actions = {
 						}
 					}
 				}
-				154 = {
+				capital_scope = {
 					create_unit = {
 						division = "division_template = \"元素抵抗军\" start_experience_factor = 0.2"
 						count = 2
@@ -489,4 +489,47 @@ on_actions = {
 			}
 		}
 	}
+}
+
+on_actions = {
+    on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+	                ROOT = { tag = XRG }
+					FROM = { tag = ZDG }
+				}
+				ZDG = {
+					country_event = { days = 14  id = ZDG_events.39 }
+				}
+			}
+	    }
+    }
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = ZDG }
+					has_global_flag = liyue_unified
+				}
+				LYU = {
+					country_event = { days = 35  id = ZDG_events.41 }
+				}
+			}
+	    }
+    }
+	on_war = {
+		effect = {
+			if = {
+				limit = {
+					ZDG = {
+						casualties > 300000
+					}
+				}
+				ZDG = {
+					country_event = { days = 31  id = ZDG_events.43 }
+				}
+			}
+	    }
+    }
 }

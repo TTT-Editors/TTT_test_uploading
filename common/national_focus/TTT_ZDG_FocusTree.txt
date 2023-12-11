@@ -397,7 +397,7 @@ focus_tree = {
 				}
 		    }
 		}
-			222 = {
+			207 = {
 				create_unit = {
 					division = "division_template = \"雪之协防军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = ZDG
@@ -644,7 +644,7 @@ focus_tree = {
 		completion_reward = {
             add_stability = 0.10
 	        add_war_support = 0.10
-			222 = {
+			207 = {
 				add_resource = {
 					type = rubber
 					amount = 5
@@ -869,7 +869,7 @@ focus_tree = {
 			}
 		}
 	}
-		222 = {
+		207 = {
 		create_unit = {
 			division = "division_template = \"愚人众先遣军\" start_experience_factor = 0.4"
 			owner = ZDG
@@ -960,6 +960,10 @@ focus_tree = {
 			}
 			unlock_decision_category_tooltip = ZDG_decision_category5
 			set_country_flag = ZDG_xuebeng_flag
+			ZDG_baoshoupai_buffjisuan = yes
+			ZDG_dikangzhe_buffjisuan = yes
+			ZDG_gongzhizhe_buffjisuan = yes
+			ZDG_toujizhe_buffjisuan = yes
 	    }
 	}
 	focus = {
@@ -967,7 +971,7 @@ focus_tree = {
 		icon = unknown
 		x = 19
 		y = 11
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -977,19 +981,15 @@ focus_tree = {
 			every_country = {
 				if = {
 					limit = {
-						is_nominate_liyue = yes
-						FROM = {
-							has_war_with = ZDG
-						}
+						is_nominate_liyue = yes	
+						has_war_with = ZDG
 					}
-					FROM = {
 					add_stability = -0.15
 	                add_war_support = -0.15
 					add_manpower = -1000
-				    }
 				}
 			}
-	    }
+		}
 		prerequisite = {
 			focus = ZDG_xuebeng
 		}
@@ -999,7 +999,7 @@ focus_tree = {
 		icon = unknown
 		x = 19
 		y = 12
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1012,6 +1012,8 @@ focus_tree = {
 					}				
 				add_timed_idea = { idea = ZDG_yurenzhoudeshentou days = 120 } 
 			}
+			set_country_flag = { flag = ZDG_shentougefang_flag value = 1 days = 365 }
+			unlock_decision_tooltip = ZDG_shentougefang_jueyi
 	    }
 		prerequisite = {
 			focus = ZDG_wulikonghe
@@ -1022,7 +1024,7 @@ focus_tree = {
 		icon = unknown
 		x = 21
 		y = 12
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 0
 		}
@@ -1040,7 +1042,7 @@ focus_tree = {
 		icon = unknown
 		x = 22
 		y = 13
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 0
 		}
@@ -1058,7 +1060,7 @@ focus_tree = {
 		icon = unknown
 		x = 20
 		y = 13
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1077,7 +1079,7 @@ focus_tree = {
 		icon = unknown
 		x = 19
 		y = 14
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1104,7 +1106,7 @@ focus_tree = {
 		icon = unknown
 		x = 18
 		y = 13
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1112,7 +1114,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			random_list = { 
-				40 = {
+				60 = {
 					every_country = {
 						limit = {							
 							has_war_with = ROOT
@@ -1121,11 +1123,8 @@ focus_tree = {
 						add_war_support = -0.15
 						add_manpower = -1000
 					}
-				} 
-				30 = { 
-				
-				}
-				30 = { 	    
+				} 	
+				40 = { 	    
 					every_country = {
 						limit = {
 							has_war_with = ROOT
@@ -1134,6 +1133,8 @@ focus_tree = {
 					}
 				}
 			}
+			unlock_decision_tooltip = ZDG_dajishiqi_jueyi
+			set_country_flag = { flag = ZDG_dajishiqi_flag value = 1 days = 365 } 
 	    }
 		prerequisite = {
 			focus = ZDG_shentougefang
@@ -1154,19 +1155,9 @@ focus_tree = {
 			focus = ZDG_xuebeng
 		}
 		completion_reward = {
-			add_advisor_role = {
-				character = ZDG_liyuehezuoshiyixiaozu
-				activate = no
-				advisor = {
-					slot = political_advisor
-					cost = 200
-					idea_token = ZDG_liyuehezuoshiyixiaozu
-					traits = {
-						ZDG_liyuehezuoshiyixiaozu_tezhi
-					}
-					can_be_fired = no
-				}
-			}
+			show_ideas_tooltip = ZDG_liyuehezuoshiyixiaozu
+			unlock_decision_category_tooltip = ZDG_decision_category6
+			country_event = { days = 1 id = ZDG_events.37 }
 	    }
 	}
 	focus = {
@@ -1174,7 +1165,7 @@ focus_tree = {
 		icon = unknown
 		x = 10
 		y = 12
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1232,7 +1223,7 @@ focus_tree = {
                     }
 				}
 			}
-			222 = {
+			207 = {
 				create_unit = {
 					division = "division_template = \"干涉行动协防军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = ZDG
@@ -1247,7 +1238,7 @@ focus_tree = {
 		icon = unknown
 		x = 9
 		y = 13
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1257,7 +1248,21 @@ focus_tree = {
 			focus = ZDG_chonzuxiefangjun
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ZDG_geitamenwuqi_tt
+			set_variable = {
+				ZDG_gongzhizhehezuodu_value = 1
+			}
+			set_variable = {
+				ZDG_gongzhizheyingxiangli_value = 1
+			}
+			if = {
+				limit = {
+					has_idea = ZDG_liyuehezuoshiyixiaozu
+				}
+				set_variable = {
+					ZDG_toujizheyingxiangli_value = 1
+				}
+			}
 	    }
 	}
 	focus = {
@@ -1265,7 +1270,7 @@ focus_tree = {
 		icon = unknown
 		x = 11
 		y = 13
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1281,6 +1286,9 @@ focus_tree = {
 				}
 				add_ideas = ZDG_neizhantebieguanzhifaan
 			}
+			set_variable = {
+				ZDG_baoshoupaiyingxiangli_value = -1
+			}
 	    }
 	}
 	focus = {
@@ -1288,7 +1296,7 @@ focus_tree = {
 		icon = unknown
 		x = 10
 		y = 14
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1311,8 +1319,17 @@ focus_tree = {
 				add_equipment_to_stockpile = {
 					type = infantry_equipment
 					amount = 2500
-					}
+				}
 			}
+            add_days_mission_timeout = {
+				mission = ZDG_decision_4
+				days = 35
+			}
+			add_days_mission_timeout = {
+				mission = ZDG_decision_5
+				days = 35
+			}
+			unlock_decision_tooltip = ZDG_tuanjielansezhiyan
 	    }
 	}
 	focus = {
@@ -1320,11 +1337,23 @@ focus_tree = {
 		icon = unknown
 		x = 12
 		y = 15
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_bielaiaishi_tt2
+				has_country_flag = ZDG_gongzhizhetigongbaozuo_flag
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_bielaiaishi_tt3
+				has_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_bielaiaishi_tt
+				has_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
+			}
 		}
 		prerequisite = {
 			focus = ZDG_paoguyugou
@@ -1336,7 +1365,15 @@ focus_tree = {
 		    focus = ZDG_yinhezhike
 		}
 		completion_reward = {
-			
+			set_country_flag = ZDG_bielaiaishi_flag
+			ZDG_baoshoupai_buffjisuan = yes
+			set_variable = {
+				ZDG_baoshoupaihezuodu_value = 1
+			}
+			set_variable = {
+				ZDG_baoshoupaiyingxiangli_value = 1
+			}
+			custom_effect_tooltip = ZDG_bielaiaishi_tt4
 	    }
 	}
 	focus = {
@@ -1344,7 +1381,7 @@ focus_tree = {
 		icon = unknown
 		x = 16
 		y = 15
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1368,7 +1405,7 @@ focus_tree = {
 		icon = unknown
 		x = 14
 		y = 16
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 10
 		}
@@ -1381,7 +1418,7 @@ focus_tree = {
 		    focus = ZDG_langdeliaoya
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = ZDG_jingxianliyue_tt
 	    }
 	}
 	focus = {
@@ -1389,7 +1426,7 @@ focus_tree = {
 		icon = unknown
 		x = 8
 		y = 12
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 0
 		}
@@ -1408,7 +1445,7 @@ focus_tree = {
 		icon = unknown
 		x = 7
 		y = 13
-		cost = 7
+		cost = 28
 		ai_will_do = { 
 			base = 0
 		}
@@ -1430,7 +1467,7 @@ focus_tree = {
 		icon = unknown
 		x = 14
 		y = 11
-		cost = 7
+		cost = 14
 		ai_will_do = { 
 			base = 10
 		}
@@ -1473,7 +1510,7 @@ focus_tree = {
 		icon = unknown
 		x = 14
 		y = 12
-		cost = 7
+		cost = 14
 		ai_will_do = { 
 			base = 10
 		}
@@ -1493,7 +1530,7 @@ focus_tree = {
 		icon = unknown
 		x = 14
 		y = 13
-		cost = 7
+		cost = 14
 		ai_will_do = { 
 			base = 10
 		}
@@ -1515,7 +1552,7 @@ focus_tree = {
 		icon = unknown
 		x = 14
 		y = 14
-		cost = 7
+		cost = 14
 		ai_will_do = { 
 			base = 10
 		}
@@ -1531,6 +1568,19 @@ focus_tree = {
 				id = ZDG_extreme_northern_palace
 				value = 0.10
 			}
+			custom_effect_tooltip = ZDG_yicicishengli_tt
+			hidden_effect = {
+			remove_trait = {
+				character = SNE_Childe
+				slot = political_advisor
+				trait = Childe_bingyan_gongrong
+			    }
+            add_trait = {
+				character = SNE_Childe
+				slot = political_advisor
+				trait = Childe_bingyan_gongrong_2
+		        }
+		    }
 	    }
 	}
 }

@@ -6,7 +6,7 @@ Ruotuo_turn_bad = {
 		set_variable = { usable_network_states = 2 }
 		set_variable = { network_strength = 1 }
 	}
-	156 = {
+	68 = {
 		add_dynamic_modifier = { modifier = RTG_network_strength_1 }
 	}
 	add_war_support = 0.1
@@ -255,19 +255,31 @@ Liyue_rebirth = {
 RTG_add_network = {
 	if = {
 		limit = { RTG = { check_variable = { network_strength = 1 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_1 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_1
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = { RTG = { check_variable = { network_strength = 2 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_2 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_2
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = { RTG = { check_variable = { network_strength = 3 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_3 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_3
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = { RTG = { check_variable = { network_strength = 4 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_4 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_4
+			scope = RTG 
+		}
 	}
 }
 
@@ -315,14 +327,20 @@ RTG_strengthen_network = {
 			limit = { has_dynamic_modifier = { modifier = RTG_network_strength_3 } }
 			remove_dynamic_modifier = { modifier = RTG_network_strength_3 }
 		}
-		add_dynamic_modifier = { modifier = RTG_network_strength_4 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_4
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = {
 			has_dynamic_modifier = { modifier = RTG_network_strength_4 }
 		}
 		remove_dynamic_modifier = { modifier = RTG_network_strength_4 }
-		add_dynamic_modifier = { modifier = RTG_network_strength_5 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_5
+			scope = RTG 
+		}
 	}
 }
 
@@ -350,7 +368,10 @@ RTG_tick_up_networks = {
 					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_3 } }
 					remove_dynamic_modifier = { modifier = RTG_network_strength_3 }
 				}
-				add_dynamic_modifier = { modifier = RTG_network_strength_4 }
+				add_dynamic_modifier = {
+					modifier = RTG_network_strength_4
+					scope = RTG 
+				}
 			}
 		}
 		else_if = {
@@ -370,7 +391,10 @@ RTG_tick_up_networks = {
 					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_2 } }
 					remove_dynamic_modifier = { modifier = RTG_network_strength_2 }
 				}
-				add_dynamic_modifier = { modifier = RTG_network_strength_3 }
+				add_dynamic_modifier = {
+					modifier = RTG_network_strength_3
+					scope = RTG 
+				}
 			}
 		}
 		else_if = {
@@ -380,7 +404,10 @@ RTG_tick_up_networks = {
 					has_dynamic_modifier = { modifier = RTG_network_strength_1 }
 				}
 				remove_dynamic_modifier = { modifier = RTG_network_strength_1 }
-				add_dynamic_modifier = { modifier = RTG_network_strength_2 }
+				add_dynamic_modifier = {
+					modifier = RTG_network_strength_2
+					scope = RTG 
+				}
 			}
 		}
 	}

@@ -12,138 +12,127 @@
 # contain
 # area_priority
 # building_target
-
 ###这凝光AI实在太愚蠢了！！！！
 Ningguang_aizaobudui = {
-    allowed = {
+	allowed = {
 		tag = NNG
 	}
-    enable = {
+	enable = {
 		tag = NNG
 	}
 	abort = {
 		always = no
 	}
 	ai_strategy = {
-	type = role_ratio
-	id = infantry
-	value = 500
-    }
-	
+		type = role_ratio
+		id = infantry
+		value = 500
+	}
 	ai_strategy = {
-	type = role_ratio
-	id = marines
-	value = 500
-    }
-	
+		type = role_ratio
+		id = marines
+		value = 500
+	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 10
+		value = 5
 	}
-	
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = infantry
 		value = 7
 	}
-	
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = infantry
-		value = 50
+		value = 65
 	}
-	
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = artillery
-		value = 65
+		value = 50
+	}
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 500
+	}
+	ai_strategy = {
+		type = build_army
+		id = marines
+		value = 500
+	}
+	ai_strategy = {
+		type = build_army
+		id = motorized
+		value = -900
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = -900
 	}
 	
 	ai_strategy = {
-	type = build_army
-	id = infantry
-	value = 500
+		type = invade
+		id = ZDG
+		value = -500
+	}
+	
+	ai_strategy = {
+	type = naval_invasion_supremacy_weight
+	value = 900
     }
 	
 	ai_strategy = {
-	type = build_army
-	id = marines
-	value = 500
+	type = force_build_armies
+	value = 900
     }
-	
-	ai_strategy = {
-	type = build_army
-	id = motorized
-	value = -900
-    }
-	
-	ai_strategy = {
-	type = role_ratio
-	id = armor
-	value = -900
-    }
-	ai_strategy = {
-	type = invade
-	id = LYU
-	value = 100
-	}
-	ai_strategy = {
-	type = invade
-	id = RTG
-	value = 100
-	}
-	ai_strategy = {
-	type = invade
-	id = XOG
-	value = 100
-	}
-	ai_strategy = {
-	type = invade
-	id = XRG
-	value = 100
-	}
-	ai_strategy = {
-	type = invade
-	id = ZDG
-	value = -500
-	}
 }
 
 Ningguang_KQG_isbad = {
 	allowed = {
 		tag = NNG
 	}
-	enable = {  
-		country_exists = KQG 
+	enable = {
+		country_exists = KQG
 	}
-	abort = {	
-		NOT = { country_exists = KQG }
+	abort = {
+		NOT = {
+			country_exists = KQG
+		}
 	}
 	ai_strategy = {
-	type = front_unit_request
-	tag = KQG
- 	value = 999
-    }
+		type = front_unit_request
+		tag = KQG
+		value = 999
+	}
 }
+
 Yaoguangtan_isbad = {
 	allowed = {
 		tag = NNG
 	}
 	enable = {
-		country_exists = KQG 
+		country_exists = KQG
 	}
 	abort = {
-		NOT = { country_exists = KQG }
+		NOT = {
+			country_exists = KQG
+		}
 	}
 	ai_strategy = {
-	type = front_unit_request
-	tag = KQG
-	country_trigger = { tag = KQG }
-    state = 126
-	value = -1000
-    }
+		type = front_unit_request
+		tag = KQG
+		country_trigger = {
+			tag = KQG
+		}
+		state = 116
+		value = -1000
+	}
 }
+
 Ningguang_KQG_isbad_two = {
 	allowed = {
 		tag = NNG
@@ -151,59 +140,97 @@ Ningguang_KQG_isbad_two = {
 	enable = {
 		country_exists = KQG
 		NOT = {
-		    NNG = {
-		        has_completed_focus = NNG_wmbijiangshengli
-		    }
+			NNG = {
+				has_completed_focus = NNG_wmbijiangshengli
+			}
 		}
 	}
 	abort = {
-	    NNG = { has_completed_focus = NNG_wmbijiangshengli }
+		NNG = {
+			has_completed_focus = NNG_wmbijiangshengli
+		}
 		or = {
-		NOT = { country_exists = KQG }
-		has_war_with = XOG
-		has_war_with = XRG
-		has_war_with = RTG
-		has_war_with = LYU
+			NOT = {
+				country_exists = KQG
 			}
+			has_war_with = XOG
+			has_war_with = XRG
+			has_war_with = RTG
+			has_war_with = LYU
+		}
 	}
 	ai_strategy = {
-	type = front_control
-	tag = KQG  
-	ratio = 0.1
-    state = 146
-	state = 149
-	state = 405
-	state = 406
-	priority = 100  
-	ordertype = front  
-	execution_type = careful
-	manual_attack = yes
-	execute_order = no
-    }
+		type = front_control
+		tag = KQG
+		ratio = 0.1
+		state = 86
+		state = 88
+		state = 90
+		state = 91
+		priority = 100
+		ordertype = front
+		execution_type = careful
+		manual_attack = yes
+		execute_order = no
+	}
+	ai_strategy = {
+		type = invade
+		id = KQG
+		value = -500
+	}
 }
+
 Ningguang_KQG_isbad_three = {
 	allowed = {
 		tag = NNG
 	}
 	enable = {
-		country_exists = KQG	
+		country_exists = KQG
 		has_completed_focus = NNG_wmbijiangshengli
+		num_divisions > 80
 	}
-	abort = {	
-		NOT = { country_exists = KQG }
+	abort = {
+	    or = {
+		NOT = {
+			country_exists = KQG
+		}
+		num_divisions < 60
+		}
 	}
 	ai_strategy = {
-	type = front_control
-	tag = KQG  
-	ratio = 0.1
-    state = 146
-	state = 149
-	state = 405
-	state = 406
-	priority = 900  
-	ordertype = front  
-	execution_type = rush  
-	manual_attack = yes
-	execute_order = yes
-    }
+		type = front_control
+		tag = KQG
+		ratio = 0.1
+		state = 86
+		state = 88
+		state = 90
+		state = 91
+		priority = 900
+		ordertype = front
+		execution_type = rush
+		manual_attack = yes
+		execute_order = yes
+	}
+}
+
+Ningguang_fangshou = {
+	allowed = {
+		tag = NNG
+	}
+	enable = {
+		num_divisions < 65
+	}
+	abort = {
+		num_divisions > 50
+	}
+	ai_strategy = {
+		type = front_control
+		area = Liyue
+		ratio = 0.1
+		priority = 900
+		ordertype = front
+		execution_type = balanced
+		manual_attack = yes
+		execute_order = no
+	}
 }

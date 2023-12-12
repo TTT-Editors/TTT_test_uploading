@@ -59,10 +59,48 @@ on_actions = {
 					}
 				}
 				if = {
+					limit = {
+						OR = {
+							XOG = { exists = no }
+							XOG = { is_puppet_of = ZDG }
+						}
+						KQG = { has_war_with = ZDG }
+						KQG = { controls_state = 147 }
+					}
+					KQG = {
+						transfer_state = 138
+						transfer_state = 139
+						transfer_state = 137
+						transfer_state = 131
+						transfer_state = 194
+						transfer_state = 133
+						transfer_state = 130
+						transfer_state = 134
+						transfer_state = 135
+						transfer_state = 132
+						transfer_state = 136
+					}
+				}
+				every_country = {
+					limit = { is_subject_of = ZDG }
+					ZDG = {
+						annex_country = {
+							target = PREV
+							transfer_troops = no
+						}
+					}
+				}
+				if = {
 					limit = { 
 						XRG = { exists = yes }
 					}
 					XRG = { transfer_state = 167 }
+				}
+				if = {
+					limit = { 
+						XOG = { exists = yes }
+					}
+					XOG = { transfer_state = 134 }
 				}
 				if = {
 					limit = { 
@@ -343,12 +381,9 @@ on_actions = {
 							}
 						}
 						every_owned_state = {			
-							every_other_country = {
+							every_country = {
 								limit = {
-								#	NOT = {
-								#		is_subject_of = ROOT
-								#		is_in_faction_with = ROOT
-								#	}
+									NOT = { is_ally_with = ROOT }
 									controls_state = PREV							
 								}
 								transfer_state = PREV

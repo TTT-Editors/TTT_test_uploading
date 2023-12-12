@@ -140,8 +140,8 @@ liyue_civil_war_decisions = {
 			OR = {
 				is_faction_leader = yes
 				is_in_faction = no
-				is_subject = no
 			}
+			is_subject = no
 			has_global_flag = Liyue_Civil_War
 			has_global_flag = zdg_has_come
 		}
@@ -591,7 +591,7 @@ liyue_civil_war_decisions = {
 			}
 			#We have not enough troops
 			modifier = {
-				add = -150
+				add = -90
 				OR = {
 					has_army_manpower = {
 						size < 449999
@@ -686,9 +686,10 @@ liyue_civil_war_decisions = {
 						can_be_attacked = yes
 					}
 				}
-				declare_war_on = {
-					target = XOG
+				create_wargoal = {
 					type = annex_everything
+					target = XOG
+					expire = 1000
 				}
 			}
 			if = {
@@ -697,9 +698,10 @@ liyue_civil_war_decisions = {
 						can_be_attacked = yes
 					}
 				}
-				declare_war_on = {
-					target = XRG
+				create_wargoal = {
 					type = annex_everything
+					target = XRG
+					expire = 1000
 				}
 			}
 			if = {
@@ -708,9 +710,10 @@ liyue_civil_war_decisions = {
 						can_be_attacked = yes
 					}
 				}
-				declare_war_on = {
-					target = ZDG
+				create_wargoal = {
 					type = annex_everything
+					target = ZDG
+					expire = 1000
 				}
 			}
 		}
@@ -734,6 +737,7 @@ liyue_civil_war_decisions = {
 				is_in_faction = no
 				is_faction_leader = yes
 			}
+			is_subject = no
 			OR = {
 				tag = XRG
 				tag = XOG
@@ -759,22 +763,15 @@ liyue_civil_war_decisions = {
 					tooltip = north_no_enemy
 					has_country_flag = north_victor
 				}
-				custom_trigger_tooltip = {
-					tooltip = xrg_tried_cooperated
-					tag = XRG
-					XOG = {
-						has_country_flag = xrg_has_tried_to_cooperate_with_xog
-					}
-				}
-				custom_trigger_tooltip = {
-					tooltip = xog_not_with_others
+				AND = {
 					OR = {
-						tag = XOG
 						tag = XRG
+						AND = {
+							tag = XOG
+							has_country_flag = XOG_choose_unify_Liyue
+						}
 					}
-					XOG = {
-						has_country_flag = XOG_Choice_XOG
-					}
+					ZDG = { exists = no }
 				}
 			}
 		}
@@ -795,23 +792,16 @@ liyue_civil_war_decisions = {
 		remove_effect = {
 			set_global_flag = cn_battle_has_happen
 			custom_effect_tooltip = ready_to_attack_center
-			hidden_effect = {
-				ROOT = {
-					news_event = {
-						id = global_news.11
-						hours = 12
-					}
-				}
-			}
 			if = {
 				limit = {
 					KQG = {
 						can_be_attacked = yes
 					}
 				}
-				declare_war_on = {
-					target = KQG
+				create_wargoal = {
 					type = annex_everything
+					target = KQG
+					expire = 730
 				}
 			}
 			if = {
@@ -820,9 +810,10 @@ liyue_civil_war_decisions = {
 						can_be_attacked = yes
 					}
 				}
-				declare_war_on = {
-					target = NNG
+				create_wargoal = {
 					type = annex_everything
+					target = NNG
+					expire = 730
 				}
 			}
 		}
@@ -864,9 +855,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			declare_war_on = {
-				target = ARF
+			create_wargoal = {
 				type = annex_everything
+				target = ARF
+				expire = 730
 			}
 		}
 	}
@@ -929,9 +921,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			declare_war_on = {
-				target = NNG
+			create_wargoal = {
 				type = annex_everything
+				target = NNG
+				expire = 730
 			}
 		}
 	}
@@ -973,7 +966,7 @@ liyue_civil_war_decisions = {
 			}
 			#We have not enough troops
 			modifier = {
-				add = -150
+				add = -90
 				OR = {
 					has_army_manpower = {
 						size < 449999
@@ -1072,9 +1065,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			declare_war_on = {
-				target = FROM.owner
+			create_wargoal = {
 				type = annex_everything
+				target = FROM.owner
+				expire = 730
 			}
 		}
 		ai_will_do = {
@@ -1088,7 +1082,7 @@ liyue_civil_war_decisions = {
 				has_war = yes
 			}
 			modifier = {
-				factor = 0
+				factor = 0.1
 				enemies_strength_ratio > 1
 			}
 		}
@@ -1727,15 +1721,17 @@ liyue_civil_war_decisions = {
 		}
 		war_with_on_complete = ANG
 		complete_effect = {
-			declare_war_on = {
-				target = ANG
-				type = annex_everything
-			}
 			ANG = {
 				country_event = {
 					days = 1
 					id = liyue_civil_war.101
 				}
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = ANG
+				type = annex_everything
 			}
 		}
 	}
@@ -1748,10 +1744,10 @@ liyue_civil_war_decisions = {
 			}
 			NOT = {
 				RTG = {
-					is_subject_of = LYU
+					is_subject_of = ROOT
 				}
 				RTG = {
-					is_in_faction_with = LYU
+					is_in_faction_with = ROOT
 				}
 				original_tag = RTG
 			}
@@ -1771,15 +1767,17 @@ liyue_civil_war_decisions = {
 		}
 		war_with_on_complete = RTG
 		complete_effect = {
-			declare_war_on = {
-				target = RTG
-				type = annex_everything
-			}
 			RTG = {
 				country_event = {
 					days = 1
 					id = liyue_civil_war.101
 				}
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = RTG
+				type = annex_everything
 			}
 		}
 	}
@@ -1792,10 +1790,10 @@ liyue_civil_war_decisions = {
 			}
 			NOT = {
 				XRG = {
-					is_subject_of = LYU
+					is_subject_of = ROOT
 				}
 				XRG = {
-					is_in_faction_with = LYU
+					is_in_faction_with = ROOT
 				}
 				tag = XRG
 			}
@@ -1815,15 +1813,17 @@ liyue_civil_war_decisions = {
 		}
 		war_with_on_complete = XRG
 		complete_effect = {
-			declare_war_on = {
-				target = XRG
-				type = annex_everything
-			}
 			XRG = {
 				country_event = {
 					days = 1
 					id = liyue_civil_war.101
 				}
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = XRG
+				type = annex_everything
 			}
 		}
 	}
@@ -1836,10 +1836,10 @@ liyue_civil_war_decisions = {
 			}
 			NOT = {
 				XOG = {
-					is_subject_of = LYU
+					is_subject_of = ROOT
 				}
 				XOG = {
-					is_in_faction_with = LYU
+					is_in_faction_with = ROOT
 				}
 				tag = XOG
 			}
@@ -1856,15 +1856,17 @@ liyue_civil_war_decisions = {
 		}
 		war_with_on_complete = XOG
 		complete_effect = {
-			declare_war_on = {
-				target = XOG
-				type = annex_everything
-			}
 			XOG = {
 				country_event = {
 					days = 1
 					id = liyue_civil_war.101
 				}
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = XOG
+				type = annex_everything
 			}
 		}
 	}
@@ -1877,10 +1879,10 @@ liyue_civil_war_decisions = {
 			}
 			NOT = {
 				KQG = {
-					is_subject_of = LYU
+					is_subject_of = ROOT
 				}
 				KQG = {
-					is_in_faction_with = LYU
+					is_in_faction_with = ROOT
 				}
 				tag = KQG
 			}
@@ -1900,15 +1902,17 @@ liyue_civil_war_decisions = {
 		}
 		war_with_on_complete = KQG
 		complete_effect = {
-			declare_war_on = {
-				target = KQG
-				type = annex_everything
-			}
 			KQG = {
 				country_event = {
 					days = 1
 					id = liyue_civil_war.101
 				}
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = KQG
+				type = annex_everything
 			}
 		}
 	}
@@ -1921,10 +1925,10 @@ liyue_civil_war_decisions = {
 			}
 			NOT = {
 				NNG = {
-					is_subject_of = LYU
+					is_subject_of = ROOT
 				}
 				NNG = {
-					is_in_faction_with = LYU
+					is_in_faction_with = ROOT
 				}
 				tag = NNG
 			}
@@ -1941,15 +1945,17 @@ liyue_civil_war_decisions = {
 		}
 		war_with_on_complete = NNG
 		complete_effect = {
-			declare_war_on = {
-				target = NNG
-				type = annex_everything
-			}
 			NNG = {
 				country_event = {
 					days = 1
 					id = liyue_civil_war.101
 				}
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = NNG
+				type = annex_everything
 			}
 		}
 	}
@@ -1982,15 +1988,17 @@ liyue_civil_war_decisions = {
 		}
 		war_with_on_complete = LYU
 		complete_effect = {
-			declare_war_on = {
-				target = LYU
-				type = annex_everything
-			}
 			LYU = {
 				country_event = {
 					days = 1
 					id = liyue_civil_war.101
 				}
+			}
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = LYU
+				type = annex_everything
 			}
 		}
 	}

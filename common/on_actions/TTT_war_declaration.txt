@@ -176,6 +176,35 @@ on_actions = {
 					}
 				}
 			}
+			#Liyue cn battle
+			if = {
+				limit = {
+					has_global_flag = cn_battle_has_happen
+					NOT = { has_global_flag = global_news_11_happened }
+					OR = {
+						tag = XRG
+						tag = XOG
+						tag = KQG
+						tag = NNG
+					}
+					FROM = {
+						OR = {
+							tag = XRG
+							tag = XOG
+							tag = KQG
+							tag = NNG
+						}
+					}
+				}
+				hidden_effect = {
+					ROOT = {
+						news_event = {
+							id = global_news.11
+							hours = 12
+						}
+					}
+				}
+			}
 			#The Great Unification
 			if = {
 				limit = {

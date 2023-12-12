@@ -16,13 +16,56 @@ on_actions = {
 				country_event = { id = XOG_events.120 }
 			}
 			
+			#XOG and XRG too Tsai, so I add something...
+			if = {
+				limit = { 
+					FROM = {
+						OR = {
+							tag = XOG
+							tag = XRG
+						}
+					}
+					ROOT = { tag = ZDG }
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_template = "Liyue Difang Minbing Lv"
+						}
+					}
+					division_template = {
+						name = "Liyue Difang Minbing Lv"
+						is_locked = no
+						division_names_group = LYU_INF_02
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 1 y = 0 }
+							irregular_infantry = { x = 1 y = 1 }
+						}
+						support = {
+							recon = { x = 0 y = 0 }
+						}
+					}
+				}
+				FROM = {
+					capital_scope = {
+						create_unit = {
+							division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+							owner = FROM
+							count = 1
+						}
+					}
+				}
+			}
+			
 			if = {
 				limit = {
 					has_global_flag = Liyue_Civil_War
 				}
 				if = {
 					limit = {
-						tag = RTG
+						ROOT = { tag = RTG }
 						RTG = { has_government = reformism }
 						FROM = {
 							controller = { has_war_with = RTG }

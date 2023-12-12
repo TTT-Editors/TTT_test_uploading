@@ -1,0 +1,72 @@
+#	Example:
+# 
+#	can_send_a_cultural_gift = {		#
+#		is_protecting_labor_right = no
+#		makes_chuxi_a_holiday = no		#February 9th, 2024
+#		tag = PRC				# Don't use original tag because DPP and KMT also use PRC as original.
+#		OR = {
+#			DPR = { exists = yes }	#Beichaoxian
+#			KOR = { exists = yes }	#Nanchaoxian
+#			any_country = {
+#				wants_to_steal_cultural_legacy = yes
+#				steal_cultural_legacy_target = PRC
+#			}
+#		}
+#	}
+#
+#	In a script file:
+#
+#	trigger = {
+#		can_send_a_cultural_gift = yes
+#	}
+# 
+#	Put your shit here.
+
+ai_likely_to_join_your_pact = {		#set ai_weight to 2
+	is_subject = no
+	OR = {
+		AND = {
+			strength_ratio = {
+				tag = FROM 
+				ratio < 0.8
+			}
+			has_opinion = {
+				target = FROM
+				value > 50
+			}
+		}
+		has_opinion = {
+			target = FROM
+			value > 80
+		}
+	}
+	NOT = { has_war_with = FROM }
+}
+
+ai_more_likely_to_join_your_pact = {		#set ai_weight to 5
+	is_subject = no
+	strength_ratio = {
+		tag = FROM 
+		ratio < 0.5
+	}
+	has_opinion = {
+		target = FROM
+		value > 80
+	}
+	NOT = { has_war_with = FROM }
+}
+
+ai_refuse_to_join_your_pact = {			#set ai_weight to 100
+	OR = {
+		is_subject = yes
+		has_war_with = FROM
+		has_opinion = {
+			target = FROM
+			value < 0
+		}
+		strength_ratio = {
+			tag = FROM 
+			ratio > 1.25
+		}
+	}
+}

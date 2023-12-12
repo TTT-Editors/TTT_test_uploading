@@ -57,6 +57,40 @@ scripted_gui = {
 				check_variable = { ttt_ui_region_selection = 12 }
 			}
 			
+			#buttons can be clicked or not
+			tlcw_button_1_click_enabled = {
+				NOT = { has_country_flag = tlcw_1_clicked_nearly }
+				has_war = yes
+				has_political_power > 29
+				command_power > 9
+			}
+			tlcw_button_2_click_enabled = {
+				NOT = { has_country_flag = tlcw_2_clicked_nearly }
+				has_war = yes
+				has_political_power > 29
+				command_power > 9
+			}
+			tlcw_button_3_click_enabled = {
+				NOT = { has_country_flag = tlcw_3_clicked_nearly }
+				has_political_power > 29
+				command_power > 9
+			}
+			tlcw_button_4_click_enabled = {
+				NOT = { has_country_flag = tlcw_4_clicked_nearly }
+				has_political_power > 29
+				command_power > 9
+			}
+			tlcw_button_5_click_enabled = {
+				NOT = { has_country_flag = tlcw_5_clicked_nearly }
+				has_political_power > 49
+				command_power > 29
+			}
+			tlcw_button_6_click_enabled = {
+				NOT = { has_country_flag = tlcw_6_clicked_nearly }
+				has_political_power > 99
+				command_power > 49
+			}
+			
 			#show warlord state
 			warlord_extinct_visible = {
 				exists = no
@@ -88,116 +122,93 @@ scripted_gui = {
 			liyue_state_1_click = {
 				set_variable = { ttt_ui_region_selection = 1 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_2_click = {
 				set_variable = { ttt_ui_region_selection = 2 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_3_click = {
 				set_variable = { ttt_ui_region_selection = 3 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_4_click = {
 				set_variable = { ttt_ui_region_selection = 4 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_5_click = {
 				set_variable = { ttt_ui_region_selection = 5 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_7_click = {
 				set_variable = { ttt_ui_region_selection = 7 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_8_click = {
 				set_variable = { ttt_ui_region_selection = 8 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_9_click = {
 				set_variable = { ttt_ui_region_selection = 9 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_10_click = {
 				set_variable = { ttt_ui_region_selection = 10 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_11_click = {
 				set_variable = { ttt_ui_region_selection = 11 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 			liyue_state_12_click = {
 				set_variable = { ttt_ui_region_selection = 12 }
 				set_marked_states = yes
-				recalculate_button_values = yes
 				add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 			}
 		
 			#recon
 			tlcw_button_1_click = {
-				if = {
-					limit = { check_variable = { liyue_button_frames^1 = 2 } }
-					tlcw_button_1_click_effect = yes
-				}
+				tlcw_button_1_click_effect = yes
+				set_country_flag = tlcw_1_clicked_nearly
 			}
 
 			#push line
 			tlcw_button_2_click = {
-				if = {
-					limit = { check_variable = { liyue_button_frames^2 = 2 } }
-					tlcw_button_2_click_effect = yes
-				}
+				tlcw_button_2_click_effect = yes
+				set_country_flag = tlcw_2_clicked_nearly
 			}
 
 			#build forts
 			tlcw_button_3_click = {
-				if = {
-					limit = { check_variable = { liyue_button_frames^3 = 2 } }
-					tlcw_button_3_click_effect = yes
-				}
+				tlcw_button_3_click_effect = yes
+				set_country_flag = tlcw_3_clicked_nearly
 			}
 
 			#ensure logistical support
 			tlcw_button_4_click = {
-				if = {
-					limit = { check_variable = { liyue_button_frames^4 = 2 } }
-					tlcw_button_4_click_effect = yes
-				}				
+				tlcw_button_4_click_effect = yes
+				set_country_flag = tlcw_4_clicked_nearly
 			}
 
 			#food collection
 			tlcw_button_5_click = {
-				if = {
-					limit = { check_variable = { liyue_button_frames^5 = 2 } }
-					tlcw_button_5_click_effect = yes
-				}
+				tlcw_button_5_click_effect = yes
+				set_country_flag = tlcw_5_clicked_nearly
 			}
 
 			#recruiting militia
 			tlcw_button_6_click = {
-				if = {
-					limit = { check_variable = { liyue_button_frames^6 = 2 } }
-					tlcw_button_6_click_effect = yes
-				}
+				tlcw_button_6_click_effect = yes
+				set_country_flag = tlcw_6_clicked_nearly
 			}
 		}
 		
@@ -205,7 +216,7 @@ scripted_gui = {
 			is_nominate_liyue = yes
         }
 
-        ai_test_interval = 192
+        ai_test_interval = 96
 		
 		ai_check = {
 			enemies_strength_ratio > 0.5
@@ -213,308 +224,92 @@ scripted_gui = {
 			command_power > 15
         }
 		
-		ai_weights = {
-			liyue_state_1_click = {
-				ai_will_do = {
-					base = -1 #by default it is negative so AI won't run this
-					modifier = {
-						check_variable = { liyue_region_frames^1 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^1 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^1 = 5 }
-						check_variable = { liyue_region_milita_usable^1 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^1 = 0 } }
-						add = -100
-					}
-				}
-			}
+		ai_weights = {			
 			
-			liyue_state_2_click = {
+			tlcw_button_2_click = {
 				ai_will_do = {
-					base = -1
+					base = 50
 					modifier = {
-						check_variable = { liyue_region_frames^2 = 1 }
-						add = 50
+						tag = KQG
+						has_war_with = NNG
+						strength_ratio = {
+							tag = NNG
+							ratio < 4
+						}
+						factor = 8
 					}
 					modifier = {
-						check_variable = { liyue_region_frames^2 = 5 }
-						add = 25
+						surrender_progress > 0.3
+						factor = 0.2
 					}
 					modifier = {
-						check_variable = { liyue_region_frames^2 = 5 }
-						check_variable = { liyue_region_milita_usable^2 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^2 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_3_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^3 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^3 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^3 = 5 }
-						check_variable = { liyue_region_milita_usable^3 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^3 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_4_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^4 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^4 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^4 = 5 }
-						check_variable = { liyue_region_milita_usable^4 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^4 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_5_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^5 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^5 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^5 = 5 }
-						check_variable = { liyue_region_milita_usable^5 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^5 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_7_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^7 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^7 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^7 = 5 }
-						check_variable = { liyue_region_milita_usable^7 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^7 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_8_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^8 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^8 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^8 = 5 }
-						check_variable = { liyue_region_milita_usable^8 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^8 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_9_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^9 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^9 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^9 = 5 }
-						check_variable = { liyue_region_milita_usable^9 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^9 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_10_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^10 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^10 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^10 = 5 }
-						check_variable = { liyue_region_milita_usable^10 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^10 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_11_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^11 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^11 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^11 = 5 }
-						check_variable = { liyue_region_milita_usable^11 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^11 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			liyue_state_12_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_region_frames^12 = 1 }
-						add = 50
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^12 = 5 }
-						add = 25
-					}
-					modifier = {
-						check_variable = { liyue_region_frames^12 = 5 }
-						check_variable = { liyue_region_milita_usable^12 = 1 }
-						enemies_strength_ratio > 1
-						add = 75
-					}
-					modifier = {
-						NOT = { check_variable = { liyue_region_movement_point^12 = 0 } }
-						add = -100
-					}
-				}
-			}
-			
-			tlcw_button_1_click = {
-				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_button_frames^1 = 2 }
-						add = 150
+						has_country_flag = tlcw_3_clicked_nearly
+						factor = 0.1
 					}
 				}
 			}
 			
 			tlcw_button_3_click = {
 				ai_will_do = {
-					base = -1
+					base = 50
 					modifier = {
-						check_variable = { liyue_button_frames^3 = 2 }
-						add = 150
+						surrender_progress > 0.3
+						factor = 5
+					}
+					modifier = {
+						has_war_with = ZDG
+						strength_ratio = {
+							tag = ZDG
+							ratio < 1
+						}
+						factor = 8
+					}
+					modifier = {
+						enemies_strength_ratio > 1.2
+						factor = 5
+					}
+					modifier = {
+						has_country_flag = tlcw_2_clicked_nearly
+						factor = 0.1
+					}
+				}
+			}
+			
+			tlcw_button_4_click = {
+				ai_will_do = {
+					base = 50
+					modifier = {
+						tag = KQG
+						factor = 2
+					}
+					modifier = {
+						NOT = { has_country_flag = tlcw_2_clicked_nearly }
+						NOT = { has_country_flag = tlcw_3_clicked_nearly }
+						factor = 0
 					}
 				}
 			}
 			
 			tlcw_button_5_click = {
 				ai_will_do = {
-					base = -1
+					base = 50
 					modifier = {
-						check_variable = { liyue_button_frames^5 = 2 }
-						add = 600
+						tag = KQG
+						factor = 2
+					}
+					modifier = {
+						OR = {
+							has_war_support < 0.25
+							has_stability < 0.25
+						}
+						factor = 0
 					}
 				}
 			}
 			
 			tlcw_button_6_click = {
 				ai_will_do = {
-					base = -1
-					modifier = {
-						check_variable = { liyue_button_frames^6 = 2 }
-						add = 900
-					}
+					base = 1000
 				}
 			}
 		}
@@ -523,12 +318,6 @@ scripted_gui = {
 			#I'm such a dumb.
 			#I need a loop_effect
 			ttt_liyue_tag_entry_flag = { image = "[This.GetFlag]" }
-			tlcw_button_1 = { frame = liyue_button_frames^1 }
-			tlcw_button_2 = { frame = liyue_button_frames^2 }
-			tlcw_button_3 = { frame = liyue_button_frames^3 }
-			tlcw_button_4 = { frame = liyue_button_frames^4 }
-			tlcw_button_5 = { frame = liyue_button_frames^5 }
-			tlcw_button_6 = { frame = liyue_button_frames^6 }
 			
 			liyue_state_1 = { frame = liyue_region_frames^1 }
 			liyue_state_2 = { frame = liyue_region_frames^2 }

@@ -3,7 +3,10 @@ defined_text = { #战争结语
 	text = { #刻晴战败
 		trigger = {
 			event_target:winning_country = {
+				or = {
 				is_nominate_liyue = yes
+				original_tag = ZDG
+				}
 			}
 			event_target:losing_country = {
 				original_tag = KQG
@@ -14,7 +17,10 @@ defined_text = { #战争结语
 	text = { #凝光战败
 		trigger = {
 			event_target:winning_country = {
+				or = {
 				is_nominate_liyue = yes
+				original_tag = ZDG
+				}
 			}
 			event_target:losing_country = {
 				original_tag = NNG
@@ -82,7 +88,7 @@ defined_text = { #战争结语
 				original_tag = ZDG
 			}
 			event_target:losing_country = {
-				original_tag = LYU
+				LYU = { has_capitulated = yes }
 				has_global_flag = liyue_unified
 			}
 		}
@@ -138,6 +144,19 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_dikangjunzhanbai
 	}
+	text = { #干涉军傀儡战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				is_nominate_liyue = yes
+				is_subject_of = ZDG
+			}
+		}
+		localization_key = TTT_ganshejun_kuilei
+	}
+
 	#通用结语
 	text = {
 		localization_key = TTT_zhanbaitonyonjieyu
@@ -163,7 +182,7 @@ defined_text = { #战争描述
 			}
 			event_target:losing_country = {
 				has_global_flag = liyue_unified
-				country_exists = ZDG
+				LYU = { has_capitulated = yes }
 			}
 		}
 	localization_key = TTT_lianhezhenxianzhanbai

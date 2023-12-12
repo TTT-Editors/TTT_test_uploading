@@ -1,27 +1,22 @@
 RTG_special_categories = {
-	
 	the_situation_go_worse = {
-		
 		icon = hol_draw_up_staff_plans
-		
-		allowed = { always = no }
-
-		available = {
-			hidden_trigger = { always = no }
+		allowed = {
+			always = no
 		}
-		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
 		is_good = no
 		days_mission_timeout = 7
-
 		visible = {
 			tag = RTG
 			has_country_flag = ruotuo_going_bad
 		}
-		
 		fire_only_once = no
-		
 		cancel_if_not_visible = yes
-
 		cancel_trigger = {
 			hidden_trigger = {
 				OR = {
@@ -30,10 +25,10 @@ RTG_special_categories = {
 				}
 			}
 		}
-		
-		timeout_effect = { 
+		timeout_effect = {
 			random_list = {
-				20 = { }
+				20 = {
+				}
 				50 = {
 					add_popularity = {
 						ideology = hive_mind
@@ -47,221 +42,32 @@ RTG_special_categories = {
 					}
 				}
 			}
-
 			hidden_effect = {
 				activate_mission = the_situation_go_worse
 			}
-		}            
-		
-		complete_effect = { 
-		
 		}
-	}
-	
-	#New added Missions
-	
-	RTG_save_our_people = {
-		
-		icon = hol_draw_up_staff_plans
-		
-		allowed = { always = no }
-
-		available = {
-			hidden_trigger = { always = no }
-		}
-		
-		is_good = no
-		days_mission_timeout = 28
-
-		visible = {
-			tag = RTG
-			has_country_flag = ruotuo_going_bad
-		}
-		
-		fire_only_once = yes
-		
-		cancel_if_not_visible = yes
-
-		cancel_trigger = {
-			hidden_trigger = {
-				OR = {
-					has_government = reformism
-					has_government = hive_mind
-				}
-			}
-		}
-		
-		timeout_effect = { 
-			hidden_effect = {
-				country_event = {
-					id = ruotuo.202
-					days = 15
-				}
-				random_list = {
-					30 = { set_country_flag = rescue_success }
-					30 = { set_country_flag = rescue_failed }
-					40 = {
-						if = {
-							limit = { has_country_flag = rescue_expanded }
-							set_country_flag = rescue_success
-						}
-						else = { set_country_flag = rescue_failed }
-					}
-				}
-			}
-			if = {
-				limit = { has_country_flag = rescue_expanded }
-				add_manpower = 500
-			}
-			country_event = { id = ruotuo.201 }
-			clr_country_flag = save_our_people_immed
-			clr_country_flag = AI_not_save
-			clr_country_flag = rescue_expanded
-		}   
-	}
-	
-	RTG_expand_rescue_team = {
-		
-		icon = generic_oppression
-		
-		available = {
-			has_equipment = { infantry_equipment > 499 }
-		}
-
-		visible = {
-			has_country_flag = save_our_people_immed
-		}
-
-		fire_only_once = yes
-		
-		cancel_if_not_visible = yes
-
-		days_remove = 7
-
-		cost = 40
-
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_INSANE
-					}
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_COLLAPSE
-					}
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = RTG_ai_behavior
-					option = RTG_COMMON
-				}
-			}
-		}
-
-		remove_effect = {
-			hidden_effect = { set_country_flag = rescue_expanded }
-		}
-
 		complete_effect = {
-			add_manpower = -500
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -50
-			}
 		}
 	}
-	
 	##########################
-	
-	RTG_appease_leylines = {
-		
-		icon = generic_oppression
-		
-		available = {
-			#has_country_flag = ruotuo_going_bad
-		}
-
-		visible = {
-			has_country_flag = focus_RTG_right_finish_1
-		}
-
-		fire_only_once = no
-
-		days_remove = 14
-		
-		days_re_enable = 14
-
-		cost = 30
-
-		modifier = {
-			civilian_factory_use = 2
-		}
-
-		ai_will_do = {
-			base = 1
-			
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_INSANE
-					}
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_COLLAPSE
-					}
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = RTG_ai_behavior
-					option = RTG_COMMON
-				}
-			}
-		}
-
-		remove_effect = {
-			add_popularity = {
-				ideology = hive_mind
-				popularity = -0.05
-			}
-		}
-
-		complete_effect = {
-		}
-	}
-	
 	RTG_suppress_elemental_creature_riots = {
-		
 		icon = generic_oppression
-		
 		available = {
 			#has_country_flag = ruotuo_going_bad
-			has_equipment = { infantry_equipment > 999 }
+			has_equipment = {
+				infantry_equipment > 999
+			}
 			esotericism > 0.25
 		}
-
 		visible = {
 			has_country_flag = focus_RTG_right_finish_2
 		}
-
 		fire_only_once = no
-
 		days_remove = 30
-
-		modifier = { }
-
+		modifier = {
+		}
 		ai_will_do = {
 			base = 10
-			
 			modifier = {
 				factor = 0
 				OR = {
@@ -283,15 +89,13 @@ RTG_special_categories = {
 				}
 			}
 		}
-
 		remove_effect = {
 			add_popularity = {
-				ideology = hive_mind 
+				ideology = hive_mind
 				popularity = -0.1
 			}
 			army_experience = 10
 		}
-
 		complete_effect = {
 			add_manpower = -10000
 			add_equipment_to_stockpile = {
@@ -300,33 +104,25 @@ RTG_special_categories = {
 			}
 		}
 	}
-	
 	RTG_last_stand = {
-		
 		icon = generic_oppression
-		
 		available = {
 			#has_country_flag = ruotuo_going_bad
-			has_equipment = { infantry_equipment > 1999 }
+			has_equipment = {
+				infantry_equipment > 1999
+			}
 			esotericism > 0.5
 		}
-
 		visible = {
 			has_country_flag = focus_RTG_right_finish_3
 		}
-
-
 		fire_only_once = no
-
 		days_remove = 60
-
 		cost = 100
-
-		modifier = { }
-
+		modifier = {
+		}
 		ai_will_do = {
 			base = 10
-			
 			modifier = {
 				factor = 0
 				OR = {
@@ -348,14 +144,12 @@ RTG_special_categories = {
 				}
 			}
 		}
-
 		remove_effect = {
 			add_popularity = {
 				ideology = hive_mind
 				popularity = -0.25
 			}
 		}
-
 		complete_effect = {
 			army_experience = -10
 			add_manpower = -20000
@@ -365,140 +159,32 @@ RTG_special_categories = {
 			}
 		}
 	}
-	
-	RTG_miner_corps = {
-		
-		icon = generic_oppression
-		
-		available = {
-			#has_country_flag = ruotuo_going_bad
-			has_equipment = { infantry_equipment > 999 }
-		}
-
-		visible = {
-			has_country_flag = ruotuo_going_bad
-		}
-
-		is_good = yes
-
-		fire_only_once = no
-
-		days_remove = 14
-
-		cost = 20
-
-		modifier = { }
-
-		ai_will_do = {
-			base = 1
-		}
-
-		remove_effect = {
-			division_template = {
-				name = "Miner Corps"
-				template_counter = 4
-				division_names_group = SPR_INF_06
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-				}
-				support = {
-					recon = { x = 0 y = 0 }
-				}
-			}
-			random_owned_controlled_state = {
-				create_unit = {
-					division = "division_template = \"Miner Corps\" start_experience_factor = 0.1" 
-					owner = RTG
-					count = 2
-				}
-			}
-		}
-
-		complete_effect = {
-			add_manpower = -10000
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
-	}
-	
-	#set up official media
-	
-}
-
-RTG_yuan_kun_she = {
-    RTG_official_media = {
-		
-		icon = decision_RTG_Retuo_integrate
-		
-		visible = { NOT = { has_idea = juyuan_daily } }
-
-		is_good = yes
-		fire_only_once = yes
-		days_remove = 30
-
-		cost = 150
-
-		modifier = { }
-
-		ai_will_do = {
-			base = 10
-			
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_INSANE
-					}
-					has_game_rule = {
-						rule = RTG_ai_behavior
-						option = RTG_COLLAPSE
-					}
-				}
-			}
-			modifier = {
-				factor = 100
-				has_game_rule = {
-					rule = RTG_ai_behavior
-					option = RTG_COMMON
-				}
-			}
-		}
-		
-		remove_effect = { 
-		    add_ideas = juyuan_daily
-            if = {
-			limit = {
-			    has_government = authoritarianism
-			}
-			hidden_effect = {
-			    country_event = {
-				    id = ruotuo.12
-					days = 20
-				    }
-			    }
-		    }
-		}
-	}
 }
 
 RTG_declare_war = {
-    RTG_Declare_war_on_zdgqinluejun = {
-	    icon = decision_RTG_Declare_war_on
-		available = { 
+	RTG_Declare_war_on_zdgqinluejun = {
+		icon = decision_RTG_Declare_war_on
+		available = {
 			is_subject = no
-		    NOT = { has_war_with = ZDG } 
-			ZDG = { exists = yes }
+			NOT = {
+				has_war_with = ZDG
+			}
+			ZDG = {
+				exists = yes
+			}
 			has_war = no
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = ZDG
+			OR = {
+				any_owned_state = {
+					any_neighbor_state = {
+						is_controlled_by = ZDG
+					}
+				}
+				any_subject_country = {
+					any_owned_state = {
+						any_neighbor_state = {
+							is_controlled_by = ZDG
+						}
+					}
 				}
 			}
 		}
@@ -508,24 +194,36 @@ RTG_declare_war = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    declare_war_on = {
-                target = ZDG
-                type = annex_everything
-            }
+		remove_effect = {
+			declare_war_on = {
+				target = ZDG
+				type = annex_everything
+			}
 		}
 	}
-	
 	RTG_declare_war_on_Keqing = {
-	    icon = decision_RTG_Declare_war_on
-		available = { 
+		icon = decision_RTG_Declare_war_on
+		available = {
 			is_subject = no
-		    NOT = { has_war_with = KQG }
-            KQG = { exists = yes }
-            has_war = no
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = KQG
+			NOT = {
+				has_war_with = KQG
+			}
+			KQG = {
+				exists = yes
+			}
+			has_war = no
+			OR = {
+				any_owned_state = {
+					any_neighbor_state = {
+						is_controlled_by = KQG
+					}
+				}
+				any_subject_country = {
+					any_owned_state = {
+						any_neighbor_state = {
+							is_controlled_by = KQG
+						}
+					}
 				}
 			}
 		}
@@ -535,26 +233,38 @@ RTG_declare_war = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    declare_war_on = {
-                target = KQG
-                type = annex_everything
-            }
+		remove_effect = {
+			declare_war_on = {
+				target = KQG
+				type = annex_everything
+			}
 		}
 	}
-	
 	RTG_declare_war_on_huguojun = {
-	    icon = decision_RTG_Declare_war_on
-		available = { 
+		icon = decision_RTG_Declare_war_on
+		available = {
 			is_subject = no
-		    NOT = { has_war_with = XOG }
-            XOG = { exists = yes }
+			NOT = {
+				has_war_with = XOG
+			}
+			XOG = {
+				exists = yes
+			}
 			has_war = no
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = XOG
+			OR = {
+				any_owned_state = {
+					any_neighbor_state = {
+						is_controlled_by = XOG
+					}
 				}
-			}	
+				any_subject_country = {
+					any_owned_state = {
+						any_neighbor_state = {
+							is_controlled_by = XOG
+						}
+					}
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -562,24 +272,36 @@ RTG_declare_war = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    declare_war_on = {
-                target = XOG
-                type = annex_everything
-            }
+		remove_effect = {
+			declare_war_on = {
+				target = XOG
+				type = annex_everything
+			}
 		}
 	}
-	
 	RTG_declare_war_on_liberal = {
-	    icon = decision_RTG_Declare_war_on
-		available = { 
+		icon = decision_RTG_Declare_war_on
+		available = {
 			is_subject = no
-		    NOT = { has_war_with = NNG }
-            NNG = { exists = yes }
+			NOT = {
+				has_war_with = NNG
+			}
+			NNG = {
+				exists = yes
+			}
 			has_war = no
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = NNG
+			OR = {
+				any_owned_state = {
+					any_neighbor_state = {
+						is_controlled_by = NNG
+					}
+				}
+				any_subject_country = {
+					any_owned_state = {
+						any_neighbor_state = {
+							is_controlled_by = NNG
+						}
+					}
 				}
 			}
 		}
@@ -589,29 +311,41 @@ RTG_declare_war = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    declare_war_on = {
-                target = NNG
-                type = annex_everything
-            }
+		remove_effect = {
+			declare_war_on = {
+				target = NNG
+				type = annex_everything
+			}
 		}
 	}
-	
 	RTG_declare_war_on_Xianren = {
-	    icon = decision_RTG_Declare_war_on
-		available = { 
+		icon = decision_RTG_Declare_war_on
+		available = {
 			is_subject = no
-		    NOT = { has_war_with = XRG }
-			has_war = no
-            XRG = { 
-			    exists = yes 
-				NOT = { is_in_faction_with = RTG }
+			NOT = {
+				has_war_with = XRG
 			}
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = XRG
+			has_war = no
+			XRG = {
+				exists = yes
+				NOT = {
+					is_in_faction_with = RTG
 				}
-			}			
+			}
+			OR = {
+				any_owned_state = {
+					any_neighbor_state = {
+						is_controlled_by = XRG
+					}
+				}
+				any_subject_country = {
+					any_owned_state = {
+						any_neighbor_state = {
+							is_controlled_by = XRG
+						}
+					}
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -619,29 +353,41 @@ RTG_declare_war = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    declare_war_on = {
-                target = XRG
-                type = annex_everything
-            }
+		remove_effect = {
+			declare_war_on = {
+				target = XRG
+				type = annex_everything
+			}
 		}
 	}
-	
 	RTG_declare_war_on_liyue_anachist = {
-	    icon = decision_RTG_Declare_war_on
-		available = { 
+		icon = decision_RTG_Declare_war_on
+		available = {
 			is_subject = no
-		    NOT = { has_war_with = ANG }
-			has_war = no
-            ANG = { 
-			    exists = yes 
-				NOT = { is_in_faction_with = ANG }
+			NOT = {
+				has_war_with = ANG
 			}
-			any_owned_state = {
-				any_neighbor_state = {
-					is_controlled_by = ANG
+			has_war = no
+			ANG = {
+				exists = yes
+				NOT = {
+					is_in_faction_with = ANG
 				}
-			}			
+			}
+			OR = {
+				any_owned_state = {
+					any_neighbor_state = {
+						is_controlled_by = ANG
+					}
+				}
+				any_subject_country = {
+					any_owned_state = {
+						any_neighbor_state = {
+							is_controlled_by = ANG
+						}
+					}
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -649,26 +395,27 @@ RTG_declare_war = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    declare_war_on = {
-                target = ANG
-                type = annex_everything
-            }
+		remove_effect = {
+			declare_war_on = {
+				target = ANG
+				type = annex_everything
+			}
 		}
 	}
-	
 }
 
 liyue_civil_war_decisions = {
-    RTG_controls_Xianren = {
-	    icon = decision_RTG_Retuo_controls
-		visible = { 
+	RTG_controls_Xianren = {
+		icon = decision_RTG_Retuo_controls
+		visible = {
 			tag = RTG
 			is_faction_leader = yes
-		    XRG = { 
-			    is_in_faction_with = RTG
-				NOT = { has_autonomy_state = autonomy_army }
- 			}		
+			XRG = {
+				is_in_faction_with = RTG
+				NOT = {
+					has_autonomy_state = autonomy_army
+				}
+			}
 		}
 		fire_only_once = no
 		days_remove = 90
@@ -676,38 +423,44 @@ liyue_civil_war_decisions = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    if = {
-			    limit = {
-				    XRG = { is_subject = no }
+		remove_effect = {
+			if = {
+				limit = {
+					XRG = {
+						is_subject = no
+					}
 				}
 				set_autonomy = {
-				    target = XRG
+					target = XRG
 					autonomy_state = autonomy_puppet
 					end_wars = no
 				}
 			}
 			else_if = {
-			    limit = {
-				    XRG = { has_autonomy_state = autonomy_puppet }
+				limit = {
+					XRG = {
+						has_autonomy_state = autonomy_puppet
+					}
 				}
-			    set_autonomy = {
-				    target = XRG
+				set_autonomy = {
+					target = XRG
 					autonomy_state = autonomy_army
-				    end_wars = no
+					end_wars = no
 				}
 			}
 		}
 	}
 	RTG_controls_anachist_Liyue = {
-	    icon = decision_RTG_Retuo_controls
-		visible = { 
+		icon = decision_RTG_Retuo_controls
+		visible = {
 			tag = RTG
 			is_faction_leader = yes
-		    ANG = { 
-			    is_in_faction_with = RTG
-				NOT = { has_autonomy_state = autonomy_army } 
-			}			
+			ANG = {
+				is_in_faction_with = RTG
+				NOT = {
+					has_autonomy_state = autonomy_army
+				}
+			}
 		}
 		fire_only_once = no
 		days_remove = 90
@@ -715,38 +468,44 @@ liyue_civil_war_decisions = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    if = {
-			    limit = {
-				    ANG = { is_subject = no }
+		remove_effect = {
+			if = {
+				limit = {
+					ANG = {
+						is_subject = no
+					}
 				}
 				set_autonomy = {
-				    target = ANG
+					target = ANG
 					autonomy_state = autonomy_puppet
 					end_wars = no
 				}
 			}
 			else_if = {
-			    limit = {
-				    ANG = { has_autonomy_state = autonomy_puppet }
+				limit = {
+					ANG = {
+						has_autonomy_state = autonomy_puppet
+					}
 				}
-			    set_autonomy = {
-				    target = ANG
+				set_autonomy = {
+					target = ANG
 					autonomy_state = autonomy_army
-				    end_wars = no
+					end_wars = no
 				}
 			}
 		}
 	}
 	RTG_controls_Liyuegang = {
-	    icon = decision_RTG_Retuo_controls
-		visible = { 
+		icon = decision_RTG_Retuo_controls
+		visible = {
 			tag = RTG
 			is_faction_leader = yes
-		    LYU = { 
-			    is_in_faction_with = RTG
-				NOT = { has_autonomy_state = autonomy_army }  
-			}			
+			LYU = {
+				is_in_faction_with = RTG
+				NOT = {
+					has_autonomy_state = autonomy_army
+				}
+			}
 		}
 		fire_only_once = no
 		days_remove = 90
@@ -754,25 +513,29 @@ liyue_civil_war_decisions = {
 		ai_will_do = {
 			base = 10
 		}
-		remove_effect = { 
-		    if = {
-			    limit = {
-				    LYU = { is_subject = no }
+		remove_effect = {
+			if = {
+				limit = {
+					LYU = {
+						is_subject = no
+					}
 				}
 				set_autonomy = {
-				    target = LYU
+					target = LYU
 					autonomy_state = autonomy_puppet
 					end_wars = no
 				}
 			}
 			else_if = {
-			    limit = {
-				    LYU = { has_autonomy_state = autonomy_puppet }
+				limit = {
+					LYU = {
+						has_autonomy_state = autonomy_puppet
+					}
 				}
-			    set_autonomy = {
-				    target = LYU
+				set_autonomy = {
+					target = LYU
 					autonomy_state = autonomy_army
-				    end_wars = no
+					end_wars = no
 				}
 			}
 		}
@@ -780,9 +543,10 @@ liyue_civil_war_decisions = {
 }
 
 RTG_develop_capital = {
-    RTG_expand_yuan_capital = {      #开凿渊都
-	    icon = decision_RTG_expand_yuan_capital
-		visible = { 			
+	RTG_expand_yuan_capital = {
+		#开凿渊都
+		icon = decision_RTG_expand_yuan_capital
+		visible = {
 		}
 		fire_only_once = yes
 		days_remove = 180
@@ -791,22 +555,27 @@ RTG_develop_capital = {
 			base = 5
 		}
 		modifier = {
-        civilian_factory_use = 3		
+			civilian_factory_use = 3
 		}
 		available = {
-		industrial_complex > 4
+			industrial_complex > 4
 		}
 		remove_effect = {
-		    add_ideas = RTG_Excavate_Yuandug
+			add_ideas = RTG_Excavate_Yuandug
 			set_country_flag = RTG_expand_yuan_capital_flag
-			set_variable = { RTG_yongyoujianzhucao = 10 }
-			set_variable = { RTG_shengyukeyon = 10 }			
-        }		
+			set_variable = {
+				RTG_yongyoujianzhucao = 10
+			}
+			set_variable = {
+				RTG_shengyukeyon = 10
+			}
+		}
 	}
-	RTG_migrate_factory = {        #拓展渊都
-	    icon = decision_RTG_migrate_factory
+	RTG_migrate_factory = {
+		#拓展渊都
+		icon = decision_RTG_migrate_factory
 		visible = {
-            has_country_flag = RTG_expand_yuan_capital_flag		
+			has_country_flag = RTG_expand_yuan_capital_flag
 		}
 		fire_only_once = no
 		days_remove = 30
@@ -815,24 +584,33 @@ RTG_develop_capital = {
 			base = 5
 		}
 		available = {
-		    custom_trigger_tooltip = {
-		    tooltip = RTG_migrate_factory_tt1	
-		    check_variable = { RTG_migrate_factory_value < 11 }
-	        }
+			custom_trigger_tooltip = {
+				tooltip = RTG_migrate_factory_tt1
+				check_variable = {
+					RTG_migrate_factory_value < 11
+				}
+			}
 			industrial_complex > 4
 		}
 		remove_effect = {
-		   add_to_variable = { RTG_yongyoujianzhucao = 1 }
-		   add_to_variable = { RTG_shengyukeyon = 1 }
-           add_to_variable = { RTG_migrate_factory_value = 1 }
-           custom_effect_tooltip = RTG_migrate_factory_tt2		   
+			add_to_variable = {
+				RTG_yongyoujianzhucao = 1
+			}
+			add_to_variable = {
+				RTG_shengyukeyon = 1
+			}
+			add_to_variable = {
+				RTG_migrate_factory_value = 1
+			}
+			custom_effect_tooltip = RTG_migrate_factory_tt2
 		}
 		modifier = {
-        civilian_factory_use = 3		
+			civilian_factory_use = 3
 		}
 	}
-	RTG_extend_residential_areas = {   #建造军用工厂
-	    icon = RTG_extend_residential_areas
+	RTG_extend_residential_areas = {
+		#建造军用工厂
+		icon = RTG_extend_residential_areas
 		fire_only_once = no
 		days_remove = 60
 		cost = 20
@@ -840,48 +618,72 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-            has_country_flag = RTG_expand_yuan_capital_flag		
+			has_country_flag = RTG_expand_yuan_capital_flag
 		}
 		available = {
-        custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt1	
-		    check_variable = { RTG_extend_residential_areas_value < 6 }
-	        }		
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt2	
-		    check_variable = { RTG_shengyukeyon > 0 }
-	        }
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt4	
-		    NOT = { has_country_flag = RTG_extend_residential_flag }
-	        }
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt3	
-		    NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-	        }
-		industrial_complex > 3
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt1
+				check_variable = {
+					RTG_extend_residential_areas_value < 6
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt2
+				check_variable = {
+					RTG_shengyukeyon > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt4
+				NOT = {
+					has_country_flag = RTG_extend_residential_flag
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
+			industrial_complex > 3
 		}
 		modifier = {
-		civilian_factory_use = 3
+			civilian_factory_use = 3
 		}
 		complete_effect = {
-		    set_country_flag = RTG_zhinengdianyige_flag 
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
-            hidden_effect = {		
-		    add_offsite_building = { type = arms_factory level = 1 }
+			hidden_effect = {
+				add_offsite_building = {
+					type = arms_factory
+					level = 1
+				}
 			}
 			custom_effect_tooltip = add_RTG_yuan_capital_MP
-		    add_to_variable = { RTG_extend_residential_areas_value = 1 }
-		    add_to_variable = { RTG_junyongongchang = 1 }
-			add_to_variable = { RTG_shengyukeyon = -1 }
-			add_to_variable = { RTG_yishiyondejianzhucao = 1 }
-			set_country_flag = { flag = RTG_extend_residential_flag value = 1 days = 60 }
-			clr_country_flag = RTG_zhinengdianyige_flag 
+			add_to_variable = {
+				RTG_extend_residential_areas_value = 1
+			}
+			add_to_variable = {
+				RTG_junyongongchang = 1
+			}
+			add_to_variable = {
+				RTG_shengyukeyon = -1
+			}
+			add_to_variable = {
+				RTG_yishiyondejianzhucao = 1
+			}
+			set_country_flag = {
+				flag = RTG_extend_residential_flag
+				value = 1
+				days = 60
+			}
+			clr_country_flag = RTG_zhinengdianyige_flag
 		}
 	}
-	RTG_defend_yuan_capital = {  #建造民用工厂
-	    icon = RTG_defend_yuan_capital
+	RTG_defend_yuan_capital = {
+		#建造民用工厂
+		icon = RTG_defend_yuan_capital
 		fire_only_once = no
 		days_remove = 90
 		cost = 20
@@ -889,48 +691,72 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-            has_country_flag = RTG_expand_yuan_capital_flag		
+			has_country_flag = RTG_expand_yuan_capital_flag
 		}
-		available =  {
-        custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt1	
-		    check_variable = { RTG_defend_yuan_capital_value < 6 }
-	        }		
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt2	
-		    check_variable = { RTG_shengyukeyon > 0 }
-	        }
-        custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt4	
-		    NOT = { has_country_flag = RTG_defend_yuan_flag }
-	        }
-       custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt3	
-		    NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-	        }			
-		industrial_complex > 4
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt1
+				check_variable = {
+					RTG_defend_yuan_capital_value < 6
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt2
+				check_variable = {
+					RTG_shengyukeyon > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt4
+				NOT = {
+					has_country_flag = RTG_defend_yuan_flag
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
+			industrial_complex > 4
 		}
 		modifier = {
-		civilian_factory_use = 3
+			civilian_factory_use = 3
 		}
 		complete_effect = {
-		    set_country_flag = RTG_zhinengdianyige_flag 
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
-		    hidden_effect = {		
-		    add_offsite_building = { type = industrial_complex level = 1 }
+			hidden_effect = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
 			}
-		    add_to_variable = { RTG_defend_yuan_capital_value = 1 }
-		    add_to_variable = { RTG_minyongongchang = 1 }
+			add_to_variable = {
+				RTG_defend_yuan_capital_value = 1
+			}
+			add_to_variable = {
+				RTG_minyongongchang = 1
+			}
 			custom_effect_tooltip = add_RTG_yuan_capital_AD
-			add_to_variable = { RTG_shengyukeyon = -1 }
-			add_to_variable = { RTG_yishiyondejianzhucao = 1 }
-			set_country_flag = { flag = RTG_defend_yuan_flag value = 1 days = 90 }
-            clr_country_flag = RTG_zhinengdianyige_flag			
+			add_to_variable = {
+				RTG_shengyukeyon = -1
+			}
+			add_to_variable = {
+				RTG_yishiyondejianzhucao = 1
+			}
+			set_country_flag = {
+				flag = RTG_defend_yuan_flag
+				value = 1
+				days = 90
+			}
+			clr_country_flag = RTG_zhinengdianyige_flag
 		}
 	}
-	RTG_yuan_capital_fix_speed = {   #建造居民区 
-	    icon = RTG_yuan_capital_fix_speed
+	RTG_yuan_capital_fix_speed = {
+		#建造居民区 
+		icon = RTG_yuan_capital_fix_speed
 		fire_only_once = no
 		days_remove = 20
 		cost = 45
@@ -938,43 +764,57 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-            has_country_flag = RTG_expand_yuan_capital_flag		
+			has_country_flag = RTG_expand_yuan_capital_flag
 		}
 		available = {
-		industrial_complex > 3
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt3	
-		    NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-	        }
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt4	
-		    NOT = { has_country_flag = RTG_yuan_capital_fix_flag }
-	        }
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt5	
-		    check_variable = { RTG_yuan_capital_fix_speed_value < 16 }
-	        }
+			industrial_complex > 3
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt4
+				NOT = {
+					has_country_flag = RTG_yuan_capital_fix_flag
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt5
+				check_variable = {
+					RTG_yuan_capital_fix_speed_value < 16
+				}
+			}
 		}
 		modifier = {
-		civilian_factory_use = 2
+			civilian_factory_use = 2
 		}
 		complete_effect = {
-		    set_country_flag = RTG_zhinengdianyige_flag 
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
 			custom_effect_tooltip = add_RTG_yuan_capital_FS
-			hidden_effect = { 
-			add_ideas = RTG_yuan_capital_fix_speed_ideas
+			hidden_effect = {
+				add_ideas = RTG_yuan_capital_fix_speed_ideas
 			}
-			add_to_variable = { RTG_dailaiderenli = 500 }
-			add_to_variable = { RTG_yuan_capital_fix_speed = 1 }
+			add_to_variable = {
+				RTG_dailaiderenli = 500
+			}
+			add_to_variable = {
+				RTG_yuan_capital_fix_speed = 1
+			}
 			clr_country_flag = RTG_zhinengdianyige_flag
-			set_country_flag = { flag = RTG_yuan_capital_fix_flag value = 1 days = 90 }
-			
+			set_country_flag = {
+				flag = RTG_yuan_capital_fix_flag
+				value = 1
+				days = 90
+			}
 		}
 	}
-	RTG_yuandu_engineering_department = {   #渊都工程署 
-	    icon = RTG_yuan_capital_fix_speed
+	RTG_yuandu_engineering_department = {
+		#渊都工程署 
+		icon = RTG_yuan_capital_fix_speed
 		fire_only_once = yes
 		days_remove = 180
 		cost = 45
@@ -982,51 +822,80 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-            has_country_flag = RTG_expand_yuan_capital_flag		
+			has_country_flag = RTG_expand_yuan_capital_flag
 		}
 		available = {
-		custom_trigger_tooltip = {
-		tooltip = RTG_yuandu_engineering_department_tt
-		check_variable = { RTG_yishiyondejianzhucao > 11 }
-            }
-		custom_trigger_tooltip = {
-		tooltip = RTG_yuanduyan_statue_tt
-		check_variable = { RTG_shengyukeyon > 1 }
-            }
-		custom_trigger_tooltip = {
-		tooltip = RTG_yuanduyan_statue_tts
-		XQG = { exists= NO}
-		XRG = { exists= NO}
-		KQG = { exists= NO}
-		XOG = { exists= NO}
-		ZDG = { exists= NO}
-		LYU = { exists= NO}
-		ANG = { exists= NO}
-		ARF = { exists= NO}
-		NNG = { exists= NO}
-            }
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt3	
-		    NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-	        }
-		industrial_complex > 5
+			custom_trigger_tooltip = {
+				tooltip = RTG_yuandu_engineering_department_tt
+				check_variable = {
+					RTG_yishiyondejianzhucao > 11
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_yuanduyan_statue_tt
+				check_variable = {
+					RTG_shengyukeyon > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_yuanduyan_statue_tts
+				XQG = {
+					exists = NO
+				}
+				XRG = {
+					exists = NO
+				}
+				KQG = {
+					exists = NO
+				}
+				XOG = {
+					exists = NO
+				}
+				ZDG = {
+					exists = NO
+				}
+				LYU = {
+					exists = NO
+				}
+				ANG = {
+					exists = NO
+				}
+				ARF = {
+					exists = NO
+				}
+				NNG = {
+					exists = NO
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
+			industrial_complex > 5
 		}
 		modifier = {
-		civilian_factory_use = 4
+			civilian_factory_use = 4
 		}
-		complete_effect = { 
-		add_to_variable = { RTG_yishiyondejianzhucao = 2 }
-		add_to_variable = { RTG_shengyukeyon = -2 }
-		set_country_flag = RTG_zhinengdianyige_flag
+		complete_effect = {
+			add_to_variable = {
+				RTG_yishiyondejianzhucao = 2
+			}
+			add_to_variable = {
+				RTG_shengyukeyon = -2
+			}
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
 			custom_effect_tooltip = RTG_yuandu_tt
 			set_country_flag = RTG_yuandu_engineering_complete
-            clr_country_flag = RTG_zhinengdianyige_flag			
+			clr_country_flag = RTG_zhinengdianyige_flag
 		}
 	}
-	RTG_yuanduyan_statue = {   #渊都岩神像 
-	    icon = RTG_yuan_capital_fix_speed
+	RTG_yuanduyan_statue = {
+		#渊都岩神像 
+		icon = RTG_yuan_capital_fix_speed
 		fire_only_once = yes
 		days_remove = 180
 		cost = 100
@@ -1034,35 +903,46 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-		    has_country_flag = RTG_yuandu_engineering_complete
+			has_country_flag = RTG_yuandu_engineering_complete
 		}
 		available = {
-		custom_trigger_tooltip = {
-		tooltip = RTG_yuanduyan_statue_tt
-		check_variable = { RTG_shengyukeyon > 1 }
-            }
-		industrial_complex > 7
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt3	
-		    NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-	        }
+			custom_trigger_tooltip = {
+				tooltip = RTG_yuanduyan_statue_tt
+				check_variable = {
+					RTG_shengyukeyon > 1
+				}
+			}
+			industrial_complex > 7
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
 		}
 		modifier = {
-		civilian_factory_use = 6
+			civilian_factory_use = 6
 		}
-		complete_effect = { 
-		add_to_variable = { RTG_yishiyondejianzhucao = 2 }
-		add_to_variable = { RTG_shengyukeyon = -2 }
-		set_country_flag = RTG_zhinengdianyige_flag
+		complete_effect = {
+			add_to_variable = {
+				RTG_yishiyondejianzhucao = 2
+			}
+			add_to_variable = {
+				RTG_shengyukeyon = -2
+			}
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
 			add_ideas = RTG_Yuanduyan_Statue
-			add_to_variable = { RTG_yixiujian = 1 }
+			add_to_variable = {
+				RTG_yixiujian = 1
+			}
 			clr_country_flag = RTG_zhinengdianyige_flag
 		}
 	}
-	RTG_prosperity_equality = {   #共荣平等纪念碑 
-	    icon = RTG_yuan_capital_fix_speed
+	RTG_prosperity_equality = {
+		#共荣平等纪念碑 
+		icon = RTG_yuan_capital_fix_speed
 		fire_only_once = yes
 		days_remove = 180
 		cost = 100
@@ -1070,35 +950,46 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-		    has_country_flag = RTG_yuandu_engineering_complete
+			has_country_flag = RTG_yuandu_engineering_complete
 		}
 		available = {
-		custom_trigger_tooltip = {
-		tooltip = RTG_yuanduyan_statue_tt
-		check_variable = { RTG_shengyukeyon > 1 }
-            }
-		industrial_complex > 7
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt3	
-		    NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-	        }
+			custom_trigger_tooltip = {
+				tooltip = RTG_yuanduyan_statue_tt
+				check_variable = {
+					RTG_shengyukeyon > 1
+				}
+			}
+			industrial_complex > 7
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
 		}
 		modifier = {
-		civilian_factory_use = 6
+			civilian_factory_use = 6
 		}
-		complete_effect = { 
-		add_to_variable = { RTG_yishiyondejianzhucao = 2 }
-		add_to_variable = { RTG_shengyukeyon = -2 }
-		set_country_flag = RTG_zhinengdianyige_flag
+		complete_effect = {
+			add_to_variable = {
+				RTG_yishiyondejianzhucao = 2
+			}
+			add_to_variable = {
+				RTG_shengyukeyon = -2
+			}
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
 			add_ideas = RTG_prosperity_equality
-			add_to_variable = { RTG_yixiujian = 1 }
-			clr_country_flag = RTG_zhinengdianyige_flag 
+			add_to_variable = {
+				RTG_yixiujian = 1
+			}
+			clr_country_flag = RTG_zhinengdianyige_flag
 		}
 	}
-	RTG_yuankun_society_headquarters = {   #渊坤社总部 
-	    icon = RTG_yuan_capital_fix_speed
+	RTG_yuankun_society_headquarters = {
+		#渊坤社总部 
+		icon = RTG_yuan_capital_fix_speed
 		fire_only_once = yes
 		days_remove = 180
 		cost = 100
@@ -1106,38 +997,49 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-		    has_country_flag = RTG_yuandu_engineering_complete
+			has_country_flag = RTG_yuandu_engineering_complete
 		}
 		available = {
-		custom_trigger_tooltip = {
-		tooltip = RTG_yuanduyan_statue_tt
-		check_variable = { RTG_shengyukeyon > 1 }
-            }
-		custom_trigger_tooltip = {
-		    tooltip = RTG_extend_residential_areas_tt3	
-		    NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-	        }
-		industrial_complex > 7
+			custom_trigger_tooltip = {
+				tooltip = RTG_yuanduyan_statue_tt
+				check_variable = {
+					RTG_shengyukeyon > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
+			industrial_complex > 7
 		}
 		modifier = {
-		civilian_factory_use = 6
+			civilian_factory_use = 6
 		}
-		complete_effect = { 
-		add_to_variable = { RTG_yishiyondejianzhucao = 2 }
-		add_to_variable = { RTG_shengyukeyon = -2 }
-		set_country_flag = RTG_zhinengdianyige_flag
+		complete_effect = {
+			add_to_variable = {
+				RTG_yishiyondejianzhucao = 2
+			}
+			add_to_variable = {
+				RTG_shengyukeyon = -2
+			}
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
-		    swap_ideas = {
-			add_idea = RTG_prosperity_equality
-			remove_idea = juyuan_daily
-		    }
-		add_to_variable = { RTG_yixiujian = 1 }
-		clr_country_flag = RTG_zhinengdianyige_flag
+			swap_ideas = {
+				add_idea = RTG_prosperity_equality
+				remove_idea = juyuan_daily
+			}
+			add_to_variable = {
+				RTG_yixiujian = 1
+			}
+			clr_country_flag = RTG_zhinengdianyige_flag
 		}
 	}
-	RTG_Stratigraphic_ciences = {   #层岩科学院 
-	    icon = RTG_yuan_capital_fix_speed
+	RTG_Stratigraphic_ciences = {
+		#层岩科学院 
+		icon = RTG_yuan_capital_fix_speed
 		fire_only_once = yes
 		days_remove = 180
 		cost = 100
@@ -1145,35 +1047,46 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-		    has_country_flag = RTG_yuandu_engineering_complete
+			has_country_flag = RTG_yuandu_engineering_complete
 		}
 		available = {
-		industrial_complex > 7
-		custom_trigger_tooltip = {
-		tooltip = RTG_yuanduyan_statue_tt
-		check_variable = { RTG_shengyukeyon > 1 }
-            }
-		custom_trigger_tooltip = {
-		tooltip = RTG_extend_residential_areas_tt3
-		NOT = { has_country_flag = RTG_zhinengdianyige_flag }
-            }
+			industrial_complex > 7
+			custom_trigger_tooltip = {
+				tooltip = RTG_yuanduyan_statue_tt
+				check_variable = {
+					RTG_shengyukeyon > 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RTG_extend_residential_areas_tt3
+				NOT = {
+					has_country_flag = RTG_zhinengdianyige_flag
+				}
+			}
 		}
 		modifier = {
-		civilian_factory_use = 6
+			civilian_factory_use = 6
 		}
-		complete_effect = { 
-		add_to_variable = { RTG_yishiyondejianzhucao = 2 }
-		add_to_variable = { RTG_shengyukeyon = -2 }
-		add_to_variable = { RTG_yixiujian = 1 }
-		set_country_flag = RTG_zhinengdianyige_flag
+		complete_effect = {
+			add_to_variable = {
+				RTG_yishiyondejianzhucao = 2
+			}
+			add_to_variable = {
+				RTG_shengyukeyon = -2
+			}
+			add_to_variable = {
+				RTG_yixiujian = 1
+			}
+			set_country_flag = RTG_zhinengdianyige_flag
 		}
 		remove_effect = {
 			add_ideas = RTG_prosperity_equality
 			clr_country_flag = RTG_zhinengdianyige_flag
 		}
 	}
-	RTG_declare_yuan_capital = {   #宣告渊都的建立 
-	    icon = RTG_yuan_capital_fix_speed
+	RTG_declare_yuan_capital = {
+		#宣告渊都的建立 
+		icon = RTG_yuan_capital_fix_speed
 		fire_only_once = yes
 		days_remove = 180
 		cost = 100
@@ -1181,68 +1094,38 @@ RTG_develop_capital = {
 			base = 10
 		}
 		visible = {
-		    has_country_flag = RTG_yuandu_engineering_complete
+			has_country_flag = RTG_yuandu_engineering_complete
 		}
 		available = {
-		industrial_complex > 7
-		custom_trigger_tooltip = {
-		tooltip = RTG_declare_yuan_capital_tt
-		check_variable = { RTG_yishiyondejianzhucao > 19 }
-            }
+			industrial_complex > 7
+			custom_trigger_tooltip = {
+				tooltip = RTG_declare_yuan_capital_tt
+				check_variable = {
+					RTG_yishiyondejianzhucao > 19
+				}
+			}
 		}
 		modifier = {
-		civilian_factory_use = 6
+			civilian_factory_use = 6
 		}
 		remove_effect = {
-			news_event = { id = global_news.46 }
-			add_to_variable = { RTG_yixiujian = 1 }
+			news_event = {
+				id = global_news.46
+			}
+			add_to_variable = {
+				RTG_yixiujian = 1
+			}
 		}
 	}
 }
 
 RTG_forgive_everything = {
-    RTG_accept_clique_liberial = {
-	    icon = decision_RTG_accept_clique
-		visible = { 
-		    NNG = { exists = no }			
-		}
-		fire_only_once = yes
-		days_remove = 120
-		cost = 120
-		ai_will_do = {
-			base = 100
-		}
-		remove_effect = { 
-		    NNG = {
-		        every_character = {
-					set_nationality = RTG
-				}
-            }
-		}
-	}
-    RTG_accept_clique_yuhengxing = {
-	    icon = decision_RTG_accept_clique
-		visible = { 
-		    KQG = { exists = no }			
-		}
-		fire_only_once = yes
-		days_remove = 120
-		cost = 120
-		ai_will_do = {
-			base = 100
-		}
-		remove_effect = { 
-		    KQG = {
-		        every_character = {
-					set_nationality = RTG
-				}
-            }
-		}
-	}
-	RTG_accept_clique_huguojun = {
-	    icon = decision_RTG_accept_clique
-		visible = { 
-		    XOG = { exists = no }				
+	RTG_accept_clique_liberial = {
+		icon = decision_RTG_accept_clique
+		visible = {
+			NNG = {
+				exists = no
+			}
 		}
 		fire_only_once = yes
 		days_remove = 120
@@ -1251,20 +1134,19 @@ RTG_forgive_everything = {
 			base = 100
 		}
 		remove_effect = {
-		    XOG = {
-                every_character = {
+			NNG = {
+				every_character = {
 					set_nationality = RTG
 				}
-			}			
+			}
 		}
 	}
-	RTG_accept_clique_xianren = {
-	    icon = decision_RTG_accept_clique
-		visible = { 
-		    XRG = { 
-			    exists = no
-				NOT = { has_country_flag = clique_in_Retuo_faction }
-			}			
+	RTG_accept_clique_yuhengxing = {
+		icon = decision_RTG_accept_clique
+		visible = {
+			KQG = {
+				exists = no
+			}
 		}
 		fire_only_once = yes
 		days_remove = 120
@@ -1272,24 +1154,69 @@ RTG_forgive_everything = {
 		ai_will_do = {
 			base = 100
 		}
-		remove_effect = { 
-		    XRG = {
-		        every_character = {
+		remove_effect = {
+			KQG = {
+				every_character = {
 					set_nationality = RTG
 				}
-            }
+			}
+		}
+	}
+	RTG_accept_clique_huguojun = {
+		icon = decision_RTG_accept_clique
+		visible = {
+			XOG = {
+				exists = no
+			}
+		}
+		fire_only_once = yes
+		days_remove = 120
+		cost = 120
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			XOG = {
+				every_character = {
+					set_nationality = RTG
+				}
+			}
+		}
+	}
+	RTG_accept_clique_xianren = {
+		icon = decision_RTG_accept_clique
+		visible = {
+			XRG = {
+				exists = no
+				NOT = {
+					has_country_flag = clique_in_Retuo_faction
+				}
+			}
+		}
+		fire_only_once = yes
+		days_remove = 120
+		cost = 120
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			XRG = {
+				every_character = {
+					set_nationality = RTG
+				}
+			}
 		}
 	}
 	RTG_accept_clique_anachist = {
-	    icon = decision_RTG_accept_clique
-		visible = { 
-		    ANG = { 
-			    exists = no
-				NOT = { 
-				    has_country_flag = clique_in_Retuo_faction 
+		icon = decision_RTG_accept_clique
+		visible = {
+			ANG = {
+				exists = no
+				NOT = {
+					has_country_flag = clique_in_Retuo_faction
 					has_country_flag = anachist_peace_with_Ganyu
 				}
-			}				
+			}
 		}
 		fire_only_once = yes
 		days_remove = 120
@@ -1300,16 +1227,18 @@ RTG_forgive_everything = {
 		remove_effect = {
 			ANG_com_zijigongshe = {
 				set_nationality = RTG
-			}	
+			}
 		}
 	}
 	RTG_accept_Liyuegang = {
-	    icon = decision_RTG_accept_clique
-		visible = { 
-		    LYU = { 
-			    exists = no
-				NOT = { has_country_flag = clique_in_Retuo_faction }
-			}				
+		icon = decision_RTG_accept_clique
+		visible = {
+			LYU = {
+				exists = no
+				NOT = {
+					has_country_flag = clique_in_Retuo_faction
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 120
@@ -1318,7 +1247,7 @@ RTG_forgive_everything = {
 			base = 100
 		}
 		remove_effect = {
-		    LYU = {
+			LYU = {
 				every_character = {
 					set_nationality = RTG
 				}
@@ -1327,18 +1256,20 @@ RTG_forgive_everything = {
 	}
 }
 
-RTG_kuizeng = { 
+RTG_kuizeng = {
 	RTG_kuizeng1 = {
 		cost = 50
 		days_remove = 90
 		visible = {
-			check_variable = { kuizeng < 10 }
+			check_variable = {
+				kuizeng < 10
+			}
 		}
 		modifier = {
 			civilian_factory_use = 2
 		}
 		complete_effect = {
-			add_to_variable ={
+			add_to_variable = {
 				var = kuizeng
 				value = 1
 			}
@@ -1370,52 +1301,53 @@ RTG_kuizeng = {
 					type = chromium
 					amount = 5
 				}
-				
 			}
 		}
 	}
 }
 
 RTG_shenyuan_zhizhi = {
-	RTG_shenyuan1 = { #要求教导魔物
+	RTG_shenyuan1 = {
+		#要求教导魔物
 		cost = 50
 		days_remove = 120
 		visible = {
 			has_country_flag = shenyuan_zhizhi
 		}
 		modifier = {
-
 		}
 		complete_effect = {
 			add_manpower = 12000
 			army_experience = 20
 		}
 	}
-	RTG_shenyuan2 = { #枝叶的教诲
+	RTG_shenyuan2 = {
+		#枝叶的教诲
 		cost = 120
 		fire_only_once = yes
 		visible = {
 			has_country_flag = shenyuan_zhizhi
 		}
 		modifier = {
-			
 		}
 		complete_effect = {
 			add_ideas = shenyuan_guwen
 		}
 	}
-	RTG_shenyuan3 = { #要求军备援助
+	RTG_shenyuan3 = {
+		#要求军备援助
 		cost = 100
 		days_remove = 120
 		visible = {
 			has_country_flag = shenyuan_zhizhi
-			check_variable = {shenyuan_yuanzhu < 3}
+			check_variable = {
+				shenyuan_yuanzhu < 3
+			}
 		}
 		modifier = {
-			
 		}
 		complete_effect = {
-			add_to_variable ={
+			add_to_variable = {
 				var = shenyuan_yuanzhu
 				value = 1
 			}
@@ -1438,126 +1370,776 @@ RTG_shenyuan_zhizhi = {
 RTG_underground_networks = {
 	add_underground_network = {
 		on_map_mode = map_only
-	
 		priority = 20
-		
-  		icon = onmap_recruit_operative
-
+		icon = onmap_recruit_operative
 		visible = {
 			#拥有
-			RTG = { has_full_control_of_state = FROM }
-			FROM = { has_RTG_network = no }
+			RTG = {
+				has_full_control_of_state = FROM
+			}
+			FROM = {
+				has_RTG_network = no
+			}
 		}
-		
-        state_target = yes
+		state_target = yes
 		target_array = controlled_states
-		
 		available = {
-			check_variable = { used_network_states < usable_network_states }
+			check_variable = {
+				used_network_states < usable_network_states
+			}
 		}
-		
 		ai_will_do = {
 			factor = 15
-		}		
-
+		}
 		cancel_if_not_visible = yes
-
 		highlight_color_while_active = yes
-		
 		fire_only_once = no
-		
 		days_remove = 14
-
 		days_re_enable = 30
-
 		complete_effect = {
 			if = {
-				limit = { FROM = { is_liyue_region_eight_states = yes } }
-				add_to_variable = { used_network_states = -1 }
+				limit = {
+					FROM = {
+						is_liyue_region_eight_states = yes
+					}
+				}
+				add_to_variable = {
+					used_network_states = -1
+				}
 			}
-			add_to_variable = { used_network_states = 1 }
+			add_to_variable = {
+				used_network_states = 1
+			}
 		}
-		
 		remove_effect = {
 			custom_effect_tooltip = RTG_add_network_tt
 			hidden_effect = {
-				FROM = { RTG_add_network = yes }
+				FROM = {
+					RTG_add_network = yes
+				}
 			}
 		}
 	}
-
 	remove_underground_network = {
 		on_map_mode = map_only
-	
 		priority = 20
-		
-  		icon = onmap_recruit_operative
-
+		icon = onmap_recruit_operative
 		visible = {
 			#拥有
-			FROM = { has_RTG_network = yes }
-			FROM = { NOT = { is_liyue_region_eight_states = yes } }
+			FROM = {
+				has_RTG_network = yes
+			}
+			FROM = {
+				NOT = {
+					is_liyue_region_eight_states = yes
+				}
+			}
 		}
-		
-        state_target = yes
+		state_target = yes
 		target_array = controlled_states
-		
 		ai_will_do = {
 			factor = 0
-		}		
-
+		}
 		cancel_if_not_visible = yes
-
 		highlight_color_while_active = yes
-		
 		fire_only_once = no
-		
 		days_remove = 7
-
 		days_re_enable = 14
-		
 		remove_effect = {
 			custom_effect_tooltip = RTG_remove_network_tt
 			hidden_effect = {
-				FROM = { RTG_remove_network = yes }
-				add_to_variable = { used_network_states = -1 }
+				FROM = {
+					RTG_remove_network = yes
+				}
+				add_to_variable = {
+					used_network_states = -1
+				}
 			}
 		}
 	}
-
 	strengthen_network = {
 		on_map_mode = map_only
-	
 		priority = 20
-		
-  		icon = onmap_recruit_operative
-
+		icon = onmap_recruit_operative
 		visible = {
 			#拥有
-			FROM = { has_RTG_network = yes }
+			FROM = {
+				has_RTG_network = yes
+			}
 		}
-		
-        state_target = yes
+		state_target = yes
 		target_array = controlled_states
-		
 		ai_will_do = {
 			factor = 0
-		}		
-
+		}
 		cancel_if_not_visible = yes
-
 		highlight_color_while_active = yes
-		
 		fire_only_once = no
-		
 		days_remove = 7
-
 		days_re_enable = 120
-		
 		remove_effect = {
 			custom_effect_tooltip = RTG_strengthen_network_tt
 			hidden_effect = {
-				FROM = { RTG_strengthen_network = yes }
+				FROM = {
+					RTG_strengthen_network = yes
+				}
+			}
+		}
+	}
+}
+
+#初始线决议
+RTG_mosun = {
+	#营救私自入渊矿工
+	RTG_yingjiusiziruyuankuangong = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+		}
+		fire_only_once = yes
+		available = {
+			always = no
+		}
+		activation = {
+			has_country_flag = save_our_people_immed
+		}
+		days_mission_timeout = 70
+		is_good = no
+		timeout_effect = {
+			remove_mission = RTG_yingjiusiziruyuankuangong
+			clr_country_flag = save_our_people_immed
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = RTG_paichujiuyuandui_yes
+					}
+				}
+				country_event = {
+					days = 1
+					id = RTG.7
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = RTG_paichujiuyuandui_yes
+				}
+				random_list = {
+					50 = {
+						modifier = {
+							add = 10
+							has_country_flag = RTG_paichujiuyuandui_yes_two
+						}
+						country_event = {
+							days = 1
+							id = RTG.8
+						}
+					}
+					50 = {
+						country_event = {
+							days = 1
+							id = RTG.7
+						}
+					}
+				}
+			}
+		}
+	}
+	#派出救援队
+	RTG_paichujiuyuandui = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+			NOT = {
+				has_government = hive_mind
+			}
+			has_country_flag = save_our_people_immed
+		}
+		available = {
+			command_power > 9
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 7
+		complete_effect = {
+			set_country_flag = RTG_paichujiuyuandui_yes
+			custom_effect_tooltip = RTG_paichujiuyuandui_tt
+		}
+	}
+	#增加救援队规模
+	RTG_zengjiajiuyuanduiguimo = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+			has_country_flag = save_our_people_immed
+		}
+		available = {
+			command_power > 9
+			has_country_flag = RTG_paichujiuyuandui_yes
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 7
+		complete_effect = {
+			set_country_flag = RTG_paichujiuyuandui_yes_two
+			custom_effect_tooltip = RTG_paichujiuyuandui_tt
+		}
+	}
+	#安抚地脉
+	RTG_appease_leylines = {
+		desc = RTG_erosion_system_1_desc
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+			has_country_flag = erosion_system_start
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RTG_appease_leylines_tt
+				NOT = {
+					has_country_flag = RTG_appease_leylines_flag
+				}
+			}
+		}
+		cost = 20
+		fire_only_once = no
+		days_remove = 7
+		complete_effect = {
+			add_to_variable = {
+				RTG_erosion_system = -3
+			}
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			}
+			custom_effect_tooltip = RTG_erosion_system_2_tt_three
+			custom_effect_tooltip = RTG_erosion_system_2_tt_four
+			set_country_flag = {
+				flag = RTG_appease_leylines_flag
+				value = 1
+				days = 14
+			}
+			if = {
+				limit = {
+					has_idea = RTG_Fengxu
+				}
+				add_to_variable = {
+					RTG_erosion_system = -3
+				}
+				clamp_variable = {
+					var = RTG_erosion_system
+					min = 0
+					max = 100
+				}
+			}
+		}
+	}
+	#仙家术法
+	RTG_erosion_system_2 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+			has_country_flag = erosion_system_start
+		}
+		available = {
+			has_idea = RTG_Fengxu
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 35
+		complete_effect = {
+			set_country_flag = RTG_erosion_system_2_flag_two
+			custom_effect_tooltip = RTG_erosion_system_3_tt
+		}
+		remove_effect = {
+			add_to_variable = {
+				RTG_erosion_system = -3
+			}
+			add_to_variable = {
+				RTG_erosion_system_week = -1
+			}
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			}
+			clamp_variable = {
+				var = RTG_erosion_system_week
+				min = 0
+				max = 100
+			}
+			custom_effect_tooltip = RTG_erosion_system_2_tt_three
+		}
+	}
+	#停止巨渊中心的建筑与开发项目
+	RTG_erosion_system_3 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+			has_country_flag = erosion_system_start
+		}
+		available = {
+		}
+		cost = 10
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RTG_erosion_system_3_flag
+			custom_effect_tooltip = RTG_erosion_system_3_tt
+			add_to_variable = {
+				RTG_erosion_system_week = -1
+			}
+			clamp_variable = {
+				var = RTG_erosion_system_week
+				min = 0
+				max = 100
+			}
+			add_stability = -0.1
+			add_war_support = -0.15
+			155 = {
+				add_dynamic_modifier = {
+					modifier = RTG_juyuanzhongxinwufajianzao
+				}
+			}
+			156 = {
+				add_dynamic_modifier = {
+					modifier = RTG_juyuanzhongxinwufajianzao
+				}
+			}
+		}
+	}
+	#阻塞地脉
+	RTG_erosion_system_4 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+			has_country_flag = erosion_system_start
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RTG_erosion_system_4_tt
+				check_variable = {
+					RTG_erosion_system > 49
+				}
+			}
+		}
+		cost = 70
+		days_remove = 60
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RTG_erosion_system_4_flag
+			custom_effect_tooltip = RTG_erosion_system_3_tt
+			add_to_variable = {
+				RTG_erosion_system_week = -1
+			}
+			clamp_variable = {
+				var = RTG_erosion_system_week
+				min = 0
+				max = 100
+			}
+		}
+	}
+	#饮鸩止渴
+	RTG_erosion_system_5 = {
+		allowed = {
+			original_tag = RTG
+		}
+		visible = {
+			has_country_flag = erosion_system_start
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RTG_erosion_system_5_tt
+				check_variable = {
+					RTG_erosion_system > 79
+				}
+			}
+		}
+		cost = 70
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = RTG_erosion_system_5_tt2
+			custom_effect_tooltip = RTG_erosion_system_5_tt3
+			add_to_variable = {
+				RTG_erosion_system = -30
+			}
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			}
+		}
+	}
+	#终局
+	RTG_erosion_system_6 = {
+		fire_only_once = no
+		visible = {
+			has_country_flag = {
+				flag = erosion_system_start
+				days > 180
+			}
+		}
+		activation = {
+			has_country_flag = {
+				flag = erosion_system_start
+				days > 180
+			}
+		}
+		days_mission_timeout = 180
+		is_good = yes
+		cost = 0
+		available = {
+			always = no
+		}
+		cancel_trigger = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = RTG_erosion_system_6_tt
+			if = {
+				limit = {
+					check_variable = {
+						RTG_erosion_system < 20
+					}
+				}
+				country_event = {
+					days = 1
+					id = RTG.14
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						RTG_erosion_system > 80
+					}
+				}
+				country_event = {
+					days = 1
+					id = RTG.15
+				}
+			}
+			else = {
+				country_event = {
+					days = 1
+					id = RTG.13
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+RTG_huanghunxianli_jizhi = {
+	X_RTG_propaganda_3 = {
+		# 建立渊坤社
+		priority = 2
+		ai_will_do = {
+			factor = 10
+		}
+		icon = eng_propaganda_campaigns
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+		}
+		days_remove = 60
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 3
+			}
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			add_ideas = juyuan_daily
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 3
+			}
+			set_variable = {
+				RTG_xuanchuanhaibaolanwei = 1
+			}
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+			set_country_flag = RTG_unlock_second_stage_poster
+			custom_effect_tooltip = RTG_unlock_second_stage_poster_tt
+			hidden_effect = {
+				country_event = { days = 7  id = RTG.34 }
+			}
+		}
+	}
+	X_RTG_propaganda_4 = {
+		# 你我都是璃月人
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 140
+		cost = 20
+		modifier = {
+			stability_weekly = 0.005
+		}
+		complete_effect = {
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 4
+			}
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 4
+			}
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_5 = {
+		# 坚决保卫契约，时刻准备介入
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+			has_war_support < 0.51
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 70
+		cost = 20
+		modifier = {
+			stability_weekly = -0.005
+			war_support_weekly = 0.015
+		}
+		complete_effect = {
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 5
+			}
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 5
+			}
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_6 = {
+		#岩壁将会隔开战火
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+			has_war_support > 0.5
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 140
+		cost = 10
+		modifier = {
+			army_core_defence_factor = 0.1
+			production_speed_bunker_factor = 0.2
+		}
+		complete_effect = {
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 6
+			}
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 6
+			}
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_7 = {
+		# 为和平而生产
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			factor = 100
+		}
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+			has_war = no
+		}
+		visible = {
+			has_country_flag = RTG_unlock_second_stage_poster
+		}
+		days_remove = 140
+		cost = 20
+		modifier = {
+			production_factory_start_efficiency_factor = 0.05
+			production_factory_efficiency_gain_factor = 0.05
+		}
+		complete_effect = {
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 7
+			}
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 7
+			}
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+	X_RTG_propaganda_8 = {
+		# 资源才是巨渊之本
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			factor = 100
+		}
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			X_RTG_propaganda_poster_slot_available = yes
+			custom_trigger_tooltip = {
+				tooltip = KQG_focus_tt
+				has_global_flag = Liyue_Civil_War
+			}
+		}
+		visible = {
+		}
+		days_remove = 140
+		cost = 20
+		modifier = {
+			local_resources_factor = 0.2
+		}
+		complete_effect = {
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 8
+			}
+			X_RTG_pick_propaganda_campaign_slot_effect = yes
+		}
+		remove_effect = {
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 8
+			}
+			X_RTG_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
+}
+#难民规模机制
+RTG_nanming_jizhi_jueyi = {
+	RTG_jiangdi_nanminguimo = {
+		#降低难民规模
+		priority = 2
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			tag = RTG
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RTG_jiangdi_nanminguimo_tt
+				or = {
+                    check_variable = { RTG_chushixian_xianzhi = 0 }
+					check_variable = { RTG_juanshuxian_xianzhi = 1 }
+				}
+			}
+		}
+		visible = {
+			has_country_flag = erosion_system_start
+		    NOT = {
+		    has_government = hive_mind
+		    }
+		}
+		days_remove = 30
+		cost = 0
+		modifier = {
+			
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_4
+				}
+				swap_ideas = {
+					remove_idea = RTG_nanmin_guimo_4
+					add_idea = RTG_nanmin_guimo_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_3
+				}
+				swap_ideas = {
+					remove_idea = RTG_nanmin_guimo_3
+					add_idea = RTG_nanmin_guimo_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_2
+				}
+				swap_ideas = {
+					remove_idea = RTG_nanmin_guimo_2
+					add_idea = RTG_nanmin_guimo
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo
+				}		
+				remove_ideas = RTG_nanmin_guimo			
 			}
 		}
 	}

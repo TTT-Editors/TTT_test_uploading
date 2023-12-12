@@ -33,64 +33,28 @@ country_event = {
 		ZDG = { exists = yes }
 	}
 	
+	immediate = {
+		hidden_effect = {
+			ROOT = {
+				ZDG = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+					activate_mission = ZDG_offensive_in_one_year
+				}
+				activate_mission = anti_ZDG_offensive_in_one_year
+			}
+			XOG = { add_ideas = XOG_BUFF_WAR }
+			XRG = { add_ideas = XOG_BUFF_WAR }
+		}
+	}
+	
 	option = {
 		name = liyue_civil_war.5.a
 		if = {
 			limit = { NOT = { has_global_flag = zdg_has_come } }
 			set_global_flag = zdg_has_come
-		}
-		ROOT = {
-			ZDG = {
-				declare_war_on = {
-					target = PREV
-					type = annex_everything
-				}
-				activate_mission = ZDG_offensive_in_one_year
-			}
-			activate_mission = anti_ZDG_offensive_in_one_year
-		}
-		#hidden_effect = {
-		#	add_ideas = beat_the_ZDG_invaders
-		#}
-	}
-}
-
-#统一南部，正式开始
-country_event = {
-	id = liyue_civil_war.7
-	title = liyue_civil_war.7.t
-	desc = liyue_civil_war.7.d
-	is_triggered_only = yes
-	
-	#出发
-	option = {
-		name = liyue_civil_war.7.a
-		if = {
-			limit = {
-				LYU = { can_be_attacked = yes }
-			}
-			declare_war_on = {
-				target = LYU
-				type = annex_everything
-			}
-		}
-		if = {
-			limit = {
-				ANG = { can_be_attacked = yes }
-			}
-			declare_war_on = {
-				target = ANG
-				type = annex_everything
-			}
-		}
-		if = {
-			limit = {
-				RTG = { can_be_attacked = yes }
-			}
-			declare_war_on = {
-				target = RTG
-				type = annex_everything
-			}
 		}
 	}
 }

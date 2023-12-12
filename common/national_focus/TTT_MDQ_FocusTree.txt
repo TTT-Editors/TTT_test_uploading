@@ -370,13 +370,16 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
-            add_command_power = -20 #指挥点
+            add_command_power = -10 #指挥点
             add_manpower = -6251 
             QQR = {
                 add_stability = -0.1
 	            add_war_support = -0.1
             }
-                        
+            LTM = {
+                add_stability = -0.1
+	            add_war_support = -0.1
+            }            
         }
     }
 focus = {
@@ -392,7 +395,8 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
-                        
+            army_experience = 35  
+            add_command_power = 25             
         }
     }
 focus = {
@@ -410,7 +414,13 @@ focus = {
         completion_reward = {
                MOT = {
                 country_event = { id = MDQ_event.9 days = 1 } 
-               }         
+               } 
+               add_manpower = 5000 
+               add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = 2500
+                producer = MOT
+            }    
         }
     }
 focus = {
@@ -426,7 +436,7 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
-                        
+            add_ideas = MDQ_idea_0_7            
         }
     }
 focus = {
@@ -442,7 +452,7 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
-                        
+            country_event = { id = MDQ_event.16 days = 21 }            
         }
     }
 focus = {
@@ -461,7 +471,24 @@ focus = {
                 factor = 10.0
         }     
         completion_reward = {
-                        
+            capital_scope = {
+                create_unit = {
+                    division = "name = \"西风骑士团军区正式部队01\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
+                    owner = ROOT
+                }
+                create_unit = {
+                    division = "name = \"西风骑士团军区正式部队02\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
+                    owner = ROOT
+                }
+                create_unit = {
+                    division = "name = \"西风骑士团军区正式部队03\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
+                    owner = ROOT
+                }
+                create_unit = {
+                    division = "name = \"西风骑士团军区正式部队04\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
+                    owner = ROOT
+                }
+            }             
         }
     }
 focus = {
@@ -593,7 +620,7 @@ focus = {
         x = 4.0
         y = 7.0
         prerequisite = {
-                focus =MDQ_01_16
+                focus = MDQ_01_16
         }
         cost = 21.0
         ai_will_do = {
@@ -602,6 +629,7 @@ focus = {
         completion_reward = {
             #unlock_decision_category_tooltip = MDQ_decisions_02_01  仅仅是提示一下解锁什么决议  
             custom_effect_tooltip = MDQ_0_07
+            set_country_flag = MDQ_country_flag_01
         }
     }
 focus = {

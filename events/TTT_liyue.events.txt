@@ -134,9 +134,63 @@ country_event = {
 				transfer_state = 91
 			}
 			NNG = {
+				division_template = {
+					name = "Yiyongjun"
+					is_locked = no
+					priority = 0
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+					}
+				}
+				
+				division_template = {
+					name = "Bubing Shi"
+					is_locked = no
+					priority = 0
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 1 y = 3 }
+						artillery_brigade = { x = 2 y = 0 }
+						artillery_brigade = { x = 2 y = 1 }
+					}
+					support = {
+						recon = { x = 0 y = 0 }
+					}
+				}
+
 				every_owned_state = {
 					add_core_of = NNG
 					remove_core_of = LYU
+					set_demilitarized_zone = no
+					create_unit = {
+						division = "division_template = \"Yiyongjun\" start_experience_factor = 0.55"
+						owner = NNG
+						allow_spawning_on_enemy_provs = yes
+						count = 2
+					}
+				}
+				
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Bubing Shi\" start_experience_factor = 0.7"
+						owner = NNG
+						allow_spawning_on_enemy_provs = yes
+						count = 2
+					}
 				}
 				country_event = {
 					days = 15
@@ -145,9 +199,8 @@ country_event = {
 			}
 			transfer_units_fraction = {
 				target = NNG
-				size = 0.1
-				keep_unit_leaders = {
-				}
+				navy_ratio = 0.3
+				keep_unit_leaders = { }
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
@@ -303,14 +356,11 @@ country_event = {
 				transfer_state = 114
 			}
 			KQG = {
-				every_owned_state = {
-					add_core_of = KQG
-					remove_core_of = LYU
-				}
+				country_event = { id = spawn_army_event.1 }
 			}
 			transfer_units_fraction = {
 				target = KQG
-				size = 0.07
+				navy_ratio = 0.07
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
@@ -431,7 +481,7 @@ country_event = {
 			}
 			transfer_units_fraction = {
 				target = XOG
-				size = 0.2
+				navy_ratio = 0.2
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
@@ -453,9 +503,11 @@ country_event = {
 				promote_character = LYU_Xiao
 			}
 			XOG = {
+				country_event = { id = spawn_army_event.1 }
 				every_owned_state = {
 					add_core_of = XOG
 					remove_core_of = LYU
+					set_demilitarized_zone = no
 				}
 			}
 			if = {
@@ -560,14 +612,16 @@ country_event = {
 				#load_oob = "RTG"
 			}
 			RTG = {
+				country_event = { id = spawn_army_event.1 }
 				every_owned_state = {
 					add_core_of = RTG
 					remove_core_of = LYU
+					set_demilitarized_zone = no
 				}
 			}
 			transfer_units_fraction = {
 				target = RTG
-				size = 0.2
+				navy_ratio = 0.2
 				keep_unit_leaders_trigger = {
 					always = yes
 				}
@@ -622,6 +676,7 @@ country_event = {
 				transfer_state = 100
 				transfer_state = 258
 			}
+			100 = { set_demilitarized_zone = no }
 			ZDG = {
 				inherit_technology = SNE
 				set_research_slots = 3
@@ -641,6 +696,37 @@ country_event = {
 				}
 				add_manpower = 10000
 				set_political_power = 200
+			}
+			ZDG = {
+				division_template = {
+					name = "Yuzoje ekspedicionario eskadro" #Южное Expedicionário Exército
+					is_locked = no
+					priority = 0
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 1 y = 3 }
+						artillery_brigade = { x = 2 y = 0 }
+						artillery_brigade = { x = 2 y = 1 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						recon = { x = 0 y = 1 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Yuzoje ekspedicionario eskadro\" start_experience_factor = 0.7"
+						owner = ZDG
+						allow_spawning_on_enemy_provs = yes
+						count = 25
+					}
+				}
 			}
 			SNE = {
 				SNE_Childe = {
@@ -745,7 +831,7 @@ country_event = {
 			}
 			transfer_units_fraction = {
 				target = XRG
-				size = 0.4
+				navy_ratio = 0.4
 				keep_unit_leaders = {
 				}
 				keep_unit_leaders_trigger = {
@@ -753,11 +839,14 @@ country_event = {
 				}
 			}
 			XRG = {
+				country_event = { id = spawn_army_event.1 }
 				every_owned_state = {
 					add_core_of = XRG
 					remove_core_of = LYU
+					set_demilitarized_zone = no
 				}
 			}
+			100 = { set_demilitarized_zone = yes }
 			XRG_Shenhe = {
 				set_nationality = XRG
 			}
@@ -812,10 +901,12 @@ country_event = {
 				transfer_state = 60
 				transfer_state = 69
 				transfer_state = 71
+				country_event = { id = spawn_army_event.1 }
 				#load_oob = "ANG"
 				every_owned_state = {
 					add_core_of = ANG
 					remove_core_of = LYU
+					set_demilitarized_zone = no
 				}
 			}
 			hidden_effect = {
@@ -939,6 +1030,7 @@ country_event = { #内战爆发事件 LYU触发
 				id = liyue.9
 				days = 1
 			}
+			LYU_lazy_load_oob = yes
 			country_event = {
 				id = LHPG.10 
 				days = 14

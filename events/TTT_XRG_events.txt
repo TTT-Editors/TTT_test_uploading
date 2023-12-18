@@ -199,6 +199,10 @@ country_event = {
 		recruit_character = XRG_wenhepaixianren
 		recruit_character = XRG_zhonglipaixianren
 		recruit_character = XRG_jijinpaixianren
+		set_political_party = {
+    		ideology = authoritarianism
+    		popularity = 100
+		}
 		country_event = { days = 5 id = XRG_EVENTS_QXHY.15 }
 	}
 }
@@ -767,11 +771,7 @@ country_event = {
 		has_war_with = ZDG
 		has_manpower < 20000
     }
-	fire_only_once = yes
-
-	mean_time_to_happen = {
-		days = 7
-	}
+	fire_only_once = no
 	
 	option = { 
 		name = XRG_EVENTS_WAR.3.a
@@ -792,10 +792,6 @@ country_event = {
 		}
     }
 	fire_only_once = no
-
-	mean_time_to_happen = {
-		days = 7
-	}
 	
 	option = { 
 		name =XRG_EVENTS_WAR.4.a
@@ -967,3 +963,642 @@ country_event = {
 	}	
 }
 
+add_namespace = XRG_EVENTS_HXD
+country_event = {
+	id = XRG_EVENTS_HXD.1
+	title = XRG_EVENTS_HXD.1.t
+	desc = XRG_EVENTS_HXD.1.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.1.a
+		add_to_variable = { XRG_minzhongbumandu = 2 }
+		add_to_variable = { XRG_xianjiabumandu = 2 }
+		add_to_variable = { XRG_hexiedu = 10 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_1
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.1.b
+		add_political_power = -50
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.2
+	title = XRG_EVENTS_HXD.2.t
+	desc = XRG_EVENTS_HXD.2.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.2.a
+		add_political_power = -100
+		add_to_variable = { XRG_hexiedu = 20 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_2
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.2.b
+		add_political_power = -50
+		add_to_variable = { XRG_hexiedu = 10 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_3
+	}
+	option = { 
+		name = XRG_EVENTS_HXD.2.c
+		add_to_variable = { XRG_hexiedu = 5 }
+		add_to_variable = { XRG_xianjiabumandu = 1 }
+		add_to_variable = { XRG_minzhongbumandu = 1 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_4
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.3
+	title = XRG_EVENTS_HXD.3.t
+	desc = XRG_EVENTS_HXD.3.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.3.a
+		add_to_variable = { XRG_hexiedu = 10 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_3
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.3.b
+		add_political_power = 50
+		add_to_variable = { XRG_hexiedu = 5 }
+		add_to_variable = { XRG_xianjiabumandu = 1 }
+		add_to_variable = { XRG_minzhongbumandu = 1 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_4
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.4
+	title = XRG_EVENTS_HXD.4.t
+	desc = XRG_EVENTS_HXD.4.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.4.a
+		add_political_power = -50
+		add_to_variable = { XRG_hexiedu = 5 }
+		add_to_variable = { XRG_xianjiabumandu = -1 }
+		add_to_variable = { XRG_minzhongbumandu = -1 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_5
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.4.b
+		add_to_variable = { XRG_hexiedu = -5 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_6
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.5
+	title = XRG_EVENTS_HXD.5.t
+	desc = XRG_EVENTS_HXD.5.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.5.a
+		add_political_power = -50
+		add_to_variable = { XRG_hexiedu = 5 }
+		add_to_variable = { XRG_xianjiabumandu = -1 }
+		add_to_variable = { XRG_minzhongbumandu = -1 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_5
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.5.b
+		add_political_power = -50
+		add_to_variable = { XRG_xianjiabumandu = -3 }
+		add_to_variable = { XRG_minzhongbumandu = -3 }
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_7
+	}
+	option = { 
+		name = XRG_EVENTS_HXD.5.c
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.6
+	title = XRG_EVENTS_HXD.6.t
+	desc = XRG_EVENTS_HXD.6.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.6.a
+		add_political_power = -50
+		add_to_variable = { XRG_hexiedu = 5 }
+		add_to_variable = { XRG_xianjiabumandu = -1 }
+		add_to_variable = { XRG_minzhongbumandu = -1 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_5
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.6.b
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.7
+	title = XRG_EVENTS_HXD.7.t
+	desc = XRG_EVENTS_HXD.7.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.7.a
+		add_political_power = 50
+		add_to_variable = { XRG_xianjiabumandu = 1 }
+		add_to_variable = { XRG_minzhongbumandu = 1 }
+		clamp_temp_variable = {
+    		var = XRG_minzhongbumandu
+    		min = 0
+			max = 10
+		}
+		clamp_temp_variable = {
+    		var = XRG_xianjiabumandu
+    		min = 0
+			max = 10
+		}
+		custom_effect_tooltip = XRG_HXD_tooltip_8
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.7.b
+	}
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.8
+	title = XRG_EVENTS_HXD.8.t
+	desc = XRG_EVENTS_HXD.8.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.8.a
+		add_political_power = -200
+		add_war_support = -0.1
+		add_to_variable = { XRG_hexiedu = -50 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		add_timed_idea = { idea = XRG_DEBUFF_HXD days = 90 }
+		custom_effect_tooltip = XRG_HXD_tooltip_9
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.9
+	title = XRG_EVENTS_HXD.9.t
+	desc = XRG_EVENTS_HXD.9.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.9.a
+		add_political_power = -200
+		add_stability = -0.1
+		add_to_variable = { XRG_hexiedu = -50 }
+		clamp_temp_variable = {
+    		var = XRG_hexiedu
+    		min = 0
+			max = 100
+		}
+		add_timed_idea = { idea = XRG_DEBUFF_HXD days = 90 }
+		custom_effect_tooltip = XRG_HXD_tooltip_9
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.10
+	title = XRG_EVENTS_HXD.10.t
+	desc = XRG_EVENTS_HXD.10.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.10.a
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_2
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_2
+				add_idea = XRG_BUFF_HXD_1
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_3
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_3
+				add_idea = XRG_BUFF_HXD_1
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_4
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_4
+				add_idea = XRG_BUFF_HXD_1
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_5
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_5
+				add_idea = XRG_BUFF_HXD_1
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.11
+	title = XRG_EVENTS_HXD.11.t
+	desc = XRG_EVENTS_HXD.11.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.11.a
+		swap_ideas = {
+			remove_idea = XRG_BUFF_HXD_1
+			add_idea = XRG_BUFF_HXD_2
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.12
+	title = XRG_EVENTS_HXD.12.t
+	desc = XRG_EVENTS_HXD.12.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.12.a
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_3
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_3
+				add_idea = XRG_BUFF_HXD_2
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_4
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_4
+				add_idea = XRG_BUFF_HXD_2
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_5
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_5
+				add_idea = XRG_BUFF_HXD_2
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.13
+	title = XRG_EVENTS_HXD.13.t
+	desc = XRG_EVENTS_HXD.13.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.13.a
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_1
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_1
+				add_idea = XRG_BUFF_HXD_3
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_2
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_2
+				add_idea = XRG_BUFF_HXD_3
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.14
+	title = XRG_EVENTS_HXD.14.t
+	desc = XRG_EVENTS_HXD.14.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.14.a
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_4
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_4
+				add_idea = XRG_BUFF_HXD_3
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_5
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_5
+				add_idea = XRG_BUFF_HXD_3
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.15
+	title = XRG_EVENTS_HXD.15.t
+	desc = XRG_EVENTS_HXD.15.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.15.a
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_1
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_1
+				add_idea = XRG_BUFF_HXD_4
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_2
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_2
+				add_idea = XRG_BUFF_HXD_4
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_3
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_3
+				add_idea = XRG_BUFF_HXD_4
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.16
+	title = XRG_EVENTS_HXD.16.t
+	desc = XRG_EVENTS_HXD.16.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.16.a
+		swap_ideas = {
+			remove_idea = XRG_BUFF_HXD_5
+			add_idea = XRG_BUFF_HXD_4
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.17
+	title = XRG_EVENTS_HXD.17.t
+	desc = XRG_EVENTS_HXD.17.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.17.a
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_1
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_1
+				add_idea = XRG_BUFF_HXD_5
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_2
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_2
+				add_idea = XRG_BUFF_HXD_5
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_3
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_3
+				add_idea = XRG_BUFF_HXD_5
+			}
+		}
+		if = {
+			limit = {
+				has_idea = XRG_BUFF_HXD_4
+			}
+			swap_ideas = {
+				remove_idea = XRG_BUFF_HXD_4
+				add_idea = XRG_BUFF_HXD_5
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.18
+	title = XRG_EVENTS_HXD.18.t
+	desc = XRG_EVENTS_HXD.18.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.18.a
+		country_event = XRG_EVENTS_HXD.19
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.18.b
+		country_event = XRG_EVENTS_HXD.20
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.18.c
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.19
+	title = XRG_EVENTS_HXD.19.t
+	desc = XRG_EVENTS_HXD.19.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.19.a
+		country_event = XRG_EVENTS_HXD.20
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.19.b
+		country_event = XRG_EVENTS_HXD.18
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.19.c	
+	}	
+}
+
+country_event = {
+	id = XRG_EVENTS_HXD.20
+	title = XRG_EVENTS_HXD.20.t
+	desc = XRG_EVENTS_HXD.20.d
+	is_triggered_only = yes
+	fire_only_once = no
+	option = { 
+		name = XRG_EVENTS_HXD.20.a
+		country_event = XRG_EVENTS_HXD.19
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.20.b
+		country_event = XRG_EVENTS_HXD.18
+	}	
+	option = { 
+		name = XRG_EVENTS_HXD.20.c
+	}	
+}

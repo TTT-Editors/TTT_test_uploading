@@ -27,8 +27,15 @@ focus_tree = {
 		id = XR_L1	#群仙会议#
 		icon = GFX_goal_XRG02
 		cost = 21.00
-		visible = {
-			has_country_flag = XRG_FLAG_1
+		allow_branch = {
+			if = {
+				limit = {
+					has_country_flag = XRG_FLAG_1
+				}
+				NOT = {
+					has_country_flag = XRG_FLAG_2
+				}
+			}
 		}
 		available = {
 			has_country_flag = XRG_FLAG_1
@@ -43,7 +50,26 @@ focus_tree = {
 				remove = XRG_CSZX
 				add = XRG_QXHY_ONE
 			}
+			add_ideas = XRG_BUFF_HXD_3
 			custom_effect_tooltip = XRG_QXHY_tooltip
+			set_variable = { XRG_hexiedu = 40 }
+			clamp_temp_variable = {
+    			var = XRG_hexiedu
+    			min = 0
+				max = 100
+			}
+			set_variable = { XRG_xianjiabumandu = 0 }
+			clamp_temp_variable = {
+    			var = XRG_xianjiabumandu
+    			min = 0
+				max = 10
+			}
+			set_variable = { XRG_minzhongbumandu = 0 }
+			clamp_temp_variable = {
+    			var = XRG_minzhongbumandu
+    			min = 0
+				max = 10
+			}
 		}
 	}
 	focus = {

@@ -1791,9 +1791,12 @@ RTG_mosun = {
 			custom_effect_tooltip = RTG_erosion_system_6_tt
 			if = {
 				limit = {
+					AND = {
+					is_ai = no
 					check_variable = {
 						RTG_erosion_system < 20
-					}
+					    }
+				    }
 				}
 				country_event = {
 					days = 1
@@ -1802,8 +1805,11 @@ RTG_mosun = {
 			}
 			else_if = {
 				limit = {
-					check_variable = {
-						RTG_erosion_system > 80
+					AND = {
+						is_ai = no
+						check_variable = {
+							RTG_erosion_system > 80
+						}
 					}
 				}
 				country_event = {

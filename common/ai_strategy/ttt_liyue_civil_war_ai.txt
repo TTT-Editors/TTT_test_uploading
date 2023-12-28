@@ -382,7 +382,10 @@ XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend
 	}
 
 	enable = {
-		date < 2003.1.1 #To space!
+		OR = {
+			date < 2003.1.1 #To space!
+			ZDG = { num_divisions > 12 }
+		}
 		has_war_with = ZDG
 		ZDG = {
 			NOT = { has_country_flag = ZDG_complete_failure }
@@ -520,5 +523,30 @@ dont_buy_and_sell_liyue_weapons = {
 		id = RTG
 		target = market_access_rights
 		value = -200
+	}
+}
+
+crush_ZDG = {
+	allowed = {
+		is_nominate_liyue = yes
+	}
+	
+	enable = {
+		ZDG = { num_divisions < 12 }
+	}
+	
+	abort = {
+		ZDG = { exists = no }
+	}
+
+	ai_strategy = {
+		type = front_control
+		tag = ZDG
+		ratio = 0.5
+		priority = 75
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes 
+		manual_attack = yes
 	}
 }

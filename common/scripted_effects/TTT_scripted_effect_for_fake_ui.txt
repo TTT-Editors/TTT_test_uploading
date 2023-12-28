@@ -120,63 +120,7 @@ recalculate_button_values = {
 		end = 7
 		value = j
 				
-		set_variable = { liyue_button_frames^j = 1 }
-	}
-	
-	#overrite for liyue_region_movement_point
-	if = {
-		limit = { 
-			NOT = {
-				check_variable = { liyue_region_movement_point^ttt_ui_region_selection = 0 }
-			}
-		}
-		set_temp_variable = { LYU_btn = liyue_region_movement_point^ttt_ui_region_selection }
-		set_variable = { liyue_button_frames^LYU_btn = 3 }
-	}
-	else = {
-		if = {
-			limit = {
-				check_variable = { liyue_region_frames^ttt_ui_region_selection = 1 }
-				has_political_power > 15
-				command_power > 15
-			}
-			set_variable = { liyue_button_frames^2 = 2 }
-		}
-		if = {
-			limit = {
-				check_variable = { liyue_region_frames^ttt_ui_region_selection < 3.5 }
-				has_political_power > 15
-				command_power > 15
-			}
-			set_variable = { liyue_button_frames^1 = 2 }
-			set_variable = { liyue_button_frames^3 = 2 }
-			set_variable = { liyue_button_frames^4 = 2 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { liyue_region_frames^ttt_ui_region_selection = 5 }
-				has_political_power > 50
-				command_power > 25
-			}
-			set_variable = { liyue_button_frames^5 = 2 }
-			set_variable = { liyue_button_frames^6 = 2 }
-		}
-	}
-	
-	#overrite for others
-	if = {
-		limit = {
-			NOT = { has_global_flag = Liyue_Civil_War }
-		}
-		set_variable = { liyue_button_frames^5 = 1 }
-		set_variable = { liyue_button_frames^6 = 1 }
-	}
-	if = {
-		limit = {
-			has_global_flag = Liyue_Civil_War
-			check_variable = { liyue_region_milita_usable^ttt_ui_region_selection = 0 }
-		}
-		set_variable = { liyue_button_frames^6 = 3 }
+		set_variable = { liyue_button_frames^j = 2 }
 	}
 }
 
@@ -323,76 +267,148 @@ set_marked_states = {
 ###################################################################################################
 #for buttons
 tlcw_button_1_click_effect = {
-	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 1 }
-	recalculate_button_values = yes
+	ROOT = {
+		add_political_power = -30
+		add_command_power = -10
+	}
 	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
-			is_in_array = { liyue_marked_states = THIS }
+			has_state_flag = is_Liyues_territory
 			NOT = { is_controlled_by = ROOT }
+			any_neighbor_state = { is_controlled_by = ROOT }
 		}
-		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_1 days = 45 }
+		add_dynamic_modifier = {
+			modifier = LYU_tlcw_modifier_1
+			days = 75
+		}
 	}
 }
 
 tlcw_button_2_click_effect = {
-	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 2 }
-	recalculate_button_values = yes
+	ROOT = {
+		add_political_power = -30
+		add_command_power = -10
+	}
 	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
-		limit = { is_in_array = { liyue_marked_states = THIS } }
-		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_2 days = 45 }
+		limit = {
+			has_state_flag = is_Liyues_territory
+			OR = {
+				AND = {
+					is_controlled_by = ROOT
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+				AND = {
+					controller = { has_war_with = ROOT }
+					any_neighbor_state = { is_controlled_by = ROOT }
+				}
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = LYU_tlcw_modifier_2
+			scope = ROOT 
+			days = 75
+		}
 	}
 }
 
 tlcw_button_3_click_effect = {
-	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 3 }
-	recalculate_button_values = yes
+	ROOT = {
+		add_political_power = -30
+		add_command_power = -10
+	}
 	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
-			is_in_array = { liyue_marked_states = THIS }
+			has_state_flag = is_Liyues_territory
 			is_controlled_by = ROOT
+			OR = {
+				AND = {
+					is_controlled_by = ROOT
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+				AND = {
+					NOT = { is_controlled_by = ROOT }
+					any_neighbor_state = {
+						controller = {
+							tag = ROOT
+						}
+					}
+				}
+			}
 		}
-		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_3 days = 45 }
+		add_dynamic_modifier = {
+			modifier = LYU_tlcw_modifier_3
+			scope = ROOT 
+			days = 75
+		}
 	}
 }
 
 tlcw_button_4_click_effect = {
-	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 4 }
-	recalculate_button_values = yes
+	ROOT = {
+		add_political_power = -30
+		add_command_power = -10
+	}
 	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
-			is_in_array = { liyue_marked_states = THIS }
+			has_state_flag = is_Liyues_territory
 			is_controlled_by = ROOT
+			any_neighbor_state = {
+				controller = {
+					NOT = { tag = ROOT }
+				}
+			}
 		}
-		add_dynamic_modifier = { modifier = LYU_tlcw_modifier_4 days = 45 }
+		add_dynamic_modifier = {
+			modifier = LYU_tlcw_modifier_4
+			scope = ROOT 
+			days = 75
+		}
 	}
 }
 
 tlcw_button_5_click_effect = {
-	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 5 }
-	recalculate_button_values = yes
+	ROOT = {
+		add_political_power = -50
+		add_command_power = -30
+	}
 	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	every_state = {
 		limit = {
-			is_in_array = { liyue_marked_states = THIS }
-			is_controlled_by = ROOT
+			has_state_flag = is_Liyues_territory
+			is_fully_controlled_by = ROOT
 		}
 		ROOT = { 	
 			add_equipment_to_stockpile = {
 				type = grain_conversion_eq
 				amount = 100
 	        }		
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 50
+	        }	
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = 25
+	        }
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 5
+	        }
+			add_stability = -0.005
+			add_war_support = -0.005
 		}
 	}
 }
 
 tlcw_button_6_click_effect = {
-	set_variable = { liyue_region_movement_point^ttt_ui_region_selection = 6 }
-	set_variable = { liyue_region_milita_usable^ttt_ui_region_selection = 0 }
-	recalculate_button_values = yes
+	ROOT = {
+		add_political_power = -100
+		add_command_power = -50
+	}
 	add_to_variable = { ttt_liyue_civil_war_decision_ui_dirty = 1 }
 	if = {
 		limit = {
@@ -416,12 +432,18 @@ tlcw_button_6_click_effect = {
 			NOT = { is_subject_of = ZDG }
 		}
 		every_state = {
-			limit = { is_in_array = { liyue_marked_states = THIS } }
+			limit = {
+				has_state_flag = is_Liyues_territory
+				is_fully_controlled_by = ROOT
+			}
 			create_unit = {
 				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.15 start_equipment_factor = 0.6"
 				owner = ROOT
-				#allow_spawning_on_enemy_provs = yes
-				count = 1
+				count = 2
+			}
+			ROOT = {
+				add_stability = -0.005
+				add_war_support = -0.005
 			}
 		}
 	}

@@ -1,557 +1,323 @@
 add_namespace = MDQ_event
 
-###事件名：达达乌帕谷战争
+###事件名：第五次达达乌帕谷战争
 news_event = {
 	id = MDQ_event.1
 	immediate = {}
 	title = MDQ_event.1.t
 	desc = MDQ_event.1.d
-	is_triggered_only =yes
+	picture = GFX_MDQ_news_event_01
+	is_triggered_only = yes
 	option = {
 		name = MDQ_event.1.a
 	}
 }
-###事件名：黑日之下，风声呼啸
+###事件名：达达乌帕谷军区与南风镇
 country_event = {
 	id = MDQ_event.2
 	immediate = {}
 	title = MDQ_event.2.t
 	desc = MDQ_event.2.d
+	picture = GFX_MDQ_event_01
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.2.a
 	}
 }
-######事件名：达达乌帕谷蒙德胜利
-news_event = {
-	id = MDQ_event.3
-	immediate = {}
-	title = MDQ_event.3.t
-	desc = MDQ_event.3.d
-	is_triggered_only =yes
-	option = {
-		name = MDQ_event.3.a
-	}
-}
-###事件名：黑日自东方升起
+###事件名：达达乌帕谷军区与三剑客
 country_event = {
 	id = MDQ_event.4
 	immediate = {}
 	
 	title = MDQ_event.4.t
 	desc = MDQ_event.4.d
+	picture = GFX_MDQ_event_03
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.4.a
 	}
 }
-###事件名：第二次达达乌帕谷战争
-news_event = {
+###事件名：艾吉迪托的演讲
+country_event = {
+	id = MDQ_event.3
+	immediate = {}
+	
+	title = MDQ_event.3.t
+	desc = MDQ_event.3.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	option = {
+		name = MDQ_event.3.a
+		set_country_flag = MDQ_flag_01_yes
+		complete_national_focus = MDQ_01_13
+	}
+	option = {
+		name = MDQ_event.3.b
+		set_country_flag = MDQ_flag_01_no
+		complete_national_focus = MDQ_The_wind_is_calling
+	}
+}
+###事件名：达达乌帕谷军区的三大部落
+country_event = {
 	id = MDQ_event.5
 	immediate = {}
+	
 	title = MDQ_event.5.t
 	desc = MDQ_event.5.d
+	picture = GFX_MDQ_event_02
 	is_triggered_only =yes
 	fire_only_once =yes
 	option = {
 		name = MDQ_event.5.a
 	}
-	option = {
-		name = MDQ_event.5.b
-	}
 }
-###事件名：向蒙德请求火炮援助
+###事件名：老兵的决意
 country_event = {
 	id = MDQ_event.6
 	immediate = {}
+	
 	title = MDQ_event.6.t
 	desc = MDQ_event.6.d
 	is_triggered_only =yes
-	fire_only_once = no
+	fire_only_once =yes
 	option = {
 		name = MDQ_event.6.a
-		ai_chance = {
-			base = 3
-			modifier = {has_equipment = {bow > 800} add = 2 factor = 2}
+		country_event = {
+			days = 14
+			id = MDQ_event.7
 		}
-		add_equipment_to_stockpile = {
-			type = artillery_equipment
-			amount = -800
-			producer = MOT
-		}
-		MDQ = {
-			country_event = {id = MDQ_event.7 days = 5}
-		}
-		
-	}
-	option = {
-		name = MDQ_event.6.b
-		ai_chance = {
-			base = 3
-			modifier = {has_equipment = {artillery_equipment < 800} add = 1 factor = 2}
-			modifier = {has_equipment = {artillery_equipment > 200} add = 1 factor = 2}
-			modifier = {MDQ = {num_divisions > 20} factor = 0.75}
-			modifier = {MDQ = {num_divisions > 35} add = -2 factor = 0.5}
-		}
-		MDQ = {
-			country_event = {id = MDQ_event.8 days = 5}
-		}
-		add_equipment_to_stockpile = {
-			type = artillery_equipment
-			amount = -200
-			producer = MOT
-		}
+		add_war_support = 0.01
 	}
 }
-###事件名：向蒙德请求火炮援助\回复1
+###事件名：前线的馈赠
 country_event = {
 	id = MDQ_event.7
 	immediate = {}
+	
 	title = MDQ_event.7.t
 	desc = MDQ_event.7.d
 	is_triggered_only =yes
-	fire_only_once = no
+	fire_only_once =yes
 	option = {
 		name = MDQ_event.7.a
-		add_equipment_to_stockpile = {
-			type = artillery_equipment
-			amount = 800
-			producer = MOT
-		}
+		add_war_support = 0.01
 	}
 }
-###事件名：向蒙德请求火炮援助\回复2
+###事件名：工坊一瞥
 country_event = {
 	id = MDQ_event.8
 	immediate = {}
+	
 	title = MDQ_event.8.t
 	desc = MDQ_event.8.d
 	is_triggered_only =yes
-	fire_only_once = no
+	fire_only_once =yes
 	option = {
 		name = MDQ_event.8.a
-		add_equipment_to_stockpile = {
-			type = artillery_equipment
-			amount = 200
-			producer = MOT
-		}
+		add_stability = -0.01
 	}
 }
-
-####向雪山请求资源援助
+###事件名：诺——艾——尔——
 country_event = {
 	id = MDQ_event.9
 	immediate = {}
 	title = MDQ_event.9.t
 	desc = MDQ_event.9.d
-	is_triggered_only =yes
-	fire_only_once = no
+	is_triggered_only = yes
+	fire_only_once = yes
 	option = {
 		name = MDQ_event.9.a
 		MDQ = {
-			country_event = {id = MDQ_event.10 days = 2}
+			country_event = {
+				days = 7
+			    id = MDQ_event.10
+		    }
+	    }
+		hidden_effect = {
+			MDQ_Noelle = { #将诺艾尔移动到MDQ，需要触发该效果的势力是拥有该角色的势力（移动顾问，移动角色）
+			set_nationality = { 
+				target_country = MDQ 
+			} 
 		}
-		give_resource_rights = { receiver = MDQ state = 39 }
+		}
 	}
 }
-####向雪山请求资源援助\回复
+#未授勋的花
 country_event = {
 	id = MDQ_event.10
 	immediate = {}
 	title = MDQ_event.10.t
 	desc = MDQ_event.10.d
-	is_triggered_only =yes
-	fire_only_once = no
+	is_triggered_only = yes
+	fire_only_once = yes
 	option = {
 		name = MDQ_event.10.a
+		country_event = {
+			days = 7
+			id = MDQ_event.11
+		}
 	}
 }
-#################################################################################################
-#######女仆修行事件链
-###事件名：来自[MDQ.getname]求助：军区请求骑士团帮助
+#诺艾尔的学习笔记01
 country_event = {
 	id = MDQ_event.11
 	immediate = {}
-	
 	title = MDQ_event.11.t
 	desc = MDQ_event.11.d
-	is_triggered_only =yes
-	fire_only_once =yes
+	is_triggered_only = yes
+	fire_only_once = yes
 	option = {
 		name = MDQ_event.11.a
-		ai_chance = {
-			base = 0
+		country_event = {
+			days = 35
+			id = MDQ_event.12
 		}
-		custom_effect_tooltip = MDQ_event.11.a_tooltip
+		MDQ_Noelle = { #增加特质
+			 add_unit_leader_trait = ambusher
+	    }
 	}
 	option = {
 		name = MDQ_event.11.b
-		ai_chance = {
-			base = 10
+		country_event = {
+			days = 35
+			id = MDQ_event.12
 		}
-		hidden_effect = {
-			country_event = {id = MDQ_event.12 days = 3}
-		}
-		custom_effect_tooltip = MDQ_event.11.b_tooltip
+		MDQ_Noelle = { #增加特质
+			 add_unit_leader_trait = skilled_staffer
+	    }
 	}
 }
-###事件名：来自[MDQ.getname]求助：军区需要什么？
+#诺艾尔的发言
 country_event = {
 	id = MDQ_event.12
 	immediate = {}
-	
 	title = MDQ_event.12.t
 	desc = MDQ_event.12.d
-	is_triggered_only =yes
-	fire_only_once =yes
+	is_triggered_only = yes
+	fire_only_once = yes
 	option = {
 		name = MDQ_event.12.a
-		ai_chance = {
-			base = 0
+		country_event = {
+			days = 70
+		    id = MDQ_event.13
 		}
-		custom_effect_tooltip = MDQ_event.12.a_tooltip
 	}
 	option = {
 		name = MDQ_event.12.b
-		ai_chance = {
-			base = 10
+		country_event = {
+			days = 70
+			id = MDQ_event.13
 		}
-		hidden_effect = {
-			country_event = {id = MDQ_event.13 days = 3}
+	}
+	option = {
+		name = MDQ_event.12.c
+		country_event = {
+			days = 70
+			id = MDQ_event.13
 		}
-		custom_effect_tooltip = MDQ_event.11.b_tooltip
 	}
 }
-###事件名：来自[MDQ.getname]求助：可靠的人选
+#诺艾尔的学习笔记02
 country_event = {
 	id = MDQ_event.13
 	immediate = {}
-	
 	title = MDQ_event.13.t
 	desc = MDQ_event.13.d
-	is_triggered_only =yes
-	fire_only_once =yes
+	is_triggered_only = yes
+	fire_only_once = yes
 	option = {
 		name = MDQ_event.13.a
-		ai_chance = {
-			base = 10
+		country_event = {
+			days = 140
+		    id = MDQ_event.14
 		}
-		hidden_effect = {
-			country_event = {id = MDQ_event.14 days = 3}
+	}
+	option = {
+		name = MDQ_event.13.b
+		country_event = {
+			days = 140
+			id = MDQ_event.14
 		}
 	}
 }
-###事件名：来自[MDQ.getname]求助：女仆的委任
+#诺艾尔的学习笔记03
 country_event = {
 	id = MDQ_event.14
 	immediate = {}
-	
 	title = MDQ_event.14.t
 	desc = MDQ_event.14.d
-	is_triggered_only =yes
-	fire_only_once =yes
-	option = {
-		name = MDQ_event.14.a
-		custom_effect_tooltip = MDQ_event.14.a_tooltip
-		ai_chance = {
-			base = 10
-		}
-		hidden_effect = {
-			MDQ = {
-				country_event = {id = MDQ_event.15 days = 5}
-			}
-			MDQ_Noelle = {
-				set_nationality = MDQ
-			}
-			MDQ_Noelle2 = {
-				set_nationality = MDQ
-			}
-		}
-	}
-}
-###事件名：女仆骑士的到来
-country_event = {
-	id = MDQ_event.15
-	immediate = {}
-	
-	title = MDQ_event.15.t
-	desc = MDQ_event.15.d
-	is_triggered_only =yes
-	fire_only_once =yes
-	option = {
-		name = MDQ_event.15.a
-		ai_chance = {
-			base = 10
-		}
-		custom_effect_tooltip = MDQ_event.15.a_tooltip
-		hidden_effect = {
-			country_event = {id = MDQ_event.16 days = 14}
-			activate_advisor = MDQ_Noelle
-			activate_advisor = MDQ_Noelle2
-			set_country_flag = Noelle_in_dadawupa
-		}
-	}
-}
-###事件名：诺艾尔的学习笔记
-country_event = {
-	id = MDQ_event.17
-	immediate = {}
-	title = MDQ_event.17.t
-	desc = MDQ_event.17.d
-	is_triggered_only =yes
-	fire_only_once =yes
-	option = {
-		name = MDQ_event.17.a
-		MDQ_Noelle = {
-			add_unit_leader_trait = ambusher
-		}
-		ai_chance = {
-			base = 5
-		}
-	}
-	option = {
-		name = MDQ_event.17.b
-		MDQ_Noelle = {
-			add_unit_leader_trait = skilled_staffer
-		}
-		ai_chance = {
-			base = 5
-		}
-	}
-}
-###事件名：诺艾尔的发言
-country_event = {
-	id = MDQ_event.19
-	immediate = {}
-	title = MDQ_event.19.t
-	desc = MDQ_event.19.d
-	is_triggered_only =yes
-	fire_only_once =yes
-	option = {
-		name = MDQ_event.19.a
-		####为顾问添加特质，领导人同理
-		add_trait = {
-			character = MDQ_Noelle
-			slot = political_advisor
-			trait = MDQ_Noelle_traits_3
-		}
-		ai_chance = {
-			base = 3
-		}
-	}
-	option = {
-		name = MDQ_event.19.b
-		add_trait = {
-			character = MDQ_Noelle
-			slot = political_advisor
-			trait = MDQ_Noelle_traits_4
-		}
-		ai_chance = {
-			base = 3
-		}
-	}
-	option = {
-		name = MDQ_event.19.c
-		add_trait = {
-			character = MDQ_Noelle
-			slot = political_advisor
-			trait = MDQ_Noelle_traits_5
-		}
-		ai_chance = {
-			base = 3
-		}
-	}
-}
-###事件名：诺艾尔的学习笔记2
-country_event = {
-	id = MDQ_event.21
-	immediate = {}
-	title = MDQ_event.21.t
-	desc = MDQ_event.21.d
-	is_triggered_only =yes
-	fire_only_once =yes
-	option = {
-		name = MDQ_event.21.a
-		MDQ_Noelle = {
-			add_planning = 1
-			add_logistics = 1
-		}
-		ai_chance = {
-			base = 5
-		}
-		
-	}
-	option = {
-		name = MDQ_event.21.b
-		MDQ_Noelle = {
-			add_unit_leader_trait = thorough_planner
-		}
-		ai_chance = {
-			base = 5
-		}
-	}
-}
-###事件名：诺艾尔的学习笔记3
-country_event = {
-	id = MDQ_event.23
-	immediate = {}
-	title = MDQ_event.23.t
-	desc = MDQ_event.23.d
-	is_triggered_only =yes
-	fire_only_once =yes
-	option = {
-		name = MDQ_event.23.a
-		add_trait = {
-			character = MDQ_Noelle
-			slot = political_advisor
-			trait = MDQ_Noelle_traits_6
-		}
-		ai_chance = {
-			base = 5
-		}
-	}
-	option = {
-		name = MDQ_event.23.b
-		add_trait = {
-			character = MDQ_Noelle
-			slot = political_advisor
-			trait = MDQ_Noelle_traits_7
-		}
-		ai_chance = {
-			base = 5
-		}
-	}
-}
-
-#######################################
-#######################################
-###丰碑
-country_event = {
-	id = MDQ_event.31
-	immediate = {}
-	title = MDQ_event.31.t
-	desc = MDQ_event.31.d
-	is_triggered_only =yes
-	fire_only_once =yes
-	option = {
-		name = MDQ_event.31.a
-	}
-}
-
-
-##########################################
-##########################################
-###转换为蒙德骑士团
-country_event = {
-    id = MDQ_event.99
-    title = MDQ_event.99.t
-    desc = MDQ_event.99.d
 	is_triggered_only = yes
 	fire_only_once = yes
-	option = { 
-		name = MDQ_event.99.a
-        
-		##转移顾问
-		hidden_effect = {
-			MDQ_Dr_Livingstone = {
-				set_nationality = MOT
-			}
-			MDQ_Dr_Livingstone2 = {
-				set_nationality = MOT
-			}
-			MDQ_Mike = {
-				set_nationality = MOT
-			}
-			MDQ_Mike2 = {
-				set_nationality = MOT
-			}
-			MDQ_Elon_Musk = {
-				set_nationality = MOT
-			}
-			MDQ_Sternberg = {
-				set_nationality = MOT
-			}
-			MDQ_Zhuang_Yang = {
-				set_nationality = MOT
-			}
-			MDQ_Damut = {
-				set_nationality = MOT
-			}
-			MDQ_Damut2 = {
-				set_nationality = MOT
-			}
-			MDQ_Egidito_von_Page = {
-				set_nationality = MOT
-			}
-			MDQ_Egidito_von_Page2 = {
-				set_nationality = MOT
-			}
-			if = {
-				limit = {
-					has_country_flag = Noelle_in_dadawupa
-				}
-				MDQ_Noelle2= {
-					set_nationality = MOT
-				}
-				MDQ_Noelle= {
-					set_nationality = MOT
-				}
-			} 
-        }
-		MOT = {
-            change_tag_from = ROOT 
-        }
-		MOT = {
-			annex_country = {
-				target = MDQ
-				transfer_troops = yes
-			}
-		}
-	}
-}
-####军区覆灭（新闻）
-news_event = {
-    id = MDQ_event.98
-    title = MDQ_event.98.t
-    desc = MDQ_event.98.d
-	is_triggered_only = yes
-	option = { 
-		name = MDQ_event.98.a
+	option = {
+		name = MDQ_event.14.a
 	}
 }
 
-####军区覆灭（蒙德）
+#事件：道路断绝
 country_event = {
-    id = MDQ_event.97
-    title = MDQ_event.97.t
-    desc = MDQ_event.97.d
+	id = MDQ_event.15
+	immediate = {
+		hidden_effect = {
+			MDQ = { every_owned_state = { add_core_of = LTM } }
+			MDQ = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 14
+							state = 285
+							state = 286								
+						}
+					}
+					LTM = { transfer_state = PREV }
+				}
+				transfer_units_fraction = {
+					target = LTM
+					size = 0.6
+					keep_unit_leaders = {
+					}
+					keep_unit_leaders_trigger = {
+						always = yes
+					}
+				}
+			}
+			LTM = {
+				declare_war_on = {
+					target = MDQ
+					type = annex_everything
+				}
+			}
+			LTM = {
+				declare_war_on = {
+					target = QQR
+					type = annex_everything
+				}
+			}
+		}
+	}
+	title = MDQ_event.15.t
+	desc = MDQ_event.15.d
 	is_triggered_only = yes
-	option = { 
-		name = MDQ_event.97.a
-		add_manpower = 20000
-	}
-}
-#####达达乌帕战争停战
-news_event = {
-	id = MDQ_event.25
-	immediate = {}
-	title = MDQ_event.25.t
-	desc =MDQ_event.25.d
-	is_triggered_only =yes
+	fire_only_once = yes
 	option = {
-		name = MDQ_event.25.a
+		name = MDQ_event.15.a
+		set_country_flag = MDQ_event_15_happened
 	}
 }
-#####达达乌帕战争失败
-news_event = {
-	id = MDQ_event.26
+
+#达达乌帕谷军区阅兵的报道
+country_event = {
+	id = MDQ_event.16
 	immediate = {}
-	title = MDQ_event.26.t
-	desc =MDQ_event.26.d
-	is_triggered_only =yes
+	title = MDQ_event.16.t
+	desc = MDQ_event.16.d
+	is_triggered_only = yes
+	fire_only_once = yes
 	option = {
-		name = MDQ_event.26.a
+		name = MDQ_event.16.a
+		add_stability = 0.1
+		add_war_support = 0.1
 	}
 }
+

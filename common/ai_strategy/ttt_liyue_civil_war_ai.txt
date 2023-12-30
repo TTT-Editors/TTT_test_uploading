@@ -2,8 +2,16 @@ Liyue_you_should_be_prepared_for_war = {
 	allowed = {
 		is_nominate_liyue = yes
 	}
-	enable = { has_global_flag = Liyue_Civil_War }
-	abort = { NOT = { has_global_flag = Liyue_Civil_War } }
+	enable = {
+		OR = {
+			has_global_flag = Liyue_Civil_War
+			has_global_flag = Liyue_Civil_War_Coming
+		}
+	}
+	abort = {
+		NOT = { has_global_flag = Liyue_Civil_War }
+		NOT = { has_global_flag = Liyue_Civil_War_Coming }
+	}
 	
 	ai_strategy = {
         type = force_build_armies
@@ -38,6 +46,8 @@ Xianren_likes_Xiao = {
 		NOT = { has_war_with = XOG }
 	}
 	
+	abort_when_not_enabled = yes
+	
 	ai_strategy = {
 		type = befriend
 		id = "XOG"
@@ -53,6 +63,8 @@ Xiao_likes_Xianren = {
 	enable = {	
 		NOT = { has_war_with = XRG }
 	}
+	
+	abort_when_not_enabled = yes
 	
 	ai_strategy = {
 		type = befriend
@@ -365,7 +377,7 @@ Xianren_and_Xiao_not_mess_up_with_southern_warlords = {
 	}
 }
 
-XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend while germany has buffs.
+XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend
 	allowed = {
 		OR = { 
 			original_tag = XRG
@@ -374,7 +386,10 @@ XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend while
 	}
 
 	enable = {
-		date < 2003.1.1 #To space!
+		OR = {
+			date < 2003.1.1 #To space!
+			ZDG = { num_divisions > 12 }
+		}
 		has_war_with = ZDG
 		ZDG = {
 			NOT = { has_country_flag = ZDG_complete_failure }
@@ -400,12 +415,21 @@ XRG_and_XOG_stalemate = { #Only perform careful attacks, we want to defend while
 
 dont_buy_and_sell_liyue_weapons = {
 	allowed = {
-		always = yes # not original_tag to avoid Vichy weirdness
+		always = yes
 	}
 	enable = {
-		has_global_flag = Liyue_Civil_War
+		OR = {
+			has_global_flag = Liyue_Civil_War
+			has_global_flag = Liyue_Civil_War_Coming
+			date < 2001.1.1
+		}
 	}
-	abort_when_not_enabled = yes
+	
+	abort = {
+		NOT = { has_global_flag = Liyue_Civil_War }
+		NOT = { has_global_flag = Liyue_Civil_War_Coming }
+		date > 2001.1.1
+	}
 
 	ai_strategy = {
 		type = diplo_action_acceptance
@@ -503,5 +527,30 @@ dont_buy_and_sell_liyue_weapons = {
 		id = RTG
 		target = market_access_rights
 		value = -200
+	}
+}
+
+crush_ZDG = {
+	allowed = {
+		is_nominate_liyue = yes
+	}
+	
+	enable = {
+		ZDG = { num_divisions < 12 }
+	}
+	
+	abort = {
+		ZDG = { exists = no }
+	}
+
+	ai_strategy = {
+		type = front_control
+		tag = ZDG
+		ratio = 0.5
+		priority = 75
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes 
+		manual_attack = yes
 	}
 }

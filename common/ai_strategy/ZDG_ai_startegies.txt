@@ -42,21 +42,26 @@ ZDG_is_very_good = {
 	id = armor
 	value = -9000
     }
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = artillery
-		value = 30
-	}
-	
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = infantry
-		value = 50
-	}
-	
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = support
-		value = 30
-	}
 }
+
+ZDG_jingongdashi = {
+	allowed = {
+		tag = ZDG
+	}
+	enable = {
+		num_divisions > 40
+	}
+	abort = {
+		num_divisions < 30
+	}
+	ai_strategy = {
+		type = front_control
+		area = Liyue
+		ratio = 0.1
+		priority = 900
+		ordertype = front
+		execution_type = rush
+		manual_attack = yes
+		execute_order = yes
+	}
+} 

@@ -147,7 +147,7 @@ KQG_unit_production = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 4
+		value = 2
 	}
 
 	ai_strategy = { #added to railway gun define (set to 0 by default, increased in default strategies)
@@ -183,41 +183,7 @@ KQG_anti_armor = {
 		value = 15
 	}
 }
-#刻晴进攻凝光
-Keqing_anti_Ningguang = {
-	allowed = {
-		tag = KQG
-	}
-	enable = {
-		country_exists = NNG
-        NOT = {		
-		    has_completed_focus = KQG_21
-		}
-	}
-	abort = {	
-		NOT = {
-		or = {
-		country_exists = NNG
-		has_completed_focus = KQG_21
-		    }
-		}	 
-	}
-	ai_strategy = {
-	type = front_control
-	tag = NNG  
-	ratio = 0.1
-    state = 160
-	state = 144
-	state = 141
-	state = 403
-	state = 404
-	priority = 900  
-	ordertype = front  
-	execution_type = rush_weak 
-	manual_attack = yes
-	execute_order = yes
-    }
-}
+
 KQG_stockpile_less_early_game = {
 	allowed = {
 		original_tag = KQG
@@ -230,7 +196,7 @@ KQG_stockpile_less_early_game = {
 
 	ai_strategy = {
 		type = equipment_stockpile_surplus_ratio
-		value = -20 # reduce while we build up in case of NNG issues
+		value = -40 # reduce while we build up in case of NNG issues
 	}
 }
 
@@ -283,12 +249,12 @@ Keqing_finds_she_need_to_look_out_the_sea = {
 	
 	enable = {
 		has_war_with = NNG
-		date < 2002.1.1
+		date > 2002.1.1
 	}
 	
 	abort = {
 		OR = {
-			date > 2002.1.1
+			date > 2005.1.1
 			NNG = { exists = no }
 			AND = {
 				126 = { is_controlled_by = KQG }
@@ -303,10 +269,13 @@ Keqing_finds_she_need_to_look_out_the_sea = {
 		order_id = 2
 		
 		states = {
-			145
-			144
-			141
-			147
+			89
+			91
+			92
+			94
+			113
+			114
+			115
 		}
 
 		ratio = 0.1
@@ -353,11 +322,12 @@ attack_ningguang = {
 		type = front_control
 		tag = NNG
 		ratio = 0.75
-		priority = 100
+		priority = 30
 		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes 
-		manual_attack = yes
+		execution_type = balanced
+		
+		#Too many troops being surrounded, so rush_weak ---> balanced will be better
+		#Let AI itself to decide whether it should attack or not.
 	}
 }
 
@@ -389,11 +359,11 @@ attack_ningguang_but_pause = {
 		type = front_control
 		tag = NNG
 		ratio = 0.75
-		priority = 50
+		priority = 30
 		ordertype = front
 		execution_type = careful  
 		execute_order = no 
-		manual_attack = no 
+		manual_attack = yes
 	}
 }
 
@@ -511,6 +481,8 @@ KQG_watch_out_south = {
 			RTG = { surrender_progress > 0.6 }
 		}
 	}
+	
+	abort = { NOT = { has_global_flag = Liyue_Civil_War } }
 	
 	ai_strategy = {
 		type = front_unit_request

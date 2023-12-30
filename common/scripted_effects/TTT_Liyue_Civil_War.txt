@@ -26,29 +26,40 @@ unlock_liyue_advisors = {
 
 reset_core_of_liyue = {
 	ROOT = { set_research_slots = 4 }
-	ROOT = { set_capital = { state = 124 } }
+	ROOT = {
+		set_capital = {
+			state = 51
+			remember_old_capital = no
+		}
+	}
 	ROOT = { add_named_threat = { threat = -35 name = liyue_civil_war_end_tt } }
 	ROOT = { clear_variable = ttt_liyue_civil_war_decision_ui_dirty }
 	if = {
 		limit = {
 			has_template = "Renmin Chiweidui"
 		}
-		delete_unit_template_and_units = "Renmin Chiweidui"
-		disband = yes
+		delete_unit_template_and_units = {
+			division_template = "Renmin Chiweidui"
+			disband = yes
+		}
 	}
 	if = {
 		limit = {
 			has_template = "Liyue Difang Minbing Lv"
 		}
-		delete_unit_template_and_units = "Liyue Difang Minbing Lv"
-		disband = yes
+		delete_unit_template_and_units = {
+			division_template = "Liyue Difang Minbing Lv"
+			disband = yes
+		}
 	}
 	if = {
 		limit = {
 			has_template = "Snezhnaya volunteer army"
 		}
-		delete_unit_template_and_units = "Snezhnaya volunteer army"
-		disband = yes
+		delete_unit_template_and_units = {
+			division_template = "Snezhnaya volunteer army"
+			disband = yes
+		}
 	}
 	every_possible_country = {
 		limit = { is_nominate_liyue = yes }
@@ -56,6 +67,10 @@ reset_core_of_liyue = {
 			limit = { has_state_flag = is_Liyues_territory }
 			remove_core_of = PREV
 		}
+	}
+	every_state = {
+		limit = { has_state_flag = is_Liyues_territory }
+		add_core_of = ROOT
 	}
 	
 	#achievements

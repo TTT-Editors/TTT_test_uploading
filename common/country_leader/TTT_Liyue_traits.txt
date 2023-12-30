@@ -81,8 +81,8 @@ leader_traits = {
 	
 	mysterious_mineralogist = {
 		random = no
-		stability_weekly = 0.001
-		ai_focus_aggressive_factor = 0.5
+		production_speed_buildings_factor = 0.05
+		line_change_production_efficiency_factor = 0.05
 		ai_will_do = {
 			factor = 1
 		}
@@ -147,7 +147,8 @@ leader_traits = {
         enemy_operative_capture_chance_factor = 1
         production_factory_max_efficiency_factor = 0.05
 	    production_factory_efficiency_gain_factor = 0.05
-        stability_weekly = 0.01
+        stability_weekly = 0.002
+		war_support_weekly = 0.002
         communism_drift = 0.05		
 		ai_will_do = {
 			factor = 1
@@ -166,7 +167,7 @@ leader_traits = {
 		reformism_drift = 0.01
 		RESISTANCE_DECAY = 0.2
 		REQUIRED_GARRISON_FACTOR = -0.2
-		RESISTANCE_DAMAGE_TO_GARRISONS = -0.2
+		resistance_damage_to_garrison = -0.2
 		ai_will_do = {
 			factor = 1
 		}
@@ -234,7 +235,7 @@ leader_traits = {
         army_morale_factor = 0.05
         command_cap = 30		
 		ai_will_do = {
-			factor = 1
+			factor = 20
 		}
 	}
 	NNG_liujiaoyuan_traits = {
@@ -376,10 +377,9 @@ leader_traits = {
 		#sprite = 11		#特质图标，如齿轮等，不写默认为空
 		
 		################################buff################################
-		reformism_drift = 0.2
-		consumer_goods_factor = 0.05
-		production_speed_buildings_factor = 0.1
-		war_support_factor = 0.15	
+		reformism_drift = 0.05
+		stability_factor = 0.10
+		war_support_factor = 0.05	
 		
 		ai_will_do = {
 			factor = 1
@@ -391,10 +391,9 @@ leader_traits = {
 		#sprite = 11		特质图标，如齿轮等，不写默认为空
 		
 		################################buff################################
-		political_power_gain = 0.2
-		stability_factor = 0.15
-		line_change_production_efficiency_factor = 0.2
-		industrial_capacity_factory = 0.1
+		
+		production_speed_buildings_factor = 0.05
+		line_change_production_efficiency_factor = 0.20
 
 		ai_will_do = {
 			factor = 4
@@ -406,10 +405,10 @@ leader_traits = {
 		#sprite = 11		特质图标，如齿轮等，不写默认为空
 		
 		################################buff################################
-		party_popularity_stability_factor = 0.2
+		consumer_goods_factor = 0.05
+		industry_repair_factor = 0.10
 		production_lack_of_resource_penalty_factor = -0.25
-		industry_repair_factor = 0.2
-		max_surrender_limit_offset = 0.1
+		surrender_limit = 0.05
 		ai_will_do = {
 			factor = 4
 		}
@@ -417,11 +416,10 @@ leader_traits = {
 
     anranyizhi = {
 		random = no		
-		war_support_factor = 0.15
-		liberalism_acceptance = 50 #（人治主义外交同意度）
 		consumer_goods_factor = -0.05
-		trade_opinion_factor = 0.5
-
+        war_support_factor = -0.05
+		trade_laws_cost_factor = -0.50
+		trade_opinion_factor = 0.50
 		ai_will_do = {
 			factor = 2
 		}
@@ -429,9 +427,11 @@ leader_traits = {
 
 	Sharp_Water = {
 		random = no
-		army_attack_factor = 0.2
-		army_org_factor = -0.1
-		war_support_factor = -0.05	
+		experience_gain_army = 0.15
+		army_infantry_attack_factor = 0.15
+		army_org_factor = 0.05
+	    army_morale_factor = 0.05
+		command_cap = 30
 		ai_will_do = {
 			factor = 1
 		}
@@ -440,8 +440,9 @@ leader_traits = {
 	Silent_Water = {
 	    random = no
 		operative_slot = 1
-		intelligence_agency_defense = 2
-		intel_network_gain_factor = 0.2
+		intel_network_gain = 0.10
+		agency_upgrade_time = -0.15
+		encryption_factor = 0.20
 		ai_will_do = {
 			factor = 1
 		}
@@ -449,8 +450,10 @@ leader_traits = {
 	
 	To_King = {
 	    random = no
-		army_bonus_air_superiority_factor = 0.1
-		air_ace_generation_chance_factor = 0.2
+		org_loss_when_moving = -0.10
+		army_speed_factor = 0.10
+		experience_gain_army_factor = 0.15
+		command_cap = 30
 		ai_will_do = {
 			factor = 1
 		}
@@ -458,8 +461,8 @@ leader_traits = {
 	
 	Miner_Congress = {
 	    random = no
-		industrial_capacity_factory = 0.15
-		production_factory_efficiency_gain_factor = 0.15
+		industrial_capacity_factory = 0.05
+		production_factory_efficiency_gain_factor = 0.10
 		ai_will_do = {
 			factor = 1
 		}
@@ -467,9 +470,8 @@ leader_traits = {
 	
 	Morax_Juanshu_1 = {
 	    random = no
-		stability_factor = 0.1
-		war_support_factor = 0.1
-		political_power_factor = 0.15
+		local_resources_factor = 0.25
+		production_speed_bunker_factor = 0.10
 		ai_will_do = {
 			factor = 1
 		}
@@ -493,7 +495,7 @@ leader_traits = {
 		political_power_factor = 0.15
 		local_resources_factor = 0.1
 		production_speed_infrastructure_factor = 0.1
-		production_speed_railway_factor = 0.1
+		production_speed_rail_way_factor = 0.1
 		ai_will_do = {
 			factor = 1
 		}
@@ -501,10 +503,38 @@ leader_traits = {
 	
 	Rock_Firm = {
 	    random = no
-	    army_defence_factor = 0.1
-		army_core_attack_factor = 0.1
-		army_core_defence_factor = 0.1
-		production_speed_bunker_factor = 0.2
+	    experience_gain_army = 0.35
+		army_defence_factor = 0.15
+		army_core_defence_factor = 0.15
+		dig_in_speed_factor = 0.10
+		command_cap = 30
+	    ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	RTG_yuansu_zhinu = {
+	    random = no
+	    experience_gain_army = 0.35
+		army_core_attack_factor = 0.15
+		army_attack_factor = 0.15
+		land_reinforce_rate = 0.02
+		command_cap = 30
+	    ai_will_do = {
+			factor = 1
+		}
+	}
+	RTG_Yanzhang_yansui = {
+	    random = no
+	    cat_grand_battle_plan_cost_factor =  -0.20
+	    ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	RTG_yuansu_hongliu = {
+	    random = no
+	    cat_mass_assault_cost_factor =  -0.20
 	    ai_will_do = {
 			factor = 1
 		}
@@ -557,6 +587,24 @@ leader_traits = {
 	young_scholar = { 
 	    random = no
 		political_power_factor = 0.05
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	RTG_Yanzhi_juanshu = { 
+	    random = no
+		stability_factor = 0.10
+		war_support_factor = 0.10
+		political_power_factor = 0.15
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	RTG_Yuansu_baojun = { 
+	    random = no
+		stability_factor = 0.10
+		war_support_factor = 0.10
+		political_power_factor = 0.15
 		ai_will_do = {
 			factor = 1
 		}
@@ -834,8 +882,8 @@ leader_traits = {
 		random = no
 		political_power_factor = 0.2
 		defensive_war_stability_factor = 0.2
-		war_support_weekly = 0.01
-		stability_weekly = 0.01
+		war_support_weekly = 0.002
+		stability_weekly = 0.002
 		ai_will_do = {
 			factor = 1
 		}
@@ -845,8 +893,8 @@ leader_traits = {
 		random = no
 		political_power_factor = 0.2
 		war_stability_factor = 0.2
-		war_support_weekly = 0.01
-		stability_weekly = 0.01
+		war_support_weekly = 0.002
+		stability_weekly = 0.002
 		research_speed_factor = 0.05
 		ai_will_do = {
 			factor = 1
@@ -873,8 +921,7 @@ leader_traits = {
 
 	XRG_BZ_LY = {
 		random = no
-		experience_gain_air = 0.1
-		experience_gain_air = 0.5
+		experience_gain_air = 0.3
 		air_superiority_efficiency = 0.1
 		air_weather_penalty = -0.5
 		command_cap = 20
@@ -903,8 +950,7 @@ leader_traits = {
 
 	XRG_BZ_LS = {
 		random = no
-		experience_gain_army = 0.1
-		experience_gain_army = 0.5
+		experience_gain_army = 0.3
 		army_org_factor = 0.1
 		army_defence_factor = 0.1
 		command_cap = 20

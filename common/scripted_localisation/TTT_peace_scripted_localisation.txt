@@ -3,7 +3,10 @@ defined_text = { #战争结语
 	text = { #刻晴战败
 		trigger = {
 			event_target:winning_country = {
+				or = {
 				is_nominate_liyue = yes
+				original_tag = ZDG
+				}
 			}
 			event_target:losing_country = {
 				original_tag = KQG
@@ -14,7 +17,10 @@ defined_text = { #战争结语
 	text = { #凝光战败
 		trigger = {
 			event_target:winning_country = {
+				or = {
 				is_nominate_liyue = yes
+				original_tag = ZDG
+				}
 			}
 			event_target:losing_country = {
 				original_tag = NNG
@@ -82,7 +88,7 @@ defined_text = { #战争结语
 				original_tag = ZDG
 			}
 			event_target:losing_country = {
-				original_tag = LYU
+				LYU = { has_capitulated = yes }
 				has_global_flag = liyue_unified
 			}
 		}
@@ -138,6 +144,68 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_dikangjunzhanbai
 	}
+	
+	#############################################################################################
+	text = { # MDQ vs QQR, MDQ won
+		trigger = {
+			event_target:winning_country = {
+				tag = MDQ
+			}
+			event_target:losing_country = {
+				tag = QQR
+			}
+			QQR = { exists = no }
+		}
+		localization_key = TTT_MDQ_QQR_won_tooltip
+	}
+	text = { # MDQ vs QQR, MDQ lost
+		trigger = {
+			event_target:winning_country = {
+				tag = QQR
+			}
+			event_target:losing_country = {
+				tag = MDQ
+			}
+			MDQ = { has_country_flag = MDQ_has_lost_ddup_war }
+		}
+		localization_key = TTT_MDQ_QQR_lost_tooltip
+	}
+	text = { # MDQ vs QQR, Stalemate
+		trigger = {
+			event_target:winning_country = {
+				tag = QQR
+			}
+			event_target:losing_country = {
+				tag = MDQ
+			}
+		}
+		localization_key = TTT_MDQ_QQR_tie_tooltip
+	}
+	text = { #干涉军傀儡战败
+		trigger = {
+			event_target:winning_country = {
+				is_nominate_liyue = yes
+			}
+			event_target:losing_country = {
+				is_nominate_liyue = yes
+				is_subject_of = ZDG
+			}
+		}
+		localization_key = TTT_ganshejun_kuilei
+	}
+
+	text = { #Special_cg
+		trigger = {
+			event_target:winning_country = {
+				tag = EMP
+			}
+			event_target:losing_country = {
+				tag = EMP
+			}
+			check_variable = { special_defeat_cg = 1 }
+		}
+		localization_key = TTT_TTT_special_defeat_cg_1_tt
+	}
 	#通用结语
 	text = {
 		localization_key = TTT_zhanbaitonyonjieyu
@@ -163,7 +231,7 @@ defined_text = { #战争描述
 			}
 			event_target:losing_country = {
 				has_global_flag = liyue_unified
-				country_exists = ZDG
+				LYU = { has_capitulated = yes }
 			}
 		}
 	localization_key = TTT_lianhezhenxianzhanbai
@@ -201,6 +269,55 @@ defined_text = { #战争描述
 			}
 		}
 	localization_key = TTT_liyueneizhanmiaoshu
+	}
+	
+	#############################################################################################
+	text = { # MDQ vs QQR, MDQ won
+		trigger = {
+			event_target:winning_country = {
+				tag = MDQ
+			}
+			event_target:losing_country = {
+				tag = QQR
+			}
+			QQR = { exists = no }
+		}
+		localization_key = TTT_MDQ_QQR_won_description
+	}
+	text = { # MDQ vs QQR, MDQ lost
+		trigger = {
+			event_target:winning_country = {
+				tag = QQR
+			}
+			event_target:losing_country = {
+				tag = MDQ
+			}
+			MDQ = { has_country_flag = MDQ_has_lost_ddup_war }
+		}
+		localization_key = TTT_MDQ_QQR_lost_description
+	}
+	text = { # MDQ vs QQR, Stalemate
+		trigger = {
+			event_target:winning_country = {
+				tag = QQR
+			}
+			event_target:losing_country = {
+				tag = MDQ
+			}
+		}
+		localization_key = TTT_MDQ_QQR_tie_description
+	}
+	text = { #Special_cg
+		trigger = {
+			event_target:winning_country = {
+				tag = EMP
+			}
+			event_target:losing_country = {
+				tag = EMP
+			}
+			check_variable = { special_defeat_cg = 1 }
+		}
+		localization_key = TTT_TTT_special_defeat_cg_1_desc
 	}
 	#通用描述
 	text = {

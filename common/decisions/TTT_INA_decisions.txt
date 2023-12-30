@@ -153,54 +153,6 @@ X_INA_propaganda_campaigns = {
 
 #八酝岛冲突
 INA_war_beginning = {
-	INA_BYI_prepare_end = 
-	{
-		activation = {
-			check_variable = {global.INA_Conflict_Volience <100}		
-		}
-		available = {
-			check_variable = {global.INA_Conflict_Volience =100}
-		}
-		visible = {	
-			check_variable = {global.INA_Conflict_Volience <100}
-		}
-		is_good = no 
-		days_mission_timeout = 280
-		fire_only_once = yes
-		timeout_effect = {
-			set_country_flag = BYI_final_war_coming
-		}
-		complete_effect = {
-			set_country_flag = BYI_final_war_coming
-			custom_effect_tooltip = BYI_final_war_will_coming
-		}
-	}
-	#一点就炸的战争
-	INA_BYI_war_start = 
-	{
-		activation = 
-		{
-			has_country_flag = BYI_final_war_coming
-		}
-		available = 
-		{
-			always = no
-		}
-		visible = {
-			always = yes
-		}
-		is_good = no
-		days_mission_timeout = 30
-		fire_only_once = yes
-		timeout_effect = {
-			KJG = {
-				declare_War_on = 
-				{
-					target = WSR type = annex_everything
-				}
-			}
-		}
-	}
 	INA_fenge =
 	{
 		icon = null
@@ -481,75 +433,35 @@ INA_war_beginning = {
 		}
 		
 		visible = {
-			if = 
+			check_variable = 
 			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 1
-					}
-				}
+				INA_Island_choice = 1
 			}
-			else_if = 
+			check_variable = 
 			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 2
-					}
-				}
+				INA_Island_choice = 2
 			}
-			else_if = 
+			check_variable = 
 			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 3
-					}
-				}
+				INA_Island_choice = 3
 			}
-			else_if = 
+			check_variable = 
 			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 4
-					}
-				}
+				INA_Island_choice = 4
 			}
-			else_if = 
+			check_variable = 
 			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 5
-					}
-				}
+				INA_Island_choice = 5
 			}
-			else_if = 
+			check_variable = 
 			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 6
-					}
-				}
+				INA_Island_choice = 6
 			}
-			else_if = 
+			check_variable = 
 			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 7
-					}
-				}
+				INA_Island_choice = 7
+			} 
+		}
 			}
 		}
 		ai_will_do = {
@@ -563,7 +475,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 1}}
 				INA_reduce_Impact_State_1 = yes
-				88 = 
+				229 = 
 				{
 					add_manpower = -2000
 				}
@@ -572,7 +484,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 2}}
 				INA_reduce_Impact_State_2 = yes
-				83 = 
+				230 = 
 				{
 					add_manpower = -2000
 				}
@@ -581,7 +493,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 3}}
 				INA_reduce_Impact_State_3 = yes
-				373 = 
+				231 = 
 				{
 					add_manpower = -2000
 				}
@@ -590,7 +502,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 4}}
 				INA_reduce_Impact_State_4 = yes
-				372 = 
+				232 = 
 				{
 					add_manpower = -2000
 				}
@@ -599,7 +511,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 5}}
 				INA_reduce_Impact_State_5 = yes
-				86 = 
+				233 = 
 				{
 					add_manpower = -2000
 				}
@@ -608,7 +520,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 6}}
 				INA_reduce_Impact_State_6 = yes
-				85 = 
+				234 = 
 				{
 					add_manpower = -2000
 				}
@@ -617,7 +529,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 7}}
 				INA_reduce_Impact_State_7 = yes
-				87 = 
+				235 = 
 				{
 					add_manpower = -2000
 				}
@@ -645,79 +557,38 @@ INA_war_beginning = {
 
 		   allowed = {
 			   original_tag = INA 
+			   check_variable = 
+				{
+					INA_Island_choice = 1
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 2
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 3
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 4
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 5
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 6
+				}
+				check_variable = 
+				{
+					INA_Island_choice = 7
+				}
 		   }
 
 		   visible = {
-			if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 1
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 2
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 3
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 4
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 5
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 6
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 7
-					}
-				}
-			}
+			  always = yes
 		   }
 		   ai_will_do = {
 			  factor = 50
@@ -783,150 +654,52 @@ INA_war_beginning = {
 		available = 
 		{
 			original_tag = INA
-			if = {
-				limit = {
-					check_variable = {
-						global.TTT_BYI_Conflict_State_1 = 1
-					}
-				}
+			check_variable = {
+				INA_Island_choice = 1
 			}
-
-			else_if = {
-				limit = {
-					check_variable = {
-						global.TTT_BYI_Conflict_State_2 = 1
-					}
-				}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_1 = 1
 			}
-			else_if = {
-				limit = {
-					check_variable = {
-						global.TTT_BYI_Conflict_State_3 = 1
-					}
-				}
+			check_variable = {
+				INA_Island_choice = 2
 			}
-			else_if = {
-				limit = {
-					check_variable = {
-						global.TTT_BYI_Conflict_State_4 = 1
-					}
-				}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_2 = 1
 			}
-			else_if = {
-				limit = {
-					check_variable = {
-						global.TTT_BYI_Conflict_State_5 = 1
-					}
-				}
+			check_variable = {
+				INA_Island_choice = 3
 			}
-			else_if = {
-				limit = {
-					check_variable = {
-						global.TTT_BYI_Conflict_State_6 = 1
-					}
-				}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_3 = 1
 			}
-			else_if = {
-				limit = {
-					check_variable = {
-						global.TTT_BYI_Conflict_State_7 = 1
-					}
-				}
+			check_variable = {
+				INA_Island_choice = 4
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_4 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 5
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_5 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 6
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_6 = 1
+			}
+			check_variable = {
+				INA_Island_choice = 7
+			}
+			check_variable = {
+				global.TTT_BYI_Conflict_State_7 = 1
 			}
 		}
 
 		visible = {
-			if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 1
-					}
-					check_variable = {
-						global.TTT_BYI_Conflict_State_1 = 1
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 2
-					}
-					check_variable = {
-						global.TTT_BYI_Conflict_State_2 = 1
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 3
-					}
-					check_variable = {
-						global.TTT_BYI_Conflict_State_3 = 1
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 4
-					}
-					check_variable = {
-						global.TTT_BYI_Conflict_State_4 = 1
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 5
-					}
-					check_variable = {
-						global.TTT_BYI_Conflict_State_5 = 1
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 6
-					}
-					check_variable = {
-						global.TTT_BYI_Conflict_State_6 = 1
-					}
-				}
-			}
-			else_if = 
-			{
-				limit = 
-				{
-					check_variable = 
-					{
-						INA_Island_choice = 7
-					}
-					check_variable = {
-						global.TTT_BYI_Conflict_State_6 = 1
-					}
-				}
-			}
+			always = yes
 		}
 		ai_will_do = {
 			factor = 50
@@ -1011,7 +784,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 1}}
 				INA_add_Impact_State_1 = yes
-				88 = 
+				230 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
@@ -1022,7 +795,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 2}}
 				INA_add_Impact_State_2 = yes
-				83 = {
+				229 = {
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
 					}
@@ -1032,13 +805,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 3}}
 				INA_add_Impact_State_3 = yes
-				373 = 
-				{
-					add_dynamic_modifier = {
-						modifier = INA_state_modifier_bunker
-					}
-				}
-				84 = 
+				235 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
@@ -1049,13 +816,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 4}}
 				INA_add_Impact_State_4 = yes
-				372 = 
-				{
-					add_dynamic_modifier = {
-						modifier = INA_state_modifier_bunker
-					}
-				}
-				370 = 
+				234 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
@@ -1066,13 +827,7 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 5}}
 				INA_add_Impact_State_5 = yes
-				371 = 
-				{
-					add_dynamic_modifier = {
-						modifier = INA_state_modifier_bunker
-					}
-				}
-				86 = 
+				233 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
@@ -1084,24 +839,21 @@ INA_war_beginning = {
 			{
 				limit = {check_variable = {INA_Island_choice = 6}}
 				INA_add_Impact_State_6 = yes
-				85 = 
+				235 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
 					}
 				}
+<<<<<<< HEAD
 				82 = 
-				{
-					add_dynamic_modifier = {
-						modifier = INA_state_modifier_bunker
-					}
-				}
+=======
 			}
 			else_if = 
 			{
 				limit = {check_variable = {INA_Island_choice = 7}}
 				INA_add_Impact_State_7 = yes
-				87 = 
+				232 = 
 				{
 					add_dynamic_modifier = {
 						modifier = INA_state_modifier_bunker
@@ -1115,7 +867,80 @@ INA_war_beginning = {
 		}
 
 	 }
-	#海祇叛军的行动
+	#风雨欲来
+	INA_Declare_war = {     
+		activation = {
+			INA_triggers_Declare_war = yes
+			NOT = {SNA = {has_War_with = KUJ}}
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			always = yes
+		}
+		is_good = no
+		days_mission_timeout = 25
+		fire_only_once = yes
+		timeout_effect = {
+			INA = {
+				set_autonomy = {
+					target = SNA
+					autonomy_state = autonomy_free
+				}
+				set_autonomy = {
+					target = KUJ
+					autonomy_state = autonomy_free
+				}
+			}
+			SNA = { 
+				leave_faction = yes 
+			    country_event = XinHai.10
+			}
+			KUJ = { 
+				leave_faction = yes
+				declare_war_on = {target = SNA type = annex_everything} 
+			}
+			clr_country_flag = INA_34_flag
+			SNA = {clr_country_flag = INA_34_flag}
+			KUJ = 
+			{
+				if = {
+					limit = {
+						has_country_flag = INA_Compulsory_conscription_budui
+						NOT = { has_template = "足轻" }
+						original_tag = KUJ
+					}
+					KUJ = {				
+					 division_template = {
+						name = "足轻"
+						priority = 2
+						is_locked = no
+						division_names_group = INA_INF_01
+						regiments = {
+							militia = { x = 0 y = 0 }
+							militia = { x = 0 y = 1 }
+							militia = { x = 0 y = 2 }
+							militia = { x = 1 y = 0 }
+							militia = { x = 1 y = 1 }
+						}
+					}
+				}
+					random_state = {
+						limit = {
+						is_core_of = KUJ
+						}
+						create_unit = {
+						division = "division_template = \"足轻\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = KUJ
+						count = KJG_add_new_army
+						}
+					}				
+				}
+			}
+		}
+	}
+
 }
 #测试用决议
 INA_pianzhi_test = 
@@ -1244,7 +1069,7 @@ INA_pianzhi_test =
 		days_remove = 15
 
 		remove_effect = {
-			87 = 
+			231 = 
 			{
 				add_dynamic_modifier = {
 					modifier = INA_state_modifier_bunker

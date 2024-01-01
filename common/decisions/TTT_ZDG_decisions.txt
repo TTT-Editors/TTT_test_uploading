@@ -239,24 +239,35 @@ ZDG_decision_category = {
 		days_mission_timeout = 1
 		is_good = yes
 		cost = 0
-		cancel_trigger = {
-		    or = {
-			has_country_flag = ZDG_14_flag
-			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
-		    }
+		cancel_trigger = {    
+			has_country_flag = ZDG_14_flag	    
 		}
 		timeout_effect = {
-			random_list = {
-				40 = {
-					country_event = {
-						dyas = 4
-						id = ZDG_events.12
+			if = {
+				limit = {
+					has_country_flag = ZDG_zhijiekaiqierjieduan_flag
+				}			
+				country_event = {
+					dyas = 4
+					id = ZDG_events.13
 					}
 				}
-				60 = {
+			else_if = {
+				limit = {
+					NOT = { has_country_flag = ZDG_zhijiekaiqierjieduan_flag }
+				}
+				random_list = {
+					40 = {
+						country_event = {
+							dyas = 4
+							id = ZDG_events.12
+						}
+					}
+					60 = {
 					country_event = {
 						dyas = 4
 						id = ZDG_events.13
+					    }
 					}
 				}
 			}

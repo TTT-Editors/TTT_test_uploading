@@ -84,7 +84,6 @@
 		advisor = {
 			slot = army_chief
 			idea_token = RTG_Retuo
-			ledger = army
 			allowed  = { 
 			    original_tag = RTG
 			}
@@ -99,7 +98,7 @@
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = RTG_Retuo
+			idea_token = RTG_Retuo_political
 			allowed  = { 
 			    original_tag = RTG
 			}
@@ -114,7 +113,7 @@
 		}
 		advisor = {
 			slot = theorist
-			idea_token = RTG_Retuo
+			idea_token = RTG_Retuo_theorist
 			ledger = army
 			allowed  = { 
 			    original_tag = RTG
@@ -177,7 +176,7 @@
 		}
 		advisor = {
 			slot = theorist
-			idea_token = RTG_Retuo_bad
+			idea_token = RTG_Retuo_bad_theorist
 			ledger = army
 			allowed  = { 
 			    original_tag = RTG
@@ -191,7 +190,7 @@
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = RTG_Retuo_bad
+			idea_token = RTG_Retuo_bad_army
 			allowed  = { 
 			    original_tag = RTG
 			}
@@ -261,7 +260,7 @@
 		}
 		advisor={
 		    slot = high_command
-			idea_token = RTG_Fengxu
+			idea_token = RTG_Fengxu_high_command
 			ledger = air
 			allowed  = {
 				OR = {
@@ -273,7 +272,10 @@
 				NOT = { has_government = hive_mind }
 			}
 			visible = {
+				or = {
 				has_country_flag = RTG4_flag
+				original_tag = ARF
+			    }
 			}
 			traits = {
 				To_King 
@@ -329,7 +331,10 @@
 			}
 			visible = {						#ͬavailable     ȶȽϸ 
 			    NOT = { has_government = hive_mind }
+				or = {
 				has_country_flag = RTG1_flag
+				original_tag = ARF
+			    }
 			}
 			traits = {
 				Miner_Congress
@@ -398,7 +403,7 @@
 		}
 		advisor={
 		    slot = high_command
-			idea_token = RTG_Dao
+			idea_token = RTG_Dao_high_command
 			ledger = army
 			allowed  = {
 			    original_tag = RTG
@@ -455,7 +460,7 @@
 			slot = political_advisor #这里填算什么顾问，这里是政治顾问
 			idea_token = RTG_Zhiqiong  #idea，代号
 			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
-					OR = {
+				OR = {
 					original_tag = RTG
 					original_tag = ARF
 				}
@@ -465,7 +470,10 @@
 				NOT = { has_government = hive_mind }
 			}
             visible = {						#出现（就是看得见）条件，如果没有写always = yes
+			    or = {
 				has_country_flag = RTG3_flag
+				original_tag = ARF
+			    }
 			}
 			traits  = {
 				renzhiyizhi  #效果，要在country_leader里写具体效果，并且记得本地化

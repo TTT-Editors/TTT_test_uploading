@@ -1,0 +1,275 @@
+add_namespace = spawn_army_event
+#spawn_army
+country_event = {
+	id = spawn_army_event.1
+	title = spawn_army_event.1.t
+	desc = spawn_army_event.1.d
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		division_template = {
+			name = "Infantry Division"
+			is_locked = no
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 0
+					y = 3
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 3
+				}
+			}
+		}
+		division_template = {
+			name = "Border Guard Army"
+			is_locked = no
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+			}
+		}
+		division_template = {
+			name = "Local Milita"
+			is_locked = no
+			regiments = {
+				irregular_infantry = {
+					x = 0
+					y = 0
+				}
+				irregular_infantry = {
+					x = 0
+					y = 1
+				}
+				irregular_infantry = {
+					x = 1
+					y = 0
+				}
+				irregular_infantry = {
+					x = 1
+					y = 1
+				}
+			}
+		}
+		division_template = {
+			name = "Mobile Army"			#Should be tanks, but cavalry also ok
+			is_locked = no
+			regiments = {
+				cavalry = {
+					x = 0
+					y = 0
+				}
+				cavalry = {
+					x = 0
+					y = 1
+				}
+				cavalry = {
+					x = 0
+					y = 2
+				}
+			}
+		}
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"Infantry Division\" start_experience_factor = 0.5"
+				owner = ROOT
+				allow_spawning_on_enemy_provs = yes
+				count = 2
+			}
+			create_unit = {
+				division = "division_template = \"Mobile Army\" start_experience_factor = 0.45"
+				owner = ROOT
+				allow_spawning_on_enemy_provs = yes
+				count = 1
+			}
+		}
+		every_owned_state = {
+			if = {
+				limit = {
+					OR = {
+						is_coastal = yes
+						is_island_state = yes
+						any_neighbor_state = {
+							NOT = {
+								is_owned_by = ROOT
+							}
+						}
+					}
+					arms_factory > 0
+				}
+				create_unit = {
+					division = "division_template = \"Border Guard Army\" start_experience_factor = 0.25"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			if = {
+				limit = {
+					arms_factory > 3
+				}
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.25"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 2
+				}
+				create_unit = {
+					division = "division_template = \"Border Guard Army\" start_experience_factor = 0.25"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+				create_unit = {
+					division = "division_template = \"Mobile Army\" start_experience_factor = 0.45"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			else_if = {
+				limit = {
+					arms_factory > 2
+				}
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.25"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+				create_unit = {
+					division = "division_template = \"Mobile Army\" start_experience_factor = 0.45"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			else_if = {
+				limit = {
+					arms_factory > 1
+				}
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.25"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			if = {
+				limit = {
+					state_population > 10000000
+				}
+				create_unit = {
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 4
+				}
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.25"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+				create_unit = {
+					division = "division_template = \"Mobile Army\" start_experience_factor = 0.45"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 2
+				}
+			}
+			else_if = {
+				limit = {
+					state_population > 5000000
+				}
+				create_unit = {
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 3
+				}
+				create_unit = {
+					division = "division_template = \"Infantry Division\" start_experience_factor = 0.25"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+				create_unit = {
+					division = "division_template = \"Mobile Army\" start_experience_factor = 0.45"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			else_if = {
+				limit = {
+					state_population > 1000000
+				}
+				create_unit = {
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 2
+				}
+				create_unit = {
+					division = "division_template = \"Mobile Army\" start_experience_factor = 0.45"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			else_if = {
+				limit = {
+					state_population > 500000
+				}
+				create_unit = {
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+		}
+	}
+	option = {
+		name = spawn_army_event.1.a
+	}
+}

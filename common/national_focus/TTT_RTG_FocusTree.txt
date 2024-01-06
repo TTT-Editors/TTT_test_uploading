@@ -1972,6 +1972,7 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			set_variable = { RTG_xuanchuanhaibaolanwei = 2 }
+			set_country_flag = RTG_unlock_second_slot
 			custom_effect_tooltip = RTG_unlock_second_slot_tt
 			set_country_flag = RTG_guyou_flag
 			custom_effect_tooltip = RTG_unlock_second_stage_poster_tt
@@ -2348,57 +2349,16 @@ focus_tree = {
 		y = 2
 		cost = 35
 		available = {
-			OR = {
-				has_idea = the_earth_roars
-				has_idea = the_earth_roars_2
-				has_idea = the_earth_roars_3
-				has_idea = the_earth_roars_4
-				has_idea = the_earth_roars_5
-			}
+			has_idea = the_earth_roars
 		}
 		bypass = {
-			NOT = {
-			    OR = {
-				has_idea = the_earth_roars
-				has_idea = the_earth_roars_2
-				has_idea = the_earth_roars_3
-				has_idea = the_earth_roars_4
-				has_idea = the_earth_roars_5
-			    }
-		    }
+			NOT = {  
+			has_idea = the_earth_roars	   
+		    } 
 		}
         completion_reward = {
-			add_political_power = -100
-			if = {
-				limit = {
-					has_idea = the_earth_roars
-				}
-				remove_ideas = the_earth_roars
-			}
-			else_if = {
-				limit = {
-					has_idea = the_earth_roars_2
-				}
-				remove_ideas = the_earth_roars_2
-			}
-			else_if = {
-				limit = {
-					has_idea = the_earth_roars_3
-				}
-				remove_ideas = the_earth_roars_3
-			}
-			else_if = {
-				limit = {
-					has_idea = the_earth_roars_4
-				}
-				remove_ideas = the_earth_roars_4
-			}
-			else_if = {
-				limit = {
-					has_idea = the_earth_roars_5
-				}
-				remove_ideas = the_earth_roars_5
-			}
+			add_political_power = -100	
+			remove_ideas = the_earth_roars	
 		}
 		prerequisite = { focus = RTG_guyou  }
 	}

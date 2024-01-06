@@ -88,15 +88,31 @@ on_actions = {
 						XRG = { exists = no }
 						XOG = { exists = no }
 					}
-					random_country = {
+					every_country = {
 						limit = {
-							has_country_flag = ready_for_another_round
+							is_nominate_liyue = yes
+							has_war_with = ZDG
 							is_faction_leader = yes
 						}
 						dismantle_faction = yes
 						country_event = {
 							id = liyue_civil_war.10
 							days = 45
+						}
+					}
+					every_country = {
+						limit = {
+							is_nominate_liyue = yes
+							has_war_with = ZDG
+						}
+						teleport_armies = {
+							limit = { 
+								NOT = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+							to_state_array = owned_controlled_states
 						}
 					}
 				}

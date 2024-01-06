@@ -24,4 +24,24 @@ ttt_army_decisions = {
 			}
 		}
 	}
+	
+	diversify_special_forces = {
+		icon = GFX_decision_generic_military
+		allowed = { is_nominate_mondstadt = no }		# Mondstadt has a unique system, don't add common decisions on it. 
+		available = {
+			date > 2003.1.1
+		}
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_potential_special_forces_tree = yes
+		}
+		ai_will_do = {
+			factor = 201
+			#ai do not lack of pp at all.
+		}
+	}
 }

@@ -80,9 +80,9 @@ on_actions = {
 						FROM = {
 							tag = RTG
 						}
-						RTG = {
-							has_government = reformism
-						}
+					}
+					RTG = {
+						has_government = reformism
 					}
 				}
 				if = {
@@ -172,6 +172,35 @@ on_actions = {
 					RTG = {
 						country_event = {
 							id = retuo_juanshu.33
+						}
+					}
+				}
+			}
+			#Liyue cn battle
+			if = {
+				limit = {
+					has_global_flag = cn_battle_has_happen
+					NOT = { has_global_flag = global_news_11_happened }
+					OR = {
+						tag = XRG
+						tag = XOG
+						tag = KQG
+						tag = NNG
+					}
+					FROM = {
+						OR = {
+							tag = XRG
+							tag = XOG
+							tag = KQG
+							tag = NNG
+						}
+					}
+				}
+				hidden_effect = {
+					ROOT = {
+						news_event = {
+							id = global_news.11
+							hours = 12
 						}
 					}
 				}
@@ -289,6 +318,21 @@ on_actions = {
 					}
 				}
 			}
+			
+			#Mystry bug of Ganyu
+			#Chushou should be jue
+			if = {
+				limit = {
+					OR = {
+						tag = LYU
+						FROM = {
+							tag = LYU
+						}
+					}
+				}
+				LYU = { country_lock_all_division_template = no }
+			}
+			
 			#抵抗军宣战龙王，并且完成了国策暗度
 			if = {
 				limit = {
@@ -300,48 +344,48 @@ on_actions = {
 					}
 				}
 				ARF = { 
-				set_country_flag = ARF_7_flag
-				add_offsite_building = {
-					type = arms_factory
-					level = 1
-				}
-				division_template = {
-					name = "Minbing Budui"
-					priority = 2
-					is_locked = yes
-					division_names_group = ARF_INF_01
-					regiments = {
-						militia = {
-							x = 0
-							y = 0
-						}
-						militia = {
-							x = 0
-							y = 1
-						}
-						militia = {
-							x = 0
-							y = 2
-						}
-						militia = {
-							x = 1
-							y = 0
-						}
-						militia = {
-							x = 1
-							y = 1
-						}
-						militia = {
-							x = 1
-							y = 2
+					set_country_flag = ARF_7_flag
+					add_offsite_building = {
+						type = arms_factory
+						level = 1
+					}
+					division_template = {
+						name = "Minbing Budui"
+						priority = 2
+						is_locked = yes
+						division_names_group = ARF_INF_01
+						regiments = {
+							militia = {
+								x = 0
+								y = 0
+							}
+							militia = {
+								x = 0
+								y = 1
+							}
+							militia = {
+								x = 0
+								y = 2
+							}
+							militia = {
+								x = 1
+								y = 0
+							}
+							militia = {
+								x = 1
+								y = 1
+							}
+							militia = {
+								x = 1
+								y = 2
+							}
 						}
 					}
-				}
-				154 = {
-					create_unit = {
-						division = "division_template = \"Minbing Budui\" start_experience_factor = 0.2"
-						count = 3
-						owner = ARF
+					154 = {
+						create_unit = {
+							division = "division_template = \"Minbing Budui\" start_experience_factor = 0.2"
+							count = 3
+							owner = ARF
 					    }
 				    }
 				}
@@ -460,4 +504,47 @@ on_actions = {
 			}
 		}
 	}
+}
+
+on_actions = {
+    on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+	                ROOT = { tag = XRG }
+					FROM = { tag = ZDG }
+				}
+				ZDG = {
+					country_event = { days = 14  id = ZDG_events.39 }
+				}
+			}
+	    }
+    }
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = ZDG }
+					has_global_flag = liyue_unified
+				}
+				LYU = {
+					country_event = { days = 35  id = ZDG_events.41 }
+				}
+			}
+	    }
+    }
+	on_war = = {
+		effect = {
+			if = {
+				limit = {
+					ZDG = {
+						casualties > 300000
+					}
+				}
+				ZDG = {
+					country_event = { days = 31  id = ZDG_events.43 }
+				}
+			}
+	    }
+    }
 }

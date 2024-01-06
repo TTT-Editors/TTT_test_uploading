@@ -1,4 +1,20 @@
 ZDG_decision_category = {
+	ZDG_zhijiekaiqierjieduan = {
+		allowed = {
+			is_ai = no
+		}
+		available = {
+			is_ai = no
+		}
+        visible = {
+			is_ai = no
+		} 		
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = ZDG_zhijiekaiqierjieduan_flag
+			custom_effect_tooltip = ZDG_zhijiekaiqierjieduan_tt
+		}
+	}
 	ZDG_detectintelligence_immortalfamily_XRG = {
 		#刺探仙家情报
 		cost = 10
@@ -224,7 +240,10 @@ ZDG_decision_category = {
 		is_good = yes
 		cost = 0
 		cancel_trigger = {
+		    or = {
 			has_country_flag = ZDG_14_flag
+			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
+		    }
 		}
 		timeout_effect = {
 			random_list = {
@@ -312,7 +331,10 @@ ZDG_decision_category = {
 		is_good = yes
 		cost = 0
 		cancel_trigger = {
-			has_country_flag = ZDG_14_flag2
+			or = {
+				has_country_flag = ZDG_14_flag
+				has_country_flag = ZDG_zhijiekaiqierjieduan_flag
+				}
 		}
 		timeout_effect = {
 			random_list = {
@@ -378,7 +400,10 @@ ZDG_decision_category = {
 		is_good = yes
 		cost = 0
 		cancel_trigger = {
-			has_country_flag = ZDG_14_flag2
+			or = {
+				has_country_flag = ZDG_14_flag
+				has_country_flag = ZDG_zhijiekaiqierjieduan_flag
+				}
 		}
 		timeout_effect = {
 			random_list = {
@@ -444,7 +469,10 @@ ZDG_decision_category = {
 		is_good = yes
 		cost = 0
 		cancel_trigger = {
-			has_country_flag = ZDG_14_flag2
+			or = {
+				has_country_flag = ZDG_14_flag
+				has_country_flag = ZDG_zhijiekaiqierjieduan_flag
+				}
 		}
 		timeout_effect = {
 			random_list = {
@@ -1271,9 +1299,8 @@ ZDG_decision_category = {
 				autonomy_state = ZDG_autonomus_states
 			}
 			RTG = {
-				add_popularity = {
-					ideology = despotism
-					popularity = 1
+				set_popularities = {
+					despotism = 100
 				}
 			}
 		}
@@ -1381,9 +1408,8 @@ ZDG_decision_category = {
 				autonomy_state = ZDG_autonomus_states
 			}
 			LYU = {
-				add_popularity = {
-					ideology = despotism
-					popularity = 1
+				set_popularities = {
+					despotism = 100
 				}
 			}
 		}
@@ -1561,6 +1587,80 @@ ZDG_decision_category = {
 		}
 		ai_will_do = {
 			base = 20
+		}
+	}
+	ZDG_shentougefang_jueyi = {
+		#渗透各方
+		name = ZDG_shentougefang
+		cost = 20
+		days_remove = 365
+		fire_only_once = no
+		icon = GFX_decision_ZDG_zhengzhijingji
+		visible = {
+			tag = ZDG
+			has_completed_focus = ZDG_shentougefang
+		}
+		available = {
+			NOT = {
+				has_country_flag = ZDG_shentougefang_flag
+			}
+			command_power > 20 
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			every_country = {		
+				limit = {					
+					has_war_with = ROOT
+			    }				
+			add_timed_idea = { idea = ZDG_yurenzhoudeshentou days = 120 } 
+		    }
+			add_command_power = -20
+		}
+	}
+	ZDG_dajishiqi_jueyi = {
+		#打击士气
+		name = ZDG_dajishiqi
+		cost = 20
+		days_remove = 365
+		fire_only_once = no
+		icon = GFX_decision_ZDG_zhengzhijingji
+		visible = {
+			tag = ZDG
+			has_completed_focus = ZDG_shentougefang
+		}
+		available = {
+			NOT = {
+				has_country_flag = ZDG_dajishiqi_flag
+			}
+			command_power > 20 
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			random_list = { 
+				60 = {
+					every_country = {
+						limit = {							
+							has_war_with = ROOT
+						}
+						add_stability = -0.15
+						add_war_support = -0.15
+						add_manpower = -1000
+					}
+				} 	
+				40 = { 	    
+					every_country = {
+						limit = {
+							has_war_with = ROOT
+						}						
+						add_timed_idea = { idea = ZDG_shiqikonghuang days = 120 } 
+					}
+				}
+			}
+			add_command_power = -20
 		}
 	}
 }
@@ -2018,7 +2118,7 @@ ZDG_decision_category3 = {
 				}
 				add_equipment_to_stockpile = {
 					type = train_equipment
-					amount = 5
+					amount = 50
 				}
 			}
 			else_if = {
@@ -2559,7 +2659,8 @@ ZDG_decision_category3 = {
 		days_remove = 150
 		fire_only_once = yes
 		visible = {
-			has_country_flag = ZDG_events34_flag
+			has_country_flag = ZDG_xuebeng_flag
+			has_idea = ZDG_shengzhangyuchonshanjuling
 		}
 		available = {
 			custom_trigger_tooltip = {
@@ -2603,7 +2704,7 @@ ZDG_decision_category3 = {
 			}
 			remove_ideas = ZDG_shengzhangyuchonshanjuling
 			set_variable = {
-				ZDG_dikangzhehezuodu_value = 6
+				ZDG_dikangzhehezuodu_value = 0
 			}
 			set_variable = {
 				ZDG_dikangzheyingxiangli_value = 1
@@ -2617,7 +2718,8 @@ ZDG_decision_category3 = {
 				type = artillery_equipment
 				amount = -1200
 			}
-			clr_country_flag = ZDG_events34_flag
+			clr_country_flag = ZDG_xuebeng_flag
+			custom_effect_tooltip = ZDG_zhenyadikangzuz_tt4
 		}
 	}
 }
@@ -2783,14 +2885,16 @@ ZDG_decision_category4 = {
 }
 
 ZDG_decision_category5 = {
-    ZDG_test_gui = {
-		#展开政治经济支援条目
+	ZDG_test_gui = {
+		#测试决议
 		cost = 0
 		days_remove = 0
 		fire_only_once = no
 		icon = GFX_decision_ZDG_zhengzhijingji
 		visible = {
 			tag = ZDG
+			is_ai = no
+			is_debug = yes
 		}
 		ai_will_do = {
 			factor = 10
@@ -2809,6 +2913,9 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+			NOT = {
+				has_country_flag = ZDG_gongzhizhetigongbaozuo_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
 			or = {
 				AND = {
@@ -2860,6 +2967,9 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+			NOT = {
+				has_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
 		}
 		days_mission_timeout = 70
@@ -2872,13 +2982,17 @@ ZDG_decision_category5 = {
 			or = {
 				has_country_flag = ZDG_complete_failure
 				has_country_flag = ZDG_events10flag
-				NOT = { has_country_flag = ZDG_xuebeng_flag }
+				NOT = {
+					has_country_flag = ZDG_xuebeng_flag
+				}
 			}
 		}
 		timeout_effect = {
 			add_to_variable = {
 				ZDG_gongzhizheyingxiangli_value = -1
 			}
+			custom_effect_tooltip = ZDG_fuchigongzhizhe_tt3
+			ZDG_gongzhizhe_buffjisuan = yes
 		}
 		ai_will_do = {
 			base = 100
@@ -2894,6 +3008,9 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+			NOT = {
+				has_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
 			or = {
 				check_variable = {
@@ -2926,6 +3043,9 @@ ZDG_decision_category5 = {
 			}
 			NOT = {
 				has_country_flag = ZDG_events10flag
+			}
+			NOT = {
+				has_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
 			}
 			has_country_flag = ZDG_xuebeng_flag
 			or = {
@@ -2963,13 +3083,17 @@ ZDG_decision_category5 = {
 			or = {
 				has_country_flag = ZDG_complete_failure
 				has_country_flag = ZDG_events10flag
-				NOT = { has_country_flag = ZDG_xuebeng_flag }
+				NOT = {
+					has_country_flag = ZDG_xuebeng_flag
+				}
 			}
 		}
 		timeout_effect = {
 			add_to_variable = {
 				ZDG_toujizhehezuodu_value = -1
 			}
+			custom_effect_tooltip = ZDG_decision_5_tt
+			ZDG_toujizhe_buffjisuan = yes
 		}
 		ai_will_do = {
 			base = 100
@@ -2984,6 +3108,9 @@ ZDG_decision_category5 = {
 			}
 			NOT = {
 				has_country_flag = ZDG_events10flag
+			}
+			NOT = {
+				has_country_flag = ZDG_bielaiaishi_flag
 			}
 			has_country_flag = ZDG_xuebeng_flag
 		}
@@ -3021,13 +3148,17 @@ ZDG_decision_category5 = {
 				}
 				30 = {
 					add_to_variable = {
-						ZDG_baoshoupaiyingxiangli_value = 1
+						ZDG_baoshoupaiyingxiangli_value = -1
 					}
+					custom_effect_tooltip = ZDG_decision_6_tt3
+					ZDG_baoshoupai_buffjisuan = yes
 				}
 				30 = {
 					add_to_variable = {
-						ZDG_dikangzhehezuodu_value = 1
+						ZDG_baoshoupaihezuodu_value = 1
 					}
+					custom_effect_tooltip = ZDG_decision_6_tt2
+					ZDG_baoshoupai_buffjisuan = yes
 				}
 			}
 		}
@@ -3045,8 +3176,13 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+			NOT = {
+				has_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
-			check_variable = { ZDG_dikangzhehezuodu_value < 6 }
+			check_variable = {
+				ZDG_dikangzhehezuodu_value < 6
+			}
 		}
 		activation = {
 			NOT = {
@@ -3055,8 +3191,13 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+			NOT = {
+				has_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
-			check_variable = { ZDG_dikangzhehezuodu_value < 6 }
+			check_variable = {
+				ZDG_dikangzhehezuodu_value < 6
+			}
 		}
 		days_mission_timeout = 70
 		is_good = no
@@ -3074,21 +3215,25 @@ ZDG_decision_category5 = {
 				NOT = {
 					has_country_flag = ZDG_xuebeng_flag
 				}
-				check_variable = { ZDG_dikangzhehezuodu_value > 5 }
+				check_variable = {
+					ZDG_dikangzhehezuodu_value > 5
+				}
 			}
 		}
 		timeout_effect = {
 			add_to_variable = {
 				ZDG_dikangzhehezuodu_value = -1
 			}
+			custom_effect_tooltip = ZDG_decision_7_tt2
+			ZDG_dikangzhe_buffjisuan = yes
 			random_list = {
 				75 = {
 					add_to_variable = {
 						ZDG_dikangzheyingxiangli_value = 1
 					}
+					custom_effect_tooltip = ZDG_decision_7_tt3
 				}
 				25 = {
-					
 				}
 			}
 		}
@@ -3106,8 +3251,13 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+			NOT = {
+				has_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
-			check_variable = { ZDG_dikangzhehezuodu_value < 6 }
+			check_variable = {
+				ZDG_dikangzhehezuodu_value < 6
+			}
 		}
 		activation = {
 			NOT = {
@@ -3116,16 +3266,23 @@ ZDG_decision_category5 = {
 			NOT = {
 				has_country_flag = ZDG_events10flag
 			}
+			NOT = {
+				has_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
+			}
 			has_country_flag = ZDG_xuebeng_flag
-			check_variable = { ZDG_dikangzhehezuodu_value < 6 }
+			check_variable = {
+				ZDG_dikangzhehezuodu_value < 6
+			}
 		}
 		days_mission_timeout = 70
 		is_good = no
 		cost = 0
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = ZDG_decision_7_tt	
-				check_variable = { ZDG_dikangzhehezuodu_value > 5 }
+				tooltip = ZDG_decision_7_tt
+				check_variable = {
+					ZDG_dikangzhehezuodu_value > 5
+				}
 			}
 		}
 		cancel_trigger = {
@@ -3135,196 +3292,206 @@ ZDG_decision_category5 = {
 				NOT = {
 					has_country_flag = ZDG_xuebeng_flag
 				}
-				check_variable = { ZDG_dikangzhehezuodu_value > 5 }
+				check_variable = {
+					ZDG_dikangzhehezuodu_value > 5
+				}
 			}
 		}
 		timeout_effect = {
 			add_to_variable = {
 				ZDG_dikangzhehezuodu_value = -1
 			}
-			random_list = {
-				10 = {
-					if = {
-						limit = {
-							check_variable = { ZDG_dikangzheyingxiangli_value = 2 }
-						}
-						add_war_support = -0.01
-						add_stability = -0.01
-						random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 0.15
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 0.15
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 0.15
-							}
-							add_manpower = -2500
-						}
-						every_other_country = {
-							limit = {
-								is_subject_of = ROOT
-							}
-							add_war_support = -0.01
-						    add_stability = -0.01
-						    random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 0.15
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 0.15
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 0.15
-							}
-							add_manpower = -2500
-						    }
-						}
+			custom_effect_tooltip = ZDG_decision_7_tt2
+			ZDG_dikangzhe_buffjisuan = yes
+			if = {
+				limit = {
+					check_variable = {
+						ZDG_dikangzheyingxiangli_value = 2
 					}
 				}
-				10 = {
-					if = {
-						limit = {
-							check_variable = { ZDG_dikangzheyingxiangli_value = 3 }
+				add_war_support = -0.01
+				add_stability = -0.01
+				every_controlled_state = {
+					random_select_amount = 2
+					damage_building = {
+						type = arms_factory
+						damage = 0.15
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 0.15
+					}
+					damage_building = {
+						type = infrastructure
+						damage = 0.15
+					}
+					add_manpower = -2500
+				}
+				every_other_country = {
+					limit = {
+						is_subject_of = ROOT
+					}
+					add_war_support = -0.01
+					add_stability = -0.01
+					every_controlled_state = {
+						random_select_amount = 2
+						damage_building = {
+							type = arms_factory
+							damage = 0.15
 						}
-						add_war_support = -0.02
-						add_stability = -0.02
-						random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 0.4
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 0.4
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 0.4
-							}
-							add_manpower = -5000
+						damage_building = {
+							type = industrial_complex
+							damage = 0.15
 						}
-						every_other_country = {
-							limit = {
-								is_subject_of = ROOT
-							}
-							add_war_support = -0.02
-						    add_stability = -0.02
-						    random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 0.4
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 0.4
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 0.4
-							}
-							add_manpower = -5000
-						    }
+						damage_building = {
+							type = infrastructure
+							damage = 0.15
 						}
+						add_manpower = -2500
 					}
 				}
-				10 = {
-					if = {
-						limit = {
-							check_variable = { ZDG_dikangzheyingxiangli_value = 4 }
-						}
-						add_war_support = -0.03
-						add_stability = -0.03
-						random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 0.9
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 0.9
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 0.9
-							}
-							add_manpower = -10000
-						}
-						every_other_country = {
-							limit = {
-								is_subject_of = ROOT
-							}
-							add_war_support = -0.03
-						    add_stability = -0.03
-						    random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 0.9
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 0.9
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 0.9
-							}
-							add_manpower = -10000
-						    }
-						}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						ZDG_dikangzheyingxiangli_value = 3
 					}
 				}
-				10 = {
-					if = {
-						limit = {
-							check_variable = { ZDG_dikangzheyingxiangli_value = 5 }
+				add_war_support = -0.02
+				add_stability = -0.02
+				every_controlled_state = {
+					random_select_amount = 3
+					damage_building = {
+						type = arms_factory
+						damage = 0.4
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 0.4
+					}
+					damage_building = {
+						type = infrastructure
+						damage = 0.4
+					}
+					add_manpower = -5000
+				}
+				every_other_country = {
+					limit = {
+						is_subject_of = ROOT
+					}
+					add_war_support = -0.02
+					add_stability = -0.02
+					every_controlled_state = {
+						random_select_amount = 3
+						damage_building = {
+							type = arms_factory
+							damage = 0.4
 						}
-						add_war_support = -0.05
-						add_stability = -0.05
-						random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 1.2
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 1.2
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 1.2
-							}
-							add_manpower = -25000
+						damage_building = {
+							type = industrial_complex
+							damage = 0.4
 						}
-						every_other_country = {
-							limit = {
-								is_subject_of = ROOT
-							}
-							add_war_support = -0.05
-						    add_stability = -0.05
-						    random_owned_controlled_state = {
-							damage_building = {
-								type = arms_factory
-								damage = 1.2
-							}
-							damage_building = {
-								type = industrial_complex
-								damage = 1.2
-							}
-							damage_building = {
-								type = infrastructure
-								damage = 1.2
-							}
-							add_manpower = -25000
-						    }
+						damage_building = {
+							type = infrastructure
+							damage = 0.4
 						}
+						add_manpower = -5000
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						ZDG_dikangzheyingxiangli_value = 4
+					}
+				}
+				add_war_support = -0.03
+				add_stability = -0.03
+				every_controlled_state = {
+					random_select_amount = 5
+					damage_building = {
+						type = arms_factory
+						damage = 0.9
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 0.9
+					}
+					damage_building = {
+						type = infrastructure
+						damage = 0.9
+					}
+					add_manpower = -10000
+				}
+				every_other_country = {
+					limit = {
+						is_subject_of = ROOT
+					}
+					add_war_support = -0.03
+					add_stability = -0.03
+					every_controlled_state = {
+						random_select_amount = 5
+						damage_building = {
+							type = arms_factory
+							damage = 0.9
+						}
+						damage_building = {
+							type = industrial_complex
+							damage = 0.9
+						}
+						damage_building = {
+							type = infrastructure
+							damage = 0.9
+						}
+						add_manpower = -10000
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						ZDG_dikangzheyingxiangli_value = 5
+					}
+				}
+				add_war_support = -0.05
+				add_stability = -0.05
+				every_controlled_state = {
+					random_select_amount = 8
+					damage_building = {
+						type = arms_factory
+						damage = 1.2
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1.2
+					}
+					damage_building = {
+						type = infrastructure
+						damage = 1.2
+					}
+					add_manpower = -25000
+				}
+				every_other_country = {
+					limit = {
+						is_subject_of = ROOT
+					}
+					add_war_support = -0.05
+					add_stability = -0.05
+					every_controlled_state = {
+						random_select_amount = 8
+						damage_building = {
+							type = arms_factory
+							damage = 1.2
+						}
+						damage_building = {
+							type = industrial_complex
+							damage = 1.2
+						}
+						damage_building = {
+							type = infrastructure
+							damage = 1.2
+						}
+						add_manpower = -25000
 					}
 				}
 			}
@@ -3333,22 +3500,26 @@ ZDG_decision_category5 = {
 			base = 100
 		}
 	}
-	ZDG_fuchigongzhizhe = { #扶持共治者	
+	ZDG_fuchigongzhizhe = {
+		#扶持共治者	
 		fire_only_once = no
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = ZDG_fuchigongzhizhe_tt	
-				check_variable = { ZDG_gongzhizheyingxiangli_value < 5 }
+				tooltip = ZDG_fuchigongzhizhe_tt
+				check_variable = {
+					ZDG_gongzhizheyingxiangli_value < 5
+				}
 			}
 			custom_trigger_tooltip = {
-				tooltip = ZDG_fuchigongzhizhe_tt2	
-				check_variable = { ZDG_gongzhizhehezuodu_value > 3 }
+				tooltip = ZDG_fuchigongzhizhe_tt2
+				check_variable = {
+					ZDG_gongzhizhehezuodu_value > 3
+				}
 			}
 		}
 		allowed = {
 			original_tag = ZDG
 		}
-		
 		visible = {
 			NOT = {
 				has_country_flag = ZDG_complete_failure
@@ -3358,37 +3529,42 @@ ZDG_decision_category5 = {
 			}
 			has_country_flag = ZDG_xuebeng_flag
 		}
-		
 		cost = 30
-
 		days_remove = 35
-
 		days_re_enable = 35
-		
 		remove_effect = {
 			if = {
 				limit = {
-					NOT = { has_idea = ZDG_liyuehezuoshiyixiaozu }
+					NOT = {
+						has_idea = ZDG_liyuehezuoshiyixiaozu
+					}
 				}
-				add_to_variable = { ZDG_gongzhizheyingxiangli_value = 1 }
+				add_to_variable = {
+					ZDG_gongzhizheyingxiangli_value = -1
+				}
+				ZDG_gongzhizhe_buffjisuan = yes
 				custom_effect_tooltip = ZDG_fuchigongzhizhe_tt3
 			}
 			else_if = {
 				limit = {
 					has_idea = ZDG_liyuehezuoshiyixiaozu
 				}
-				add_to_variable = { ZDG_gongzhizheyingxiangli_value = 1 }
-				add_to_variable = { ZDG_gongzhizhehezuodu_value = 1 }
+				add_to_variable = {
+					ZDG_gongzhizheyingxiangli_value = 1
+				}
+				add_to_variable = {
+					ZDG_gongzhizhehezuodu_value = 1
+				}
 				custom_effect_tooltip = ZDG_fuchigongzhizhe_tt4
 				custom_effect_tooltip = ZDG_fuchigongzhizhe_tt3
 			}
 		}
-		
 		ai_will_do = {
 			base = 20
 		}
 	}
-	ZDG_zhengzhiyouhuo = { #政治诱惑	
+	ZDG_zhengzhiyouhuo = {
+		#政治诱惑	
 		fire_only_once = no
 		available = {
 			has_idea = ZDG_liyuehezuoshiyixiaozu
@@ -3397,7 +3573,6 @@ ZDG_decision_category5 = {
 		allowed = {
 			original_tag = ZDG
 		}
-		
 		visible = {
 			NOT = {
 				has_country_flag = ZDG_complete_failure
@@ -3407,40 +3582,46 @@ ZDG_decision_category5 = {
 			}
 			has_country_flag = ZDG_xuebeng_flag
 		}
-
 		modifier = {
 			civilian_factory_use = 1
 		}
-
-		cost = 50
-
 		days_remove = 35
-
 		days_re_enable = 35
-		
 		remove_effect = {
 			hidden_effect = {
-			random_list = {
-				10 = {
-					add_to_variable = { ZDG_gongzhizhehezuodu_value = 1 }
-				    }
-				10 = {
-					add_to_variable = { ZDG_toujizhehezuodu_value = 1 }
-				    }
-				10 = {
-					add_to_variable = { ZDG_baoshoupaihezuodu_value = 1 }
-				    }
-			    }
-				add_to_variable = { ZDG_gongzhizheyingxiangli_value = 1 }
-		    }
+				random_list = {
+					10 = {
+						add_to_variable = {
+							ZDG_gongzhizhehezuodu_value = 1
+						}
+						ZDG_gongzhizhe_buffjisuan = yes
+					}
+					10 = {
+						add_to_variable = {
+							ZDG_toujizhehezuodu_value = 1
+						}
+						ZDG_toujizhe_buffjisuan = yes
+					}
+					10 = {
+						add_to_variable = {
+							ZDG_baoshoupaihezuodu_value = 1
+						}
+						ZDG_baoshoupai_buffjisuan = yes
+					}
+				}
+				add_to_variable = {
+					ZDG_gongzhizheyingxiangli_value = 1
+				}
+				ZDG_gongzhizhe_buffjisuan = yes
+			}
 			custom_effect_tooltip = ZDG_zhengzhiyouhuo_tt
 		}
-		
 		ai_will_do = {
 			base = 20
 		}
 	}
-	ZDG_xiangtoujizhepaixiongpu = { #向投机者拍胸脯	
+	ZDG_xiangtoujizhepaixiongpu = {
+		#向投机者拍胸脯	
 		fire_only_once = no
 		available = {
 			has_war_support > 0.75
@@ -3449,7 +3630,6 @@ ZDG_decision_category5 = {
 		allowed = {
 			original_tag = ZDG
 		}
-		
 		visible = {
 			NOT = {
 				has_country_flag = ZDG_complete_failure
@@ -3459,19 +3639,1848 @@ ZDG_decision_category5 = {
 			}
 			has_country_flag = ZDG_xuebeng_flag
 		}
-
 		cost = 25
-
 		days_remove = 35
-
 		days_re_enable = 35
-		
 		remove_effect = {
-			add_to_variable = { ZDG_toujizhehezuodu_value = 1 }
+			add_to_variable = {
+				ZDG_toujizhehezuodu_value = 1
+			}
+			ZDG_toujizhe_buffjisuan = yes
 			custom_effect_tooltip = ZDG_xiangtoujizhepaixiongpu_tt
 			add_command_power = -5
 		}
-		
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhenyadikangzhe = {
+		#镇压抵抗者	
+		fire_only_once = no
+		available = {
+			has_equipment = {
+				infantry_equipment > 499
+			}
+			has_equipment = {
+				support_equipment > 499
+			}
+			has_manpower > 999
+			command_power > 9
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		days_remove = 35
+		days_re_enable = 35
+		remove_effect = {
+			add_to_variable = {
+				ZDG_dikangzheyingxiangli_value = -1
+			}
+			add_to_variable = {
+				ZDG_dikangzhehezuodu_value = -1
+			}
+			ZDG_dikangzhe_buffjisuan = yes
+			custom_effect_tooltip = ZDG_zhenyadikangzhe_tt
+			add_command_power = -10
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_xianzhibaoshoupai = {
+		#限制保守派	
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_xianzhibaoshoupai_tt
+				check_variable = {
+					ZDG_baoshoupaihezuodu_value > 2
+				}
+			}
+			has_manpower > 499
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		cost = 30
+		days_remove = 35
+		days_re_enable = 35
+		remove_effect = {
+			random_list = {
+				50 = {
+					add_to_variable = {
+						ZDG_baoshoupaiyingxiangli_value = -1
+					}
+					ZDG_baoshoupai_buffjisuan = yes
+					custom_effect_tooltip = ZDG_xianzhibaoshoupai_tt2
+				}
+				50 = {
+					add_to_variable = {
+						ZDG_baoshoupaiyingxiangli_value = -1
+					}
+					ZDG_baoshoupai_buffjisuan = yes
+					add_to_variable = {
+						ZDG_baoshoupaihezuodu_value = -1
+					}
+					ZDG_baoshoupai_buffjisuan = yes
+					custom_effect_tooltip = ZDG_xianzhibaoshoupai_tt3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_shoumaitoujizhe = {
+		#收买投机者	
+		fire_only_once = no
+		available = {
+			num_of_available_civilian_factories > 1
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		modifier = {
+			civilian_factory_use = 2
+		}
+		cost = 50
+		days_remove = 70
+		days_re_enable = 35
+		remove_effect = {
+			add_to_variable = {
+				ZDG_toujizhehezuodu_value = 1
+			}
+			ZDG_toujizhe_buffjisuan = yes
+			custom_effect_tooltip = ZDG_shoumaitoujizhe_tt
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_cuimianbaoshoupai = {
+		#催眠保守派	
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_cuimianbaoshoupai_tt
+				check_variable = {
+					var = ZDG_baoshoupaihezuodu_value
+					value = 2
+					compare = greater_than_or_equals
+				}
+			}
+			NOT = {
+				has_country_flag = ZDG_cuimianbaoshoupai_flag
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		modifier = {
+			civilian_factory_use = 2
+		}
+		cost = 100
+		days_remove = 70
+		days_re_enable = 35
+		complete_effect = {
+			add_to_variable = {
+				ZDG_baoshoupaihezuodu_value = 1
+			}
+			ZDG_baoshoupai_buffjisuan = yes
+			custom_effect_tooltip = ZDG_cuimianbaoshoupai_tt3
+			set_country_flag = {
+				flag = ZDG_cuimianbaoshoupai_flag
+				value = 1
+				days = 180
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				ZDG_baoshoupaihezuodu_value = -1
+			}
+			ZDG_baoshoupai_buffjisuan = yes
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_tuanjielansezhiyan = {
+		#团结蓝色之岩	
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_tuanjielansezhiyan_tt
+				check_variable = {
+					var = ZDG_toujizhehezuodu_value
+					value = 4
+					compare = less_than
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_tuanjielansezhiyan_tt2
+				check_variable = {
+					var = ZDG_baoshoupaiyingxiangli_value
+					value = 3
+					compare = less_than
+				}
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			has_completed_focus = ZDG_paoguyugou
+		}
+		cost = 20
+		days_remove = 70
+		days_re_enable = 35
+		remove_effect = {
+			add_to_variable = {
+				ZDG_toujizhehezuodu_value = 1
+			}
+			add_to_variable = {
+				ZDG_baoshoupaiyingxiangli_value = 1
+			}
+			ZDG_toujizhe_buffjisuan = yes
+			ZDG_baoshoupai_buffjisuan = yes
+			custom_effect_tooltip = ZDG_tuanjielansezhiyan_tt3
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_gongzhizhetigongbaozuo = {
+		#向共治者提供宝座	
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_gongzhizhetigongbaozuo_tt
+				check_variable = {
+					var = ZDG_gongzhizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_gongzhizhetigongbaozuo_tt2
+				check_variable = {
+					var = ZDG_gongzhizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			NOT = {
+				has_country_flag = ZDG_gongzhizhetigongbaozuo_flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		cost = 0
+		days_remove = 70
+		remove_effect = {
+			set_variable = {
+				ZDG_gongzhizhehezuodu_value = 5
+			}
+			set_variable = {
+				ZDG_gongzhizheyingxiangli_value = 5
+			}
+			ZDG_gongzhizhe_buffjisuan = yes
+			set_country_flag = ZDG_gongzhizhetigongbaozuo_flag
+			custom_effect_tooltip = ZDG_gongzhizhetigongbaozuo_tt3
+			ZDG_gongzhizhe_buffjisuan = yes
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_geitoujizhedezuizhonfangan = {
+		#给投机者的最终方案	
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_geitoujizhedezuizhonfangan_tt
+				check_variable = {
+					var = ZDG_toujizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_geitoujizhedezuizhonfangan_tt2
+				check_variable = {
+					var = ZDG_toujizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			num_subjects > 2
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			NOT = {
+				has_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		cost = 20
+		days_remove = 70
+		days_re_enable = 35
+		remove_effect = {
+			set_variable = {
+				ZDG_toujizhehezuodu_value = 5
+			}
+			set_variable = {
+				ZDG_toujizheyingxiangli_value = 5
+			}
+			set_country_flag = ZDG_geitoujizhedezuizhonfangan_flag
+			custom_effect_tooltip = ZDG_geitoujizhedezuizhonfangan_tt3
+			ZDG_toujizhe_buffjisuan = yes
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_duidikangzhedequanmianjiejue = {
+		#对抵抗者的全面解决	
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt
+				check_variable = {
+					var = ZDG_dikangzheyingxiangli_value
+					value = 1
+					compare = less_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt2
+				check_variable = {
+					var = ZDG_gongzhizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt6
+				check_variable = {
+					var = ZDG_gongzhizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt3
+				check_variable = {
+					var = ZDG_toujizhehezuodu_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt4
+				check_variable = {
+					var = ZDG_toujizheyingxiangli_value
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ZDG_duidikangzhedequanmianjiejue_tt5
+				check_variable = {
+					var = ZDG_baoshoupaihezuodu_value
+					value = 4
+					compare = greater_than_or_equals
+				}
+			}
+			has_stability > 0.5
+			has_war_support > 0.5
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+		}
+		cost = 20
+		days_remove = 70
+		days_re_enable = 35
+		remove_effect = {
+			set_variable = {
+				ZDG_dikangzhehezuodu_value = 0
+			}
+			set_variable = {
+				ZDG_dikangzheyingxiangli_value = 1
+			}
+			ZDG_dikangzhe_buffjisuan = yes
+			set_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
+			custom_effect_tooltip = ZDG_zhenyadikangzuz_tt4
+			ZDG_dikangzhe_buffjisuan = yes
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+}
+
+ZDG_decision_category6 = {
+	ZDG_zaixianrendiqujianlijunshi = {
+		#在仙人地区建立军事特别辖区
+		fire_only_once = no
+		available = {
+			XRG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			XRG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+			has_country_flag = ZDG_events38_flag_2
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = XRG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = XRG
+					autonomy_state = ZDG_autonomus_states_three
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zaixianrendiqujianlijingji = {
+		#在仙人地区建立经济特别辖区
+		fire_only_once = no
+		available = {
+			XRG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			XRG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+			has_country_flag = ZDG_events38_flag
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = XRG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = XRG
+					autonomy_state = ZDG_autonomus_states_two
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zaixiaodiqujianlijingji = {
+		#在魈地区建立经济特别辖区
+		fire_only_once = no
+		available = {
+			XOG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			XOG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+			has_country_flag = ZDG_events38_flag
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = XOG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = XOG
+					autonomy_state = ZDG_autonomus_states_two
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zaixiaodiqujianlijjunshi = {
+		#在魈地区建立军事特别辖区
+		fire_only_once = no
+		available = {
+			XOG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			XOG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+			has_country_flag = ZDG_events38_flag_2
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = XOG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = XOG
+					autonomy_state = ZDG_autonomus_states_three
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zaiguiliyuandiqujianlijingji = {
+		#在归离原地区建立经济特别辖区
+		fire_only_once = no
+		available = {
+			KQG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			KQG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+			has_country_flag = ZDG_events38_flag
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = KQG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = KQG
+					autonomy_state = ZDG_autonomus_states_two
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zaiguiliyuandiqujianlijunshi = {
+		#在归离原地区建立军事特别辖区
+		fire_only_once = no
+		available = {
+			KQG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			KQG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+			has_country_flag = ZDG_events38_flag_2
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = KQG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = KQG
+					autonomy_state = ZDG_autonomus_states_three
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zaicengyanjuyuandiqujianlijingji = {
+		#在层岩巨渊地区建立经济特别辖区
+		fire_only_once = no
+		available = {
+			RTG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			has_country_flag = ZDG_events38_flag
+			RTG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = RTG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = RTG
+					autonomy_state = ZDG_autonomus_states_two
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zaicengyanjuyuandiqujianlijunshi = {
+		#在层岩巨渊地区建立军事特别辖区
+		fire_only_once = no
+		available = {
+			RTG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			has_country_flag = ZDG_events38_flag_2
+			RTG = {
+				is_subject_of = ZDG
+				has_autonomy_state = ZDG_autonomus_states
+			}
+		}
+		cost = 0
+		remove_effect = {
+			ZDG = {
+				set_autonomy = {
+					target = RTG
+					autonomy_state = autonomy_free
+				}
+			}
+			ZDG = {
+				set_autonomy = {
+					target = RTG
+					autonomy_state = ZDG_autonomus_states_three
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuangongyeshebei = {
+		#支援工业设备
+		fire_only_once = yes
+		available = {
+			XRG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			industrial_complex > 2
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XRG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 20
+		days_remove = 60
+		remove_effect = {
+			civilian_factory_use = 2
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = industry
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			XRG = {
+				add_ideas = ZDG_gongyezhichi
+				add_tech_bonus = {
+					bonus = 0.25
+					uses = 1
+					category = industry
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuangongyeshebei_2 = {
+		#支援工业设备
+		fire_only_once = yes
+		available = {
+			XOG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			industrial_complex > 2
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XOG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 20
+		days_remove = 60
+		remove_effect = {
+			civilian_factory_use = 2
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = industry
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			XOG = {
+				add_ideas = ZDG_gongyezhichi
+				add_tech_bonus = {
+					bonus = 0.25
+					uses = 1
+					category = industry
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuangongyeshebei_3 = {
+		#支援工业设备
+		fire_only_once = yes
+		available = {
+			KQG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			industrial_complex > 2
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				KQG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 20
+		days_remove = 60
+		remove_effect = {
+			civilian_factory_use = 2
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = industry
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			KQG = {
+				add_ideas = ZDG_gongyezhichi
+				add_tech_bonus = {
+					bonus = 0.25
+					uses = 1
+					category = industry
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuangongyeshebei_4 = {
+		#支援工业设备
+		fire_only_once = yes
+		available = {
+			RTG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			industrial_complex > 2
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				RTG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 20
+		days_remove = 60
+		remove_effect = {
+			civilian_factory_use = 2
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = industry
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			RTG = {
+				add_ideas = ZDG_gongyezhichi
+				add_tech_bonus = {
+					bonus = 0.25
+					uses = 1
+					category = industry
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanjiaoguantuan = {
+		#支援教官团
+		fire_only_once = yes
+		available = {
+			XRG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			command_power > 29
+			has_army_experience > 20
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XRG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			add_command_power = -30
+			army_experience = -20
+		}
+		remove_effect = {
+			XRG = {
+				add_ideas = ZDG_zhiyuanjaioguantuan
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanjiaoguantuan_2 = {
+		#支援教官团
+		fire_only_once = yes
+		available = {
+			XOG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			command_power > 29
+			has_army_experience > 20
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XOG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			add_command_power = -30
+			army_experience = -20
+		}
+		remove_effect = {
+			XOG = {
+				add_ideas = ZDG_zhiyuanjaioguantuan
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanjiaoguantuan_3 = {
+		#支援教官团
+		fire_only_once = yes
+		available = {
+			KQG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			command_power > 29
+			has_army_experience > 20
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				KQG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			add_command_power = -30
+			army_experience = -20
+		}
+		remove_effect = {
+			KQG = {
+				add_ideas = ZDG_zhiyuanjaioguantuan
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanjiaoguantuan_4 = {
+		#支援教官团
+		fire_only_once = yes
+		available = {
+			RTG = {
+				is_subject_of = ZDG
+				NOT = {
+					has_idea = ZDG_gongyezhichi
+				}
+			}
+			command_power > 29
+			has_army_experience > 20
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				RTG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			add_command_power = -30
+			army_experience = -20
+		}
+		remove_effect = {
+			RTG = {
+				add_ideas = ZDG_zhiyuanjaioguantuan
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanwuqizhuangbei = {
+		#支援武器装备
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanwuqizhuangbei_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanwuqizhuangbei_flag
+					}
+				}
+			}
+			has_equipment = {
+				infantry_equipment > 4999
+			}
+			has_equipment = {
+				grain_conversion_eq > 4999
+			}
+			has_equipment = {
+				ttt_uniform_eq > 4999
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XRG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			XRG = {
+				is_subject_of = ZDG
+			}
+			has_completed_focus = ZDG_geitamenwuqi
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanwuqizhuangbei_flag
+				value = 1
+				days = 30
+			}
+			XRG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.35
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanwuqizhuangbei_2 = {
+		#支援武器装备
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanwuqizhuangbei2_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanwuqizhuangbei_flag_2
+					}
+				}
+			}
+			has_equipment = {
+				infantry_equipment > 4999
+			}
+			has_equipment = {
+				grain_conversion_eq > 4999
+			}
+			has_equipment = {
+				ttt_uniform_eq > 4999
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XOG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			XOG = {
+				is_subject_of = ZDG
+			}
+			has_completed_focus = ZDG_geitamenwuqi
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanwuqizhuangbei_flag_2
+				value = 1
+				days = 30
+			}
+			XOG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.35
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanwuqizhuangbei_3 = {
+		#支援武器装备
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanwuqizhuangbei3_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanwuqizhuangbei_flag_3
+					}
+				}
+			}
+			has_equipment = {
+				infantry_equipment > 4999
+			}
+			has_equipment = {
+				grain_conversion_eq > 4999
+			}
+			has_equipment = {
+				ttt_uniform_eq > 4999
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				KQG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			KQG = {
+				is_subject_of = ZDG
+			}
+			has_completed_focus = ZDG_geitamenwuqi
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanwuqizhuangbei_flag_3
+				value = 1
+				days = 30
+			}
+			KQG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.35
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanwuqizhuangbei_4 = {
+		#支援武器装备
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanwuqizhuangbei4_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanwuqizhuangbei_flag_4
+					}
+				}
+			}
+			has_equipment = {
+				infantry_equipment > 4999
+			}
+			has_equipment = {
+				grain_conversion_eq > 4999
+			}
+			has_equipment = {
+				ttt_uniform_eq > 4999
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				RTG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			RTG = {
+				is_subject_of = ZDG
+			}
+			has_completed_focus = ZDG_geitamenwuqi
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanwuqizhuangbei_flag_4
+				value = 1
+				days = 30
+			}
+			RTG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.35
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanzhongxingwuqi = {
+		#支援重型武器
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanzhongxingwuqi_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanzhongxingwuqi_flag
+					}
+				}
+			}
+			has_equipment = {
+				artillery_equipment > 999
+			}
+			has_equipment = {
+				support_equipment > 2499
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XRG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			XRG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanzhongxingwuqi_flag
+				value = 1
+				days = 30
+			}
+			XRG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.36
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanzhongxingwuqi_2 = {
+		#支援重型武器
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanzhongxingwuqi2_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanzhongxingwuqi_flag_2
+					}
+				}
+			}
+			has_equipment = {
+				artillery_equipment > 999
+			}
+			has_equipment = {
+				support_equipment > 2499
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XOG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			XOG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanzhongxingwuqi_flag_2
+				value = 1
+				days = 30
+			}
+			XOG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.36
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanzhongxingwuqi_3 = {
+		#支援重型武器
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanzhongxingwuqi3_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanzhongxingwuqi_flag_3
+					}
+				}
+			}
+			has_equipment = {
+				artillery_equipment > 999
+			}
+			has_equipment = {
+				support_equipment > 2499
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				KQG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			KQG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanzhongxingwuqi_flag_3
+				value = 1
+				days = 30
+			}
+			KQG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.36
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_zhiyuanzhongxingwuqi_4 = {
+		#支援重型武器
+		fire_only_once = no
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ZDG_zhiyuanzhongxingwuqi4_tt
+				NOT = {
+					has_country_flag = {
+						ZDG_zhiyuanzhongxingwuqi_flag_4
+					}
+				}
+			}
+			has_equipment = {
+				artillery_equipment > 999
+			}
+			has_equipment = {
+				support_equipment > 2499
+			}
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				RTG = {
+					has_autonomy_state = ZDG_autonomus_states
+				}
+			}
+			RTG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 10
+		days_remove = 30
+		remove_effect = {
+			set_country_flag = {
+				flag = ZDG_zhiyuanzhongxingwuqi_flag_4
+				value = 1
+				days = 30
+			}
+			RTG = {
+				country_event = {
+					days = 10
+					id = ZDG_events.36
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_banbuneizhan = {
+		#在仙人派地区颁布《内战特别管制法案》
+		fire_only_once = yes
+		available = {
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XRG = {
+					has_autonomy_state = ZDG_autonomus_states
+					has_idea = ZDG_neizhantebieguanzhifaan
+				}
+			}
+			XRG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 20
+		remove_effect = {
+			XRG = {
+				add_ideas = ZDG_neizhantebieguanzhifaan
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_banbuneizhan_2 = {
+		#在轻策庄地区颁布《内战特别管制法案》
+		fire_only_once = yes
+		available = {
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				XOG = {
+					has_autonomy_state = ZDG_autonomus_states
+					has_idea = ZDG_neizhantebieguanzhifaan
+				}
+			}
+			XOG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 20
+		remove_effect = {
+			XOG = {
+				add_ideas = ZDG_neizhantebieguanzhifaan
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_banbuneizhan_3 = {
+		#在归离原地区颁布《内战特别管制法案》
+		fire_only_once = yes
+		available = {
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				KQG = {
+					has_autonomy_state = ZDG_autonomus_states
+					has_idea = ZDG_neizhantebieguanzhifaan
+				}
+			}
+			KQG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 20
+		remove_effect = {
+			KQG = {
+				add_ideas = ZDG_neizhantebieguanzhifaan
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	ZDG_banbuneizhan_4 = {
+		#在层岩巨渊地区颁布《内战特别管制法案》
+		fire_only_once = yes
+		available = {
+		}
+		allowed = {
+			original_tag = ZDG
+		}
+		visible = {
+			NOT = {
+				has_country_flag = ZDG_complete_failure
+			}
+			NOT = {
+				has_country_flag = ZDG_events10flag
+			}
+			has_country_flag = ZDG_xuebeng_flag
+			NOT = {
+				RTG = {
+					has_autonomy_state = ZDG_autonomus_states
+					has_idea = ZDG_neizhantebieguanzhifaan
+				}
+			}
+			RTG = {
+				is_subject_of = ZDG
+			}
+		}
+		cost = 20
+		remove_effect = {
+			RTG = {
+				add_ideas = ZDG_neizhantebieguanzhifaan
+			}
+		}
 		ai_will_do = {
 			base = 20
 		}

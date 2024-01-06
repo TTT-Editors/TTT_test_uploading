@@ -404,144 +404,6 @@ RTG_declare_war = {
 	}
 }
 
-liyue_civil_war_decisions = {
-	RTG_controls_Xianren = {
-		icon = decision_RTG_Retuo_controls
-		visible = {
-			tag = RTG
-			is_faction_leader = yes
-			XRG = {
-				is_in_faction_with = RTG
-				NOT = {
-					has_autonomy_state = autonomy_army
-				}
-			}
-		}
-		fire_only_once = no
-		days_remove = 90
-		cost = 50
-		ai_will_do = {
-			base = 10
-		}
-		remove_effect = {
-			if = {
-				limit = {
-					XRG = {
-						is_subject = no
-					}
-				}
-				set_autonomy = {
-					target = XRG
-					autonomy_state = autonomy_puppet
-					end_wars = no
-				}
-			}
-			else_if = {
-				limit = {
-					XRG = {
-						has_autonomy_state = autonomy_puppet
-					}
-				}
-				set_autonomy = {
-					target = XRG
-					autonomy_state = autonomy_army
-					end_wars = no
-				}
-			}
-		}
-	}
-	RTG_controls_anachist_Liyue = {
-		icon = decision_RTG_Retuo_controls
-		visible = {
-			tag = RTG
-			is_faction_leader = yes
-			ANG = {
-				is_in_faction_with = RTG
-				NOT = {
-					has_autonomy_state = autonomy_army
-				}
-			}
-		}
-		fire_only_once = no
-		days_remove = 90
-		cost = 50
-		ai_will_do = {
-			base = 10
-		}
-		remove_effect = {
-			if = {
-				limit = {
-					ANG = {
-						is_subject = no
-					}
-				}
-				set_autonomy = {
-					target = ANG
-					autonomy_state = autonomy_puppet
-					end_wars = no
-				}
-			}
-			else_if = {
-				limit = {
-					ANG = {
-						has_autonomy_state = autonomy_puppet
-					}
-				}
-				set_autonomy = {
-					target = ANG
-					autonomy_state = autonomy_army
-					end_wars = no
-				}
-			}
-		}
-	}
-	RTG_controls_Liyuegang = {
-		icon = decision_RTG_Retuo_controls
-		visible = {
-			tag = RTG
-			is_faction_leader = yes
-			LYU = {
-				is_in_faction_with = RTG
-				NOT = {
-					has_autonomy_state = autonomy_army
-				}
-			}
-		}
-		fire_only_once = no
-		days_remove = 90
-		cost = 50
-		ai_will_do = {
-			base = 10
-		}
-		remove_effect = {
-			if = {
-				limit = {
-					LYU = {
-						is_subject = no
-					}
-				}
-				set_autonomy = {
-					target = LYU
-					autonomy_state = autonomy_puppet
-					end_wars = no
-				}
-			}
-			else_if = {
-				limit = {
-					LYU = {
-						has_autonomy_state = autonomy_puppet
-					}
-				}
-				set_autonomy = {
-					target = LYU
-					autonomy_state = autonomy_army
-					end_wars = no
-				}
-			}
-		}
-	}
-}
-
 RTG_develop_capital = {
 	RTG_expand_yuan_capital = {
 		#开凿渊都
@@ -2674,8 +2536,11 @@ liyue_civil_war_decisions = {
 			news_event = {
 				id = retuo_juanshu_news.5
 			}
+			set_variable = { RTG_xuanchuanhaibaolanwei = 3 }
+			custom_effect_tooltip = RTG_unlock_second_slot_tt
 			set_cosmetic_tag = RTCW
-			set_country_flag = RTG_shouxu_zhiyue_flag 	
+			set_country_flag = RTG_shouxu_zhiyue_flag 
+				
 		}
 	}
 	RTG_xuangao_lyuneizhanjieshu = {

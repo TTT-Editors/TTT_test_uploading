@@ -1652,25 +1652,30 @@ news_event = {
     #fire_only_once = no
     option = {
         name = retuo_juanshu_news.2.a
-		trigger = { 
+		trigger = {
+		OR = {
 		original_tag = NNG
         original_tag = ANG
 		original_tag = KQG
+	        }
 		}
     }
 	option = {
         name = retuo_juanshu_news.2.b
-		trigger = { 
+		trigger = {
+		OR = {
 		original_tag = RTG
         original_tag = XRG
 		original_tag = XOG
 		original_tag = LYU
+	        }
 		}
     }
 	option = {
         name = retuo_juanshu_news.2.c
 		trigger = {
 		NOT = {
+		OR = {
 		original_tag = RTG
         original_tag = XRG
 		original_tag = XOG
@@ -1678,6 +1683,7 @@ news_event = {
         original_tag = NNG
         original_tag = ANG
 		original_tag = KQG
+	            }
 	        }
 		}
     }	
@@ -1724,25 +1730,30 @@ news_event = {
     #fire_only_once = no
 	option = {
         name = retuo_juanshu_news.5.a		
-		trigger = { 
+		trigger = {
+			OR = {
 			original_tag = NNG
 			original_tag = ANG
 			original_tag = KQG
+		    }
 		}
     }
 	option = {
         name = retuo_juanshu_news.5.b		
 		trigger = { 
+			OR = {
 			original_tag = RTG
 			original_tag = XRG
 			original_tag = XOG
 			original_tag = LYU
+		    }
 		}
     }
 	option = {
         name = retuo_juanshu_news.5.c		
 		trigger = { 
 			NOT = {
+				OR = {
 				original_tag = RTG
 				original_tag = XRG
 				original_tag = XOG
@@ -1750,6 +1761,7 @@ news_event = {
 				original_tag = NNG
 				original_tag = ANG
 				original_tag = KQG
+			    }
 			}
 		}
     }	
@@ -2004,8 +2016,18 @@ country_event = {
 	is_triggered_only = yes
 	option = { 
 		name = RTG.13.a
-		trigger = {    
-            is_ai = yes		
+		trigger = {
+			OR = {
+            is_ai = yes
+			AND = {
+				check_variable = {
+					RTG_erosion_system < 80
+				    }
+					check_variable = {
+						RTG_erosion_system > 20
+					}
+			    }
+		    }	
         }
 		add_stability = 0.10
 		RTG_Retuo_good = {
@@ -2032,8 +2054,18 @@ country_event = {
 	}
 	option = { 
 		name = RTG.13.b
-		trigger = {    
-            is_ai = yes		
+		trigger = {
+			OR = {
+            is_ai = yes
+			AND = {
+				check_variable = {
+					RTG_erosion_system < 80
+				    }
+					check_variable = {
+						RTG_erosion_system > 20
+					}
+			    }
+		    }	
         }
 		add_stability = 0.10
 		set_politics = {

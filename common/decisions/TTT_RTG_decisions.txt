@@ -1999,10 +1999,10 @@ RTG_nanming_jizhi_jueyi = {
 				tooltip = RTG_jiangdi_nanminguimo_tt
 				or = {
 					check_variable = {
-						RTG_chushixian_xianzhi = 0
+						RTG_juanshuxian_xianzhi = 1
 					}
 					check_variable = {
-						RTG_juanshuxian_xianzhi = 1
+						RTG_juanshuxian_xianzhi = 2
 					}
 				}
 			}
@@ -2046,12 +2046,6 @@ RTG_nanming_jizhi_jueyi = {
 					remove_idea = RTG_nanmin_guimo_2
 					add_idea = RTG_nanmin_guimo
 				}
-			}
-			else_if = {
-				limit = {
-					has_idea = RTG_nanmin_guimo
-				}
-				remove_ideas = RTG_nanmin_guimo
 			}
 		}
 	}
@@ -2316,6 +2310,34 @@ liyue_civil_war_decisions = {
 			}
 			set_variable = { RTG_xuanchuanhaibaolanwei = 3 }
 			custom_effect_tooltip = RTG_unlock_second_slot_tt
+			set_variable = { RTG_juanshuxian_xianzhi = 2 }
+			if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo
+				}
+				swap_ideas = {
+					add_idea = RTG_nanmin_guimo_2
+					remove_idea = RTG_nanmin_guimo
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_2
+				}
+				swap_ideas = {
+					add_idea = RTG_nanmin_guimo_3
+					remove_idea = RTG_nanmin_guimo_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = RTG_nanmin_guimo_3
+				}
+				swap_ideas = {
+					add_idea = RTG_nanmin_guimo_4
+					remove_idea = RTG_nanmin_guimo_3
+				}
+			}
 			set_cosmetic_tag = RTCW
 			set_country_flag = RTG_shouxu_zhiyue_flag 
 			set_country_flag = RTG_unlock_third_slot 	
@@ -2395,6 +2417,7 @@ liyue_civil_war_decisions = {
 					remove_idea = RTG_zhongzu_maodun_4
 				}
 			}
+			
 		}
 	}
 }

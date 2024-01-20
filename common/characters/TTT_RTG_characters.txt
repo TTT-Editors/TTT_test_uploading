@@ -507,31 +507,10 @@
                 original_tag = ARF
 			    }
 			}
-		}
-		
+		}	
 	}
 
-	RTG_Local_Committee = {
-		name=RTG_Local_Committee
-		portraits={
-			civilian={
-				#large = 
-			}
-			army={
-				#large = 
-			}
-		}
-		
-		country_leader={
-			ideology = liberalism_subtype
-			traits={ Hilltop_Dweller }
-			expire="2022.10.20.1"
-			id=-1
-		}
-		
-	}
-
-RTG_AnMozhi = {
+    RTG_AnMozhi = {
 		name=RTG_AnMozhi #领袖和领袖介绍本地化是这个：TTT_characters_l_english
 		portraits={
 			civilian={ #政治
@@ -576,9 +555,114 @@ RTG_AnMozhi = {
 			visible = {						
 				has_country_flag = RTG1_flag
 			}
+		}	
+	}
+    RTG_Hongjie = { #虹姐
+		name=RTG_Hongjie #领袖和领袖介绍本地化是这个：TTT_characters_l_english
+		portraits={
+			civilian={ #政治
+				small = GFX_portrait_small_Liyue_lishuidieshan
+				#arge = GFX_portrait_large_Liyue_Anmozhi
+			}
 		}
-
 		
+        advisor={ #内阁顾问
+			slot = political_advisor #这里填算什么顾问，这里是政治顾问
+			idea_token = RTG_Hongjie  #idea，代号
+			desc = RTG_Hongjie_desc
+			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+				original_tag = RTG
+			}
+			available = {						#出现（就是看得见）条件，如果没有写always = yes
+				NOT = { has_government = hive_mind }
+			}
+			visible = {						
+				has_country_flag = RTG17_flag
+			}
+			traits = {
+				RTG_hongse_guangcai  #效果，要在country_leader里写具体效果，并且记得本地化
+			}
+			cost = 150
+			ai_will_do = {
+				base = 10
+			}
+		}
+        advisor = {
+			slot = theorist
+			idea_token = RTG_Hongjie_theorist
+			desc = RTG_Hongjie_desc
+			ledger = army
+			allowed = { 
+			    original_tag = RTG
+			}
+			visible = { has_country_flag = RTG17_flag }
+			traits = { RTG_quanmian_guihua }
+            cost = 150	
+			ai_will_do = {
+				base = 10
+			}			
+		}	
+	}
+    RTG_Heimai = { #黑麦
+	name=RTG_Heimai #领袖和领袖介绍本地化是这个：TTT_characters_l_english
+	portraits={
+		civilian={ #政治
+			small = GFX_portrait_small_Liyue_lishuidieshan
+			#arge = GFX_portrait_large_Liyue_Anmozhi
+		}
 	}
 
+	advisor={ #内阁顾问
+		slot = political_advisor #这里填算什么顾问，这里是政治顾问
+		idea_token = RTG_Heimai  #idea，代号
+		desc = RTG_Heimai_desc
+		allowed = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+			original_tag = RTG
+		}
+		available = {						#出现（就是看得见）条件，如果没有写always = yes
+			NOT = { has_government = hive_mind }
+		}
+		visible = {						
+			has_country_flag = RTG41_flag
+		}
+		traits = {
+			RTG_heitu_huanmai  #效果，要在country_leader里写具体效果，并且记得本地化
+		}
+		cost = 150
+		ai_will_do = {
+			base = 10
+		    }
+	    }
+	}
+
+	RTG_Muning = { #攸宁
+	name=RTG_Muning #领袖和领袖介绍本地化是这个：TTT_characters_l_english
+	portraits={
+		civilian={ #政治
+			small = GFX_portrait_small_Liyue_lishuidieshan
+			#arge = GFX_portrait_large_Liyue_Anmozhi
+		}
+	}
+	advisor={ #内阁顾问
+		slot = political_advisor #这里填算什么顾问，这里是政治顾问
+		idea_token = RTG_Muning  #idea，代号
+		desc = RTG_Muning_desc
+		allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+			original_tag = RTG
+		}
+		available = {						#出现（就是看得见）条件，如果没有写always = yes
+			NOT = { has_government = hive_mind }
+		}
+		visible = {						
+			has_country_flag = RTG42_flag
+		}
+		traits = {
+			RTG_youyou_shengning  #效果，要在country_leader里写具体效果，并且记得本地化
+		}
+		cost = 150
+		ai_will_do = {
+			base = 10
+		    }
+	    }
+	}
 }

@@ -43,6 +43,7 @@ shared_focus =
 	completion_reward = {
 		country_event = INA_events.1 
 		add_political_power = 10
+		INA_PingDing_unlocked = yes
 	}
 }
 
@@ -263,27 +264,35 @@ shared_focus =
 	ai_will_do = {
 		factor = 100
 	}
+	select_effect = {
+		country_event = {
+			id = INA_events.15
+			days = 15
+		}
+		set_variable = { INA_laws_in_processing = 1 }
+		set_variable = { INA_laws_in_processing_days = 35 }
+		clr_country_flag = INA_PingDing_adjourment
+	}
 	completion_reward = {
 		set_country_flag = INA_start_Vision_hunt
+		mark_focus_tree_layout_dirty = yes
 		custom_effect_tooltip = INA_Vision_hunt_law
-		hidden_effect = 
-		{
-			country_event = 
-			{
+
+		add_to_array = { INA_PingDing_laws_history = 5 }
+		clear_variable = INA_laws_in_processing
+		clear_variable = INA_laws_in_processing_days
+		set_country_flag = INA_PingDing_adjourment
+
+		unlock_decision_category_tooltip = INA_Vision_hunt_decision
+
+		hidden_effect = {
+			country_event = {
 				id = INA_events.12
 			}
-			swap_ideas = 
-			{
+			swap_ideas = {
 				add_idea = INA_putrid_Shogunate_Army_quality_1
 				remove_idea = INA_putrid_Shogunate_Army_quality_2
 			}
-		}
-	}
-	select_effect = {
-		country_event = 
-		{
-			id = INA_events.15
-			days = 15
 		}
 	}
 }

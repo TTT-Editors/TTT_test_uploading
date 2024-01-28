@@ -1,4 +1,25 @@
 on_actions ={
+	on_daily_INA = {
+		effect = {
+			if = {
+				limit = {
+					has_variable = INA_laws_in_processing_days
+				}
+				add_to_variable = { INA_laws_in_processing_days = -1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = INA_laws_in_processing_days
+							value = 0
+							compare = equals
+						}
+					}
+					clear_variable = INA_laws_in_processing_days
+					clear_variable = INA_laws_in_processing
+				}
+			}
+		}
+	}
     on_startup = {
         effect = {
             INA = {
@@ -126,27 +147,6 @@ on_actions ={
             }
         }
     }
-	on_daily_INA = {
-		effect = {
-			if = {
-				limit = {
-					has_variable = INA_laws_in_processing_days
-				}
-				add_to_variable = { INA_laws_in_processing_days = -1 }
-				if = {
-					limit = {
-						check_variable = {
-							var = INA_laws_in_processing_days
-							value = 0
-							compare = equals
-						}
-					}
-					clear_variable = INA_laws_in_processing_days
-					clear_variable = INA_laws_in_processing
-				}
-			}
-		}
-	}
 	on_war = {
 		effect = {
 			#九条家获得民兵部队

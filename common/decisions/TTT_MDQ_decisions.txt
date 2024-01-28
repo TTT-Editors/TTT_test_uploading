@@ -81,6 +81,7 @@ MDQ_decisions_01 = {
 
 		ai_will_do = { factor = 100 }
 		cancel_trigger = {
+			QQR = { exists = yes }
 			OR = {
 				MOT = { has_war_with = QQR }
 				MDQ = { NOT = { has_war_with = QQR } }
@@ -111,6 +112,11 @@ MDQ_decisions_01 = {
 						target = MDQ
 						autonomous_state = mot_military_areas
 					}
+				}
+				MOT = { add_to_faction = MDQ }
+				every_state = {
+					limit = { is_core_of = QQR }
+					remove_core_of = QQR
 				}
 				##################################################
 				#	News Event for MDQ win

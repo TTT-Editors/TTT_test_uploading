@@ -5,7 +5,7 @@ MDQ_decisions_01 = {
 		available = { always = no } #任务完成的条件，这里是始终为非
 		ai_will_do = { factor = 20 } #ai倾向
 		fire_only_once = yes  #是否为一次性
-		days_mission_timeout = 240 #时间限制（测试用所以改成7天，上线前一定记得改回240天）
+		days_mission_timeout = 1 #时间限制（测试用所以改成7天，上线前一定记得改回240天）
 		timeout_effect = {  #失败效果
 			add_stability = -0.2
 			add_war_support = -0.2
@@ -121,6 +121,14 @@ MDQ_decisions_01 = {
 				##################################################
 				#	News Event for MDQ win
 				##################################################
+				
+				##################################################
+				#	Different ending for different army-civilian harmony
+				##################################################
+				if = {
+					limit = {
+					}
+				}
 			}
 			if = {
 				limit = {
@@ -152,6 +160,14 @@ MDQ_decisions_01 = {
 				##################################################
 				#	News Event for MDQ lost
 				##################################################
+				
+				##################################################
+				#	Different ending for different army-civilian harmony
+				##################################################
+				if = {
+					limit = {
+					}
+				}
 			}
 			set_global_flag = TTT_warpeace_show_gui
 			add_to_variable = { global.TTT_warpeace_dirty = 1 }

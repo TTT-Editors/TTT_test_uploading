@@ -6,18 +6,18 @@ scripted_gui = {
 
         visible = {
             original_tag = INA
-            #has_country_flag = INA_PingDing_visible
+            has_country_flag = INA_PingDing_GUI_available
             NOT = { has_country_flag = INA_raiden_EI_leads_new_inazuma}
         }
         effects = {
             INA_PingDing_use_button_click = {
                 if = {
-					limit = { NOT = {has_country_flag = PingDing_Gui_open}}
-					set_country_flag = PingDing_Gui_open
+					limit = { NOT = { has_country_flag = INA_PingDing_Gui_visible } }
+					set_country_flag = INA_PingDing_Gui_visible
 				}
 				else_if = {
-					limit = { has_country_flag = PingDing_Gui_open}
-					clr_country_flag = PingDing_Gui_open
+					limit = { has_country_flag = INA_PingDing_Gui_visible }
+					clr_country_flag = INA_PingDing_Gui_visible
 				}
             }
         }
@@ -28,13 +28,13 @@ scripted_gui = {
 
         visible = {
             original_tag = INA
-            has_country_flag = PingDing_Gui_open
-            #has_country_flag = INA_PingDing_visible
+            has_country_flag = INA_PingDing_Gui_visible
+            has_country_flag = INA_PingDing_GUI_available
             NOT = { has_country_flag = INA_raiden_EI_leads_new_inazuma}
         }
         effects = {
             INA_PingDing_exit_click = {
-                clr_country_flag = PingDing_Gui_open
+                clr_country_flag = INA_PingDing_Gui_visible
             }
         }
         properties = {

@@ -72,7 +72,7 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_3 #解决问题
+	id = INA_First_stage_3 #旧的不去新的还来
 	icon = GFX_INA_goal_5
 	relative_position_id = INA_First_stage
 	prerequisite = {
@@ -97,13 +97,16 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_4 #增加工资
+	id = INA_First_stage_4 #休养生息
 	icon = GFX_INA_goal_12
 	relative_position_id = INA_First_stage
 	prerequisite = {
 		focus = INA_First_stage_3
 	}
-	x = -3
+	mutually_exclusive = {
+		focus = INA_First_stage_5
+	}
+	x = -2
 	y = 3
 	cost = 35.00
 	ai_will_do = {
@@ -120,13 +123,16 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_5 #隐形之手
+	id = INA_First_stage_5 #提起精神
 	icon = GFX_INA_goal_7
 	relative_position_id = INA_First_stage
 	prerequisite = {
 		focus = INA_First_stage_3
 	}
-	x = 3
+	mutually_exclusive = {
+		focus = INA_First_stage_4
+	}
+	x = 2
 	y = 3
 	cost = 35.00
 	ai_will_do = {
@@ -143,12 +149,9 @@ shared_focus =
 	icon = GFX_INA_goal_22
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_3
+		focus = INA_First_stage_4
 	}
-	mutually_exclusive = {
-		focus = INA_First_stage_7
-	}
-	x = -1
+	x = -3
 	y = 4
 	cost = 35.00
 	ai_will_do = {
@@ -162,16 +165,13 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_7 #抓壮丁！
+	id = INA_First_stage_7#短暂休假
 	icon = GFX_INA_goal_4
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_3
+		focus = INA_First_stage_4
 	}
-	mutually_exclusive = {
-		focus = INA_First_stage_6
-	}
-	x = 1
+	x = -1
 	y = 4
 	cost = 35.00
 	ai_will_do = {
@@ -192,15 +192,14 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_8 #抓捕寻衅滋事者
+	id = INA_First_stage_8 #采取隔离行动
 	icon = GFX_INA_goal_10
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_6
-		focus = INA_First_stage_7
+		focus = INA_First_stage_5
 	}
-	x = 0
-	y = 5
+	x = 1
+	y = 4
 	cost = 35.00
 	ai_will_do = {
 		factor = 100
@@ -245,20 +244,14 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_9 #眼狩之令
+	id = INA_First_stage_9 #绛票扩印
 	icon = GFX_INA_goal_33
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_8
+		focus = INA_First_stage_5
 	}
-	prerequisite = {
-		focus = INA_First_stage_10
-	}
-	prerequisite = {
-		focus = INA_First_stage_11
-	}
-	x = 0
-	y = 6
+	x = 3
+	y = 4
 	cost = 35.00
 	ai_will_do = {
 		factor = 100
@@ -290,13 +283,18 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_10 #征兵法案
+	id = INA_First_stage_10 #唯有等待
 	icon = GFX_INA_goal_9
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_4
+		focus = INA_First_stage_6
+		focus = INA_First_stage_7
 	}
-	x = -3
+	prerequisite = {
+		focus = INA_First_stage_8
+		focus = INA_First_stage_9
+	}
+	x = -0
 	y = 5
 	cost = 35.00
 	ai_will_do = {
@@ -309,34 +307,6 @@ shared_focus =
 		set_country_flag = INA_conscription_law_flag
 	}
 }
-
-shared_focus =
-{
-	id = INA_First_stage_11 #绛票扩印
-	icon = GFX_INA_goal_6
-	relative_position_id = INA_First_stage
-	prerequisite = {
-		focus = INA_First_stage_5
-	}
-	x = 3
-	y = 5
-	cost = 35.00
-	ai_will_do = {
-		factor = 100
-	}
-	completion_reward = {
-		add_ideas = INA_purple_cash
-		custom_effect_tooltip = INA_reduce_ecomony_pressure
-		random_core_state = {
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = industrial_complex
-				level = 1
-			}
-		}
-	}
-}
-
 #初始眼狩令
 shared_focus =
 {

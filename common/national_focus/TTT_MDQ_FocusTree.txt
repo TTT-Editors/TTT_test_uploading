@@ -771,7 +771,7 @@ focus_tree = {
 		completion_reward = {
 			add_war_support = 0.10
 			add_stability = 0.10
-			custom_effect_tooltip = TTT_zhengfufazhanchengdu_good_two
+			custom_effect_tooltip = TTT_junshifazhanchengdu_bad
 		}
 	}
 	focus = {
@@ -883,7 +883,8 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			
+			unlock_decision_tooltip = MDQ_decisions_02_10
+			set_country_flag = MDQ_02_08_tt
 		}
 	}
 	focus = {
@@ -901,7 +902,9 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
+			set_country_flag = MDQ_02_09_flag
+			nlock_decision_tooltip = MDQ_decisions_03_01
+			unlock_decision_tooltip = MDQ_decisions_03_03
 		}
 	}
 	focus = {
@@ -974,6 +977,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = MDQ_02_12_tt
+			set_country_flag = MDQ_02_12_flag
+			activate_mission = MDQ_decisions_03_05
 		}
 	}
 	focus = {
@@ -996,13 +1001,17 @@ focus_tree = {
 				country_exists = NNG
 				}
 			}
-		has_country_flag = MDQ_01_13_completed
+		has_country_flag = MDQ_country_flag_01
 		}
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			custom_effect_tooltip = MDQ_02_12_tt 
+			custom_effect_tooltip = MDQ_02_12_tt
+			set_country_flag = MDQ_02_13_flag
+			set_country_flag = MDQ_02_12_flag
+			activate_mission = MDQ_decisions_03_05
+			activate_mission = MDQ_decisions_03_06
 		}
 	}
 	focus = {
@@ -1038,8 +1047,16 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		}
+		available = {
+			NOT = {
+				has_country_flag = MDQ_decisions_03_02_flag
+			}
+		}
 		completion_reward = {
 			country_event = { days = 1  id = MDQ_event.17 }
+			custom_effect_tooltip = MDQ_02_15_tt
+			unlock_decision_tooltip = MDQ_decisions_03_01
+			unlock_decision_tooltip = MDQ_decisions_03_03
 		}
 	}
 	focus = {
@@ -1117,7 +1134,10 @@ focus_tree = {
 				limit = {
 					NOT = { has_idea = MDQ_idea_0_4 }
 				}
-				add_ideas = MDQ_idea_0_4
+				swap_ideas = {
+					add_idea = MDQ_idea_0_19
+					remove_idea = MDQ_idea_0_4
+				}
 			}
 		}
 	}

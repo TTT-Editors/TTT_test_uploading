@@ -1,33 +1,55 @@
 MDQ_decisions_01 = {
 	MDQ_decisions_01_01 = {
-		allowed = { tag = MDQ } #该任务只能被该tag触发
-		activation = { has_idea = MDQ_Black_sun_crisis }     #任务前提条件                               
-		available = { always = no } #任务完成的条件，这里是始终为非
-		ai_will_do = { factor = 20 } #ai倾向
-		fire_only_once = yes  #是否为一次性
-		days_mission_timeout = 240 #时间限制
-		timeout_effect = {  #失败效果
+		allowed = {
+			tag = MDQ
+		}
+		#该任务只能被该tag触发
+		activation = {
+			has_idea = MDQ_Black_sun_crisis
+		}
+		#任务前提条件                               
+		available = {
+			always = no
+		}
+		#任务完成的条件，这里是始终为非
+		ai_will_do = {
+			factor = 20
+		}
+		#ai倾向
+		fire_only_once = yes		#是否为一次性
+		days_mission_timeout = 240		#时间限制（测试用所以改成7天，上线前一定记得改回240天）
+		timeout_effect = {
+			#失败效果
 			add_stability = -0.2
 			add_war_support = -0.2
-			news_event = { id = global_news.61 }
-			add_ideas = closed_economy #封闭经济
-			add_ideas = extensive_conscription #广泛征兵
-			add_ideas = war_economy #战时经济
+			news_event = {
+				id = global_news.61
+			}
+			add_ideas = closed_economy			#封闭经济
+			add_ideas = extensive_conscription			#广泛征兵
+			add_ideas = war_economy			#战时经济
 			hidden_effect = {
-				MOT = {  #从蒙德城独立
+				MOT = {
+					#从蒙德城独立
 					set_autonomy = {
 						target = MDQ
 						autonomy_state = autonomy_free
 					}
 				}
-				leave_faction = yes #退出阵营，国家tag 
-				remove_ideas = { MDQ_Black_sun_crisis }
+				leave_faction = yes				#退出阵营，国家tag 
+				remove_ideas = {
+					MDQ_Black_sun_crisis
+				}
 				every_owned_state = {
 					add_core_of = QQR
 				}
 				every_owned_state = {
-					limit = { is_demilitarized_zone = yes }
-					QQR = { transfer_state = PREV }	
+					limit = {
+						is_demilitarized_zone = yes
+					}
+					QQR = {
+						transfer_state = PREV
+					}
 					set_demilitarized_zone = no
 				}
 				QQR = {
@@ -39,67 +61,76 @@ MDQ_decisions_01 = {
 						type = annex_everything
 					}
 				}
-				load_focus_tree = TTT_MDQ_focustree_02 #国策树ID 
+				load_focus_tree = TTT_MDQ_focustree_02				#国策树ID 
 			}
 			activate_mission = MDQ_240_days_to_hell_without_LTM
 		}
 	}
-	
 	MDQ_240_days_to_hell_without_LTM = {
 		icon = infiltrate_state
-
-		allowed = { always = no }
-
+		allowed = {
+			always = no
+		}
 		available = {
 			OR = {
 				AND = {
 					QQR = {
-						controls_state = 13
-						controls_state = 399
+						controls_state = 35
+						controls_state = 36
 					}
 				}
 				AND = {
 					MDQ = {
-						controls_state = 280
-						controls_state = 281
+						controls_state = 37
+						controls_state = 38
 					}
 				}
 			}
 		}
-
 		highlight_states = {
 			highlight_states_trigger = {
 				OR = {
-					state = 280
-					state = 281
+					state = 37
+					state = 38
 				}
 			}
 		}
-
 		fire_only_once = yes
 		days_mission_timeout = 365
-
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			factor = 100
+		}
 		cancel_trigger = {
+			QQR = {
+				exists = yes
+			}
 			OR = {
-				MOT = { has_war_with = QQR }
-				MDQ = { NOT = { has_war_with = QQR } }
+				MOT = {
+					has_war_with = QQR
+				}
+				MDQ = {
+					NOT = {
+						has_war_with = QQR
+					}
+				}
 			}
 		}
-
-		complete_effect = {		
+		complete_effect = {
 			if = {
 				limit = {
 					MDQ = {
-						controls_state = 280
-						controls_state = 281
+						controls_state = 37
+						controls_state = 38
 					}
 				}
 				log = "[GetDateText]: [Root.GetName]: Decision MDQ has won the ddup war"
-				
 				#show peace
-				MDQ = { save_global_event_target_as = winning_country }
-				QQR = { save_global_event_target_as = losing_country }
+				MDQ = {
+					save_global_event_target_as = winning_country
+				}
+				QQR = {
+					save_global_event_target_as = losing_country
+				}
 				MDQ = {
 					annex_country = {
 						target = QQR
@@ -112,22 +143,41 @@ MDQ_decisions_01 = {
 						autonomous_state = mot_military_areas
 					}
 				}
+				MOT = {
+					add_to_faction = MDQ
+				}
+				every_state = {
+					limit = {
+						is_core_of = QQR
+					}
+					remove_core_of = QQR
+				}
 				##################################################
 				#	News Event for MDQ win
 				##################################################
+				##################################################
+				#	Different ending for different army-civilian harmony
+				##################################################
+				if = {
+					limit = {
+					}
+				}
 			}
 			if = {
 				limit = {
 					QQR = {
-						controls_state = 13
-						controls_state = 399
+						controls_state = 35
+						controls_state = 36
 					}
 				}
 				log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
-				
 				#show peace
-				QQR = { save_global_event_target_as = winning_country }
-				MDQ = { save_global_event_target_as = losing_country }
+				QQR = {
+					save_global_event_target_as = winning_country
+				}
+				MDQ = {
+					save_global_event_target_as = losing_country
+				}
 				MDQ = {
 					white_peace = QQR
 					set_country_flag = MDQ_has_lost_ddup_war
@@ -135,37 +185,55 @@ MDQ_decisions_01 = {
 						limit = {
 							NOT = {
 								OR = {
-									state = 13
-									state = 399
+									state = 35
+									state = 36
 								}
 							}
 						}
-						QQR = { transfer_state = PREV }	
+						QQR = {
+							transfer_state = PREV
+						}
 					}
 				}
 				##################################################
 				#	News Event for MDQ lost
 				##################################################
+				##################################################
+				#	Different ending for different army-civilian harmony
+				##################################################
+				if = {
+					limit = {
+					}
+				}
 			}
 			set_global_flag = TTT_warpeace_show_gui
-			add_to_variable = { global.TTT_warpeace_dirty = 1 }
+			add_to_variable = {
+				global.TTT_warpeace_dirty = 1
+			}
 			recalculate_MDQ_core = yes
 		}
 		timeout_effect = {
 			#Stalemate
 			log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
-				
 			#show peace
 			set_global_flag = TTT_warpeace_show_gui
-			QQR = { save_global_event_target_as = winning_country }
-			MDQ = { save_global_event_target_as = losing_country }
-			add_to_variable = { global.TTT_warpeace_dirty = 1 }
+			QQR = {
+				save_global_event_target_as = winning_country
+			}
+			MDQ = {
+				save_global_event_target_as = losing_country
+			}
+			add_to_variable = {
+				global.TTT_warpeace_dirty = 1
+			}
 			MDQ = {
 				every_owned_state = {
 					limit = {
 						is_controlled_by = QQR
 					}
-					QQR = { transfer_state = PREV }	
+					QQR = {
+						transfer_state = PREV
+					}
 				}
 			}
 			QQR = {
@@ -173,18 +241,22 @@ MDQ_decisions_01 = {
 					limit = {
 						is_controlled_by = MDQ
 					}
-					MDQ = { transfer_state = PREV }	
+					MDQ = {
+						transfer_state = PREV
+					}
 				}
 			}
 			MDQ = {
-				transfer_state = 13 
-				transfer_state = 399 
+				transfer_state = 35
+				transfer_state = 36
 			}
 			QQR = {
-				transfer_state = 280 
-				transfer_state = 281 
+				transfer_state = 37
+				transfer_state = 38
 			}
-			MDQ = { white_peace = QQR }
+			MDQ = {
+				white_peace = QQR
+			}
 			recalculate_MDQ_core = yes
 			##################################################
 			#	News Event for stalemate
@@ -194,87 +266,753 @@ MDQ_decisions_01 = {
 }
 
 MDQ_decisions_02 = {
-	MDQ_decisions_02_01 = {              
-		available = { has_country_flag = MDQ_country_flag_01 } #决议前提条件，这里需要完成这个国策
-		visible =  { has_country_flag = MDQ_country_flag_01 } #决议何时可见
-		ai_will_do = { factor = 20 } #ai倾向
-		fire_only_once = no #决议是否只能使用一次
-		cost = 10 #决议使用消耗的政治点数
-		days_remove = 35 #决议持续天数
-		days_re_enable = 35 #决议复用天数（非一次性决议）
-		complete_effect = { 
-			
+	MDQ_decisions_02_01 = {
+		available = {
+			has_country_flag = MDQ_country_flag_01
 		}
-		remove_effect = {    #持续天数结束后的效果
-		add_manpower = 4000
-	    }
-	}
-
-	MDQ_decisions_02_02 = {              
-		available = { has_country_flag = MDQ_country_flag_01 } #决议前提条件，这里需要完成这个国策
-		visible =  { has_country_flag = MDQ_country_flag_01 } #决议何时可见
-		ai_will_do = { factor = 20 } #ai倾向
-		fire_only_once = no #决议是否只能使用一次
-		cost = 10 #决议使用消耗的政治点数
-		days_remove = 35 #决议持续天数
-		days_re_enable = 35 #决议复用天数（非一次性决议）
-		complete_effect = { 
-			
+		#决议前提条件，这里需要完成这个国策
+		visible = {
+			has_country_flag = MDQ_country_flag_01
 		}
-		remove_effect = {    #持续天数结束后的效果
-		add_equipment_to_stockpile = {
-			type = infantry_equipment
-			amount = 400
-			producer = MDQ
-		}    
-	    }
-	}
-
-	MDQ_decisions_02_03 = {              
-		available = { 
-			has_country_flag = MDQ_country_flag_01
-		} 
-		visible =  { 
-			has_country_flag = MDQ_country_flag_01
-		} 
-		ai_will_do = { 
-			factor = 20 
-		} 
-		fire_only_once = no 
-		cost = 10 
-		days_remove = 35 
-		days_re_enable = 35 
-		complete_effect = { 
-			
+		#决议何时可见
+		ai_will_do = {
+			factor = 20
 		}
-		remove_effect = {    
-		add_equipment_to_stockpile = {
-			type = support_equipment
-			amount = 200
-			producer = MDQ
-		}    
-	    }
+		#ai倾向
+		fire_only_once = no		#决议是否只能使用一次
+		cost = 10		#决议使用消耗的政治点数
+		days_remove = 35		#决议持续天数
+		days_re_enable = 35		#决议复用天数（非一次性决议）
+		complete_effect = {
+		}
+		remove_effect = {
+			#持续天数结束后的效果
+			add_manpower = 4000
+		}
 	}
-
-	MDQ_decisions_02_04 = {              
-		available = { 
+	MDQ_decisions_02_02 = {
+		available = {
 			has_country_flag = MDQ_country_flag_01
-			has_war_support < 0.35 
-		} 
-		visible =  { 
+		}
+		#决议前提条件，这里需要完成这个国策
+		visible = {
 			has_country_flag = MDQ_country_flag_01
-		} 
-		ai_will_do = { 
-			factor = 20 
-		} 
-		fire_only_once = no 
-		cost = 30 
-		days_remove = 35 
-		days_re_enable = 35 
-		complete_effect = { }
-		remove_effect = {  	  
-	    add_war_support = 0.05
-	    }
+		}
+		#决议何时可见
+		ai_will_do = {
+			factor = 20
+		}
+		#ai倾向
+		fire_only_once = no		#决议是否只能使用一次
+		cost = 10		#决议使用消耗的政治点数
+		days_remove = 35		#决议持续天数
+		days_re_enable = 35		#决议复用天数（非一次性决议）
+		complete_effect = {
+		}
+		remove_effect = {
+			#持续天数结束后的效果
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 400
+				producer = MDQ
+			}
+		}
+	}
+	MDQ_decisions_02_03 = {
+		available = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		visible = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 10
+		days_remove = 35
+		days_re_enable = 35
+		complete_effect = {
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 200
+				producer = MDQ
+			}
+		}
+	}
+	MDQ_decisions_02_04 = {
+		available = {
+			has_country_flag = MDQ_country_flag_01
+			has_war_support < 0.35
+		}
+		visible = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 30
+		days_remove = 35
+		days_re_enable = 35
+		complete_effect = {
+		}
+		remove_effect = {
+			add_war_support = 0.05
+		}
 	}
 }
-	
+
+MDQ_decisions_03 = {
+	MDQ_decisions_02_05 = {
+		#蒙德邦联在我们身后
+		fire_only_once = no
+		available = {
+			NOT = {
+				MDQ = {
+					has_war_with = QQR
+				}
+			}
+		}
+		activation = {		
+			has_country_flag = MDQ_02_05_flag
+			check_variable = {
+				MDQ_zhiyuandianshu < 11
+			}
+		}
+		days_mission_timeout = 28
+		is_good = yes
+		cancel_trigger = {
+			NOT = {
+				OR = {
+					MDQ = {
+						has_war_with = QQR
+					}
+					custom_trigger_tooltip = {
+						tooltip = MDQ_decisions_02_05_tt2
+						check_variable = {
+							MDQ_zhiyuandianshu < 11
+						}
+					}
+				}
+			}
+		}
+		complete_effect = {
+			clr_country_flag = MDQ_02_05_flag
+		}
+		cancel_effect = {
+			clr_country_flag = MDQ_02_05_flag
+		}
+		timeout_effect = {
+			add_to_variable = {
+				MDQ_zhiyuandianshu = 1
+			}
+			clamp_variable = {
+				var = MDQ_zhiyuandianshu
+				min = 0
+				max = 10
+			}
+			custom_effect_tooltip = MDQ_decisions_02_05_tt
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	MDQ_decisions_02_06 = {
+		#请求蒙德城的支援
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_06_tt
+				check_variable = {
+					MDQ_zhiyuandianshu > 2
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_06_tt3
+				check_variable = {
+					MDQ_decisions_02_06_value < 6
+				}
+			}
+		}
+		visible = {
+			has_country_flag = MDQ_02_05_flag
+			check_variable = {
+				MDQ_decisions_02_06_value < 6
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 0
+		days_remove = 42
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				MDQ_decisions_02_06_value = 1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = MOT
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 500
+				producer = MOT
+			}
+			add_manpower = 12000
+			add_to_variable = {
+				MDQ_zhiyuandianshu = -2
+			}
+			custom_effect_tooltip = MDQ_decisions_02_06_tt2
+		}
+	}
+	MDQ_decisions_02_07 = {
+		#请求龙脊镇的支援
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_07_tt
+				check_variable = {
+					MDQ_zhiyuandianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_06_tt3
+				check_variable = {
+					MDQ_decisions_02_07_value < 6
+				}
+			}
+		}
+		visible = {
+			has_country_flag = MDQ_02_06_flag
+			check_variable = {
+				MDQ_decisions_02_07_value < 6
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 0
+		days_remove = 21
+		complete_effect = {
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 500
+				producer = DSC
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = 500
+				producer = DSC
+			}
+			add_manpower = 7000
+			add_to_variable = {
+				MDQ_zhiyuandianshu = -1
+			}
+			add_to_variable = {
+				MDQ_decisions_02_07_value = 1
+			}
+			custom_effect_tooltip = MDQ_decisions_02_07_tt2
+		}
+	}
+	MDQ_decisions_02_08 = {
+		#请求璃月港的支援
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_08_tt
+				check_variable = {
+					MDQ_zhiyuandianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					country_exists = NNG
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_06_tt3
+				check_variable = {
+					MDQ_decisions_02_08_value < 6
+				}
+			}
+		}
+		visible = {
+			has_country_flag = MDQ_02_07_flag
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_06_tt3
+				check_variable = {
+					MDQ_decisions_02_08_value < 6
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 0
+		days_remove = 21
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				MDQ_decisions_02_08_value = 1
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = 1000
+				producer = LYU
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = 1000
+				producer = LYU
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = LYU
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 500
+				producer = LYU
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 500
+				producer = LYU
+			}
+			add_to_variable = {
+				MDQ_zhiyuandianshu = -3
+			}
+			custom_effect_tooltip = MDQ_decisions_02_08_tt2
+		}
+	}
+	MDQ_decisions_02_10 = {
+		#请求晨曦镇的支援
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_07_tt
+				check_variable = {
+					MDQ_zhiyuandianshu > 0
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_10_tt
+				check_variable = {
+					MDQ_decisions_02_10_value > 2
+				}
+			}		
+		}
+		visible = {
+			has_country_flag = MDQ_02_07_flag
+			custom_trigger_tooltip = {
+				tooltip = MDQ_decisions_02_10_tt
+				check_variable = {
+					MDQ_decisions_02_10_value > 2
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 0
+		days_remove = 42
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				MDQ_decisions_02_10_value = 1
+			}
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_to_variable = {
+				MDQ_zhiyuandianshu = -2
+			}
+			custom_effect_tooltip = MDQ_decisions_02_06_tt2
+		}
+	}
+	MDQ_decisions_02_09 = {
+		#维系防线
+		fire_only_once = yes
+		available = {
+			NOT = {
+				MDQ = {
+					has_war_with = QQR
+				}
+			}
+		}
+		activation = {
+			has_country_flag = MDQ_02_04_flag
+		}
+		days_mission_timeout = 70
+		is_good = no
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					MDQ = {
+						has_war_with = QQR
+					}
+				}
+				NOT = {
+					has_full_control_of_state = 35
+				}
+				NOT = {
+					has_full_control_of_state = 36
+				}
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = MDQ_02_05_flag
+			add_stability = -0.05
+			add_war_support = -0.05
+		}
+		timeout_effect = {
+			clr_country_flag = MDQ_02_04_flag
+			country_event = {
+				days = 1
+				id = MDQ_event.20
+			}
+			add_timed_idea = {
+				idea = MDQ_idea_0_17
+				days = 120
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	MDQ_decisions_03_01 = {
+		#发起中心会战
+		available = {
+			command_power > 4
+			NOT = {
+				has_country_flag = MDQ_decisions_03_03_flag
+			}
+		}
+		visible = {
+			has_country_flag = MDQ_02_09_flag
+		}
+		custom_cost_trigger = {
+			original_tag = MDQ
+		}
+		custom_cost_text = MDQ_decisions_03_01_cost_tt
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+		}
+		remove_effect = {
+			38 = {
+				add_dynamic_modifier = {
+					modifier = MDQ_dynamic_modifiers_0_2
+					scope = MDQ
+				}
+			}
+			set_country_flag = MDQ_decisions_03_01_flag
+			activate_mission = MDQ_decisions_03_02
+		}
+	}
+	MDQ_decisions_03_02 = {
+		#中心会战
+		fire_only_once = yes
+		available = {
+			NOT = {
+				MDQ = {
+					has_war_with = QQR
+				}
+			}
+		}
+		activation = {
+			has_country_flag = MDQ_decisions_03_01_flag
+		}
+		days_mission_timeout = 90
+		is_good = no
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					MDQ = {
+						has_war_with = QQR
+					}
+				}
+				NOT = {
+					has_full_control_of_state = 38
+				}
+			}
+		}
+		cancel_effect = {
+			QQR = {
+				add_timed_idea = {
+					idea = MDQ_idea_0_18
+					days = 120
+				}
+			}
+			add_war_support = -0.1
+			remove_mission = MDQ_decisions_03_02
+		}
+		timeout_effect = {
+			QQR = {
+				add_timed_idea = {
+					idea = MDQ_idea_0_18
+					days = 120
+				}
+			}
+			add_war_support = -0.1
+			set_country_flag = MDQ_decisions_03_02_flag
+			remove_mission = MDQ_decisions_03_02
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	MDQ_decisions_03_03 = {
+		#发起海岸线会战
+		available = {
+			command_power > 4
+			NOT = {
+				has_country_flag = MDQ_decisions_03_01_flag
+			}
+		}
+		visible = {
+			has_country_flag = MDQ_02_09_flag
+		}
+		custom_cost_trigger = {
+			original_tag = MDQ
+		}
+		custom_cost_text = MDQ_decisions_03_01_cost_tt
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+		}
+		remove_effect = {
+			40 = {
+				add_dynamic_modifier = {
+					modifier = MDQ_dynamic_modifiers_0_2
+					scope = MDQ
+				}
+			}
+			set_country_flag = MDQ_decisions_03_03_flag
+			activate_mission = MDQ_decisions_03_04
+		}
+	}
+	MDQ_decisions_03_04 = {
+		#海岸线会战
+		fire_only_once = yes
+		available = {
+			NOT = {
+				MDQ = {
+					has_war_with = QQR
+				}
+			}
+		}
+		activation = {
+			has_country_flag = MDQ_decisions_03_03_flag
+		}
+		days_mission_timeout = 90
+		is_good = no
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					MDQ = {
+						has_war_with = QQR
+					}
+				}
+				NOT = {
+					has_full_control_of_state = 40
+				}
+			}
+		}
+		cancel_effect = {
+			QQR = {
+				add_timed_idea = {
+					idea = MDQ_idea_0_18
+					days = 120
+				}
+			}
+			add_war_support = -0.1
+			remove_mission = MDQ_decisions_03_04
+		}
+		timeout_effect = {
+			QQR = {
+				add_timed_idea = {
+					idea = MDQ_idea_0_18
+					days = 120
+				}
+			}
+			add_war_support = -0.1
+			set_country_flag = MDQ_decisions_03_02_flag
+			remove_mission = MDQ_decisions_03_04
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	MDQ_decisions_03_05 = {
+		#框架内的援助
+		fire_only_once = no
+		available = {
+			NOT = {
+				MDQ = {
+					has_war_with = QQR
+				}
+			}
+		}
+		activation = {
+			has_country_flag = MDQ_02_12_flag
+		}
+		days_mission_timeout = 30
+		is_good = no
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					MDQ = {
+						has_war_with = QQR
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = MDQ_decisions_03_06_tt	
+					country_exists = NNG	
+				}
+			}
+		}
+		cancel_effect = {
+			remove_mission = MDQ_decisions_03_05
+			clr_country_flag = MDQ_02_12_flag
+		}
+		complete_effect = {
+			remove_mission = MDQ_decisions_03_05
+			clr_country_flag = MDQ_02_12_flag
+		}
+		timeout_effect = {
+			random_list = {
+				10 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 500
+						producer = LYU
+					}
+				}
+				10 = {
+					add_equipment_to_stockpile = {
+						type = artillery_equipment
+						amount = 50
+						producer = LYU
+					}
+				}
+				10 = {
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 100
+						producer = LYU
+					}
+				}
+				10 = {
+					add_equipment_to_stockpile = {
+						type = ttt_uniform_eq
+						amount = 200
+						producer = LYU
+					}
+				}
+				10 = {
+					add_equipment_to_stockpile = {
+						type = grain_conversion_eq
+						amount = 200
+						producer = LYU
+					}
+				}
+				10 = {
+					add_political_power = 20
+				}
+				10 = {
+					add_command_power = 20
+				}
+				10 = {
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	MDQ_decisions_03_06 = {
+		#当然，还有框架外的……
+		fire_only_once = no
+		available = {
+			NOT = {
+				MDQ = {
+					has_war_with = QQR
+				}
+			}
+		}
+		activation = {
+			has_country_flag = MDQ_02_13_flag
+		}
+		days_mission_timeout = 30
+		is_good = no
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					MDQ = {
+						has_war_with = QQR
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = MDQ_decisions_03_06_tt	
+					country_exists = NNG	
+				}
+			}
+		}
+		cancel_effect = {
+			remove_mission = MDQ_decisions_03_06
+			clr_country_flag = MDQ_02_13_flag
+		}
+		complete_effect = {
+			remove_mission = MDQ_decisions_03_06
+			clr_country_flag = MDQ_02_13_flag
+		}
+		timeout_effect = {
+			random_list = {
+				10 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 700
+						producer = LYU
+					}
+				}
+				10 = {
+					add_equipment_to_stockpile = {
+						type = artillery_equipment
+						amount = 80
+						producer = LYU
+					}
+				}
+				10 = {
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 150
+						producer = LYU
+					}
+				}
+			}
+			add_political_power = -15
+			add_war_support = -0.05
+			add_stability = -0.05
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}

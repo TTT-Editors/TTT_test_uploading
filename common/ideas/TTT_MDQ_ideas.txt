@@ -23,6 +23,28 @@ ideas = {
 				political_power_gain = -0.2
 			}
 		}
+		###军民和谐度：亲如一家
+		MDQ_The_situation_of_the_army_and_the_people_1 = {
+			allowed = {
+				original_tag = MDQ
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.2
+				war_support_factor = 0.2
+				army_org_factor = 0.10
+				land_reinforce_rate = 0.015
+				conscription = 0.03
+				stability_weekly = 0.003
+			}
+		}
 		###军民和谐度：携手共进
 		MDQ_The_situation_of_the_army_and_the_people0 = {
 			name = MDQ_The_situation_of_the_army_and_the_people
@@ -44,6 +66,65 @@ ideas = {
 				land_reinforce_rate = 0.01
 				conscription = 0.02
 				stability_weekly = 0.002
+			}
+		}
+		###军民和谐度：不即不离
+		MDQ_The_situation_of_the_army_and_the_people_3 = {
+			name = MDQ_The_situation_of_the_army_and_the_people
+			allowed = {
+				original_tag = MDQ
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				war_support_factor = 0.1
+				land_reinforce_rate = 0.005
+				conscription = 0.01
+				stability_weekly = 0.001
+			}
+		}
+		###军民和谐度：利尽交疏
+		MDQ_The_situation_of_the_army_and_the_people_4 = {
+			allowed = {
+				original_tag = MDQ
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+		###军民和谐度：劳燕分飞
+		MDQ_The_situation_of_the_army_and_the_people_5 = {
+			name = MDQ_The_situation_of_the_army_and_the_people
+			allowed = {
+				original_tag = MDQ
+				always = no
+			}
+
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.2
+				war_support_factor = -0.1
+				war_support_weekly = -0.001
+				stability_weekly = -0.001
 			}
 		}
 		###三剑客传说
@@ -78,7 +159,7 @@ ideas = {
 			}
 
 			removal_cost = -1
-			picture = MDQ_The_Legend_of_the_Three_Musketeers
+			picture = MDQ_daobaotuan
 
 			modifier = {
 				stability_factor = -0.1
@@ -98,7 +179,7 @@ ideas = {
 			}
 
 			removal_cost = -1
-			picture = MDQ_The_Legend_of_the_Three_Musketeers
+			picture = MDQ_daobaotuan
 
 			modifier = {
 				stability_factor = -0.05
@@ -119,7 +200,7 @@ ideas = {
 			}
 
 			removal_cost = -1
-			picture = MDQ_The_Legend_of_the_Three_Musketeers
+			picture = MDQ_bbwy
 
 			modifier = {
 				supply_consumption_factor = -0.05 #-5%补给消耗
@@ -129,6 +210,7 @@ ideas = {
 		#达达乌帕谷战士精神
 		MDQ_idea_0_4 = {
 			name = MDQ_idea_0_4
+            picture = MDQ_ddwpgzs
 			allowed = {
 				original_tag = MDQ
 			}
@@ -138,7 +220,6 @@ ideas = {
 			}
 
 			removal_cost = -1
-			picture = MDQ_The_Legend_of_the_Three_Musketeers
 
 			modifier = {
 				org_loss_when_moving = -0.1 #陆军移动中组织度损失
@@ -157,11 +238,11 @@ ideas = {
 				tag = MDQ
 			}
 			cancel ={
-				not = { controls_state = 13 }
+				not = { controls_state = 35 }
 			}
 
 			removal_cost = -1
-			picture = MDQ_The_Legend_of_the_Three_Musketeers
+			picture = MDQ_bwjq
 
 			modifier = {
 	            army_core_defence_factor = 0.05    #陆军核心防御
@@ -195,14 +276,10 @@ ideas = {
 			name = MDQ_idea_0_7
 			allowed = {
 				original_tag = MDQ
+				always = no
 			}
-
-			allowed_civil_war = {
-				tag = MDQ
-			}
-
 			removal_cost = -1
-			picture = MDQ_The_Legend_of_the_Three_Musketeers
+			picture = MDQ_qiuqiuren
 
 			targeted_modifier = { #限定tag的民族精神效果
 				tag = QQR
@@ -210,10 +287,305 @@ ideas = {
 	            army_attack_factor = 0.05
 	            army_defence_factor = 0.1
 		    }
-	}
+		}
+		#军区的意义——守护
+		MDQ_idea_0_8 = {
+			allowed = {
+				original_tag = MDQ
+			}
+            available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
 
-		
+			removal_cost = -1
+			picture = MDQ_shouhu
 
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+                authoritarianism_drift = 0.01
+			}
+		}
+		#被模糊化的条例
+		MDQ_idea_0_9 = {
+			allowed = {
+				original_tag = MDQ
+			}
+            available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_tiaoli
+
+			modifier = {
+				conscription_factor = 0.10
+                mobilization_speed = 0.10
+				stability_factor = -0.10
+			}
+		}
+		#被模糊化的条例
+		MDQ_idea_0_10 = {
+			name = MDQ_idea_0_9
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_tiaoli
+
+			modifier = {
+				conscription_factor = 0.20
+                training_time_army_factor = -0.15
+				mobilization_speed = 0.10
+				stability_factor = -0.10
+				minimum_training_level = -0.1
+			}
+		}
+		#迅速化
+		MDQ_idea_0_11 = {
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_xunsu
+
+			modifier = {
+				org_loss_when_moving = -0.05
+				army_speed_factor = 0.05
+			}
+		}
+		#打击黑市
+		MDQ_idea_0_12 = {	
+			allowed = {
+				original_tag = MDQ
+			}
+            available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_heishi
+
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = 0.2
+			}
+		}
+		#严格执行的物资配给制度
+		MDQ_idea_0_13 = {	
+			allowed = {
+				original_tag = MDQ
+			}
+            available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_peiji
+
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = 0.10
+			}
+		}
+		#更进一步的体制
+		MDQ_idea_0_14 = {	
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_tizhi
+
+			modifier = {
+				stability_factor = 0.10
+				war_support_factor = 0.10
+			}
+		}
+		#最终突击
+		MDQ_idea_0_15 = {	
+			allowed = {
+				original_tag = MDQ
+			}
+            available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_tuji
+
+			modifier = {
+				army_attack_factor = 0.10
+				breakthrough_factor = 0.10
+				army_defence_factor = 0.05
+			}
+		}
+		#委员长离世的危机
+		MDQ_idea_0_16 = {	
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_sile
+
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.10
+			}
+		}
+		#军心振奋
+		MDQ_idea_0_17 = {	
+			allowed = {
+				original_tag = MDQ
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_zhenfen
+
+			modifier = {
+				army_core_attack_factor = 0.05
+	            army_core_defence_factor = 0.05
+				mobilization_speed = 0.05
+			}
+		}
+		#最近的失败
+		MDQ_idea_0_18 = {	
+			allowed = {
+				always = yes
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_The_Legend_of_the_Three_Musketeers
+
+			modifier = {
+				war_support_weekly = -0.02
+				surrender_limit = -0.20
+			}
+		}
+		#达达乌帕谷战士精神
+		MDQ_idea_0_19 = {
+			name = MDQ_idea_0_4
+			allowed = {
+				always = yes
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_ddwpgzs
+
+			modifier = {
+				org_loss_when_moving = -0.1 #陆军移动中组织度损失
+				army_core_attack_factor = 0.15   #陆军核心攻击
+	            army_core_defence_factor = 0.15   #陆军核心防御
+				army_org_factor = 0.10
+			}
+		}
+		#迪卢克的特殊支援
+		MDQ_idea_0_20 = {
+			allowed = {
+				always = yes
+			}
+			available = {
+				QQR = {
+					has_war_with = MDQ
+				}
+			}
+			allowed_civil_war = {
+				tag = MDQ
+			}
+
+			removal_cost = -1
+			picture = MDQ_dlk
+
+			modifier = {
+				planning_speed = 0.15
+				army_speed_factor = 0.05
+			}
+		}
 	}
 }
 		

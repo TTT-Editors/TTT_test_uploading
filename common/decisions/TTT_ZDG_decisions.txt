@@ -189,7 +189,7 @@ ZDG_decision_category = {
 					is_subject_of = ZDG
 				}
 			}
-			138 = {
+			102 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -197,7 +197,7 @@ ZDG_decision_category = {
 					}
 				}
 			}
-			157 = {
+			75 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -219,7 +219,7 @@ ZDG_decision_category = {
 					is_subject_of = ZDG
 				}
 			}
-			138 = {
+			102 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -227,7 +227,7 @@ ZDG_decision_category = {
 					}
 				}
 			}
-			157 = {
+			75 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -239,24 +239,35 @@ ZDG_decision_category = {
 		days_mission_timeout = 1
 		is_good = yes
 		cost = 0
-		cancel_trigger = {
-		    or = {
-			has_country_flag = ZDG_14_flag
-			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
-		    }
+		cancel_trigger = {    
+			has_country_flag = ZDG_14_flag	    
 		}
 		timeout_effect = {
-			random_list = {
-				40 = {
-					country_event = {
-						dyas = 4
-						id = ZDG_events.12
+			if = {
+				limit = {
+					has_country_flag = ZDG_zhijiekaiqierjieduan_flag
+				}			
+				country_event = {
+					dyas = 4
+					id = ZDG_events.13
 					}
 				}
-				60 = {
+			else_if = {
+				limit = {
+					NOT = { has_country_flag = ZDG_zhijiekaiqierjieduan_flag }
+				}
+				random_list = {
+					40 = {
+						country_event = {
+							dyas = 4
+							id = ZDG_events.12
+						}
+					}
+					60 = {
 					country_event = {
 						dyas = 4
 						id = ZDG_events.13
+					    }
 					}
 				}
 			}
@@ -295,7 +306,7 @@ ZDG_decision_category = {
 				}
 			}
 			original_tag = ZDG
-			147 = {
+			94 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -318,7 +329,7 @@ ZDG_decision_category = {
 				}
 			}
 			original_tag = ZDG
-			147 = {
+			94 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -370,7 +381,7 @@ ZDG_decision_category = {
 				}
 			}
 			original_tag = ZDG
-			155 = {
+			68 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -387,7 +398,7 @@ ZDG_decision_category = {
 				}
 			}
 			original_tag = ZDG
-			155 = {
+			68 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -439,7 +450,7 @@ ZDG_decision_category = {
 				}
 			}
 			original_tag = ZDG
-			124 = {
+			50 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -456,7 +467,7 @@ ZDG_decision_category = {
 				}
 			}
 			original_tag = ZDG
-			124 = {
+			50 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -508,6 +519,10 @@ ZDG_decision_category = {
 		available = {
 			command_power > 10
 		}
+		custom_cost_trigger = {
+			original_tag = ZDG
+		}
+		custom_cost_text = ZDG_scale_usevileyes_cost_tt
 		ai_will_do = {
 			factor = 10
 		}
@@ -671,7 +686,7 @@ ZDG_decision_category = {
 		#占领绝云间
 		fire_only_once = yes
 		available = {
-			159 = {
+			83 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -683,7 +698,7 @@ ZDG_decision_category = {
 		visible = {
 			has_war = yes
 			NOT = {
-				159 = {
+				83 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -696,7 +711,7 @@ ZDG_decision_category = {
 		activation = {
 			has_war = yes
 			NOT = {
-				159 = {
+				83 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -731,7 +746,7 @@ ZDG_decision_category = {
 		#占领天遒谷
 		fire_only_once = yes
 		available = {
-			157 = {
+			75 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -743,7 +758,7 @@ ZDG_decision_category = {
 		visible = {
 			has_country_flag = ZDG_occupytianqiuflag
 			NOT = {
-				157 = {
+				75 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -756,7 +771,7 @@ ZDG_decision_category = {
 		activation = {
 			has_country_flag = ZDG_occupytianqiuflag
 			NOT = {
-				157 = {
+				75 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -789,7 +804,7 @@ ZDG_decision_category = {
 		#占领轻策庄
 		fire_only_once = yes
 		available = {
-			132 = {
+			106 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -801,7 +816,7 @@ ZDG_decision_category = {
 		visible = {
 			has_war = yes
 			NOT = {
-				132 = {
+				106 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -814,7 +829,7 @@ ZDG_decision_category = {
 		activation = {
 			has_war = yes
 			NOT = {
-				157 = {
+				85 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -849,7 +864,7 @@ ZDG_decision_category = {
 		#占领望舒客栈
 		fire_only_once = yes
 		available = {
-			138 = {
+			102 = {
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = {
@@ -861,7 +876,7 @@ ZDG_decision_category = {
 		visible = {
 			has_country_flag = ZDG_occupy_qingce_villflag
 			NOT = {
-				138 = {
+				102 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -874,7 +889,7 @@ ZDG_decision_category = {
 		activation = {
 			has_country_flag = ZDG_occupy_qingce_villflag
 			NOT = {
-				157 = {
+				85 = {
 					OR = {
 						is_controlled_by = ROOT
 						CONTROLLER = {
@@ -907,27 +922,18 @@ ZDG_decision_category = {
 	}
 	ZDG_establishing_goodwill_government = {
 		#建立仙人管理区  
+		visible = {
+			any_state = {
+				is_core_of = XRG
+			}
+		}
 		available = {
-			controls_state = 165
-			controls_state = 164
-			controls_state = 163
-			controls_state = 142
-			controls_state = 162
-			controls_state = 161
-			controls_state = 171
-			controls_state = 195
-			controls_state = 196
-			controls_state = 157
-			controls_state = 158
-			controls_state = 159
-			controls_state = 244
-			controls_state = 223
-			controls_state = 168
-			controls_state = 204
-			controls_state = 203
-			controls_state = 199
-			controls_state = 198
-			controls_state = 167
+			all_state = {
+				OR = {
+					NOT = { is_core_of = XRG }
+					controller = { tag = ZDG }
+				}
+			}
 			XRG = {
 				exists = NO
 			}
@@ -940,32 +946,12 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			release = XRG
+			set_autonomy = {
+				target = XRG
+				autonomy_state = ZDG_autonomus_states
+			}
 			XRG = {
-				transfer_state = 165
-				transfer_state = 164
-				transfer_state = 163
-				transfer_state = 142
-				transfer_state = 110
-				transfer_state = 142
-				transfer_state = 162
-				transfer_state = 161
-				transfer_state = 171
-				transfer_state = 195
-				transfer_state = 196
-				transfer_state = 157
-				transfer_state = 158
-				transfer_state = 159
-				transfer_state = 244
-				transfer_state = 223
-				transfer_state = 168
-				transfer_state = 204
-				transfer_state = 203
-				transfer_state = 199
-				transfer_state = 198
-				transfer_state = 167
-				every_owned_state = {
-					add_core_of = XRG
-				}
 				hidden_effect = {
 					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
@@ -1003,12 +989,8 @@ ZDG_decision_category = {
 				set_stability = 0.3
 				set_war_support = 0.3
 				hidden_effect = {
-					load_oob = "XRG_kuilei"
+					#load_oob = "XRG_kuilei"
 				}
-			}
-			set_autonomy = {
-				target = XRG
-				autonomy_state = ZDG_autonomus_states
 			}
 			XRG = {
 				add_popularity = {
@@ -1020,18 +1002,18 @@ ZDG_decision_category = {
 	}
 	ZDG_establishing_beiliyue_government = {
 		#建立北璃月管理区  
+		visible = {
+			any_state = {
+				is_core_of = XOG
+			}
+		}
 		available = {
-			controls_state = 138
-			controls_state = 139
-			controls_state = 137
-			controls_state = 131
-			controls_state = 194
-			controls_state = 133
-			controls_state = 130
-			controls_state = 134
-			controls_state = 135
-			controls_state = 132
-			controls_state = 136
+			all_state = {
+				OR = {
+					NOT = { is_core_of = XOG }
+					controller = { tag = ZDG }
+				}
+			}
 			XOG = {
 				exists = NO
 			}
@@ -1044,21 +1026,12 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			release = XOG
+			set_autonomy = {
+				target = XOG
+				autonomy_state = ZDG_autonomus_states
+			}
 			XOG = {
-				transfer_state = 138
-				transfer_state = 139
-				transfer_state = 137
-				transfer_state = 131
-				transfer_state = 194
-				transfer_state = 133
-				transfer_state = 130
-				transfer_state = 134
-				transfer_state = 135
-				transfer_state = 132
-				transfer_state = 136
-				every_owned_state = {
-					add_core_of = XOG
-				}
 				hidden_effect = {
 					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
@@ -1096,12 +1069,8 @@ ZDG_decision_category = {
 				set_stability = 0.3
 				set_war_support = 0.3
 				hidden_effect = {
-					load_oob = "XOG_kuilei"
+					#load_oob = "XOG_kuilei"
 				}
-			}
-			set_autonomy = {
-				target = XOG
-				autonomy_state = ZDG_autonomus_states
 			}
 			XOG = {
 				set_popularities = {
@@ -1112,33 +1081,26 @@ ZDG_decision_category = {
 	}
 	ZDG_establishing_guiliyuan_government = {
 		#建立归离原管理区  
+		visible = {
+			any_state = {
+				OR = {
+					is_core_of = KQG
+					is_core_of = NNG
+				}
+			}
+		}
 		available = {
-			controls_state = 145
-			controls_state = 126
-			controls_state = 148
-			controls_state = 146
-			controls_state = 149
-			controls_state = 405
-			controls_state = 406
-			controls_state = 150
-			controls_state = 242
-			controls_state = 147
-			controls_state = 160
-			controls_state = 166
-			controls_state = 144
-			controls_state = 143
-			controls_state = 141
-			controls_state = 121
-			controls_state = 243
-			controls_state = 403
-			controls_state = 404
-			controls_state = 143
-			KQG = {
-				exists = NO
+			all_state = {
+				OR = {
+					AND = {
+						NOT = { is_core_of = KQG }
+						NOT = { is_core_of = NNG }
+					}
+					controller = { tag = ZDG }
+				}
 			}
-			NNG = {
-				exists = NO
-			}
+			KQG = { exists = NO }
+			NNG = { exists = NO }
 		}
 		cost = 200
 		ai_will_do = {
@@ -1148,29 +1110,13 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			every_state = {
+				limit = { is_core_of = NNG }
+				add_core_of = KQG
+				remove_core_of = NNG
+			}
+			release = KQG
 			KQG = {
-				transfer_state = 145
-				transfer_state = 126
-				transfer_state = 148
-				transfer_state = 146
-				transfer_state = 149
-				transfer_state = 405
-				transfer_state = 406
-				transfer_state = 150
-				transfer_state = 242
-				transfer_state = 147
-				transfer_state = 160
-				transfer_state = 166
-				transfer_state = 144
-				transfer_state = 141
-				transfer_state = 121
-				transfer_state = 243
-				transfer_state = 403
-				transfer_state = 404
-				transfer_state = 143
-				every_owned_state = {
-					add_core_of = KQG
-				}
 				hidden_effect = {
 					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
@@ -1203,7 +1149,7 @@ ZDG_decision_category = {
 				set_stability = 0.3
 				set_war_support = 0.3
 				hidden_effect = {
-					load_oob = "KNG_kuilei"
+					#load_oob = "KNG_kuilei"
 				}
 			}
 			set_autonomy = {
@@ -1220,15 +1166,12 @@ ZDG_decision_category = {
 	ZDG_establishing_cengyan_government = {
 		#建立巨渊管理区  
 		available = {
-			controls_state = 155
-			controls_state = 156
-			controls_state = 154
-			controls_state = 197
-			controls_state = 205
-			controls_state = 206
-			controls_state = 207
-			controls_state = 208
-			controls_state = 209
+			all_state = {
+				OR = {
+					NOT = { is_core_of = RTG }
+					controller = { tag = ZDG }
+				}
+			}
 			RTG = {
 				exists = NO
 			}
@@ -1241,19 +1184,8 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			release = RTG
 			RTG = {
-				transfer_state = 155
-				transfer_state = 156
-				transfer_state = 154
-				transfer_state = 197
-				transfer_state = 205
-				transfer_state = 206
-				transfer_state = 207
-				transfer_state = 208
-				transfer_state = 209
-				every_owned_state = {
-					add_core_of = RTG
-				}
 				hidden_effect = {
 					load_focus_tree = ZDG_puppet_FocusTree
 					every_character = {
@@ -1291,7 +1223,7 @@ ZDG_decision_category = {
 				set_stability = 0.3
 				set_war_support = 0.3
 				hidden_effect = {
-					load_oob = "RTG_kuilei"
+					#load_oob = "RTG_kuilei"
 				}
 			}
 			set_autonomy = {
@@ -1307,28 +1239,26 @@ ZDG_decision_category = {
 	}
 	ZDG_establishing_liyuegang_government = {
 		#建立璃月港管理区 
+		visible = {
+			any_state = {
+				OR = {
+					is_core_of = LYU
+					is_core_of = ANG
+				}
+			}
+		}
 		available = {
-			controls_state = 3
-			controls_state = 151
-			controls_state = 152
-			controls_state = 170
-			controls_state = 210
-			controls_state = 211
-			controls_state = 153
-			controls_state = 129
-			controls_state = 128
-			controls_state = 123
-			controls_state = 124
-			controls_state = 122
-			controls_state = 127
-			controls_state = 125
-			controls_state = 169
-			LYU = {
-				exists = NO
+			all_state = {
+				OR = {
+					AND = {
+						NOT = { is_core_of = LYU }
+						NOT = { is_core_of = ANG }
+					}
+					controller = { tag = ZDG }
+				}
 			}
-			ANG = {
-				exists = NO
-			}
+			LYU = { exists = NO }
+			ANG = { exists = NO }
 		}
 		cost = 200
 		ai_will_do = {
@@ -1338,25 +1268,13 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			every_state = {
+				limit = { is_core_of = ANG }
+				add_core_of = LYU
+				remove_core_of = ANG
+			}
+			release = LYU
 			LYU = {
-				transfer_state = 3
-				transfer_state = 151
-				transfer_state = 152
-				transfer_state = 170
-				transfer_state = 210
-				transfer_state = 211
-				transfer_state = 153
-				transfer_state = 129
-				transfer_state = 128
-				transfer_state = 123
-				transfer_state = 124
-				transfer_state = 122
-				transfer_state = 127
-				transfer_state = 125
-				transfer_state = 169
-				every_owned_state = {
-					add_core_of = LYU
-				}
 				set_cosmetic_tag = LYU_reichskommissariat
 				set_country_flag = ZDG_zhenghexiashuxiaqu_flag
 				hidden_effect = {
@@ -1400,7 +1318,7 @@ ZDG_decision_category = {
 				set_stability = 0.3
 				set_war_support = 0.3
 				hidden_effect = {
-					load_oob = "LYU_kuilei"
+					#load_oob = "LYU_kuilei"
 				}
 			}
 			set_autonomy = {
@@ -1486,7 +1404,7 @@ ZDG_decision_category = {
 					}
 				}
 			}
-			222 = {
+			capital_scope = {
 				create_unit = {
 					division = "division_template = \"雪之协防军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = ZDG
@@ -1600,6 +1518,10 @@ ZDG_decision_category = {
 			tag = ZDG
 			has_completed_focus = ZDG_shentougefang
 		}
+		custom_cost_trigger = {
+			original_tag = ZDG
+		}
+		custom_cost_text = ZDG_shentougefang_jueyi_cost_tt
 		available = {
 			NOT = {
 				has_country_flag = ZDG_shentougefang_flag
@@ -1630,6 +1552,10 @@ ZDG_decision_category = {
 			tag = ZDG
 			has_completed_focus = ZDG_shentougefang
 		}
+		custom_cost_trigger = {
+			original_tag = ZDG
+		}
+		custom_cost_text = ZDG_shentougefang_jueyi_cost_tt
 		available = {
 			NOT = {
 				has_country_flag = ZDG_dajishiqi_flag
@@ -2764,7 +2690,7 @@ ZDG_decision_category4 = {
 						large = "GFX_portrait_large_Snezhnaya_Childe2"
 					}
 				}
-				add_corps_commander_role = {
+				add_field_marshal_role = {
 					Character = SNE_Childe
 					traits = {
 						electro_element
@@ -2799,7 +2725,7 @@ ZDG_decision_category4 = {
 						large = "GFX_portrait_large_Snezhnaya_Childe"
 					}
 				}
-				add_corps_commander_role = {
+				add_field_marshal_role = {
 					Character = SNE_Childe
 					traits = {
 						hydro_element
@@ -4084,7 +4010,6 @@ ZDG_decision_category5 = {
 			ZDG_dikangzhe_buffjisuan = yes
 			set_country_flag = ZDG_duidikangzhedequanmianjiejue_flag
 			custom_effect_tooltip = ZDG_zhenyadikangzuz_tt4
-			ZDG_dikangzhe_buffjisuan = yes
 		}
 		ai_will_do = {
 			base = 20

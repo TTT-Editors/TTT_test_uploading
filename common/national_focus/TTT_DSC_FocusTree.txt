@@ -1,0 +1,478 @@
+focus_tree = {
+	id = DSC_focustree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = DSC
+		}
+	}
+    default = no
+
+    focus = {
+        id = DSC_weak_army
+        icon = GFX_goal_DSC_rj
+        x = 6
+        y = 0
+        cost = 7
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+			army_experience = 10
+        }
+    }
+
+	#Left line
+    focus = {
+        id = DSC_expand_the_army
+        icon = GFX_goal_DSC_kuojun
+		prerequisite = { focus = DSC_weak_army }
+		x = -2
+		y = 1
+		relative_position_id = DSC_weak_army
+
+        cost = 35
+		mutually_exclusive = { focus = DSC_improve_army_quality }
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_conscription_factor = 0.5 }
+                add_to_variable = { DSC_eod_experience_loss_factor = 0.1 }
+                add_to_variable = { DSC_eod_experience_gain_army_unit_factor = -0.1 }
+                add_to_variable = { DSC_eod_political_power_gain = -0.5 }
+            }
+            custom_effect_tooltip = DSC_expand_the_army_tt
+        }
+    }
+
+    focus = {
+        id = DSC_recruit_Springvalian_hunter
+        icon = GFX_goal_DSC_lr
+		prerequisite = { focus = DSC_expand_the_army }
+		x = -3
+		y = 2
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+			add_manpower = 1500
+			hidden_effect = {
+                add_to_variable = { DSC_eod_org_loss_when_moving = -0.1 }
+                add_to_variable = { DSC_eod_army_org_factor = 0.1 }
+                add_to_variable = { DSC_eod_coordination_bonus = 0.05 }
+			}
+            custom_effect_tooltip = DSC_recruit_Springvalian_hunter_tt
+        }
+    }
+
+    focus = {
+        id = DSC_a_job_to_unemployed
+        icon = GFX_goal_DSC_gz
+		prerequisite = { focus = DSC_expand_the_army }
+		x = -1
+		y = 2
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.05
+			hidden_effect = {
+                add_to_variable = { DSC_eod_conscription_factor = 0.05 }
+			}
+            custom_effect_tooltip = DSC_a_job_to_unemployed_tt
+        }
+    }
+
+    focus = {
+        id = DSC_increase_artillery
+        icon = GFX_goal_DSC_hp
+		prerequisite = { focus = DSC_recruit_Springvalian_hunter }
+		x = -4
+		y = 3
+		relative_position_id = DSC_weak_army
+
+        cost = 49
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            add_equipment_to_stockpile = {
+                type = artillery_equipment
+                amount = 1000
+            }
+            add_political_power = -50
+            add_ideas = DSC_focus_on_artillery
+        }
+    }
+
+    focus = {
+        id = DSC_we_need_engineer
+        icon = GFX_goal_DSC_gb
+		prerequisite = { focus = DSC_recruit_Springvalian_hunter }
+		prerequisite = { focus = DSC_a_job_to_unemployed }
+		x = -2
+		y = 3
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_dig_in_speed_factor = 0.1 }
+                add_to_variable = { DSC_eod_max_dig_in_factor = 0.1 }
+                add_to_variable = { DSC_eod_recon_factor_while_entrenched = 0.05 }
+                add_to_variable = { DSC_eod_attrition = -0.1 }
+            }
+            custom_effect_tooltip = DSC_we_need_engineer_tt
+        }
+    }
+
+    focus = {
+        id = DSC_expand_arms_factories
+        icon = GFX_goal_DSC_kj
+		prerequisite = { focus = DSC_increase_artillery }
+		prerequisite = { focus = DSC_we_need_engineer }
+		x = -3
+		y = 4
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            34 = {
+                add_extra_state_shared_building_slots = 2
+                add_building_construction = {
+                    type = arms_factory
+                    level = 2
+                    instant_build = yes
+                }                
+            }
+        }
+    }
+
+    focus = {
+        id = DSC_fast_mobilization_system
+        icon = GFX_goal_DSC_dy
+		prerequisite = { focus = DSC_renew_equipments }
+		prerequisite = { focus = DSC_we_need_engineer }
+		x = -1
+		y = 4
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_mobilization_speed = 0.15 }
+            }
+            custom_effect_tooltip = DSC_fast_mobilization_system_tt
+        }
+    }
+
+    focus = {
+        id = DSC_super_firepower
+        icon = GFX_goal_DSC_hl
+		prerequisite = { focus = DSC_expand_arms_factories }
+		prerequisite = { focus = DSC_fast_mobilization_system }
+		x = -2
+		y = 5
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_breakthrough_factor = 0.15 }
+                add_to_variable = { DSC_eod_army_attack_factor = 0.15 }
+            }
+            custom_effect_tooltip = DSC_super_firepower_tt
+        }
+    }
+
+	#Right line
+    focus = {
+        id = DSC_improve_army_quality
+        icon = GFX_goal_DSC_zl
+		prerequisite = { focus = DSC_weak_army }
+		x = 2
+		y = 1
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+		mutually_exclusive = { focus = DSC_expand_the_army }
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            add_ideas = DSC_strengthen_mountaineers
+            hidden_effect = {
+                add_to_variable = { DSC_eod_experience_gain_army_unit_factor = 0.15 }
+                add_to_variable = { DSC_eod_training_time_factor = 0.1 }
+                add_to_variable = { DSC_eod_army_defence_factor = 0.1 }
+                add_to_variable = { DSC_eod_army_attack_factor = 0.1 }
+                add_to_variable = { DSC_eod_political_power_gain = -0.3 }
+            }
+            custom_effect_tooltip = DSC_improve_army_quality_tt
+        }
+    }
+
+    focus = {
+        id = DSC_cold_resistance_training
+        icon = GFX_goal_DSC_nh
+		prerequisite = { focus = DSC_improve_army_quality }
+		x = 1
+		y = 2
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            add_ideas = DSC_cold_resistance_training_idea
+            hidden_effect = {
+                add_to_variable = { DSC_eod_acclimatization_cold_climate_gain_factor = 0.15 }
+                add_to_variable = { DSC_eod_org_loss_when_moving = -0.1 }
+            }
+            custom_effect_tooltip = DSC_cold_resistance_training_tt
+        }
+    }
+
+    focus = {
+        id = DSC_expand_service_length
+        icon = GFX_goal_DSC_yc
+		prerequisite = { focus = DSC_improve_army_quality }
+		x = 3
+		y = 2
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            add_ideas = DSC_expand_service_length_idea
+        }
+    }
+
+    focus = {
+        id = DSC_new_army_provisions
+        icon = GFX_goal_DSC_yz
+		prerequisite = { focus = DSC_cold_resistance_training }
+		prerequisite = { focus = DSC_expand_service_length }
+		x = 2
+		y = 3
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            add_ideas = DSC_new_army_provisions_idea
+            add_war_support = 0.05
+            add_tech_bonus = {
+                bonus = 1
+                uses = 1
+                category = grain_tech
+            }            
+        }
+    }
+
+    focus = {
+        id = DSC_flexible_combat_team
+        icon = GFX_goal_DSC_lh
+		prerequisite = { focus = DSC_expand_service_length }
+		x = 4
+		y = 3
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            add_ideas = DSC_flexible_combat_team_idea
+        }
+    }
+
+    focus = {
+        id = DSC_three_three_system
+        icon = GFX_goal_DSC_zd
+		prerequisite = { focus = DSC_new_army_provisions }
+		prerequisite = { focus = DSC_renew_equipments }
+		x = 1
+		y = 4
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_coordination_bonus = 0.1 }
+                add_to_variable = { DSC_eod_breakthrough_factor = 0.05 }
+            }
+            custom_effect_tooltip = DSC_three_three_system_tt
+        }
+    }
+
+    focus = {
+        id = DSC_elite_army_officer
+        icon = GFX_goal_DSC_jr
+		prerequisite = { focus = DSC_new_army_provisions }
+		prerequisite = { focus = DSC_flexible_combat_team }
+		x = 3
+		y = 4
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            swap_ideas = {
+                remove_idea = DSC_expand_service_length_idea
+                add_idea = DSC_elite_army_officer_idea
+            }
+        }
+    }
+
+    focus = {
+        id = DSC_build_up_rapid_reponse_force
+        icon = GFX_goal_DSC_ks
+		prerequisite = { focus = DSC_three_three_system }
+		prerequisite = { focus = DSC_elite_army_officer }
+		x = 2
+		y = 5
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_army_speed_factor = 0.15 }
+            }
+            custom_effect_tooltip = DSC_build_up_rapid_reponse_force_tt
+        }
+    }
+
+    focus = {
+        id = DSC_renew_equipments
+        icon = GFX_goal_DSC_gx
+		prerequisite = {
+			focus = DSC_a_job_to_unemployed
+			focus = DSC_cold_resistance_training
+		}
+		x = 0
+		y = 3
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            add_equipment_to_stockpile = {
+                type = infantry_equipment
+                amount = 7500
+            } 
+            hidden_effect = {
+                add_to_variable = { DSC_eod_army_defence_factor = 0.05 }
+                add_to_variable = { DSC_eod_army_attack_factor = 0.05 }
+            }
+            custom_effect_tooltip = DSC_renew_equipments_tt           
+        }
+    }
+
+    focus = {
+        id = DSC_be_alert_to_all_directions
+        icon = GFX_goal_DSC_jt
+		prerequisite = {
+			focus = DSC_fast_mobilization_system
+			focus = DSC_three_three_system
+		}
+		x = 0
+		y = 5
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_army_defence_factor = 0.05 }
+                add_to_variable = { DSC_eod_army_attack_factor = 0.05 }
+            }
+            custom_effect_tooltip = DSC_renew_equipments_tt
+        }
+    }
+
+    focus = {
+        id = DSC_true_eagle_of_Dragonsprine
+        icon = GFX_goal_DSC_zy
+		prerequisite = {
+            focus = DSC_super_firepower
+            focus = DSC_build_up_rapid_reponse_force
+        }
+		prerequisite = { focus = DSC_be_alert_to_all_directions }
+		x = 0
+		y = 6
+		relative_position_id = DSC_weak_army
+
+        cost = 42
+
+        ai_will_do = {
+            factor = 10
+        }     
+        completion_reward = {
+            hidden_effect = {
+                add_to_variable = { DSC_eod_army_defence_factor = 0.15 }
+                add_to_variable = { DSC_eod_army_attack_factor = 0.15 }
+            }
+            country_lock_all_division_template = no
+            custom_effect_tooltip = DSC_finish_army_reform_tt
+            custom_effect_tooltip = DSC_true_eagle_of_Dragonsprine_tt            
+        }
+    }
+}

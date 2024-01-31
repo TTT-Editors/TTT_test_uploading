@@ -7,702 +7,698 @@ focus_tree = {
 			tag = MDQ
 		}
 	}
-    default = no
-###国策名：无休无止的战斗
-focus = {
-    id = MDQ_Endless_battle
-        icon = GFX_goal_MDQ_Endless_battle
-        x = 9.0
-        y = 1.0
-        cost = 7.0
-        available = { 
-            
-        }
-        ai_will_do = {
-            factor = 1.0
-        }
-        completion_reward = {
-            add_political_power = 50
-            country_event = { id = MDQ_event.2 days = 1 }
-        }
-    }
-
-###国策名：夜晚的攻势
-focus = {
-    id = MDQ_Night_offensive
-        icon = GFX_goal_MDQ_Night_offensive
-        x = 10.0
-        y = 2.0
-        prerequisite = {
-            focus =MDQ_Endless_battle
-        }
-        
-        cost = 7.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            add_stability = 0.05
-            country_event = { id = MDQ_event.4 days = 1 }    
-            custom_effect_tooltip = MDQ_0_02
-        }
-    }
-
-###国策名：风在呼唤
-focus = {
-    id = MDQ_Train_militia
-        icon = GFX_goal_MDQ_Train_militia
-        x = 9.0
-        y = 3.0
-        prerequisite = {
-            focus =MDQ_Night_offensive
-        }
-        prerequisite = {
-            focus =MDQ_White_sun_offensive
-        }
-        cost = 14.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            country_event = { id = MDQ_event.3 days = 1 }    
-            custom_effect_tooltip = MDQ_0_01
-        }
-    }
-
-###国策名：训练民兵
-focus = {
-    id = MDQ_South_wing_castle
-        icon = GFX_goal_MDQ_South_wing_castle
-        x = 9.0
-        y = 4.0
-        prerequisite = {
-            focus =MDQ_Train_militia
-        }
-        
-        cost = 28.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {###此处国策效果内创建编制，并用create_unit语句创建单位
-        custom_effect_tooltip = MDQ_0_03
-        hidden_effect = { 
-            capital_scope = {
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队01\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队02\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队03\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队04\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队05\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队06\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队07\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队08\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区辅助部队09\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-            }
-        }
-        }
-    
-    }
-
-
-###国策名：白日的攻势
-focus = {
-    id = MDQ_White_sun_offensive
-        icon = GFX_goal_MDQ_White_sun_offensive
-        x = 8.0
-        y = 2.0
-        prerequisite = {
-            focus =MDQ_Endless_battle
-        }
-        
-        cost = 7.0
-        available = { 
-            
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            add_war_support = 0.05
-            country_event = { id = MDQ_event.5 days = 1 } 
-        }
-    }
-
-###国策名：坚持骑士之道
-focus = {
-    id = MDQ_The_wind_is_calling
-        icon = GFX_goal_MDQ_The_wind_is_calling
-        x = 12.0
-        y = 4.0
-        prerequisite = {
-            focus =MDQ_Train_militia
-        }
-        cost = 70.0
-        available = { 
-            has_country_flag = MDQ_flag_01_no
-        }
-        ai_will_do = {
-                factor = 1.0
-        }
-        completion_reward = {
-            custom_effect_tooltip = MDQ_0_08
-            hidden_effect = {
-                swap_ideas = {
-                    add_idea = MDQ_idea_0_6
-                    remove_idea = MDQ_The_Legend_of_the_Three_Musketeers
-                }  
-              }  
-        }
-    }
-focus = {
-    id = MDQ_01_01 #复兴战士精神
-        icon = GFX_goal_bll_01_01
-        x = 9.0
-        y = 6.0
-        prerequisite = {
-            focus =MDQ_South_wing_castle
-        }
-        cost = 7.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_political_power = -25
-            add_ideas = MDQ_idea_0_4
-        }
-    }
-focus = {
-    id = MDQ_01_02 #南风碉楼
-        icon = GFX_goal_bll_01_01
-        x = 7.0
-        y = 5.0
-        prerequisite = {
-            focus =MDQ_South_wing_castle
-        }
-        cost = 28.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            399 = {
+	default = no
+	###国策名：无休无止的战斗
+	focus = {
+		id = MDQ_Endless_battle
+		icon = GFX_goal_MDQ_Endless_battle
+		x = 9
+		y = 1
+		cost = 7
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+			country_event = {
+				id = MDQ_event.2
+				days = 1
+			}
+		}
+	}
+	###国策名：夜晚的攻势
+	focus = {
+		id = MDQ_Night_offensive
+		icon = GFX_goal_MDQ_Night_offensive
+		x = 10
+		y = 2
+		prerequisite = {
+			focus = MDQ_Endless_battle
+		}
+		cost = 7
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+			country_event = {
+				id = MDQ_event.4
+				days = 1
+			}
+			custom_effect_tooltip = MDQ_0_02
+		}
+	}
+	###国策名：风在呼唤
+	focus = {
+		id = MDQ_Train_militia
+		icon = GFX_goal_MDQ_Train_militia
+		x = 9
+		y = 3
+		prerequisite = {
+			focus = MDQ_Night_offensive
+		}
+		prerequisite = {
+			focus = MDQ_White_sun_offensive
+		}
+		cost = 14
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = {
+				id = MDQ_event.3
+				days = 1
+			}
+			custom_effect_tooltip = MDQ_0_01
+		}
+	}
+	###国策名：训练民兵
+	focus = {
+		id = MDQ_South_wing_castle
+		icon = GFX_goal_MDQ_South_wing_castle
+		x = 9
+		y = 4
+		prerequisite = {
+			focus = MDQ_Train_militia
+		}
+		cost = 28
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			###此处国策效果内创建编制，并用create_unit语句创建单位
+			custom_effect_tooltip = MDQ_0_03
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"
+						owner = MDQ
+						allow_spawning_on_enemy_provs = yes
+						count = 8
+					}
+				}
+			}
+		}
+	}
+	###国策名：白日的攻势
+	focus = {
+		id = MDQ_White_sun_offensive
+		icon = GFX_goal_MDQ_White_sun_offensive
+		x = 8
+		y = 2
+		prerequisite = {
+			focus = MDQ_Endless_battle
+		}
+		cost = 7
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			country_event = {
+				id = MDQ_event.5
+				days = 1
+			}
+		}
+	}
+	###国策名：坚持骑士之道
+	focus = {
+		id = MDQ_The_wind_is_calling
+		icon = GFX_goal_MDQ_The_wind_is_calling
+		x = 12
+		y = 4
+		prerequisite = {
+			focus = MDQ_Train_militia
+		}
+		cost = 70
+		available = {
+			has_country_flag = MDQ_flag_01_no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_0_08
+			hidden_effect = {
+				swap_ideas = {
+					add_idea = MDQ_idea_0_6
+					remove_idea = MDQ_The_Legend_of_the_Three_Musketeers
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_01		#复兴战士精神
+		icon = GFX_goal_MDQ_js
+		x = 9
+		y = 6
+		prerequisite = {
+			focus = MDQ_South_wing_castle
+		}
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_ideas = MDQ_idea_0_4
+		}
+	}
+	focus = {
+		id = MDQ_01_02		#南风碉楼
+		icon = GFX_goal_MDQ_nf
+		x = 7
+		y = 5
+		prerequisite = {
+			focus = MDQ_South_wing_castle
+		}
+		cost = 28
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			36 = {
 				add_building_construction = {
 					type = bunker
 					level = 2
 					instant_build = yes
-					province = 4796
+					province = 2075
 				}
-                add_building_construction = {
+				add_building_construction = {
 					type = bunker
 					level = 1
 					instant_build = yes
-					province = 166
+					province = 3375
 				}
-                add_building_construction = {
+				add_building_construction = {
 					type = bunker
 					level = 1
 					instant_build = yes
-					province = 9599
+					province = 2334
 				}
-                add_building_construction = {
+				add_building_construction = {
 					type = bunker
 					level = 3
 					instant_build = yes
-					province = 2292
+					province = 1417
 				}
 			}
-            282 = {
+			39 = {
 				add_building_construction = {
 					type = bunker
 					level = 2
 					instant_build = yes
-					province = 1708
+					province = 3370
 				}
-                add_building_construction = {
+				add_building_construction = {
 					type = bunker
 					level = 1
 					instant_build = yes
-					province = 9600
+					province = 3387
 				}
-                add_building_construction = {
+				add_building_construction = {
 					type = bunker
 					level = 1
 					instant_build = yes
-					province = 9620
+					province = 5573
 				}
-                add_building_construction = {
+				add_building_construction = {
 					type = bunker
 					level = 1
 					instant_build = yes
-					province = 3072
-				}
-                add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 9589
+					province = 3403
 				}
 			}
-        }
-    }
-focus = {
-    id = MDQ_01_03 #保卫大脑
-        icon = GFX_goal_bll_01_01
-        x = 7.0
-        y = 7.0
-        prerequisite = {
-                focus =MDQ_01_02
-        }
-        cost = 14.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_ideas = MDQ_idea_0_5        
-        }
-    }
-focus = {
-    id = MDQ_01_04 #收集旧装备
-        icon = GFX_goal_bll_01_01
-        x = 11.0
-        y = 5.0
-        prerequisite = {
-                focus =MDQ_South_wing_castle
-        }
-        cost = 7.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = 2000
-                producer = MDQ
-            }    
-          country_event = { id = MDQ_event.6 }
-        }
-    }
-focus = {
-    id = MDQ_01_05 #整合工坊
-        icon = GFX_goal_bll_01_01
-        x = 11.0
-        y = 7.0
-        prerequisite = {
-                focus =MDQ_01_04
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_offsite_building = { type = industrial_complex level = 1 }
-            add_offsite_building = { type = arms_factory level = 1 }    
-            country_event = { id = MDQ_event.8 }  
-        }
-    }
-focus = {
-    id = MDQ_01_06 #长号进击
-        icon = GFX_goal_bll_01_01
-        x = 9.0
-        y = 8.0
-        prerequisite = {
-                focus =MDQ_01_03
-        }
-        prerequisite = {
-                focus =MDQ_01_01
-        }
-        prerequisite = {
-                focus =MDQ_01_05
-        }
-        cost = 14.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_political_power = 100
-            add_war_support = 0.1             
-        }
-    }
-focus = {
-    id = MDQ_01_07 #共同打击
-        icon = GFX_goal_bll_01_01
-        x = 14.0
-        y = 5.0
-        prerequisite = {
-                focus =MDQ_The_wind_is_calling
-        }
-        cost = 14.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_command_power = -10 #指挥点
-            add_manpower = -6251 
-            QQR = {
-                add_stability = -0.15
-	            add_war_support = -0.15
-            }
-            LTM = {
-                add_stability = -0.15
-	            add_war_support = -0.15
-            }            
-        }
-    }
-focus = {
-    id = MDQ_01_08 #利剑出鞘
-        icon = GFX_goal_bll_01_01
-        x = 13.0
-        y = 6.0
-        prerequisite = {
-                focus =MDQ_01_07
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            army_experience = 35  
-            add_command_power = 25             
-        }
-    }
-focus = {
-    id = MDQ_01_09 #要求支援
-        icon = GFX_goal_bll_01_01
-        x = 15.0
-        y = 6.0
-        prerequisite = {
-                focus =MDQ_01_07
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-               MOT = {
-                country_event = { id = MDQ_event.9 days = 1 } 
-               } 
-               add_manpower = 5000 
-               add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = 2500
-                producer = MOT
-            }    
-        }
-    }
-focus = {
-    id = MDQ_01_10 #周全之策
-        icon = GFX_goal_bll_01_01
-        x = 14.0
-        y = 7.0
-        prerequisite = {
-                focus =MDQ_01_09
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_ideas = MDQ_idea_0_7            
-        }
-    }
-focus = {
-    id = MDQ_01_11 #武力威胁
-        icon = GFX_goal_bll_01_01
-        x = 16.0
-        y = 7.0
-        prerequisite = {
-                focus =MDQ_01_09
-        }
-        cost = 35.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            country_event = { id = MDQ_event.16 days = 21 }            
-        }
-    }
-focus = {
-    id = MDQ_01_12 #以力御暴
-        icon = GFX_goal_bll_01_01
-        x = 12.0
-        y = 8.0
-        prerequisite = {
-                focus =MDQ_01_10
-        }
-        prerequisite = {
-                focus =MDQ_01_08
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            capital_scope = {
-                create_unit = {
-                    division = "name = \"西风骑士团军区正式部队01\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区正式部队02\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区正式部队03\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"西风骑士团军区正式部队04\" division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.9"  
-                    owner = ROOT
-                }
-            }             
-        }
-    }
-focus = {
-    id = MDQ_01_13 #与夜晚诀别
-        icon = GFX_goal_bll_01_01
-        x = 6.0
-        y = 4.0
-        prerequisite = {
-                focus =MDQ_Train_militia
-        }
-        cost = 70.0
-        available = { 
-            has_country_flag = MDQ_flag_01_yes
-        }
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            custom_effect_tooltip = MDQ_0_04
-            hidden_effect = {
-                set_country_flag = MDQ_01_13_completed
-            swap_ideas = {
-				add_idea = MDQ_idea_0_1
-				remove_idea = MDQ_The_Legend_of_the_Three_Musketeers
-			}  
-          }  
-        }
-    }
-focus = {
-    id = MDQ_01_14 #侠盗之名
-        icon = GFX_goal_bll_01_01
-        x = 4.0
-        y = 5.0
-        prerequisite = {
-                focus =MDQ_01_13
-        }
-        cost = 14.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_political_power = -50
-            swap_ideas = {
+		}
+	}
+	focus = {
+		id = MDQ_01_03		#保卫大脑
+		icon = GFX_goal_MDQ_dn
+		x = 7
+		y = 7
+		prerequisite = {
+			focus = MDQ_01_02
+		}
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = MDQ_idea_0_5
+		}
+	}
+	focus = {
+		id = MDQ_01_04		#收集旧装备
+		icon = GFX_goal_MDQ_jzb
+		x = 11
+		y = 5
+		prerequisite = {
+			focus = MDQ_South_wing_castle
+		}
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = MDQ
+			}
+			country_event = {
+				id = MDQ_event.6
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_05		#整合工坊
+		icon = GFX_goal_MDQ_gf
+		x = 11
+		y = 7
+		prerequisite = {
+			focus = MDQ_01_04
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			country_event = {
+				id = MDQ_event.8
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_06		#长号进击
+		icon = GFX_goal_MDQ_h
+		x = 9
+		y = 8
+		prerequisite = {
+			focus = MDQ_01_03
+		}
+		prerequisite = {
+			focus = MDQ_01_01
+		}
+		prerequisite = {
+			focus = MDQ_01_05
+		}
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = MDQ_01_07		#共同打击
+		icon = GFX_goal_MDQ_gt
+		x = 14
+		y = 5
+		prerequisite = {
+			focus = MDQ_The_wind_is_calling
+		}
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_command_power = -10			#指挥点
+			add_manpower = -6251
+			QQR = {
+				add_stability = -0.15
+				add_war_support = -0.15
+			}
+			LTM = {
+				add_stability = -0.15
+				add_war_support = -0.15
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_08		#利剑出鞘
+		icon = GFX_goal_MDQ_lr
+		x = 13
+		y = 6
+		prerequisite = {
+			focus = MDQ_01_07
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			army_experience = 35
+			add_command_power = 25
+		}
+	}
+	focus = {
+		id = MDQ_01_09		#要求支援
+		icon = GFX_goal_MDQ_zy
+		x = 15
+		y = 6
+		prerequisite = {
+			focus = MDQ_01_07
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			MOT = {
+				country_event = {
+					id = MDQ_event.9
+					days = 1
+				}
+			}
+			set_country_flag = MDQ_01_09_flag
+			add_manpower = 5000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2500
+				producer = MOT
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_10		#周全之策
+		icon = GFX_goal_MDQ_zq
+		x = 14
+		y = 7
+		prerequisite = {
+			focus = MDQ_01_09
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = MDQ_idea_0_7
+		}
+	}
+	focus = {
+		id = MDQ_01_11		#证明自己
+		icon = GFX_goal_MDQ_yuebing
+		x = 16
+		y = 7
+		prerequisite = {
+			focus = MDQ_01_09
+		}
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			country_event = {
+				id = MDQ_event.16
+				days = 21
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_12		#以力御暴
+		icon = GFX_goal_MDQ_yb
+		x = 12
+		y = 8
+		prerequisite = {
+			focus = MDQ_01_10
+		}
+		prerequisite = {
+			focus = MDQ_01_08
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {	
+				if = {
+					limit = {
+						NOT = {
+							has_template = "西风骑士团军区辅助部队"
+						}
+					}
+					division_template = {
+						name = "西风骑士团军区辅助部队"
+						priority = 1
+						is_locked = no
+						division_names_group = MDQ_INF_03
+						regiments = {
+							militia = { x = 0 y = 0 }
+							militia = { x = 0 y = 1 }
+						}
+					}
+				}
+				capital_scope = {
+					create_unit = {
+					division = "division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"
+					owner = MDQ
+					count = 3
+				}
+			}		
+		}
+	}
+	focus = {
+		id = MDQ_01_13		#与夜晚诀别
+		icon = GFX_goal_MDQ_jb
+		x = 6
+		y = 4
+		prerequisite = {
+			focus = MDQ_Train_militia
+		}
+		cost = 70
+		available = {
+			has_country_flag = MDQ_flag_01_yes
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_0_04
+			hidden_effect = {
+				set_country_flag = MDQ_01_13_completed
+				swap_ideas = {
+					add_idea = MDQ_idea_0_1
+					remove_idea = MDQ_The_Legend_of_the_Three_Musketeers
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_14		#侠盗之名
+		icon = GFX_goal_MDQ_xd
+		x = 4
+		y = 5
+		prerequisite = {
+			focus = MDQ_01_13
+		}
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = -50
+			swap_ideas = {
 				add_idea = MDQ_idea_0_2
 				remove_idea = MDQ_idea_0_1
-			}    
-        }
-    }
-focus = {
-    id = MDQ_01_15 #步步为营
-        icon = GFX_goal_bll_01_01
-        x = 5.0
-        y = 6.0
-        prerequisite = {
-                focus = MDQ_01_14
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_timed_idea = { idea = MDQ_idea_0_3 days = 365 }
-        }
-    }
-focus = {
-    id = MDQ_01_16 #临时部队
-        icon = GFX_goal_bll_01_01
-        x = 3.0
-        y = 6.0
-        prerequisite = {
-                focus =MDQ_01_14
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_manpower = 25000
-            capital_scope = {
-                create_unit = {
-                    division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-                create_unit = {
-                    division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"  
-                    owner = ROOT
-                }
-            }           
-        }
-    }
-focus = {
-    id = MDQ_01_17 #盗宝团的地图情报
-        icon = GFX_goal_bll_01_01
-        x = 2.0
-        y = 7.0
-        prerequisite = {
-                focus =MDQ_01_16
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = { #添加地区民族精神并限定国家
-            283 = {
-                add_dynamic_modifier = { modifier = MDQ_dynamic_modifiers_0_1 }
-                scope = MDQ
-                }
-            400 = {
-                add_dynamic_modifier = { modifier = MDQ_dynamic_modifiers_0_1 }
-                scope = MDQ
-                }
-            402 = {
-                add_dynamic_modifier = { modifier = MDQ_dynamic_modifiers_0_1 }
-                scope = MDQ
-                }
-            }
-    }
-focus = {
-    id = MDQ_01_18 #申请赦免
-        icon = GFX_goal_bll_01_01
-        x = 4.0
-        y = 7.0
-        prerequisite = {
-                focus = MDQ_01_16
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            #unlock_decision_category_tooltip = MDQ_decisions_02_01  仅仅是提示一下解锁什么决议  
-            custom_effect_tooltip = MDQ_0_07
-            set_country_flag = MDQ_country_flag_01
-        }
-    }
-focus = {
-    id = MDQ_01_19 #共御外侮
-        icon = GFX_goal_bll_01_01
-        x = 6.0
-        y = 8.0
-        prerequisite = {
-                focus =MDQ_01_15
-        }
-        prerequisite = {
-                focus =MDQ_01_18
-        }
-        cost = 21.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            add_stability = 0.1
-            add_war_support = 0.1
-            add_manpower = 75000
-            add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = 1500
-                producer = MDQ
-            }            
-        }
-    }
-focus = {
-    id = MDQ_01_20 #挺进高地
-        icon = GFX_goal_bll_01_01
-        x = 7.0
-        y = 9.0
-        prerequisite = {
-                focus =MDQ_01_19
-        }
-        prerequisite = {
-                focus =MDQ_01_06
-        }
-        mutually_exclusive = {
-            focus =MDQ_01_21
-        }
-        cost = 70.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            custom_effect_tooltip = MDQ_0_05
-        }
-    }
-focus = {
-    id = MDQ_01_21 #清扫阵眼
-        icon = GFX_goal_bll_01_01
-        x = 11.0
-        y = 9.0
-        prerequisite = {
-                focus =MDQ_01_12
-        }
-        prerequisite = {
-                focus =MDQ_01_06
-        }
-        mutually_exclusive = {
-            focus =MDQ_01_20
-        }
-        cost = 70.0
-        ai_will_do = {
-                factor = 10.0
-        }     
-        completion_reward = {
-            custom_effect_tooltip = MDQ_0_06
-        }
-    }
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_15		#步步为营
+		icon = GFX_goal_MDQ_bb
+		x = 5
+		y = 6
+		prerequisite = {
+			focus = MDQ_01_14
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = MDQ_idea_0_3
+				days = 365
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_16		#临时部队
+		icon = GFX_goal_MDQ_ls
+		x = 3
+		y = 6
+		prerequisite = {
+			focus = MDQ_01_14
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_manpower = 25000
+			capital_scope = {
+				create_unit = {
+					division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"达达乌帕谷军区临时辅助部队\" division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"
+					owner = ROOT
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_17		#盗宝团的地图情报
+		icon = GFX_goal_MDQ_dt
+		x = 2
+		y = 7
+		prerequisite = {
+			focus = MDQ_01_16
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			#添加地区民族精神并限定国家
+			39 = {
+				add_dynamic_modifier = {
+					modifier = MDQ_dynamic_modifiers_0_1
+					scope = MDQ
+				}
+			}
+			40 = {
+				add_dynamic_modifier = {
+					modifier = MDQ_dynamic_modifiers_0_1
+					scope = MDQ
+				}
+			}
+			41 = {
+				add_dynamic_modifier = {
+					modifier = MDQ_dynamic_modifiers_0_1
+					scope = MDQ
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_18		#申请赦免
+		icon = GFX_goal_MDQ_sq
+		x = 4
+		y = 7
+		prerequisite = {
+			focus = MDQ_01_16
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			#unlock_decision_category_tooltip = MDQ_decisions_02_01  仅仅是提示一下解锁什么决议  
+			custom_effect_tooltip = MDQ_0_07
+			set_country_flag = MDQ_country_flag_01
+		}
+	}
+	focus = {
+		id = MDQ_01_19		#共御外侮
+		icon = GFX_goal_MDQ_gy
+		x = 6
+		y = 8
+		prerequisite = {
+			focus = MDQ_01_15
+		}
+		prerequisite = {
+			focus = MDQ_01_18
+		}
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_manpower = 75000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1500
+				producer = MDQ
+			}
+		}
+	}
+	focus = {
+		id = MDQ_01_20		#挺进高地
+		icon = GFX_goal_MDQ_gd
+		x = 7
+		y = 9
+		prerequisite = {
+			focus = MDQ_01_19
+		}
+		prerequisite = {
+			focus = MDQ_01_06
+		}
+		mutually_exclusive = {
+			focus = MDQ_01_21
+		}
+		cost = 70
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_0_05
+		}
+	}
+	focus = {
+		id = MDQ_01_21		#清扫阵眼
+		icon = GFX_goal_MDQ_qs
+		x = 11
+		y = 9
+		prerequisite = {
+			focus = MDQ_01_12
+		}
+		prerequisite = {
+			focus = MDQ_01_06
+		}
+		mutually_exclusive = {
+			focus = MDQ_01_20
+		}
+		cost = 70
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_0_06
+		}
+	}
 }
+
 focus_tree = {
 	id = TTT_MDQ_focustree_02
 	country = {
@@ -712,22 +708,808 @@ focus_tree = {
 			tag = MDQ
 		}
 	}
-    default = no
-
-    focus = {
-        id = MDQ_02_01
-            icon = GFX_goal_MDQ_Endless_battle
-            x = 9.0
-            y = 1.0
-            cost = 7.0
-            available = { 
-                
-            }
-            ai_will_do = {
-                factor = 1.0
-            }
-            completion_reward = {
-                add_political_power = 50
-            }
-        }
+	default = no
+	focus = {
+		id = MDQ_02_01		#黑日自东方升起
+		icon = GFX_goal_MDQ_hr
+		x = 10
+		y = 1
+		cost = 7
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_02		#联络蒙德城
+		icon = GFX_goal_MDQ_lianluo
+		x = 7
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_01
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+            add_war_support = 0.05
+			if = {
+				limit = {
+					NOT = { has_country_flag = MDQ_01_09_flag }
+				}			
+				MOT = {
+					country_event = {
+						id = MDQ_event.9
+						days = 1
+					}
+				}		    
+			}
+		}
+	}
+	focus = {
+		id = MDQ_02_03		#南风镇戒严
+		icon = GFX_goal_MDQ_jieyan
+		x = 13
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_01
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 0.10
+			add_stability = 0.10
+			custom_effect_tooltip = TTT_junshifazhanchengdu_bad
+		}
+	}
+	focus = {
+		id = MDQ_02_04		#我们的力量
+		icon = GFX_goal_MDQ_liliang
+		x = 9
+		y = 3
+		cost = 14
+		prerequisite = {
+			focus = MDQ_02_02
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MDQ_02_04_flag
+			activate_mission = MDQ_decisions_02_09
+		}
+	}
+	focus = {
+		id = MDQ_02_05		#向外求援
+		icon = GFX_goal_MDQ_qiuyuan
+		x = 6
+		y = 3
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_02
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MDQ_02_05_flag
+			activate_mission = MDQ_decisions_02_05
+			unlock_decision_tooltip = MDQ_decisions_02_06
+		}
+	}
+	focus = {
+		id = MDQ_02_06		#雪山和流
+		icon = GFX_goal_MDQ_xueshan
+		x = 7
+		y = 4
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_05
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MDQ_02_06_flag
+			unlock_decision_tooltip = MDQ_decisions_02_07
+		}
+	}
+	focus = {
+		id = MDQ_02_07		#逆流而上
+		icon = GFX_goal_MDQ_nles
+		x = 4
+		y = 4
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_05
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_trait = {
+				character = MDQ_Zhuangyang
+				slot = political_advisor
+				trait = MDQ_yuliyuegang_delianxizhe
+		   }
+			if = {
+				limit = {
+					has_idea = MDQ_Zhuangyang
+				}
+				add_political_power = 150
+			}
+			else_if = {
+				limit = {
+					NOT = { has_idea = MDQ_Zhuangyang }
+				}
+				add_ideas = MDQ_Zhuangyang
+			}
+			set_country_flag = MDQ_02_07_flag
+			unlock_decision_tooltip = MDQ_decisions_02_08
+		}
+	}
+	focus = {
+		id = MDQ_02_08		#西南共淌
+		icon = GFX_goal_MDQ_xinan
+		x = 7
+		y = 5
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_06
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			unlock_decision_tooltip = MDQ_decisions_02_10
+			set_country_flag = MDQ_02_08_tt
+		}
+	}
+	focus = {
+		id = MDQ_02_09		#证明自己
+		icon = GFX_goal_MDQ_zm
+		x = 7
+		y = 6
+		cost = 21
+		prerequisite = {
+			focus = MDQ_02_08
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MDQ_02_09_flag
+			nlock_decision_tooltip = MDQ_decisions_03_01
+			unlock_decision_tooltip = MDQ_decisions_03_03
+		}
+	}
+	focus = {
+		id = MDQ_02_10		#开出价码
+		icon = GFX_goal_MDQ_jiama
+		x = 3
+		y = 5
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_07
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt	
+				NOT = {
+					country_exists = NNG
+				}
+			}
+			has_idea = MDQ_Zhuangyang
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_11		#找上至冬
+		icon = GFX_goal_MDQ_zhidong
+		x = 5
+		y = 5
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_07
+		}
+		available = {
+			has_country_flag = MDQ_01_13_completed
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = MDQ_02_12		#真诚
+		icon = GFX_goal_MDQ_zc
+		x = 2
+		y = 6
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_10
+		}
+		mutually_exclusive = {
+			focus = MDQ_02_13
+		}
+		available = {
+            has_idea = MDQ_Zhuangyang
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt	
+				NOT = {
+					country_exists = NNG
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_02_12_tt
+			set_country_flag = MDQ_02_12_flag
+			activate_mission = MDQ_decisions_03_05
+		}
+	}
+	focus = {
+		id = MDQ_02_13		#冒险
+		icon = GFX_goal_MDQ_maoxian
+		x = 4
+		y = 6
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_10
+		}
+		mutually_exclusive = {
+			focus = MDQ_02_12
+		}
+		available = {
+		has_idea = MDQ_Zhuangyang
+		custom_trigger_tooltip = {
+			tooltip = MDQ_02_10_tt	
+			NOT = {
+				country_exists = NNG
+				}
+			}
+		has_country_flag = MDQ_country_flag_01
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_02_12_tt
+			set_country_flag = MDQ_02_13_flag
+			set_country_flag = MDQ_02_12_flag
+			activate_mission = MDQ_decisions_03_05
+			activate_mission = MDQ_decisions_03_06
+		}
+	}
+	focus = {
+		id = MDQ_02_14		#军区的意义
+		icon = GFX_goal_MDQ_yiyi
+		x = 3
+		y = 7
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_13
+			focus = MDQ_02_12
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_popularity = { ideology = authoritarianism popularity = 0.10 }
+			add_ideas = MDQ_idea_0_8
+		}
+	}
+	focus = {
+		id = MDQ_02_15		#揪出黑手
+		icon = GFX_goal_MDQ_hs
+		x = 5.5
+		y = 7
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_13
+		}
+		prerequisite = {
+			focus = MDQ_02_09
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			NOT = {
+				has_country_flag = MDQ_decisions_03_02_flag
+			}
+		}
+		completion_reward = {
+			country_event = { days = 1  id = MDQ_event.17 }
+			custom_effect_tooltip = MDQ_02_15_tt
+			unlock_decision_tooltip = MDQ_decisions_03_01
+			unlock_decision_tooltip = MDQ_decisions_03_03
+		}
+	}
+	focus = {
+		id = MDQ_02_16		#事急从权
+		icon = GFX_goal_MDQ_sj
+		x = 10
+		y = 4
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_04
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = MDQ_idea_0_9
+		}
+	}
+	focus = {
+		id = MDQ_02_17		#扩大民兵招收
+		icon = GFX_goal_MDQ_minbing
+		x = 10
+		y = 5
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_16
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = MDQ_idea_0_10
+				remove_idea = MDQ_idea_0_9
+			}
+			custom_effect_tooltip = TTT_junshifazhanchengdu_bad
+		}
+	}
+	focus = {
+		id = MDQ_02_18		#迅速化
+		icon = GFX_goal_MDQ_xs
+		x = 9
+		y = 6
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_17
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = MDQ_idea_0_11
+		}
+	}
+	focus = {
+		id = MDQ_02_19		#达达乌帕战争的淬炼
+		icon = GFX_goal_MDQ_cl
+		x = 9
+		y = 7
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_18
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = MDQ_idea_0_4
+				}
+				army_experience = 25
+			}
+			else_if = {
+				limit = {
+					NOT = { has_idea = MDQ_idea_0_4 }
+				}
+				swap_ideas = {
+					add_idea = MDQ_idea_0_19
+					remove_idea = MDQ_idea_0_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_02_20		#按下按钮
+		icon = GFX_goal_MDQ_anniu
+		x = 11
+		y = 6
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_17
+		}
+		prerequisite = {
+			focus = MDQ_02_26
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_02_20_tt
+			custom_effect_tooltip = MDQ_02_24_tt
+			add_ideas = Gear_operation
+			add_ideas = balance_laws
+		}
+	}
+	focus = {
+		id = MDQ_02_21		#更进一步
+		icon = GFX_goal_MDQ_gjyb
+		x = 11
+		y = 7
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_20
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = MDQ_idea_0_14
+		}
+	}
+	focus = {
+		id = MDQ_02_22		#带他们回家
+		icon = GFX_goal_MDQ_huijia
+		x = 13
+		y = 7
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_20
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_manpower = 200000
+            add_timed_idea = { idea = MDQ_idea_0_15 days = 70 }
+		}
+	}
+	focus = {
+		id = MDQ_02_23		#咨询长老会意见
+		icon = GFX_goal_MDQ_yijian
+		x = 12
+		y = 3
+		cost = 35
+		prerequisite = {
+			focus = MDQ_02_03
+		}
+		mutually_exclusive = {
+			focus = MDQ_02_24
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_02_23_tt
+		}
+	}
+	focus = {
+		id = MDQ_02_24		#暂停长老会职能
+		icon = GFX_goal_MDQ_zanting
+		x = 14
+		y = 3
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_03
+		}
+		mutually_exclusive = {
+			focus = MDQ_02_23
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = MDQ_02_24_tt
+		}
+	}
+	focus = {
+		id = MDQ_02_25		#事态升级
+		icon = GFX_goal_MDQ_shitai
+		x = 13
+		y = 4
+		cost = 21
+		prerequisite = {
+			focus = MDQ_02_23
+			focus = MDQ_02_24
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = -0.10
+			add_manpower = 112584
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+			}
+		}
+	}
+	focus = {
+		id = MDQ_02_26		#民间物资紧缩
+		icon = GFX_goal_MDQ_minjian
+		x = 12
+		y = 5
+		cost = 21
+		prerequisite = {
+			focus = MDQ_02_25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = MDQ_idea_0_12
+			add_ideas = MDQ_idea_0_13
+			custom_effect_tooltip = MDQ_02_24_tt
+		}
+	}
+	focus = {
+		id = MDQ_02_27		#战略转移
+		icon = GFX_goal_MDQ_zhuanyi
+		x = 14
+		y = 5
+		cost = 28
+		prerequisite = {
+			focus = MDQ_02_25
+		}
+		available = {
+			controls_state = 41
+			controls_state = 36
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			41 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+					instant_build = yes 
+				}
+			}
+			36 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes 
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_02_28		#主动撤离
+		icon = GFX_goal_MDQ_cheli
+		x = 14
+		y = 6
+		cost = 70
+		prerequisite = {
+			focus = MDQ_02_27
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		completion_reward = {
+			country_event = { days = 1 id = MDQ_event.18 }
+		}
+	}
+	focus = {
+		id = MDQ_02_29		#飞来横祸
+		icon = GFX_goal_MDQ_flhh
+		x = 18
+		y = 1
+		cost = 210
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = MDQ_idea_0_16
+		}
+	}
+	focus = {
+		id = MDQ_02_30		#长老会：默不作声
+		icon = GFX_goal_MDQ_mbzs
+		x = 17
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_29
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = { ideology = liberalism popularity = 0.05 }
+		}
+	}
+	focus = {
+		id = MDQ_02_31		#委员会：退避三舍
+		icon = GFX_goal_MDQ_wyh
+		x = 19
+		y = 2
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_29
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = { ideology = reformism popularity = 0.05 }
+		}
+	}
+	focus = {
+		id = MDQ_02_32		#蒙德城的指示
+		icon = GFX_goal_MDQ_mengde
+		x = 18
+		y = 3
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_30
+		}
+		prerequisite = {
+			focus = MDQ_02_31
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = { days = 1  id = MDQ_event.19 }
+		}
+	}
+	focus = {
+		id = MDQ_02_33		#本土派的选择
+		icon = GFX_goal_MDQ_bentu
+		x = 17
+		y = 4
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_32
+		}
+		mutually_exclusive = {
+			focus = MDQ_02_34
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_34		#诺艾尔暂代委员长
+		icon = GFX_goal_MDQ_nuoaier
+		x = 19
+		y = 4
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_32
+		}
+		mutually_exclusive = {
+			focus = MDQ_02_33
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_35		#稳定军区
+		icon = GFX_goal_MDQ_wd
+		x = 18
+		y = 5
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_33
+			focus = MDQ_02_34
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_36		#南风之治
+		icon = GFX_goal_MDQ_f
+		x = 16
+		y = 5
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_33
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_37		#蔷薇初放
+		icon = GFX_goal_MDQ_qw
+		x = 20
+		y = 5
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_34
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_38		#战争继续
+		icon = GFX_goal_MDQ_jx
+		x = 18
+		y = 6
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_35
+		}
+		prerequisite = {
+			focus = MDQ_02_37
+			focus = MDQ_02_36
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_02_39		#军区傲然挺立
+		icon = GFX_goal_MDQ_lile
+		x = 18
+		y = 7
+		cost = 7
+		prerequisite = {
+			focus = MDQ_02_38
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
 }

@@ -14,6 +14,13 @@ on_actions = {
 					set_state_flag = is_Liyues_territory
 				}
 			}
+			207 = { set_state_flag = is_Liyues_territory }
+			TWL = {
+				every_owned_state = {
+					limit = { NOT = { state = 305 } }
+					set_state_flag = TWL_is_dragon_maybe_rest
+				}
+			}
 			#open the welcome screen
 			every_country = {
 				if = {
@@ -31,6 +38,21 @@ on_actions = {
 				99 = { }
 				1 = {
 					XOG = { set_country_flag = XOG_lucky_yes }
+				}
+			}
+			
+			every_country = {
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								tag = LYU
+								tag = SUM
+								tag = MDQ
+							}
+						}
+					}
+					country_event = { id = spawn_army_event.1 }
 				}
 			}
 		}

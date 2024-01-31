@@ -1,3 +1,4 @@
+#初始国策
 shared_focus =
 {
 	id = INA_First_stage#百年后
@@ -6,6 +7,12 @@ shared_focus =
 		NOT = 
 		{
 			has_country_flag = INA_War_Beginning_stage
+		}
+		OR = {
+			NOT = { has_country_flag = INA_Kujyou_win_the_war }
+		}
+		OR = {
+			NOT = { has_country_flag = INA_Kujyou_tenure_end }
 		}
 	}
 	x = 1
@@ -36,6 +43,7 @@ shared_focus =
 	completion_reward = {
 		country_event = INA_events.1 
 		add_political_power = 10
+		INA_PingDing_unlocked = yes
 	}
 }
 
@@ -65,7 +73,7 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_3 #解决问题
+	id = INA_First_stage_3 #旧的不去新的还来
 	icon = GFX_INA_goal_5
 	relative_position_id = INA_First_stage
 	prerequisite = {
@@ -90,13 +98,16 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_4 #增加工资
+	id = INA_First_stage_4 #休养生息
 	icon = GFX_INA_goal_12
 	relative_position_id = INA_First_stage
 	prerequisite = {
 		focus = INA_First_stage_3
 	}
-	x = -3
+	mutually_exclusive = {
+		focus = INA_First_stage_5
+	}
+	x = -2
 	y = 3
 	cost = 35.00
 	ai_will_do = {
@@ -113,13 +124,16 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_5 #隐形之手
+	id = INA_First_stage_5 #提起精神
 	icon = GFX_INA_goal_7
 	relative_position_id = INA_First_stage
 	prerequisite = {
 		focus = INA_First_stage_3
 	}
-	x = 3
+	mutually_exclusive = {
+		focus = INA_First_stage_4
+	}
+	x = 2
 	y = 3
 	cost = 35.00
 	ai_will_do = {
@@ -136,12 +150,9 @@ shared_focus =
 	icon = GFX_INA_goal_22
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_3
+		focus = INA_First_stage_4
 	}
-	mutually_exclusive = {
-		focus = INA_First_stage_7
-	}
-	x = -1
+	x = -3
 	y = 4
 	cost = 35.00
 	ai_will_do = {
@@ -155,16 +166,13 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_7 #抓壮丁！
+	id = INA_First_stage_7#短暂休假
 	icon = GFX_INA_goal_4
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_3
+		focus = INA_First_stage_4
 	}
-	mutually_exclusive = {
-		focus = INA_First_stage_6
-	}
-	x = 1
+	x = -1
 	y = 4
 	cost = 35.00
 	ai_will_do = {
@@ -185,15 +193,14 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_8 #抓捕寻衅滋事者
+	id = INA_First_stage_8 #采取隔离行动
 	icon = GFX_INA_goal_10
 	relative_position_id = INA_First_stage
 	prerequisite = {
-		focus = INA_First_stage_6
-		focus = INA_First_stage_7
+		focus = INA_First_stage_5
 	}
-	x = 0
-	y = 5
+	x = 1
+	y = 4
 	cost = 35.00
 	ai_will_do = {
 		factor = 100
@@ -238,98 +245,73 @@ shared_focus =
 
 shared_focus =
 {
-	id = INA_First_stage_9 #眼狩之令
+	id = INA_First_stage_9 #绛票扩印
 	icon = GFX_INA_goal_33
-	relative_position_id = INA_First_stage
-	prerequisite = {
-		focus = INA_First_stage_8
-	}
-	prerequisite = {
-		focus = INA_First_stage_10
-	}
-	prerequisite = {
-		focus = INA_First_stage_11
-	}
-	x = 0
-	y = 6
-	cost = 35.00
-	ai_will_do = {
-		factor = 100
-	}
-	completion_reward = {
-		set_country_flag = INA_start_Vision_hunt
-		custom_effect_tooltip = INA_Vision_hunt_law
-		hidden_effect = 
-		{
-			country_event = 
-			{
-				id = INA_events.12
-			}
-			swap_ideas = 
-			{
-				add_idea = INA_putrid_Shogunate_Army_quality_1
-				remove_idea = INA_putrid_Shogunate_Army_quality_2
-			}
-		}
-	}
-	select_effect = {
-		country_event = 
-		{
-			id = INA_events.15
-			days = 15
-		}
-	}
-}
-
-shared_focus =
-{
-	id = INA_First_stage_10 #征兵法案
-	icon = GFX_INA_goal_9
-	relative_position_id = INA_First_stage
-	prerequisite = {
-		focus = INA_First_stage_4
-	}
-	x = -3
-	y = 5
-	cost = 35.00
-	ai_will_do = {
-		factor = 100
-	}
-	completion_reward = {
-		army_experience = 10
-	    add_war_support = 0.01
-		add_ideas = INA_short_conscription_law
-		set_country_flag = INA_conscription_law_flag
-	}
-}
-
-shared_focus =
-{
-	id = INA_First_stage_11 #绛票扩印
-	icon = GFX_INA_goal_6
 	relative_position_id = INA_First_stage
 	prerequisite = {
 		focus = INA_First_stage_5
 	}
 	x = 3
+	y = 4
+	cost = 35.00
+	ai_will_do = {
+		factor = 100
+	}
+	#扩印绛票
+}
+
+shared_focus =
+{
+	id = INA_First_stage_10 #唯有等待
+	icon = GFX_INA_goal_9
+	relative_position_id = INA_First_stage
+	prerequisite = {
+		focus = INA_First_stage_6
+		focus = INA_First_stage_8
+	}
+	prerequisite = {
+		focus = INA_First_stage_7
+		focus = INA_First_stage_9
+	}
+	x = -0
 	y = 5
 	cost = 35.00
 	ai_will_do = {
 		factor = 100
 	}
+	select_effect = {
+		country_event = {
+			id = INA_events.15
+			days = 15
+		}
+		set_variable = { INA_laws_in_processing = 1 }
+		set_variable = { INA_laws_in_processing_days = 35 }
+		clr_country_flag = INA_PingDing_adjourment
+	}
 	completion_reward = {
-		add_ideas = INA_purple_cash
-		custom_effect_tooltip = INA_reduce_ecomony_pressure
-		random_core_state = {
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = industrial_complex
-				level = 1
+		set_country_flag = INA_start_Vision_hunt
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = INA_Vision_hunt_law
+
+		add_to_array = { INA_PingDing_laws_history = 5 }
+		clear_variable = INA_laws_in_processing
+		clear_variable = INA_laws_in_processing_days
+		set_country_flag = INA_PingDing_adjourment
+
+		unlock_decision_category_tooltip = INA_Vision_hunt_decision
+
+		hidden_effect = {
+			country_event = {
+				id = INA_events.12
+			}
+			swap_ideas = {
+				add_idea = INA_putrid_Shogunate_Army_quality_1
+				remove_idea = INA_putrid_Shogunate_Army_quality_2
 			}
 		}
 	}
 }
-
+#初始眼狩令
 shared_focus =
 {
 	id = INA_Vision_Hunt_Decree #眼狩令开始
@@ -561,24 +543,28 @@ shared_focus =
 #内战开始
 shared_focus = {
 	id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_1
 	cost = 30.00
     allow_branch = {
 		has_country_flag = INA_War_Beginning_stage
 	}
-	x = 3
+	x = 5
 	y = 0
 	completion_reward={ 
-		custom_effect_tooltip = "INA_war_beginning_for_SNA"
+		custom_effect_tooltip = INA_war_beginning_for_WSR
+		custom_effect_tooltip = INA_will_be_skip
 	}
 }
 shared_focus = {
 	id = INA_war_beginning_1
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	available = {
+		has_country_flag = INA_Working_Something_out_for_inazuma
+	}
+	icon = GFX_INA_second_goal_14
 	cost = 30.00
 	prerequisite={ focus = INA_war_beginning}
-	x = 0
+	x = -2
 	y = 1
 	completion_reward={ 
 		country_event = INA_events.9
@@ -587,14 +573,17 @@ shared_focus = {
 shared_focus = {
 	id = INA_war_beginning_2
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	available = {
+		has_country_flag = INA_time_to_kill_all_Watasumier
+	}
+	icon = GFX_INA_second_goal_3
 	cost = 30.00
 	prerequisite={ focus = INA_war_beginning}
 	x = 2
 	y = 1
 	completion_reward={ 
 		custom_effect_tooltip = "zhuanyi"
-		372 = 
+		234 = 
 		{
 			add_building_construction =
 			{
@@ -604,7 +593,7 @@ shared_focus = {
 			}
 			add_manpower = -1000000
 		}
-		84 = 
+		235 = 
 		{
 			add_building_construction =
 			{
@@ -614,7 +603,7 @@ shared_focus = {
 			 }
 			add_manpower = -200000
 		}
-		370 = 
+		230 = 
 		{
 			add_building_construction =
 			{
@@ -624,7 +613,7 @@ shared_focus = {
 			}
 			add_manpower = -200000
 		}
-		76 = 
+		223 = 
 		{
 			add_extra_state_shared_building_slots = 2
 				 add_building_construction = {
@@ -634,17 +623,7 @@ shared_focus = {
 			  }
 			add_manpower = 1000000
 		}
-		78 = 
-		{
-			add_extra_state_shared_building_slots = 2
-				 add_building_construction = {
-				  type = arms_factory
-				  level = 2
-				  instant_build = yes
-			  }
-			add_manpower = 200000
-		}
-		365 = 
+		224 = 
 		{
 			add_extra_state_shared_building_slots = 2
 				 add_building_construction = {
@@ -661,10 +640,10 @@ shared_focus = {
 shared_focus = {
 	id = INA_war_beginning_3
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_13
 	cost = 30.00
 	prerequisite={ focus = INA_war_beginning_1 }
-	x = 0
+	x = -3
 	y = 2
 	completion_reward={ 
 		country_event = INA_events.10
@@ -673,10 +652,10 @@ shared_focus = {
 shared_focus = {
 	id = INA_war_beginning_4
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_10
 	cost = 30.00
-	prerequisite={ focus = INA_war_beginning_2 }
-	x = 2
+	prerequisite={ focus = INA_war_beginning_1 }
+	x = -1
 	y = 2
 	completion_reward={ 
 	}
@@ -684,24 +663,22 @@ shared_focus = {
 shared_focus = {
 	id = INA_war_beginning_5
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_4
 	cost = 30.00
-	prerequisite={ focus = INA_war_beginning_3}
-	mutually_exclusive = {focus = INA_war_beginning_6}
-	x = -1
-	y = 3
+	prerequisite={ focus = INA_war_beginning_2}
+	x = 1
+	y = 2
 	completion_reward={ 
 	}
 }
 shared_focus = {
 	id = INA_war_beginning_6
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_5
 	cost = 30.00
-	prerequisite={ focus = INA_war_beginning_3 }
-	mutually_exclusive = {focus = INA_war_beginning_5}
-	x = 1
-	y = 3
+	prerequisite={ focus = INA_war_beginning_2 }
+	x = 3
+	y = 2
 	completion_reward={ 
 	}
 }
@@ -709,11 +686,11 @@ shared_focus = {
 shared_focus = {       
 	id = INA_war_beginning_7
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_12
 	cost = 30.00
-	prerequisite={ focus = INA_war_beginning_4}
-	x = 2
-	y = 4
+	prerequisite={ focus = INA_war_beginning_3}
+	x = -3
+	y = 3
 	completion_reward={ 
 		INA = {
 			end_puppet = SNA
@@ -724,39 +701,21 @@ shared_focus = {
 		 }
 		 hidden_effect = 
 		 {
-			KUJ = { transfer_state = 76 } 
-			KUJ = { transfer_state = 80 } 
-			KUJ = { transfer_state = 78 } 
-			KUJ = { transfer_state = 365 } 
-			KUJ = { transfer_state = 364 } 
-			KUJ = { transfer_state = 367 } 
-			KUJ = { transfer_state = 79 } 
-			KUJ = { transfer_state = 369 } 
-			KUJ = { transfer_state = 81 } 
-			KUJ = { transfer_state = 87 } 
-			KUJ = { transfer_state = 372 } 
-			KUJ = { transfer_state = 84 } 
-			KUJ = { transfer_state = 371 } 
-			KUJ = { transfer_state = 370 } 
-			KUJ = { transfer_state = 86 } 
-			KUJ = { transfer_state = 77 } 
-			KUJ = { add_state_core = 76 } 
-			KUJ = { add_state_core = 80 } 
-			KUJ = { add_state_core = 78 } 
-			KUJ = { add_state_core = 365 } 
-			KUJ = { add_state_core = 364 } 
-			KUJ = { add_state_core = 367 } 
-			KUJ = { add_state_core = 79 } 
-			KUJ = { add_state_core = 369 } 
-			KUJ = { add_state_core = 81 } 
-			KUJ = { add_state_core = 87 } 
-			KUJ = { add_state_core = 371 } 
-			KUJ = { add_state_core = 370 } 
-			KUJ = { add_state_core = 86 } 
-			KUJ = { add_state_core = 77 } 
-			KUJ = { add_state_core = 372 } 
-			KUJ = { add_state_core = 84 } 
-			KUJ = {load_oob = "KUJ"}
+			KUJ = { add_state_core = 223 } 
+			KUJ = { add_state_core = 224 } 
+			KUJ = { add_state_core = 225 } 
+			KUJ = { add_state_core = 226 } 
+			KUJ = { add_state_core = 227 } 
+			KUJ = { add_state_core = 228 } 
+			KUJ = { add_state_core = 229 } 
+			KUJ = { add_state_core = 230 } 
+			KUJ = { add_state_core = 231 } 
+			KUJ = { add_state_core = 232 } 
+			KUJ = { add_state_core = 233 } 
+			KUJ = { add_state_core = 234 } 
+			KUJ = { add_state_core = 235 } 
+			release = KUJ
+			#KUJ = {#load_oob = "KUJ"}
 			if = { 
 				limit = {has_country_flag = KUJ_get_weapons}
 				KUJ = {
@@ -880,11 +839,11 @@ shared_focus = {
 shared_focus = {
 	id = INA_war_beginning_8
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_11
 	cost = 30.00
-	prerequisite={ focus = INA_war_beginning_5 focus = INA_war_beginning_6 }
-	x = 0
-	y = 4
+	prerequisite={ focus = INA_war_beginning_4}
+	x = -1
+	y = 3
 	completion_reward={ 
 		country_event = INA_events.11
 	}
@@ -893,12 +852,11 @@ shared_focus = {
 shared_focus = {
 	id = INA_war_beginning_9
 	relative_position_id = INA_war_beginning
-	icon = GFX_INA
+	icon = GFX_INA_second_goal_6
 	cost = 30.00
-	prerequisite={ focus = INA_war_beginning_7}
-	prerequisite={ focus = INA_war_beginning_8}
+	prerequisite={ focus = INA_war_beginning_5}
 	x = 1
-	y = 5
+	y = 3
 	completion_reward={ 
 		KUJ = { #declare_war_on = { target = SNA type = annex_everything }
 			random_owned_controlled_state=
@@ -922,5 +880,3380 @@ shared_focus = {
 	}
 }
 
+shared_focus = {
+	id = INA_war_beginning_10
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA_second_goal_7
+	cost = 30.00
+	prerequisite = {
+		focus = INA_war_beginning_6
+	}
+	x = 3
+	y = 3
+	completion_reward = { 
+		add_political_power = 10
+	}
+}
 
+shared_focus = {
+	id = INA_war_beginning_11
+	relative_position_id = INA_war_beginning
+	prerequisite = {
+		focus = INA_war_beginning_7
+	}
+	prerequisite = {
+		focus = INA_war_beginning_8
+	}
+	icon = GFX_INA_second_goal_15
+	cost = 30.00
+	x = -2
+	y = 4
+	completion_reward = { 
+		add_political_power = 10
+	}
+}
 
+shared_focus = {
+	id = INA_war_beginning_12
+	relative_position_id = INA_war_beginning
+	icon = GFX_INA_second_goal_9
+	prerequisite = {
+		focus = INA_war_beginning_9
+	}
+	prerequisite = {
+		focus = INA_war_beginning_10
+	}
+	cost = 30.00
+	x = 2
+	y = 4
+	completion_reward = { 
+		add_political_power = 10
+	}
+}
+
+shared_focus = {
+	id = INA_war_beginning_13
+	relative_position_id = INA_war_beginning
+	prerequisite = {
+		focus = INA_war_beginning
+	}
+	icon = GFX_INA_second_goal_2
+	cost = 30.00
+	x = 0
+	y = 1
+	completion_reward = { 
+		add_political_power = 10
+	}
+}
+
+shared_focus = {
+	id = INA_war_beginning_14
+	relative_position_id = INA_war_beginning
+	prerequisite = {
+		focus = INA_war_beginning_13
+	}
+	icon = GFX_INA_second_goal_16
+	cost = 30.00
+	x = 0
+	y = 4
+	completion_reward = { 
+		add_political_power = 10
+	}
+}
+
+shared_focus = {
+	id = INA_war_beginning_15
+	relative_position_id = INA_war_beginning
+	prerequisite = {
+		focus = INA_war_beginning_14
+	}
+	prerequisite = {
+		focus = INA_war_beginning_11 focus = INA_war_beginning_12
+	}
+	icon = GFX_INA_second_goal_8
+	cost = 30.00
+	x = 0
+	y = 5
+	completion_reward = { 
+		add_political_power = 10
+	}
+}
+
+#祟神出现
+shared_focus = 
+{
+	id = INA_The_crisis_of_Inazuma
+	icon = GFX_INA
+	allow_branch = 
+	{
+		has_country_flag = INA_NO_country_flag
+	}
+	cost = 30
+	x = 0
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+#九条家家主
+shared_focus = 
+{
+	id = INA_Kujyous_tenure #分支父国策
+	icon = GFX_INA_jiutiao
+	allow_branch = {
+		has_country_flag = INA_Kujyou_win_the_war #解锁该分支条件
+		NOT = {has_country_flag = INA_Kujyou_tenure_end}
+		NOT = {has_country_flag = INA_Uprising_begin}
+	} 
+	cost = 30
+	x = 8 #父国策的xy坐标是绝对坐标
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_1#分支子国策
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure#父国策
+	prerequisite = {
+		focus = INA_Kujyous_tenure#子国策必须与父国策相连
+	}
+	cost = 30
+	x = 1 #子国策的坐标是相对于父国策的坐标
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_2
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure
+	}
+	cost = 30
+	x = -1
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_3
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_1
+	}prerequisite = {
+		focus = INA_Kujyous_tenure_2
+	}
+	cost = 30
+	x = 0
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_4
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_22
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_15
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_27
+	}
+	cost = 30
+	x = -4 
+	y = 13
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_5
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_22
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_15
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_27
+	}
+	cost = 30
+	x = 0 
+	y = 13
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_6
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_22
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_15
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_27
+	}
+	cost = 30
+	x = 4 
+	y = 13
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_7
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_4
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_5
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_6
+	}
+	cost = 30
+	x = 0 
+	y = 14
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+#政治线 包含与柊家的联姻 与社奉行的强制联合 合并奉行成立联合奉行 削减部分部门的人数
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_3
+	}
+	cost = 30
+	x = -8
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_1
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics
+	}
+	cost = 30
+	x = -12
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_2
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_1
+	}
+	cost = 30
+	x = -10
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_3
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_1
+	}
+	cost = 30
+	x = -14
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_4
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics
+	}
+	cost = 30
+	x = -6
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_5
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_4
+	}
+	cost = 30
+	x = -6
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_6
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_5
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_Kujyous_tenure_politics_7
+	}
+	cost = 30
+	x = -5
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_7
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_5
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_Kujyous_tenure_politics_6
+	}
+	cost = 30
+	x = -7
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_8
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_6
+		focus = INA_Kujyous_tenure_politics_7
+	}
+	cost = 30
+	x = -6
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_9
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_2
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_Kujyous_tenure_politics_10
+	}
+	cost = 30
+	x = -11
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_10
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_2
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_Kujyous_tenure_politics_10
+	}
+	cost = 30
+	x = -9
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_11
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_9
+	}
+	cost = 30
+	x = -11
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_12
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_10
+	}
+	cost = 30
+	x = -9
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_13
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_11
+		focus = INA_Kujyous_tenure_politics_12
+	}
+	cost = 30
+	x = -10
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_14
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_3
+	}
+	cost = 30
+	x = -14
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_15
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_14
+	}
+	cost = 30
+	x = -14
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_16
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_15
+	}
+	cost = 30
+	x = -14
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_17
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_16
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_13
+	}
+	cost = 30
+	x = -12
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_18
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_13
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_8
+	}
+	cost = 30
+	x = -8
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_19
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_17
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_18
+	}
+	cost = 30
+	x = -10
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_20
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_19
+	}
+	cost = 30
+	x = -9
+	y = 11
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_21
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_19
+	}
+	cost = 30
+	x = -11
+	y = 11
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_politics_22
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_21
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_20
+	}
+	cost = 30
+	x = -10
+	y = 12
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+#经济线 包括开放新的通商埠 修建跨鸣神岛铁路 重新规划土地 修复御影炉心 
+#推广稻妻城电气化 为建设永恒稻妻城做铺垫
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_3
+	}
+	cost = 30
+	x = 0
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_1
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy
+	}
+	cost = 30
+	x = -1
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_2
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy
+	}
+	cost = 30
+	x = 1
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_3
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_2
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_1
+	}
+	cost = 30
+	x = 0
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_4
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_3
+	}
+	cost = 30
+	x = 0
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_5
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_4
+	}
+	cost = 30
+	x = -2
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_6
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_4
+	}
+	cost = 30
+	x = 0
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_7
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_4
+	}
+	cost = 30
+	x = 2
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_8
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_5
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_politics_8
+	}
+	cost = 30
+	x = -4
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_9
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_8
+	}
+	cost = 30
+	x = -4
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_10
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_9
+	}
+	cost = 30
+	x = -7
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_11
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_9
+	}
+	cost = 30
+	x = -5
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_12
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_9
+	}
+	cost = 30
+	x = -3
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_13
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_9
+	}
+	cost = 30
+	x = -1
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_14
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_10
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_11
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_12
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_13
+	}
+	cost = 30
+	x = -4
+	y = 11
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_15
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_14
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_20
+	}
+	cost = 30
+	x = -2
+	y = 12
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_16
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_6
+	}
+	cost = 30
+	x = -1
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_17
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_6
+	}
+	cost = 30
+	x = 1
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_18
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_16
+	}
+	cost = 30
+	x = -1
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_19
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_17
+	}
+	cost = 30
+	x = 1
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_economy_20
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_18
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_19
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_13
+	}
+	cost = 30
+	x = 0
+	y = 11
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+#军备线 包括陆地部队新型武器的使用 薪资改革 以及稻妻城内同心改革 打击黑恶势力和新式军工建设 继续推广眼狩令 
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_3
+	}
+	cost = 30
+	x = 9
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_1
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army
+	}
+	cost = 30
+	x = 6
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_2
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army
+	}
+	cost = 30
+	x = 12
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_3
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_1
+	}
+	cost = 30
+	x = 5
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_4
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_1
+	}
+	cost = 30
+	x = 7
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_5
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_3
+	}
+	cost = 30
+	x = 5
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_6
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_4
+	}
+	cost = 30
+	x = 7
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_7
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_5
+	}
+	cost = 30
+	x = 5
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_8
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_5
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_6
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_18
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_17
+	}
+	cost = 30
+	x = 9
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_9
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_7
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_economy_7
+	}
+	cost = 30
+	x = 4
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_10
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_9
+	}
+	cost = 30
+	x = 4
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_11
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_10
+	}
+	cost = 30
+	x = 2
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_12
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_10
+	}
+	cost = 30
+	x = 4
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_13
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_10
+	}
+	cost = 30
+	x = 6
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_14
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_11
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_12
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_13
+	}
+	cost = 30
+	x = 4
+	y = 11
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_15
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_2
+	}
+	cost = 30
+	x = 11
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_16
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_2
+	}
+	cost = 30
+	x = 13
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_17
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_15
+	}
+	cost = 30
+	x = 11
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_18
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_16
+	}
+	cost = 30
+	x = 13
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_19
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+    prerequisite = {
+		focus = INA_Kujyous_tenure_army_8	
+	}
+	cost = 30
+	x = 7
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_20
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_8
+	}
+	cost = 30
+	x = 9
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_21
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_8
+	}
+	cost = 30
+	x = 11
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_22
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_19
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_20
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_21
+	}
+	cost = 30
+	x = 8
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_23
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_19
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_20
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_21
+	}
+	cost = 30
+	x = 10
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_24
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_22
+	}
+	cost = 30
+	x = 8
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_25
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_23
+	}
+	cost = 30
+	x = 10
+	y = 10
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_26
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_24
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_25
+	}
+	cost = 30
+	x = 9
+	y = 11
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Kujyous_tenure_army_27
+	icon = GFX_INA
+	relative_position_id = INA_Kujyous_tenure
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_14
+	}
+	prerequisite = {
+		focus = INA_Kujyous_tenure_army_26
+	}
+	cost = 30
+	x = 7
+	y = 12
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#九条孝行去世
+shared_focus = 
+{
+	id = INA_Kujyou_died
+	icon = GFX_INA
+	allow_branch = {
+		has_country_flag = INA_Kujyou_tenure_end
+	    NOT = 
+		{
+			has_country_flag = INA_Uprising_begin
+		}
+	} 
+	cost = 30
+	x = 8
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_died_1
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_died }
+	cost = 5
+	x = 0
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_died_2
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_died_1 }
+	cost = 5
+	x = -2
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_died_3
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_died_1 }
+	cost = 5
+	x = 0
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_died_4
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_died_1 }
+	cost = 5
+	x = 2
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	allow_branch = {
+		has_country_flag = INA_Kujyou_tenure_end
+		NOT = {has_country_flag = INA_the_next_crisis}
+	}
+	prerequisite = {focus = INA_Kujyou_died_2 }
+	prerequisite = {focus = INA_Kujyou_died_3 }
+	prerequisite = {focus = INA_Kujyou_died_4 }
+	cost = 5
+	x = 0
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#九条镰治成为家主假国策
+#九条镰治政策包括优化稻妻律法、二次精简评定所 完善农业生产体系以及向工业国家过渡 以及现代化军队训练
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_1
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake}
+	cost = 30
+	x = -4
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_2
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake}
+	cost = 30
+	x = 0
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_3
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake}
+	cost = 30
+	x = 4
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_4
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_1}
+	cost = 30
+	x = -5
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_5
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_1}
+	cost = 30
+	x = -3
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_6
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_4}
+	cost = 30
+	x = -5
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_7
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_5}
+	cost = 30
+	x = -3
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_8
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_6}
+	cost = 30
+	x = -5
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_9
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_7}
+	cost = 30
+	x = -3
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_10
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_8}
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_9}
+	cost = 30
+	x = -4
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_11
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_2}
+	cost = 30
+	x = -1
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_12
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_2}
+	cost = 30
+	x = 1
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_13
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_11}
+	cost = 30
+	x = -1
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_14
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_12}
+	cost = 30
+	x = 1
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_15
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_13}
+	cost = 30
+	x = -1
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_16
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_14}
+	cost = 30
+	x = 1
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_17
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_15}
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_16}
+	cost = 30
+	x = 0
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_18
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_3}
+	cost = 30
+	x = 3
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_19
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_3}
+	cost = 30
+	x = 5
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_20
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_18}
+	cost = 30
+	x = 3
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_21
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_19}
+	cost = 30
+	x = 5
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_22
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_20}
+	cost = 30
+	x = 3
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_23
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_21}
+	cost = 30
+	x = 5
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_24
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_23}
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_22}
+	cost = 30
+	x = 4
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_Kujyou_next_tenure_Fake_25
+	icon = GFX_INA
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_10}
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_17}
+	prerequisite = {focus = INA_Kujyou_next_tenure_Fake_24}
+	cost = 30
+	x = 0
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#真国策
+#稻妻危机国策树 
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_Kujyou_died
+	prerequisite = {focus = INA_Kujyou_died_2}
+	prerequisite = {focus = INA_Kujyou_died_3}
+	prerequisite = {focus = INA_Kujyou_died_4}
+	allow_branch = {
+		has_country_flag = INA_Kujyou_tenure_end
+		has_country_flag = INA_the_next_crisis 
+		NOT = {has_country_flag = INA_Uprising_begin}
+	}
+	x = 0
+	y = 3
+	completion_reward = { 
+		add_political_power = 10
+	}
+}
+
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_1
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = -3
+	y = 1
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_2
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = 0
+	y = 1
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_3
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = 3
+	y = 1
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_4
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = -3
+	y = 2
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_1
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_5
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = 0
+	y = 2
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_2
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_6
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = 3
+	y = 2
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_3
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_7
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = -3
+	y = 3
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_4
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_8
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = 0
+	y = 3
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_5
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_9
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = 3
+	y = 3
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_6
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_second_crisis_of_Inazuma_10
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_second_crisis_of_Inazuma
+	x = 0
+	y = 4
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_7
+	}
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_8
+	}
+	prerequisite = {
+		focus = INA_second_crisis_of_Inazuma_9
+	}
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#起义大爆发
+shared_focus = {
+	id = INA_uprising
+	icon = GFX_INA
+	cost = 30
+	allow_branch = {
+		has_country_flag = INA_Uprising_begin
+		NOT = {
+			has_country_flag = INA_uprising_end
+		}
+	}
+	x = 4
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#动用铁拳狠狠的镇压这群闹事的人
+#届时九条裟罗会代替九条镰治，成为九条家的家主
+#若到达一定时间内，未能将四位叛军领导捉拿归案，贵族将会投靠鹰司家
+#鹰司将会使用更残忍的手段进行镇压
+shared_focus = {
+	id = INA_uprising_1
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising
+	}
+	allow_branch = 
+	{
+		NOT = {has_country_flag = INA_Kujyou_win_the_war}
+		NOT = {has_country_flag = INA_Takashi_has_new_idea}
+		NOT = {has_country_flag = INA_uprising_end}
+		has_country_flag = INA_Uprising_begin
+	}
+	x = -6
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_4
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_1
+	}
+	x = -7
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_5
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_1
+	}
+	x = -5
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_6
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_4
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_5
+	}
+	x = -6
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_7
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_6
+	}
+	x = -6
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_8
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_6
+	}
+	x = -8
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_9
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_6
+	}
+	x = -4
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_10
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_8
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_7
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_9
+	}
+	x = -6
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_11
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_10
+	}
+	x = -7
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_12
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_10
+	}
+	x = -5
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_13
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_11
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_uprising_14
+	}
+	x = -9
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_14
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_11
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_uprising_14
+	}
+	x = -7
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_15
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_13
+		focus = INA_uprising_14
+	}
+	x = -8
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_16
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_12
+	}
+	x = -5
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_17
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_16
+	}
+	x = -5
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_18
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_15
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_17
+	}
+	x = -6
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#动用至冬国的人脉，先进的武器以及大把的钱
+#无论斡旋失败也好，九条家镇压失败也罢
+#进入这条线时，将军的警戒度将直线上升
+#而再不能及时处理叛乱，或者发现鹰司与愚人众他们有染，想必将军势必会勃然大怒
+#但如果镇压成功，鹰司将成为天领奉行的新家主
+shared_focus = {
+	id = INA_uprising_2
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	allow_branch = 
+	{
+		has_country_flag = INA_Takashi_has_new_idea
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising
+	}
+	x = 0
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_35
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_2
+	}
+	x = -1
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_36
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_2
+	}
+	x = 1
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_37
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_35
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_36
+	}
+	x = 0
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_38
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_37
+	}
+	x = -3
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_39
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_2
+	}
+	x = 3
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_40
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_38
+	}
+	x = -4
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_41
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_38
+	}
+	x = -2
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_42
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_39
+	}
+	x = 2
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_43
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_39
+	}
+	x = 4
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_44
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_37
+	}
+	x = 0
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_45
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_41
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_40
+	}
+	x = -2
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_46
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_42
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_43
+	}
+	x = 2
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_47
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_44
+	}
+	x = 0
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_48
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_45
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_46
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_47
+	}
+	x = 0
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#与他们的主要成员(枫原万叶、霄宫、久歧忍、琦良良)进行谈判，进行斡旋
+#九条镰治可以使用九条家特权来强行通过某个法案
+#但会导致九条家席位下降 若九条家席位与鹰司家席位相同 鹰司会考虑夺权篡位
+shared_focus = {
+	id = INA_uprising_3
+	icon = GFX_INA
+	cost = 30
+	allow_branch = 
+	{
+		NOT = {has_country_flag = INA_Takashi_has_new_idea}
+		NOT = {has_country_flag = INA_uprising_end}
+		NOT = {has_country_flag = INA_Kujyou_win_the_war}
+		has_country_flag = INA_Uprising_begin
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising
+	}
+	relative_position_id = INA_uprising
+	x = 6
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_19
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_3
+	}
+	x = 7
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_20
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_3
+	}
+	x = 5
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_21
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_20
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_19
+	}
+	x = 3
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_22
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_20
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_19
+	}
+	x = 5
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_23
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_20
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_19
+	}
+	x = 7
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_24
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_20
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_19
+	}
+	x = 9
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_25
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_21
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_22
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_23
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_24
+	}
+	x = 6
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_26
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_25
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_uprising_27
+	}
+	x = 8
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_27
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_25
+	}
+	mutually_exclusive = 
+	{
+		focus = INA_uprising_26
+	}
+	x = 4
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_28
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_26
+		focus = INA_uprising_27
+	}
+	x = 6
+	y = 6
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_29
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_28
+	}
+	x = 5
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_30
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_28
+	}
+	x = 7
+	y = 7
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_31
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_29
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_30
+	}
+	x = 6
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_32
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_27
+	}
+	x = 4
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_33
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_26
+	}
+	x = 8
+	y = 8
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = {
+	id = INA_uprising_34
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_uprising
+	prerequisite = 
+	{
+		focus = INA_uprising_31
+	}
+	prerequisite = 
+	{
+		focus = INA_uprising_32
+		focus = INA_uprising_33
+	}
+	x = 6
+	y = 9
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#最后结局
+#九条镰治与起义首领斡旋完毕，稻妻进入新的时代
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz
+	icon = GFX_INA
+	cost = 30
+	allow_branch = {
+		has_country_flag = INA_uprising_end
+		has_country_flag = INA_Kujyou_lz_success
+	}
+	x = 2
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_1
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz
+	}
+	x = 2
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_2
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz
+	}
+	x = 0
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_3
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz
+	}
+	x = 2
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_4
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz_2
+	}
+	x = 0
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_5
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz_2
+	}
+	x = -2
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_6
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz_4
+	}
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz_5
+	}
+	x = -1
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_7
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz_3
+	}
+	x = 2
+	y = 3
+		completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_lz_8
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_lz
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz_6
+	}
+	prerequisite = {
+		focus = INA_final_to_Kujyou_lz_7
+	}
+	x = 1
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#裟罗的铁拳最终砸碎了起义
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl
+	icon = GFX_INA
+	cost = 30
+	allow_branch = {
+		has_country_flag = INA_uprising_end
+		has_country_flag = INA_Kujyou_sl_success
+	}
+	x = 2
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_1
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl
+	}
+	x = 2
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_2
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl
+	}
+	x = 0
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_3
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl
+	}
+	x = -2
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_4
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_2
+	}
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_1
+	}
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_3
+	}
+	x = 0
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_5
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_4
+	}
+	x = -1
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_6
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_4
+	}
+	x = 1
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_7
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_5
+	}
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_6
+	}
+	x = 0
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Kujyou_sl_8
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Kujyou_sl
+	prerequisite = {
+		focus = INA_final_to_Kujyou_sl_7
+	}
+	x = 0
+	y = 5
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+#鹰司的阴谋终将得逞
+shared_focus = 
+{
+	id = INA_final_to_Takashi
+	icon = GFX_INA
+	cost = 30
+	allow_branch = {
+		has_country_flag = INA_uprising_end
+		has_country_flag = INA_Takashi_success
+	}
+	x = 3
+	y = 0
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_1
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi
+	}
+	x = 2
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_2
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi
+	}
+	x = -2
+	y = 1
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_3
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi_1
+	}
+	x = 2
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_4
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi_1
+	}
+	x = 0
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_5
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi_1
+	}
+	x = 4
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_6
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi_2
+	}
+	x = -2
+	y = 2
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_7
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi_3
+	}
+	prerequisite = {
+		focus = INA_final_to_Takashi_4
+	}
+	prerequisite = {
+		focus = INA_final_to_Takashi_5
+	}
+	x = 2
+	y = 3
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+shared_focus = 
+{
+	id = INA_final_to_Takashi_8
+	icon = GFX_INA
+	cost = 30
+	relative_position_id = INA_final_to_Takashi
+	prerequisite = {
+		focus = INA_final_to_Takashi_6
+	}
+	prerequisite = {
+		focus = INA_final_to_Takashi_7
+	}
+	x = 0
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}
+
+shared_focus = 
+{
+	id = INA_Inazuma_Reis_tenure
+	icon = GFX_INA_zhimu
+	cost = 30
+	allow_branch = {
+		always = no
+	}
+	x = 0
+	y = 4
+	completion_reward = {
+		add_political_power = 10
+	}
+}

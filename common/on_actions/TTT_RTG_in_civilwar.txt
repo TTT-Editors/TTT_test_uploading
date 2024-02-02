@@ -17,6 +17,11 @@ on_actions = {
 				    id = retuo_juanshu_news.4 
 					days = 1
 			    }
+				RTG = {
+					country_event = {
+						id = RTG.42
+					}
+				}
             }
         }
     }	
@@ -122,6 +127,22 @@ on_actions = {
 				has_country_flag = erosion_system_start
 			}
 			add_to_variable = { RTG_erosion_system = -2 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
+	on_weekly_RTG = {   #完成决议《仙家术法》，龙王的每周磨损度-1
+		effect = {
+	    if = {
+			limit = {
+				has_country_flag = RTG18_flag
+				has_country_flag = RTG_erosion_system_2_flag_two
+			}
+			add_to_variable = { RTG_erosion_system = -1 }
 			clamp_variable = {
 				var = RTG_erosion_system
 				min = 0

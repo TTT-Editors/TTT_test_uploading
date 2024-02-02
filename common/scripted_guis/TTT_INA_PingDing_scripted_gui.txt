@@ -1,0 +1,112 @@
+scripted_gui = {
+    INA_PingDing_use = {
+        window_name = "INA_PingDing_use"
+        context_type = player_context
+        parent_window_token = politics_tab
+
+        visible = {
+            original_tag = INA
+            #has_country_flag = INA_PingDing_GUI_available
+            NOT = { has_country_flag = INA_raiden_EI_leads_new_inazuma}
+        }
+        effects = {
+            INA_PingDing_use_button_click = {
+                if = {
+					limit = { NOT = { has_country_flag = INA_PingDing_Gui_visible } }
+					set_country_flag = INA_PingDing_Gui_visible
+				}
+				else_if = {
+					limit = { has_country_flag = INA_PingDing_Gui_visible }
+					clr_country_flag = INA_PingDing_Gui_visible
+				}
+            }
+        }
+    }
+    INA_PingDing_main = {
+        window_name = "INA_PingDing_main"
+        context_type = player_context
+
+        visible = {
+            original_tag = INA
+            has_country_flag = INA_PingDing_Gui_visible
+            #has_country_flag = INA_PingDing_GUI_available
+            NOT = { has_country_flag = INA_raiden_EI_leads_new_inazuma}
+        }
+        effects = {
+            INA_PingDing_exit_click = {
+                clr_country_flag = INA_PingDing_Gui_visible
+            }
+        }
+        properties = {
+            INA_PingDing_seat_ = {
+                frame = INA_PingDing_seat_frame^i
+                image = "[Get_PingDing_seat_image]"
+                x = INA_PingDing_seat_position_x^i
+                y = INA_PingDing_seat_position_y^i
+            }
+            #INA_pingding_1 = {
+            #    frame = TTT_pingding_1
+            #}
+
+            #INA_pingding_2 = {
+            #    frame = TTT_pingding_2
+            #}
+
+            #INA_pingding_3 = {
+            #    frame = TTT_pingding_3
+            #}
+
+            #INA_pingding_4 = {
+            #    frame = TTT_pingding_4
+            #}
+
+            #INA_pingding_5 = {
+            #    frame = TTT_pingding_5
+            #}
+
+            #INA_pingding_6 = {
+            #    frame = TTT_pingding_6
+            #}
+
+            #INA_pingding_7 = {
+            #    frame = TTT_pingding_7
+            #}
+
+            #INA_pingding_8 = {
+            #    frame = TTT_pingding_8
+            #}
+
+            #INA_pingding_9 = {
+            #    frame = TTT_pingding_9
+            #}
+
+            #INA_pingding_10 = {
+            #    frame = TTT_pingding_10
+            #}
+
+            #INA_pingding_11 = {
+            #    frame = TTT_pingding_11
+            #}
+
+            #INA_pingding_12 = {
+            #    frame = TTT_pingding_12
+            #}
+        }
+        dynamic_lists = {
+            INA_PingDing_laws_history_list = {
+                array = INA_PingDing_laws_history
+                index = pdx
+                entry_container = INA_PingDing_laws_history_list_Entry
+                #value = INA_laws_history_list_id
+                change_scope = no
+            }
+            INA_PingDing_seat_diagram = {
+                array = INA_PingDing_seat_position_x
+                index = i
+                entry_container = INA_PingDing_seat_diagram_Entry
+                #value = INA_laws_history_list_id
+                change_scope = no
+            }
+        }
+    }
+}	

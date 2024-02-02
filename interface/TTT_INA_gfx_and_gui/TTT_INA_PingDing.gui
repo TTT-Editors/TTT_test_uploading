@@ -1,5 +1,4 @@
-guiTypes = 
-{
+guiTypes = {
 	containerWindowType = {
 		name = "INA_PingDing_use"
 		position = {
@@ -11,10 +10,9 @@ guiTypes =
 		buttonType = {
 			name = "INA_PingDing_use_button"
 			quadTextureSprite = "GFX_INA_PingDing_use_button"
-			scale = 0.8
 			position = {
-				x = 400
-				y = 15
+				x = 35
+				y = 70
 			}
 			pdx_tooltip = Test_Gui_tt
 			clicksound = click_default
@@ -23,33 +21,46 @@ guiTypes =
 	}
 
 	containerWindowType = {
-		name = "INA_PingDing_background"
+		name = "INA_PingDing_main"
 		position = {
 			x = 540
 			y = 200
 		}
 		size = { width = 1000 height = 650 }
+		#animation_type = linear
+		#animation_time = 1600
+		moveable = yes
 
 		background = {
 			name = "INA_PingDing_background_gfx"
 			quadTextureSprite = "GFX_inazuma_region"
 		}
+
+		iconType = {
+			name = "INA_PingDing_background_gfx_"
+			spriteType = "GFX_inazuma_region"
+			position = {
+				x = 0
+				y = 0
+			}
+			alwaystransparent = yes
+		}
 		instantTextBoxType = {
 			name = "INA_PingDing_title"
-			position = { x = 290 y = 10}
-			font = "TTT_special_font_title"
+			position = { x = 280 y = 14 }
+			font = "hoi_36header"
 			text = "INA_PingDing_title_use"
-			alwaystransparent = yes
-			maxHeight = 500
+			maxHeight = 40
 			maxWidth = 500
 			fixedsize = yes
 			orientation = UPPER_LEFT
+			pdx_tooltip = INA_PingDing_tt
 		}
 		buttonType = {
 			name = "INA_PingDing_exit"
 			position = {
-				x = 0
-				y = 0
+				x = 4
+				y = 4
 			}
 			scale = 0.8
 		    spriteType = "GFX_exit"
@@ -60,12 +71,11 @@ guiTypes =
 		buttonType = {
 			name = "INA_Emblem_Hiiragi_Clan_button"
 			quadTextureSprite = "GFX_Emblem_Hiiragi_Clan"
-			scale = 0.5
 			position = {
-				x = 55
-				y = 55
+				x = 44
+				y = 54
 			}
-			pdx_tooltip = INA_Emblem_Hiiragi_Clan_use_tt
+			pdx_tooltip = INA_Emblem_Hiiragi_Clan_tt
 			clicksound = click_default
 			oversound = ui_menu_over
 		}
@@ -73,269 +83,377 @@ guiTypes =
 		buttonType = {
 			name = "INA_Kamisato_Clan_button"
 			quadTextureSprite = "GFX_Kamisato_Clan"
-			scale = 0.5
 			position = {
-				x = 55
-				y = 460
+				x = 44
+				y = 449
 			}
-			pdx_tooltip = INA_Kamisato_Clan_use_tt
+			pdx_tooltip = INA_Kamisato_Clan_tt
 			clicksound = click_default
 			oversound = ui_menu_over
 		}
 		buttonType = {
 			name = "INA_Kujou_Clan_button"
 			quadTextureSprite = "GFX_Kujou_Clan"
-			scale = 0.5
 			position = {
-				x = 513
-				y = 55
+				x = 501
+				y = 60
 			}
-			pdx_tooltip = INA_Kujou_Clan_use_tt
+			pdx_tooltip = INA_Kujou_Clan_tt
 			clicksound = click_default
 			oversound = ui_menu_over
 		}
 		buttonType = {
 			name = "INA_Sangonomiya_Clan_button"
 			quadTextureSprite = "GFX_Sangonomiya_Clan"
-			scale = 0.5
 			position = {
-				x = 513
-				y = 460
+				x = 501
+				y = 462
 			}
-			pdx_tooltip = INA_Kujou_Clan_use_tt
+			pdx_tooltip = INA_Sangonomiya_Clan_tt
 			clicksound = click_default
 			oversound = ui_menu_over
 		}
-	}
-
-	containerWindowType = {
-		name = "INA_PingDing_laws_display_screen"
-		position = {
-			x = 665
-			y = 0
-		}
-		size = {
-			width = 334
-			height = 800
-		}
-	    iconType = {
-			name = "INA_adjournment"
-			spriteType = "GFX_INA_adjourment"
+        
+		containerWindowType = {
+			name = "INA_pingDing_seat"
 			position = {
-				x = 60
-				y = 40
+				x = 135
+				y = 120
 			}
-			scale = 0.9
-		}
-		instantTextBoxType = {
-			name = "INA_PingDing_state"
-			position = { x = 98 y = 320}
-			font = "TTT_special_font_title"
-			text = "[INA_PingDing_state]"
-			alwaystransparent = yes
-			maxHeight = 500
-			maxWidth = 500
-			fixedsize = yes
-			orientation = UPPER_LEFT
-		}
-	}
-	containerWindowType = {
-		name = "INA_PingDing_laws_history_window"
-		position = 
-		{
-			x = 712
-			y = 420
-		}
-		size = {
-			width = 255
-			height = 205
-		}
-		verticalScrollbar = "right_vertical_slider"
-		gridBoxType = {
-			name = "laws_history_list"
 			size = {
-				width = 240
+				width = 500
+				height = 500
+			}
+			#animation_type = linear
+		    #animation_time = 1600
+
+			iconType = {
+				name = "INA_PingDing"
+				spriteType = GFX_INA_PingDing
+				position = {
+					x = 0
+					y = 0
+				}
+				scale = 0.8
+				pdx_tooltip = INA_PingDing_tt
+			}
+	        gridboxtype = {
+				name = "INA_PingDing_seat_diagram"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 100%% height = 0 }
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+		containerWindowType = {
+			name = "INA_PingDing_laws_display_screen"
+			position = {
+				x = 665
+				y = 0
+			}
+			size = {
+				width = 334
+				height = 800
+			}
+			#animation_type = linear
+	    	#animation_time = 1600
+
+			iconType = {
+				name = "INA_adjournment"
+				spriteType = "GFX_INA_adjourment"
+				position = {
+					x = 58
+					y = 40
+				}
+				scale = 0.9
+			}
+			instantTextBoxType = {
+				name = "INA_PingDing_state"
+				position = { x = 58 y = 320}
+				font = "TTT_special_font_title"
+				text = "[INA_PingDing_state]"
+				alwaystransparent = yes
+				maxHeight = 500
+				maxWidth = 230
+				fixedsize = yes
+				orientation = UPPER_LEFT
+				format = centre
+			}
+		}
+		containerWindowType = {
+			name = "INA_PingDing_laws_history_window"
+			position = {
+				x = 711
+				y = 410
+			}
+			size = {
+				width = 256
 				height = 205
 			}
-			slotsize = {
-				width = 240
-				height = 60
+			#animation_type = linear
+			#animation_time = 1600
+			clipping = yes
+
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_pingding_empty"
+			} 
+			instantTextBoxType = {
+				name = "INA_PingDing_laws_history_title"
+				position = { x = 0 y = 8 }
+				font = "TTT_special_font_title"
+				text = "INA_PingDing_laws_history_title"
+				format = centre
+				maxWidth = 256
+				maxHeight = 24
+				fixedsize = yes
+				pdx_tooltip = ""
 			}
-			max_slots_horizontal = 1
-			add_horizontal = no
+			containerWindowType = {
+				name = "INA_PingDing_laws_history_window_0"
+				position = {
+					x = 10
+					y = 52
+				}
+				size = {
+					width = 250
+					height = 140
+				}
+				#animation_type = linear
+				#animation_time = 1600
+				clipping = yes
+
+				containerWindowType = {
+					name = "INA_PingDing_laws_history_window_0"
+					position = {
+						x = 0
+						y = 0
+					}
+					size = {
+						width = 250
+						height = 140
+					}
+					#clipping = yes
+					#Orientation = upper_left
+					#margin = { top = 10 bottom = 10 }
+					#horizontalScrollbar = "bottom_horizontal_slider"
+					scroll_wheel_factor = 20
+					smooth_scrolling = yes
+					verticalScrollbar = "right_vertical_slider"
+		
+					background = {
+						name = "Background"
+						quadTextureSprite = "GFX_pingding_empty"
+					}
+					gridBoxType = {
+						name = "INA_PingDing_laws_history_list"
+						position = { 
+							x = 0
+							y = 0
+						}
+						size = {
+							width = 250
+							height = 320
+						}
+						slotsize = {
+							width = 250
+							height = 38
+						}
+						max_slots_horizontal = 1
+						add_horizontal = no
+					}	
+				} 
+			} 
 		}
 	}
-    containerWindowType = {
-		name = "INA_pingDing_main"
+	containerWindowType = {
+		name = "INA_PingDing_seat_diagram_Entry"
 		position = {
-			x = 135
-			y = 120
+			x = 0
+			y = 0
 		}
-		size = {
-			width = 500
-			height = 500
-		}
-        iconType = {
-			name = "INA_PingDing"
-            spriteType = GFX_INA_PingDing
-			position = {
-				x = 0
-				y = 0
-			}
-			scale = 0.8
-		}
-		iconType = {
-			name = "INA_PingDing_RaiDen_mei_seat"
-			spriteType = GFX_INA_PingDing_Raiden_mei
-			position = {
-				x = 159
-				y = 0
-			}
-			scale = 0.8
-		}
+		#animation_type = linear
+		#animation_time = 1600
 
-		#第一席
 		iconType = {
-			name = "INA_pingding_1" 
-			quadTextureSprite = "GFX_INA_yihui_1" ##评定所第一席位
-			position =
-			{
-				x = 230
-				y = 20
-			}
-			scale = 0.8
-		}
-
-		#第二席 
-		iconType = {
-			name = "INA_pingding_2"
-			quadTextureSprite = "GFX_INA_yihui_2" ##评定所第二席位
-			position =
-			{
-				x = 290
-				y = 81
-			}
-			scale = 0.8
-		}
-
-		#第三席
-		icontype = {
-			name = "INA_pingding_3"
-			quadTextureSprite = "GFX_INA_yihui_3" ##评定所第三席位
-			position =
-			{
-				x = 318
-				y = 146
-			}
-			scale = 0.8
-		}
-
-		#第四席
-		iconType = {
-			name = "INA_pingding_4"
-			quadTextureSprite = "GFX_INA_yihui_4" ##评定所第四席位
-			position =
-			{
-				x = 308
-				y = 214
-			}
-			scale = 0.8
-		}
-
-		#第五席
-		iconType = {
-			name = "INA_pingding_5"
-			quadTextureSprite = "GFX_INA_yihui_5" ##评定所第五席位
-			position =
-			{
-				x = 260
-				y = 280
-			}
-			scale = 0.8
-		}
-
-		#第六席
-		iconType = {
-			name = "INA_pingding_6"
-			quadTextureSprite = "GFX_INA_yihui_6" ##评定所第六席位
-			position =
-			{
-				x = 194
-				y = 321
-			}
-			scale = 0.8
-		}
-
-		#第七席
-		iconType = {
-			name = "INA_pingding_7"
-			quadTextureSprite = "GFX_INA_yihui_7" ##评定所第七席位
-			position =
-			{
-				x = 124
-				y = 320
-			}
-			scale = 0.8
-		}
-
-		#第八席
-		iconType = {
-			name = "INA_pingding_8"
-			quadTextureSprite = "GFX_INA_yihui_8" ##评定所第八席位
-			position =
-			{
-				x = 59
-				y = 280
-			}
-			scale = 0.8
-		}
-
-		#第九席
-		iconType = {
-			name = "INA_pingding_9"
-			quadTextureSprite = "GFX_INA_yihui_9" ##评定所第九席位
-			position =
-			{
-				x = 10
-				y = 215
-			}
-			scale = 0.8
-		}
-
-		#第十席
-		iconType = {
-			name = "INA_pingding_10"
-			quadTextureSprite = "GFX_INA_yihui_10" ##评定所第十席位
-			position =
-			{
-				x = 1
-				y = 146
-			}
-			scale = 0.8
-		}
-
-		#第十一席
-		iconType = {
-			name = "INA_pingding_11"
-			quadTextureSprite = "GFX_INA_yihui_11" ##评定所第十一席位
-			position =
-			{
-				x = 29
-				y = 81
-			}
-			scale = 0.8
-		}
-
-		#第十二席
-		iconType = {
-			name = "INA_pingding_12"
-			quadTextureSprite = "GFX_INA_yihui_12" ##评定所第十二席位
-			position =
-			{
-				x = 92
-				y = 21
-			}
-			scale = 0.8
+			name = "INA_PingDing_seat_" 
+		    scale = 0.8
+			pdx_tooltip = INA_PingDing_seat_tt
 		}
 	}
+	containerWindowType = {
+		name = "INA_PingDing_laws_history_list_Entry"
+		position = {
+			x = 0
+			y = 0
+		}
+		#animation_type = linear
+		#animation_time = 1600
+		
+		instantTextBoxType = {
+			name = "INA_PingDing_laws_history_text"
+			position = { x = 0 y = 0 }
+			font = "hoi_24header"
+			text = "[INA_PingDing_laws_history_text]"
+			format = left
+			maxWidth = 250
+			maxHeight = 24
+			fixedsize = yes
+			pdx_tooltip = INA_PingDing_laws_history_tt
+		}
+	}
+
+    #九重代码,留作纪念
+	#iconType = {
+	#	name = "INA_PingDing_RaiDen_mei_seat"
+	#	spriteType = GFX_INA_PingDing_Raiden_mei
+	#	position = {
+	#		x = 159
+	#		y = 0
+	#	}
+	#	scale = 0.8
+	#}
+	#第一席
+	#iconType = {
+	#	name = "INA_pingding_1" 
+	#	quadTextureSprite = "GFX_INA_yihui_1" ##评定所第一席位
+	#	position = {
+	#		x = 230
+	#		y = 20
+	#	}
+    #scale = 0.8
+	#}
+
+	#第二席 
+	#iconType = {
+	#	name = "INA_pingding_2"
+	#	quadTextureSprite = "GFX_INA_yihui_2" ##评定所第二席位
+	#	position =
+	#	{
+	#		x = 290
+	#		y = 81
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第三席
+	#icontype = {
+	#	name = "INA_pingding_3"
+	#	quadTextureSprite = "GFX_INA_yihui_3" ##评定所第三席位
+	#	position =
+	#	{
+	#		x = 318
+	#		y = 146
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第四席
+	#iconType = {
+	#	name = "INA_pingding_4"
+	#	quadTextureSprite = "GFX_INA_yihui_4" ##评定所第四席位
+	#	position =
+	#	{
+	#		x = 308
+	#		y = 214
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第五席
+	#iconType = {
+	#	name = "INA_pingding_5"
+	#	quadTextureSprite = "GFX_INA_yihui_5" ##评定所第五席位
+	#	position =
+	#	{
+	#		x = 260
+	#		y = 280
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第六席
+	#iconType = {
+	#	name = "INA_pingding_6"
+	#	quadTextureSprite = "GFX_INA_yihui_6" ##评定所第六席位
+	#	position =
+	#	{
+	#		x = 194
+	#		y = 321
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第七席
+	#iconType = {
+	#	name = "INA_pingding_7"
+	#	quadTextureSprite = "GFX_INA_yihui_7" ##评定所第七席位
+	#	position =
+	#	{
+	#		x = 124
+	#		y = 320
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第八席
+	#iconType = {
+	#	name = "INA_pingding_8"
+	#	quadTextureSprite = "GFX_INA_yihui_8" ##评定所第八席位
+	#	position =
+	#	{
+	#		x = 59
+	#		y = 280
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第九席
+	#iconType = {
+	#	name = "INA_pingding_9"
+	#	quadTextureSprite = "GFX_INA_yihui_9" ##评定所第九席位
+	#	position =
+	#	{
+	#		x = 10
+	#		y = 215
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第十席
+	#iconType = {
+	#	name = "INA_pingding_10"
+	#	quadTextureSprite = "GFX_INA_yihui_10" ##评定所第十席位
+	#	position =
+	#	{
+	#		x = 1
+	#		y = 146
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第十一席
+	#iconType = {
+	#	name = "INA_pingding_11"
+	#	quadTextureSprite = "GFX_INA_yihui_11" ##评定所第十一席位
+	#	position =
+	#	{
+	#		x = 29
+	#		y = 81
+	#	}
+	#	scale = 0.8
+	#}
+
+	#第十二席
+	#iconType = {
+	#	name = "INA_pingding_12"
+	#	quadTextureSprite = "GFX_INA_yihui_12" ##评定所第十二席位
+	#	position =
+	#	{
+	#		x = 92
+	#		y = 21
+	#	}
+	#	scale = 0.8
+	#}
 }

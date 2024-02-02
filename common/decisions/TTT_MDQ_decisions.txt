@@ -69,6 +69,106 @@ MDQ_decisions_01 = {
 			activate_mission = MDQ_240_days_to_hell_without_LTM
 		}
 	}
+	MDQ_decisions_02_01 = {
+		available = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		#决议前提条件，这里需要完成这个国策
+		visible = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		#决议何时可见
+		ai_will_do = {
+			factor = 20
+		}
+		#ai倾向
+		fire_only_once = no		#决议是否只能使用一次
+		cost = 10		#决议使用消耗的政治点数
+		days_remove = 35		#决议持续天数
+		days_re_enable = 35		#决议复用天数（非一次性决议）
+		complete_effect = {
+		}
+		remove_effect = {
+			#持续天数结束后的效果
+			add_manpower = 4000
+		}
+	}
+	MDQ_decisions_02_02 = {
+		available = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		#决议前提条件，这里需要完成这个国策
+		visible = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		#决议何时可见
+		ai_will_do = {
+			factor = 20
+		}
+		#ai倾向
+		fire_only_once = no		#决议是否只能使用一次
+		cost = 10		#决议使用消耗的政治点数
+		days_remove = 35		#决议持续天数
+		days_re_enable = 35		#决议复用天数（非一次性决议）
+		complete_effect = {
+		}
+		remove_effect = {
+			#持续天数结束后的效果
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 400
+				producer = MDQ
+			}
+		}
+	}
+	MDQ_decisions_02_03 = {
+		available = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		visible = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 10
+		days_remove = 35
+		days_re_enable = 35
+		complete_effect = {
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 200
+				producer = MDQ
+			}
+		}
+	}
+	MDQ_decisions_02_04 = {
+		available = {
+			has_country_flag = MDQ_country_flag_01
+			has_war_support < 0.35
+		}
+		visible = {
+			has_country_flag = MDQ_country_flag_01
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		fire_only_once = no
+		cost = 30
+		days_remove = 35
+		days_re_enable = 35
+		complete_effect = {
+		}
+		remove_effect = {
+			add_war_support = 0.05
+		}
+	}
+}
+
+MDQ_decisions_03 = {
 	MDQ_240_days_to_hell_without_LTM = {
 		icon = infiltrate_state
 		allowed = {
@@ -208,6 +308,7 @@ MDQ_decisions_01 = {
 				news_event = {
 					id = global_news.64
 				}
+				country_event = { days = 1  id = MDQ_event.36 }
 				##################################################
 				#	News Event for MDQ lost
 				##################################################
@@ -224,7 +325,6 @@ MDQ_decisions_01 = {
 					    }
 					}
 					country_event = { days = 1  id = MDQ_event.24 }
-					country_event = { days = 2  id = MDQ_event.36 }
 				}
 			}
 			set_global_flag = TTT_warpeace_show_gui
@@ -288,109 +388,6 @@ MDQ_decisions_01 = {
 			##################################################
 		}
 	}
-}
-
-MDQ_decisions_02 = {
-	MDQ_decisions_02_01 = {
-		available = {
-			has_country_flag = MDQ_country_flag_01
-		}
-		#决议前提条件，这里需要完成这个国策
-		visible = {
-			has_country_flag = MDQ_country_flag_01
-		}
-		#决议何时可见
-		ai_will_do = {
-			factor = 20
-		}
-		#ai倾向
-		fire_only_once = no		#决议是否只能使用一次
-		cost = 10		#决议使用消耗的政治点数
-		days_remove = 35		#决议持续天数
-		days_re_enable = 35		#决议复用天数（非一次性决议）
-		complete_effect = {
-		}
-		remove_effect = {
-			#持续天数结束后的效果
-			add_manpower = 4000
-		}
-	}
-	MDQ_decisions_02_02 = {
-		available = {
-			has_country_flag = MDQ_country_flag_01
-		}
-		#决议前提条件，这里需要完成这个国策
-		visible = {
-			has_country_flag = MDQ_country_flag_01
-		}
-		#决议何时可见
-		ai_will_do = {
-			factor = 20
-		}
-		#ai倾向
-		fire_only_once = no		#决议是否只能使用一次
-		cost = 10		#决议使用消耗的政治点数
-		days_remove = 35		#决议持续天数
-		days_re_enable = 35		#决议复用天数（非一次性决议）
-		complete_effect = {
-		}
-		remove_effect = {
-			#持续天数结束后的效果
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 400
-				producer = MDQ
-			}
-		}
-	}
-	MDQ_decisions_02_03 = {
-		available = {
-			has_country_flag = MDQ_country_flag_01
-		}
-		visible = {
-			has_country_flag = MDQ_country_flag_01
-		}
-		ai_will_do = {
-			factor = 20
-		}
-		fire_only_once = no
-		cost = 10
-		days_remove = 35
-		days_re_enable = 35
-		complete_effect = {
-		}
-		remove_effect = {
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = 200
-				producer = MDQ
-			}
-		}
-	}
-	MDQ_decisions_02_04 = {
-		available = {
-			has_country_flag = MDQ_country_flag_01
-			has_war_support < 0.35
-		}
-		visible = {
-			has_country_flag = MDQ_country_flag_01
-		}
-		ai_will_do = {
-			factor = 20
-		}
-		fire_only_once = no
-		cost = 30
-		days_remove = 35
-		days_re_enable = 35
-		complete_effect = {
-		}
-		remove_effect = {
-			add_war_support = 0.05
-		}
-	}
-}
-
-MDQ_decisions_03 = {
 	MDQ_decisions_02_05 = {
 		#蒙德邦联在我们身后
 		fire_only_once = no

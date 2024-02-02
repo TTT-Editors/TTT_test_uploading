@@ -5,15 +5,40 @@ on_actions = {
 				limit = {
 					MDQ = {
 						has_war_with = QQR
-						NOT = { has_country_flag = MDQ_01_13_completed }
-						NOT = { has_country_flag = MDQ_event_15_happened }
+						NOT = {
+							has_country_flag = MDQ_01_13_completed
+						}
+						NOT = {
+							has_country_flag = MDQ_event_15_happened
+						}
 					}
 					QQR = {
 						controls_state = 39
 						controls_state = 40
 					}
 				}
-				MDQ = { country_event = { id = MDQ_event.15 } }
+				MDQ = {
+					country_event = {
+						id = MDQ_event.15
+					}
+				}
+			}
+		}
+	}
+	on_peace = {
+		effect = {
+			if = {
+				limit = {
+					MDQ = {
+						has_completed_focus = MDQ_02_08
+					}
+				}
+				MDQ = {
+					add_offsite_building = {
+						type = arms_factory
+						level = -1
+					}
+				}
 			}
 		}
 	}

@@ -20,6 +20,9 @@ MDQ_decisions_01 = {
 		days_mission_timeout = 240		#时间限制（测试用所以改成7天，上线前一定记得改回240天）
 		timeout_effect = {
 			#失败效果
+			hidden_effect = {
+				country_event = { days = 63  id = MDQ_event.35 }
+			}
 			add_stability = -0.2
 			add_war_support = -0.2
 			news_event = {
@@ -66,206 +69,6 @@ MDQ_decisions_01 = {
 			activate_mission = MDQ_240_days_to_hell_without_LTM
 		}
 	}
-	MDQ_240_days_to_hell_without_LTM = {
-		icon = infiltrate_state
-		allowed = {
-			always = no
-		}
-		available = {
-			OR = {
-				AND = {
-					QQR = {
-						controls_state = 35
-						controls_state = 36
-					}
-				}
-				AND = {
-					MDQ = {
-						controls_state = 37
-						controls_state = 38
-					}
-				}
-			}
-		}
-		highlight_states = {
-			highlight_states_trigger = {
-				OR = {
-					state = 37
-					state = 38
-				}
-			}
-		}
-		fire_only_once = yes
-		days_mission_timeout = 365
-		ai_will_do = {
-			factor = 100
-		}
-		cancel_trigger = {
-			QQR = {
-				exists = yes
-			}
-			OR = {
-				MOT = {
-					has_war_with = QQR
-				}
-				MDQ = {
-					NOT = {
-						has_war_with = QQR
-					}
-				}
-			}
-		}
-		complete_effect = {
-			if = {
-				limit = {
-					MDQ = {
-						controls_state = 37
-						controls_state = 38
-					}
-				}
-				log = "[GetDateText]: [Root.GetName]: Decision MDQ has won the ddup war"
-				#show peace
-				MDQ = {
-					save_global_event_target_as = winning_country
-				}
-				QQR = {
-					save_global_event_target_as = losing_country
-				}
-				MDQ = {
-					annex_country = {
-						target = QQR
-						transfer_troops = no
-					}
-				}
-				MOT = {
-					set_autonomy = {
-						target = MDQ
-						autonomous_state = mot_military_areas
-					}
-				}
-				MOT = {
-					add_to_faction = MDQ
-				}
-				every_state = {
-					limit = {
-						is_core_of = QQR
-					}
-					remove_core_of = QQR
-				}
-				##################################################
-				#	News Event for MDQ win
-				##################################################
-				##################################################
-				#	Different ending for different army-civilian harmony
-				##################################################
-				if = {
-					limit = {
-					}
-				}
-			}
-			if = {
-				limit = {
-					QQR = {
-						controls_state = 35
-						controls_state = 36
-					}
-				}
-				log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
-				#show peace
-				QQR = {
-					save_global_event_target_as = winning_country
-				}
-				MDQ = {
-					save_global_event_target_as = losing_country
-				}
-				MDQ = {
-					white_peace = QQR
-					set_country_flag = MDQ_has_lost_ddup_war
-					every_owned_state = {
-						limit = {
-							NOT = {
-								OR = {
-									state = 35
-									state = 36
-								}
-							}
-						}
-						QQR = {
-							transfer_state = PREV
-						}
-					}
-				}
-				##################################################
-				#	News Event for MDQ lost
-				##################################################
-				##################################################
-				#	Different ending for different army-civilian harmony
-				##################################################
-				if = {
-					limit = {
-					}
-				}
-			}
-			set_global_flag = TTT_warpeace_show_gui
-			add_to_variable = {
-				global.TTT_warpeace_dirty = 1
-			}
-			recalculate_MDQ_core = yes
-		}
-		timeout_effect = {
-			#Stalemate
-			log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
-			#show peace
-			set_global_flag = TTT_warpeace_show_gui
-			QQR = {
-				save_global_event_target_as = winning_country
-			}
-			MDQ = {
-				save_global_event_target_as = losing_country
-			}
-			add_to_variable = {
-				global.TTT_warpeace_dirty = 1
-			}
-			MDQ = {
-				every_owned_state = {
-					limit = {
-						is_controlled_by = QQR
-					}
-					QQR = {
-						transfer_state = PREV
-					}
-				}
-			}
-			QQR = {
-				every_owned_state = {
-					limit = {
-						is_controlled_by = MDQ
-					}
-					MDQ = {
-						transfer_state = PREV
-					}
-				}
-			}
-			MDQ = {
-				transfer_state = 35
-				transfer_state = 36
-			}
-			QQR = {
-				transfer_state = 37
-				transfer_state = 38
-			}
-			MDQ = {
-				white_peace = QQR
-			}
-			recalculate_MDQ_core = yes
-			##################################################
-			#	News Event for stalemate
-			##################################################
-		}
-	}
-}
-
-MDQ_decisions_02 = {
 	MDQ_decisions_02_01 = {
 		available = {
 			has_country_flag = MDQ_country_flag_01
@@ -366,6 +169,225 @@ MDQ_decisions_02 = {
 }
 
 MDQ_decisions_03 = {
+	MDQ_240_days_to_hell_without_LTM = {
+		icon = infiltrate_state
+		allowed = {
+			always = no
+		}
+		available = {
+			OR = {
+				AND = {
+					QQR = {
+						controls_state = 35
+						controls_state = 36
+					}
+				}
+				AND = {
+					MDQ = {
+						controls_state = 37
+						controls_state = 38
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 37
+					state = 38
+				}
+			}
+		}
+		fire_only_once = yes
+		days_mission_timeout = 365
+		ai_will_do = {
+			factor = 100
+		}
+		cancel_trigger = {
+			QQR = {
+				exists = yes
+			}
+			OR = {
+				MOT = {
+					has_war_with = QQR
+				}
+				MDQ = {
+					NOT = {
+						has_war_with = QQR
+					}
+				}
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					MDQ = {
+						controls_state = 37
+						controls_state = 38
+					}
+				}
+				log = "[GetDateText]: [Root.GetName]: Decision MDQ has won the ddup war"
+				#show peace
+				MDQ = {
+					save_global_event_target_as = winning_country
+				}
+				QQR = {
+					save_global_event_target_as = losing_country
+				}
+				MDQ = {
+					annex_country = {
+						target = QQR
+						transfer_troops = no
+					}
+				}
+				MOT = {
+					set_autonomy = {
+						target = MDQ
+						autonomous_state = mot_military_areas
+					}
+				}
+				MOT = {
+					add_to_faction = MDQ
+				}
+				every_state = {
+					limit = {
+						is_core_of = QQR
+					}
+					remove_core_of = QQR
+				}
+				news_event = {
+					id = global_news.62
+				}
+				##################################################
+				#	News Event for MDQ win
+				##################################################
+				##################################################
+				#	Different ending for different army-civilian harmony
+				##################################################
+				if = {
+					limit = {
+						check_variable = {
+							MDQ_junmin_tuanjiedu_value = 5
+						}
+					}
+					country_event = { days = 1  id = MDQ_event.28 }
+				}
+			}
+			if = {
+				limit = {
+					QQR = {
+						controls_state = 35
+						controls_state = 36
+					}
+				}
+				log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
+				#show peace
+				QQR = {
+					save_global_event_target_as = winning_country
+				}
+				MDQ = {
+					save_global_event_target_as = losing_country
+				}
+				MDQ = {
+					white_peace = QQR
+					set_country_flag = MDQ_has_lost_ddup_war
+					every_owned_state = {
+						limit = {
+							NOT = {
+								OR = {
+									state = 35
+									state = 36
+								}
+							}
+						}
+						QQR = {
+							transfer_state = PREV
+						}
+					}
+				}
+				news_event = {
+					id = global_news.64
+				}
+				country_event = { days = 1  id = MDQ_event.36 }
+				##################################################
+				#	News Event for MDQ lost
+				##################################################
+				##################################################
+				#	Different ending for different army-civilian harmony
+				##################################################
+				if = {
+					limit = {
+						OR = {
+						check_variable = {
+							MDQ_junmin_tuanjiedu_value = 1
+						    }
+						has_country_flag = MDQ_02_20_flag
+					    }
+					}
+					country_event = { days = 1  id = MDQ_event.24 }
+				}
+			}
+			set_global_flag = TTT_warpeace_show_gui
+			add_to_variable = {
+				global.TTT_warpeace_dirty = 1
+			}
+			recalculate_MDQ_core = yes
+		}
+		timeout_effect = {
+			#Stalemate
+			log = "[GetDateText]: [Root.GetName]: Decision MDQ has lost the ddup war"
+			#show peace
+			set_global_flag = TTT_warpeace_show_gui
+			QQR = {
+				save_global_event_target_as = winning_country
+			}
+			MDQ = {
+				save_global_event_target_as = losing_country
+			}
+			add_to_variable = {
+				global.TTT_warpeace_dirty = 1
+			}
+			MDQ = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = QQR
+					}
+					QQR = {
+						transfer_state = PREV
+					}
+				}
+			}
+			QQR = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = MDQ
+					}
+					MDQ = {
+						transfer_state = PREV
+					}
+				}
+			}
+			MDQ = {
+				transfer_state = 35
+				transfer_state = 36
+			}
+			QQR = {
+				transfer_state = 37
+				transfer_state = 38
+			}
+			MDQ = {
+				white_peace = QQR
+			}
+			recalculate_MDQ_core = yes
+			country_event = { days = 2  id = MDQ_event.37 }
+			news_event = {
+				id = global_news.63
+			}
+			##################################################
+			#	News Event for stalemate
+			##################################################
+		}
+	}
 	MDQ_decisions_02_05 = {
 		#蒙德邦联在我们身后
 		fire_only_once = no
@@ -532,15 +554,18 @@ MDQ_decisions_03 = {
 				}
 			}
 			custom_trigger_tooltip = {
-				tooltip = MDQ_02_10_tt
-				NOT = {
-					country_exists = NNG
-				}
-			}
-			custom_trigger_tooltip = {
 				tooltip = MDQ_decisions_02_06_tt3
 				check_variable = {
 					MDQ_decisions_02_08_value < 6
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
 				}
 			}
 		}
@@ -550,6 +575,15 @@ MDQ_decisions_03 = {
 				tooltip = MDQ_decisions_02_06_tt3
 				check_variable = {
 					MDQ_decisions_02_08_value < 6
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
 				}
 			}
 		}
@@ -735,6 +769,7 @@ MDQ_decisions_03 = {
 		}
 		activation = {
 			has_country_flag = MDQ_decisions_03_01_flag
+			NOT = { has_country_flag = remove_MDQ_decisions_03_02_flag }
 		}
 		days_mission_timeout = 90
 		is_good = no
@@ -759,6 +794,7 @@ MDQ_decisions_03 = {
 			}
 			add_war_support = -0.1
 			remove_mission = MDQ_decisions_03_02
+			set_country_flag = remove_MDQ_decisions_03_02_flag
 		}
 		timeout_effect = {
 			QQR = {
@@ -770,6 +806,7 @@ MDQ_decisions_03 = {
 			add_war_support = -0.1
 			set_country_flag = MDQ_decisions_03_02_flag
 			remove_mission = MDQ_decisions_03_02
+			set_country_flag = remove_MDQ_decisions_03_02_flag
 		}
 		ai_will_do = {
 			base = 100
@@ -820,6 +857,7 @@ MDQ_decisions_03 = {
 		}
 		activation = {
 			has_country_flag = MDQ_decisions_03_03_flag
+			NOT = { has_country_flag = remove_MDQ_decisions_03_04_flag }
 		}
 		days_mission_timeout = 90
 		is_good = no
@@ -844,6 +882,7 @@ MDQ_decisions_03 = {
 			}
 			add_war_support = -0.1
 			remove_mission = MDQ_decisions_03_04
+			set_country_flag = remove_MDQ_decisions_03_04_flag
 		}
 		timeout_effect = {
 			QQR = {
@@ -855,6 +894,7 @@ MDQ_decisions_03 = {
 			add_war_support = -0.1
 			set_country_flag = MDQ_decisions_03_02_flag
 			remove_mission = MDQ_decisions_03_04
+			set_country_flag = remove_MDQ_decisions_03_04_flag
 		}
 		ai_will_do = {
 			base = 100
@@ -872,6 +912,15 @@ MDQ_decisions_03 = {
 		}
 		activation = {
 			has_country_flag = MDQ_02_12_flag
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
 		}
 		days_mission_timeout = 30
 		is_good = no
@@ -883,8 +932,13 @@ MDQ_decisions_03 = {
 					}
 				}
 				custom_trigger_tooltip = {
-					tooltip = MDQ_decisions_03_06_tt	
-					country_exists = NNG	
+					tooltip = MDQ_02_10_tt
+					NOT = {
+						OR = {
+							has_global_flag=Liyue_Civil_War
+							has_global_flag=Liyue_Civil_War_Coming
+						}
+					}
 				}
 			}
 		}
@@ -959,6 +1013,15 @@ MDQ_decisions_03 = {
 		}
 		activation = {
 			has_country_flag = MDQ_02_13_flag
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
 		}
 		days_mission_timeout = 30
 		is_good = no
@@ -970,8 +1033,13 @@ MDQ_decisions_03 = {
 					}
 				}
 				custom_trigger_tooltip = {
-					tooltip = MDQ_decisions_03_06_tt	
-					country_exists = NNG	
+					tooltip = MDQ_02_10_tt
+					NOT = {
+						OR = {
+							has_global_flag=Liyue_Civil_War
+							has_global_flag=Liyue_Civil_War_Coming
+						}
+					}
 				}
 			}
 		}

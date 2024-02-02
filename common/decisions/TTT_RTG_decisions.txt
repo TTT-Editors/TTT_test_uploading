@@ -161,8 +161,6 @@ RTG_special_categories = {
 	}
 }
 
-
-
 RTG_develop_capital = {
 	RTG_expand_yuan_capital = {
 		#开凿渊都
@@ -177,8 +175,8 @@ RTG_develop_capital = {
 		}
 		modifier = {
 			civilian_factory_use = 3
-			political_power_gain = -0.10
-			production_speed_buildings_factor = -0.10
+			political_power_gain = -0.1
+			production_speed_buildings_factor = -0.1
 			consumer_goods_factor = 0.05
 		}
 		available = {
@@ -1143,12 +1141,7 @@ RTG_mosun = {
 			}
 			has_country_flag = save_our_people_immed
 		}
-		custom_cost_trigger = {
-			original_tag = RTG
-		}
-		custom_cost_text = RTG_paichujiuyuandui_cost_tt
 		available = {
-			command_power > 9
 		}
 		cost = 20
 		fire_only_once = yes
@@ -1166,12 +1159,7 @@ RTG_mosun = {
 		visible = {
 			has_country_flag = save_our_people_immed
 		}
-		custom_cost_trigger = {
-			original_tag = RTG
-		}
-		custom_cost_text = RTG_paichujiuyuandui_cost_tt
 		available = {
-			command_power > 9
 			has_country_flag = RTG_paichujiuyuandui_yes
 		}
 		cost = 20
@@ -1533,8 +1521,10 @@ RTG_huanghunxianli_jizhi = {
 			has_war_support < 0.51
 		}
 		visible = {
-			has_country_flag = RTG_unlock_second_stage_poster	
-			NOT = { has_country_flag = RTG_guyou_flag }
+			has_country_flag = RTG_unlock_second_stage_poster
+			NOT = {
+				has_country_flag = RTG_guyou_flag
+			}
 		}
 		days_remove = 70
 		cost = 20
@@ -1575,7 +1565,9 @@ RTG_huanghunxianli_jizhi = {
 		}
 		visible = {
 			has_country_flag = RTG_unlock_second_stage_poster
-			NOT = { has_country_flag = RTG_guyou_flag }
+			NOT = {
+				has_country_flag = RTG_guyou_flag
+			}
 		}
 		days_remove = 140
 		cost = 10
@@ -1616,7 +1608,9 @@ RTG_huanghunxianli_jizhi = {
 		}
 		visible = {
 			has_country_flag = RTG_unlock_second_stage_poster
-			NOT = { has_country_flag = RTG_guyou_flag }
+			NOT = {
+				has_country_flag = RTG_guyou_flag
+			}
 		}
 		days_remove = 140
 		cost = 20
@@ -1674,11 +1668,16 @@ RTG_huanghunxianli_jizhi = {
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_9 = { #帝君在呼唤着我们
+	X_RTG_propaganda_9 = {
+		#帝君在呼唤着我们
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { original_tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			original_tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1696,19 +1695,28 @@ RTG_huanghunxianli_jizhi = {
 			war_support_weekly = 0.005
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 9 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 9
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 9 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 9
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_10 = { #保卫繁荣的契约
+	X_RTG_propaganda_10 = {
+		#保卫繁荣的契约
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { original_tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			original_tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1726,19 +1734,28 @@ RTG_huanghunxianli_jizhi = {
 			surrender_limit = 0.1
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 10 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 10
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 10 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 10
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_11 = { #保卫勤劳的契约”
+	X_RTG_propaganda_11 = {
+		#保卫勤劳的契约”
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1754,22 +1771,31 @@ RTG_huanghunxianli_jizhi = {
 		cost = 10
 		modifier = {
 			industrial_capacity_factory = 0.1
-	        industrial_capacity_dockyard = 0.1
+			industrial_capacity_dockyard = 0.1
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 11 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 11
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 11 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 11
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_12 = { # 保卫黄金的契约
+	X_RTG_propaganda_12 = {
+		# 保卫黄金的契约
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { original_tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			original_tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1782,25 +1808,33 @@ RTG_huanghunxianli_jizhi = {
 			has_country_flag = RTG_guyou_flag
 		}
 		days_remove = 140
-	
 		cost = 10
 		modifier = {
 			consumer_goods_factor = -0.05
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 12 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 12
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 12 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 12
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_13 = { #为璃月与帝君献上最后一滴鲜血
+	X_RTG_propaganda_13 = {
+		#为璃月与帝君献上最后一滴鲜血
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { original_tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			original_tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1813,7 +1847,6 @@ RTG_huanghunxianli_jizhi = {
 			has_country_flag = RTG_guyou_flag
 		}
 		days_remove = 140
-		
 		cost = 10
 		modifier = {
 			army_org_factor = 0.05
@@ -1822,19 +1855,28 @@ RTG_huanghunxianli_jizhi = {
 			pocket_penalty = -0.2
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 13 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 13
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 13 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 13
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_14 = { #消灭侵略者
+	X_RTG_propaganda_14 = {
+		#消灭侵略者
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1848,32 +1890,40 @@ RTG_huanghunxianli_jizhi = {
 			has_war_with = ZDG
 		}
 		days_remove = 140
-		
 		cost = 10
 		modifier = {
-            conscription_factor = 0.15
-            experience_loss_factor = -0.25
-			mobilization_speed = 0.10
+			conscription_factor = 0.15
+			experience_loss_factor = -0.25
+			mobilization_speed = 0.1
 		}
 		targeted_modifier = {
 			tag = ZDG
-			attack_bonus_against = 0.10
-			defense_bonus_against = 0.10
+			attack_bonus_against = 0.1
+			defense_bonus_against = 0.1
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 14 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 14
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 14 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 14
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_15 = { #保卫璃月港
+	X_RTG_propaganda_15 = {
+		#保卫璃月港
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { original_tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			original_tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1891,38 +1941,58 @@ RTG_huanghunxianli_jizhi = {
 		days_remove = 140
 		cost = 10
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 15 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 15
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 			51 = {
-			add_dynamic_modifier = { modifier = RTG_baowei_liyuegang }
-		    }
+				add_dynamic_modifier = {
+					modifier = RTG_baowei_liyuegang
+				}
+			}
 			87 = {
-				add_dynamic_modifier = { modifier = RTG_baowei_liyuegang }
+				add_dynamic_modifier = {
+					modifier = RTG_baowei_liyuegang
+				}
 			}
 			50 = {
-				add_dynamic_modifier = { modifier = RTG_baowei_liyuegang }
+				add_dynamic_modifier = {
+					modifier = RTG_baowei_liyuegang
+				}
 			}
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 15 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 15
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
-			
 			51 = {
-			remove_dynamic_modifier = { modifier = RTG_baowei_liyuegang }
+				remove_dynamic_modifier = {
+					modifier = RTG_baowei_liyuegang
+				}
 			}
 			87 = {
-			remove_dynamic_modifier = { modifier = RTG_baowei_liyuegang }
+				remove_dynamic_modifier = {
+					modifier = RTG_baowei_liyuegang
+				}
 			}
 			50 = {
-			remove_dynamic_modifier = { modifier = RTG_baowei_liyuegang }
+				remove_dynamic_modifier = {
+					modifier = RTG_baowei_liyuegang
+				}
 			}
 		}
 	}
-	X_RTG_propaganda_16 = { #岩王帝君的呼唤
+	X_RTG_propaganda_16 = {
+		#岩王帝君的呼唤
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { original_tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			original_tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1935,26 +2005,34 @@ RTG_huanghunxianli_jizhi = {
 			has_country_flag = RTG_guyou_flag
 		}
 		days_remove = 140
-		
 		cost = 10
 		modifier = {
 			conscription_factor = 0.25
 			training_time_factor = 0.2
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 16 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 16
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 16 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 16
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
-	X_RTG_propaganda_17 = { # “新璃月就在眼前！
+	X_RTG_propaganda_17 = {
+		# “新璃月就在眼前！
 		priority = 2
 		icon = eng_propaganda_campaigns
-		ai_will_do = { factor = 10 }
-		allowed = { original_tag = RTG }
+		ai_will_do = {
+			factor = 10
+		}
+		allowed = {
+			original_tag = RTG
+		}
 		available = {
 			X_RTG_propaganda_poster_slot_available = yes
 			custom_trigger_tooltip = {
@@ -1962,9 +2040,9 @@ RTG_huanghunxianli_jizhi = {
 				has_global_flag = Liyue_Civil_War
 			}
 			has_war = yes
-			any_country = {								
+			any_country = {
 				has_war_with = ROOT
-                surrender_progress > 0.2			
+				surrender_progress > 0.2
 			}
 		}
 		visible = {
@@ -1972,7 +2050,6 @@ RTG_huanghunxianli_jizhi = {
 			has_country_flag = RTG_shouxu_zhiyue_flag
 		}
 		days_remove = 140
-		
 		cost = 75
 		modifier = {
 			consumer_goods_factor = 0.05
@@ -1982,11 +2059,15 @@ RTG_huanghunxianli_jizhi = {
 			breakthrough_factor = 0.05
 		}
 		complete_effect = {
-			set_variable = { X_RTG_new_propaganda_campaign = 17 }
+			set_variable = {
+				X_RTG_new_propaganda_campaign = 17
+			}
 			X_RTG_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			set_variable = { X_RTG_propaganda_campaign_to_remove = 17 }
+			set_variable = {
+				X_RTG_propaganda_campaign_to_remove = 17
+			}
 			X_RTG_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
@@ -2101,13 +2182,13 @@ liyue_civil_war_decisions = {
 		}
 		visible = {
 			has_completed_focus = RTG_zhishangyunjian
-			XRG = {		
+			XRG = {
 				exists = yes
 				is_subject = no
 				NOT = {
 					is_in_faction_with = RTG
 					has_war_with = RTG
-				}	
+				}
 			}
 		}
 		available = {
@@ -2135,13 +2216,13 @@ liyue_civil_war_decisions = {
 		}
 		visible = {
 			has_completed_focus = RTG_mihefenqi
-			LYU = {		
+			LYU = {
 				exists = yes
 				is_subject = no
 				NOT = {
 					is_in_faction_with = RTG
 					has_war_with = RTG
-				}	
+				}
 			}
 		}
 		available = {
@@ -2175,135 +2256,135 @@ liyue_civil_war_decisions = {
 			OR = {
 				AND = {
 					87 = {
-					controller = {
-					is_in_faction_with = RTG
-				        }
-				    }
+						controller = {
+							is_in_faction_with = RTG
+						}
+					}
 					51 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					50 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					52 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					53 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					70 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					54 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					55 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					56 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					59 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					60 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					71 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
 					}
 					69 = {
 						controller = {
-						is_in_faction_with = RTG
+							is_in_faction_with = RTG
 						}
-					}			
+					}
 				}
 				AND = {
 					87 = {
 						controller = {
-						original_tag = RTG
-							}
+							original_tag = RTG
 						}
-						51 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					51 = {
+						controller = {
+							original_tag = RTG
 						}
-						50 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					50 = {
+						controller = {
+							original_tag = RTG
 						}
-						52 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					52 = {
+						controller = {
+							original_tag = RTG
 						}
-						53 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					53 = {
+						controller = {
+							original_tag = RTG
 						}
-						70 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					70 = {
+						controller = {
+							original_tag = RTG
 						}
-						54 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					54 = {
+						controller = {
+							original_tag = RTG
 						}
-						55 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					55 = {
+						controller = {
+							original_tag = RTG
 						}
-						56 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					56 = {
+						controller = {
+							original_tag = RTG
 						}
-						59 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					59 = {
+						controller = {
+							original_tag = RTG
 						}
-						60 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					60 = {
+						controller = {
+							original_tag = RTG
 						}
-						71 = {
-							controller = {
-								original_tag = RTG
-							}
+					}
+					71 = {
+						controller = {
+							original_tag = RTG
 						}
-						69 = {
-							controller = {
-								original_tag = RTG
+					}
+					69 = {
+						controller = {
+							original_tag = RTG
 						}
 					}
 				}
@@ -2318,9 +2399,13 @@ liyue_civil_war_decisions = {
 			news_event = {
 				id = retuo_juanshu_news.5
 			}
-			set_variable = { RTG_xuanchuanhaibaolanwei = 3 }
+			set_variable = {
+				RTG_xuanchuanhaibaolanwei = 3
+			}
 			custom_effect_tooltip = RTG_unlock_second_slot_tt
-			set_variable = { RTG_juanshuxian_xianzhi = 2 }
+			set_variable = {
+				RTG_juanshuxian_xianzhi = 2
+			}
 			if = {
 				limit = {
 					has_idea = RTG_nanmin_guimo
@@ -2349,18 +2434,18 @@ liyue_civil_war_decisions = {
 				}
 			}
 			set_cosmetic_tag = RTCW
-			set_country_flag = RTG_shouxu_zhiyue_flag 
-			set_country_flag = RTG_unlock_third_slot 	
+			set_country_flag = RTG_shouxu_zhiyue_flag
+			set_country_flag = RTG_unlock_third_slot
 		}
 	}
 	RTG_xuangao_lyuneizhanjieshu = {
 		#宣告璃月内战结束
 		visible = {
-		    original_tag = RTG
+			original_tag = RTG
 			is_subject = no
 			is_faction_leader = yes
 		}
-        available = {
+		available = {
 			LYU = {
 				or = {
 					exists = no
@@ -2373,7 +2458,7 @@ liyue_civil_war_decisions = {
 					is_in_faction_with = RTG
 				}
 			}
-			ZDG = {		
+			ZDG = {
 				exists = no
 			}
 			KQG = {
@@ -2407,16 +2492,43 @@ liyue_civil_war_decisions = {
 			base = 100
 		}
 		complete_effect = {
-			annex_country = { target = LYU transfer_troops = yes }
-			annex_country = { target = ANG transfer_troops = yes }
-			annex_country = { target = KQG transfer_troops = yes }
-			annex_country = { target = NNG transfer_troops = yes }
-			annex_country = { target = XOG transfer_troops = yes }
-			annex_country = { target = XRG transfer_troops = yes }
+			annex_country = {
+				target = LYU
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = ANG
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = KQG
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = NNG
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = XOG
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = XRG
+				transfer_troops = yes
+			}
 			hidden_effect = {
-				country_event = { days = 21  id = retuo_juanshu.26 }
-				country_event = { days = 35  id = retuo_juanshu.25 }
-				country_event = { days = 1  id = super.24 }
+				country_event = {
+					days = 21
+					id = retuo_juanshu.26
+				}
+				country_event = {
+					days = 35
+					id = retuo_juanshu.25
+				}
+				country_event = {
+					days = 1
+					id = super.24
+				}
 			}
 			if = {
 				limit = {
@@ -2427,7 +2539,6 @@ liyue_civil_war_decisions = {
 					remove_idea = RTG_zhongzu_maodun_4
 				}
 			}
-			
 		}
 	}
 }

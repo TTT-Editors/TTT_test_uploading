@@ -449,31 +449,37 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
-		completion_reward = {	
-				if = {
-					limit = {
-						NOT = {
-							has_template = "西风骑士团军区辅助部队"
-						}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "西风骑士团军区辅助部队"
 					}
-					division_template = {
-						name = "西风骑士团军区辅助部队"
-						priority = 1
-						is_locked = no
-						division_names_group = MDQ_INF_03
-						regiments = {
-							militia = { x = 0 y = 0 }
-							militia = { x = 0 y = 1 }
+				}
+				division_template = {
+					name = "西风骑士团军区辅助部队"
+					priority = 1
+					is_locked = no
+					division_names_group = MDQ_INF_03
+					regiments = {
+						militia = {
+							x = 0
+							y = 0
+						}
+						militia = {
+							x = 0
+							y = 1
 						}
 					}
 				}
-				capital_scope = {
-					create_unit = {
+			}
+			capital_scope = {
+				create_unit = {
 					division = "division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.5"
 					owner = MDQ
 					count = 3
 				}
-			}		
+			}
 		}
 	}
 	focus = {
@@ -740,17 +746,19 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 50
-            add_war_support = 0.05
+			add_war_support = 0.05
 			if = {
 				limit = {
-					NOT = { has_country_flag = MDQ_01_09_flag }
-				}			
+					NOT = {
+						has_country_flag = MDQ_01_09_flag
+					}
+				}
 				MOT = {
 					country_event = {
 						id = MDQ_event.9
 						days = 1
 					}
-				}		    
+				}
 			}
 		}
 	}
@@ -769,9 +777,9 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_war_support = 0.10
-			add_stability = 0.10
-			custom_effect_tooltip = TTT_junshifazhanchengdu_bad
+			add_war_support = 0.1
+			add_stability = 0.1
+			custom_effect_tooltip = TTT_zhengfufazhanchengdu_bad
 		}
 	}
 	focus = {
@@ -830,6 +838,14 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = MDQ_02_06_flag
 			unlock_decision_tooltip = MDQ_decisions_02_07
+			DSC = {
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = "MDQ"
+		            value = 900
+				}
+				add_ideas = MDQ_idea_0_24
+			}
 		}
 	}
 	focus = {
@@ -851,7 +867,7 @@ focus_tree = {
 				character = MDQ_Zhuangyang
 				slot = political_advisor
 				trait = MDQ_yuliyuegang_delianxizhe
-		   }
+			}
 			if = {
 				limit = {
 					has_idea = MDQ_Zhuangyang
@@ -860,7 +876,9 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
-					NOT = { has_idea = MDQ_Zhuangyang }
+					NOT = {
+						has_idea = MDQ_Zhuangyang
+					}
 				}
 				add_ideas = MDQ_Zhuangyang
 			}
@@ -873,7 +891,7 @@ focus_tree = {
 		icon = GFX_goal_MDQ_xinan
 		x = 7
 		y = 5
-		cost = 7
+		cost = 14
 		prerequisite = {
 			focus = MDQ_02_06
 		}
@@ -885,6 +903,11 @@ focus_tree = {
 		completion_reward = {
 			unlock_decision_tooltip = MDQ_decisions_02_10
 			set_country_flag = MDQ_02_08_tt
+			add_offsite_building = {
+				type = arms_factory
+				level = 1
+			}
+			custom_effect_tooltip = MDQ_02_08_tt
 		}
 	}
 	focus = {
@@ -918,7 +941,7 @@ focus_tree = {
 		}
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = MDQ_02_10_tt	
+				tooltip = MDQ_02_10_tt
 				NOT = {
 					country_exists = NNG
 				}
@@ -929,7 +952,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
+			add_timed_idea = {
+				idea = MDQ_idea_0_21
+				days = 120
+			}
 		}
 	}
 	focus = {
@@ -948,7 +974,9 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			
+			MOT = {
+				country_event = { days = 1  id = MDQ_event.31 }
+			}
 		}
 	}
 	focus = {
@@ -956,7 +984,7 @@ focus_tree = {
 		icon = GFX_goal_MDQ_zc
 		x = 2
 		y = 6
-		cost = 7
+		cost = 28
 		prerequisite = {
 			focus = MDQ_02_10
 		}
@@ -964,11 +992,14 @@ focus_tree = {
 			focus = MDQ_02_13
 		}
 		available = {
-            has_idea = MDQ_Zhuangyang
+			has_idea = MDQ_Zhuangyang
 			custom_trigger_tooltip = {
-				tooltip = MDQ_02_10_tt	
+				tooltip = MDQ_02_10_tt
 				NOT = {
-					country_exists = NNG
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
 				}
 			}
 		}
@@ -986,7 +1017,7 @@ focus_tree = {
 		icon = GFX_goal_MDQ_maoxian
 		x = 4
 		y = 6
-		cost = 7
+		cost = 28
 		prerequisite = {
 			focus = MDQ_02_10
 		}
@@ -994,14 +1025,17 @@ focus_tree = {
 			focus = MDQ_02_12
 		}
 		available = {
-		has_idea = MDQ_Zhuangyang
-		custom_trigger_tooltip = {
-			tooltip = MDQ_02_10_tt	
-			NOT = {
-				country_exists = NNG
+			has_idea = MDQ_Zhuangyang
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
 				}
 			}
-		has_country_flag = MDQ_country_flag_01
+			has_country_flag = MDQ_country_flag_01
 		}
 		ai_will_do = {
 			factor = 1
@@ -1028,7 +1062,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_popularity = { ideology = authoritarianism popularity = 0.10 }
+			add_popularity = {
+				ideology = authoritarianism
+				popularity = 0.1
+			}
 			add_ideas = MDQ_idea_0_8
 		}
 	}
@@ -1053,7 +1090,10 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			country_event = { days = 1  id = MDQ_event.17 }
+			country_event = {
+				days = 1
+				id = MDQ_event.17
+			}
 			custom_effect_tooltip = MDQ_02_15_tt
 			unlock_decision_tooltip = MDQ_decisions_03_01
 			unlock_decision_tooltip = MDQ_decisions_03_03
@@ -1132,7 +1172,9 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
-					NOT = { has_idea = MDQ_idea_0_4 }
+					NOT = {
+						has_idea = MDQ_idea_0_4
+					}
 				}
 				swap_ideas = {
 					add_idea = MDQ_idea_0_19
@@ -1161,6 +1203,15 @@ focus_tree = {
 			custom_effect_tooltip = MDQ_02_24_tt
 			add_ideas = Gear_operation
 			add_ideas = balance_laws
+			add_to_variable = {
+				MDQ_junmin_tuanjiedu_value = -1
+			}
+			clamp_temp_variable = {
+				var = MDQ_junmin_tuanjiedu_value
+				min = 1
+				max = 5
+			}
+			set_country_flag = MDQ_02_20_flag
 		}
 	}
 	focus = {
@@ -1192,8 +1243,20 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_manpower = 200000
-            add_timed_idea = { idea = MDQ_idea_0_15 days = 70 }
+			add_manpower = -200000
+			add_to_variable = {
+				MDQ_junmin_tuanjiedu_value = 1
+			}
+			clamp_temp_variable = {
+				var = MDQ_junmin_tuanjiedu_value
+				min = 1
+				max = 5
+			}
+			custom_effect_tooltip = MDQ_02_23_tt
+			add_timed_idea = {
+				idea = MDQ_idea_0_15
+				days = 70
+			}
 		}
 	}
 	focus = {
@@ -1213,6 +1276,15 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = MDQ_02_23_tt
+			add_to_variable = {
+				MDQ_junmin_tuanjiedu_value = 1
+			}
+			clamp_temp_variable = {
+				var = MDQ_junmin_tuanjiedu_value
+				min = 1
+				max = 5
+			}
+			add_ideas = MDQ_idea_0_22
 		}
 	}
 	focus = {
@@ -1232,6 +1304,15 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = MDQ_02_24_tt
+			add_to_variable = {
+				MDQ_junmin_tuanjiedu_value = -1
+			}
+			clamp_temp_variable = {
+				var = MDQ_junmin_tuanjiedu_value
+				min = 1
+				max = 5
+			}
+			add_ideas = MDQ_idea_0_23
 		}
 	}
 	focus = {
@@ -1248,7 +1329,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_war_support = -0.10
+			add_war_support = -0.1
 			add_manpower = 112584
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
@@ -1272,6 +1353,14 @@ focus_tree = {
 			add_ideas = MDQ_idea_0_12
 			add_ideas = MDQ_idea_0_13
 			custom_effect_tooltip = MDQ_02_24_tt
+			add_to_variable = {
+				MDQ_junmin_tuanjiedu_value = -1
+			}
+			clamp_temp_variable = {
+				var = MDQ_junmin_tuanjiedu_value
+				min = 1
+				max = 5
+			}
 		}
 	}
 	focus = {
@@ -1295,16 +1384,19 @@ focus_tree = {
 				add_building_construction = {
 					type = industrial_complex
 					level = -1
-					instant_build = yes 
+					instant_build = yes
 				}
 			}
 			36 = {
 				add_building_construction = {
 					type = arms_factory
 					level = 1
-					instant_build = yes 
+					instant_build = yes
 				}
 			}
+			set_country_flag = MDQ_02_27_flag
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = MDQ_zhanluo_zhuanyi_xiaozu
 		}
 	}
 	focus = {
@@ -1320,7 +1412,10 @@ focus_tree = {
 			factor = 0
 		}
 		completion_reward = {
-			country_event = { days = 1 id = MDQ_event.18 }
+			country_event = {
+				days = 1
+				id = MDQ_event.18
+			}
 		}
 	}
 	focus = {
@@ -1331,6 +1426,9 @@ focus_tree = {
 		cost = 210
 		ai_will_do = {
 			factor = 1
+		}
+		available = {
+			always = no
 		}
 		completion_reward = {
 			add_ideas = MDQ_idea_0_16
@@ -1350,7 +1448,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_stability = -0.05
-			add_popularity = { ideology = liberalism popularity = 0.05 }
+			add_popularity = {
+				ideology = liberalism
+				popularity = 0.05
+			}
 		}
 	}
 	focus = {
@@ -1367,7 +1468,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_stability = -0.05
-			add_popularity = { ideology = reformism popularity = 0.05 }
+			add_popularity = {
+				ideology = reformism
+				popularity = 0.05
+			}
 		}
 	}
 	focus = {
@@ -1386,7 +1490,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			country_event = { days = 1  id = MDQ_event.19 }
+			country_event = {
+				days = 1
+				id = MDQ_event.19
+			}
 		}
 	}
 	focus = {
@@ -1405,7 +1512,16 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
+			set_party_name = {
+				ideology = reformism
+				long_name = MDQ_reformism_party_bentu_long
+				name = MDQ_reformism_party_bentu
+			}
+			set_party_name = {
+				ideology = despotism
+				long_name = MDQ_despotism_party_bentu_long
+				name = MDQ_despotism_party_bentu
+			}
 		}
 	}
 	focus = {
@@ -1424,7 +1540,16 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
+			set_party_name = {
+				ideology = reformism
+				long_name = MDQ_reformism_party_bentu_long
+				name = MDQ_reformism_party_bentu
+			}
+			set_party_name = {
+				ideology = despotism
+				long_name = MDQ_despotism_party_bentu_long
+				name = MDQ_despotism_party_bentu
+			}
 		}
 	}
 	focus = {
@@ -1432,7 +1557,7 @@ focus_tree = {
 		icon = GFX_goal_MDQ_wd
 		x = 18
 		y = 5
-		cost = 7
+		cost = 14
 		prerequisite = {
 			focus = MDQ_02_33
 			focus = MDQ_02_34
@@ -1442,6 +1567,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 50
+			add_stability = 0.1
 		}
 	}
 	focus = {
@@ -1449,7 +1575,7 @@ focus_tree = {
 		icon = GFX_goal_MDQ_f
 		x = 16
 		y = 5
-		cost = 7
+		cost = 14
 		prerequisite = {
 			focus = MDQ_02_33
 		}
@@ -1457,7 +1583,14 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
+			custom_effect_tooltip = MDQ_02_36_tt
+			hidden_effect = {
+			set_popularities = {
+				authoritarianism = 60
+				liberalism = 15
+				reformism = 25
+			    }
+		    }
 		}
 	}
 	focus = {
@@ -1465,7 +1598,7 @@ focus_tree = {
 		icon = GFX_goal_MDQ_qw
 		x = 20
 		y = 5
-		cost = 7
+		cost = 14
 		prerequisite = {
 			focus = MDQ_02_34
 		}
@@ -1473,7 +1606,18 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
+			custom_effect_tooltip = MDQ_02_36_tt
+			hidden_effect = {
+			set_popularities = {
+				authoritarianism = 40
+				liberalism = 10
+				reformism = 50
+			    }
+			set_politics = {
+				ruling_party = reformism
+				elections_allowed = no
+			    }
+		    }
 		}
 	}
 	focus = {
@@ -1493,7 +1637,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
+			remove_ideas = MDQ_idea_0_16
 		}
 	}
 	focus = {
@@ -1501,15 +1645,26 @@ focus_tree = {
 		icon = GFX_goal_MDQ_lile
 		x = 18
 		y = 7
-		cost = 7
+		cost = 70
 		prerequisite = {
 			focus = MDQ_02_38
 		}
 		ai_will_do = {
 			factor = 1
 		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_39_tt
+				check_variable = {
+					MDQ_junmin_tuanjiedu_value < 5 
+				}
+			}
+			QQR = {
+				exists = no
+			}
+		}
 		completion_reward = {
-			add_political_power = 50
+			country_event = { days = 1  id = MDQ_event.29 }
 		}
 	}
 }

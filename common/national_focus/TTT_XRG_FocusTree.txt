@@ -27,8 +27,15 @@ focus_tree = {
 		id = XR_L1	#群仙会议#
 		icon = GFX_goal_XRG02
 		cost = 21.00
-		visible = {
-			has_country_flag = XRG_FLAG_1
+		allow_branch = {
+			if = {
+				limit = {
+					has_country_flag = XRG_FLAG_1
+				}
+				NOT = {
+					has_country_flag = XRG_FLAG_2
+				}
+			}
 		}
 		available = {
 			has_country_flag = XRG_FLAG_1
@@ -43,7 +50,26 @@ focus_tree = {
 				remove = XRG_CSZX
 				add = XRG_QXHY_ONE
 			}
+			add_ideas = XRG_BUFF_HXD_3
 			custom_effect_tooltip = XRG_QXHY_tooltip
+			set_variable = { XRG_hexiedu = 40 }
+			clamp_temp_variable = {
+    			var = XRG_hexiedu
+    			min = 0
+				max = 100
+			}
+			set_variable = { XRG_xianjiabumandu = 0 }
+			clamp_temp_variable = {
+    			var = XRG_xianjiabumandu
+    			min = 0
+				max = 10
+			}
+			set_variable = { XRG_minzhongbumandu = 0 }
+			clamp_temp_variable = {
+    			var = XRG_minzhongbumandu
+    			min = 0
+				max = 10
+			}
 		}
 	}
 	focus = {
@@ -457,19 +483,19 @@ focus_tree = {
 			focus = XR_DL_1
 		}
 		available = {
-			has_full_control_of_state = 157
-			has_full_control_of_state = 159
+			has_full_control_of_state = 78
+			has_full_control_of_state = 83
 		}
 		x = 14
 		y = 8
 		completion_reward = {
 			if = {
 				limit = {
-					157 = {
+					78 = {
 						is_controlled_by = XRG
 					}
 				}
-				157 = {
+				78 = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 					type = arms_factory
@@ -479,11 +505,11 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					159 = {
+					83 = {
 						is_controlled_by = XRG
 					}
 				}
-				159 = {
+				83 = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 					type = arms_factory

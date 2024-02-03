@@ -99,8 +99,14 @@ Ningguang_KQG_isbad = {
 		country_exists = KQG
 	}
 	abort = {
-		NOT = {
-			country_exists = KQG
+		or = {
+			NOT = {
+				country_exists = KQG
+			}
+			has_war_with = XOG
+			has_war_with = XRG
+			has_war_with = RTG
+			has_war_with = LYU
 		}
 	}
 	ai_strategy = {
@@ -123,14 +129,16 @@ Yaoguangtan_isbad = {
 		}
 	}
 	ai_strategy = {
-		type = front_unit_request
-		tag = KQG
-		country_trigger = {
-			tag = KQG
-		}
-		state = 126
-		value = -1000
+		type = put_unit_buffers
+		ratio = 0.00
+		states = {
+ 		116
+ 		117
+ 		81
+ 	   }
 	}
+	subtract_invasions_from_need = no
+	subtract_fronts_from_need = no
 }
 
 Ningguang_KQG_isbad_two = {
@@ -160,26 +168,20 @@ Ningguang_KQG_isbad_two = {
 		}
 	}
 	ai_strategy = {
-		type = front_control
-		tag = KQG
-		ratio = 0.1
-		state = 146
-		state = 149
-		state = 405
-		state = 406
-		priority = 100
-		ordertype = front
-		execution_type = careful
-		manual_attack = yes
-		execute_order = no
-	}
-	ai_strategy = {
-		type = invade
-		id = KQG
-		value = -500
-	}
+	type = front_control
+	tag = KQG  
+	ratio = 0.1
+    state = 146
+	state = 149
+	state = 405
+	state = 406
+	priority = 100  
+	ordertype = front  
+	execution_type = careful
+	manual_attack = yes
+	execute_order = no
+    }
 }
-
 Ningguang_KQG_isbad_three = {
 	allowed = {
 		tag = NNG
@@ -187,30 +189,30 @@ Ningguang_KQG_isbad_three = {
 	enable = {
 		country_exists = KQG
 		has_completed_focus = NNG_wmbijiangshengli
-		num_divisions > 80
+		num_divisions > 150
 	}
 	abort = {
 	    or = {
 		NOT = {
 			country_exists = KQG
 		}
-		num_divisions < 60
+		num_divisions < 100
 		}
 	}
 	ai_strategy = {
-		type = front_control
-		tag = KQG
-		ratio = 0.1
-		state = 146
-		state = 149
-		state = 405
-		state = 406
-		priority = 900
-		ordertype = front
-		execution_type = rush
-		manual_attack = yes
-		execute_order = yes
-	}
+	type = front_control
+	tag = KQG  
+	ratio = 0.1
+    state = 146
+	state = 149
+	state = 405
+	state = 406
+	priority = 900  
+	ordertype = front  
+	execution_type = rush  
+	manual_attack = yes
+	execute_order = yes
+    }
 }
 
 Ningguang_fangshou = {

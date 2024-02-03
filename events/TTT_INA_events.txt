@@ -1,4 +1,5 @@
 add_namespace = INA_events
+add_namespace = INA_Kujyou_events
 #老地方，新开张
 country_event = {
 	id = INA_events.1
@@ -74,9 +75,6 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = INA_events.7.a
-		INA = {
-			load_focus_tree = war_beginning
-		}
 	}
 }
 
@@ -112,6 +110,21 @@ country_event = {
 	}
 }
 
+
+#尔国临格
+country_event = {
+	id = INA_events.11
+	title = INA_events.11.t
+	desc = INA_events.11.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = INA_events.11.a
+	}
+}
+
+
+
 #眼狩令通过
 country_event = {
 	id = INA_events.12
@@ -144,17 +157,20 @@ country_event = {
 	}
 }
 
-#尔国临格
+#狂欢
 country_event = {
-	id = INA_events.11
-	title = INA_events.11.t
-	desc = INA_events.11.d
+	id = INA_events.14
+	title = INA_events.14.t
+	desc = INA_events.14.d
 	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-		name = INA_events.11.a
+		name = INA_events.14.a
+		set_country_flag = INA_War_Beginning_stage
+		complete_national_focus = INA_war_beginning
 	}
 }
+
 
 #眼狩令修正案
 country_event = {
@@ -237,18 +253,6 @@ country_event = {
 	}
 }
 
-#狂欢
-country_event = {
-	id = INA_events.14
-	title = INA_events.14.t
-	desc = INA_events.14.d
-	fire_only_once = yes
-	is_triggered_only = yes
-	option = {
-		name = INA_events.14.a
-		set_country_flag = INA_War_Beginning_stage
-	}
-}
 #御前屠杀
 country_event = {
 	id = INA_events.19
@@ -280,13 +284,11 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = INA_events.21.a
-		WSR = {
-			transfer_state = 88
-			transfer_state = 83
-			add_victory_points = {
-				province = 12313
-				value = 5
-			}
+		SNA = {
+			leave_faction = yes
+		}
+		INA = {
+			end_puppet = SNA
 		}
 	}
 }
@@ -310,27 +312,17 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = INA_events.23.a
-		KJG = {
-			transfer_state = 85
-			add_state_core = 85
-			transfer_state = 82
-			add_state_core = 82
-			transfer_state = 373
-			add_state_core = 373
-			transfer_state = 84
-			add_state_core = 84
-			transfer_state = 371
-			add_state_core = 371
-			transfer_state = 86
-			add_state_core = 86
-			transfer_state = 370
-			add_state_core = 370
-			transfer_state = 87
-			add_state_core = 87
-			transfer_state = 372
-			add_state_core = 372
-			transfer_state = 81
-			add_state_core = 81
+		KJA = {
+			transfer_state = 231
+			add_state_core = 231
+			transfer_state = 232
+			add_state_core = 232
+			transfer_state = 233
+			add_state_core = 233
+			transfer_state = 234
+			add_state_core = 234
+			transfer_state = 235
+			add_state_core = 235
 		}
 		#驻军
 		set_variable = {global.KJG_impact_1 = 25 } #藤兜
@@ -338,7 +330,7 @@ country_event = {
 		set_variable = {global.KJG_impact_3 = 55 } #蛇首峡
 		set_variable = {global.KJG_impact_4 = 75 } #八酝港
 		set_variable = {global.KJG_impact_5 = 65 } #花染之源
-		set_variable = {global.KJG_impact_6 = 45 } #绯木村
+		set_variable = {global.KJG_impact_6 = 55 } #绯木村
 		set_variable = {global.KJG_impact_7 = 65 } #蛇首山区
 		#义军
 		set_variable = {global.WSR_impact_1 = 75} #藤兜
@@ -346,7 +338,7 @@ country_event = {
 		set_variable = {global.WSR_impact_3 = 45} #蛇首峡
 		set_variable = {global.WSR_impact_4 = 25} #八酝港
 		set_variable = {global.WSR_impact_5 = 35} #花染之源
-		set_variable = {global.WSR_impact_6 = 55} #绯木村
+		set_variable = {global.WSR_impact_6 = 45} #绯木村
 		set_variable = {global.WSR_impact_7 = 35} #蛇首山区
 		#选择
 		set_variable = {INA_Island_choice = 0} #选择操作
@@ -363,11 +355,166 @@ country_event = {
 		set_variable = {global.TTT_BYI_Conflict_State_7 = 1}
 		#暴乱程度
 		set_variable = {global.INA_Conflict_Volience = 0}
-
+		set_country_flag = INA_BYI_war_begin
 		hidden_effect = 
 		{
 			add_to_variable = {TTT_INA_conflict_SNA_ui_dirty = 1}
 		}
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.1
+	title = INA_Kujyou_events.1.t
+	desc = INA_Kujyou_events.1.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.1.a
+		set_country_flag = INA_Kujyou_tenure_end
+		complete_national_focus = INA_Kujyou_died
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.2
+	title = INA_Kujyou_events.2.t
+	desc = INA_Kujyou_events.2.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.2.a
+		set_country_flag = INA_Kujyou_win_the_war
+		complete_national_focus = INA_Kujyous_tenure
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.3
+	title = INA_Kujyou_events.3.t
+	desc = INA_Kujyou_events.3.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.3.a
+		load_focus_tree = INA_Kujyou_focus_tree
+		set_country_flag = INA_Kujyou_win_the_war
+		complete_national_focus = INA_Kujyous_tenure
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.4
+	title = INA_Kujyou_events.4.t
+	desc = INA_Kujyou_events.4.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.4.a
+		set_country_flag = INA_Uprising_end
+		set_country_flag = INA_Kujyou_lz_success
+		complete_national_focus = INA_final_to_Kujyou_lz
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.5
+	title = INA_Kujyou_events.5.t
+	desc = INA_Kujyou_events.5.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.5.a
+		set_country_flag = INA_Kujyou_tenure_end
+		complete_national_focus = INA_Kujyou_died
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.6
+	title = INA_Kujyou_events.6.t
+	desc = INA_Kujyou_events.6.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.6.a
+		set_country_flag = INA_the_next_crisis
+		complete_national_focus = INA_second_crisis_of_Inazuma
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.7
+	title = INA_Kujyou_events.7.t
+	desc = INA_Kujyou_events.7.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.7.a
+		clr_country_flag = INA_Kujyou_win_the_war
+		set_country_flag = INA_Uprising_begin
+		complete_national_focus = INA_uprising
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.8
+	title = INA_Kujyou_events.8.t
+	desc = INA_Kujyou_events.8.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.8.a
+		set_country_flag = INA_Takashi_has_new_idea
+		complete_national_focus = INA_uprising_2
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.9
+	title = INA_Kujyou_events.9.t
+	desc = INA_Kujyou_events.9.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.9.a
+		set_country_flag = INA_Uprising_end
+		set_country_flag = INA_Kujyou_sl_success
+		complete_national_focus = INA_final_to_Kujyou_sl
+	}
+}
+
+country_event = 
+{
+	id = INA_Kujyou_events.10
+	title = INA_Kujyou_events.10.t
+	desc = INA_Kujyou_events.10.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = 
+	{
+		name = INA_Kujyou_events.10.a
+		set_country_flag = INA_Uprising_end
+		set_country_flag = INA_Takashi_success
+		complete_national_focus = INA_final_to_Takashi
 	}
 }
 

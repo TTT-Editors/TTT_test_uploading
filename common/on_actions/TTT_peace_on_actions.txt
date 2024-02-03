@@ -10,12 +10,6 @@ on_actions = {
 			#news event should put on first.
 			#news_event = { id = country_capitulated.0 days = 0 }
 			
-			#开启谈判结语GUI
-			set_global_flag = TTT_warpeace_show_gui
-			FROM = { save_global_event_target_as = winning_country }
-			ROOT = { save_global_event_target_as = losing_country }
-			add_to_variable = { global.TTT_warpeace_dirty = 1 }
-			
 			#zhidong invaders failed
 		    if = { 
 				limit = {
@@ -38,24 +32,11 @@ on_actions = {
 					every_unit_leader = {
 						set_nationality = SNE
 					}
-				}
-				SNE = { 
-				    transfer_state = 176
-					transfer_state = 218
-					transfer_state = 221
-					transfer_state = 222
-					transfer_state = 220
-					transfer_state = 212
-					transfer_state = 219
-					transfer_state = 213
-					transfer_state = 214
-					transfer_state = 215
-					transfer_state = 216
-					transfer_state = 217
-				    every_owned_state = {
-					    limit = { is_core_of = ZDG }
+					every_owned_state = {
+					    limit = { NOT = { has_state_flag = is_Liyues_territory } }
 					    remove_core_of = ZDG
 						add_core_of = SNE
+						SNE = { transfer_state = PREV }
 					}
 				}
 				if = {
@@ -65,20 +46,20 @@ on_actions = {
 							XOG = { is_puppet_of = ZDG }
 						}
 						KQG = { has_war_with = ZDG }
-						KQG = { controls_state = 147 }
+						KQG = { controls_state = 94 }
 					}
 					KQG = {
-						transfer_state = 138
-						transfer_state = 139
-						transfer_state = 137
-						transfer_state = 131
-						transfer_state = 194
-						transfer_state = 133
-						transfer_state = 130
-						transfer_state = 134
-						transfer_state = 135
-						transfer_state = 132
-						transfer_state = 136
+						transfer_state = 102
+						transfer_state = 103
+						transfer_state = 104
+						transfer_state = 105
+						transfer_state = 106
+						transfer_state = 107
+						transfer_state = 108
+						transfer_state = 109
+						transfer_state = 110
+						transfer_state = 111
+						transfer_state = 112
 					}
 				}
 				every_country = {
@@ -94,28 +75,44 @@ on_actions = {
 					limit = { 
 						XRG = { exists = yes }
 					}
-					XRG = { transfer_state = 167 }
+					XRG = { transfer_state = 100 }
 				}
 				if = {
 					limit = { 
 						XOG = { exists = yes }
 					}
-					XOG = { transfer_state = 134 }
+					XOG = { transfer_state = 109 }
 				}
 				if = {
 					limit = { 
 						XRG = { exists = no }
 						XOG = { exists = no }
 					}
-					random_country = {
+					every_country = {
 						limit = {
-							has_country_flag = ready_for_another_round
+							is_nominate_liyue = yes
+							has_war_with = ZDG
 							is_faction_leader = yes
 						}
 						dismantle_faction = yes
 						country_event = {
 							id = liyue_civil_war.10
 							days = 45
+						}
+					}
+					every_country = {
+						limit = {
+							is_nominate_liyue = yes
+							has_war_with = ZDG
+						}
+						teleport_armies = {
+							limit = { 
+								NOT = {
+									tag = ROOT
+									is_subject_of = ROOT
+								}
+							}
+							to_state_array = owned_controlled_states
 						}
 					}
 				}
@@ -331,6 +328,36 @@ on_actions = {
 				}
 			}
 			
+			#############################################################################################
+			#MDQ vs QQR
+			#############################################################################################
+			if = {
+				limit = {
+					ROOT = { tag = MDQ }
+					FROM = { tag = QQR }
+				}
+				set_global_flag = special_peace_not_annex
+				MDQ = {
+					white_peace = QQR
+					set_country_flag = MDQ_has_lost_ddup_war
+					every_owned_state = {
+						limit = {
+							NOT = {
+								OR = {
+									state = 35
+									state = 36
+								}
+							}
+						}
+						QQR = { transfer_state = PREV }	
+					}
+				}
+				##################################################
+				#	News Event for MDQ lost
+				##################################################
+				recalculate_MDQ_core = yes
+			}
+			
 			#default
 			if = {
 				limit = {
@@ -342,6 +369,7 @@ on_actions = {
 							}
 						}
 					}
+					NOT = { has_global_flag = special_peace_not_annex }
 				}
 				FROM = {
 					every_enemy_country = {
@@ -398,6 +426,17 @@ on_actions = {
 					}
 				}
 			}
+			
+			if = {
+				limit = { has_global_flag = special_peace_not_annex }
+				clr_global_flag = special_peace_not_annex
+			}
+			
+			#开启谈判结语GUI
+			set_global_flag = TTT_warpeace_show_gui
+			FROM = { save_global_event_target_as = winning_country }
+			ROOT = { save_global_event_target_as = losing_country }
+			add_to_variable = { global.TTT_warpeace_dirty = 1 }
 		}
 	}
 }

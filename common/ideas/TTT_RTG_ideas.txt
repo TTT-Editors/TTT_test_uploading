@@ -44,55 +44,39 @@ ideas = {
 	country = {
 	    #巨渊之怒
 		the_earth_roars = {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanzhinu
 			
 			allowed_civil_war = {
 				always = yes
 			}
             
-			available = { 		
-			NOT = { is_subject_of = ZDG }	
-			}
-			cancel = {
-				AND = {
-					check_variable = {
-					var = RTG_erosion_system
-					value = 25
-					compare = greater_than_or_equals
-					}
-					check_variable = {
-					var = RTG_erosion_system
-					value = 50
-					compare = less_than
-					}
-				}
-			}
-			on_remove = {
-			   country_event = { days = 1  id = RTG.27 }
-			}
 			removal_cost = -1
 			modifier = {
-				production_speed_buildings_factor = -0.1
-				production_factory_max_efficiency_factor = -0.1
-				industrial_capacity_factory = -0.1
-				local_resources_factor = -0.2
-				stability_factor = -0.1
-				war_support_factor = -0.1
-				political_power_factor = -0.1
+				production_speed_buildings_factor = -0.25
+				production_factory_max_efficiency_factor = -0.25
+				industrial_capacity_factory = -0.25
+				local_resources_factor = -0.5
+				stability_factor = -0.2
+				war_support_factor = -0.2
+				political_power_factor = -0.2
 			}
 		}
 		#巨渊之怒
 		the_earth_roars_2 = {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanzhinu
 			name = the_earth_roars
 			desc = the_earth_roars_desc
 			allowed_civil_war = {
 				always = yes
 			}  
-			available = { 	
-			NOT = { is_subject_of = ZDG }
-			}
-            cancel = {
+			available = {
+				OR = {
+						NOT = { is_subject_of = ZDG }
+						NOT = { has_completed_focus = RTG_pingxi_yuannu }
+					}
+				}
+            cancel = {	
+				AND = {
 				check_variable = {
 					var = RTG_erosion_system
 					value = 50
@@ -103,6 +87,7 @@ ideas = {
 					value = 75
 					compare = less_than
 					}
+				}		
 			}
 			on_remove = {
 			   country_event = { days = 1  id = RTG.29 }
@@ -120,15 +105,18 @@ ideas = {
 		}
 		#巨渊之怒
 		the_earth_roars_3 = {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanzhinu
 			name = the_earth_roars
 			desc = the_earth_roars_desc
 			allowed_civil_war = {
 				always = yes
 			}
-			available = { 		
-			NOT = { is_subject_of = ZDG }			  
-			}
+			available = {
+				OR = {
+					NOT = { is_subject_of = ZDG }
+					NOT = { has_completed_focus = RTG_pingxi_yuannu }
+					}
+				}
 			cancel = {
 				check_variable = {
 					var = RTG_erosion_system
@@ -157,15 +145,18 @@ ideas = {
 		}
 		#巨渊之怒
 		the_earth_roars_4 = {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanzhinu
 			name = the_earth_roars
 			desc = the_earth_roars_desc
 			allowed_civil_war = {
 				always = yes
 			}
-			available = { 		
-			NOT = { is_subject_of = ZDG }	
-			}
+			available = {
+				OR = {
+						NOT = { is_subject_of = ZDG }
+						NOT = { has_completed_focus = RTG_pingxi_yuannu }
+					}
+				}
 			cancel = {
 				check_variable = {
 				var = RTG_erosion_system
@@ -189,15 +180,18 @@ ideas = {
 		}
 		#巨渊之怒
 		the_earth_roars_5 = {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanzhinu
 			name = the_earth_roars
 			desc = the_earth_roars_desc
 			allowed_civil_war = {
 				always = yes
 			}
-			available = { 		
-			NOT = { is_subject_of = ZDG }	
-			}
+			available = {
+				OR = {
+						NOT = { is_subject_of = ZDG }
+						NOT = { has_completed_focus = RTG_pingxi_yuannu }
+					}
+				}
 			on_remove = {
 			   country_event = { days = 1  id = RTG.32 }
 			}
@@ -214,12 +208,17 @@ ideas = {
 		}
 		#难民规模
 		RTG_nanmin_guimo = {
-			picture = RTG_the_earth_roars
+			picture = RTG_nanminguimo
 			allowed_civil_war = {
 				always = yes
 			}
 			available = { 		
-			NOT = { is_subject_of = ZDG }	
+			NOT = { is_subject_of = ZDG }
+			NOT = { has_government = hive_mind }
+			OR = {
+			has_global_flag=Liyue_Civil_War
+			has_global_flag=Liyue_Civil_War_Coming
+		        }
 			}
 			removal_cost = -1
 			modifier = {
@@ -227,18 +226,23 @@ ideas = {
 				monthly_population = 0.10
 				production_speed_buildings_factor = 0.025
 				war_support_factor = -0.05
-				political_power_gain = -0.10
+				political_power_gain = -0.05
 			}
 		}
 		#难民规模
 		RTG_nanmin_guimo_2 = {
-			picture = RTG_the_earth_roars
+			picture = RTG_nanminguimo
 			name = RTG_nanmin_guimo
 			allowed_civil_war = {
 				always = yes
 			}
 			available = { 		
-			NOT = { is_subject_of = ZDG }	
+			NOT = { is_subject_of = ZDG }
+			NOT = { has_government = hive_mind }
+			OR = {
+			has_global_flag=Liyue_Civil_War
+			has_global_flag=Liyue_Civil_War_Coming
+		        }
 			}
 			removal_cost = -1
 			modifier = {
@@ -246,18 +250,23 @@ ideas = {
 				monthly_population = 0.20
 				production_speed_buildings_factor = 0.05
 				war_support_factor = -0.10
-				political_power_gain = -0.20
+				political_power_gain = -0.10
 			}
 		}
 		#难民规模
 		RTG_nanmin_guimo_3 = {
-			picture = RTG_the_earth_roars
+			picture = RTG_nanminguimo
 			name = RTG_nanmin_guimo
 			allowed_civil_war = {
 				always = yes
 			}
 			available = { 		
-			NOT = { is_subject_of = ZDG }	
+			NOT = { is_subject_of = ZDG }
+			NOT = { has_government = hive_mind }
+			OR = {
+			has_global_flag=Liyue_Civil_War
+			has_global_flag=Liyue_Civil_War_Coming
+		        }
 			}
 			removal_cost = -1
 			modifier = {
@@ -265,18 +274,23 @@ ideas = {
 				monthly_population = 0.30
 				production_speed_buildings_factor = 0.10
 				war_support_factor = -0.15
-				political_power_gain = -0.30
+				political_power_gain = -0.15
 			}
 		}
 		#难民规模
 		RTG_nanmin_guimo_4 = {
-			picture = RTG_the_earth_roars
+			picture = RTG_nanminguimo
 			name = RTG_nanmin_guimo
 			allowed_civil_war = {
 				always = yes
 			}
 			available = { 		
-			NOT = { is_subject_of = ZDG }	
+			NOT = { is_subject_of = ZDG }
+			NOT = { has_government = hive_mind }
+			OR = {
+			has_global_flag=Liyue_Civil_War
+			has_global_flag=Liyue_Civil_War_Coming
+		        }
 			}
 			removal_cost = -1
 			modifier = {
@@ -284,7 +298,7 @@ ideas = {
 				monthly_population = 0.40
 				production_speed_buildings_factor = 0.20
 				war_support_factor = -0.20
-				political_power_gain = -0.40
+				political_power_gain = -0.20
 			}
 		}
 		temporary_shutdown = {
@@ -340,7 +354,7 @@ ideas = {
 				local_resources_factor = -0.6
 				production_speed_buildings_factor = -0.2
 				hive_mind_drift = -0.3
-				consumer_goods_factor = 0.2
+				consumer_goods_factor = 0.8
 			}
 		}
 		
@@ -360,7 +374,7 @@ ideas = {
 				local_resources_factor = -0.3
 				production_speed_buildings_factor = -0.1
 				hive_mind_drift = -0.4
-				consumer_goods_factor = 0.1
+				consumer_goods_factor = 0.4
 			}
 		}
 		
@@ -411,22 +425,26 @@ ideas = {
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = {
-				consumer_goods_factor = 0.1
+				consumer_goods_factor = 0.4
 				political_power_gain = -0.25
 			}
 		}
 		
+     ###渊神社
 		juyuan_daily = {
-			picture = POL_Ideology_Drift_Defence
+			picture = RTG_juyuandaily
 			allowed = { 
-			NOT = { has_government =hive_mind  } 
+			
 			    }
 			allowed_civil_war = { always = yes }
 			
-			available = { NOT = { is_subject_of = ZDG } }
+			available = { 
+				NOT = { is_subject_of = ZDG } 
+				NOT = { has_government = hive_mind  } 
+			}
 			removal_cost = -1
 			modifier = {
-				consumer_goods_factor = 0.01
+				consumer_goods_factor = 0.04
 				stability_factor = 0.03
 				war_support_factor = 0.03
 				political_power_factor = 0.05
@@ -578,7 +596,7 @@ ideas = {
                 air_ace_generation_chance_factor = 0.1				
 			}
 		}
-		
+		#岩间工厂
 		RTG_yanjian_gongchang_1 = {
 		    picture = RTG_yanjian_gongchang
 		    allowed = {
@@ -588,8 +606,9 @@ ideas = {
 			removal_cost = -1
 			modifier = { 
 			    industry_air_damage_factor = -0.8
-                production_speed_buildings_factor = -0.1
-                industrial_capacity_factory = -0.1				
+                industrial_capacity_factory = -0.05
+                industry_repair_factor = 0.15
+				local_resources_factor = 0.10
 			}
 		}
 		
@@ -635,7 +654,7 @@ ideas = {
                 syndicalism_acceptance = 20
                 people_livelihood_acceptance = 20	
                 production_factory_max_efficiency_factor = 0.1
-                consumer_goods_factor = -0.05				
+                consumer_goods_factor = -0.2				
 			}
 		}
 		
@@ -647,10 +666,11 @@ ideas = {
 		    available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    conversion_cost_civ_to_mil_factor = -0.2
-                conversion_cost_mil_to_civ_factor = -0.2
                 production_speed_arms_factory_factor = 0.2
-                production_speed_bunker_factor = 0.2				
+                production_speed_bunker_factor = 0.5
+				consumer_goods_factor = -0.05
+				production_speed_rail_way_factor = 0.5
+				production_speed_supply_node_factor = 0.5
 			}
 		}
 		
@@ -745,7 +765,7 @@ ideas = {
                 political_power_gain = -1			
 			}
 		}
-		
+		#渊都协议
 		RTG_changming_deng = {
 		    picture = RTG_changming_deng
 		    allowed = {
@@ -753,11 +773,9 @@ ideas = {
 			}
 		    available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
-			modifier = { 
-			    political_power_gain = 0.1
+			modifier = { 	   
                 army_core_attack_factor = 0.05
-                army_core_defence_factor = 0.05
-                training_time_army_factor = -0.05				
+                army_core_defence_factor = 0.05          				
 			}
 		}
 		
@@ -769,7 +787,7 @@ ideas = {
 		    available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    consumer_goods_factor = -0.1
+			    consumer_goods_factor = -0.4
                 production_speed_industrial_complex_factor = 0.2				
 			}
 		}
@@ -812,7 +830,7 @@ ideas = {
 		    available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    consumer_goods_factor = -0.1
+			    consumer_goods_factor = -0.4
                 production_speed_buildings_factor = 0.1				
 			}
 		}
@@ -864,7 +882,7 @@ ideas = {
 		}
 		
 		outport_stuff = {
-			picture = RTG_the_earth_roars
+			picture = RTG_xiangxichukou
 			allowed = {
 				always = no
 			}
@@ -933,12 +951,12 @@ ideas = {
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    consumer_goods_factor = 0.05
+			    consumer_goods_factor = 0.2
                 production_speed_industrial_complex_factor = 0.1
 				monthly_population = 0.1
 			}
 		}
-		
+		#种族矛盾
 		RTG_zhongzu_maodun_1 = {
 		    picture = RTG_zhongzu_maodun
 		    allowed = {
@@ -950,13 +968,15 @@ ideas = {
 			    stability_factor = -0.4
                 war_support_factor = -0.4
 				monthly_population = -0.5
-				political_power_gain = -0.5
-				training_time_army_factor = 0.5
+				training_time_army_factor = 0.6
+				conscription_factor = -0.80
+				production_speed_buildings_factor = -0.40
+				industrial_capacity_factory = -0.40
 			}
 		}
-		
+		#初步缓和的种族矛盾
 		RTG_zhongzu_maodun_2 = {
-		    picture = RTG_zhongzu_maodun
+		    picture = RTG_zhongzu_maodun_huanhe
 		    allowed = {
 			    original_tag = RTG
 			}
@@ -965,12 +985,53 @@ ideas = {
 			modifier = { 
 			    stability_factor = -0.3
                 war_support_factor = -0.3
-				monthly_population = -0.5
-				political_power_gain = -0.5
-				training_time_army_factor = 0.5
+				monthly_population = -0.3
+				training_time_army_factor = 0.45
+				conscription_factor = -0.60
+				production_speed_buildings_factor = -0.30
+				industrial_capacity_factory = -0.30
 			}
 		}
-		
+		#初步缓和的种族矛盾
+		RTG_zhongzu_maodun_3 = {
+		    picture = RTG_zhongzu_maodun_huanhe
+			name = RTG_zhongzu_maodun_2
+		    allowed = {
+			    original_tag = RTG
+			}
+			available = { NOT = { is_subject_of = ZDG } }
+			removal_cost = -1
+			modifier = { 
+			    stability_factor = -0.2
+                war_support_factor = -0.2
+				monthly_population = -0.2
+				training_time_army_factor = 0.25
+				conscription_factor = -0.40
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.20
+			}
+		}
+		#暂时压制的种族矛盾
+		RTG_zhongzu_maodun_4 = {
+		    picture = RTG_zanshiyazhi
+		    allowed = {
+			    original_tag = RTG
+			}
+			available = { NOT = { is_subject_of = ZDG } }
+			cancel = {
+				has_country_flag = {
+					flag = RTG_qirubuzai_flag
+					days > 728
+				}
+			}
+			on_remove = {
+				country_event = { days = 1  id = RTG.39 }
+			}
+			removal_cost = -1
+			modifier = { 
+			   
+			}
+		}
 		RTG_kaihua_yuansu_ing = {
 		    picture = RTG_kaihua_yuansu
 		    allowed = {
@@ -979,7 +1040,7 @@ ideas = {
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    consumer_goods_factor = 0.05
+			    consumer_goods_factor = 0.2
 				political_power_gain = -0.1
 			}
 		}
@@ -1003,7 +1064,7 @@ ideas = {
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    consumer_goods_factor = 0.05
+			    consumer_goods_factor = 0.2
 				political_power_gain = -0.1
 			}
 		}
@@ -1028,7 +1089,7 @@ ideas = {
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    consumer_goods_factor = 0.15
+			    consumer_goods_factor = 0.5
 				stability_factor = -0.2
 				war_support_factor = -0.2
 				political_power_gain = -0.5
@@ -1036,7 +1097,20 @@ ideas = {
 				monthly_population = -0.2
 			} 
 		}
-		
+		#神授璃月渊军
+		RTG_liyue_yuanjun = {
+		    name = RTG_liyue_yuanjun_1
+		    picture = RTG_liyue_yuanjun
+		    allowed = {
+			    original_tag = RTG
+			}
+			available = { NOT = { is_subject_of = ZDG } }
+			removal_cost = -1
+			modifier = { 
+			   	
+			}
+		}
+		#璃月渊军
 		RTG_liyue_yuanjun_1 = {
 		    picture = RTG_liyue_yuanjun
 		    allowed = {
@@ -1045,123 +1119,111 @@ ideas = {
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 10
-				army_defence_factor = 0.1			
+			   	conscription = 0.005
+				weekly_manpower = 5000
 			}
 		}
-		
+		#璃月渊军
 		RTG_liyue_yuanjun_2 = {
 		    picture = RTG_liyue_yuanjun
+			name = RTG_liyue_yuanjun_1
 		    allowed = {
 			    original_tag = RTG
 			}
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 10
-				army_defence_factor = 0.1
-				max_planning = 0.2			
+			    army_attack_factor = 0.15
+				army_speed_factor = 0.20
 			}
 		}
-		
+		#璃月渊军
 		RTG_liyue_yuanjun_3 = {
 		    picture = RTG_liyue_yuanjun
+			name = RTG_liyue_yuanjun_1
 		    allowed = {
 			    original_tag = RTG
 			}
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 10
-				army_defence_factor = 0.1
-				max_planning = 0.2
-				army_attack_factor = 0.1 				
+			   land_reinforce_rate = 0.02
+			   mobilization_speed = 0.15
 			}
 		}
-		
+		#璃月渊军
 		RTG_liyue_yuanjun_4a = {
 		    picture = RTG_liyue_yuanjun
+			name = RTG_liyue_yuanjun_1
 		    allowed = {
 			    original_tag = RTG
 			}
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 10
-				army_defence_factor = 0.1
-				max_planning = 0.2
-				army_attack_factor = 0.1 
-                land_doctrine_cost_factor = -0.2					
+			   max_planning = 0.15
+               planning_speed = 0.20		   
 			}
 		}
-		
+		#璃月渊军
 		RTG_liyue_yuanjun_4b = {
 		    picture = RTG_liyue_yuanjun
+			name = RTG_liyue_yuanjun_1
 		    allowed = {
 			    original_tag = RTG
 			}
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 20
-				army_defence_factor = 0.1
-				max_planning = 0.3
-				army_attack_factor = 0.1
-                promote_cost_factor = -0.3 				
+			    max_command_power = 25
+				experience_gain_army_factor = 0.15
+				promote_cost_factor = -0.33
+				minimum_training_level = -0.10
 			}
 		}
-		
+		#璃月渊军
 		RTG_liyue_yuanjun_5ax = {
 		    picture = RTG_liyue_yuanjun
+			name = RTG_liyue_yuanjun_1
 		    allowed = {
 			    original_tag = RTG
 			}
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 10
-				army_defence_factor = 0.1
-				max_planning = 0.2
-				army_attack_factor = 0.1 
-                land_doctrine_cost_factor = -0.2
-                land_reinforce_rate = 0.02
-                army_morale_factor = 0.1				
+			    army_defence_factor = 0.15
+				dig_in_speed_factor = 0.20
 			}
 		}
-		
+		#璃月渊军
 		RTG_liyue_yuanjun_5ay = {
 		    picture = RTG_liyue_yuanjun
+			name = RTG_liyue_yuanjun_1
 		    allowed = {
 			    original_tag = RTG
 			}
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 10
-				army_defence_factor = 0.1
-				max_planning = 0.2
-				army_attack_factor = 0.1 
-                land_doctrine_cost_factor = -0.2
-                production_speed_arms_factory_factor = 0.05
-                conversion_cost_civ_to_mil_factor = -0.25				
+			   army_core_defence_factor = 0.15
+			   experience_loss_factor = -0.15
+			   supply_consumption_factor = -0.15
 			}
 		}
-		
+		#璃月渊军
 		RTG_liyue_yuanjun_5bx = {
 		    picture = RTG_liyue_yuanjun
+			name = RTG_liyue_yuanjun_1
 		    allowed = {
 			    original_tag = RTG
 			}
 			available = { NOT = { is_subject_of = ZDG } }
 			removal_cost = -1
 			modifier = { 
-			    max_command_power = 20
-				army_defence_factor = 0.1
-				max_planning = 0.3
-				army_attack_factor = 0.1
-                promote_cost_factor = -0.3
-                land_reinforce_rate = 0.02
-                army_morale_factor = 0.1	 				
+			   army_org_factor = 0.20
+			   army_morale_factor = 0.20
+			   org_loss_when_moving = -0.20
+			   land_doctrine_cost_factor = -0.10
 			}
 		}
 		
@@ -1461,9 +1523,9 @@ ideas = {
 		        naval_doctrine_cost_factor = -0.1			
 			}
 		}
-        #巨渊防御
+        #巨渊后勤
 		Chasm_logistics= {
-			picture = RTG_the_earth_roars
+			picture = RTG_houqinluxian
 			allowed = {
 				always = no
 			}
@@ -1491,7 +1553,7 @@ ideas = {
 			}
 			modifier = {
 				political_power_factor = -0.05
-				consumer_goods_factor = 0.03
+				consumer_goods_factor = 0.1
 			}
 		}
 	RTG_fengsuo_b = { #被封锁！
@@ -1504,7 +1566,7 @@ ideas = {
 			}
 			modifier = {
 				political_power_factor = -0.1
-				consumer_goods_factor = 0.06
+				consumer_goods_factor = 0.2
 			}
 		}
 	RTG_fengsuo_c = { #被封锁！
@@ -1517,7 +1579,7 @@ ideas = {
 			}
 			modifier = {
 				political_power_factor = -0.15
-				consumer_goods_factor = 0.09
+				consumer_goods_factor = 0.35
 			}
 		}
 	RTG_Hive_curdling = {
@@ -1550,7 +1612,7 @@ ideas = {
 			modifier = {
 			    political_power_gain = -0.10
 				production_speed_buildings_factor = -0.10
-				consumer_goods_factor = 0.05
+				consumer_goods_factor = 0.2
 			}
 		}
     RTG_Yuanduyan_Statue = {        #渊都岩神像
@@ -1594,7 +1656,7 @@ ideas = {
 			    research_speed_factor = 0.02
 				war_support_factor = 0.05
 				drift_defence_factor = 0.50
-				consumer_goods_factor = 0.01
+				consumer_goods_factor = 0.04
 				stability_factor = 0.03
 				political_power_factor = 0.05
 			}
@@ -1614,7 +1676,7 @@ ideas = {
 		}
 	#巨渊封锁令
     Chasm_lockdown_first_stage= {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanfengsuoling
 			allowed = {
 				always = no
 			}
@@ -1634,7 +1696,7 @@ ideas = {
 		}
         #巨渊封锁令
 		Chasm_lockdown_second_stage= {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanfengsuoling
 			allowed = {
 				always = no
 			}
@@ -1657,7 +1719,7 @@ ideas = {
 		}
         #巨渊封锁令
 		Chasm_lockdown_third_stage= {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanfengsuoling
 			allowed = {
 				always = no
 			}
@@ -1680,7 +1742,7 @@ ideas = {
 		}
         #巨渊封锁令
 		Chasm_lockdown_third_different_stage= {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanfengsuoling
 			allowed = {
 				always = no
 			}
@@ -1703,7 +1765,7 @@ ideas = {
 		}
 		#巨渊防卫司
 		Chasm_defence_department= {
-			picture = RTG_the_earth_roars
+			picture = RTG_juyuanfangweisi
 			allowed = {
 				always = no
 			}
@@ -1723,7 +1785,7 @@ ideas = {
 			}
 		}
 		#加固伏龙树封印
-		RTG_jiagu_fulongshu= {
+		RTG_jiagu_fulongshu = {
 			picture = RTG_the_earth_roars
 			allowed = {
 				always = yes
@@ -1740,6 +1802,89 @@ ideas = {
 				war_support_factor = -0.10
 				consumer_goods_factor = 0.10
 				political_power_factor = -0.50
+			}
+		}
+		#岩王帝君的遗产
+		RTG_yanwang_dijun_yichan= {
+			picture = RTG_morax_legacy
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			available = { NOT = { is_subject_of = ZDG } }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				war_support_factor = 0.10
+				political_power_factor = 0.10
+				conscription = 0.01
+			}
+		}
+		#岩王帝君的遗产
+		RTG_yanwang_dijun_yichan_2 = {
+			picture = RTG_morax_legacy
+			name = RTG_yanwang_dijun_yichan 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			available = { NOT = { is_subject_of = ZDG } }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.20
+				war_support_factor = 0.20
+				political_power_factor = 0.20
+				conscription = 0.02
+			}
+		}
+		#岩王帝君的遗产
+		RTG_yanwang_dijun_yichan_3 = {
+			picture = RTG_morax_legacy
+			name = RTG_yanwang_dijun_yichan 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			available = { NOT = { is_subject_of = ZDG } }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.20
+				war_support_factor = 0.20
+				political_power_factor = 0.20
+				conscription = 0.03
+			}
+		}
+		#元素工作令
+		RTG_yuansu_gongzuoling = {
+			picture = RTG_yuansugongzuoling
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			available = { NOT = { is_subject_of = ZDG } }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.20
+				production_factory_max_efficiency_factor = 0.20
+	            production_factory_efficiency_gain_factor = 0.20
+				consumer_goods_factor = 0.07
+				stability_factor = -0.12
 			}
 		}
 		####以下为磨损龙王的ideas
@@ -2054,198 +2199,25 @@ ideas = {
 	
 	
 	
-	#####??????
-	tank_manufacturer = {
-		designer = yes
-		
-		RTG_new_heiyan_factory_1 = {
-		    name = new_heiyan_factory
-		    #picture = new_heiyan_factory
+	#####制造商
+	industrial_concern = {	
+		RTG_juyuan_mine_field = {
+		    name = juyuan_mine_field
+		    #picture = juyuan_mine_field
 			cost = 150
 			visible = { 
 			    OR = {  
 				    original_tag = RTG  
 				}  
 			}
-			available = {
-				if = {
-					limit = { original_tag = RTG  }
-			        custom_trigger_tooltip = { 
-				        tooltip = has_fixed_heiyan_factory
-					    OR = {
-					        NOT = { has_global_flag = Liyue_Civil_War }
-						    has_country_flag = RTG_keyi_shiyong_heiyanchang
-					    }
-			        }
-			    }
-		    }
-			research_bonus = {
-		        armor = 0.2
-	        }
-		    equipment_bonus = {
-                light_tank_chassis = {
-                    instant = yes
-                    build_cost_ic = -0.05
-                }
-				medium_tank_chassis = {
-                    instant = yes
-                    build_cost_ic = -0.05
-                }
-				heavy_tank_chassis = {
-                    instant = yes
-                    build_cost_ic = -0.05
-                }
-            }
-		}
-	}
-	
-	aircraft_manufacturer = {
-		designer = yes
-		
-		RTG_new_heiyan_factory_2 = {
-		    name = new_heiyan_factory
-		    #picture = new_heiyan_factory
-			cost = 150
-			visible = { 
-			    OR = {  
-				    original_tag = RTG  					
-				}  
-			}
-			available = {
-				if = {
-					limit = { original_tag = RTG  }
-			        custom_trigger_tooltip = { 
-				        tooltip = has_fixed_heiyan_factory
-					    OR = {
-					        NOT = { has_global_flag = Liyue_Civil_War }
-						    has_country_flag = RTG_keyi_shiyong_heiyanchang
-					    }
-			        }
-			    }
-		    }
-			research_bonus = {
-		        light_fighter = 0.2
-	            cat_heavy_fighter = 0.2
-	            tactical_bomber = 0.2
-	            cat_strategic_bomber = 0.2
-	            cas_bomber = 0.2
-	            naval_bomber = 0.2
-	        }
-		    equipment_bonus = {
-                CAS_equipment = {
-                   instant = yes
-                   build_cost_ic = -0.1
-                }
-				fighter_equipment = {
-                   instant = yes
-                   build_cost_ic = -0.1
-                }
-				nav_bomber_equipment = {
-                   instant = yes
-                   build_cost_ic = -0.1
-                }
-				tac_bomber_equipment = {
-                   instant = yes
-                   build_cost_ic = -0.1
-                }
-				strat_bomber_equipment = {
-                   instant = yes
-                   build_cost_ic = -0.1
-                }
-            }
-		}
-	}	
-	
-	materiel_manufacturer = {
-		designer = yes
-		
-		RTG_new_heiyan_factory_3 = {
-		    name = new_heiyan_factory
-		    #picture = new_heiyan_factory
-			cost = 150
-			visible = { 
-			    OR = {  
-				    original_tag = RTG    
-				}  
-			}
-			available = {
-				if = {
-					limit = { original_tag = RTG  }
-			        custom_trigger_tooltip = { 
-				        tooltip = has_fixed_heiyan_factory
-					    OR = {
-					        NOT = { has_global_flag = Liyue_Civil_War }
-						    has_country_flag = RTG_keyi_shiyong_heiyanchang
-					    }
-			        }
-			    }
-		    }
-			research_bonus = {
-		        artillery = 0.2
-	        }
-		    equipment_bonus = {
-                artillery_equipment = {
-                   instant = yes
-                   build_cost_ic = -0.05
-                }
-			    artillery_equipment = {
-                    instant = yes				
-				    soft_attack = 0.05
-				}
-			}
-		}
-		
-		RTG_new_heiyan_factory_4 = {
-		    name = new_heiyan_factory
-		    #picture = new_heiyan_factory
-			cost = 150
-			visible = { OR = {  original_tag = RTG    }  }
-			available = {
-				if = {
-					limit = { original_tag = RTG  }
-			        custom_trigger_tooltip = { 
-				        tooltip = has_fixed_heiyan_factory
-					    OR = {
-					        NOT = { has_global_flag = Liyue_Civil_War }
-						    has_country_flag = RTG_keyi_shiyong_heiyanchang
-					    }
-			        }
-			    }
-		    }
-			research_bonus = {
-		        infantry_weapons = 0.2
-	        }
-		    equipment_bonus = {
-                infantry_equipment = {
-                   instant = yes
-                   build_cost_ic = -0.05
-                }
-			    infantry_equipment = {
-                    instant = yes				
-				    soft_attack = 0.05
-				}
-			}
-		}
-		
-	}
-	
-	industrial_concern = {
-	
-	    RTG_new_heiyan_factory_5 = {
-		    name = RTG_kuangyelianhe
-		    #picture = new_heiyan_factory
-			cost = 150
-			visible = { 	   
-			    original_tag = RTG  	    
-			}
-			
 			research_bonus = {
 		        industry = 0.2
 	        }
 		    modifier = {
-				local_resources_factor = 0.10
+			    local_resources_factor = 0.1
 			}
 		}
+	    
 	}		
 	
 }

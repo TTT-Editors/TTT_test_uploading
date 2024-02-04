@@ -225,9 +225,44 @@ country_event = {
 					}
 			    }
 		    }
-		set_country_flag = ZDG_14_flag
-		remove_dynamic_modifier = {  modifier = CLSIA_dui_dangdiren_huaiyi1 }
+			set_country_flag = ZDG_14_flag
+			remove_dynamic_modifier = {  modifier = CLSIA_dui_dangdiren_huaiyi1 }
+			if = {
+				limit = { ZDG = { has_war_with = CUG }}
+				log = "[GetDateText]: [Root.GetName]: CUG has beaten ZDG"
+				#show peace
+				CUG = {
+					save_global_event_target_as = winning_country
+				}
+				ZDG = {
+					save_global_event_target_as = losing_country
+				}
+				CUG = {
+					annex_country = {
+						target = ZDG
+						transfer_troops = no
+					}
+				}
+				every_state = {
+					limit = { is_core_of = ZDG }
+					remove_core_of = ZDG
+				}
+				set_global_flag = TTT_warpeace_show_gui
+				add_to_variable = {
+					global.TTT_warpeace_dirty = 1
+				}
+				news_event = {
+					id = global_news.4
+				}
+				XRG = { create_wargoal = { target = CUG type = annex_everything }  }
+				XRG = { create_wargoal = { target = XOG type = annex_everything }  }
+				XOG = { create_wargoal = { target = CUG type = annex_everything }  }
+				XOG = { create_wargoal = { target = XRG type = annex_everything }  }
+				CUG = { create_wargoal = { target = XRG type = annex_everything }  }
+				CUG = { create_wargoal = { target = XOG type = annex_everything }  }
+			}			
 		}
+		custom_effect_tooltip = LYU_game_over_from_retuo
 	}
 }
 #找到神之心

@@ -292,6 +292,20 @@ country_event = {
 					}
 				}
 			}
+			if = {
+				limit = { has_dlc = "Together for Victory" }
+				LYU = {
+					set_autonomy = {
+						target = CUG
+						autonomy_state = autonomy_free
+					}
+				}
+			}
+			else = {
+				LYU = { end_puppet = CUG }
+			}
+			306 = { set_demilitarized_zone = yes }
+			308 = { set_demilitarized_zone = yes }
 			log = "[GetDateText]: [Root.GetName]: NingGuangand_Xingqiu_has_load_oob"
 		}
 	}
@@ -679,9 +693,9 @@ country_event = {
 			ZDG = {
 				transfer_state = 306
 				transfer_state = 308
-				transfer_state = 109
 			}
-			100 = { set_demilitarized_zone = no }
+			306 = { set_demilitarized_zone = no }
+			308 = { set_demilitarized_zone = no }
 			ZDG = {
 				inherit_technology = SNE
 				set_research_slots = 3
@@ -698,10 +712,8 @@ country_event = {
 			ZDG = {
 				308 = {
 					add_core_of = ZDG
-					remove_core_of = CUG
 				}
 				306 = { set_compliance = 40 }
-				109 = { set_compliance = 40 }
 				add_manpower = 10000
 				set_political_power = 200
 			}
@@ -781,16 +793,10 @@ country_event = {
 				id = global_news.3
 				hours = 12
 			}
-			XOG = {
-				country_event = {
-					id = liyue_civil_war.5
-					days = 20
-				}
-			}
-			XRG = {
-				country_event = {
-					id = liyue_civil_war.5
-					days = 20
+			ZDG = {
+				create_wargoal = {
+					type = annex_everything
+					target = CUG
 				}
 			}
 			every_possible_country = {
@@ -874,14 +880,11 @@ country_event = {
 				}
 			}
 			XRG = {
-				annex_country = { target = CUG transfer_troops = no }
 				every_owned_state = {
 					add_core_of = XRG
 					remove_core_of = LYU
 					set_demilitarized_zone = no
 				}
-				306 = { set_demilitarized_zone = yes }
-				308 = { set_demilitarized_zone = yes }
 				country_event = { id = spawn_army_event.1 }
 			}
 			XRG_Shenhe = {

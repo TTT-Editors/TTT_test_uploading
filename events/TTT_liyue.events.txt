@@ -691,7 +691,6 @@ country_event = {
 		hidden_effect = {
 			set_global_flag = zdg_had_come
 			ZDG = {
-				transfer_state = 306
 				transfer_state = 308
 			}
 			306 = { set_demilitarized_zone = no }
@@ -699,7 +698,7 @@ country_event = {
 			ZDG = {
 				inherit_technology = SNE
 				set_research_slots = 3
-				#load_oob = "ZDG"
+				load_oob = "ZDG_army"
 				add_offsite_building = {
 					type = arms_factory
 					level = 1
@@ -710,69 +709,7 @@ country_event = {
 				}
 			}
 			ZDG = {
-				308 = {
-					add_core_of = ZDG
-				}
-				306 = { set_compliance = 40 }
-				add_manpower = 10000
-				set_political_power = 200
-			}
-			ZDG = {
-				division_template = {
-					name = "Vspomogatel'nye voyska" #Zhidong_ganshe_jun
-					division_names_group = ZDG_INF_01
-					is_locked = no
-					priority = 1
-					regiments = {
-						infantry = { x = 0 y = 0 }
-		                infantry = { x = 0 y = 1 }
-		                infantry = { x = 0 y = 2 }
-		                infantry = { x = 1 y = 0 }
-		                artillery_brigade = { x = 2 y = 0 }
-					}
-				}
-				capital_scope = {
-					create_unit = {
-						division = "division_template = \"Vspomogatel'nye voyska\" start_experience_factor = 0.5"
-						owner = ZDG
-						allow_spawning_on_enemy_provs = yes
-						count = 23
-					}
-				}
-				division_template = {
-					name = "Yuzoje ekspedicionario eskadro" #Yurenzhon_ganshe_budui
-					division_names_group = ZDG_INF_01
-					is_locked = yes
-					priority = 2
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						artillery_brigade = { x = 3 y = 0 }
-						artillery_brigade = { x = 3 y = 1 }
-						artillery_brigade = { x = 3 y = 2 }
-						artillery_brigade = { x = 4 y = 0 }
-					}
-					support = {
-						engineer = { x = 0 y = 0 }
-						recon = { x = 0 y = 1 }
-						artillery = { x = 0 y = 2 }
-					}
-				}
-				capital_scope = {
-					create_unit = {
-						division = "division_template = \"Yuzoje ekspedicionario eskadro\" start_experience_factor = 0.75"
-						owner = ZDG
-						allow_spawning_on_enemy_provs = yes
-						count = 6
-					}
-				}
+				308 = { set_compliance = 40 }
 			}
 			SNE = {
 				SNE_Childe = {
@@ -1065,10 +1002,6 @@ country_event = { #内战爆发事件 LYU触发
 			log = "[GetDateText], [Root.GetName]: Liyue Civil War Begins"
 			country_event = {
 				id = super.1
-			}
-			country_event = {
-				id = liyue.9
-				days = 1
 			}
 			LYU_lazy_load_oob = yes
 			country_event = {

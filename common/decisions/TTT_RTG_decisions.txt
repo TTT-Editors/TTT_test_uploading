@@ -806,27 +806,6 @@ RTG_forgive_everything = {
 			custom_effect_tooltip = RTG_forgive_everything_tt
 		}
 	}
-	RTG_accept_clique_anachist = {
-		icon = decision_RTG_accept_clique
-		visible = {
-			ANG = {
-				exists = no
-				NOT = {
-					has_country_flag = clique_in_Retuo_faction
-					has_country_flag = anachist_peace_with_Ganyu
-				}
-			}
-		}
-		fire_only_once = yes
-		days_remove = 120
-		cost = 120
-		ai_will_do = {
-			base = 100
-		}
-		remove_effect = {
-			custom_effect_tooltip = RTG_forgive_everything_tt
-		}
-	}
 	RTG_accept_Liyuegang = {
 		icon = decision_RTG_accept_clique
 		visible = {
@@ -2149,12 +2128,12 @@ liyue_civil_war_decisions = {
 			original_tag = RTG
 		}
 		visible = {
+			has_country_flag = RTG_zhishangyunjian_flag
 			NOT = {
 				has_war_with = XRG
 				is_in_faction_with = XRG
 				has_country_flag = RTG_yaoqing_xianren_flag
 			}
-			has_completed_focus = RTG_zhishangyunjian
 		}
 		available = {
 			XRG = {
@@ -2181,7 +2160,14 @@ liyue_civil_war_decisions = {
 			original_tag = RTG
 		}
 		visible = {
-			has_completed_focus = RTG_zhishangyunjian
+			has_country_flag = RTG_zhishangyunjian_flag
+			XRG = {
+				exists = yes
+				is_subject = no
+			}
+		}
+		available = {
+			is_faction_leader = yes
 			XRG = {
 				exists = yes
 				is_subject = no
@@ -2190,9 +2176,6 @@ liyue_civil_war_decisions = {
 					has_war_with = RTG
 				}
 			}
-		}
-		available = {
-			is_faction_leader = yes
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -2215,7 +2198,14 @@ liyue_civil_war_decisions = {
 			original_tag = RTG
 		}
 		visible = {
-			has_completed_focus = RTG_mihefenqi
+			has_country_flag = RTG_mihefenqi_flag
+			LYU = {
+				exists = yes
+				is_subject = no
+			}
+		}
+		available = {
+			is_faction_leader = yes
 			LYU = {
 				exists = yes
 				is_subject = no
@@ -2224,9 +2214,6 @@ liyue_civil_war_decisions = {
 					has_war_with = RTG
 				}
 			}
-		}
-		available = {
-			is_faction_leader = yes
 		}
 		fire_only_once = yes
 		cost = 10
@@ -2253,139 +2240,107 @@ liyue_civil_war_decisions = {
 		available = {
 			has_war_support > 0.6
 			has_stability > 0.75
-			OR = {
-				AND = {
-					87 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					51 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					50 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					52 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					53 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					70 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					54 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					55 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					56 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					59 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					60 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					71 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					69 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
+			87 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
 				}
-				AND = {
-					87 = {
-						controller = {
-							original_tag = RTG
-						}
+			}
+			51 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					51 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			50 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					50 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			52 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					52 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			53 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					53 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			70 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					70 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			54 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					54 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			55 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					55 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			56 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					56 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			59 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					59 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			60 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					60 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			71 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
-					71 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					69 = {
-						controller = {
-							original_tag = RTG
-						}
+				}
+			}
+			69 = {
+				controller = {
+					OR = {
+						is_in_faction_with = RTG
+						original_tag = RTG
 					}
 				}
 			}

@@ -30,7 +30,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			add_political_power = 50
+			country_event = CUG_event.1
 		}
 	}
 	focus = {
@@ -58,7 +59,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			add_war_support = 0.05
 		}
 	}
 	focus = {
@@ -86,7 +87,14 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = CUG_shouji_jin_li_tt
+			LYU_fujin_xianjun = {
+			swap_country_leader_traits = {
+				remove = jiushi_xianjun
+				add = jiushi_xianjun_1
+				ideology = moraxism
+			    }
+		    }
 		}
 	}
 	focus = {
@@ -112,9 +120,17 @@ focus_tree = {
 					}
 				}
 			}
+            controls_state = 307
 		}
 		completion_reward = {
-			
+			307 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 
+				}
+			}
+			custom_effect_tooltip = CUG_shouji_jin_li_tt
 		}
 	}
 	focus = {
@@ -143,9 +159,18 @@ focus_tree = {
 					}
 				}
 			}
+			has_manpower > 459
+			has_equipment = {
+				infantry_equipment > 466
+			} 
 		}
 		completion_reward = {
-			
+			add_manpower = -459
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -466
+			}
+			country_event = CUG_event.2
 		}
 	}
 	focus = {
@@ -171,9 +196,22 @@ focus_tree = {
 					}
 				}
 			}
+			controls_state = 207
 		}
 		completion_reward = {
-			
+			207 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 
+				}
+			}
+			if = {
+				limit = {
+					207 = { is_demilitarized_zone = yes }
+				}
+				207 = { set_demilitarized_zone = no }
+			}
 		}
 	}
 	focus = {
@@ -201,7 +239,11 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			add_stability = 0.05
+			swap_ideas = {
+				remove_idea = CUG_chenyu_ergong
+				add_idea = CUG_chenyu_ergong_1
+			}
 		}
 	}
 	
@@ -230,7 +272,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			add_stability = 0.05
 		}
 	}
 	focus = {
@@ -256,9 +298,27 @@ focus_tree = {
 					}
 				}
 			}
+			controls_state = 309
 		}
 		completion_reward = {
-			
+			309 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 			
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes 			
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 			
+				}
+			}
 		}
 	}
 	focus = {
@@ -284,9 +344,21 @@ focus_tree = {
 					}
 				}
 			}
+			controls_state = 306
 		}
 		completion_reward = {
-			
+			309 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes 			
+				}			
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 30
+			}
 		}
 	}
 	focus = {
@@ -343,9 +415,22 @@ focus_tree = {
 					}
 				}
 			}
+			controls_state = 308		
 		}
 		completion_reward = {
 			
+			build_railway = {
+				path = { 7556 7545 7537 7532 2118  }
+			}	
+			
+			308 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 7556
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -373,7 +458,11 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			306 = {
+				add_dynamic_modifier = {
+					modifier = LYU_xianjia_chahu
+				}
+			}
 		}
 	}
 	focus = {
@@ -399,9 +488,23 @@ focus_tree = {
 					}
 				}
 			}
+			controls_state = 309
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = TTT_gongyefazhanchengdu_good_two
+			custom_effect_tooltip = CUG_jinko_jixie_tt
+			swap_ideas = {
+				remove_idea = CUG_chenyu_ergong_1
+				add_idea = CUG_chenyu_ergong_2
+			}
+			309 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -429,7 +532,10 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = CUG_qiaoying_chaye
+				add_idea = CUG_qiaoying_chaye_1
+			}
 		}
 	}
 	focus = {
@@ -457,7 +563,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			add_ideas = CUG_xianjia_zhuli
+			country_event = CUG_event.3
 		}
 	}
 	focus = {
@@ -466,7 +573,7 @@ focus_tree = {
 		available_if_capitulated = no
 		x = 5
 		y = 5
-		cost = 35
+		cost = 70
 		ai_will_do = {
 			factor = 10
 		}
@@ -491,7 +598,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			country_event = CUG_event.4
 		}
 	}
 }

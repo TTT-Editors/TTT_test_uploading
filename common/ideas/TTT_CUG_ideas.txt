@@ -55,6 +55,21 @@ ideas = {
 				political_power_gain = 0.1
 			}
 		}
+		#翘英茶业的衰败
+		CUG_qiaoyingchaye_shuaibai = {
+			removal_cost = -1
+			picture = CUG_qiaoying_chaye
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {			
+				stability_factor = -0.2
+				min_export = 0.25		
+			}
+		}
 		#水土失衡
 		CUG_shuitu_shihen = {
 			removal_cost = -1
@@ -71,6 +86,30 @@ ideas = {
 				surrender_limit = -0.5
 				LYU_Yield_tea = -0.35
 				custom_modifier_tooltip = CUG_shuitu_shihen_tt
+				custom_modifier_tooltip = SPR_military_disloyalty_tt
+			}
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+			on_remove = {
+				country_lock_all_division_template = no
+			}
+		}
+		#蛮荒入侵
+		CUG_huangman_ruqing = {
+			removal_cost = -1
+			picture = CUG_xianjia
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = -0.50
+				war_support_factor = -0.50
+				monthly_population = -0.50
+				LYU_Yield_tea = -0.95
 				custom_modifier_tooltip = SPR_military_disloyalty_tt
 			}
 			on_add = {

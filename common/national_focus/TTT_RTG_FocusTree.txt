@@ -2180,6 +2180,7 @@ focus_tree = {
 		cost = 35
 		completion_reward = {
 			add_manpower = 120000
+			add_command_power = 30
 			custom_effect_tooltip = TTT_junshifazhanchengdu_good_two
 			hidden_effect = {
 				add_dynamic_modifier = {
@@ -2199,14 +2200,14 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_template = "巨渊千岩军"
+						has_template = "旧千岩军"
 					}
 				}
 				division_template = {
-					name = "巨渊千岩军"
+					name = "旧千岩军"
 					is_locked = no
 					priority = 1
-					division_names_group = RTG_INF_01
+					division_names_group = LYU_INF_04
 					regiments = {
 						infantry = {
 							x = 0
@@ -2245,7 +2246,7 @@ focus_tree = {
 			}
 			capital_scope = {
 				create_unit = {
-					division = "division_template = \"巨渊千岩军\" start_experience_factor = 0.5"
+					division = "division_template = \"旧千岩军\" start_experience_factor = 0.5"
 					owner = RTG
 					count = 5
 				}
@@ -2288,7 +2289,10 @@ focus_tree = {
 		y = 3
 		cost = 35
 		ai_will_do = {
-			base = 10
+			base = 100
+		}
+		available = {
+			is_in_faction = no
 		}
 		completion_reward = {
 			add_ideas = RTG_changming_deng
@@ -2387,7 +2391,7 @@ focus_tree = {
 		y = 3
 		cost = 35
 		ai_will_do = {
-			base = 100
+			base = 10
 		}
 		completion_reward = {
 			swap_ideas = {
@@ -2431,7 +2435,7 @@ focus_tree = {
 		y = 4
 		cost = 28
 		ai_will_do = {
-			base = 10
+			base = 100
 		}
 		bypass = {
 			XRG = {
@@ -2469,7 +2473,7 @@ focus_tree = {
 		y = 4
 		cost = 28
 		ai_will_do = {
-			base = 100
+			base = 10
 		}
 		completion_reward = {
 			swap_ideas = {
@@ -2488,6 +2492,9 @@ focus_tree = {
 		x = 12
 		y = 4
 		cost = 28
+		available = {
+			has_idea = RTG_zhongzu_maodun_2
+		}
 		completion_reward = {
 			swap_ideas = {
 				add_idea = RTG_zhongzu_maodun_3
@@ -2543,6 +2550,9 @@ focus_tree = {
 		x = 11
 		y = 5
 		cost = 28
+		available = {
+			has_idea = RTG_zhongzu_maodun_3
+		}
 		completion_reward = {
 			swap_ideas = {
 				add_idea = RTG_zhongzu_maodun_4
@@ -2553,8 +2563,6 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = RTG_suiyidantong
-		}
-		prerequisite = {
 			focus = RTG_qiyue_yongcun
 		}
 	}
@@ -3026,6 +3034,7 @@ focus_tree = {
 		y = 6
 		cost = 70
 		completion_reward = {
+			add_command_power = 20
 			custom_effect_tooltip = TTT_junshifazhanchengdu_good
 			hidden_effect = {
 				add_dynamic_modifier = {

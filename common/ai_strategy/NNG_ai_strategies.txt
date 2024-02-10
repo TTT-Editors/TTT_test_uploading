@@ -18,10 +18,15 @@ Ningguang_aizaobudui = {
 		tag = NNG
 	}
 	enable = {
-		tag = NNG
+		always = yes
 	}
 	abort = {
 		always = no
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = cavalry
+		value = -100
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -61,7 +66,7 @@ Ningguang_aizaobudui = {
 	ai_strategy = {
 		type = role_ratio
 		id = infantry
-		value = 75 #88 to 70
+		value = 88 #88 to 70
 	}
 	ai_strategy = {
 		type = invade
@@ -101,7 +106,7 @@ Ningguang_KQG_isbad = {
 	ai_strategy = {
 		type = front_unit_request
 		tag = KQG
-		value = 999
+		value = 100
 	}
 }
 
@@ -157,19 +162,15 @@ Ningguang_KQG_isbad_two = {
 		}
 	}
 	ai_strategy = {
-	type = front_control
-	tag = KQG  
-	ratio = 0.1
-    state = 146
-	state = 149
-	state = 405
-	state = 406
-	priority = 100  
-	ordertype = front  
-	execution_type = careful
-	manual_attack = yes
-	execute_order = no
-    }
+		type = front_control
+		tag = KQG
+		ratio = 0.75
+		priority = 30
+		ordertype = front
+		execution_type = careful  
+		execute_order = no 
+		manual_attack = yes
+	}
 }
 Ningguang_KQG_isbad_three = {
 	allowed = {
@@ -178,28 +179,76 @@ Ningguang_KQG_isbad_three = {
 	enable = {
 		country_exists = KQG
 		has_completed_focus = NNG_wmbijiangshengli
-		num_divisions > 100
+		num_divisions > 70
 	}
 	abort = {
 	    or = {
 		NOT = {
 			country_exists = KQG
 		}
-		num_divisions < 100
+		num_divisions < 69
 		}
 	}
 	ai_strategy = {
-	type = front_control
-	tag = KQG  
-	ratio = 0.1
-    state = 146
-	state = 149
-	state = 405
-	state = 406
-	priority = 900  
-	ordertype = front  
-	execution_type = rush  
-	manual_attack = yes
-	execute_order = yes
-    }
+		type = front_control
+		tag = NNG
+		ratio = 0.75
+		priority = 30
+		ordertype = front
+		execution_type = rush
+	}
+}
+NNG_watch_out_south = {
+	allowed = {
+		original_tag = NNG
+	}
+	
+	enable = {
+		date > 2001.1.1
+		OR = {
+			date > 2003.1.1
+			AND = {
+				ANG = { exists = no }
+				LYU = { NOT = { has_idea = GANYU0_A } }
+			}
+			ANG = { surrender_progress > 0.6 }
+			
+			LYU = { exists = no }
+			LYU = { is_subject = yes }
+			LYU = { is_in_faction = yes }
+			LYU = { surrender_progress > 0.6 }
+			
+			RTG = { exists = no }
+			RTG = { is_subject = yes }
+			RTG = { is_in_faction = yes }
+			RTG = { surrender_progress > 0.6 }
+		}
+	}
+	
+	abort = { NOT = { has_global_flag = Liyue_Civil_War } }
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = "LYU"
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = "RTG"
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = "ANG"
+		value = 40
+	}
+	
+	#poor little guy
+	ai_strategy = {
+		type = front_unit_request
+		id = "ARF"
+		value = 25
+	}
 }

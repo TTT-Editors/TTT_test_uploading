@@ -683,7 +683,12 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 	    name = retuo_juanshu.6.a
-		RTG = { add_to_faction = XRG }
+		RTG = {
+			set_autonomy = {
+				target = XRG
+				autonomy_state = RTG_autonomus_states
+			}
+		}
 		hidden_effect = {
 			RTG = {
 				news_event = {
@@ -810,31 +815,6 @@ country_event = {
 		}
 	}
 	option = {
-	    name = retuo_juanshu.11.b
-		diplomatic_relation = {
-            country = RTG
-            relation = non_aggression_pact
-            active = yes
-        }
-		add_opinion_modifier = {
-			target = RTG
-		    modifier = large_increase
-	    }
-		RTG = {
-		    add_opinion_modifier = {
-			    target = LYU
-				modifier = large_increase
-			}
-		    country_event = {
-			    id = retuo_juanshu.12
-				hours = 35
-			}
-		}
-		ai_chance = {
-			base = 50
-		}
-	}
-	option = {
 	    name = retuo_juanshu.11.c
 		add_opinion_modifier = {
 			target = RTG
@@ -876,10 +856,12 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 	    name = retuo_juanshu.13.a
-		annex_country = {
-            target = LYU
-            transfer_troops = yes
-        }
+		RTG = {
+			set_autonomy = {
+				target = XRG
+				autonomy_state = RTG_autonomus_states
+			}
+		}
 		add_timed_idea = {
 		    idea = RTG_integrate_liyuegang
 			days = 120

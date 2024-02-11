@@ -177,11 +177,11 @@ add_to_faction = MOT
 add_to_faction = BLL
 add_to_faction = DLK
 add_to_faction = DSC
-add_to_faction = GAP
 add_to_faction = ALS
 add_to_faction = FXE
-add_to_faction = DSC
+add_to_faction = TWL
 add_to_faction = QQZ
+add_to_faction = MDQ
 
 if = {
 	limit = {
@@ -220,15 +220,45 @@ if = {
 		autonomous_state = mot_subjects
 	}
 }
-else = {
-	puppet = ALS
-	puppet = BLL
-	puppet = DLK
-	puppet = TWL
-	puppet = MDQ
-	puppet = FXE
-	puppet = DSC
-	puppet = QQZ
+
+if = {
+	limit = {
+		not = {
+			has_dlc = "Together for Victory"
+		}
+	}
+	set_autonomy = {
+		target = ALS
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = BLL
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = DLK
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = TWL
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = MDQ
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = FXE
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = DSC
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = QQZ
+		autonomous_state = autonomy_puppet
+	}
 }
 
 set_politics = {

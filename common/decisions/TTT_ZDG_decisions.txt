@@ -974,16 +974,22 @@ ZDG_decision_category = {
 	ZDG_establishing_goodwill_government = {
 		#建立仙人管理区  
 		visible = {
-			any_state = {
-				is_core_of = XRG
+			any_owned_state = {
+				OR = {
+					region = 32
+					region = 31
+					state = 72
+				}
 			}
 		}
 		available = {
 			all_state = {
 				OR = {
-					NOT = { is_core_of = XRG }
-					controller = { tag = ZDG }
+					region = 32
+					region = 31
+					state = 72
 				}
+				is_controlled_by = ZDG
 			}
 			XRG = {
 				exists = NO
@@ -997,6 +1003,20 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			every_state = {
+				limit = { is_core_of = XRG }
+				remove_core_of = XRG
+			}
+			every_state = {
+				limit = { 
+					OR = {
+						region = 32
+						region = 31
+						state = 72
+					}
+				}
+				add_core_of = XRG
+			}
 			release = XRG
 			set_autonomy = {
 				target = XRG
@@ -1054,16 +1074,22 @@ ZDG_decision_category = {
 	ZDG_establishing_beiliyue_government = {
 		#建立北璃月管理区  
 		visible = {
-			any_state = {
-				is_core_of = XOG
+			any_owned_state = {
+				OR = {
+					region = 19
+					region = 20
+					region = 22
+				}
 			}
 		}
 		available = {
 			all_state = {
 				OR = {
-					NOT = { is_core_of = XOG }
-					controller = { tag = ZDG }
+					region = 19
+					region = 20
+					region = 22
 				}
+				is_controlled_by = ZDG
 			}
 			XOG = {
 				exists = NO
@@ -1077,6 +1103,20 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			every_state = {
+				limit = { is_core_of = XOG }
+				remove_core_of = XOG
+			}
+			every_state = {
+				limit = { 
+					OR = {
+						region = 19
+						region = 20
+						region = 22
+					}
+				}
+				add_core_of = XOG
+			}
 			release = XOG
 			set_autonomy = {
 				target = XOG
@@ -1133,22 +1173,24 @@ ZDG_decision_category = {
 	ZDG_establishing_guiliyuan_government = {
 		#建立归离原管理区  
 		visible = {
-			any_state = {
+			any_owned_state = {
 				OR = {
-					is_core_of = KQG
-					is_core_of = NNG
+					region = 23
+					region = 24
+					region = 25
+					region = 26
 				}
 			}
 		}
 		available = {
 			all_state = {
 				OR = {
-					AND = {
-						NOT = { is_core_of = KQG }
-						NOT = { is_core_of = NNG }
-					}
-					controller = { tag = ZDG }
+					region = 23
+					region = 24
+					region = 25
+					region = 26
 				}
+				is_controlled_by = ZDG
 			}
 			KQG = { exists = NO }
 			NNG = { exists = NO }
@@ -1162,9 +1204,23 @@ ZDG_decision_category = {
 		}
 		complete_effect = {
 			every_state = {
+				limit = { is_core_of = KQG }
+				remove_core_of = KQG
+			}
+			every_state = {
 				limit = { is_core_of = NNG }
-				add_core_of = KQG
 				remove_core_of = NNG
+			}
+			every_state = {
+				limit = { 
+					OR = {
+						region = 23
+						region = 24
+						region = 25
+						region = 26
+					}
+				}
+				add_core_of = KQG
 			}
 			release = KQG
 			KQG = {
@@ -1215,17 +1271,21 @@ ZDG_decision_category = {
 		}
 	}
 	ZDG_establishing_cengyan_government = {
-		#建立巨渊管理区  
+		#建立巨渊管理区 
+		visible = {
+			any_owned_state = {
+				region = 30
+			}
+		} 
 		available = {
 			all_state = {
 				OR = {
-					NOT = { is_core_of = RTG }
-					controller = { tag = ZDG }
+					region = 30
 				}
+				is_controlled_by = ZDG
 			}
-			RTG = {
-				exists = NO
-			}
+			RTG = { exists = NO }
+			ARF = { exists = NO }
 		}
 		cost = 200
 		ai_will_do = {
@@ -1235,6 +1295,20 @@ ZDG_decision_category = {
 			original_tag = ZDG
 		}
 		complete_effect = {
+			every_state = {
+				limit = { is_core_of = RTG }
+				remove_core_of = RTG
+			}
+			every_state = {
+				limit = { is_core_of = ARF }
+				remove_core_of = ARF
+			}
+			every_state = {
+				limit = { 
+					region = 30
+				}
+				add_core_of = RTG
+			}
 			release = RTG
 			RTG = {
 				hidden_effect = {
@@ -1291,22 +1365,22 @@ ZDG_decision_category = {
 	ZDG_establishing_liyuegang_government = {
 		#建立璃月港管理区 
 		visible = {
-			any_state = {
+			any_owned_state = {
 				OR = {
-					is_core_of = LYU
-					is_core_of = ANG
+					region = 27
+					region = 28
+					region = 29
 				}
 			}
 		}
 		available = {
 			all_state = {
 				OR = {
-					AND = {
-						NOT = { is_core_of = LYU }
-						NOT = { is_core_of = ANG }
-					}
-					controller = { tag = ZDG }
+					region = 27
+					region = 28
+					region = 29
 				}
+				controller = { tag = ZDG }
 			}
 			LYU = { exists = NO }
 			ANG = { exists = NO }
@@ -1320,9 +1394,25 @@ ZDG_decision_category = {
 		}
 		complete_effect = {
 			every_state = {
+				limit = { is_core_of = LYU }
+				remove_core_of = LYU
+			}
+			every_state = {
 				limit = { is_core_of = ANG }
-				add_core_of = LYU
 				remove_core_of = ANG
+			}
+			every_state = {
+				limit = { 
+					OR = {
+						region = 27
+						region = 28
+						AND = {
+							region = 29
+							NOT = { state = 72 }
+						}
+					}
+				}
+				add_core_of = LYU
 			}
 			release = LYU
 			LYU = {

@@ -15,6 +15,59 @@ ZDG_decision_category = {
 			custom_effect_tooltip = ZDG_zhijiekaiqierjieduan_tt
 		}
 	}
+	ZDG_xuanzhan_mosun_RTG = {
+		#RTG宣战决议
+		name = Nanbu_xuanzhanjueyi_RTG
+		visible = {
+			original_tag = RTG
+			RTG = {
+				exists = yes
+			}
+			NOT = {
+				RTG = {
+					is_subject_of = ROOT
+				}
+				RTG = {
+					is_in_faction_with = ROOT
+				}
+				has_war_with = RTG
+			}
+		}
+		fire_only_once = yes
+		days_remove = 14
+		available = {
+			#has_war = no
+			OR = {
+				any_owned_state = {
+					any_neighbor_state = {
+						is_controlled_by = RTG
+					}
+				}
+				any_subject_country = {
+					any_owned_state = {
+						any_neighbor_state = {
+							is_controlled_by = RTG
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		war_with_on_complete = RTG
+		complete_effect = {
+			RTG = {
+				country_event = {
+					days = 1
+					id = liyue_civil_war.101
+				}
+			}
+		}
+		remove_effect = {
+			create_wargoal = { target = RTG type = annex_everything } 
+		}
+	}
 	ZDG_detectintelligence_immortalfamily_XRG = {
 		#刺探仙家情报
 		cost = 10

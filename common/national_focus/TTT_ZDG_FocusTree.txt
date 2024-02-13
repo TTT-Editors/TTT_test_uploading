@@ -408,6 +408,11 @@ focus_tree = {
 					traits = {
 						ice_whispering1
 					}
+					visible = {
+						NOT = {
+							has_country_flag = ZDG_jingxianliyue_flag
+						}
+					}
 				}
 			}
 			add_advisor_role = {
@@ -419,6 +424,11 @@ focus_tree = {
 					idea_token = ZDG_valeria1
 					traits = {
 						ice_whispering
+					}
+					visible = {
+						NOT = {
+							has_country_flag = ZDG_jingxianliyue_flag
+						}
 					}
 				}
 			}
@@ -433,6 +443,11 @@ focus_tree = {
 					traits = {
 						thundercloud1
 					}
+					visible = {
+						NOT = {
+							has_country_flag = ZDG_jingxianliyue_flag
+						}
+					}
 				}
 			}
 			add_advisor_role = {
@@ -444,6 +459,11 @@ focus_tree = {
 					idea_token = ZDG_nastasia1
 					traits = {
 						thundercloud
+					}
+					visible = {
+						NOT = {
+							has_country_flag = ZDG_jingxianliyue_flag
+						}
 					}
 				}
 			}
@@ -1770,7 +1790,90 @@ focus_tree = {
 			focus = ZDG_langdeliaoya
 		}
 		completion_reward = {
-
+			SNE = {
+				set_autonomy = {
+					target = ZDG
+					autonomy_state = ZDG_autonomus_states_2
+				}
+			}
+			ZDG = {
+				SNE_Childe = {
+					set_nationality = {
+						target_country = SNE
+					}
+				}
+				promote_character = ZDG_ChenyuValley_Association_government
+			}
+			set_party_name = {
+				ideology = despotism
+				long_name = ZDG_despotism_party_cug_long
+				name = ZDG_despotism_party_cug
+			}
+			set_party_name = {
+				ideology = national_socialism
+				long_name = ZDG_national_socialism_party_cug_long
+				name = ZDG_national_socialism_party_cug
+			}
+			set_party_name = {
+				ideology = authoritarianism
+				long_name = ZDG_authoritarianism_party_cug_long
+				name = ZDG_authoritarianism_party_cug
+			}
+			set_country_flag = ZDG_jingxianliyue_flag
+			add_ideas = ZDG_nvhuang_yingyan
+			add_ideas = ZDG_lieyanhuohua_yujin
+			add_ideas = ZDG_wuxianshangu_xinsheng
+			division_template = {
+				name = "沉玉谷驻防部队"
+				is_locked = no
+				priority = 1
+				division_names_group = ZDG_INF_02
+				regiments = {
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 0
+						y = 2
+					}
+					infantry = {
+						x = 0
+						y = 3
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
+					artillery_brigade = {
+						x = 2
+						y = 0
+					}
+					artillery_brigade = {
+						x = 2
+						y = 1
+					}
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+			every_owned_state = {
+				create_unit = {
+					division = "division_template = \"沉玉谷驻防部队\" start_experience_factor = 0.55"
+					owner = ZDG
+					allow_spawning_on_enemy_provs = yes
+					count = 3
+				}
+			}
 			hidden_effect = {
 				ZDG = {
 					set_cosmetic_tag = ZDLY

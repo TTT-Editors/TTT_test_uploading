@@ -171,7 +171,6 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_global_flag = Liyue_Civil_War
-		has_unite_liyue = yes
 		is_faction_leader = yes
 		original_tag = RTG
 		LYU = {
@@ -225,30 +224,6 @@ country_event = {
 				target = CUG
 				autonomy_state = LYU_autonomus_states
 			}
-			annex_country = {
-				target = LYU
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = ANG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = KQG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = NNG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = XOG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = XRG
-				transfer_troops = yes
-			}
 			hidden_effect = {
 				country_event = {
 					days = 21
@@ -270,6 +245,17 @@ country_event = {
 				swap_ideas = {
 					add_idea = RTG_zhongzu_maodun_1
 					remove_idea = RTG_zhongzu_maodun_4
+				}
+			}
+		}
+		every_other_country = {
+			limit = {
+				is_subject_of = RTG
+			}
+			ROOT = {
+				annex_country = {
+					target = PREV
+					transfer_troops = yes
 				}
 			}
 		}

@@ -982,8 +982,10 @@ ZDG_decision_category = {
 		}
 		available = {
 			all_state = {
-				has_state_flag = Xianren_state_flag
-				is_owned_and_controlled_by = ZDG
+				OR = {
+					NOT = { has_state_flag = Xianren_state_flag }
+					is_owned_and_controlled_by = ZDG
+				}
 			}
 			XRG = {
 				exists = NO
@@ -1070,8 +1072,10 @@ ZDG_decision_category = {
 		}
 		available = {
 			all_state = {
-				has_state_flag = Xiao_state_flag
-				is_owned_and_controlled_by = ZDG
+				OR = {
+					NOT = { has_state_flag = Xiao_state_flag }
+					is_owned_and_controlled_by = ZDG
+				}
 			}
 			XOG = {
 				exists = NO
@@ -1157,8 +1161,10 @@ ZDG_decision_category = {
 		}
 		available = {
 			all_state = {
-				has_state_flag = Keqing_Ningguang_state_flag
-				is_owned_and_controlled_by = ZDG
+				OR = {
+					NOT = { has_state_flag = Keqing_Ningguang_state_flag }
+					is_owned_and_controlled_by = ZDG
+				}
 			}
 			KQG = { exists = NO }
 			NNG = { exists = NO }
@@ -1242,8 +1248,10 @@ ZDG_decision_category = {
 		} 
 		available = {
 			all_state = {
-				has_state_flag = Ruotuo_state_flag
-				is_owned_and_controlled_by = ZDG
+				OR = {
+					NOT = { has_state_flag = Ruotuo_state_flag }
+					is_owned_and_controlled_by = ZDG
+				}
 			}
 			RTG = { exists = NO }
 			ARF = { exists = NO }
@@ -1337,11 +1345,13 @@ ZDG_decision_category = {
 		available = {
 			all_state = {
 				OR = {
-					region = 27
-					region = 28
-					region = 29
+					AND = {
+						NOT = { region = 27 }
+						NOT = { region = 28 }
+						NOT = { region = 29 }
+					}
+					is_owned_and_controlled_by = ZDG
 				}
-				controller = { tag = ZDG }
 			}
 			LYU = { exists = NO }
 			ANG = { exists = NO }

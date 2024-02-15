@@ -267,6 +267,9 @@ country_event = {
 						always = no
 					}
 				}
+				every_character = {
+					set_nationality = SNE
+				}
 			}
 			set_country_flag = ZDG_14_flag
 			remove_dynamic_modifier = {
@@ -317,6 +320,25 @@ country_event = {
 				}
 				ZDG = {
 					release = CUG
+				}
+				every_country = {
+					limit = {
+						is_subject_of = ZDG
+					}
+					ZDG = {
+						annex_country = {
+							target = PREV
+						}
+					}
+				}
+				every_neighbor_country = {
+					limit = {
+						is_nominate_liyue = yes
+					}
+					declare_war_on = {
+						target = ZDG
+						type = annex_everything
+					}
 				}
 			}
 		}

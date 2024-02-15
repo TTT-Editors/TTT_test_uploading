@@ -622,7 +622,6 @@ liyue_civil_war_decisions = {
 	defeat_zdg = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			308 = {
 				is_core_of = CUG
 			}
@@ -671,7 +670,6 @@ liyue_civil_war_decisions = {
 	defeat_XRG = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			79 = {
 				is_core_of = XRG
 			}
@@ -747,7 +745,6 @@ liyue_civil_war_decisions = {
 	defeat_RTG = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			68 = {
 				is_core_of = RTG
 			}
@@ -815,7 +812,6 @@ liyue_civil_war_decisions = {
 	defeat_ANG = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			59 = {
 				is_core_of = ANG
 			}
@@ -856,7 +852,6 @@ liyue_civil_war_decisions = {
 	defeat_LYU = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			51 = {
 				is_core_of = LYU
 			}
@@ -924,7 +919,6 @@ liyue_civil_war_decisions = {
 	defeat_KQG = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			92 = {
 				is_core_of = KQG
 			}
@@ -992,7 +986,6 @@ liyue_civil_war_decisions = {
 	defeat_NNG = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			117 = {
 				is_core_of = NNG
 			}
@@ -1073,7 +1066,6 @@ liyue_civil_war_decisions = {
 	defeat_XOG = {
 		icon = generic_civil_support
 		visible = {
-			always = no
 			106 = {
 				is_core_of = XOG
 			}
@@ -1134,65 +1126,6 @@ liyue_civil_war_decisions = {
 					remove_core_of = XOG
 				}
 				custom_effect_tooltip = ANG_defeat_tooltip
-			}
-		}
-	}
-	defeat_all = {
-		icon = generic_civil_support
-		cost = 0
-		fire_only_once = no
-		days_remove = 15
-		visible = {
-			is_nominate_liyue = yes
-		}
-		highlight_states = {
-			highlight_states_trigger = {
-				is_controlled_by = ROOT
-					NOT = {
-						is_core_of = ROOT
-					}
-					all_of_scopes = {
-						array = core_countries
-						exists = no
-				    }
-			    } 							
-			}
-		ai_will_do = {
-			base = 1000
-			#Really really important
-		}
-		available = {
-			FROM = {
-				compliance > 30
-			}
-		}
-		state_target = yes
-		on_map_mode = map_only
-		target_trigger = {
-			FROM = {
-				is_controlled_by = ROOT
-				NOT = {
-					is_core_of = ROOT
-				}
-				all_of_scopes = {
-					array = core_countries
-					exists = no
-				}
-			}
-		}
-		remove_effect = {
-			FROM = {
-				every_possible_country = {
-					limit = {
-						FROM = {
-							is_core_of = PREV
-						}
-					}
-					FROM = {
-						remove_core_of = PREV
-					}
-				}
-				add_core_of = ROOT
 			}
 		}
 	}

@@ -122,19 +122,23 @@ Ningguang_KQG_isbad_two = {
 				has_completed_focus = NNG_wmbijiangshengli
 			}
 		}
+		NNG = { NOT = { has_idea = AI_focus_on_attack_buff } }
 	}
 	abort = {
-		NNG = {
-			has_completed_focus = NNG_wmbijiangshengli
-		}
-		or = {
-			NOT = {
-				country_exists = KQG
+		OR = {
+			NNG = {
+				has_completed_focus = NNG_wmbijiangshengli
 			}
-			has_war_with = XOG
-			has_war_with = XRG
-			has_war_with = RTG
-			has_war_with = LYU
+			NNG = { has_idea = AI_focus_on_attack_buff }
+			or = {
+				NOT = {
+					country_exists = KQG
+				}
+				has_war_with = XOG
+				has_war_with = XRG
+				has_war_with = RTG
+				has_war_with = LYU
+			}
 		}
 	}
 	ai_strategy = {
@@ -154,16 +158,20 @@ Ningguang_KQG_isbad_three = {
 	}
 	enable = {
 		country_exists = KQG
-		has_completed_focus = NNG_wmbijiangshengli
-		num_divisions > 70
+		OR = {
+			has_completed_focus = NNG_wmbijiangshengli
+			num_divisions > 70
+			has_idea = AI_focus_on_attack_buff
+		}
 	}
 	abort = {
 	    or = {
-		NOT = {
-			country_exists = KQG
+			NOT = {
+				country_exists = KQG
+			}
+			num_divisions < 69
 		}
-		num_divisions < 69
-		}
+		NOT = { has_idea = AI_focus_on_attack_buff }
 	}
 	ai_strategy = {
 		type = front_control

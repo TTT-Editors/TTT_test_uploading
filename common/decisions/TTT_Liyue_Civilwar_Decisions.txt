@@ -180,7 +180,9 @@ liyue_civil_war_decisions = {
 							}
 						}
 						AND = {
-							NOT = { tag = ROOT }
+							NOT = {
+								tag = ROOT
+							}
 							OR = {
 								exists = no
 								is_subject = yes
@@ -439,15 +441,27 @@ liyue_civil_war_decisions = {
 				has_state_flag = is_Liyues_territory
 				is_capital = yes
 				owner = {
-					NOT = { tag = ROOT }
-					NOT = { has_war_with = ROOT }
-					NOT = { is_in_faction_with = ROOT }
-					NOT = { is_subject_of = ROOT }
+					NOT = {
+						tag = ROOT
+					}
+					NOT = {
+						has_war_with = ROOT
+					}
+					NOT = {
+						is_in_faction_with = ROOT
+					}
+					NOT = {
+						is_subject_of = ROOT
+					}
 					OR = {
-						any_neighbor_country = { tag = ROOT }
+						any_neighbor_country = {
+							tag = ROOT
+						}
 						tag = NNG
 					}
-					NOT = { has_non_aggression_pact_with = ROOT }
+					NOT = {
+						has_non_aggression_pact_with = ROOT
+					}
 				}
 			}
 		}
@@ -473,12 +487,16 @@ liyue_civil_war_decisions = {
 				has_country_flag = center_victor
 				AND = {
 					tag = XRG
-					ZDG = { exists = no }
-					date > 2001.4.1		#Avoid too early war declaration
+					ZDG = {
+						exists = no
+					}
+					date > 2001.4.1					#Avoid too early war declaration
 				}
 				AND = {
 					tag = XOG
-					ZDG = { exists = no }
+					ZDG = {
+						exists = no
+					}
 					has_country_flag = XOG_choose_unify_Liyue
 				}
 			}
@@ -619,217 +637,536 @@ liyue_civil_war_decisions = {
 	}
 	#Get rid of Zhidong invaders
 	#ZDG - 207
-	defeat_zdg = {
-		icon = generic_civil_support
-		visible = {
-			308 = {
-				is_core_of = CUG
-			}
-			owns_state = 308
-			NOT = {
-				country_exists = ZDG
-				country_exists = CUG
-			}
-			is_liyue_bad_warlords = no
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 308
-			}
-		}
-		available = {
-			308 = {
-				CONTROLLER = {
-					tag = ROOT
-				}
-			}
-		}
-		ai_will_do = {
-			base = 1000
-			#Really really important
-		}
-		cost = 10
-		complete_effect = {
-			every_state = {
-				limit = {
-					is_core_of = ZDG
-				}
-				add_core_of = ROOT
-				remove_core_of = ZDG
-			}
-			every_state = {
-				limit = {
-					is_core_of = CUG
-				}
-				add_core_of = ROOT
-				remove_core_of = CUG
-			}
-		}
-	}
+	#defeat_zdg = {
+	#icon = generic_civil_support
+	#visible = {
+	#308 = {
+	#is_core_of = CUG
+	#}
+	#owns_state = 308
+	#NOT = {
+	#country_exists = ZDG
+	#country_exists = CUG
+	#}
+	#is_liyue_bad_warlords = no
+	#}
+	#highlight_states = {
+	#highlight_state_targets = {
+	#state = 308
+	#}
+	#}
+	#available = {
+	#308 = {
+	#CONTROLLER = {
+	#tag = ROOT
+	#}
+	#}
+	#}
+	#ai_will_do = {
+	#base = 1000
+	#Really really important
+	#}
+	#cost = 10
+	#complete_effect = {
+	#every_state = {
+	#limit = {
+	#is_core_of = ZDG
+	#}
+	#add_core_of = ROOT
+	#remove_core_of = ZDG
+	#}
+	#every_state = {
+	#limit = {
+	#is_core_of = CUG
+	#}
+	#add_core_of = ROOT
+	#remove_core_of = CUG
+	#}
+	#}
+	#}
 	#XRG - 79
-	defeat_XRG = {
-		icon = generic_civil_support
-		visible = {
-			79 = {
-				is_core_of = XRG
-			}
-			owns_state = 79
-			NOT = {
-				country_exists = XRG
-			}
-			is_liyue_bad_warlords = no
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 79
-			}
-		}
-		available = {
-			79 = {
-				CONTROLLER = {
-					tag = ROOT
-				}
-			}
-		}
-		ai_will_do = {
-			base = 1000
-			#Really really important
-		}
-		cost = 100
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						tag = ANG
-					}
-				}
-				every_state = {
-					limit = {
-						is_core_of = XRG
-					}
-					add_core_of = ROOT
-					remove_core_of = XRG
-				}
-			}
-			else_if = {
-				limit = {
-					tag = ANG
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_XRG
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_XRG
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_SHG
-					value = 15
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_SHG
-					value = 15
-				}
-				every_state = {
-					limit = {
-						is_core_of = XRG
-					}
-					remove_core_of = XRG
-				}
-				custom_effect_tooltip = ANG_defeat_tooltip
-			}
-		}
-	}
+	#defeat_XRG = {
+	#icon = generic_civil_support
+	#visible = {
+	#79 = {
+	#is_core_of = XRG
+	#}
+	#owns_state = 79
+	#NOT = {
+	#	country_exists = XRG
+	#}
+	#is_liyue_bad_warlords = no
+	#}
+	#highlight_states = {
+	#highlight_state_targets = {
+	#	state = 79
+	#	}
+	#}
+	#available = {
+	#	79 = {
+	#		CONTROLLER = {
+	#			tag = ROOT
+	#		}
+	#	}
+	#}
+	#ai_will_do = {
+	#	base = 1000
+	#Really really important
+	#}
+	#cost = 100
+	#complete_effect = {
+	#	if = {
+	#		limit = {
+	#			NOT = {
+	#				tag = ANG
+	#			}
+	#		}
+	#		every_state = {
+	#			limit = {
+	#				is_core_of = XRG
+	#			}
+	#			add_core_of = ROOT
+	#			remove_core_of = XRG
+	#		}
+	#	}
+	#	else_if = {
+	#		limit = {
+	#			tag = ANG
+	#		}
+	#		add_to_variable = {
+	#			var = ANG_state_support_var_XRG
+	#			value = 10
+	#		}
+	#		add_to_variable = {
+	#			var = ANG_state_zhenghe_var_XRG
+	#			value = 10
+	##		}
+	##		add_to_variable = {
+	##			var = ANG_state_support_var_SHG
+	##			value = 15
+	##		}
+	##		add_to_variable = {
+	##			var = ANG_state_zhenghe_var_SHG
+	##			value = 15
+	##		}
+	##		every_state = {
+	##			limit = {
+	#is_core_of = XRG
+	##			}
+	#			remove_core_of = XRG
+	#		}
+	#		custom_effect_tooltip = ANG_defeat_tooltip
+	#	}
+	#}
+	#}
 	#RTG - 68
-	defeat_RTG = {
-		icon = generic_civil_support
-		visible = {
-			68 = {
-				is_core_of = RTG
-			}
-			owns_state = 68
-			NOT = {
-				country_exists = RTG
-			}
-			is_liyue_bad_warlords = no
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 68
-			}
-		}
-		available = {
-			68 = {
-				CONTROLLER = {
-					tag = ROOT
-				}
-			}
-		}
-		ai_will_do = {
-			base = 1000
-			#Really really important
-		}
-		cost = 100
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						tag = ANG
-					}
-				}
-				every_state = {
-					limit = {
-						is_core_of = RTG
-					}
-					add_core_of = ROOT
-					remove_core_of = RTG
-				}
-			}
-			else_if = {
-				limit = {
-					tag = ANG
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_RTG
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_RTG
-					value = 10
-				}
-				every_state = {
-					limit = {
-						is_core_of = RTG
-					}
-					remove_core_of = RTG
-				}
-				custom_effect_tooltip = ANG_defeat_tooltip
-			}
-		}
-	}
+	#defeat_RTG = {
+	#icon = generic_civil_support
+	#visible = {
+	#	68 = {
+	#		is_core_of = RTG
+	#	}
+	#	owns_state = 68
+	#	NOT = {
+	#		country_exists = RTG
+	#	}
+	#	is_liyue_bad_warlords = no
+	#}
+	#highlight_states = {
+	#	highlight_state_targets = {
+	#		state = 68
+	#	}
+	#}
+	#available = {
+	#	68 = {
+	#		CONTROLLER = {
+	#			tag = ROOT
+	#		}
+	#	}
+	#}
+	#ai_will_do = {
+	#	base = 1000
+	#Really really important
+	#}
+	#cost = 100
+	#complete_effect = {
+	#	if = {
+	#		limit = {
+	#			NOT = {
+	#				tag = ANG
+	#		}
+	#				}
+	#		every_state = {
+	#			limit = {
+	#is_core_of = RTG
+	#			}
+	#			add_core_of = ROOT
+	#			remove_core_of = RTG
+	#		}
+	#	}
+	#	else_if = {
+	#		limit = {
+	#			tag = ANG
+	#		}
+	#		add_to_variable = {
+	#			var = ANG_state_support_var_RTG
+	#			value = 10
+	#		}
+	#		add_to_variable = {
+	#			var = ANG_state_zhenghe_var_RTG
+	#			value = 10
+	#		}
+	#		every_state = {
+	#			limit = {
+	#				is_core_of = RTG
+	#			}
+	#			remove_core_of = RTG
+	#		}
+	#		custom_effect_tooltip = ANG_defeat_tooltip
+	#	}
+	#}
+	#}
 	#ANG - 59
-	defeat_ANG = {
+	#defeat_ANG = {
+	#icon = generic_civil_support
+	#visible = {
+	#	59 = {
+	#		is_core_of = ANG
+	#	}
+	#	owns_state = 59
+	#	NOT = {
+	#		country_exists = ANG
+	#	}
+	#is_liyue_bad_warlords = no
+	#}
+	#highlight_states = {
+	#highlight_state_targets = {
+	#	state = 59
+	#}
+	#}
+	#available = {
+	#	59 = {
+	#		CONTROLLER = {
+	#			tag = ROOT
+	#		}
+	#	}
+	#}
+	#ai_will_do = {
+	#	base = 1000
+	#Really really important
+	#}
+	#cost = 100
+	#complete_effect = {
+	#	every_state = {
+	#		limit = {
+	#			is_core_of = ANG
+	#		}
+	#		add_core_of = ROOT
+	#		remove_core_of = ANG
+	#	}
+	#}
+	#}
+	#LYU - 51
+	#defeat_LYU = {
+	#icon = generic_civil_support
+	#visible = {
+	#	51 = {
+	#		is_core_of = LYU
+	#	}
+	#	owns_state = 51
+	#	NOT = {
+	#		country_exists = LYU
+	#	}
+	#	is_liyue_bad_warlords = no
+	#}
+	#highlight_states = {
+	#highlight_state_targets = {
+	#		state = 51
+	#	}
+	#}
+	#available = {
+	#	51 = {
+	#		CONTROLLER = {
+	#			tag = ROOT
+	#		}
+	#	}
+	#}
+	#ai_will_do = {
+	#	base = 1000
+	#Really really important
+	#}
+	#cost = 100
+	#complete_effect = {
+	#	if = {
+	##		limit = {
+	##			NOT = {
+	##				tag = ANG
+	##			}
+	##		}
+	#		every_state = {
+	#			limit = {
+	#				is_core_of = LYU
+	#			}
+	#			add_core_of = ROOT
+	#			remove_core_of = LYU
+	#		}
+	#	}
+	#	else_if = {
+	#		limit = {
+	#			tag = ANG
+	#		}
+	#		add_to_variable = {
+	#			var = ANG_state_support_var_LYU
+	#			value = 10
+	#		}
+	#		add_to_variable = {
+	#			var = ANG_state_zhenghe_var_LYU
+	#			value = 10
+	#		}
+	#		every_state = {
+	#			limit = {
+	#				is_core_of = LYU
+	#			}
+	#			remove_core_of = LYU
+	#		}
+	#		custom_effect_tooltip = ANG_defeat_tooltip
+	#	}
+	#}
+	#}
+	#KQG - 92
+	#defeat_KQG = {
+	#	icon = generic_civil_support
+	#	visible = {
+	#92 = {
+	#is_core_of = KQG
+	###		}
+	#		NOT = {
+	#		country_exists = KQG
+	#	}
+	#
+	#is_liyue_bad_warlords = no
+	##	}
+	#	highlight_states = {
+	##			state = 92
+	#		}
+	#	}
+	#	available = {
+	#		92 = {
+	#			CONTROLLER = {
+	#				tag = ROOT
+	#			}
+	#		}
+	#	}
+	#	ai_will_do = {
+	#		base = 1000
+	#Really really important
+	#	}
+	#	cost = 100
+	#	complete_effect = {
+	#		if = {
+	#			limit = {
+	#				NOT = {
+	##					tag = ANG
+	#				}
+	#			}
+	#			every_state = {
+	#				limit = {
+	#					is_core_of = KQG
+	#				}
+	#				add_core_of = ROOT
+	#				remove_core_of = KQG
+	#			}
+	#		}
+	#		else_if = {
+	#			limit = {
+	#				tag = ANG
+	#			}
+	#			add_to_variable = {
+	#				var = ANG_state_support_var_KQG
+	#				value = 10
+	#			}
+	#			add_to_variable = {
+	#				var = ANG_state_zhenghe_var_KQG
+	#				value = 10
+	#			}
+	#			every_state = {
+	#				limit = {
+	#					is_core_of = KQG
+	#				}
+	#				remove_core_of = KQG
+	#			}
+	#			custom_effect_tooltip = ANG_defeat_tooltip
+	#		}
+	#	}
+	#}
+	#NNG - 117
+	#defeat_NNG = {
+	#	icon = generic_civil_support
+	#	visible = {
+	##		117 = {
+	##			is_core_of = NNG
+	##		}
+	##		owns_state = 117
+	##		NOT = {
+	##			country_exists = NNG
+	##		}
+	##		is_liyue_bad_warlords = no
+	##	}
+	#	highlight_states = {
+	#		highlight_state_targets = {
+	#			state = 117
+	#		}
+	#	}
+	#	available = {
+	#		117 = {
+	#			CONTROLLER = {
+	#				tag = ROOT
+	#			}
+	#		}
+	#	}
+	##	ai_will_do = {
+	###		base = 1000
+	##		#Really really important
+	##	}
+	##	cost = 100
+	##	complete_effect = {
+	##		if = {
+	##			limit = {
+	##				NOT = {
+	##					tag = ANG
+	##				}
+	##			}
+	##			every_state = {
+	##				limit = {
+	##					is_core_of = NNG
+	##				}
+	##				add_core_of = ROOT
+	##				remove_core_of = NNG
+	#			}
+	#		}
+	#		else_if = {
+	#			limit = {
+	#				tag = ANG
+	#			}
+	#			add_to_variable = {
+	##				var = ANG_state_support_var_NNG
+	##				value = 10
+	##			}
+	##			add_to_variable = {
+	##				var = ANG_state_zhenghe_var_NNG
+	##				value = 10
+	##			}
+	##			add_to_variable = {
+	##				var = ANG_state_support_var_BDG
+	##				value = 20
+	##			}
+	##			add_to_variable = {
+	##				var = ANG_state_zhenghe_var_BDG
+	##				value = 15
+	##			}
+	##			every_state = {
+	##				limit = {
+	##					is_core_of = NNG
+	##				}
+	##				remove_core_of = NNG
+	##			}
+	##			custom_effect_tooltip = ANG_defeat_tooltip
+	##		}
+	##		NNG = {
+	##			LYU_Yelan = {
+	#				set_nationality = ROOT
+	#			}
+	#		}
+	#	}
+	#}
+	#XOG - 106
+	#defeat_XOG = {
+	#	icon = generic_civil_support
+	#	visible = {
+	#		106 = {
+	#			is_core_of = XOG
+	#		}
+	#		owns_state = 106
+	#		NOT = {
+	#			country_exists = XOG
+	#		}
+	#		is_liyue_bad_warlords = no
+	#	}
+	#	highlight_states = {
+	#		highlight_state_targets = {
+	#			state = 106
+	#		}
+	#	}
+	#	available = {
+	#		106 = {
+	#			CONTROLLER = {
+	#				tag = ROOT
+	#			}
+	#		}
+	#	}
+	#	ai_will_do = {
+	#		base = 1000
+	#		#Really really important
+	#	}
+	#	cost = 100
+	#	complete_effect = {
+	#		if = {
+	#			limit = {
+	#				NOT = {
+	#					tag = ANG
+	#				}
+	#			}
+	#			every_state = {
+	#				limit = {
+	#					is_core_of = XOG
+	#				}
+	#				add_core_of = ROOT
+	#				remove_core_of = XOG
+	#			}
+	#		}
+	#		else_if = {
+	#			limit = {
+	#				tag = ANG
+	#			}
+	#			add_to_variable = {
+	#				var = ANG_state_support_var_XOG
+	#				value = 10
+	#			}
+	#			add_to_variable = {
+	#				var = ANG_state_zhenghe_var_XOG
+	#				value = 10
+	#			}
+	#			every_state = {
+	#				limit = {
+	#					is_core_of = XOG
+	#				}
+	#				remove_core_of = XOG
+	#			}
+	#			custom_effect_tooltip = ANG_defeat_tooltip
+	#		}
+	#	}
+	#}
+	#General purpose nuclear
+	defeat_all = {
 		icon = generic_civil_support
+		cost = 0
+		fire_only_once = no
+		days_remove = 15
 		visible = {
-			59 = {
-				is_core_of = ANG
-			}
-			owns_state = 59
+			is_nominate_liyue = yes
 			NOT = {
-				country_exists = ANG
+				original_tag = ANG
 			}
-			is_liyue_bad_warlords = no
 		}
 		highlight_states = {
-			highlight_state_targets = {
-				state = 59
-			}
-		}
-		available = {
-			59 = {
-				CONTROLLER = {
-					tag = ROOT
+			highlight_states_trigger = {
+				is_controlled_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+				all_of_scopes = {
+					array = core_countries
+					exists = no
 				}
 			}
 		}
@@ -837,39 +1174,60 @@ liyue_civil_war_decisions = {
 			base = 1000
 			#Really really important
 		}
-		cost = 100
-		complete_effect = {
-			every_state = {
-				limit = {
-					is_core_of = ANG
+		available = {
+			FROM = {
+				compliance > 30
+			}
+		}
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+				all_of_scopes = {
+					array = core_countries
+					exists = no
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				every_possible_country = {
+					limit = {
+						FROM = {
+							is_core_of = PREV
+						}
+					}
+					FROM = {
+						remove_core_of = PREV
+					}
 				}
 				add_core_of = ROOT
-				remove_core_of = ANG
 			}
 		}
 	}
-	#LYU - 51
-	defeat_LYU = {
+	#General purpose nuclear_ANG
+	ANG_defeat_all = {
 		icon = generic_civil_support
+		name = defeat_all
+		cost = 0
+		fire_only_once = no
+		days_remove = 15
 		visible = {
-			51 = {
-				is_core_of = LYU
-			}
-			owns_state = 51
-			NOT = {
-				country_exists = LYU
-			}
-			is_liyue_bad_warlords = no
+			original_tag = ANG
 		}
 		highlight_states = {
-			highlight_state_targets = {
-				state = 51
-			}
-		}
-		available = {
-			51 = {
-				CONTROLLER = {
-					tag = ROOT
+			highlight_states_trigger = {
+				is_controlled_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+				all_of_scopes = {
+					array = core_countries
+					exists = no
 				}
 			}
 		}
@@ -877,255 +1235,149 @@ liyue_civil_war_decisions = {
 			base = 1000
 			#Really really important
 		}
-		cost = 100
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						tag = ANG
+		available = {
+			FROM = {
+				compliance > 30
+			}
+		}
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+				all_of_scopes = {
+					array = core_countries
+					exists = no
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						is_core_of = XRG
+					}
+					ROOT = {
+						add_to_variable = {
+							var = ANG_state_support_var_XRG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_XRG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_support_var_SHG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_SHG
+							value = 40
+						}
+						custom_effect_tooltip = ANG_defeat_tooltip
 					}
 				}
-				every_state = {
+				else_if = {
+					limit = {
+						is_core_of = RTG
+					}
+					ROOT = {
+						add_to_variable = {
+							var = ANG_state_support_var_RTG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_RTG
+							value = 40
+						}
+						custom_effect_tooltip = ANG_defeat_tooltip
+					}
+				}
+				else_if = {
 					limit = {
 						is_core_of = LYU
 					}
-					add_core_of = ROOT
-					remove_core_of = LYU
-				}
-			}
-			else_if = {
-				limit = {
-					tag = ANG
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_LYU
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_LYU
-					value = 10
-				}
-				every_state = {
-					limit = {
-						is_core_of = LYU
-					}
-					remove_core_of = LYU
-				}
-				custom_effect_tooltip = ANG_defeat_tooltip
-			}
-		}
-	}
-	#KQG - 92
-	defeat_KQG = {
-		icon = generic_civil_support
-		visible = {
-			92 = {
-				is_core_of = KQG
-			}
-			owns_state = 92
-			NOT = {
-				country_exists = KQG
-			}
-			is_liyue_bad_warlords = no
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 92
-			}
-		}
-		available = {
-			92 = {
-				CONTROLLER = {
-					tag = ROOT
-				}
-			}
-		}
-		ai_will_do = {
-			base = 1000
-			#Really really important
-		}
-		cost = 100
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						tag = ANG
+					ROOT = {
+						add_to_variable = {
+							var = ANG_state_support_var_LYU
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_LYU
+							value = 40
+						}
+						custom_effect_tooltip = ANG_defeat_tooltip
 					}
 				}
-				every_state = {
+				else_if = {
 					limit = {
 						is_core_of = KQG
 					}
-					add_core_of = ROOT
-					remove_core_of = KQG
-				}
-			}
-			else_if = {
-				limit = {
-					tag = ANG
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_KQG
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_KQG
-					value = 10
-				}
-				every_state = {
-					limit = {
-						is_core_of = KQG
-					}
-					remove_core_of = KQG
-				}
-				custom_effect_tooltip = ANG_defeat_tooltip
-			}
-		}
-	}
-	#NNG - 117
-	defeat_NNG = {
-		icon = generic_civil_support
-		visible = {
-			117 = {
-				is_core_of = NNG
-			}
-			owns_state = 117
-			NOT = {
-				country_exists = NNG
-			}
-			is_liyue_bad_warlords = no
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 117
-			}
-		}
-		available = {
-			117 = {
-				CONTROLLER = {
-					tag = ROOT
-				}
-			}
-		}
-		ai_will_do = {
-			base = 1000
-			#Really really important
-		}
-		cost = 100
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						tag = ANG
+					ROOT = {
+						add_to_variable = {
+							var = ANG_state_support_var_KQG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_KQG
+							value = 40
+						}
+						custom_effect_tooltip = ANG_defeat_tooltip
 					}
 				}
-				every_state = {
+				else_if = {
 					limit = {
 						is_core_of = NNG
 					}
-					add_core_of = ROOT
-					remove_core_of = NNG
-				}
-			}
-			else_if = {
-				limit = {
-					tag = ANG
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_NNG
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_NNG
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_BDG
-					value = 20
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_BDG
-					value = 15
-				}
-				every_state = {
-					limit = {
-						is_core_of = NNG
-					}
-					remove_core_of = NNG
-				}
-				custom_effect_tooltip = ANG_defeat_tooltip
-			}
-			NNG = {
-				LYU_Yelan = {
-					set_nationality = ROOT
-				}
-			}
-		}
-	}
-	#XOG - 106
-	defeat_XOG = {
-		icon = generic_civil_support
-		visible = {
-			106 = {
-				is_core_of = XOG
-			}
-			owns_state = 106
-			NOT = {
-				country_exists = XOG
-			}
-			is_liyue_bad_warlords = no
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 106
-			}
-		}
-		available = {
-			106 = {
-				CONTROLLER = {
-					tag = ROOT
-				}
-			}
-		}
-		ai_will_do = {
-			base = 1000
-			#Really really important
-		}
-		cost = 100
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						tag = ANG
+					ROOT = {
+						add_to_variable = {
+							var = ANG_state_support_var_NNG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_NNG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_support_var_BDG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_BDG
+							value = 40
+						}
+						custom_effect_tooltip = ANG_defeat_tooltip
 					}
 				}
-				every_state = {
+				else_if = {
 					limit = {
 						is_core_of = XOG
 					}
-					add_core_of = ROOT
-					remove_core_of = XOG
-				}
-			}
-			else_if = {
-				limit = {
-					tag = ANG
-				}
-				add_to_variable = {
-					var = ANG_state_support_var_XOG
-					value = 10
-				}
-				add_to_variable = {
-					var = ANG_state_zhenghe_var_XOG
-					value = 10
-				}
-				every_state = {
-					limit = {
-						is_core_of = XOG
+					ROOT = {
+						add_to_variable = {
+							var = ANG_state_support_var_XOG
+							value = 40
+						}
+						add_to_variable = {
+							var = ANG_state_zhenghe_var_XOG
+							value = 40
+						}
+						custom_effect_tooltip = ANG_defeat_tooltip
 					}
-					remove_core_of = XOG
 				}
-				custom_effect_tooltip = ANG_defeat_tooltip
+				every_possible_country = {
+					limit = {
+						FROM = {
+							is_core_of = PREV
+						}
+					}
+					FROM = {
+						remove_core_of = PREV
+					}
+				}
 			}
 		}
 	}
@@ -1186,7 +1438,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			create_wargoal = { target = ANG type = annex_everything } 
+			create_wargoal = {
+				target = ANG
+				type = annex_everything
+			}
 		}
 	}
 	Nanbu_xuanzhanjueyi_RTG = {
@@ -1245,7 +1500,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			create_wargoal = { target = RTG type = annex_everything } 
+			create_wargoal = {
+				target = RTG
+				type = annex_everything
+			}
 		}
 	}
 	Nanbu_xuanzhanjueyi_XRG = {
@@ -1304,7 +1562,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			create_wargoal = { target = XRG type = annex_everything } 
+			create_wargoal = {
+				target = XRG
+				type = annex_everything
+			}
 		}
 	}
 	Nanbu_xuanzhanjueyi_XOG = {
@@ -1363,7 +1624,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			create_wargoal = { target = XOG type = annex_everything } 
+			create_wargoal = {
+				target = XOG
+				type = annex_everything
+			}
 		}
 	}
 	Nanbu_xuanzhanjueyi_KQG = {
@@ -1422,7 +1686,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			create_wargoal = { target = KQG type = annex_everything } 
+			create_wargoal = {
+				target = KQG
+				type = annex_everything
+			}
 		}
 	}
 	Nanbu_xuanzhanjueyi_NNG = {
@@ -1481,7 +1748,10 @@ liyue_civil_war_decisions = {
 			}
 		}
 		remove_effect = {
-			create_wargoal = { target = NNG type = annex_everything } 
+			create_wargoal = {
+				target = NNG
+				type = annex_everything
+			}
 		}
 	}
 	Nanbu_xuanzhanjueyi_LYU = {

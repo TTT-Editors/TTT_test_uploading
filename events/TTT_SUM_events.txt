@@ -44,11 +44,11 @@ country_event = { #维摩庄扩建
 	immediate = {
 		hidden_effect = {
 			add_stability = 0.1
-			389 = {
+			133 = {
 				set_state_category = city
 				add_manpower = 192831
 			}
-			470 = {
+			134 = {
 				set_state_category = large_town
 				add_manpower = 101852
 			}
@@ -163,8 +163,19 @@ country_event = { #死域随机事件
 	title = sumeru.10000.t
 	desc = sumeru.10000.d
 
-	is_triggered_only = yes
-
+	trigger = {
+		NOT = {
+			has_country_flag = SUM_WitheringZone_is_clr
+		}
+	}
+	mean_time_to_happen = {
+		days = 55
+		modifier = {
+			factor = 1        
+			tag = SUM
+		}
+	}
+	hidden = yes
 	immediate = {
 		set_variable_to_random = {
 			var = WitheringZone_event_index
@@ -181,6 +192,11 @@ country_event = { #死域随机事件
 			value = 10
 			tooltip = random_WitheringZone_event_tt
 		} 
+		clamp_variable = {
+			var = WitheringZone_array_value^WitheringZone_event_index
+			min = 0
+			max = 100
+		}
 		SUM_WitheringZone_flesh =yes
 	}
 }
@@ -189,8 +205,19 @@ country_event = { #死域随机事件
 	title = sumeru.10001.t
 	desc = sumeru.10001.d
 
-	is_triggered_only = yes
-
+	trigger = {
+		NOT = {
+			has_country_flag = SUM_WitheringZone_is_clr
+		}
+	}
+	mean_time_to_happen = {
+		days = 85
+		modifier = {
+			factor = 1        
+			tag = SUM
+		}
+	}
+	hidden = yes
 	immediate = {
 		set_variable_to_random = {
 			var = WitheringZone_event_index
@@ -207,6 +234,11 @@ country_event = { #死域随机事件
 			value = 20
 			tooltip = random_WitheringZone_event_med_tt
 		} 
+		clamp_variable = {
+			var = WitheringZone_array_value^WitheringZone_event_index
+			min = 0
+			max = 100
+		}
 		SUM_WitheringZone_flesh =yes
 	}
 }
@@ -215,8 +247,20 @@ country_event = { #死域随机事件
 	title = sumeru.10002.t
 	desc = sumeru.10002.d
 
-	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			has_country_flag = SUM_WitheringZone_is_clr
+		}
+	}
+	mean_time_to_happen = {
+		days = 155
+		modifier = {
+			factor = 1        
+			tag = SUM
+		}
+	}
 
+	hidden = yes
 	immediate = {
 		set_variable_to_random = {
 			var = WitheringZone_event_index
@@ -233,6 +277,11 @@ country_event = { #死域随机事件
 			value = 30
 			tooltip = random_WitheringZone_event_big_tt
 		} 
+		clamp_variable = {
+			var = WitheringZone_array_value^WitheringZone_event_index
+			min = 0
+			max = 100
+		}
 		SUM_WitheringZone_flesh =yes
 	}
 }

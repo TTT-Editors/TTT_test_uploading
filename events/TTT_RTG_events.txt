@@ -645,36 +645,18 @@ country_event = {
 			}
 		}
 		ai_chance = {
-			base = 20
+			base = 50
 			modifier = {
-			    add = 10
+			    add = 5
 				RTG = {
 				   has_country_flag = RTG_yuxianrenhuimian_flag
 			    }
 			}
 			modifier = {
-			    add = 10
+			    add = 5
 				RTG = {
 				   has_country_flag = RTG8_flag
 			    }
-			}
-			modifier = {
-			    add = 5
-				XRG = {
-				    has_war = yes
-			    }
-			}
-		    modifier = {
-			    add = 2
-				ai_likely_to_join_your_pact = yes
-			}
-			modifier = {
-			    add = 5
-				ai_more_likely_to_join_your_pact = yes
-			}
-			modifier = {
-			    add = 100
-				ai_refuse_to_join_your_pact = yes
 			}
 		}
 	}
@@ -687,40 +669,7 @@ country_event = {
 			}
 		}
 		ai_chance = {
-			base = 20
-			modifier = {
-			    add = 30
-				XRG = {
-				    num_divisions > RTG.num_divisions
-				}
-			}
-			modifier = {
-			    add = 10
-				XRG = {
-					has_war = no
-			    }
-			}
-			modifier = {
-				add = 10
-				strength_ratio = {
-                tag = RTG
-                ratio > 0.5
-                }
-			}
-			modifier = {
-				add = 15
-				strength_ratio = {
-                tag = RTG
-                ratio > 1
-                }
-			}
-			modifier = {
-				add = 15
-				strength_ratio = {
-                tag = RTG
-                ratio > 2
-                }
-			}
+			base = 50
 		}
 	}
 }
@@ -734,7 +683,18 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 	    name = retuo_juanshu.6.a
-		RTG = { add_to_faction = XRG }
+		if = {
+			limit = {
+				XRG = { has_war_with = ZDG }
+			}
+			declare_war_on = { target = ZDG type = take_state }
+		}
+		RTG = {
+			set_autonomy = {
+				target = XRG
+				autonomy_state = RTG_autonomus_states
+			}
+		}
 		hidden_effect = {
 			RTG = {
 				news_event = {
@@ -848,77 +808,15 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 	    name = retuo_juanshu.11.a
-		custom_effect_tooltip = LYU_game_over_from_retuo
 		RTG = {
 		    country_event = {
 			    id = retuo_juanshu.13
-				days = 7
+				days = 1
 			}
 		}
 		set_country_flag = clique_in_Retuo_faction
 		ai_chance = {
-			base = 0
-			modifier = {
-			    add = 20
-				LYU = {
-					has_country_leader = { 
-						character = LYU_Ganyu  
-						ruling_only = yes 
-					}
-				}
-			}
-			modifier = {
-			    add = 10
-				LYU = {
-					has_country_leader = { 
-						character = LYU_Yanfei  
-						ruling_only = yes 
-					}
-				}
-			}
-		}
-	}
-	option = {
-	    name = retuo_juanshu.11.b
-		diplomatic_relation = {
-            country = RTG
-            relation = non_aggression_pact
-            active = yes
-        }
-		add_opinion_modifier = {
-			target = RTG
-		    modifier = large_increase
-	    }
-		RTG = {
-		    add_opinion_modifier = {
-			    target = LYU
-				modifier = large_increase
-			}
-		    country_event = {
-			    id = retuo_juanshu.12
-				hours = 35
-			}
-		}
-		ai_chance = {
-			base = 0
-			modifier = {
-			    add = 20
-				LYU = {
-					has_country_leader = { 
-						character = LYU_Ganyu  
-						ruling_only = yes 
-					}
-				}
-			}
-			modifier = {
-			    add = 10
-				LYU = {
-					has_country_leader = { 
-						character = LYU_Yanfei  
-						ruling_only = yes 
-					}
-				}
-			}
+			base = 50
 		}
 	}
 	option = {
@@ -938,40 +836,7 @@ country_event = {
 			}
 		}
 		ai_chance = {
-			base = 20
-			modifier = {
-			    add = 30
-				LYU = {
-				    num_divisions > RTG.num_divisions
-				}
-			}
-			modifier = {
-			    add = 10
-				LYU = {
-					has_war = no
-			    }
-			}
-			modifier = {
-				add = 10
-				strength_ratio = {
-                tag = RTG
-                ratio > 0.5
-                }
-			}
-			modifier = {
-				add = 15
-				strength_ratio = {
-                tag = RTG
-                ratio > 1
-                }
-			}
-			modifier = {
-				add = 15
-				strength_ratio = {
-                tag = RTG
-                ratio > 2
-                }
-			}
+			base = 50
 		}
 	}
 }
@@ -996,10 +861,12 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 	    name = retuo_juanshu.13.a
-		annex_country = {
-            target = LYU
-            transfer_troops = yes
-        }
+		RTG = {
+			set_autonomy = {
+				target = LYU
+				autonomy_state = RTG_autonomus_states
+			}
+		}
 		add_timed_idea = {
 		    idea = RTG_integrate_liyuegang
 			days = 120

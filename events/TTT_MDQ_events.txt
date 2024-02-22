@@ -331,27 +331,6 @@ country_event = {
 		name = MDQ_event.15.a
 		set_country_flag = MDQ_event_15_happened
 		effect_tooltip = {
-			MDQ = {
-				every_owned_state = {
-					limit = {
-						OR = {
-							state = 41
-						}
-					}
-					LTM = {
-						transfer_state = PREV
-					}
-				}
-				transfer_units_fraction = {
-					target = LTM
-					size = 0.4
-					keep_unit_leaders = {
-					}
-					keep_unit_leaders_trigger = {
-						always = yes
-					}
-				}
-			}
 			LTM = {
 				declare_war_on = {
 					target = MDQ
@@ -422,10 +401,18 @@ country_event = {
 	option = {
 		name = MDQ_event.19.a
 		complete_national_focus = MDQ_02_33
+		country_event = { 
+			id = MDQ_event.39 
+            days = 7
+		}
 	}
 	option = {
 		name = MDQ_event.19.b
 		complete_national_focus = MDQ_02_34
+		country_event = { 
+			id = MDQ_event.40
+            days = 7
+		}
 		trigger = {
 			has_character = MDQ_Noelle
 		}
@@ -542,6 +529,10 @@ country_event = {
 		country_event = {
 			days = 30
 			id = MDQ_event.25
+		}
+		country_event = {
+			days = 1
+			id = MDQ_event.38
 		}
 	}
 }
@@ -807,7 +798,9 @@ country_event = {
 	option = {
 		name = MDQ_event.35.a
 		add_stability = -0.1
+		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = MDQ_02_29
+		set_country_flag = MDQ_event35_flag
 		retire_character = MDQ_Agidito
 	}
 }
@@ -833,5 +826,95 @@ country_event = {
 	fire_only_once = yes
 	option = {
 		name = MDQ_event.37.a
+	}
+}
+
+#削去腐肉
+country_event = {
+	id = MDQ_event.38
+	title = MDQ_event.38.t
+	desc = MDQ_event.38.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.38.a
+	}
+}
+
+#卡尼鄂拉就任
+country_event = {
+	id = MDQ_event.39
+	title = MDQ_event.39.t
+	desc = MDQ_event.39.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.39.a
+	}
+}
+
+#诺艾尔上任
+country_event = {
+	id = MDQ_event.40
+	title = MDQ_event.40.t
+	desc = MDQ_event.40.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.40.a
+	}
+}
+
+#收工
+country_event = {
+	id = MDQ_event.41
+	title = MDQ_event.41.t
+	desc = MDQ_event.41.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.41.a
+	}
+}
+
+#与长老会握握手
+country_event = {
+	id = MDQ_event.42
+	title = MDQ_event.42.t
+	desc = MDQ_event.42.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.42.a
+	}
+}
+
+#长老会的停摆
+country_event = {
+	id = MDQ_event.43
+	title = MDQ_event.43.t
+	desc = MDQ_event.43.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.43.a
+	}
+}
+
+#长老会的停摆
+country_event = {
+	id = MDQ_event.44
+	title = MDQ_event.44.t
+	desc = MDQ_event.44.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.44.a
+	}
+	option = {
+		name = MDQ_event.44.b
+		QQR = {
+			change_tag_from = ROOT
+		}
 	}
 }

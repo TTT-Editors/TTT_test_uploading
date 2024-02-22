@@ -959,60 +959,42 @@ country_event = { #测试事件
 			value = -20
 		}
 
+		clamp_temp_variable = {
+			var = yanfei_assassination_chance_temp
+			min = 0
+			max = 100
+		}
 
-		set_temp_variable = {
-			var = yanfei_assassination_chance_temp_1
-			value = 100
+		clamp_temp_variable = {
+			var = ganyu_assassination_chance_temp
+			min = 0
+			max = 100
 		}
-		set_temp_variable = {
-			var = ganyu_assassination_chance_temp_1
-			value = 100
-		}
-		set_temp_variable = {
-			var = baizhu_assassination_chance_temp_1
-			value = 100
-		}
-		subtract_from_temp_variable  = { 
-			var = yanfei_assassination_chance_temp_1
-			value = yanfei_assassination_chance_temp
-		}
-		subtract_from_temp_variable  = { 
-			var = ganyu_assassination_chance_temp_1
-			value = ganyu_assassination_chance_temp
-		}
-		subtract_from_temp_variable  = { 
-			var = baizhu_assassination_chance_temp_1
-			value = baizhu_assassination_chance_temp
+
+		clamp_temp_variable = {
+			var = baizhu_assassination_chance_temp
+			min = 0
+			max = 100
 		}
 
 
-		random_list = { #从烟绯到白术依次判定
+		random_list = { #从烟绯到白术同时判定
 			yanfei_assassination_chance_temp = { #烟绯判定
 				country_event = { id = LHPG.28 days = 7 }
 			}
-			yanfei_assassination_chance_temp_1 = {
-				random_list = {
-					ganyu_assassination_chance_temp = { #甘雨判定
-						country_event = { id = ganyu.70 days = 7 }
-					}
-					ganyu_assassination_chance_temp_1 = {
-						random_list = { 
-							baizhu_assassination_chance_temp = { #白术判定
-								country_event = { id = LHPG.32 days = 7 }
-							}
-							baizhu_assassination_chance_temp_1 = {
-								country_event = { id = LHPG.36 days = 7 }
-								clr_country_flag = LH_assassinate_begin
-							}
-						}
-					}
-				}
+			ganyu_assassination_chance_temp = { #甘雨判定
+				country_event = { id = ganyu.70 days = 7 }
+			}
+			baizhu_assassination_chance_temp = { #白术判定
+				country_event = { id = LHPG.32 days = 7 }
+			}
+			50 = {
+				country_event = { id = LHPG.36 days = 7 }
+				clr_country_flag = LH_assassinate_begin
 			}
 		}
-		
-		
-
 	}
+		
 	fire_only_once = yes
 	is_triggered_only = yes
 

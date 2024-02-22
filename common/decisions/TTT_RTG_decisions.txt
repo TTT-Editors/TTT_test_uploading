@@ -806,27 +806,6 @@ RTG_forgive_everything = {
 			custom_effect_tooltip = RTG_forgive_everything_tt
 		}
 	}
-	RTG_accept_clique_anachist = {
-		icon = decision_RTG_accept_clique
-		visible = {
-			ANG = {
-				exists = no
-				NOT = {
-					has_country_flag = clique_in_Retuo_faction
-					has_country_flag = anachist_peace_with_Ganyu
-				}
-			}
-		}
-		fire_only_once = yes
-		days_remove = 120
-		cost = 120
-		ai_will_do = {
-			base = 100
-		}
-		remove_effect = {
-			custom_effect_tooltip = RTG_forgive_everything_tt
-		}
-	}
 	RTG_accept_Liyuegang = {
 		icon = decision_RTG_accept_clique
 		visible = {
@@ -1370,7 +1349,7 @@ RTG_mosun = {
 				days > 180
 			}
 		}
-		days_mission_timeout = 180
+		days_mission_timeout = 90
 		is_good = yes
 		cost = 0
 		available = {
@@ -1427,7 +1406,7 @@ RTG_huanghunxianli_jizhi = {
 		# 建立渊坤社
 		priority = 2
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		icon = eng_propaganda_campaigns
 		allowed = {
@@ -1469,7 +1448,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			tag = RTG
@@ -1507,7 +1486,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			tag = RTG
@@ -1550,7 +1529,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			tag = RTG
@@ -1593,7 +1572,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			tag = RTG
@@ -1636,7 +1615,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			tag = RTG
@@ -1673,7 +1652,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			original_tag = RTG
@@ -1712,7 +1691,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			original_tag = RTG
@@ -1751,7 +1730,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			tag = RTG
@@ -1791,7 +1770,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			original_tag = RTG
@@ -1830,7 +1809,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			original_tag = RTG
@@ -1872,7 +1851,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			tag = RTG
@@ -1919,7 +1898,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			original_tag = RTG
@@ -1930,9 +1909,15 @@ RTG_huanghunxianli_jizhi = {
 				tooltip = KQG_focus_tt
 				has_global_flag = Liyue_Civil_War
 			}
-			has_full_control_of_state = 51
-			has_full_control_of_state = 87
-			has_full_control_of_state = 50
+			51 = {
+				controls_or_subject_of = yes
+			}
+			87 = {
+				controls_or_subject_of = yes
+			}
+			50 = {
+				controls_or_subject_of = yes
+			}
 			has_war = yes
 		}
 		visible = {
@@ -1988,7 +1973,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			original_tag = RTG
@@ -2028,7 +2013,7 @@ RTG_huanghunxianli_jizhi = {
 		priority = 2
 		icon = eng_propaganda_campaigns
 		ai_will_do = {
-			factor = 10
+			factor = 50
 		}
 		allowed = {
 			original_tag = RTG
@@ -2149,20 +2134,18 @@ liyue_civil_war_decisions = {
 			original_tag = RTG
 		}
 		visible = {
+			has_country_flag = RTG_zhishangyunjian_flag
 			NOT = {
 				has_war_with = XRG
 				is_in_faction_with = XRG
 				has_country_flag = RTG_yaoqing_xianren_flag
 			}
-			has_completed_focus = RTG_zhishangyunjian
 		}
 		available = {
 			XRG = {
-				has_war_with = ZDG
 				exists = yes
 				is_subject = no
 			}
-			is_faction_leader = yes
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -2181,18 +2164,22 @@ liyue_civil_war_decisions = {
 			original_tag = RTG
 		}
 		visible = {
-			has_completed_focus = RTG_zhishangyunjian
+			has_country_flag = RTG_zhishangyunjian_flag
 			XRG = {
 				exists = yes
 				is_subject = no
-				NOT = {
-					is_in_faction_with = RTG
-					has_war_with = RTG
-				}
 			}
 		}
 		available = {
 			is_faction_leader = yes
+			XRG = {
+				exists = yes
+				is_subject = no
+				NOT = {
+					is_subject_of = RTG
+					has_war_with = RTG
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 14
@@ -2215,18 +2202,21 @@ liyue_civil_war_decisions = {
 			original_tag = RTG
 		}
 		visible = {
-			has_completed_focus = RTG_mihefenqi
+			has_country_flag = RTG_mihefenqi_flag
+			LYU = {
+				exists = yes
+				is_subject = no
+			}
+		}
+		available = {
 			LYU = {
 				exists = yes
 				is_subject = no
 				NOT = {
-					is_in_faction_with = RTG
 					has_war_with = RTG
+					is_subject_of = RTG
 				}
 			}
-		}
-		available = {
-			is_faction_leader = yes
 		}
 		fire_only_once = yes
 		cost = 10
@@ -2249,151 +2239,79 @@ liyue_civil_war_decisions = {
 		}
 		visible = {
 			is_subject = no
+			has_government = reformism
 		}
 		available = {
-			has_war_support > 0.6
-			has_stability > 0.75
-			OR = {
-				AND = {
-					87 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					51 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					50 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					52 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					53 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					70 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					54 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					55 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					56 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					59 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					60 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					71 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
-					69 = {
-						controller = {
-							is_in_faction_with = RTG
-						}
-					}
+			87 = {
+				controller = {
+					controls_or_subject_of = yes
 				}
-				AND = {
-					87 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					51 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					50 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					52 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					53 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					70 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					54 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					55 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					56 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					59 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					60 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					71 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
-					69 = {
-						controller = {
-							original_tag = RTG
-						}
-					}
+			}
+			51 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			50 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			52 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			53 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			70 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			54 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			55 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			56 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			59 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			60 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			71 = {
+				controller = {
+					controls_or_subject_of = yes
+				}
+			}
+			69 = {
+				controller = {
+					controls_or_subject_of = yes
 				}
 			}
 		}
 		fire_only_once = yes
 		cost = 0
 		ai_will_do = {
-			base = 50
+			base = 500
 		}
 		complete_effect = {
 			news_event = {
@@ -2438,50 +2356,45 @@ liyue_civil_war_decisions = {
 			set_country_flag = RTG_unlock_third_slot
 		}
 	}
-	RTG_xuangao_lyuneizhanjieshu = {
+	RTG_xuangao_neizhan_jieshu = {
 		#宣告璃月内战结束
-		visible = {
+		allowed = {
 			original_tag = RTG
-			is_subject = no
-			is_faction_leader = yes
 		}
-		available = {
+		visible = {
+			is_subject = no
+			has_government = reformism
+			has_global_flag = Liyue_Civil_War
 			LYU = {
 				or = {
 					exists = no
+					is_subject_of = RTG
 					is_in_faction_with = RTG
 				}
 			}
-			ANG = {
-				or = {
-					exists = no
-					is_in_faction_with = RTG
-				}
+			ANG = {		
+				exists = no
 			}
 			ZDG = {
 				exists = no
 			}
-			KQG = {
-				or = {
-					exists = no
-					is_in_faction_with = RTG
-				}
+			KQG = {			
+				exists = no		
 			}
-			NNG = {
-				or = {
-					exists = no
-					is_in_faction_with = RTG
-				}
+			NNG = {	
+				exists = no
 			}
 			XOG = {
 				or = {
 					exists = no
+					is_subject_of = RTG
 					is_in_faction_with = RTG
 				}
 			}
 			XRG = {
 				or = {
 					exists = no
+					is_subject_of = RTG
 					is_in_faction_with = RTG
 				}
 			}
@@ -2489,56 +2402,58 @@ liyue_civil_war_decisions = {
 		fire_only_once = yes
 		cost = 0
 		ai_will_do = {
-			base = 100
+			base = 500
 		}
 		complete_effect = {
-			annex_country = {
-				target = LYU
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = ANG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = KQG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = NNG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = XOG
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = XRG
-				transfer_troops = yes
-			}
-			hidden_effect = {
-				country_event = {
-					days = 21
-					id = retuo_juanshu.26
+			reset_core_of_liyue = yes
+			remove_liyue_civilwar_national_spirit = yes
+			RTG = {
+				set_cosmetic_tag = RTCW
+				hidden_effect = {
+					country_event = {
+						days = 21
+						id = retuo_juanshu.26
+					}
+					country_event = {
+						days = 35
+						id = retuo_juanshu.25
+					}
+					country_event = {
+						days = 1
+						id = super.24
+					}
 				}
-				country_event = {
-					days = 35
-					id = retuo_juanshu.25
-				}
-				country_event = {
-					days = 1
-					id = super.24
+				if = {
+					limit = {
+						has_country_flag = RTG39_flag
+					}
+					swap_ideas = {
+						add_idea = RTG_zhongzu_maodun_1
+						remove_idea = RTG_zhongzu_maodun_4
+					}
 				}
 			}
-			if = {
+			every_other_country = {
 				limit = {
-					has_country_flag = RTG39_flag
+					is_subject_of = RTG
 				}
-				swap_ideas = {
-					add_idea = RTG_zhongzu_maodun_1
-					remove_idea = RTG_zhongzu_maodun_4
+				ROOT = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
 				}
 			}
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
+			}
+			set_global_flag = good_Retuo_reunite_Liyue
+			news_event = {
+				id = Turning_point_news.6
+			}
+			clr_global_flag = Liyue_Civil_War
+			play_song = "SE_goodRetuo_victory"
 		}
 	}
 }

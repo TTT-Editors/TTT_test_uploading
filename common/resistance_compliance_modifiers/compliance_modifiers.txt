@@ -23,6 +23,55 @@ compliance_25 = {
 		recruitable_population = 0.005
 	}
 }
+
+compliance_30 = {
+	type = core_compliance_modifier
+	icon = "GFX_occupation_compliance_modifier_strip:5"
+	small_icon = "GFX_occupation_compliance_modifier_small_strip:5"
+	threshold = 30
+	margin = 2
+	
+	visible = {
+		is_nominate_liyue = yes
+		NOT = { tag = CUG }
+		NOT = { tag = ANG }
+		FROM = {
+			is_nominate_liyue = yes
+			NOT = { tag = CUG }
+		}
+	}
+	on_enable = {
+		#Shamelessly steal from KR
+		every_controlled_state = {
+			limit = {
+				OR = {
+					is_core_of = FROM
+					AND = {
+						has_resistance = yes
+						occupied_country_tag = FROM
+					}
+				}
+				NOT = { is_core_of = ROOT }
+			}
+			add_core_of = ROOT
+		}
+		hidden_effect = {
+			#remove all cores of FROM
+			if = {
+				limit = {
+					NOT = { country_exists = FROM }
+				}
+				every_controlled_state = {
+					limit = {
+						is_core_of = FROM
+					}
+					remove_core_of = FROM
+				}
+			}
+		}
+	}
+}
+
 compliance_40 = {
 	type = core_compliance_modifier
 	icon = "GFX_occupation_compliance_modifier_strip:3"

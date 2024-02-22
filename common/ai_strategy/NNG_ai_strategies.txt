@@ -18,25 +18,25 @@ Ningguang_aizaobudui = {
 		tag = NNG
 	}
 	enable = {
-		tag = NNG
+		always = yes
 	}
 	abort = {
 		always = no
 	}
 	ai_strategy = {
 		type = role_ratio
-		id = infantry
-		value = 500
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = marines
-		value = 500
+		id = cavalry
+		value = -100
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
 		value = 5
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = naval_invasion_focus
+		value = 100
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -55,16 +55,6 @@ Ningguang_aizaobudui = {
 	}
 	ai_strategy = {
 		type = build_army
-		id = infantry
-		value = 500
-	}
-	ai_strategy = {
-		type = build_army
-		id = marines
-		value = 500
-	}
-	ai_strategy = {
-		type = build_army
 		id = motorized
 		value = -900
 	}
@@ -73,7 +63,11 @@ Ningguang_aizaobudui = {
 		id = armor
 		value = -900
 	}
-	
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 88 #88 to 70
+	}
 	ai_strategy = {
 		type = invade
 		id = ZDG
@@ -112,34 +106,10 @@ Ningguang_KQG_isbad = {
 	ai_strategy = {
 		type = front_unit_request
 		tag = KQG
-		value = 999
+		value = 100
 	}
 }
 
-Yaoguangtan_isbad = {
-	allowed = {
-		tag = NNG
-	}
-	enable = {
-		country_exists = KQG
-	}
-	abort = {
-		NOT = {
-			country_exists = KQG
-		}
-	}
-	ai_strategy = {
-		type = put_unit_buffers
-		ratio = 0.00
-		states = {
- 		116
- 		117
- 		81
- 	   }
-	}
-	subtract_invasions_from_need = no
-	subtract_fronts_from_need = no
-}
 
 Ningguang_KQG_isbad_two = {
 	allowed = {
@@ -149,38 +119,37 @@ Ningguang_KQG_isbad_two = {
 		country_exists = KQG
 		NOT = {
 			NNG = {
-				has_completed_focus = NNG_wmbijiangshengli
+				has_completed_focus = NNG_wmenjiangyitongqianjin
 			}
 		}
 	}
 	abort = {
-		NNG = {
-			has_completed_focus = NNG_wmbijiangshengli
-		}
-		or = {
-			NOT = {
-				country_exists = KQG
+		OR = {
+			NNG = {
+				has_completed_focus = NNG_wmenjiangyitongqianjin
 			}
-			has_war_with = XOG
-			has_war_with = XRG
-			has_war_with = RTG
-			has_war_with = LYU
+			#NNG = { has_idea = AI_focus_on_attack_buff }
+			or = {
+				NOT = {
+					country_exists = KQG
+				}
+				has_war_with = XOG
+				has_war_with = XRG
+				has_war_with = RTG
+				has_war_with = LYU
+			}
 		}
 	}
 	ai_strategy = {
-	type = front_control
-	tag = KQG  
-	ratio = 0.1
-    state = 146
-	state = 149
-	state = 405
-	state = 406
-	priority = 100  
-	ordertype = front  
-	execution_type = careful
-	manual_attack = yes
-	execute_order = no
-    }
+		type = front_control
+		tag = KQG
+		ratio = 0.75
+		priority = 30
+		ordertype = front
+		execution_type = careful  
+		execute_order = no 
+		manual_attack = yes
+	}
 }
 Ningguang_KQG_isbad_three = {
 	allowed = {
@@ -188,51 +157,81 @@ Ningguang_KQG_isbad_three = {
 	}
 	enable = {
 		country_exists = KQG
-		has_completed_focus = NNG_wmbijiangshengli
-		num_divisions > 150
+		OR = {
+			has_completed_focus = NNG_wmenjiangyitongqianjin
+			num_divisions > 70
+			#has_idea = AI_focus_on_attack_buff
+		}
 	}
 	abort = {
 	    or = {
-		NOT = {
-			country_exists = KQG
+			NOT = {
+				country_exists = KQG
+				has_completed_focus = NNG_wmenjiangyitongqianjin
+			}
 		}
-		num_divisions < 100
-		}
-	}
-	ai_strategy = {
-	type = front_control
-	tag = KQG  
-	ratio = 0.1
-    state = 146
-	state = 149
-	state = 405
-	state = 406
-	priority = 900  
-	ordertype = front  
-	execution_type = rush  
-	manual_attack = yes
-	execute_order = yes
-    }
-}
-
-Ningguang_fangshou = {
-	allowed = {
-		tag = NNG
-	}
-	enable = {
-		num_divisions < 65
-	}
-	abort = {
-		num_divisions > 50
+		#NOT = { has_idea = AI_focus_on_attack_buff }
 	}
 	ai_strategy = {
 		type = front_control
-		area = Liyue
-		ratio = 0.1
-		priority = 900
+		tag = NNG
+		ratio = 0.75
+		priority = 30
 		ordertype = front
-		execution_type = balanced
-		manual_attack = yes
-		execute_order = no
+		execution_type = rush
+	}
+}
+NNG_watch_out_south = {
+	allowed = {
+		original_tag = NNG
+	}
+	
+	enable = {
+		date > 2001.1.1
+		OR = {
+			date > 2003.1.1
+			AND = {
+				ANG = { exists = no }
+				LYU = { NOT = { has_idea = GANYU0_A } }
+			}
+			ANG = { surrender_progress > 0.6 }
+			
+			LYU = { exists = no }
+			LYU = { is_subject = yes }
+			LYU = { is_in_faction = yes }
+			LYU = { surrender_progress > 0.6 }
+			
+			RTG = { exists = no }
+			RTG = { is_subject = yes }
+			RTG = { is_in_faction = yes }
+			RTG = { surrender_progress > 0.6 }
+		}
+	}
+	
+	abort = { NOT = { has_global_flag = Liyue_Civil_War } }
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = "LYU"
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = "RTG"
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		id = "ANG"
+		value = 40
+	}
+	
+	#poor little guy
+	ai_strategy = {
+		type = front_unit_request
+		id = "ARF"
+		value = 25
 	}
 }

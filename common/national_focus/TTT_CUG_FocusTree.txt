@@ -1,0 +1,606 @@
+focus_tree = {
+	id = CUG_focustree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CUG
+		}
+	}
+	default = no
+	focus = {
+		id = CUG_chenyu_zhulong		#沉玉祝珑
+		icon = GFX_goal_CUG_chenyu
+		available_if_capitulated = no
+		x = 5
+		y = 0
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_political_power = 50
+			country_event = CUG_event.1
+		}
+	}
+	focus = {
+		id = CUG_kebu_ronghuan	#刻不容缓之事
+		icon = GFX_goal_CUG_kbrh
+		available_if_capitulated = no
+		x = 2
+		y = 1
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_chenyu_zhulong
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = CUG_shouji_jin_li	#收集金鲤
+		icon = GFX_goal_CUG_jl
+		available_if_capitulated = no
+		x = 1
+		y = 2
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_kebu_ronghuan
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = CUG_shouji_jin_li_tt
+			LYU_fujin_xianjun = {
+			swap_country_leader_traits = {
+				remove = jiushi_xianjun
+				add = jiushi_xianjun_1
+				ideology = moraxism
+			    }
+		    }
+		}
+	}
+	focus = {
+		id = CUG_fuyuan_xianxiang	#复原仙像
+		icon = GFX_goal_CUG_xx
+		available_if_capitulated = no
+		x = 3
+		y = 2
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_kebu_ronghuan
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+            controls_state = 307
+		}
+		completion_reward = {
+			307 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 
+				}
+			}
+			custom_effect_tooltip = CUG_shouji_jin_li_tt
+		}
+	}
+	focus = {
+		id = CUG_daji_pantu	#打击叛徒
+		icon = GFX_goal_CUG_dj
+		available_if_capitulated = no
+		x = 2
+		y = 3
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_shouji_jin_li
+		}
+		prerequisite = {
+			focus = CUG_fuyuan_xianxiang
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+			has_manpower > 459
+			has_equipment = {
+				infantry_equipment > 466
+			} 
+		}
+		completion_reward = {
+			add_manpower = -459
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -466
+			}
+			country_event = CUG_event.2
+		}
+	}
+	focus = {
+		id = CUG_laiyun_zhixing	#来歆之行
+		icon = GFX_goal_CUG_ly
+		available_if_capitulated = no
+		x = 2
+		y = 4
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_daji_pantu
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+			controls_state = 207
+		}
+		completion_reward = {
+			207 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 
+				}
+			}
+			if = {
+				limit = {
+					207 = { is_demilitarized_zone = yes }
+				}
+				207 = { set_demilitarized_zone = no }
+			}
+			country_event = CUG_event.5
+		}
+	}
+	focus = {
+		id = CUG_yaowang_weilai_zhishi	#遥望未来之事
+		icon = GFX_goal_CUG_wl
+		available_if_capitulated = no
+		x = 5
+		y = 1
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_chenyu_zhulong
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_stability = 0.05
+			swap_ideas = {
+				remove_idea = CUG_chenyu_ergong
+				add_idea = CUG_chenyu_ergong_1
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_huize_wanmin_zhishi	#惠泽万民之事
+		icon = GFX_goal_CUG_hj
+		available_if_capitulated = no
+		x = 8
+		y = 1
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_chenyu_zhulong
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = CUG_fazhen_yilongbu	#发展遗珑埠
+		icon = GFX_goal_CUG_gk
+		available_if_capitulated = no
+		x = 7
+		y = 2
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_huize_wanmin_zhishi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+			controls_state = 309
+		}
+		completion_reward = {
+			309 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 			
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes 			
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 			
+				}
+			}
+		}
+	}
+	focus = {
+		id = CUG_yanshui_jiaoxing	#岩水交行
+		icon = GFX_goal_CUG_ys
+		available_if_capitulated = no
+		x = 7
+		y = 3
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_fazhen_yilongbu
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+			controls_state = 306
+		}
+		completion_reward = {
+			309 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes 			
+				}			
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 30
+			}
+		}
+	}
+	focus = {
+		id = CUG_weituo_kexueyuan	#委托科学院
+		icon = GFX_goal_CUG_kx
+		available_if_capitulated = no
+		x = 8
+		y = 4
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_yanshui_jiaoxing
+		}
+		prerequisite = {
+			focus = CUG_xiufu_xianjia_chafu
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			set_country_flag = CUG_weituo_kexueyuan_flag
+			unlock_decision_category_tooltip = CUG_decison_categories
+		}
+	}
+	focus = {
+		id = CUG_fazhen_qiaoyingzhuang	#沟通翘英庄
+		icon = GFX_goal_CUG_qy
+		available_if_capitulated = no
+		x = 9
+		y = 2
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_huize_wanmin_zhishi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+			controls_state = 308		
+		}
+		completion_reward = {
+			
+			build_railway = {
+				path = { 7556 7545 7537 7532 2118  }
+			}	
+			
+			308 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 7556
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = CUG_xiufu_xianjia_chafu	#修复仙家茶釜
+		icon = GFX_goal_CUG_ch
+		available_if_capitulated = no
+		x = 9
+		y = 3
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_fazhen_qiaoyingzhuang
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			306 = {
+				add_dynamic_modifier = {
+					modifier = LYU_xianjia_chahu
+				}
+			}
+		}
+	}
+	focus = {
+		id = CUG_jinko_jixie	#进口机械
+		icon = GFX_goal_CUG_jx
+		available_if_capitulated = no
+		x = 5
+		y = 2
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_yaowang_weilai_zhishi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+			controls_state = 309
+		}
+		completion_reward = {
+			custom_effect_tooltip = TTT_gongyefazhanchengdu_good_two
+			custom_effect_tooltip = CUG_jinko_jixie_tt
+			swap_ideas = {
+				remove_idea = CUG_chenyu_ergong_1
+				add_idea = CUG_chenyu_ergong_2
+			}
+			309 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = CUG_gaishan_jiyi	#改善技艺
+		icon = GFX_goal_CUG_gs
+		available_if_capitulated = no
+		x = 5
+		y = 3
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_jinko_jixie
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CUG_qiaoying_chaye
+				add_idea = CUG_qiaoying_chaye_1
+			}
+		}
+	}
+	focus = {
+		id = CUG_baifan_xianjia	#拜访仙家
+		icon = GFX_goal_CUG_xj
+		available_if_capitulated = no
+		x = 5
+		y = 4
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_gaishan_jiyi
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = CUG_xianjia_zhuli
+			country_event = CUG_event.3
+		}
+	}
+	focus = {
+		id = CUG_toulong_yishi	#投珑仪式
+		icon = GFX_goal_CUG_tl
+		available_if_capitulated = no
+		x = 5
+		y = 5
+		cost = 70
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = CUG_baifan_xianjia
+		}
+		prerequisite = {
+			focus = CUG_laiyun_zhixing
+		}
+		prerequisite = {
+			focus = CUG_weituo_kexueyuan
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MDQ_02_10_tt
+				NOT = {
+					OR = {
+						has_global_flag=Liyue_Civil_War
+						has_global_flag=Liyue_Civil_War_Coming
+					}
+				}
+			}
+		}
+		completion_reward = {
+			country_event = CUG_event.4
+		}
+	}
+}

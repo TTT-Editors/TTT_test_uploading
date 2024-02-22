@@ -51,6 +51,7 @@ Xianren_likes_Xiao = {
 	
 	enable = {	
 		NOT = { has_war_with = XOG }
+		NOT = { has_wargoal_against = XOG }
 	}
 	
 	abort_when_not_enabled = yes
@@ -69,6 +70,7 @@ Xiao_likes_Xianren = {
 	
 	enable = {	
 		NOT = { has_war_with = XRG }
+		NOT = { has_wargoal_against = XRG }
 	}
 	
 	abort_when_not_enabled = yes
@@ -337,6 +339,12 @@ Ganyu_s_little_tricks = {
 		id = "ANG"
 		value = 500
 	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ARF"
+		value = 500
+	}
 }
 
 Xianren_and_Xiao_not_mess_up_with_southern_warlords = {
@@ -559,5 +567,28 @@ crush_ZDG = {
 		execution_type = rush_weak
 		execute_order = yes 
 		manual_attack = yes
+	}
+}
+
+AI_dont_want_to_start_a_war_so_easily = {
+	allowed = {
+		is_nominate_liyue = yes
+	}
+	
+	enable = {
+		has_war = yes
+		enemies_strength_ratio > 0.8 
+	}
+	
+	abort = {
+		OR = {
+			has_war = no
+			enemies_strength_ratio < 0.65
+		}
+	}
+
+	ai_strategy = {
+		type = avoid_starting_wars
+		value = -500
 	}
 }

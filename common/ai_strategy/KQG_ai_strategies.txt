@@ -147,7 +147,7 @@ KQG_unit_production = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 2
+		value = 1
 	}
 
 	ai_strategy = { #added to railway gun define (set to 0 by default, increased in default strategies)
@@ -242,54 +242,6 @@ KQG_dont_waste_xp_until_medium_armor = {
 	}
 }
 
-Keqing_finds_she_need_to_look_out_the_sea = {
-	allowed = {
-		tag = KQG
-	}
-	
-	enable = {
-		has_war_with = NNG
-		date > 2002.1.1
-	}
-	
-	abort = {
-		OR = {
-			date > 2005.1.1
-			NNG = { exists = no }
-			AND = {
-				126 = { is_controlled_by = KQG }
-				242 = { is_controlled_by = KQG }
-			}
-		}
-	}
-
-	ai_strategy = {
-		type = put_unit_buffers
-
-		order_id = 2
-		
-		states = {
-			89
-			91
-			92
-			94
-			113
-			114
-			115
-		}
-
-		ratio = 0.1
-
-		subtract_invasions_from_need = no
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "NNG"
-		value = 500
-	}
-}
-
 attack_ningguang = {
 	allowed = {
 		original_tag = KQG
@@ -297,6 +249,7 @@ attack_ningguang = {
 	enable = {
 		country_exists = NNG
 		NNG = { has_war_with = KQG }
+
 		OR = {
 			strength_ratio = {
 				tag = NNG
@@ -342,9 +295,11 @@ attack_ningguang_but_pause = {
 			ratio < 1.5
 		}
 		KQG = { enemies_strength_ratio > 1 }
+		NOT = { has_idea = AI_focus_on_attack_buff }
 	}
 	abort = {
 		OR = {
+			has_idea = AI_focus_on_attack_buff
 			NOT = { country_exists = NNG }
 			NOT = { NNG = { has_war_with = KQG } }
 			strength_ratio = {

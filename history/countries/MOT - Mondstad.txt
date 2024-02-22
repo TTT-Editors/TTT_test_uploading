@@ -177,11 +177,11 @@ add_to_faction = MOT
 add_to_faction = BLL
 add_to_faction = DLK
 add_to_faction = DSC
-add_to_faction = GAP
 add_to_faction = ALS
 add_to_faction = FXE
-add_to_faction = DSC
+add_to_faction = TWL
 add_to_faction = QQZ
+add_to_faction = MDQ
 
 if = {
 	limit = {
@@ -219,28 +219,53 @@ if = {
 		target = QQZ
 		autonomous_state = mot_subjects
 	}
-	set_autonomy = {
-		target = GAP
-		autonomous_state = mot_autonomus_states
-	}
 }
-else = {
-	puppet = ALS
-	puppet = BLL
-	puppet = DLK
-	puppet = TWL
-	puppet = MDQ
-	puppet = FXE
-	puppet = DSC
-	puppet = QQZ
-	puppet = GAP
+
+if = {
+	limit = {
+		not = {
+			has_dlc = "Together for Victory"
+		}
+	}
+	set_autonomy = {
+		target = ALS
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = BLL
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = DLK
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = TWL
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = MDQ
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = FXE
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = DSC
+		autonomous_state = autonomy_puppet
+	}
+	set_autonomy = {
+		target = QQZ
+		autonomous_state = autonomy_puppet
+	}
 }
 
 set_politics = {
 	ruling_party = authoritarianism
 	last_election = "1997.11.8"
 	election_frequency = 70
-	elections_allowed = Yes
+	elections_allowed = NO
 }
 set_popularities = {
 	liberalism = 5

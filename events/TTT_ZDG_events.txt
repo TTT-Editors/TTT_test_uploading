@@ -1,390 +1,510 @@
 add_namespace = ZDG_events
-
 #鲸天之章
 country_event = {
-    id = ZDG_events.1
+	id = ZDG_events.1
 	title = ZDG_events.1.t
-    desc = ZDG_events.1.d
+	desc = ZDG_events.1.d
 	picture = GFX_country_event_jingtianzhizhang
-    fire_only_once=yes
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.1.a
+		name = ZDG_events.1.a
 	}
 }
+
 #这片土地
 country_event = {
-    id = ZDG_events.2
+	id = ZDG_events.2
 	title = ZDG_events.2.t
-    desc = ZDG_events.2.d
-    fire_only_once=yes
+	desc = ZDG_events.2.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.2.a
+		name = ZDG_events.2.a
 	}
 }
+
 #对当地人的怀疑
 country_event = {
-    id = ZDG_events.3
+	id = ZDG_events.3
 	title = ZDG_events.3.t
-    desc = ZDG_events.3.d
-    fire_only_once=yes
+	desc = ZDG_events.3.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.3.a
-		add_stability = -0.10
+		name = ZDG_events.3.a
+		add_stability = -0.1
 	}
 }
+
 #我们的故乡
 country_event = {
-    id = ZDG_events.4
+	id = ZDG_events.4
 	title = ZDG_events.4.t
-    desc = ZDG_events.4.d
-    fire_only_once=yes
+	desc = ZDG_events.4.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.4.a
+		name = ZDG_events.4.a
 		add_political_power = 120
 	}
 }
+
 #支援到达
 country_event = {
-    id = ZDG_events.5
+	id = ZDG_events.5
 	title = ZDG_events.5.t
-    desc = ZDG_events.5.d
-    fire_only_once=yes
+	desc = ZDG_events.5.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.5.a
+		name = ZDG_events.5.a
 		add_equipment_to_stockpile = {
-		type = infantry_equipment
-		amount = 2000
-	    }
+			type = infantry_equipment
+			amount = 2000
+		}
 		add_equipment_to_stockpile = {
-		type = support_equipment
-		amount = 500
-	    }
+			type = support_equipment
+			amount = 500
+		}
 		add_equipment_to_stockpile = {
-		type = artillery_equipment
-		amount = 500
-	    }
+			type = artillery_equipment
+			amount = 500
+		}
 		add_equipment_to_stockpile = {
-		type = ttt_uniform_eq
-		amount = 500
-	    }
+			type = ttt_uniform_eq
+			amount = 500
+		}
 		add_equipment_to_stockpile = {
-		type = grain_conversion_eq
-		amount = 500
-	    }
+			type = grain_conversion_eq
+			amount = 500
+		}
 		add_political_power = 200
 		add_manpower = 50000
 		if = {
-				limit = {
-					NOT = { has_template = "愚人众先遣军" }
+			limit = {
+				NOT = {
+					has_template = "愚人众先遣军"
 				}
-		division_template = {
-			name = "愚人众先遣军"
-			priority = 2
-			is_locked = yes
-			division_names_group = ZDG_INF_01
-			regiments = {
-				infantry = { x = 0 y = 0 }
-				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }
-				infantry = { x = 1 y = 0 }
-				infantry = { x = 1 y = 1 }
-				infantry = { x = 1 y = 2 }
-				artillery_brigade = { x = 2 y = 0 }
-		
 			}
-			support = {
-				engineer = { x = 0 y = 0 }
-				recon = { x = 0 y = 1 }
+			division_template = {
+				name = "愚人众先遣军"
+				priority = 2
+				is_locked = yes
+				division_names_group = ZDG_INF_01
+				regiments = {
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 0
+						y = 2
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
+					infantry = {
+						x = 1
+						y = 2
+					}
+					artillery_brigade = {
+						x = 2
+						y = 0
+					}
+				}
+				support = {
+					engineer = {
+						x = 0
+						y = 0
+					}
+					recon = {
+						x = 0
+						y = 1
+					}
+				}
+			}
+		}
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"愚人众先遣军\" start_experience_factor = 0.4"
+				owner = ZDG
+				count = 2
 			}
 		}
 	}
-		capital_scope = {
-		create_unit = {
-			division = "division_template = \"愚人众先遣军\" start_experience_factor = 0.4"
-			owner = ZDG
-			count = 2
-		    }
-	    }   
-	}
 }
+
 #烈寒抚骨
 country_event = {
-    id = ZDG_events.6
+	id = ZDG_events.6
 	title = ZDG_events.6.t
-    desc = ZDG_events.6.d
-    fire_only_once=yes
+	desc = ZDG_events.6.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.6.a
+		name = ZDG_events.6.a
 	}
 }
+
 #小玩意儿
 country_event = {
-    id = ZDG_events.7
+	id = ZDG_events.7
 	title = ZDG_events.7.t
-    desc = ZDG_events.7.d
-    fire_only_once=yes
+	desc = ZDG_events.7.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.7.a
-		add_war_support = -0.10
+		name = ZDG_events.7.a
+		add_war_support = -0.1
 	}
 }
+
 #如一阵风雪
 country_event = {
-    id = ZDG_events.8
+	id = ZDG_events.8
 	title = ZDG_events.8.t
-    desc = ZDG_events.8.d
-    fire_only_once=yes
+	desc = ZDG_events.8.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.8.a
+		name = ZDG_events.8.a
 		custom_effect_tooltip = ZDG_victory_tt
 		custom_effect_tooltip = ttt_end_game_tt
 		hidden_effect = {
-		    remove_dynamic_modifier = {  modifier = CLSIA_dui_dangdiren_huaiyi1 }
-			news_event = { id =  global_news.51 days = 2 }
+			remove_dynamic_modifier = {
+				modifier = CLSIA_dui_dangdiren_huaiyi1
+			}
+			news_event = {
+				id = global_news.51
+				days = 2
+			}
 			set_country_flag = ZDG_events10flag
-			ZDG = { add_ideas = ZDG_likewhen_tathagatacame }
-				ZDG = {
-					transfer_units_fraction = {
-						target = SNE
-						size = 1
-						keep_unit_leaders = {}
-						keep_unit_leaders_trigger = {
-							always = no
+			ZDG = {
+				add_ideas = ZDG_likewhen_tathagatacame
+			}
+			ZDG = {
+				transfer_units_fraction = {
+					target = SNE
+					size = 1
+					keep_unit_leaders = {
 					}
-			    }
+					keep_unit_leaders_trigger = {
+						always = no
+					}
+				}
 				every_character = {
-						set_nationality = SNE
-			    }
+					set_nationality = SNE
+				}
 				every_country = {
-				    limit = {
-					    is_subject_of = ZDG
+					limit = {
+						is_subject_of = ZDG
 					}
 					ZDG = {
-					    annex_country = {
-						   target = PREV
+						annex_country = {
+							target = PREV
 						}
 					}
 				}
 				every_neighbor_country = {
-				    limit = {
-					    is_nominate_liyue = yes
+					limit = {
+						is_nominate_liyue = yes
 					}
-					declare_war_on = { target = ZDG type = annex_everything }
-			    } 
-		    }
-			SNE = { change_tag_from = ROOT }
+					declare_war_on = {
+						target = ZDG
+						type = annex_everything
+					}
+				}
+			}
+			SNE = {
+				change_tag_from = ROOT
+			}
 		}
 	}
 }
+
 #东眺岩港
 country_event = {
-    id = ZDG_events.9
+	id = ZDG_events.9
 	title = ZDG_events.9.t
-    desc = ZDG_events.9.d
-    fire_only_once=yes
+	desc = ZDG_events.9.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.9.a
+		name = ZDG_events.9.a
 	}
 }
+
 #女皇之手令
 country_event = {
-    id = ZDG_events.10
+	id = ZDG_events.10
 	title = ZDG_events.10.t
-    desc = ZDG_events.10.d
-    fire_only_once=yes
+	desc = ZDG_events.10.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.10.a
+		name = ZDG_events.10.a
 		hidden_effect = {
-			ZDG = { add_ideas = ZDG_likewhen_tathagatacame }
-				ZDG = {
-					transfer_units_fraction = {
-						target = SNE
-						size = 1
-						keep_unit_leaders = {}
-						keep_unit_leaders_trigger = {
-							always = no
+			ZDG = {
+				add_ideas = ZDG_likewhen_tathagatacame
+			}
+			ZDG = {
+				transfer_units_fraction = {
+					target = SNE
+					size = 1
+					keep_unit_leaders = {
 					}
-			    }
-		    }
-		set_country_flag = ZDG_14_flag
-		remove_dynamic_modifier = {  modifier = CLSIA_dui_dangdiren_huaiyi1 }
+					keep_unit_leaders_trigger = {
+						always = no
+					}
+				}
+				every_character = {
+					set_nationality = SNE
+				}
+			}
+			set_country_flag = ZDG_14_flag
+			remove_dynamic_modifier = {
+				modifier = CLSIA_dui_dangdiren_huaiyi1
+			}
+			if = {
+				limit = {
+					ZDG = {
+						has_war_with = CUG
+					}
+				}
+				log = "[GetDateText]: [Root.GetName]: CUG has beaten ZDG"
+				#show peace
+				CUG = {
+					save_global_event_target_as = winning_country
+				}
+				ZDG = {
+					save_global_event_target_as = losing_country
+				}
+				CUG = {
+					annex_country = {
+						target = ZDG
+						transfer_troops = no
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = ZDG
+					}
+					remove_core_of = ZDG
+				}
+				set_global_flag = TTT_warpeace_show_gui
+				add_to_variable = {
+					global.TTT_warpeace_dirty = 1
+				}
+				news_event = {
+					id = global_news.4
+				}
+				XRG = {
+					set_country_flag = north_victor
+				}
+			}
+			if = {
+				limit = {
+					CUG = {
+						exists = no
+					}
+				}
+				ZDG = {
+					release = CUG
+				}
+				every_country = {
+					limit = {
+						is_subject_of = ZDG
+					}
+					ZDG = {
+						annex_country = {
+							target = PREV
+						}
+					}
+				}
+				every_neighbor_country = {
+					limit = {
+						is_nominate_liyue = yes
+					}
+					declare_war_on = {
+						target = ZDG
+						type = annex_everything
+					}
+				}
+			}
 		}
+		custom_effect_tooltip = LYU_game_over_from_retuo
 	}
 }
+
 #找到神之心
 country_event = {
-    id = ZDG_events.12
+	id = ZDG_events.12
 	title = ZDG_events.12.t
-    desc = ZDG_events.12.d
-    fire_only_once=yes
+	desc = ZDG_events.12.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.12.a
+		name = ZDG_events.12.a
 		complete_national_focus = ZDG_14
 		set_country_flag = ZDG_14_flag
 	}
 }
+
 #没找到神之心
 country_event = {
-    id = ZDG_events.13
+	id = ZDG_events.13
 	title = ZDG_events.13.t
-    desc = ZDG_events.13.d
-    fire_only_once=yes
+	desc = ZDG_events.13.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.13.a
+		name = ZDG_events.13.a
 		complete_national_focus = ZDG_15
 		set_country_flag = ZDG_15_flag
 	}
 }
+
 #找到神之心二阶段
 country_event = {
-    id = ZDG_events.14
+	id = ZDG_events.14
 	title = ZDG_events.14.t
-    desc = ZDG_events.14.d
-    fire_only_once=yes
+	desc = ZDG_events.14.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.14.a
+		name = ZDG_events.14.a
 		set_country_flag = ZDG_14_flag2
 	}
 }
+
 #百分比找到神之心
 country_event = {
-	id = ZDG_events.19 
+	id = ZDG_events.19
 	title = ZDG_events.19.t
 	desc = ZDG_events.19.d
-	fire_only_once = yes 
+	fire_only_once = yes
 	trigger = {
-		LYU = { 
-		is_subject_of = ZDG
-		exists = no
+		LYU = {
+			is_subject_of = ZDG
+			exists = no
 		}
-		RTG = { 
-		is_subject_of = ZDG
-		exists = no
+		RTG = {
+			is_subject_of = ZDG
+			exists = no
 		}
-		XOG = { 
-		is_subject_of = ZDG
-		exists = no
+		XOG = {
+			is_subject_of = ZDG
+			exists = no
 		}
-		XRG = { 
-		is_subject_of = ZDG
-		exists = no
+		XRG = {
+			is_subject_of = ZDG
+			exists = no
 		}
-		KQG = { 
-		is_subject_of = ZDG
-		exists = no
+		KQG = {
+			is_subject_of = ZDG
+			exists = no
 		}
 		original_tag = ZDG
-		NOT = { has_country_flag = ZDG_zhijiekaiqierjieduan_flag }
+		NOT = {
+			has_country_flag = ZDG_zhijiekaiqierjieduan_flag
+		}
 	}
-    hidden = yes	
+	hidden = yes
 	option = {
-		name = ZDG_events.19.a 	
-        country_event = { days = 1 id = ZDG_events.14 }
+		name = ZDG_events.19.a
+		country_event = {
+			days = 1
+			id = ZDG_events.14
+		}
 		ai_chance = {
 			base = 100
 		}
 	}
 }
+
 #消灭仙人派璃月失败
 country_event = {
-    id = ZDG_events.20
+	id = ZDG_events.20
 	title = ZDG_events.20.t
-    desc = ZDG_events.20.d
-    fire_only_once=yes
+	desc = ZDG_events.20.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.20.a
+		name = ZDG_events.20.a
 		add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = -0.2
+			id = ZDG_extreme_northern_palace
+			value = -0.2
 		}
 	}
 }
+
 #消灭仙人派璃月成功
 country_event = {
-    id = ZDG_events.21
+	id = ZDG_events.21
 	title = ZDG_events.21.t
-    desc = ZDG_events.21.d
-    fire_only_once=yes
+	desc = ZDG_events.21.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.21.a
+		name = ZDG_events.21.a
 		add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = 0.1
+			id = ZDG_extreme_northern_palace
+			value = 0.1
 		}
 	}
 }
+
 #消灭北璃月军政府成功
 country_event = {
-    id = ZDG_events.22
+	id = ZDG_events.22
 	title = ZDG_events.22.t
-    desc = ZDG_events.22.d
-    fire_only_once=yes
+	desc = ZDG_events.22.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.22.a
+		name = ZDG_events.22.a
 		add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = 0.1
+			id = ZDG_extreme_northern_palace
+			value = 0.1
 		}
 	}
 }
+
 #消灭北璃月军政府失败
 country_event = {
-    id = ZDG_events.23
+	id = ZDG_events.23
 	title = ZDG_events.23.t
-    desc = ZDG_events.23.d
-    fire_only_once=yes
+	desc = ZDG_events.23.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.23.a
+		name = ZDG_events.23.a
 		add_power_balance_value = {
-				id = ZDG_extreme_northern_palace
-				value = -0.2
+			id = ZDG_extreme_northern_palace
+			value = -0.2
 		}
 	}
 }
 
 #占领成功
 country_event = {
-    id = ZDG_events.24
+	id = ZDG_events.24
 	title = ZDG_events.24.t
-    desc = ZDG_events.24.d
-    fire_only_once=yes
+	desc = ZDG_events.24.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.24.a
+		name = ZDG_events.24.a
 		add_power_balance_value = {
 			id = ZDG_extreme_northern_palace
 			value = 0.05
@@ -394,192 +514,228 @@ country_event = {
 
 #占领失败
 country_event = {
-    id = ZDG_events.25
+	id = ZDG_events.25
 	title = ZDG_events.25.t
-    desc = ZDG_events.25.d
-    fire_only_once=yes
+	desc = ZDG_events.25.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.25.a
+		name = ZDG_events.25.a
 		add_power_balance_value = {
 			id = ZDG_extreme_northern_palace
 			value = -0.05
 		}
 	}
 }
+
 #在蓝色与金色下
 country_event = {
-    id = ZDG_events.26
+	id = ZDG_events.26
 	title = ZDG_events.26.t
-    desc = ZDG_events.26.d
-    fire_only_once=yes
+	desc = ZDG_events.26.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.26.a
+		name = ZDG_events.26.a
 		custom_effect_tooltip = ZDG_events26_tt
 	}
 }
+
 #向南去
 country_event = {
-    id = ZDG_events.27
+	id = ZDG_events.27
 	title = ZDG_events.27.t
-    desc = ZDG_events.27.d
-    fire_only_once=yes
+	desc = ZDG_events.27.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.27.a
+		name = ZDG_events.27.a
 		SNE_Elizabeth = {
-		    set_character_flag = SNE_Elizabeth_flag
+			set_character_flag = SNE_Elizabeth_flag
 		}
 		add_corps_commander_role = {
-        Character = SNE_Elizabeth
-        desc = SNE_Elizabeth_desc
-            traits = { harsh_leader bearer_of_artillery winter_specialist adaptable ranger }
-	        skill = 2
-	        attack_skill = 3
-	        defense_skill = 1
-	        planning_skill = 2
-	        logistics_skill = 3
-        }
+			Character = SNE_Elizabeth
+			desc = SNE_Elizabeth_desc
+			traits = {
+				harsh_leader
+				bearer_of_artillery
+				winter_specialist
+				adaptable
+				ranger
+			}
+			skill = 2
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 3
+		}
 		effect_tooltip = {
-		add_advisor_role = {
-        character = SNE_Elizabeth
-        activate = no
-        advisor = {
-        slot = political_advisor
-        cost = 150
-        idea_token = SNE_Elizabeth_token
-        traits = {
-            ZDG_jiurebaikui2
-                    }
-                }
-            }
-		add_advisor_role = {
-        character = SNE_Elizabeth
-        activate = no
-        advisor = {
-        slot = high_command
-        cost = 150
-        idea_token = SNE_Elizabeth_token
-        traits = {
-            ZDG_jiurebaikui
-                    }
-                }
-            }
+			add_advisor_role = {
+				character = SNE_Elizabeth
+				activate = no
+				advisor = {
+					slot = political_advisor
+					cost = 150
+					idea_token = SNE_Elizabeth_token
+					traits = {
+						ZDG_jiurebaikui2
+					}
+				}
+			}
+			add_advisor_role = {
+				character = SNE_Elizabeth
+				activate = no
+				advisor = {
+					slot = high_command
+					cost = 150
+					idea_token = SNE_Elizabeth_token
+					traits = {
+						ZDG_jiurebaikui
+					}
+				}
+			}
 		}
 	}
 }
+
 #我们为何而战？
 country_event = {
-    id = ZDG_events.28
+	id = ZDG_events.28
 	title = ZDG_events.28.t
-    desc = ZDG_events.28.d
-    fire_only_once=yes
+	desc = ZDG_events.28.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.28.a
+		name = ZDG_events.28.a
 		add_war_support = -0.01
 	}
 }
+
 #关于驻璃月国外交使团愚人众及其国家银行于璃月异动报告
 country_event = {
-    id = ZDG_events.29
+	id = ZDG_events.29
 	title = ZDG_events.29.t
-    desc = ZDG_events.29.d
-    fire_only_once=yes
+	desc = ZDG_events.29.d
+	fire_only_once = yes
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.29.a
+		name = ZDG_events.29.a
 	}
 }
 
 #风雪再起-1
 country_event = {
-    id = ZDG_events.30
+	id = ZDG_events.30
 	title = ZDG_events.30.t
-    desc = ZDG_events.30.d
+	desc = ZDG_events.30.d
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.30.a
-		country_event = { id = ZDG_events.31 days = 1 }
+		name = ZDG_events.30.a
+		country_event = {
+			id = ZDG_events.31
+			days = 1
+		}
 	}
 }
 
 #风雪再起-2
 country_event = {
-    id = ZDG_events.31
+	id = ZDG_events.31
 	title = ZDG_events.31.t
-    desc = ZDG_events.31.d
+	desc = ZDG_events.31.d
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.31.a
+		name = ZDG_events.31.a
 		custom_effect_tooltip = total_war_tt
-		country_event = { id = ZDG_events.32 days = 1 }
+		country_event = {
+			id = ZDG_events.32
+			days = 1
+		}
 	}
 }
 
 #风雪再起-3
 country_event = {
-    id = ZDG_events.32
+	id = ZDG_events.32
 	title = ZDG_events.32.t
-    desc = ZDG_events.32.d
+	desc = ZDG_events.32.d
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.32.a
+		name = ZDG_events.32.a
 		hidden_effect = {
-			LYU = { country_event = { id = liyue_civil_war.23 } }
+			LYU = {
+				country_event = {
+					id = liyue_civil_war.23
+				}
+			}
 		}
 	}
 }
 
 #志愿军抵达
 country_event = {
-    id = ZDG_events.33
+	id = ZDG_events.33
 	title = ZDG_events.33.t
-    desc = ZDG_events.33.d
+	desc = ZDG_events.33.d
 	is_triggered_only = yes
-	
 	option = {
-	    name = ZDG_events.33.a
+		name = ZDG_events.33.a
 		if = {
 			limit = {
 				NOT = {
-					has_template = "Snezhnaya volunteer army"
-					#This template will disband after the war, so please DO NOT change this template name into CHINESE CHARACTERS!
+					has_template = "至冬国志愿军"
 				}
 			}
 			division_template = {
-				name = "Snezhnaya volunteer army"
+				name = "至冬国志愿军"
 				priority = 2
 				is_locked = yes
 				division_names_group = ZDG_INF_01
 				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					artillery_brigade = { x = 2 y = 0 }
-			
+					infantry = {
+						x = 0
+						y = 0
+					}
+					infantry = {
+						x = 0
+						y = 1
+					}
+					infantry = {
+						x = 0
+						y = 2
+					}
+					infantry = {
+						x = 1
+						y = 0
+					}
+					infantry = {
+						x = 1
+						y = 1
+					}
+					infantry = {
+						x = 1
+						y = 2
+					}
+					artillery_brigade = {
+						x = 2
+						y = 0
+					}
 				}
 				support = {
-					engineer = { x = 0 y = 0 }
-					recon = { x = 0 y = 1 }
+					engineer = {
+						x = 0
+						y = 0
+					}
+					recon = {
+						x = 0
+						y = 1
+					}
 				}
 			}
 		}
 		capital_scope = {
 			create_unit = {
-				division = "division_template = \"Snezhnaya volunteer army\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+				division = "division_template = \"至冬国志愿军\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 				owner = ZDG
 				count = 2
 			}
@@ -589,20 +745,28 @@ country_event = {
 
 #草蛇灰线
 country_event = {
-    id = ZDG_events.34
+	id = ZDG_events.34
 	title = ZDG_events.34.t
-    desc = ZDG_events.34.d
+	desc = ZDG_events.34.d
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.34.a
+		name = ZDG_events.34.a
 		unlock_decision_tooltip = ZDG_zhenyadikangzuz
 		set_country_flag = ZDG_events34_flag
 		clr_country_flag = ZDG_xuebeng_flag
 		add_ideas = ZDG_shengzhangyuchonshanjuling
-		add_to_variable = { ZDG_gongzhizhehezuodu_value = -1 }
-		add_to_variable = { ZDG_toujizhehezuodu_value = -1 }
-		add_to_variable = { ZDG_baoshoupaihezuodu_value = -1 }
-		add_to_variable = { ZDG_dikangzhehezuodu_value = -1 }
+		add_to_variable = {
+			ZDG_gongzhizhehezuodu_value = -1
+		}
+		add_to_variable = {
+			ZDG_toujizhehezuodu_value = -1
+		}
+		add_to_variable = {
+			ZDG_baoshoupaihezuodu_value = -1
+		}
+		add_to_variable = {
+			ZDG_dikangzhehezuodu_value = -1
+		}
 		ZDG_baoshoupai_buffjisuan = yes
 		ZDG_dikangzhe_buffjisuan = yes
 		ZDG_gongzhizhe_buffjisuan = yes
@@ -613,76 +777,79 @@ country_event = {
 
 #至冬的支援
 country_event = {
-    id = ZDG_events.35
+	id = ZDG_events.35
 	title = ZDG_events.35.t
-    desc = ZDG_events.35.d
+	desc = ZDG_events.35.d
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.35.a
+		name = ZDG_events.35.a
 		add_equipment_to_stockpile = {
-		type = infantry_equipment
-		amount = 3000
-		producer = ZDG
-	    }
+			type = infantry_equipment
+			amount = 3000
+			producer = ZDG
+		}
 		add_equipment_to_stockpile = {
-		type = grain_conversion_eq
-		amount = 3000
-		producer = ZDG
-	    }
+			type = grain_conversion_eq
+			amount = 3000
+			producer = ZDG
+		}
 		add_equipment_to_stockpile = {
-		type = ttt_uniform_eq
-		amount = 3000
-		producer = ZDG
-	    }
+			type = ttt_uniform_eq
+			amount = 3000
+			producer = ZDG
+		}
 	}
 }
 
 #至冬的支援
 country_event = {
-    id = ZDG_events.36
+	id = ZDG_events.36
 	title = ZDG_events.35.t
-    desc = ZDG_events.35.d
+	desc = ZDG_events.35.d
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.35.a
+		name = ZDG_events.35.a
 		add_equipment_to_stockpile = {
-		type = artillery_equipment
-		amount = 600
-		producer = ZDG
-	    }
+			type = artillery_equipment
+			amount = 600
+			producer = ZDG
+		}
 		add_equipment_to_stockpile = {
-		type = support_equipment
-		amount = 1500
-		producer = ZDG
-	    }
+			type = support_equipment
+			amount = 1500
+			producer = ZDG
+		}
 	}
 }
 
 #宴会开幕
 country_event = {
-    id = ZDG_events.37
+	id = ZDG_events.37
 	title = ZDG_events.37.t
-    desc = ZDG_events.37.d
+	desc = ZDG_events.37.d
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.37.a
-		country_event = { days = 1 id = ZDG_events.38 }
+		name = ZDG_events.37.a
+		country_event = {
+			days = 1
+			id = ZDG_events.38
+		}
 	}
 }
 
 #宴会之后的密谈
 country_event = {
-    id = ZDG_events.38
+	id = ZDG_events.38
 	title = ZDG_events.38.t
-    desc = ZDG_events.38.d
+	desc = ZDG_events.38.d
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.38.a
+		name = ZDG_events.38.a
 		set_country_flag = ZDG_events38_flag
 		custom_effect_tooltip = ZDG_events38_tt
 	}
 	option = {
-	    name = ZDG_events.38.b
+		name = ZDG_events.38.b
 		set_country_flag = ZDG_events38_flag_2
 		custom_effect_tooltip = ZDG_events38_tt2
 	}
@@ -690,83 +857,83 @@ country_event = {
 
 #新兵入伍
 country_event = {
-    id = ZDG_events.39
+	id = ZDG_events.39
 	title = ZDG_events.39.t
-    desc = ZDG_events.39.d
-	fire_only_once=yes
+	desc = ZDG_events.39.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.39.a
+		name = ZDG_events.39.a
 		add_manpower = 1
 	}
 }
 
 #锦瑟凝绝
 country_event = {
-    id = ZDG_events.40
+	id = ZDG_events.40
 	title = ZDG_events.40.t
-    desc = ZDG_events.40.d
+	desc = ZDG_events.40.d
 	picture = GFX_event_generic_ZDG_in_Liyue
-	fire_only_once=yes
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.40.a
+		name = ZDG_events.40.a
 		add_stability = -0.01
 	}
 }
 
 #再起新朝
 country_event = {
-    id = ZDG_events.41
+	id = ZDG_events.41
 	title = ZDG_events.41.t
-    desc = ZDG_events.41.d
+	desc = ZDG_events.41.d
 	picture = GFX_event_generic_morning_scene
-	fire_only_once=yes
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.41.a
+		name = ZDG_events.41.a
 		add_stability = 0.01
 	}
 }
 
 #至冬人的恩赐?
 country_event = {
-    id = ZDG_events.42
+	id = ZDG_events.42
 	title = ZDG_events.42.t
-    desc = ZDG_events.42.d
+	desc = ZDG_events.42.d
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-	    name = ZDG_events.42.a
+		name = ZDG_events.42.a
 		add_stability = 0.02
 	}
 }
 
 #死亡如影随形
 country_event = {
-    id = ZDG_events.43
+	id = ZDG_events.43
 	title = ZDG_events.43.t
-    desc = ZDG_events.43.d
-	fire_only_once=yes
+	desc = ZDG_events.43.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.43.a
+		name = ZDG_events.43.a
 		random_owned_controlled_state = {
-		    add_manpower = -1
-	    }
+			add_manpower = -1
+		}
 	}
 }
 
 #价高者得
 country_event = {
-    id = ZDG_events.44
+	id = ZDG_events.44
 	title = ZDG_events.44.t
-    desc = ZDG_events.44.d
+	desc = ZDG_events.44.d
 	picture = GFX_event_generic_blood
-	fire_only_once=yes
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.44.a
+		name = ZDG_events.44.a
 		add_manpower = -685
 		add_stability = -0.01
 		add_war_support = -0.01
@@ -775,73 +942,73 @@ country_event = {
 
 #困境求生
 country_event = {
-    id = ZDG_events.45
+	id = ZDG_events.45
 	title = ZDG_events.45.t
-    desc = ZDG_events.45.d
-	fire_only_once=yes
+	desc = ZDG_events.45.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.45.a
+		name = ZDG_events.45.a
 		add_stability = -0.01
 	}
 }
 
 #战士的终末
 country_event = {
-    id = ZDG_events.46
+	id = ZDG_events.46
 	title = ZDG_events.46.t
-    desc = ZDG_events.46.d
-	fire_only_once=yes
+	desc = ZDG_events.46.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.46.a
+		name = ZDG_events.46.a
 		add_war_support = -0.01
 	}
 }
 
 #意外的‘礼物’
 country_event = {
-    id = ZDG_events.47
+	id = ZDG_events.47
 	title = ZDG_events.47.t
-    desc = ZDG_events.47.d
-	fire_only_once=yes
+	desc = ZDG_events.47.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.47.a
+		name = ZDG_events.47.a
 		custom_effect_tooltip = ZDG_events47_tt
 	}
 }
 
 #锄奸
 country_event = {
-    id = ZDG_events.48
+	id = ZDG_events.48
 	title = ZDG_events.48.t
-    desc = ZDG_events.48.d
-	fire_only_once=yes
+	desc = ZDG_events.48.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.48.a
+		name = ZDG_events.48.a
 	}
 }
 
 #送行
 country_event = {
-    id = ZDG_events.49
+	id = ZDG_events.49
 	title = ZDG_events.49.t
-    desc = ZDG_events.49.d
-	fire_only_once=yes
+	desc = ZDG_events.49.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.49.a
+		name = ZDG_events.49.a
 		hidden_effect = {
 			every_country = {
 				if = {
 					limit = {
-						is_nominate_liyue = yes	
+						is_nominate_liyue = yes
 						has_war_with = ZDG
 					}
 					add_manpower = 500
-				    add_war_support = 0.05
+					add_war_support = 0.05
 				}
 			}
 		}
@@ -850,27 +1017,30 @@ country_event = {
 
 #致齐悦
 country_event = {
-    id = ZDG_events.50
+	id = ZDG_events.50
 	title = ZDG_events.50.t
-    desc = ZDG_events.50.d
-	fire_only_once=yes
+	desc = ZDG_events.50.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.50.a
+		name = ZDG_events.50.a
 		hidden_effect = {
-			country_event = { days = 70  id = ZDG_events.51 }
+			country_event = {
+				days = 70
+				id = ZDG_events.51
+			}
 		}
 	}
 }
 
 #硬汉柔情
 country_event = {
-    id = ZDG_events.51
+	id = ZDG_events.51
 	title = ZDG_events.51.t
-    desc = ZDG_events.51.d
-	fire_only_once=yes
+	desc = ZDG_events.51.d
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
-	    name = ZDG_events.51.a
+		name = ZDG_events.51.a
 	}
 }

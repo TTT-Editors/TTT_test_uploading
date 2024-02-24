@@ -114,11 +114,12 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		custom_effect_tooltip = INA_reduce_army_pressure
-		custom_effect_tooltip = INA_add_ecomony_pressure
-		hidden_effect = {
-			INA_army_conscription_easier = yes
+		custom_effect_tooltip = INA_reduce_pressure
+		add_timed_idea = {
+			idea = INA_small_relax
+			days = 30
 		}
+		#ai添加走改革线倾向增加
 	}
 }
 
@@ -140,7 +141,15 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		custom_effect_tooltip = INA_reduce_ecomony_pressure
+		custom_effect_tooltip = INA_inspire
+		209 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+		add_stability = -0.1
+		#触发事件：中饱私囊
 	}
 }
 
@@ -159,8 +168,7 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		custom_effect_tooltip = INA_mild
-		custom_effect_tooltip = INA_add_ecomony_pressure
+		custom_effect_tooltip = INA_appease_bayun
 	}
 }
 
@@ -206,39 +214,17 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		add_stability = 0.05
-		add_manpower = -8000
-		custom_effect_tooltip = INA_bayun_north_order
-		hidden_effect = {
-			country_event = 
-			{
-				id = INA_events.13
-			}
-			88 = 
-			{
-				add_compliance = 15
-				add_resistance = -15
-			}
-			82 = 
-			{
-				add_compliance = 15
-				add_resistance = -15
-			}
-			83 = 
-			{
-				add_compliance = 15
-				add_resistance = -15
-			}
-			85 = 
-			{
-				add_compliance = 15
-				add_resistance = -15
-			}
-			373 = 
-			{
-				add_compliance = 15
-				add_resistance = -15
-			}
+		custom_effect_tooltip = INA_isolate_SNA
+		add_stability = -0.05
+		add_manpower = -3000
+		229 = {
+			add_compliance = -0.3
+		}
+		232 = {
+			add_compliance = -0.15
+		}
+		234 = {
+			add_manpower = 2000
 		}
 	}
 }

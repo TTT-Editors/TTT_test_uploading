@@ -1,0 +1,45 @@
+on_actions = {
+	on_monthly_DSC = {
+	
+	#Calculate all types of resources, production, saving and defecit.
+	#resource 0~grain, 1~fuel, 2~tool, 3~treasure
+	#Array Notification:
+	#DSC_resource_gain
+	#DSC_resource_saving
+	#DSC_resource_consumption
+	
+		effect = {
+			add_to_variable = { ttt_dsc_excavate_ui_dirty = 1 }
+			if = {
+				limit = { grain < 0 }
+				set_variable = { DSC_resource_gain^0 = 0 }
+			}
+			else = {
+				set_variable = { DSC_resource_gain^0 = resource@grain }
+			}
+			
+			if = {
+				limit = { oil < 0 }
+				set_variable = { DSC_resource_gain^1 = 0 }
+			}
+			else = {
+				set_variable = { DSC_resource_gain^1 = resource@oil }
+			}
+			
+			set_variable = { DSC_resource_gain^2 = num_of_civilian_factories_available_for_projects }
+			
+			for_loop_effect = {
+				end = 4
+				value = j
+				add_to_variable = {
+					var = DSC_resource_saving^j
+					value = DSC_resource_gain^j
+				}
+				subtract_from_variable = {
+					var = DSC_resource_saving^j
+					value = DSC_resource_consumption^j
+				}
+			}
+		}
+	}
+}

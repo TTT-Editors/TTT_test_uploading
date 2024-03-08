@@ -1,0 +1,210 @@
+MOT_dragon_crisis_decision_cat = {
+	MOT_dragon_crisis_decision_test = {
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			activate_mission = MOT_dragon_crisis_time_mission
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_time_mission = {
+		priority = 114
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_remove = 0
+		days_mission_timeout = 180
+		timeout_effect = {
+			add_stability = -0.2
+			add_war_support = -0.2
+			clr_country_flag = MOT_dragon_crisis
+		}
+	}
+	MOT_commucate_decision_1 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { QQZ FXE BLL }
+		cost = 15
+		days_remove = 7
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = QQZ
+					}
+				}
+				country_event = { id = MOT_event.50 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = FXE
+					}
+				}
+				ROOT = {
+					country_event = { id = MOT_event.51 }
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = BLL
+					}
+				}
+				country_event = { id = MOT_event.53 }
+			}
+		}
+	}
+	MOT_commucate_decision_2 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { DSC DLK }
+		cost = 25
+		days_remove = 14
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = DSC
+					}
+				}
+				country_event = { id = MOT_event.54 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = DLK
+					}
+				}
+				country_event = { id = MOT_event.55 }
+			}
+		}
+	}
+	MOT_commucate_decision_3 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { TWL MDQ ALS }
+		cost = 50
+		days_remove = 21
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = TWL
+					}
+				}
+				country_event = { id = MOT_event.56 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = MDQ
+					}
+				}
+				country_event = { id = MOT_event.57 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = ALS
+					}
+				}
+				country_event = { id = MOT_event.58 }
+			}
+		}
+	}	
+	MOT_dragon_crisis_exchange_goods_decision = { #换取物资
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		days_re_enable = 0
+		days_remove = 7
+		available = {
+			
+		}
+
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_exchange_goods_tt
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 12
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_produce_goods_decision = { #生产物资
+		cost = 15
+		days_re_enable = 0
+		days_remove = 35
+		available = {
+			
+		}
+		modifier = {
+			consumer_goods_factor = 0.25
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_produce_goods_tt
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 10
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+}

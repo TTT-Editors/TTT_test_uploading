@@ -426,7 +426,7 @@ SUM_WitheringZone_monthly_1 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -459,7 +459,7 @@ SUM_WitheringZone_monthly_2 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -500,7 +500,7 @@ SUM_WitheringZone_monthly_3 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -533,7 +533,7 @@ SUM_WitheringZone_monthly_4 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -566,7 +566,7 @@ SUM_WitheringZone_monthly_5 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -607,7 +607,7 @@ SUM_WitheringZone_monthly_6 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -648,7 +648,7 @@ SUM_WitheringZone_monthly_7 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -681,7 +681,7 @@ SUM_WitheringZone_monthly_8 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -726,7 +726,7 @@ SUM_WitheringZone_monthly_9 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -763,7 +763,7 @@ SUM_WitheringZone_monthly_10 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -816,7 +816,7 @@ SUM_WitheringZone_monthly_11 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -853,7 +853,7 @@ SUM_WitheringZone_monthly_12 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -898,7 +898,7 @@ SUM_WitheringZone_monthly_13 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -927,7 +927,7 @@ SUM_WitheringZone_monthly_14 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -964,7 +964,7 @@ SUM_WitheringZone_monthly_15 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -1005,7 +1005,7 @@ SUM_WitheringZone_monthly_16 = {
         }
         divide_temp_variable = {
             var = temp
-            value = 20
+            value = SUM_FR_diff_num
         }
         round_temp_variable  = temp
         add_to_variable = {
@@ -1245,4 +1245,260 @@ SUM_randon_event_test_effect = {
             }
         }
     }
+}
+FR_clr_click_effect = {
+    if = {
+        limit = {
+            check_variable = {
+                var = Forest_Ranger_clr_WitheringZone_array^WitheringZone_choose
+                value = 1
+                compare = equals
+            }
+        }
+        set_variable = {
+            var = Forest_Ranger_clr_WitheringZone_array^WitheringZone_choose
+            value = 2
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = -1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = -1
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = Forest_Ranger_strengthen_WitheringZone_array^WitheringZone_choose
+                    value = 2
+                    compare = equals
+                }
+            }
+            FR_strengthen_click_effect = yes
+        }
+    }
+    else = {
+        set_variable = {
+            var = Forest_Ranger_clr_WitheringZone_array^WitheringZone_choose
+            value = 1
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = 1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = 1
+        }
+    }
+    
+}
+FR_intelligence_click_effect = {
+    if = {
+        limit = {
+            check_variable = {
+                var = Forest_Ranger_intelligence_array^WitheringZone_choose
+                value = 1
+                compare = equals
+            }
+        }
+        set_variable = {
+            var = Forest_Ranger_intelligence_array^WitheringZone_choose
+            value = 2
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = -1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = -1
+        }
+    }
+    else = {
+        set_variable = {
+            var = Forest_Ranger_intelligence_array^WitheringZone_choose
+            value = 1
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = 1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = 1
+        }
+    }
+}
+FR_strengthen_click_effect = {
+    if = {
+        limit = {
+            check_variable = {
+                var = Forest_Ranger_strengthen_WitheringZone_array^WitheringZone_choose
+                value = 1
+                compare = equals
+            }
+        }
+        set_variable = {
+            var = Forest_Ranger_strengthen_WitheringZone_array^WitheringZone_choose
+            value = 2
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = -1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = -1
+        }
+
+        if = {
+            limit = {
+                check_variable = {
+                    var = Forest_Ranger_clr_WitheringZone_array^WitheringZone_choose
+                    value = 2
+                    compare = equals
+                }
+            }
+            FR_clr_click_effect = yes
+        }
+    }
+    else = {
+        set_variable = {
+            var = Forest_Ranger_strengthen_WitheringZone_array^WitheringZone_choose
+            value = 1
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = 1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = 1
+        }
+    }
+}
+FR_attack_click_effect = {
+    if = {
+        limit = {
+            check_variable = {
+                var = Forest_Ranger_attack_enemy_array^WitheringZone_choose
+                value = 1
+                compare = equals
+            }
+        }
+        set_variable = {
+            var = Forest_Ranger_attack_enemy_array^WitheringZone_choose
+            value = 2
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = -1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = -1
+        }
+    }
+    else = {
+        set_variable = {
+            var = Forest_Ranger_attack_enemy_array^WitheringZone_choose
+            value = 1
+        }
+        # add_to_variable = {
+        #     var = WitheringZone_Forest_Ranger_value^WitheringZone_choose
+        #     value = 1
+        # }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = 1
+        }
+    }
+}
+
+
+
+FR_clr_month_effect = {
+    for_loop_effect = {
+        start = 0
+        end = 17
+
+        if = {
+            limit = {
+                check_variable = {
+                    var = Forest_Ranger_clr_WitheringZone_array^v
+                    value = 2
+                    compare = equals
+                }
+            }
+            add_to_variable = {
+                var = WitheringZone_array_value^v
+                value = SUM_FR_clr_num
+            }
+            clamp_variable = {
+                var = WitheringZone_array_value^v
+                min = 0
+                max = 100
+            }
+        }
+    }
+}
+
+FR_strengthen_month_effect = {
+    for_loop_effect = {
+        start = 0
+        end = 17
+
+        if = {
+            limit = {
+                check_variable = {
+                    var = Forest_Ranger_strengthen_WitheringZone_array^v
+                    value = 2
+                    compare = equals
+                }
+            }
+            add_to_variable = {
+                var = WitheringZone_array_value^v
+                value = 15
+            }
+            clamp_variable = {
+                var = WitheringZone_array_value^v
+                min = 0
+                max = 100
+            }
+        }
+    }
+}
+
+FR_recuit = {
+    if = {
+        limit = {
+            check_variable = {
+                var = SUM_Forest_Ranger_available_max
+                value = 5
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            var = SUM_Forest_Ranger_available
+            value = 1
+        }
+    }
+    add_to_variable = {
+        var = SUM_Forest_Ranger_available_max
+        value = 1
+    }
+}
+
+FR_lost = {
+    add_to_variable = {
+        var = SUM_Forest_Ranger_available_max
+        value = -1
+    }
+    add_to_variable = {
+        var = SUM_Forest_Ranger_available
+        value = -1
+    }
+
 }

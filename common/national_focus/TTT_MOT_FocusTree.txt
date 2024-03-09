@@ -168,7 +168,7 @@ focus_tree = {
             add_political_power = 25
 			hidden_effect = { #此为隐藏效果
 				country_event = { 
-					days = 7 id = MOT_event.75
+					days = 7 id = MOT_event.83
 				}
 			}
 		}
@@ -328,7 +328,7 @@ focus_tree = {
 		x = 14
 		y = 5
 		
-		cost = 30
+		cost = 35
 
 		ai_will_do = {
 		    base = 0
@@ -346,6 +346,11 @@ focus_tree = {
 		}
 		search_filters = {  }
 		completion_reward = {
+			custom_effect_tooltip = MOT_DC_materials_point_subtract_5
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = -5
+			}
 			country_event = { id = MOT_event.71 }
 		}
 	}
@@ -360,9 +365,30 @@ focus_tree = {
 
 		}
 
-		cost = 30
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
+			custom_effect_tooltip = MOT_tree_0_13_tt
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^0
+				value = -5
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^1
+				value = -250
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^2
+				value = -10
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^3
+				value = -7
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^4
+				value = -7
+			}
 			country_event = { id = MOT_event.72 }
 		}
 	}
@@ -377,10 +403,37 @@ focus_tree = {
 
 		}
 
-		cost = 30
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			
+			custom_effect_tooltip = MOT_tree_0_14_tt
+			country_event = { id = MOT_event.73 }
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 10
+			}
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 20
+			}
+			if = {
+				limit = {
+					has_completed_focus = MOT_tree_0_16
+				}
+				add_to_variable = {
+					var = MOT_DC_war_point
+					value = 15
+				}
+			}
+			if = {
+				limit = {
+					has_idea = MOT_Rosary
+				}
+				add_to_variable = {
+					var = MOT_DC_war_point
+					value = 15
+				}
+			}
 		}
 	}
 
@@ -391,17 +444,12 @@ focus_tree = {
 		x = 14
 		y = 8
 		available = {
-			check_variable = {MOT_Political_grid_array^2 = 6}
-			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^2 = 6}
-				tooltip =MOT_tree_0_15_trigger_tooltip
-			}
 		}
 
-		cost = 30
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			
+			country_event = { id = MOT_event.70 }
 		}
 	}
 
@@ -421,9 +469,10 @@ focus_tree = {
 		select_effect = {
 			if = {
 				limit = {
-					has_idea = MOT_Jean2
+					has_idea = MOT_Jean
 					has_idea = MOT_Barbara
 				}
+				country_event = { id = MOT_event.74 days = 7 }
 				complete_national_focus = MOT_tree_0_16
 			}
 
@@ -436,15 +485,6 @@ focus_tree = {
 				}
 				add_to_variable = {
 					var = MOT_DC_clear_point
-					value = 15
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = MOT_tree_0_14
-				}
-				add_to_variable = {
-					var = MOT_DC_war_point
 					value = 15
 				}
 			}
@@ -476,8 +516,6 @@ focus_tree = {
 					id = global_news.30#事件id
 					days = 7#几天后触发
 				}#此为触发世界新闻
-				##风魔龙危机结束
-				set_global_flag = MOT_dragon_crisis_is_over
 			}
 		}
 	}

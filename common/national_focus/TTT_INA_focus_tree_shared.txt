@@ -119,6 +119,7 @@ shared_focus =
 			idea = INA_small_relax
 			days = 30
 		}
+		country_event = INA_events.4
 		#ai添加走改革线倾向增加
 	}
 }
@@ -149,7 +150,7 @@ shared_focus =
 			}
 		}
 		add_stability = -0.1
-		#触发事件：中饱私囊
+		country_event = INA_events.2
 	}
 }
 
@@ -169,6 +170,8 @@ shared_focus =
 	}
 	completion_reward = {
 		custom_effect_tooltip = INA_appease_bayun
+		add_stability = 0.03
+		#触发事件：日出西边？
 	}
 }
 
@@ -187,15 +190,11 @@ shared_focus =
 		factor = 100
 	}
 	completion_reward = {
-		custom_effect_tooltip = INA_harshly
-		custom_effect_tooltip = INA_reduce_army_pressure
-		custom_effect_tooltip = INA_reduce_army_quality
-		custom_effect_tooltip = INA_conscription_low_action_on_War_extend
-		hidden_effect = 
-		{
-			INA_army_conscription_easier = yes
+		custom_effect_tooltip = INA_vacation_tt
+		add_timed_idea = {
+			idea = INA_vacation
+			days = 30
 		}
-		set_country_flag = INA_conscription_law_flag_extend
 	}
 }
 
@@ -218,14 +217,15 @@ shared_focus =
 		add_stability = -0.05
 		add_manpower = -3000
 		229 = {
-			add_compliance = -0.3
+			add_compliance = -30
 		}
 		232 = {
-			add_compliance = -0.15
+			add_compliance = -15
 		}
 		234 = {
 			add_manpower = 2000
 		}
+		#触发事件得寸进尺
 	}
 }
 
@@ -243,7 +243,26 @@ shared_focus =
 	ai_will_do = {
 		factor = 100
 	}
-	#扩印绛票
+	completion_reward = {
+		#set_country_flag = INA_start_Vision_hunt
+		#mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = INA_purple_cash_extend_law
+
+		#add_to_array = { INA_PingDing_laws_history = 5 }
+		#clear_variable = INA_laws_in_processing
+		#clear_variable = INA_laws_in_processing_days
+		#set_country_flag = INA_PingDing_adjourment
+
+		#unlock_decision_category_tooltip = INA_Vision_hunt_decision
+		#投票成功后实现的效果
+		swap_ideas = {
+			remove_idea = INA_purple_cash
+			add_idea = INA_extend_purple_cash
+		}
+		#投票失败
+		add_stability = -0.1
+		#柊家损失一个评定所席位
+	}
 }
 
 shared_focus =

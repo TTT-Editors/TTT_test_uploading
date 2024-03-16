@@ -352,7 +352,6 @@ Baizhu_jingji_chonzu = {
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = Baizhu_shichang_zoufang_tt
-				
 			}
 		}
 		visible = {
@@ -361,10 +360,9 @@ Baizhu_jingji_chonzu = {
 			}
 		}
 		complete_effect = {
-			
 		}
 		modifier = {
-			political_power_gain = -0.20
+			political_power_gain = -0.2
 		}
 		remove_effect = {
 			add_to_variable = {
@@ -381,7 +379,6 @@ Baizhu_jingji_chonzu = {
 					add_political_power = 40
 				}
 				25 = {
-					
 				}
 				10 = {
 					add_stability = -0.02
@@ -409,11 +406,10 @@ Baizhu_jingji_chonzu = {
 			}
 		}
 		modifier = {
-			political_power_gain = -0.20
+			political_power_gain = -0.2
 		}
 		fire_only_once = yes
 		complete_effect = {
-			
 		}
 		remove_effect = {
 			add_ideas = Baizhu_wangwen_wang
@@ -434,14 +430,16 @@ Baizhu_jingji_chonzu = {
 			has_completed_focus = Baizhu_yubing_wenshen
 		}
 		modifier = {
-			political_power_gain = -0.20
+			political_power_gain = -0.2
 		}
 		fire_only_once = yes
 		complete_effect = {
-			country_event = { days = 7  id = Baizhu_event.3 }
+			country_event = {
+				days = 7
+				id = Baizhu_event.3
+			}
 		}
 		remove_effect = {
-			
 		}
 	}
 	#审核海军工业
@@ -460,11 +458,10 @@ Baizhu_jingji_chonzu = {
 			has_completed_focus = Baizhu_yubing_wenshen
 		}
 		modifier = {
-			political_power_gain = -0.20
+			political_power_gain = -0.2
 		}
 		fire_only_once = yes
 		complete_effect = {
-			
 		}
 		remove_effect = {
 			navy_experience = 50
@@ -486,11 +483,10 @@ Baizhu_jingji_chonzu = {
 			has_completed_focus = Baizhu_yubing_wenshen
 		}
 		modifier = {
-			political_power_gain = -0.20
+			political_power_gain = -0.2
 		}
 		fire_only_once = yes
 		complete_effect = {
-			
 		}
 		remove_effect = {
 			army_experience = 50
@@ -516,7 +512,6 @@ Baizhu_jingji_chonzu = {
 		}
 		fire_only_once = yes
 		complete_effect = {
-			
 		}
 		remove_effect = {
 			swap_ideas = {
@@ -545,12 +540,105 @@ Baizhu_jingji_chonzu = {
 		}
 		fire_only_once = yes
 		complete_effect = {
-			
 		}
 		remove_effect = {
 			swap_ideas = {
 				add_idea = Baizhu_wangwen_qie
 				remove_idea = Baizhu_wangwen_wenqie_wen
+			}
+		}
+	}
+}
+
+Baizhu_zhenxie_heli_jueyi = {
+	#接纳顾问
+	Baizhu_jiena_guwen = {
+		#icon = ger_mefo_bills
+		allowed = {
+			original_tag = LYU
+		}
+		days_remove = 120
+		targets = {
+			NNG
+			XOG
+			RTG
+		}
+		target_non_existing = yes
+		target_trigger = {
+			FROM = {
+				NOT = {
+					exists = yes
+					has_government = hive_mind
+				}
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			FROM = {
+				every_character = {
+					set_nationality = LYU
+				}
+			}
+		}
+	}
+}
+
+liyue_civil_war_decisions = {
+	#向xxx提议设立人道主义援助机构
+	Baizhu_tiyi_jianli_rendao = {
+		#icon = ger_mefo_bills
+		visible = {
+			has_country_flag = Baizhu_event2_flag
+		}
+		cost = 50
+		days_remove = 90
+		target_trigger = {
+			FROM = {
+				is_nominate_liyue = yes
+				NOT = {
+					exists = no
+					has_government = hive_mind
+					original_tag = LYU
+				}
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+		}
+		remove_effect = {
+			FROM = {
+				country_event = { days = 1  id = Baizhu_event.9 }
+			}
+		}
+	}
+	#向xxx发出和平呼吁
+	Baizhu_fachu_heping_chanyi = {
+		#icon = ger_mefo_bills
+		visible = {
+			has_country_flag = Baizhu_event2_flag
+		}
+		cost = 50
+		days_remove = 90
+		target_trigger = {
+			FROM = {
+				is_nominate_liyue = yes
+				NOT = {
+					exists = no
+					has_government = hive_mind
+					original_tag = LYU
+				}
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+		}
+		remove_effect = {
+			FROM = {
+				country_event = { days = 1  id = Baizhu_event.9 }
 			}
 		}
 	}

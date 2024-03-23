@@ -45,6 +45,19 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = Baizhu_event.3.a
+		custom_effect_tooltip = Baizhu_event3_tt
+	}
+	option = {
+		name = Baizhu_event.3.b
+        custom_effect_tooltip = Baizhu_event3_tt2
+		random_list = {
+			40 = {
+				country_event = { days = 35  id = Baizhu_event.17 }
+			}
+			60 = {
+				country_event = { days = 35  id = Baizhu_event.18 }
+			}
+		}
 	}
 }
 #第一次会议
@@ -122,10 +135,20 @@ country_event = {
 	desc = Baizhu_event.9.d
 
 	#picture = TTT_event1
-	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
 		name = Baizhu_event.9.a
+		set_country_flag = Baizhu_event9_flag
+		add_stability = 0.05
+		add_political_power = 50
+		set_variable = {
+			Baizhu_value_01 = 0
+		}
+	}
+	option = {
+		name = Baizhu_event.9.b
+		add_stability = -0.05
+		add_war_support = -0.05
 	}
 }
 #璃月港呼吁和平
@@ -135,9 +158,146 @@ country_event = {
 	desc = Baizhu_event.10.d
 
 	#picture = TTT_event1
-	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
 		name = Baizhu_event.10.a
+		add_war_support = -0.05
+	}
+}
+#璃月港的渗透
+country_event = {
+	id = Baizhu_event.11
+	title = Baizhu_event.11.t
+	desc = Baizhu_event.11.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.11.a
+		add_to_variable = {
+			Baizhu_value_01 = 1
+		}
+		hidden_effect = {
+			add_timed_idea = { idea = Baizhu_ideas_01 days = 30 }
+		}
+	}
+}
+#对战争的诘问
+country_event = {
+	id = Baizhu_event.12
+	title = Baizhu_event.12.t
+	desc = Baizhu_event.12.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.12.a
+        add_war_support = -0.15
+		add_manpower = -5681
+	}
+}
+#和平的蜜糖，软弱的毒药
+country_event = {
+	id = Baizhu_event.13
+	title = Baizhu_event.13.t
+	desc = Baizhu_event.13.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.13.a
+        add_war_support = -0.30
+		add_stability = -0.20
+		add_manpower = -12765
+		transfer_units_fraction = {
+			target = LYU
+			size = 0
+			army_ratio = 0.1	
+		}
+		add_timed_idea = { idea = Baizhu_ideas_02 days = 120 } 
+	}
+}
+#第二份报告
+country_event = {
+	id = Baizhu_event.14
+	title = Baizhu_event.14.t
+	desc = Baizhu_event.14.d
+
+	#picture = TTT_event1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.14.a
+		country_event = { days = 35  id = Baizhu_event.15 }
+	}
+}
+#第三份报告
+country_event = {
+	id = Baizhu_event.15
+	title = Baizhu_event.15.t
+	desc = Baizhu_event.15.d
+
+	#picture = TTT_event1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.15.a
+		country_event = { days = 35  id = Baizhu_event.16 }
+	}
+}
+#最终的报告
+country_event = {
+	id = Baizhu_event.16
+	title = Baizhu_event.16.t
+	desc = Baizhu_event.16.d
+	#picture = TTT_event1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.16.a
+		add_timed_idea = { idea = Baizhu_ideas_03 days = 365 } 
+	}
+}
+##第二份报告(40)
+country_event = {
+	id = Baizhu_event.17
+	title = Baizhu_event.17.t
+	desc = Baizhu_event.17.d
+
+	#picture = TTT_event1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.17.a
+		country_event = { days = 70  id = Baizhu_event.19 }
+	}
+}
+#第二份报告(60)
+country_event = {
+	id = Baizhu_event.18
+	title = Baizhu_event.18.t
+	desc = Baizhu_event.18.d
+
+	#picture = TTT_event1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.18.a
+		country_event = { days = 35  id = Baizhu_event.16 }
+	}
+}
+#最终的报告(失败)
+country_event = {
+	id = Baizhu_event.19
+	title = Baizhu_event.19.t
+	desc = Baizhu_event.19.d
+
+	#picture = TTT_event1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Baizhu_event.19.a
+		add_stability = -0.10
+		add_war_support = -0.10
 	}
 }

@@ -7,6 +7,9 @@ Baizhu_gangcheng_gupi = {
 			original_tag = LYU
 		}
 		cost = 5
+		ai_will_do = {
+			factor = 50
+		}
 		days_remove = 35
 		available = {
 			NOT = {
@@ -57,6 +60,9 @@ Baizhu_gangcheng_gupi = {
 		#icon = ger_mefo_bills
 		allowed = {
 			original_tag = LYU
+		}
+		ai_will_do = {
+			factor = 50
 		}
 		cost = 5
 		days_remove = 35
@@ -110,6 +116,9 @@ Baizhu_gangcheng_gupi = {
 		allowed = {
 			original_tag = LYU
 		}
+		ai_will_do = {
+			factor = 50
+		}
 		cost = 5
 		days_remove = 35
 		available = {
@@ -161,6 +170,9 @@ Baizhu_gangcheng_gupi = {
 		#icon = ger_mefo_bills
 		allowed = {
 			original_tag = LYU
+		}
+		ai_will_do = {
+			factor = 50
 		}
 		cost = 5
 		days_remove = 35
@@ -359,6 +371,9 @@ Baizhu_jingji_chonzu = {
 				Baizhu_shichang_zoufang_value < 10
 			}
 		}
+		ai_will_do = {
+			factor = 50
+		}
 		complete_effect = {
 		}
 		modifier = {
@@ -405,6 +420,9 @@ Baizhu_jingji_chonzu = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 50
+		}
 		modifier = {
 			political_power_gain = -0.2
 		}
@@ -428,6 +446,9 @@ Baizhu_jingji_chonzu = {
 		}
 		visible = {
 			has_completed_focus = Baizhu_yubing_wenshen
+		}
+		ai_will_do = {
+			factor = 50
 		}
 		modifier = {
 			political_power_gain = -0.2
@@ -457,6 +478,9 @@ Baizhu_jingji_chonzu = {
 		visible = {
 			has_completed_focus = Baizhu_yubing_wenshen
 		}
+		ai_will_do = {
+			factor = 50
+		}
 		modifier = {
 			political_power_gain = -0.2
 		}
@@ -482,6 +506,9 @@ Baizhu_jingji_chonzu = {
 		visible = {
 			has_completed_focus = Baizhu_yubing_wenshen
 		}
+		ai_will_do = {
+			factor = 50
+		}
 		modifier = {
 			political_power_gain = -0.2
 		}
@@ -503,6 +530,9 @@ Baizhu_jingji_chonzu = {
 		available = {
 			has_idea = Baizhu_wangwen_wen
 			num_of_civilian_factories_available_for_projects > 1
+		}
+		ai_will_do = {
+			factor = 50
 		}
 		visible = {
 			has_completed_focus = Baizhu_taisu_zhenyao
@@ -528,6 +558,9 @@ Baizhu_jingji_chonzu = {
 		}
 		cost = 90
 		days_remove = 120
+		ai_will_do = {
+			factor = 50
+		}
 		available = {
 			has_idea = Baizhu_wangwen_wenqie_wen
 			num_of_civilian_factories_available_for_projects > 2
@@ -562,6 +595,9 @@ Baizhu_zhenxie_heli_jueyi = {
 			NNG
 			XOG
 			RTG
+		}
+		ai_will_do = {
+			factor = 50
 		}
 		target_non_existing = yes
 		target_trigger = {
@@ -609,6 +645,9 @@ liyue_civil_war_decisions = {
 		fire_only_once = yes
 		complete_effect = {
 		}
+		ai_will_do = {
+			factor = 50
+		}
 		remove_effect = {
 			FROM = {
 				country_event = { days = 1  id = Baizhu_event.9 }
@@ -621,8 +660,11 @@ liyue_civil_war_decisions = {
 		visible = {
 			has_country_flag = Baizhu_event2_flag
 		}
-		cost = 50
-		days_remove = 90
+		cost = 20
+		days_remove = 35
+		ai_will_do = {
+			factor = 50
+		}
 		target_trigger = {
 			FROM = {
 				is_nominate_liyue = yes
@@ -638,7 +680,45 @@ liyue_civil_war_decisions = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = { days = 1  id = Baizhu_event.9 }
+				country_event = { days = 1  id = Baizhu_event.10 }
+			}
+		}
+	}
+	#向xxx发出人道主义援助……以及思想
+	Baizhu_decisions_01 = {
+		#icon = ger_mefo_bills
+		visible = {
+			has_country_flag = Baizhu_event2_flag
+			has_country_flag = Baizhu_event9_flag
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		cost = 50
+		days_remove = 35
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+		}
+		target_trigger = {
+			FROM = {
+				is_nominate_liyue = yes
+				NOT = {
+					exists = no
+					has_government = hive_mind
+					original_tag = LYU
+				}
+			}
+		}
+		fire_only_once = no
+		modifier = {
+			civilian_factory_use = 1
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+				country_event = { days = 1  id = Baizhu_event.11 }
 			}
 		}
 	}

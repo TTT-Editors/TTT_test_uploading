@@ -345,15 +345,6 @@ liyue_civil_war_decisions = {
 			ROOT = {
 				controls_state = FROM
 			}
-			hidden_trigger = {
-				OR = {
-					is_ai = no
-					AND = {
-						is_ai = yes
-						KQG = { has_army_manpower = { size < 250000 } }
-					}
-				}
-			}
 		}
 		cancel_if_not_visible = yes
 		highlight_color_while_active = yes
@@ -404,36 +395,6 @@ liyue_civil_war_decisions = {
 					division = "division_template = \"Renmin Chiweidui\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
 					owner = KQG
 					count = 2
-				}
-			}
-		}
-	}
-	
-	hidden_test_decision_for_KQG_1 = {
-		visible = {
-			ai = yes
-			tag = KQG
-		}
-		available = {
-			has_army_experience > 54
-		}
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 0
-		}
-		complete_effect = {
-			army_experience = -55
-			add_units_to_division_template = {
-				template_name = "Red Guard"
-				regiments = {
-					infantry = 1
-					infantry = 1
-					infantry = 1
-					artillery_brigade = 2
-					artillery_brigade = 2
-				}
-				support = {
-					artillery = 0
 				}
 			}
 		}

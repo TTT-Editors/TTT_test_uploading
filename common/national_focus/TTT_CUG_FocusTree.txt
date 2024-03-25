@@ -603,4 +603,951 @@ focus_tree = {
 			country_event = CUG_event.4
 		}
 	}
+
+
+
+	#CUG Civil War
+	focus = {
+		id = CUG_war_is_coming	#风雨欲来
+		icon = unknown
+		available_if_capitulated = no
+		x = 20
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_martial_law	#紧急戒严
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = { focus = CUG_war_is_coming }
+		x = -3
+		y = 1
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_industry_mobilization	#军工动员令
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = { focus = CUG_martial_law }
+		mutually_exclusive = { focus = CUG_arms_factory_construction }
+		x = -6
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_arms_factory_construction #紧急军工建设
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = { focus = CUG_martial_law }
+		mutually_exclusive = { focus = CUG_industry_mobilization }
+		x = -4
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_total_industry_mobilization #经济总动员
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_industry_mobilization
+			focus = CUG_arms_factory_construction
+		}
+		x = -5
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_lingmengshan_line #灵濛山防线
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_martial_law
+		}
+		x = -2
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_yilongbu_fortification #遗珑埠城防
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_martial_law
+		}
+		x = 0
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_qiaoying_village_fortification #翘英庄城防
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_yilongbu_fortification
+		}
+		x = 0
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_continue_defense_line_construction #继续防线建设
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_lingmengshan_line
+		}
+		prerequisite = {
+			focus = CUG_qiaoying_village_fortification
+		}
+		x = -1
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_road_construction #道路建设
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		x = -9
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_back_road_construction #后方道路建设
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_road_construction
+		}
+		x = -9
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_yilongbu_arms_factory_construction #遗珑埠军工厂建设
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		x = -7
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_qiaoyingzhuanug_workshop_improvement #翘英庄工坊改造
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		x = -5
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_purchase_fontaine_machine #购买枫丹军工设备
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		x = -3
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_nam_leing_arms_factory_construction #南岭工厂建设
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_purchase_fontaine_machine
+		}
+		x = -3
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_stay_true_to_heart #本固邦宁
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_yilongbu_arms_factory_construction
+			focus = CUG_qiaoyingzhuanug_workshop_improvement
+		}
+		x = -7
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		mutually_exclusive = { focus = CUG_necessary_evil }
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_necessary_evil #必要之恶
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_yilongbu_arms_factory_construction
+			focus = CUG_qiaoyingzhuanug_workshop_improvement
+		}
+		x = -5
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		mutually_exclusive = { focus = CUG_stay_true_to_heart }
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_liyue_help_me #请求璃月支援
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_stay_true_to_heart
+			focus = CUG_necessary_evil
+		}
+		x = -6
+		y = 6
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_new_lease_of_life #劫后余生
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_liyue_help_me
+		}
+		x = -6
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_emergency_mobilization #紧急动员
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_war_is_coming
+		}
+		x = 3
+		y = 1
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_mobilise_milita #组建民兵
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_emergency_mobilization
+		}
+		mutually_exclusive = { focus = CUG_expand_army_recruit }
+		x = 2
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_expand_army_recruit #扩招千岩军
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_emergency_mobilization
+		}
+		mutually_exclusive = { focus = CUG_mobilise_milita }
+		x = 4
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_purchase_fontaine_weapons #购买枫丹军火
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mobilise_milita
+			focus = CUG_expand_army_recruit
+		}
+		mutually_exclusive = { focus = CUG_smuggle_fontaine_weapons }
+		x = 2
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_smuggle_fontaine_weapons #走私枫丹军火
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mobilise_milita
+			focus = CUG_expand_army_recruit
+		}
+		mutually_exclusive = { focus = CUG_purchase_fontaine_weapons }
+		x = 4
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_no_step_back #走私枫丹军火
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_purchase_fontaine_weapons
+		}
+		prerequisite = {
+			focus = CUG_smuggle_fontaine_weapons
+		}
+		x = 2
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_external_rescue #外部援助
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_purchase_fontaine_weapons
+		}
+		prerequisite = {
+			focus = CUG_smuggle_fontaine_weapons
+		}
+		x = 4
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_contact_foreigner #联络外部势力（收了枫丹50万法郎）
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_external_rescue
+		}
+		x = 4
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_blood_and_tear #血与泪
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_no_step_back
+		}
+		prerequisite = {
+			focus = CUG_continue_defense_line_construction
+		}
+		x = 0
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_inspire_everyone #号召全体军民
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_blood_and_tear
+		}
+		x = -1
+		y = 6
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_military_reform #军事改革
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_blood_and_tear
+		}
+		x = 1
+		y = 6
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_guerrilla_warfare #游击战
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		x = -2
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_enemy_base_areas #设立敌后根据地
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_guerrilla_warfare
+		}
+		x = -2
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_people_s_war #人民战争
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		x = 0
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_unite_we_can_win #众志成城
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_people_s_war
+		}
+		x = 0
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_unexpected_assiatance #意想不到的援助
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_enemy_base_areas
+		}
+		prerequisite = {
+			focus = CUG_unite_we_can_win
+		}
+		x = -1
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_mountain_warfare #山地作战
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		x = 2
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_emphasis_on_engineers #重视工兵
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mountain_warfare
+		}
+		x = 2
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_keep_up_with_time #时代的变化
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mountain_warfare
+		}
+		x = 2
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_hard_times_are_over #苦尽甘来
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_keep_up_with_time
+		}
+		prerequisite = {
+			focus = CUG_unexpected_assiatance
+		}
+		x = 0
+		y = 10
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_quantity_first #数量更重要
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		mutually_exclusive = { focus = CUG_quality_first }
+		x = 4
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_quality_first #质量更重要
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		mutually_exclusive = { focus = CUG_quantity_first }
+		x = 6
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_set_up_the_staff #建立参谋部
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_quantity_first
+			focus = CUG_quality_first
+		}
+		mutually_exclusive = { focus = CUG_select_junior_officers }
+		x = 4
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_select_junior_officers #选拔基层军官
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_quantity_first
+			focus = CUG_quality_first
+		}
+		mutually_exclusive = { focus = CUG_set_up_the_staff }
+		x = 6
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_bba_dlc #唯有浴血
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_set_up_the_staff
+			focus = CUG_select_junior_officers
+		}
+		mutually_exclusive = { focus = CUG_use_soft_conquer_hardness }
+		x = 4
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_use_soft_conquer_hardness #以柔克刚
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_set_up_the_staff
+			focus = CUG_select_junior_officers
+		}
+		mutually_exclusive = { focus = CUG_bba_dlc }
+		x = 6
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_supply_improvement #改善补给状况
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_bba_dlc
+			focus = CUG_use_soft_conquer_hardness
+		}
+		x = 5
+		y = 10
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
+	
+	focus = {
+		id = CUG_reborn_from_the_fire
+		icon = unknown
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_keep_up_with_time
+		}
+		prerequisite = {
+			focus = CUG_supply_improvement
+		}
+		x = 2
+		y = 11
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			
+		}
+	}
 }

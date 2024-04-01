@@ -1258,10 +1258,16 @@ focus_tree = {
 			focus = CUG_stay_true_to_heart
 			focus = CUG_necessary_evil
 		}
+		available = {
+			OR = {
+				date > 2002.8.1
+				surrender_progress > 0.9
+			}
+		}
 		x = -6
 		y = 6
 		relative_position_id = CUG_war_is_coming
-		cost = 10
+		cost = 140
 		ai_will_do = {
 			factor = 10
 		}
@@ -1277,15 +1283,31 @@ focus_tree = {
 		prerequisite = {
 			focus = CUG_liyue_help_me
 		}
+		available = {
+			ZDG = { exists = no }
+		}
 		x = -6
 		y = 7
 		relative_position_id = CUG_war_is_coming
-		cost = 10
+		cost = 70
 		ai_will_do = {
 			factor = 10
 		}
 		completion_reward = {
-			
+			hidden_effect = {
+				remove_ideas = CUG_bad_army_1
+				remove_ideas = CUG_bad_army_2
+				remove_ideas = CUG_army_1
+				remove_ideas = CUG_army_2
+				remove_ideas = CUG_army_3
+				remove_ideas = CUG_army_4
+				remove_ideas = CUG_army_5
+				remove_ideas = CUG_army_end
+			}
+			add_timed_idea = {
+				idea = CUG_new_lease_of_life_idea
+				days = 365
+			}
 		}
 	}
 	
@@ -1736,12 +1758,12 @@ focus_tree = {
 		x = -1
 		y = 9
 		relative_position_id = CUG_war_is_coming
-		cost = 10
+		cost = 21
 		ai_will_do = {
 			factor = 10
 		}
 		completion_reward = {
-			
+			add_ideas = CUG_assistance_of_lingyuan
 		}
 	}
 	
@@ -1820,12 +1842,21 @@ focus_tree = {
 		x = 2
 		y = 9
 		relative_position_id = CUG_war_is_coming
-		cost = 10
+		cost = 42
 		ai_will_do = {
 			factor = 10
 		}
 		completion_reward = {
-			
+			add_tech_bonus = {
+				name = CUG_keep_up_with_time_bonus
+				bonus = 0.25
+				uses = 2
+				category = artillery
+			}
+			swap_ideas = {
+				remove_idea = CUG_army_4
+				add_idea = CUG_army_5
+			}
 		}
 	}
 	
@@ -1842,12 +1873,12 @@ focus_tree = {
 		x = 0
 		y = 10
 		relative_position_id = CUG_war_is_coming
-		cost = 10
+		cost = 70
 		ai_will_do = {
 			factor = 10
 		}
 		completion_reward = {
-			
+			add_ideas = CUG_push_back_the_line
 		}
 	}
 	
@@ -2019,7 +2050,10 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = CUG_army_5
+				add_idea = CUG_army_end
+			}
 		}
 	}
 }

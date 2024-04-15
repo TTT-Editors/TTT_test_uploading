@@ -278,10 +278,16 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = CUG_event.17.a
+		ai_chance = {
+			base = 0
+		}
 		set_country_flag = CUG_quantity_first
 	}
 	option = {
 		name = CUG_event.17.b
+		ai_chance = {
+			base = 1
+		}
 		set_country_flag = CUG_quality_first
 	}
 }
@@ -338,5 +344,113 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = CUG_event.21.a
+	}
+}
+
+#沉玉谷请求武器
+country_event = {
+	id = CUG_event.22
+	title = CUG_event.22.t
+	desc = CUG_event.22.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	
+	#Agree
+	option = {
+		name = CUG_event.22.a
+		ai_chance = {
+			base = 2
+		}
+		CUG = { country_event = { id = CUG_event.23 } }
+		effect_tooltip = {
+			send_equipment = {
+				type = infantry_equipment
+				amount = 500
+				target = CUG
+			}
+			send_equipment = {
+				type = ttt_uniform_eq
+				amount = 100
+				target = CUG
+			}
+			send_equipment = {
+				type = grain_conversion_eq
+				amount = 100
+				target = CUG
+			}
+			send_equipment = {
+				type = support_equipment
+				amount = 20
+				target = CUG
+			}
+			send_equipment = {
+				type = artillery_equipment
+				amount = 10
+				target = CUG
+			}
+		}
+	}
+	
+	#Decline
+	option = {
+		name = CUG_event.22.b
+		ai_chance = {
+			base = 1
+		}
+		CUG = { country_event = { id = CUG_event.24 } }
+	}
+}
+
+#Guns send!
+country_event = {
+	id = CUG_event.23
+	title = CUG_event.23.t
+	desc = CUG_event.23.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = CUG_event.23.a
+		FROM = {
+			send_equipment = {
+				type = infantry_equipment
+				amount = 500
+				target = CUG
+			}
+			send_equipment = {
+				type = ttt_uniform_eq
+				amount = 100
+				target = CUG
+			}
+			send_equipment = {
+				type = grain_conversion_eq
+				amount = 100
+				target = CUG
+			}
+			send_equipment = {
+				type = support_equipment
+				amount = 20
+				target = CUG
+			}
+			send_equipment = {
+				type = artillery_equipment
+				amount = 10
+				target = CUG
+			}
+		}
+	}
+}
+
+#They decline to send guns
+country_event = {
+	id = CUG_event.24
+	title = CUG_event.24.t
+	desc = CUG_event.24.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = CUG_event.24.a
 	}
 }

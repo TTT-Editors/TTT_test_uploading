@@ -425,4 +425,60 @@ liyue_civil_war_decisions = {
 			}
 		}
 	}
+	
+	#Ask for political support
+	CUG_ask_for_political_support = {
+		icon = default_battle
+		allowed = {
+			tag = CUG
+		}
+		visible = {
+			has_completed_focus = CUG_external_rescue
+		}
+		available = {
+			OR = {
+				XRG = { exists = yes }
+				XOG = { exists = yes }
+			}
+		}
+		
+		days_re_enable = 30
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+	
+	#Ask for volunteer army
+	CUG_ask_for_volunteer_army = {
+		icon = default_battle
+		allowed = {
+			tag = CUG
+		}
+		visible = {
+			has_completed_focus = CUG_external_rescue
+		}
+		available = {
+			OR = {
+				XRG = { exists = yes }
+				XOG = { exists = yes }
+			}
+		}
+		
+		cost = 50		
+		fire_only_once = yes
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		complete_effect = {
+			XRG = { add_ideas = CUG_volunteer_army }
+			XOG = { add_ideas = CUG_volunteer_army }
+			XRG = { country_event = { id = CUG_event.25 } }
+			XOG = { country_event = { id = CUG_event.25 } }
+		}
+	}
 }

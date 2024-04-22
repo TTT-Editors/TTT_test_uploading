@@ -672,13 +672,35 @@ focus_tree = {
 		x = -6
 		y = 2
 		relative_position_id = CUG_war_is_coming
-		cost = 10
+		cost = 14
 		ai_will_do = {
 			factor = 10
 		}
 		completion_reward = {
 			add_stability = -0.15
 			add_war_support = -0.15
+			306 = {
+				remove_building = {
+					type = industrial_complex
+					level = 2
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			309 = {
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -1278,7 +1300,20 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = CUG_call_liyue_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_nominate_liyue = yes
+						OR = {
+							is_faction_leader = yes
+							is_in_faction = no
+						}
+						is_subject = no
+					}
+					country_event = { id = CUG_event.27 }
+				}
+			}
 		}
 	}
 	
@@ -1588,7 +1623,8 @@ focus_tree = {
 			factor = 0	#no use by now
 		}
 		completion_reward = {
-			
+			unlock_decision_tooltip = CUG_ask_for_foreign_guns
+			unlock_decision_tooltip = CUG_ask_for_foreign_volunteer_army
 		}
 	}
 	
@@ -1631,7 +1667,7 @@ focus_tree = {
 			focus = CUG_blood_and_tear
 		}
 		available = {
-			has_completed_focus = URG_establish_the_german_uruguayan_cultural_center
+			has_completed_focus = CUG_military_reform
 		}
 		x = -1
 		y = 6
@@ -1748,6 +1784,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = CUG_people_s_war_idea
+			hidden_effect = {
+				country_event = { id = CUG_event.26 }
+			}
 		}
 	}
 	

@@ -344,6 +344,67 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = CUG_event.21.a
+		add_ideas = disarmed_nation
+		add_ideas = CUG_post_war_generation
+		hidden_effect = {
+			delete_unit = {
+				disband = yes
+			}
+			division_template = {
+				name = "Post War Qianyan Army"
+				is_locked = no
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 0 y = 2 }
+					artillery_brigade = { x = 2 y = 0 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+				}
+			}
+			remove_ideas = {
+				CUG_bad_army_1
+				CUG_bad_army_2
+				CUG_army_1
+				CUG_army_2
+				CUG_army_3
+				CUG_army_4
+				CUG_army_5
+				CUG_army_end
+				CUG_emergency_mobilization_idea
+				CUG_no_step_back_idea
+				CUG_cdlc_idea
+				CUG_necessary_evil_idea
+				CUG_stay_true_to_heart_idea
+				CUG_people_s_war_idea
+				CUG_people_s_war_idea_2
+				CUG_guerrilla_warfare_idea
+				CUG_guerrilla_warfare_idea_2
+				CUG_mountain_warfare_idea
+				CUG_quantity_first_idea
+				CUG_quality_first_idea
+				CUG_set_up_the_staff_idea
+				CUG_select_junior_officers_idea
+				CUG_bba_dlc_idea
+				CUG_use_soft_conquer_hardness_idea
+				CUG_supply_improvement_idea
+				CUG_assistance_of_lingyuan
+				CUG_push_back_the_line
+			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Post War Qianyan Army\" start_experience_factor = 0.5"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 6
+				}
+			}
+		}
 	}
 }
 
@@ -468,5 +529,123 @@ country_event = {
 		effect_tooltip = {
 			add_ideas = CUG_volunteer_army
 		}
+	}
+}
+
+#演讲
+country_event = {
+	id = CUG_event.26
+	title = CUG_event.26.t
+	desc = CUG_event.26.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = CUG_event.26.a
+	}
+}
+
+#摇璃月下场
+#CUG call us!
+country_event = {
+	id = CUG_event.27
+	title = CUG_event.27.t
+	desc = CUG_event.27.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	#Agree
+	option = {
+		ai_chance = {
+			base = 8
+			
+			#Badboy will never help you
+			modifier = {
+				factor = 0
+				has_government = hive_mind
+			}
+			
+			#Just on our border!
+			modifier = {
+				factor = 2
+				OR = {
+					tag = XRG
+					tag = XOG
+				}
+			}
+			
+			#I have my war to deal with....
+			modifier = {
+				factor = 0.2
+				has_war = yes
+			}
+			
+			#too far away
+			modifier = {
+				factor = 0.5
+				OR = {
+					tag = LYU
+					tag = ANG
+					tag = RTG
+				}
+			}
+			
+			#isolation
+			modifier = {
+				factor = 0.1
+				tag = ARF
+			}
+			
+			#this is our duty
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		add_to_war = {
+			targeted_alliance = CUG
+			enemy = ZDG
+			hostility_reason = asked_to_join
+		}
+		CUG = { give_military_access = ROOT }
+
+		name = CUG_event.27.a
+	}
+	
+	#Decline
+	option = {
+		ai_chance = {
+			base = 4
+		}
+		name = CUG_event.27.b
+	}
+}
+
+#军备订单
+country_event = {
+	id = CUG_event.28
+	title = CUG_event.28.t
+	desc = CUG_event.28.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = CUG_event.28.a
+		custom_effect_tooltip = CUG_purchase_from_FON_tt
+		add_political_power = 75
+	}
+}
+
+#军火走私
+country_event = {
+	id = CUG_event.29
+	title = CUG_event.29.t
+	desc = CUG_event.29.d
+
+	#picture = TTT_event1
+	is_triggered_only = yes
+	option = {
+		name = CUG_event.29.a
+		custom_effect_tooltip = CUG_stolen_from_FON_tt
 	}
 }

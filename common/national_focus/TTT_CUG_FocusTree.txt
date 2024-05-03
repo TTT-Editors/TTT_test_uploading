@@ -625,6 +625,13 @@ focus_tree = {
 		available = {
 			has_country_flag = CUG_unlock_right_focus
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		completion_reward = {
 			add_ideas = CUG_bad_army_1
 			country_lock_all_division_template = no
@@ -652,6 +659,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		completion_reward = {
 			add_political_power = 25
 			add_stability = -0.05
@@ -672,13 +686,42 @@ focus_tree = {
 		x = -6
 		y = 2
 		relative_position_id = CUG_war_is_coming
-		cost = 10
+		cost = 14
 		ai_will_do = {
 			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		completion_reward = {
 			add_stability = -0.15
 			add_war_support = -0.15
+			306 = {
+				remove_building = {
+					type = industrial_complex
+					level = 2
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			309 = {
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -694,6 +737,13 @@ focus_tree = {
 		cost = 35
 		ai_will_do = {
 			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		completion_reward = {
 			add_offsite_building = { type = arms_factory level = 1 }
@@ -715,6 +765,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		completion_reward = {
 			add_ideas = war_economy
 		}
@@ -735,9 +792,18 @@ focus_tree = {
 		available = {
 			307 = { is_fully_controlled_by = ROOT }
 		}
-		
+
 		bypass = {
-			NOT = { 307 = { is_fully_controlled_by = ROOT } }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 307 = { is_fully_controlled_by = ROOT } }
+			}
 		}
 
 		ai_will_do = {
@@ -847,9 +913,18 @@ focus_tree = {
 		available = {
 			309 = { is_fully_controlled_by = ROOT }
 		}
-		
+
 		bypass = {
-			NOT = { 309 = { is_fully_controlled_by = ROOT } }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 309 = { is_fully_controlled_by = ROOT } }
+			}
 		}
 
 		completion_reward = {
@@ -879,9 +954,18 @@ focus_tree = {
 		available = {
 			306 = { is_fully_controlled_by = ROOT }
 		}
-		
+
 		bypass = {
-			NOT = { 306 = { is_fully_controlled_by = ROOT } }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 306 = { is_fully_controlled_by = ROOT } }
+			}
 		}
 		ai_will_do = {
 			factor = 10
@@ -922,9 +1006,18 @@ focus_tree = {
 		available = {
 			305 = { is_fully_controlled_by = ROOT }
 		}
-		
+
 		bypass = {
-			NOT = { 305 = { is_fully_controlled_by = ROOT } }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 305 = { is_fully_controlled_by = ROOT } }
+			}
 		}
 
 		ai_will_do = {
@@ -1053,8 +1146,19 @@ focus_tree = {
 			focus = CUG_total_industry_mobilization
 		}
 		bypass = {
-			NOT = { controls_state = 306 }
-			NOT = { controls_state = 309 }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				AND = {
+					NOT = { controls_state = 306 }
+					NOT = { controls_state = 309 }
+				}
+			}
 		}
 		x = -9
 		y = 4
@@ -1091,7 +1195,16 @@ focus_tree = {
 			focus = CUG_road_construction
 		}
 		bypass = {
-			NOT = { controls_state = 305 }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 305 }
+			}
 		}
 		x = -9
 		y = 5
@@ -1120,7 +1233,16 @@ focus_tree = {
 			focus = CUG_total_industry_mobilization
 		}
 		bypass = {
-			NOT = { controls_state = 309 }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 309 }
+			}
 		}
 		x = -7
 		y = 4
@@ -1149,7 +1271,16 @@ focus_tree = {
 			focus = CUG_total_industry_mobilization
 		}
 		bypass = {
-			NOT = { controls_state = 306 }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 306 }
+			}
 		}
 		x = -5
 		y = 4
@@ -1177,6 +1308,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		completion_reward = {
 			add_political_power = -100
 			add_offsite_building = { type = arms_factory level = 1 }
@@ -1191,7 +1329,16 @@ focus_tree = {
 			focus = CUG_purchase_fontaine_machine
 		}
 		bypass = {
-			NOT = { controls_state = 305 }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 305 }
+			}
 		}
 		x = -3
 		y = 5
@@ -1228,6 +1375,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		completion_reward = {
 			add_ideas = CUG_stay_true_to_heart_idea
 			country_event = { id = CUG_event.16 }
@@ -1250,6 +1404,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		completion_reward = {
 			add_ideas = CUG_necessary_evil_idea
 			country_event = { id = CUG_event.15 }
@@ -1270,6 +1431,13 @@ focus_tree = {
 				surrender_progress > 0.9
 			}
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = -6
 		y = 6
 		relative_position_id = CUG_war_is_coming
@@ -1278,7 +1446,20 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-			
+			custom_effect_tooltip = CUG_call_liyue_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_nominate_liyue = yes
+						OR = {
+							is_faction_leader = yes
+							is_in_faction = no
+						}
+						is_subject = no
+					}
+					country_event = { id = CUG_event.27 }
+				}
+			}
 		}
 	}
 	
@@ -1324,6 +1505,13 @@ focus_tree = {
 		prerequisite = {
 			focus = CUG_war_is_coming
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = 3
 		y = 1
 		relative_position_id = CUG_war_is_coming
@@ -1354,6 +1542,13 @@ focus_tree = {
 		available_if_capitulated = no
 		prerequisite = {
 			focus = CUG_emergency_mobilization
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		mutually_exclusive = { focus = CUG_expand_army_recruit }
 		x = 2
@@ -1401,6 +1596,13 @@ focus_tree = {
 		available_if_capitulated = no
 		prerequisite = {
 			focus = CUG_emergency_mobilization
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		mutually_exclusive = { focus = CUG_mobilise_milita }
 		x = 4
@@ -1456,6 +1658,13 @@ focus_tree = {
 			focus = CUG_mobilise_milita
 			focus = CUG_expand_army_recruit
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		mutually_exclusive = { focus = CUG_smuggle_fontaine_weapons }
 		x = 2
 		y = 3
@@ -1466,6 +1675,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -75
+			FON = { 
+				country_event = { id = CUG_event.28 }
+			}
 			add_equipment_to_stockpile = { 
 				type = infantry_equipment
 				amount = 750
@@ -1488,6 +1700,13 @@ focus_tree = {
 			focus = CUG_mobilise_milita
 			focus = CUG_expand_army_recruit
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		mutually_exclusive = { focus = CUG_purchase_fontaine_weapons }
 		x = 4
 		y = 3
@@ -1498,6 +1717,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -200
+			FON = { 
+				country_event = { id = CUG_event.29 }
+			}
 			add_equipment_to_stockpile = { 
 				type = infantry_equipment
 				amount = 1500
@@ -1519,6 +1741,13 @@ focus_tree = {
 		prerequisite = {
 			focus = CUG_purchase_fontaine_weapons
 			focus = CUG_smuggle_fontaine_weapons
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = 2
 		y = 4
@@ -1548,15 +1777,25 @@ focus_tree = {
 			focus = CUG_purchase_fontaine_weapons
 			focus = CUG_smuggle_fontaine_weapons
 		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				AND = {
+					NOT = { exists = XRG }
+					NOT = { exists = XOG }
+				}
+			}
+		}
 		x = 4
 		y = 4
 		relative_position_id = CUG_war_is_coming
 		cost = 42
-		
-		bypass = {
-			NOT = { exists = XRG }
-			NOT = { exists = XOG }
-		}
 
 		ai_will_do = {
 			factor = 10
@@ -1576,9 +1815,20 @@ focus_tree = {
 			focus = CUG_external_rescue
 		}
 		bypass = {
-			NOT = { exists = FON }
-			NOT = { exists = MOT }
-			NOT = { exists = SUM }
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_demilitarized_zone = no
+					}
+					ZDG = { exists = no }
+				}
+				AND = {
+					NOT = { exists = FON }
+					NOT = { exists = MOT }
+					NOT = { exists = SUM }
+				}
+			}
 		}
 		x = 4
 		y = 5
@@ -1588,7 +1838,8 @@ focus_tree = {
 			factor = 0	#no use by now
 		}
 		completion_reward = {
-			
+			unlock_decision_tooltip = CUG_ask_for_foreign_guns
+			unlock_decision_tooltip = CUG_ask_for_foreign_volunteer_army
 		}
 	}
 	
@@ -1604,6 +1855,13 @@ focus_tree = {
 		}
 		available = {
 			NOT = { has_idea = CUG_no_step_back }
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = 0
 		y = 5
@@ -1631,7 +1889,14 @@ focus_tree = {
 			focus = CUG_blood_and_tear
 		}
 		available = {
-			has_completed_focus = URG_establish_the_german_uruguayan_cultural_center
+			has_completed_focus = CUG_military_reform
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = -1
 		y = 6
@@ -1653,6 +1918,13 @@ focus_tree = {
 		available_if_capitulated = no
 		prerequisite = {
 			focus = CUG_blood_and_tear
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = 1
 		y = 6
@@ -1695,6 +1967,13 @@ focus_tree = {
 		prerequisite = {
 			focus = CUG_military_reform
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = -2
 		y = 7
 		relative_position_id = CUG_war_is_coming
@@ -1713,6 +1992,13 @@ focus_tree = {
 		available_if_capitulated = no
 		prerequisite = {
 			focus = CUG_guerrilla_warfare
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = -2
 		y = 8
@@ -1739,6 +2025,13 @@ focus_tree = {
 		prerequisite = {
 			focus = CUG_military_reform
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = 0
 		y = 7
 		relative_position_id = CUG_war_is_coming
@@ -1748,6 +2041,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = CUG_people_s_war_idea
+			hidden_effect = {
+				country_event = { id = CUG_event.26 }
+			}
 		}
 	}
 	
@@ -1764,6 +2060,13 @@ focus_tree = {
 		cost = 35
 		ai_will_do = {
 			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		completion_reward = {
 			swap_ideas = {
@@ -1782,6 +2085,13 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = CUG_unite_we_can_win
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = -1
 		y = 9
@@ -1812,6 +2122,13 @@ focus_tree = {
 		cost = 35
 		ai_will_do = {
 			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		completion_reward = {
 			if = {
@@ -1847,6 +2164,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 10
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		completion_reward = {
 			add_tech_bonus = {
 				name = CUG_emphasis_on_engineers_bonus
@@ -1867,6 +2191,13 @@ focus_tree = {
 		available_if_capitulated = no
 		prerequisite = {
 			focus = CUG_mountain_warfare
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = 2
 		y = 9
@@ -1932,6 +2263,13 @@ focus_tree = {
 				has_country_flag = CUG_quantity_first
 			}
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		mutually_exclusive = { focus = CUG_quality_first }
 		x = 4
 		y = 7
@@ -1960,6 +2298,13 @@ focus_tree = {
 				has_country_flag = CUG_quality_first
 			}
 		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		mutually_exclusive = { focus = CUG_quantity_first }
 		x = 6
 		y = 7
@@ -1982,6 +2327,14 @@ focus_tree = {
 			focus = CUG_quality_first
 		}
 		mutually_exclusive = { focus = CUG_select_junior_officers }
+		
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = 4
 		y = 8
 		relative_position_id = CUG_war_is_coming
@@ -2003,6 +2356,13 @@ focus_tree = {
 			focus = CUG_quality_first
 		}
 		mutually_exclusive = { focus = CUG_set_up_the_staff }
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = 6
 		y = 8
 		relative_position_id = CUG_war_is_coming
@@ -2024,6 +2384,13 @@ focus_tree = {
 			focus = CUG_select_junior_officers
 		}
 		mutually_exclusive = { focus = CUG_use_soft_conquer_hardness }
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = 4
 		y = 9
 		relative_position_id = CUG_war_is_coming
@@ -2045,6 +2412,13 @@ focus_tree = {
 			focus = CUG_select_junior_officers
 		}
 		mutually_exclusive = { focus = CUG_bba_dlc }
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
+		}
 		x = 6
 		y = 9
 		relative_position_id = CUG_war_is_coming
@@ -2064,6 +2438,13 @@ focus_tree = {
 		prerequisite = {
 			focus = CUG_bba_dlc
 			focus = CUG_use_soft_conquer_hardness
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_demilitarized_zone = no
+			}
+			ZDG = { exists = no }
 		}
 		x = 5
 		y = 10

@@ -386,3 +386,172 @@ CUG_decison_categories = {
 		}
 	}
 }
+
+liyue_civil_war_decisions = {
+	#Ask for guns
+	CUG_ask_for_guns = {
+		icon = default_battle
+		allowed = {
+			tag = CUG
+		}
+		visible = {
+			has_completed_focus = CUG_external_rescue
+			has_war_with = ZDG
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				is_capital = yes
+				owner = {
+					OR = {
+						tag = XRG
+						tag = XOG
+					}
+					NOT = { has_war_with = CUG }
+				}
+			}
+		}
+		
+		cost = 75
+		days_re_enable = 70
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		complete_effect = {
+			FROM.owner = {
+				country_event = {
+					id = CUG_event.22
+				}
+			}
+		}
+	}
+	
+	#Ask for political support
+	CUG_ask_for_political_support = {
+		icon = default_battle
+		allowed = {
+			tag = CUG
+		}
+		visible = {
+			has_completed_focus = CUG_external_rescue
+			has_war_with = ZDG
+		}
+		available = {
+			OR = {
+				XRG = { exists = yes }
+				XOG = { exists = yes }
+			}
+		}
+		
+		days_re_enable = 30
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		complete_effect = {
+			add_political_power = 20
+		}
+	}
+	
+	#Ask for volunteer army
+	CUG_ask_for_volunteer_army = {
+		icon = default_battle
+		allowed = {
+			tag = CUG
+		}
+		visible = {
+			has_completed_focus = CUG_external_rescue
+			has_war_with = ZDG
+		}
+		available = {
+			OR = {
+				XRG = { exists = yes }
+				XOG = { exists = yes }
+			}
+		}
+		
+		cost = 50		
+		fire_only_once = yes
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		complete_effect = {
+			XRG = { add_ideas = CUG_volunteer_army }
+			XOG = { add_ideas = CUG_volunteer_army }
+			XRG = { country_event = { id = CUG_event.25 } }
+			XOG = { country_event = { id = CUG_event.25 } }
+		}
+	}
+	
+	#Ask for foregin guns
+	CUG_ask_for_foreign_guns = {
+		icon = default_battle
+		allowed = {
+			tag = CUG
+		}
+		visible = {
+			has_completed_focus = CUG_contact_foreigner
+			has_war_with = ZDG
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				is_capital = yes
+				owner = {
+					OR = {
+						tag = MOT
+						tag = SUM
+						tag = FON
+					}
+					NOT = { has_war_with = CUG }
+				}
+			}
+		}
+		
+		cost = 75
+		days_re_enable = 70
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		complete_effect = {
+			FROM.owner = {
+				country_event = {
+					id = CUG_event.22
+				}
+			}
+		}
+	}
+	
+	#Ask for foreign volunteer army
+	CUG_ask_for_foreign_volunteer_army = {
+		icon = default_battle
+		allowed = {
+			tag = CUG
+		}
+		visible = {
+			has_completed_focus = CUG_external_rescue
+			has_war_with = ZDG
+		}
+		
+		cost = 200		
+		fire_only_once = yes
+		ai_will_do = {
+			base = 200
+			#Important
+		}
+		complete_effect = {
+			if = {
+				limit = { CUG = { has_completed_focus = CUG_purchase_fontaine_weapons } }
+				FON = { add_ideas = CUG_volunteer_army }
+				FON = { country_event = { id = CUG_event.25 } }
+			}
+			MOT = { add_ideas = CUG_volunteer_army }
+			SUM = { add_ideas = CUG_volunteer_army }
+			MOT = { country_event = { id = CUG_event.25 } }
+			SUM = { country_event = { id = CUG_event.25 } }
+		}
+	}
+}

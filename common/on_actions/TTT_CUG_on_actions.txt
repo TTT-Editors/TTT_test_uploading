@@ -1,0 +1,32 @@
+on_actions = {
+	on_monthly_CUG = { #每月茶叶计算
+		effect = {
+			CUG = {
+				set_variable = { CUG_tea_production = 0 }
+			}
+			every_owned_state = {
+				limit = { has_variable = actual_tea_production }
+				set_variable = { actual_tea_production = base_tea_production }
+				#calculate tea production
+				if = {
+					NOT = { is_controlled_by = CUG }
+					set_variable = { actual_tea_production = 0 }
+				}
+				else = {
+					if = {
+						limit = { has_state_flag = CUG_improved_tea_production }
+						multiply_variable = { actual_tea_production = 1.2 }
+					}
+				}
+				CUG = {
+					add_to_variable = { CUG_tea_production = PREV.actual_tea_production }
+				}
+			}
+			
+			#purchase guns
+			CUG = {
+				### add_to_variable = { actual_tea_production = FON_flags*150 }
+			}
+		}
+	}
+}

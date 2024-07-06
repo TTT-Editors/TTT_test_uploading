@@ -574,7 +574,29 @@ CUG_tea_decison_categories = {
 		}
 		state_target = yes
 		target_trigger = {
-			is_core_of = CUG
+			has_variable = actual_tea_production
+		}
+	}
+	
+	CUG_improve_tea_production = {
+		icon = default_battle
+		visible = {
+			NOT = { has_state_flag = CUG_improved_tea_production }
+			is_controlled_by = CUG
+		}
+		
+		cost = 50		
+		ai_will_do = {
+			base = 100
+			#Important
+		}
+		complete_effect = {
+			set_state_flag = {
+				flag = CUG_improved_tea_production
+				days = 365
+			}
+			custom_effect_tooltip = CUG_improve_tea_production_tt
+			
 		}
 	}
 }

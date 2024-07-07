@@ -599,4 +599,109 @@ CUG_tea_decison_categories = {
 			
 		}
 	}
+	
+	CUG_increase_gun_purchase = {
+		icon = default_battle
+		available = {
+			check_variable = { CUG_increase_gun_purchase < 10 }
+			check_variable = { actual_tea_production > 149 }
+		}
+		days_remove = 15
+		ai_will_do = {
+			base = 50
+			#Important
+		}
+		complete_effect = {
+			add_to_variable = { CUG_increase_gun_purchase = 1 }
+		}
+	}
+	
+	CUG_decrease_gun_purchase = {
+		icon = default_battle
+		available = {
+			check_variable = { CUG_increase_gun_purchase > 0 }
+		}
+		days_remove = 15
+		ai_will_do = {
+			base = 0
+			#Important
+			modifier = {
+				add = 20
+				check_variable = { actual_tea_production < 0 }
+			}
+		}
+		complete_effect = {
+			add_to_variable = { CUG_increase_gun_purchase = -1 }
+		}
+	}
+	
+	CUG_increase_supply_eq_purchase = {
+		icon = default_battle
+		available = {
+			check_variable = { CUG_increase_supply_eq_purchase < 10 }
+			check_variable = { actual_tea_production > 149 }
+		}
+		days_remove = 15
+		ai_will_do = {
+			base = 35
+			#Important
+		}
+		complete_effect = {
+			add_to_variable = { CUG_increase_supply_eq_purchase = 1 }
+		}
+	}
+	
+	CUG_decrease_supply_eq_purchase = {
+		icon = default_battle
+		available = {
+			check_variable = { CUG_increase_supply_eq_purchase > 0 }
+		}
+		days_remove = 15
+		ai_will_do = {
+			base = 0
+			#Important
+			modifier = {
+				add = 30
+				check_variable = { actual_tea_production < 0 }
+			}
+		}
+		complete_effect = {
+			add_to_variable = { CUG_increase_supply_eq_purchase = -1 }
+		}
+	}
+	
+	CUG_increase_food_purchase = {
+		icon = default_battle
+		available = {
+			check_variable = { CUG_increase_food_purchase < 10 }
+			check_variable = { actual_tea_production > 149 }
+		}
+		days_remove = 15
+		ai_will_do = {
+			base = 25
+			#Important
+		}
+		complete_effect = {
+			add_to_variable = { CUG_increase_food_purchase = 1 }
+		}
+	}
+	
+	CUG_decrease_food_purchase = {
+		icon = default_battle
+		available = {
+			check_variable = { CUG_increase_food_purchase > 0 }
+		}
+		days_remove = 15
+		ai_will_do = {
+			base = 0
+			#Important
+			modifier = {
+				add = 45
+				check_variable = { actual_tea_production < 0 }
+			}
+		}
+		complete_effect = {
+			add_to_variable = { CUG_increase_food_purchase = -1 }
+		}
+	}
 }

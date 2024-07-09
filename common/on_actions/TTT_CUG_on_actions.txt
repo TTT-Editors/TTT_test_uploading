@@ -23,10 +23,16 @@ on_actions = {
 				}
 			}
 			
-			#purchase guns
+			#purchase guns with tea
 			CUG = {
-				### add_to_variable = { actual_tea_production = FON_flags*150 }
+				set_temp_variable = { CUG_total_purchase = CUG_gun_purchase }
+				add_to_temp_variable = { CUG_total_purchase = CUG_supply_eq_purchase }
+				add_to_temp_variable = { CUG_total_purchase = CUG_food_purchase }
+				multiply_temp_variable = { CUG_total_purchase = 150 }
+				subtract_from_variable = { CUG_tea_production = CUG_total_purchase }
 			}
+			
+			#add equipments to stockpile
 		}
 	}
 }

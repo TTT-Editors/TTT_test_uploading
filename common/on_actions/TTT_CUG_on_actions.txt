@@ -33,6 +33,42 @@ on_actions = {
 			}
 			
 			#add equipments to stockpile
+			CUG = {
+				set_temp_variable = { CUG_gun_purchase_temp = CUG_gun_purchase }
+				multiply_temp_variable = { CUG_gun_purchase_temp = 2 }
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = CUG_gun_purchase_temp
+					producer = FON
+				}
+				multiply_temp_variable = { CUG_gun_purchase_temp = 25 }
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = CUG_gun_purchase_temp
+					producer = FON
+				}
+				
+				set_temp_variable = { CUG_supply_eq_purchase_temp = CUG_supply_eq_purchase }
+				multiply_temp_variable = { CUG_supply_eq_purchase_temp = 10 }
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = CUG_supply_eq_purchase_temp
+					producer = FON
+				}
+				
+				set_temp_variable = { CUG_food_purchase_temp = CUG_food_purchase }
+				multiply_temp_variable = { CUG_food_purchase_temp = 10 }
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = CUG_food_purchase_temp
+					producer = FON
+				}
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = CUG_food_purchase_temp
+					producer = FON
+				}
+			}
 		}
 	}
 }

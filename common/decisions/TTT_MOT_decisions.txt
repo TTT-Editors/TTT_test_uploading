@@ -759,3 +759,290 @@ MOT_dragon_crisis_decision_cat = {
 
 	}
 }
+
+
+
+MOT_support_military_region_decision_cat = {
+	MOT_SMR_send_mil = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_manpower > 7500
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 11
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_manpower = -7500
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.201 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_send_weapon = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 799
+			}
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 10
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -800
+				}
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.202 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_send_support = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 799
+			}
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 10
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = -800
+					producer = MOT
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = -800
+					producer = MOT
+				}
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.203 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_aks_for_help_equ = {
+		cost = 10
+		days_re_enable = 60
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		
+		complete_effect = {
+			MOT = {
+				country_event = { id = MOT_event.21 days = 2 }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_manpower = {
+		cost = 10
+		days_re_enable = 60
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		
+		complete_effect = {
+			MOT = {
+				country_event = { id = MOT_event.22 days = 2 }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_war = {
+		cost = 15
+		days_re_enable = 35
+		days_remove = 35
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		available = {
+			has_war_support < 0.25
+		}
+		remove_effect = {
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_sta = {
+		cost = 15
+		days_re_enable = 35
+		days_remove = 35
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		available = {
+			has_stability < 0.25
+		}
+		remove_effect = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+MOT_common_decisions_cat = {
+	MOT_train_mil_without_premission = {
+		cost = 25
+		days_re_enable = 35
+		days_remove = 0
+		visible = {
+			OR = {
+				tag = QQZ
+				tag = DSC
+				tag = DLK
+				tag = ALS
+			}
+		}
+		available = {
+			command_power > 20
+			has_manpower > 4000
+			has_equipment = {
+				infantry_equipment > 319
+			}
+			has_equipment = {
+				ttt_uniform_eq > 19
+			}
+			has_equipment = {
+				grain_conversion_eq > 39
+			}
+		}
+		complete_effect = {
+			add_command_power = -20
+			add_manpower = -4000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -320
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = -20
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = -40
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						has_template = "Local Milita"
+					}
+				}
+				else = {
+					division_template = {
+						name = "Local Milita"
+						is_locked = no
+						regiments = {
+							irregular_infantry = {
+								x = 0
+								y = 0
+							}
+							irregular_infantry = {
+								x = 0
+								y = 1
+							}
+							irregular_infantry = {
+								x = 1
+								y = 0
+							}
+							irregular_infantry = {
+								x = 1
+								y = 1
+							}
+						}
+					}
+				}
+			}
+		}
+		remove_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

@@ -379,31 +379,131 @@ news_event = {
 	}
 }
 
-#��ħ�����������ǿӲ��
+#
 news_event = {
-	id = global_news.29	#�¼�����
-	title = global_news.29.t	#�¼�����
+	id = global_news.29	#
+	title = global_news.29.t	#
 	desc = global_news.29.d
-	is_triggered_only = yes	#�Ƿ�ֻ�ܱ�������
-	picture = GFX_MOT_news_event_01	#GFX_���ͼƬ��
-	major = yes	#���й����Ƿ�ɼ�
-	#fire_only_once = yes #�Ƿ�ֻ�ܴ���һ��(�����������Ǹ�ͬʱʹ��)
+	is_triggered_only = yes	#
+	picture = GFX_MOT_news_event_01	#
+	major = yes	#
+	#fire_only_once = yes #()
 	option = {
-		name = global_news.29.a		#ѡ��
+		trigger = {
+			OR = {
+				tag = MOT
+				tag = FXE
+				tag = QQZ
+				tag = DSC
+				tag = MDQ
+				tag = BLL
+				tag = DLK
+				tag = ALS
+			}
+			
+		}
+		name = global_news.29.a		#
+	}
+	option = {
+		trigger = {
+			tag = ABY
+		}
+		name = global_news.29.b		#
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					tag = MOT
+					tag = FXE
+					tag = QQZ
+					tag = DSC
+					tag = MDQ
+					tag = BLL
+					tag = DLK
+					tag = ALS
+					tag = ABY
+				}
+			}
+		}
+		name = global_news.29.c		#
 	}
 }
 
-#��ħ��Σ�����
+#
 news_event = {
-	id = global_news.30	#�¼�����
-	title = global_news.30.t	#�¼�����
+	id = global_news.30	#四风守护的回归
+	title = global_news.30.t	#
 	desc = global_news.30.d
-	is_triggered_only = yes	#�Ƿ�ֻ�ܱ�������
-	picture = GFX_MOT_news_event_02	#GFX_���ͼƬ��
-	major = yes	#���й����Ƿ�ɼ�
-	#fire_only_once = yes #�Ƿ�ֻ�ܴ���һ��(�����������Ǹ�ͬʱʹ��)
+	is_triggered_only = yes	#
+	trigger = { #若720天后不存在蒙德内战，则触发 但是我不知道条件是什么
+		
+	}
+	picture = GFX_MOT_news_event_02	#
+	major = yes	#
+	#fire_only_once = yes #
 	option = {
-		name = global_news.30.a		#ѡ��
+		trigger = {
+			OR = {
+				tag = MOT
+				tag = FXE
+				tag = QQZ
+				tag = DSC
+				tag = MDQ
+				tag = BLL
+				tag = DLK
+				tag = ALS
+			}
+		}
+		name = global_news.30.a		#
+		MOT = {
+			add_ideas = MOT_TWL_back_idea
+		}
+		FXE = {
+			add_ideas = MOT_TWL_back_idea
+		}
+		QQZ = {
+			add_ideas = MOT_TWL_back_idea
+		}
+		DSC = {
+			add_ideas = MOT_TWL_back_idea
+		}
+		MDQ = {
+			add_ideas = MOT_TWL_back_idea
+		}
+		BLL = {
+			add_ideas = MOT_TWL_back_idea
+		}
+		DLK = {
+			add_ideas = MOT_TWL_back_idea
+		}
+		ALS = {
+			add_ideas = MOT_TWL_back_idea
+		}
+	}
+	option = {
+		trigger = {
+			tag = ABY
+		}
+		name = global_news.30.b		#
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					tag = MOT
+					tag = FXE
+					tag = QQZ
+					tag = DSC
+					tag = MDQ
+					tag = BLL
+					tag = DLK
+					tag = ALS
+					tag = ABY
+				}
+			}
+		}
+		name = global_news.30.c		#
 	}
 }
 
@@ -1489,6 +1589,164 @@ news_event = {
 		name = global_news.68.a
 	}
 }
+news_event = {
+	id = global_news.69	#
+	title = global_news.69.t	#
+	desc = global_news.69.d
+	is_triggered_only = yes	#
+	# picture = GFX_MOT_news_event_01	#
+	major = yes	#
+	#fire_only_once = yes #
+	option = {
+		trigger = {
+			OR = {
+				tag = MOT
+				tag = FXE
+				tag = QQZ
+				tag = DSC
+				tag = MDQ
+				tag = BLL
+				tag = DLK
+				tag = ALS
+			}
+			
+		}
+		name = global_news.69.a		#
+
+
+	}
+	option = {
+		trigger = {
+			tag = ABY
+		}
+		name = global_news.69.b		#
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					tag = MOT
+					tag = FXE
+					tag = QQZ
+					tag = DSC
+					tag = MDQ
+					tag = BLL
+					tag = DLK
+					tag = ALS
+					tag = ABY
+				}
+			}
+		}
+		name = global_news.69.c		#
+	}
+}
+
+news_event = {
+	id = global_news.70	#
+	title = global_news.70.t	#
+	desc = global_news.70.d
+	is_triggered_only = yes	#
+	# picture = GFX_MOT_news_event_01	#
+	major = yes	#
+	immediate = {
+		hidden_effect = {
+			news_event = { id = global_news.30 days = 720 }
+		}
+	}
+	#fire_only_once = yes #
+	option = {
+		trigger = {
+			OR = {
+				tag = MOT
+				tag = FXE
+				tag = QQZ
+				tag = DSC
+				tag = MDQ
+				tag = BLL
+				tag = DLK
+				tag = ALS
+			}
+			
+		}
+		name = global_news.70.a		#
+
+	}
+	option = {
+		trigger = {
+			tag = ABY
+		}
+		name = global_news.70.b		#
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					tag = MOT
+					tag = FXE
+					tag = QQZ
+					tag = DSC
+					tag = MDQ
+					tag = BLL
+					tag = DLK
+					tag = ALS
+					tag = ABY
+				}
+			}
+		}
+		name = global_news.70.c		#
+	}
+}
+
+news_event = {
+	id = global_news.71
+	title = global_news.71.t
+	desc = global_news.71.d
+	is_triggered_only = yes
+	# picture = GFX_event_TTT_jinbupai_fon_picture
+	major = yes
+	option = {
+		trigger = {
+			OR = {
+				tag = MOT
+				tag = FXE
+				tag = QQZ
+				tag = DSC
+				tag = MDQ
+				tag = BLL
+				tag = DLK
+				tag = ALS
+			}
+			
+		}
+		name = global_news.71.a
+		
+	}
+	option = {
+		trigger = {
+			tag = ABY
+		}
+		name = global_news.71.b
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					tag = MOT
+					tag = FXE
+					tag = QQZ
+					tag = DSC
+					tag = MDQ
+					tag = BLL
+					tag = DLK
+					tag = ALS
+					tag = ABY
+				}
+			}
+		}
+		name = global_news.71.c
+	}
+}
+
 ############################################################################################################################################################################
 #####    #####   #####  #     #  ######    #####   #######  #####   #####   #     #
 #     #  #       #       #     #  #     #  #     #     #       #    #     #  ##    #

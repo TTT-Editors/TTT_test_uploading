@@ -1,0 +1,205 @@
+on_actions = {
+	#白术remove掉相应国家获得buff
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = KQG
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_keqing_zhanbai
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = NNG
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_nng_zhanbai
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = ANG
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_ang_zhanbai
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = ZDG
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_zdg_zhanbai
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = RTG
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_rtg_zhanbai
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = ARF
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_arf_zhanbai
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = XRG
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_xrg_zhanbai
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						original_tag = XOG
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_completed_focus = Baizhu_duku_banan
+						}
+					}
+				}
+				LYU = {
+			        add_ideas = Baizhu_xog_zhanbai
+				}
+			}
+		}
+	}
+	#如果一个已经同意了设立人道主义援助，那么当他们主动对你开战时触发“对战争的诘问”，如果你已经向他们输出的和平提议与援助一共达到了五次，则改为触发“和平的蜜糖，软弱的毒药
+	on_declare_war = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = {		
+						has_country_flag = Baizhu_event9_flag					    
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_country_flag = Baizhu_event2_flag
+						}
+					}
+				}
+				ROOT = {
+			       country_event = Baizhu_event.12
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {		
+						check_variable = {
+							Baizhu_value_01 > 4
+						}					    
+					}
+					FROM = {
+						original_tag = LYU
+						LYU = {
+							LYU_Baizhu = {
+								is_country_leader = yes
+							}
+							has_country_flag = Baizhu_event2_flag
+						}
+					}
+				}
+				ROOT = {
+			        add_ideas = Baizhu_nng_zhanbai
+					country_event = Baizhu_event.13
+				}
+			}		
+		}
+	}
+}

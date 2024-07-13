@@ -603,4 +603,1887 @@ focus_tree = {
 			country_event = CUG_event.4
 		}
 	}
+
+
+
+	#CUG Civil War
+	focus = {
+		id = CUG_war_is_coming	#风雨欲来 雪莱我爱你
+		icon = GFX_CUG_war_is_coming
+		available_if_capitulated = no
+		x = 20
+		y = 0
+		cost = 7
+
+		allow_branch = {
+			has_country_flag = CUG_unlock_right_focus
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			has_country_flag = CUG_unlock_right_focus
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_ideas = CUG_bad_army_1
+			country_lock_all_division_template = no
+			add_stability = -0.2
+			add_war_support = 0.1
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = CUG_shuitu_shihen
+					add_idea = CUG_shuitu_shihen_2
+				}
+				country_event = { id = CUG_event.7 days = 3 }
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_martial_law	#紧急戒严
+		icon = GFX_CUG_martial_law
+		available_if_capitulated = no
+		prerequisite = { focus = CUG_war_is_coming }
+		x = -3
+		y = 1
+		relative_position_id = CUG_war_is_coming
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_stability = -0.05
+			add_ideas = partial_economic_mobilisation
+			add_ideas = closed_economy
+			hidden_effect = { 
+				country_event = { id = CUG_event.8 days = 3 }
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_industry_mobilization	#军工动员令
+		icon = GFX_CUG_industry_mobilization
+		available_if_capitulated = no
+		prerequisite = { focus = CUG_martial_law }
+		mutually_exclusive = { focus = CUG_arms_factory_construction }
+		x = -6
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_stability = -0.15
+			add_war_support = -0.15
+			306 = {
+				remove_building = {
+					type = industrial_complex
+					level = 2
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			309 = {
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_arms_factory_construction #紧急军工建设
+		icon = GFX_CUG_arms_factory_construction
+		available_if_capitulated = no
+		prerequisite = { focus = CUG_martial_law }
+		mutually_exclusive = { focus = CUG_industry_mobilization }
+		x = -4
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	
+	focus = {
+		id = CUG_total_industry_mobilization #经济总动员
+		icon = GFX_CUG_total_industry_mobilization
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_industry_mobilization
+			focus = CUG_arms_factory_construction
+		}
+		x = -5
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_ideas = war_economy
+		}
+	}
+	
+	focus = {
+		id = CUG_lingmengshan_line #灵濛山防线
+		icon = GFX_CUG_lingmengshan_line
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_martial_law
+		}
+		x = -2
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 21
+
+		available = {
+			307 = { is_fully_controlled_by = ROOT }
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 307 = { is_fully_controlled_by = ROOT } }
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			307 = {
+				add_building_construction = {
+					type = bunker
+					province = 7509
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7518
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7510
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7528
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7529
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7513
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7519
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7520
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7521
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7514
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7492
+					level = 1
+					instant_build = yes
+				}
+			}
+			307 = {
+				add_building_construction = {
+					type = bunker
+					province = 7539
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7549
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_yilongbu_fortification #遗珑埠城防
+		icon = GFX_CUG_yilongbu_fortification
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_martial_law
+		}
+		x = 0
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			309 = { is_fully_controlled_by = ROOT }
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 309 = { is_fully_controlled_by = ROOT } }
+			}
+		}
+
+		completion_reward = {
+			309 = {
+				add_building_construction = {
+					type = bunker
+					province = 2118
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_qiaoying_village_fortification #翘英庄城防
+		icon = GFX_CUG_qiaoying_village_fortification
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_yilongbu_fortification
+		}
+		x = 0
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 14
+
+		available = {
+			306 = { is_fully_controlled_by = ROOT }
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 306 = { is_fully_controlled_by = ROOT } }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			306 = {
+				add_building_construction = {
+					type = bunker
+					province = 7490
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7442
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_continue_defense_line_construction #继续防线建设
+		icon = GFX_CUG_continue_defense_line_construction
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_lingmengshan_line
+		}
+		prerequisite = {
+			focus = CUG_qiaoying_village_fortification
+		}
+		x = -1
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 42
+
+		available = {
+			305 = { is_fully_controlled_by = ROOT }
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { 305 = { is_fully_controlled_by = ROOT } }
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			305 = {
+				add_building_construction = {
+					type = bunker
+					province = 7392
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7343
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7352
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7379
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7397
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7380
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7386
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7381
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7395
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7387
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 59
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7401
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7390
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7375
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 7356
+					level = 1
+					instant_build = yes
+				}
+			}
+			207 = {
+				add_building_construction = {
+					type = bunker
+					province = 670
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 1017
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = CUG_cdlc_idea
+				days = 180
+			}
+			country_event = { id = CUG_event.13 }
+		}
+	}
+	
+	focus = {
+		id = CUG_road_construction #道路建设
+		icon = GFX_CUG_road_construction
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				AND = {
+					NOT = { controls_state = 306 }
+					NOT = { controls_state = 309 }
+				}
+			}
+		}
+		x = -9
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 28
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			306 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			309 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_back_road_construction #后方道路建设
+		icon = GFX_CUG_back_road_construction
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_road_construction
+		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 305 }
+			}
+		}
+		x = -9
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			305 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_yilongbu_arms_factory_construction #遗珑埠军工厂建设
+		icon = GFX_CUG_yilongbu_arms_factory_construction
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 309 }
+			}
+		}
+		x = -7
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 105
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			309 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_qiaoyingzhuanug_workshop_improvement #翘英庄工坊改造
+		icon = GFX_CUG_qiaoyingzhuanug_workshop_improvement
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 306 }
+			}
+		}
+		x = -5
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	
+	focus = {
+		id = CUG_purchase_fontaine_machine #购买枫丹军工设备
+		icon = GFX_CUG_purchase_fontaine_machine
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_total_industry_mobilization
+		}
+		x = -3
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	
+	focus = {
+		id = CUG_nam_leing_arms_factory_construction #南岭工厂建设
+		icon = GFX_CUG_nam_leing_arms_factory_construction
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_purchase_fontaine_machine
+		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				NOT = { controls_state = 305 }
+			}
+		}
+		x = -3
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 42
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			305 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_stay_true_to_heart #本固邦宁
+		icon = GFX_CUG_stay_true_to_heart
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_yilongbu_arms_factory_construction
+			focus = CUG_qiaoyingzhuanug_workshop_improvement
+		}
+		x = -7
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		mutually_exclusive = { focus = CUG_necessary_evil }
+		cost = 28
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_ideas = CUG_stay_true_to_heart_idea
+			country_event = { id = CUG_event.16 }
+		}
+	}
+	
+	focus = {
+		id = CUG_necessary_evil #必要之恶
+		icon = GFX_CUG_necessary_evil
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_yilongbu_arms_factory_construction
+			focus = CUG_qiaoyingzhuanug_workshop_improvement
+		}
+		x = -5
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		mutually_exclusive = { focus = CUG_stay_true_to_heart }
+		cost = 28
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_ideas = CUG_necessary_evil_idea
+			country_event = { id = CUG_event.15 }
+		}
+	}
+	
+	focus = {
+		id = CUG_liyue_help_me #请求璃月支援
+		icon = GFX_CUG_liyue_help_me
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_stay_true_to_heart
+			focus = CUG_necessary_evil
+		}
+		available = {
+			OR = {
+				date > 2002.8.1
+				surrender_progress > 0.9
+			}
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = -6
+		y = 6
+		relative_position_id = CUG_war_is_coming
+		cost = 140
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = CUG_call_liyue_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_nominate_liyue = yes
+						OR = {
+							is_faction_leader = yes
+							is_in_faction = no
+						}
+						is_subject = no
+					}
+					country_event = { id = CUG_event.27 }
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_new_lease_of_life #劫后余生
+		icon = GFX_CUG_new_lease_of_life
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_liyue_help_me
+		}
+		available = {
+			ZDG = { exists = no }
+		}
+		x = -6
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 70
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			hidden_effect = {
+				remove_ideas = CUG_bad_army_1
+				remove_ideas = CUG_bad_army_2
+				remove_ideas = CUG_army_1
+				remove_ideas = CUG_army_2
+				remove_ideas = CUG_army_3
+				remove_ideas = CUG_army_4
+				remove_ideas = CUG_army_5
+				remove_ideas = CUG_army_end
+			}
+			add_timed_idea = {
+				idea = CUG_new_lease_of_life_idea
+				days = 365
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_emergency_mobilization #紧急动员
+		icon = GFX_CUG_emergency_mobilization
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_war_is_coming
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 3
+		y = 1
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 7
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = extensive_conscription
+			swap_ideas = {
+				remove_idea = CUG_bad_army_1
+				add_idea = CUG_bad_army_2
+			}
+			add_timed_idea = {
+				idea = CUG_emergency_mobilization_idea
+				days = 180
+			}
+			hidden_effect = { 
+				country_event = { id = CUG_event.9 days = 3 }
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_mobilise_milita #组建民兵
+		icon = GFX_CUG_mobilise_milita
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_emergency_mobilization
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		mutually_exclusive = { focus = CUG_expand_army_recruit }
+		x = 2
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 14
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Chenyugu Minbing"
+					}
+				}
+				division_template = {
+					name = "Chenyugu Minbing"
+					priority = 2
+					is_locked = no
+					division_names_group = LYU_INF_02
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Chenyugu Minbing\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+					owner = CUG
+					count = 12
+				}
+			}
+			hidden_effect = { 
+				country_event = { id = CUG_event.10 days = 3 }
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_expand_army_recruit #扩招千岩军
+		icon = GFX_CUG_expand_army_recruit
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_emergency_mobilization
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		mutually_exclusive = { focus = CUG_mobilise_milita }
+		x = 4
+		y = 2
+		relative_position_id = CUG_war_is_coming
+		cost = 14
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Chenyugu Shoujun"
+					}
+				}
+				division_template = {
+					name = "Chenyugu Shoujun"
+					priority = 2
+					is_locked = no
+					division_names_group = LYU_INF_04
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Chenyugu Shoujun\" start_experience_factor = 0.3"
+					owner = CUG
+					count = 5
+				}
+			}
+			hidden_effect = { 
+				country_event = { id = CUG_event.10 days = 3 }
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_purchase_fontaine_weapons #购买枫丹军火
+		icon = GFX_CUG_purchase_fontaine_weapons
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mobilise_milita
+			focus = CUG_expand_army_recruit
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		mutually_exclusive = { focus = CUG_smuggle_fontaine_weapons }
+		x = 2
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = -75
+			FON = { 
+				country_event = { id = CUG_event.28 }
+			}
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment
+				amount = 750
+				producer = FON
+			}
+
+			add_equipment_to_stockpile = { 
+				type = artillery_equipment
+				amount = 30
+				producer = FON
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_smuggle_fontaine_weapons #走私枫丹军火
+		icon = GFX_CUG_smuggle_fontaine_weapons
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mobilise_milita
+			focus = CUG_expand_army_recruit
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		mutually_exclusive = { focus = CUG_purchase_fontaine_weapons }
+		x = 4
+		y = 3
+		relative_position_id = CUG_war_is_coming
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = -200
+			FON = { 
+				country_event = { id = CUG_event.29 }
+			}
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment
+				amount = 1500
+				producer = FON
+			}
+
+			add_equipment_to_stockpile = { 
+				type = artillery_equipment
+				amount = 50
+				producer = FON
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_no_step_back #撅不后退
+		icon = GFX_CUG_no_step_back
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_purchase_fontaine_weapons
+			focus = CUG_smuggle_fontaine_weapons
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 2
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CUG_bad_army_2
+				add_idea = CUG_army_1
+			}
+			add_timed_idea = {
+				idea = CUG_no_step_back_idea
+				days = 140
+			}
+			country_event = { id = CUG_event.12 }
+		}
+	}
+	
+	focus = {
+		id = CUG_external_rescue #外部援助
+		icon = GFX_CUG_external_rescue
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_purchase_fontaine_weapons
+			focus = CUG_smuggle_fontaine_weapons
+		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				AND = {
+					XRG = { exists = no }
+					XOG = { exists = no }
+				}
+			}
+		}
+		x = 4
+		y = 4
+		relative_position_id = CUG_war_is_coming
+		cost = 42
+
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			unlock_decision_tooltip = CUG_ask_for_guns
+			unlock_decision_tooltip = CUG_ask_for_political_support
+			unlock_decision_tooltip = CUG_ask_for_volunteer_army
+		}
+	}
+	
+	focus = {
+		id = CUG_contact_foreigner #联络外部势力（收了枫丹50万法郎）
+		icon = GFX_CUG_contact_foreigner
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_external_rescue
+		}
+		bypass = {
+			OR = {
+				AND = {
+					date > 2001.3.1
+					all_owned_state = {
+						is_fully_controlled_by = CUG
+					}
+					ZDG = { exists = no }
+				}
+				AND = {
+					FON = { exists = no }
+					MOT = { exists = no }
+					SUM = { exists = no }
+				}
+			}
+		}
+		x = 4
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 105
+		ai_will_do = {
+			factor = 0	#no use by now
+		}
+		completion_reward = {
+			unlock_decision_tooltip = CUG_ask_for_foreign_guns
+			unlock_decision_tooltip = CUG_ask_for_foreign_volunteer_army
+		}
+	}
+	
+	focus = {
+		id = CUG_blood_and_tear #血与泪
+		icon = GFX_CUG_blood_and_tear
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_no_step_back
+		}
+		prerequisite = {
+			focus = CUG_continue_defense_line_construction
+		}
+		available = {
+			NOT = { has_idea = CUG_no_step_back }
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 0
+		y = 5
+		relative_position_id = CUG_war_is_coming
+		cost = 70
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_ideas = service_by_requirement
+			swap_ideas = {
+				remove_idea = CUG_army_1
+				add_idea = CUG_army_2
+			}
+			country_event = { id = CUG_event.14 }
+		}
+	}
+	
+	focus = {
+		id = CUG_inspire_everyone #号召全体军民
+		icon = GFX_CUG_inspire_everyone
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_blood_and_tear
+		}
+		available = {
+			has_completed_focus = CUG_military_reform
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = -1
+		y = 6
+		relative_position_id = CUG_war_is_coming
+		cost = 28
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = tot_economic_mobilisation
+			add_ideas = all_adults_serve
+		}
+	}
+	
+	focus = {
+		id = CUG_military_reform #军事改革
+		icon = GFX_CUG_military_reform
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_blood_and_tear
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 1
+		y = 6
+		relative_position_id = CUG_war_is_coming
+		cost = 70
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_intelligence_agency = no
+				}
+				create_intelligence_agency = yes
+			}
+			else = {
+				upgrade_intelligence_agency = upgrade_passive_defense
+			}
+			swap_ideas = {
+				remove_idea = CUG_army_2
+				add_idea = CUG_army_3
+			}
+			add_doctrine_cost_reduction = {
+				name = CUG_military_reform_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			country_event = { id = CUG_event.17 }
+		}
+	}
+	
+	focus = {
+		id = CUG_guerrilla_warfare #游击战
+		icon = GFX_CUG_guerrilla_warfare
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = -2
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_guerrilla_warfare_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_enemy_base_areas #设立敌后根据地
+		icon = GFX_CUG_enemy_base_areas
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_guerrilla_warfare
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = -2
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CUG_guerrilla_warfare_idea
+				add_idea = CUG_guerrilla_warfare_idea_2
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_people_s_war #人民战争
+		icon = GFX_CUG_people_s_war
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 0
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_people_s_war_idea
+			hidden_effect = {
+				country_event = { id = CUG_event.26 }
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_unite_we_can_win #众志成城
+		icon = GFX_CUG_unite_we_can_win
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_people_s_war
+		}
+		x = 0
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CUG_people_s_war_idea
+				add_idea = CUG_people_s_war_idea_2
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_unexpected_assiatance #意想不到的援助
+		icon = GFX_CUG_unexpected_assiatance
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_enemy_base_areas
+		}
+		prerequisite = {
+			focus = CUG_unite_we_can_win
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = -1
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 21
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_assistance_of_lingyuan
+			country_event = { id = CUG_event.18 }
+		}
+	}
+	
+	focus = {
+		id = CUG_mountain_warfare #山地作战
+		icon = GFX_CUG_mountain_warfare
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		x = 2
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = { has_tech = special_forces_mountaineers }
+				}
+				if = {
+					limit = {
+						OR = {
+							has_tech = special_forces_marines
+							has_tech = special_forces_paratroopers
+						}
+					}
+					add_potential_special_forces_tree = yes
+				}
+				set_technology = { special_forces_mountaineers = 1 }
+			}
+			add_ideas = CUG_mountain_warfare_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_emphasis_on_engineers #重视工兵
+		icon = GFX_CUG_emphasis_on_engineers
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mountain_warfare
+		}
+		x = 2
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = CUG_emphasis_on_engineers_bonus
+				bonus = 0.75
+				uses = 1
+				category = engineers_tech
+			}
+			swap_ideas = {
+				remove_idea = CUG_army_3
+				add_idea = CUG_army_4
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_keep_up_with_time #时代的变化
+		icon = GFX_CUG_keep_up_with_time
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_mountain_warfare
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 2
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 42
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = CUG_keep_up_with_time_bonus
+				bonus = 0.25
+				uses = 2
+				category = artillery
+			}
+			swap_ideas = {
+				remove_idea = CUG_army_4
+				add_idea = CUG_army_5
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_hard_times_are_over #苦尽甘来
+		icon = GFX_CUG_hard_times_are_over
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_keep_up_with_time
+		}
+		prerequisite = {
+			focus = CUG_unexpected_assiatance
+		}
+		x = 0
+		y = 10
+		relative_position_id = CUG_war_is_coming
+		cost = 70
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_push_back_the_line
+			effect_tooltip = {
+				ZDG = { add_ideas = CUG_bad_morale }
+			}
+			hidden_effect = { 
+				ZDG = { country_event = { id = CUG_event.19 } }
+			}
+		}
+	}
+	
+	focus = {
+		id = CUG_quantity_first #数量更重要
+		icon = GFX_CUG_quantity_first
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		available = {
+			hidden_trigger = {
+				has_country_flag = CUG_quantity_first
+			}
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		mutually_exclusive = { focus = CUG_quality_first }
+		x = 4
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_quantity_first_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_quality_first #质量更重要
+		icon = GFX_CUG_quality_first
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_inspire_everyone
+		}
+		prerequisite = {
+			focus = CUG_military_reform
+		}
+		available = {
+			hidden_trigger = {
+				has_country_flag = CUG_quality_first
+			}
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		mutually_exclusive = { focus = CUG_quantity_first }
+		x = 6
+		y = 7
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_quality_first_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_set_up_the_staff #建立参谋部
+		icon = GFX_CUG_set_up_the_staff
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_quantity_first
+			focus = CUG_quality_first
+		}
+		mutually_exclusive = { focus = CUG_select_junior_officers }
+		
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 4
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_set_up_the_staff_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_select_junior_officers #选拔基层军官
+		icon = GFX_CUG_select_junior_officers
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_quantity_first
+			focus = CUG_quality_first
+		}
+		mutually_exclusive = { focus = CUG_set_up_the_staff }
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 6
+		y = 8
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_select_junior_officers_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_bba_dlc #唯有浴血
+		icon = GFX_CUG_bba_dlc
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_set_up_the_staff
+			focus = CUG_select_junior_officers
+		}
+		mutually_exclusive = { focus = CUG_use_soft_conquer_hardness }
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 4
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_bba_dlc_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_use_soft_conquer_hardness #以柔克刚
+		icon = GFX_CUG_use_soft_conquer_hardness
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_set_up_the_staff
+			focus = CUG_select_junior_officers
+		}
+		mutually_exclusive = { focus = CUG_bba_dlc }
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 6
+		y = 9
+		relative_position_id = CUG_war_is_coming
+		cost = 35
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_use_soft_conquer_hardness_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_supply_improvement #改善补给状况
+		icon = GFX_CUG_supply_improvement
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_bba_dlc
+			focus = CUG_use_soft_conquer_hardness
+		}
+		bypass = {
+			date > 2001.3.1
+			all_owned_state = {
+				is_fully_controlled_by = CUG
+			}
+			ZDG = { exists = no }
+		}
+		x = 5
+		y = 10
+		relative_position_id = CUG_war_is_coming
+		cost = 42
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = CUG_supply_improvement_idea
+		}
+	}
+	
+	focus = {
+		id = CUG_reborn_from_the_fire
+		icon = GFX_CUG_reborn_from_the_fire
+		available_if_capitulated = no
+		prerequisite = {
+			focus = CUG_keep_up_with_time
+		}
+		prerequisite = {
+			focus = CUG_supply_improvement
+		}
+		x = 2
+		y = 11
+		relative_position_id = CUG_war_is_coming
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CUG_army_5
+				add_idea = CUG_army_end
+			}
+			country_event = { id = CUG_event.20 }
+			hidden_effect = {
+				country_event = { id = CUG_event.21 days = 50 }
+			}
+		}
+	}
 }

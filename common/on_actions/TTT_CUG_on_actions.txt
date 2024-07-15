@@ -69,6 +69,21 @@ on_actions = {
 					producer = FON
 				}
 			}
+			
+			#calculate tea buff
+			CUG = {
+				set_temp_variable = { ctp_value = CUG_tea_production }
+				divide_temp_variable = { ctp_value = 5000 }
+				set_variable = { ctp_political_power_gain = ctp_value }
+				divide_temp_variable = { ctp_value = 5 }
+				set_variable = { ctp_stability_factor = ctp_value }
+				
+				if = {
+					limit = { check_variable = { CUG_tea_production < 0 } }
+					multiply_variable = { ctp_political_power_gain = 3 }
+					multiply_variable = { ctp_stability_factor = 3 }
+				}
+			}
 		}
 	}
 }

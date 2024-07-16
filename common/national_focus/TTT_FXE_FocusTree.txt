@@ -1,0 +1,319 @@
+focus_tree = {
+	id = FXE
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = FXE
+		}
+	}
+	default = no
+
+	focus = {
+		id =  Absentee_conference_focus  #缺席的大会
+		icon = sss
+		cost = 21.00
+
+		search_filters = {   }
+		completion_reward = {
+
+		}
+
+		x = 9
+		y = 0
+	}
+
+	focus = {
+		id =  Support_reconnaissance_knights_focus  #支持侦察骑士
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Absentee_conference_focus}
+		search_filters = {   }
+		mutually_exclusive = {focus = Support_the_Wave_Knight_focus}
+		completion_reward = {
+
+		}
+
+		relative_position_id = Absentee_conference_focus
+		x = -2
+		y = 1
+	}
+
+	focus = {
+		id =  Support_the_Wave_Knight_focus  #支持浪花骑士
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Absentee_conference_focus}
+		search_filters = {   }		
+		mutually_exclusive = {focus = Support_reconnaissance_knights_focus}
+		completion_reward = {
+
+		}
+
+		relative_position_id = Absentee_conference_focus
+		x = 2
+		y = 1
+	}
+
+	focus = {
+		id =  Kia_s_support_focus   #凯亚的支持
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Support_reconnaissance_knights_focus}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = Support_reconnaissance_knights_focus
+		x = -2
+		y = 1
+	}
+
+	focus = {
+		id =  Lobbying_Acting_Leader_focus   #游说代理团长
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Support_reconnaissance_knights_focus focus = Support_the_Wave_Knight_focus}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = Support_reconnaissance_knights_focus
+		x = 2
+		y = 1
+	}
+
+	focus = {
+		id = Contact_Lawrence_focus  #联系劳伦斯
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Support_the_Wave_Knight_focus}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = Support_reconnaissance_knights_focus
+		x = 6
+		y = 1
+	}
+
+	focus = {
+		id = The_tradition_of_the_Knights_focus  #骑士团的传统
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Kia_s_support_focus focus = Lobbying_Acting_Leader_focus}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = Kia_s_support_focus
+		x = 2
+		y = 1
+	}
+
+	focus = {
+		id = Starting_from_reality_focus  #以实际出发
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Contact_Lawrence_focus focus = Lobbying_Acting_Leader_focus}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = Contact_Lawrence_focus
+		x = -2
+		y = 1
+	}
+
+	focus = {
+		id = Current_situation_in_East_Mongolia_in_1999  #1999年东蒙德现状
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { 
+			focus = The_tradition_of_the_Knights_focus
+		}
+		prerequisite = { 
+			focus = Starting_from_reality_focus
+		}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = The_tradition_of_the_Knights_focus
+		x = 2
+		y = 1
+	}
+
+	focus = {
+		id = The_legacy_of_industrialization_focus  #工业化的遗产
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Current_situation_in_East_Mongolia_in_1999}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = Current_situation_in_East_Mongolia_in_1999
+		x = -6
+		y = 1
+	}
+
+	focus = {
+		id = Monster_problem_focus  #魔物问题		
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Current_situation_in_East_Mongolia_in_1999}
+		search_filters = {  }
+		completion_reward = {
+
+		}
+
+		relative_position_id = Current_situation_in_East_Mongolia_in_1999
+		x = 2
+		y = 1
+	}
+
+	focus = {
+		id = Developing_the_Southern_Plains_focus  #发展南部平原	
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = The_legacy_of_industrialization_focus}
+		search_filters = {  }
+		mutually_exclusive = {focus = Developing_port_areas_focus}
+		mutually_exclusive = {focus = Developing_mountainous_areas_focus}
+		completion_reward = {
+
+		}
+
+		relative_position_id = The_legacy_of_industrialization_focus
+		x = -2
+		y = 1
+	}
+
+	focus = {
+		id = Developing_port_areas_focus  #发展港口地区
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = The_legacy_of_industrialization_focus}
+		search_filters = {  }
+		mutually_exclusive = {focus = Developing_the_Southern_Plains_focus}
+		mutually_exclusive = {focus = Developing_mountainous_areas_focus}
+		completion_reward = {
+
+		}
+
+		relative_position_id = The_legacy_of_industrialization_focus
+		x = 0
+		y = 1
+	}
+
+	focus = {
+		id = Developing_mountainous_areas_focus  #发展山地地区
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = The_legacy_of_industrialization_focus}
+		search_filters = {  }
+		mutually_exclusive = {focus = Developing_the_Southern_Plains_focus}
+		mutually_exclusive = {focus = Developing_port_areas_focus}
+		completion_reward = {
+
+		}
+
+		relative_position_id = The_legacy_of_industrialization_focus
+		x = 2
+		y = 1
+	}
+
+	focus = {
+		id = Collaborate_with_the_Adventurer_Association_focus  #与冒险家协会合作
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { focus = Monster_problem_focus}
+		search_filters = {  }		
+		completion_reward = {
+
+		}
+
+		relative_position_id = Monster_problem_focus
+		x = 0
+		y = 1.5
+	}
+
+	focus = {
+		id = Agricultural_Revitalization_Plan_focus  #农业振兴计划
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { 
+			focus = Developing_the_Southern_Plains_focus 
+			focus = Developing_port_areas_focus 
+			focus = Developing_mountainous_areas_focus}
+		search_filters = {  }		
+		completion_reward = {
+
+		}
+
+		relative_position_id = Developing_the_Southern_Plains_focus 
+		x = -2
+		y = 1
+	}
+
+	focus = {
+		id = Clean_up_the_mess_focus  #收拾烂摊子
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { 
+			focus = Developing_the_Southern_Plains_focus 
+			focus = Developing_port_areas_focus 
+			focus = Developing_mountainous_areas_focus}
+		search_filters = {  }		
+		completion_reward = {
+
+		}
+
+		relative_position_id = Developing_port_areas_focus 
+		x = 1
+		y = 1
+	}
+
+	focus = {
+		id = Dealing_with_refugee_flows_focus  #处理难民潮
+		icon = sss
+		cost = 21.00
+
+		prerequisite = { 
+			focus = Developing_the_Southern_Plains_focus 
+			focus = Developing_port_areas_focus 
+			focus = Developing_mountainous_areas_focus}
+		search_filters = {  }		
+		completion_reward = {
+
+		}
+
+		relative_position_id =  Developing_mountainous_areas_focus
+		x = 1
+		y = 1
+	}
+}

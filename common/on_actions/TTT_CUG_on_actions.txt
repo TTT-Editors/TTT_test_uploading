@@ -9,12 +9,12 @@ on_actions = {
 				set_variable = { actual_tea_production = base_tea_production }
 				#calculate tea production
 				if = {
-					NOT = { is_controlled_by = CUG }
+					limit = { NOT = { is_controlled_by = CUG } }
 					set_variable = { actual_tea_production = 0 }
 				}
 				else = {
 					if = {
-						limit = { has_state_flag = CUG_improved_tea_production }
+						limit = { has_dynamic_modifier = { modifier = CUG_promote_tea_production } }
 						multiply_variable = { actual_tea_production = 1.2 }
 					}
 				}
@@ -25,10 +25,11 @@ on_actions = {
 			
 			#purchase guns with tea
 			CUG = {
-				set_temp_variable = { CUG_total_purchase = CUG_gun_purchase }
-				add_to_temp_variable = { CUG_total_purchase = CUG_supply_eq_purchase }
-				add_to_temp_variable = { CUG_total_purchase = CUG_food_purchase }
-				multiply_temp_variable = { CUG_total_purchase = 150 }
+				set_variable = { CUG_total_purchase = 0 }
+				set_variable = { CUG_total_purchase = CUG_gun_purchase }
+				add_to_variable = { CUG_total_purchase = CUG_supply_eq_purchase }
+				add_to_variable = { CUG_total_purchase = CUG_food_purchase }
+				multiply_variable = { CUG_total_purchase = 150 }
 				subtract_from_variable = { CUG_tea_production = CUG_total_purchase }
 			}
 			
@@ -55,14 +56,14 @@ on_actions = {
 					amount = CUG_supply_eq_purchase_temp
 					producer = FON
 				}
-				
-				set_temp_variable = { CUG_food_purchase_temp = CUG_food_purchase }
-				multiply_temp_variable = { CUG_food_purchase_temp = 10 }
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = ttt_uniform_eq
 					amount = CUG_food_purchase_temp
 					producer = FON
 				}
+				
+				set_temp_variable = { CUG_food_purchase_temp = CUG_food_purchase }
+				multiply_temp_variable = { CUG_food_purchase_temp = 25 }
 				add_equipment_to_stockpile = {
 					type = grain_conversion_eq
 					amount = CUG_food_purchase_temp

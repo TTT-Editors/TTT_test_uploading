@@ -556,15 +556,15 @@ liyue_civil_war_decisions = {
 	}
 }
 CUG_tea_decison_categories = {
-	CUG_see_tea_surplus = {
-		priority = 50
-		visible = {
-			always = yes
-		}
-		available = {
-			always = no
-		}
-	}
+	#CUG_see_tea_surplus = {
+	#	priority = 50
+	#	visible = {
+	#		always = yes
+	#	}
+	#	available = {
+	#		always = no
+	#	}
+	#}
 	
 	CUG_state_tea_surplus = {
 		priority = 20
@@ -575,6 +575,7 @@ CUG_tea_decison_categories = {
 			always = no
 		}
 		state_target = yes
+		on_map_mode = map_only
 		target_trigger = {
 			FROM = { has_variable = actual_tea_production }
 		}
@@ -620,6 +621,13 @@ CUG_tea_decison_categories = {
 			check_variable = { CUG_gun_purchase < 10 }
 			check_variable = { CUG_tea_production > 149 }
 		}
+
+		custom_cost_trigger = {
+			check_variable = { CUG_tea_production > 149 }
+		}
+		
+		custom_cost_text = CUG_tea_production_is_enough_tt
+		
 		days_remove = 15
 		ai_will_do = {
 			base = 50
@@ -627,6 +635,7 @@ CUG_tea_decison_categories = {
 		}
 		complete_effect = {
 			add_to_variable = { CUG_gun_purchase = 1 }
+			custom_effect_tooltip = CUG_increase_gun_purchase_tt
 		}
 	}
 	
@@ -647,6 +656,7 @@ CUG_tea_decison_categories = {
 		}
 		complete_effect = {
 			add_to_variable = { CUG_gun_purchase = -1 }
+			custom_effect_tooltip = CUG_decrease_gun_purchase_tt
 		}
 	}
 	
@@ -657,6 +667,13 @@ CUG_tea_decison_categories = {
 			check_variable = { CUG_supply_eq_purchase < 10 }
 			check_variable = { CUG_tea_production > 149 }
 		}
+
+		custom_cost_trigger = {
+			check_variable = { CUG_tea_production > 149 }
+		}
+		
+		custom_cost_text = CUG_tea_production_is_enough_tt
+		
 		days_remove = 15
 		ai_will_do = {
 			base = 35
@@ -664,6 +681,7 @@ CUG_tea_decison_categories = {
 		}
 		complete_effect = {
 			add_to_variable = { CUG_supply_eq_purchase = 1 }
+			custom_effect_tooltip = CUG_increase_supply_eq_purchase_tt
 		}
 	}
 	
@@ -684,6 +702,7 @@ CUG_tea_decison_categories = {
 		}
 		complete_effect = {
 			add_to_variable = { CUG_supply_eq_purchase = -1 }
+			custom_effect_tooltip = CUG_decrease_supply_eq_purchase_tt
 		}
 	}
 	
@@ -694,6 +713,13 @@ CUG_tea_decison_categories = {
 			check_variable = { CUG_food_purchase < 10 }
 			check_variable = { CUG_tea_production > 149 }
 		}
+
+		custom_cost_trigger = {
+			check_variable = { CUG_tea_production > 149 }
+		}
+		
+		custom_cost_text = CUG_tea_production_is_enough_tt
+		
 		days_remove = 15
 		ai_will_do = {
 			base = 25
@@ -701,6 +727,7 @@ CUG_tea_decison_categories = {
 		}
 		complete_effect = {
 			add_to_variable = { CUG_food_purchase = 1 }
+			custom_effect_tooltip = CUG_increase_food_purchase_tt
 		}
 	}
 	
@@ -721,6 +748,7 @@ CUG_tea_decison_categories = {
 		}
 		complete_effect = {
 			add_to_variable = { CUG_food_purchase = -1 }
+			custom_effect_tooltip = CUG_decrease_food_purchase_tt
 		}
 	}
 }

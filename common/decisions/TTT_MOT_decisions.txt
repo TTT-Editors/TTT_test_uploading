@@ -1,0 +1,1048 @@
+MOT_dragon_crisis_decision_cat = {
+	MOT_dragon_crisis_decision_test = {
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			activate_mission = MOT_dragon_crisis_time_mission
+		}
+		remove_effect = {
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_time_mission = {
+		priority = 114
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = no
+		days_remove = 0
+		days_mission_timeout = 360
+		timeout_effect = {
+			add_stability = -0.2
+			add_war_support = -0.2
+
+			clr_country_flag = MOT_dragon_crisis
+			set_country_flag = MOT_dragon_crisis_time_out
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	MOT_commucate_decision_1 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { QQZ FXE BLL }
+		cost = 15
+                icon = GFX_decision_MOT_talk
+		days_remove = 7
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = QQZ
+					}
+				}
+				country_event = { id = MOT_event.50 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = FXE
+					}
+				}
+				ROOT = {
+					country_event = { id = MOT_event.51 }
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = BLL
+					}
+				}
+				country_event = { id = MOT_event.53 }
+			}
+		}
+	}
+	MOT_commucate_decision_2 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { DSC DLK }
+		cost = 25
+                icon = GFX_decision_MOT_talk
+		days_remove = 14
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = DSC
+					}
+				}
+				country_event = { id = MOT_event.54 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = DLK
+					}
+				}
+				country_event = { id = MOT_event.55 }
+			}
+		}
+	}
+	MOT_commucate_decision_3 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { TWL MDQ ALS }
+		cost = 50
+                icon = GFX_decision_MOT_talk
+		days_remove = 21
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = TWL
+					}
+				}
+				country_event = { id = MOT_event.56 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = MDQ
+					}
+				}
+				country_event = { id = MOT_event.57 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = ALS
+					}
+				}
+				country_event = { id = MOT_event.58 }
+			}
+		}
+	}	
+	MOT_dragon_crisis_exchange_goods_decision = { #换取物资
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		days_re_enable = 0
+		days_remove = 7
+		available = {
+			
+		}
+
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_exchange_goods_tt
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 12
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_produce_goods_decision = { #生产物资
+		cost = 15
+		days_re_enable = 0
+		days_remove = 35
+		available = {
+			
+		}
+		modifier = {
+			consumer_goods_factor = 0.25
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_produce_goods_tt
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 10
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_war_decision = { #准备武器
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^0
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_dragon_crisis_prepare_war_decision_cost_tt
+		days_re_enable = 0
+		days_remove = 7
+		visible = {
+			has_completed_focus = MOT_tree_0_12
+		}
+		available = {
+			
+		}
+		complete_effect = {
+			subtract_from_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^0
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_war_tt
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 10
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_for_twl_decision = { #针对风魔龙的特训
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+			has_equipment = {
+				infantry_equipment > MOT_DC_decision_cost_and_time^1
+			}
+		}
+		custom_cost_text = MOT_dragon_crisis_prepare_for_twl_decision_cost_tt
+		days_re_enable = 35
+		days_remove = MOT_DC_decision_cost_and_time^3
+		visible = {
+			has_completed_focus = MOT_tree_0_12
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > MOT_DC_decision_cost_and_time^1
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_for_twl_tt
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 15
+			}
+			add_command_power = 10
+			army_experience = 10
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_plan_decision = { #筹划计划
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^2
+				compare = greater_than_or_equals
+			}
+			command_power > 20
+		}
+		custom_cost_text = MOT_dragon_crisis_prepare_for_plan_cost_tt
+		days_re_enable = 21
+		days_remove = MOT_DC_decision_cost_and_time^4
+		visible = {
+			has_completed_focus = MOT_tree_0_12
+		}
+		available = {
+			command_power > 20
+		}
+		complete_effect = {
+			add_command_power = -20
+			subtract_from_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^2
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_plan_tt
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 20
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_speech_decision = { #发表演讲
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		days_re_enable = 14
+		visible = {
+			has_completed_focus = MOT_tree_0_08
+		}
+		available = {
+			has_stability < 0.5
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_political_power = 15
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_contact_church_decision = { #联系教会
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_contact_church_cost_tt
+		days_remove = 7
+		visible = {
+			has_completed_focus = MOT_tree_0_08
+		}
+		available = {
+
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -10
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DCs_contact_church_decision
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = 10
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_appease_decision = { #安抚风魔龙的特训
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		days_re_enable = 14
+		days_remove = 35
+		visible = {
+			has_completed_focus = MOT_tree_0_08
+		}
+		available = {
+
+		}
+		modifier = {
+			consumer_goods_factor = 0.25
+			research_speed_factor = -0.25
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_appease_decision_tt
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = 20
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_ask_abd_help_decision = { #寻求阿贝多的帮助
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			DSC = {
+				country_event = { id = MOT_event.75 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_the_final_plan_war_decision = { #最终的解决
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 80
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_war_point
+				value = 100
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_materials_point
+				value = 50
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_final_plan_war_cost_tt
+		days_remove = 7
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MOT_tree_0_15
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_finish_point_tt
+				check_variable = {
+					var = MOT_DC_finish_point
+					value = 80
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_war_point_tt
+				check_variable = {
+					var = MOT_DC_war_point
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_materials_point_tt
+				check_variable = {
+					var = MOT_DC_materials_point
+					value = 50
+					compare = greater_than_or_equals
+				}
+			}
+			has_idea = MOT_Jean
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -80
+			}
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = -100
+			}
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = -50
+			}
+			remove_mission = MOT_dragon_crisis_time_mission
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_dragon_crisis_the_final_plan_war_decision_tt
+			#计算概率
+			hidden_effect = {
+				set_temp_variable = {
+					var = MOT_DC_war_percent_temp
+					value = 60
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = MOT_DC_comucatetion_point
+							value = 8 
+							compare = equals
+						}
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_war_percent_temp
+						value = 15
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = MOT_DSC_support_us
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_war_percent_temp
+						value = 10
+					}
+				}
+				if = {
+					limit = {
+						has_completed_focus = MOT_tree_0_16
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_war_percent_temp
+						value = 5
+					}
+				}
+				clamp_temp_variable = {
+					var = MOT_DC_war_percent_temp
+					min = 0
+					max = 100
+				}
+				set_temp_variable = {
+					var = MOT_DC_war_percent_temp_1
+					value = 100
+				}
+				subtract_from_variable = {
+					var = MOT_DC_war_percent_temp_1
+					value = MOT_DC_war_percent_temp
+				}
+				random_list = {
+					MOT_DC_war_percent_temp = {
+						country_event = { id = MOT_event.78 }
+					}
+					MOT_DC_war_percent_temp_1 = {
+						country_event = { id = MOT_event.80 }
+					}
+				}
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_the_final_plan_clear_decision = { #最终的净化
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 80
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_war_point
+				value = 100
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_materials_point
+				value = 50
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_final_plan_clear_cost_tt
+		days_remove = 7
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MOT_tree_0_11
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_finish_point_tt
+				check_variable = {
+					var = MOT_DC_finish_point
+					value = 80
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_clear_point_tt
+				check_variable = {
+					var = MOT_DC_clear_point
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_materials_point_tt
+				check_variable = {
+					var = MOT_DC_materials_point
+					value = 50
+					compare = greater_than_or_equals
+				}
+			}
+			has_idea = MOT_Jean
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -80
+			}
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = -100
+			}
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = -50
+			}
+			remove_mission = MOT_dragon_crisis_time_mission
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_dragon_crisis_the_final_plan_war_decision_tt
+			#计算概率
+			hidden_effect = {
+				set_temp_variable = {
+					var = MOT_DC_clear_percent_temp
+					value = 50
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = MOT_DC_comucatetion_point
+							value = 8 
+							compare = equals
+						}
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 15
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = MOT_DSC_support_us
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 10
+					}
+				}
+				if = {
+					limit = {
+						has_completed_focus = MOT_tree_0_16
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 20
+					}
+				}
+				if = {
+					limit = {
+						TWL = {
+							has_idea = MOT_Wenti
+						}
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 20
+					}
+				}
+				clamp_temp_variable = {
+					var = MOT_DC_clear_percent_temp_1
+					min = 0
+					max = 100
+				}
+				set_temp_variable = {
+					var = MOT_DC_clear_percent_temp
+					value = 100
+				}
+				subtract_from_variable = {
+					var = MOT_DC_clear_percent_temp_1
+					value = MOT_DC_clear_percent_temp
+				}
+				random_list = {
+					MOT_DC_clear_percent_temp = {
+						country_event = { id = MOT_event.79 }
+					}
+					MOT_DC_clear_percent_temp_1 = {
+						country_event = { id = MOT_event.80 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+}
+
+
+
+MOT_support_military_region_decision_cat = {
+	MOT_SMR_send_mil = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_manpower > 7500
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 11
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_manpower = -7500
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.201 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_send_weapon = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 799
+			}
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 10
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -800
+				}
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.202 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_send_support = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 799
+			}
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 10
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = -800
+					producer = MOT
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = -800
+					producer = MOT
+				}
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.203 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_aks_for_help_equ = {
+		cost = 10
+		days_re_enable = 60
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		
+		complete_effect = {
+			MOT = {
+				country_event = { id = MOT_event.21 days = 2 }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_manpower = {
+		cost = 10
+		days_re_enable = 60
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		
+		complete_effect = {
+			MOT = {
+				country_event = { id = MOT_event.22 days = 2 }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_war = {
+		cost = 15
+		days_re_enable = 35
+		days_remove = 35
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		available = {
+			has_war_support < 0.25
+		}
+		remove_effect = {
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_sta = {
+		cost = 15
+		days_re_enable = 35
+		days_remove = 35
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		available = {
+			has_stability < 0.25
+		}
+		remove_effect = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+MOT_common_decisions_cat = {
+	MOT_train_mil_without_premission = {
+		cost = 25
+		days_re_enable = 35
+		days_remove = 0
+		visible = {
+			OR = {
+				tag = QQZ
+				tag = DSC
+				tag = DLK
+				tag = ALS
+			}
+		}
+		available = {
+			command_power > 20
+			has_manpower > 4000
+			has_equipment = {
+				infantry_equipment > 319
+			}
+			has_equipment = {
+				ttt_uniform_eq > 19
+			}
+			has_equipment = {
+				grain_conversion_eq > 39
+			}
+		}
+		complete_effect = {
+			add_command_power = -20
+			add_manpower = -4000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -320
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = -20
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = -40
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						has_template = "Local Milita"
+					}
+				}
+				else = {
+					division_template = {
+						name = "Local Milita"
+						is_locked = no
+						regiments = {
+							irregular_infantry = {
+								x = 0
+								y = 0
+							}
+							irregular_infantry = {
+								x = 0
+								y = 1
+							}
+							irregular_infantry = {
+								x = 1
+								y = 0
+							}
+							irregular_infantry = {
+								x = 1
+								y = 1
+							}
+						}
+					}
+				}
+			}
+		}
+		remove_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

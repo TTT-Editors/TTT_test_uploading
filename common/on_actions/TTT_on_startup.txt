@@ -1,8 +1,10 @@
 on_actions = {
 	on_startup = {
 		effect = {
-			LYU = { LYU_lazy_load_oob = yes }
-			LYU = { 
+			LYU = {
+				LYU_lazy_load_oob = yes
+			}
+			LYU = {
 				country_event = {
 					id = lyu_start.1
 					days = 12
@@ -18,20 +20,74 @@ on_actions = {
 				every_owned_state = {
 					set_state_flag = is_CUG_territory
 				}
+				
+				#南岭
+				305 = {
+					set_variable = { base_tea_production = 200 }
+					set_variable = { actual_tea_production = 200 }
+				}
+				
+				#翘英庄
+				306 = {
+					set_variable = { base_tea_production = 1300 }
+					set_variable = { actual_tea_production = 1300 }
+				}
+
+				#灵濛山
+				307 = {
+					set_variable = { base_tea_production = 500 }
+					set_variable = { actual_tea_production = 500 }
+				}
+
+				#北岭
+				308 = {
+					set_variable = { base_tea_production = 400 }
+					set_variable = { actual_tea_production = 400 }
+				}
+				
+				#暝垣山
+				309 = {
+					set_variable = { base_tea_production = 800 }
+					set_variable = { actual_tea_production = 800 }
+				}
+				set_variable = { CUG_tea_production = 3200 }
+				set_variable = { CUG_gun_purchase = 0 }
+				set_variable = { CUG_supply_eq_purchase = 0 }
+				set_variable = { CUG_food_purchase = 0 }
+				set_variable = { CUG_total_purchase = 0 }
 			}
 			TWL = {
 				every_owned_state = {
-					limit = { NOT = { state = 305 } }
+					limit = {
+						NOT = {
+							state = 305
+						}
+					}
 					set_state_flag = TWL_is_dragon_maybe_rest
+				}
+				set_popularities = {
+					authoritarianism = 70
+					national_socialism = 8
+					liberalism = 8
+					communism = 4
+					despotism = 10
 				}
 			}
 			#open the welcome screen
 			every_country = {
 				if = {
-					limit = { is_ai = no }
-					set_variable = { TTT_opening_page = 1 }
-					set_variable = { TTT_Nation_Page = 1 }
-					set_variable = { TTT_Mod_Page = 1 }
+					limit = {
+						is_ai = no
+					}
+					set_variable = {
+						TTT_opening_page = 1
+					}
+					set_variable = {
+						TTT_Nation_Page = 1
+					}
+					set_variable = {
+						TTT_Mod_Page = 1
+					}
 					country_event = {
 						id = EMP_event.2
 					}
@@ -39,12 +95,14 @@ on_actions = {
 			}
 			#set random seed
 			random_list = {
-				99 = { }
+				99 = {
+				}
 				1 = {
-					XOG = { set_country_flag = XOG_lucky_yes }
+					XOG = {
+						set_country_flag = XOG_lucky_yes
+					}
 				}
 			}
-			
 			every_country = {
 				if = {
 					limit = {
@@ -54,10 +112,13 @@ on_actions = {
 								tag = SUM
 								tag = MDQ
 								tag = CUG
+								tag = QQZ
 							}
 						}
 					}
-					country_event = { id = spawn_army_event.1 }
+					country_event = {
+						id = spawn_army_event.1
+					}
 				}
 			}
 		}

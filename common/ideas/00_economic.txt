@@ -74,7 +74,7 @@ ideas = {
 
 		civilian_economy = {
 
-              
+
 			cost = 500
 			removal_cost = -1
 
@@ -214,7 +214,7 @@ ideas = {
 
 			cancel_if_invalid = no
 			ai_will_do = {
-   				factor = 3
+   				base = 3
 
 				modifier = {
 					#High prio on production
@@ -290,7 +290,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_expected_value = 0.10
+				consumer_goods_expected_value = 0.15
 				conscription = -0.03
 
 				stability_factor = -0.2
@@ -306,7 +306,7 @@ ideas = {
 
 			cancel_if_invalid = no
 		}
-		
+
 	}
 
 	trade_laws = {
@@ -338,7 +338,7 @@ ideas = {
 			allowed_to_remove = {
 				has_war = yes
 			}
-			
+
 			cancel_if_invalid = no
 		}
 
@@ -461,7 +461,13 @@ ideas = {
 					is_major = no
 					has_war = no
 				}
-
+				modifier = {
+					factor = 200
+					NOT = { has_a_fascist_ideology = yes }
+					NOT = { has_idea = closed_economy }
+					has_war = yes
+					is_major = yes
+				}
 				modifier = {
 					add = 1500
 

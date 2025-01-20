@@ -21,21 +21,7 @@ focus_tree = {
 		    base = 15
 		}
 		available = {
-			NOT = {has_global_flag = MOT_dragon_crisis_is_over}
-			has_idea = MOT_crisis_of_Tewalin
-			NOT = {has_global_flag = MOT_dragon_crisis}
-			NOT = {has_global_flag = MOT_federal_route}
-			NOT = {has_global_flag = MOT_industrialization_program}
-			NOT = {has_global_flag = MOT_military_reform}
-			custom_trigger_tooltip = {
-				NOT = {has_global_flag = MOT_dragon_crisis_is_over}
-				NOT = {has_global_flag = MOT_dragon_crisis}
-				NOT = {has_global_flag = MOT_federal_route}
-				NOT = {has_global_flag = MOT_industrialization_program}
-				NOT = {has_global_flag = MOT_military_reform}
-            }
 		}
-		search_filters = {  }
 		completion_reward = {
 			swap_ideas = {
 				add_idea = MOT_crisis_of_Tewalin2 #风魔龙危机2
@@ -51,7 +37,8 @@ focus_tree = {
 					days = 35#几天后触发
 				}#此为触发世界新闻
 			}
-			set_global_flag = MOT_dragon_crisis
+			custom_effect_tooltip = MOT_begin_dragon_crisis
+			set_country_flag = MOT_dragon_crisis
 		}
 	}
 
@@ -167,7 +154,6 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_02 }
         prerequisite = { focus = MOT_tree_0_03 }
         prerequisite = { focus = MOT_tree_0_04 }
-        prerequisite = { focus = MOT_tree_0_06 }
 		x = 13
 		y = 3
 		
@@ -180,6 +166,11 @@ focus_tree = {
 			add_stability = 0.05
             add_war_support = 0.05
             add_political_power = 25
+			hidden_effect = { #此为隐藏效果
+				country_event = { 
+					days = 7 id = MOT_event.83
+				}
+			}
 		}
 	}
 
@@ -199,15 +190,7 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
             ##解锁支援军区的决议
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_01
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_02
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_03
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_04
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_05
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_06
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_07
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_08
-			unlock_decision_tooltip = MOT_Political_decision_support_military_region_09
+			custom_effect_tooltip = unlock_decision_MOT_support
 		}
 	}
 
@@ -218,21 +201,19 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_06 }
 		x = 12
 		y = 4
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
-		cost = 35
+
+		cost = 70
 		ai_will_do = {
 		    base = 15
 		}
-		search_filters = {  }
 		available ={
-			always = no
+
+		}
+		select_effect = {
+			country_event = { id = MOT_event.59 }
 		}
 		completion_reward = {
-
+			country_event = { id = MOT_event.59 } #仅仅作为tooltip，实际上不会触发两次
 		}
 	}
 
@@ -244,21 +225,29 @@ focus_tree = {
 		x = 10
 		y = 5
 		
-		cost = 30
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
+		cost = 35
 		ai_will_do = {
 		    base = 60 
 		}
 		available = {
-			has_global_flag = Lock_MOT_Standpoint_decision_1
-		}
-		search_filters = {  }
-		completion_reward = {
+			has_country_flag = MOT_DC_chose_peace_flag
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_materials_point_more_than_5
+				check_variable = {
+					var = MOT_DC_materials_point
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
 			
+		}
+		completion_reward = {
+			custom_effect_tooltip = MOT_DC_materials_point_subtract_5
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = -5
+			}
+			country_event = { id = MOT_event.67 }
 		}
 	}
 
@@ -269,21 +258,22 @@ focus_tree = {
 		x = 10
 		y = 6
 		available = {
-			check_variable = {MOT_Political_grid_array^0 = 4}
-			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^0 = 4}
-				tooltip =MOT_tree_0_09_trigger_tooltip
-			}
+
 		}
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
-		cost = 30
+
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			
+			custom_effect_tooltip = MOT_tree_0_09_tt
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = 15
+			}
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 15
+			}
+			country_event = { id = MOT_event.68 }
 		}
 	}
 
@@ -294,21 +284,22 @@ focus_tree = {
 		x = 10
 		y = 7
 		available = {
-			check_variable = {MOT_Political_grid_array^1 = 5}
-			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^1 = 5}
-				tooltip = MOT_tree_0_10_trigger_tooltip
-			}
+
 		}
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
-		cost = 30
+
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			
+			custom_effect_tooltip = MOT_tree_0_10_tt
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = 15
+			}
+			add_to_variable = {
+				var = MOT_DC_materials_point_use
+				value = -2
+			}
+			country_event = { id = MOT_event.69 }
 		}
 	}
 
@@ -318,22 +309,14 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_10 }
 		x = 10
 		y = 8
-		cost = 30
+		cost = 35
 		search_filters = {  }
 		available = {
-			check_variable = {MOT_Political_grid_array^2 = 6}
-			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^2 = 6}
-				tooltip = MOT_tree_0_11_trigger_tooltip
-			}
+           has_country_flag = MOT_tree_0_11_flag
 		}
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
+
 		completion_reward = {
-		    
+		    country_event = { id = MOT_event.70 }
 		}
 	}
 
@@ -345,21 +328,30 @@ focus_tree = {
 		x = 14
 		y = 5
 		
-		cost = 30
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
+		cost = 35
+
 		ai_will_do = {
 		    base = 0
 		}
 		available = {
-			has_global_flag = Lock_MOT_Standpoint_decision_3
+			has_country_flag = MOT_DC_chose_war_flag
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_materials_point_more_than_5
+				check_variable = {
+					var = MOT_DC_materials_point
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
 		}
 		search_filters = {  }
 		completion_reward = {
-			
+			custom_effect_tooltip = MOT_DC_materials_point_subtract_5
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = -5
+			}
+			country_event = { id = MOT_event.71 }
 		}
 	}
 
@@ -370,21 +362,34 @@ focus_tree = {
 		x = 14
 		y = 6
 		available = {
-			check_variable = {MOT_Political_grid_array^0 = 4}
-			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^0 = 4}
-				tooltip = MOT_tree_0_13_trigger_tooltip
-			}
+
 		}
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
-		cost = 30
+
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			
+			custom_effect_tooltip = MOT_tree_0_13_tt
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^0
+				value = -5
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^1
+				value = -250
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^2
+				value = -10
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^3
+				value = -7
+			}
+			add_to_variable = {
+				var = MOT_DC_decision_cost_and_time^4
+				value = -7
+			}
+			country_event = { id = MOT_event.72 }
 		}
 	}
 
@@ -395,21 +400,40 @@ focus_tree = {
 		x = 14
 		y = 7
 		available = {
-			check_variable = {MOT_Political_grid_array^1 = 5}
-			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^1 = 5}
-				tooltip =MOT_tree_0_14_trigger_tooltip
-			}
+
 		}
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
-		cost = 30
+
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			
+			custom_effect_tooltip = MOT_tree_0_14_tt
+			country_event = { id = MOT_event.73 }
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 10
+			}
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 20
+			}
+			if = {
+				limit = {
+					has_completed_focus = MOT_tree_0_16
+				}
+				add_to_variable = {
+					var = MOT_DC_war_point
+					value = 15
+				}
+			}
+			if = {
+				limit = {
+					has_idea = MOT_Rosary
+				}
+				add_to_variable = {
+					var = MOT_DC_war_point
+					value = 15
+				}
+			}
 		}
 	}
 
@@ -420,21 +444,13 @@ focus_tree = {
 		x = 14
 		y = 8
 		available = {
-			check_variable = {MOT_Political_grid_array^2 = 6}
-			custom_trigger_tooltip = {
-				check_variable = {MOT_Political_grid_array^2 = 6}
-				tooltip =MOT_tree_0_15_trigger_tooltip
-			}
+		    has_country_flag = MOT_tree_0_11_flag
 		}
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
-		cost = 30
+
+		cost = 35
 		search_filters = {  }
 		completion_reward = {
-			
+			country_event = { id = MOT_event.70 }
 		}
 	}
 
@@ -444,19 +460,35 @@ focus_tree = {
         prerequisite = { focus = MOT_tree_0_08 focus = MOT_tree_0_12 }
 		x = 12
 		y = 6
-		bypass = {
-			not = {
-				has_global_flag = MOT_dragon_crisis
-			}
-		}
+
 		ai_will_do = {
 			base = 0
 			factor = 0
 		}
-		cost = 70
+		cost = 35
 		search_filters = {  }
+		select_effect = {
+			if = {
+				limit = {
+					has_idea = MOT_Jean
+					has_idea = MOT_Barbara
+				}
+				country_event = { id = MOT_event.74 days = 7 }
+				complete_national_focus = MOT_tree_0_16
+			}
+
+		}
 		completion_reward = {
-			
+			custom_effect_tooltip = MOT_tree_0_16_tt
+			if = {
+				limit = {
+					has_completed_focus = MOT_tree_0_10
+				}
+				add_to_variable = {
+					var = MOT_DC_clear_point
+					value = 15
+				}
+			}
 		}
 	}
 
@@ -467,14 +499,14 @@ focus_tree = {
 		x = 12
 		y = 9
 		available = {
-			always = no
+
 		}
 		bypass = {
-			has_global_flag = MOT_dragon_crisis_is_over
+
 		}
 		allow_branch = {
-			not = {
-				has_idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+			NOT = {
+				has_country_flag = MOT_dragon_crisis_time_out
 			}
 		}
 		cost = 1
@@ -485,8 +517,6 @@ focus_tree = {
 					id = global_news.30#事件id
 					days = 7#几天后触发
 				}#此为触发世界新闻
-				##风魔龙危机结束
-				set_global_flag = MOT_dragon_crisis_is_over
 			}
 		}
 	}
@@ -498,10 +528,10 @@ focus_tree = {
 		y = 9
 		prerequisite = { focus = MOT_tree_0_11 focus = MOT_tree_0_15 }
 		allow_branch = {
-			has_idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+			has_country_flag = MOT_dragon_crisis_time_out
 		}
 		available = {
-			has_idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+
 		}
 		cost = 180
 		search_filters = {  }

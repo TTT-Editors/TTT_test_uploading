@@ -1,0 +1,42 @@
+scripted_map_modes = {
+	ttt_progress_map_mode = {
+		top = {
+			type = none
+		}
+		bottom = {
+			type = country
+			color = {
+				FROM = {
+					set_temp_variable = { alpha = 0.75 }
+					if = {
+						limit = { is_ttt_finished_tag = yes }
+						set_temp_variable = { green = 0.75 }
+						set_temp_variable = { blue = 1.0 }
+					}
+					else_if = {
+						limit = { is_ttt_partially_finished_tag = yes }
+						set_temp_variable = { red = 0.5 }
+						set_temp_variable = { green = 1.0 }
+						set_temp_variable = { blue = 0.15 }
+					}
+					else_if = {
+						limit = { is_ttt_hardly_edited_tag = yes }
+						set_temp_variable = { red = 1.0 }
+						set_temp_variable = { green = 0.85 }
+					}
+
+					#else are empty tags
+					else = {
+						set_temp_variable = { red = 1.0 }
+					}
+				}
+			}
+			thickness = yes
+		}
+
+		far_text = country
+		near_text = none
+
+		update_daily = no
+	}
+}

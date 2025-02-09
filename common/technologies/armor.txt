@@ -35,56 +35,58 @@ technologies = {
 
 			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
 		}
-	
+
 		path = {
 			leads_to_tech = basic_light_tank
 			research_cost_coeff = 1
 		}
-	
+
 		path = {
 			leads_to_tech = basic_heavy_tank
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2
 		start_year = 1918
 		folder = {
 			name = armour_folder
 			position = { x = 0 y = 0 }
 		}
-		
+
 		ai_will_do = {
-			factor = 1
-			
+			base = 1
+
 			modifier = {
 				factor = 0
 				NOT = { has_tech = gw_artillery }
 			}
-			
+
 			modifier = {
 				factor = 2
 				is_major = yes
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2000.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2001.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2002.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_light_armor
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
@@ -124,62 +126,64 @@ technologies = {
 
 			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
 		}
-		
+
 		path = {
 			leads_to_tech = improved_light_tank
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2
 		start_year = 1990
 		folder = {
 			name = armour_folder
 			position = { x = -4 y = 2 }
 		}
-		
+
 		sub_technologies = {
 			basic_light_td
 			basic_light_art
 			basic_light_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 1
-			
+			base = 1
+
 			modifier = {
 				factor = 0
 				NOT = { has_tech = gw_artillery }
 			}
-			
+
 			modifier = {
 				factor = 2
 				is_major = yes
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2000.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2001.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2002.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_light_armor
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}	
-	
+
 	basic_light_td = {
 
 		enable_equipments = {
@@ -188,12 +192,13 @@ technologies = {
 		enable_subunits = {
 			light_tank_destroyer_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1990
-		
+
 		ai_will_do = {
-			factor = 0.5
+			base = 0.5
+
 			modifier = {
 				has_template_containing_unit = light_tank_destroyer_brigade
 				factor = 2
@@ -213,14 +218,16 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_light_art = {
 
 		enable_equipments = {
@@ -229,12 +236,12 @@ technologies = {
 		enable_subunits = {
 			light_sp_artillery_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1990
-		
+
 		ai_will_do = {
-			factor = 0.25
+			base = 0.25
 			modifier = {
 				has_template_containing_unit = light_sp_artillery_brigade
 				add = 2
@@ -248,14 +255,16 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_light_spaa = {
 
 		enable_equipments = {
@@ -264,12 +273,12 @@ technologies = {
 		enable_subunits = {
 			light_sp_anti_air_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1990
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 			modifier = {
 				is_major = yes
 				add = 0.25
@@ -283,9 +292,11 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
@@ -296,7 +307,7 @@ technologies = {
 		enable_equipments = {
 			light_tank_equipment_2 
 		}
-		
+
 		path = {
 			leads_to_tech = advanced_light_tank
 			research_cost_coeff = 1
@@ -306,68 +317,76 @@ technologies = {
 			leads_to_tech = amphibious_tank
 			research_cost_coeff = 1
 		}
-		
+
 		path = {
 			leads_to_tech = basic_medium_tank
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2
 		start_year = 1999
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = -4 y = 4 }
 		}
-		
+
 		sub_technologies = {
 			improved_light_td
 			improved_light_art
 			improved_light_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 1
-			
+			base = 1
+
+			modifier = {
+				is_major = yes
+				has_war = yes
+				factor = 10 #you are embarassing yourself
+			}
+
 			modifier = {
 				factor = 1.1
 				date > "2000.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2001.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2002.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_light_armor
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_light_td = {
 
 		enable_equipments = {
 			light_tank_destroyer_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1999
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				has_template_containing_unit = light_tank_destroyer_brigade
-				factor = 2
+				add = 2
 			}
 			modifier = {
 				factor = 0
@@ -378,25 +397,27 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_light_art = {
 
 		enable_equipments = {
 			light_tank_artillery_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1999
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				has_template_containing_unit = light_sp_artillery_brigade
@@ -412,25 +433,27 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_light_spaa = {
 
 		enable_equipments = {
 			light_tank_aa_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1999
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -441,9 +464,11 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
@@ -467,22 +492,17 @@ technologies = {
 		allow_branch = {
 			has_dlc = "Man the Guns"
 		}
-		
+
 		research_cost = 2
 		start_year = 2003
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = -8 y = 7 }
 		}
-		
+
 		ai_will_do = {
-			factor = 0.5
-			
-			modifier = {
-				factor = 2
-				is_major = yes
-			}
+			base = 0.5
 			modifier = {
 				not = {
 					any_controlled_state = {
@@ -492,10 +512,12 @@ technologies = {
 				factor = 0
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			tp_tech
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
@@ -506,18 +528,18 @@ technologies = {
 		enable_equipments = {
 			amphibious_tank_equipment_2
 		}
-		
+
 		research_cost = 2
 		start_year = 2005
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = -8 y = 9 }
 		}
-		
+
 		ai_will_do = {
-			factor = 0.5
-			
+			base = 0.5
+
 			modifier = {
 				factor = 2
 				is_major = yes
@@ -531,126 +553,135 @@ technologies = {
 				factor = 0
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			tp_tech
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_light_tank = { #Leopard
 
 		enable_equipments = {
 			light_tank_equipment_3 
 		}	
-		
+
 		research_cost = 2
 		start_year = 2004
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = -4 y = 8 }
 		}
-		
+
 		sub_technologies = {
 			advanced_light_td
 			advanced_light_art
 			advanced_light_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 0.5
+			base = 0.5
 			modifier = {
 				is_major = no
 				factor = 2
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2005.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2006.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2007.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_light_armor
+			mio_cat_tech_light_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_light_td = {
 
 		enable_equipments = {
 			light_tank_destroyer_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_light_art = {
 
 		enable_equipments = {
 			light_tank_artillery_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-	
+
 		ai_will_do = {
-			factor = 0.1
+			base = 0.1
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_light_spaa = {
 
 		enable_equipments = {
 			light_tank_aa_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_light_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_medium_tank = { #Panzer III
 
 		enable_equipments = {
@@ -660,12 +691,12 @@ technologies = {
 		enable_subunits = {
 			medium_armor
 		}
-		
+
 		path = {
 			leads_to_tech = improved_medium_tank 
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2
 		start_year = 2002
 
@@ -673,41 +704,41 @@ technologies = {
 			name = armour_folder
 			position = { x = 0 y = 6 }
 		}
-		
+
 		sub_technologies = {
 			basic_medium_td
 			basic_medium_art
 			basic_medium_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 2
-			
+			base = 2
 			modifier = {
 				factor = 1.1
 				date > "2003.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2004.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2005.1.1"
 			}
-			
-		}
-		
-		categories = {
-			armor
-			cat_medium_armor
+
 		}
 
+		categories = {
+			armor
+			mio_cat_tech_all_armor_and_modules
+			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
+		}
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_medium_td = {
 
 		enable_equipments = {
@@ -717,13 +748,13 @@ technologies = {
 		enable_subunits = {
 			medium_tank_destroyer_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2002
 
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -733,30 +764,32 @@ technologies = {
 					is_researching_technology = improved_medium_tank
 				}
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2003.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2004.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2005.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_medium_art = {
 
 		enable_equipments = {
@@ -766,12 +799,12 @@ technologies = {
 		enable_subunits = {
 			medium_sp_artillery_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2002
-		
+
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -781,30 +814,32 @@ technologies = {
 					is_researching_technology = improved_medium_tank
 				}
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2003.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2004.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2005.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_medium_spaa = {
 
 		enable_equipments = {
@@ -814,12 +849,12 @@ technologies = {
 		enable_subunits = {
 			medium_sp_anti_air_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2002
-		
+
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -830,20 +865,22 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_medium_tank = { #Panzer IV
 
 		enable_equipments = {
 			medium_tank_equipment_2 
 		}
-		
+
 		path = {
 			leads_to_tech = advanced_medium_tank 
 			research_cost_coeff = 1
@@ -852,65 +889,66 @@ technologies = {
 			leads_to_tech = improved_heavy_tank 
 			research_cost_coeff = 0.9
 		}
-		
+
 		research_cost = 2
 		start_year = 2004
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 0 y = 8 }
 		}
-		
+
 		sub_technologies = {
 			improved_medium_td
 			improved_medium_art
 			improved_medium_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 3
-			
+			base = 3
+
 			modifier = {
 				date < "2004.1.1"
 				factor = 0.3
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2005.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2006.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2007.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_medium_td = {
 
 		enable_equipments = {
 			medium_tank_destroyer_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
 
 		ai_will_do = {
-			factor = 0
-			
+			base = 0
+
 			modifier = {
 				has_template_containing_unit = medium_tank_destroyer_brigade
 				factor = 3
@@ -924,41 +962,43 @@ technologies = {
 					is_researching_technology = advanced_medium_tank
 				}
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2005.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2006.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2007.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_medium_art = {
 
 		enable_equipments = {
 			medium_tank_artillery_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-		
+
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -976,36 +1016,38 @@ technologies = {
 				factor = 1.1
 				date > "2005.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2006.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2007.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_medium_spaa = {
 
 		enable_equipments = {
 			medium_tank_aa_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-		
+
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -1016,20 +1058,22 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_medium_tank = { #Panther
 
 		enable_equipments = {
 			medium_tank_equipment_3 
 		}
-		
+
 		path = {
 			leads_to_tech = main_battle_tank 
 			research_cost_coeff = 1
@@ -1038,60 +1082,61 @@ technologies = {
 			leads_to_tech = advanced_heavy_tank 
 			research_cost_coeff = 0.9
 		}
-		
+
 		research_cost = 2
 		start_year = 2006
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 0 y = 10 }
 		}
-		
+
 		sub_technologies = {
 			advanced_medium_td
 			advanced_medium_art
 			advanced_medium_spaa
 		}
-		
+
 
 		ai_will_do = {
-			factor = 1
-			
+			base = 1
+
 			modifier = {
 				factor = 1.2
 				date > "2007.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2008.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2009.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_medium_td = {
 
 		enable_equipments = {
 			medium_tank_destroyer_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -1105,41 +1150,43 @@ technologies = {
 				has_template_containing_unit = medium_tank_destroyer_brigade
 				factor = 3
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2007.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2008.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2009.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_medium_art = {
 
 		enable_equipments = {
 			medium_tank_artillery_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -1153,41 +1200,43 @@ technologies = {
 				has_template_containing_unit = medium_sp_artillery_brigade
 				factor = 3
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2007.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2008.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.1
 				date > "2009.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_medium_spaa = {
 
 		enable_equipments = {
 			medium_tank_aa_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1198,14 +1247,16 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	main_battle_tank = { #E-50
 
 		enable_equipments = {
@@ -1214,204 +1265,211 @@ technologies = {
 		enable_subunits = {
 			modern_armor
 		}
-		
+
 		path = {
 			leads_to_tech = main_battle_tank2
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2.5
 		start_year = 2008
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 2 y = 12 }
 		}
-		
+
 		sub_technologies = {
 			modern_td
 			modern_art
 			modern_spaa
 		}
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2009.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2010.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2011.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	main_battle_tank2 = { #E-50
 
 		enable_equipments = {
 			modern_tank_equipment_2
 		}
-		
+
 		path = {
 			leads_to_tech = main_battle_tank3
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2.5
 		start_year = 2012
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 2 y = 14 }
 		}
-		
+
 		sub_technologies = {
 			modern_td2
 			modern_art2
 			modern_spaa2
 		}
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2013.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2014.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2015.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	main_battle_tank3 = { #E-50
 
 		enable_equipments = {
 			modern_tank_equipment_3
 		}
-		
+
 		path = {
 			leads_to_tech = main_battle_tank4
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2.5
 		start_year = 2016
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 2 y = 16 }
 		}
-		
+
 		sub_technologies = {
 			modern_td3
 			modern_art3
 			modern_spaa3
 		}
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2017.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2018.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2019.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	main_battle_tank4 = { #E-50
 
 		enable_equipments = {
 			modern_tank_equipment_4
 		}
-		
+
 		research_cost = 2.5
 		start_year = 2020
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 2 y = 18 }
 		}
-		
+
 		sub_technologies = {
 			modern_td4
 			modern_art4
 			modern_spaa4
 		}
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2021.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2022.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2023.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_td = {
 
 		enable_equipments = {
@@ -1421,141 +1479,164 @@ technologies = {
 		enable_subunits = {
 			modern_tank_destroyer_brigade
 		}
-	
+
+		path = {
+			leads_to_tech = morden_td2
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2008
-		
+
 		ai_will_do = {
-			factor = 1
-			
+			base = 1
+
 			modifier = {
 				factor = 2
 				date > "2009.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2010.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2011.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_td2 = {
 
 		enable_equipments = {
 			modern_tank_destroyer_equipment_2
 		}
-	
+
+		path = {
+			leads_to_tech = morden_td3
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2012
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2013.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2014.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2015.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_td3 = {
 
 		enable_equipments = {
 			modern_tank_destroyer_equipment_3
 		}
-	
+
+		path = {
+			leads_to_tech = morden_td4
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2016
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2017.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2018.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2019.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_td4 = {
 
 		enable_equipments = {
 			modern_tank_destroyer_equipment_4
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2020
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2021.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2022.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2023.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_art = {
 
 		enable_equipments = {
@@ -1565,225 +1646,271 @@ technologies = {
 		enable_subunits = {
 			modern_sp_artillery_brigade
 		}
-	
+
+		path = {
+			leads_to_tech = morden_art2
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2008
-		
+
 		ai_will_do = {
-			factor = 1
-			
+			base = 1
+
 			modifier = {
 				factor = 2
 				date > "2009.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2010.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2011.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_art2 = {
 
 		enable_equipments = {
 			modern_tank_artillery_equipment_2
 		}
-	
+
+		path = {
+			leads_to_tech = morden_art3
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2012
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2013.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2014.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2015.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_art3 = {
 
 		enable_equipments = {
 			modern_tank_artillery_equipment_3
 		}
-	
+
+		path = {
+			leads_to_tech = morden_art4
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2016
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2017.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2018.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2019.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_art4 = {
 
 		enable_equipments = {
 			modern_tank_artillery_equipment_4
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2020
-		
+
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				factor = 2
 				date > "2021.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2022.1.1"
 			}
-			
+
 			modifier = {
 				factor = 2
 				date > "2023.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_spaa = {
 
 		enable_equipments = {
 			modern_tank_aa_equipment_1
 		}
 
+		path = {
+			leads_to_tech = morden_spaa2
+			research_cost_coeff = 1
+		}
+
 		enable_subunits = {
 			modern_sp_anti_air_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2008
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_spaa2 = {
 
 		enable_equipments = {
 			modern_tank_aa_equipment_2
 		}
-	
+
+		path = {
+			leads_to_tech = morden_spaa3
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2012
-		
+
 		ai_will_do = {
 			factor = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_spaa3 = {
 
 		enable_equipments = {
 			modern_tank_aa_equipment_3
 		}
-	
+
+		path = {
+			leads_to_tech = morden_spaa4
+			research_cost_coeff = 1
+		}
+
 		research_cost = 0.5
 		start_year = 2016
-		
+
 		ai_will_do = {
 			factor = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	modern_spaa4 = {
 
 		enable_equipments = {
 			modern_tank_aa_equipment_4
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2020
-		
+
 		ai_will_do = {
 			factor = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_medium_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_heavy_tank = { #Grosstraktor
 
 		enable_equipments = {
@@ -1819,44 +1946,44 @@ technologies = {
 
 			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
 		}
-		
+
 		path = {
 			leads_to_tech = improved_heavy_tank
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2
 		start_year = 1990
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 4 y = 2 }
 		}
-		
+
 		sub_technologies = {
 			basic_heavy_td
 			basic_heavy_art
 			basic_heavy_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 0.8
-			
+			base = 0.8
+
 			modifier = {
 				factor = 0
 				NOT = { has_tech = gw_artillery }
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2000.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2001.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2002.1.1"
@@ -1869,15 +1996,16 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_heavy_armor
+			mio_cat_tech_heavy_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_heavy_td = {
 
 		enable_equipments = {
@@ -1887,12 +2015,12 @@ technologies = {
 		enable_subunits = {
 			heavy_tank_destroyer_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1990
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1903,14 +2031,16 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	basic_heavy_art = {
 
 		enable_equipments = {
@@ -1920,12 +2050,12 @@ technologies = {
 		enable_subunits = {
 			heavy_sp_artillery_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1990
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1936,15 +2066,17 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
 
-	
+
 	basic_heavy_spaa = {
 
 		enable_equipments = {
@@ -1953,12 +2085,12 @@ technologies = {
 		enable_subunits = {
 			heavy_sp_anti_air_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 1990
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1969,20 +2101,22 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_heavy_tank = { #Tiger
 
 		enable_equipments = {
 			heavy_tank_equipment_2 
 		}
-		
+
 		path = {
 			leads_to_tech = advanced_heavy_tank 
 			research_cost_coeff = 1
@@ -1991,38 +2125,38 @@ technologies = {
 			leads_to_tech = improved_medium_tank 
 			research_cost_coeff = 0.9
 		}
-		
+
 		path = {
 			leads_to_tech = super_heavy_tank 
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2.5
 		start_year = 2004
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 4 y = 8 }
 		}
-		
+
 		sub_technologies = {
 			improved_heavy_td
 			improved_heavy_art
 			improved_heavy_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 0.8
+			base = 0.8
 			modifier = {
 				factor = 1.2
 				date > "2005.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2006.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2007.1.1"
@@ -2035,26 +2169,27 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_heavy_armor
+			mio_cat_tech_heavy_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_heavy_td = {
 
 		enable_equipments = {
 			heavy_tank_destroyer_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -2065,25 +2200,27 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	improved_heavy_art = {
 
 		enable_equipments = {
 			heavy_tank_artillery_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -2094,26 +2231,28 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
 
-	
+
 	improved_heavy_spaa = {
 
 		enable_equipments = {
 			heavy_tank_aa_equipment_2
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2004
-		
+
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -2124,20 +2263,22 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_heavy_tank = { #King Tiger
 
 		enable_equipments = {
 			heavy_tank_equipment_3 
 		}
-		
+
 		path = {
 			leads_to_tech = main_battle_tank 
 			research_cost_coeff = 1
@@ -2146,57 +2287,58 @@ technologies = {
 			leads_to_tech = advanced_medium_tank 
 			research_cost_coeff = 0.9
 		}
-		
+
 		research_cost = 2.5
 		start_year = 2006
-		
+
 		folder = {
 			name = armour_folder
 			position = { x = 4 y = 10 }
 		}
-		
+
 		sub_technologies = {
 			advanced_heavy_td
 			advanced_heavy_art
 			advanced_heavy_spaa
 		}
-		
+
 		ai_will_do = {
-			factor = 0.8
-			
+			base = 0.8
+
 			modifier = {
 				factor = 1.2
 				date > "2007.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2008.1.1"
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "2009.1.1"
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_heavy_armor
+			mio_cat_tech_heavy_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_heavy_td = {
 
 		enable_equipments = {
 			heavy_tank_destroyer_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
 			factor = 0
 
@@ -2209,23 +2351,25 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_heavy_art = {
 
 		enable_equipments = {
 			heavy_tank_artillery_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
 			factor = 0
 
@@ -2238,23 +2382,25 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	advanced_heavy_spaa = {
 
 		enable_equipments = {
 			heavy_tank_aa_equipment_3
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
 			factor = 0
 
@@ -2267,15 +2413,37 @@ technologies = {
 				}
 			}
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	super_heavy_tank = { #Maus
+
+		path = {
+			leads_to_tech = sp_armored_lc_high_impact_obliterator_cannon_tech
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = sp_armored_lc_naval_engine_conversion_tech
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = sp_armored_lc_transmission_improvements_tech
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = sp_armored_lc_specialized_field_manuals_tech
+			research_cost_coeff = 1
+		}
 
 		enable_equipments = {
 			super_heavy_tank_equipment_1
@@ -2284,32 +2452,45 @@ technologies = {
 		enable_subunits = {
 			super_heavy_armor
 		}
-	
-		research_cost = 2.5
-		start_year = 2006
+
+		on_research_complete = {
+			if = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_UNLOCK_PROJECT
+					PROJECT = sp_land_land_cruiser
+				}
+			}
+		}
+
+		research_cost = 3
+		start_year = 2004
 		folder = {
 			name = armour_folder
-			position = { x = 8 y = 10 }
+			position = { x = 9 y = 8 }
 		}
-		
+
 		sub_technologies = {
 			super_heavy_td
 			super_heavy_art
 			super_heavy_spaa
 		}
-		
+
 		ai_will_do = {
 			factor = 0 # Hitler cries on the inside
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
 			cat_heavy_armor
+			mio_cat_tech_heavy_armor_and_modules
 		}
-
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	super_heavy_td = {
 
 		enable_equipments = {
@@ -2319,21 +2500,23 @@ technologies = {
 		enable_subunits = {
 			super_heavy_tank_destroyer_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
 			factor = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	super_heavy_art = {
 
 		enable_equipments = {
@@ -2343,21 +2526,23 @@ technologies = {
 		enable_subunits = {
 			super_heavy_sp_artillery_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
 			factor = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 	super_heavy_spaa = {
 
 		enable_equipments = {
@@ -2366,19 +2551,21 @@ technologies = {
 		enable_subunits = {
 			super_heavy_sp_anti_air_brigade
 		}
-	
+
 		research_cost = 0.5
 		start_year = 2006
-		
+
 		ai_will_do = {
 			factor = 0
 		}
-		
+
 		categories = {
 			armor
+			mio_cat_tech_all_armor_and_modules
+			mio_cat_tech_heavy_armor_and_modules
 		}
 
 		special_project_specialization = { specialization_land }
 	}
-	
+
 }

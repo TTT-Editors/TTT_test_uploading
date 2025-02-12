@@ -285,7 +285,7 @@ focus_tree = {
 	focus = {
 		id = KQG_16		#确立指导思想
 		icon = GFX_goal_KQG_mil_18
-		cost = 35
+		cost = 28
 		prerequisite = {
 			focus = KQG_15
 		}
@@ -304,7 +304,7 @@ focus_tree = {
 	focus = {
 		id = KQG_17		#设立政治委员
 		icon = GFX_goal_KQG_eco_13
-		cost = 35
+		cost = 28
 		prerequisite = {
 			focus = KQG_16
 		}
@@ -323,7 +323,7 @@ focus_tree = {
 	focus = {
 		id = KQG_18		#改革赤卫队
 		icon = GFX_goal_KQG_mil_29
-		cost = 32
+		cost = 28
 		prerequisite = {
 			focus = KQG_17
 		}
@@ -381,7 +381,7 @@ focus_tree = {
 	focus = {
 		id = KQG_21		#我们是人民的军队
 		icon = GFX_goal_KQG_pol_49
-		cost = 70
+		cost = 35
 		prerequisite = {
 			focus = KQG_22
 		}
@@ -628,21 +628,23 @@ focus_tree = {
 				add_idea = KQG1919810
 				remove_idea = KQG1145144
 			}
-			add_advisor_role = {
-				Character = LYU_keqing
-				advisor = {
-					slot = political_advisor
-					cost = 150
-					idea_token = LYU_keqing
-					traits = {
-						Keqing_heihei_traits
-					}
-					allowed = {
-						always = yes
+			effect_tooltip = {
+				LYU_Keqing = {
+					add_advisor_role = {
+						Character = LYU_keqing
+						advisor = {
+							slot = political_advisor
+							cost = 150
+							idea_token = LYU_keqing
+							traits = {
+								Keqing_heihei_traits
+							}
+						}
+						activate = no
 					}
 				}
-				activate = no
 			}
+			hidden_effect = { set_country_flag = KQG_advisor_available }
 		}
 	}
 	focus = {
@@ -700,7 +702,7 @@ focus_tree = {
 	focus = {
 		id = KQG5_1		#召集反正部队
 		icon = GFX_goal_KQG_fanzheng
-		cost = 28
+		cost = 21
 		ai_will_do = {
 			factor = 100
 		}
@@ -732,6 +734,10 @@ focus_tree = {
 							y = 2
 						}
 						infantry = {
+							x = 0
+							y = 3
+						}
+						infantry = {
 							x = 1
 							y = 0
 						}
@@ -743,9 +749,17 @@ focus_tree = {
 							x = 1
 							y = 2
 						}
-						artillery_brigade = {
-							x = 0
+						infantry = {
+							x = 1
 							y = 3
+						}
+						artillery_brigade = {
+							x = 2
+							y = 0
+						}
+						artillery_brigade = {
+							x = 2
+							y = 1
 						}
 					}
 				}
@@ -754,7 +768,7 @@ focus_tree = {
 				create_unit = {
 					division = "division_template = \"千岩军\" start_experience_factor = 0.4"
 					owner = KQG
-					count = 3
+					count = 6
 				}
 			}
 		}
@@ -943,31 +957,31 @@ focus_tree = {
 		}
 		available = {
 			XQG = {
-				exists = NO
+				exists = no
 			}
 			XRG = {
-				exists = NO
+				exists = no
 			}
 			RTG = {
-				exists = NO
+				exists = no
 			}
 			XOG = {
-				exists = NO
+				exists = no
 			}
 			ZDG = {
-				exists = NO
+				exists = no
 			}
 			LYU = {
-				exists = NO
+				exists = no
 			}
 			ANG = {
-				exists = NO
+				exists = no
 			}
 			ARF = {
-				exists = NO
+				exists = no
 			}
 			NNG = {
-				exists = NO
+				exists = no
 			}
 		}
 		x = 21

@@ -17,6 +17,11 @@ on_actions = {
 				    id = retuo_juanshu_news.4 
 					days = 1
 			    }
+				RTG = {
+					country_event = {
+						id = RTG.42
+					}
+				}
             }
         }
     }	
@@ -35,4 +40,115 @@ on_actions = {
 		}
 	}
 	
+	on_weekly_RTG = {   #每周磨损值＋3
+		effect = {
+	    if = {
+			limit = {
+				has_country_flag = erosion_system_start
+			}
+			add_to_variable = { RTG_erosion_system = 5 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
+	on_weekly_RTG = {   #完成国策延续《巨渊封锁令》，龙王的每周磨损度－1
+		effect = {
+	    if = {
+			limit = {
+				has_completed_focus = RTG_yanxujuyuanfengsuoling
+				has_country_flag = erosion_system_start
+			}
+			add_to_variable = { RTG_erosion_system = -1 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
+	on_weekly_RTG = {   #完成国策《允许地上开采》，龙王的每周磨损度1
+		effect = {
+	    if = {
+			limit = {
+				has_completed_focus = RTG_yunxudishangkaicai
+				has_country_flag = erosion_system_start
+			}
+			add_to_variable = { RTG_erosion_system = 1 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
+	on_weekly_RTG = {   #完成决议《停止巨渊中心的建筑与开发项目》，龙王的每周磨损度－1
+		effect = {
+	    if = {
+			limit = {
+				has_country_flag = RTG_erosion_system_3_flag
+				has_country_flag = erosion_system_start
+			}
+			add_to_variable = { RTG_erosion_system = -1 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
+	on_weekly_RTG = {   #完成决议《阻塞地脉》，龙王的每周磨损度-1
+		effect = {
+	    if = {
+			limit = {
+				has_country_flag = RTG_erosion_system_4_flag
+				has_country_flag = erosion_system_start
+			}
+			add_to_variable = { RTG_erosion_system = -1 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
+	on_weekly_RTG = {   #触发事件《匿名援助》，龙王的每周磨损度-2
+		effect = {
+	    if = {
+			limit = {
+				has_country_flag = RTG18_flag
+				has_country_flag = erosion_system_start
+			}
+			add_to_variable = { RTG_erosion_system = -2 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
+	on_weekly_RTG = {   #完成决议《仙家术法》，龙王的每周磨损度-1
+		effect = {
+	    if = {
+			limit = {
+				has_country_flag = RTG18_flag
+				has_country_flag = RTG_erosion_system_2_flag_two
+			}
+			add_to_variable = { RTG_erosion_system = -1 }
+			clamp_variable = {
+				var = RTG_erosion_system
+				min = 0
+				max = 100
+			    }
+		    }
+	    }
+	}
 }

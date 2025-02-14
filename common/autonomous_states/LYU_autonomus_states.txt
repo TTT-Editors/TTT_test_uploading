@@ -1,0 +1,105 @@
+autonomy_state = {
+	id = LYU_autonomus_states
+	
+	default = no
+	is_puppet = yes
+   
+	use_overlord_color = yes
+	min_freedom_level = 0.4
+	
+	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+		can_not_declare_war = yes
+		can_decline_call_to_war = no
+		can_be_spymaster = no
+		contributes_operatives = yes
+		can_create_collaboration_government = no
+	}
+	
+	modifier = {
+		extra_trade_to_overlord_factor = 0.5
+		overlord_trade_cost_factor = -0.5
+		cic_to_overlord_factor = 0.25
+		mic_to_overlord_factor = 0.25
+		autonomy_gain_global_factor = -0.3
+	}
+	
+	ai_subject_wants_higher = {
+		factor = 0.0
+	}
+	
+	ai_overlord_wants_lower = {
+		factor = 0.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		OVERLORD = { is_nominate_liyue = yes }
+	}
+    can_take_level = {
+		always = no
+	}
+
+	can_lose_level = {
+		always = no
+	}
+	#ROOT is puppet - FROM is potential OVERLORD
+	use_for_peace_conference_weight = {
+		base = 0
+	}
+}
+
+autonomy_state = {
+	id = RTG_autonomus_states#渊都协议成员国
+	
+	default = no
+	is_puppet = yes
+   
+	use_overlord_color = yes
+	min_freedom_level = 0.4
+	
+	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+		can_not_declare_war = yes
+		can_decline_call_to_war = no
+		can_be_spymaster = no
+		contributes_operatives = yes
+		can_create_collaboration_government = no
+	}
+	
+	modifier = {
+		war_support_factor = 0.02
+		extra_trade_to_overlord_factor = 0.5
+		overlord_trade_cost_factor = -0.5
+	}
+	
+	ai_subject_wants_higher = {
+		factor = 0.0
+	}
+	
+	ai_overlord_wants_lower = {
+		factor = 0.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		OVERLORD = { tag = RTG }
+	}
+    can_take_level = {
+		always = no
+	}
+
+	can_lose_level = {
+		always = no
+	}
+	#ROOT is puppet - FROM is potential OVERLORD
+	use_for_peace_conference_weight = {
+		base = 0
+	}
+}

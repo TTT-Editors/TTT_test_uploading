@@ -1,39 +1,28 @@
 ##################
 # SUPER EVENTS 
 ##################
-
 add_namespace = super
-
-country_event = {	##Liyue_Civil_War璃月内战
+country_event = {
+	##Liyue_Civil_War璃月内战
 	id = super.1
 	title = super.1.t
 	desc = super.1.d
 	picture = GFX_report_event_diplomatic_message
-
 	is_triggered_only = yes
-	
 	fire_only_once = yes
 	hidden = yes
-
 	option = {
 		name = super.1.a
-		
-		every_country = {
+		every_possible_country = {
 			limit = {
-				OR = {
-				    original_tag = LYU
-				    original_tag = ANG
-				    original_tag = RTG
-				    original_tag = XRG
-				    original_tag = KQG
-				    original_tag = NNG
-					original_tag = XOG
-			    }
+				is_nominate_liyue = yes
 			}
 			add_ideas = liyue_civilwar_for_Liyue
 		}
-        set_global_flag = Liyue_Civil_War_start
-		news_event = { id = Turning_point_news.1 }
+		set_global_flag = Liyue_Civil_War_start
+		news_event = {
+			id = Turning_point_news.1
+		}
 		play_song = "SE_Liyue_civilwar"
 		LYU = {
 			set_cosmetic_tag = GANYULY
@@ -42,403 +31,434 @@ country_event = {	##Liyue_Civil_War璃月内战
 	}
 }
 
-country_event = {		##公子干翻璃月
-	id = super.2
-	title = super.2.t
-	desc = super.2.d
-	picture = GFX_report_event_diplomatic_message
+##country_event = {
+	##公子干翻璃月
+	##id = super.2
+	##title = super.2.t
+	##desc = super.2.d
+	##picture = GFX_report_event_diplomatic_message
+	##is_triggered_only = no
+	##trigger = {
+		##has_global_flag = Liyue_Civil_War
+		##has_unite_liyue = yes
+		##tag = ZDG
+	##}
+	##fire_only_once = yes
+	##hidden = yes
+	##option = {
+		##name = super.2.a
+		##reset_core_of_liyue = yes
+		##ZDG = {
+			##set_cosmetic_tag = ZDLY
+		##}
+		##set_global_flag = Gongzi_reunite_Liyue
+		##news_event = {
+			##id = Turning_point_news.2
+		##}
+		##clr_global_flag = Liyue_Civil_War
+		##play_song = "SE_Gongzi_victory"
+	##}
+##}
 
-	is_triggered_only = no
-	
-	trigger = {
-	    has_global_flag = Liyue_Civil_War
-		has_unite_liyue = yes
-		tag = ZDG
-	}
-	fire_only_once = yes
-	
-	hidden = yes
-
-	option = {
-		name = super.2.a
-        reset_core_of_liyue = yes
-		ZDG = {
-			set_capital = {
-                state = 124 
-                remember_old_capital = no
-            }
-			set_cosmetic_tag = ZDLY
-			every_state = {
-				limit = { has_state_flag = is_Liyues_territory }
-				add_core_of = ZDG
-			}
-		}
-        set_global_flag = Gongzi_reunite_Liyue
-		news_event = { id = Turning_point_news.2 }
-        clr_global_flag = Liyue_Civil_War
-        
-		play_song = "SE_Gongzi_victory"
-	}
-}
-
-
-country_event = {		##魈统一璃月
+country_event = {
+	##魈统一璃月
 	id = super.5
 	title = super.5.t
 	desc = super.5.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = XOG
-    }
+	}
 
+	mean_time_to_happen = {
+		days = 2
+	}
 	fire_only_once = yes
-	
 	hidden = yes
-
 	option = {
 		name = super.5.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
 		XOG = {
-			set_capital = {
-                state = 124 
-                remember_old_capital = no
-            }
 			set_cosmetic_tag = XIAOLY
-			every_state = {
-				limit = { has_state_flag = is_Liyues_territory }
-				add_core_of = XOG
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
 			}
-		}	
+		}
 		set_global_flag = Xiao_reunite_Liyue
-		news_event = { id = Turning_point_news.3 }
-        clr_global_flag = Liyue_Civil_War
-
+		news_event = {
+			id = Turning_point_news.3
+		}
+		clr_global_flag = Liyue_Civil_War
 		play_song = "SE_Xiao_victory"
 	}
 }
 
-country_event = {		##刻晴统一璃月
+country_event = {
+	##刻晴统一璃月
 	id = super.11
 	title = super.11.t
 	desc = super.11.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = KQG
 	}
 
-	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
 	
+	fire_only_once = yes
 	hidden = yes
-
 	option = {
 		name = super.11.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
-		KQG = {
-			set_capital = {
-                state = 124 
-                remember_old_capital = no
-            }
+		set_global_flag = Keqing_reunite_Liyue
+		news_event = {
+			id = Turning_point_news.4
 		}
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = KQG
-		}
-
-        set_global_flag = Keqing_reunite_Liyue
-		news_event = { id = Turning_point_news.4 }
-        clr_global_flag = Liyue_Civil_War
+		clr_global_flag = Liyue_Civil_War
 		KQG = {
 			set_cosmetic_tag = PRL
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
+			}
 		}
-        play_song = "SE_Keqing_victory"
+		play_song = "SE_Keqing_victory"
 	}
 }
 
-country_event = {		##自由派凝光统一璃月
+country_event = {
+	##自由派凝光统一璃月
 	id = super.13
 	title = super.13.t
 	desc = super.13.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = NNG
 	}
 
-	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
 	
+	fire_only_once = yes
 	hidden = yes
-
 	option = {
 		name = super.13.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
 		NNG = {
-			set_capital = {
-                state = 124 
-                remember_old_capital = no
-            }
-		}
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = NNG
-		}
-		NNG = {
 			set_cosmetic_tag = ROL
-		}	
-        set_global_flag = xzNingGuang_reunite_Liyue
-		news_event = { id = Turning_point_news.5 }
-        clr_global_flag = Liyue_Civil_War
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
+			}
+		}
+		set_global_flag = xzNingGuang_reunite_Liyue
+		news_event = {
+			id = Turning_point_news.5
+		}
+		clr_global_flag = Liyue_Civil_War
+		play_song = "SE_xzNingGuang_victory"
 	}
 }
 
-country_event = {		##眷属龙王统一璃月
+country_event = {
+	##眷属龙王统一璃月
 	id = super.24
 	title = super.24.t
 	desc = super.24.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
-		has_unite_liyue = yes
-		tag = RTG
-		
-		RTG = { 
-			has_country_leader = {ruling_only = yes character = RTG_Retuo_good }
-			has_country_leader_ideology = com_prosperity_theory
+		has_global_flag = Liyue_Civil_War
+		is_faction_leader = yes
+		original_tag = RTG
+		LYU = {
+			or = {
+				exists = no
+				is_in_faction_with = RTG
+			}
+		}
+		ANG = {
+			or = {
+				exists = no
+				is_in_faction_with = RTG
+			}
+		}
+		ZDG = {
+			exists = no
+		}
+		KQG = {
+			or = {
+				exists = no
+				is_in_faction_with = RTG
+			}
+		}
+		NNG = {
+			or = {
+				exists = no
+				is_in_faction_with = RTG
+			}
+		}
+		XOG = {
+			or = {
+				exists = no
+				is_in_faction_with = RTG
+			}
+		}
+		XRG = {
+			or = {
+				exists = no
+				is_in_faction_with = RTG
+			}
 		}
 	}
 
-	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
 	
 	hidden = yes
-
 	option = {
 		name = super.24.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
-        RTG = {
-			set_capital = {
-                state = 124 
-                remember_old_capital = no
-            }
-		}
 		RTG = {
 			set_cosmetic_tag = RTCW
-		}	
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = RTG
+			hidden_effect = {
+				country_event = {
+					days = 21
+					id = retuo_juanshu.26
+				}
+				country_event = {
+					days = 35
+					id = retuo_juanshu.25
+				}
+				country_event = {
+					days = 1
+					id = super.24
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = RTG39_flag
+				}
+				swap_ideas = {
+					add_idea = RTG_zhongzu_maodun_1
+					remove_idea = RTG_zhongzu_maodun_4
+				}
+			}
 		}
-
+		every_other_country = {
+			limit = {
+				is_subject_of = RTG
+			}
+			ROOT = {
+				annex_country = {
+					target = PREV
+					transfer_troops = yes
+				}
+			}
+		}
+		set_autonomy = {
+			target = CUG
+			autonomy_state = LYU_autonomus_states
+		}
 		set_global_flag = good_Retuo_reunite_Liyue
-		news_event = { id = Turning_point_news.6 }
-        clr_global_flag = Liyue_Civil_War
-
+		news_event = {
+			id = Turning_point_news.6
+		}
+		clr_global_flag = Liyue_Civil_War
 		play_song = "SE_goodRetuo_victory"
 	}
 }
 
-country_event = {		 ##磨损龙王统一璃月
+country_event = {
+	##磨损龙王统一璃月
 	id = super.25
 	title = super.25.t
 	desc = super.25.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = RTG
-		
-        RTG = {
-			has_country_leader = {ruling_only = yes character = RTG_Retuo_bad }
+		RTG = {
+			has_country_leader = {
+				ruling_only = yes
+				character = RTG_Retuo_bad
+			}
 			has_country_leader_ideology = elemental_supremacism
 		}
-    }
+	}
 
-	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
 	
+	fire_only_once = yes
 	hidden = yes
-
 	option = {
 		name = super.25.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
-        RTG = {
-			set_capital = {
-                state = 124 
-                remember_old_capital = no
-            }
+		RTG = {
 			set_cosmetic_tag = RTCWB
-		}	
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = RTG
 		}
 		set_global_flag = bad_Retuo_reunite_Liyue
-		news_event = { id = Turning_point_news.7 }
-        clr_global_flag = Liyue_Civil_War
-
+		news_event = {
+			id = Turning_point_news.7
+		}
+		clr_global_flag = Liyue_Civil_War
 		RTG = {
-			set_variable = { usable_network_states = 9 }
-			add_to_variable = { network_strength = 1 }
+			set_variable = {
+				usable_network_states = 9
+			}
+			add_to_variable = {
+				network_strength = 1
+			}
 			RTG_tick_up_networks = yes
 		}
-		
 		play_song = "SE_badRetuo_victory"
 	}
 }
 
-country_event = {		##黑岩军统一璃月
+country_event = {
+	##黑岩军统一璃月
 	id = super.26
 	title = super.26.t
 	desc = super.26.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = ANG
 	}
 
-	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
 	
+	fire_only_once = yes
 	hidden = yes
-
 	option = {
 		name = super.26.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
-        ANG = {
-			set_capital = {
-                state = 124 
-                remember_old_capital = no
-            }
+		ANG = {
 			set_cosmetic_tag = ALLY
-		}	
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = ANG
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
+			}
 		}
-        set_global_flag = Heiweijun_reunite_Liyue
-		news_event = { id = Turning_point_news.8 }
-        clr_global_flag = Liyue_Civil_War
-
-        play_song = "SE_Heiweijun_victory"
+		set_global_flag = Heiweijun_reunite_Liyue
+		news_event = {
+			id = Turning_point_news.8
+		}
+		clr_global_flag = Liyue_Civil_War
+		play_song = "SE_Heiweijun_victory"
 	}
 }
 
-country_event = {		##甘雨统一璃月
+country_event = {
+	##甘雨统一璃月
 	id = super.27
 	title = super.27.t
 	desc = super.27.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = LYU
-		
-		LYU = { 
-			has_country_leader = { 
-				 character = LYU_Ganyu
-				 ruling_only = yes
+		LYU = {
+			has_country_leader = {
+				character = LYU_Ganyu
+				ruling_only = yes
 			}
-		    has_country_leader_ideology = moraxism
-	    }
+			has_country_leader_ideology = moraxism
+		}
 	}
 
-	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
 	
+	fire_only_once = yes
 	hidden = yes
-
 	option = {
 		name = super.27.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
-        set_global_flag = Ganyu_reunite_Liyue
-		news_event = { id = Turning_point_news.9 }
-        clr_global_flag = Liyue_Civil_War
-		
+		set_global_flag = Ganyu_reunite_Liyue
+		news_event = {
+			id = Turning_point_news.9
+		}
+		clr_global_flag = Liyue_Civil_War
 		LYU = {
 			drop_cosmetic_tag = yes
-		    remove_country_leader_trait = sinner_ofLiyue
+			remove_country_leader_trait = sinner_ofLiyue
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
+			}
 		}
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = LYU
-		}
-
-        play_song = "SE_Ganyu_victory"
+		play_song = "SE_Ganyu_victory"
 	}
 }
 
-country_event = {		##烟绯统一璃月
+country_event = {
+	##烟绯统一璃月
 	id = super.28
 	title = super.28.t
 	desc = super.28.d
 	picture = GFX_report_event_diplomatic_message
-
-	is_triggered_only = no
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = LYU
-		
-		LYU = { 
-			has_country_leader = { 
-				 character = LYU_Yanfei
-				 ruling_only = yes
+		LYU = {
+			has_country_leader = {
+				character = LYU_Yanfei
+				ruling_only = yes
 			}
-		    has_country_leader_ideology = authoritarian_democracy
-	    }
+			has_country_leader_ideology = moraxism
+		}
 	}
 
-	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 2
+	}
 	
+	fire_only_once = yes
 	hidden = yes
-
 	option = {
 		name = super.28.a
-        reset_core_of_liyue = yes
+		reset_core_of_liyue = yes
 		remove_liyue_civilwar_national_spirit = yes
-        set_global_flag = Yanfei_reunite_Liyue
-		news_event = { id = Turning_point_news.10 }
-        clr_global_flag = Liyue_Civil_War
-		
+		set_global_flag = Yanfei_reunite_Liyue
+		news_event = {
+			id = Turning_point_news.10
+		}
+		clr_global_flag = Liyue_Civil_War
 		LYU = {
 			drop_cosmetic_tag = yes
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
+			}
 		}
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = LYU
-		}
-
-        play_song = "SE_Yanfei_victory"
+		play_song = "SE_Yanfei_victory"
 	}
 }
 
@@ -488,64 +508,61 @@ country_event = {		##烟绯统一璃月
 #        play_song = "SE_Baizhu_victory"
 #	}
 #}
-
-country_event = {		##仙人统一璃月
+country_event = {
+	##仙人统一璃月
 	id = super.30
 	title = super.30.t
 	desc = super.30.d
 	picture = GFX_report_event_diplomatic_message
-	
 	trigger = {
-	    has_global_flag = Liyue_Civil_War
+		has_global_flag = Liyue_Civil_War
 		has_unite_liyue = yes
 		tag = XRG
 	}
-
 	fire_only_once = yes
-	
 	hidden = yes
-	
-	mean_time_to_happen = { days = 1 }
-	
+	mean_time_to_happen = {
+		days = 1
+	}
 	option = {
 		name = super.30.a
-        reset_core_of_liyue = yes
- 		XRG = {
+		reset_core_of_liyue = yes
+		XRG = {
 			set_cosmetic_tag = XRLY
-		}       
-		remove_liyue_civilwar_national_spirit = yes
-        set_global_flag = Xianren_reunite_Liyue
-		news_event = { id = Turning_point_news.12 }
-        clr_global_flag = Liyue_Civil_War
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			add_core_of = XRG
+			set_autonomy = {
+				target = CUG
+				autonomy_state = LYU_autonomus_states
+			}
 		}
-
-        play_song = "SE_Yanfei_victory"
+		remove_liyue_civilwar_national_spirit = yes
+		set_global_flag = Xianren_reunite_Liyue
+		news_event = {
+			id = Turning_point_news.12
+		}
+		clr_global_flag = Liyue_Civil_War
+		play_song = "SE_Yanfei_victory"
 	}
 }
 
-country_event = {		##稻妻永恒
+country_event = {
+	##稻妻永恒
 	id = super.2022
 	title = super.2022.t
 	desc = super.2022.d
 	picture = GFX_report_event_diplomatic_message
-
 	is_triggered_only = no
-	
 	trigger = {
-	    INA = { has_government = esotericism }
+		INA = {
+			has_government = esotericism
+		}
 	}
-
 	fire_only_once = yes
-	
 	hidden = yes
-
 	option = {
 		name = super.2022.a
-		news_event = { id = Turning_point_news.13 }
-        play_song = "SE_Inazuma_eternity"
+		news_event = {
+			id = Turning_point_news.13
+		}
+		play_song = "SE_Inazuma_eternity"
 	}
 }
-

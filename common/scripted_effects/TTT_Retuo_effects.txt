@@ -6,7 +6,7 @@ Ruotuo_turn_bad = {
 		set_variable = { usable_network_states = 2 }
 		set_variable = { network_strength = 1 }
 	}
-	156 = {
+	68 = {
 		add_dynamic_modifier = { modifier = RTG_network_strength_1 }
 	}
 	add_war_support = 0.1
@@ -83,12 +83,6 @@ Ruotuo_end_of_the_first_stage = {
 		temporary_shutdown_2
 		temporary_shutdown_3
 		temporary_shutdown_4
-	}
-	if = {
-		limit = {
-			has_idea = ai_RTG_is_a_good_boy
-		}
-		remove_ideas = ai_RTG_is_a_good_boy
 	}
 }
 
@@ -255,19 +249,31 @@ Liyue_rebirth = {
 RTG_add_network = {
 	if = {
 		limit = { RTG = { check_variable = { network_strength = 1 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_1 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_1
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = { RTG = { check_variable = { network_strength = 2 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_2 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_2
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = { RTG = { check_variable = { network_strength = 3 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_3 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_3
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = { RTG = { check_variable = { network_strength = 4 } } }
-		add_dynamic_modifier = { modifier = RTG_network_strength_4 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_4
+			scope = RTG 
+		}
 	}
 }
 
@@ -315,14 +321,20 @@ RTG_strengthen_network = {
 			limit = { has_dynamic_modifier = { modifier = RTG_network_strength_3 } }
 			remove_dynamic_modifier = { modifier = RTG_network_strength_3 }
 		}
-		add_dynamic_modifier = { modifier = RTG_network_strength_4 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_4
+			scope = RTG 
+		}
 	}
 	else_if = {
 		limit = {
 			has_dynamic_modifier = { modifier = RTG_network_strength_4 }
 		}
 		remove_dynamic_modifier = { modifier = RTG_network_strength_4 }
-		add_dynamic_modifier = { modifier = RTG_network_strength_5 }
+		add_dynamic_modifier = {
+			modifier = RTG_network_strength_5
+			scope = RTG 
+		}
 	}
 }
 
@@ -350,7 +362,10 @@ RTG_tick_up_networks = {
 					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_3 } }
 					remove_dynamic_modifier = { modifier = RTG_network_strength_3 }
 				}
-				add_dynamic_modifier = { modifier = RTG_network_strength_4 }
+				add_dynamic_modifier = {
+					modifier = RTG_network_strength_4
+					scope = RTG 
+				}
 			}
 		}
 		else_if = {
@@ -370,7 +385,10 @@ RTG_tick_up_networks = {
 					limit = { has_dynamic_modifier = { modifier = RTG_network_strength_2 } }
 					remove_dynamic_modifier = { modifier = RTG_network_strength_2 }
 				}
-				add_dynamic_modifier = { modifier = RTG_network_strength_3 }
+				add_dynamic_modifier = {
+					modifier = RTG_network_strength_3
+					scope = RTG 
+				}
 			}
 		}
 		else_if = {
@@ -380,8 +398,114 @@ RTG_tick_up_networks = {
 					has_dynamic_modifier = { modifier = RTG_network_strength_1 }
 				}
 				remove_dynamic_modifier = { modifier = RTG_network_strength_1 }
-				add_dynamic_modifier = { modifier = RTG_network_strength_2 }
+				add_dynamic_modifier = {
+					modifier = RTG_network_strength_2
+					scope = RTG 
+				}
 			}
 		}
+	}
+}
+
+X_RTG_pick_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { X_RTG_poster_left_icon_frame = X_RTG_propaganda_empty_slot_index }
+			}
+			set_variable = { X_RTG_poster_left_icon_frame = X_RTG_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { X_RTG_propaganda_left_poster_to_age = X_RTG_poster_left_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+			hidden_effect = {
+				country_event = { id = xpand_RTG_capmaign_events.101 days = X_RTG_default_propaganda_campaign_old_days }
+				#set_country_flag = { flag = X_RTG_propaganda_left_days_remaining_flag days = X_RTG_default_propaganda_campaign_duration } #Surprise! This doesnät work with vars :D  Maybe in the future
+				if = { #Debug -> Faster time
+					limit = {
+						has_country_flag = X_RTG_debug_fast_propaganda_campaigns_flag
+					}
+					set_country_flag = { flag = X_RTG_propaganda_left_days_remaining_flag days = 5 }
+				}
+				else = { #Regular time
+					set_country_flag = { flag = X_RTG_propaganda_left_days_remaining_flag days = 140 } #Need code support to use a var here
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { X_RTG_poster_center_icon_frame = X_RTG_propaganda_empty_slot_index }
+			}
+			set_variable = { X_RTG_poster_center_icon_frame = X_RTG_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { X_RTG_propaganda_center_poster_to_age = X_RTG_poster_center_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+			hidden_effect = {
+				country_event = { id = xpand_RTG_capmaign_events.102 days = X_RTG_default_propaganda_campaign_old_days }
+				#set_country_flag = { flag = X_RTG_propaganda_center_days_remaining_flag days = X_RTG_default_propaganda_campaign_duration } #Surprise! This doesnät work with vars :D  Maybe in the future
+				if = { #Debug -> Faster time
+					limit = {
+						has_country_flag = X_RTG_debug_fast_propaganda_campaigns_flag
+					}
+					set_country_flag = { flag = X_RTG_propaganda_center_days_remaining_flag days = 5 }
+				}
+				else = { #Regular time
+					set_country_flag = { flag = X_RTG_propaganda_center_days_remaining_flag days = 140 } #Need code support to use a var here
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { X_RTG_poster_right_icon_frame = X_RTG_propaganda_empty_slot_index }
+			}
+			set_variable = { X_RTG_poster_right_icon_frame = X_RTG_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { X_RTG_propaganda_right_poster_to_age = X_RTG_poster_right_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+			hidden_effect = {
+				country_event = { id = xpand_RTG_capmaign_events.103 days = X_RTG_default_propaganda_campaign_old_days }
+				#set_country_flag = { flag = X_RTG_propaganda_right_days_remaining_flag days = X_RTG_default_propaganda_campaign_duration } #Surprise! This doesnät work with vars :D  Maybe in the future
+				if = { #Debug -> Faster time
+					limit = {
+						has_country_flag = X_RTG_debug_fast_propaganda_campaigns_flag
+					}
+					set_country_flag = { flag = X_RTG_propaganda_right_days_remaining_flag days = 5 }
+				}
+				else = { #Regular time
+					set_country_flag = { flag = X_RTG_propaganda_right_days_remaining_flag days = 140 } #Need code support to use a var here
+				}
+			}
+		}
+		set_variable = { X_RTG_new_propaganda_campaign = 0 } # Reset var
+		add_to_variable = { X_RTG_propaganda_campaigns_taken = 1 } #Update propaganda campaigns counter
+	}
+}
+
+X_RTG_reset_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { X_RTG_poster_left_icon_frame = X_RTG_propaganda_campaign_to_remove }
+			}
+			set_variable = { X_RTG_poster_left_icon_frame = X_RTG_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = X_RTG_propaganda_left_poster_to_age
+			clr_country_flag = X_RTG_propaganda_left_slot_is_old_flag
+		}
+		else_if = {
+			limit = {
+				check_variable = { X_RTG_poster_center_icon_frame = X_RTG_propaganda_campaign_to_remove }
+			}
+			set_variable = { X_RTG_poster_center_icon_frame = X_RTG_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = X_RTG_propaganda_center_poster_to_age
+			clr_country_flag = X_RTG_propaganda_center_slot_is_old_flag
+		}
+		else_if = { #This could be turned into an else, but leaving it like this to hopefully make it easier to see
+			limit = {
+				check_variable = { X_RTG_poster_right_icon_frame = X_RTG_propaganda_campaign_to_remove }
+			}
+			set_variable = { X_RTG_poster_right_icon_frame = X_RTG_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = X_RTG_propaganda_right_poster_to_age
+			clr_country_flag = X_RTG_propaganda_right_slot_is_old_flag
+		}
+		set_variable = { X_RTG_propaganda_campaign_to_remove = 0 } # Reset var
 	}
 }

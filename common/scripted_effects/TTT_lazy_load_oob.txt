@@ -1,173 +1,238 @@
 #
 LYU_lazy_load_oob = {
 	LYU = {
-	   
 		division_template = {
 			name = "Liyue Difang Minbing Lv"
 			is_locked = no
 			division_names_group = LYU_INF_02
 			regiments = {
-				irregular_infantry = { x = 0 y = 0 }
-				irregular_infantry = { x = 0 y = 1 }
-				irregular_infantry = { x = 1 y = 0 }
-				irregular_infantry = { x = 1 y = 1 }
+				irregular_infantry = {
+					x = 0
+					y = 0
+				}
+				irregular_infantry = {
+					x = 0
+					y = 1
+				}
+				irregular_infantry = {
+					x = 1
+					y = 0
+				}
+				irregular_infantry = {
+					x = 1
+					y = 1
+				}
 			}
 			support = {
-				recon = { x = 0 y = 0 }
+				recon = {
+					x = 0
+					y = 0
+				}
 			}
 		}
-	    
-		
 		division_template = {
 			name = "Qianyan Qibing"
 			is_locked = no
 			division_names_group = LYU_CAV_02
-				regiments = {
-				cavalry = { x = 0 y = 0 }
-				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }
-				cavalry = { x = 1 y = 0 }
-				cavalry = { x = 1 y = 1 }
-				cavalry = { x = 1 y = 2 }
+			regiments = {
+				cavalry = {
+					x = 0
+					y = 0
+				}
+				cavalry = {
+					x = 0
+					y = 1
+				}
+				cavalry = {
+					x = 0
+					y = 2
+				}
+				cavalry = {
+					x = 1
+					y = 0
+				}
+				cavalry = {
+					x = 1
+					y = 1
+				}
+				cavalry = {
+					x = 1
+					y = 2
+				}
 			}
-		
 			support = {
-				recon = { x = 0 y = 0 }
+				recon = {
+					x = 0
+					y = 0
+				}
 			}
 		}
-		
+		division_template = {
+			name = "Qianyan Jun"
+			is_locked = no
+			regiments = {
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 0
+					y = 3
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 3
+				}
+			}
+		}
 	}
-	
+	capital_scope = {
+		create_unit = {
+			division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.7"
+			owner = LYU
+			allow_spawning_on_enemy_provs = yes
+			count = 3
+		}
+	}
 	every_owned_state = {
-		#Capital
 		if = {
-			limit = { 
-				is_capital = yes
+			limit = {
+				arms_factory > 1
 			}
 			create_unit = {
-				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.7" 
+				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1"
 				owner = LYU
 				allow_spawning_on_enemy_provs = yes
-				count = 3
+				count = 1
+			}
+			create_unit = {
+				division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.5"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
 			}
 		}
-		
-		#Other States outside capital
+		else_if = {
+			limit = {
+				arms_factory > 0
+			}
+			create_unit = {
+				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
+			}
+			#create_unit = {
+			#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.5" 
+			#	owner = LYU
+			#	allow_spawning_on_enemy_provs = yes
+			#	count = 1
+			#}
+		}
 		else = {
-			
-			if = {
-				limit = { arms_factory > 1 }
-				create_unit = {
-					division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
-				}
-				create_unit = {
-					division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.5" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
-				}
+			create_unit = {
+				division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.1"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
 			}
-			else_if = {
-				limit = { arms_factory > 0 }
-				create_unit = {
-					division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
-				}
-				#create_unit = {
-				#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.5" 
-				#	owner = LYU
-				#	allow_spawning_on_enemy_provs = yes
-				#	count = 1
-				#}
+		}
+		#Coastal states get extra corps
+		if = {
+			limit = {
+				naval_base > 1
 			}
-			else = {
-				create_unit = {
-					division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.1" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
-				}
+			create_unit = {
+				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.1"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
 			}
-			
-			#Coastal states get extra corps
-			if = {
-				limit = { naval_base > 1 }
-				create_unit = {
-					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.1" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
+		}
+		if = {
+			limit = {
+				OR = {
+					is_coastal = yes
+					is_island_state = yes
 				}
+				arms_factory > 0
 			}
-			
-			if = {
-				limit = {
-					OR = {
-						is_coastal = yes
-						is_island_state = yes
-					}
-					arms_factory > 0
-				}
-				create_unit = {
-					division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.3" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
-				}
-				#create_unit = {
-				#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.3" 
-				#	owner = LYU
-				#	allow_spawning_on_enemy_provs = yes
-				#	count = 1
-				#}
+			create_unit = {
+				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.3"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
 			}
-			
-			#Border states get extra corps
-			if = {
-				limit = {
-					any_neighbor_state = {
-						NOT = { is_owned_by = LYU }
-					}
-					arms_factory > 1
-				}
-				create_unit = {
-					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.5" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
-				}
-			}
-			
-			else_if = {
-				limit = {
-					any_neighbor_state = {
-						NOT = { is_owned_by = LYU }
+			#create_unit = {
+			#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.3" 
+			#	owner = LYU
+			#	allow_spawning_on_enemy_provs = yes
+			#	count = 1
+			#}
+		}
+		#Border states get extra corps
+		if = {
+			limit = {
+				any_neighbor_state = {
+					NOT = {
+						is_owned_by = LYU
 					}
 				}
-				create_unit = {
-					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
+				arms_factory > 1
+			}
+			create_unit = {
+				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.5"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
+			}
+		}
+		else_if = {
+			limit = {
+				any_neighbor_state = {
+					NOT = {
+						is_owned_by = LYU
+					}
 				}
-				create_unit = {
-					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3" 
-					owner = LYU
-					allow_spawning_on_enemy_provs = yes
-					count = 1
-				}
+			}
+			create_unit = {
+				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
+			}
+			create_unit = {
+				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3"
+				owner = LYU
+				allow_spawning_on_enemy_provs = yes
+				count = 1
 			}
 		}
 	}
 }
 
 remove_liyue_civilwar_national_spirit = {
-    every_country = {
+	every_country = {
 		limit = {
 			has_idea = liyue_civilwar_for_Liyue
 		}
@@ -178,122 +243,167 @@ remove_liyue_civilwar_national_spirit = {
 SUM_lazy_load_oob = {
 	SUM = {
 		division_template = {
-			name = "Sumeru Milita"			
+			name = "Sumeru Milita"
 			is_locked = no
 			division_names_group = SUM_MAIN_01
 			regiments = {
-				infantry = { x = 0 y = 0 }
-				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }
-				infantry = { x = 0 y = 3 }
-				infantry = { x = 0 y = 4 }
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 0
+					y = 3
+				}
+				infantry = {
+					x = 0
+					y = 4
+				}
 			}
 		}
-	
 		division_template = {
 			name = "Border Guard Army"
 			is_locked = no
 			division_names_group = SUM_INF_01
 			regiments = {
-				infantry = { x = 0 y = 0 }
-				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }
-				infantry = { x = 1 y = 0 }
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
 			}
 		}
-	
 		division_template = {
 			name = "Local Milita"
 			is_locked = no
 			division_names_group = SUM_INF_02
 			regiments = {
-				irregular_infantry = { x = 0 y = 0 }
-				irregular_infantry = { x = 0 y = 1 }
-				irregular_infantry = { x = 1 y = 0 }
-				irregular_infantry = { x = 1 y = 1 }
+				irregular_infantry = {
+					x = 0
+					y = 0
+				}
+				irregular_infantry = {
+					x = 0
+					y = 1
+				}
+				irregular_infantry = {
+					x = 1
+					y = 0
+				}
+				irregular_infantry = {
+					x = 1
+					y = 1
+				}
 			}
 		}
-	
 		division_template = {
 			name = "Sumeru Cavalry"
 			is_locked = no
 			division_names_group = SUM_CAV_01
-				regiments = {
-				cavalry = { x = 0 y = 0 }
-				cavalry = { x = 0 y = 1 }
-				cavalry = { x = 0 y = 2 }
-				cavalry = { x = 1 y = 0 }
+			regiments = {
+				cavalry = {
+					x = 0
+					y = 0
+				}
+				cavalry = {
+					x = 0
+					y = 1
+				}
+				cavalry = {
+					x = 0
+					y = 2
+				}
+				cavalry = {
+					x = 1
+					y = 0
+				}
 			}
 		}
 	}
-	
 	every_owned_state = {
 		#Capital
 		if = {
-			limit = { 
+			limit = {
 				is_capital = yes
 			}
 			create_unit = {
-				division = "division_template = \"Sumeru Milita\" start_experience_factor = 0.9" 
+				division = "division_template = \"Sumeru Milita\" start_experience_factor = 0.9"
 				owner = SUM
 				allow_spawning_on_enemy_provs = yes
 				count = 4
 			}
 		}
-		
 		#Other States outside capital
 		else = {
-			
 			if = {
-				limit = { arms_factory > 1 }
+				limit = {
+					arms_factory > 1
+				}
 				create_unit = {
-					division = "division_template = \"Local Milita\" start_experience_factor = 0.1" 
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
 					owner = SUM
 					allow_spawning_on_enemy_provs = yes
 					count = 2
 				}
 				create_unit = {
-					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.5" 
+					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.5"
 					owner = SUM
 					allow_spawning_on_enemy_provs = yes
 					count = 1
 				}
 			}
-#			else_if = {
-#				limit = { arms_factory > 0 }
-#				create_unit = {
-#					division = "division_template = \"Local Milita\" start_experience_factor = 0.1" 
-#					owner = SUM
-#					allow_spawning_on_enemy_provs = yes
-#					count = 1
-#				}
-#				create_unit = {
-#					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.5" 
-#					owner = SUM
-#					allow_spawning_on_enemy_provs = yes
-#					count = 1
-#				}
-#			}
+			#			else_if = {
+			#				limit = { arms_factory > 0 }
+			#				create_unit = {
+			#					division = "division_template = \"Local Milita\" start_experience_factor = 0.1" 
+			#					owner = SUM
+			#					allow_spawning_on_enemy_provs = yes
+			#					count = 1
+			#				}
+			#				create_unit = {
+			#					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.5" 
+			#					owner = SUM
+			#					allow_spawning_on_enemy_provs = yes
+			#					count = 1
+			#				}
+			#			}
 			else = {
 				create_unit = {
-					division = "division_template = \"Local Milita\" start_experience_factor = 0.1" 
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
 					owner = SUM
 					allow_spawning_on_enemy_provs = yes
 					count = 1
 				}
 			}
-			
 			#Coastal states get extra corps
-#			if = {
-#				limit = { naval_base > 1 }
-#				create_unit = {
-#					division = "division_template = \"Border Guard Army\" start_experience_factor = 0.1" 
-#					owner = SUM
-#					allow_spawning_on_enemy_provs = yes
-#					count = 1
-#				}
-#			}
-			
+			#			if = {
+			#				limit = { naval_base > 1 }
+			#				create_unit = {
+			#					division = "division_template = \"Border Guard Army\" start_experience_factor = 0.1" 
+			#					owner = SUM
+			#					allow_spawning_on_enemy_provs = yes
+			#					count = 1
+			#				}
+			#			}
 			if = {
 				limit = {
 					OR = {
@@ -303,53 +413,55 @@ SUM_lazy_load_oob = {
 					arms_factory > 0
 				}
 				create_unit = {
-					division = "division_template = \"Local Milita\" start_experience_factor = 0.3" 
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.3"
 					owner = SUM
 					allow_spawning_on_enemy_provs = yes
 					count = 1
 				}
 				create_unit = {
-					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.3" 
+					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.3"
 					owner = SUM
 					allow_spawning_on_enemy_provs = yes
 					count = 1
 				}
 			}
-			
 			#Border states get extra corps
 			if = {
 				limit = {
 					any_neighbor_state = {
-						NOT = { is_owned_by = SUM }
+						NOT = {
+							is_owned_by = SUM
+						}
 					}
 					arms_factory > 1
 				}
 				create_unit = {
-					division = "division_template = \"Border Guard Army\" start_experience_factor = 0.5" 
+					division = "division_template = \"Border Guard Army\" start_experience_factor = 0.5"
 					owner = SUM
 					allow_spawning_on_enemy_provs = yes
 					count = 1
 				}
 			}
-			
 			else_if = {
 				limit = {
 					any_neighbor_state = {
-						NOT = { is_owned_by = SUM }
+						NOT = {
+							is_owned_by = SUM
+						}
 					}
 				}
 				create_unit = {
-					division = "division_template = \"Local Milita\" start_experience_factor = 0.3" 
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.3"
 					owner = SUM
 					allow_spawning_on_enemy_provs = yes
 					count = 1
 				}
-#				create_unit = {
-#					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.3" 
-#					owner = SUM
-#					allow_spawning_on_enemy_provs = yes
-#					count = 1
-#				}
+				#				create_unit = {
+				#					division = "division_template = \"Sumeru Cavalry\" start_experience_factor = 0.3" 
+				#					owner = SUM
+				#					allow_spawning_on_enemy_provs = yes
+				#					count = 1
+				#				}
 			}
 		}
 	}

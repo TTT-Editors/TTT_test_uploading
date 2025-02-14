@@ -1,10 +1,10 @@
-capital = 276
+capital = 34
 
 set_research_slots = 2
 set_technology = {
 	infantry_weapons = 1
-	ttt_uniform = 1
-	z_1999_grain_tech = 1
+	ttt_uniform_tech = 1
+	grain_tech_1 = 1
 }
 
 recruit_character = MOT_Albedo
@@ -13,9 +13,8 @@ recruit_character = MOT_Sucrose
 ##set country num
 set_variable ={MOT_Standpoint_country_num = 6}
 country_lock_all_division_template = yes
-set_oob = "DSC"
-add_ideas = MOT_Political_click_character7
-276 = {
+#add_ideas = MOT_Political_click_character7
+33 = {
 	add_dynamic_modifier = { modifier = MOT_Political_character_modifier}
 }
 set_stability = 0.40
@@ -27,7 +26,7 @@ set_popularities = {
 	authoritarianism = 40
 	reformism = 30
 	liberalism = 20
-	populism = 5
+	totalitarianism = 5
 	national_socialism = 5
 }
 
@@ -41,11 +40,80 @@ add_ideas = {
 	DSC_cooperate_with_adventurer_association
 	DSC_snowy_mountain_remained_people
 	MOD_the_rule_of_mondstad_defease_Others
+	DSC_finances_from_favonius
 }
 
 set_politics = {
 	ruling_party = authoritarianism
 	last_election = "1995.11.8"
 	election_frequency = 70
-	elections_allowed = No
+	elections_allowed = no
 }
+
+every_owned_state = {
+	limit = { region = 14 }
+	set_demilitarized_zone = yes
+	add_dynamic_modifier = {
+		modifier = DSC_dragon_falls
+	}
+}
+
+DSC = {
+	add_opinion_modifier = {
+		modifier = faction_traitor
+		target = MOT
+	}
+}
+
+#DSC Eagle of Dragonsprine Spirit
+set_variable = { DSC_eod_attrition = 0.15 }
+set_variable = { DSC_eod_army_speed_factor = 0.05 }
+set_variable = { DSC_eod_army_defence_factor = -0.25 }
+set_variable = { DSC_eod_army_attack_factor = -0.25 }
+set_variable = { DSC_eod_conscription_factor = -0.4 }
+set_variable = { DSC_eod_experience_gain_army_unit_factor = -0.1 }
+set_variable = { DSC_eod_org_loss_when_moving = 0.1 }
+set_variable = { DSC_eod_acclimatization_cold_climate_gain_factor = 0.05 }
+set_variable = { DSC_eod_experience_loss_factor = 0 }
+set_variable = { DSC_eod_political_power_gain = 0 }
+set_variable = { DSC_eod_army_org_factor = 0 }
+set_variable = { DSC_eod_coordination_bonus = 0 }
+set_variable = { DSC_eod_unit_artillery_brigade_design_cost_factor = 0 }
+set_variable = { DSC_eod_experience_gain_artillery_combat_factor = 0 }
+set_variable = { DSC_eod_dig_in_speed_factor = 0 }
+set_variable = { DSC_eod_max_dig_in_factor = 0 }
+set_variable = { DSC_eod_recon_factor_while_entrenched = 0 }
+set_variable = { DSC_eod_mobilization_speed = 0 }
+set_variable = { DSC_eod_breakthrough_factor = 0 }
+set_variable = { DSC_eod_mountaineers_special_forces_contribution_factor = 0 }
+set_variable = { DSC_eod_training_time_factor = 0 }
+set_variable = { DSC_eod_winter_attrition_factor = 0 }
+set_variable = { DSC_eod_army_attack_speed_factor = 0 }
+set_variable = { DSC_eod_no_supply_grace = 0 }
+set_variable = { DSC_eod_supply_consumption_factor = 0 }
+set_variable = { DSC_eod_army_org_regain = 0 }
+set_variable = { DSC_eod_out_of_supply_factor = 0 }
+set_variable = { DSC_eod_unit_mountaineers_design_cost_factor = 0 }
+set_variable = { DSC_eod_equipment_conversion_speed = 0 }
+set_variable = { DSC_eod_experience_gain_army = 0 }
+
+add_dynamic_modifier = { modifier = DSC_Eagle_of_Dragonsprine_Spirit }
+
+#DSC excavation 
+#resource 0~grain, 1~fuel, 2~tool, 3~treasure
+resize_array = { 
+	array = DSC_resource_gain
+	value = 0
+	size = 4
+}
+resize_array = { 
+	array = DSC_resource_saving
+	value = 0
+	size = 4
+}
+resize_array = { 
+	array = DSC_resource_consumption
+	value = 0
+	size = 4
+}
+set_variable = { ttt_dsc_excavate_ui_dirty = 0 }

@@ -35,7 +35,6 @@ ARF_yuanzhu = {
 	}
 	bianjing_1 = {
 		#边境袭扰
-		cost = 100
 		days_re_enable = 120
 		visible = {
 			has_country_flag = ARF_yes
@@ -44,82 +43,41 @@ ARF_yuanzhu = {
 			}
 		}
 		available = {
-			any_owned_state = {
+			69 = {
 				is_fully_controlled_by = ROOT
-				hidden_trigger = {
-					NOT = {
-						has_state_flag = border_incident_active
-					}
-				}
 				has_ROOT_at_least_1_div_in_current_state_scope = yes
-				any_neighbor_state = {
-					is_fully_controlled_by = RTG
-					NOT = {
-						has_state_flag = border_incident_active
-					}
-				}
 			}
+			63 = {
+				is_fully_controlled_by = RTG
+			}
+			has_war = no
 		}
 		custom_cost_trigger = {
 			command_power > 24.9
+			has_political_power > 99.9
 		}
+		custom_cost_text = ARF_decision_cost_25_cp_100_pp
 		complete_effect = {
-			add_command_power = -25
-			random_state = {
-				limit = {
-					any_neighbor_state = {
-						is_fully_controlled_by = RTG
-						NOT = { has_state_flag = border_incident_active }
-					}
-				}
-				hidden_effect = {
-					save_event_target_as = defender_state
-					set_variable = {
-						FROM.defender_state_vs_@ROOT = id
-					}
-					set_temp_variable = {
-						defender_state_temp = id
-					}
-					set_state_flag = border_incident_active
-				}
-			}
-			random_owned_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					hidden_trigger = {
-						NOT = {
-							has_state_flag = border_incident_active
-						}
-					}
-					has_ROOT_at_least_1_div_in_current_state_scope = yes
-					any_neighbor_state = {
-						state = var:FROM.defender_state_vs_@ROOT
-					}
-				}
-				save_event_target_as = attacker_state
-				set_variable = {
-					FROM.attacker_state_vs_@ROOT = id
-				}
-				set_temp_variable = {
-					attacker_state_temp = id
-				}
-				set_state_flag = border_incident_active
+			hidden_effect = {
+				add_command_power = -25
+				add_political_power = -100
+				set_country_flag = bianjing_1_flag
 			}
 			start_border_war = {
-				change_state_after_war = yes
+				change_state_after_war = no
 				attacker = {
-					state = var:FROM.attacker_state_vs_@ROOT
+					state = 69
 					num_provinces = 4
 					on_win = dikangjun.8					#进攻方胜利
-					on_lose = 0					#进攻方失败
+					on_lose = 0
 					on_cancel = 0
 				}
 				defender = {
-					state = var:FROM.defender_state_vs_@ROOT
+					state = 63
 					num_provinces = 4
-					on_win = 0					#防守方胜利
-					on_lose = 0					#防守方失败
-					on_cancel = 0					#防守方胜利
+					on_win = 0
+					on_lose = 0
+					on_cancel = 0
 				}
 			}
 		}

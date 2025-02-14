@@ -1,2022 +1,1048 @@
-MOT_Political_decision_category = {
-    ##################################################################################
-    #################################################################################
-    ############风魔龙危机决议
-    MOT_Political_decision_category_focustree_MOT_tree_0_07 = {
-        allowed = {
-            tag = MOT
-        }
-        activation = {
-            not = {
-                has_completed_focus = MOT_tree_0_07
-            }
-            has_completed_focus = MOT_tree_0_06
-            has_completed_focus = MOT_tree_0_05
-        }
-        available = {
-            always = no
-        }
-        is_good = yes
-        selectable_mission = no
-        days_mission_timeout = 30
-        fire_only_once = yes
-        timeout_effect = {
-            complete_national_focus = MOT_tree_0_07
-        }
-    }
-    ##########################################################################
-    #########################################################################
-    ###########################################################################
-    ##支援军区决议
-    MOT_Political_decision_support_military_region_01= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_manpower > 1000
-            country_exists = TWL
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = TWL
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                TWL = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-            }
-            modifier = {
-                TWL = {
-                    surrender_progress >0.5
-                }
-                has_war = no
-                add = 5
-                factor = 2
-            }
-        }
-        days_re_enable = 120
-		days_remove = 10
-        fire_only_once = no
-        cost = 10
-        remove_effect = {
-            TWL = {
-                country_event = {id = MOT_event.201 days = 4}
-            }
-            add_manpower = -1000
+MOT_dragon_crisis_decision_cat = {
+	MOT_dragon_crisis_decision_test = {
+
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		available = {
+			
+		}
+		complete_effect = {
+			activate_mission = MOT_dragon_crisis_time_mission
+		}
+		remove_effect = {
+
 		}
 
-    }
-    MOT_Political_decision_support_military_region_02= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_equipment = {
-                infantry_equipment > 1000
-            }
-            country_exists = TWL
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = TWL
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                TWL = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-                factor = 2
-            }
-            modifier = {
-                has_equipment = {infantry_equipment > 10000}
-                has_war = no
-                add = 5
-            }
-        }
-        days_re_enable = 90
-		days_remove = 10
-        fire_only_once = no
-        cost = 10
-        remove_effect = {
-            add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = -1000
-                producer = MOT
-            }
-            TWL = {
-                country_event = {id = MOT_event.202 days = 4}
-            }
+		ai_will_do = {
+			factor = 0
 		}
-    }
-    MOT_Political_decision_support_military_region_03= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_equipment = {
-                grain_conversion_eq > 1000
-            }
-            country_exists = TWL
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = TWL
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                TWL = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-                factor = 2
-            }
-            modifier = {
-                has_equipment = {grain_conversion_eq > 10000}
-                has_war = no
-                add = 5
-            }
-        }
-        days_re_enable = 90
-		days_remove = 10
-        fire_only_once = no
-        cost = 10
-        remove_effect = {
-            add_equipment_to_stockpile = {
-                type = grain_conversion_eq
-                amount = -1000
-                producer = MOT
-            }
-            TWL = {
-                country_event = {id = MOT_event.203 days = 4}
-            }
-		}
-    }
-    MOT_Political_decision_support_military_region_04= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_manpower > 1000
-            country_exists = MDQ
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = MDQ
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                MDQ = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-            }
-            modifier = {
-                MDQ = {
-                    surrender_progress >0.5
-                }
-                has_war = no
-                add = 5
-                factor = 1.5
-            }
-        }
-        days_re_enable = 120
-		days_remove = 10
-        fire_only_once = no
-        cost = 10
-        remove_effect = {
-            MDQ = {
-                country_event = {id = MOT_event.201 days = 3}
-            }
-            add_manpower = -1000
-		}
-    }
-    MOT_Political_decision_support_military_region_05= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_equipment = {
-                infantry_equipment > 1000
-            }
-            country_exists = MDQ
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = MDQ
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                MDQ = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-                factor = 1.8
-            }
-            modifier = {
-                has_equipment = {infantry_equipment > 10000}
-                has_war = no
-                add = 5
-            }
-        }
-        days_re_enable = 90
-		days_remove = 10
-        fire_only_once = no
-        cost = 10
-        remove_effect = {
-            add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = -1000
-                producer = MOT
-            }
-            MDQ = {
-                country_event = {id = MOT_event.202 days = 3}
-            }
-		}
-    }
-    MOT_Political_decision_support_military_region_06= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_equipment = {
-                grain_conversion_eq > 1000
-            }
-            country_exists = MDQ
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            country_exists = MDQ
-            has_country_flag = MOT_open_gui_map1
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                MDQ = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-                factor = 1.8
-            }
-            modifier = {
-                has_equipment = {grain_conversion_eq > 10000}
-                has_war = no
-                add = 5
-            }
-        }
-        days_re_enable = 90
-		days_remove = 10
-        fire_only_once = no
-        cost = 10
-        remove_effect = {
-            add_equipment_to_stockpile = {
-                type = grain_conversion_eq
-                amount = -1000
-                producer = MOT
-            }
-			MDQ = {
-                country_event = {id = MOT_event.203 days = 3}
-            }
-		}
-    }
-    MOT_Political_decision_support_military_region_07= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_manpower > 1000
-            country_exists = FXE
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = FXE
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                FXE = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-            }
-            modifier = {
-                FXE = {
-                    surrender_progress > 0.5
-                }
-                has_war = no
-                add = 5
-                factor = 1.5
-            }
-        }
-        days_re_enable = 120
-		days_remove = 10
-        fire_only_once = no
-        cost = 20
-        remove_effect = {
-            add_manpower = -1000
-			FXE = {
-                country_event = {id = MOT_event.201 days = 2}
-            }
-		}
-    }
-    MOT_Political_decision_support_military_region_08= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_equipment = {
-                infantry_equipment > 1000
-            }
-            country_exists = FXE
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = FXE
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                FXE = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-                factor = 1.5
-            }
-            modifier = {
-                has_equipment = {infantry_equipment > 10000}
-                has_war = no
-                add = 5
-            }
-        }
-        days_re_enable = 90
-		days_remove = 10
-        fire_only_once = no
-        cost = 30
-        remove_effect = {
-            add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = -1000
-                producer = MOT
-            }
-			FXE = {
-                country_event = {id = MOT_event.202 days = 2}
-            }
-		}
-    }
-    MOT_Political_decision_support_military_region_09= {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_equipment = {
-                grain_conversion_eq > 1000
-            }
-            country_exists = FXE
-            has_completed_focus = MOT_tree_0_06
-        }
-        visible = {
-            has_completed_focus = MOT_tree_0_06
-            has_country_flag = MOT_open_gui_map1
-            country_exists = FXE
-        }
-        ai_will_do = {
-            base = 0
-            modifier = {
-                FXE = {
-                    has_war = yes
-                }
-                has_war = no
-                add = 5
-                factor = 1.5
-            }
-            modifier = {
-                has_equipment = {grain_conversion_eq > 10000}
-                has_war = no
-                add = 5
-            }
-        }
-        days_re_enable = 90
-		days_remove = 10
-        fire_only_once = no
-        cost = 30
-        remove_effect = {
-            add_equipment_to_stockpile = {
-                type = grain_conversion_eq
-                amount = -1000
-                producer = MOT
-            }
-			FXE = {
-                country_event = {id = MOT_event.203 days = 2}
-            }
-		}
-    }
-    ################################################################################
-    ################################################################################
-    ################################################################################
-    ##风魔龙决议
-    ###净化风魔龙
-    MOT_Progress_decision_mission_07 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_completed_focus = MOT_tree_0_11
-            has_political_power > 200
-            check_variable = {MOT_Progress_num > 21}
-            has_global_flag = MOT_dragon_crisis
-            not = {
-                has_global_flag = MOT_dragon_crisis_is_over
-            }
-        }
-        visible = {
-            tag = MOT
-            has_country_flag = MOT_open_gui_map1
-            has_completed_focus = MOT_tree_0_11
-            has_global_flag = MOT_dragon_crisis
-            not = {
-                has_global_flag = MOT_dragon_crisis_is_over
-            }
-        }
-        ai_will_do = {
-            base = 10
-            factor = 10
-        }
-		days_remove = 10
-        fire_only_once = yes
-        cost = 200
-        fixed_random_seed = no
-        complete_effect = {
-            add_to_variable = {MOT_Progress_num = -20}
-            add_to_variable = {MOT_Progress_num_localization = -20}
-            custom_effect_tooltip = MOT_Progress_decision_mission_07_tooltip
-		}
-        remove_trigger = {
-			not = {
-                has_global_flag = MOT_dragon_crisis
-            }
-		}
-        remove_effect = {
-            ####给出结果
-            random_list = {
-                var:global.MOT_dragon_crisis_victory_probability = {
-                    news_event = {days = 1 id = MOT_event.11}
-                    every_country = {
-                        limit = {
-                            not = {
-                                original_tag = MOT
-                            }
-                        }
-                        news_event = {days = 3 id = MOT_event.1102}
-                    }
-                }
-                var:global.MOT_dragon_crisis_fail_probability = {
-                    country_event = {days = 1 id = MOT_event.14}
-                    news_event = {days = 2 id = MOT_event.15}
-                    every_country = {
-                        limit = {
-                            not = {
-                                original_tag = MOT
-                            }
-                        }
-                        news_event = {days = 2 id = MOT_event.1402}
-                    }
-                }
-            }
-            ###清除风魔龙危机的变量和标记
-            clear_variable = global.MOT_dragon_crisis_mot_scout_num
-            clear_variable = global.MOT_dragon_crisis_twl_scout_num
-            clear_variable = global.MOT_dragon_crisis_complete_state_num
-            clear_variable = global.MOT_dragon_crisis_victory_probability
-            clear_variable = global.MOT_dragon_crisis_fail_probability
-            every_state = {
-                limit = {
-                    has_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_has_begun
-                }
-                clr_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_has_begun
-            }
-            every_state = {
-                limit = {
-                    has_state_flag = MOT_TWL_the_dragon_maybe_rest_in_here
-                }
-                clr_state_flag = MOT_TWL_the_dragon_maybe_rest_in_here
-            }
-            every_state = {
-                limit = {
-                    has_state_flag = MOT_dragon_crisis_the_state_prepare_has_begun
-                }
-                clr_state_flag = MOT_dragon_crisis_the_state_prepare_has_begun
-            }
-            every_state = {
-                limit = {
-                    has_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_is_end
-                }
-                clr_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_is_end
-            }
-        }
-    }
 
-    ##消灭风魔龙
-    MOT_Progress_decision_mission_08 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            tag = MOT
-            has_completed_focus = MOT_tree_0_15
-            has_political_power > 50
-            check_variable = {MOT_Progress_num > 11}
-            has_equipment = {
-                infantry_equipment > 5000
-            }
-            command_power > 50
-            has_global_flag = MOT_dragon_crisis
-            not = {
-                has_global_flag = MOT_dragon_crisis_is_over
-            }
-        }
-        visible = {
-            has_country_flag = MOT_open_gui_map1
-            has_completed_focus = MOT_tree_0_15
-            has_global_flag = MOT_dragon_crisis
-            not = {
-                has_global_flag = MOT_dragon_crisis_is_over
-            }
-        }
-        ai_will_do = {
-            base = 10
-            factor = 10
-        }
-		days_remove = 30
-        fire_only_once = yes
-        cost = 50
-        complete_effect = {
-            add_to_variable = {MOT_Progress_num = -10}
-            add_to_variable = {MOT_Progress_num_localization = -10}
-            add_command_power = -50
-            custom_effect_tooltip = MOT_Progress_decision_mission_08_tooltip
+	}
+	MOT_dragon_crisis_time_mission = {
+		priority = 114
+		activation = {
+			always = no
 		}
-        remove_trigger = {
-			not = {
-                has_global_flag = MOT_dragon_crisis
-            }
+		available = {
+			always = no
 		}
-        remove_effect = {
-            if = {
-                limit={
-                    has_completed_focus = MOT_tree_0_16
-                }
-                news_event = {days = 1 id = MOT_event.13}
-                every_country = {
-                    limit = {
-                        not = {
-                            original_tag = MOT
-                        }
-                    }
-                    country_event = {days = 2 id = MOT_event.1302}
-                }
-                
-            }
-            else = {
-                random_list = {
-                    90 = {
-                        news_event = {days = 1 id = MOT_event.13}
-                        every_country = {
-                            limit = {
-                                not = {
-                                    original_tag = MOT
-                                }
-                            }
-                            country_event = {days = 2 id = MOT_event.1302}
-                        }
-                    }
-                    10 = {
-                        country_event = {days = 1 id = MOT_event.14}
-                        news_event = {days = 2 id = MOT_event.15}
-                        every_country = {
-                            limit = {
-                                not = {
-                                    original_tag = MOT
-                                }
-                            }
-                            news_event = {days = 2 id = MOT_event.1402}
-                        }
-                    }
-                }
-            }
-        }
-    }
-    ###################################################################
-    ###################################################################
-    ####################################################################
-    #######温和路线
-    ###观察
-    MOT_Progress_decision_mission_01 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            always = no
-        }
+		is_good = no
+		days_remove = 0
+		days_mission_timeout = 360
+		timeout_effect = {
+			add_stability = -0.2
+			add_war_support = -0.2
 
-        activation = {
-            check_variable = { global.MOT_naionalfocus_mission^0 = 1}
-            has_global_flag = MOT_dragon_crisis
-        }
-        selectable_mission = no
-        days_mission_timeout = 70
-        is_good = no
-        fire_only_once =yes
-        timeout_effect = {
-            if = {
-                limit = {
-                    has_global_flag = MOT_dragon_crisis
-                    or = {
-                        check_variable = {
-                            var = global.MOT_dragon_crisis_twl_scout_num
-                            value = 1
-                            compare = less_than
-                        }
-                        check_variable = {
-                            var = global.MOT_dragon_crisis_mot_scout_num
-                            value = 1
-                            compare = less_than
-                        }
-                    }
-                }
-                activate_mission = MOT_Progress_decision_mission_01
-                add_stability = -0.05
-            }
-            if = {
-                limit = {
-                    has_global_flag = MOT_dragon_crisis
-                    check_variable = {
-                        var = global.MOT_dragon_crisis_twl_scout_num
-                        value = 1
-                        compare = greater_than_or_equals
-                    }
-                    check_variable = {
-                        var = global.MOT_dragon_crisis_mot_scout_num
-                        value = 1
-                        compare = greater_than_or_equals
-                    }
-                }
-                TWL = {
-                    add_stability = 0.05
-                }
-                country_event = {id = MOT_event.210}
-                remove_from_array = {
-                    array = global.MOT_naionalfocus_mission
-                    index = 0
-                }
-                add_to_array = {
-                    array = global.MOT_naionalfocus_mission
-                    value = 3
-                    index = 0 
-                }
-                ##显示任务完成
-                set_temp_variable = { MOT_m = 1 }
-                MOT_Political_complete_mission = yes
-            }
-            custom_effect_tooltip = MOT_Progress_decision_mission_01_tooltip
-        }
-    }
-    ###探寻
-    MOT_Progress_decision_mission_02 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            ##goal
-            check_variable = {
-                var = global.MOT_dragon_crisis_complete_state_num
-                value = 7
-                compare = greater_than_or_equals
-            }
-        }
-        activation = {
-            check_variable = { global.MOT_naionalfocus_mission^1 = 1}
-            has_global_flag = MOT_dragon_crisis
-        }
-        selectable_mission = no
-        days_mission_timeout = 140
-        is_good = no
-        fire_only_once =yes
-        timeout_effect = {
-            if = {
-                limit={
-                    has_global_flag = MOT_dragon_crisis
-                    check_variable = {
-                        var = global.MOT_dragon_crisis_complete_state_num
-                        value = 7
-                        compare = less_than
-                    }
-                }
-                add_stability = -0.05
-            }
-            custom_effect_tooltip = MOT_Progress_decision_mission_02_tooltip
-        }
-        complete_effect = {
-            if = {
-                limit={
-                    has_global_flag = MOT_dragon_crisis
-                    check_variable = {
-                        var = global.MOT_dragon_crisis_complete_state_num
-                        value = 7
-                        compare = greater_than_or_equals
-                    }
-                }
-                country_event = {id = MOT_event.214}
-                TWL = {
-                    country_event = {id = MOT_event.213}
-                }
-                TWL = {
-                    add_stability = 0.05
-                }
-                remove_from_array = {
-                    array = global.MOT_naionalfocus_mission
-                    index = 1
-                }
-                add_to_array = {
-                    array = global.MOT_naionalfocus_mission
-                    value = 3
-                    index = 1
-                }
-                ##显示任务完成
-                set_temp_variable = { MOT_m = 2 }
-                MOT_Political_complete_mission = yes
-            }
-        }
-    }
-    ###准备净化
-    MOT_Progress_decision_mission_03 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            ##goal
-            or = {
-                check_variable = {global.MOT_dragon_crisis_victory_probability = 100}
-                check_variable = {MOT_Deadline_num > 9}
-            }
-        }
-        activation = {
-            check_variable = { global.MOT_naionalfocus_mission^2 = 1}
-            has_global_flag = MOT_dragon_crisis
-        }
-        selectable_mission = no
-        days_mission_timeout = 175
-        is_good = no
-        fire_only_once =yes
-        timeout_effect = {
-            if = {
-                limit = {
-                    has_global_flag = MOT_dragon_crisis
-                }
-                TWL = {
-                    country_event = {id = MOT_event.216}
-                }
-                country_event = {id = MOT_event.216}
-                remove_from_array = {
-                    array = global.MOT_naionalfocus_mission
-                    index = 2
-                }
-                add_to_array = {
-                    array = global.MOT_naionalfocus_mission
-                    value = 3
-                    index = 2
-                }
-                set_temp_variable = { MOT_m = 3 }
-                MOT_Political_complete_mission = yes
-            }
-            custom_effect_tooltip = MOT_Progress_decision_mission_03_tooltip
-        }
-        complete_effect = {
-            if = {
-                limit={
-                    has_global_flag = MOT_dragon_crisis
-                }
-                TWL = {
-                    country_event = {id = MOT_event.216}
-                }
-                country_event = {id = MOT_event.216}
-                remove_from_array = {
-                    array = global.MOT_naionalfocus_mission
-                    index = 2
-                }
-                add_to_array = {
-                    array = global.MOT_naionalfocus_mission
-                    value = 3
-                    index = 2
-                }
-                set_temp_variable = { MOT_m = 3 }
-                MOT_Political_complete_mission = yes
-            }
-        }
-    }
-
-
-
-    ###强硬线任务
-    ##战争准备
-    MOT_Progress_decision_mission_04 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            check_variable = {
-                var = MOT_Progress_num
-                value = 31
-                compare = greater_than_or_equals
-            }
-            check_variable = { global.MOT_naionalfocus_mission^0 = 4}
-        }
-        activation = {
-            check_variable = { global.MOT_naionalfocus_mission^0 = 2}
-            has_global_flag = MOT_dragon_crisis
-        }
-        selectable_mission = no
-        days_mission_timeout = 70
-        is_good = no
-        fire_only_once =yes
-        timeout_effect = {
-            add_stability = -0.05
-            add_war_support = -0.05
-            if = {
-                limit = {
-                    has_global_flag = MOT_dragon_crisis
-                }
-                activate_mission = MOT_Progress_decision_mission_04
-            }
-        }
-        complete_effect = {
-            add_to_variable = {MOT_Progress_num = -30}
-            add_to_variable = {MOT_Progress_num_localization = -30}
-            
-            set_temp_variable = { MOT_m = 1 }
-            MOT_Political_complete_mission = yes
-        }
-    }
-    MOT_Progress_decision_mission_05 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            check_variable = {
-                var = MOT_Progress_num
-                value = 31
-                compare = greater_than_or_equals
-            }
-            check_variable = { global.MOT_naionalfocus_mission^1 = 4}
-        }
-        activation = {
-            check_variable = { global.MOT_naionalfocus_mission^1 = 2}
-            has_global_flag = MOT_dragon_crisis
-        }
-        selectable_mission = no
-        days_mission_timeout = 70
-        is_good = no
-        fire_only_once =yes
-        timeout_effect = {
-            add_stability = -0.05
-            add_war_support = -0.05
-            if = {
-                limit = {
-                    has_global_flag = MOT_dragon_crisis
-                }
-                activate_mission = MOT_Progress_decision_mission_05
-            }
-        }
-        complete_effect = {
-            add_to_variable = {MOT_Progress_num = -30}
-            add_to_variable = {MOT_Progress_num_localization = -30}        
-            TWL = {
-                add_war_support = 0.05
-            }
-            set_temp_variable = { MOT_m = 2 }
-            MOT_Political_complete_mission = yes
-        }
-    }
-    MOT_Progress_decision_mission_06 = {
-        allowed = {
-            tag = MOT
-        }
-        available = {
-            check_variable = {
-                var = MOT_Progress_num
-                value = 31
-                compare = greater_than_or_equals
-            }
-            check_variable = { global.MOT_naionalfocus_mission^2 = 4}
-        }
-        activation = {
-            check_variable = { global.MOT_naionalfocus_mission^2 = 2}
-            has_global_flag = MOT_dragon_crisis
-        }
-        selectable_mission = no
-        days_mission_timeout = 70
-        is_good = no
-        fire_only_once =yes
-        timeout_effect = {
-            add_stability = -0.05
-            add_war_support = -0.05
-            if = {
-                limit = {
-                    has_global_flag = MOT_dragon_crisis
-                }
-                activate_mission = MOT_Progress_decision_mission_06
-            }
-        }
-        complete_effect = {
-            add_to_variable = {MOT_Progress_num = -30}
-            add_to_variable = {MOT_Progress_num_localization = -30}
-            
-            TWL = {
-                add_war_support = 0.05
-            }
-            set_temp_variable = { MOT_m = 3 }
-            MOT_Political_complete_mission = yes
-        }
-    }
-
-##########################################################################
-#######################################################################
-###########################################################################
-####跳过风魔龙
-    MOT_Political_decision_category_passby_crisis_of_dargon = {
-        allowed = {
-            tag = MOT
-        }
-        visible = {
-            is_debug = yes
-        }
-        available = {
-            is_debug = yes
-        }
-        fire_only_once = yes
-        complete_effect = {
-            ###清除风魔龙危机民族精神
+			clr_country_flag = MOT_dragon_crisis
+			set_country_flag = MOT_dragon_crisis_time_out
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	MOT_commucate_decision_1 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { QQZ FXE BLL }
+		cost = 15
+                icon = GFX_decision_MOT_talk
+		days_remove = 7
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
 			if = {
 				limit = {
-					has_idea = MOT_crisis_of_Tewalin
+					FROM = {
+						tag = QQZ
+					}
 				}
-				remove_ideas = MOT_crisis_of_Tewalin
+				country_event = { id = MOT_event.50 }
 			}
-			else_if = {
+			if = {
 				limit = {
-					has_idea = MOT_crisis_of_Tewalin2
+					FROM = {
+						tag = FXE
+					}
 				}
-				remove_ideas = MOT_crisis_of_Tewalin2
+				ROOT = {
+					country_event = { id = MOT_event.51 }
+				}
 			}
-			TWL = {
-				remove_ideas = TWL_frightening_strikes_of_windy_dargons
+			if = {
+				limit = {
+					FROM = {
+						tag = BLL
+					}
+				}
+				country_event = { id = MOT_event.53 }
 			}
-			BLL = {
-				remove_ideas = BLL_fengmolongweiji
+		}
+	}
+	MOT_commucate_decision_2 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { DSC DLK }
+		cost = 25
+                icon = GFX_decision_MOT_talk
+		days_remove = 14
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = DSC
+					}
+				}
+				country_event = { id = MOT_event.54 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = DLK
+					}
+				}
+				country_event = { id = MOT_event.55 }
+			}
+		}
+	}
+	MOT_commucate_decision_3 = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets_dynamic = yes
+		targets = { TWL MDQ ALS }
+		cost = 50
+                icon = GFX_decision_MOT_talk
+		days_remove = 21
+		fire_only_once = yes
+        priority = 12
+		ai_will_do = {
+			base = 100
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = TWL
+					}
+				}
+				country_event = { id = MOT_event.56 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = MDQ
+					}
+				}
+				country_event = { id = MOT_event.57 }
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = ALS
+					}
+				}
+				country_event = { id = MOT_event.58 }
+			}
+		}
+	}	
+	MOT_dragon_crisis_exchange_goods_decision = { #换取物资
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		days_re_enable = 0
+		days_remove = 7
+		available = {
+			
+		}
+
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_exchange_goods_tt
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 12
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_produce_goods_decision = { #生产物资
+		cost = 15
+		days_re_enable = 0
+		days_remove = 35
+		available = {
+			
+		}
+		modifier = {
+			consumer_goods_factor = 0.25
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_produce_goods_tt
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = 10
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_war_decision = { #准备武器
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^0
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_dragon_crisis_prepare_war_decision_cost_tt
+		days_re_enable = 0
+		days_remove = 7
+		visible = {
+			has_completed_focus = MOT_tree_0_12
+		}
+		available = {
+			
+		}
+		complete_effect = {
+			subtract_from_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^0
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_war_tt
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 10
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_for_twl_decision = { #针对风魔龙的特训
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+			has_equipment = {
+				infantry_equipment > MOT_DC_decision_cost_and_time^1
+			}
+		}
+		custom_cost_text = MOT_dragon_crisis_prepare_for_twl_decision_cost_tt
+		days_re_enable = 35
+		days_remove = MOT_DC_decision_cost_and_time^3
+		visible = {
+			has_completed_focus = MOT_tree_0_12
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > MOT_DC_decision_cost_and_time^1
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_for_twl_tt
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 15
+			}
+			add_command_power = 10
+			army_experience = 10
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_plan_decision = { #筹划计划
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^2
+				compare = greater_than_or_equals
+			}
+			command_power > 20
+		}
+		custom_cost_text = MOT_dragon_crisis_prepare_for_plan_cost_tt
+		days_re_enable = 21
+		days_remove = MOT_DC_decision_cost_and_time^4
+		visible = {
+			has_completed_focus = MOT_tree_0_12
+		}
+		available = {
+			command_power > 20
+		}
+		complete_effect = {
+			add_command_power = -20
+			subtract_from_variable = {
+				var = MOT_DC_finish_point
+				value = MOT_DC_decision_cost_and_time^2
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_plan_tt
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = 20
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_speech_decision = { #发表演讲
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		days_re_enable = 14
+		visible = {
+			has_completed_focus = MOT_tree_0_08
+		}
+		available = {
+			has_stability < 0.5
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_political_power = 15
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_contact_church_decision = { #联系教会
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_contact_church_cost_tt
+		days_remove = 7
+		visible = {
+			has_completed_focus = MOT_tree_0_08
+		}
+		available = {
+
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -10
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DCs_contact_church_decision
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = 10
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_prepare_appease_decision = { #安抚风魔龙的特训
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		days_re_enable = 14
+		days_remove = 35
+		visible = {
+			has_completed_focus = MOT_tree_0_08
+		}
+		available = {
+
+		}
+		modifier = {
+			consumer_goods_factor = 0.25
+			research_speed_factor = -0.25
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_DC_prepare_appease_decision_tt
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = 20
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_ask_abd_help_decision = { #寻求阿贝多的帮助
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_exchange_goods_cost_tt
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -5
+			}
+		}
+		remove_effect = {
+			DSC = {
+				country_event = { id = MOT_event.75 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+
+	MOT_dragon_crisis_the_final_plan_war_decision = { #最终的解决
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 80
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_war_point
+				value = 100
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_materials_point
+				value = 50
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_final_plan_war_cost_tt
+		days_remove = 7
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MOT_tree_0_15
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_finish_point_tt
+				check_variable = {
+					var = MOT_DC_finish_point
+					value = 80
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_war_point_tt
+				check_variable = {
+					var = MOT_DC_war_point
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_materials_point_tt
+				check_variable = {
+					var = MOT_DC_materials_point
+					value = 50
+					compare = greater_than_or_equals
+				}
+			}
+			has_idea = MOT_Jean
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -80
+			}
+			add_to_variable = {
+				var = MOT_DC_war_point
+				value = -100
+			}
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = -50
+			}
+			remove_mission = MOT_dragon_crisis_time_mission
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_dragon_crisis_the_final_plan_war_decision_tt
+			#计算概率
+			hidden_effect = {
+				set_temp_variable = {
+					var = MOT_DC_war_percent_temp
+					value = 60
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = MOT_DC_comucatetion_point
+							value = 8 
+							compare = equals
+						}
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_war_percent_temp
+						value = 15
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = MOT_DSC_support_us
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_war_percent_temp
+						value = 10
+					}
+				}
+				if = {
+					limit = {
+						has_completed_focus = MOT_tree_0_16
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_war_percent_temp
+						value = 5
+					}
+				}
+				clamp_temp_variable = {
+					var = MOT_DC_war_percent_temp
+					min = 0
+					max = 100
+				}
+				set_temp_variable = {
+					var = MOT_DC_war_percent_temp_1
+					value = 100
+				}
+				subtract_from_variable = {
+					var = MOT_DC_war_percent_temp_1
+					value = MOT_DC_war_percent_temp
+				}
+				random_list = {
+					MOT_DC_war_percent_temp = {
+						country_event = { id = MOT_event.78 }
+					}
+					MOT_DC_war_percent_temp_1 = {
+						country_event = { id = MOT_event.80 }
+					}
+				}
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+	MOT_dragon_crisis_the_final_plan_clear_decision = { #最终的净化
+		custom_cost_trigger = {
+			check_variable = {
+				var = MOT_DC_finish_point
+				value = 80
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_clear_point
+				value = 100
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = MOT_DC_materials_point
+				value = 50
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = MOT_DC_final_plan_clear_cost_tt
+		days_remove = 7
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MOT_tree_0_11
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_finish_point_tt
+				check_variable = {
+					var = MOT_DC_finish_point
+					value = 80
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_clear_point_tt
+				check_variable = {
+					var = MOT_DC_clear_point
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MOT_DC_final_plan_materials_point_tt
+				check_variable = {
+					var = MOT_DC_materials_point
+					value = 50
+					compare = greater_than_or_equals
+				}
+			}
+			has_idea = MOT_Jean
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = MOT_DC_finish_point
+				value = -80
+			}
+			add_to_variable = {
+				var = MOT_DC_clear_point
+				value = -100
+			}
+			add_to_variable = {
+				var = MOT_DC_materials_point
+				value = -50
+			}
+			remove_mission = MOT_dragon_crisis_time_mission
+		}
+		remove_effect = {
+			custom_effect_tooltip = MOT_dragon_crisis_the_final_plan_war_decision_tt
+			#计算概率
+			hidden_effect = {
+				set_temp_variable = {
+					var = MOT_DC_clear_percent_temp
+					value = 50
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = MOT_DC_comucatetion_point
+							value = 8 
+							compare = equals
+						}
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 15
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = MOT_DSC_support_us
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 10
+					}
+				}
+				if = {
+					limit = {
+						has_completed_focus = MOT_tree_0_16
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 20
+					}
+				}
+				if = {
+					limit = {
+						TWL = {
+							has_idea = MOT_Wenti
+						}
+					}
+					add_to_temp_variable = {
+						var = MOT_DC_clear_percent_temp
+						value = 20
+					}
+				}
+				clamp_temp_variable = {
+					var = MOT_DC_clear_percent_temp_1
+					min = 0
+					max = 100
+				}
+				set_temp_variable = {
+					var = MOT_DC_clear_percent_temp
+					value = 100
+				}
+				subtract_from_variable = {
+					var = MOT_DC_clear_percent_temp_1
+					value = MOT_DC_clear_percent_temp
+				}
+				random_list = {
+					MOT_DC_clear_percent_temp = {
+						country_event = { id = MOT_event.79 }
+					}
+					MOT_DC_clear_percent_temp_1 = {
+						country_event = { id = MOT_event.80 }
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+	}
+}
+
+
+
+MOT_support_military_region_decision_cat = {
+	MOT_SMR_send_mil = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_manpower > 7500
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 11
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_manpower = -7500
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.201 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_send_weapon = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 799
+			}
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 10
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -800
+				}
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.202 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_send_support = {
+		target_root_trigger = {
+			tag = MOT
+		}
+		targets = {
+			MDQ TWL FXE
+		}
+		targets_dynamic = yes
+		target_trigger = {
+			exists = yes
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 799
+			}
+		}
+		cost = 10
+		days_re_enable = 30
+		priority = 10
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			MOT = {
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = -800
+					producer = MOT
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = -800
+					producer = MOT
+				}
+			}
+			FROM = {
+				# add_manpower = 7500
+				# hidden_effect = {
+					country_event = { id = MOT_event.203 }
+				# }
+			}
+		}
+	}
+	MOT_SMR_aks_for_help_equ = {
+		cost = 10
+		days_re_enable = 60
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		
+		complete_effect = {
+			MOT = {
+				country_event = { id = MOT_event.21 days = 2 }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_manpower = {
+		cost = 10
+		days_re_enable = 60
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		
+		complete_effect = {
+			MOT = {
+				country_event = { id = MOT_event.22 days = 2 }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_war = {
+		cost = 15
+		days_re_enable = 35
+		days_remove = 35
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		available = {
+			has_war_support < 0.25
+		}
+		remove_effect = {
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	MOT_SMR_aks_for_help_sta = {
+		cost = 15
+		days_re_enable = 35
+		days_remove = 35
+		visible = {
+			OR = {
+				tag = MDQ
+				tag = TWL
+				tag = FXE
+			}
+		}
+		available = {
+			has_stability < 0.25
+		}
+		remove_effect = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+MOT_common_decisions_cat = {
+	MOT_train_mil_without_premission = {
+		cost = 25
+		days_re_enable = 35
+		days_remove = 0
+		visible = {
+			OR = {
+				tag = QQZ
+				tag = DSC
+				tag = DLK
+				tag = ALS
+			}
+		}
+		available = {
+			command_power > 20
+			has_manpower > 4000
+			has_equipment = {
+				infantry_equipment > 319
+			}
+			has_equipment = {
+				ttt_uniform_eq > 19
+			}
+			has_equipment = {
+				grain_conversion_eq > 39
+			}
+		}
+		complete_effect = {
+			add_command_power = -20
+			add_manpower = -4000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -320
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq
+				amount = -20
+			}
+			add_equipment_to_stockpile = {
+				type = grain_conversion_eq
+				amount = -40
 			}
 			hidden_effect = {
-				news_event = {
-					id = global_news.30#事件id
-					days = 7#几天后触发
-				}#此为触发世界新闻
-				##清除条件FLAG
-				clr_global_flag = MOT_dragon_crisis
-				set_global_flag = MOT_dragon_crisis_is_over
-                MOT_clear_deadline_standpoint_progress_and_clear_mission_and_flag = yes
-            }
-        }
-    }
+				if = {
+					limit = {
+						has_template = "Local Milita"
+					}
+				}
+				else = {
+					division_template = {
+						name = "Local Milita"
+						is_locked = no
+						regiments = {
+							irregular_infantry = {
+								x = 0
+								y = 0
+							}
+							irregular_infantry = {
+								x = 0
+								y = 1
+							}
+							irregular_infantry = {
+								x = 1
+								y = 0
+							}
+							irregular_infantry = {
+								x = 1
+								y = 1
+							}
+						}
+					}
+				}
+			}
+		}
+		remove_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Local Milita\" start_experience_factor = 0.1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
 }
-##############################################################################################
-############################################################################################
-##############################################################################################
-##军事线改革决议
-###绘测地图
-
-MOT_Political_decision_category = {
-    ##蒙德城
-    MOT_Political_decision_category_MOT_tree_0_43_01 = {
-        allowed = {
-            original_tag = MOT
-        }
-        visible = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-        }
-        available = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-            1 = {
-                is_owned_or_subject_trigger = yes
-            }
-            2 = {
-                is_owned_or_subject_trigger = yes
-            }
-            288 = {
-                is_owned_or_subject_trigger = yes
-            }
-            command_power > 15
-            not = {
-                has_country_flag = MOT_Survey_map_is_locking_flag
-            }
-            has_country_flag = MOT_mika_is_activating
-        }
-        ai_will_do = {
-            base = 5
-            modifier={
-                has_political_power > 150
-                add = 5
-                factor = 2
-            }
-        }
-        fire_only_once = yes
-        cost = 50
-        days_remove = 150
-        complete_effect = {
-            add_command_power = -15
-        }
-        remove_effect = {
-            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
-            1 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            2 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            288 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-        }
-    }
-    ##风起地
-    MOT_Political_decision_category_MOT_tree_0_43_02 = {
-        allowed = {
-            original_tag = MOT
-        }
-        visible = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-        }
-        available = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-            278 = {
-                is_owned_or_subject_trigger = yes
-            }
-            274 = {
-                is_owned_or_subject_trigger = yes
-            }
-            9 = {
-                is_owned_or_subject_trigger = yes
-            }
-            279 = {
-                is_owned_or_subject_trigger = yes
-            }
-            7 = {
-                is_owned_or_subject_trigger = yes
-            }
-            command_power > 15
-            not = {
-                has_country_flag = MOT_Survey_map_is_locking_flag
-            }
-            has_country_flag = MOT_mika_is_activating
-        }
-        ai_will_do = {
-            base = 5
-            modifier={
-                has_political_power > 150
-                add = 5
-                factor = 2
-            }
-        }
-        fire_only_once = yes
-        cost = 50
-        days_remove = 150
-        complete_effect = {
-            add_command_power = -15
-            278 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            274 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            9 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            279 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            7 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-        }
-        remove_effect = {
-            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
-        }
-    }
-    ##奔狼领
-    MOT_Political_decision_category_MOT_tree_0_43_03 = {
-        allowed = {
-            original_tag = MOT
-        }
-        visible = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-        }
-        available = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-            259 = {
-                is_owned_or_subject_trigger = yes
-            }
-            27 = {
-                is_owned_or_subject_trigger = yes
-            }
-            245 = {
-                is_owned_or_subject_trigger = yes
-            }
-            262 = {
-                is_owned_or_subject_trigger = yes
-            }
-            261 = {
-                is_owned_or_subject_trigger = yes
-            }
-            command_power > 15
-            not = {
-                has_country_flag = MOT_Survey_map_is_locking_flag
-            }
-            has_country_flag = MOT_mika_is_activating
-        }
-        ai_will_do = {
-            base = 5
-            modifier={
-                has_political_power > 150
-                add = 5
-                factor = 2
-            }
-        }
-        fire_only_once = yes
-        cost = 50
-        days_remove = 150
-        complete_effect = {
-            add_command_power = -15
-            259 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            27 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            245 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            262 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            261 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-        }
-        remove_effect = {
-            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
-        }
-    }
-    ##晨曦酒庄
-    MOT_Political_decision_category_MOT_tree_0_43_04 = {
-        allowed = {
-            original_tag = MOT
-        }
-        visible = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-        }
-        available = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-            26 = {
-                is_owned_or_subject_trigger = yes
-            }
-            264 = {
-                is_owned_or_subject_trigger = yes
-            }
-            263 = {
-                is_owned_or_subject_trigger = yes
-            }
-            265 = {
-                is_owned_or_subject_trigger = yes
-            }
-            267 = {
-                is_owned_or_subject_trigger = yes
-            }
-            266 = {
-                is_owned_or_subject_trigger = yes
-            }
-            command_power > 15
-            not = {
-                has_country_flag = MOT_Survey_map_is_locking_flag
-            }
-            has_country_flag = MOT_mika_is_activating
-        }
-        ai_will_do = {
-            base = 5
-            modifier={
-                has_political_power > 150
-                add = 5
-                factor = 2
-            }
-        }
-        fire_only_once = yes
-        cost = 50
-        days_remove = 150
-        complete_effect = {
-            add_command_power = -15
-            26 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            264 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            263 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            265 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            267 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            266 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-        }
-        remove_effect = {
-            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
-        }
-    }
-    ##清泉镇
-   MOT_Political_decision_category_MOT_tree_0_43_05 = {
-        allowed = {
-            original_tag = MOT
-        }
-        visible = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-        }
-        available = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-            268 = {
-                is_owned_or_subject_trigger = yes
-            }
-            8 = {
-                is_owned_or_subject_trigger = yes
-            }
-            269 = {
-                is_owned_or_subject_trigger = yes
-            }
-            271 = {
-                is_owned_or_subject_trigger = yes
-            }
-            273 = {
-                is_owned_or_subject_trigger = yes
-            }
-            270 = {
-                is_owned_or_subject_trigger = yes
-            }
-            272 = {
-                is_owned_or_subject_trigger = yes
-            }
-            command_power > 15
-            not = {
-                has_country_flag = MOT_Survey_map_is_locking_flag
-            }
-            has_country_flag = MOT_mika_is_activating
-        }
-        ai_will_do = {
-            base = 5
-            modifier={
-                has_political_power > 150
-                add = 5
-                factor = 2
-            }
-        }
-        fire_only_once = yes
-        cost = 50
-        days_remove = 150
-        complete_effect = {
-            add_command_power = -15
-            268 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            8 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            269 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            271 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            273 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            270 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            272 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-        }
-        remove_effect = {
-            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
-        }
-    }
-    ##龙脊镇
-   MOT_Political_decision_category_MOT_tree_0_43_06 = {
-        allowed = {
-            original_tag = MOT
-        }
-        visible = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-        }
-        available = {
-            original_tag = MOT
-            has_completed_focus = MOT_tree_0_43
-            275 = {
-                is_owned_or_subject_trigger = yes
-            }
-            276 = {
-                is_owned_or_subject_trigger = yes
-            }
-            command_power > 15
-            not = {
-                has_country_flag = MOT_Survey_map_is_locking_flag
-            }
-            has_country_flag = MOT_mika_is_activating
-        }
-        ai_will_do = {
-            base = 5
-            modifier={
-                has_political_power > 150
-                add = 5
-                factor = 2
-            }
-        }
-        fire_only_once = yes
-        cost = 50
-        days_remove = 150
-        complete_effect = {
-            add_command_power = -15
-            275 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-            276 = {
-                add_dynamic_modifier = {modifier = MOT_Standardize_military_planning}
-            }
-        }
-        remove_effect = {
-            set_country_flag = {flag = MOT_Survey_map_is_locking_flag value = 1 days = 30}
-        }
-    }
-    ##自由，反抗，诗文
-    MOT_Political_decision_category_Freedom_resistance_poetry = {
-        allowed = {
-            original_tag = MOT
-        }
-        visible = {
-            original_tag = MOT
-            has_idea = MOT_A_song_of_defiance
-            has_idea = MOT_The_teachings_of_freedom
-        }
-        available = {
-            original_tag = MOT
-            has_idea = MOT_A_song_of_defiance
-            has_idea = MOT_The_teachings_of_freedom
-        }
-        ai_will_do = {
-            base = 10
-            factor = 10
-        }
-        fire_only_once = yes
-        complete_effect = {
-            remove_ideas = MOT_A_song_of_defiance
-            remove_ideas = MOT_The_teachings_of_freedom
-            add_ideas = MOT_Freedom_resistance_poetry
-        }
-    }
-
-
-
-
-}
-###########################################################################
-#########################################################################
-##########################################################################
-MOT_open_gui_map_decision_category = {
-    ###西风骑士团
-    MOT_open_gui_map_decisions1 = {
-        icon = GFX_MOT_Political_map_sign1
-		allowed = {
-            tag = MOT
-		}
-        fire_only_once = no
-        state_target = yes
-        targets = {
-			state = 1
-		}
-		target_trigger = {
-			FROM = { state =1 }
-		}
-        visible = {
-                1 = {is_owned_or_subject_trigger = yes}
-        }
-		target_root_trigger = {
-            or = {
-                original_tag = MOT
-                is_subject_of = MOT
-            }
-		}
-        days_re_enable = 0
-		days_remove = 0
-        on_map_mode = map_only
-        complete_effect = {
-			MOT_open_gui_map_clr_country_flag = yes
-            MOT_Political_clr_character_flag = yes
-            set_country_flag = MOT_open_gui_map1
-            clear_variable = map_num
-            add_to_variable = {map_num = 0}
-            MOT_Political_character_is_visible = yes
-		}
-    }
-    MOT_open_gui_map_decisions2 = {
-        icon =GFX_MOT_Political_map_sign2
-		allowed = {
-            tag = MOT
-		}
-        fire_only_once = no
-        state_target = yes
-        targets = {
-			state = 2
-		}
-		target_trigger = {
-			FROM = { state =2 }
-		}
-        visible = {
-                2 = {is_owned_or_subject_trigger = yes}
-		}
-		target_root_trigger = {
-            or = {
-                original_tag = MOT
-                is_subject_of = MOT
-            }
-		}
-        days_re_enable = 0
-		days_remove = 0
-        on_map_mode = map_only
-        complete_effect = {
-			MOT_open_gui_map_clr_country_flag = yes
-            MOT_Political_clr_character_flag = yes
-            set_country_flag = MOT_open_gui_map2
-            clear_variable = map_num
-            add_to_variable = {map_num = 1}
-            MOT_Political_character_is_visible = yes
-		}
-
-    }
-    MOT_open_gui_map_decisions3 = {
-        icon =GFX_MOT_Political_map_sign3
-		allowed = {
-            tag = MOT
-		}
-        fire_only_once = no
-        state_target = yes
-        targets = {
-			state = 276
-		}
-		target_trigger = {
-			FROM = { state =276}
-		}
-        visible = {
-			276 = {is_owned_or_subject_trigger = yes}
-		}
-		target_root_trigger = {
-            or = {
-                original_tag = MOT
-                is_subject_of = MOT
-            }
-		}
-        days_re_enable = 0
-		days_remove = 0
-        on_map_mode = map_only
-        complete_effect = {
-			MOT_open_gui_map_clr_country_flag = yes
-            MOT_Political_clr_character_flag = yes
-            set_country_flag = MOT_open_gui_map3
-            clear_variable = map_num
-            add_to_variable = {map_num = 2}
-            MOT_Political_character_is_visible = yes
-		}
-
-    }
-    MOT_open_gui_map_decisions4 = {
-        icon =GFX_MOT_Political_map_sign4
-		allowed = {
-            tag = MOT
-		}
-        fire_only_once = no
-        state_target = yes
-        targets = {
-			state = 8
-		}
-		target_trigger = {
-			FROM = { state =8 }
-		}
-        visible = {
-			8 = {is_owned_or_subject_trigger = yes}
-		}
-		target_root_trigger = {
-            or = {
-                original_tag = MOT
-                is_subject_of = MOT
-            }
-		}
-        days_re_enable = 0
-		days_remove = 0
-        on_map_mode = map_only
-        complete_effect = {
-			MOT_open_gui_map_clr_country_flag = yes
-            MOT_Political_clr_character_flag = yes
-            set_country_flag = MOT_open_gui_map4
-            clear_variable = map_num
-            add_to_variable = {map_num = 3}
-            MOT_Political_character_is_visible = yes
-		}
-    }
-    MOT_open_gui_map_decisions5 = {
-        icon =GFX_MOT_Political_map_sign5
-		allowed = {
-            tag = MOT
-		}
-        fire_only_once = no
-        state_target = yes
-        targets = {
-			state = 263
-		}
-		target_trigger = {
-			FROM = { state =263 }
-		}
-        visible = {
-			263 = {is_owned_or_subject_trigger = yes}
-		}
-		target_root_trigger = {
-            or = {
-                original_tag = MOT
-                is_subject_of = MOT
-            }
-		}
-        days_re_enable = 0
-		days_remove = 0
-        on_map_mode = map_only
-        complete_effect = {
-			MOT_open_gui_map_clr_country_flag = yes
-            MOT_Political_clr_character_flag = yes
-            set_country_flag = MOT_open_gui_map5
-            clear_variable = map_num
-            add_to_variable = {map_num = 4}
-            MOT_Political_character_is_visible = yes
-		}
-
-    }
-}
-#############################################################
-###############################################################
-####风魔龙危机行动
-##variable:
-##1、global.MOT_dragon_crisis_mot_scout_num 蒙德侦察团人数 global.MOT_dragon_crisis_twl_scout_num 风龙废墟侦察团人数
-##2、global.MOT_dragon_crisis_complete_state_num 已侦察地块数
-##3、global.MOT_dragon_crisis_victory_probability 最终成功的概率 global.MOT_dragon_crisis_fail_probability 最终失败的概率
-
-MOT_dragon_crisis_decision_category = {
-    ##招募侦察团
-    MOT_dragon_crisis_decision_category_01 = {
-        allowed = {
-            original_tag = MOT
-        }
-        available = {
-            original_tag = MOT
-            has_global_flag = MOT_dragon_crisis
-            ##要求50政治点数和20点进度
-            has_political_power > 50
-            check_variable = {MOT_Progress_num > 21}
-            check_variable = { global.MOT_naionalfocus_mission^0 = 1}
-            custom_trigger_tooltip = {
-                check_variable = {MOT_Progress_num > 21}
-                tooltip = MOT_dragon_crisis_decision_category_01_trigger_tooltip
-            }
-        }
-        visible = {
-            original_tag = MOT
-            has_global_flag = MOT_dragon_crisis
-            check_variable = { global.MOT_naionalfocus_mission^0 = 1}
-        }
-        ai_will_do = {
-            base = 10
-            modifier={
-                check_variable = {global.MOT_dragon_crisis_mot_scout_num < 3 }
-                add = 10
-            }
-            modifier={
-                check_variable = {global.MOT_dragon_crisis_mot_scout_num < 1 }
-                factor = 10
-            }
-            modifier={
-                check_variable = {global.MOT_dragon_crisis_mot_scout_num > 2 }
-                factor = 0
-            }
-        }
-        cancel_if_not_visible = yes
-        cancel_if_invalid = yes
-		days_remove = 20
-        fire_only_once = no
-        cost = 30
-        complete_effect = {
-            add_to_variable = {MOT_Progress_num = -20}
-            add_to_variable = {MOT_Progress_num_localization = -20}
-            clamp_variable = {
-                var = MOT_Progress_num
-                min = 1
-                max = 101
-            }
-            clamp_variable = {
-                var = MOT_Progress_num_localization
-                min = 0
-                max = 100
-            }
-        }
-        remove_effect = {
-            add_to_variable = {global.MOT_dragon_crisis_mot_scout_num = 1}
-            add_to_variable = { MOT_Political_maintain_the_scout_political_power_cost = 0.4 }
-            country_event = {id = MOT_event.208}
-		}
-    }
-
-
-    ##支援风龙废墟军区
-    MOT_dragon_crisis_decision_category_04 = {
-        allowed = {
-            original_tag = MOT
-        }
-        available = {
-            original_tag = MOT
-            has_global_flag = MOT_dragon_crisis
-            has_political_power > 50
-            has_completed_focus = MOT_tree_0_08
-            check_variable = {MOT_Progress_num> 10 }
-            custom_trigger_tooltip = {
-                tooltip = MOT_dragon_crisis_decision_category_04_tooltip
-                check_variable = {MOT_Progress_num > 10 }
-            }
-        }
-        visible = {
-            original_tag = MOT
-            has_global_flag = MOT_dragon_crisis
-            has_completed_focus = MOT_tree_0_08
-        }
-        
-        ai_will_do = {
-            base = 0
-            modifier={
-                check_variable = {global.MOT_dragon_crisis_mot_scout_num > 1 }
-                add = 5
-            }
-            modifier={
-                check_variable = {global.MOT_dragon_crisis_twl_scout_num < 2 }
-                add = 5
-            }
-            modifier={
-                has_political_power > 50
-                factor = 5
-            }
-        }
-        cancel_if_not_visible = yes
-        cancel_if_invalid = yes
-		days_remove = 5
-        fire_only_once = no
-        cost = 50
-        complete_effect = {
-            add_to_variable = {MOT_Progress_num = -10}
-            add_to_variable = {MOT_Progress_num_localization = -10}
-            clamp_variable = {
-                var = MOT_Progress_num
-                min = 1
-                max = 101
-            }
-            clamp_variable = {
-                var = MOT_Progress_num_localization
-                min = 0
-                max = 100
-            }
-        }
-        remove_effect = {
-            TWL = {
-                country_event = {id = MOT_event.217}
-            }
-		}
-    }
-
-
-    ####探寻
-    ##风龙废墟指定省份
-    MOT_dragon_crisis_decision_category_02 = {
-        icon = GFX_MOT_dragon_crisis_decision
-        allowed = {
-            tag = MOT
-        }
-        ai_will_do = {
-            base = 10
-            factor = 10
-        }
-        fire_only_once = yes
-        state_target = yes
-        cancel_if_not_visible = yes
-        cancel_if_invalid = yes
-            #28 34 33 260 257 30 36 32 239 256 29 35
-        ####指向的是省份，里面关于省份的条件
-        ##框内的条件达成才能出现
-        target_trigger = {
-            FROM = { 
-                OR = {
-                    state = 28
-                    state = 34
-                    state = 260
-                    state = 257
-                    state = 33
-                    state = 30
-                    state = 258
-                    state = 256
-                    state = 36
-                    state = 32
-                    state = 239
-                    state = 29
-                    state = 35
-                }
-                is_owned_by = TWL
-                not = {
-                    has_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_is_end
-                }
-            }
-        }
-        
-        ##框内的条件达成才能出现
-        ####指向的是占据省份的国家，里面关于国家的条件
-        target_root_trigger = {
-            has_global_flag = MOT_dragon_crisis
-            or = {
-                check_variable = { global.MOT_naionalfocus_mission^1 = 1}
-                check_variable = { global.MOT_naionalfocus_mission^1 = 3}
-            }
-            original_tag = MOT
-        }
-        available = {
-            check_variable = { global.MOT_dragon_crisis_mot_scout_num > 0 }
-            check_variable = { MOT_Progress_num > 11}
-            command_power > 5
-            not = {
-                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
-            }
-            FROM = {
-                not = {
-                    has_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_has_begun
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = MOT_dragon_crisis_decision_category_02_trigger_tooltip
-                check_variable = { MOT_Progress_num > 11}
-            }
-        }
-        days_remove = 30
-        cost = 30
-        on_map_mode = map_and_decisions_view
-        complete_effect = {
-            FROM = {
-                set_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_has_begun
-            }
-            add_to_variable = { global.MOT_dragon_crisis_mot_scout_num = -1 }
-            clamp_variable = {
-                var = global.MOT_dragon_crisis_mot_scout_num
-                min = 0
-            }
-            add_to_variable = { MOT_Progress_num = -10}
-            add_to_variable = { MOT_Progress_num_localization = -10}
-            clamp_variable = {
-                var = MOT_Progress_num
-                min = 1
-                max = 101
-            }
-            clamp_variable = {
-                var = MOT_Progress_num_localization
-                min = 0
-                max = 100
-            }
-            add_command_power = -5
-        }
-        remove_effect = {
-            add_to_variable = { global.MOT_dragon_crisis_mot_scout_num = 1 }
-            FROM = {
-                clr_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_has_begun
-                set_state_flag = MOT_dragon_crisis_the_state_Reconnaissance_is_end
-            }
-            add_to_variable = { global.MOT_dragon_crisis_complete_state_num = 1}
-            hidden_effect = {
-                if = {
-                    limit = {
-                        FROM = {
-                            has_state_flag = MOT_TWL_the_dragon_maybe_rest_in_here
-                        }
-                    }
-                    MOT = {
-                        country_event = {
-                            id = MOT_event.207
-                            days = 1
-                        }
-                    }
-                    TWL = {
-                        country_event = {
-                            id = MOT_event.207
-                            days = 1
-                        }
-                    }
-                    ###提升成功概率
-                    add_to_variable = {global.MOT_dragon_crisis_victory_probability = 10}
-                    clamp_variable = {
-                        var = global.MOT_dragon_crisis_victory_probability
-                        min = 0
-                        max = 100
-                    }
-                    set_variable = {global.MOT_dragon_crisis_fail_probability = 100}
-                    subtract_from_variable = {global.MOT_dragon_crisis_fail_probability = global.MOT_dragon_crisis_victory_probability}
-                }
-                else= {
-                    MOT = {
-                        country_event = {
-                            id = MOT_event.206
-                            days = 1
-                        }
-                    }
-                    TWL = {
-                        country_event = {
-                            id = MOT_event.206
-                            days = 1
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    ####准备净化
-    MOT_dragon_crisis_decision_category_03 = {
-        icon = GFX_MOT_dragon_crisis_decision
-        allowed = {
-            tag = MOT
-        }
-        ai_will_do = {
-            base = 10
-            factor = 10
-        }
-        fire_only_once = no
-        state_target = yes
-        cancel_if_not_visible = yes
-        cancel_if_invalid = yes
-        target_trigger = {
-            FROM = {
-                OR = {
-                    state = 28
-                    state = 34
-                    state = 260
-                    state = 257
-                    state = 33
-                    state = 30
-                    state = 258
-                    state = 256
-                    state = 36
-                    state = 32
-                    state = 239
-                    state = 29
-                    state = 35
-                }
-                has_state_flag = MOT_TWL_the_dragon_maybe_rest_in_here
-                is_owned_by = TWL
-            }
-        }
-        target_root_trigger = {
-            has_global_flag = MOT_dragon_crisis
-            check_variable = { global.MOT_naionalfocus_mission^2 = 1}
-            or = {
-                original_tag = MOT
-                is_subject_of = MOT
-            }
-        }
-        available = {
-            check_variable = { global.MOT_dragon_crisis_mot_scout_num > 0 }
-            check_variable = { MOT_Progress_num > 11 }
-            has_equipment = { infantry_equipment > 500 }
-            not = {
-                check_variable = { global.MOT_naionalfocus_mission^2 = 3}
-            }
-            FROM = {
-                not = {
-                    has_state_flag = MOT_dragon_crisis_the_state_prepare_has_begun
-                }
-            }
-            custom_trigger_tooltip = {
-                tooltip = MOT_dragon_crisis_decision_category_03_trigger_tooltip
-                check_variable = { MOT_Progress_num > 11}
-            }
-        }
-        days_remove = 30
-        cost = 30
-        on_map_mode = map_and_decisions_view
-        complete_effect = {
-            From = {
-                set_state_flag = MOT_dragon_crisis_the_state_prepare_has_begun
-            }
-            add_equipment_to_stockpile = {
-                type = infantry_equipment
-                amount = -500
-            }
-            add_to_variable = { global.MOT_dragon_crisis_mot_scout_num = -1 }
-            clamp_variable = {
-                var = global.MOT_dragon_crisis_mot_scout_num
-                min = 0
-            }
-            add_to_variable = { MOT_Progress_num = -10}
-            add_to_variable = { MOT_Progress_num_localization = -10}
-            clamp_variable = {
-                var = MOT_Progress_num
-                min = 1
-                max = 101
-            }
-            clamp_variable = {
-                var = MOT_Progress_num_localization
-                min = 0
-                max = 100
-            }
-        }
-        remove_effect = {
-            From = {
-                clr_state_flag = MOT_dragon_crisis_the_state_prepare_has_begun
-            }
-            add_to_variable = {global.MOT_dragon_crisis_victory_probability = 10}
-            clamp_variable = {
-                var = global.MOT_dragon_crisis_victory_probability
-                min = 0
-                max = 100
-            }
-            set_variable = {global.MOT_dragon_crisis_fail_probability = 100}
-			subtract_from_variable = {global.MOT_dragon_crisis_fail_probability = global.MOT_dragon_crisis_victory_probability}
-            add_to_variable = { global.MOT_dragon_crisis_mot_scout_num = 1 }
-        }
-    }
-}
-######################################################
-########################################################

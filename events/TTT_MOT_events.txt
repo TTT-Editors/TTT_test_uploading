@@ -518,9 +518,9 @@ country_event = {
 	option = {
 		name = MOT_event.21.a
 		trigger = {
-			has_equipment = {grain_conversion_eq > 1000}
-			has_equipment = {infantry_equipment > 2000}
-			has_equipment = {ttt_uniform_eq > 1000}
+			has_equipment = {grain_conversion_eq > 800}
+			has_equipment = {infantry_equipment > 1000}
+			has_equipment = {ttt_uniform_eq > 800}
 		}
 		From = {
 			country_event = {days = 3 id = MOT_event.23}
@@ -925,7 +925,11 @@ country_event = {
 	option = {
 		name = MOT_event.201.a
 		add_war_support = 0.01
-        add_manpower = 1000
+        add_manpower = 7500
+		add_to_variable = {
+			var = MOT_SMR_expectation
+			value = 1
+		}
 	}
 }
 country_event = {
@@ -938,11 +942,14 @@ country_event = {
 	fire_only_once =no
 	option = {
 		name = MOT_event.202.a
-		add_war_support = 0.01
 		add_equipment_to_stockpile = {
 			type = infantry_equipment
-			amount = 1000
+			amount = 800
 			producer = MOT
+		}
+		add_to_variable = {
+			var = MOT_SMR_expectation
+			value = 1
 		}
 	}
 }
@@ -959,8 +966,17 @@ country_event = {
 		add_war_support = 0.01
 		add_equipment_to_stockpile = {
 			type = grain_conversion_eq
-			amount = 1000
+			amount = 800
 			producer = MOT
+		}
+		add_equipment_to_stockpile = {
+			type = ttt_uniform_eq
+			amount = 800
+			producer = MOT
+		}
+		add_to_variable = {
+			var = MOT_SMR_expectation
+			value = 1
 		}
 	}
 }
@@ -1047,22 +1063,7 @@ country_event = {
 		###设置三个flag (MOT_TWL_the_dragon_maybe_rest_in_here)在风龙废墟地块
 		random_owned_state = {
 			limit = {
-				#28 34 33 260 257 30 36 32 239 256 29 35
-				OR = {
-					state = 28 
-					state = 34
-					state = 33
-					state = 260
-					state = 257
-					state = 30
-					state = 36
-					state = 32
-					state = 239
-					state = 256
-					state = 29
-					state = 35
-					state = 258
-				}
+				has_state_flag = TWL_is_dragon_maybe_rest
 				is_fully_controlled_by = TWL
 				not = {
 					has_state_flag = MOT_TWL_the_dragon_maybe_rest_in_here
@@ -1072,22 +1073,7 @@ country_event = {
 		}
 		random_owned_state = {
 			limit = {
-				#28 34 33 260 257 30 36 32 239 256 29 35
-				OR = {
-					state = 28 
-					state = 34
-					state = 33
-					state = 260
-					state = 257
-					state = 30
-					state = 36
-					state = 32
-					state = 239
-					state = 256
-					state = 29
-					state = 35
-					state = 258
-				}
+				has_state_flag = TWL_is_dragon_maybe_rest
 				is_fully_controlled_by = TWL
 				not = {
 					has_state_flag = MOT_TWL_the_dragon_maybe_rest_in_here
@@ -1097,22 +1083,7 @@ country_event = {
 		}
 		random_owned_state = {
 			limit = {
-				#28 34 33 260 257 30 36 32 239 256 29 35
-				OR = {
-					state = 28 
-					state = 34
-					state = 33
-					state = 260
-					state = 257
-					state = 30
-					state = 36
-					state = 32
-					state = 239
-					state = 256
-					state = 29
-					state = 35
-					state = 258
-				}
+				has_state_flag = TWL_is_dragon_maybe_rest
 				is_fully_controlled_by = TWL
 				not = {
 					has_state_flag = MOT_TWL_the_dragon_maybe_rest_in_here
@@ -1231,7 +1202,7 @@ country_event = {
 country_event = {
 	id = MOT_event.41
 	immediate = {}
-	picture = GFX
+	
 	title = MOT_event.41.t
 	desc = MOT_event.41.d
 	is_triggered_only =yes
@@ -1245,7 +1216,7 @@ country_event = {
 country_event = {
 	id = MOT_event.42
 	immediate = {}
-	picture =GFX
+	
 	title = MOT_event.42.t
 	desc = MOT_event.42.d
 	is_triggered_only =yes
@@ -1258,7 +1229,7 @@ country_event = {
 country_event = {
 	id = MOT_event.43
 	immediate = {}
-	picture =GFX
+	
 	title = MOT_event.43.t
 	desc = MOT_event.43.d
 	is_triggered_only =yes
@@ -1271,7 +1242,7 @@ country_event = {
 country_event = {
 	id = MOT_event.44
 	immediate = {}
-	picture =GFX
+	
 	title = MOT_event.44.t
 	desc = MOT_event.44.d
 	is_triggered_only =yes
@@ -1284,7 +1255,7 @@ country_event = {
 country_event = {
 	id = MOT_event.45
 	immediate = {}
-	picture =GFX
+	
 	title = MOT_event.45.t
 	desc = MOT_event.45.d
 	is_triggered_only =yes
@@ -1302,7 +1273,7 @@ country_event = {
 country_event = {
 	id = MOT_event.46
 	immediate = {}
-	picture =GFX
+	
 	title = MOT_event.46.t
 	desc = MOT_event.46.d
 	is_triggered_only =yes
@@ -1315,7 +1286,7 @@ country_event = {
 country_event = {
 	id = MOT_event.47
 	immediate = {}
-	picture =GFX
+	
 	title = MOT_event.47.t
 	desc = MOT_event.47.d
 	is_triggered_only =yes
@@ -1342,7 +1313,7 @@ country_event = {
 ###失落的小太阳
 country_event = {
 	id = MOT_event.48
-	picture = GFX
+	
 	title = MOT_event.48.t
 	desc = MOT_event.48.d
 	is_triggered_only =yes
@@ -1352,5 +1323,670 @@ country_event = {
 		name = MOT_event.48.a
 		add_political_power = 15
 		custom_effect_tooltip = MOT_event48_tt
+	}
+}
+
+country_event = {
+	id = MOT_event.50 #清泉回响
+	picture = GFX_MOT_event_08
+	title = MOT_event.50.t
+	desc = MOT_event.50.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.50.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+country_event = {
+	id = MOT_event.51 #浪花应答
+	picture = GFX_MOT_event_08
+	title = MOT_event.51.t
+	desc = MOT_event.51.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.51.a
+		country_event = { id = MOT_event.52 }
+	}
+}
+country_event = {
+	id = MOT_event.52 #优菈·劳伦斯的信件
+	picture = GFX_MOT_event_08
+	title = MOT_event.52.t
+	desc = MOT_event.52.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	
+	option = {
+		name = MOT_event.52.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.53 #狼群之意
+	picture = GFX_MOT_event_08
+	title = MOT_event.53.t
+	desc = MOT_event.53.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.53.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.54 #雪麓林音
+	picture = GFX_MOT_event_08
+	title = MOT_event.54.t
+	desc = MOT_event.54.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.54.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.55
+	picture = GFX_MOT_event_08
+	title = MOT_event.55.t
+	desc = MOT_event.55.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.55.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.56
+	picture = GFX_MOT_event_08
+	title = MOT_event.56.t
+	desc = MOT_event.56.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.56.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.57
+	picture = GFX_MOT_event_08
+	title = MOT_event.57.t
+	desc = MOT_event.57.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.57.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.58
+	picture = GFX_MOT_event_08
+	title = MOT_event.58.t
+	desc = MOT_event.58.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.58.a
+		custom_effect_tooltip = MOT_DC_finish_point_weekly_add_tt
+		add_to_variable = {
+			var = MOT_DC_finish_point_weekly
+			value = 1
+		}
+		add_to_variable = {
+			var = MOT_DC_comucatetion_point
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.59
+	picture = GFX_MOT_event_08
+	title = MOT_event.59.t
+	desc = MOT_event.59.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.59.a
+		country_event = { id = MOT_event.60 days = 7 }
+	}
+}
+
+country_event = {
+	id = MOT_event.60
+	picture = GFX_MOT_event_08
+	title = MOT_event.60.t
+	desc = MOT_event.60.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.60.a
+		custom_effect_tooltip = MOT_DC_DSC_opinion_tt
+		country_event = { id = MOT_event.61 days = 7 }
+		
+	}
+}
+
+country_event = {
+	id = MOT_event.61
+	picture = GFX_MOT_event_08
+	title = MOT_event.61.t
+	desc = MOT_event.61.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.61.a
+		custom_effect_tooltip = MOT_DC_BLL_opinion_tt
+		country_event = { id = MOT_event.62 days = 7 }
+	}
+}
+
+country_event = {
+	id = MOT_event.62
+	picture = GFX_MOT_event_08
+	title = MOT_event.62.t
+	desc = MOT_event.62.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.62.a
+		custom_effect_tooltip = MOT_DC_DLK_opinion_tt
+		country_event = { id = MOT_event.63 days = 7 }
+	}
+}
+
+country_event = {
+	id = MOT_event.63
+	picture = GFX_MOT_event_08
+	title = MOT_event.63.t
+	desc = MOT_event.63.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.63.a
+		custom_effect_tooltip = MOT_DC_ALS_opinion_tt
+		country_event = { id = MOT_event.64 days = 7 }
+	}
+}
+
+country_event = {
+	id = MOT_event.64
+	picture = GFX_MOT_event_08
+	title = MOT_event.64.t
+	desc = MOT_event.64.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.64.a
+		custom_effect_tooltip = MOT_DC_QQZ_opinion_tt
+		country_event = { id = MOT_event.65 days = 7 }
+	}
+}
+
+country_event = {
+	id = MOT_event.65
+	picture = GFX_MOT_event_08
+	title = MOT_event.65.t
+	desc = MOT_event.65.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.65.a
+		custom_effect_tooltip = MOT_DC_MOT_opinion_tt
+		country_event = { id = MOT_event.66 days = 7 }
+	}
+}
+
+country_event = {
+	id = MOT_event.66
+	picture = GFX_MOT_event_08
+	title = MOT_event.66.t
+	desc = MOT_event.66.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.66.a
+		custom_effect_tooltip = MOT_DC_chose_peace_tt
+		set_country_flag = MOT_DC_chose_peace_flag
+	}
+	option = {
+		name = MOT_event.66.b
+		custom_effect_tooltip = MOT_DC_chose_war_tt
+		set_country_flag = MOT_DC_chose_war_flag
+	}
+}
+
+country_event = {
+	id = MOT_event.67
+	picture = GFX_MOT_event_08
+	title = MOT_event.67.t
+	desc = MOT_event.67.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.67.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.68
+	picture = GFX_MOT_event_08
+	title = MOT_event.68.t
+	desc = MOT_event.68.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.68.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.69
+	picture = GFX_MOT_event_08
+	title = MOT_event.69.t
+	desc = MOT_event.69.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.69.a
+		add_political_power = 25
+		custom_effect_tooltip = MOT_DC_finish_point_add_5
+		add_to_variable = {
+			var = MOT_DC_finish_point
+			value = 5
+		}
+
+	}
+}
+
+country_event = {
+	id = MOT_event.70
+	picture = GFX_MOT_event_08
+	title = MOT_event.70.t
+	desc = MOT_event.70.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.70.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.71
+	picture = GFX_MOT_event_08
+	title = MOT_event.71.t
+	desc = MOT_event.71.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.71.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.72
+	picture = GFX_MOT_event_08
+	title = MOT_event.72.t
+	desc = MOT_event.72.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.72.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.73
+	picture = GFX_MOT_event_08
+	title = MOT_event.73.t
+	desc = MOT_event.73.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.73.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.74
+	picture = GFX_MOT_event_08
+	title = MOT_event.74.t
+	desc = MOT_event.74.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.74.a
+		complete_national_focus = MOT_tree_0_16
+	}
+}
+
+country_event = {
+	id = MOT_event.75
+	picture = GFX_MOT_event_08
+	title = MOT_event.75.t
+	desc = MOT_event.75.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.75.a
+		add_political_power = -100
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_timed_idea = {
+			idea = MOT_DSC_support_idea
+			days = 120
+		}
+		MOT = {
+			country_event = { id = MOT_event.76 }
+		}
+	}
+	option = {
+		name = MOT_event.75.b
+		MOT = {
+			country_event = { id = MOT_event.77 }
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.76
+
+	title = MOT_event.76.t
+	desc = MOT_event.76.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.76.a
+		custom_effect_tooltip = MOT_event.76_tt
+		set_country_flag = MOT_DSC_support_us
+		add_to_variable = {
+			var = MOT_DC_finish_point
+			value = 25
+		}
+		add_to_variable = {
+			var= MOT_DC_materials_point
+			value =25
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.77
+
+	title = MOT_event.77.t
+	desc = MOT_event.77.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.77.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.78
+
+	title = MOT_event.78.t
+	desc = MOT_event.78.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	immediate = {
+		hidden_effect = {
+			remove_mission = MOT_dragon_crisis_time_mission
+		}
+	}
+	option = {
+		name = MOT_event.78.a
+		news_event = { id = global_news.68 }
+		add_timed_idea = {
+			idea = MOT_Wind_Dragon_ruins_reconstruction_grant
+			days = 360
+		}
+		remove_ideas = MOT_crisis_of_Tewalin2
+		hidden_effect = {
+			remove_ideas = MOT_crisis_of_Tewalin
+		}
+		QQZ = {
+			remove_ideas = QQZ_fengmolonweiji
+		}
+		BLL = {
+			remove_ideas = BLL_fengmolongweiji
+		}
+		TWL = {
+			remove_ideas = TWL_frightening_strikes_of_windy_dargons
+			add_timed_idea = {
+				idea = MOT_The_aftermath_of_the_Wind_dragon_crisis
+				days = 360
+			}
+		}
+	}
+}
+
+country_event = {
+	id = MOT_event.79
+
+	title = MOT_event.79.t
+	desc = MOT_event.79.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	immediate = {
+		hidden_effect = {
+			remove_mission = MOT_dragon_crisis_time_mission
+		}
+	}
+	option = {
+		name = MOT_event.79.a
+		
+		news_event = { id = global_news.70 }
+		
+		remove_ideas = MOT_crisis_of_Tewalin2
+		hidden_effect = {
+			remove_ideas = MOT_crisis_of_Tewalin
+		}
+		QQZ = {
+			remove_ideas = QQZ_fengmolonweiji
+		}
+		BLL = {
+			remove_ideas = BLL_fengmolongweiji
+		}
+		TWL = {
+			remove_ideas = TWL_frightening_strikes_of_windy_dargons
+		}
+		
+	}	
+	
+
+}
+
+country_event = {
+	id = MOT_event.80
+
+	title = MOT_event.80.t
+	desc = MOT_event.80.d
+	is_triggered_only =yes
+	fire_only_once =yes
+	immediate = {
+		hidden_effect = {
+			remove_mission = MOT_dragon_crisis_time_mission
+		}
+	}
+	option = {
+		name = MOT_event.80.a
+		news_event = {id = global_news.71 }
+		add_timed_idea = {
+			idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+			days = 720
+		}
+		add_country_leader_trait = MOT_Jean2_traits
+		QQZ = {
+			add_timed_idea = {
+				idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+				days = 720
+			}
+		}
+		FXE = {
+			add_timed_idea = {
+				idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+				days = 720
+			}
+		}
+		DSC = {
+			add_timed_idea = {
+				idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+				days = 720
+			}
+		}
+		MDQ = {
+			add_timed_idea = {
+				idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+				days = 720
+			}
+		}
+		TWL = {
+			add_ideas = MOT_Wind_Dragon_ruins_reconstruction
+			add_timed_idea = {
+				idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+				days = 720
+			}
+		}
+		BLL = {
+			add_timed_idea = {
+				idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+				days = 720
+			}
+		}
+		ALS = {
+			add_timed_idea = {
+				idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
+				days = 720
+			}
+		}
+	}
+}
+#猎鹿人的一天
+country_event = {
+	id = MOT_event.83
+	picture = GFX_MOT_event_08
+	title = MOT_event.83.t
+	desc = MOT_event.83.d
+	is_triggered_only =yes
+	fire_only_once =yes
+
+	option = {
+		name = MOT_event.83.a
+
+	}
+}
+
+country_event = {
+	id = MOT_event.84
+	# picture = GFX_MOT_event_08
+	title = MOT_event.84.t
+	desc = MOT_event.84.d
+	is_triggered_only =yes
+
+	option = {
+		name = MOT_event.84.a
+
 	}
 }

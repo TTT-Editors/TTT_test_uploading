@@ -18,6 +18,7 @@ country_event = {
 	id = lyu_start.2
 	title = lyu_start.2.t
 	desc = lyu_start.2.d
+    picture = GFX_news_event_liyue14
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -25,6 +26,7 @@ country_event = {
 		name = lyu_start.2.a
 	}
 }
+
 #一日复一日
 country_event = {
 	id = lyu_start.3
@@ -83,6 +85,10 @@ country_event = {
 		custom_effect_tooltip = Quarter_year_countdown_tt
 		hidden_effect = {
 			LYU = { set_political_power = 0 }
+			CUG = {
+				set_country_flag = CUG_unlock_right_focus
+				mark_focus_tree_layout_dirty = yes
+			}
 			unlock_liyue_advisors = yes
 		    if = {
 				limit = {
@@ -126,12 +132,20 @@ country_event = {
 				days = 3
 			}
 			country_event = {
+				id = liyue.9
+				days = 17
+			}
+			country_event = {
 				id = liyue.7
 				days = 5
 			}
 			country_event = {
 				id = liyue.8
 				days = 7
+			}
+			news_event = {
+				id = global_news.60
+				days = 16
 			}
 			country_event = {
 				id = liyue.10
@@ -153,6 +167,29 @@ country_event = {
 				id = lyu_start.12
 				days = 80
 			}
+			every_owned_state = {
+				limit = {
+					NOT = {
+						region = 27
+						region = 28
+						region = 29
+					}
+				}
+				set_demilitarized_zone = yes
+			}
+			delete_unit_template_and_units = {
+				division_template = "Liyue Difang Minbing Lv"
+				disband = yes #will refund equipment and manpower
+			}
+			delete_unit_template_and_units = {
+				division_template = "Qianyan Qibing"
+				disband = yes #will refund equipment and manpower
+			}
+			delete_unit_template_and_units = {
+				division_template = "Qianyan Jun"
+				disband = yes #will refund equipment and manpower
+			}
+			destroy_unit = yes
 			clr_country_flag = people_has_calmed_down
 			clr_country_flag = labours_wage_has_leveled
 			clr_country_flag = market_opening
@@ -285,6 +322,7 @@ country_event = {
 	id = lyu_start.14
 	title = lyu_start.14.t
 	desc = lyu_start.14.d
+	picture = GFX_news_event_liyue12
 	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
@@ -296,6 +334,7 @@ country_event = {
 	id = lyu_start.15
 	title = lyu_start.15.t
 	desc = lyu_start.15.d
+	picture = GFX_news_event_liyue15
 	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
@@ -925,5 +964,33 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = lyu_start.54.a
+	}
+}
+
+#青雀归乡
+country_event = {
+	id = lyu_start.55
+	title = lyu_start.55.t
+	desc = lyu_start.55.d
+	picture = GFX_news_event_liyue16
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.55.a
+		add_political_power = 5
+	}
+}
+
+#二胡声扬
+country_event = {
+	id = lyu_start.56
+	title = lyu_start.56.t
+	desc = lyu_start.56.d
+	picture = GFX_event_generic_night_scene
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_start.56.a
+		add_political_power = 5
 	}
 }

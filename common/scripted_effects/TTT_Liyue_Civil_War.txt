@@ -6,7 +6,17 @@ kickstart_of_liyue_civil_war = {
 			target = NNG
 			type = annex_everything
 		}
+		#add_timed_idea = {
+		#	idea = AI_focus_on_attack_buff
+		#	days = 180
+		#}
 	}
+	#NNG = {
+		#add_timed_idea = {
+		#	idea = AI_focus_on_attack_buff
+		#	days = 180
+		#}
+	#}
 }
 
 unlock_liyue_advisors = {
@@ -26,36 +36,55 @@ unlock_liyue_advisors = {
 
 reset_core_of_liyue = {
 	ROOT = { set_research_slots = 4 }
-	ROOT = { set_capital = { state = 124 } }
+	ROOT = {
+		set_capital = {
+			state = 51
+			remember_old_capital = no
+		}
+	}
 	ROOT = { add_named_threat = { threat = -35 name = liyue_civil_war_end_tt } }
 	ROOT = { clear_variable = ttt_liyue_civil_war_decision_ui_dirty }
 	if = {
 		limit = {
 			has_template = "Renmin Chiweidui"
 		}
-		delete_unit_template_and_units = "Renmin Chiweidui"
-		disband = yes
+		delete_unit = {
+			template = "Renmin Chiweidui"
+		}
 	}
 	if = {
 		limit = {
 			has_template = "Liyue Difang Minbing Lv"
 		}
-		delete_unit_template_and_units = "Liyue Difang Minbing Lv"
-		disband = yes
+		delete_unit_template_and_units = {
+			division_template = "Liyue Difang Minbing Lv"
+			disband = yes
+		}
 	}
 	if = {
 		limit = {
-			has_template = "Snezhnaya volunteer army"
+			has_template = "至冬国志愿军"
 		}
-		delete_unit_template_and_units = "Snezhnaya volunteer army"
-		disband = yes
+		delete_unit = {
+			template = "至冬国志愿军"
+		}
 	}
 	every_possible_country = {
-		limit = { is_nominate_liyue = yes }
+		limit = {
+			is_nominate_liyue = yes
+			NOT = { tag = CUG }
+		}
 		every_state = {
 			limit = { has_state_flag = is_Liyues_territory }
 			remove_core_of = PREV
 		}
+	}
+	every_state = {
+		limit = {
+			has_state_flag = is_Liyues_territory
+			NOT = { is_core_of = CUG }
+		}
+		add_core_of = ROOT
 	}
 	
 	#achievements

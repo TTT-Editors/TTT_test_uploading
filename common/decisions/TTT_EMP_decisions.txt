@@ -1,6 +1,6 @@
 Genshin_impact_The_Twist_of_Teyvat_Team_decision_category = {
 	Haha_you_find_me = {
-		icon = GFX_decision_generic_tank
+		icon = GFX_decision_dls
 		cost = 0
 		fire_only_once = no
 		ai_will_do = {
@@ -17,6 +17,26 @@ Genshin_impact_The_Twist_of_Teyvat_Team_decision_category = {
 		}
 		add_to_variable = {
 			XOG_zhizheng_var = 10
+		}
+	}
+	TTT_special_defeat_cg_1 = {
+		icon = GFX_decision_generic_tank
+		fire_only_once = no
+		ai_will_do = {
+			factor = 0
+		}
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			hidden_effect = {
+				#Show defeat cg GUI
+				set_global_flag = TTT_warpeace_show_gui
+				EMP = { save_global_event_target_as = winning_country }
+				EMP = { save_global_event_target_as = losing_country }
+				add_to_variable = { global.TTT_warpeace_dirty = 1 }
+				set_variable = { special_defeat_cg = 1 }
+			}
 		}
 	}
 }

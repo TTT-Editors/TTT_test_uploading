@@ -95,80 +95,6 @@ country_event = {
 }
 
 country_event = {
-	id = YFX_event.6 #（魈）烟绯来信
-	title = YFX_event.6.t
-	desc = YFX_event.6.d
-	
-	is_triggered_only = yes
-	fire_only_once = yes #仅触发一次
-	
-	option = { 
-		name = YFX_event.6.a #我们将加入璃月联盟
-		trigger = { NOT = { has_country_flag =  XOG_Choice_XOG } }
-		LYU = {
-			country_event = { 
-				days = 3 id = YFX_event.7 
-			}
-		}
-		ai_chance = {
-			factor = 40 #ai倾向，放到选项里面
-			modifier = {
-				has_war = yes 
-				factor = 60   #处于战争时的倾向
-		    }
-		}
-	}
-	
-	option = { 
-		name = YFX_event.6.b #我们不会同意
-        #immediate = {	}	当这个这个事件跳出来时的效果
-		set_country_flag = XOG_refuse_LYU
-		ai_chance = {
-			factor = 60
-			modifier = {
-				has_war = yes 
-				factor = 40   #处于战争时的倾向
-			}
-		}
-		LYU = {
-			country_event = { 
-				days = 3 id = YFX_event.8 
-			}
-		}
-	}
-}
-
-country_event = {
-	id = YFX_event.7 #魈同意加入
-	title = YFX_event.7.t
-	desc = YFX_event.7.d
-	
-	is_triggered_only = yes #能否被国策、决议等触发
-	fire_only_once = yes #仅触发一次
-	option = { 
-		name = YFX_event.7.a
-		LYU = {
-			add_to_faction = XOG
-		}
-		XOG = {
-			set_country_flag = befriend_with_LYU
-		}
-	}
-}
-
-country_event = {
-	id = YFX_event.8 #魈拒绝加入
-	title = YFX_event.8.t
-	desc = YFX_event.8.d
-	
-	is_triggered_only = yes #能否被国策、决议等触发
-	fire_only_once = yes #仅触发一次
-	option = { 
-		name = YFX_event.8.a
-	}
-}
-
-country_event = {
 	id = YFX_event.9 #雨中岩港
 	title = YFX_event.9.t
 	desc = YFX_event.9.d
@@ -208,6 +134,7 @@ country_event = {
 	id = YFX_event.12 #马上就好了
 	title = YFX_event.12.t
 	desc = YFX_event.12.d
+	picture = GFX_news_event_liyue13
 	
 	is_triggered_only = yes 
 	fire_only_once = yes 

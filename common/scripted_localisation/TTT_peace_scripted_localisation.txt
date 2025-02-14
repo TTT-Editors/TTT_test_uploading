@@ -1,28 +1,82 @@
-defined_text = { #战争结语
+defined_text = {
+	#战争结语
 	name = TTT_Getwarpeacet
-	text = { #刻晴战败
+	text = {
+		#干涉军傀儡战败
+		#This should put on first
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
 			}
 			event_target:losing_country = {
+				is_subject_of = ZDG
+			}
+		}
+		localization_key = TTT_ganshejun_kuilei
+	}
+	text = {
+		#刻晴战败
+		trigger = {
+			event_target:winning_country = {
+				or = {
+					is_nominate_liyue = yes
+					original_tag = ZDG
+				}
+			}
+			event_target:losing_country = {
 				original_tag = KQG
+				NOT = {
+					is_subject_of = ZDG
+				}
 			}
 		}
 		localization_key = TTT_Keqingzhanbai
 	}
-	text = { #凝光战败
+	text = {
+		#凝光战败
 		trigger = {
 			event_target:winning_country = {
-				is_nominate_liyue = yes
+				or = {
+					is_nominate_liyue = yes
+					original_tag = ZDG
+				}
 			}
 			event_target:losing_country = {
 				original_tag = NNG
+				NOT = {
+					is_subject_of = ZDG
+				}
 			}
 		}
 		localization_key = TTT_Ningguangzhanbai
 	}
-	text = { #至冬战败
+	text = {
+		#菜了吗？如菜
+		trigger = {
+			date > 2001.9.1
+			event_target:winning_country = {
+				original_tag = CUG
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+		localization_key = TTT_Zhidongzhanbai_CUG_special
+	}
+	text = {
+		#哥们你怎么这么菜啊
+		trigger = {
+			event_target:winning_country = {
+				original_tag = CUG
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+		localization_key = TTT_Zhidongzhanbai_CUG
+	}
+	text = {
+		#至冬战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -33,35 +87,56 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_Zhidongzhanbai
 	}
-	text = { #仙人战败
+	text = {
+		#沉玉谷战败
 		trigger = {
 			event_target:winning_country = {
-			    or = {
-				is_nominate_liyue = yes
 				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				original_tag = CUG
+			}
+		}
+		localization_key = TTT_CUG_defeated
+	}
+	text = {
+		#仙人战败
+		trigger = {
+			event_target:winning_country = {
+				or = {
+					is_nominate_liyue = yes
+					original_tag = ZDG
 				}
 			}
 			event_target:losing_country = {
 				original_tag = XRG
+				NOT = {
+					is_subject_of = ZDG
+				}
 			}
 		}
 		localization_key = TTT_Xianrenzhanbai
 	}
-	text = { #魈战败
+	text = {
+		#魈战败
 		trigger = {
 			event_target:winning_country = {
-			    or = {
-				is_nominate_liyue = yes
-				original_tag = ZDG
+				or = {
+					is_nominate_liyue = yes
+					original_tag = ZDG
 				}
 			}
 			event_target:losing_country = {
 				original_tag = XOG
+				NOT = {
+					is_subject_of = ZDG
+				}
 			}
 		}
 		localization_key = TTT_Xiaozhanbai
 	}
-	text = { #璃月港战败
+	text = {
+		#璃月港战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -69,26 +144,37 @@ defined_text = { #战争结语
 			event_target:losing_country = {
 				original_tag = LYU
 				or = {
-				NOT = { has_global_flag = liyue_unified }
-				NOT = { country_exists = ZDG }
+					NOT = {
+						has_global_flag = liyue_unified
+					}
+					NOT = {
+						country_exists = ZDG
+					}
+					NOT = {
+						is_subject_of = ZDG
+					}
 				}
 			}
 		}
 		localization_key = TTT_Liyuegangzhanbai
 	}
-	text = { ##璃月抵抗同盟战败
+	text = {
+		##璃月抵抗同盟战败
 		trigger = {
 			event_target:winning_country = {
 				original_tag = ZDG
 			}
 			event_target:losing_country = {
-				original_tag = LYU
+				LYU = {
+					has_capitulated = yes
+				}
 				has_global_flag = liyue_unified
 			}
 		}
 		localization_key = TTT_Liyuegangdikangtongmengzhanbai
 	}
-	text = { #好龙王战败
+	text = {
+		#好龙王战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -96,13 +182,17 @@ defined_text = { #战争结语
 			event_target:losing_country = {
 				original_tag = RTG
 				RTG = {
-				has_government = reformism
+					has_government = reformism
+					NOT = {
+					is_subject_of = ZDG
+				    }
 				}
 			}
 		}
 		localization_key = TTT_Longwangzhanbai
 	}
-	text = { #坏龙王战败
+	text = {
+		#坏龙王战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -110,37 +200,48 @@ defined_text = { #战争结语
 			event_target:losing_country = {
 				original_tag = RTG
 				RTG = {
-				has_government = hive_mind
+					has_government = hive_mind
+					NOT = {
+					is_subject_of = ZDG
+				    }
 				}
 			}
 		}
 		localization_key = TTT_Longwangbadzhanbai
 	}
-	text = { #黑岩军战败
+	text = {
+		#黑岩军战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
 			}
 			event_target:losing_country = {
 				original_tag = ANG
+				NOT = {
+					is_subject_of = ZDG
+				}
 			}
 		}
 		localization_key = TTT_Heiyanjunzhanbai
 	}
-	text = { #抵抗军战败
+	text = {
+		#抵抗军战败
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
 			}
 			event_target:losing_country = {
 				original_tag = ARF
+				NOT = {
+					is_subject_of = ZDG
+				}
 			}
 		}
 		localization_key = TTT_dikangjunzhanbai
 	}
-	
 	#############################################################################################
-	text = { # MDQ vs QQR, MDQ won
+	text = {
+		# MDQ vs QQR, MDQ won
 		trigger = {
 			event_target:winning_country = {
 				tag = MDQ
@@ -148,11 +249,14 @@ defined_text = { #战争结语
 			event_target:losing_country = {
 				tag = QQR
 			}
-			QQR = { exists = no }
+			QQR = {
+				exists = no
+			}
 		}
 		localization_key = TTT_MDQ_QQR_won_tooltip
 	}
-	text = { # MDQ vs QQR, MDQ lost
+	text = {
+		# MDQ vs QQR, MDQ lost
 		trigger = {
 			event_target:winning_country = {
 				tag = QQR
@@ -160,11 +264,14 @@ defined_text = { #战争结语
 			event_target:losing_country = {
 				tag = MDQ
 			}
-			MDQ = { has_country_flag = MDQ_has_lost_ddup_war }
+			MDQ = {
+				has_country_flag = MDQ_has_lost_ddup_war
+			}
 		}
 		localization_key = TTT_MDQ_QQR_lost_tooltip
 	}
-	text = { # MDQ vs QQR, Stalemate
+	text = {
+		# MDQ vs QQR, Stalemate
 		trigger = {
 			event_target:winning_country = {
 				tag = QQR
@@ -175,14 +282,57 @@ defined_text = { #战争结语
 		}
 		localization_key = TTT_MDQ_QQR_tie_tooltip
 	}
+	text = {
+		#Special_cg
+		trigger = {
+			event_target:winning_country = {
+				tag = EMP
+			}
+			event_target:losing_country = {
+				tag = EMP
+			}
+			check_variable = {
+				special_defeat_cg = 1
+			}
+		}
+		localization_key = TTT_TTT_special_defeat_cg_1_tt
+	}
 	#通用结语
 	text = {
 		localization_key = TTT_zhanbaitonyonjieyu
 	}
 }
-defined_text = { #战争描述
+
+defined_text = {
+	#战争描述
 	name = TTT_Getwapeace_description
-	text = { #联合阵线成功
+	text = {
+		#菜了吗？如菜
+		trigger = {
+			date > 2001.9.1
+			event_target:winning_country = {
+				original_tag = CUG
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+		localization_key = TTT_Zhidongzhanbai_CUG_special_tt
+	}
+	text = {
+		#哥们你怎么这么菜啊
+		trigger = {
+			event_target:winning_country = {
+				original_tag = CUG
+			}
+			event_target:losing_country = {
+				original_tag = ZDG
+			}
+		}
+		localization_key = TTT_Zhidongzhanbai_CUG_tt
+	}
+	text = {
+		#联合阵线成功
 		trigger = {
 			event_target:winning_country = {
 				has_global_flag = liyue_unified
@@ -191,21 +341,25 @@ defined_text = { #战争描述
 				original_tag = ZDG
 			}
 		}
-	localization_key = TTT_lianhezhenxianchenggon
+		localization_key = TTT_lianhezhenxianchenggon
 	}
-	text = { #联合阵线战败
+	text = {
+		#联合阵线战败
 		trigger = {
 			event_target:winning_country = {
 				original_tag = ZDG
 			}
 			event_target:losing_country = {
 				has_global_flag = liyue_unified
-				country_exists = ZDG
+				LYU = {
+					has_capitulated = yes
+				}
 			}
 		}
-	localization_key = TTT_lianhezhenxianzhanbai
+		localization_key = TTT_lianhezhenxianzhanbai
 	}
-	text = { #干涉军胜利描述
+	text = {
+		#干涉军胜利描述
 		trigger = {
 			event_target:winning_country = {
 				original_tag = ZDG
@@ -214,21 +368,25 @@ defined_text = { #战争描述
 				is_nominate_liyue = yes
 			}
 		}
-	localization_key = TTT_ganshejunshenglimiaoshu
+		localization_key = TTT_ganshejunshenglimiaoshu
 	}
-	text = { #干涉军失败描述
+	text = {
+		#干涉军失败描述
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
-				NOT = { has_global_flag = liyue_unified }
+				NOT = {
+					has_global_flag = liyue_unified
+				}
 			}
 			event_target:losing_country = {
 				original_tag = ZDG
 			}
 		}
-	localization_key = TTT_ganshejunshibaimiaoshu
+		localization_key = TTT_ganshejunshibaimiaoshu
 	}
-	text = { #LYU内战通用描述
+	text = {
+		#LYU内战通用描述
 		trigger = {
 			event_target:winning_country = {
 				is_nominate_liyue = yes
@@ -237,11 +395,11 @@ defined_text = { #战争描述
 				is_nominate_liyue = yes
 			}
 		}
-	localization_key = TTT_liyueneizhanmiaoshu
+		localization_key = TTT_liyueneizhanmiaoshu
 	}
-	
 	#############################################################################################
-	text = { # MDQ vs QQR, MDQ won
+	text = {
+		# MDQ vs QQR, MDQ won
 		trigger = {
 			event_target:winning_country = {
 				tag = MDQ
@@ -249,11 +407,14 @@ defined_text = { #战争描述
 			event_target:losing_country = {
 				tag = QQR
 			}
-			QQR = { exists = no }
+			QQR = {
+				exists = no
+			}
 		}
 		localization_key = TTT_MDQ_QQR_won_description
 	}
-	text = { # MDQ vs QQR, MDQ lost
+	text = {
+		# MDQ vs QQR, MDQ lost
 		trigger = {
 			event_target:winning_country = {
 				tag = QQR
@@ -261,11 +422,14 @@ defined_text = { #战争描述
 			event_target:losing_country = {
 				tag = MDQ
 			}
-			MDQ = { has_country_flag = MDQ_has_lost_ddup_war }
+			MDQ = {
+				has_country_flag = MDQ_has_lost_ddup_war
+			}
 		}
 		localization_key = TTT_MDQ_QQR_lost_description
 	}
-	text = { # MDQ vs QQR, Stalemate
+	text = {
+		# MDQ vs QQR, Stalemate
 		trigger = {
 			event_target:winning_country = {
 				tag = QQR
@@ -275,6 +439,33 @@ defined_text = { #战争描述
 			}
 		}
 		localization_key = TTT_MDQ_QQR_tie_description
+	}
+	text = {
+		#沉玉谷战败
+		trigger = {
+			event_target:winning_country = {
+				original_tag = ZDG
+			}
+			event_target:losing_country = {
+				original_tag = CUG
+			}
+		}
+		localization_key = TTT_CUG_defeated_description
+	}
+	text = {
+		#Special_cg
+		trigger = {
+			event_target:winning_country = {
+				tag = EMP
+			}
+			event_target:losing_country = {
+				tag = EMP
+			}
+			check_variable = {
+				special_defeat_cg = 1
+			}
+		}
+		localization_key = TTT_TTT_special_defeat_cg_1_desc
 	}
 	#通用描述
 	text = {

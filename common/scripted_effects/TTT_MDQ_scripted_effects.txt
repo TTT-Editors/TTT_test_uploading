@@ -27,30 +27,20 @@ MDQ_MDQ_transfer_dynamic_modifiers = {
 }
 
 recalculate_MDQ_core = {
-	if = {
-		limit = { LTM = { exists = yes } }
-		MDQ = {
-			annex_country = {
-				target = LTM
-				transfer_troops = no
-			}
-		}
-		every_state = {
-			limit = { is_core_of = LTM }
-			remove_core_of = LTM
-		}
-	}
 	every_state = {
 		limit = { is_core_of = MDQ }
 		if = {
-			limit = { controlled_by = MDQ }
+			limit = { is_controlled_by = MDQ }
 			remove_core_of = QQR
+			add_core_of = MDQ
 		}
 		if = {
-			limit = { controlled_by = QQR }
+			limit = { is_controlled_by = QQR }
 			remove_core_of = MDQ
+			add_core_of = QQR
 		}
 	}
+	
 	if = {
 		limit = { has_dlc = "Together for Victory" }
 		MOT = {
@@ -63,4 +53,6 @@ recalculate_MDQ_core = {
 	else = {
 		MOT = { puppet = MDQ }
 	}
+	
+	MOT = { add_to_faction = MDQ }
 }

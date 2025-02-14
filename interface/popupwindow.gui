@@ -3,7 +3,7 @@ guiTypes = {
 	containerWindowType = {
 		name = "diplomacy_standard_popup_window"
 		position = { x = -225 y = -160 }
-		size = { width = 584 height = 280 }
+		size = { width = 584 height = 320 }
 		orientation= center
 		moveable = yes
 		fade_time = 200
@@ -17,7 +17,7 @@ guiTypes = {
 			quadTextureSprite ="GFX_tiled_bg"
 		}
 
-		iconType = {
+		iconType =	{
 			name ="diplo_popup_header_bg"
 			spriteType = "GFX_diplo_popup_header_bg_large"
 			position = { x= 0 y = 8 }
@@ -100,21 +100,20 @@ guiTypes = {
 			borderSize = {x = 0 y = 0}
 			text = "Long text here!"
 			maxWidth = 325
-			maxHeight = 130
+			maxHeight = 160
 			format = centre
 			scrollbartype = "standardtext_slider"
 		}
 
-		iconType =
-		{
+		iconType = {
 			name ="diplo_popup_bottom"
 			spriteType = "GFX_diplo_popup_bottom_large"
-			position = { x= 0 y = 218 }
+			position = { x= 0 y = 253 }
 		}
 
 		buttonType = {
 			name = "decline_button"
-			position = { x=77 y =231}
+			position = { x=77 y =265}
 			quadTextureSprite ="GFX_button_123x34"
 			buttonText = "FE_DECLINE"
 			buttonFont = "hoi_18mbs"
@@ -123,7 +122,7 @@ guiTypes = {
 
 		buttonType = {
 			name = "accept_button"
-			position = { x=386 y =231}
+			position = { x=386 y =265}
 			quadTextureSprite ="GFX_button_123x34"
 			buttonText = "FE_ACCEPT"
 			buttonFont = "hoi_18mbs"
@@ -804,6 +803,13 @@ guiTypes = {
 		}
 
 		iconType = {
+			name = "design_team_icon"
+			position = { x= 400 y = 130 }
+			centerposition = yes
+			hide = yes
+		}
+
+		iconType = {
 			name = "equipment_icon"
 			quadTextureSprite ="GFX_land_equipment_role_icons"
 			position = { x= 312 y = 140 }
@@ -896,6 +902,109 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "message_popup_window"
+		position = { x = -349 y = -464 }
+		size = { width = 350 height = 220 }
+		orientation=lower_right
+		moveable = no
+		fade_time = 200
+		fade_type = linear
+		show_sound = diplomatic_notification
+		hide_sound = menu_close_window
+		click_to_front = no
+		
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_bg"
+		}
+
+		instantTextBoxType = {
+			name = "title"
+			position = { x = -105 y = 26 }
+			textureFile = ""
+			font = "hoi_18mbs"
+			borderSize = {x = 0 y = 0}
+			text = "Title"
+			maxWidth = 210
+			maxHeight = 44
+			fixedsize = yes
+			multiline = yes
+			format = center
+			orientation = center_up
+		}
+		
+		iconType = {
+			name = "diplo_war_large_icon"
+			quadTextureSprite ="GFX_diplo_war_large_icon"
+			position = { x= 16 y = 6 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "diplo_war_large_icon2"
+			quadTextureSprite ="GFX_diplo_war_large_icon"
+			position = { x= 427 y = 6 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "sender_flag"
+			quadTextureSprite ="GFX_flag_small2"
+			position = { x= 22 y = 23 }
+			Orientation = "UPPER_LEFT"
+		}
+
+		iconType =
+		{
+			name ="sender_flag_frame"
+			spriteType = "GFX_diplo_countrylist_flag_frame"
+			position = { x= 18 y = 19 }
+		}
+
+		iconType = {
+			name = "receiver_flag"
+			quadTextureSprite ="GFX_flag_small2"
+			position = { x= -63 y = 23 }
+			Orientation = "UPPER_RIGHT"
+		}
+
+		iconType =
+		{
+			name ="receiver_flag_frame"
+			spriteType = "GFX_diplo_countrylist_flag_frame"
+			position = { x= -68 y = 19 }
+			Orientation = "UPPER_RIGHT"
+		}
+		
+		instantTextBoxType = {
+			name = "message"
+			position = { x = 21 y = 76 }
+			textureFile = ""
+			font = "hoi_18mbs"
+			borderSize = {x = 0 y = 0}
+			text = "蠢驴你个斯德哥尔摩日山羊的"
+			maxWidth = 308
+			maxHeight = 110
+			format = center
+			scrollbartype = "standardtext_slider"
+		}
+
+		iconType = {
+			name ="diplo_popup_bottom"
+			spriteType = "GFX_diplo_popup_bottom"
+			position = { x= 3 y = 249 }
+		}
+		
+		iconType = {
+			name = "timeout_progressbar"
+			spriteType = "GFX_popup_progressbar"
+			position = { x=14 y=193 }
+		}
+	}
+	
+	containerWindowType = {
+		name = "confirmation_popup_window"
 		position = { x = -225 y = -160 }
 		size = { width = 500 height = 320 }
 		orientation= center
@@ -1004,7 +1113,7 @@ guiTypes = {
 			shortcut = "RETURN"
 		}
 	}
-
+	
 	containerWindowType = {
 		name = "political_goal_popup_window"
 		position = { x = -225 y = -160 }
@@ -1717,12 +1826,13 @@ guiTypes = {
 		}
 
 
-#		iconType = {
-#			name ="focus_popup_bg"
-#			spriteType = "GFX_focus_popup_bg"
-#			position = { x= 15 y = 72 }
-#			alwaystransparent = yes
-#		}
+		iconType =
+		{
+			name ="focus_popup_bg"
+			spriteType = "GFX_focus_popup_bg"
+			position = { x= 15 y = 72 }
+			alwaystransparent = yes
+		}
 
 		iconType =
 		{

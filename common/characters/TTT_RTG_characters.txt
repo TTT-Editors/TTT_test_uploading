@@ -1,4 +1,4 @@
-﻿characters={
+characters={
 	RTG_KunJun = {
 		name=RTG_KunJun #领袖和领袖介绍本地化是这个：TTT_characters_l_english
 		portraits={
@@ -16,10 +16,11 @@
 			slot = political_advisor #这里填算什么顾问，这里是政治顾问
 			idea_token = RTG_KunJun  #idea，代号
 			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
-					original_tag = RTG
+				original_tag = RTG
 			}
 			visible = {						#出现（就是看得见）条件，如果没有写always = yes
 				NOT = { has_government = hive_mind }
+				has_country_flag = RTG13_flag
 			}
 			available = {						#出现（就是看得见）条件，如果没有写always = yes
 				NOT = { has_government = hive_mind }
@@ -41,14 +42,24 @@
 			id=-1
 		}
 		
-		field_marshal={
-			traits={ }
-			skill=7
-			attack_skill=7
-			defense_skill=7
-			planning_skill=7
-			logistics_skill=7
+		country_leader={ #领袖
+			desc = RTG_KunJun_desc
+			ideology = reformism_subtype
+			traits={ mysterious_mineralogist }
+			expire="2022.10.20.1"
+			id=-1
+		}
+		corps_commander={
+			traits={ organizer }
+			skill=2
+			attack_skill=1
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
 			legacy_id=-1
+			visible = { 
+				has_country_flag = RTG13_flag
+			}
 		}
 	}
 	
@@ -57,9 +68,11 @@
 		portraits={
 		    civilian={
 				large = GFX_portrait_large_Liyue_Retuo_good
+				small = GFX_portrait_small_Liyue_Retuo_good
 			}
 			army={
 		        large = GFX_portrait_large_Liyue_Retuo_good
+				small = GFX_portrait_small_Liyue_Retuo_good
 			}
 		}
 		
@@ -72,23 +85,67 @@
 		}
 		
 		advisor = {
-			slot = high_command
+			slot = army_chief
 			idea_token = RTG_Retuo
-			ledger = army
 			allowed  = { 
 			    original_tag = RTG
 			}
-			visible = { has_government = reformism }
+			visible = { 
+			has_country_flag = RTG13_flag
+			}
 			traits = { Rock_firm }
+            cost = 200	
+			ai_will_do = {
+				base = 50
+			}			
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RTG_Retuo_political
+			allowed  = { 
+			    original_tag = RTG
+			}
+			visible = {
+			has_country_flag = RTG13_flag
+			}
+			traits = { RTG_Yanzhi_juanshu }
             cost = 200	
 			ai_will_do = {
 				base = 10
 			}			
 		}
+		advisor = {
+			slot = theorist
+			idea_token = RTG_Retuo_theorist
+			ledger = army
+			allowed  = { 
+			    original_tag = RTG
+			}
+			visible = {
+			has_country_flag = RTG13_flag
+			}
+			traits = { RTG_Yanzhang_yansui }
+            cost = 200	
+			ai_will_do = {
+				base = 10
+			}			
+		}
+		field_marshal={
+			traits={ handonshanyue_longwang_good yanbigongming_zhili_good geo_element organizer unyielding_defender thorough_planner }
+			skill=7
+			attack_skill=5
+			defense_skill=7
+			planning_skill=8
+			logistics_skill=8
+			legacy_id=-1
+			visible = { 
+			has_country_flag = RTG13_flag
+			}
+		}
 	}
 	
 	RTG_Retuo_bad = {
-	    name=RTG_Retuo_good
+	    name=RTG_Retuo_bad
 		portraits={
 		    civilian={
 				large = GFX_portrait_large_Liyue_Retuo_bad
@@ -101,9 +158,63 @@
 		country_leader={
 			desc = RTG_Retuo_bad_desc
 			ideology = hive_mind_subtype
-			traits={  }
+			traits={ Morax_Juanshu_1 }
 			expire="2022.10.20.1"
 			id=-1
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RTG_Retuo_bad
+			allowed  = { 
+			    original_tag = RTG
+			}
+			visible = { 
+			has_government = hive_mind 
+			}
+			traits = { RTG_Yuansu_baojun }
+            cost = 200	
+			ai_will_do = {
+				base = 10
+			}			
+		}
+		advisor = {
+			slot = theorist
+			idea_token = RTG_Retuo_bad_theorist
+			ledger = army
+			allowed  = { 
+			    original_tag = RTG
+			}
+			visible = { has_government = hive_mind }
+			traits = { RTG_yuansu_hongliu }
+            cost = 200	
+			ai_will_do = {
+				base = 10
+			}			
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = RTG_Retuo_bad_army
+			allowed  = { 
+			    original_tag = RTG
+			}
+			visible = { has_government = hive_mind }
+			traits = { RTG_yuansu_zhinu }
+            cost = 200	
+			ai_will_do = {
+				base = 10
+			}			
+		}
+		field_marshal={
+			traits={ handonshanyue_longwang_good yanbigongming_zhili_good geo_element organizer unyielding_defender aggressive_assaulter }
+			skill=7
+			attack_skill=5
+			defense_skill=7
+			planning_skill=8
+			logistics_skill=8
+			legacy_id=-1
+			visible = { 
+			has_government = hive_mind 
+			}
 		}
 	}
 	
@@ -139,6 +250,9 @@
 			available = {						#  Ϸ   ֺ  Ի      ж      ȶ    󣬲 дĬ  always = yes
 				NOT = { has_government = hive_mind }
 			}
+			visible = {
+				has_country_flag = RTG4_flag
+			}
 			traits  = {
 				little_cost 
 			}
@@ -149,7 +263,7 @@
 		}
 		advisor={
 		    slot = high_command
-			idea_token = RTG_Fengxu
+			idea_token = RTG_Fengxu_high_command
 			ledger = air
 			allowed  = {
 				OR = {
@@ -159,6 +273,12 @@
 			}
 			available = {
 				NOT = { has_government = hive_mind }
+			}
+			visible = {
+				or = {
+				has_country_flag = RTG4_flag
+				original_tag = ARF
+			    }
 			}
 			traits = {
 				To_King 
@@ -175,13 +295,19 @@
 			id=-1
 		}
 		corps_commander={
-			traits={ }
+			traits={ pyro_element trickster   }
 			skill=4
 			attack_skill=5
-			defense_skill=5
+			defense_skill=4
 			planning_skill=1
 			logistics_skill=2
 			legacy_id=-1
+			visible = {
+				or = {
+				has_country_flag = RTG4_flag
+				original_tag = ARF
+			    }
+			}
 		}
 
 		
@@ -211,6 +337,10 @@
 			}
 			visible = {						#ͬavailable     ȶȽϸ 
 			    NOT = { has_government = hive_mind }
+				or = {
+				has_country_flag = RTG1_flag
+				original_tag = ARF
+			    }
 			}
 			traits = {
 				Miner_Congress
@@ -229,13 +359,19 @@
 		}
 
 		corps_commander={
-			traits={ }
-			skill=3
+			traits={cavalry_leader }
+			skill=2
 			attack_skill=3
-			defense_skill=1
-			planning_skill=3
+			defense_skill=2
+			planning_skill=1
 			logistics_skill=2
 			legacy_id=-1
+			visible = {
+				or = {			
+				has_country_flag = RTG1_flag
+				original_tag = ARF
+			    }
+			}
 		}
 
 		
@@ -261,7 +397,7 @@
 				original_tag = RTG
 			}
 			visible = {
-			    has_government = reformism
+			    has_country_flag = the_return_of_Dao
 			}
 			available = {
 				has_country_flag = the_return_of_Dao
@@ -276,13 +412,13 @@
 		}
 		advisor={
 		    slot = high_command
-			idea_token = RTG_Dao
+			idea_token = RTG_Dao_high_command
 			ledger = army
 			allowed  = {
 			    original_tag = RTG
 			}
 			visible = {
-			    has_government = reformism
+			    has_country_flag = the_return_of_Dao
 			}
 			available = {
 				has_country_flag = the_return_of_Dao
@@ -292,7 +428,19 @@
 			}
 			cost = 150
 			ai_will_do = {
-				base = 10
+				base = 50
+			}
+		}
+		corps_commander={
+			traits={ hydro_element infantry_leader trait_engineer jingmo_zhishui_tezhi }
+			skill=6
+			attack_skill=7
+			defense_skill=4
+			planning_skill=5
+			logistics_skill=4
+			legacy_id=-1
+			visible = {						
+				has_country_flag = the_return_of_Dao
 			}
 		}
 	}
@@ -321,13 +469,20 @@
 			slot = political_advisor #这里填算什么顾问，这里是政治顾问
 			idea_token = RTG_Zhiqiong  #idea，代号
 			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
-					OR = {
+				OR = {
 					original_tag = RTG
 					original_tag = ARF
 				}
 			}
+			desc = RTG_Zhiqiong_desc
 			available = {						#出现（就是看得见）条件，如果没有写always = yes
 				NOT = { has_government = hive_mind }
+			}
+            visible = {						#出现（就是看得见）条件，如果没有写always = yes
+			    or = {
+				has_country_flag = RTG3_flag
+				original_tag = ARF
+			    }
 			}
 			traits  = {
 				renzhiyizhi  #效果，要在country_leader里写具体效果，并且记得本地化
@@ -346,31 +501,16 @@
 			planning_skill=2
 			logistics_skill=2
 			legacy_id=-1
-		}
-		
+			visible = {
+				or = {						
+				has_country_flag = RTG3_flag
+                original_tag = ARF
+			    }
+			}
+		}	
 	}
 
-	RTG_Local_Committee = {
-		name=RTG_Local_Committee
-		portraits={
-			civilian={
-				#large = 
-			}
-			army={
-				#large = 
-			}
-		}
-		
-		country_leader={
-			ideology = liberalism_subtype
-			traits={ Hilltop_Dweller }
-			expire="2022.10.20.1"
-			id=-1
-		}
-		
-	}
-
-RTG_AnMozhi = {
+    RTG_AnMozhi = {
 		name=RTG_AnMozhi #领袖和领袖介绍本地化是这个：TTT_characters_l_english
 		portraits={
 			civilian={ #政治
@@ -392,6 +532,9 @@ RTG_AnMozhi = {
 			available = {						#出现（就是看得见）条件，如果没有写always = yes
 				NOT = { has_government = hive_mind }
 			}
+			visible = {						
+				has_country_flag = RTG1_flag
+			}
 			traits  = {
 				anranyizhi  #效果，要在country_leader里写具体效果，并且记得本地化
 			}
@@ -409,9 +552,118 @@ RTG_AnMozhi = {
 			planning_skill=2
 			logistics_skill=2
 			legacy_id=-1
+			visible = {						
+				has_country_flag = RTG1_flag
+				NOT = { has_government = hive_mind }
+			}
+		}	
+	}
+    RTG_Hongjie = { #虹姐
+		name=RTG_Hongjie #领袖和领袖介绍本地化是这个：TTT_characters_l_english
+		portraits={
+			civilian={ #政治
+				small = GFX_portrait_small_Liyue_unknown
+				#arge = GFX_portrait_large_Liyue_Anmozhi
+			}
 		}
-
 		
+        advisor={ #内阁顾问
+			slot = political_advisor #这里填算什么顾问，这里是政治顾问
+			idea_token = RTG_Hongjie  #idea，代号
+			desc = RTG_Hongjie_desc
+			allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+				original_tag = RTG
+			}
+			available = {						#出现（就是看得见）条件，如果没有写always = yes
+				NOT = { has_government = hive_mind }
+			}
+			visible = {						
+				has_country_flag = RTG17_flag
+			}
+			traits = {
+				RTG_hongse_guangcai  #效果，要在country_leader里写具体效果，并且记得本地化
+			}
+			cost = 150
+			ai_will_do = {
+				base = 10
+			}
+		}
+        advisor = {
+			slot = theorist
+			idea_token = RTG_Hongjie_theorist
+			desc = RTG_Hongjie_desc
+			ledger = army
+			allowed = { 
+			    original_tag = RTG
+			}
+			visible = { has_country_flag = RTG17_flag }
+			traits = { RTG_quanmian_guihua }
+            cost = 150	
+			ai_will_do = {
+				base = 10
+			}			
+		}	
+	}
+    RTG_Heimai = { #黑麦
+	name=RTG_Heimai #领袖和领袖介绍本地化是这个：TTT_characters_l_english
+	portraits={
+		civilian={ #政治
+			small = GFX_portrait_small_Liyue_unknown
+			#arge = GFX_portrait_large_Liyue_Anmozhi
+		}
 	}
 
+	advisor={ #内阁顾问
+		slot = political_advisor #这里填算什么顾问，这里是政治顾问
+		idea_token = RTG_Heimai  #idea，代号
+		desc = RTG_Heimai_desc
+		allowed = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+			original_tag = RTG
+		}
+		available = {						#出现（就是看得见）条件，如果没有写always = yes
+			NOT = { has_government = hive_mind }
+		}
+		visible = {						
+			has_country_flag = RTG41_flag
+		}
+		traits = {
+			RTG_heitu_huanmai  #效果，要在country_leader里写具体效果，并且记得本地化
+		}
+		cost = 150
+		ai_will_do = {
+			base = 10
+		    }
+	    }
+	}
+
+	RTG_Muning = { #攸宁
+	name=RTG_Muning #领袖和领袖介绍本地化是这个：TTT_characters_l_english
+	portraits={
+		civilian={ #政治
+			small = GFX_portrait_small_Liyue_unknown
+			#arge = GFX_portrait_large_Liyue_Anmozhi
+		}
+	}
+	advisor={ #内阁顾问
+		slot = political_advisor #这里填算什么顾问，这里是政治顾问
+		idea_token = RTG_Muning  #idea，代号
+		desc = RTG_Muning_desc
+		allowed  = {						#条件，如果效命的国家多于一个需要用or，不能另起一个
+			original_tag = RTG
+		}
+		available = {						#出现（就是看得见）条件，如果没有写always = yes
+			NOT = { has_government = hive_mind }
+		}
+		visible = {						
+			has_country_flag = RTG42_flag
+		}
+		traits = {
+			RTG_youyou_shengning  #效果，要在country_leader里写具体效果，并且记得本地化
+		}
+		cost = 150
+		ai_will_do = {
+			base = 10
+		    }
+	    }
+	}
 }

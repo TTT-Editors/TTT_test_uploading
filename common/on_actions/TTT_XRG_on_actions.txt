@@ -1,0 +1,306 @@
+on_actions = {
+	on_monthly_XRG = {
+		effect = {
+			#每月增加的人仙和谐度
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = XRG_FLAG_1      #每月检测和谐度存在条件
+					}
+					is_subject_of = ZDG				
+				}
+				XRG = { 
+					clear_variable = XRG_hexiedu 
+					clear_variable = XRG_xianjiabumandu
+					clear_variable = XRG_minzhongbumandu
+				}	
+				
+				#检测和谐度是否处于0-20
+				if = {
+					limit = { 
+						NOT = { has_idea = XRG_DEBUFF_HXD }
+						check_variable = {
+    						var = XRG_hexiedu
+    						value = 0
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_hexiedu < 20 }
+						NOT = { is_subject_of = ZDG }
+					}
+					add_to_variable = { XRG_hexiedu = 10 }
+				}
+
+				#检测和谐度是否处于20-40
+				if = {
+					limit = { 
+						NOT = { has_idea = XRG_DEBUFF_HXD }
+						check_variable = {
+    						var = XRG_hexiedu
+    						value = 20
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_hexiedu < 40 }
+						NOT = { is_subject_of = ZDG }
+					}
+					add_to_variable = { XRG_hexiedu = 5 }
+				}
+				
+				#检测仙家不满度是否大于5
+				if = {
+					limit = { 
+						NOT = { has_idea = XRG_DEBUFF_HXD }
+						check_variable = {
+    						var = XRG_xianjiabumandu
+    						value = 5
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_xianjiabumandu < 10 }
+						NOT = { is_subject_of = ZDG }
+					}
+					add_to_variable = { XRG_xianjiabumandu = -1 }
+				}
+
+				#检测民众不满度是否大于5
+				if = {
+					limit = { 
+						NOT = { has_idea = XRG_DEBUFF_HXD }
+						check_variable = {
+    						var = XRG_minzhongbumandu
+    						value = 5
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_minzhongbumandu < 10 }
+						NOT = { is_subject_of = ZDG }
+					}
+					add_to_variable = { XRG_minzhongbumandu = -1 }
+				}
+
+				#每月触发和谐度与不满度随机事件
+				if = {
+					limit = { 
+						NOT = { has_idea = XRG_DEBUFF_HXD }
+						has_country_flag = XRG_FLAG_1
+                    	NOT = { is_subject_of = ZDG }					
+					}
+					if = {
+						limit = {
+							check_variable = {
+    							var = XRG_hexiedu
+    							value = 0
+    							compare = greater_than_or_equals
+							}
+							check_variable = { XRG_hexiedu < 20 }
+						}
+						random_list = {
+    						50 = {
+       							country_event = XRG_EVENTS_HXD.1
+    						}
+    						50 = {
+       							country_event = XRG_EVENTS_HXD.2
+    						}
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+    							var = XRG_hexiedu
+    							value = 20
+    							compare = greater_than_or_equals
+							}
+							check_variable = { XRG_hexiedu < 40 }
+						}
+						random_list = {
+    						50 = {
+       							country_event = XRG_EVENTS_HXD.3
+    						}
+    						50 = {
+       							country_event = XRG_EVENTS_HXD.4
+    						}
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+    							var = XRG_hexiedu
+    							value = 40
+    							compare = greater_than_or_equals
+							}
+							check_variable = { XRG_hexiedu < 60 }
+						}
+						country_event = XRG_EVENTS_HXD.5
+					}
+					if = {
+						limit = {
+							check_variable = {
+    							var = XRG_hexiedu
+    							value = 60
+    							compare = greater_than_or_equals
+							}
+							check_variable = { XRG_hexiedu < 80 }
+						}
+						random_list = {
+    						50 = {
+       							country_event = XRG_EVENTS_HXD.6
+    						}
+    						50 = {
+       							country_event = XRG_EVENTS_HXD.7
+    						}
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+    							var = XRG_hexiedu
+    							value = 80
+    							compare = greater_than_or_equals
+							}
+						}
+						add_stability = 0.05
+						add_war_support = 0.05
+						add_political_power = 50
+					}
+				}
+			}   			
+		}	
+	}
+	on_weekly_XRG = {
+		effect = {
+			#每周检测和谐度与不满度民族精神及事件
+			if = {
+				limit = { 
+					NOT = { has_idea = XRG_DEBUFF_HXD }
+					has_country_flag = XRG_FLAG_1
+					has_variable = XRG_hexiedu 
+                    NOT = { is_subject_of = ZDG }					
+				}
+				if = {
+					limit = {
+						check_variable = { XRG_xianjiabumandu = 10 }
+						NOT = { has_idea = XRG_DEBUFF_HXD }
+						NOT = { is_subject_of = ZDG }
+					}
+					country_event = XRG_EVENTS_HXD.8
+				}
+				if = {
+					limit = {
+						check_variable = { XRG_minzhongbumandu = 10 }
+						NOT = { has_idea = XRG_DEBUFF_HXD }
+						NOT = { is_subject_of = ZDG }
+					}
+					country_event = XRG_EVENTS_HXD.9
+				}
+				if = {
+					limit = {
+						check_variable = {
+    						var = XRG_hexiedu
+    						value = 0
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_hexiedu < 20 }
+						NOT = { has_idea = XRG_BUFF_HXD_1 }
+						NOT = { is_subject_of = ZDG }
+					}
+					country_event = XRG_EVENTS_HXD.10
+				}
+				if = {
+					limit = {
+						check_variable = {
+    						var = XRG_hexiedu
+    						value = 20
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_hexiedu < 40 }
+						NOT = { has_idea = XRG_BUFF_HXD_2 }
+						NOT = { is_subject_of = ZDG }
+					}
+					if = {
+						limit = {
+							has_idea = XRG_BUFF_HXD_1
+						}
+						country_event = XRG_EVENTS_HXD.11
+					}
+					if = {
+						limit = {
+							or = {
+								has_idea = XRG_BUFF_HXD_3
+								has_idea = XRG_BUFF_HXD_4
+								has_idea = XRG_BUFF_HXD_5
+							}
+						}
+						country_event = XRG_EVENTS_HXD.12
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+    						var = XRG_hexiedu
+    						value = 40
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_hexiedu < 60 }
+						NOT = { has_idea = XRG_BUFF_HXD_3 }
+						NOT = { is_subject_of = ZDG }
+					}
+					if = {
+						limit = {
+							or = {
+								has_idea = XRG_BUFF_HXD_1
+								has_idea = XRG_BUFF_HXD_2
+							}
+						}
+						country_event = XRG_EVENTS_HXD.13
+					}
+					if = {
+						limit = {
+							or = {
+								has_idea = XRG_BUFF_HXD_4
+								has_idea = XRG_BUFF_HXD_5
+							}
+						}
+						country_event = XRG_EVENTS_HXD.14
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+    						var = XRG_hexiedu
+    						value = 60
+    						compare = greater_than_or_equals
+						}
+						check_variable = { XRG_hexiedu < 80 }
+						NOT = { has_idea = XRG_BUFF_HXD_4 }
+						NOT = { is_subject_of = ZDG }
+					}
+					if = {
+						limit = {
+							or = {
+								has_idea = XRG_BUFF_HXD_1
+								has_idea = XRG_BUFF_HXD_2
+								has_idea = XRG_BUFF_HXD_3
+							}
+						}
+						country_event = XRG_EVENTS_HXD.15
+					}
+					if = {
+						limit = {
+							has_idea = XRG_BUFF_HXD_5
+						}
+						country_event = XRG_EVENTS_HXD.16
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+    						var = XRG_hexiedu
+    						value = 80
+    						compare = greater_than_or_equals
+						}
+						NOT = { has_idea = XRG_BUFF_HXD_5 }
+						NOT = { is_subject_of = ZDG }
+					}
+					country_event = XRG_EVENTS_HXD.17
+				}
+			}
+		}	
+	}
+}

@@ -80,7 +80,7 @@ focus_tree = {
 	focus = {
 		id = KQG_4		#土地改革
 		icon = GFX_goal_KQG_tudigaige
-		cost = 70
+		cost = 35
 		ai_will_do = {
 			factor = 50
 		}
@@ -285,7 +285,7 @@ focus_tree = {
 	focus = {
 		id = KQG_16		#确立指导思想
 		icon = GFX_goal_KQG_mil_18
-		cost = 35
+		cost = 28
 		prerequisite = {
 			focus = KQG_15
 		}
@@ -304,7 +304,7 @@ focus_tree = {
 	focus = {
 		id = KQG_17		#设立政治委员
 		icon = GFX_goal_KQG_eco_13
-		cost = 35
+		cost = 28
 		prerequisite = {
 			focus = KQG_16
 		}
@@ -323,7 +323,7 @@ focus_tree = {
 	focus = {
 		id = KQG_18		#改革赤卫队
 		icon = GFX_goal_KQG_mil_29
-		cost = 32
+		cost = 28
 		prerequisite = {
 			focus = KQG_17
 		}
@@ -381,7 +381,7 @@ focus_tree = {
 	focus = {
 		id = KQG_21		#我们是人民的军队
 		icon = GFX_goal_KQG_pol_49
-		cost = 70
+		cost = 35
 		prerequisite = {
 			focus = KQG_22
 		}
@@ -505,7 +505,7 @@ focus_tree = {
 		completion_reward = {
 			add_offsite_building = {
 				type = arms_factory
-				level = 1
+				level = 2
 			}
 		}
 	}
@@ -569,7 +569,7 @@ focus_tree = {
 	focus = {
 		id = KQG_32		#简化军工生产线
 		icon = GFX_goal_KQG_eco_52
-		cost = 70
+		cost = 35
 		prerequisite = {
 			focus = KQG_31
 		}
@@ -582,7 +582,7 @@ focus_tree = {
 	focus = {
 		id = KQG_33		#扩大军工生产
 		icon = GFX_goal_KQG_mil_32
-		cost = 70
+		cost = 35
 		ai_will_do = {
 			factor = 100
 		}
@@ -628,21 +628,23 @@ focus_tree = {
 				add_idea = KQG1919810
 				remove_idea = KQG1145144
 			}
-			add_advisor_role = {
-				Character = LYU_keqing
-				advisor = {
-					slot = political_advisor
-					cost = 150
-					idea_token = LYU_keqing
-					traits = {
-						Keqing_heihei_traits
-					}
-					allowed = {
-						always = yes
+			effect_tooltip = {
+				LYU_Keqing = {
+					add_advisor_role = {
+						Character = LYU_keqing
+						advisor = {
+							slot = political_advisor
+							cost = 150
+							idea_token = LYU_keqing
+							traits = {
+								Keqing_heihei_traits
+							}
+						}
+						activate = no
 					}
 				}
-				activate = no
 			}
+			hidden_effect = { set_country_flag = KQG_advisor_available }
 		}
 	}
 	focus = {
@@ -664,7 +666,7 @@ focus_tree = {
 	focus = {
 		id = KQG_38		#设立政治审查局
 		icon = GFX_goal_KQG_shelizhengzhi
-		cost = 70
+		cost = 35
 		prerequisite = {
 			focus = KQG_37
 		}
@@ -700,7 +702,7 @@ focus_tree = {
 	focus = {
 		id = KQG5_1		#召集反正部队
 		icon = GFX_goal_KQG_fanzheng
-		cost = 28
+		cost = 21
 		ai_will_do = {
 			factor = 100
 		}
@@ -732,6 +734,10 @@ focus_tree = {
 							y = 2
 						}
 						infantry = {
+							x = 0
+							y = 3
+						}
+						infantry = {
 							x = 1
 							y = 0
 						}
@@ -743,9 +749,17 @@ focus_tree = {
 							x = 1
 							y = 2
 						}
-						artillery_brigade = {
-							x = 0
+						infantry = {
+							x = 1
 							y = 3
+						}
+						artillery_brigade = {
+							x = 2
+							y = 0
+						}
+						artillery_brigade = {
+							x = 2
+							y = 1
 						}
 					}
 				}
@@ -754,7 +768,7 @@ focus_tree = {
 				create_unit = {
 					division = "division_template = \"千岩军\" start_experience_factor = 0.4"
 					owner = KQG
-					count = 3
+					count = 6
 				}
 			}
 		}
@@ -844,7 +858,7 @@ focus_tree = {
 	focus = {
 		id = KQG_50		#这是最后的斗争
 		icon = GFX_goal_KQG_pol_50
-		cost = 70
+		cost = 35
 		prerequisite = {
 			focus = KQG_belongs_Soviet_Union
 		}
@@ -918,7 +932,7 @@ focus_tree = {
 	focus = {
 		id = KQG_59		#社会思想走向解放
 		icon = GFX_goal_KQG_pol_59
-		cost = 70
+		cost = 35
 		prerequisite = {
 			focus = KQG_58
 		}
@@ -934,7 +948,7 @@ focus_tree = {
 	focus = {
 		id = KQG_62		#为了更美好的明天
 		icon = GFX_goal_KQG_2
-		cost = 70
+		cost = 35
 		prerequisite = {
 			focus = KQG_Heavy_cleaning
 		}
@@ -943,31 +957,31 @@ focus_tree = {
 		}
 		available = {
 			XQG = {
-				exists = NO
+				exists = no
 			}
 			XRG = {
-				exists = NO
+				exists = no
 			}
 			RTG = {
-				exists = NO
+				exists = no
 			}
 			XOG = {
-				exists = NO
+				exists = no
 			}
 			ZDG = {
-				exists = NO
+				exists = no
 			}
 			LYU = {
-				exists = NO
+				exists = no
 			}
 			ANG = {
-				exists = NO
+				exists = no
 			}
 			ARF = {
-				exists = NO
+				exists = no
 			}
 			NNG = {
-				exists = NO
+				exists = no
 			}
 		}
 		x = 21

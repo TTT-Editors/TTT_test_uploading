@@ -1,0 +1,90 @@
+on_actions = {
+	on_monthly_CUG = { #每月茶叶计算
+		effect = {
+			CUG = {
+				set_variable = { CUG_tea_production = 0 }
+			}
+			every_owned_state = {
+				limit = { has_variable = actual_tea_production }
+				set_variable = { actual_tea_production = base_tea_production }
+				#calculate tea production
+				if = {
+					limit = { NOT = { is_controlled_by = CUG } }
+					set_variable = { actual_tea_production = 0 }
+				}
+				else = {
+					if = {
+						limit = { has_dynamic_modifier = { modifier = CUG_promote_tea_production } }
+						multiply_variable = { actual_tea_production = 1.2 }
+					}
+				}
+				CUG = {
+					add_to_variable = { CUG_tea_production = PREV.actual_tea_production }
+				}
+			}
+			
+			#purchase guns with tea
+			CUG = {
+				set_variable = { CUG_total_purchase = 0 }
+				set_variable = { CUG_total_purchase = CUG_gun_purchase }
+				add_to_variable = { CUG_total_purchase = CUG_supply_eq_purchase }
+				add_to_variable = { CUG_total_purchase = CUG_food_purchase }
+				multiply_variable = { CUG_total_purchase = 150 }
+				subtract_from_variable = { CUG_tea_production = CUG_total_purchase }
+			}
+			
+			#add equipments to stockpile
+			CUG = {
+				set_temp_variable = { CUG_gun_purchase_temp = CUG_gun_purchase }
+				multiply_temp_variable = { CUG_gun_purchase_temp = 2 }
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = CUG_gun_purchase_temp
+					producer = FON
+				}
+				multiply_temp_variable = { CUG_gun_purchase_temp = 25 }
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = CUG_gun_purchase_temp
+					producer = FON
+				}
+				
+				set_temp_variable = { CUG_supply_eq_purchase_temp = CUG_supply_eq_purchase }
+				multiply_temp_variable = { CUG_supply_eq_purchase_temp = 10 }
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = CUG_supply_eq_purchase_temp
+					producer = FON
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq
+					amount = CUG_supply_eq_purchase_temp
+					producer = FON
+				}
+				
+				set_temp_variable = { CUG_food_purchase_temp = CUG_food_purchase }
+				multiply_temp_variable = { CUG_food_purchase_temp = 25 }
+				add_equipment_to_stockpile = {
+					type = grain_conversion_eq
+					amount = CUG_food_purchase_temp
+					producer = FON
+				}
+			}
+			
+			#calculate tea buff
+			CUG = {
+				set_temp_variable = { ctp_value = CUG_tea_production }
+				divide_temp_variable = { ctp_value = 5000 }
+				set_variable = { ctp_political_power_gain = ctp_value }
+				divide_temp_variable = { ctp_value = 5 }
+				set_variable = { ctp_stability_factor = ctp_value }
+				
+				if = {
+					limit = { check_variable = { CUG_tea_production < 0 } }
+					multiply_variable = { ctp_political_power_gain = 3 }
+					multiply_variable = { ctp_stability_factor = 3 }
+				}
+			}
+		}
+	}
+}

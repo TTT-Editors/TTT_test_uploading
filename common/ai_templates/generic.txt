@@ -2,7 +2,6 @@ armor_generic = {
 
 	blocked_for = {
 		EMP
-		NAT
 	}
 
 	role = armor
@@ -159,8 +158,9 @@ armor_generic = {
 			}
 
 			regiments = {
-				medium_armor = 5
-				infantry = 6
+				medium_armor = 4
+				light_armor = 2
+				motorized = 4
 			}
 		}
 
@@ -306,8 +306,6 @@ suppression_generic = {
 		}
 
 		target_template = {
-			weight = 0.9
-			match_value = 3000.0
 
 			support = { 
 				military_police = 1
@@ -562,6 +560,96 @@ paratrooper_generic = {
 		}
 		}
 	}
+
+landcruiser_generic = {
+
+
+	role = mega_heavy_breakthrough_role
+
+	upgrade_prio = {
+		base = 2
+
+		modifier = {
+			factor = 0
+			NOT = { is_special_project_completed = sp:sp_land_land_cruiser }
+		}
+	}
+
+	landcruiser_default = {
+
+		upgrade_prio = {
+			base = 1
+
+			modifier = {
+				factor = 1
+			}
+		}
+
+		target_template = {
+
+			support = {
+				engineer = 1
+				land_cruiser = 1
+				anti_air = 1
+			}
+
+			regiments = {
+				medium_armor = 2
+				heavy_armor = 1
+				motorized = 6
+			}
+		}
+	}
+}
+
+super_heavy_generic = {
+
+
+	role = super_heavy_breakthrough_role
+
+	upgrade_prio = {
+		base = 0
+
+		modifier = {
+			add = 1
+			is_major = yes
+			num_of_military_factories > 150 # nly if we have loads of factories
+			date > 2006.6.1 # Lets wait until late war
+			NOT = { has_tech = main_battle_tank_chassis } # Abandon Super heavy projects if we start doing modern tanks instead
+			NOT = { has_a_democratic_ideology = yes } # Let the authoritarian regimes spend money on this 
+		}
+
+		modifier = {
+			factor = 0
+			is_special_project_completed = sp:sp_land_land_cruiser # Lets stop this if and when we have landcruisers
+		}
+	}
+
+	super_heavy_default = {
+
+		upgrade_prio = {
+			base = 1
+
+			modifier = {
+				factor = 1
+			}
+		}
+
+		target_template = {
+
+			support = {
+				engineer = 1
+				anti_air = 1
+				super_heavy_armor = 1
+			}
+
+			regiments = {
+				medium_armor = 2
+				motorized = 6
+			}
+		}
+	}
+}
 
 
 

@@ -156,78 +156,69 @@ enemy_has_equal_or_better_radar_tech_trigger = {
 				ROOT = {
 					has_tech = radio_detection
 					NOT = {
-						has_tech = decimetric_radar
+						has_tech = cavity_magnatron
 					}
 				}
 			}
 			FROM = {
 				OR = {
 					has_tech = radio_detection
-					has_tech = decimetric_radar
+					has_tech = cavity_magnatron
 				}
 			}
 		}
 		else_if = {
 			limit = {
 				ROOT = {
-					has_tech = decimetric_radar
-					NOT = {
-						has_tech = improved_decimetric_radar
+					has_tech = cavity_magnatron
+
 					}
 				}
-			}
 			FROM = {
-				OR = {
-					has_tech = decimetric_radar
-					has_tech = improved_decimetric_radar
+				has_tech = cavity_magnatron
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				ROOT = {
-					has_tech = improved_decimetric_radar
 					NOT = {
 						has_tech = centimetric_radar
 					}
 				}
 			}
 			FROM = {
-				OR = {
-					has_tech = improved_decimetric_radar
 					has_tech = centimetric_radar
 				}
 			}
-		}
 		else_if = {
 			limit = {
 				ROOT = {
 					has_tech = centimetric_radar
 					NOT = {
-						has_tech = improved_centimetric_radar
+						has_tech = phased_array
 					}
 				}
 			}
 			FROM = {
 				OR = {
 					has_tech = centimetric_radar
-					has_tech = improved_centimetric_radar
+					has_tech = phased_array
 				}
 			}
 		}
 		else_if = {
 			limit = {
 				ROOT = {
-					has_tech = improved_centimetric_radar
+					has_tech = phased_array
 					NOT = {
-						has_tech = advanced_centimetric_radar
+						has_tech = monopulse_radar
 					}
 				}
 			}
 			FROM = {
 				OR = {
-					has_tech = improved_centimetric_radar
-					has_tech = advanced_centimetric_radar
+					has_tech = phased_array
+					has_tech = monopulse_radar
 				}
 			}
 		}
@@ -416,6 +407,22 @@ state_is_fully_controlled_by_ROOT_or_subject = {
 	}
 }
 
+#State scope
+state_is_fully_controlled_by_ROOT_subject_or_faction_member = {
+	custom_trigger_tooltip = {
+		tooltip = state_is_fully_controlled_by_ROOT_subject_or_faction_member_tt
+		OR = {
+			is_fully_controlled_by = ROOT
+			controller = {
+				OR = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+				}
+				has_full_control_of_state = PREV
+			}
+		}
+	}
+}
 state_has_any_resource = {
 	OR = {
 		has_resources_amount = {
@@ -582,6 +589,19 @@ mio_original_country_exists_and_not_at_war_with_ROOT = { #Used for MIO decisions
 	NOT = { has_war_with = ROOT }
 }
 
+mio_original_country_available_with_opinion_subject_and_war_requirements_fulfilled = { #Used for MIO decisions availability - THIS is original country
+	has_opinion = {
+		target = ROOT
+		value > 49
+	}
+	OR = {
+		is_subject = no
+		is_subject_of = ROOT
+	}
+	has_capitulated = no
+	NOT = { has_war_with = ROOT }
+}
+
 
 can_unlock_new_special_forces_tree = {
 	if = {
@@ -712,6 +732,14 @@ is_democracy_seller_trigger = {
 		has_government = liberalism
 		has_government = right_wing_anarchism
 	}
+
+is_communist_seller_trigger = {
+	NOT = { has_war_with = ROOT }
+	OR = {
+		has_government = totalitarianism
+		has_government = communism
+		has_government = left_wing_anarchism
+	}
 }
 
 is_allied_seller_trigger = {
@@ -720,3 +748,4 @@ is_allied_seller_trigger = {
 		FROM = { is_in_faction_with = ROOT }
 	}
 }
+

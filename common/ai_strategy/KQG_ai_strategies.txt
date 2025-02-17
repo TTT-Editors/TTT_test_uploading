@@ -34,13 +34,13 @@ KQG_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = paratroopers
-		value = 0
+		value = 1
 	}
 
 	ai_strategy = {
 		type = role_ratio
 		id = mountaineers
-		value = 2
+		value = 0
 	}
 
 	ai_strategy = {
@@ -58,7 +58,7 @@ KQG_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = motorized
-		value = 0 #because doctrine this = 2
+		value = -1 #because doctrine this = 1
 	}
 
 	ai_strategy = {
@@ -70,7 +70,7 @@ KQG_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = -17 #because doctrine this = 3
+		value = -7 #because doctrine this = 3
 	}
 
 	ai_strategy = {
@@ -112,19 +112,13 @@ KQG_unit_production = {
 
 	ai_strategy = {
 		type = equipment_production_factor
-		id = infantry
-		value = 5 #30 to 50
-	}
-
-	ai_strategy = {
-		type = equipment_production_factor
 		id = anti_tank
 		value = 20
 	}
 
 	ai_strategy = {
 		type = equipment_production_factor
-		id = anti_air
+		id = infantry
 		value = 25
 	}
 
@@ -154,7 +148,6 @@ KQG_unit_production = {
 		type = railway_gun_divisions_ratio
 		value = 1
 	}
-
 }
 
 KQG_anti_armor = {
@@ -184,7 +177,7 @@ KQG_anti_armor = {
 	}
 }
 
-KQG_stockpile_less_early_game = {
+KQG_stockpile_more_early_game = {
 	allowed = {
 		original_tag = KQG
 	}
@@ -196,7 +189,7 @@ KQG_stockpile_less_early_game = {
 
 	ai_strategy = {
 		type = equipment_stockpile_surplus_ratio
-		value = -40 # reduce while we build up in case of NNG issues
+		value = 15 # reduce while we build up in case of NNG issues
 	}
 }
 
@@ -270,7 +263,7 @@ attack_ningguang = {
 			}
 		}
 	}
-	
+
 	ai_strategy = {
 		type = front_control
 		tag = NNG
@@ -278,9 +271,18 @@ attack_ningguang = {
 		priority = 30
 		ordertype = front
 		execution_type = balanced
-		
+
 		#Too many troops being surrounded, so rush_weak ---> balanced will be better
 		#Let AI itself to decide whether it should attack or not.
+	}
+
+	ai_strategy = {
+		type = force_concentration_target_weight
+		state = 89
+		state = 90
+		state = 91
+
+		value = 35 # +35%
 	}
 }
 
@@ -290,11 +292,13 @@ attack_ningguang_but_pause = {
 	}
 	enable = {
 		country_exists = NNG
-		strength_ratio = {
-			tag = NNG
-			ratio < 1.5
+		OR = {
+			strength_ratio = {
+				tag = NNG
+				ratio < 1.5
+			}
+			KQG = { enemies_strength_ratio > 1 }
 		}
-		KQG = { enemies_strength_ratio > 1 }
 		NOT = { has_idea = AI_focus_on_attack_buff }
 	}
 	abort = {
@@ -309,7 +313,7 @@ attack_ningguang_but_pause = {
 			KQG = { enemies_strength_ratio < 0.85 }
 		}
 	}
-	
+
 	ai_strategy = {
 		type = front_control
 		tag = NNG
@@ -350,7 +354,7 @@ KQG_try_to_land_ningguang = {
 			ratio > 1.2
 		}
 	}
-	
+
 	abort = {
 		NOT = { country_exists = NNG }
 	}
@@ -375,7 +379,7 @@ KQG_try_to_land_xiao = {
 	allowed = {
 		original_tag = KQG
 	}
-	
+
 	enable = {
 		country_exists = XOG
 		XOG = { has_war_with = KQG }
@@ -384,7 +388,7 @@ KQG_try_to_land_xiao = {
 			ratio > 1.2
 		}
 	}
-	
+
 	abort = {
 		NOT = { country_exists = XOG }
 	}
@@ -414,7 +418,7 @@ KQG_watch_out_south = {
 	allowed = {
 		original_tag = KQG
 	}
-	
+
 	enable = {
 		date > 2001.1.1
 		OR = {
@@ -424,39 +428,39 @@ KQG_watch_out_south = {
 				LYU = { NOT = { has_idea = GANYU0_A } }
 			}
 			ANG = { surrender_progress > 0.6 }
-			
+
 			LYU = { exists = no }
 			LYU = { is_subject = yes }
 			LYU = { is_in_faction = yes }
 			LYU = { surrender_progress > 0.6 }
-			
+
 			RTG = { exists = no }
 			RTG = { is_subject = yes }
 			RTG = { is_in_faction = yes }
 			RTG = { surrender_progress > 0.6 }
 		}
 	}
-	
+
 	abort = { NOT = { has_global_flag = Liyue_Civil_War } }
-	
+
 	ai_strategy = {
 		type = front_unit_request
 		id = "LYU"
 		value = 40
 	}
-	
+
 	ai_strategy = {
 		type = front_unit_request
 		id = "RTG"
 		value = 40
 	}
-	
+
 	ai_strategy = {
 		type = front_unit_request
 		id = "ANG"
 		value = 40
 	}
-	
+
 	#poor little guy
 	ai_strategy = {
 		type = front_unit_request

@@ -1451,7 +1451,7 @@ ZDG_decision_category = {
 		fire_only_once = no
 		available = {
 			has_equipment = {
-				infantry_equipment > 499
+				infantry_equipment > 699
 			}
 			NOT = {
 				has_country_flag = ZDG_recruit_trooflag
@@ -1478,14 +1478,14 @@ ZDG_decision_category = {
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = -500
+				amount = -600
 			}
 		}
 		remove_effect = {
 			set_country_flag = {
 				flag = ZDG_recruit_trooflag
 				value = 1
-				days = 30
+				days = 120
 			}
 			if = {
 				limit = {
@@ -1535,12 +1535,12 @@ ZDG_decision_category = {
 		fire_only_once = no
 		available = {
 			has_equipment = {
-				infantry_equipment > 600
+				infantry_equipment > 1100
 			}
 			has_equipment = {
-				artillery_equipment > 10
+				artillery_equipment > 30
 			}
-			has_manpower > 1000
+			has_manpower > 15000
 		}
 		visible = {
 			has_completed_focus = ZDG_chonzuxiefangjun
@@ -1559,13 +1559,13 @@ ZDG_decision_category = {
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = -600
+				amount = -1100
 			}
 			add_equipment_to_stockpile = {
 				type = artillery_equipment
-				amount = -10
+				amount = -30
 			}
-			add_manpower = -1000
+			add_manpower = -15000
 		}
 		remove_effect = {
 			if = {
@@ -1770,7 +1770,7 @@ ZDG_decision_category3 = {
 			is_ai = no
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 		complete_effect = {
 			clr_country_flag = ZDG_expandmilitary_flag
@@ -1962,7 +1962,7 @@ ZDG_decision_category3 = {
 				}
 			}
 			add_to_variable = {
-				ZDG_weekly_manpower = 500
+				ZDG_weekly_manpower = 300
 			}
 		}
 	}
@@ -2001,7 +2001,7 @@ ZDG_decision_category3 = {
 			add_to_variable = {
 				ZDG_submitreserve_value = 1
 			}
-			add_manpower = 20000
+			add_manpower = 8000
 		}
 	}
 	ZDG_equipment_assistancerequirements = {
@@ -2792,13 +2792,16 @@ ZDG_decision_category4 = {
 				SNE_Childe = {
 					remove_unit_leader_role = yes
 				}
-				SNE_Childe = {
-					set_country_leader_portrait = {
-						portrait = "gfx/characters/large/Snezhnaya/SNE_mowangwuzhuang.png"
-					}
-				}
+				#SNE_Childe = {
+				#	set_country_leader_portrait = {
+				#		portrait = "gfx/characters/large/Snezhnaya/SNE_mowangwuzhuang.png"
+				#	}
+				#}
 				set_portraits = {
 					character = SNE_Childe
+					civilian = {
+						large = "GFX_portrait_large_Snezhnaya_Childe2"
+					}
 					army = {
 						large = "GFX_portrait_large_Snezhnaya_Childe2"
 					}
@@ -4922,9 +4925,7 @@ ZDG_decision_category6 = {
 			custom_trigger_tooltip = {
 				tooltip = ZDG_zhiyuanwuqizhuangbei_tt
 				NOT = {
-					has_country_flag = {
-						ZDG_zhiyuanwuqizhuangbei_flag
-					}
+					has_country_flag = ZDG_zhiyuanwuqizhuangbei_flag
 				}
 			}
 			has_equipment = {

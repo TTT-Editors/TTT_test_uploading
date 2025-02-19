@@ -3,11 +3,33 @@ scripted_gui = {
 	ttt_liyue_notebook_decision_ui = {
 		context_type = decision_category
 		window_name = "ttt_liyue_notebook_decision_ui_window"
+
+		triggers = {
+			liyue_construction_button_click_enabled = {
+				is_liyue_notebook_available = yes
+			}
+		}
+
+		effects = {
+			liyue_construction_button_click = {
+				set_global_flag = liyue_construction_main_view_enabled
+			}
+		}
 	}
 
-	#ttt_liyue_notebook_main = {
-	#	context_type = player_context
-	#	window_name = "ttt_liyue_notebook_main_ui_window"
-	#}
+	ttt_liyue_construction_main = {
+		context_type = player_context
+		window_name = "ttt_liyue_construction_main_ui_window"
+
+		visible = {
+			has_global_flag = liyue_construction_main_view_enabled
+		}
+
+		effects = {
+			liyue_construction_close_button_click = {
+				clr_global_flag = liyue_construction_main_view_enabled
+			}
+		}
+	}
 
 }

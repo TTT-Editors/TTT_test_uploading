@@ -1,7 +1,7 @@
 ideas = {
 
 	hidden_ideas = {
-		
+
 		league_of_nations_member_idea = { 
 			allowed = {
 				always = no
@@ -10,12 +10,14 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
-			
+
 			modifier = {
 			}
 		}
+
+
 
 		continuous_naval_production = {
 			allowed = {
@@ -25,9 +27,9 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
-			
+
 			modifier = {
 				industrial_capacity_dockyard = 0.2
 			}
@@ -42,9 +44,9 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
-			
+
 			equipment_bonus = {
 				small_plane_airframe = {
 					instant = yes
@@ -104,9 +106,105 @@ ideas = {
 
 	# Special ones that can be applied on other countries through focus system.
 	country = {
-	
+		damage_to_naval_base_low = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = POL_disjointed_industry
+
+			removal_cost = -1
+
+			modifier = {
+				refit_speed = -0.05
+				repair_speed_factor = -0.05
+			}
+		}
+		damage_to_naval_base_medium = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = POL_disjointed_industry
+
+			removal_cost = -1
+
+			modifier = {
+				refit_speed = -0.1
+				repair_speed_factor = -0.1
+			}
+		}
+		damage_to_naval_base_high = {
+			allowed = {
+				always = no
+			}
+
+			picture = POL_disjointed_industry
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				refit_speed = -0.25
+				repair_speed_factor = -0.25
+			}
+		}
+
+		TO_chose_neutrality = {
+
+			picture = generic_pp_unity_bonus
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			#on_add = {
+			#	set_rule = { can_join_factions = no }
+			#}
+			#
+			#on_remove = {
+			#	set_rule = { can_join_factions = yes }
+			#}
+
+			modifier = {
+				trade_opinion_factor = 0.25
+				#democratic_acceptance = -300
+				#communism_acceptance = 100
+				#custom_modifier_tooltip = SOV_shocked_by_surprise_attack_cant_join_factions_tt
+			}
+		}
+
+		TO_nato_ratified = {
+
+			picture = generic_democratic_drift_bonus
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				operative_slot = 1
+				communism_acceptance = -15
+			}
+		}
+
 		MTG_TEST_NAVAL_IDEA = { #MTG_TODO_GABRIEL: remove before shipping
-			
+
 			allowed = {
 				always = no
 			}
@@ -115,14 +213,14 @@ ideas = {
 
 			picture = generic_infantry_bonus
 
-			
+
 			modifier = {
 				navy_fuel_consumption_factor = -1
 				air_fuel_consumption_factor = -1
 				#spotting_chance = 5
 			}
 		}
-		
+
 		# Generic Focus Ideas
 
 		special_forces = {
@@ -133,19 +231,19 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			picture = FRA_scw_intervention_nationalists_focus
-			
+
 			modifier = {
 				special_forces_cap = 0.02
 			}
 		}	
 
 		race_for_the_bomb = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -153,22 +251,24 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_research_bonus
-	
+
 			modifier = {
-				production_speed_nuclear_reactor_factor = 0.2
+				production_speed_nuclear_reactor_factor = 0.15 # was 0.2
+				specialization_nuclear_speed_factor = 0.05
+				production_speed_nuclear_facility_factor = 0.05
 			}
 			research_bonus = {
-				nuclear = 0.15
+				nuclear = 0.05 # was 0.15
 			}
 		}
 
 		race_for_the_bomb_outclassed = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -176,22 +276,24 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_research_bonus
-	
+
 			modifier = {
-				production_speed_nuclear_reactor_factor = 0.25
+				production_speed_nuclear_reactor_factor = 0.2 # was 0.25
 				political_power_factor = -0.5
+				specialization_nuclear_speed_factor = 0.05
+				production_speed_nuclear_facility_factor = 0.05
 			}
 			research_bonus = {
-				nuclear = 0.15
+				nuclear = 0.05
 			}
 		}
-		
+
 		received_attache = {
-			
+
 			allowed = {
 				always = no
 			}
@@ -201,18 +303,18 @@ ideas = {
 			}
 
 			removal_cost = -1
-			
+
 			modifier = {
 				army_org_factor = 0.02
 				planning_speed = 0.10
 			}
 		}
 		draft_dodging = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -220,18 +322,18 @@ ideas = {
 			}
 
 			picture = generic_manpower_bonus
-			
+
 			modifier = {
 				conscription_factor = -0.2
 			}
 		}
 
 		draft_dodging_2 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -239,18 +341,18 @@ ideas = {
 			}
 
 			picture = generic_manpower_bonus
-			
+
 			modifier = {
 				conscription_factor = -0.3
 			}
 		}
 
 		draft_dodging_3 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -258,18 +360,18 @@ ideas = {
 			}
 
 			picture = generic_manpower_bonus
-			
+
 			modifier = {
 				conscription_factor = -0.4
 			}
 		}
 
 		strikes_1 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -277,20 +379,20 @@ ideas = {
 			}
 
 			picture = generic_production_bonus
-			
+
 			modifier = {
-				consumer_goods_factor = 0.2
+				consumer_goods_factor = 0.4
 				local_resources_factor = -0.2
 				industrial_capacity_factory = -0.2
 				industrial_capacity_dockyard = -0.2
 			}
 		}
 		strikes_2 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -298,20 +400,20 @@ ideas = {
 			}
 
 			picture = generic_production_bonus
-			
+
 			modifier = {
-				consumer_goods_factor = 0.3
+				consumer_goods_factor = 0.6
 				local_resources_factor = -0.3
 				industrial_capacity_factory = -0.3
 				industrial_capacity_dockyard = -0.3
 			}
 		}
 		strikes_3 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -319,20 +421,20 @@ ideas = {
 			}
 
 			picture = generic_production_bonus
-			
+
 			modifier = {
-				consumer_goods_factor = 0.5
+				consumer_goods_factor = 0.8
 				local_resources_factor = -0.5
 				industrial_capacity_factory = -0.5
 				industrial_capacity_dockyard = -0.5
 			}
 		}
 		mutiny_1 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -340,7 +442,7 @@ ideas = {
 			}
 
 			picture = generic_army_problems
-			
+
 			modifier = {
 				army_morale_factor = -0.2
 				training_time_factor = 0.2
@@ -350,11 +452,11 @@ ideas = {
 			}
 		}
 		mutiny_2 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -362,7 +464,7 @@ ideas = {
 			}
 
 			picture = generic_army_problems
-			
+
 			modifier = {
 				army_morale_factor = -0.35
 				training_time_factor = 0.35
@@ -372,11 +474,11 @@ ideas = {
 			}
 		}
 		mutiny_3 = {
-			
+
 			allowed = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			allowed_civil_war = {
@@ -384,7 +486,7 @@ ideas = {
 			}
 
 			picture = generic_army_problems
-			
+
 			modifier = {
 				army_morale_factor = -0.5
 				training_time_factor = 0.5
@@ -404,11 +506,11 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_manpower_bonus
-			
+
 			modifier = {
 				army_core_attack_factor = 0.25 
 			}
@@ -423,11 +525,11 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			picture = chi_war_of_resistance3
-			
+
 			modifier = {
 				resistance_growth_on_our_occupied_states = 0.1 
 				resistance_damage_to_garrison_on_our_occupied_states = 0.25 
@@ -442,11 +544,11 @@ ideas = {
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 5300
 				production_cost_max_ship_hull_heavy = 10000
@@ -462,11 +564,11 @@ ideas = {
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent_reduced
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 6000
 				production_cost_max_ship_hull_heavy = 12000
@@ -482,11 +584,11 @@ ideas = {
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 5700
 				production_cost_max_ship_hull_heavy = 11500
@@ -502,11 +604,11 @@ ideas = {
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent_reduced
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 6500
 				production_cost_max_ship_hull_heavy = 14000
@@ -514,16 +616,67 @@ ideas = {
 			}
 		}
 	}
+		special_project_consumer_costs_high = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+
+			modifier = {
+				consumer_goods_factor = 0.1
+			}
+		}
+
+		special_project_consumer_costs_medium = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		special_project_consumer_costs_low = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+
+			modifier = {
+				consumer_goods_factor = 0.025
+			}
+		}
+	}
 
 	# TECHNOLOGY
 	tank_manufacturer = { 
-	
+
 		designer = yes
-		
+
 		generic_tank_manufacturer = {
 
 			picture = generic_tank_manufacturer_1
-			
+
 			allowed = {
 				NOT = { 
 					is_nominate_mondstadt = yes
@@ -533,24 +686,24 @@ ideas = {
 					has_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }
 				}
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				armor = 0.15
 			}
-			
+
 			traits = { tank_manufacturer }
 		}
 	}
-	
+
 	naval_manufacturer = { 
-	
+
 		designer = yes
-	
+
 		generic_naval_manufacturer = {
-			
+
 			picture = generic_naval_manufacturer_1
 
 			allowed = {
@@ -562,24 +715,24 @@ ideas = {
 					has_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }
 				}
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				naval_equipment = 0.15
 			}
-			
+
 			traits = { naval_manufacturer }
 		}
 	}
 
 	aircraft_manufacturer = { 
-	
+
 		designer = yes
-	
+
 		generic_light_aircraft_manufacturer = {
-			
+
 			picture = generic_air_manufacturer_1
 
 			allowed = {
@@ -591,19 +744,19 @@ ideas = {
 					has_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
 				}
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				air_equipment = 0.15
 			}
-			
+
 			traits = { light_aircraft_manufacturer }
 		}
-		
+
 		generic_medium_aircraft_manufacturer = {
-			
+
 			picture = generic_air_manufacturer_3
 
 			allowed = {
@@ -615,21 +768,21 @@ ideas = {
 					has_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
 				}
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				air_equipment = 0.15
 			}
-			
+
 			traits = { medium_aircraft_manufacturer }
 		}
-		
+
 		generic_heavy_aircraft_manufacturer = {
 
 			picture = generic_air_manufacturer_2
-			
+
 			allowed = {
 				NOT = { 
 					is_nominate_mondstadt = yes
@@ -639,19 +792,19 @@ ideas = {
 					has_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
 				}
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				air_equipment = 0.15
 			}
-			
+
 			traits = { heavy_aircraft_manufacturer }
 		}
-		
+
 		generic_naval_aircraft_manufacturer = {
-			
+
 			picture = generic_naval_manufacturer_2
 
 			allowed = {
@@ -663,14 +816,14 @@ ideas = {
 					has_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
 				}
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				air_equipment = 0.15
 			}
-			
+
 			traits = { naval_aircraft_manufacturer }
 		}
 	}
@@ -682,12 +835,12 @@ ideas = {
 			picture = TTT_kantanzhizaoshang
 
 			allowed = {
-				
+
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				industry = 0.05
 			}
@@ -702,12 +855,12 @@ ideas = {
 			picture = TTT_guihuadezhizaoshang
 
 			allowed = {
-				
+
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				industry = 0.10
 			}
@@ -722,14 +875,14 @@ ideas = {
 			picture = TTT_zhanshibaohuzhizaoshang
 
 			allowed = {
-				
+
 			}
 			available = {
 				has_war = yes
 			}
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				industry = 0.05
 			}
@@ -743,11 +896,11 @@ ideas = {
 	}
 
 	materiel_manufacturer = {
-	
+
 		designer = yes
-	
+
 		generic_motorized_equipment_manufacturer = {
-			
+
 			picture = generic_motorized_equipment_manufacturer_3
 
 			allowed = {
@@ -759,14 +912,14 @@ ideas = {
 					has_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
 				}
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				motorized_equipment = 0.15
 			}
-			
+
 			traits = { motorized_equipment_manufacturer }
 		}
 		##维修小组
@@ -775,12 +928,12 @@ ideas = {
 			picture = TTT_weixiuzhizaoshang
 
 			allowed = {
-				
+
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				infantry_weapons = 0.10
 			}
@@ -796,12 +949,12 @@ ideas = {
 			picture = TTT_hoqinzhizaoshang
 
 			allowed = {
-				
+
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				infantry_weapons = 0.15
 			}
@@ -823,12 +976,12 @@ ideas = {
 			picture = TTT_wuqizhizaoshang
 
 			allowed = {
-				
+
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				infantry_weapons = 0.15
 			}
@@ -846,12 +999,12 @@ ideas = {
 			picture = TTT_lieyanzhizaoshang
 
 			allowed = {
-				
+
 			}
-			
+
 			cost = 150
 			removal_cost = 10
-			
+
 			research_bonus = {
 				artillery = 0.10
 			}

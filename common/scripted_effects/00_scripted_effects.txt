@@ -825,7 +825,7 @@ bba_create_cas_license_effect = { #this assumes that the corresponding get_cas_e
 	}
 	else_if = {
 		limit = {
-			has_tech = basic_small_airframe
+			has_tech = primitive_airframe
 		}
 		create_production_license = {
 			target = event_target:license_target
@@ -864,7 +864,7 @@ bba_create_fighter_license_effect = { #this assumes that the corresponding get_f
 	}
 	else_if = {
 		limit = {
-			has_tech = basic_small_airframe
+			has_tech = primitive_airframe
 		}
 		create_production_license = {
 			target = event_target:license_target
@@ -1147,10 +1147,17 @@ find_local_dangerous_fascist = {
 
 # The idea is that you can use these effects to store the party popularities (and, if desired, the ruling party) when puppeting or possibly when starting civil wars, and then use the "restore" effects to reset it after the puppeting has happened, so that you don't have to use the overlord's ideology if you don't want to. 
 get_current_ideology_popularities = {
+	set_variable = { ROOT.totalitarianism_support_before_change = ROOT.party_popularity_100@totalitarianism }
 	set_variable = { ROOT.communist_support_before_change = ROOT.party_popularity_100@communism }
-	set_variable = { ROOT.democratic_support_before_change = ROOT.party_popularity_100@democratic }
-	set_variable = { ROOT.fascist_support_before_change = ROOT.party_popularity_100@fascism }
-	set_variable = { ROOT.neutrality_support_before_change = ROOT.party_popularity_100@neutrality }
+	set_variable = { ROOT.left_wing_anarchism_support_before_change = ROOT.party_popularity_100@left_wing_anarchism }
+	set_variable = { ROOT.reformism_support_before_change = ROOT.party_popularity_100@reformism }
+	set_variable = { ROOT.liberalism_support_before_change = ROOT.party_popularity_100@liberalism }
+	set_variable = { ROOT.right_wing_anarchism_support_before_change = ROOT.party_popularity_100@right_wing_anarchism }
+	set_variable = { ROOT.authoritarianism_support_before_change = ROOT.party_popularity_100@authoritarianism }
+	set_variable = { ROOT.despotism_support_before_change = ROOT.party_popularity_100@despotism }
+	set_variable = { ROOT.national_socialism_support_before_change = ROOT.party_popularity_100@national_socialism }
+	set_variable = { ROOT.esotericism_support_before_change = ROOT.party_popularity_100@esotericism }
+	set_variable = { ROOT.hive_mind_support_before_change = ROOT.party_popularity_100@hive_mind }
 }
 get_current_ruling_party = {
 	set_variable = { ROOT.ruling_ideology_before_change = ROOT.current_party_ideology_group }
@@ -1159,15 +1166,29 @@ restore_ideology_popularities = {
 	hidden_effect = {
 		# Reset popluarities to what they were before puppeting 
 		set_popularities = {
+			totalitarianism = ROOT.totalitarianism_support_before_change
 			communism = ROOT.communist_support_before_change
-			democratic = ROOT.democratic_support_before_change
-			fascism = ROOT.fascist_support_before_change
-			neutrality = ROOT.neutrality_support_before_change
+			left_wing_anarchism = ROOT.left_wing_anarchism_support_before_change
+			reformism = ROOT.reformism_support_before_change
+			liberalism = ROOT.liberalism_support_before_change
+			right_wing_anarchism = ROOT.right_wing_anarchism_support_before_change
+			authoritarianism = ROOT.authoritarianism_support_before_change
+			despotism = ROOT.despotism_support_before_change
+			national_socialism = ROOT.national_socialism_support_before_change
+			esotericism = ROOT.esotericism_support_before_change
+			hive_mind = ROOT.hive_mind_support_before_change
 		}
+		clear_variable = ROOT.totalitarianism_support_before_change
 		clear_variable = ROOT.communist_support_before_change
-		clear_variable = ROOT.democratic_support_before_change
-		clear_variable = ROOT.fascist_support_before_change
-		clear_variable = ROOT.neutrality_support_before_change
+		clear_variable = ROOT.left_wing_anarchism_support_before_change
+		clear_variable = ROOT.reformism_support_before_change
+		clear_variable = ROOT.liberalism_support_before_change
+		clear_variable = ROOT.right_wing_anarchism_support_before_change
+		clear_variable = ROOT.authoritarianism_support_before_change
+		clear_variable = ROOT.despotism_support_before_change
+		clear_variable = ROOT.national_socialism_support_before_change
+		clear_variable = ROOT.esotericism_support_before_change
+		clear_variable = ROOT.hive_mind_support_before_change
 	}
 }
 restore_ruling_party = {

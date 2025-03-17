@@ -38,7 +38,7 @@ ideas = {
 				army_attack_speed_factor = 0.1
 				army_speed_factor = -0.2
 				breakthrough_factor = -0.3
-				max_dig_in_factor = -1
+				max_dig_in_factor = -0.6
 				conscription_factor = 0.8
 				supply_combat_penalties_on_core_factor = -0.3
 				coordination_bonus = -0.1
@@ -55,8 +55,8 @@ ideas = {
 			}
             removal_cost = -1
 			modifier = {
-				max_planning_factor = -1
-				planning_speed = -1
+				max_planning_factor = -0.4
+				planning_speed = -0.4
 				command_abilities_cost_factor = 1
 				army_attack_speed_factor = 0.15
 			}
@@ -78,9 +78,73 @@ ideas = {
 				line_change_production_efficiency_factor = -0.3 
 				production_factory_efficiency_gain_factor = -0.3
 				industrial_capacity_factory = -0.35
+				research_basic_machine_tools_speed_factor = 0.15
 				production_lack_of_resource_penalty_factor = -0.75
 			}
         }
+
+		##原始的生产体系
+		QQR_creat_national = {
+            allowed = {
+				original_tag = QQR
+				always = yes
+			}
+            removal_cost = -1
+			equipment_bonus = {
+				grain_conversion_eq = { #军粮
+					build_cost_ic = -0.05 #加成
+					instant = yes
+				}
+			}
+			equipment_bonus = {
+				support_equipment = { #支援装备
+					build_cost_ic = 0.3 #加成
+					instant = yes
+				}
+			}
+			equipment_bonus = {
+				artillery_equipment  = { #火炮
+					build_cost_ic = 0.5 #加成
+					instant = yes
+				}
+			}
+			equipment_bonus = {
+				mechanized_equipment  = { #机械化
+					build_cost_ic = 0.5 #加成
+					instant = yes
+				}
+			}
+        }
+
+		##智商低下的丘丘人
+        QQR_SB_qqr = {
+            allowed = {
+				original_tag = QQR
+				always = yes
+			}
+            removal_cost = -1
+			modifier = {
+				research_speed_factor = -0.6
+				stability_factor =0.15
+				war_support_factor = 0.15
+			}
+        }
+
+		##原始的经济情况
+        QQR_economy_national = {
+            allowed = {
+				original_tag = QQR
+				always = yes
+			}
+            removal_cost = -1
+			modifier = {
+				global_building_slots_factor = -0.7
+				production_speed_buildings_factor = -0.5
+				local_resources_factor = -0.4
+				production_factory_start_efficiency_factor = -0.4
+			}
+        }
+
 		##深渊议会(初始）
         QQR_abgrund_parliament_orign = {
             allowed = {

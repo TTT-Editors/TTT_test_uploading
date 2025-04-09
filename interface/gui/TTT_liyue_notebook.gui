@@ -38,33 +38,68 @@ guiTypes = {
 		buttonType = {
 			name = "liyue_construction_close_button"
 			position = { x = 846 y = 27 }
-			quadTextureSprite = "GFX_closebutton"
+			quadTextureSprite = "GFX_liyue_project_closebutton"
 			pdx_tooltip = "liyue_construction_close_button_tt"
 		}
 
 		iconType = { 
 			name = "info_icon"
-			position = { x= 553 y = 190 }
+			position = { x= 830 y = 190 }
 			spriteType = "GFX_liyue_info_icon"
 			pdx_tooltip = "liyue_construction_info_tt"
 			pdx_tooltip_delayed = "liyue_construction_info_delayed_tt"
 		}
+
+		iconType = { 
+			name = "res_type_background"
+			position = { x= 319 y = 478 }
+			spriteType = "GFX_lyu_project_res_grid"
+		}
 		
 		#Text
-
+		#Title
 		instantTextboxType = {
 			name = "construction_company_title"
-			position = { x= 52 y = 195 }
+			position = { x= 150 y = 190 }
 			font = "TTT_special_font_title"
 			text = "construction_company_title_tt"
 			format = centre
-			maxWidth = 500
+			maxWidth = 600
 			maxHeight = 40
 		}
 
+		#Project List Window
+		containerWindowType = {
+			name = "lyu_con_projects_grid_container"
+			position = { x = 30 y = 230 }
+			size = { width = 240 height = 450 }
+			clipping = yes
+			verticalScrollbar = "right_vertical_slider" 
+			margin = { top = 0 left = 0 bottom = 0 right = 0 }
+
+			background = {
+				name = "lyu_con_projects_grid_background"
+				quadTextureSprite = "GFX_tiled_window_transparent"
+			}
+
+			#Dynamic lists
+
+			gridboxtype = {
+				name = "lyu_con_projects_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				slotsize = { width = 200 height = 55 }
+				max_slots_horizontal = 1
+				add_horizontal = yes
+				orientation = UPPER_LEFT
+			}
+		}
+
+		#Project View
 		instantTextboxType = {
 			name = "construction_project_title"
-			position = { x= 665 y = 195 }
+			position = { x= 328 y = 250 }
 			font = "TTT_special_font_title"
 			text = "construction_project_title_tt"
 			maxWidth = 350
@@ -73,20 +108,78 @@ guiTypes = {
 		
 		instantTextBoxType = {
 			name = "construction_project_desc"
-			position = { x = 615 y = 460 }
+			position = { x = 555 y = 240 }
 			font = "Main_16"
 			text = "construction_project_desc_tt"
-			maxWidth = 250
-			maxHeight = 150
+			maxWidth = 280
+			maxHeight = 460
 			alwaystransparent = yes
 			scrollbarType = standardtext_slider
 		}
 
-		iconType = { 
-			name = "construction_mask"
-			position = { x= 609 y = 240 }
-			spriteType = "GFX_liyue_construction_mask_icon"
-			pdx_tooltip = "construction_mask_tt"
+		buttonType = {
+			name = "lyu_project_start_button"
+			position = { x = 283 y = 570 }
+			quadTextureSprite = "GFX_liyue_project_start_button"
+			buttonText = "project_start_tt"
+			buttonFont = "hoi_18"
+		}
+
+		iconType = {
+			name = "lyu_project_progress_bar"
+			position = { x= 279 y = 668 }
+			spriteType = "GFX_lyu_project_progress_bar"
+			pdx_tooltip = "lyu_progress_bar_tt"
+			pdx_tooltip_delayed = "lyu_progress_bar_delayed_tt"
+		}
+
+		buttonType = {
+			name = "lyu_project_resource_increase_btn"
+			position = { x = 278 y = 600 }
+			quadTextureSprite = "GFX_liyue_res_plus_button"
+			pdx_tooltip = "resource_increase_tt"
+		}
+
+		buttonType = {
+			name = "lyu_project_resource_decrease_btn"
+			position = { x = 485 y = 600 }
+			quadTextureSprite = "GFX_liyue_res_minus_button"
+			pdx_tooltip = "resource_decrease_tt"
+		}
+
+		iconType = {
+			name = "lyu_project_resource_level"
+			position = { x= 328 y = 613 }
+			pdx_tooltip = "resource_level_tt"
+			pdx_tooltip_delayed = "resource_level_delayed_tt"
+		}
+
+		iconType = {
+			name = "lyu_project_resource_icon"
+			position = { x= 376 y = 515 }
+			pdx_tooltip = "resource_type_tt"
+			pdx_tooltip_delayed = "resource_type_delayed_tt"
+		}
+	}
+
+	## List Entry ## 
+	containerWindowType = {
+		name = "lyu_con_projects_entry"
+		size = { width = 200 height = 55 }
+
+		#background = {
+		#	name = "lyu_con_projects_entry_background"
+		#	quadTextureSprite = "GFX_tiled_window_transparent"
+		#}
+
+		buttonType = {
+			name = "project_btn"
+			spriteType = "GFX_liyue_project_bar_icon"
+			position = { x = 0 y = 0 }
+
+			#This will write onto the button the value and index of the array
+			buttonText = "[get_project_title]"
+			buttonFont = "hoi_18"
 		}
 	}
 }

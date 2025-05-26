@@ -8,6 +8,7 @@ country_event = {
 	desc = QQR_event.1.d
 	trigger = {
 		has_war = yes
+		tag = QQR
 	}
 	fire_only_once = yes
 	option = {
@@ -15,3 +16,70 @@ country_event = {
 		add_timed_idea = { idea = QQR_fight_think_long_time_ago days = 90 }
 	}
 }
+##盗宝团的混乱
+country_event = {
+	id = QQR_event.2
+	immediate = {
+	}
+	title = QQR_event.2.t
+	desc = QQR_event.2.d
+	trigger = {
+		has_war_with = LTM
+		tag = QQR
+		NOT = { has_war_with = MDQ }
+	}
+	fire_only_once = yes
+	option = {
+		name = QQR_event.2.a #暴力镇压
+		add_war_support = 5
+		country_event = { days = 5 id = QQR_event.3 }
+	}
+	option = {
+		name = QQR_event.2.b #和平谈判
+		add_political_power = -30
+		add_war_support = -10
+		add_stability = -10
+		country_event = { days = 5 id = QQR_event.4 }
+	}
+}
+#暴力镇压
+country_event = {
+	id = QQR_event.3
+	immediate = {
+	}
+	title = QQR_event.3.t
+	desc = QQR_event.3.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = QQR_event.3.a
+		annex_country = { target = LTM transfer_troops = no }
+		add_stability = -5
+		add_timed_idea = { idea = QQR_thief_is_fighting days = 90 } 
+		add_state_core = 41
+	}
+}
+#和平谈判
+country_event = {
+	id = QQR_event.4
+	immediate = {
+	}
+	title = QQR_event.4.t
+	desc = QQR_event.4.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = QQR_event.4.a
+		annex_country = { target = LTM transfer_troops = no }
+		add_state_core = 41
+		add_offsite_building = { type = arms_factory level = 1 }
+		add_offsite_building = { type = industrial_complex level = 1 }
+		add_tech_bonus = {
+			name = QQR_tech_bonus_1
+			bonus = 1
+			uses = 2
+			category = industry
+		}
+	}
+}
+

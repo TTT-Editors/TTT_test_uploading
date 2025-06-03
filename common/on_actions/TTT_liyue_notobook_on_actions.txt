@@ -43,6 +43,7 @@ on_actions = {
 					size = 10
 					value = 0
 				}
+				add_dynamic_modifier = { modifier = lyu_special_project_extra_cost }
 				#log = "[?global.lyu_projects_array^0] is first value in array"
 				#add_to_array = { global.lyu_proj_arr^0 = 100 }
 				#log = "[?global.lyu_proj_arr^0^0] is the first value in 2 dimension array."
@@ -72,6 +73,12 @@ on_actions = {
 				#log = "Liyue on monthly code started!"
 				clr_global_flag = liyue_progress_cd
 				set_global_flag = liyue_progress_cd
+
+				set_variable = { lyu_tot_pp_cost = 0 }
+				set_variable = { lyu_tot_ic_use = 0 }
+				set_variable = { lyu_tot_cp_cost = 0 }
+				set_variable = { lyu_wk_st_cost = 0 }
+				set_variable = { lyu_wk_ws_cost = 0 }
 				
 				for_each_loop = {
 					array = global.lyu_proj_arr
@@ -97,6 +104,50 @@ on_actions = {
 							limit = { check_variable = { global.lyu_proj_arr_2^v > 100 } }
 							set_variable = { global.lyu_proj_arr_2^v = 100 }
 							set_variable = { global.lyu_proj_arr_1^v = 2 }	#building --> finished
+						}
+						
+						#calculate the cost of special projects
+						if = {
+							limit = { NOT = { check_variable = { global.lyu_proj_arr_4^v = 0 }}}
+							
+							#arr_3^v = 0 -> pp
+							if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 0 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = 0.15 }
+								add_to_variable = { lyu_tot_pp_cost = extra_cost }
+							}
+							
+							#arr_3^v = 1 -> ic
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 1 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								add_to_variable = { lyu_tot_ic_use = extra_cost }
+							}
+							
+							#arr_3^v = 2 -> cp
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 2 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = -0.15 }
+								add_to_variable = { lyu_tot_cp_cost = extra_cost }
+							}
+							
+							#arr_3^v = 3 -> stability_weekly
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 3 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = -0.002 }
+								add_to_variable = { lyu_wk_st_cost = extra_cost }
+							}
+							
+							#arr_3^v = 4 -> war_support_weekly
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 4 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = -0.002 }
+								add_to_variable = { lyu_wk_ws_cost = extra_cost }
+							}
 						}
 					}
 				}

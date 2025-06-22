@@ -2,12 +2,12 @@ on_actions = {
 	on_startup = {
 		effect = {
 			LYU = {
-				set_variable = { global.current_selected_program = 1 }
+				#set_variable = { global.current_selected_program = 1 }
 				set_variable = { global.lyu_monthly_pp_base = 1 }	# monthly program progress is 1%
 				set_variable = { global.liyue_notebook_ui_dirty = 0 }
 				add_to_array = { global.lyu_projects_array = 1 }
-				add_to_array = { global.lyu_projects_array = 2 }
-				add_to_array = { global.lyu_projects_array = 3 }
+				#add_to_array = { global.lyu_projects_array = 2 }
+				#add_to_array = { global.lyu_projects_array = 3 }
 				#resize_array = {
 				#	array = global.lyu_projects_array
 				#	size = 30
@@ -43,8 +43,8 @@ on_actions = {
 					size = 10
 					value = 0
 				}
-				set_variable = { global.lyu_proj_arr_1^1 = 2 }
-				set_variable = { global.lyu_proj_arr_2^1 = 100 }
+				set_variable = { global.lyu_proj_arr_1^1 = 1 }
+				set_variable = { global.lyu_proj_arr_2^1 = 93 }
 				set_variable = { global.lyu_proj_arr_3^1 = 1 }
 				set_variable = { global.current_selected_program = 1 }
 				add_dynamic_modifier = { modifier = lyu_special_project_extra_cost }
@@ -73,6 +73,7 @@ on_actions = {
 							days > 28
 						}
 					}
+					is_nominate_liyue = yes
 				}
 				#log = "Liyue on monthly code started!"
 				clr_global_flag = liyue_progress_cd
@@ -108,6 +109,12 @@ on_actions = {
 							limit = { check_variable = { global.lyu_proj_arr_2^v > 100 } }
 							set_variable = { global.lyu_proj_arr_2^v = 100 }
 							set_variable = { global.lyu_proj_arr_1^v = 2 }	#building --> finished
+							
+							#every projects' finished events
+							if = {
+								limit = { v = 1 }
+								country_event = { id = lyu_special_project_finished.1 }
+							}
 						}
 						
 						#calculate the cost of special projects

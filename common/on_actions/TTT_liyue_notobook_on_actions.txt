@@ -1,0 +1,171 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			LYU = {
+				#set_variable = { global.current_selected_program = 1 }
+				set_variable = { global.lyu_monthly_pp_base = 1 }	# monthly program progress is 1%
+				set_variable = { global.liyue_notebook_ui_dirty = 0 }
+				add_to_array = { global.lyu_projects_array = 1 }
+				add_to_array = { global.lyu_projects_array = 2 }
+				#add_to_array = { global.lyu_projects_array = 3 }
+				#resize_array = {
+				#	array = global.lyu_projects_array
+				#	size = 30
+				#	value = 1
+				#}
+				resize_array = {
+					array = global.lyu_proj_arr
+					size = 10
+					value = 0
+				}
+				resize_array = {
+					array = global.lyu_proj_arr_1
+					size = 10
+					value = 0
+				}
+				resize_array = {
+					array = global.lyu_proj_arr_2
+					size = 10
+					value = 0
+				}
+				resize_array = {
+					array = global.lyu_proj_arr_3
+					size = 10
+					value = 0
+				}
+				resize_array = {
+					array = global.lyu_proj_arr_4
+					size = 10
+					value = 0
+				}
+				resize_array = {
+					array = global.lyu_proj_arr_5
+					size = 10
+					value = 0
+				}
+				set_variable = { global.lyu_proj_arr_1^1 = 1 }
+				set_variable = { global.lyu_proj_arr_2^1 = 93 }
+				set_variable = { global.lyu_proj_arr_3^1 = 1 }
+				set_variable = { global.current_selected_program = 1 }
+				add_dynamic_modifier = { modifier = lyu_special_project_extra_cost }
+				#log = "[?global.lyu_projects_array^0] is first value in array"
+				#add_to_array = { global.lyu_proj_arr^0 = 100 }
+				#log = "[?global.lyu_proj_arr^0^0] is the first value in 2 dimension array."
+			}
+		}
+	}
+	
+	on_monthly = {
+		effect = {
+			if = {
+				limit = { 
+					OR = {
+						has_global_flag = ttt_liyue_civil_war_end
+						AND = {
+							NOT = { has_global_flag = Liyue_Civil_War_Coming }
+							NOT = {	has_global_flag = Liyue_Civil_War }
+						}
+					}
+					OR = {
+						NOT = { has_global_flag = liyue_progress_cd }
+						has_global_flag = {
+							flag = liyue_progress_cd
+							days > 28
+						}
+					}
+					is_nominate_liyue = yes
+				}
+				#log = "Liyue on monthly code started!"
+				clr_global_flag = liyue_progress_cd
+				set_global_flag = liyue_progress_cd
+
+				set_variable = { lyu_tot_pp_cost = 0 }
+				set_variable = { lyu_tot_ic_use = 0 }
+				set_variable = { lyu_tot_cp_cost = 0 }
+				set_variable = { lyu_wk_st_cost = 0 }
+				set_variable = { lyu_wk_ws_cost = 0 }
+				
+				for_each_loop = {
+					array = global.lyu_proj_arr
+					index = v
+					
+					set_variable = { global.lyu_proj_arr_5^v = 0 }	#refresh monthly progress
+					if = {
+						limit = { check_variable = { global.lyu_proj_arr_1^v = 1 } }	#only 1 makes sense
+						
+						#global.lyu_proj_arr_5^v calculating
+						add_to_variable = {	global.lyu_proj_arr_5^v = global.lyu_monthly_pp_base }
+						set_temp_variable = { extra_progress = global.lyu_proj_arr_4^v }
+						#Lv1 resource --> 0.2% monthly progress
+						divide_temp_variable = { extra_progress = 5 }
+						add_to_variable = {	global.lyu_proj_arr_5^v = extra_progress }
+						
+						#global.lyu_proj_arr_2^v calculating
+						add_to_variable = {
+							global.lyu_proj_arr_2^v = global.lyu_proj_arr_5^v
+						}
+						
+						if = {
+							limit = { check_variable = { global.lyu_proj_arr_2^v > 100 } }
+							set_variable = { global.lyu_proj_arr_2^v = 100 }
+							set_variable = { global.lyu_proj_arr_1^v = 2 }	#building --> finished
+							
+							#every projects' finished events
+							if = {
+								limit = { v = 1 }
+								country_event = { id = lyu_special_project_finished.1 }
+							}
+						}
+						
+						#calculate the cost of special projects
+						if = {
+							limit = { NOT = { check_variable = { global.lyu_proj_arr_4^v = 0 }}}
+							
+							#arr_3^v = 0 -> pp
+							if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 0 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = 0.1 }
+								add_to_variable = { lyu_tot_pp_cost = extra_cost }
+							}
+							
+							#arr_3^v = 1 -> ic
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 1 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								add_to_variable = { lyu_tot_ic_use = extra_cost }
+							}
+							
+							#arr_3^v = 2 -> cp
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 2 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = -0.1 }
+								add_to_variable = { lyu_tot_cp_cost = extra_cost }
+							}
+							
+							#arr_3^v = 3 -> stability_weekly
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 3 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = -0.001 }
+								add_to_variable = { lyu_wk_st_cost = extra_cost }
+							}
+							
+							#arr_3^v = 4 -> war_support_weekly
+							else_if = {
+								limit = { check_variable = { global.lyu_proj_arr_3^v = 4 } }
+								set_temp_variable = { extra_cost = global.lyu_proj_arr_4^v }
+								multiply_temp_variable = { extra_cost = -0.001 }
+								add_to_variable = { lyu_wk_ws_cost = extra_cost }
+							}
+						}
+					}
+				}
+				#finally, refresh ui
+				add_to_variable = { global.liyue_notebook_ui_dirty = 1 }
+			}
+			#log = "Liyue on monthly code finished yet!"
+		}
+	}
+}

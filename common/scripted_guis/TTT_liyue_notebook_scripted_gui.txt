@@ -7,6 +7,7 @@ scripted_gui = {
 		triggers = {
 			liyue_construction_button_click_enabled = {
 				is_liyue_notebook_available = yes
+				NOT = { has_global_flag = liyue_construction_main_view_enabled } 
 			}
 		}
 
@@ -20,16 +21,133 @@ scripted_gui = {
 	ttt_liyue_construction_main = {
 		context_type = player_context
 		window_name = "ttt_liyue_construction_main_ui_window"
+		dirty = global.liyue_notebook_ui_dirty
+
+		dynamic_lists = {
+			lyu_con_projects_grid = {
+				array = global.lyu_projects_array
+				index = i			#project's ui order
+				value = project_id	#project's real id
+				change_scope = no
+				entry_container = lyu_con_projects_entry
+			}
+		}
 
 		visible = {
 			has_global_flag = liyue_construction_main_view_enabled
+		}
+
+		triggers = {
+			#start a project
+			lyu_project_start_button_visible = {
+				check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 0 }	#project^1 means project status, 0 = not started yet, 1 = building, 2 = finished, -1 = failed
+			}
+
+			#project's progress, resources and resources consumption level
+			#maybe a sub-gui window is better?
+			lyu_project_progress_bar_visible = {
+				#this bar needs to add
+				NOT = { check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 0 } }
+			}
+
+			lyu_project_resource_increase_btn_visible = {
+				NOT = { check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 0 } }
+			}
+
+			lyu_project_resource_decrease_btn_visible = {
+				NOT = { check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 0 } }
+			}
+
+			lyu_project_resource_level_visible = {
+				#this icon needs to add
+				NOT = { check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 0 } }
+			}
+
+			res_type_background_visible = {
+				NOT = { check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 0 } }
+			}
+
+			lyu_project_resource_icon_visible = {
+				NOT = { check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 0 } }
+			}
+
+			#enable
+			lyu_project_resource_increase_btn_click_enabled = {
+				#this button needs to add
+				#it doesn't make sense to drop resources into failed or finished projects
+				check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 1 }
+
+				#max level is 4
+				check_variable = { global.lyu_proj_arr_4^global.current_selected_program < 4 }
+			}
+
+			lyu_project_resource_decrease_btn_click_enabled = {
+				check_variable = { global.lyu_proj_arr_1^global.current_selected_program = 1 }
+
+				#min level is 0
+				check_variable = { global.lyu_proj_arr_4^global.current_selected_program > 0 }
+			}
 		}
 
 		effects = {
 			liyue_construction_close_button_click = {
 				clr_global_flag = liyue_construction_main_view_enabled
 			}
+
+			project_btn_click = {
+				set_variable = { global.current_selected_program = global.lyu_projects_array^i }
+				add_to_variable = { global.liyue_notebook_ui_dirty = 1 }
+				log = "global selected program is currently [?global.current_selected_program]"
+				log = "program [?global.current_selected_program]'s status is currently [?global.lyu_proj_arr_1^global.current_selected_program]"
+			}
+
+			lyu_project_start_button_click = {
+				set_variable = { global.lyu_proj_arr_1^global.current_selected_program = 1 }
+				add_to_variable = { global.liyue_notebook_ui_dirty = 1 }
+			}
+
+			lyu_project_resource_increase_btn_click = {
+				add_to_variable = { global.lyu_proj_arr_4^global.current_selected_program = 1 }
+				add_to_variable = { global.liyue_notebook_ui_dirty = 1 }
+			}
+
+			lyu_project_resource_decrease_btn_click = {
+				add_to_variable = { global.lyu_proj_arr_4^global.current_selected_program = -1 }
+				add_to_variable = { global.liyue_notebook_ui_dirty = 1 }
+			}
+		}
+
+		properties = {
+			lyu_project_progress_bar = {
+				#project's progress is stored in project^2, clamp 0~100
+				#when add, add "icontype = lyu_project_progress_bar" in *.gui file
+				#and a "progressbartype = " in *.gfx file is needed
+				frame = global.lyu_proj_arr_2^global.current_selected_program
+			}
+
+			lyu_project_resource_icon = {
+				image = "[get_lyu_resource_icon]"
+				#i need to add a scripted_loc later
+				#this refers to project^3
+				#resource type of project, 0=pp, 1=civilian factory, 2=command power, 3=weekly stability, 4=weekly war support
+			}
+
+			lyu_project_resource_level = {
+				image = "[get_lyu_resource_level]"
+				#i need to add a scripted_loc later
+				#this refers to project^4
+			}
+
+			#220*180,x=305,y=305
+			lyu_project_picture = {
+				image = "[get_lyu_project_picture]"
+			}
+
+			#size:800*120,x=50,y=40
+			lyu_project_tag_banner = {
+				image = "[get_lyu_tag_banner]"
+				#i need to add a scripted_loc later, 2025.6.10
+			}
 		}
 	}
-
 }

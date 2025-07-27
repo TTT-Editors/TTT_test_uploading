@@ -83,7 +83,16 @@ country_event = {
 	option = {
 		name = lyu_start.7.a
 		custom_effect_tooltip = Quarter_year_countdown_tt
+		custom_effect_tooltip = ALL_PROJECT_FAIL_TT
 		hidden_effect = {
+			for_each_loop = {
+				array = global.lyu_proj_arr
+				index = v
+				if = {
+					limit = { check_variable = { global.lyu_proj_arr_1^v = 1 } }	#only 1 makes sense
+					set_variable = { global.lyu_proj_arr_1^v = -1 }	#building --> failed
+				}
+			}
 			LYU = { set_political_power = 0 }
 			CUG = {
 				set_country_flag = CUG_unlock_right_focus

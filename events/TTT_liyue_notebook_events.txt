@@ -6,8 +6,7 @@ country_event = {
 	id = lyu_special_project_finished.1
 	title = lyu_special_project_finished.1.t
 	desc = lyu_special_project_finished.1.d
-
-	#picture = lyu_start_unASjmeN-172103
+	
 	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
@@ -17,7 +16,7 @@ country_event = {
 		custom_effect_tooltip = Keqing_big_win_tt
 		hidden_effect = {
 			add_to_variable = {
-				Keqing_Alioth = 30
+				Keqing_Alioth = 50
 			}
 			every_owned_state = {
 				limit = { is_liyue_region_three_states = yes }
@@ -45,15 +44,94 @@ country_event = {
 		}
 		
 		add_resource = {
-			type = steel
-			amount = 18
-			state = 92
-		}
-		
-		add_resource = {
 			type = grain
 			amount = 33
 			state = 95
+		}
+
+		if = {
+			limit = { has_completed_focus = LYU_Large_development }
+			custom_effect_tooltip = {
+				localization_key = get_reward_by_custom_focus
+				FOCUS_TITLE = LYU_Large_development
+			}
+			94 = {
+				add_resource = {
+					type = tungsten
+					amount = 15
+				}
+				add_resource = {
+					type = steel
+					amount = 24
+				}
+			}
+		}
+	}
+}
+
+#海务振兴
+country_event = {
+	id = lyu_special_project_finished.6
+	title = lyu_special_project_finished.6.t
+	desc = lyu_special_project_finished.6.d
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = lyu_special_project_finished.6.a
+		custom_effect_tooltip = Ningguang_big_win_tt
+		hidden_effect = {
+			add_to_variable = {
+				Ningguang_Tianquan_Star = 50
+			}
+		}
+		
+		89 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+		}
+		117 = {
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+
+		if = {
+			limit = { has_completed_focus = LYU_Guyunge_Industrial }
+			custom_effect_tooltip = {
+				localization_key = get_reward_by_custom_focus
+				FOCUS_TITLE = LYU_Guyunge_Industrial
+			}
+			116 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 }

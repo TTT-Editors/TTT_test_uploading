@@ -57,3 +57,70 @@ QQR_from_the_abgrund = {
         }
     }
 }
+
+QQR_collect_ruins_guard = {
+    QQR_collect_ruins_guard_small = {
+        cost = 30
+        days_remove = 10
+        days_re_enable = 20
+        fire_only_once = no
+        allowed = {
+            controls_state = 36
+        }
+        remove_effect = {
+			add_equipment_to_stockpile = {
+                type = ttt_ruins_guard_eq_0
+                amount = 10
+            }
+		}
+    }
+
+    QQR_collect_ruins_guard_middle = {
+        cost = 60
+        days_remove = 20
+        days_re_enable = 30
+        fire_only_once = no
+        allowed = {
+            controls_state = 34
+        }
+        remove_effect = {
+			add_equipment_to_stockpile = {
+                type = ttt_ruins_guard_eq_0
+                amount = 25
+            }
+		}
+    }
+
+    QQR_collect_ruins_guard_big = {
+        cost = 80
+        days_remove = 30
+        days_re_enable = 50
+        fire_only_once = no
+        allowed = {
+            controls_state = 4
+        }
+        remove_effect = {
+			add_equipment_to_stockpile = {
+                type = ttt_ruins_guard_eq_0
+                amount = 45
+            }
+		}
+    }
+}
+#跳过发展期（搞完经济线工业线记得删）
+QQR_abandon_develop = {
+    QQR_abandon_develop_0 = {
+        cost = 5
+        days_remove = 60
+        fire_only_once = yes
+        complete_effect = {  
+			#开始/点击决议时的效果
+		}
+		remove_effect = {
+			#决议完成/结束时的效果
+            MDQ = {
+                country_event = { days = 1 id = MDQ_event.49 }
+            }
+		}
+    }
+}

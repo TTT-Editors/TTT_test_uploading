@@ -960,7 +960,7 @@ country_event = {
 	desc = MDQ_event.47.d
 	trigger = {
 		NOT = {
-			has_army_manpower = { size > 53000 }
+			has_army_manpower = { size > 55000 }
 		}
 		has_war = yes
 		tag = MDQ
@@ -982,5 +982,42 @@ country_event = {
 			}
 		}
 		
+	}
+}
+#准备下一次达达乌帕谷战争
+country_event = {
+	id = MDQ_event.48
+	title = MDQ_event.48.t
+	desc = MDQ_event.48.d
+	trigger = {
+		QQR = {
+			has_completed_focus = QQR016
+		}
+		tag = MDQ
+	}
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.48.a
+		country_event = { days = 1000 id = MDQ_event.49 }
+	}
+}
+#第六次达达乌帕谷战争
+country_event = {
+	id = MDQ_event.49
+	title = MDQ_event.49.t
+	desc = MDQ_event.49.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.49.a
+		declare_war_on = { target = QQR type = annex_everything }
+		MOT = {
+			#从蒙德城独立
+			set_autonomy = {
+				target = MDQ
+				autonomy_state = autonomy_free
+			}
+		}
+		leave_faction = yes				#退出阵营，国家tag 
 	}
 }

@@ -484,7 +484,7 @@ focus_tree = {
 					character = QQR_abgrund_leader_none
 					promote_leader = yes
 					country_leader = {
-						ideology=esotericism
+						ideology=esotericism_subtype
 						expire="2022.10.20.1"
 						traits = { power_struggle_QQR }
 					}
@@ -580,6 +580,20 @@ focus_tree = {
 			prerequisite = {
 				focus = QQR010
 			}
+			completion_reward = {
+				add_popularity = { ideology = esotericism popularity = 0.1 }
+				remove_ideas = QQR_abgrund_parliament_009
+				add_country_leader_role = {
+					character = QQR_Abyss_Council
+					promote_leader = yes
+					country_leader = {
+						ideology=esotericism_subtype
+						expire="2022.10.20.1"
+						traits = { Abyss_Council_trait }
+					}
+						
+				}
+			}
 	
 		}
 
@@ -594,6 +608,13 @@ focus_tree = {
 			}
 			ai_will_do = {
 				base = 15
+			}
+			completion_reward = {
+				add_political_power = 100
+				QQR_Abyss_Council = {
+					add_country_leader_trait = Abyss_Council_trait_14
+					remove_country_leader_trait = Abyss_Council_trait 
+				}
 			}
 	
 		}
@@ -611,6 +632,9 @@ focus_tree = {
 			}
 			ai_will_do = {
 				base = 15
+			}
+			completion_reward = {
+				country_event = { days = 1 id = QQR_event.6 }
 			}
 	
 		}
@@ -630,6 +654,9 @@ focus_tree = {
 			ai_will_do = {
 				base = 15
 			}
+			completion_reward = {
+				add_timed_idea = { idea = QQR_prepare_to_war days = 1095 }
+			}
 	
 		}
 
@@ -644,6 +671,15 @@ focus_tree = {
 			}
 			ai_will_do = {
 				base = 15
+			}
+			bypass = {
+				has_war = yes
+			}
+			available = {
+				NOT = { has_idea = QQR_prepare_to_war }
+			}
+			completion_reward = {
+				declare_war_on = { target = MDQ type = annex_everything }
 			}
 	
 		}
@@ -663,6 +699,13 @@ focus_tree = {
 			ai_will_do = {
 				base = 15
 			}
+			bypass = {
+				has_war = yes
+			}
+			completion_reward = {
+				                              #未完成
+			}
+	
 	
 		}
 
@@ -677,7 +720,7 @@ focus_tree = {
 			}
 			ai_will_do = {
 				base = 15
-			}
+			}                                #未完成
 	
 		}
 
@@ -691,8 +734,17 @@ focus_tree = {
 				focus = QQR017
 				focus = QQR019
 			}
+			prerequisite = {
+				NOT = { country_exists = MDQ }
+			}
 			ai_will_do = {
 				base = 15
+			}
+			bypass = {
+				NOT = { country_exists = DSC }
+			}
+			completion_reward = {
+				
 			}
 	
 		}

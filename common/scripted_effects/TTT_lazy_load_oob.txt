@@ -117,115 +117,120 @@ LYU_lazy_load_oob = {
 	every_owned_state = {
 		if = {
 			limit = {
-				arms_factory > 1
+				impassable = no
 			}
-			create_unit = {
-				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
-			}
-			create_unit = {
-				division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.5"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
-			}
-		}
-		else_if = {
-			limit = {
-				arms_factory > 0
-			}
-			create_unit = {
-				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
-			}
-			#create_unit = {
-			#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.5" 
-			#	owner = LYU
-			#	allow_spawning_on_enemy_provs = yes
-			#	count = 1
-			#}
-		}
-		else = {
-			create_unit = {
-				division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.1"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
-			}
-		}
-		#Coastal states get extra corps
-		if = {
-			limit = {
-				naval_base > 1
-			}
-			create_unit = {
-				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.1"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
-			}
-		}
-		if = {
-			limit = {
-				OR = {
-					is_coastal = yes
-					is_island_state = yes
+			if = {
+				limit = {
+					arms_factory > 1
 				}
-				arms_factory > 0
+				create_unit = {
+					division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+				create_unit = {
+					division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.5"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
 			}
-			create_unit = {
-				division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.3"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
+			else_if = {
+				limit = {
+					arms_factory > 0
+				}
+				create_unit = {
+					division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.1"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+				#create_unit = {
+				#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.5" 
+				#	owner = LYU
+				#	allow_spawning_on_enemy_provs = yes
+				#	count = 1
+				#}
 			}
-			#create_unit = {
-			#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.3" 
-			#	owner = LYU
-			#	allow_spawning_on_enemy_provs = yes
-			#	count = 1
-			#}
-		}
-		#Border states get extra corps
-		if = {
-			limit = {
-				any_neighbor_state = {
-					NOT = {
-						is_owned_by = LYU
+			else = {
+				create_unit = {
+					division = "division_template = \"Qianyan Qibing\" start_experience_factor = 0.1"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			#Coastal states get extra corps
+			if = {
+				limit = {
+					naval_base > 1
+				}
+				create_unit = {
+					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.1"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						is_coastal = yes
+						is_island_state = yes
+					}
+					arms_factory > 0
+				}
+				create_unit = {
+					division = "division_template = \"Liyue Difang Minbing Lv\" start_experience_factor = 0.3"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+				#create_unit = {
+				#	division = "division_template = \"Liyue Cavalry\" start_experience_factor = 0.3" 
+				#	owner = LYU
+				#	allow_spawning_on_enemy_provs = yes
+				#	count = 1
+				#}
+			}
+			#Border states get extra corps
+			if = {
+				limit = {
+					any_neighbor_state = {
+						NOT = {
+							is_owned_by = LYU
+						}
+					}
+					arms_factory > 1
+				}
+				create_unit = {
+					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.5"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
+			}
+			else_if = {
+				limit = {
+					any_neighbor_state = {
+						NOT = {
+							is_owned_by = LYU
+						}
 					}
 				}
-				arms_factory > 1
-			}
-			create_unit = {
-				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.5"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
-			}
-		}
-		else_if = {
-			limit = {
-				any_neighbor_state = {
-					NOT = {
-						is_owned_by = LYU
-					}
+				create_unit = {
+					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
 				}
-			}
-			create_unit = {
-				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
-			}
-			create_unit = {
-				division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3"
-				owner = LYU
-				allow_spawning_on_enemy_provs = yes
-				count = 1
+				create_unit = {
+					division = "division_template = \"Qianyan Jun\" start_experience_factor = 0.3"
+					owner = LYU
+					allow_spawning_on_enemy_provs = yes
+					count = 1
+				}
 			}
 		}
 	}

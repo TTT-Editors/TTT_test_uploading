@@ -324,4 +324,44 @@ QQR_abandon_develop = {
             }
 		}
     }
+    #打下南风镇后
+    QQR_abandon_develop_1 = {
+        cost = 5
+        days_remove = 40
+        fire_only_once = yes
+        visible = { always = yes }
+        available = { NOT = { country_exists = MDQ } }
+        complete_effect = {
+            remove_ideas = QQR_fight_without_plan_1
+            remove_ideas = QQR_SB_qqr_1
+            swap_ideas = {
+                remove_idea = QQR_factor_national_1
+                add_idea = QQR_factor_national_2
+            }
+            swap_ideas = {
+                remove_idea = QQR_economy_national_1
+                add_idea = QQR_economy_national_2
+            }
+            swap_ideas = {
+                remove_idea = QQR_control_national_1
+                add_idea = QQR_control_national_2
+            }
+            swap_ideas = {
+                remove_idea = QQR_the_army_full_of_QQR
+                add_idea = QQR_the_army_full_of_QQR_1
+            }
+            capital_scope = {
+                create_unit = {
+                  division = "division_template = \"丘丘人步兵师\" start_experience_factor = 0.2"
+                  owner = QQR
+                  count = 4  
+                }
+                create_unit = {
+                    division = "division_template = \"丘丘人混编师\" start_experience_factor = 0.2"
+                    owner = QQR
+                    count = 2 
+                }
+            }
+        }
+    }
 }

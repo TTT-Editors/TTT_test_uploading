@@ -41,10 +41,32 @@ reset_core_of_liyue = {
 			state = 51
 			remember_old_capital = no
 		}
+		add_dynamic_modifier = { modifier = lyu_special_project_extra_cost }
+		add_ideas = {
+			Liyue_economic_collapse_1
+			Liyue_low_efficiency_administration_1
+			Liyue_nationwide_resistance_1
+		}
+		set_political_power = 100
+		set_global_flag = ttt_liyue_civil_war_end
+		set_country_flag = king_of_liyue
+	
+		#Reconstruction Progress
+		set_variable = { liyue_adm_reconstruction_progress = 0 }	#administration
+		set_variable = { liyue_mil_reconstruction_progress = 0 }	#military occupation
+		set_variable = { liyue_eco_reconstruction_progress = 0 }	#economy rebuild
+		set_variable = { LYU_days_factory_bankrupt_timeuot = 6 }	#days to remove factory
+		set_variable = { LYU_days_rebellion_prepare_timeout = 15 }	#days to play some little tricks
+
+		every_owned_state = {
+			limit = {
+				NOT = { is_core_of = FROM  }
+			}
+			start_resistance = yes
+		}
 	}
 	ROOT = { add_named_threat = { threat = -35 name = liyue_civil_war_end_tt } }
 	ROOT = { clear_variable = ttt_liyue_civil_war_decision_ui_dirty }
-	set_global_flag = ttt_liyue_civil_war_end
 	if = {
 		limit = {
 			has_template = "Renmin Chiweidui"
@@ -70,23 +92,24 @@ reset_core_of_liyue = {
 			division_template = "至冬国志愿军"
 		}
 	}
-	every_possible_country = {
-		limit = {
-			is_nominate_liyue = yes
-			NOT = { tag = CUG }
-		}
-		every_state = {
-			limit = { has_state_flag = is_Liyues_territory }
-			remove_core_of = PREV
-		}
-	}
-	every_state = {
-		limit = {
-			has_state_flag = is_Liyues_territory
-			NOT = { is_core_of = CUG }
-		}
-		add_core_of = ROOT
-	}
+	
+	#every_possible_country = {
+	#	limit = {
+	#		is_nominate_liyue = yes
+	#		NOT = { tag = CUG }
+	#	}
+	#	every_state = {
+	#		limit = { has_state_flag = is_Liyues_territory }
+	#		remove_core_of = PREV
+	#	}
+	#}
+	#every_state = {
+	#	limit = {
+	#		has_state_flag = is_Liyues_territory
+	#		NOT = { is_core_of = CUG }
+	#	}
+	#	add_core_of = ROOT
+	#}
 	
 	#achievements
 	if = {
@@ -98,6 +121,142 @@ reset_core_of_liyue = {
 		clr_country_flag = defeated_ningguang
 	}
 }
+
+liyue_adm_reconstruction_progress_upgrade = {
+	if = {
+		limit = {
+			has_idea = Liyue_low_efficiency_administration_5
+		}
+		remove_ideas = Liyue_low_efficiency_administration_5
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_low_efficiency_administration_4
+		}
+		swap_ideas = {
+			add_idea = Liyue_low_efficiency_administration_5
+			remove_idea = Liyue_low_efficiency_administration_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_low_efficiency_administration_3
+		}
+		swap_ideas = {
+			add_idea = Liyue_low_efficiency_administration_4
+			remove_idea = Liyue_low_efficiency_administration_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_low_efficiency_administration_2
+		}
+		swap_ideas = {
+			add_idea = Liyue_low_efficiency_administration_3
+			remove_idea = Liyue_low_efficiency_administration_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_low_efficiency_administration_1
+		}
+		swap_ideas = {
+			add_idea = Liyue_low_efficiency_administration_2
+			remove_idea = Liyue_low_efficiency_administration_1
+		}
+	}
+}
+
+liyue_eco_reconstruction_progress_upgrade = {
+	if = {
+		limit = {
+			has_idea = Liyue_economic_collapse_5
+		}
+		remove_ideas = Liyue_economic_collapse_5
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_economic_collapse_4
+		}
+		swap_ideas = {
+			add_idea = Liyue_economic_collapse_5
+			remove_idea = Liyue_economic_collapse_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_economic_collapse_3
+		}
+		swap_ideas = {
+			add_idea = Liyue_economic_collapse_4
+			remove_idea = Liyue_economic_collapse_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_economic_collapse_2
+		}
+		swap_ideas = {
+			add_idea = Liyue_economic_collapse_3
+			remove_idea = Liyue_economic_collapse_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_economic_collapse_1
+		}
+		swap_ideas = {
+			add_idea = Liyue_economic_collapse_2
+			remove_idea = Liyue_economic_collapse_1
+		}
+	}
+}
+
+liyue_mil_reconstruction_progress_upgrade = {
+	if = {
+		limit = {
+			has_idea = Liyue_nationwide_resistance_5
+		}
+		remove_ideas = Liyue_nationwide_resistance_5
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_nationwide_resistance_4
+		}
+		swap_ideas = {
+			add_idea = Liyue_nationwide_resistance_5
+			remove_idea = Liyue_nationwide_resistance_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_nationwide_resistance_3
+		}
+		swap_ideas = {
+			add_idea = Liyue_nationwide_resistance_4
+			remove_idea = Liyue_nationwide_resistance_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_nationwide_resistance_2
+		}
+		swap_ideas = {
+			add_idea = Liyue_nationwide_resistance_3
+			remove_idea = Liyue_nationwide_resistance_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = Liyue_nationwide_resistance_1
+		}
+		swap_ideas = {
+			add_idea = Liyue_nationwide_resistance_2
+			remove_idea = Liyue_nationwide_resistance_1
+		}
+	}
+}
+
 LH_troika_sort = {
 	resize_array = {
 		array = troika_cha_array

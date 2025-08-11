@@ -24,11 +24,33 @@ compliance_25 = {
 	}
 }
 
-compliance_30 = {
+compliance_40 = {
+	type = core_compliance_modifier
+	icon = "GFX_occupation_compliance_modifier_strip:3"
+	small_icon = "GFX_occupation_compliance_modifier_small_strip:3"
+	threshold = 40
+	margin = 2
+	state_modifier = {
+		local_factories = 0.1
+		local_resources = 0.1
+	}
+}
+compliance_60 = {
+	type = core_compliance_modifier
+	icon = "GFX_occupation_compliance_modifier_strip:4"
+	small_icon = "GFX_occupation_compliance_modifier_small_strip:4"
+	threshold = 60
+	margin = 2
+	state_modifier = {
+		recruitable_population_factor = 0.2
+	}
+}
+
+compliance_75 = {
 	type = core_compliance_modifier
 	icon = "GFX_occupation_compliance_modifier_strip:5"
 	small_icon = "GFX_occupation_compliance_modifier_small_strip:5"
-	threshold = 30
+	threshold = 75
 	margin = 2
 	
 	visible = {
@@ -68,31 +90,25 @@ compliance_30 = {
 					remove_core_of = FROM
 				}
 			}
+
+			#add recounstruction of mil\adm
+			if = {
+				limit = {
+					check_variable = { liyue_adm_reconstruction_progress < 100 }
+				}
+				add_to_variable = { liyue_adm_reconstruction_progress = 10 }
+			}
+
+			if = {
+				limit = {
+					check_variable = { liyue_mil_reconstruction_progress < 100 }
+				}
+				add_to_variable = { liyue_mil_reconstruction_progress = 5 }
+			}
 		}
 	}
 }
 
-compliance_40 = {
-	type = core_compliance_modifier
-	icon = "GFX_occupation_compliance_modifier_strip:3"
-	small_icon = "GFX_occupation_compliance_modifier_small_strip:3"
-	threshold = 40
-	margin = 2
-	state_modifier = {
-		local_factories = 0.1
-		local_resources = 0.1
-	}
-}
-compliance_60 = {
-	type = core_compliance_modifier
-	icon = "GFX_occupation_compliance_modifier_strip:4"
-	small_icon = "GFX_occupation_compliance_modifier_small_strip:4"
-	threshold = 60
-	margin = 2
-	state_modifier = {
-		recruitable_population_factor = 0.2
-	}
-}
 compliance_80 = {
 	type = core_compliance_modifier
 	icon = "GFX_occupation_compliance_modifier_strip:5"

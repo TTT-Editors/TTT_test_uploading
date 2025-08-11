@@ -60,13 +60,10 @@ ideas = {
 			}
 			
 			modifier = {
+				non_core_manpower = 0.5
 				supply_consumption_factor = -0.2
-				#attrition = -0.2
 				no_supply_grace = 24
 				war_support_weekly = -0.001
-				#out_of_supply_factor = -0.2
-				#supply_node_range = 0.5
-				#equipment_capture_factor = 0.20
 				offensive_war_stability_factor = 0.25
 				ai_desired_divisions_factor = 2
 			}
@@ -131,7 +128,7 @@ ideas = {
 			
 			modifier = {
 				stability_factor = 0.10
-				reformism_drift = 0.20
+				#reformism_drift = 0.20
 			}
 		}
 		
@@ -481,10 +478,253 @@ ideas = {
 			removal_cost = -1
 			picture = LYU_sichaoxiying
 			modifier = {
-			stability_factor = 0.10
-			political_power_factor = 0.05
-			war_support_factor = 0.10
-            monthly_population = 0.20			
+				army_org_factor = 0.2
+				army_attack_factor = 0.25
+				army_defence_factor = 0.25
+				political_power_factor = 0.25
+				weekly_manpower = 2500
+				stability_weekly = 0.005
+				war_support_weekly = 0.005
+				ai_focus_aggressive_factor = 0.5
+			}
+		}
+
+		#归离原冲突
+		Liyue_Guiliyuan_Conflict = {
+			removal_cost = -1
+			picture = LYU_guiliyuan_confilct
+			available = {
+				KQG = { exists = yes }
+				NNG = { exists = yes }
+			}
+			
+			modifier = {
+				army_speed_factor = 0.2
+				army_org_factor = -0.25
+				army_defence_factor = -0.25
+				equipment_capture = 0.25
+				terrain_penalty_reduction = 0.5
+				pocket_penalty = 0.5
+				ai_focus_aggressive_factor = 1
+			}
+			
+			targeted_modifier = {
+				tag = KQG
+				attack_bonus_against = 0.35
+			}
+
+			targeted_modifier = {
+				tag = NNG
+				attack_bonus_against = 0.35
+			}
+		}
+		
+		#战后民精
+		#崩溃的国民经济
+		Liyue_economic_collapse_1 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				consumer_goods_factor = 1
+				political_power_factor = -0.25
+				production_speed_buildings_factor = -0.75
+				industrial_capacity_factory = -0.75
+				industrial_capacity_dockyard = -0.75
+				production_factory_max_efficiency_factor = -0.5
+				min_export = -0.5
+			}
+		}
+
+		Liyue_economic_collapse_2 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				consumer_goods_factor = 0.8
+				political_power_factor = -0.2
+				production_speed_buildings_factor = -0.6
+				industrial_capacity_factory = -0.6
+				industrial_capacity_dockyard = -0.6
+				production_factory_max_efficiency_factor = -0.4
+				min_export = -0.4
+			}
+		}
+
+		Liyue_economic_collapse_3 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				consumer_goods_factor = 0.6
+				political_power_factor = -0.15
+				production_speed_buildings_factor = -0.45
+				industrial_capacity_factory = -0.45
+				industrial_capacity_dockyard = -0.45
+				production_factory_max_efficiency_factor = -0.3
+				min_export = -0.3
+			}
+		}
+
+		Liyue_economic_collapse_4 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				consumer_goods_factor = 0.4
+				political_power_factor = -0.1
+				production_speed_buildings_factor = -0.3
+				industrial_capacity_factory = -0.3
+				industrial_capacity_dockyard = -0.3
+				production_factory_max_efficiency_factor = -0.2
+				min_export = -0.2
+			}
+		}
+
+		Liyue_economic_collapse_5 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				consumer_goods_factor = 0.2
+				political_power_factor = -0.05
+				production_speed_buildings_factor = -0.15
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.15
+				production_factory_max_efficiency_factor = -0.1
+				min_export = -0.1
+			}
+		}
+		
+		#低效的行政体系
+		Liyue_low_efficiency_administration_1 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				political_power_factor = -0.25
+				mobilization_speed = -0.75
+				conscription_factor = -0.75
+				research_speed_factor = -0.35
+			}
+		}
+		
+		Liyue_low_efficiency_administration_2 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				political_power_factor = -0.2
+				mobilization_speed = -0.6
+				conscription_factor = -0.6
+				research_speed_factor = -0.25
+			}
+		}
+		
+		Liyue_low_efficiency_administration_3 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				political_power_factor = -0.15
+				mobilization_speed = -0.45
+				conscription_factor = -0.45
+				research_speed_factor = -0.15
+			}
+		}
+		
+		Liyue_low_efficiency_administration_4 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				political_power_factor = -0.1
+				mobilization_speed = -0.3
+				conscription_factor = -0.3
+				research_speed_factor = -0.05
+			}
+		}
+		
+		Liyue_low_efficiency_administration_5 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				political_power_factor = -0.05
+				mobilization_speed = -0.1
+				conscription_factor = -0.1
+			}
+		}
+		
+		#猖獗的武装分子
+		Liyue_nationwide_resistance_1 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				stability_factor = -0.75
+				political_power_factor = -0.25
+				war_support_factor = -1
+				ai_join_ally_desire_factor = -1000
+				ai_get_ally_desire_factor = -1000
+				resistance_target = 0.3
+				compliance_growth = -0.5
+			}
+		}
+		
+		Liyue_nationwide_resistance_2 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				stability_factor = -0.5
+				political_power_factor = -0.2
+				war_support_factor = -0.8
+				ai_join_ally_desire_factor = -1000
+				ai_get_ally_desire_factor = -1000
+				resistance_target = 0.2
+				compliance_growth = -0.3
+			}
+		}
+		
+		Liyue_nationwide_resistance_3 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				stability_factor = -0.25
+				political_power_factor = -0.15
+				war_support_factor = -0.6
+				ai_join_ally_desire_factor = -1000
+				ai_get_ally_desire_factor = -1000
+				resistance_target = 0.1
+				compliance_growth = -0.1
+			}
+		}
+		
+		Liyue_nationwide_resistance_4 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				stability_factor = -0.15
+				political_power_factor = -0.1
+				war_support_factor = -0.4
+				ai_join_ally_desire_factor = -500
+				ai_get_ally_desire_factor = -500
+			}
+		}
+		
+		Liyue_nationwide_resistance_5 = {
+			removal_cost = -1
+			picture = unknown
+			
+			modifier = {
+				war_support_factor = -0.25
+				political_power_factor = -0.05
+				ai_join_ally_desire_factor = -300
+				ai_get_ally_desire_factor = -300
+				compliance_growth = 0.25
 			}
 		}
 	}

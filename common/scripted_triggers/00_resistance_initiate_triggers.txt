@@ -35,39 +35,16 @@ should_not_activate_active_crypto_bonuses = {
 # from from = occupied (always original tag)
 # can be specialized for states by using should_initiate_resistance_STATEID1_STATEID2 = { }
 # those will override default should_initiate_resistance
+
 should_initiate_resistance = {
 	impassable = no
 	check_variable = { core_countries^num > 0 } # have no cores
 	NOT = { is_core_of = FROM  } # never for our cores
+
+	OR = {
+		NOT = { has_state_flag = is_Liyues_territory }
+		FROM = { is_nominate_liyue = no }
+		FROM = { has_country_flag = king_of_liyue }
+	}
 }
-
-#should_initiate_resistance_5 = {
-#	# for Germany, this state always has resistance
-#	if = {
-#		limit = { FROM = { tag = GER } }
-#		always = yes
-#	}
-#	else_if = {
-#		should_initiate_resistance = yes
-#	}
-#}
-#
-#should_initiate_resistance_60_65_54 = {
-#	# for facsist Germany, these state always has resistance
-#	# since there are no other cores, the resistor will be Germany
-#	if = {
-#		limit = { 
-#			FROM = { 
-#				tag = GER 
-#				has_a_fascist_ideology = yes
-#			}
-#		}
-#		always = yes
-#	}
-#	else_if = {
-#		should_initiate_resistance = yes
-#	}
-#}
-
-# ~~
 

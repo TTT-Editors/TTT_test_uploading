@@ -1271,7 +1271,7 @@ post_liyue_civil_war_decision_category = {
 	
 	#economy decisions	
 	lyu_invest_factory = {
-		
+		icon = GFX_decision_Factory_resolution_icon_small
 		cost = 20
 		fire_only_once = no
 		days_remove = 45
@@ -1314,6 +1314,7 @@ post_liyue_civil_war_decision_category = {
 	}
 	
 	lyu_rebuild_countryside = {
+		icon = GFX_decision_TTT_decision07
 		cost = 50
 		fire_only_once = no
 		days_remove = 180
@@ -1370,6 +1371,7 @@ post_liyue_civil_war_decision_category = {
 	}
 	
 	lyu_fix_port = {
+		icon = GFX_decision_TTT_decision01
 		cost = 35
 		fire_only_once = no
 		days_remove = 30
@@ -1493,6 +1495,8 @@ post_liyue_civil_war_decision_category = {
 			has_army_experience > 75
 		}
 		
+		icon = GFX_decision_TTT_Recruit_icon_Small
+		
 		custom_cost_text = lyu_reorganize_milita_cost_tt
 		
 		fire_only_once = yes
@@ -1592,6 +1596,7 @@ post_liyue_civil_war_decision_category = {
 	
 	#administration decisions
 	lyu_recruit_more_officers = {
+		icon = GFX_decision_TTT_decision04
 		cost = 15
 		
 		visible = {
@@ -1628,6 +1633,7 @@ post_liyue_civil_war_decision_category = {
 	}
 	
 	lyu_absorb_former_gov_employees = {
+		icon = GFX_decision_TTT_decision08
 		cost = 0
 		
 		visible = {
@@ -1728,6 +1734,7 @@ post_liyue_civil_war_decision_category = {
 	#}
 	
 	lyu_stabilize_economy = {
+		icon = GFX_decision_TTT_decision05
 		cost = 0
 		
 		visible = {
@@ -1740,25 +1747,28 @@ post_liyue_civil_war_decision_category = {
 			}
 		}
 		available = {
-			if = {
-				limit = { has_idea = Liyue_economic_collapse_1 }
-				check_variable = { liyue_eco_reconstruction_progress > 19 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_economic_collapse_2 }
-				check_variable = { liyue_eco_reconstruction_progress > 39 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_economic_collapse_3 }
-				check_variable = { liyue_eco_reconstruction_progress > 59 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_economic_collapse_4 }
-				check_variable = { liyue_eco_reconstruction_progress > 79 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_economic_collapse_5 }
-				check_variable = { liyue_eco_reconstruction_progress > 99 }
+			custom_trigger_tooltip = {
+				tooltip = we_have_enough_eco_progress_tt
+				if = {
+					limit = { has_idea = Liyue_economic_collapse_1 }
+					check_variable = { liyue_eco_reconstruction_progress > 19 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_economic_collapse_2 }
+					check_variable = { liyue_eco_reconstruction_progress > 39 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_economic_collapse_3 }
+					check_variable = { liyue_eco_reconstruction_progress > 59 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_economic_collapse_4 }
+					check_variable = { liyue_eco_reconstruction_progress > 79 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_economic_collapse_5 }
+					check_variable = { liyue_eco_reconstruction_progress > 99 }
+				}
 			}
 		}
 		ai_will_do = {
@@ -1775,6 +1785,7 @@ post_liyue_civil_war_decision_category = {
 	}
 	
 	lyu_stabilize_country = {
+		icon = GFX_decision_category_default_battle
 		cost = 0
 		
 		visible = {
@@ -1787,25 +1798,28 @@ post_liyue_civil_war_decision_category = {
 			}
 		}
 		available = {
-			if = {
-				limit = { has_idea = Liyue_nationwide_resistance_1 }
-				check_variable = { liyue_mil_reconstruction_progress > 19 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_nationwide_resistance_2 }
-				check_variable = { liyue_mil_reconstruction_progress > 39 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_nationwide_resistance_3 }
-				check_variable = { liyue_mil_reconstruction_progress > 59 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_nationwide_resistance_4 }
-				check_variable = { liyue_mil_reconstruction_progress > 79 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_nationwide_resistance_5 }
-				check_variable = { liyue_mil_reconstruction_progress > 99 }
+			custom_trigger_tooltip = {
+				tooltip = we_have_enough_mil_progress_tt
+				if = {
+					limit = { has_idea = Liyue_nationwide_resistance_1 }
+					check_variable = { liyue_mil_reconstruction_progress > 19 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_nationwide_resistance_2 }
+					check_variable = { liyue_mil_reconstruction_progress > 39 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_nationwide_resistance_3 }
+					check_variable = { liyue_mil_reconstruction_progress > 59 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_nationwide_resistance_4 }
+					check_variable = { liyue_mil_reconstruction_progress > 79 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_nationwide_resistance_5 }
+					check_variable = { liyue_mil_reconstruction_progress > 99 }
+				}
 			}
 		}
 		ai_will_do = {
@@ -1829,6 +1843,7 @@ post_liyue_civil_war_decision_category = {
 	}
 	
 	lyu_adm_expansion = {
+		icon = GFX_decision_TTT_decision04
 		cost = 0
 		
 		visible = {
@@ -1841,25 +1856,28 @@ post_liyue_civil_war_decision_category = {
 			}
 		}
 		available = {
-			if = {
-				limit = { has_idea = Liyue_low_efficiency_administration_1 }
-				check_variable = { liyue_adm_reconstruction_progress > 19 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_low_efficiency_administration_2 }
-				check_variable = { liyue_adm_reconstruction_progress > 39 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_low_efficiency_administration_3 }
-				check_variable = { liyue_adm_reconstruction_progress > 59 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_low_efficiency_administration_4 }
-				check_variable = { liyue_adm_reconstruction_progress > 79 }
-			}
-			else_if = {
-				limit = { has_idea = Liyue_low_efficiency_administration_5 }
-				check_variable = { liyue_adm_reconstruction_progress > 99 }
+			custom_trigger_tooltip = {
+				tooltip = we_have_enough_adm_progress_tt
+				if = {
+					limit = { has_idea = Liyue_low_efficiency_administration_1 }
+					check_variable = { liyue_adm_reconstruction_progress > 19 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_low_efficiency_administration_2 }
+					check_variable = { liyue_adm_reconstruction_progress > 39 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_low_efficiency_administration_3 }
+					check_variable = { liyue_adm_reconstruction_progress > 59 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_low_efficiency_administration_4 }
+					check_variable = { liyue_adm_reconstruction_progress > 79 }
+				}
+				else_if = {
+					limit = { has_idea = Liyue_low_efficiency_administration_5 }
+					check_variable = { liyue_adm_reconstruction_progress > 99 }
+				}
 			}
 		}
 		ai_will_do = {
@@ -1921,7 +1939,7 @@ post_liyue_civil_war_decision_category = {
 			}
 			random_list = {
 				seed = global.date
-				40 = {
+				25 = {
 					modifier = {
 						add = -5
 						has_country_flag = factory_invested
@@ -1944,7 +1962,7 @@ post_liyue_civil_war_decision_category = {
 						}
 					}
 				}
-				45 = {
+				60 = {
 					modifier = {
 						add = -3
 						has_country_flag = factory_invested

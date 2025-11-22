@@ -1249,25 +1249,115 @@ liyue_civil_war_decisions = {
 			}
 		}
 	}
+	
+	KQG_reunify_liyue = {
+		#宣告璃月内战结束
+		allowed = {
+			original_tag = KQG
+		}
+		visible = {
+			is_subject = no
+		}
+		available = {
+			LYU = { exists = no }
+			ANG = { exists = no }
+			ZDG = { exists = no }
+			RTG = { exists = no }
+			NNG = { exists = no }
+			XOG = { exists = no }
+			XRG = { exists = no }
+			ARF = { exists = no }
+		}
+		fire_only_once = yes
+		cost = 0
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+			reset_core_of_liyue = yes
+			KQG = {
+				set_cosmetic_tag = PRL
+				set_autonomy = {
+					target = CUG
+					autonomy_state = LYU_autonomus_states
+				}
+				hidden_effect = {
+					country_event = { id = super.11 }
+				}
+			}
+			KQG = {
+				set_party_name = { 
+					ideology = totalitarianism
+					long_name = KQG_totalitarianism_party_pcw_long
+					name = KQG_totalitarianism_party_pcw
+				}
+				set_party_name = { 
+					ideology = communism
+					long_name = KQG_communism_party_pcw_long
+					name = KQG_communism_party_pcw
+				}
+				set_party_name = { 
+					ideology = left_wing_anarchism
+					long_name = KQG_left_wing_anarchism_party_pcw_long
+					name = KQG_left_wing_anarchism_party_pcw
+				}
+				set_party_name = { 
+					ideology = reformism
+					long_name = KQG_reformism_party_pcw_long
+					name = KQG_reformism_party_pcw
+				}
+				set_party_name = { 
+					ideology = liberalism
+					long_name = KQG_liberalism_party_pcw_long
+					name = KQG_liberalism_party_pcw
+				}
+				set_party_name = { 
+					ideology = authoritarianism
+					long_name = KQG_authoritarianism_party_pcw_long
+					name = KQG_authoritarianism_party_pcw
+				}
+				set_party_name = { 
+					ideology = despotism
+					long_name = KQG_despotism_party_pcw_long
+					name = KQG_despotism_party_pcw
+				}
+				set_party_name = { 
+					ideology = national_socialism
+					long_name = KQG_national_socialism_party_pcw_long
+					name = KQG_national_socialism_party_pcw
+				}
+				set_party_name = { 
+					ideology = esotericism
+					long_name = KQG_esotericism_party_pcw_long
+					name = KQG_esotericism_party_pcw
+				}
+				set_party_name = { 
+					ideology = hive_mind
+					long_name = KQG_hive_mind_party_pcw_long
+					name = KQG_hive_mind_party_pcw
+				}
+				
+				hidden_effect = {
+					set_popularities = {
+						totalitarianism = 8
+						communism = 37
+						left_wing_anarchism = 6
+						reformism = 16
+						liberalism = 9
+						authoritarianism = 10
+						despotism = 6
+						national_socialism = 3
+						esotericism = 3
+						hive_mind = 2
+					}
+				}
+			}
+			play_song = "SE_Keqing_victory"
+		}
+	}
 }
 
 post_liyue_civil_war_decision_category = {
-	
-    develop_infrastructure = {
-        cost = 50
-		visible = {
-			always = no
-		}
-        available = {
-            has_manpower > 500
-        }
-        complete_effect = {
-            random_owned_state = {
-                 add_building_construction = { type = infrastructure level = 2 instant_build = yes }
-            }
-            add_manpower = -500
-        }
-    }
 	
 	#economy decisions	
 	lyu_invest_factory = {

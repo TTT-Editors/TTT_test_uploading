@@ -1,0 +1,464 @@
+focus_tree = {
+	id = KQG_postwar_recon_tree
+	country = {
+		factor = 0
+	}
+	default = no
+	
+	focus = {
+		id = KQG_pw_peace_has_come	#内战胜利
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 6
+		y = 0
+
+		completion_reward = { 
+			add_political_power = 100
+			country_event = { id = 0 days = 7 }	#添加一个内战结束的事件，以底层视角描写
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_start_recon	#开始重建
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -3
+		y = 1
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_peace_has_come
+		}
+
+		completion_reward = { 
+			#写一个custom_effect_tooltip:我们国家的重建进度将取得少量进展
+			hidden_effect = {
+				add_to_variable = { liyue_eco_reconstruction_progress = 2 }
+				add_to_variable = { LYU_days_factory_bankrupt_timeuot = 1 }
+				add_to_variable = { LYU_days_rebellion_prepare_timeout = 1 }
+			}
+			country_event = { id = 0 days = 7 }	#添加一个开始重建的事件，以底层视角描写
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_stabilize_economy	#稳固经济局势
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -5
+		y = 2
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_start_recon
+		}
+
+		completion_reward = { 
+			country_event = { id = 0 }	#兑付革命公债问题，选择以摩拉兑付还是以“纸摩拉”+实物兑付
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_ensure_mora_credit	#保证摩拉体系
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -6
+		y = 3
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_stabilize_economy
+		}
+		
+		mutually_exclusive = {
+			focus = KQG_pw_issue_new_currency
+		}
+
+		completion_reward = { 
+			#开启通货膨胀机制，通货膨胀每个季度-1
+			#花钱会扣通胀
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_issue_new_currency	#发行璃月新摩拉
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -4
+		y = 3
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_stabilize_economy
+		}
+		
+		mutually_exclusive = {
+			focus = KQG_pw_ensure_mora_credit
+		}
+
+		completion_reward = { 
+			#开启通货膨胀机制，通货膨胀每个季度-1
+			#花钱会加通胀
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_recon_countryside	#重建乡村
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -3
+		y = 2
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_start_recon
+		}
+
+		completion_reward = { 
+			#添加“专注重建”民族精神，效果为消费品系数+50%，稳定-15%，每月自动+1%经济重建进度，直到经济重建完成
+			unlock_decision_tooltip = {
+				decision = lyu_rebuild_countryside
+			}
+
+			hidden_effect = {
+				set_country_flag = lyu_rebuild_countryside_available_flag
+				add_to_variable = { liyue_eco_reconstruction_progress = 5 } #这里写一个custom_effect_tooltip
+			}
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_recon_road	#重修道路
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -1
+		y = 2
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_start_recon
+		}
+
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			unlock_decision_tooltip = {
+				decision = lyu_repair_road
+			}
+			hidden_effect = {
+				set_country_flag = lyu_repair_road_flag
+				add_to_variable = { liyue_eco_reconstruction_progress = 5 } #这里写一个custom_effect_tooltip
+			}
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_recon_city	#重建城市
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -2
+		y = 3
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_recon_countryside
+		}
+		
+		prerequisite = {
+			focus = KQG_pw_recon_road
+		}
+
+		completion_reward = { 
+			#解锁救济工厂和修复港口决议，经济重建进度+10
+			#随机两个地块+1民工
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_initial_economic_recovery	#经济初步稳定
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = -3
+		y = 4
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_recon_city
+		}
+		
+		prerequisite = {
+			focus = KQG_pw_ensure_mora_credit
+			focus = KQG_pw_issue_new_currency
+		}
+
+		available = {
+			#经济重建进度60以上
+		}
+
+		completion_reward = { 
+			add_political_power = 100
+			add_stability = 0.1
+			#银行破产、盗匪破坏各+3天
+			#可用资金+5
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_ensure_security	#保障安全
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 3
+		y = 1
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_peace_has_come
+		}
+
+		completion_reward = { 
+			#获得25cp，50pp和1500枪
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_eliminate_bandits	#剿匪运动
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 1
+		y = 2
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_ensure_security
+		}
+
+		completion_reward = { 
+			#解锁“清除盗匪”决议
+			#解锁“组织民兵”决议
+			#获得50cp
+			country_event = { id = 0 } #解锁事件“剿匪运动”
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_mass_demobilization	#大规模复员
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 0
+		y = 3
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_eliminate_bandits
+		}
+
+		available = { 
+			#陆军总人数在50万以下，且拥有“有限征兵”或“志愿兵”法案
+			#如果是AI就会在战后出事件随机删除它的陆军，并给予训练时间+10000%的buff
+			#军事重建进度>60
+		}
+
+		completion_reward = { 
+			#军事重建进度+5
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_production_and_construction_corps	#生产建设兵团
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 2
+		y = 3
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_eliminate_bandits
+		}
+
+		completion_reward = { 
+			#获得一个建造速度+15%，生活消费品比例-20%的buff
+			country_event = { id = 0 }#触发一个部队在归离原的荒凉地区进行建设的事件，效果为归离原河口+1民用工厂
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_restore_order	#恢复秩序
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 3
+		y = 4
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_mass_demobilization
+		}
+		
+		prerequisite = {
+			focus = KQG_pw_production_and_construction_corps
+		}
+		
+		prerequisite = {
+			focus = KQG_pw_clean_up_toxins
+			focus = KQG_pw_win_win_cooperation
+		}
+
+		completion_reward = { 
+			#解锁恢复秩序决议
+			#所有地块抵抗-2，顺从+2
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_establish_basic_political_power	#建立基层政权
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 3
+		y = 2
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_ensure_security
+		}
+
+		completion_reward = { 
+			#政治重建进度+5
+			add_political_power = 75
+			#获得一个顺从度+0.02的buff
+			#解锁征召公务员决议 lyu_recruit_more_officers
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_trial_of_war_criminals	#审判战犯
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 5
+		y = 2
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_ensure_security
+		}
+
+		completion_reward = { 
+			#开启针对战争时期各个领导人的调查、取证工作
+			add_stability = 0.1
+			add_political_power = 250
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_clean_up_toxins	#清扫遗毒
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 4
+		y = 3
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_trial_of_war_criminals
+		}
+
+		mutually_exclusive = { focus = KQG_pw_win_win_cooperation }
+
+		completion_reward = { 
+			add_political_power = 300
+			#红饼支持率+15%，稳定度+15%
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_win_win_cooperation	#与旧势力合作
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 6
+		y = 3
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_trial_of_war_criminals
+		}
+
+		mutually_exclusive = { focus = KQG_pw_clean_up_toxins }
+
+		completion_reward = { 
+			#将行秋、重云、璃月港三傻（若不为领导人）、璃月港的其他顾问、昆均（如果是好的）、鬼肖（如果被干涉军击灭）、仙人（最温和的那个）、申鹤变为顾问和将领
+			#粉饼+7%，蓝饼+4%，灰饼+3%，深灰饼+1%
+			#解锁吸纳前政府官员决议，lyu_absorb_former_gov_employees
+		}
+	}
+	
+	focus = {
+		id = KQG_pw_finish_recon	#完成重建
+		icon = GFX_goal_LYU_yubeidoutuoxie
+		cost = 25
+
+		x = 0
+		y = 5
+		relative_position_id = KQG_pw_peace_has_come
+		
+		prerequisite = {
+			focus = KQG_pw_initial_economic_recovery
+		}
+		
+		prerequisite = {
+			focus = KQG_pw_restore_order
+		}
+
+		available = {
+			#没有三个战后逆天debuff
+		}
+
+		completion_reward = { 
+			add_political_power = 100
+			add_stability = 0.1
+			add_war_support = 0.1
+			#红饼支持度+10%
+			#“理论空白”debuff消一层
+			#可用资金+10
+			country_event = { id = 0 }#添加一个重建颇有起色的事件，以底层视角描写，与前面的KQG_pw_peace_has_come国策中的事件对应
+		}
+	}
+}

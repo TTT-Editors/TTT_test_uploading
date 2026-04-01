@@ -1366,11 +1366,11 @@ post_liyue_civil_war_decision_category = {
 		icon = GFX_decision_Factory_resolution_icon_small
 		cost = 20
 		fire_only_once = no
-		days_remove = 45
-		days_re_enable = 45
+		days_remove = 60
+		days_re_enable = 60
 
 		modifier = {
-			political_power_factor = -0.1
+			political_power_factor = -0.15
 		}
 		
 		visible = {
@@ -1389,14 +1389,14 @@ post_liyue_civil_war_decision_category = {
 		
 		complete_effect = {
 			custom_effect_tooltip = lyu_factory_bankrupt_days_add_tt
-			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 2 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 1 }
 		}
 		
 		remove_effect = {
 			custom_effect_tooltip = lyu_factory_bankrupt_days_add_tt
-			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 2 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 1 }
 			custom_effect_tooltip = lyu_eco_rebuild_progress_add_tt
-			add_to_variable = { liyue_eco_reconstruction_progress = 4 }
+			add_to_variable = { liyue_eco_reconstruction_progress = 2 }
 			if = {
 				limit = { NOT = { has_country_flag = factory_invested } }
 				custom_effect_tooltip = lyu_factory_bankrupt_effect_decrease_tt
@@ -1447,9 +1447,9 @@ post_liyue_civil_war_decision_category = {
 		
 		remove_effect = {
 			custom_effect_tooltip = lyu_factory_bankrupt_days_add_tt
-			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 6 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 3 }
 			custom_effect_tooltip = lyu_rebellion_prepare_days_add_tt
-			add_to_variable = { LYU_days_rebellion_prepare_timeout = 4 }
+			add_to_variable = { LYU_days_rebellion_prepare_timeout = 3 }
 			custom_effect_tooltip = lyu_eco_rebuild_big_progress_add_tt
 			add_to_variable = { liyue_eco_reconstruction_progress = 15 }
 			custom_effect_tooltip = lyu_mil_rebuild_progress_add_tt
@@ -1491,6 +1491,10 @@ post_liyue_civil_war_decision_category = {
 				has_idea = Liyue_economic_collapse_4
 				has_idea = Liyue_economic_collapse_5
 			}
+			OR = {
+				NOT = { tag = KQG }
+				has_country_flag = lyu_fix_port_flag
+			}
 		}
 
 		ai_will_do = {
@@ -1499,14 +1503,14 @@ post_liyue_civil_war_decision_category = {
 		
 		complete_effect = {
 			custom_effect_tooltip = lyu_factory_bankrupt_days_add_tt
-			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 2 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 1 }
 		}
 		
 		remove_effect = {
 			custom_effect_tooltip = lyu_factory_bankrupt_days_add_tt
-			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 4 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 2 }
 			custom_effect_tooltip = lyu_eco_rebuild_big_progress_add_tt
-			add_to_variable = { liyue_eco_reconstruction_progress = 7 }
+			add_to_variable = { liyue_eco_reconstruction_progress = 4 }
 			if = {
 				limit = { NOT = { has_country_flag = port_fixed } }
 				custom_effect_tooltip = lyu_factory_bankrupt_effect_decrease_tt
@@ -1579,8 +1583,8 @@ post_liyue_civil_war_decision_category = {
 			}
 			hidden_effect = {
 				add_to_variable = { LYU_days_rebellion_prepare_timeout = 1 }
-				add_to_variable = { liyue_adm_reconstruction_progress = 2 }
-				add_to_variable = { liyue_mil_reconstruction_progress = 2 }
+				add_to_variable = { liyue_adm_reconstruction_progress = 1 }
+				add_to_variable = { liyue_mil_reconstruction_progress = 1 }
 			}
 		}
 	}
@@ -1596,7 +1600,7 @@ post_liyue_civil_war_decision_category = {
 		custom_cost_text = lyu_reorganize_milita_cost_tt
 		
 		fire_only_once = yes
-		days_remove = 240
+		days_remove = 360
 		
 		visible = {
 			OR = {
@@ -1605,6 +1609,10 @@ post_liyue_civil_war_decision_category = {
 				has_idea = Liyue_nationwide_resistance_3
 				has_idea = Liyue_nationwide_resistance_4
 				has_idea = Liyue_nationwide_resistance_5
+			}
+			OR = {
+				NOT = { tag = KQG }
+				has_country_flag = lyu_reorganize_milita_flag
 			}
 		}
 		
@@ -1642,8 +1650,8 @@ post_liyue_civil_war_decision_category = {
 		custom_cost_text = decision_cost_ie_500_cp_20
 		
 		fire_only_once = no
-		days_remove = 15
-		days_re_enable = 45
+		days_remove = 30
+		days_re_enable = 90
 		
 		visible = {
 			OR = {
@@ -1652,6 +1660,10 @@ post_liyue_civil_war_decision_category = {
 				has_idea = Liyue_nationwide_resistance_3
 				has_idea = Liyue_nationwide_resistance_4
 				has_idea = Liyue_nationwide_resistance_5
+			}
+			OR = {
+				NOT = { tag = KQG }
+				has_country_flag = lyu_kill_bandits_flag
 			}
 		}
 		
@@ -1713,8 +1725,8 @@ post_liyue_civil_war_decision_category = {
 			has_manpower > 3000
 		}
 		
-		days_remove = 15
-		days_re_enable = 15
+		days_remove = 30
+		days_re_enable = 30
 		
 		modifier = {
 			political_power_factor = -0.15
@@ -1724,7 +1736,7 @@ post_liyue_civil_war_decision_category = {
 			custom_effect_tooltip = lyu_rebellion_prepare_days_add_tt
 			custom_effect_tooltip = lyu_adm_rebuild_progress_add_tt
 			add_to_variable = { LYU_days_rebellion_prepare_timeout = 1 }
-			add_to_variable = { liyue_adm_reconstruction_progress = 3 }
+			add_to_variable = { liyue_adm_reconstruction_progress = 2 }
 		}
 	}
 	
@@ -1746,16 +1758,13 @@ post_liyue_civil_war_decision_category = {
 			base = 50
 		}
 		
-		days_remove = 180
+		fire_only_once = yes
+		days_remove = 270
 		
 		modifier = {
-			political_power_cost = 0.3
-			drift_defence_factor = -0.25
-			reformism_drift = 0.15
-			communism_drift = 0.03
-			liberalism_drift = 0.03
-			authoritarianism_drift = 0.07
-			despotism_drift = 0.02
+			political_power_cost = 0.5
+			drift_defence_factor = -0.75
+			communism_drift = -0.05
 		}
 		
 		remove_effect = {
@@ -1880,7 +1889,7 @@ post_liyue_civil_war_decision_category = {
 			add_to_variable = { liyue_adm_reconstruction_progress = 1 }
 			add_to_variable = { liyue_mil_reconstruction_progress = 1 }
 			add_to_variable = { LYU_days_rebellion_prepare_timeout = 2 }
-			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 5 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 2 }
 		}
 	}
 	
@@ -1930,8 +1939,8 @@ post_liyue_civil_war_decision_category = {
 			liyue_mil_reconstruction_progress_upgrade = yes
 			add_stability = 0.05
 			add_war_support = 0.05
-			add_to_variable = { LYU_days_rebellion_prepare_timeout = 10 }
-			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 2 }
+			add_to_variable = { LYU_days_rebellion_prepare_timeout = 5 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 1 }
 			every_owned_state = {
 				limit = {
 					NOT = { is_core_of = ROOT }
@@ -1993,8 +2002,8 @@ post_liyue_civil_war_decision_category = {
 				limit = {
 					NOT = { is_core_of = ROOT }
 				}
-				add_resistance = -2
-				add_compliance = 5
+				add_resistance = -1
+				add_compliance = 2
 			}
 		}
 	}
@@ -2339,9 +2348,78 @@ post_liyue_civil_war_decision_category = {
 					#action failed
 					hidden_effect = {
 						add_to_variable = { LYU_days_rebellion_prepare_timeout = 1 }
-						add_to_variable = { liyue_mil_reconstruction_progress = 5 }
+						add_to_variable = { liyue_mil_reconstruction_progress = 2 }
 					}
 				}
+			}
+		}
+		complete_effect = {
+		}
+	}
+	
+	liyue_healing = {
+		activation = {
+			OR = {
+				has_idea = Liyue_economic_collapse_1
+				has_idea = Liyue_economic_collapse_2
+				has_idea = Liyue_economic_collapse_3
+				has_idea = Liyue_economic_collapse_4
+				has_idea = Liyue_economic_collapse_5
+				
+				has_idea = Liyue_nationwide_resistance_1
+				has_idea = Liyue_nationwide_resistance_2
+				has_idea = Liyue_nationwide_resistance_3
+				has_idea = Liyue_nationwide_resistance_4
+				has_idea = Liyue_nationwide_resistance_5
+				
+				has_idea = Liyue_low_efficiency_administration_1
+				has_idea = Liyue_low_efficiency_administration_2
+				has_idea = Liyue_low_efficiency_administration_3
+				has_idea = Liyue_low_efficiency_administration_4
+				has_idea = Liyue_low_efficiency_administration_5
+			}
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 30
+		visible = {
+			OR = {
+				has_idea = Liyue_economic_collapse_1
+				has_idea = Liyue_economic_collapse_2
+				has_idea = Liyue_economic_collapse_3
+				has_idea = Liyue_economic_collapse_4
+				has_idea = Liyue_economic_collapse_5
+				
+				has_idea = Liyue_nationwide_resistance_1
+				has_idea = Liyue_nationwide_resistance_2
+				has_idea = Liyue_nationwide_resistance_3
+				has_idea = Liyue_nationwide_resistance_4
+				has_idea = Liyue_nationwide_resistance_5
+				
+				has_idea = Liyue_low_efficiency_administration_1
+				has_idea = Liyue_low_efficiency_administration_2
+				has_idea = Liyue_low_efficiency_administration_3
+				has_idea = Liyue_low_efficiency_administration_4
+				has_idea = Liyue_low_efficiency_administration_5
+			}
+		}
+		fire_only_once = no
+		cancel_trigger = {
+			check_variable = { liyue_adm_reconstruction_progress > 99 }
+			check_variable = { liyue_eco_reconstruction_progress > 99 }
+			check_variable = { liyue_mil_reconstruction_progress > 99 }
+		}
+		timeout_effect = {
+			custom_effect_tooltip = liyue_healing_tt
+			hidden_effect = {
+				activate_mission = liyue_healing
+				add_to_variable = { liyue_adm_reconstruction_progress = 1 }
+				add_to_variable = { liyue_eco_reconstruction_progress = 1 }
+				add_to_variable = { liyue_mil_reconstruction_progress = 1 }
 			}
 		}
 		complete_effect = {

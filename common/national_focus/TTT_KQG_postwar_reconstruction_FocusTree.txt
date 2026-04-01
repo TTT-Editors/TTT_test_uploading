@@ -201,8 +201,28 @@ focus_tree = {
 		}
 
 		completion_reward = { 
-			#解锁救济工厂和修复港口决议，经济重建进度+10
-			#随机两个地块+1民工
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			unlock_decision_tooltip = {
+				decision = lyu_fix_port
+			}
+			hidden_effect = {
+				set_country_flag = lyu_fix_port_flag
+				add_to_variable = { liyue_eco_reconstruction_progress = 10 } #这里写一个custom_effect_tooltip
+			}
 		}
 	}
 	
@@ -225,13 +245,18 @@ focus_tree = {
 		}
 
 		available = {
-			#经济重建进度60以上
+			check_variable = { liyue_eco_reconstruction_progress > 59 }
+			#写一个“经济重建进度>=60的tooltip”
 		}
 
 		completion_reward = { 
 			add_political_power = 100
 			add_stability = 0.1
-			#银行破产、盗匪破坏各+3天
+			
+			#银行破产、盗匪破坏各+3天，写tooltip
+			add_to_variable = { LYU_days_rebellion_prepare_timeout = 3 }
+			add_to_variable = { LYU_days_factory_bankrupt_timeuot = 3 }
+			
 			#可用资金+5
 		}
 	}
@@ -250,7 +275,12 @@ focus_tree = {
 		}
 
 		completion_reward = { 
-			#获得25cp，50pp和1500枪
+			add_political_power = 25
+			add_command_power = 50
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1500
+			}
 		}
 	}
 	
@@ -268,10 +298,18 @@ focus_tree = {
 		}
 
 		completion_reward = { 
-			#解锁“清除盗匪”决议
-			#解锁“组织民兵”决议
-			#获得50cp
-			country_event = { id = 0 } #解锁事件“剿匪运动”
+			unlock_decision_tooltip = {
+				decision = lyu_kill_bandits
+			}
+			unlock_decision_tooltip = {
+				decision = lyu_reorganize_milita
+			}
+			add_command_power = 50
+			hidden_effect = {
+				set_country_flag = lyu_kill_bandits_flag
+				set_country_flag = lyu_reorganize_milita_flag
+				country_event = { id = 0 } #解锁事件“剿匪运动”
+			}
 		}
 	}
 	
@@ -289,13 +327,35 @@ focus_tree = {
 		}
 
 		available = { 
-			#陆军总人数在50万以下，且拥有“有限征兵”或“志愿兵”法案
+			#陆军总人数在100万以下
 			#如果是AI就会在战后出事件随机删除它的陆军，并给予训练时间+10000%的buff
-			#军事重建进度>60
+			
+			#写一个“军事重建进度>=60的tooltip”
+			check_variable = { liyue_mil_reconstruction_progress > 59 }
 		}
 
 		completion_reward = { 
 			#军事重建进度+5
+			hidden_effect = {
+				add_to_variable = { liyue_mil_reconstruction_progress = 5 }
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_idea = disarmed_nation
+						has_idea = volunteer_only
+						has_idea = limited_conscription
+					}
+				}
+				add_political_power = 200
+			}
+			else = {
+				add_political_power = 75
+			}
+
+			add_stability = 0.05
+			add_war_support = 0.05
 		}
 	}
 	
@@ -313,7 +373,7 @@ focus_tree = {
 		}
 
 		completion_reward = { 
-			#获得一个建造速度+15%，生活消费品比例-20%的buff
+			add_ideas = KQG_production_and_construction_corps
 			country_event = { id = 0 }#触发一个部队在归离原的荒凉地区进行建设的事件，效果为归离原河口+1民用工厂
 		}
 	}
@@ -455,8 +515,19 @@ focus_tree = {
 			add_political_power = 100
 			add_stability = 0.1
 			add_war_support = 0.1
+
 			#红饼支持度+10%
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}	
+
 			#“理论空白”debuff消一层
+			swap_ideas = {
+				add_idea = KQG_theory_blank_2
+				remove_idea = KQG_theory_blank_1
+			}
+
 			#可用资金+10
 			country_event = { id = 0 }#添加一个重建颇有起色的事件，以底层视角描写，与前面的KQG_pw_peace_has_come国策中的事件对应
 		}

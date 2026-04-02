@@ -1533,6 +1533,10 @@ post_liyue_civil_war_decision_category = {
 		days_remove = 15
 		visible = {
 			is_nominate_liyue = yes
+			OR = {
+				NOT = { tag = KQG } 
+				has_country_flag = lyu_restore_order_flag
+			}
 		}
 		highlight_states = {
 			highlight_states_trigger = {
@@ -1633,7 +1637,7 @@ post_liyue_civil_war_decision_category = {
 			custom_effect_tooltip = lyu_rebellion_prepare_days_add_tt
 			custom_effect_tooltip = lyu_mil_rebuild_big_progress_add_tt
 			custom_effect_tooltip = lyu_rebellion_prepare_effect_decrease_tt
-			add_to_variable = { LYU_days_rebellion_prepare_timeout = 15 }
+			add_to_variable = { LYU_days_rebellion_prepare_timeout = 10 }
 			add_to_variable = { liyue_mil_reconstruction_progress = 30 }
 			set_country_flag = lyu_reorganize_milita_flag
 		}
@@ -1714,6 +1718,10 @@ post_liyue_civil_war_decision_category = {
 				has_idea = Liyue_low_efficiency_administration_3
 				has_idea = Liyue_low_efficiency_administration_4
 				has_idea = Liyue_low_efficiency_administration_5
+			}
+			OR = {
+				NOT = { tag = KQG }
+				has_country_flag = lyu_recruit_more_officers_flag
 			}
 		}
 		
@@ -1944,6 +1952,7 @@ post_liyue_civil_war_decision_category = {
 			every_owned_state = {
 				limit = {
 					NOT = { is_core_of = ROOT }
+					has_state_flag = is_Liyues_territory
 				}
 				add_resistance = -5
 				add_compliance = 2

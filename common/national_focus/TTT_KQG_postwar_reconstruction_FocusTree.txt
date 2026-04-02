@@ -401,6 +401,20 @@ focus_tree = {
 		}
 
 		completion_reward = { 
+			unlock_decision_tooltip = {
+				decision = lyu_restore_order
+			}
+			hidden_effect = {
+				set_country_flag = lyu_restore_order_flag
+			}
+			every_owned_state = {
+				limit = {
+					NOT = { is_core_of = ROOT }
+					has_state_flag = is_Liyues_territory
+				}
+				add_resistance = -2
+				add_compliance = 2
+			}
 			#解锁恢复秩序决议
 			#所有地块抵抗-2，顺从+2
 		}
@@ -420,7 +434,14 @@ focus_tree = {
 		}
 
 		completion_reward = { 
+			unlock_decision_tooltip = {
+				decision = lyu_recruit_more_officers
+			}
 			#政治重建进度+5
+			hidden_effect = {
+				add_to_variable = { liyue_adm_reconstruction_progress = 5 }#写一个tooltip
+				set_country_flag = lyu_recruit_more_officers_flag
+			}
 			add_political_power = 75
 			#获得一个顺从度+0.02的buff
 			#解锁征召公务员决议 lyu_recruit_more_officers

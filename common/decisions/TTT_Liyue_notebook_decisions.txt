@@ -14,39 +14,36 @@ TTT_Liyue_notebook = {
 			}
 		}
 		available = {
-			always = no
+			is_liyue_notebook_available = yes
+			NOT = { has_global_flag = liyue_construction_main_view_enabled } 
 		}
 		complete_effect = {
-			
+			set_global_flag = liyue_construction_main_view_enabled
 		}
 	}
 
-	liyue_propoganda_decision = {
-		priority = 99
-		visible = {
-			OR = {
-				has_global_flag = ttt_liyue_civil_war_end
-				AND = {
-					NOT = { has_global_flag = Liyue_Civil_War_Coming }
-					NOT = {	has_global_flag = Liyue_Civil_War }
-				}
-			}
-		}
-		available = {
-			always = no
-		}
-		complete_effect = {
-		}
-	}
+	#liyue_propoganda_decision = {
+	#	priority = 99
+	#	visible = {
+	#		OR = {
+	#			has_global_flag = ttt_liyue_civil_war_end
+	#			AND = {
+	#				NOT = { has_global_flag = Liyue_Civil_War_Coming }
+	#				NOT = {	has_global_flag = Liyue_Civil_War }
+	#			}
+	#		}
+	#	}
+	#	available = {
+	#		always = no
+	#	}
+	#	complete_effect = {
+	#	}
+	#}
 
 	liyue_emergency_decision = {
 		priority = 98
 		visible = {
-			OR = {
-				has_global_flag = Liyue_Civil_War_Coming
-				has_global_flag = Liyue_Civil_War
-			}
-			NOT = { has_global_flag = ttt_liyue_civil_war_end }
+			is_liyue_notebook_available = no
 		}
 		available = {
 			always = no

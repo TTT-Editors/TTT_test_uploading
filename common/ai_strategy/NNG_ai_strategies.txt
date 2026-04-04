@@ -72,100 +72,71 @@ Ningguang_aizaobudui = {
 		value = 900
 	}
 }
-Ningguang_KQG_isbad = {
-	allowed = {
-		tag = NNG
-	}
-	enable = {
-		country_exists = KQG
-	}
-	abort = {
-		or = {
-			NOT = {
-				country_exists = KQG
-			}
-			has_war_with = XOG
-			has_war_with = XRG
-			has_war_with = RTG
-			has_war_with = LYU
-		}
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = KQG
-		value = 100
-	}
-}
 
-Ningguang_KQG_isbad_two = {
+attack_keqing = {
 	allowed = {
-		tag = NNG
+		original_tag = NNG
 	}
 	enable = {
 		country_exists = KQG
-		NOT = {
-			NNG = {
-				has_completed_focus = NNG_wmenjiangyitongqianjin
+		KQG = { has_war_with = NNG }
+
+		OR = {
+			strength_ratio = {
+				tag = KQG
+				ratio > 1.25
 			}
+			NNG = { enemies_strength_ratio < 1 }
 		}
 	}
 	abort = {
 		OR = {
-			NNG = {
-				has_completed_focus = NNG_wmenjiangyitongqianjin
-			}
-			#NNG = { has_idea = AI_focus_on_attack_buff }
-			or = {
-				NOT = {
-					country_exists = KQG
+			NOT = { country_exists = KQG }
+			AND = {
+				strength_ratio = {
+					tag = KQG
+					ratio < 1
 				}
-				has_war_with = XOG
-				has_war_with = XRG
-				has_war_with = RTG
-				has_war_with = LYU
+				NNG = { enemies_strength_ratio > 1.2 }
 			}
 		}
 	}
+
 	ai_strategy = {
 		type = front_control
 		tag = KQG
 		ratio = 0.75
 		priority = 30
 		ordertype = front
-		execution_type = careful
-		execute_order = no
+		execution_type = balanced
 		manual_attack = yes
+
+		#Too many troops being surrounded, so rush_weak ---> balanced will be better
+		#Let AI itself to decide whether it should attack or not.
+	}
+
+	ai_strategy = {
+		type = force_concentration_target_weight
+		state = 92
+		state = 93
+		state = 94
+
+		value = 35 # +35%
 	}
 }
 
-Ningguang_KQG_isbad_three = {
+NNG_onto_the_beaches = {
 	allowed = {
-		tag = NNG
+		original_tag = NNG
 	}
 	enable = {
-		country_exists = KQG
-		OR = {
-			has_completed_focus = NNG_wmenjiangyitongqianjin
-			num_divisions > 70
-			#has_idea = AI_focus_on_attack_buff
-		}
+		has_war = yes
 	}
-	abort = {
-		or = {
-			NOT = {
-				country_exists = KQG
-				has_completed_focus = NNG_wmenjiangyitongqianjin
-			}
-		}
-		#NOT = { has_idea = AI_focus_on_attack_buff }
-	}
+	abort_when_not_enabled = yes
+
 	ai_strategy = {
-		type = front_control
-		tag = NNG
-		ratio = 0.75
-		priority = 30
-		ordertype = front
-		execution_type = rush_weak
+		type = naval_invasion_focus
+		value = 100
 	}
 }
 

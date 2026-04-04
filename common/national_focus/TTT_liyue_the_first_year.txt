@@ -97,17 +97,25 @@ focus_tree = {
 			country_event = {
 				id = lyu_start.48
 			}
-			116 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
+			custom_effect_tooltip = Ningguang_small_win_tt
+			custom_effect_tooltip = {
+				localization_key = lyu_proj_progress_change
+				PROJECT_TITLE = liyue_project_6_title
+				PROJECT_PROGRESS = 15
+			}
+			hidden_effect = {
+				add_to_variable = {
+					Ningguang_Tianquan_Star = 15
 				}
-				add_building_construction = {
-					type = dockyard
-					level = 1
-					instant_build = yes
+			}
+			hidden_effect = {
+				add_to_variable = {
+					global.lyu_proj_arr_2^6 = 15
+				}
+				if = {
+					limit = { is_ai = yes }
+					set_variable = { global.lyu_proj_arr_4^6 = 4 }
+					set_variable = { global.lyu_proj_arr_4^1 = 0 }
 				}
 			}
 		}
@@ -139,14 +147,35 @@ focus_tree = {
 			country_event = {
 				id = lyu_start.49
 			}
-			94 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
+			custom_effect_tooltip = Keqing_small_win_tt
+			custom_effect_tooltip = {
+				localization_key = lyu_proj_progress_change
+				PROJECT_TITLE = liyue_project_1_title
+				PROJECT_PROGRESS = 15
+			}
+			hidden_effect = {
+				add_to_variable = {
+					Keqing_Alioth = 15
 				}
 			}
+			hidden_effect = {
+				add_to_variable = {
+					global.lyu_proj_arr_2^1 = 15
+				}
+				if = {
+					limit = { is_ai = yes }
+					set_variable = { global.lyu_proj_arr_4^1 = 4 }
+					set_variable = { global.lyu_proj_arr_4^6 = 0 }
+				}
+			}
+			#94 = {
+			#	add_extra_state_shared_building_slots = 2
+			#	add_building_construction = {
+			#		type = industrial_complex
+			#		level = 2
+			#		instant_build = yes
+			#	}
+			#}
 		}
 	}
 	focus = {
@@ -201,13 +230,9 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			116 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
+			115 = {
+				increase_state_category = yes
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
 					level = 1
@@ -237,14 +262,20 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			94 = {
-				add_resource = {
-					type = tungsten
-					amount = 3
-				}
-				add_resource = {
-					type = steel
-					amount = 3
+			custom_effect_tooltip = {
+				localization_key = finish_this_focus_to_get_reward
+				PROJECT_TITLE = liyue_project_1_title
+			}
+			effect_tooltip = {
+				94 = {
+					add_resource = {
+						type = tungsten
+						amount = 15
+					}
+					add_resource = {
+						type = steel
+						amount = 24
+					}
 				}
 			}
 		}
@@ -297,17 +328,23 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			116 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
+			custom_effect_tooltip = {
+				localization_key = finish_this_focus_to_get_reward
+				PROJECT_TITLE = liyue_project_6_title
+			}
+			effect_tooltip = {
+				116 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
 		}

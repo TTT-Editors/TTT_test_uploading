@@ -1767,6 +1767,9 @@ country_event = {
 
 	option = {
 		name = MOT_event.75.a
+		ai_chance = {
+			base = 100
+		}
 		add_political_power = -100
 		add_stability = -0.1
 		add_war_support = -0.1
@@ -1780,6 +1783,9 @@ country_event = {
 	}
 	option = {
 		name = MOT_event.75.b
+		ai_chance = {
+			base = 100
+		}
 		MOT = {
 			country_event = { id = MOT_event.77 }
 		}
@@ -1833,6 +1839,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			remove_mission = MOT_dragon_crisis_time_mission
+			clr_country_flag = MOT_dragon_crisis
 		}
 	}
 	option = {
@@ -1872,6 +1879,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			remove_mission = MOT_dragon_crisis_time_mission
+			clr_country_flag = MOT_dragon_crisis
 		}
 	}
 	option = {
@@ -1908,11 +1916,26 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			remove_mission = MOT_dragon_crisis_time_mission
+			set_global_flag = MOT_dragon_crisis_is_over
+			clr_country_flag = MOT_dragon_crisis
 		}
 	}
 	option = {
 		name = MOT_event.80.a
 		news_event = {id = global_news.71 }
+		hidden_effect = {
+			remove_ideas = MOT_crisis_of_Tewalin2
+			remove_ideas = MOT_crisis_of_Tewalin
+			QQZ = {
+				remove_ideas = QQZ_fengmolonweiji
+			}
+			BLL = {
+				remove_ideas = BLL_fengmolongweiji
+			}
+			TWL = {
+				remove_ideas = TWL_frightening_strikes_of_windy_dargons
+			}
+		}
 		add_timed_idea = {
 			idea = MOT_The_shadow_of_the_Demon_Dragon_crisis
 			days = 720

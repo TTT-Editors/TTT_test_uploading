@@ -1,0 +1,306 @@
+##########################################################################################
+
+### ###  ###  ##  #    ##   ##  #   #     ###   ##   ## ### ###      ###  #  # #   ###  ## 
+ #  #  # #   #  # #   #  # #     # #      #  # #  # #   #   #  #     #  # #  # #   #   #   
+ #  #  # ##  #  # #   #  # # ##   #       ###  ####  #  ##  #  #     ###  #  # #   ##   #  
+ #  #  # #   #  # #   #  # #  #   #       #  # #  #   # #   #  #     #  # #  # #   #     # 
+### ###  ###  ##  ###  ##   ##    #       ###  #  # ##  ### ###      #  #  ##  ### ### ## 
+
+########################################################################################## 
+
+joining_rule_non_fascist = {
+	type = joining_rules
+	visible = {
+		NOT = { has_a_fascist_ideology = yes }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_a_fascist_ideology = yes }
+		}
+		modifier = {
+			add = 1
+			has_a_pro_communism_ideology = yes
+		}
+	}
+	trigger = {
+		NOT = {
+			has_a_fascist_ideology = yes
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_non_democratic = {
+	type = joining_rules
+	visible = {
+		NOT = { has_a_democratic_ideology = yes }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_a_democratic_ideology = yes }
+		}
+		modifier = {
+			add = 1
+			has_a_fascist_ideology = yes
+		}
+	}
+	trigger = {
+		NOT = {
+			has_a_democratic_ideology = yes 
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_non_communist = {
+	type = joining_rules
+	visible = {
+		NOT = { has_a_pro_communism_ideology = yes }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_a_pro_communism_ideology = yes }
+		}
+		modifier = {
+			add = 1
+			has_a_fascist_ideology = yes
+		}
+	}
+	available = {
+		IF = {
+			limit = {
+				has_faction_template = faction_template_allies
+			}
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+					has_a_fascist_ideology = yes
+				}
+			}
+		}
+	}
+	can_remove = {
+		always = yes 
+	}
+	trigger = {
+		NOT = {
+			has_a_pro_communism_ideology = yes 
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_fascist_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_a_fascist_ideology = yes
+	}
+	trigger = {
+		has_a_fascist_ideology = yes
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_democratic_non_aligned = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_a_democratic_ideology = yes
+	}
+	trigger = {
+		OR = {
+			has_a_democratic_ideology = yes
+			has_an_authoritarian_ideology = yes
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_same_ideology = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	trigger = {
+		has_government = FROM
+	}
+}
+
+joining_rule_communist_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_a_pro_communism_ideology = yes
+	}
+	trigger = {
+		has_a_pro_communism_ideology = yes
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_support_percentage = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	visible = {
+
+	}
+	trigger = {
+		compare_ideology_with_faction = {
+			value > 0.3
+			leader = FROM
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_puppets_only = {
+	type = joining_rules
+	can_remove = {
+		faction_manifest_fulfillment > 0.95
+	}
+	ai_will_do = {
+		base = 0
+	}
+	trigger = {
+		ROOT = { is_subject_of = FROM }
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+	modifier= {
+		subjects_autonomy_gain = -0.05
+	}
+}
+
+#######################################################
+
+#   #  ##  ###      ###  ### #    ##  ### ###  ##  #  #     
+#   # #  # #  #     #  # #   #   #  #  #   #  #  # ## #     
+# # # #### ###      ###  ##  #   ####  #   #  #  # # ##     
+# # # #  # #  #     #  # #   #   #  #  #   #  #  # #  #     
+ # #  #  # #  #     #  # ### ### #  #  #  ###  ##  #  #
+
+ ######################################################     
+
+
+joining_rule_has_no_war = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 3
+			has_an_authoritarian_ideology = yes
+			has_war = no 
+		}
+	}
+	trigger = {
+		has_war = no
+	}
+	modifier = {
+		improve_relations_maintain_cost_factor = -0.1
+	}
+}
+
+joining_rule_has_no_offensive_war = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 2
+			OR = {
+				has_a_democratic_ideology = yes
+				has_an_authoritarian_ideology = yes
+			}
+		}
+	}
+	trigger = {
+		has_offensive_war = no
+	}
+	modifier = {
+		defensive_war_stability_factor = 0.15
+	}
+}
+
+########################################################
+
+ ##  ###  ##   ##  ###   ##  ###  #  # ###  ##   ##  #   
+#    #   #  # #    #  # #  # #  # #  #  #  #  # #  # #   
+# ## ##  #  # # ## ###  #### ###  ####  #  #    #### #   
+#  # #   #  # #  # #  # #  # #    #  #  #  #  # #  # #   
+ ##  ###  ##   ##  #  # #  # #    #  # ###  ##  #  # ###
+
+######################################################## 
+
+joining_rule_neighbors_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			has_an_authoritarian_ideology = yes
+			has_war = no 
+		}
+	}
+	
+	trigger = {
+		any_neighbor_country = {
+			is_in_faction_with = FROM
+		}
+	}
+	modifier = {
+		enemy_justify_war_goal_time = 0.2
+	}
+}
+
+joining_rule_same_continent_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	can_remove = {
+		faction_manifest_fulfillment > 0.75
+	}
+	trigger = {
+		ROOT = { is_on_same_continent_as = FROM }
+	}
+	modifier = {
+		enemy_justify_war_goal_time = 0.1
+	}
+}

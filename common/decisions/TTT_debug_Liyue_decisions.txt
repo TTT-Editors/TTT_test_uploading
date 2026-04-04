@@ -1,0 +1,46 @@
+LY_debug_Liyue_decisions_categories = {
+	LY_Keqing_seizes_power_post_civilwar_focus = {
+		cost = 0
+		days_re_enable = 0
+		days_remove = 0
+		visible = {
+			original_tag = LYU
+		}
+		complete_effect = {
+			set_cosmetic_tag = PRL
+			load_focus_tree = KQG_postwar_recon_tree
+			set_politics = {
+                ruling_party = communism
+                elections_allowed = yes
+                last_election = "1997.12.10"
+                election_frequency = 60
+            }
+			remove_ideas = {
+	            Liyue_Vast_territory
+	            a_dying_morax
+	            an_unbalanced_developed_country
+	            a_torn_society
+            }
+			add_ideas = {
+				KQG_theory_blank_1
+			}
+			
+		    add_dynamic_modifier = { modifier = lyu_special_project_extra_cost }
+		    add_ideas = {
+		 	    Liyue_economic_collapse_1
+			    Liyue_low_efficiency_administration_1
+			    Liyue_nationwide_resistance_1
+		    }
+		    set_global_flag = ttt_liyue_civil_war_end
+		    set_country_flag = king_of_liyue
+	
+		    #Reconstruction Progress
+		    set_variable = { liyue_adm_reconstruction_progress = 0 }	#administration
+		    set_variable = { liyue_mil_reconstruction_progress = 0 }	#military occupation
+		    set_variable = { liyue_eco_reconstruction_progress = 0 }	#economy rebuild
+		    set_variable = { LYU_days_factory_bankrupt_timeuot = 2 }	#days to remove factory
+		    set_variable = { LYU_days_rebellion_prepare_timeout = 5 }	#days to play some little tricks
+
+		}
+	}
+}

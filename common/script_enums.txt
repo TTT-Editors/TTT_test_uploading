@@ -88,6 +88,9 @@ script_enum_equipment_stat = {
 	fuel_consumption_factor
 	strategic_attack
 	carrier_size
+	submarine_carrier_size
+	carrier_surface_detection
+	carrier_sub_detection
 	acclimatization_hot_climate_gain_factor			#Cannot be used with MIOS
 	acclimatization_cold_climate_gain_factor		#Cannot be used with MIOS
 	night_penalty				#Cannot be used with MIOS
@@ -129,6 +132,7 @@ script_enum_equipment_category = {
 	ballistic_missile
 	nuclear_missile
 	sam_missile
+	support_ship
 	suicide
 	scout_plane
 	maritime_patrol_plane
@@ -146,6 +150,16 @@ script_enum_equipment_category = {
 }
 
 script_enum_equipment_bonus_type = {
+	## This script enum contains all equipment types that can be used in equipment_bonus
+	## or in game/common/military_industrial_organization scripts.
+
+	## This list contains either equipment category (see script_enum_equipment_category above)
+	## or equipment archetypes & types defined in game/common/units/equipments
+
+	## This enum should be updated every time either of those is updated
+	## (there will be a log error at startup as a reminder)
+
+	# Equipment categories
 	convoy
 	train
 	floating_harbor
@@ -169,6 +183,7 @@ script_enum_equipment_bonus_type = {
 	ballistic_missile
 	nuclear_missile
 	sam_missile
+	support_ship
 	suicide
 	scout_plane
 	maritime_patrol_plane
@@ -230,6 +245,7 @@ script_enum_equipment_bonus_type = {
 	gw_armored_car_equipment
 	armored_car_equipment_1
 	armored_car_equipment_2
+	armored_car_at_equipment
 	armored_train_1
 	armored_train_2
 	artillery_equipment_1
@@ -340,6 +356,12 @@ script_enum_equipment_bonus_type = {
 	nuclear_missile_equipment_2
 	sam_missile_equipment
 	sam_missile_equipment_1
+	support_ship_hull
+	support_ship_1
+	support_ship_2
+	repair_ship_hull
+	repair_ship_1
+	repair_ship_2
 	infantry_equipment_0
 	infantry_equipment_1
 	infantry_equipment_2
@@ -522,8 +544,11 @@ script_enum_equipment_bonus_type = {
 	heavy_tank_flame_chassis_2
 	heavy_tank_flame_chassis_3
 	small_plane_cas_airframe
+	cv_small_plane_cas_airframe
 	small_plane_naval_bomber_airframe
+	cv_small_plane_naval_bomber_airframe
 	small_plane_suicide_airframe
+	cv_small_plane_suicide_airframe
 	medium_plane_fighter_airframe
 	medium_plane_scout_plane_airframe
 	large_plane_maritime_patrol_plane_airframe
@@ -625,6 +650,11 @@ script_enum_equipment_bonus_type = {
 	medium_tank_destroyer_chassis
 	medium_tank_amphibious_chassis
 	medium_tank_flame_chassis
+	heavy_tank_aa_chassis
+	heavy_tank_artillery_chassis
+	heavy_tank_destroyer_chassis
+	heavy_tank_amphibious_chassis
+	heavy_tank_flame_chassis
 	super_heavy_tank_aa_chassis
 	super_heavy_tank_artillery_chassis
 	super_heavy_tank_destroyer_chassis
@@ -695,6 +725,26 @@ script_enum_equipment_bonus_type = {
 	medium_tank_flame_chassis_1
 	medium_tank_flame_chassis_2
 	medium_tank_flame_chassis_3
+	heavy_tank_aa_chassis_0
+	heavy_tank_aa_chassis_1
+	heavy_tank_aa_chassis_2
+	heavy_tank_aa_chassis_3
+	heavy_tank_artillery_chassis_0
+	heavy_tank_artillery_chassis_1
+	heavy_tank_artillery_chassis_2
+	heavy_tank_artillery_chassis_3
+	heavy_tank_destroyer_chassis_0
+	heavy_tank_destroyer_chassis_1
+	heavy_tank_destroyer_chassis_2
+	heavy_tank_destroyer_chassis_3
+	heavy_tank_amphibious_chassis_0
+	heavy_tank_amphibious_chassis_1
+	heavy_tank_amphibious_chassis_2
+	heavy_tank_amphibious_chassis_3
+	heavy_tank_flame_chassis_0
+	heavy_tank_flame_chassis_1
+	heavy_tank_flame_chassis_2
+	heavy_tank_flame_chassis_3
 	super_heavy_tank_aa_chassis_1
 	super_heavy_tank_artillery_chassis_1
 	super_heavy_tank_destroyer_chassis_1
@@ -790,6 +840,9 @@ script_enum_equipment_bonus_type = {
 	super_heavy_tank_aa_equipment_1
 	super_heavy_tank_artillery_equipment_1
 	super_heavy_tank_destroyer_equipment_1
+	super_heavy_tank_aa_equipment_1
+	amphibious_tank_equipment_1
+	amphibious_tank_equipment_2
 	supersonic_fighter_equipment_1
 	train_equipment_4
 	ttt_hand_cannon_eq

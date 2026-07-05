@@ -973,12 +973,12 @@ country_event = {
 			create_unit = {
 				division = "division_template = \"西风骑士团军区正式部队\" start_experience_factor = 0.8"
 				owner = MDQ
-				count = 1
+				count = 2
 			}
 			create_unit = {
 				division = "division_template = \"西风骑士团军区辅助部队\" start_experience_factor = 0.8"
 				owner = MDQ
-				count = 3
+				count = 5
 			}
 		}
 		
@@ -1019,5 +1019,22 @@ country_event = {
 			}
 		}
 		leave_faction = yes				#退出阵营，国家tag 
+	}
+}
+#临时战争指挥部的离开
+country_event = {
+	id = MDQ_event.50
+	title = MDQ_event.50.t
+	desc = MDQ_event.50.d
+	trigger = {
+		has_war = no
+		tag = MDQ
+		date > 1999.6.1
+		has_idea =  MDQ_short_time_decide_war
+	}
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.50.a
+		remove_ideas = MDQ_short_time_decide_war
 	}
 }

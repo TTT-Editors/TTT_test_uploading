@@ -773,6 +773,7 @@ country_event = {
 	option = {
 		name = MDQ_event.33.a
 		custom_effect_tooltip = MDQ_event33_tt
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -786,6 +787,7 @@ country_event = {
 	option = {
 		name = MDQ_event.34.a
 		custom_effect_tooltip = MDQ_event33_tt
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -814,6 +816,12 @@ country_event = {
 	fire_only_once = yes
 	option = {
 		name = MDQ_event.36.a
+		add_popularity = { ideology = autocracy popularity = 0.1 }
+		add_popularity = { ideology = authoritarianism popularity = -0.25 }
+		add_popularity = { ideology = reformism popularity = 0.1 }
+		add_stability = -0.25
+		add_war_support = -0.2
+		add_ideas = MDQ_man_from_knight_order
 	}
 }
 
@@ -984,48 +992,12 @@ country_event = {
 		
 	}
 }
-#准备下一次达达乌帕谷战争
+
+#临时战争指挥部的离开
 country_event = {
 	id = MDQ_event.48
 	title = MDQ_event.48.t
 	desc = MDQ_event.48.d
-	trigger = {
-		QQR = {
-			has_completed_focus = QQR016
-		}
-		tag = MDQ
-	}
-	fire_only_once = yes
-	option = {
-		name = MDQ_event.48.a
-		country_event = { days = 1000 id = MDQ_event.49 }
-	}
-}
-#第六次达达乌帕谷战争
-country_event = {
-	id = MDQ_event.49
-	title = MDQ_event.49.t
-	desc = MDQ_event.49.d
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = {
-		name = MDQ_event.49.a
-		declare_war_on = { target = QQR type = annex_everything }
-		MOT = {
-			#从蒙德城独立
-			set_autonomy = {
-				target = MDQ
-				autonomy_state = autonomy_free
-			}
-		}
-		leave_faction = yes				#退出阵营，国家tag 
-	}
-}
-#临时战争指挥部的离开
-country_event = {
-	id = MDQ_event.50
-	title = MDQ_event.50.t
-	desc = MDQ_event.50.d
 	trigger = {
 		has_war = no
 		tag = MDQ
@@ -1034,7 +1006,64 @@ country_event = {
 	}
 	fire_only_once = yes
 	option = {
-		name = MDQ_event.50.a
+		name = MDQ_event.48.a
 		remove_ideas = MDQ_short_time_decide_war
+	}
+}
+#致达达乌帕谷军区的信
+country_event = {
+	id = MDQ_event.49
+	title = MDQ_event.49.t
+	desc = MDQ_event.49.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.49.a
+	}
+}
+#骑士团精神再现
+country_event = {
+	id = MDQ_event.50
+	title = MDQ_event.50.t
+	desc = MDQ_event.50.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.50.a
+		add_stability = 0.05
+	}
+}
+#治安新局面
+country_event = {
+	id = MDQ_event.51
+	title = MDQ_event.51.t
+	desc = MDQ_event.51.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.51.a
+	}
+}
+#祭奠英雄
+country_event = {
+	id = MDQ_event.52
+	title = MDQ_event.52.t
+	desc = MDQ_event.52.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.52.a
+	}
+}
+
+#向深渊进军
+country_event = {
+	id = MDQ_event.53
+	title = MDQ_event.53.t
+	desc = MDQ_event.53.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = MDQ_event.53.a
 	}
 }

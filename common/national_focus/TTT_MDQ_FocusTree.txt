@@ -1933,3 +1933,531 @@ focus_tree = {
 		factor = 0
 	}
 }
+
+#诺艾尔线
+focus_tree = {
+	id = TTT_MDQ_focustree_04
+	country = {
+		factor = 0
+	}
+	allow_branch = {
+		has_completed_focus = MDQ_02_34
+		has_country_flag = MDQ_has_lost_ddup_war
+	} 
+
+
+	focus = {
+		id = MDQ_04_01		#联系骑士团中央合作
+		icon = GFX_goal_MDQ_04_01
+		x = 20
+		y = 1
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_completed_focus = MDQ_02_34
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = MDQ_04_02		#寻求援助
+		icon = GFX_goal_MDQ_04_02
+		x = 16
+		y = 2
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_01
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = grain_conversion_0
+				amount = 200
+				producer = MOT
+			}
+			add_equipment_to_stockpile = {
+				type = ttt_uniform_eq_0
+				amount = 100
+				producer = MOT
+			}
+			add_political_power = 30
+		}
+	}
+	focus = {
+		id = MDQ_04_03		#紧密联系
+		icon = GFX_goal_MDQ_04_03
+		x = 16
+		y = 3
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_02
+		}
+		prerequisite = {
+			focus = MDQ_04_05
+		}
+		completion_reward = {
+			completion_reward = {
+				MOT = {
+					add_opinion_modifier = {
+						target = ROOT  
+						modifier = MDQ_focus_04_03 ##这个便是modifier ，左右好感度的东西，定义在opinion_modifiers文件夹
+					}
+				}
+				QQZ = {
+					add_opinion_modifier = {
+						target = ROOT  
+						modifier = MDQ_focus_04_03 
+					}
+				}
+				TWL = {
+					add_opinion_modifier = {
+						target = ROOT  
+						modifier = MDQ_focus_04_03 
+					}
+				}
+				FXE = {
+					add_opinion_modifier = {
+						target = ROOT  
+						modifier = MDQ_focus_04_03 
+					}
+				}
+				DSC = {
+					add_opinion_modifier = {
+						target = ROOT  
+						modifier = MDQ_focus_04_03 
+					}
+				}
+				DLK = {
+					add_opinion_modifier = {
+						target = ROOT  
+						modifier = MDQ_focus_04_03 
+					}
+				}
+				BLL = {
+					add_opinion_modifier = {
+						target = ROOT  
+						modifier = MDQ_focus_04_03 
+					}
+				}
+				country_event = { days = 1 id = MDQ_event.49 }
+				add_manpower = 1000
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_04		#军事援助
+		icon = GFX_goal_MDQ_04_04
+		x = 16
+		y = 4
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_03
+		}
+		completion_reward = {
+			custom_modifier_tooltip = MDQ_docus_04_04_tt
+			add_manpower = 2000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = MOT
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_05		#重整军队
+		icon = GFX_goal_MDQ_04_05
+		x = 18
+		y = 2
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_01
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = MDQ_4_new_army
+			}	
+		}
+	}
+	focus = {
+		id = MDQ_04_06		#提拔军官
+		icon = GFX_goal_MDQ_04_06
+		x = 18
+		y = 3
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_05
+		}
+		completion_reward = {
+			add_unit_leader = MDQ_jack
+			add_unit_leader = MDQ_Albin_Naumann
+			add_unit_leader = MDQ_Ulrich_Wagner
+			add_political_power = -35
+		}
+
+	}
+	focus = {
+		id = MDQ_04_07		#重申骑士内涵
+		icon = GFX_goal_MDQ_04_07
+		x = 18
+		y = 4
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_06
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = MDQ_4_new_army
+				add_idea = MDQ_4_new_army_2			
+			}
+			
+			country_event = { days = 1 id = MDQ_event.50 }
+		}
+	}
+	focus = {
+		id = MDQ_04_08		#战争准备
+		icon = GFX_goal_MDQ_04_08
+		x = 18
+		y = 5
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_07
+		}
+		prerequisite = {
+			focus = MDQ_04_04
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = MDQ_4_new_army_2
+				add_idea = MDQ_4_new_army_3	
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_09		#削弱旧势力影响力
+		icon = GFX_goal_MDQ_04_09
+		x = 20
+		y = 2
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_01
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.05
+			add_political_power = -25
+			add_popularity = { ideology = reformism popularity = 0.1 }
+		}
+	}
+	focus = {
+		id = MDQ_04_10		#权力收缩
+		icon = GFX_goal_MDQ_04_10
+		x = 20
+		y = 3
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_09
+		}
+		completion_reward = {
+			set_politics = { ruling_party = reformism }
+			add_popularity = { ideology = reformism popularity = 0.15 }
+			add_country_leader_role = {
+				character = MDQ_Noelle
+				promote_leader = yes
+				country_leader = {
+					ideology = reformism_subtype
+					expire = "2021.1.1.1"
+					
+				}
+			}
+			swap_ideas = {
+				remove_idea = MDQ_man_from_knight_order
+				
+			}
+			add_political_power = -50
+		}
+	}
+	focus = {
+		id = MDQ_04_11		#制度改革
+		icon = GFX_goal_MDQ_04_11
+		x = 20
+		y = 4
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_10
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.05
+			add_popularity = { ideology = reformism popularity = 0.1 }
+		}
+	}
+
+	focus = {
+		id = MDQ_04_12		#整顿治安
+		icon = GFX_goal_MDQ_04_12
+		x = 20
+		y = 5
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_11
+		}
+		prerequisite = {
+			focus = MDQ_04_07
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = -0.05
+			country_event = { days = 1 id = MDQ_event.51 }
+		}
+	}
+	focus = {
+		id = MDQ_04_13		#祭奠英雄
+		icon = GFX_goal_MDQ_04_13
+		x = 20
+		y = 6
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_12
+		}
+		prerequisite = {
+			focus = MDQ_04_08
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			add_manpower = 3000
+			country_event = { days = 1 id = MDQ_event.52 }
+		}
+	}
+	focus = {
+		id = MDQ_04_14		#工厂建设
+		icon = GFX_goal_MDQ_04_14
+		x = 22
+		y = 2
+		cost = 28
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_01
+		}
+		completion_reward = {
+			state_36 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes 
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_15		#工业合作
+		icon = GFX_goal_MDQ_04_15
+		x = 22
+		y = 3
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_14
+		}
+		completion_reward = {
+			add_timed_idea = { idea = MDQ_4_make_factory_together days = 60 }
+			MOT = {
+				add_timed_idea = { idea = MDQ_4_make_factory_together days = 60 }
+			}
+			DSC = {
+				add_timed_idea = { idea = MDQ_4_make_factory_together days = 60 }
+			}
+			DLK = {
+				add_timed_idea = { idea = MDQ_4_make_factory_together days = 60 }
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_16		#劳逸结合
+		icon = GFX_goal_MDQ_04_16
+		x = 24
+		y = 3
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_14
+		}
+		completion_reward = {
+			swap_ideas = {
+				
+				add_idea = MDQ_4_good_worker			
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_17		#开垦荒地
+		icon = GFX_goal_MDQ_04_17
+		x = 26
+		y = 2
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_01
+		}
+		completion_reward = {
+			state_36 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_18		#开辟道路
+		icon = GFX_goal_MDQ_04_18
+		x = 26
+		y = 3
+		cost = 21
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_17
+		}
+		completion_reward = {
+			state_36 = {
+				add_building_construction = {
+					type = infrastructure 
+					level = 1
+					instant_build = yes 
+				}
+			}
+		}
+	}
+	focus = {
+		id = MDQ_04_19		#重视补给
+		icon = GFX_goal_MDQ_04_19
+		x = 26
+		y = 4
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_18
+		}
+		completion_reward = {
+			#
+		}
+	}
+	focus = {
+		id = MDQ_04_20		#收复失地
+		icon = GFX_goal_MDQ_04_20
+		x = 20
+		y = 7
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MDQ_04_10
+		}
+		prerequisite = {
+			focus = MDQ_04_19
+		}
+		prerequisite = {
+			focus = MDQ_04_15
+		}
+		prerequisite = {
+			focus = MDQ_04_16
+		}
+		completion_reward = {
+			country_event = { days = 1 id = MDQ_event.53 }
+			MOT = {
+				#从蒙德城独立
+				set_autonomy = {
+					target = MDQ
+					autonomy_state = autonomy_free
+				}
+			}
+			leave_faction = yes
+			declare_war_on = { target = QQR type = annex_everything }
+		}
+	}
+}
+
+
+#卡尼鄂拉线
+focus_tree = {
+	id = TTT_MDQ_focustree_05
+	country = {
+		factor = 0
+	}
+	allow_branch = {
+		has_completed_focus = MDQ_02_33
+		has_country_flag = MDQ_has_lost_ddup_war
+	} 
+
+
+	focus = {
+		id = MDQ_05_01		#复盘失败原因
+		icon = GFX_goal_MDQ_05_01
+		x = 21
+		y = 1
+		cost = 14
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_completed_focus = MDQ_02_33
+		}
+		completion_reward = {
+			#
+		}
+	}
+}

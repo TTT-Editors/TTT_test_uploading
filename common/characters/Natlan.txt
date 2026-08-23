@@ -1,24 +1,6 @@
 characters = {
-    NAT_jizi = {
-        name = NAT_jizi
-        portraits = {
-            civilian = {
-                large = "GFX_portrait_large_Natlan_jizi"
-            }
-            army = {
-                large = "GFX_portrait_large_Natlan_jizi"
-            }
-        }
-        
-        country_leader = {
-            ideology = national_socialism_subtype
-            traits = {  }
-            expire = "2022.10.20.1"
-            id = -1
-        }
-    }
-
-	NAT_Mavuika = {
+    #=========== 开局国家领袖 ===========
+    NAT_Mavuika = {
         name = NAT_Mavuika
         portraits = {
             civilian = {
@@ -28,13 +10,560 @@ characters = {
                 large = "GFX_portrait_large_Natlan_Mavuika"
             }
         }
-        
+
         country_leader = {
-            ideology = national_socialism_subtype
-            traits = {  }
+            ideology = authoritarianism_subtype
+            traits = { NAT_sun_ablaze }
             expire = "2025.2.11.22"
             id = -1
-			desc = NAT_Mavuika_desc
+            desc = NAT_Mavuika_desc
         }
-	}
+
+        country_leader = {
+            ideology = reformism_subtype
+            traits = { NAT_sun_ablaze }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Mavuika_desc
+            visible = {
+                has_country_flag = NAT_mavuika_civilian_rule
+            }
+        }
+
+        field_marshal = {
+            traits = { pyro_element NAT_ode_of_flame_commander }
+            skill = 6
+            attack_skill = 6
+            defense_skill = 5
+            planning_skill = 5
+            logistics_skill = 4
+            legacy_id = -1
+        }
+    }
+
+    #=========== 开局顾问与将军 ===========
+    NAT_Kachina = {
+        name = NAT_Kachina
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Kachina"
+                small = "GFX_portrait_small_Natlan_Kachina"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Kachina"
+                small = "GFX_portrait_small_Natlan_Kachina"
+            }
+        }
+
+        country_leader = {
+            ideology = reformism_subtype
+            traits = { NAT_usha_botti_leader }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Kachina_leader_desc
+            visible = {
+                has_country_flag = NAT_kachina_leader
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = NAT_Kachina_advisor
+            cost = 75
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_usha_botti }
+        }
+
+        corps_commander = {
+            traits = { geo_element NAT_usha_botti_commander }
+            skill = 3
+            attack_skill = 2
+            defense_skill = 4
+            planning_skill = 3
+            logistics_skill = 2
+            legacy_id = -1
+        }
+    }
+
+    NAT_Xilonen = {
+        name = NAT_Xilonen
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Xilonen"
+                small = "GFX_portrait_small_Natlan_Xilonen"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Xilonen"
+                small = "GFX_portrait_small_Natlan_Xilonen"
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = NAT_Xilonen_advisor
+            cost = 150
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_forge_of_names }
+        }
+
+        advisor = {
+            slot = theorist
+            idea_token = NAT_Xilonen_theorist
+            cost = 150
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_forge_of_names_theorist }
+        }
+
+        corps_commander = {
+            traits = { geo_element NAT_forge_of_names_commander }
+            skill = 4
+            attack_skill = 3
+            defense_skill = 4
+            planning_skill = 4
+            logistics_skill = 4
+            legacy_id = -1
+        }
+    }
+
+    NAT_Mualani = {
+        name = NAT_Mualani
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Mualani"
+                small = "GFX_portrait_small_Natlan_Mualani"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Mualani"
+                small = "GFX_portrait_small_Natlan_Mualani"
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = NAT_Mualani_advisor
+            cost = 100
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_springs_guide }
+        }
+
+        navy_leader = {
+            traits = { Tidecaller NAT_springs_guide_commander }
+            skill = 4
+            attack_skill = 3
+            defense_skill = 4
+            maneuvering_skill = 5
+            coordination_skill = 3
+            legacy_id = -1
+        }
+    }
+
+    NAT_Kinich = {
+        name = NAT_Kinich
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Kinich"
+                small = "GFX_portrait_small_Natlan_Kinich"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Kinich"
+                small = "GFX_portrait_small_Natlan_Kinich"
+            }
+        }
+
+        advisor = {
+            slot = army_chief
+            idea_token = NAT_Kinich_advisor
+            cost = 150
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_dragon_hunter }
+        }
+
+        corps_commander = {
+            traits = { dendro_element NAT_dragon_hunter_commander }
+            skill = 5
+            attack_skill = 5
+            defense_skill = 4
+            planning_skill = 4
+            logistics_skill = 3
+            legacy_id = -1
+        }
+    }
+
+    NAT_Chasca = {
+        name = NAT_Chasca
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Chasca"
+                small = "GFX_portrait_small_Natlan_Chasca"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Chasca"
+                small = "GFX_portrait_small_Natlan_Chasca"
+            }
+        }
+
+        advisor = {
+            slot = air_chief
+            idea_token = NAT_Chasca_advisor
+            cost = 150
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_peacemaker }
+        }
+
+        corps_commander = {
+            traits = { anemo_element NAT_peacemaker_commander }
+            skill = 4
+            attack_skill = 5
+            defense_skill = 3
+            planning_skill = 4
+            logistics_skill = 3
+            legacy_id = -1
+        }
+    }
+
+    NAT_Iansan = {
+        name = NAT_Iansan
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Iansan"
+                small = "GFX_portrait_small_Natlan_Iansan"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Iansan"
+                small = "GFX_portrait_small_Natlan_Iansan"
+            }
+        }
+
+        advisor = {
+            slot = high_command
+            idea_token = NAT_Iansan_advisor
+            cost = 100
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_strength }
+        }
+
+        corps_commander = {
+            traits = { electro_element NAT_strength_commander }
+            skill = 5
+            attack_skill = 5
+            defense_skill = 5
+            planning_skill = 4
+            logistics_skill = 3
+            legacy_id = -1
+        }
+    }
+
+    NAT_Citlali = {
+        name = NAT_Citlali
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Citlali"
+                small = "GFX_portrait_small_Natlan_Citlali"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Citlali"
+                small = "GFX_portrait_small_Natlan_Citlali"
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = NAT_Citlali_advisor
+            cost = 100
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_obsidian_grandma }
+        }
+    }
+
+    #=========== 路线解锁/隐藏人物 ===========
+    NAT_Varesa = {
+        name = NAT_Varesa
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Varesa"
+                small = "GFX_portrait_small_Natlan_Varesa"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Varesa"
+                small = "GFX_portrait_small_Natlan_Varesa"
+            }
+        }
+
+        advisor = {
+            slot = high_command
+            idea_token = NAT_Varesa_advisor
+            cost = 100
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_varesa_strength }
+            visible = {
+                has_country_flag = NAT_varesa_available
+            }
+        }
+
+        corps_commander = {
+            traits = { electro_element NAT_varesa_commander }
+            skill = 4
+            attack_skill = 5
+            defense_skill = 3
+            planning_skill = 2
+            logistics_skill = 2
+            legacy_id = -1
+            visible = {
+                has_country_flag = NAT_varesa_available
+            }
+        }
+    }
+
+    NAT_Ororon = {
+        name = NAT_Ororon
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Ororon"
+                small = "GFX_portrait_small_Natlan_Ororon"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Ororon"
+                small = "GFX_portrait_small_Natlan_Ororon"
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = NAT_Ororon_advisor
+            cost = 75
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_bat_soul }
+            visible = {
+                has_country_flag = NAT_ororon_available
+            }
+        }
+
+        corps_commander = {
+            traits = { electro_element NAT_bat_soul_commander }
+            skill = 3
+            attack_skill = 3
+            defense_skill = 3
+            planning_skill = 4
+            logistics_skill = 3
+            legacy_id = -1
+            visible = {
+                has_country_flag = NAT_ororon_available
+            }
+        }
+    }
+
+    NAT_Ifa = {
+        name = NAT_Ifa
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Ifa"
+                small = "GFX_portrait_small_Natlan_Ifa"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Ifa"
+                small = "GFX_portrait_small_Natlan_Ifa"
+            }
+        }
+
+        advisor = {
+            slot = high_command
+            idea_token = NAT_Ifa_advisor
+            cost = 75
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_veterinarian }
+            visible = {
+                has_country_flag = NAT_ifa_available
+            }
+        }
+    }
+
+    NAT_Capitano = {
+        name = NAT_Capitano
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Capitano"
+                small = "GFX_portrait_small_Natlan_Capitano"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Capitano"
+                small = "GFX_portrait_small_Natlan_Capitano"
+            }
+        }
+
+        country_leader = {
+            ideology = despotism_subtype
+            traits = { NAT_capitano_sentinel }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Capitano_desc
+            visible = {
+                has_country_flag = NAT_capitano_arrived
+            }
+        }
+
+        country_leader = {
+            ideology = national_socialism_subtype
+            traits = { NAT_capitano_sentinel }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Capitano_desc
+            visible = {
+                has_country_flag = NAT_capitano_arrived
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = NAT_Capitano_advisor
+            cost = 150
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_capitano_plan }
+            visible = {
+                has_country_flag = NAT_capitano_arrived
+            }
+        }
+
+        advisor = {
+            slot = army_chief
+            idea_token = NAT_Capitano_army_advisor
+            cost = 150
+            removal_cost = 10
+            allowed = { original_tag = NAT }
+            traits = { NAT_capitano_plan_army }
+            visible = {
+                has_country_flag = NAT_capitano_arrived
+            }
+        }
+
+        field_marshal = {
+            traits = { NAT_sentinel_commander }
+            skill = 7
+            attack_skill = 7
+            defense_skill = 8
+            planning_skill = 7
+            logistics_skill = 5
+            legacy_id = -1
+            visible = {
+                has_country_flag = NAT_capitano_arrived
+            }
+        }
+    }
+
+    NAT_Xbalanque = {
+        name = NAT_Xbalanque
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Xbalanque"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Xbalanque"
+            }
+        }
+
+        country_leader = {
+            ideology = esotericism_subtype
+            traits = { NAT_first_flame }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Xbalanque_desc
+            visible = {
+                has_country_flag = NAT_xbalanque_returned
+            }
+        }
+
+        field_marshal = {
+            traits = { pyro_element NAT_first_flame_commander }
+            skill = 7
+            attack_skill = 8
+            defense_skill = 6
+            planning_skill = 6
+            logistics_skill = 4
+            legacy_id = -1
+            visible = {
+                has_country_flag = NAT_xbalanque_returned
+            }
+        }
+    }
+
+    NAT_Ochkan = {
+        name = NAT_Ochkan
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Ochkan"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Ochkan"
+            }
+        }
+
+        country_leader = {
+            ideology = national_socialism_subtype
+            traits = { NAT_ochkan_tyrant }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Ochkan_desc
+            visible = {
+                has_country_flag = NAT_ochkan_restored
+            }
+        }
+
+        corps_commander = {
+            traits = { NAT_ochkan_commander }
+            skill = 5
+            attack_skill = 6
+            defense_skill = 4
+            planning_skill = 3
+            logistics_skill = 3
+            legacy_id = -1
+            visible = {
+                has_country_flag = NAT_ochkan_restored
+            }
+        }
+    }
+
+    NAT_Gosoythoth = {
+        name = NAT_Gosoythoth
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_large_Natlan_Gosoythoth"
+            }
+            army = {
+                large = "GFX_portrait_large_Natlan_Gosoythoth"
+            }
+        }
+
+        country_leader = {
+            ideology = hive_mind_subtype
+            traits = { NAT_abyss_incarnate }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Gosoythoth_desc
+            visible = {
+                has_country_flag = NAT_gosoythoth_descends
+            }
+        }
+
+        country_leader = {
+            ideology = esotericism_subtype
+            traits = { NAT_abyss_incarnate }
+            expire = "2025.2.11.22"
+            id = -1
+            desc = NAT_Gosoythoth_desc
+            visible = {
+                has_country_flag = NAT_gosoythoth_descends
+            }
+        }
+    }
 }

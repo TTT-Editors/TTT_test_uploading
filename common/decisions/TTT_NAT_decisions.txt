@@ -1,0 +1,372 @@
+# ==================== 六部族会议 ====================
+NAT_tribal_council = {
+	NAT_tribal_gift_echoes = {
+		icon = GFX_decision_NAT_tribal_gift
+		cost = 25
+		available = {
+			has_political_power > 25
+			check_variable = { NAT_loyalty_echoes < 100 }
+		}
+		complete_effect = {
+			add_political_power = -25
+			custom_effect_tooltip = NAT_loyalty_echoes_plus_10_tt
+			add_to_variable = { NAT_loyalty_echoes = 10 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_tribal_gift_springs = {
+		icon = GFX_decision_NAT_tribal_gift
+		cost = 25
+		available = {
+			has_political_power > 25
+			check_variable = { NAT_loyalty_springs < 100 }
+		}
+		complete_effect = {
+			add_political_power = -25
+			custom_effect_tooltip = NAT_loyalty_springs_plus_10_tt
+			add_to_variable = { NAT_loyalty_springs = 10 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_tribal_gift_canopy = {
+		icon = GFX_decision_NAT_tribal_gift
+		cost = 0
+		available = {
+			army_experience > 5
+			check_variable = { NAT_loyalty_canopy < 100 }
+		}
+		complete_effect = {
+			army_experience = -5
+			custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt
+			add_to_variable = { NAT_loyalty_canopy = 10 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_tribal_gift_flower = {
+		icon = GFX_decision_NAT_tribal_gift
+		cost = 0
+		available = {
+			air_experience > 5
+			check_variable = { NAT_loyalty_flower < 100 }
+		}
+		complete_effect = {
+			air_experience = -5
+			custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt
+			add_to_variable = { NAT_loyalty_flower = 10 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_tribal_gift_plenty = {
+		icon = GFX_decision_NAT_tribal_gift
+		cost = 0
+		available = {
+			has_manpower > 2000
+			check_variable = { NAT_loyalty_plenty < 100 }
+		}
+		complete_effect = {
+			add_manpower = -2000
+			custom_effect_tooltip = NAT_loyalty_plenty_plus_10_tt
+			add_to_variable = { NAT_loyalty_plenty = 10 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_tribal_gift_nightwind = {
+		icon = GFX_decision_NAT_tribal_gift
+		cost = 50
+		available = {
+			has_political_power > 50
+			check_variable = { NAT_loyalty_nightwind < 100 }
+		}
+		complete_effect = {
+			add_political_power = -50
+			custom_effect_tooltip = NAT_loyalty_nightwind_plus_10_tt
+			add_to_variable = { NAT_loyalty_nightwind = 10 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ==================== 深渊侵蚀 ====================
+NAT_abyss_pressure = {
+	NAT_abyss_clock = {
+		icon = GFX_decision_NAT_abyss_action
+		fire_only_once = yes
+		available = { always = no }
+		activation = { tag = NAT }
+		days_mission_timeout = 3000
+		is_good = no
+		timeout_effect = {
+			set_global_flag = NAT_storm_coming
+			set_global_flag = NAT_abyss_natural_growth_stopped
+			country_event = { id = NAT_war_events.100 }
+			activate_mission = NAT_storm_clock
+		}
+	}
+	NAT_storm_clock = {
+		icon = GFX_decision_NAT_abyss_action
+		fire_only_once = yes
+		available = { always = no }
+		activation = { has_global_flag = NAT_storm_coming }
+		days_mission_timeout = 100
+		is_good = no
+		timeout_effect = {
+			country_event = { id = NAT_war_events.110 }
+		}
+	}
+	NAT_abyss_military_purge = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 25
+		days_re_enable = 60
+		available = {
+			has_equipment = { infantry_equipment > 1500 }
+			has_manpower > 3000
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1500 }
+			add_manpower = -3000
+			custom_effect_tooltip = NAT_abyss_pressure_minus_6_tt
+			add_to_variable = { NAT_abyss_pressure = -6 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_abyss_tribal_ritual = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 50
+		days_re_enable = 90
+		available = { check_variable = { NAT_loyalty_nightwind > 5 } }
+		complete_effect = {
+			add_political_power = -50
+			custom_effect_tooltip = NAT_loyalty_nightwind_minus_5_tt
+			custom_effect_tooltip = NAT_abyss_pressure_minus_8_tt
+			add_to_variable = { NAT_loyalty_nightwind = -5 }
+			add_to_variable = { NAT_abyss_pressure = -8 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_abyss_mavuika_fuel = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_re_enable = 120
+		available = { check_variable = { NAT_mavuika_fuel > 10 } }
+		complete_effect = {
+			custom_effect_tooltip = NAT_mavuika_fuel_minus_10_tt
+			custom_effect_tooltip = NAT_abyss_pressure_minus_10_tt
+			add_to_variable = { NAT_mavuika_fuel = -10 }
+			add_to_variable = { NAT_abyss_pressure = -10 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_mavuika_refuel = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_re_enable = 150
+		available = {
+			has_fuel > 300000
+			check_variable = { NAT_mavuika_fuel < 100 }
+		}
+		complete_effect = {
+			add_fuel = -300000
+			custom_effect_tooltip = NAT_mavuika_fuel_plus_1_tt
+			add_to_variable = { NAT_mavuika_fuel = 1 }
+		}
+		ai_will_do = { factor = 0 }
+	}
+	NAT_abyss_capitano_help = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_re_enable = 90
+		available = { has_country_flag = NAT_capitano_arrived }
+		complete_effect = {
+			custom_effect_tooltip = NAT_capitano_influence_plus_10_tt
+			custom_effect_tooltip = NAT_abyss_pressure_minus_7_tt
+			add_to_variable = { NAT_capitano_influence = 10 }
+			add_to_variable = { NAT_snezhnaya_influence = 3 }
+			add_to_variable = { NAT_abyss_pressure = -7 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_abyss_seal_random_breach = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 30
+		days_re_enable = 30
+		available = { NAT_has_abyss_breach_state = yes }
+		complete_effect = {
+			add_political_power = -30
+			NAT_remove_random_abyss_breach = yes
+			custom_effect_tooltip = NAT_abyss_pressure_minus_3_tt
+			add_to_variable = { NAT_abyss_pressure = -3 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_abyss_slow_forever = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 150
+		fire_only_once = yes
+		available = {
+			check_variable = { NAT_abyss_growth_interval < 90 }
+			has_political_power > 150
+		}
+		complete_effect = {
+			add_political_power = -150
+			custom_effect_tooltip = NAT_abyss_growth_interval_plus_30_tt
+			add_to_variable = { NAT_abyss_growth_interval = 30 }
+		}
+		ai_will_do = { factor = 0 }
+	}
+}
+
+# ==================== 燃素经济 ====================
+NAT_phlogiston_economy = {
+	NAT_phlogiston_refine_fuel = {
+		icon = GFX_decision_NAT_phlogiston_action
+		cost = 25
+		days_re_enable = 30
+		available = { check_variable = { NAT_phlogiston_stockpile > 10 } }
+		complete_effect = {
+			add_political_power = -25
+			custom_effect_tooltip = NAT_phlogiston_stockpile_minus_10_tt
+			add_to_variable = { NAT_phlogiston_stockpile = -10 }
+			add_fuel = 1500
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_phlogiston_improve_efficiency = {
+		icon = GFX_decision_NAT_phlogiston_action
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_political_power = -75
+			add_ideas = NAT_idea_phlogiston_efficiency
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_phlogiston_emergency_factory = {
+		icon = GFX_decision_NAT_phlogiston_action
+		cost = 50
+		days_re_enable = 180
+		available = { check_variable = { NAT_phlogiston_stockpile > 20 } }
+		complete_effect = {
+			add_political_power = -50
+			custom_effect_tooltip = NAT_phlogiston_stockpile_minus_20_tt
+			add_to_variable = { NAT_phlogiston_stockpile = -20 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_phlogiston_research_push = {
+		icon = GFX_decision_NAT_phlogiston_action
+		cost = 100
+		days_re_enable = 180
+		complete_effect = {
+			add_political_power = -100
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ==================== 决战动员 ====================
+NAT_final_battle_actions = {
+	NAT_final_mobilize_tribes = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 50
+		days_re_enable = 30
+		complete_effect = {
+			add_political_power = -50
+			custom_effect_tooltip = NAT_all_loyalty_minus_3_tt
+			add_manpower = 20000
+			add_to_variable = { NAT_loyalty_echoes = -3 }
+			add_to_variable = { NAT_loyalty_springs = -3 }
+			add_to_variable = { NAT_loyalty_canopy = -3 }
+			add_to_variable = { NAT_loyalty_flower = -3 }
+			add_to_variable = { NAT_loyalty_plenty = -3 }
+			add_to_variable = { NAT_loyalty_nightwind = -3 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_final_overtime_work = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_re_enable = 45
+		available = { has_political_power > 25 }
+		complete_effect = {
+			add_political_power = -25
+			add_stability = -0.02
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_final_quality_for_quantity = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_re_enable = 45
+		available = { army_experience > 20 }
+		complete_effect = {
+			army_experience = -20
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 }
+			add_manpower = 5000
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ==================== 战后清理 ====================
+NAT_post_war_cleanup = {
+	NAT_cleanup_breach_equipment = {
+		icon = GFX_decision_NAT_post_war_cleanup
+		cost = 25
+		days_re_enable = 30
+		available = {
+			NAT_has_abyss_breach_state = yes
+			has_equipment = { infantry_equipment > 800 }
+		}
+		complete_effect = {
+			add_political_power = -25
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -800 }
+			NAT_remove_random_abyss_breach = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_cleanup_breach_command = {
+		icon = GFX_decision_NAT_post_war_cleanup
+		cost = 0
+		days_re_enable = 30
+		available = {
+			NAT_has_abyss_breach_state = yes
+			has_command_power > 25
+		}
+		complete_effect = {
+			add_command_power = -25
+			NAT_remove_random_abyss_breach = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_cleanup_breach_pp = {
+		icon = GFX_decision_NAT_post_war_cleanup
+		cost = 75
+		days_re_enable = 15
+		available = {
+			NAT_has_abyss_breach_state = yes
+			has_political_power > 75
+		}
+		complete_effect = {
+			add_political_power = -75
+			NAT_remove_random_abyss_breach = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_cleanup_declare_done = {
+		icon = GFX_decision_NAT_post_war_cleanup
+		cost = 0
+		fire_only_once = yes
+		available = {
+			check_variable = { NAT_abyss_pressure < 1 }
+			NOT = { NAT_has_abyss_breach_state = yes }
+		}
+		complete_effect = {
+			set_global_flag = NAT_abyss_mechanic_abandoned
+			country_event = { id = NAT_war_events.210 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}

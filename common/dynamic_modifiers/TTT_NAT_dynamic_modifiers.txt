@@ -1,0 +1,33 @@
+NAT_abyss_pressure_dynamic = {
+	icon = GFX_idea_NAT_idea_abyss_frontline
+	enable = {
+		has_variable = NAT_abyss_pressure_penalty
+		NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+	}
+	remove_trigger = {
+		has_global_flag = NAT_abyss_mechanic_abandoned
+		NOT = { has_variable = NAT_abyss_pressure_penalty }
+	}
+	stability_factor = NAT_abyss_pressure_penalty
+	war_support_factor = NAT_abyss_pressure_penalty
+	production_speed_arms_factory_factor = NAT_abyss_pressure_penalty
+	local_resources_factor = NAT_abyss_pressure_penalty
+	consumer_goods_factor = NAT_abyss_pressure_consumer
+}
+
+NAT_final_battle_dynamic = {
+	icon = GFX_idea_NAT_idea_abyss_frontline
+	enable = {
+		has_global_flag = NAT_final_battle_started
+	}
+	remove_trigger = {
+		OR = {
+			has_global_flag = NAT_final_battle_over
+			NOT = { has_global_flag = NAT_final_battle_started }
+		}
+	}
+	army_attack_factor = NAT_final_battle_attack
+	army_hp_factor = NAT_final_battle_hp
+	war_support_factor = NAT_final_battle_ws
+	production_speed_arms_factory_factor = NAT_final_battle_prod
+}

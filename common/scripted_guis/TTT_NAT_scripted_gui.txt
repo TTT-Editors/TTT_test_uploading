@@ -1,0 +1,36 @@
+scripted_gui = {
+	NAT_tribal_council_gui = {
+		context_type = decision_category
+		window_name = "NAT_tribal_council_window"
+		visible = {
+			has_country_flag = NAT_tribal_council_open
+			NOT = { has_global_flag = NAT_tribal_council_abandoned }
+		}
+		properties = {
+			NAT_tribe_echoes_icon = { frame = NAT_loyalty_echoes }
+			NAT_tribe_springs_icon = { frame = NAT_loyalty_springs }
+			NAT_tribe_canopy_icon = { frame = NAT_loyalty_canopy }
+			NAT_tribe_flower_icon = { frame = NAT_loyalty_flower }
+			NAT_tribe_plenty_icon = { frame = NAT_loyalty_plenty }
+			NAT_tribe_nightwind_icon = { frame = NAT_loyalty_nightwind }
+		}
+	}
+
+	NAT_abyss_pressure_gui = {
+		context_type = decision_category
+		window_name = "NAT_abyss_pressure_window"
+		visible = {
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+		}
+		triggers = {
+			NAT_snezhnaya_influence_progress_visible = {
+				has_country_flag = NAT_dottore_invited
+			}
+		}
+		properties = {
+			NAT_abyss_progress = { frame = NAT_abyss_pressure }
+			NAT_mavuika_fuel_progress = { frame = NAT_mavuika_fuel }
+			NAT_snezhnaya_influence_progress = { frame = NAT_snezhnaya_influence }
+		}
+	}
+}

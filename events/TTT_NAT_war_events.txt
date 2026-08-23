@@ -1,0 +1,128 @@
+add_namespace = NAT_war_events
+
+# 决战序幕
+country_event = {
+	id = NAT_war_events.1
+	title = NAT_war_events.1.t
+	desc = NAT_war_events.1.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_war_events.1.a
+		add_war_support = 0.10
+	}
+}
+
+# 最终准备
+country_event = {
+	id = NAT_war_events.2
+	title = NAT_war_events.2.t
+	desc = NAT_war_events.2.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_war_events.2.a
+		set_global_flag = NAT_final_preparation_done
+	}
+}
+
+# 3000天倒计时结束：风暴将临
+country_event = {
+	id = NAT_war_events.100
+	title = NAT_war_events.100.t
+	desc = NAT_war_events.100.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_war_events.100.a
+		set_global_flag = NAT_storm_coming
+		set_global_flag = NAT_abyss_natural_growth_stopped
+		activate_mission = NAT_storm_clock
+	}
+}
+
+# 风暴倒计时结束：NAB爆发
+country_event = {
+	id = NAT_war_events.110
+	title = NAT_war_events.110.t
+	desc = NAT_war_events.110.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_war_events.110.a
+		set_global_flag = NAT_final_battle_started
+		NAT_spawn_natlan_abyss = yes
+		NAB = {
+			declare_war_on = {
+				target = NAT
+				type = annex_everything
+			}
+		}
+		news_event = { id = NAT_news_events.20 }
+	}
+}
+
+# 决战胜利（NAB投降后自动触发）
+country_event = {
+	id = NAT_war_events.200
+	title = NAT_war_events.200.t
+	desc = NAT_war_events.200.d
+	picture = GFX_news_event_liyue14
+	trigger = {
+		tag = NAT
+		has_global_flag = NAT_final_battle_started
+		NAB = { has_capitulated = yes }
+	}
+	mean_time_to_happen = { days = 1 }
+	fire_only_once = yes
+	option = {
+		name = NAT_war_events.200.a
+		set_global_flag = NAT_final_battle_over
+		set_global_flag = NAT_final_battle_won
+		NAT_open_post_war_cleanup = yes
+		NAB = {
+			every_owned_state = { remove_core_of = NAB }
+		}
+		every_owned_state = { remove_core_of = NAB }
+		news_event = { id = NAT_news_events.21 }
+	}
+}
+
+# 决战失败
+country_event = {
+	id = NAT_war_events.300
+	title = NAT_war_events.300.t
+	desc = NAT_war_events.300.d
+	picture = GFX_news_event_liyue14
+	trigger = {
+		tag = NAT
+		has_global_flag = NAT_final_battle_failed
+	}
+	mean_time_to_happen = { days = 1 }
+	fire_only_once = yes
+	option = {
+		name = NAT_war_events.300.a
+		set_global_flag = NAT_final_battle_over
+		NAT_abyss_final_defeat = yes
+		news_event = { id = NAT_news_events.22 }
+	}
+}
+
+# 战后修复完成
+country_event = {
+	id = NAT_war_events.210
+	title = NAT_war_events.210.t
+	desc = NAT_war_events.210.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_war_events.210.a
+		set_global_flag = NAT_abyss_mechanic_abandoned
+		remove_dynamic_modifier = { modifier = NAT_abyss_pressure_dynamic }
+	}
+}

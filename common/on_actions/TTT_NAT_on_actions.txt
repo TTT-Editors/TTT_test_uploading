@@ -1,0 +1,73 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			NAT = {
+				set_variable = { NAT_abyss_growth_interval = 30 }
+				set_variable = { NAT_snezhnaya_influence = 0 }
+				set_variable = { NAT_abyss_tick = 0 }
+				set_variable = { NAT_breach_event_timer = 0 }
+				set_variable = { NAT_abyss_negative_timer = 0 }
+				add_dynamic_modifier = { modifier = NAT_abyss_pressure_dynamic }
+				activate_mission = NAT_abyss_clock
+			}
+		}
+	}
+
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					tag = NAT
+					has_global_flag = NAT_final_battle_started
+					NOT = { has_global_flag = NAT_final_battle_over }
+				}
+				set_global_flag = NAT_final_battle_failed
+			}
+		}
+	}
+
+	on_monthly = {
+		effect = {
+			if = {
+				limit = {
+					tag = NAT
+					NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+					NOT = { has_global_flag = NAT_final_battle_over }
+				}
+				NAT = {
+					NAT_monthly_abyss_growth = yes
+
+					if = {
+						limit = { check_variable = { NAT_abyss_pressure >= 100 } }
+						NAT_abyss_pressure_100_failure = yes
+					}
+
+					add_to_variable = { NAT_breach_event_timer = 30 }
+					add_to_variable = { NAT_abyss_negative_timer = 30 }
+
+					if = {
+						limit = {
+							check_variable = { NAT_abyss_pressure >= 40 }
+							check_variable = { NAT_breach_event_timer >= 60 }
+						}
+						set_variable = { NAT_breach_event_timer = 0 }
+						country_event = { id = NAT_abyss_events.100 }
+					}
+
+					if = {
+						limit = {
+							check_variable = { NAT_abyss_pressure >= 60 }
+							check_variable = { NAT_abyss_negative_timer >= 90 }
+						}
+						set_variable = { NAT_abyss_negative_timer = 0 }
+						random_list = {
+							40 = { country_event = { id = NAT_abyss_events.101 } }
+							30 = { country_event = { id = NAT_abyss_events.102 } }
+							30 = { country_event = { id = NAT_abyss_events.103 } }
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,223 @@
+# ================= 纳塔通用脚本效果 =================
+
+# 每30天由 on_action 调用：深渊侵蚀自然增长。
+# NAT_abyss_growth_interval 默认30，决议/国策可把它改成60、90等。
+NAT_monthly_abyss_growth = {
+	if = {
+		limit = { NOT = { has_global_flag = NAT_abyss_natural_growth_stopped } }
+		add_to_variable = { NAT_abyss_tick = 30 }
+		if = {
+			limit = {
+				check_variable = { NAT_abyss_tick >= NAT_abyss_growth_interval }
+			}
+			subtract_from_variable = { NAT_abyss_tick = NAT_abyss_growth_interval }
+			add_to_variable = { NAT_abyss_pressure = 1 }
+			clamp_variable = { var = NAT_abyss_pressure min = 0 max = 100 }
+		}
+	}
+	# 更新深渊侵蚀给国家的惩罚变量
+	set_variable = { NAT_abyss_pressure_penalty = NAT_abyss_pressure }
+	multiply_variable = { var = NAT_abyss_pressure_penalty value = -0.001 }
+	set_variable = { NAT_abyss_pressure_consumer = NAT_abyss_pressure }
+	multiply_variable = { var = NAT_abyss_pressure_consumer value = 0.002 }
+	clamp_variable = { var = NAT_abyss_pressure min = 0 max = 100 }
+}
+
+# 给一个随机的纳塔非首都省份添加深渊裂口
+NAT_spawn_random_abyss_breach = {
+	random_owned_state = {
+		limit = {
+			is_capital = no
+			NOT = { has_state_flag = NAT_abyss_breach }
+		}
+		set_state_flag = NAT_abyss_breach
+		random_province = {
+			limit = {
+				NOT = { has_province_flag = NAT_abyss_breach }
+			}
+			add_province_modifier = {
+				static_modifiers = { NAT_abyss_breach_province }
+			}
+			set_province_flag = NAT_abyss_breach
+		}
+	}
+}
+
+# 移除一个随机深渊裂口
+NAT_remove_random_abyss_breach = {
+	random_owned_state = {
+		limit = { has_state_flag = NAT_abyss_breach }
+		random_province = {
+			limit = { has_province_flag = NAT_abyss_breach }
+			remove_province_modifier = {
+				static_modifiers = { NAT_abyss_breach_province }
+			}
+			clr_province_flag = NAT_abyss_breach
+		}
+		clr_state_flag = NAT_abyss_breach
+	}
+}
+
+# 深渊侵蚀度到100时直接进入决战失败
+NAT_abyss_pressure_100_failure = {
+	if = {
+		limit = { NOT = { exists = NAB } }
+		NAT_spawn_natlan_abyss = yes
+	}
+	set_global_flag = NAT_final_battle_failed
+	country_event = { id = NAT_war_events.300 }
+}
+
+# 计算决战动态修正：0.5 - 深渊侵蚀度*0.01
+NAT_calculate_final_battle_modifier = {
+	set_variable = { NAT_final_battle_attack = NAT_abyss_pressure }
+	set_variable = { NAT_final_battle_hp = NAT_abyss_pressure }
+	set_variable = { NAT_final_battle_ws = NAT_abyss_pressure }
+	set_variable = { NAT_final_battle_prod = NAT_abyss_pressure }
+	multiply_variable = { var = NAT_final_battle_attack value = -0.01 }
+	multiply_variable = { var = NAT_final_battle_hp value = -0.01 }
+	multiply_variable = { var = NAT_final_battle_ws value = -0.01 }
+	multiply_variable = { var = NAT_final_battle_prod value = -0.01 }
+	add_to_variable = { NAT_final_battle_attack = 0.5 }
+	add_to_variable = { NAT_final_battle_hp = 0.5 }
+	add_to_variable = { NAT_final_battle_ws = 0.5 }
+	add_to_variable = { NAT_final_battle_prod = 0.5 }
+	add_dynamic_modifier = { modifier = NAT_final_battle_dynamic }
+}
+
+# 决战爆发：释放NAB，转移裂口州，给予古斯托特，继承科技并刷兵
+NAT_spawn_natlan_abyss = {
+	NAT_calculate_final_battle_modifier = yes
+	NAT_spawn_random_abyss_breach = yes
+	every_owned_state = {
+		limit = { is_core_of = NAT }
+		add_core_of = NAB
+	}
+	release = NAB
+	NAB = {
+		every_owned_state = {
+			add_core_of = NAT
+			if = {
+				limit = { NOT = { has_state_flag = NAT_abyss_breach } }
+				transfer_state_to = NAT
+			}
+		}
+		set_politics = {
+			ruling_party = hive_mind
+			elections_allowed = no
+			last_election = "1999.4.1"
+			election_frequency = 48
+		}
+		set_popularities = { hive_mind = 100 }
+		set_stability = 0.70
+		set_war_support = 1.00
+		set_country_flag = NAT_gosoythoth_descends
+		inherit_technology = NAT
+		set_research_slots = 3
+		NAT_spawn_abyss_army = yes
+	}
+	every_possible_country = {
+		limit = { has_character = NAT_Gosoythoth }
+		random_character = {
+			limit = { is_character = NAT_Gosoythoth }
+			set_nationality = NAB
+		}
+	}
+	NAB = {
+		promote_character = {
+			character = NAT_Gosoythoth
+			ideology = hive_mind_subtype
+		}
+	}
+	set_global_flag = NAT_abyss_country_spawned
+	news_event = { id = NAT_news_events.20 }
+}
+
+# NAB按每个州工业与人力刷兵
+NAT_spawn_abyss_army = {
+	division_template = {
+		name = "Abyss Infantry"
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 2 y = 0 }
+		}
+	}
+	division_template = {
+		name = "Abyss Cavalry"
+		regiments = {
+			cavalry = { x = 0 y = 0 }
+			cavalry = { x = 1 y = 0 }
+		}
+	}
+	every_owned_state = {
+		create_unit = {
+			division = "name = \"Abyss Infantry\" division_template = \"Abyss Infantry\" start_experience_factor = 0.4 start_equipment_factor = 0.6 start_manpower_factor = 0.7"
+			count = 1
+		}
+		create_unit = {
+			division = "name = \"Abyss Cavalry\" division_template = \"Abyss Cavalry\" start_experience_factor = 0.4 start_equipment_factor = 0.6 start_manpower_factor = 0.7"
+			count = 1
+		}
+	}
+	add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 }
+	add_manpower = 20000
+}
+
+# 决战胜利后清理深渊裂口决议组开关
+NAT_open_post_war_cleanup = {
+	set_global_flag = NAT_final_battle_won
+	set_country_flag = NAT_post_war_cleanup_open
+	remove_ideas = NAT_idea_abyss_frontline
+	add_ideas = NAT_idea_post_war_reconstruction
+	every_owned_state = {
+		limit = { has_state_flag = NAT_abyss_breach }
+		set_state_flag = NAT_post_war_cleanup_target
+	}
+}
+
+# 决战失败：NAT吞并NAB，古斯托特领导NAT，NAT成为ABY附庸
+NAT_abyss_final_defeat = {
+	set_global_flag = NAT_abyss_mechanic_abandoned
+	set_global_flag = NAT_tribal_council_abandoned
+	set_global_flag = NAT_final_battle_failed
+	every_possible_country = {
+		limit = { has_character = NAT_Gosoythoth }
+		random_character = {
+			limit = { is_character = NAT_Gosoythoth }
+			set_nationality = NAT
+		}
+	}
+	NAT = {
+		annex_country = { target = NAB transfer_troops = no }
+		set_country_flag = NAT_gosoythoth_descends
+		set_politics = { ruling_party = hive_mind elections_allowed = no }
+		set_popularities = { hive_mind = 100 }
+		promote_character = {
+			character = NAT_Gosoythoth
+			ideology = hive_mind_subtype
+		}
+		every_owned_state = {
+			delete_unit = { }
+		}
+	}
+	every_owned_state = {
+		remove_core_of = NAB
+	}
+	every_country = {
+		limit = { NOT = { tag = NAT } }
+		add_opinion_modifier = { target = NAT modifier = NAT_abyss_defeat_opinion }
+		reverse_add_opinion_modifier = { target = NAT modifier = NAT_abyss_defeat_opinion }
+	}
+	add_named_threat = { threat = 50 name = NAT_abyss_defeat_threat_tt }
+	ABY = {
+		puppet = NAT
+	}
+}
+
+# 六部族会议废弃后转成固定buff
+NAT_abandon_tribal_council = {
+	set_global_flag = NAT_tribal_council_abandoned
+	set_country_flag = NAT_tribal_council_fixed
+	add_ideas = NAT_idea_tribal_council_fixed
+}

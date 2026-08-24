@@ -1,0 +1,280 @@
+focus_tree = {
+	id = TTT_NAT_1999_focus_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = NAT
+		}
+	}
+	default = no
+
+	# ==================== 1999：火神复苏前的纳塔 ====================
+	focus = {
+		id = NAT_pre_1999_opening
+		icon = GFX_goal_NAT_pre_1999_opening
+		cost = 35
+		x = 4 y = 0
+		completion_reward = {
+			add_political_power = 50
+			set_country_flag = NAT_pre_year_started
+		}
+	}
+	focus = {
+		id = NAT_pre_six_tribes_agenda
+		icon = GFX_goal_NAT_pre_six_tribes_agenda
+		cost = 35
+		x = 4 y = 1
+		prerequisite = { focus = NAT_pre_1999_opening }
+		completion_reward = {
+			add_political_power = 20
+			custom_effect_tooltip = NAT_loyalty_echoes_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_springs_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_canopy_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_flower_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_plenty_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_nightwind_plus_5_tt
+			add_to_variable = { NAT_loyalty_echoes = 5 }
+			add_to_variable = { NAT_loyalty_springs = 5 }
+			add_to_variable = { NAT_loyalty_canopy = 5 }
+			add_to_variable = { NAT_loyalty_flower = 5 }
+			add_to_variable = { NAT_loyalty_plenty = 5 }
+			add_to_variable = { NAT_loyalty_nightwind = 5 }
+		}
+	}
+	focus = {
+		id = NAT_pre_arena_maintenance
+		icon = GFX_goal_NAT_pre_arena_maintenance
+		cost = 35
+		x = 1 y = 2
+		prerequisite = { focus = NAT_pre_six_tribes_agenda }
+		completion_reward = {
+			331 = {
+				limit = {
+					is_owned_and_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAT_pre_road_renovation
+		icon = GFX_goal_NAT_pre_road_renovation
+		cost = 35
+		x = 1 y = 3
+		prerequisite = { focus = NAT_pre_arena_maintenance }
+		completion_reward = {
+			add_ideas = NAT_idea_railways
+			random_state = {
+				limit = {
+					is_owned_and_controlled_by = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAT_pre_phlogiston_survey
+		icon = GFX_goal_NAT_pre_phlogiston_survey
+		cost = 35
+		x = 0 y = 4
+		prerequisite = { focus = NAT_pre_road_renovation }
+		completion_reward = {
+			328 = {
+				add_resource = {
+					type = oil
+					amount = 12
+				}
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+			set_country_flag = NAT_pre_phlogiston_survey_finished
+		}
+	}
+	focus = {
+		id = NAT_pre_phlogiston_laboratory
+		icon = GFX_goal_NAT_pre_phlogiston_laboratory
+		cost = 35
+		x = 4 y = 4
+		prerequisite = { focus = NAT_pre_road_renovation }
+		completion_reward = {
+			add_ideas = NAT_idea_research_institute
+		}
+	}
+	focus = {
+		id = NAT_pre_expand_refinery
+		icon = GFX_goal_NAT_pre_expand_refinery
+		cost = 35
+		x = 0 y = 5
+		prerequisite = { focus = NAT_pre_phlogiston_survey }
+		completion_reward = {
+			add_ideas = NAT_idea_refinery_1
+		}
+	}
+	focus = {
+		id = NAT_pre_wait_for_flame
+		icon = GFX_goal_NAT_pre_wait_for_flame
+		cost = 35
+		x = 2 y = 6
+		prerequisite = { focus = NAT_pre_volcano_geothermal }
+		prerequisite = { focus = NAT_pre_expand_refinery }
+		prerequisite = { focus = NAT_pre_dragon_partnership }
+		completion_reward = {
+			add_stability = 0.10
+			set_country_flag = NAT_pre_year_complete
+		}
+	}
+
+	# 文化分支
+	focus = {
+		id = NAT_pre_tribal_games
+		icon = GFX_goal_NAT_pre_tribal_games
+		cost = 35
+		x = 7 y = 2
+		prerequisite = { focus = NAT_pre_six_tribes_agenda }
+		completion_reward = {
+			custom_effect_tooltip = NAT_loyalty_echoes_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_springs_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_canopy_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_flower_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_plenty_plus_5_tt
+			custom_effect_tooltip = NAT_loyalty_nightwind_plus_5_tt
+			add_to_variable = { NAT_loyalty_echoes = 5 }
+			add_to_variable = { NAT_loyalty_springs = 5 }
+			add_to_variable = { NAT_loyalty_canopy = 5 }
+			add_to_variable = { NAT_loyalty_flower = 5 }
+			add_to_variable = { NAT_loyalty_plenty = 5 }
+			add_to_variable = { NAT_loyalty_nightwind = 5 }
+		}
+	}
+	focus = {
+		id = NAT_pre_harvest_festival
+		icon = GFX_goal_NAT_pre_harvest_festival
+		cost = 35
+		x = 7 y = 3
+		prerequisite = { focus = NAT_pre_tribal_games }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = NAT_pre_springs_tourism
+		icon = GFX_goal_NAT_pre_springs_tourism
+		cost = 35
+		x = 6 y = 4
+		prerequisite = { focus = NAT_pre_harvest_festival }
+		completion_reward = {
+			add_ideas = NAT_idea_export_economy
+		}
+	}
+	focus = {
+		id = NAT_pre_memory_weaving
+		icon = GFX_goal_NAT_pre_memory_weaving
+		cost = 35
+		x = 8 y = 4
+		prerequisite = { focus = NAT_pre_harvest_festival }
+		completion_reward = {
+			custom_effect_tooltip = NAT_loyalty_nightwind_plus_5_tt
+			add_to_variable = { NAT_loyalty_nightwind = 5 }
+		}
+	}
+
+	# 建设分支
+	focus = {
+		id = NAT_pre_coast_road
+		icon = GFX_goal_NAT_pre_coast_road
+		cost = 35
+		x = 2 y = 4
+		prerequisite = { focus = NAT_pre_road_renovation }
+		completion_reward = {
+			318 = {
+				limit = {
+					is_owned_and_controlled_by = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			IF = {
+				limit = {
+					318 = {
+						naval_base < 10
+					}
+				}
+				318 = {
+					add_building_construction = {
+						type = naval_base
+						level = 2
+						instant_build = yes
+						province = 8175
+					}
+				}
+			}
+			
+			build_railway = {
+				path = { 8141 8136 8132 8115 8071 8078 10 8086 8095 8054 }
+				path = { 8175 8147 8025 8071 }
+			}
+		}
+	}
+	focus = {
+		id = NAT_pre_volcano_geothermal
+		icon = GFX_goal_NAT_pre_volcano_geothermal
+		cost = 35
+		x = 2 y = 5
+		prerequisite = { focus = NAT_pre_coast_road }
+		completion_reward = {
+			328 = {
+				limit = {
+					is_owned_and_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = NAT_pre_dragon_partnership
+		icon = GFX_goal_NAT_pre_dragon_partnership
+		cost = 35
+		x = 4 y = 5
+		prerequisite = { focus = NAT_pre_phlogiston_laboratory }
+		completion_reward = {
+			add_army_experience = 30
+			add_air_experience = 20
+		}
+	}
+}

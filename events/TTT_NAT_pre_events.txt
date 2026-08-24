@@ -1,0 +1,44 @@
+add_namespace = NAT_pre_events
+
+# 火神复苏：一年后由 history 中的 country_event 触发
+country_event = {
+	id = NAT_pre_events.10
+	title = NAT_pre_events.10.t
+	desc = NAT_pre_events.10.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = NAT_pre_events.10.a
+		set_country_flag = NAT_fire_god_revived
+		set_global_flag = NAT_fire_god_revived
+		set_politics = {
+			ruling_party = authoritarianism
+			last_election = "1997.8.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_country_leader_role = {
+			character = NAT_Mavuika
+			promote_leader = yes
+			country_leader = {
+				ideology = authoritarianism_subtype
+				traits = { NAT_sun_ablaze }
+				expire = "2025.2.11.22"
+			}
+		}
+		set_popularities = {
+			authoritarianism = 40
+			reformism = 18
+			liberalism = 12
+			national_socialism = 12
+			communism = 8
+			left_wing_anarchism = 5
+			despotism = 4
+			esotericism = 1
+		}
+		load_focus_tree = TTT_NAT_focus_tree
+		news_event = { id = NAT_news_events.30 }
+	}
+}

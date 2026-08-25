@@ -42,49 +42,55 @@ characters = {
     }
 
     #=========== 开局顾问与将军 ===========
-    NAT_Kachina = {
-        name = NAT_Kachina
-        portraits = {
-            civilian = {
-                large = "GFX_portrait_large_Natlan_Kachina"
-                small = "GFX_portrait_small_Natlan_Kachina"
-            }
-            army = {
-                large = "GFX_portrait_large_Natlan_Kachina"
-                small = "GFX_portrait_small_Natlan_Kachina"
-            }
-        }
+	NAT_Kachina = {
+		name = NAT_Kachina
+		portraits = {
+			civilian = {
+				large = "GFX_portrait_large_Natlan_Kachina"
+				small = "GFX_portrait_small_Natlan_Kachina"
+			}
+			army = {
+				large = "GFX_portrait_large_Natlan_Kachina"
+				small = "GFX_portrait_small_Natlan_Kachina"
+			}
+		}
 
-        country_leader = {
-            ideology = reformism_subtype
-            traits = { NAT_usha_botti_leader }
-            expire = "2025.2.11.22"
-            id = -1
-            desc = NAT_Kachina_leader_desc
-            visible = {
-                has_country_flag = NAT_kachina_leader
-            }
-        }
+		country_leader = {
+			ideology = reformism_subtype
+			traits = { NAT_usha_botti_leader }
+			expire = "2025.2.11.22"
+			id = -1
+			desc = NAT_Kachina_leader_desc
+			visible = {
+				has_country_flag = NAT_kachina_leader
+			}
+		}
 
-        advisor = {
-            slot = political_advisor
-            idea_token = NAT_Kachina_advisor
-            cost = 75
-            removal_cost = 10
-            allowed = { original_tag = NAT }
-            traits = { NAT_usha_botti }
-        }
+		advisor = {
+			slot = political_advisor
+			idea_token = NAT_Kachina_advisor
+			cost = 75
+			removal_cost = 10
+			allowed = { original_tag = NAT }
+			traits = { NAT_usha_botti }
+			visible = {
+				NOT = { has_character_flag = NAT_kachina_unavailable }
+			}
+		}
 
-        corps_commander = {
-            traits = { geo_element NAT_usha_botti_commander }
-            skill = 3
-            attack_skill = 2
-            defense_skill = 4
-            planning_skill = 3
-            logistics_skill = 2
-            legacy_id = -1
-        }
-    }
+		corps_commander = {
+			traits = { geo_element NAT_usha_botti_commander }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = -1
+			visible = {
+				NOT = { has_character_flag = NAT_kachina_unavailable }
+			}
+		}
+	}    
 
     NAT_Xilonen = {
         name = NAT_Xilonen

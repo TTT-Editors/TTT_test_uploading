@@ -2,107 +2,36 @@ focus_tree = {
 	id = TTT_NAT_focus_tree
 	country = {
 		factor = 0
+		modifier = {
+			add = 100
+			tag = NAT
+		}
 	}
 	default = no
 
-	# ==================== 一、开局：危机与巡礼（28个，6个互斥） ====================
+	# ==================== 一、危机浮现：前期准备与侦察（20个，35天） ====================
+	#危机浮现
 	focus = {
-		id = NAT_start_abyss_alarm
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_emergence
+		icon = GFX_goal_NAT_crisis_emergence
 		cost = 35
-		x = 0 y = 0
+		x = 5 y = 0
 		completion_reward = {
-			add_war_support = 0.05
 			add_political_power = 50
-			set_country_flag = NAT_war_section_open
-			set_country_flag = NAT_economy_section_open
-			country_event = { id = NAT_focus_events.1 }
+			set_country_flag = NAT_crisis_started
+			country_event = { id = NAT_crisis_events.1 }
 		}
 	}
+
+	#听取各部汇报
 	focus = {
-		id = NAT_start_pilgrimage_open
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_hear_reports
+		icon = GFX_goal_NAT_crisis_hear_reports
 		cost = 35
-		x = 0 y = 1
-		prerequisite = { focus = NAT_start_abyss_alarm }
+		x = -1 y = 2
+		prerequisite = { focus = NAT_crisis_tour_tribes }
 		completion_reward = {
-			add_stability = 0.05
-			set_country_flag = NAT_pilgrimage_open
-			country_event = { id = NAT_focus_events.2 }
-		}
-	}
-	focus = {
-		id = NAT_start_six_tribes_assembly
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 0 y = 2
-		prerequisite = { focus = NAT_start_pilgrimage_open }
-		completion_reward = {
-			add_political_power = 75
-			set_country_flag = NAT_tribal_council_open
-			country_event = { id = NAT_tribal_events.1 }
-		}
-	}
-	focus = {
-		id = NAT_start_night_kingdom_survey
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 0 y = 3
-		prerequisite = { focus = NAT_start_six_tribes_assembly }
-		completion_reward = {
-			custom_effect_tooltip = NAT_night_kingdom_integrity_set_70_tt
-			set_variable = { NAT_night_kingdom_integrity = 70 }
-			add_war_support = 0.05
-			country_event = { id = NAT_abyss_events.1 }
-		}
-	}
-	focus = {
-		id = NAT_start_abyss_recon
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 0 y = 4
-		prerequisite = { focus = NAT_start_night_kingdom_survey }
-		completion_reward = {
-			custom_effect_tooltip = NAT_abyss_pressure_minus_3_tt
-			add_to_variable = { NAT_abyss_pressure = -3 }
-			add_army_experience = 20
-			country_event = { id = NAT_abyss_events.2 }
-		}
-	}
-	focus = {
-		id = NAT_start_phlogiston_rationing
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 0 y = 5
-		prerequisite = { focus = NAT_start_abyss_recon }
-		completion_reward = {
-			add_fuel = 1000
-			custom_effect_tooltip = NAT_phlogiston_stockpile_set_75_tt
-			set_variable = { NAT_phlogiston_stockpile = 75 }
-			add_ideas = NAT_idea_phlogiston_rationing
-		}
-	}
-	focus = {
-		id = NAT_start_sacred_flame_rehearsal
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 0 y = 6
-		prerequisite = { focus = NAT_start_phlogiston_rationing }
-		completion_reward = {
-			custom_effect_tooltip = NAT_sacred_flame_plus_10_tt
-			add_to_variable = { NAT_sacred_flame = 10 }
-			add_war_support = 0.05
-			add_stability = 0.05
-		}
-	}
-	focus = {
-		id = NAT_start_census_six_tribes
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 0 y = 7
-		prerequisite = { focus = NAT_start_sacred_flame_rehearsal }
-		completion_reward = {
-			add_political_power = 100
+			add_political_power = 30
 			custom_effect_tooltip = NAT_loyalty_echoes_plus_5_tt
 			custom_effect_tooltip = NAT_loyalty_springs_plus_5_tt
 			custom_effect_tooltip = NAT_loyalty_canopy_plus_5_tt
@@ -117,230 +46,234 @@ focus_tree = {
 			add_to_variable = { NAT_loyalty_nightwind = 5 }
 		}
 	}
+
+	#走访部族
 	focus = {
-		id = NAT_start_central_war_cabinet
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_tour_tribes
+		icon = GFX_goal_NAT_crisis_tour_tribes
 		cost = 35
-		x = 2 y = 8
-		prerequisite = { focus = NAT_start_census_six_tribes }
-		mutually_exclusive = { focus = NAT_start_tribal_autonomy }
+		x = 0 y = 1
+		prerequisite = { focus = NAT_crisis_emergence }
 		completion_reward = {
-			set_country_flag = NAT_path_war_cabinet
-			add_political_power = 120
-			add_war_support = 0.10
-			custom_effect_tooltip = NAT_loyalty_echoes_minus_5_tt
-			custom_effect_tooltip = NAT_loyalty_flower_minus_5_tt
-			add_to_variable = { NAT_loyalty_echoes = -5 }
-			add_to_variable = { NAT_loyalty_flower = -5 }
-		}
-	}
-	focus = {
-		id = NAT_start_tribal_autonomy
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 4 y = 8
-		prerequisite = { focus = NAT_start_census_six_tribes }
-		mutually_exclusive = { focus = NAT_start_central_war_cabinet }
-		completion_reward = {
-			set_country_flag = NAT_path_tribal_autonomy
-			add_political_power = 120
-			add_stability = 0.10
-			custom_effect_tooltip = NAT_loyalty_echoes_plus_8_tt
-			custom_effect_tooltip = NAT_loyalty_springs_plus_8_tt
-			custom_effect_tooltip = NAT_loyalty_canopy_plus_8_tt
-			custom_effect_tooltip = NAT_loyalty_flower_plus_8_tt
-			custom_effect_tooltip = NAT_loyalty_plenty_plus_8_tt
-			custom_effect_tooltip = NAT_loyalty_nightwind_plus_8_tt
-			add_to_variable = { NAT_loyalty_echoes = 8 }
-			add_to_variable = { NAT_loyalty_springs = 8 }
-			add_to_variable = { NAT_loyalty_canopy = 8 }
-			add_to_variable = { NAT_loyalty_flower = 8 }
-			add_to_variable = { NAT_loyalty_plenty = 8 }
-			add_to_variable = { NAT_loyalty_nightwind = 8 }
-		}
-	}
-	focus = {
-		id = NAT_start_capitano_contact
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 6 y = 8
-		prerequisite = { focus = NAT_start_census_six_tribes }
-		mutually_exclusive = { focus = NAT_start_capitano_expel }
-		completion_reward = {
-			set_country_flag = NAT_capitano_arrived
-			set_country_flag = NAT_dottore_invited
-			set_country_flag = NAT_path_capitano_cooperation
-			custom_effect_tooltip = NAT_capitano_influence_plus_15_tt
-			add_to_variable = { NAT_capitano_influence = 15 }
-			add_to_variable = { NAT_snezhnaya_influence = 5 }
-			add_political_power = 80
-		}
-	}
-	focus = {
-		id = NAT_start_capitano_expel
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 8 y = 8
-		prerequisite = { focus = NAT_start_census_six_tribes }
-		mutually_exclusive = { focus = NAT_start_capitano_contact }
-		completion_reward = {
-			set_country_flag = NAT_path_capitano_expelled
-			add_war_support = 0.05
-			add_political_power = 80
-			custom_effect_tooltip = NAT_capitano_influence_minus_5_tt
-			add_to_variable = { NAT_capitano_influence = -5 }
-		}
-	}
-	focus = {
-		id = NAT_start_orthodox_flame
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 10 y = 8
-		prerequisite = { focus = NAT_start_census_six_tribes }
-		mutually_exclusive = { focus = NAT_start_dragon_research }
-		completion_reward = {
-			set_country_flag = NAT_path_orthodox_flame
-			custom_effect_tooltip = NAT_sacred_flame_plus_20_tt
-			add_to_variable = { NAT_sacred_flame = 20 }
 			add_stability = 0.05
+			add_political_power = 20
 		}
 	}
+
+	#深渊侦察
 	focus = {
-		id = NAT_start_dragon_research
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_recon_abyss
+		icon = GFX_goal_NAT_crisis_recon_abyss
 		cost = 35
-		x = 12 y = 8
-		prerequisite = { focus = NAT_start_census_six_tribes }
-		mutually_exclusive = { focus = NAT_start_orthodox_flame }
+		x = 1 y = 2
+		prerequisite = { focus = NAT_crisis_tour_tribes }
 		completion_reward = {
-			set_country_flag = NAT_path_dragon_research
-			add_tech_bonus = {
-				bonus = 1.0
-				uses = 1
-				category = industry
-				name = NAT_dragon_tech_bonus
-			}
+			custom_effect_tooltip = NAT_abyss_pressure_minus_5_tt
+			add_to_variable = { NAT_abyss_pressure = -5 }
+			army_experience = 20
 		}
 	}
+
+	#夜神之国侦察
 	focus = {
-		id = NAT_start_night_watch_towers
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_night_kingdom_scout
+		icon = GFX_goal_NAT_crisis_night_kingdom_scout
 		cost = 35
-		x = 2 y = 1
-		prerequisite = { focus = NAT_start_abyss_alarm }
-		completion_reward = { add_army_experience = 20 }
-	}
-	focus = {
-		id = NAT_start_mine_defenses
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 2 y = 2
-		prerequisite = { focus = NAT_start_night_watch_towers }
-		completion_reward = { add_army_experience = 15 }
-	}
-	focus = {
-		id = NAT_start_coast_guard
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 2 y = 3
-		prerequisite = { focus = NAT_start_mine_defenses }
+		x = 3 y = 3
+		prerequisite = { focus = NAT_crisis_rescue_prep }
 		completion_reward = {
-			add_equipment_to_stockpile = { type = convoy amount = 10 }
-			add_navy_experience = 25
+			custom_effect_tooltip = NAT_night_kingdom_integrity_plus_10_tt
+			add_to_variable = { NAT_night_kingdom_integrity = 10 }
 		}
 	}
+
+	#燃素动员
 	focus = {
-		id = NAT_start_tribal_militia_law
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_phlogiston_mobilize
+		icon = GFX_goal_NAT_crisis_phlogiston_mobilize
 		cost = 35
-		x = 2 y = 4
-		prerequisite = { focus = NAT_start_coast_guard }
-		completion_reward = { add_ideas = NAT_idea_tribal_militia }
+		x = -1 y = 3
+		prerequisite = { focus = NAT_crisis_hear_reports }
+		completion_reward = {
+			add_fuel = 1500
+			add_ideas = NAT_idea_phlogiston_rationing
+		}
 	}
+
+	#部族民兵
 	focus = {
-		id = NAT_start_veteran_corps
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_tribal_militia
+		icon = GFX_goal_NAT_crisis_tribal_militia
 		cost = 35
-		x = 2 y = 5
-		prerequisite = { focus = NAT_start_tribal_militia_law }
-		completion_reward = { add_manpower = 15000 }
+		x = 1 y = 3
+		prerequisite = { focus = NAT_crisis_recon_abyss }
+		completion_reward = {
+			add_ideas = NAT_idea_tribal_militia
+			add_manpower = 20000
+		}
 	}
+
+	#运输保障
 	focus = {
-		id = NAT_start_foreign_observers
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_transport
+		icon = GFX_goal_NAT_crisis_transport
 		cost = 35
-		x = 2 y = 6
-		prerequisite = { focus = NAT_start_veteran_corps }
-		completion_reward = { add_political_power = 80 }
+		x = 0 y = 4
+		prerequisite = { focus = NAT_crisis_tribal_militia }
+		prerequisite = { focus = NAT_crisis_phlogiston_mobilize }
+		completion_reward = {
+			add_ideas = NAT_idea_railways
+		}
 	}
+
+	#竞技场转为指挥部
 	focus = {
-		id = NAT_start_phlogiston_depot
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_arena_repair
+		icon = GFX_goal_NAT_crisis_arena_repair
 		cost = 35
-		x = 2 y = 7
-		prerequisite = { focus = NAT_start_foreign_observers }
-		completion_reward = { add_fuel = 500 }
+		x = 5 y = 1
+		prerequisite = { focus = NAT_crisis_emergence }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 30
+		}
 	}
+
+	#警报网
 	focus = {
-		id = NAT_start_night_kingdom_archive
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_warning_network
+		icon = GFX_goal_NAT_crisis_warning_network
 		cost = 35
-		x = 4 y = 9
-		prerequisite = { focus = NAT_start_phlogiston_depot }
-		completion_reward = { add_political_power = 50 }
-	}
-	focus = {
-		id = NAT_start_fortify_volcano
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 4 y = 10
-		prerequisite = { focus = NAT_start_night_kingdom_archive }
-		completion_reward = { add_army_experience = 30 }
-	}
-	focus = {
-		id = NAT_start_scout_dragons
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 4 y = 11
-		prerequisite = { focus = NAT_start_fortify_volcano }
-		completion_reward = { add_air_experience = 20 }
-	}
-	focus = {
-		id = NAT_start_civil_defense
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 4 y = 12
-		prerequisite = { focus = NAT_start_scout_dragons }
-		completion_reward = { add_war_support = 0.05 }
-	}
-	focus = {
-		id = NAT_start_hero_training
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 4 y = 13
-		prerequisite = { focus = NAT_start_civil_defense }
-		completion_reward = { add_army_experience = 50 }
-	}
-	focus = {
-		id = NAT_start_abyss_warning_network
-		icon = GFX_goal_NAT_placeholder
-		cost = 35
-		x = 4 y = 14
-		prerequisite = { focus = NAT_start_hero_training }
+		x = 5 y = 6
+		prerequisite = { focus = NAT_crisis_dragon_scouts }
+		prerequisite = { focus = NAT_crisis_abyss_breach_seal }
 		completion_reward = {
 			custom_effect_tooltip = NAT_abyss_pressure_minus_5_tt
 			add_to_variable = { NAT_abyss_pressure = -5 }
 		}
 	}
 	focus = {
-		id = NAT_start_ode_trial
-		icon = GFX_goal_NAT_placeholder
+		id = NAT_crisis_save_kachina
+		icon = GFX_goal_NAT_crisis_save_kachina
 		cost = 35
-		x = 4 y = 15
-		prerequisite = { focus = NAT_start_abyss_warning_network }
+		x = 6 y = 4
+		prerequisite = { focus = NAT_crisis_night_kingdom_scout }
+		prerequisite = { focus = NAT_crisis_guard_ground }
+		prerequisite = { focus = NAT_crisis_mavuika_fuel }
 		completion_reward = {
-			set_country_flag = NAT_ode_trial_done
-			country_event = { id = NAT_focus_events.3 }
+			country_event = { id = NAT_crisis_events.10 }
+		}
+	}
+	focus = {
+		id = NAT_crisis_rescue_prep
+		icon = GFX_goal_NAT_crisis_rescue_prep
+		cost = 35
+		x = 5 y = 2
+		prerequisite = { focus = NAT_crisis_arena_repair }
+		completion_reward = {
+			add_command_power = 20
+			add_equipment_to_stockpile = { type = support_equipment amount = 500 }
+		}
+	}
+	focus = {
+		id = NAT_crisis_guard_ground
+		icon = GFX_goal_NAT_crisis_guard_ground
+		cost = 35
+		x = 5 y = 3
+		prerequisite = { focus = NAT_crisis_rescue_prep }
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = NAT_idea_core_defense
+		}
+	}
+	focus = {
+		id = NAT_crisis_abyss_breach_seal
+		icon = GFX_goal_NAT_crisis_abyss_breach_seal
+		cost = 35
+		x = 6 y = 5
+		prerequisite = { focus = NAT_crisis_save_kachina }
+		completion_reward = {
+			custom_effect_tooltip = NAT_abyss_pressure_minus_8_tt
+			add_to_variable = { NAT_abyss_pressure = -8 }
+		}
+	}
+	focus = {
+		id = NAT_crisis_mavuika_fuel
+		icon = GFX_goal_NAT_crisis_mavuika_fuel
+		cost = 35
+		x = 7 y = 3
+		prerequisite = { focus = NAT_crisis_rescue_prep }
+		completion_reward = {
+			custom_effect_tooltip = NAT_mavuika_fuel_minus_10_tt
+			add_to_variable = { NAT_mavuika_fuel = -10 }
+			custom_effect_tooltip = NAT_sacred_flame_plus_10_tt
+			add_to_variable = { NAT_sacred_flame = 10 }
+		}
+	}
+	focus = {
+		id = NAT_crisis_dragon_scouts
+		icon = GFX_goal_NAT_crisis_dragon_scouts
+		cost = 35
+		x = 3 y = 5
+		prerequisite = { focus = NAT_crisis_night_kingdom_scout }
+		completion_reward = {
+			air_experience = 20
+			add_ideas = NAT_idea_night_kingdom_energy
+		}
+	}
+	focus = {
+		id = NAT_crisis_heroes_muster
+		icon = GFX_goal_NAT_crisis_heroes_muster
+		cost = 35
+		x = 9 y = 1
+		prerequisite = { focus = NAT_crisis_emergence }
+		completion_reward = {
+			army_experience = 30
+			add_manpower = 15000
+		}
+	}
+	focus = {
+		id = NAT_crisis_ode_prepare
+		icon = GFX_goal_NAT_crisis_ode_prepare
+		cost = 35
+		x = 9 y = 2
+		prerequisite = { focus = NAT_crisis_heroes_muster }
+		completion_reward = {
+			custom_effect_tooltip = NAT_ode_charges_plus_1_tt
+			set_variable = { NAT_ode_charges = 1 }
+		}
+	}
+	focus = {
+		id = NAT_crisis_final_survey
+		icon = GFX_goal_NAT_crisis_final_survey
+		cost = 35
+		x = 9 y = 3
+		prerequisite = { focus = NAT_crisis_ode_prepare }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	focus = {
+		id = NAT_crisis_pilgrimage_emergency
+		icon = GFX_goal_NAT_crisis_pilgrimage_emergency
+		cost = 35
+		x = 9 y = 4
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NAT_all_preparation_is_done_tt	
+				has_completed_focus = NAT_crisis_transport
+				has_completed_focus = NAT_crisis_warning_network
+			}
+		}
+		prerequisite = { focus = NAT_crisis_final_survey }
+		completion_reward = {
+			set_country_flag = NAT_crisis_preparation_done
+			add_war_support = 0.10
+			country_event = { id = NAT_crisis_events.20 }
 		}
 	}
 
@@ -367,7 +300,7 @@ focus_tree = {
 		cost = 35
 		x = 0 y = 22
 		prerequisite = { focus = NAT_war_equip_militias }
-		completion_reward = { add_army_experience = 60 }
+		completion_reward = { army_experience = 60 }
 	}
 	focus = {
 		id = NAT_war_ode_of_resurrection
@@ -388,7 +321,7 @@ focus_tree = {
 		cost = 35
 		x = 0 y = 24
 		prerequisite = { focus = NAT_war_ode_of_resurrection }
-		completion_reward = { add_army_experience = 20 }
+		completion_reward = { army_experience = 20 }
 	}
 	focus = {
 		id = NAT_war_phlogiston_artillery
@@ -404,7 +337,7 @@ focus_tree = {
 		cost = 35
 		x = 0 y = 26
 		prerequisite = { focus = NAT_war_phlogiston_artillery }
-		completion_reward = { add_air_experience = 50 }
+		completion_reward = { air_experience = 50 }
 	}
 	focus = {
 		id = NAT_war_build_navy
@@ -414,7 +347,7 @@ focus_tree = {
 		prerequisite = { focus = NAT_war_air_wing }
 		completion_reward = {
 			add_equipment_to_stockpile = { type = convoy amount = 10 }
-			add_navy_experience = 40
+			navy_experience = 40
 		}
 	}
 	focus = {
@@ -466,7 +399,7 @@ focus_tree = {
 		cost = 35
 		x = 0 y = 28
 		prerequisite = { focus = NAT_war_night_warden_mobilize }
-		completion_reward = { add_army_experience = 50 }
+		completion_reward = { army_experience = 50 }
 	}
 	focus = {
 		id = NAT_war_stockpile_equipment
@@ -573,7 +506,7 @@ focus_tree = {
 		cost = 35
 		x = 0 y = 42
 		prerequisite = { focus = NAT_battle_gosoythoth_march }
-		completion_reward = { add_army_experience = 80 }
+		completion_reward = { army_experience = 80 }
 	}
 	focus = {
 		id = NAT_battle_hold_cities
@@ -637,7 +570,7 @@ focus_tree = {
 		cost = 35
 		x = 4 y = 47
 		prerequisite = { focus = NAT_battle_phlogiston_charge }
-		completion_reward = { add_air_experience = 80 }
+		completion_reward = { air_experience = 80 }
 	}
 	focus = {
 		id = NAT_battle_naval_screen
@@ -670,7 +603,7 @@ focus_tree = {
 		cost = 35
 		x = 6 y = 42
 		prerequisite = { focus = NAT_battle_tribal_levies }
-		completion_reward = { add_army_experience = 30 }
+		completion_reward = { army_experience = 30 }
 	}
 	focus = {
 		id = NAT_battle_evacuate_civilians
@@ -1038,14 +971,14 @@ focus_tree = {
 	# 悬木人
 	focus = { id = NAT_tribe_canopy_1 icon = GFX_goal_NAT_placeholder cost = 28 x = 4 y = 90 available = { has_country_flag = NAT_tribal_council_open } completion_reward = { custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt add_to_variable = { NAT_loyalty_canopy = 10 } } }
 	focus = { id = NAT_tribe_canopy_2 icon = GFX_goal_NAT_placeholder cost = 28 x = 4 y = 91 prerequisite = { focus = NAT_tribe_canopy_1 } completion_reward = { custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt add_to_variable = { NAT_loyalty_canopy = 10 } } }
-	focus = { id = NAT_tribe_canopy_3 icon = GFX_goal_NAT_placeholder cost = 28 x = 4 y = 92 prerequisite = { focus = NAT_tribe_canopy_2 } completion_reward = { custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt add_to_variable = { NAT_loyalty_canopy = 10 } add_army_experience = 10 } }
+	focus = { id = NAT_tribe_canopy_3 icon = GFX_goal_NAT_placeholder cost = 28 x = 4 y = 92 prerequisite = { focus = NAT_tribe_canopy_2 } completion_reward = { custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt add_to_variable = { NAT_loyalty_canopy = 10 } army_experience = 10 } }
 	focus = { id = NAT_tribe_canopy_4 icon = GFX_goal_NAT_placeholder cost = 28 x = 4 y = 93 prerequisite = { focus = NAT_tribe_canopy_3 } completion_reward = { custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt add_to_variable = { NAT_loyalty_canopy = 10 } } }
 	focus = { id = NAT_tribe_canopy_5 icon = GFX_goal_NAT_placeholder cost = 28 x = 4 y = 94 prerequisite = { focus = NAT_tribe_canopy_4 } completion_reward = { custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt add_to_variable = { NAT_loyalty_canopy = 10 } set_country_flag = NAT_canopy_agenda_done } }
 
 	# 花羽会
 	focus = { id = NAT_tribe_flower_1 icon = GFX_goal_NAT_placeholder cost = 28 x = 6 y = 90 available = { has_country_flag = NAT_tribal_council_open } completion_reward = { custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt add_to_variable = { NAT_loyalty_flower = 10 } } }
 	focus = { id = NAT_tribe_flower_2 icon = GFX_goal_NAT_placeholder cost = 28 x = 6 y = 91 prerequisite = { focus = NAT_tribe_flower_1 } completion_reward = { custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt add_to_variable = { NAT_loyalty_flower = 10 } } }
-	focus = { id = NAT_tribe_flower_3 icon = GFX_goal_NAT_placeholder cost = 28 x = 6 y = 92 prerequisite = { focus = NAT_tribe_flower_2 } completion_reward = { custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt add_to_variable = { NAT_loyalty_flower = 10 } add_air_experience = 10 } }
+	focus = { id = NAT_tribe_flower_3 icon = GFX_goal_NAT_placeholder cost = 28 x = 6 y = 92 prerequisite = { focus = NAT_tribe_flower_2 } completion_reward = { custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt add_to_variable = { NAT_loyalty_flower = 10 } air_experience = 10 } }
 	focus = { id = NAT_tribe_flower_4 icon = GFX_goal_NAT_placeholder cost = 28 x = 6 y = 93 prerequisite = { focus = NAT_tribe_flower_3 } completion_reward = { custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt add_to_variable = { NAT_loyalty_flower = 10 } } }
 	focus = { id = NAT_tribe_flower_5 icon = GFX_goal_NAT_placeholder cost = 28 x = 6 y = 94 prerequisite = { focus = NAT_tribe_flower_4 } completion_reward = { custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt add_to_variable = { NAT_loyalty_flower = 10 } set_country_flag = NAT_flower_agenda_done } }
 

@@ -1,0 +1,199 @@
+add_namespace = NAT_prep_events
+add_namespace = NAT_crisis_events
+add_namespace = NAT_news_events
+
+#【事件、决议、国策的本地化名称：归火圣夜巡礼开幕】
+country_event = {
+	id = NAT_prep_events.1
+	title = NAT_prep_events.1.t
+	desc = NAT_prep_events.1.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		news_event = { id = NAT_news_events.31 }
+		country_event = { id = NAT_prep_events.2 days = 28 }
+	}
+	option = {
+		name = NAT_prep_events.1.a
+		add_war_support = 0.05
+	}
+}
+
+#【事件、决议、国策的本地化名称：卡齐娜复活失败】
+country_event = {
+	id = NAT_prep_events.2
+	title = NAT_prep_events.2.t
+	desc = NAT_prep_events.2.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_prep_events.2.a
+		NAT_Kachina = {
+			set_character_flag = NAT_kachina_unavailable
+		}
+		set_country_flag = NAT_prep_pilgrimage_cancelled
+		custom_effect_tooltip = NAT_kachina_unavailable_tt
+		custom_effect_tooltip = NAT_prep_pilgrimage_cancelled_tt
+		news_event = { id = NAT_news_events.32 }
+		load_focus_tree = TTT_NAT_focus_tree
+		complete_national_focus = NAT_crisis_emergence
+	}
+}
+
+#【事件、决议、国策的本地化名称：危机浮现】
+country_event = {
+	id = NAT_crisis_events.1
+	title = NAT_crisis_events.1.t
+	desc = NAT_crisis_events.1.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_crisis_events.1.a
+	}
+}
+
+#【事件、决议、国策的本地化名称：决断】
+country_event = {
+	id = NAT_crisis_events.10
+	title = NAT_crisis_events.10.t
+	desc = NAT_crisis_events.10.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = NAT_crisis_events.10.a
+		custom_effect_tooltip = NAT_mavuika_fuel_minus_30_tt
+		add_to_variable = { NAT_mavuika_fuel = -30 }
+		country_event = { id = NAT_crisis_events.11 days = 25 }
+	}
+	option = {
+		name = NAT_crisis_events.10.b
+		NAT_Mualani = {
+			add_character_trait = wounded
+		}
+		NAT_Kinich = {
+			add_character_trait = wounded
+		}
+		NAT_Chasca = {
+			add_character_trait = wounded
+		}
+		custom_effect_tooltip = NAT_loyalty_springs_minus_20_tt
+		custom_effect_tooltip = NAT_loyalty_canopy_minus_20_tt
+		custom_effect_tooltip = NAT_loyalty_flower_minus_20_tt
+		add_to_variable = { NAT_loyalty_springs = -20 }
+		add_to_variable = { NAT_loyalty_canopy = -20 }
+		add_to_variable = { NAT_loyalty_flower = -20 }
+		country_event = { id = NAT_crisis_events.11 days = 25 }
+		country_event = { id = NAT_crisis_events.12 days = 360 }
+	}
+}
+
+#【事件、决议、国策的本地化名称：伤势恢复（三人组）】
+country_event = {
+	id = NAT_crisis_events.12
+	title = NAT_crisis_events.12.t
+	desc = NAT_crisis_events.12.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = yes
+	option = {
+		name = NAT_crisis_events.12.a
+		NAT_Mualani = {
+			remove_character_trait = wounded
+		}
+		NAT_Kinich = {
+			remove_character_trait = wounded
+		}
+		NAT_Chasca = {
+			remove_character_trait = wounded
+		}
+	}
+}
+
+#【事件、决议、国策的本地化名称：救回卡齐娜】
+country_event = {
+	id = NAT_crisis_events.11
+	title = NAT_crisis_events.11.t
+	desc = NAT_crisis_events.11.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_crisis_events.11.a
+		NAT_Kachina = {
+			clr_character_flag = NAT_kachina_unavailable
+			add_character_trait = wounded
+		}
+		custom_effect_tooltip = NAT_kachina_saved_tt
+		add_stability = 0.05
+		add_war_support = 0.05
+		country_event = { id = NAT_crisis_events.13 days = 720 }
+	}
+}
+
+#【事件、决议、国策的本地化名称：伤势恢复（卡齐娜）】
+country_event = {
+	id = NAT_crisis_events.13
+	title = NAT_crisis_events.13.t
+	desc = NAT_crisis_events.13.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = yes
+	option = {
+		name = NAT_crisis_events.13.a
+		NAT_Kachina = {
+			remove_character_trait = wounded
+		}
+	}
+}
+
+#【事件、决议、国策的本地化名称：前期准备完成】
+country_event = {
+	id = NAT_crisis_events.20
+	title = NAT_crisis_events.20.t
+	desc = NAT_crisis_events.20.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_crisis_events.20.a
+		add_political_power = 100
+	}
+}
+
+#【事件、决议、国策的本地化名称：归火圣夜巡礼开幕（新闻）】
+news_event = {
+	id = NAT_news_events.31
+	title = NAT_news_events.31.t
+	desc = NAT_news_events.31.d
+	picture = GFX_news_event_liyue14
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = NAT_news_events.31.a
+		trigger = { tag = NAT }
+	}
+	option = {
+		name = NAT_news_events.31.b
+		trigger = { NOT = { tag = NAT } }
+	}
+}
+
+#【事件、决议、国策的本地化名称：卡齐娜复活失败（新闻）】
+news_event = {
+	id = NAT_news_events.32
+	title = NAT_news_events.32.t
+	desc = NAT_news_events.32.d
+	picture = GFX_news_event_liyue14
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = NAT_news_events.32.a
+	}
+}

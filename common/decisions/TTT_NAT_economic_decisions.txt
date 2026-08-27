@@ -1,0 +1,199 @@
+# ==================== 通用建设决议 ====================
+NAT_general_construction = {
+	NAT_build_civilian_factory = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 25
+		days_remove = 90
+		modifier = {
+			industrial_capacity_factory = -0.03
+		}
+		available = {
+			has_country_flag = NAT_general_construction_unlocked
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_build_military_factory = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 25
+		days_remove = 90
+		modifier = {
+			industrial_capacity_factory = -0.03
+		}
+		available = {
+			has_country_flag = NAT_general_construction_unlocked
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_build_dockyard = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 25
+		days_remove = 90
+		modifier = {
+			industrial_capacity_factory = -0.03
+		}
+		available = {
+			has_country_flag = NAT_general_construction_unlocked
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					any_province = {
+						is_coastal = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ==================== 开垦荒地决议 ====================
+NAT_land_reclamation = {
+	NAT_reclaim_wasteland = {
+		icon = GFX_decision_NAT_land_reclamation
+		cost = 0
+		days_remove = 120
+		state_target = yes
+		targets = { 313 325 326 327 324 343 334 335 336 337 344 351 }
+		target_trigger = {
+			is_owned_by = ROOT
+			is_controlled_by = ROOT
+		}
+		fire_only_once = yes
+		modifier = {
+			industrial_capacity_factory = -0.02
+		}
+		available = {
+			has_country_flag = NAT_land_reclamation_unlocked
+		}
+		complete_effect = {
+			if = {
+				limit = { has_state_category = pastoral }
+				set_state_category = rural
+			}
+			else_if = {
+				limit = { has_state_category = rural }
+				set_state_category = town
+			}
+			else_if = {
+				limit = { has_state_category = town }
+				set_state_category = large_town
+			}
+			else_if = {
+				limit = { has_state_category = large_town }
+				set_state_category = city
+			}
+			else_if = {
+				limit = { has_state_category = city }
+				set_state_category = large_city
+			}
+			else_if = {
+				limit = { has_state_category = large_city }
+				set_state_category = metropolis
+			}
+			else_if = {
+				limit = { has_state_category = metropolis }
+				set_state_category = megalopolis
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ==================== 资源开发决议 ====================
+NAT_resource_development = {
+	NAT_resource_dev_351 = {
+		icon = GFX_decision_NAT_resource_development
+		cost = 25
+		days_remove = 90
+		state_target = yes
+		targets = { 351 }
+		target_trigger = {
+			is_owned_by = ROOT
+			is_controlled_by = ROOT
+		}
+		fire_only_once = yes
+		modifier = {
+			industrial_capacity_factory = -0.03
+		}
+		available = {
+			has_country_flag = NAT_resource_development_unlocked
+		}
+		complete_effect = {
+			add_resource = { type = wood amount = 32 }
+			add_resource = { type = rubber amount = 8 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_resource_dev_348 = {
+		icon = GFX_decision_NAT_resource_development
+		cost = 25
+		days_remove = 90
+		state_target = yes
+		targets = { 348 }
+		target_trigger = {
+			is_owned_by = ROOT
+			is_controlled_by = ROOT
+		}
+		fire_only_once = yes
+		modifier = {
+			industrial_capacity_factory = -0.03
+		}
+		available = {
+			has_country_flag = NAT_resource_development_unlocked
+		}
+		complete_effect = {
+			add_resource = { type = wood amount = 15 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_resource_dev_327 = {
+		icon = GFX_decision_NAT_resource_development
+		cost = 25
+		days_remove = 90
+		state_target = yes
+		targets = { 327 }
+		target_trigger = {
+			is_owned_by = ROOT
+			is_controlled_by = ROOT
+		}
+		fire_only_once = yes
+		modifier = {
+			industrial_capacity_factory = -0.03
+		}
+		available = {
+			has_country_flag = NAT_resource_development_unlocked
+		}
+		complete_effect = {
+			add_resource = { type = coal amount = 15 }
+			add_resource = { type = grain amount = 36 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}

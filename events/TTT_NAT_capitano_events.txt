@@ -1,0 +1,80 @@
+add_namespace = NAT_capitano_events
+
+#【事件、决议、国策的本地化名称：【队长】到来】
+country_event = {
+	id = NAT_capitano_events.1
+	title = NAT_capitano_events.1.t
+	desc = NAT_capitano_events.1.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_capitano_events.1.a
+		set_country_flag = NAT_capitano_arrived
+		custom_effect_tooltip = NAT_capitano_arrived_tt
+		country_event = { id = NAT_capitano_events.2 days = 2 }
+	}
+}
+
+#【事件、决议、国策的本地化名称：会面】
+country_event = {
+	id = NAT_capitano_events.2
+	title = NAT_capitano_events.2.t
+	desc = NAT_capitano_events.2.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_capitano_events.2.a
+		add_political_power = 50
+		country_event = { id = NAT_capitano_events.3 days = 200 }
+	}
+}
+
+#【事件、决议、国策的本地化名称：密谋】
+country_event = {
+	id = NAT_capitano_events.3
+	title = NAT_capitano_events.3.t
+	desc = NAT_capitano_events.3.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_capitano_events.3.a
+		set_country_flag = NAT_capitano_conspiracy_started
+		country_event = { id = NAT_capitano_events.4 days = 295 }
+		country_event = { id = NAT_capitano_events.5 days = 300 }
+	}
+}
+
+#【事件、决议、国策的本地化名称：最后一刻】
+country_event = {
+	id = NAT_capitano_events.4
+	title = NAT_capitano_events.4.t
+	desc = NAT_capitano_events.4.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_capitano_events.4.a
+		add_war_support = 0.05
+	}
+}
+
+#【事件、决议、国策的本地化名称：对峙】
+country_event = {
+	id = NAT_capitano_events.5
+	title = NAT_capitano_events.5.t
+	desc = NAT_capitano_events.5.d
+	picture = GFX_news_event_liyue14
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = NAT_capitano_events.5.a
+		custom_effect_tooltip = NAT_capitano_plan_failed_tt
+		set_country_flag = NAT_capitano_plan_failed
+		set_country_flag = NAT_ororon_available
+		complete_national_focus = NAT_phase2_fire_god_plan
+		add_stability = 0.05
+	}
+}

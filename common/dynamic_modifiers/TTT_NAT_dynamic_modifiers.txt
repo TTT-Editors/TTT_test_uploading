@@ -1,5 +1,5 @@
 NAT_abyss_pressure_dynamic = {
-	icon = GFX_idea_NAT_idea_abyss_frontline
+	icon = GFX_idea_NAT_idea_unknown
 	enable = {
 		has_variable = NAT_abyss_pressure_penalty
 		NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
@@ -15,8 +15,40 @@ NAT_abyss_pressure_dynamic = {
 	consumer_goods_factor = NAT_abyss_pressure_consumer
 }
 
+NAT_education_dynamic = {
+	icon = GFX_idea_NAT_idea_unknown
+	enable = {
+		has_variable = NAT_education_research
+	}
+	research_speed_factor = NAT_education_research
+	agency_upgrade_time = NAT_education_agency_time
+	stability_factor = NAT_education_stability
+	consumer_goods_factor = NAT_education_consumer
+	production_speed_buildings_factor = NAT_edu_build_speed
+	production_factory_max_efficiency_factor = NAT_edu_prod_max
+	production_speed_arms_factory_factor = NAT_edu_arms
+	production_speed_dockyard_factor = NAT_edu_dock
+	political_power_gain = NAT_edu_pp_gain
+}
+
+NAT_early_industry_dynamic = {
+	icon = GFX_idea_NAT_idea_unknown
+	enable = {
+		has_variable = NAT_industry_max_eff
+	}
+	production_factory_max_efficiency_factor = NAT_industry_max_eff
+	production_speed_buildings_factor = NAT_industry_build_speed
+	consumer_goods_factor = NAT_industry_consumer
+	global_building_slots_factor = NAT_industry_slots
+	political_power_factor = NAT_industry_pp_factor
+	production_speed_arms_factory_factor = NAT_industry_arms_prod
+	production_speed_dockyard_factor = NAT_industry_dock_prod
+	monthly_population = NAT_industry_monthly_pop
+	conscription_factor = NAT_industry_conscription
+}
+
 NAT_final_battle_dynamic = {
-	icon = GFX_idea_NAT_idea_abyss_frontline
+	icon = GFX_idea_NAT_idea_unknown
 	enable = {
 		has_global_flag = NAT_final_battle_started
 	}
@@ -36,4 +68,17 @@ NAT_final_battle_dynamic = {
 	max_planning = NAT_final_battle_max_planning
 	war_support_factor = NAT_final_battle_ws
 	production_speed_arms_factory_factor = NAT_final_battle_prod
+}
+
+NAT_abyss_breach_modifier = {
+	icon = GFX_modifiers_generic_resistance
+	remove_trigger = { NOT = { is_owned_by = NAT } }
+	
+	state_resources_factor = -0.50
+	local_building_slots_factor = -0.50
+	local_org_regain = -0.25
+	local_supplies = -0.25
+	army_speed_factor = -0.25
+	army_attack_factor = -0.25
+	disable_strategic_redeployment = 1
 }

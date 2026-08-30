@@ -8,7 +8,7 @@ NAT_monthly_abyss_growth = {
 		add_to_variable = { NAT_abyss_tick = 30 }
 		if = {
 			limit = {
-				check_variable = { NAT_abyss_tick >= NAT_abyss_growth_interval }
+				check_variable = { NAT_abyss_tick > NAT_abyss_growth_interval }
 			}
 			subtract_from_variable = { NAT_abyss_tick = NAT_abyss_growth_interval }
 			add_to_variable = { NAT_abyss_pressure = 1 }
@@ -17,9 +17,9 @@ NAT_monthly_abyss_growth = {
 	}
 	# 更新深渊侵蚀给国家的惩罚变量
 	set_variable = { NAT_abyss_pressure_penalty = NAT_abyss_pressure }
-	multiply_variable = { var = NAT_abyss_pressure_penalty value = -0.001 }
+	multiply_variable = { var = NAT_abyss_pressure_penalty value = -0.003 }
 	set_variable = { NAT_abyss_pressure_consumer = NAT_abyss_pressure }
-	multiply_variable = { var = NAT_abyss_pressure_consumer value = 0.002 }
+	multiply_variable = { var = NAT_abyss_pressure_consumer value = 0.01 }
 	clamp_variable = { var = NAT_abyss_pressure min = 0 max = 100 }
 }
 
@@ -28,17 +28,11 @@ NAT_spawn_random_abyss_breach = {
 	random_owned_state = {
 		limit = {
 			is_capital = no
-			NOT = { has_state_flag = NAT_abyss_breach }
+			NOT = { has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
 		}
-		set_state_flag = NAT_abyss_breach
-		random_province = {
-			limit = {
-				NOT = { has_province_flag = NAT_abyss_breach }
-			}
-			add_province_modifier = {
-				static_modifiers = { NAT_abyss_breach_province }
-			}
-			set_province_flag = NAT_abyss_breach
+		add_dynamic_modifier = {
+			modifier = NAT_abyss_breach_modifier
+			scope = NAT 
 		}
 	}
 }
@@ -46,15 +40,8 @@ NAT_spawn_random_abyss_breach = {
 # 移除一个随机深渊裂口
 NAT_remove_random_abyss_breach = {
 	random_owned_state = {
-		limit = { has_state_flag = NAT_abyss_breach }
-		random_province = {
-			limit = { has_province_flag = NAT_abyss_breach }
-			remove_province_modifier = {
-				static_modifiers = { NAT_abyss_breach_province }
-			}
-			clr_province_flag = NAT_abyss_breach
-		}
-		clr_state_flag = NAT_abyss_breach
+		limit = { has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
+		remove_dynamic_modifier = { modifier = NAT_abyss_breach_modifier }
 	}
 }
 
@@ -197,9 +184,7 @@ NAT_abyss_final_defeat = {
 			character = NAT_Gosoythoth
 			ideology = hive_mind_subtype
 		}
-		every_owned_state = {
-			delete_unit = { }
-		}
+		delete_unit = { disband = yes }
 	}
 	every_owned_state = {
 		remove_core_of = NAB

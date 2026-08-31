@@ -2,14 +2,14 @@ on_actions = {
 	on_startup = {
 		effect = {
 			NAT = {
-				set_variable = { NAT_abyss_growth_interval = 29 }
+				set_variable = { NAT_abyss_growth_interval = 16 }
 				set_variable = { NAT_snezhnaya_influence = 0 }
-				set_variable = { NAT_abyss_tick = 0 }
+				#set_variable = { NAT_abyss_tick = 0 }
 				set_variable = { NAT_breach_event_timer = 0 }
 				set_variable = { NAT_abyss_negative_timer = 0 }
-				NAT_monthly_abyss_growth = yes
 				add_dynamic_modifier = { modifier = NAT_abyss_pressure_dynamic }
 				activate_mission = NAT_abyss_clock
+				activate_mission = NAT_abyss_growing_clock
 			}
 		}
 	}
@@ -23,52 +23,50 @@ on_actions = {
 					NOT = { has_global_flag = NAT_final_battle_over }
 				}
 				set_global_flag = NAT_final_battle_failed
+				set_global_flag = NAT_final_battle_over
 			}
 		}
 	}
 
-	on_monthly = {
-		effect = {
-			if = {
-				limit = {
-					tag = NAT
-					NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
-					NOT = { has_global_flag = NAT_final_battle_over }
-				}
-				NAT = {
-					NAT_monthly_abyss_growth = yes
-
-					if = {
-						limit = { check_variable = { NAT_abyss_pressure > 99 } }
-						NAT_abyss_pressure_100_failure = yes
-					}
-
-					add_to_variable = { NAT_breach_event_timer = 30 }
-					add_to_variable = { NAT_abyss_negative_timer = 30 }
-
-					if = {
-						limit = {
-							check_variable = { NAT_abyss_pressure > 39 }
-							check_variable = { NAT_breach_event_timer > 59 }
-						}
-						set_variable = { NAT_breach_event_timer = 0 }
-						country_event = { id = NAT_abyss_events.100 }
-					}
-
-					if = {
-						limit = {
-							check_variable = { NAT_abyss_pressure > 59 }
-							check_variable = { NAT_abyss_negative_timer > 89 }
-						}
-						set_variable = { NAT_abyss_negative_timer = 0 }
-						random_list = {
-							40 = { country_event = { id = NAT_abyss_events.101 } }
-							30 = { country_event = { id = NAT_abyss_events.102 } }
-							30 = { country_event = { id = NAT_abyss_events.103 } }
-						}
-					}
-				}
-			}
-		}
-	}
+	#on_monthly = {
+	# 2026-8-31修改：将其改为决议倒计时触发而非on_monthly触发，NAT_abyss_events.101、102、103三个事件也改为随机触发而非定时触发。
+	# 相关效果已整合进决议NAT_abyss_growing_clock中
+		#effect = {
+		#	if = {
+		#		limit = {
+		#			tag = NAT
+		#			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+		#			NOT = { has_global_flag = NAT_final_battle_over }
+		#		}
+		#		NAT = {
+		#			#NAT_monthly_abyss_growth = yes
+#
+		#			add_to_variable = { NAT_breach_event_timer = 30 }
+		#			add_to_variable = { NAT_abyss_negative_timer = 30 }
+#
+		#			if = {
+		#				limit = {
+		#					check_variable = { NAT_abyss_pressure > 39 }
+		#					check_variable = { NAT_breach_event_timer > 59 }
+		#				}
+		#				set_variable = { NAT_breach_event_timer = 0 }
+		#				country_event = { id = NAT_abyss_events.100 }
+		#			}
+#
+		#			if = {
+		#				limit = {
+		#					check_variable = { NAT_abyss_pressure > 59 }
+		#					check_variable = { NAT_abyss_negative_timer > 89 }
+		#				}
+		#				set_variable = { NAT_abyss_negative_timer = 0 }
+		#				random_list = {
+		#					40 = { country_event = { id = NAT_abyss_events.101 } }
+		#					30 = { country_event = { id = NAT_abyss_events.102 } }
+		#					30 = { country_event = { id = NAT_abyss_events.103 } }
+		#				}
+		#			}
+		#		}
+		#	}
+		#}
+	#}
 }

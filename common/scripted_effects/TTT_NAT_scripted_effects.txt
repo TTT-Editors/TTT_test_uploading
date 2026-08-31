@@ -1,19 +1,37 @@
 # ================= 纳塔通用脚本效果 =================
+#强化“深渊前线”效果
+NAT_strengthen_frontline_idea = {
+	if = {
+		limit = { has_idea = NAT_idea_abyss_frontline_3 }
+		swap_ideas = {
+			remove_idea = NAT_idea_abyss_frontline_3
+			add_idea = NAT_idea_abyss_frontline_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = NAT_idea_abyss_frontline_2 }
+		swap_ideas = {
+			remove_idea = NAT_idea_abyss_frontline_2
+			add_idea = NAT_idea_abyss_frontline_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = NAT_idea_abyss_frontline }
+		swap_ideas = {
+			remove_idea = NAT_idea_abyss_frontline
+			add_idea = NAT_idea_abyss_frontline_2
+		}
+	}
+}
 
 # 每30天由 on_action 调用：深渊侵蚀自然增长。
 # NAT_abyss_growth_interval 默认30，决议/国策可把它改成60、90等。
+# 2026-8-31修改：将其改为决议倒计时触发而非on_monthly触发，NAT_abyss_events.101、102、103三个事件也改为随机触发而非定时触发。
 NAT_monthly_abyss_growth = {
 	if = {
 		limit = { NOT = { has_global_flag = NAT_abyss_natural_growth_stopped } }
-		add_to_variable = { NAT_abyss_tick = 30 }
-		if = {
-			limit = {
-				check_variable = { NAT_abyss_tick > NAT_abyss_growth_interval }
-			}
-			subtract_from_variable = { NAT_abyss_tick = NAT_abyss_growth_interval }
-			add_to_variable = { NAT_abyss_pressure = 1 }
-			clamp_variable = { var = NAT_abyss_pressure min = 0 max = 100 }
-		}
+		add_to_variable = { NAT_abyss_pressure = 1 }
+		clamp_variable = { var = NAT_abyss_pressure min = 0 max = 100 }
 	}
 	# 更新深渊侵蚀给国家的惩罚变量
 	set_variable = { NAT_abyss_pressure_penalty = NAT_abyss_pressure }
@@ -128,6 +146,12 @@ NAT_spawn_abyss_army = {
 			infantry = { x = 0 y = 0 }
 			infantry = { x = 1 y = 0 }
 			infantry = { x = 2 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 2 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 2 y = 2 }
 		}
 	}
 	division_template = {
@@ -135,6 +159,10 @@ NAT_spawn_abyss_army = {
 		regiments = {
 			cavalry = { x = 0 y = 0 }
 			cavalry = { x = 1 y = 0 }
+			cavalry = { x = 0 y = 1 }
+			cavalry = { x = 1 y = 1 }
+			cavalry = { x = 0 y = 2 }
+			cavalry = { x = 1 y = 2 }
 		}
 	}
 	every_owned_state = {
@@ -168,6 +196,9 @@ NAT_abyss_final_defeat = {
 	set_global_flag = NAT_abyss_mechanic_abandoned
 	set_global_flag = NAT_tribal_council_abandoned
 	set_global_flag = NAT_final_battle_failed
+	ABY = {
+		puppet = NAT
+	}
 	every_possible_country = {
 		limit = { has_character = NAT_Gosoythoth }
 		random_character = {
@@ -195,9 +226,6 @@ NAT_abyss_final_defeat = {
 		reverse_add_opinion_modifier = { target = NAT modifier = NAT_abyss_defeat_opinion }
 	}
 	add_named_threat = { threat = 50 name = NAT_abyss_defeat_threat_tt }
-	ABY = {
-		puppet = NAT
-	}
 }
 
 # 六部族会议废弃后转成固定buff
@@ -205,4 +233,19 @@ NAT_abandon_tribal_council = {
 	set_global_flag = NAT_tribal_council_abandoned
 	set_country_flag = NAT_tribal_council_fixed
 	add_ideas = NAT_idea_tribal_council_fixed
+}
+
+NAT_idea_research_institute_upgrade = {
+	if = {
+		limit = { 
+			has_idea = NAT_idea_research_institute
+		}
+		swap_ideas = {
+			remove_idea = NAT_idea_research_institute
+			add_idea = NAT_idea_research_institute_2
+		}
+	}
+	else = {
+		add_ideas = NAT_idea_research_institute
+	}
 }

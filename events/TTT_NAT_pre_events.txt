@@ -13,31 +13,44 @@ country_event = {
 		name = NAT_pre_events.10.a
 		set_country_flag = NAT_fire_god_revived
 		set_global_flag = NAT_fire_god_revived
-		set_politics = {
-			ruling_party = authoritarianism
-			last_election = "1997.8.1"
-			election_frequency = 48
-			elections_allowed = no
-		}
-		add_country_leader_role = {
-			character = NAT_Mavuika
-			promote_leader = yes
-			country_leader = {
-				ideology = authoritarianism_subtype
-				traits = { NAT_sun_ablaze }
-				expire = "2025.2.11.22"
+		
+		hidden_effect = {
+			set_politics = {
+				ruling_party = authoritarianism
+				last_election = "1997.8.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			add_country_leader_role = {
+				character = NAT_Mavuika
+				promote_leader = yes
+				country_leader = {
+					ideology = authoritarianism_subtype
+					traits = { NAT_sun_ablaze }
+					expire = "2026.8.31.23"
+				}
+			}
+			set_popularities = {
+				authoritarianism = 40
+				reformism = 18
+				liberalism = 12
+				national_socialism = 12
+				communism = 8
+				left_wing_anarchism = 5
+				despotism = 4
+				esotericism = 1
 			}
 		}
-		set_popularities = {
-			authoritarianism = 40
-			reformism = 18
-			liberalism = 12
-			national_socialism = 12
-			communism = 8
-			left_wing_anarchism = 5
-			despotism = 4
-			esotericism = 1
+		
+		add_stability = 0.1
+		
+		if = {
+			limit = { check_variable = { NAT_abyss_pressure < 31 }}
+			custom_effect_tooltip = NAT_first_year_bonus_tt
+			TTT_government_efficiency_upgrade = yes
+			NAT_strengthen_frontline_idea = yes
 		}
+		
 		mark_focus_tree_layout_dirty = yes
 		load_focus_tree = TTT_NAT_pre_pilgrimage_tree
 		news_event = { id = NAT_news_events.30 }

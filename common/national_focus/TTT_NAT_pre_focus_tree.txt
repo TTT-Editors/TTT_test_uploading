@@ -29,7 +29,6 @@ focus_tree = {
 		x = 4 y = 1
 		prerequisite = { focus = NAT_pre_1999_opening }
 		completion_reward = {
-			add_political_power = 20
 			custom_effect_tooltip = NAT_loyalty_echoes_plus_5_tt
 			custom_effect_tooltip = NAT_loyalty_springs_plus_5_tt
 			custom_effect_tooltip = NAT_loyalty_canopy_plus_5_tt
@@ -87,13 +86,17 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			custom_effect_tooltip = NAT_abyss_growth_slower_1_tt
+			hidden_effect = {
+				add_to_variable = { NAT_abyss_growth_interval = 1 }
+			}
 		}
 	}
 	focus = {
 		id = NAT_pre_phlogiston_survey
 		icon = GFX_goal_NAT_pre_phlogiston_survey
 		cost = 35
-		x = 0 y = 4
+		x = -1 y = 4
 		prerequisite = { focus = NAT_pre_road_renovation }
 		completion_reward = {
 			328 = {
@@ -113,17 +116,17 @@ focus_tree = {
 		id = NAT_pre_phlogiston_laboratory
 		icon = GFX_goal_NAT_pre_phlogiston_laboratory
 		cost = 35
-		x = 4 y = 4
+		x = 3 y = 4
 		prerequisite = { focus = NAT_pre_road_renovation }
 		completion_reward = {
-			add_ideas = NAT_idea_research_institute
+			NAT_idea_research_institute_upgrade = yes
 		}
 	}
 	focus = {
 		id = NAT_pre_expand_refinery
 		icon = GFX_goal_NAT_pre_expand_refinery
 		cost = 35
-		x = 0 y = 5
+		x = -1 y = 5
 		prerequisite = { focus = NAT_pre_phlogiston_survey }
 		completion_reward = {
 			add_ideas = NAT_idea_refinery_1
@@ -133,13 +136,17 @@ focus_tree = {
 		id = NAT_pre_wait_for_flame
 		icon = GFX_goal_NAT_pre_wait_for_flame
 		cost = 35
-		x = 2 y = 6
+		x = 1 y = 6
 		prerequisite = { focus = NAT_pre_volcano_geothermal }
 		prerequisite = { focus = NAT_pre_expand_refinery }
 		prerequisite = { focus = NAT_pre_dragon_partnership }
 		completion_reward = {
-			add_stability = 0.10
+			NAT_strengthen_frontline_idea = yes
 			set_country_flag = NAT_pre_year_complete
+			custom_effect_tooltip = NAT_abyss_growth_slower_2_tt
+			hidden_effect = {
+				add_to_variable = { NAT_abyss_growth_interval = 2 }
+			}
 		}
 	}
 
@@ -182,7 +189,10 @@ focus_tree = {
 		x = 6 y = 4
 		prerequisite = { focus = NAT_pre_harvest_festival }
 		completion_reward = {
-			add_ideas = NAT_idea_export_economy
+			add_timed_idea = {
+				idea = NAT_idea_export_economy
+				days = 360
+			}
 		}
 	}
 	focus = {
@@ -192,8 +202,9 @@ focus_tree = {
 		x = 8 y = 4
 		prerequisite = { focus = NAT_pre_harvest_festival }
 		completion_reward = {
-			custom_effect_tooltip = NAT_loyalty_nightwind_plus_5_tt
-			add_to_variable = { NAT_loyalty_nightwind = 5 }
+			add_political_power = 50
+			custom_effect_tooltip = NAT_loyalty_nightwind_plus_10_tt
+			add_to_variable = { NAT_loyalty_nightwind = 10 }
 		}
 	}
 
@@ -202,7 +213,7 @@ focus_tree = {
 		id = NAT_pre_coast_road
 		icon = GFX_goal_NAT_pre_coast_road
 		cost = 35
-		x = 2 y = 4
+		x = 1 y = 4
 		prerequisite = { focus = NAT_pre_road_renovation }
 		completion_reward = {
 			318 = {
@@ -247,7 +258,7 @@ focus_tree = {
 		id = NAT_pre_volcano_geothermal
 		icon = GFX_goal_NAT_pre_volcano_geothermal
 		cost = 35
-		x = 2 y = 5
+		x = 1 y = 5
 		prerequisite = { focus = NAT_pre_coast_road }
 		completion_reward = {
 			328 = {
@@ -272,7 +283,7 @@ focus_tree = {
 		id = NAT_pre_dragon_partnership
 		icon = GFX_goal_NAT_pre_dragon_partnership
 		cost = 35
-		x = 4 y = 5
+		x = 3 y = 5
 		prerequisite = { focus = NAT_pre_phlogiston_laboratory }
 		completion_reward = {
 			army_experience = 30

@@ -102,6 +102,65 @@ NAT_abyss_pressure = {
 			activate_mission = NAT_storm_clock
 		}
 	}
+	
+	NAT_abyss_growing_clock = {
+		icon = generic_ignite_civil_war
+		available = { always = no }
+		activation = { 
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+			NOT = { has_global_flag = NAT_final_battle_over }
+		}
+		visible = {
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+			NOT = { has_global_flag = NAT_final_battle_over }
+		}
+		days_mission_timeout = NAT_abyss_growth_interval
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_global_flag = NAT_abyss_mechanic_abandoned
+				has_global_flag = NAT_final_battle_over
+			}
+		}
+		is_good = no
+		timeout_effect = {
+			hidden_effect = {
+				activate_mission = NAT_abyss_growing_clock
+				NAT_monthly_abyss_growth = yes
+			}
+			
+			if = {
+				limit = { NOT = { has_global_flag = NAT_fire_god_revived } }
+				custom_effect_tooltip = press_abyss_pressure_lower_than_40_before_2000_tt
+			}
+			
+			if = {
+				limit = {
+					check_variable = { NAT_abyss_pressure > 39 }
+					NOT = { has_country_flag = NAT_breach_event_timer }
+				}
+				country_event = { id = NAT_abyss_events.100 }
+			}
+			
+			if = {
+				limit = {
+					check_variable = { NAT_abyss_pressure > 59 }
+					NOT = { has_country_flag = NAT_abyss_negative_timer }
+				}
+				random_list = {
+					40 = { country_event = { id = NAT_abyss_events.101 } }
+					30 = { country_event = { id = NAT_abyss_events.102 } }
+					30 = { country_event = { id = NAT_abyss_events.103 } }
+				}
+			}
+			
+			if = {
+				limit = { check_variable = { NAT_abyss_pressure > 99 } }
+				NAT_abyss_pressure_100_failure = yes
+			}
+		}
+	}
+	
 	NAT_storm_clock = {
 		icon = GFX_decision_NAT_abyss_action
 		fire_only_once = yes
@@ -113,17 +172,18 @@ NAT_abyss_pressure = {
 			country_event = { id = NAT_war_events.110 }
 		}
 	}
+	
 	NAT_abyss_military_purge = {
 		icon = GFX_decision_NAT_abyss_action
 		cost = 25
 		days_re_enable = 60
 		available = {
-			has_equipment = { infantry_equipment > 1500 }
-			has_manpower > 3000
+			has_equipment = { infantry_equipment > 2999 }
+			has_manpower > 5999
 		}
 		complete_effect = {
-			add_equipment_to_stockpile = { type = infantry_equipment amount = -1500 }
-			add_manpower = -3000
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -3000 }
+			add_manpower = -6000
 			custom_effect_tooltip = NAT_abyss_pressure_minus_6_tt
 			add_to_variable = { NAT_abyss_pressure = -6 }
 		}
@@ -132,7 +192,7 @@ NAT_abyss_pressure = {
 	NAT_abyss_tribal_ritual = {
 		icon = GFX_decision_NAT_abyss_action
 		cost = 50
-		days_re_enable = 90
+		days_re_enable = 360
 		available = { check_variable = { NAT_loyalty_nightwind > 5 } }
 		complete_effect = {
 			add_political_power = -50
@@ -147,6 +207,11 @@ NAT_abyss_pressure = {
 		icon = GFX_decision_NAT_abyss_action
 		cost = 0
 		days_re_enable = 120
+		visible = {
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+			NOT = { has_global_flag = NAT_final_battle_over }
+			has_global_flag = NAT_fire_god_revived
+		}
 		available = { check_variable = { NAT_mavuika_fuel > 10 } }
 		complete_effect = {
 			custom_effect_tooltip = NAT_mavuika_fuel_minus_10_tt

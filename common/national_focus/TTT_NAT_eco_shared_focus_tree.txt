@@ -13,7 +13,8 @@ shared_focus = {
 		}
 	}
 	completion_reward = {
-		add_ideas = NAT_idea_eco_science_academy
+		NAT_idea_research_institute_upgrade = yes
+		add_dynamic_modifier = { modifier = NAT_education_dynamic }
 	}
 }
 
@@ -174,20 +175,10 @@ shared_focus = {
 		NOT = {
 			has_war_with = NAB
 		}
+		num_of_factories > 39
 	}
 	completion_reward = {
-		add_to_variable = {
-			NAT_education_stability = 0.05
-		}
-		add_to_variable = {
-			NAT_education_research = 0.05
-		}
-		add_to_variable = {
-			NAT_edu_pp_gain = 0.05
-		}
-		custom_effect_tooltip = NAT_edu_stability_plus_5_tt
-		custom_effect_tooltip = NAT_edu_research_plus_5_tt
-		custom_effect_tooltip = NAT_edu_pp_gain_plus_5_tt
+		TTT_research_and_education_upgrade = yes
 	}
 }
 
@@ -376,7 +367,7 @@ shared_focus = {
 	id = NAT_eco_continue_industrialize
 	icon = GFX_goal_NAT_eco_continue_industrialize
 	cost = 30
-	x = 10
+	x = 8
 	y = 0
 	relative_position_id = NAT_eco_science_academy
 	available = {
@@ -385,6 +376,7 @@ shared_focus = {
 		}
 	}
 	completion_reward = {
+		add_dynamic_modifier = { modifier = NAT_early_industry_dynamic }
 		add_to_variable = {
 			NAT_industry_pp_factor = -0.1
 		}
@@ -401,7 +393,7 @@ shared_focus = {
 	id = NAT_eco_import_machines
 	icon = GFX_goal_NAT_eco_import_machines
 	cost = 30
-	x = 8
+	x = 6
 	y = 1
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -437,7 +429,7 @@ shared_focus = {
 	id = NAT_eco_prospect_resources
 	icon = GFX_goal_NAT_eco_prospect_resources
 	cost = 30
-	x = 7
+	x = 5
 	y = 2
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -462,7 +454,7 @@ shared_focus = {
 	id = NAT_eco_refining_factory
 	icon = GFX_goal_NAT_eco_prospect_resources
 	cost = 30
-	x = 7
+	x = 5
 	y = 3
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -496,7 +488,7 @@ shared_focus = {
 	id = NAT_eco_local_company
 	icon = GFX_goal_NAT_eco_local_company
 	cost = 30
-	x = 9
+	x = 7
 	y = 2
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -527,7 +519,7 @@ shared_focus = {
 	id = NAT_eco_mass_infrastructure
 	icon = GFX_goal_NAT_eco_mass_infrastructure
 	cost = 30
-	x = 9
+	x = 7
 	y = 3
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -551,7 +543,7 @@ shared_focus = {
 	id = NAT_eco_machine_makes_machine
 	icon = GFX_goal_NAT_eco_machine_makes_machine
 	cost = 30
-	x = 8
+	x = 6
 	y = 4
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -594,7 +586,7 @@ shared_focus = {
 	id = NAT_eco_agriculture
 	icon = GFX_goal_NAT_eco_agriculture
 	cost = 30
-	x = 12
+	x = 10
 	y = 1
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -625,7 +617,7 @@ shared_focus = {
 	id = NAT_eco_reclaim_land
 	icon = GFX_goal_NAT_eco_reclaim_land
 	cost = 30
-	x = 11
+	x = 9
 	y = 2
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -646,7 +638,7 @@ shared_focus = {
 	id = NAT_eco_measure_land
 	icon = GFX_goal_NAT_eco_measure_land
 	cost = 30
-	x = 11
+	x = 9
 	y = 3
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -677,7 +669,7 @@ shared_focus = {
 	id = NAT_eco_fertilizer_factory
 	icon = GFX_goal_NAT_eco_fertilizer_factory
 	cost = 30
-	x = 13
+	x = 11
 	y = 2
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -717,7 +709,7 @@ shared_focus = {
 	id = NAT_eco_mechanized_agriculture
 	icon = GFX_goal_NAT_eco_mechanized_agriculture
 	cost = 30
-	x = 13
+	x = 11
 	y = 3
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -744,7 +736,7 @@ shared_focus = {
 	id = NAT_eco_bountiful_fields
 	icon = GFX_goal_NAT_eco_bountiful_fields
 	cost = 30
-	x = 12
+	x = 10
 	y = 4
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -782,7 +774,7 @@ shared_focus = {
 	id = NAT_eco_better_tomorrow
 	icon = GFX_goal_NAT_eco_better_tomorrow
 	cost = 30
-	x = 5
+	x = 4
 	y = 5
 	relative_position_id = NAT_eco_science_academy
 	prerequisite = {
@@ -803,22 +795,8 @@ shared_focus = {
 		}
 	}
 	completion_reward = {
-		add_to_variable = {
-			NAT_industry_pp_factor = 0.05
-		}
-		add_to_variable = {
-			NAT_industry_consumer = -0.05
-		}
-		add_to_variable = {
-			NAT_industry_arms_prod = 0.05
-		}
-		add_to_variable = {
-			NAT_education_research = 0.05
-		}
-		custom_effect_tooltip = NAT_ind_pp_plus_5_tt
-		custom_effect_tooltip = NAT_ind_consumer_minus_5_tt
-		custom_effect_tooltip = NAT_ind_arms_plus_5_tt
-		custom_effect_tooltip = NAT_edu_research_plus_5_tt
+		TTT_research_and_education_upgrade = yes
+		TTT_industrial_development_upgrade = yes
 		add_research_slot = 1
 	}
 }

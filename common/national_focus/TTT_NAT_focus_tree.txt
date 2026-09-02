@@ -15,7 +15,7 @@ focus_tree = {
 		cost = 35
 		x = 5 y = 0
 		completion_reward = {
-			add_political_power = 50
+			#add_political_power = 50
 			set_country_flag = NAT_crisis_started
 			country_event = { id = NAT_crisis_events.1 }
 		}
@@ -224,6 +224,14 @@ focus_tree = {
 		icon = GFX_goal_NAT_crisis_heroes_muster
 		cost = 35
 		x = 9 y = 1
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NAT_kachina_available_tt
+				NAT_Kachina = {
+					NOT = { has_character_flag = NAT_kachina_unavailable} 
+				}
+			}
+		}
 		prerequisite = { focus = NAT_crisis_emergence }
 		completion_reward = {
 			army_experience = 30

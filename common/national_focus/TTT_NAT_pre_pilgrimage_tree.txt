@@ -11,31 +11,18 @@ focus_tree = {
 	focus = {
 		id = NAT_prep_hear_report
 		icon = GFX_goal_NAT_prep_hear_report
-		cost = 30
-		x = 1 y = 1
+		cost = 45
+		x = 0 y = 1
 		completion_reward = {
 			set_country_flag = NAT_tribal_council_open
-			add_political_power = 50
-			custom_effect_tooltip = NAT_loyalty_echoes_plus_5_tt
-			custom_effect_tooltip = NAT_loyalty_springs_plus_5_tt
-			custom_effect_tooltip = NAT_loyalty_canopy_plus_5_tt
-			custom_effect_tooltip = NAT_loyalty_flower_plus_5_tt
-			custom_effect_tooltip = NAT_loyalty_plenty_plus_5_tt
-			custom_effect_tooltip = NAT_loyalty_nightwind_plus_5_tt
-			add_to_variable = { NAT_loyalty_echoes = 5 }
-			add_to_variable = { NAT_loyalty_springs = 5 }
-			add_to_variable = { NAT_loyalty_canopy = 5 }
-			add_to_variable = { NAT_loyalty_flower = 5 }
-			add_to_variable = { NAT_loyalty_plenty = 5 }
-			add_to_variable = { NAT_loyalty_nightwind = 5 }
+			unlock_decision_category_tooltip = NAT_tribal_council
 		}
 	}
 	focus = {
 		id = NAT_prep_mavuika_tour
 		icon = GFX_goal_NAT_prep_mavuika_tour
-		cost = 30
-		x = 1 y = 2
-		prerequisite = { focus = NAT_prep_hear_report }
+		cost = 45
+		x = 2 y = 1
 		completion_reward = {
 			add_stability = 0.05
 			add_political_power = 60
@@ -44,8 +31,8 @@ focus_tree = {
 	focus = {
 		id = NAT_prep_maintain_flame
 		icon = GFX_goal_NAT_prep_maintain_flame
-		cost = 30
-		x = 3 y = 1
+		cost = 45
+		x = 4 y = 1
 		completion_reward = {
 			custom_effect_tooltip = NAT_abyss_growth_slower_2_tt
 			hidden_effect = {
@@ -56,8 +43,8 @@ focus_tree = {
 	focus = {
 		id = NAT_prep_notify_tribes
 		icon = GFX_goal_NAT_prep_notify_tribes
-		cost = 30
-		x = 5 y = 1
+		cost = 45
+		x = 6 y = 1
 		completion_reward = {
 			custom_effect_tooltip = NAT_loyalty_echoes_plus_5_tt
 			custom_effect_tooltip = NAT_loyalty_springs_plus_5_tt
@@ -73,70 +60,76 @@ focus_tree = {
 			add_to_variable = { NAT_loyalty_nightwind = 5 }
 		}
 	}
-	focus = {
-		id = NAT_prep_arena_repair
-		icon = GFX_goal_NAT_prep_arena_repair
-		cost = 30
-		x = 3 y = 2
-		prerequisite = { focus = NAT_prep_maintain_flame }
-		completion_reward = {
-			add_offsite_building = { type = industrial_complex level = 1 }
-			add_stability = 0.05
-		}
-	}
-	focus = {
-		id = NAT_prep_transport
-		icon = GFX_goal_NAT_prep_transport
-		cost = 30
-		x = 5 y = 2
-		prerequisite = { focus = NAT_prep_notify_tribes }
-		completion_reward = {
-			343 = {
-				limit = {
-					is_owned_and_controlled_by = ROOT
-					free_building_slots = {
-						building = infrastructure
-						size > 0
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = dockyard
-					level = 1
-					instant_build = yes
-				}
-			}
-			add_ideas = NAT_idea_railways
-		}
-	}
+	#focus = {
+	#	id = NAT_prep_arena_repair
+	#	icon = GFX_goal_NAT_prep_arena_repair
+	#	cost = 30
+	#	x = 3 y = 2
+	#	prerequisite = { focus = NAT_prep_maintain_flame }
+	#	completion_reward = {
+	#		add_offsite_building = { type = industrial_complex level = 1 }
+	#		add_stability = 0.05
+	#	}
+	#}
+	#focus = {
+	#	id = NAT_prep_transport
+	#	icon = GFX_goal_NAT_prep_transport
+	#	cost = 30
+	#	x = 5 y = 2
+	#	prerequisite = { focus = NAT_prep_notify_tribes }
+	#	completion_reward = {
+	#		343 = {
+	#			limit = {
+	#				is_owned_and_controlled_by = ROOT
+	#				free_building_slots = {
+	#					building = infrastructure
+	#					size > 0
+	#				}
+	#			}
+	#			add_extra_state_shared_building_slots = 1
+	#			add_building_construction = {
+	#				type = infrastructure
+	#				level = 1
+	#				instant_build = yes
+	#			}
+	#			add_building_construction = {
+	#				type = dockyard
+	#				level = 1
+	#				instant_build = yes
+	#			}
+	#		}
+	#		add_ideas = NAT_idea_railways
+	#	}
+	#}
 	focus = {
 		id = NAT_prep_grand_pilgrimage
 		icon = GFX_goal_NAT_prep_grand_pilgrimage
 		cost = 160
-		x = 3 y = 3
+		x = 3 y = 2
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = NAT_not_in_crisis	
 				NOT = { has_country_flag = NAT_prep_pilgrimage_cancelled }
 			}
 		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { focus = NAT_prep_hear_report }
 		prerequisite = { focus = NAT_prep_mavuika_tour }
-		prerequisite = { focus = NAT_prep_arena_repair }
-		prerequisite = { focus = NAT_prep_transport }
+		prerequisite = { focus = NAT_prep_maintain_flame }
+		prerequisite = { focus = NAT_prep_notify_tribes }
 		select_effect = {
 			hidden_effect = {
 				country_event = { id = NAT_prep_events.1 }
 			}
 		}
 		completion_reward = {
-			add_war_support = 1
-			add_stability = 1
-			set_country_flag = NAT_pilgrimage_held
+			#add_war_support = 1
+			#add_stability = 1
+			#set_country_flag = NAT_pilgrimage_held
 			custom_effect_tooltip = NAT_we_will_soon_win
 		}
 	}

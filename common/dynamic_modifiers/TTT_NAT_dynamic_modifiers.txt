@@ -54,17 +54,19 @@ NAT_idea_phlogiston_economy_dynamic = {
 NAT_final_battle_dynamic = {
 	icon = GFX_idea_NAT_idea_unknown
 	enable = {
-		has_global_flag = NAT_final_battle_started
+		#has_global_flag = NAT_final_battle_started
+		has_country_flag = NAT_crisis_started
+		NOT = { has_global_flag = NAT_final_battle_over }
 	}
 	remove_trigger = {
 		OR = {
 			has_global_flag = NAT_final_battle_over
-			NOT = { has_global_flag = NAT_final_battle_started }
+			NOT = { has_country_flag = NAT_crisis_started }
 		}
 	}
 	army_attack_factor = NAT_final_battle_attack
 	army_defence_factor = NAT_final_battle_defence
-	army_hp_factor = NAT_final_battle_hp
+	army_strength_factor = NAT_final_battle_hp
 	army_org_factor = NAT_final_battle_org
 	army_org_regain = NAT_final_battle_org_regain
 	army_morale_factor = NAT_final_battle_morale

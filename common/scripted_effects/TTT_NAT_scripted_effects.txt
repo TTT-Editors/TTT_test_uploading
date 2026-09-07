@@ -2,6 +2,20 @@
 #强化“深渊前线”效果
 NAT_strengthen_frontline_idea = {
 	if = {
+		limit = { has_idea = NAT_idea_abyss_frontline_5 }
+		swap_ideas = {
+			remove_idea = NAT_idea_abyss_frontline_5
+			add_idea = NAT_idea_abyss_frontline_6
+		}
+	}
+	else_if = {
+		limit = { has_idea = NAT_idea_abyss_frontline_4 }
+		swap_ideas = {
+			remove_idea = NAT_idea_abyss_frontline_4
+			add_idea = NAT_idea_abyss_frontline_5
+		}
+	}
+	else_if = {
 		limit = { has_idea = NAT_idea_abyss_frontline_3 }
 		swap_ideas = {
 			remove_idea = NAT_idea_abyss_frontline_3
@@ -74,39 +88,45 @@ NAT_abyss_pressure_100_failure = {
 }
 
 # 计算决战动态修正：0.5 - 深渊侵蚀度*0.01
-NAT_calculate_final_battle_modifier = {
-	set_variable = { NAT_final_battle_attack = NAT_abyss_pressure }
-	set_variable = { NAT_final_battle_hp = NAT_abyss_pressure }
-	set_variable = { NAT_final_battle_ws = NAT_abyss_pressure }
-	set_variable = { NAT_final_battle_prod = NAT_abyss_pressure }
-	multiply_variable = { var = NAT_final_battle_attack value = -0.01 }
-	multiply_variable = { var = NAT_final_battle_hp value = -0.01 }
-	multiply_variable = { var = NAT_final_battle_ws value = -0.01 }
-	multiply_variable = { var = NAT_final_battle_prod value = -0.01 }
-	add_to_variable = { NAT_final_battle_attack = 0.5 }
-	add_to_variable = { NAT_final_battle_hp = 0.5 }
-	add_to_variable = { NAT_final_battle_ws = 0.5 }
-	add_to_variable = { NAT_final_battle_prod = 0.5 }
-	add_dynamic_modifier = { modifier = NAT_final_battle_dynamic }
-}
+# 2026-9-6废除，改为在国策中增强此项效果
+#NAT_calculate_final_battle_modifier = {
+	#hidden_effect = {
+		#set_variable = { NAT_final_battle_attack = NAT_abyss_pressure }
+		#set_variable = { NAT_final_battle_hp = NAT_abyss_pressure }
+		#set_variable = { NAT_final_battle_ws = NAT_abyss_pressure }
+		#set_variable = { NAT_final_battle_prod = NAT_abyss_pressure }
+		#multiply_variable = { var = NAT_final_battle_attack value = -0.002 }
+		#multiply_variable = { var = NAT_final_battle_hp value = -0.002 }
+		#multiply_variable = { var = NAT_final_battle_ws value = -0.002 }
+		#multiply_variable = { var = NAT_final_battle_prod value = -0.002 }
+		#add_to_variable = { NAT_final_battle_attack = 0.5 }
+		#add_to_variable = { NAT_final_battle_hp = 0.5 }
+		#add_to_variable = { NAT_final_battle_ws = 0.5 }
+		#add_to_variable = { NAT_final_battle_prod = 0.5 }
+		#add_dynamic_modifier = { modifier = NAT_final_battle_dynamic }
+	#}
+#}
 
 # 决战爆发：释放NAB，转移裂口州，给予古斯托特，继承科技并刷兵
 NAT_spawn_natlan_abyss = {
-	NAT_calculate_final_battle_modifier = yes
+	#NAT_calculate_final_battle_modifier = yes
 	NAT_spawn_random_abyss_breach = yes
 	every_owned_state = {
-		limit = { is_core_of = NAT }
+		limit = {
+			is_core_of = NAT
+			has_dynamic_modifier = NAT_abyss_breach_modifier
+		}
 		add_core_of = NAB
 	}
 	release = NAB
 	NAB = {
-		every_owned_state = {
-			add_core_of = NAT
-			if = {
-				limit = { NOT = { has_state_flag = NAT_abyss_breach } }
-				transfer_state_to = NAT
-			}
-		}
+		#every_owned_state = {
+			#add_core_of = NAT
+		#	if = {
+		#		limit = { NOT = { has_state_flag = NAT_abyss_breach } }
+		#		transfer_state_to = NAT
+		#	}
+		#}
 		set_politics = {
 			ruling_party = hive_mind
 			elections_allowed = no
@@ -120,6 +140,14 @@ NAT_spawn_natlan_abyss = {
 		inherit_technology = NAT
 		set_research_slots = 3
 		NAT_spawn_abyss_army = yes
+	}
+	NAT = {
+		every_owned_state = {
+			limit = {
+				is_core_of = NAT
+			}
+			add_core_of = NAB
+		}
 	}
 	every_possible_country = {
 		limit = { has_character = NAT_Gosoythoth }

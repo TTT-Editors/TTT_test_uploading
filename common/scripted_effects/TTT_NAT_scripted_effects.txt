@@ -46,7 +46,7 @@ NAT_strengthen_frontline_idea = {
 }
 
 # 每30天由 on_action 调用：深渊侵蚀自然增长。
-# NAT_abyss_growth_interval 默认30，决议/国策可把它改成60、90等。
+# NAT_abyss_growth_interval 默认18，决议/国策可把它改成30、60、90等。
 # 2026-8-31修改：将其改为决议倒计时触发而非on_monthly触发，NAT_abyss_events.101、102、103三个事件也改为随机触发而非定时触发。
 NAT_monthly_abyss_growth = {
 	if = {
@@ -70,6 +70,9 @@ NAT_spawn_random_abyss_breach = {
 			is_ttt_island_state = no
 			NOT = { has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
 		}
+		set_state_flag = NAT_abyss_breach
+		set_state_flag = NAT_abyss_breach
+		set_state_flag = NAT_abyss_breach
 		add_dynamic_modifier = {
 			modifier = NAT_abyss_breach_modifier
 			scope = NAT 
@@ -81,6 +84,7 @@ NAT_spawn_random_abyss_breach = {
 NAT_remove_random_abyss_breach = {
 	random_owned_state = {
 		limit = { has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
+		clr_state_flag = NAT_abyss_breach
 		remove_dynamic_modifier = { modifier = NAT_abyss_breach_modifier }
 	}
 }
@@ -309,7 +313,10 @@ NAT_regional_abyss_corruption_change = {
 		}
 		
 		if = {
-			limit = { check_variable = { j = 0 } }
+			limit = {
+				check_variable = { j = 0 }
+				NOT = { has_country_flag = NAT_has_luanched_counterattack }
+			}
 			add_to_variable = { nat_regional_corruption_actual_change^j = 0.25 }
 		}
 		
@@ -320,36 +327,262 @@ NAT_regional_abyss_corruption_change = {
 	}
 	
 	#侵蚀过高的地脉会向周边传播，侵蚀过低的地脉会修复周边的地脉
-	#效果：0-5，每月修复周边0.25；6-25，每月修复周边0.25；51-75，每月侵蚀周边0.25；76-95，每月侵蚀周边0.5；96-100，每月侵蚀周边1
+	#区域地脉侵蚀度及其对应的效果：0-5，每月修复周边0.25；6-25，每月修复周边0.25；51-75，每月侵蚀周边0.25；76-95，每月侵蚀周边0.5；96-100，每月侵蚀周边1
 	#相邻关系：0与1、6相邻；1与0、2、5、6相邻；2与1、3、5、6相邻；3与2、5相邻；4与5相邻；5与1、2、3、4相邻；6与0、1、2相邻
+	
 	#示例如下：
 	if = {
 		limit = { check_variable = { nat_regional_corruption^0 > 95 } }
+		add_to_variable = { NAT_abyss_pressure = 1 }
 		add_to_variable = { nat_regional_corruption_actual_change^1 = 1 }
 		add_to_variable = { nat_regional_corruption_actual_change^6 = 1 }
 	}
 	else_if = {
 		limit = { check_variable = { nat_regional_corruption^0 > 75 } }
+		add_to_variable = { NAT_abyss_pressure = 0.5 }
 		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.5 }
 		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.5 }
 	}
 	else_if = {
 		limit = { check_variable = { nat_regional_corruption^0 > 50 } }
+		add_to_variable = { NAT_abyss_pressure = 0.25 }
 		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.25 }
 		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.25 }
 	}
 	else_if = {
 		limit = { check_variable = { nat_regional_corruption^0 < 6 } }
+		add_to_variable = { NAT_abyss_pressure = -0.5 }
 		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.5 }
 		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.5 }
 	}
 	else_if = {
 		limit = { check_variable = { nat_regional_corruption^0 < 26 } }
+		add_to_variable = { NAT_abyss_pressure = -0.25 }
 		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.25 }
 		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.25 }
 	}
 	
-	#需要你补充
+	#区域1：与0、2、5、6相邻
+	if = {
+		limit = { check_variable = { nat_regional_corruption^1 > 95 } }
+		add_to_variable = { NAT_abyss_pressure = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^1 > 75 } }
+		add_to_variable = { NAT_abyss_pressure = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^1 > 50 } }
+		add_to_variable = { NAT_abyss_pressure = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^1 < 6 } }
+		add_to_variable = { NAT_abyss_pressure = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^1 < 26 } }
+		add_to_variable = { NAT_abyss_pressure = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.25 }
+	}
+
+	#区域2：与1、3、5、6相邻
+	if = {
+		limit = { check_variable = { nat_regional_corruption^2 > 95 } }
+		add_to_variable = { NAT_abyss_pressure = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^2 > 75 } }
+		add_to_variable = { NAT_abyss_pressure = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^2 > 50 } }
+		add_to_variable = { NAT_abyss_pressure = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^2 < 6 } }
+		add_to_variable = { NAT_abyss_pressure = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^2 < 26 } }
+		add_to_variable = { NAT_abyss_pressure = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.25 }
+	}
+
+	#区域3：与2、5相邻
+	if = {
+		limit = { check_variable = { nat_regional_corruption^3 > 95 } }
+		add_to_variable = { NAT_abyss_pressure = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^3 > 75 } }
+		add_to_variable = { NAT_abyss_pressure = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^3 > 50 } }
+		add_to_variable = { NAT_abyss_pressure = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^3 < 6 } }
+		add_to_variable = { NAT_abyss_pressure = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^3 < 26 } }
+		add_to_variable = { NAT_abyss_pressure = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.25 }
+	}
+
+	#区域4：与5相邻
+	if = {
+		limit = { check_variable = { nat_regional_corruption^4 > 95 } }
+		add_to_variable = { NAT_abyss_pressure = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^4 > 75 } }
+		add_to_variable = { NAT_abyss_pressure = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^4 > 50 } }
+		add_to_variable = { NAT_abyss_pressure = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^4 < 6 } }
+		add_to_variable = { NAT_abyss_pressure = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^4 < 26 } }
+		add_to_variable = { NAT_abyss_pressure = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^5 = -0.25 }
+	}
+
+	#区域5：与1、2、3、4相邻
+	if = {
+		limit = { check_variable = { nat_regional_corruption^5 > 95 } }
+		add_to_variable = { NAT_abyss_pressure = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^4 = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^5 > 75 } }
+		add_to_variable = { NAT_abyss_pressure = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^4 = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^5 > 50 } }
+		add_to_variable = { NAT_abyss_pressure = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^4 = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^5 < 6 } }
+		add_to_variable = { NAT_abyss_pressure = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^4 = -0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^5 < 26 } }
+		add_to_variable = { NAT_abyss_pressure = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^3 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^4 = -0.25 }
+	}
+
+	#区域6：与0、1、2相邻
+	if = {
+		limit = { check_variable = { nat_regional_corruption^6 > 95 } }
+		add_to_variable = { NAT_abyss_pressure = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^6 > 75 } }
+		add_to_variable = { NAT_abyss_pressure = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^6 > 50 } }
+		add_to_variable = { NAT_abyss_pressure = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^6 < 6 } }
+		add_to_variable = { NAT_abyss_pressure = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^6 < 26 } }
+		add_to_variable = { NAT_abyss_pressure = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^0 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^2 = -0.25 }
+	}
 	
 	for_loop_effect = {
 		start = 0

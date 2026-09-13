@@ -9,8 +9,7 @@ NAT_tribal_council = {
 		}
 		complete_effect = {
 			add_political_power = -25
-			custom_effect_tooltip = NAT_loyalty_echoes_plus_10_tt
-			add_to_variable = { NAT_loyalty_echoes = 10 }
+			add_to_variable = { NAT_loyalty_echoes = 10  tooltip = NAT_loyalty_echoes_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -23,8 +22,7 @@ NAT_tribal_council = {
 		}
 		complete_effect = {
 			add_political_power = -25
-			custom_effect_tooltip = NAT_loyalty_springs_plus_10_tt
-			add_to_variable = { NAT_loyalty_springs = 10 }
+			add_to_variable = { NAT_loyalty_springs = 10  tooltip = NAT_loyalty_springs_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -37,8 +35,7 @@ NAT_tribal_council = {
 		}
 		complete_effect = {
 			army_experience = -5
-			custom_effect_tooltip = NAT_loyalty_canopy_plus_10_tt
-			add_to_variable = { NAT_loyalty_canopy = 10 }
+			add_to_variable = { NAT_loyalty_canopy = 10  tooltip = NAT_loyalty_canopy_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -51,8 +48,7 @@ NAT_tribal_council = {
 		}
 		complete_effect = {
 			air_experience = -5
-			custom_effect_tooltip = NAT_loyalty_flower_plus_10_tt
-			add_to_variable = { NAT_loyalty_flower = 10 }
+			add_to_variable = { NAT_loyalty_flower = 10  tooltip = NAT_loyalty_flower_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -65,8 +61,7 @@ NAT_tribal_council = {
 		}
 		complete_effect = {
 			add_manpower = -2000
-			custom_effect_tooltip = NAT_loyalty_plenty_plus_10_tt
-			add_to_variable = { NAT_loyalty_plenty = 10 }
+			add_to_variable = { NAT_loyalty_plenty = 10  tooltip = NAT_loyalty_plenty_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -79,8 +74,7 @@ NAT_tribal_council = {
 		}
 		complete_effect = {
 			add_political_power = -50
-			custom_effect_tooltip = NAT_loyalty_nightwind_plus_10_tt
-			add_to_variable = { NAT_loyalty_nightwind = 10 }
+			add_to_variable = { NAT_loyalty_nightwind = 10  tooltip = NAT_loyalty_nightwind_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -93,7 +87,7 @@ NAT_abyss_pressure = {
 		fire_only_once = yes
 		available = { always = no }
 		activation = { tag = NAT }
-		days_mission_timeout = 3000
+		days_mission_timeout = 2100
 		is_good = no
 		timeout_effect = {
 			set_global_flag = NAT_storm_coming
@@ -124,6 +118,30 @@ NAT_abyss_pressure = {
 		}
 		is_good = no
 		timeout_effect = {
+			custom_effect_tooltip = NAT_random_regional_base_change_plus_0_1_tt
+			random_list = {
+				1 = {
+					add_to_variable = { nat_regional_corruption_base_change^0 = 0.1 tooltip = NAT_regional_base_change_0_tt }
+				}
+				1 = {
+					add_to_variable = { nat_regional_corruption_base_change^1 = 0.1 tooltip = NAT_regional_base_change_1_tt }
+				}
+				1 = {
+					add_to_variable = { nat_regional_corruption_base_change^2 = 0.1 tooltip = NAT_regional_base_change_2_tt }
+				}
+				1 = {
+					add_to_variable = { nat_regional_corruption_base_change^3 = 0.1 tooltip = NAT_regional_base_change_3_tt }
+				}
+				1 = {
+					add_to_variable = { nat_regional_corruption_base_change^4 = 0.1 tooltip = NAT_regional_base_change_4_tt }
+				}
+				1 = {
+					add_to_variable = { nat_regional_corruption_base_change^5 = 0.1 tooltip = NAT_regional_base_change_5_tt }
+				}
+				1 = {
+					add_to_variable = { nat_regional_corruption_base_change^6 = 0.1 tooltip = NAT_regional_base_change_6_tt }
+				}
+			}
 			hidden_effect = {
 				activate_mission = NAT_abyss_growing_clock
 				NAT_monthly_abyss_growth = yes
@@ -161,6 +179,38 @@ NAT_abyss_pressure = {
 		}
 	}
 	
+	NAT_sacred_flame_growth_clock = {
+		icon = GFX_decision_NAT_abyss_action
+		available = { always = no }
+		activation = { 
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+			NOT = { has_global_flag = NAT_final_battle_over }
+		}
+		visible = {
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+			NOT = { has_global_flag = NAT_final_battle_over }
+		}
+		days_mission_timeout = NAT_sacred_flame_growth_interval
+		fire_only_once = no
+		cancel_trigger = {
+			OR = {
+				has_global_flag = NAT_abyss_mechanic_abandoned
+				has_global_flag = NAT_final_battle_over
+			}
+		}
+		is_good = yes
+		timeout_effect = {
+			hidden_effect = {
+				activate_mission = NAT_sacred_flame_growth_clock
+			}
+			if = {
+				limit = { check_variable = { NAT_sacred_flame < 100 } }
+				add_to_variable = { NAT_sacred_flame = 1 tooltip = NAT_sacred_flame_change_tt }
+			}
+			clamp_variable = { var = NAT_sacred_flame min = 0 max = 100 }
+		}
+	}
+	
 	NAT_storm_clock = {
 		icon = GFX_decision_NAT_abyss_action
 		fire_only_once = yes
@@ -184,6 +234,13 @@ NAT_abyss_pressure = {
 		complete_effect = {
 			add_equipment_to_stockpile = { type = infantry_equipment amount = -3000 }
 			add_manpower = -6000
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.1 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.1 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.1 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.1 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.1 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.1 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.1 tooltip = NAT_regional_base_change_6_tt }
 			#custom_effect_tooltip = NAT_abyss_pressure_minus_6_tt
 			add_to_variable = { NAT_abyss_pressure = -5 tooltip = NAT_abyss_pressure_change_tt }
 		}
@@ -196,9 +253,8 @@ NAT_abyss_pressure = {
 		available = { check_variable = { NAT_loyalty_nightwind > 5 } }
 		complete_effect = {
 			add_political_power = -50
-			custom_effect_tooltip = NAT_loyalty_nightwind_minus_5_tt
 			#custom_effect_tooltip = NAT_abyss_pressure_minus_8_tt
-			add_to_variable = { NAT_loyalty_nightwind = -5 }
+			add_to_variable = { NAT_loyalty_nightwind = -5  tooltip = NAT_loyalty_nightwind_change_tt }
 			add_to_variable = { NAT_abyss_pressure = -4 tooltip = NAT_abyss_pressure_change_tt }
 			#add_to_variable = { NAT_abyss_pressure = -8 }
 		}
@@ -213,12 +269,10 @@ NAT_abyss_pressure = {
 			NOT = { has_global_flag = NAT_final_battle_over }
 			has_global_flag = NAT_fire_god_revived
 		}
-		available = { check_variable = { NAT_mavuika_fuel > 10 } }
+		available = { check_variable = { NAT_sacred_flame > 5 } }
 		complete_effect = {
-			custom_effect_tooltip = NAT_mavuika_fuel_minus_10_tt
-			custom_effect_tooltip = NAT_abyss_pressure_minus_10_tt
-			add_to_variable = { NAT_mavuika_fuel = -10 }
-			add_to_variable = { NAT_abyss_pressure = -10 }
+			add_to_variable = { NAT_sacred_flame = -5 tooltip = NAT_sacred_flame_change_tt }
+			add_to_variable = { NAT_abyss_pressure = -5 tooltip = NAT_abyss_pressure_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -228,12 +282,11 @@ NAT_abyss_pressure = {
 		days_re_enable = 150
 		available = {
 			has_fuel > 200000
-			check_variable = { NAT_mavuika_fuel < 100 }
+			check_variable = { NAT_sacred_flame < 100 }
 		}
 		complete_effect = {
 			add_fuel = -200000
-			custom_effect_tooltip = NAT_mavuika_fuel_plus_1_tt
-			add_to_variable = { NAT_mavuika_fuel = 1 }
+			add_to_variable = { NAT_sacred_flame = 2 tooltip = NAT_sacred_flame_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -243,11 +296,12 @@ NAT_abyss_pressure = {
 		days_re_enable = 90
 		available = { has_country_flag = NAT_capitano_arrived }
 		complete_effect = {
-			custom_effect_tooltip = NAT_capitano_influence_plus_10_tt
-			custom_effect_tooltip = NAT_abyss_pressure_minus_7_tt
-			add_to_variable = { NAT_capitano_influence = 10 }
-			add_to_variable = { NAT_snezhnaya_influence = 3 }
-			add_to_variable = { NAT_abyss_pressure = -7 }
+			add_popularity = { ideology = national_socialism popularity = 0.01 }
+			add_popularity = {
+				ideology = national_socialism
+				popularity = 0.03
+			}
+			add_to_variable = { NAT_abyss_pressure = -7 tooltip = NAT_abyss_pressure_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -259,11 +313,109 @@ NAT_abyss_pressure = {
 		complete_effect = {
 			add_political_power = -30
 			NAT_remove_random_abyss_breach = yes
-			custom_effect_tooltip = NAT_abyss_pressure_minus_3_tt
-			add_to_variable = { NAT_abyss_pressure = -3 }
+			add_to_variable = { NAT_abyss_pressure = -3  tooltip = NAT_abyss_pressure_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
+	NAT_draw_leyline_map = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 100
+		days_remove = 120
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 3
+		}
+		available = {
+			has_country_flag = NAT_has_national_university
+			num_of_civilian_factories_available_for_projects > 3
+		}
+		remove_effect = {
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.3 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.3 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.3 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.3 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.3 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.3 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.3 tooltip = NAT_regional_base_change_6_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_remodel_leyline = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 100
+		days_remove = 200
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 10
+		}
+		available = {
+			has_completed_focus = NAT_eco_machine_makes_machine
+			num_of_factories > 50
+			num_of_civilian_factories_available_for_projects > 10
+			has_country_flag = NAT_night_kingdom_survey_done
+		}
+		remove_effect = {
+			add_to_variable = { NAT_abyss_growth_interval = 4 tooltip = NAT_abyss_growth_interval_change_tt }
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.2 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.2 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.2 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.2 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.2 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.2 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.2 tooltip = NAT_regional_base_change_6_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_analyze_abyss_patterns = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 150
+		days_remove = 100
+		fire_only_once = yes
+		available = {
+			has_completed_focus = NAT_crisis_transport
+			has_completed_focus = NAT_crisis_save_kachina
+			has_completed_focus = NAT_phase2_recon_offensive
+			has_completed_focus = NAT_eco_national_university
+		}
+		remove_effect = {
+			add_to_variable = { NAT_abyss_growth_interval = 2 tooltip = NAT_abyss_growth_interval_change_tt }
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.2 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.2 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.2 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.2 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.2 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.2 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.2 tooltip = NAT_regional_base_change_6_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	NAT_volcano_counterattack = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_remove = 180
+		fire_only_once = yes
+		available = {
+			has_completed_focus = NAT_phase2_phlogiston_artillery
+			has_completed_focus = NAT_crisis_heroes_muster
+			has_completed_focus = NAT_eco_tech_benefit
+			has_command_power > 49
+			has_manpower > 50000
+			has_country_flag = NAT_night_kingdom_survey_done
+		}
+		complete_effect = {
+			add_command_power = -50
+			add_manpower = -50000
+		}
+		remove_effect = {
+			add_to_variable = { NAT_abyss_growth_interval = 2 tooltip = NAT_abyss_growth_interval_change_tt }
+			add_to_variable = { NAT_sacred_flame_growth_interval = -30 tooltip = NAT_sacred_flame_growth_interval_change_tt }
+			set_country_flag = NAT_has_luanched_counterattack
+			add_to_variable = { NAT_abyss_pressure = -10 tooltip = NAT_abyss_pressure_change_tt }
+			add_to_variable = { nat_regional_corruption^0 = -25 tooltip = NAT_regional_corruption_0_change_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	
 	NAT_abyss_slow_forever = {
 		icon = GFX_decision_NAT_abyss_action
 		cost = 150
@@ -274,8 +426,7 @@ NAT_abyss_pressure = {
 		}
 		complete_effect = {
 			add_political_power = -150
-			custom_effect_tooltip = NAT_abyss_growth_interval_plus_30_tt
-			add_to_variable = { NAT_abyss_growth_interval = 30 }
+			add_to_variable = { NAT_abyss_growth_interval = 30  tooltip = NAT_abyss_growth_interval_change_tt }
 		}
 		ai_will_do = { factor = 0 }
 	}
@@ -287,12 +438,10 @@ NAT_phlogiston_economy = {
 		icon = GFX_decision_NAT_phlogiston_action
 		cost = 25
 		days_re_enable = 30
-		available = { check_variable = { NAT_phlogiston_stockpile > 10 } }
+		available = { always = yes }
 		complete_effect = {
 			add_political_power = -25
-			custom_effect_tooltip = NAT_phlogiston_stockpile_minus_10_tt
-			add_to_variable = { NAT_phlogiston_stockpile = -10 }
-			add_fuel = 1500
+			add_fuel = 1000
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -310,11 +459,9 @@ NAT_phlogiston_economy = {
 		icon = GFX_decision_NAT_phlogiston_action
 		cost = 50
 		days_re_enable = 180
-		available = { check_variable = { NAT_phlogiston_stockpile > 20 } }
+		available = { has_political_power > 50 }
 		complete_effect = {
 			add_political_power = -50
-			custom_effect_tooltip = NAT_phlogiston_stockpile_minus_20_tt
-			add_to_variable = { NAT_phlogiston_stockpile = -20 }
 			add_offsite_building = { type = industrial_complex level = 1 }
 		}
 		ai_will_do = { factor = 1 }
@@ -339,14 +486,13 @@ NAT_final_battle_actions = {
 		days_re_enable = 30
 		complete_effect = {
 			add_political_power = -50
-			custom_effect_tooltip = NAT_all_loyalty_minus_3_tt
 			add_manpower = 20000
-			add_to_variable = { NAT_loyalty_echoes = -3 }
-			add_to_variable = { NAT_loyalty_springs = -3 }
-			add_to_variable = { NAT_loyalty_canopy = -3 }
-			add_to_variable = { NAT_loyalty_flower = -3 }
-			add_to_variable = { NAT_loyalty_plenty = -3 }
-			add_to_variable = { NAT_loyalty_nightwind = -3 }
+			add_to_variable = { NAT_loyalty_echoes = -3  tooltip = NAT_loyalty_echoes_change_tt }
+			add_to_variable = { NAT_loyalty_springs = -3  tooltip = NAT_loyalty_springs_change_tt }
+			add_to_variable = { NAT_loyalty_canopy = -3  tooltip = NAT_loyalty_canopy_change_tt }
+			add_to_variable = { NAT_loyalty_flower = -3  tooltip = NAT_loyalty_flower_change_tt }
+			add_to_variable = { NAT_loyalty_plenty = -3  tooltip = NAT_loyalty_plenty_change_tt }
+			add_to_variable = { NAT_loyalty_nightwind = -3  tooltip = NAT_loyalty_nightwind_change_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}

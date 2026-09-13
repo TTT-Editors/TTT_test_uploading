@@ -2,6 +2,13 @@
 #强化“深渊前线”效果
 NAT_strengthen_frontline_idea = {
 	if = {
+		limit = { has_idea = NAT_idea_abyss_frontline_6 }
+		swap_ideas = {
+			remove_idea = NAT_idea_abyss_frontline_6
+			add_idea = NAT_idea_abyss_frontline_7
+		}
+	}
+	else_if = {
 		limit = { has_idea = NAT_idea_abyss_frontline_5 }
 		swap_ideas = {
 			remove_idea = NAT_idea_abyss_frontline_5
@@ -59,7 +66,8 @@ NAT_monthly_abyss_growth = {
 NAT_spawn_random_abyss_breach = {
 	random_owned_state = {
 		limit = {
-			is_capital = no
+			NOT = { state = 331 }
+			is_ttt_island_state = no
 			NOT = { has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
 		}
 		add_dynamic_modifier = {
@@ -275,5 +283,105 @@ NAT_idea_research_institute_upgrade = {
 	}
 	else = {
 		add_ideas = NAT_idea_research_institute
+	}
+}
+
+#计算地区地脉侵蚀度变化
+#数字对应的地区
+#0→安饶之野，AC；1→万火之瓯，BF；2→踞石山，CM；3→东纳塔，EN；4→奥齐卡纳塔，ON；5→翘枝崖，QC；6→涌流地。TS
+NAT_regional_abyss_corruption_change = {
+	for_loop_effect = {
+		start = 0
+		end = 7
+		value = j
+		
+		#储存圣火时，会让所有地区的地脉侵蚀度每月降低圣火强度的1%
+		set_variable = { nat_regional_corruption_actual_change^j = NAT_sacred_flame }
+		multiply_variable = { var = nat_regional_corruption_actual_change^j value = -0.01 }
+		
+		#添加基础值
+		add_to_variable = { nat_regional_corruption_actual_change^j = nat_regional_corruption_base_change^j }
+		
+		#三个地区需要额外设置
+		if = {
+			limit = { check_variable = { j = 1 } }
+			add_to_variable = { nat_regional_corruption_actual_change^j = -0.5 }
+		}
+		
+		if = {
+			limit = { check_variable = { j = 0 } }
+			add_to_variable = { nat_regional_corruption_actual_change^j = 0.25 }
+		}
+		
+		if = {
+			limit = { check_variable = { j = 3 } }
+			add_to_variable = { nat_regional_corruption_actual_change^j = 0.8 }
+		}
+	}
+	
+	#侵蚀过高的地脉会向周边传播，侵蚀过低的地脉会修复周边的地脉
+	#效果：0-5，每月修复周边0.25；6-25，每月修复周边0.25；51-75，每月侵蚀周边0.25；76-95，每月侵蚀周边0.5；96-100，每月侵蚀周边1
+	#相邻关系：0与1、6相邻；1与0、2、5、6相邻；2与1、3、5、6相邻；3与2、5相邻；4与5相邻；5与1、2、3、4相邻；6与0、1、2相邻
+	#示例如下：
+	if = {
+		limit = { check_variable = { nat_regional_corruption^0 > 95 } }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 1 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^0 > 75 } }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^0 > 50 } }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = 0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^0 < 6 } }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.5 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { nat_regional_corruption^0 < 26 } }
+		add_to_variable = { nat_regional_corruption_actual_change^1 = -0.25 }
+		add_to_variable = { nat_regional_corruption_actual_change^6 = -0.25 }
+	}
+	
+	#需要你补充
+	
+	for_loop_effect = {
+		start = 0
+		end = 7
+		value = j
+		
+		add_to_variable = { nat_regional_corruption^j = nat_regional_corruption_actual_change^j }
+		clamp_variable = { var = nat_regional_corruption^j min = 0 max = 100 }
+		
+		#GUI中的视觉变化
+		if = {
+			limit = { check_variable = { nat_regional_corruption^j > 95 } }
+			set_variable = { nat_regional_corruption_frame^j = 6 }
+		}
+		else_if = {
+			limit = { check_variable = { nat_regional_corruption^j > 75 } }
+			set_variable = { nat_regional_corruption_frame^j = 5 }
+		}
+		else_if = {
+			limit = { check_variable = { nat_regional_corruption^j > 50 } }
+			set_variable = { nat_regional_corruption_frame^j = 4 }
+		}
+		else_if = {
+			limit = { check_variable = { nat_regional_corruption^j > 25 } }
+			set_variable = { nat_regional_corruption_frame^j = 3 }
+		}
+		else_if = {
+			limit = { check_variable = { nat_regional_corruption^j > 5 } }
+			set_variable = { nat_regional_corruption_frame^j = 2 }
+		}
+		else = {
+			set_variable = { nat_regional_corruption_frame^j = 1 }
+		}
 	}
 }

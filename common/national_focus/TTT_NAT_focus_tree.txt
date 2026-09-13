@@ -192,8 +192,7 @@ focus_tree = {
 		prerequisite = { focus = NAT_phase2_ancient_names }
 		prerequisite = { focus = NAT_phase2_hero_training }
 		completion_reward = {
-			army_experience = 30
-			add_manpower = 15000
+			NAT_strengthen_frontline_idea = yes
 		}
 	}
 	focus = {
@@ -203,8 +202,12 @@ focus_tree = {
 		x = 11 y = 4
 		prerequisite = { focus = NAT_crisis_heroes_muster }
 		completion_reward = {
-			custom_effect_tooltip = NAT_ode_charges_plus_1_tt
-			set_variable = { NAT_ode_charges = 1 }
+			#custom_effect_tooltip = NAT_ode_charges_plus_1_tt
+			#set_variable = { NAT_ode_charges = 1 }
+			swap_ideas = {
+				remove_idea = NAT_idea_death_and_ode
+				add_idea = NAT_idea_death_and_ode_2
+			}
 		}
 	}
 	focus = {
@@ -214,11 +217,8 @@ focus_tree = {
 		x = 13 y = 4
 		prerequisite = { focus = NAT_crisis_heroes_muster }
 		completion_reward = {
-			add_tech_bonus = {
-				bonus = 0.75
-				uses = 1
-				category = industry
-			}
+			add_to_variable = { NAT_abyss_growth_interval = 3 tooltip = NAT_abyss_growth_interval_change_tt }
+			add_to_variable = { NAT_abyss_pressure = -7 tooltip = NAT_abyss_pressure_change_tt }
 		}
 	}
 	focus = {
@@ -237,7 +237,13 @@ focus_tree = {
 		prerequisite = { focus = NAT_crisis_ode_prepare }
 		completion_reward = {
 			set_country_flag = NAT_crisis_preparation_done
-			add_war_support = 0.10
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_attack = 0.1 tooltip = army_attack_factor_tt }
+			add_to_variable = { NAT_final_battle_max_planning = 0.1 tooltip = max_planning_factor_tt }
+			add_to_variable = { NAT_final_battle_defence = 0.1 tooltip = army_defence_factor_tt }
+			add_to_variable = { NAT_final_battle_hp = 0.1 tooltip = army_strength_factor_tt }
+			add_to_variable = { NAT_final_battle_org = 0.1 tooltip = army_org_factor_tt }
+			add_to_variable = { NAT_final_battle_morale = 0.1 tooltip = army_morale_factor_tt }
 			country_event = { id = NAT_crisis_events.20 }
 		}
 	}
@@ -305,8 +311,20 @@ focus_tree = {
 		x = 14 y = 1
 		prerequisite = { focus = NAT_crisis_emergence }
 		completion_reward = {
-			army_experience = 50
-			add_manpower = 15000
+			add_daily_mastery = {
+				amount = 0.4
+				days = 500
+				name =  NAT_train_army_tt
+				track = infantry
+			}
+			if = {
+				limit = { has_idea = NAT_idea_dragon_partnership }
+				swap_ideas = {
+					remove_idea = NAT_idea_dragon_partnership
+					add_idea = NAT_idea_dragon_partnership_2
+				}
+			}
+			else = { add_ideas = NAT_idea_dragon_partnership }
 		}
 	}
 	focus = {
@@ -330,9 +348,7 @@ focus_tree = {
 		prerequisite = { focus = NAT_phase2_train_army }
 		mutually_exclusive = { focus = NAT_phase2_total_mobilization }
 		completion_reward = {
-			add_offsite_building = { type = arms_factory level = 1 }
-			add_ideas = NAT_idea_core_defense
-			army_experience = 40
+			TTT_armed_forces_upgrade = yes
 		}
 	}
 	focus = {
@@ -343,9 +359,10 @@ focus_tree = {
 		prerequisite = { focus = NAT_phase2_train_army }
 		mutually_exclusive = { focus = NAT_phase2_elite_army }
 		completion_reward = {
-			add_manpower = 40000
-			add_ideas = NAT_idea_tribal_militia
-			add_war_support = 0.05
+			add_manpower = 120000
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_defence = 0.1 tooltip = army_defence_factor_tt }
+			add_to_variable = { NAT_final_battle_hp = 0.1 tooltip = army_strength_factor_tt }
 		}
 	}
 
@@ -374,8 +391,6 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = NAT_phase2_war_economy }
 		completion_reward = {
-			add_offsite_building = { type = industrial_complex level = 3 }
-			add_stability = 0.10
 			add_ideas = NAT_idea_rebuild_homes
 		}
 	}
@@ -488,7 +503,8 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = NAT_sacred_flame_plus_10_tt
 			add_to_variable = { NAT_sacred_flame = 10 }
-			add_stability = 0.05
+
+			add_war_support = 0.05
 		}
 	}
 
@@ -503,9 +519,7 @@ focus_tree = {
 			focus = NAT_phase2_total_mobilization
 		}
 		completion_reward = {
-			custom_effect_tooltip = NAT_abyss_pressure_minus_3_tt
-			add_to_variable = { NAT_abyss_pressure = -3 }
-			army_experience = 20
+			add_to_variable = { NAT_abyss_pressure = -3 tooltip = NAT_abyss_pressure_change_tt }
 		}
 	}
 	focus = {
@@ -519,7 +533,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = NAT_idea_core_defense
-			add_offsite_building = { type = infrastructure level = 2 }
 		}
 	}
 	focus = {
@@ -532,6 +545,7 @@ focus_tree = {
 		completion_reward = {
 			add_equipment_to_stockpile = { type = artillery_equipment amount = 800 }
 			add_tech_bonus = { bonus = 0.5 uses = 1 category = artillery }
+			add_ideas = NAT_idea_focus_on_artillery
 		}
 	}
 	focus = {
@@ -562,8 +576,17 @@ focus_tree = {
 		x = 13 y = 2
 		prerequisite = { focus = NAT_phase2_train_army }
 		completion_reward = {
-			army_experience = 40
-			add_manpower = 10000
+			every_unit_leader = {
+				add_skill_level = 1
+				add_attack = 2
+				add_logistics = 1
+				add_defense = 1
+			}
+			army_experience = 20
+
+			#every_country_division = {
+			#	add_divisional_commander_xp = 2000
+			#}
 		}
 	}
 

@@ -102,6 +102,21 @@ ideas = {
 			}
 		}
 		
+		NAT_idea_abyss_frontline_7 = {
+			picture = NAT_idea_abyss_frontline
+			allowed = { always = yes }
+			allowed_civil_war = { always = yes }
+			modifier = {
+				war_support_factor = 0.2
+				conscription = 0.03
+				army_core_attack_factor = 0.25
+				army_core_defence_factor = 0.25
+				army_strength_factor = 0.1
+				experience_gain_army = 0.2
+				land_mastery_gain_factor = 0.4
+			}
+		}
+		
 		
 		#六部族盟约
 		NAT_idea_six_tribes_covenant = {
@@ -140,6 +155,18 @@ ideas = {
 				stability_factor = -0.05
 			}
 		}
+		NAT_idea_death_and_ode_2 = {
+			picture = NAT_idea_death_and_ode
+			allowed = { always = yes }
+			allowed_civil_war = { always = yes }
+			modifier = {
+				war_support_factor = 0.10
+				army_morale_factor = 0.1
+				experience_loss_factor = -0.2
+			}
+		}
+		
+		
 		NAT_idea_phlogiston_rationing = {
 			picture = NAT_idea_phlogiston_economy
 			allowed = { always = yes }
@@ -210,8 +237,9 @@ ideas = {
 			allowed = { always = yes }
 			allowed_civil_war = { always = yes }
 			modifier = {
-				stability_factor = 0.05
-				consumer_goods_factor = 0.05
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				consumer_goods_factor = 0.15
 			}
 		}
 		NAT_idea_rebuild_factories = {
@@ -297,8 +325,11 @@ ideas = {
 			allowed = { always = yes }
 			allowed_civil_war = { always = yes }
 			modifier = {
-				production_speed_arms_factory_factor = 0.10
-				consumer_goods_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+				consumer_goods_factor = -0.1
+				stability_factor = -0.2
+				war_support_factor = -0.2
 			}
 		}
 		NAT_idea_export_economy = {
@@ -354,6 +385,58 @@ ideas = {
 			modifier = {
 				experience_gain_army = 0.05
 				experience_gain_air = 0.05
+			}
+		}
+		
+		NAT_idea_dragon_partnership_2 = {
+		
+			picture = NAT_idea_dragon_partnership
+			allowed = { always = no }
+
+			allowed_civil_war = {
+				NOT = { has_government = esotericism }
+				NOT = { has_government = hive_mind }
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				experience_gain_army = 0.1
+				experience_gain_air = 0.1
+				training_time_army_factor = -0.1
+				experience_gain_army_factor = 0.15
+				experience_loss_factor = -0.15
+				org_loss_at_low_org_factor = -0.15
+			}
+		}
+		
+		#关注炮兵
+		NAT_idea_focus_on_artillery = {
+		
+			picture = NAT_idea_dragon_partnership
+			allowed = { always = no }
+
+			allowed_civil_war = {
+				NOT = { has_government = esotericism }
+				NOT = { has_government = hive_mind }
+			}
+
+			removal_cost = -1
+
+			equipment_bonus = {
+				artillery_equipment = {
+					instant = yes
+					build_cost_ic = -0.1
+					reliability = 0.1
+					soft_attack = 0.1
+				}
+			}
+
+			research_bonus = {
+				artillery = 0.15
+			}
+			
+			modifier = {
 			}
 		}
 	}

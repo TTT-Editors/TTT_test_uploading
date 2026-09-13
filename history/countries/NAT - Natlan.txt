@@ -106,18 +106,24 @@ set_variable = { NAT_industry_fuel_gain = 0.05 }
 set_variable = { NAT_industry_factory_energy_consumption = 0.25 }
 set_variable = { NAT_industry_energy_gain = 0 }
 
-add_dynamic_modifier = { modifier = NAT_idea_phlogiston_economy_dynamic }
 
 set_variable = { NAT_abyss_pressure = 17 }
-set_variable = { NAT_death_debt = 25 }
+set_variable = { NAT_abyss_growth_interval = 18 }
 set_variable = { NAT_sacred_flame = 80 }
-set_variable = { NAT_mavuika_fuel = 100 }
-set_variable = { NAT_ode_charges = 0 }
-set_variable = { NAT_heroes_awakened = 1 }
-set_variable = { NAT_capitano_influence = 5 }
-set_variable = { NAT_phlogiston_stockpile = 60 }
-set_variable = { NAT_pilgrimage_cycle = 0 }
-set_variable = { NAT_night_kingdom_integrity = 65 }
+
+#这一变量废除，相关机制与圣火强度合并
+#set_variable = { NAT_mavuika_fuel = 100 }
+
+#这一变量已废除，将替换为国家新兴主义支持度
+#set_variable = { NAT_capitano_influence = 5 }
+
+#下面六个变量废除，暂时想不到更好的替代方案
+#set_variable = { NAT_phlogiston_stockpile = 60 }
+#set_variable = { NAT_pilgrimage_cycle = 0 }
+#set_variable = { NAT_night_kingdom_integrity = 65 }
+#set_variable = { NAT_ode_charges = 0 }
+#set_variable = { NAT_heroes_awakened = 1 }
+#set_variable = { NAT_death_debt = 25 }
 
 set_variable = { NAT_loyalty_echoes = 55 }
 set_variable = { NAT_loyalty_springs = 55 }
@@ -125,6 +131,48 @@ set_variable = { NAT_loyalty_canopy = 50 }
 set_variable = { NAT_loyalty_flower = 45 }
 set_variable = { NAT_loyalty_plenty = 50 }
 set_variable = { NAT_loyalty_nightwind = 50 }
+
+#下面是关于地脉侵蚀度的相关变量
+#数字对应的地区
+#0→安饶之野；1→万火之瓯；2→踞石山；3→东纳塔；4→奥齐卡纳塔；5→翘枝崖；6→涌流地
+#举例：set_variable = { nat_regional_corruption^3 = 100 }，意为将东纳塔当前的地脉侵蚀度设置为100
+
+#当前地脉侵蚀度
+resize_array = { 
+	array = nat_regional_corruption
+	value = 0
+	size = 7
+}
+#设置初值
+set_variable = { nat_regional_corruption^0 = 65 }	#高，图兰大火山在这里，副侵蚀来源，可在决战前消除
+set_variable = { nat_regional_corruption^1 = 0 }	#最低，圣火竞技场在这里
+set_variable = { nat_regional_corruption^2 = 40 }	#中
+set_variable = { nat_regional_corruption^3 = 85 }	#最高，主侵蚀来源，决战之后才能消除
+set_variable = { nat_regional_corruption^4 = 15 }	#低
+set_variable = { nat_regional_corruption^5 = 40 }	#中
+set_variable = { nat_regional_corruption^6 = 25 }	#中低
+
+#当前地脉侵蚀度每月基准变化+设置初值
+resize_array = { 
+	array = nat_regional_corruption_base_change
+	value = 1
+	size = 7
+}
+
+#当前地脉侵蚀度每月实际变化
+#无需设置初值，在on_actions中运算
+resize_array = { 
+	array = nat_regional_corruption_actual_change
+	value = 0
+	size = 7
+}
+
+#GUI视觉效果，无需设置初值，在on_actions中运算
+resize_array = { 
+	array = nat_regional_corruption_frame
+	value = 0
+	size = 7
+}
 
 ####火神复苏：一年后触发
 country_event = { id = NAT_pre_events.10 days = 365 }

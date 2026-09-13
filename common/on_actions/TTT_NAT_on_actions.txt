@@ -2,14 +2,17 @@ on_actions = {
 	on_startup = {
 		effect = {
 			NAT = {
-				set_variable = { NAT_abyss_growth_interval = 18 }
-				set_variable = { NAT_snezhnaya_influence = 0 }
+				#2026-9-13修改：下面的变量已被废除或移至history/countries/NAT文件中
+				#set_variable = { NAT_snezhnaya_influence = 0 }
 				#set_variable = { NAT_abyss_tick = 0 }
-				set_variable = { NAT_breach_event_timer = 0 }
-				set_variable = { NAT_abyss_negative_timer = 0 }
-				add_dynamic_modifier = { modifier = NAT_abyss_pressure_dynamic }
+				#set_variable = { NAT_breach_event_timer = 0 }
+				#set_variable = { NAT_abyss_negative_timer = 0 }
 				activate_mission = NAT_abyss_clock
 				activate_mission = NAT_abyss_growing_clock
+				NAT_regional_abyss_corruption_change = yes
+
+				add_dynamic_modifier = { modifier = NAT_idea_phlogiston_economy_dynamic }
+				add_dynamic_modifier = { modifier = NAT_abyss_pressure_dynamic }
 			}
 		}
 	}
@@ -24,6 +27,14 @@ on_actions = {
 				}
 				set_global_flag = NAT_final_battle_failed
 				set_global_flag = NAT_final_battle_over
+			}
+		}
+	}
+	
+	on_monthly_NAT = {
+		effect = {
+			NAT = {
+				NAT_regional_abyss_corruption_change = yes
 			}
 		}
 	}

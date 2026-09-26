@@ -68,6 +68,8 @@ focus_tree = {
 		prerequisite = { focus = NAT_crisis_rescue_prep }
 		completion_reward = {
 			add_to_variable = { NAT_abyss_pressure = -5 tooltip = NAT_abyss_pressure_change_tt }
+			set_country_flag = NAT_daily_abyss_detection_unlocked
+			unlock_decision_tooltip = {	decision = NAT_daily_abyss_detection }
 		}
 	}
 
@@ -163,6 +165,7 @@ focus_tree = {
 		completion_reward = {
 			add_command_power = 75
 			add_war_support = 0.05
+			add_to_variable = { NAT_sacred_flame_growth_interval = -10 tooltip = NAT_sacred_flame_growth_interval_change_tt }
 		}
 	}
 
@@ -299,6 +302,7 @@ focus_tree = {
 		prerequisite = { focus = NAT_phase2_hero_training }
 		completion_reward = {
 			NAT_strengthen_frontline_idea = yes
+			add_to_variable = { NAT_sacred_flame_growth_interval = -10 tooltip = NAT_sacred_flame_growth_interval_change_tt }
 		}
 	}
 	focus = {
@@ -374,6 +378,7 @@ focus_tree = {
 			add_to_variable = { NAT_final_battle_hp = 0.1 tooltip = army_strength_factor_tt }
 			add_to_variable = { NAT_final_battle_org = 0.1 tooltip = army_org_factor_tt }
 			add_to_variable = { NAT_final_battle_morale = 0.1 tooltip = army_morale_factor_tt }
+			add_to_variable = { NAT_sacred_flame_growth_interval = -10 tooltip = NAT_sacred_flame_growth_interval_change_tt }
 			country_event = { id = NAT_crisis_events.20 }
 		}
 	}
@@ -391,7 +396,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 9
+		x = 6 y = 9
 		available = { always = no }
 		completion_reward = {
 			set_country_flag = NAT_phase2_started
@@ -455,6 +460,8 @@ focus_tree = {
 		x = 2 y = 2
 		prerequisite = { focus = NAT_crisis_tour_tribes }
 		completion_reward = {
+			set_country_flag = NAT_daily_political_education_unlocked
+			unlock_decision_tooltip = { decision = NAT_daily_political_education }
 			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
 			add_to_variable = { NAT_final_battle_org = 0.05 tooltip = army_org_factor_tt }
 			add_to_variable = { NAT_final_battle_org_regain = 0.05 tooltip = army_org_regain_tt }
@@ -469,12 +476,14 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 
+		available = { has_completed_focus = NAT_crisis_save_kachina }
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 		x = 14 y = 1
 		prerequisite = { focus = NAT_crisis_emergence }
 		completion_reward = {
+			unlock_decision_tooltip = {	decision = NAT_daily_train_army }
 			add_daily_mastery = {
 				amount = 0.4
 				days = 500
@@ -489,6 +498,10 @@ focus_tree = {
 				}
 			}
 			else = { add_ideas = NAT_idea_dragon_partnership }
+
+			hidden_effect = {
+				set_country_flag = NAT_phase2_train_army_flag
+			}
 		}
 	}
 	focus = {
@@ -870,23 +883,6 @@ focus_tree = {
 	# ==================== 三、全面战争：地面战阶段（21个，25天） ====================
 	# 召集军官
 	focus = {
-		id = NAT_gw_officer_1
-		icon = GFX_goal_NAT_gw_officer_1
-		cost = 25
-		ai_will_do = {
-			factor = 10
-		}
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		x = 5 y = 10
-		prerequisite = { focus = NAT_phase2_fire_god_plan }
-		available = { has_war_with = NAB }
-		completion_reward = { army_experience = 10 }
-	}
-	focus = {
 		id = NAT_gw_officer_2
 		icon = GFX_goal_NAT_gw_officer_2
 		cost = 25
@@ -898,9 +894,13 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 5 y = 11
-		prerequisite = { focus = NAT_gw_officer_1 }
-		completion_reward = { army_experience = 10 }
+		x = 2 y = 12
+		prerequisite = { focus = NAT_gw_army_1 }
+		completion_reward = {
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_org = 0.05 tooltip = army_org_factor_tt }
+			add_to_variable = { NAT_final_battle_org_regain = 0.05 tooltip = army_org_regain_tt }
+		}
 	}
 	focus = {
 		id = NAT_gw_officer_3
@@ -914,10 +914,9 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 5 y = 12
-		prerequisite = { focus = NAT_gw_officer_2 }
+		x = 4 y = 12
+		prerequisite = { focus = NAT_gw_army_4 }
 		completion_reward = {
-			army_experience = 15
 			set_country_flag = NAT_varesa_available
 			set_country_flag = NAT_chasca_available
 		}
@@ -934,9 +933,18 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 5 y = 13
+		x = 3 y = 13
+		prerequisite = { focus = NAT_gw_officer_2 }
 		prerequisite = { focus = NAT_gw_officer_3 }
 		completion_reward = {
+			every_army_leader = {
+				display_individual_scopes = yes
+				random_select_amount = 3
+				limit = {
+					attack_skill_level < 5
+				}
+				add_attack = 1
+			}
 			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
 			add_to_variable = { NAT_final_battle_max_planning = 0.10  tooltip = max_planning_factor_tt }
 			add_to_variable = { NAT_final_battle_planning_speed = 0.10  tooltip = planning_speed_factor_tt }
@@ -955,30 +963,18 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 10
-		prerequisite = { focus = NAT_phase2_fire_god_plan }
+		x = 2 y = 11
+		prerequisite = { focus = NAT_gw_army_3 }
 		available = { has_war_with = NAB }
-		completion_reward = { add_manpower = 10000 }
-	}
-	focus = {
-		id = NAT_gw_army_2
-		icon = GFX_goal_NAT_gw_army_2
-		cost = 25
-		ai_will_do = {
-			factor = 10
-		}
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		x = 7 y = 11
-		prerequisite = { focus = NAT_gw_army_1 }
-		completion_reward = {
-			add_manpower = 10000
-			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
-			add_to_variable = { NAT_final_battle_hp = 0.05  tooltip = army_strength_factor_tt }
-			add_to_variable = { NAT_final_battle_org_regain = 0.05  tooltip = army_org_regain_tt }
+		completion_reward = { 
+			if = {
+				limit = { has_completed_focus = NAT_phase2_total_mobilization }
+				set_country_flag = NAT_militia_mobilization_unlocked
+			}
+			if = {
+				limit = { has_completed_focus = NAT_phase2_elite_army }
+				set_country_flag = NAT_elite_training_unlocked
+			}
 		}
 	}
 	focus = {
@@ -993,17 +989,10 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 12
-		prerequisite = { focus = NAT_gw_army_2 }
+		x = 3 y = 10
+		prerequisite = { focus = NAT_phase2_fire_god_plan }
 		completion_reward = {
-			if = {
-				limit = { has_completed_focus = NAT_phase2_total_mobilization }
-				set_country_flag = NAT_militia_mobilization_unlocked
-			}
-			if = {
-				limit = { has_completed_focus = NAT_phase2_elite_army }
-				set_country_flag = NAT_elite_training_unlocked
-			}
+			upgrade_conscription_law = yes
 		}
 	}
 	focus = {
@@ -1018,7 +1007,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 13
+		x = 4 y = 11
 		prerequisite = { focus = NAT_gw_army_3 }
 		completion_reward = {
 			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
@@ -1039,8 +1028,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 10
-		prerequisite = { focus = NAT_phase2_fire_god_plan }
+		x = 8 y = 11
+		prerequisite = { focus = NAT_gw_pol_1 }
 		available = { has_war_with = NAB }
 		completion_reward = { add_ideas = NAT_idea_military_economy }
 	}
@@ -1056,28 +1045,9 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 11
-		prerequisite = { focus = NAT_gw_prod_1 }
+		x = 6 y = 11
+		prerequisite = { focus = NAT_gw_pol_1 }
 		completion_reward = { add_ideas = NAT_idea_war_repair }
-	}
-	focus = {
-		id = NAT_gw_prod_3
-		icon = GFX_goal_NAT_gw_prod_3
-		cost = 25
-		ai_will_do = {
-			factor = 10
-		}
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		x = 9 y = 12
-		prerequisite = { focus = NAT_gw_prod_2 }
-		completion_reward = {
-			add_tech_bonus = { bonus = 0.75 uses = 1 category = industry }
-			add_tech_bonus = { bonus = 0.75 uses = 1 category = infantry_weapons }
-		}
 	}
 	focus = {
 		id = NAT_gw_prod_4
@@ -1091,12 +1061,11 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 13
-		prerequisite = { focus = NAT_gw_prod_3 }
+		x = 6 y = 12
+		prerequisite = { focus = NAT_gw_prod_2 }
 		completion_reward = {
-			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
-			add_to_variable = { NAT_final_battle_prod = 0.10  tooltip = production_speed_arms_factory_factor_tt }
-			add_to_variable = { NAT_final_battle_attack = 0.05  tooltip = army_attack_factor_tt }
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_arms_prod = 0.15  tooltip = production_speed_arms_factory_factor_tt }
 		}
 	}
 	# 政治动员
@@ -1112,26 +1081,33 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 11 y = 10
+		x = 7 y = 10
 		prerequisite = { focus = NAT_phase2_fire_god_plan }
 		available = { has_war_with = NAB }
-		completion_reward = { add_political_power = 50 }
-	}
-	focus = {
-		id = NAT_gw_pol_2
-		icon = GFX_goal_NAT_gw_pol_2
-		cost = 25
-		ai_will_do = {
-			factor = 10
+		completion_reward = {
+			add_political_power = 100
+			NAT_Kinich = {
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_modifier_character_trait
+						TRAIT = NAT_dragon_hunter
+					}
+					remove_trait = {
+						trait = NAT_dragon_hunter
+						slot = army_chief
+					}
+					add_trait = {
+						trait = NAT_dragon_hunter_improved
+						slot = army_chief
+					}
+				}
+			}
+			effect_tooltip = {
+				set_temp_variable = { modifier_change_tt = 0.1 tooltip = army_core_attack_factor_tt }
+				set_temp_variable = { modifier_change_tt = 0.1 tooltip = experience_gain_army_tt }
+				set_temp_variable = { modifier_change_tt = 0.1 tooltip = terrain_penalty_reduction_factor_tt }
+			}
 		}
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		x = 11 y = 11
-		prerequisite = { focus = NAT_gw_pol_1 }
-		completion_reward = { add_command_power = 50 }
 	}
 	focus = {
 		id = NAT_gw_pol_3
@@ -1145,9 +1121,16 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 11 y = 12
-		prerequisite = { focus = NAT_gw_pol_2 }
-		completion_reward = { add_stability = 0.05 }
+		x = 8 y = 12
+		prerequisite = { focus = NAT_gw_prod_1 }
+		completion_reward = {
+			NAT_Xilonen = {
+				add_trait = {
+					trait = NAT_zealous_propagandist
+					slot = political_advisor
+				}
+			}
+		}
 	}
 	focus = {
 		id = NAT_gw_pol_4
@@ -1161,7 +1144,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 11 y = 13
+		x = 7 y = 13
+		prerequisite = { focus = NAT_gw_prod_4 }
 		prerequisite = { focus = NAT_gw_pol_3 }
 		completion_reward = {
 			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
@@ -1182,10 +1166,46 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 13 y = 10
+		x = 10 y = 10
 		prerequisite = { focus = NAT_phase2_fire_god_plan }
 		available = { has_war_with = NAB }
-		completion_reward = { ZDG = { add_opinion = { who = NAT value = 10 } } }
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 3000
+				producer = SNE
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 300
+				producer = SNE
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = 300
+				producer = SNE
+			}
+			add_opinion_modifier = {
+				target = SNE
+				modifier = TTT_approves_of_govt 
+			}
+			reverse_add_opinion_modifier = {
+				target = SNE
+				modifier = TTT_approves_of_govt
+			}
+			add_opinion_modifier = {
+				target = ZDG
+				modifier = TTT_approves_of_govt 
+			}
+			reverse_add_opinion_modifier = {
+				target = ZDG
+				modifier = TTT_approves_of_govt
+			}
+			add_popularity = {
+				ideology = national_socialism
+				popularity = 0.1
+			}
+		}
 	}
 	focus = {
 		id = NAT_gw_aid_2
@@ -1199,11 +1219,38 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 13 y = 11
+		x = 10 y = 11
 		prerequisite = { focus = NAT_gw_aid_1 }
 		completion_reward = {
-			FON = { add_opinion = { who = NAT value = 10 } }
-			MOT = { add_opinion = { who = NAT value = 10 } }
+			give_market_access = FON
+			add_equipment_subsidy = {
+				cic = 5000
+				equipment_type = infantry_equipment
+				seller_tags = { FON }
+			}
+			add_opinion_modifier = {
+				target = FON
+				modifier = TTT_approves_of_govt 
+			}
+			reverse_add_opinion_modifier = {
+				target = FON
+				modifier = TTT_approves_of_govt
+			}
+			add_opinion_modifier = {
+				target = MOT
+				modifier = TTT_approves_of_govt 
+			}
+			reverse_add_opinion_modifier = {
+				target = MOT
+				modifier = TTT_approves_of_govt
+			}
+			MOT = {
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = ROOT
+					value = 250
+				}
+			}
 		}
 	}
 	focus = {
@@ -1218,10 +1265,41 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 13 y = 12
+		x = 10 y = 12
 		prerequisite = { focus = NAT_gw_aid_2 }
 		completion_reward = {
-			SUM = { add_opinion = { who = NAT value = 10 } }
+			add_opinion_modifier = {
+				target = SUM
+				modifier = TTT_approves_of_govt 
+			}
+			reverse_add_opinion_modifier = {
+				target = SUM
+				modifier = TTT_approves_of_govt
+			}
+			add_opinion_modifier = {
+				target = SUD
+				modifier = TTT_approves_of_govt 
+			}
+			reverse_add_opinion_modifier = {
+				target = SUD
+				modifier = TTT_approves_of_govt
+			}
+			
+			every_country = {
+				limit = { 
+					OR = {
+						tag = NAT
+						tag = SUM 
+						tag = SUD 
+					}
+				}
+				add_to_tech_sharing_group = nat_sumeru_research
+				send_embargo = ABY
+				send_embargo = NAB
+			}
+
+			custom_effect_tooltip = NAT_education_dynamic_change_tt
+			add_to_variable = { NAT_education_research = 0.05 tooltip = research_speed_factor_tt }
 		}
 	}
 	focus = {
@@ -1236,14 +1314,24 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 13 y = 13
+		x = 10 y = 13
 		prerequisite = { focus = NAT_gw_aid_3 }
 		completion_reward = {
-			LYU = {
-				limit = { NOT = { has_war_with = NAT } }
-				add_opinion = { who = NAT value = 10 }
+			every_country = {
+				limit = { 
+					is_nominate_liyue = yes
+				}
+				add_opinion_modifier = {
+					target = NAT
+					modifier = TTT_approves_of_govt 
+				}
+				reverse_add_opinion_modifier = {
+					target = NAT
+					modifier = TTT_approves_of_govt
+				}
+				send_embargo = ABY
+				send_embargo = NAB
 			}
-			set_country_flag = NAT_foreign_aid_unlocked
 		}
 	}
 	# 最后一战
@@ -1259,15 +1347,16 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 14
+		x = 6 y = 14
 		prerequisite = { focus = NAT_gw_officer_4 }
-		prerequisite = { focus = NAT_gw_army_4 }
-		prerequisite = { focus = NAT_gw_prod_4 }
 		prerequisite = { focus = NAT_gw_pol_4 }
 		prerequisite = { focus = NAT_gw_aid_4 }
 		available = { has_war_with = NAB }
 		completion_reward = {
-			add_ideas = NAT_idea_last_battle
+			add_timed_idea = {
+				idea = NAT_idea_last_battle
+				days = 180
+			}
 			set_country_flag = NAT_ground_war_finished
 		}
 	}
@@ -1286,9 +1375,11 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 16 y = 9
-		available = { has_global_flag = NAT_abyss_defeated }
-		completion_reward = { add_stability = 0.05 }
+		x = 15 y = 12
+		prerequisite = { focus = NAT_uw_admin_2 }
+		completion_reward = { 
+			TTT_government_efficiency_upgrade = yes
+		}
 	}
 	focus = {
 		id = NAT_uw_admin_2
@@ -1302,9 +1393,9 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 16 y = 10
-		prerequisite = { focus = NAT_uw_admin_1 }
-		completion_reward = { add_political_power = 50 }
+		x = 15 y = 11
+		prerequisite = { focus = NAT_uw_admin_6 }
+		completion_reward = { add_manpower = 200000 }
 	}
 	focus = {
 		id = NAT_uw_admin_3
@@ -1318,9 +1409,9 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 16 y = 11
-		prerequisite = { focus = NAT_uw_admin_2 }
-		completion_reward = { add_stability = 0.05 }
+		x = 18 y = 9
+		available = { has_global_flag = NAT_abyss_defeated }
+		completion_reward = { add_political_power = 200 }
 	}
 	focus = {
 		id = NAT_uw_admin_4
@@ -1334,9 +1425,12 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 16 y = 12
+		x = 21 y = 10
 		prerequisite = { focus = NAT_uw_admin_3 }
-		completion_reward = { add_political_power = 50 }
+		completion_reward = { 
+			custom_effect_tooltip = NAT_strengthen_decision_NAT_daily_abyss_detection_tt
+			hidden_effect = { set_country_flag = NAT_uw_admin_4_unlocked }
+		}
 	}
 	focus = {
 		id = NAT_uw_admin_5
@@ -1350,9 +1444,29 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 16 y = 13
+		x = 21 y = 11
 		prerequisite = { focus = NAT_uw_admin_4 }
-		completion_reward = { add_stability = 0.05 }
+		completion_reward = {
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.3 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.3 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.3 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.3 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.3 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.3 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.3 tooltip = NAT_regional_base_change_6_tt }
+			if = {
+				limit = {
+					has_country_flag = NAT_draw_leyline_map_done_flag
+				}
+				add_to_variable = { nat_regional_corruption^0 = -25 tooltip = NAT_regional_corruption_0_change_tt }
+				add_to_variable = { nat_regional_corruption^1 = -25 tooltip = NAT_regional_corruption_1_change_tt }
+				add_to_variable = { nat_regional_corruption^2 = -25 tooltip = NAT_regional_corruption_2_change_tt }
+				add_to_variable = { nat_regional_corruption^3 = -25 tooltip = NAT_regional_corruption_3_change_tt }
+				add_to_variable = { nat_regional_corruption^4 = -25 tooltip = NAT_regional_corruption_4_change_tt }
+				add_to_variable = { nat_regional_corruption^5 = -25 tooltip = NAT_regional_corruption_5_change_tt }
+				add_to_variable = { nat_regional_corruption^6 = -25 tooltip = NAT_regional_corruption_6_change_tt }
+			}
+		}
 	}
 	focus = {
 		id = NAT_uw_admin_6
@@ -1366,15 +1480,22 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 16 y = 14
-		prerequisite = { focus = NAT_uw_admin_5 }
-		completion_reward = { add_political_power = 100 }
+		x = 15 y = 10
+		prerequisite = { focus = NAT_uw_admin_3 }
+		completion_reward = {
+			add_to_variable = { NAT_loyalty_echoes = 10  tooltip = NAT_loyalty_echoes_change_tt }
+			add_to_variable = { NAT_loyalty_springs = 10  tooltip = NAT_loyalty_springs_change_tt }
+			add_to_variable = { NAT_loyalty_canopy = 10  tooltip = NAT_loyalty_canopy_change_tt }
+			add_to_variable = { NAT_loyalty_flower = 10  tooltip = NAT_loyalty_flower_change_tt }
+			add_to_variable = { NAT_loyalty_plenty = 10  tooltip = NAT_loyalty_plenty_change_tt }
+			add_to_variable = { NAT_loyalty_nightwind = 10  tooltip = NAT_loyalty_nightwind_change_tt }
+		}
 	}
 	# 工业
 	focus = {
 		id = NAT_uw_ind_1
 		icon = GFX_goal_NAT_uw_ind_1
-		cost = 28
+		cost = 42
 		ai_will_do = {
 			factor = 10
 		}
@@ -1383,9 +1504,14 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 18 y = 9
-		available = { has_global_flag = NAT_abyss_defeated }
-		completion_reward = { add_fuel = 500 }
+		x = 18 y = 10
+		prerequisite = { focus = NAT_uw_admin_3 }
+		completion_reward = { 
+			custom_effect_tooltip = NAT_get_3_flame_from_state_tt
+			hidden_effect = {
+				set_country_flag = NAT_uw_ind_1_flag
+			}
+		}
 	}
 	focus = {
 		id = NAT_uw_ind_2
@@ -1399,9 +1525,16 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 18 y = 10
-		prerequisite = { focus = NAT_uw_ind_1 }
-		completion_reward = { add_offsite_building = { type = industrial_complex level = 1 } }
+		x = 14 y = 13
+		prerequisite = { focus = NAT_uw_admin_1 }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			custom_effect_tooltip = NAT_ind_change_tt
+			add_to_variable = {
+				NAT_industry_build_speed = 0.05
+				tooltip = production_speed_buildings_factor_tt
+			}
+		}
 	}
 	focus = {
 		id = NAT_uw_ind_3
@@ -1415,9 +1548,13 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 18 y = 11
-		prerequisite = { focus = NAT_uw_ind_2 }
-		completion_reward = { add_ideas = NAT_idea_rebuild_factories }
+		x = 16 y = 13
+		prerequisite = { focus = NAT_uw_admin_1 }
+		completion_reward = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_arms_prod = 0.10 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { NAT_industry_dock_prod = 0.10 tooltip = production_speed_dockyard_factor_tt }
+		}
 	}
 	focus = {
 		id = NAT_uw_ind_4
@@ -1431,9 +1568,27 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 18 y = 12
-		prerequisite = { focus = NAT_uw_ind_3 }
-		completion_reward = { add_offsite_building = { type = infrastructure level = 2 } }
+		x = 14 y = 14
+		prerequisite = { focus = NAT_uw_ind_2 }
+		completion_reward = {
+			every_owned_state = {
+				display_individual_scopes = yes
+				random_select_amount = 6
+				limit = {
+					is_owned_and_controlled_by = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 	focus = {
 		id = NAT_uw_ind_5
@@ -1447,9 +1602,14 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 18 y = 13
-		prerequisite = { focus = NAT_uw_ind_4 }
-		completion_reward = { add_fuel = 1000 }
+		x = 16 y = 14
+		prerequisite = { focus = NAT_uw_ind_3 }
+		completion_reward = {
+			custom_effect_tooltip = NAT_uw_ind_5_tt
+			set_country_flag = NAT_uw_ind_5_flag
+			custom_effect_tooltip = NAT_ind_change_tt
+			add_to_variable = { NAT_industry_energy_gain = 0.1 tooltip = energy_gain_factor_tt }
+		}
 	}
 	focus = {
 		id = NAT_uw_ind_6
@@ -1463,9 +1623,12 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 18 y = 14
+		x = 15 y = 15
+		prerequisite = { focus = NAT_uw_ind_4 }
 		prerequisite = { focus = NAT_uw_ind_5 }
-		completion_reward = { add_ideas = NAT_idea_war_repair }
+		completion_reward = { 
+			TTT_industrial_development_upgrade = yes
+		}
 	}
 	# 军事
 	focus = {
@@ -1480,9 +1643,28 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 20 y = 9
-		available = { has_global_flag = NAT_abyss_defeated }
-		completion_reward = { army_experience = 30 }
+		x = 21 y = 14
+		prerequisite = { focus = NAT_uw_ind_3 }
+		prerequisite = { focus = NAT_uw_mil_5 }
+		completion_reward = { 
+			add_manpower = -20000
+			
+			effect_tooltip = {
+				set_temp_variable = { modifier_change_tt = -15 tooltip = nat_corruption_all_change_tt }
+			}
+
+			hidden_effect = {
+				for_loop_effect = {
+					start = 0
+					end = 7
+					value = j
+					
+					add_to_variable = { nat_regional_corruption^j = -15 }
+					clamp_variable = { var = nat_regional_corruption^j min = 0 max = 100 }
+				}
+			}
+			add_to_variable = { NAT_abyss_pressure = -20 tooltip = NAT_abyss_pressure_change_tt }
+		}
 	}
 	focus = {
 		id = NAT_uw_mil_2
@@ -1496,9 +1678,13 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 20 y = 10
-		prerequisite = { focus = NAT_uw_mil_1 }
-		completion_reward = { add_tech_bonus = { bonus = 0.5 uses = 1 category = infantry_weapons } }
+		x = 21 y = 12
+		prerequisite = { focus = NAT_uw_admin_5 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = infantry_weapons }
+			custom_effect_tooltip = NAT_uw_mil_2_done_tt
+			set_country_flag = NAT_uw_mil_2_flag
+		}
 	}
 	focus = {
 		id = NAT_uw_mil_3
@@ -1512,9 +1698,16 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 20 y = 11
+		x = 20 y = 13
 		prerequisite = { focus = NAT_uw_mil_2 }
-		completion_reward = { army_experience = 30 }
+		completion_reward = { 
+			add_daily_mastery = {
+				amount = 1
+				days = 300
+				name =  NAT_train_army_tt
+				track = infantry
+			}
+		}
 	}
 	focus = {
 		id = NAT_uw_mil_4
@@ -1528,9 +1721,13 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 20 y = 12
+		x = 19 y = 14
 		prerequisite = { focus = NAT_uw_mil_3 }
-		completion_reward = { add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 } }
+		prerequisite = { focus = NAT_uw_ind_3 }
+		completion_reward = {
+			custom_effect_tooltip = NAT_uw_mil_4_done_tt
+			set_country_flag = NAT_uw_mil_4_flag
+		}
 	}
 	focus = {
 		id = NAT_uw_mil_5
@@ -1544,9 +1741,11 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 20 y = 13
-		prerequisite = { focus = NAT_uw_mil_4 }
-		completion_reward = { army_experience = 40 }
+		x = 22 y = 13
+		prerequisite = { focus = NAT_uw_mil_2 }
+		completion_reward = { 
+			add_to_variable = { NAT_sacred_flame = 10 tooltip = NAT_sacred_flame_change_tt }
+			add_to_variable = { NAT_sacred_flame_growth_interval = -30 tooltip = NAT_sacred_flame_growth_interval_change_tt } }
 	}
 	focus = {
 		id = NAT_uw_mil_6
@@ -1560,11 +1759,23 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 20 y = 14
-		prerequisite = { focus = NAT_uw_mil_5 }
+		x = 21 y = 15
+		prerequisite = { focus = NAT_uw_mil_1 }
 		completion_reward = {
-			set_country_flag = NAT_underground_war_finished
-			country_event = { id = NAT_war_events.2 }
+			custom_effect_tooltip = NAT_uw_mil_6_tt
+			hidden_effect = {
+				random_list = {
+					1 = { set_variable = { nat_regional_corruption^0 = 0 } }
+					1 = { set_variable = { nat_regional_corruption^1 = 0 } }
+					1 = { set_variable = { nat_regional_corruption^2 = 0 } }
+					1 = { set_variable = { nat_regional_corruption^3 = 0 } }
+					1 = { set_variable = { nat_regional_corruption^4 = 0 } }
+					1 = { set_variable = { nat_regional_corruption^5 = 0 } }
+					1 = { set_variable = { nat_regional_corruption^6 = 0 } }
+				}
+			}
+			#set_country_flag = NAT_underground_war_finished
+			#country_event = { id = NAT_war_events.2 }
 		}
 	}
 
@@ -1581,7 +1792,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 8 y = 17
+		x = 11 y = 17
 		available = { has_global_flag = NAT_final_battle_won }
 		completion_reward = { add_stability = 0.10 }
 	}
@@ -1597,7 +1808,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 8 y = 18
+		x = 12 y = 18
 		prerequisite = { focus = NAT_post_war_return }
 		completion_reward = { add_stability = 0.05 }
 	}
@@ -1613,8 +1824,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 8 y = 19
-		prerequisite = { focus = NAT_post_war_funerals }
+		x = 10 y = 18
+		prerequisite = { focus = NAT_post_war_return }
 		completion_reward = { add_ideas = NAT_idea_rebuild_homes }
 	}
 	focus = {
@@ -1629,7 +1840,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 8 y = 20
+		x = 10 y = 19
 		prerequisite = { focus = NAT_post_war_rebuild_homes }
 		completion_reward = { add_ideas = NAT_idea_rebuild_factories }
 	}
@@ -1645,8 +1856,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 8 y = 21
-		prerequisite = { focus = NAT_post_war_rebuild_factories }
+		x = 12 y = 19
+		prerequisite = { focus = NAT_post_war_funerals }
 		completion_reward = { add_manpower = 10000 }
 	}
 	focus = {
@@ -1661,7 +1872,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 8 y = 22
+		x = 11 y = 20
+		prerequisite = { focus = NAT_post_war_rebuild_factories }
 		prerequisite = { focus = NAT_post_war_veterans }
 		completion_reward = {
 			set_global_flag = NAT_post_war_done
@@ -1683,7 +1895,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 23
+		x = 6 y = 21
 		prerequisite = { focus = NAT_post_war_new_natlan }
 		mutually_exclusive = { focus = NAT_reform_path_1 }
 		completion_reward = {
@@ -1703,7 +1915,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 24
+		x = 3 y = 22
 		prerequisite = { focus = NAT_tradition_path_1 }
 		completion_reward = { add_stability = 0.05 }
 	}
@@ -1719,8 +1931,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 25
-		prerequisite = { focus = NAT_tradition_path_2 }
+		x = 9 y = 22
+		prerequisite = { focus = NAT_tradition_path_1 }
 		completion_reward = {
 			add_to_variable = { NAT_loyalty_echoes = 10  tooltip = NAT_loyalty_echoes_change_tt }
 			add_to_variable = { NAT_loyalty_springs = 10  tooltip = NAT_loyalty_springs_change_tt }
@@ -1742,7 +1954,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 26
+		x = 10 y = 23
 		prerequisite = { focus = NAT_tradition_path_3 }
 		completion_reward = {
 			add_ideas = NAT_idea_tribal_council_fixed
@@ -1761,8 +1973,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 27
-		prerequisite = { focus = NAT_tradition_path_4 }
+		x = 2 y = 23
+		prerequisite = { focus = NAT_tradition_path_2 }
 		completion_reward = {
 			add_offsite_building = { type = infrastructure level = 1 }
 			add_political_power = 50
@@ -1780,8 +1992,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 28
-		prerequisite = { focus = NAT_tradition_path_5 }
+		x = 6 y = 22
+		prerequisite = { focus = NAT_tradition_path_1 }
 		completion_reward = {
 			add_stability = 0.05
 			add_war_support = 0.05
@@ -1799,8 +2011,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 29
-		prerequisite = { focus = NAT_tradition_path_6 }
+		x = 4 y = 23
+		prerequisite = { focus = NAT_tradition_path_2 }
 		completion_reward = {
 			add_ideas = NAT_idea_night_kingdom_energy
 			add_political_power = 50
@@ -1818,8 +2030,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 30
-		prerequisite = { focus = NAT_tradition_path_7 }
+		x = 8 y = 23
+		prerequisite = { focus = NAT_tradition_path_3 }
 		completion_reward = {
 			add_stability = 0.05
 			add_war_support = 0.05
@@ -1837,8 +2049,12 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 7 y = 31
+		x = 6 y = 24
+		prerequisite = { focus = NAT_tradition_path_5 }
+		prerequisite = { focus = NAT_tradition_path_7 }
+		prerequisite = { focus = NAT_tradition_path_6 }
 		prerequisite = { focus = NAT_tradition_path_8 }
+		prerequisite = { focus = NAT_tradition_path_4 }
 		completion_reward = {
 			set_country_flag = NAT_tradition_path_done
 			add_stability = 0.10
@@ -1858,7 +2074,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 23
+		x = 17 y = 21
 		prerequisite = { focus = NAT_post_war_new_natlan }
 		mutually_exclusive = { focus = NAT_tradition_path_1 }
 		completion_reward = {
@@ -1878,7 +2094,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 24
+		x = 13 y = 22
 		prerequisite = { focus = NAT_reform_path_1 }
 		completion_reward = { add_political_power = 50 }
 	}
@@ -1894,8 +2110,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 25
-		prerequisite = { focus = NAT_reform_path_2 }
+		x = 17 y = 22
+		prerequisite = { focus = NAT_reform_path_1 }
 		completion_reward = {
 			add_stability = 0.05
 			add_ideas = NAT_idea_export_economy
@@ -1913,7 +2129,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 26
+		x = 16 y = 23
 		prerequisite = { focus = NAT_reform_path_3 }
 		completion_reward = {
 			add_offsite_building = { type = industrial_complex level = 2 }
@@ -1932,8 +2148,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 27
-		prerequisite = { focus = NAT_reform_path_4 }
+		x = 18 y = 23
+		prerequisite = { focus = NAT_reform_path_3 }
 		completion_reward = {
 			add_offsite_building = { type = dockyard level = 1 }
 			add_offsite_building = { type = infrastructure level = 1 }
@@ -1951,8 +2167,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 28
-		prerequisite = { focus = NAT_reform_path_5 }
+		x = 13 y = 23
+		prerequisite = { focus = NAT_reform_path_2 }
 		completion_reward = {
 			add_political_power = 100
 			add_stability = 0.05
@@ -1970,8 +2186,8 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 29
-		prerequisite = { focus = NAT_reform_path_6 }
+		x = 21 y = 22
+		prerequisite = { focus = NAT_reform_path_1 }
 		completion_reward = {
 			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
 			add_political_power = 50
@@ -1989,7 +2205,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 30
+		x = 21 y = 23
 		prerequisite = { focus = NAT_reform_path_7 }
 		completion_reward = {
 			add_stability = 0.05
@@ -2008,7 +2224,10 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		x = 9 y = 31
+		x = 17 y = 24
+		prerequisite = { focus = NAT_reform_path_6 }
+		prerequisite = { focus = NAT_reform_path_4 }
+		prerequisite = { focus = NAT_reform_path_5 }
 		prerequisite = { focus = NAT_reform_path_8 }
 		completion_reward = {
 			set_country_flag = NAT_reform_path_done

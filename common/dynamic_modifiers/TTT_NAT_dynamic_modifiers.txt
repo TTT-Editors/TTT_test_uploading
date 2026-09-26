@@ -78,7 +78,16 @@ NAT_final_battle_dynamic = {
 
 NAT_abyss_breach_modifier = {
 	icon = GFX_modifiers_generic_resistance
-	remove_trigger = { NOT = { is_owned_by = NAT } }
+	#icon = GFX_idea_NAT_idea_unknown
+	enable = {
+		always = yes
+	}
+	remove_trigger = {
+		ROOT = {
+			NOT = { is_owned_by = NAT }
+			NOT = { is_owned_by = NAB }
+		}
+	}
 	
 	state_resources_factor = -0.50
 	local_building_slots_factor = -0.50

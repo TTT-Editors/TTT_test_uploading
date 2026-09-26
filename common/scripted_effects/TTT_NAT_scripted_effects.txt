@@ -71,8 +71,7 @@ NAT_spawn_random_abyss_breach = {
 			NOT = { has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
 		}
 		set_state_flag = NAT_abyss_breach
-		set_state_flag = NAT_abyss_breach
-		set_state_flag = NAT_abyss_breach
+		set_demilitarized_zone = yes
 		add_dynamic_modifier = {
 			modifier = NAT_abyss_breach_modifier
 			scope = NAT 
@@ -85,6 +84,7 @@ NAT_remove_random_abyss_breach = {
 	random_owned_state = {
 		limit = { has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
 		clr_state_flag = NAT_abyss_breach
+		set_demilitarized_zone = no
 		remove_dynamic_modifier = { modifier = NAT_abyss_breach_modifier }
 	}
 }
@@ -92,7 +92,7 @@ NAT_remove_random_abyss_breach = {
 # 深渊侵蚀度到100时直接进入决战失败
 NAT_abyss_pressure_100_failure = {
 	if = {
-		limit = { NOT = { exists = NAB } }
+		limit = { NAB = { exists = no } }
 		NAT_spawn_natlan_abyss = yes
 	}
 	set_global_flag = NAT_final_battle_failed
@@ -125,20 +125,14 @@ NAT_spawn_natlan_abyss = {
 	NAT_spawn_random_abyss_breach = yes
 	every_owned_state = {
 		limit = {
-			is_core_of = NAT
-			has_dynamic_modifier = NAT_abyss_breach_modifier
+			#is_core_of = NAT
+			has_state_flag = NAT_abyss_breach
+			#{ has_dynamic_modifier = { modifier = NAT_abyss_breach_modifier } }
 		}
 		add_core_of = NAB
+		NAB = {	transfer_state = PREV }
 	}
-	release = NAB
 	NAB = {
-		#every_owned_state = {
-			#add_core_of = NAT
-		#	if = {
-		#		limit = { NOT = { has_state_flag = NAT_abyss_breach } }
-		#		transfer_state_to = NAT
-		#	}
-		#}
 		set_politics = {
 			ruling_party = hive_mind
 			elections_allowed = no
@@ -302,6 +296,12 @@ NAT_regional_abyss_corruption_change = {
 		#储存圣火时，会让所有地区的地脉侵蚀度每月降低圣火强度的1%
 		set_variable = { nat_regional_corruption_actual_change^j = NAT_sacred_flame }
 		multiply_variable = { var = nat_regional_corruption_actual_change^j value = -0.01 }
+		
+		#完成特定国策，圣火强度对地脉侵蚀度的压制效果翻倍
+		if = {
+			limit = { has_country_flag = NAT_uw_mil_2_flag }
+			multiply_variable = { var = nat_regional_corruption_actual_change^j value = 2 }
+		}
 		
 		#添加基础值
 		add_to_variable = { nat_regional_corruption_actual_change^j = nat_regional_corruption_base_change^j }

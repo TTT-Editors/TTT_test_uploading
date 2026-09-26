@@ -19,24 +19,64 @@ on_actions = {
 		}
 	}
 
-	on_capitulation = {
-		effect = {
-			if = {
-				limit = {
-					tag = NAT
-					has_global_flag = NAT_final_battle_started
-					NOT = { has_global_flag = NAT_final_battle_over }
-				}
-				set_global_flag = NAT_final_battle_failed
-				set_global_flag = NAT_final_battle_over
-			}
-		}
-	}
+	#2026-9-26: moved to common/TTT_peace_on_actions.txt
+	#on_capitulation = {
+	#	effect = {
+	#		if = {
+	#			limit = {
+	#				tag = NAT
+	#				has_global_flag = NAT_final_battle_started
+	#				NOT = { has_global_flag = NAT_final_battle_over }
+	#			}
+	#			set_global_flag = NAT_final_battle_failed
+	#			set_global_flag = NAT_final_battle_over
+	#		}
+	#	}
+	#}
 	
 	on_monthly_NAT = {
 		effect = {
 			NAT = {
-				NAT_regional_abyss_corruption_change = yes
+				if = {
+					limit = { 
+						has_country_flag = NAT_temp_save_flag
+					}	
+					for_loop_effect = {
+						start = 0
+						end = 7
+						value = j
+						
+						add_to_variable = { nat_regional_corruption^j = -5 }
+						clamp_variable = { var = nat_regional_corruption^j min = 0 max = 100 }
+						
+						#GUI中的视觉变化
+						if = {
+							limit = { check_variable = { nat_regional_corruption^j > 95 } }
+							set_variable = { nat_regional_corruption_frame^j = 6 }
+						}
+						else_if = {
+							limit = { check_variable = { nat_regional_corruption^j > 75 } }
+							set_variable = { nat_regional_corruption_frame^j = 5 }
+						}
+						else_if = {
+							limit = { check_variable = { nat_regional_corruption^j > 50 } }
+							set_variable = { nat_regional_corruption_frame^j = 4 }
+						}
+						else_if = {
+							limit = { check_variable = { nat_regional_corruption^j > 25 } }
+							set_variable = { nat_regional_corruption_frame^j = 3 }
+						}
+						else_if = {
+							limit = { check_variable = { nat_regional_corruption^j > 5 } }
+							set_variable = { nat_regional_corruption_frame^j = 2 }
+						}
+						else = {
+							set_variable = { nat_regional_corruption_frame^j = 1 }
+						}
+					}
+					clr_country_flag = NAT_temp_save_flag
+				}
+				else = { NAT_regional_abyss_corruption_change = yes }
 			}
 		}
 	}

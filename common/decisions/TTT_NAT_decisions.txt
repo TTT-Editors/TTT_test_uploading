@@ -86,13 +86,29 @@ NAT_abyss_pressure = {
 		icon = GFX_decision_NAT_abyss_action
 		fire_only_once = yes
 		available = { always = no }
-		activation = { tag = NAT }
-		days_mission_timeout = 2100
+		activation = {
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+			NOT = { has_global_flag = NAT_final_battle_over }
+			NOT = { has_global_flag = NAT_final_battle_failed }
+		}
+		visible = {
+			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
+			NOT = { has_global_flag = NAT_final_battle_over }
+			NOT = { has_global_flag = NAT_final_battle_failed }
+		}
+		days_mission_timeout = 1700
 		is_good = no
+		cancel_trigger = {
+			OR = {
+				has_global_flag = NAT_abyss_mechanic_abandoned
+				has_global_flag = NAT_final_battle_over
+				has_global_flag = NAT_final_battle_failed
+			}
+		}
 		timeout_effect = {
 			set_global_flag = NAT_storm_coming
 			set_global_flag = NAT_abyss_natural_growth_stopped
-			country_event = { id = NAT_war_events.100 }
+			#country_event = { id = NAT_war_events.100 }
 			activate_mission = NAT_storm_clock
 		}
 	}
@@ -103,10 +119,14 @@ NAT_abyss_pressure = {
 		activation = { 
 			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
 			NOT = { has_global_flag = NAT_final_battle_over }
+			NOT = { has_global_flag = NAT_abyss_natural_growth_stopped }
+			NOT = { has_global_flag = NAT_final_battle_failed }
 		}
 		visible = {
 			NOT = { has_global_flag = NAT_abyss_mechanic_abandoned }
 			NOT = { has_global_flag = NAT_final_battle_over }
+			NOT = { has_global_flag = NAT_abyss_natural_growth_stopped }
+			NOT = { has_global_flag = NAT_final_battle_failed }
 		}
 		days_mission_timeout = NAT_abyss_growth_interval
 		fire_only_once = no
@@ -114,36 +134,43 @@ NAT_abyss_pressure = {
 			OR = {
 				has_global_flag = NAT_abyss_mechanic_abandoned
 				has_global_flag = NAT_final_battle_over
+				has_global_flag = NAT_abyss_natural_growth_stopped
+				has_global_flag = NAT_final_battle_failed
 			}
 		}
 		is_good = no
 		timeout_effect = {
 			custom_effect_tooltip = NAT_random_regional_base_change_plus_0_1_tt
-			random_list = {
-				1 = {
-					add_to_variable = { nat_regional_corruption_base_change^0 = 0.1 tooltip = NAT_regional_base_change_0_tt }
-				}
-				1 = {
-					add_to_variable = { nat_regional_corruption_base_change^1 = 0.1 tooltip = NAT_regional_base_change_1_tt }
-				}
-				1 = {
-					add_to_variable = { nat_regional_corruption_base_change^2 = 0.1 tooltip = NAT_regional_base_change_2_tt }
-				}
-				1 = {
-					add_to_variable = { nat_regional_corruption_base_change^3 = 0.1 tooltip = NAT_regional_base_change_3_tt }
-				}
-				1 = {
-					add_to_variable = { nat_regional_corruption_base_change^4 = 0.1 tooltip = NAT_regional_base_change_4_tt }
-				}
-				1 = {
-					add_to_variable = { nat_regional_corruption_base_change^5 = 0.1 tooltip = NAT_regional_base_change_5_tt }
-				}
-				1 = {
-					add_to_variable = { nat_regional_corruption_base_change^6 = 0.1 tooltip = NAT_regional_base_change_6_tt }
+			hidden_effect = {
+				random_list = {
+					1 = {
+						add_to_variable = { nat_regional_corruption_base_change^0 = 0.1 tooltip = NAT_regional_base_change_0_tt }
+					}
+					1 = {
+						add_to_variable = { nat_regional_corruption_base_change^1 = 0.1 tooltip = NAT_regional_base_change_1_tt }
+					}
+					1 = {
+						add_to_variable = { nat_regional_corruption_base_change^2 = 0.1 tooltip = NAT_regional_base_change_2_tt }
+					}
+					1 = {
+						add_to_variable = { nat_regional_corruption_base_change^3 = 0.1 tooltip = NAT_regional_base_change_3_tt }
+					}
+					1 = {
+						add_to_variable = { nat_regional_corruption_base_change^4 = 0.1 tooltip = NAT_regional_base_change_4_tt }
+					}
+					1 = {
+						add_to_variable = { nat_regional_corruption_base_change^5 = 0.1 tooltip = NAT_regional_base_change_5_tt }
+					}
+					1 = {
+						add_to_variable = { nat_regional_corruption_base_change^6 = 0.1 tooltip = NAT_regional_base_change_6_tt }
+					}
 				}
 			}
 			hidden_effect = {
-				activate_mission = NAT_abyss_growing_clock
+				if = {
+					limit = { NOT = { has_global_flag = NAT_abyss_natural_growth_stopped } }
+					activate_mission = NAT_abyss_growing_clock
+				}
 				NAT_monthly_abyss_growth = yes
 			}
 			
@@ -216,7 +243,7 @@ NAT_abyss_pressure = {
 		fire_only_once = yes
 		available = { always = no }
 		activation = { has_global_flag = NAT_storm_coming }
-		days_mission_timeout = 100
+		days_mission_timeout = 40
 		is_good = no
 		timeout_effect = {
 			country_event = { id = NAT_war_events.110 }
@@ -243,6 +270,11 @@ NAT_abyss_pressure = {
 			add_to_variable = { nat_regional_corruption_base_change^6 = -0.1 tooltip = NAT_regional_base_change_6_tt }
 			#custom_effect_tooltip = NAT_abyss_pressure_minus_6_tt
 			add_to_variable = { NAT_abyss_pressure = -5 tooltip = NAT_abyss_pressure_change_tt }
+			if = {
+				limit = { has_country_flag = NAT_uw_mil_4_flag }
+				custom_effect_tooltip = NAT_temp_save_tt
+				set_country_flag = NAT_temp_save_flag
+			}
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -272,7 +304,13 @@ NAT_abyss_pressure = {
 		available = { check_variable = { NAT_sacred_flame > 5 } }
 		complete_effect = {
 			add_to_variable = { NAT_sacred_flame = -5 tooltip = NAT_sacred_flame_change_tt }
-			add_to_variable = { NAT_abyss_pressure = -5 tooltip = NAT_abyss_pressure_change_tt }
+			if = {
+				limit = { has_country_flag = NAT_uw_ind_5_flag }
+				add_to_variable = { NAT_abyss_pressure = -10 tooltip = NAT_abyss_pressure_change_tt }
+			}
+			else = {
+				add_to_variable = { NAT_abyss_pressure = -5 tooltip = NAT_abyss_pressure_change_tt }
+			}
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -314,6 +352,10 @@ NAT_abyss_pressure = {
 			add_political_power = -30
 			NAT_remove_random_abyss_breach = yes
 			add_to_variable = { NAT_abyss_pressure = -3  tooltip = NAT_abyss_pressure_change_tt }
+			if = {
+				limit = { has_country_flag = NAT_uw_ind_1_flag }
+				add_to_variable = { NAT_sacred_flame = 3 tooltip = NAT_sacred_flame_change_tt }
+			}
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -330,6 +372,7 @@ NAT_abyss_pressure = {
 			num_of_civilian_factories_available_for_projects > 3
 		}
 		remove_effect = {
+			set_country_flag = NAT_draw_leyline_map_done_flag
 			add_to_variable = { nat_regional_corruption_base_change^0 = -0.3 tooltip = NAT_regional_base_change_0_tt }
 			add_to_variable = { nat_regional_corruption_base_change^1 = -0.3 tooltip = NAT_regional_base_change_1_tt }
 			add_to_variable = { nat_regional_corruption_base_change^2 = -0.3 tooltip = NAT_regional_base_change_2_tt }
@@ -430,6 +473,226 @@ NAT_abyss_pressure = {
 		}
 		ai_will_do = { factor = 0 }
 	}
+	
+	# 12 给部族发放武器
+	NAT_daily_arm_tribes = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_remove = 180
+		days_re_enable = 180
+		available = {
+			has_equipment = { infantry_equipment > 1000 }
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 }
+			add_to_variable = { NAT_loyalty_echoes = 5 tooltip = NAT_loyalty_echoes_change_tt }
+			add_to_variable = { NAT_loyalty_springs = 5 tooltip = NAT_loyalty_springs_change_tt }
+			add_to_variable = { NAT_loyalty_canopy = 5 tooltip = NAT_loyalty_canopy_change_tt }
+			add_to_variable = { NAT_loyalty_flower = 5 tooltip = NAT_loyalty_flower_change_tt }
+			add_to_variable = { NAT_loyalty_plenty = 5 tooltip = NAT_loyalty_plenty_change_tt }
+			add_to_variable = { NAT_loyalty_nightwind = 5 tooltip = NAT_loyalty_nightwind_change_tt }
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.25 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.25 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.25 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.25 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.25 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.25 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.25 tooltip = NAT_regional_base_change_6_tt }
+		}
+		remove_effect = {
+			add_to_variable = { NAT_abyss_pressure = -5 tooltip = NAT_abyss_pressure_change_tt }
+			add_to_variable = { nat_regional_corruption_base_change^0 = 0.25 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = 0.25 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = 0.25 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = 0.25 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = 0.25 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = 0.25 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = 0.25 tooltip = NAT_regional_base_change_6_tt }
+			add_to_variable = { NAT_abyss_growth_interval = 1 tooltip = NAT_abyss_growth_interval_change_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 13 加强侦测深渊动向
+	NAT_daily_abyss_detection = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_remove = 60
+		days_re_enable = 60
+		fixed_random_seed = no
+		available = {
+			has_equipment = { infantry_equipment > 500 }
+			has_equipment = { support_equipment > 20 }
+		}
+		visible = {
+			has_country_flag = NAT_daily_abyss_detection_unlocked
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = NAT_uw_admin_4_unlocked
+					custom_effect_tooltip = NAT_random_regional_base_change_minus_0_5_tt
+					hidden_effect = {
+						random_list = {
+							1 = { add_to_variable = { nat_regional_corruption_base_change^0 = -0.5 tooltip = NAT_regional_base_change_0_tt } }
+							1 = { add_to_variable = { nat_regional_corruption_base_change^1 = -0.5 tooltip = NAT_regional_base_change_1_tt } }
+							1 = { add_to_variable = { nat_regional_corruption_base_change^2 = -0.5 tooltip = NAT_regional_base_change_2_tt } }
+							1 = { add_to_variable = { nat_regional_corruption_base_change^3 = -0.5 tooltip = NAT_regional_base_change_3_tt } }
+							1 = { add_to_variable = { nat_regional_corruption_base_change^4 = -0.5 tooltip = NAT_regional_base_change_4_tt } }
+							1 = { add_to_variable = { nat_regional_corruption_base_change^5 = -0.5 tooltip = NAT_regional_base_change_5_tt } }
+							1 = { add_to_variable = { nat_regional_corruption_base_change^6 = -0.5 tooltip = NAT_regional_base_change_6_tt } }
+						}
+					}
+					add_to_variable = { NAT_abyss_pressure = -2 tooltip = NAT_abyss_pressure_change_tt }
+				}
+			}
+			else = {
+				custom_effect_tooltip = NAT_random_regional_base_change_minus_0_25_tt
+				hidden_effect = {
+					random_list = {
+						1 = { add_to_variable = { nat_regional_corruption_base_change^0 = -0.25 tooltip = NAT_regional_base_change_0_tt } }
+						1 = { add_to_variable = { nat_regional_corruption_base_change^1 = -0.25 tooltip = NAT_regional_base_change_1_tt } }
+						1 = { add_to_variable = { nat_regional_corruption_base_change^2 = -0.25 tooltip = NAT_regional_base_change_2_tt } }
+						1 = { add_to_variable = { nat_regional_corruption_base_change^3 = -0.25 tooltip = NAT_regional_base_change_3_tt } }
+						1 = { add_to_variable = { nat_regional_corruption_base_change^4 = -0.25 tooltip = NAT_regional_base_change_4_tt } }
+						1 = { add_to_variable = { nat_regional_corruption_base_change^5 = -0.25 tooltip = NAT_regional_base_change_5_tt } }
+						1 = { add_to_variable = { nat_regional_corruption_base_change^6 = -0.25 tooltip = NAT_regional_base_change_6_tt } }
+					}
+				}
+				add_to_variable = { NAT_abyss_pressure = -1 tooltip = NAT_abyss_pressure_change_tt }
+			}
+			add_to_variable = { NAT_abyss_growth_interval = 1 tooltip = NAT_abyss_growth_interval_change_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 14 加速圣火恢复
+	NAT_daily_accelerate_flame = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 50
+		days_remove = 30
+		days_re_enable = 150
+		remove_effect = {
+			add_to_variable = { NAT_sacred_flame_growth_interval = -5 tooltip = NAT_sacred_flame_growth_interval_change_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 15 测试新式武器
+	NAT_daily_test_weapons = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_remove = 45
+		days_re_enable = 45
+		fixed_random_seed = no
+		available = {
+			has_tech = infantry_weapons_2
+			has_command_power > 59
+		}
+		complete_effect = {
+			add_command_power = -60
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_random_regional_base_change_minus_0_3_tt
+			random_list = {
+				1 = { add_to_variable = { nat_regional_corruption_base_change^0 = -0.3 tooltip = NAT_regional_base_change_0_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^1 = -0.3 tooltip = NAT_regional_base_change_1_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^2 = -0.3 tooltip = NAT_regional_base_change_2_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^3 = -0.3 tooltip = NAT_regional_base_change_3_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^4 = -0.3 tooltip = NAT_regional_base_change_4_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^5 = -0.3 tooltip = NAT_regional_base_change_5_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^6 = -0.3 tooltip = NAT_regional_base_change_6_tt } }
+			}
+			add_to_variable = { NAT_abyss_pressure = -1 tooltip = NAT_abyss_pressure_change_tt }
+			add_to_variable = { NAT_abyss_growth_interval = 2 tooltip = NAT_abyss_growth_interval_change_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 16 改变地脉走向
+	NAT_daily_change_leyline = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 0
+		days_remove = 90
+		days_re_enable = 180
+		fixed_random_seed = no
+		available = {
+			num_of_civilian_factories_available_for_projects > 5
+		}
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_random_regional_base_change_minus_1_tt
+			random_list = {
+				1 = { add_to_variable = { nat_regional_corruption_base_change^0 = -1 tooltip = NAT_regional_base_change_0_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^1 = -1 tooltip = NAT_regional_base_change_1_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^2 = -1 tooltip = NAT_regional_base_change_2_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^3 = -1 tooltip = NAT_regional_base_change_3_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^4 = -1 tooltip = NAT_regional_base_change_4_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^5 = -1 tooltip = NAT_regional_base_change_5_tt } }
+				1 = { add_to_variable = { nat_regional_corruption_base_change^6 = -1 tooltip = NAT_regional_base_change_6_tt } }
+			}
+			add_to_variable = { NAT_abyss_growth_interval = 1 tooltip = NAT_abyss_growth_interval_change_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 17 动员部族
+	NAT_daily_mobilize_tribes = {
+		icon = GFX_decision_NAT_abyss_action
+		cost = 75
+		days_remove = 90
+		days_re_enable = 270
+		complete_effect = {
+			add_to_variable = { NAT_loyalty_echoes = -10 tooltip = NAT_loyalty_echoes_change_tt }
+			add_to_variable = { NAT_loyalty_springs = -10 tooltip = NAT_loyalty_springs_change_tt }
+			add_to_variable = { NAT_loyalty_canopy = -10 tooltip = NAT_loyalty_canopy_change_tt }
+			add_to_variable = { NAT_loyalty_flower = -10 tooltip = NAT_loyalty_flower_change_tt }
+			add_to_variable = { NAT_loyalty_plenty = -10 tooltip = NAT_loyalty_plenty_change_tt }
+			add_to_variable = { NAT_loyalty_nightwind = -10 tooltip = NAT_loyalty_nightwind_change_tt }
+		}
+		remove_effect = {
+			add_to_variable = { NAT_abyss_pressure = -2 tooltip = NAT_abyss_pressure_change_tt }
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.1 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.1 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.1 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.1 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.1 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.1 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.1 tooltip = NAT_regional_base_change_6_tt }
+			add_to_variable = { NAT_abyss_growth_interval = 1 tooltip = NAT_abyss_growth_interval_change_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 22 请求至冬帮忙处理深渊
+	NAT_daily_zdg_abyss_help = {
+		icon = GFX_decision_NAT_foreign_aid
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		available = {
+			has_country_flag = NAT_capitano_arrived
+		}
+		modifier = {
+			national_socialism_drift = 0.1
+		}
+		complete_effect = {
+			add_to_variable = { nat_regional_corruption^0 = -2 tooltip = NAT_regional_corruption_0_change_tt }
+			add_to_variable = { nat_regional_corruption^1 = -2 tooltip = NAT_regional_corruption_1_change_tt }
+			add_to_variable = { nat_regional_corruption^2 = -2 tooltip = NAT_regional_corruption_2_change_tt }
+			add_to_variable = { nat_regional_corruption^3 = -2 tooltip = NAT_regional_corruption_3_change_tt }
+			add_to_variable = { nat_regional_corruption^4 = -2 tooltip = NAT_regional_corruption_4_change_tt }
+			add_to_variable = { nat_regional_corruption^5 = -2 tooltip = NAT_regional_corruption_5_change_tt }
+			add_to_variable = { nat_regional_corruption^6 = -2 tooltip = NAT_regional_corruption_6_change_tt }
+		}
+		remove_effect = {
+			add_to_variable = { NAT_abyss_growth_interval = 1 tooltip = NAT_abyss_growth_interval_change_tt }
+			add_to_variable = { nat_regional_corruption_base_change^0 = -0.05 tooltip = NAT_regional_base_change_0_tt }
+			add_to_variable = { nat_regional_corruption_base_change^1 = -0.05 tooltip = NAT_regional_base_change_1_tt }
+			add_to_variable = { nat_regional_corruption_base_change^2 = -0.05 tooltip = NAT_regional_base_change_2_tt }
+			add_to_variable = { nat_regional_corruption_base_change^3 = -0.05 tooltip = NAT_regional_base_change_3_tt }
+			add_to_variable = { nat_regional_corruption_base_change^4 = -0.05 tooltip = NAT_regional_base_change_4_tt }
+			add_to_variable = { nat_regional_corruption_base_change^5 = -0.05 tooltip = NAT_regional_base_change_5_tt }
+			add_to_variable = { nat_regional_corruption_base_change^6 = -0.05 tooltip = NAT_regional_base_change_6_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
 }
 
 # ==================== 燃素经济 ====================
@@ -476,6 +739,152 @@ NAT_phlogiston_economy = {
 		}
 		ai_will_do = { factor = 1 }
 	}
+	# 5 追加投资
+	NAT_daily_extra_investment = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 50
+		days_remove = 60
+		days_re_enable = 120
+		visible = {
+			NOT = { has_country_flag = NAT_benefiting_from_industry }
+		}
+		complete_effect = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_pp_factor = -0.05 tooltip = political_power_factor_tt }
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_max_eff = 0.05 tooltip = production_factory_max_efficiency_factor_tt }
+			add_to_variable = { NAT_industry_build_speed = 0.05 tooltip = production_speed_buildings_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 6 重视民用经济
+	NAT_daily_civilian_economy = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 25
+		days_remove = 60
+		days_re_enable = 60
+		visible = {
+			NOT = { has_country_flag = NAT_benefiting_from_industry }
+		}
+		complete_effect = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_max_eff = -0.05 tooltip = production_factory_max_efficiency_factor_tt }
+		}
+		remove_effect = {
+			add_stability = 0.05
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_build_speed = 0.05 tooltip = production_speed_buildings_factor_tt }
+			add_to_variable = { NAT_industry_consumer = -0.05 tooltip = consumer_goods_factor_tt }
+			add_to_variable = { NAT_industry_pp_factor = 0.05 tooltip = political_power_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 7 重视军用经济
+	NAT_daily_military_economy = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 25
+		days_remove = 60
+		days_re_enable = 60
+		visible = {
+			NOT = { has_country_flag = NAT_benefiting_from_industry }
+		}
+		complete_effect = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_consumer = 0.10 tooltip = consumer_goods_factor_tt }
+		}
+		remove_effect = {
+			add_stability = -0.05
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_arms_prod = 0.10 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { NAT_industry_dock_prod = 0.10 tooltip = production_speed_dockyard_factor_tt }
+			add_to_variable = { NAT_industry_max_eff = 0.05 tooltip = production_factory_max_efficiency_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 8 专注逆向工程
+	NAT_daily_reverse_engineering = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 100
+		days_remove = 180
+		days_re_enable = 240
+		visible = {
+			has_country_flag = NAT_has_reverse_engineering
+			NOT = { has_country_flag = NAT_benefiting_from_industry }
+		}
+		modifier = {
+			research_speed_factor = -0.35
+			political_power_cost = 0.25
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_max_eff = 0.05 tooltip = production_factory_max_efficiency_factor_tt }
+			add_to_variable = { NAT_industry_build_speed = 0.05 tooltip = production_speed_buildings_factor_tt }
+			add_to_variable = { NAT_industry_slots = 0.10 tooltip = global_building_slots_factor_tt }
+			add_to_variable = { NAT_industry_local_resources = 0.10 tooltip = local_resources_factor_tt }
+			add_to_variable = { NAT_industry_fuel_gain = 0.10 tooltip = fuel_gain_factor_tt }
+			add_to_variable = { NAT_industry_energy_gain = 0.10 tooltip = energy_gain_factor_tt }
+			add_to_variable = { NAT_industry_factory_energy_consumption = -0.10 tooltip = factory_energy_consumption_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 9 从工业中获益
+	NAT_daily_benefit_from_industry = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 0
+		days_remove = 120
+		days_re_enable = 240
+		available = {
+			has_completed_focus = NAT_eco_tech_benefit
+		}
+		complete_effect = {
+			set_country_flag = NAT_benefiting_from_industry
+		}
+		remove_effect = {
+			clr_country_flag = NAT_benefiting_from_industry
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_pp_factor = 0.10 tooltip = political_power_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 18 请求至冬工业援助
+	NAT_daily_zdg_industry_aid = {
+		icon = GFX_decision_NAT_foreign_aid
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		available = {
+			has_country_flag = NAT_capitano_arrived
+		}
+		modifier = {
+			national_socialism_drift = 0.1
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_max_eff = 0.05 tooltip = production_factory_max_efficiency_factor_tt }
+			add_to_variable = { NAT_industry_build_speed = 0.05 tooltip = production_speed_buildings_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 19 请求至冬经济援助
+	NAT_daily_zdg_economic_aid = {
+		icon = GFX_decision_NAT_foreign_aid
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		available = {
+			has_country_flag = NAT_capitano_arrived
+		}
+		modifier = {
+			national_socialism_drift = 0.1
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_idea_phlogiston_economy_dynamic_change_tt
+			add_to_variable = { NAT_industry_consumer = -0.10 tooltip = consumer_goods_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
 }
 
 # ==================== 决战动员 ====================
@@ -494,29 +903,128 @@ NAT_final_battle_actions = {
 			add_to_variable = { NAT_loyalty_plenty = -3  tooltip = NAT_loyalty_plenty_change_tt }
 			add_to_variable = { NAT_loyalty_nightwind = -3  tooltip = NAT_loyalty_nightwind_change_tt }
 		}
-		ai_will_do = { factor = 1 }
+		ai_will_do = { factor = 0 }
 	}
-	NAT_final_overtime_work = {
-		icon = GFX_decision_NAT_abyss_action
-		cost = 0
-		days_re_enable = 45
-		available = { has_political_power > 25 }
+	#NAT_final_overtime_work = {
+	#	icon = GFX_decision_NAT_abyss_action
+	#	cost = 0
+	#	days_re_enable = 45
+	#	available = { has_political_power > 25 }
+	#	complete_effect = {
+	#		add_political_power = -25
+	#		add_stability = -0.02
+	#		add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 }
+	#	}
+	#	ai_will_do = { factor = 1 }
+	#}
+	#NAT_final_quality_for_quantity = {
+	#	icon = GFX_decision_NAT_abyss_action
+	#	cost = 0
+	#	days_re_enable = 45
+	#	available = { army_experience > 20 }
+	#	complete_effect = {
+	#		army_experience = -20
+	#		add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 }
+	#		add_manpower = 5000
+	#	}
+	#	ai_will_do = { factor = 1 }
+	#}
+	# 1 训练军队
+	NAT_daily_train_army = {
+		icon = GFX_decision_NAT_elite_training
+
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		
+		custom_cost_text = decision_cost_CP_50_cp
+		days_remove = 60
+		days_re_enable = 120
+		visible = {
+			has_country_flag = NAT_phase2_train_army_flag
+		}
 		complete_effect = {
-			add_political_power = -25
-			add_stability = -0.02
-			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 }
+			add_command_power = -50
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_attack = 0.025 tooltip = army_attack_factor_tt }
+			add_to_variable = { NAT_final_battle_defence = 0.025 tooltip = army_defence_factor_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
-	NAT_final_quality_for_quantity = {
-		icon = GFX_decision_NAT_abyss_action
-		cost = 0
-		days_re_enable = 45
-		available = { army_experience > 20 }
+	# 2 政治教育
+	NAT_daily_political_education = {
+		icon = GFX_decision_NAT_elite_training
+		cost = 40
+		days_remove = 60
+		days_re_enable = 60
+		modifier = {
+			political_power_cost = 0.25
+		}
+		visible = { has_country_flag = NAT_daily_political_education_unlocked }
+		remove_effect = {
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_org = 0.05 tooltip = army_org_factor_tt }
+			add_to_variable = { NAT_final_battle_org_regain = 0.05 tooltip = army_org_regain_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 3 训练基层军官
+	NAT_daily_train_officers = {
+		icon = GFX_decision_NAT_elite_training
+		cost = 25
+		days_remove = 60
+		days_re_enable = 120
+		available = {
+			army_experience > 39
+		}
 		complete_effect = {
-			army_experience = -20
-			add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 }
-			add_manpower = 5000
+			army_experience = -40
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_planning_speed = 0.05 tooltip = planning_speed_factor_tt }
+			add_to_variable = { NAT_final_battle_max_planning = 0.05 tooltip = max_planning_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 4 改进战地医疗
+	NAT_daily_field_medical = {
+		icon = GFX_decision_NAT_elite_training
+		cost = 50
+		days_remove = 60
+		days_re_enable = 60
+		available = {
+			has_equipment = { motorized_equipment > 49 }
+			has_equipment = { support_equipment > 49 }
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = motorized_equipment amount = -50 }
+			add_equipment_to_stockpile = { type = support_equipment amount = -50 }
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_hp = 0.05 tooltip = army_strength_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 20 请求至冬派遣教官
+	NAT_daily_zdg_instructors = {
+		icon = GFX_decision_NAT_foreign_aid
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		available = {
+			has_country_flag = NAT_capitano_arrived
+		}
+		modifier = {
+			national_socialism_drift = 0.1
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_final_battle_dynamic_change_tt
+			add_to_variable = { NAT_final_battle_attack = 0.05 tooltip = army_attack_factor_tt }
+			add_to_variable = { NAT_final_battle_org = 0.05 tooltip = army_org_factor_tt }
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -582,3 +1090,65 @@ NAT_post_war_cleanup = {
 		ai_will_do = { factor = 1 }
 	}
 }
+NAT_daily_decisions = {
+	# 10 培养教师
+	NAT_daily_train_teachers = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 0
+		days_remove = 90
+		days_re_enable = 90
+		visible = {
+			has_country_flag = NAT_daily_train_teachers_unlocked			
+			NOT = { has_country_flag = NAT_reducing_education_investment }
+		}
+		complete_effect = {
+			custom_effect_tooltip = NAT_education_dynamic_change_tt
+			add_to_variable = { NAT_education_consumer = 0.10 tooltip = consumer_goods_factor_tt }
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_education_dynamic_change_tt
+			add_to_variable = { NAT_education_stability = 0.05 tooltip = stability_factor_tt }
+			add_to_variable = { NAT_education_research = 0.05 tooltip = research_speed_factor_tt }
+			add_to_variable = { NAT_edu_pp_gain = 0.05 tooltip = political_power_gain_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 11 减少教育投资
+	NAT_daily_cut_education = {
+		icon = GFX_decision_NAT_general_construction
+		cost = 0
+		days_remove = 120
+		days_re_enable = 240
+		complete_effect = {
+			set_country_flag = NAT_reducing_education_investment
+			custom_effect_tooltip = NAT_education_dynamic_change_tt
+			add_to_variable = { NAT_education_research = -0.025 tooltip = research_speed_factor_tt }
+			add_to_variable = { NAT_education_stability = -0.025 tooltip = stability_factor_tt }
+		}
+		remove_effect = {
+			clr_country_flag = NAT_reducing_education_investment
+			custom_effect_tooltip = NAT_education_dynamic_change_tt
+			add_to_variable = { NAT_education_consumer = -0.10 tooltip = consumer_goods_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+	# 21 招募至冬教师
+	NAT_daily_zdg_teachers = {
+		icon = GFX_decision_NAT_foreign_aid
+		cost = 25
+		days_remove = 120
+		days_re_enable = 240
+		available = {
+			has_country_flag = NAT_capitano_arrived
+		}
+		modifier = {
+			national_socialism_drift = 0.1
+		}
+		remove_effect = {
+			custom_effect_tooltip = NAT_education_dynamic_change_tt
+			add_to_variable = { NAT_education_research = 0.05 tooltip = research_speed_factor_tt }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+

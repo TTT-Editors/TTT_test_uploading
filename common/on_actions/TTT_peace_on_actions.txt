@@ -1,5 +1,5 @@
 #I'm so sorry that I found no way in making it perfect.
-#If you have better ideas ,please improve it.
+#If you have better ideas, please improve it.
 #BUT IF YOU DON'T HAVE BETTER IDEAS, DON'T CHANGE COMMON CODES!!!!!!
 #ROOT = defeated country
 #FROM = victor
@@ -162,7 +162,8 @@ on_actions = {
 					}
 					XRG = {
 						set_country_flag = north_victor
-					}					#Unlock Decisions to create wargoal against KQG and NNG
+						#Unlock Decisions to create wargoal against KQG and NNG
+					}					
 				}
 				if = {
 					limit = {
@@ -514,6 +515,31 @@ on_actions = {
 				##################################################
 				recalculate_MDQ_core = yes
 			}
+			
+			#############################################################################################
+			#NAT vs NAB
+			#############################################################################################
+			#NAT Failed
+			if = {
+				limit = {
+					ROOT = { tag = NAT }
+					FROM = { tag = NAB }
+					has_global_flag = NAT_final_battle_started
+					NOT = { has_global_flag = NAT_final_battle_over }
+				}
+				set_global_flag = special_peace_not_annex
+				set_global_flag = NAT_final_battle_failed
+				set_global_flag = NAT_final_battle_over
+				NAB = {
+					white_peace = NAT
+					every_owned_state = {
+						NAT = {
+							transfer_state = PREV
+						}
+					}
+				}
+			}
+			
 			#default
 			if = {
 				limit = {
@@ -596,6 +622,7 @@ on_actions = {
 				}
 				clr_global_flag = special_peace_not_annex
 			}
+			
 			#开启谈判结语GUI
 			set_global_flag = TTT_warpeace_show_gui
 			FROM = {

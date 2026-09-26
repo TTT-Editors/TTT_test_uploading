@@ -317,27 +317,7 @@ ideas = {
 				esotericism_drift = -0.05
 			}
         }
-
-
-		##临时修正（搞完经济线工业线记得删）
-
-		##无计划的战斗
-        QQR_fight_without_plan_1 = {
-            allowed = {
-				original_tag = QQR
-				always = yes
-			}
-            removal_cost = -1
-			modifier = {
-				max_planning_factor = -0.2
-				planning_speed = -0.2
-				command_abilities_cost_factor = 0.5
-				army_attack_speed_factor = 0.05
-				land_reinforce_rate = 0.04
-			}
-        }
-
-		##原始的工业体系
+		##原始的工业体系_1
         QQR_factor_national_1 = {
             allowed = {
 				original_tag = QQR
@@ -348,66 +328,15 @@ ideas = {
 				construction_tech = -0.15
 			}
 			modifier = {
-				production_factory_max_efficiency_factor = -0.05
-				line_change_production_efficiency_factor = -0.1 
-				production_factory_efficiency_gain_factor = -0.1
-				industrial_capacity_factory = -0.2
-				research_basic_machine_tools_speed_factor = 0.15
-				production_lack_of_resource_penalty_factor = -0.6
+				production_factory_max_efficiency_factor = -0.15
+				line_change_production_efficiency_factor = -0.3 
+				production_factory_efficiency_gain_factor = -0.3
+				industrial_capacity_factory = -0.3
+				research_basic_machine_tools_speed_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.75
 			}
         }
-
-		
-
-		##智商低下的丘丘人
-        QQR_SB_qqr_1 = {
-            allowed = {
-				original_tag = QQR
-				always = yes
-			}
-            removal_cost = -1
-			modifier = {
-				research_speed_factor = -0.2
-				stability_factor = 0.15
-				war_support_factor = 0.15
-			}
-        }
-
-		##原始的经济情况
-        QQR_economy_national_1 = {
-            allowed = {
-				original_tag = QQR
-				always = yes
-			}
-            removal_cost = -1
-			modifier = {
-				global_building_slots_factor = -0.3
-				production_speed_buildings_factor = -0.3
-				local_resources_factor = -0.4
-			}
-        }
-
-		##原始的管理机构
-        QQR_control_national_1 = {
-            allowed = {
-				original_tag = QQR
-				always = yes
-			}
-            removal_cost = -1
-			modifier = {
-				political_power_gain = -0.2
-				consumer_goods_factor = -0.2
-				resistance_growth = 0.4
-				stability_factor = -0.3
-				mobilization_speed = -0.2
-				conscription_factor = -0.1
-				political_advisor_cost_factor = 0.3
-				high_command_cost_factor = 1
-			}
-        }
-		#二阶段
-
-		##原始的工业体系——基础的
+		##原始的工业体系_2
         QQR_factor_national_2 = {
             allowed = {
 				original_tag = QQR
@@ -418,46 +347,41 @@ ideas = {
 				construction_tech = -0.15
 			}
 			modifier = {
-				industrial_capacity_factory = -0.1
+				production_factory_max_efficiency_factor = -0.1
+				line_change_production_efficiency_factor = -0.2 
+				production_factory_efficiency_gain_factor = -0.3
+				industrial_capacity_factory = -0.15
 				research_basic_machine_tools_speed_factor = 0.1
-				production_lack_of_resource_penalty_factor = -0.3
+				production_lack_of_resource_penalty_factor = -0.5
 			}
         }
-
-
-		##原始的经济情况——模仿经济
-        QQR_economy_national_2 = {
+		##原始的生产体系_1
+		QQR_creat_national_1 = {
             allowed = {
 				original_tag = QQR
 				always = yes
 			}
             removal_cost = -1
-			modifier = {
-				global_building_slots_factor = -0.15
-				production_speed_buildings_factor = -0.1
-				local_resources_factor = -0.2
-				consumer_goods_factor = 0.2
+			equipment_bonus = {
+				support_equipment = { #支援装备
+					build_cost_ic = 0.2 #加成
+					instant = yes
+				}
+			}
+			equipment_bonus = {
+				artillery_equipment  = { #火炮
+					build_cost_ic = 0.5 #加成
+					instant = yes
+				}
+			}
+			equipment_bonus = {
+				mechanized_equipment  = { #机械化
+					build_cost_ic = 0.5 #加成
+					instant = yes
+				}
 			}
         }
-
-		##隔离管辖
-        QQR_control_national_2 = {
-            allowed = {
-				original_tag = QQR
-				always = yes
-			}
-            removal_cost = -1
-			modifier = {
-				political_power_gain = -0.3
-				consumer_goods_factor = -0.1
-				resistance_growth = 0.2
-				stability_factor = -0.2
-				mobilization_speed = -0.15
-				political_advisor_cost_factor = 0.3
-				high_command_cost_factor = 0.5
-			}
-        }
-		##全部丘丘人组成的军队——以丘丘人为主的两军政策
+		##全部丘丘人组成的军队_1
         QQR_the_army_full_of_QQR_1 = {
             allowed = {
 				original_tag = QQR
@@ -465,22 +389,90 @@ ideas = {
 			}
             removal_cost = -1
 			modifier = {
-				army_infantry_attack_factor = 0.2
-				army_infantry_defence_factor = 0.2
-				army_artillery_attack_factor = -0.2
-				army_artillery_defence_factor = -0.2
-				army_org_factor = -0.15
-				army_org_regain = -0.1
-				command_power_gain_mult = -0.4
-				experience_gain_army_factor = -0.2
-				breakthrough_factor = -0.15
-				max_dig_in_factor = -0.2
-				conscription_factor = -0.4
-				coordination_bonus = -0.2
-				land_doctrine_cost_factor = 0.5
-				land_reinforce_rate = 0.2
+				army_infantry_attack_factor = 0.25
+				army_infantry_defence_factor = 0.25
+				army_artillery_attack_factor = -0.4
+				army_artillery_defence_factor = -0.4
+				army_org_factor = -0.2
+				army_org_regain = -0.2
+				command_power_gain_mult = -0.8
+				experience_gain_army_factor = -0.5
+				army_attack_speed_factor = 0.1
+				army_speed_factor = -0.15
+				breakthrough_factor = -0.3
+				max_dig_in_factor = -0.6
+				conscription_factor = -0.6
+				supply_combat_penalties_on_core_factor = -0.3
+				coordination_bonus = -0.1
+				experience_gain_army_artillery_training_factor = -0.3
+				land_doctrine_cost_factor = 1
 			}
         }
+		#来自其他部落的朋友
+		QQR_man_from_other_village = {
+			allowed = {
+				original_tag = QQR
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.05
+				weekly_manpower = 500
+				stability_factor = -0.02
+			}
+		}
+		##全部丘丘人组成的军队_2
+        QQR_the_army_full_of_QQR_2 = {
+            allowed = {
+				original_tag = QQR
+				always = yes
+			}
+            removal_cost = -1
+			modifier = {
+				army_infantry_attack_factor = 0.25
+				army_infantry_defence_factor = 0.25
+				army_artillery_attack_factor = -0.4
+				army_artillery_defence_factor = -0.4
+				army_org_factor = -0.2
+				command_power_gain_mult = -0.5
+				experience_gain_army_factor = -0.5
+				army_speed_factor = -0.15
+				breakthrough_factor = -0.3
+				max_dig_in_factor = -0.6
+				conscription_factor = -0.6
+				supply_combat_penalties_on_core_factor = -0.3
+				coordination_bonus = -0.1
+				experience_gain_army_artillery_training_factor = -0.3
+				land_doctrine_cost_factor = 1
+			}
+        }
+		##全部丘丘人组成的军队_3
+        QQR_the_army_full_of_QQR_3 = {
+            allowed = {
+				original_tag = QQR
+				always = yes
+			}
+            removal_cost = -1
+			modifier = {
+				army_infantry_attack_factor = 0.25
+				army_infantry_defence_factor = 0.25
+				army_artillery_attack_factor = -0.4
+				army_artillery_defence_factor = -0.4
+				army_org_factor = -0.2
+				command_power_gain_mult = -0.5
+				experience_gain_army_factor = -0.2
+				army_speed_factor = -0.15
+				breakthrough_factor = -0.15
+				max_dig_in_factor = -0.4
+				conscription_factor = -0.6
+				supply_combat_penalties_on_core_factor = -0.3
+				coordination_bonus = -0.1
+				experience_gain_army_artillery_training_factor = -0.3
+				land_doctrine_cost_factor = 0.5
+			}
+        }
+		
+	}
 
-    }
+		
 }

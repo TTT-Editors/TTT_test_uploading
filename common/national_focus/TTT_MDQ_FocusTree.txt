@@ -1940,10 +1940,7 @@ focus_tree = {
 	country = {
 		factor = 0
 	}
-	allow_branch = {
-		has_completed_focus = MDQ_02_34
-		has_country_flag = MDQ_has_lost_ddup_war
-	} 
+	
 
 
 	focus = {
@@ -1954,10 +1951,7 @@ focus_tree = {
 		cost = 21
 		ai_will_do = {
 			factor = 1
-		}
-		available = {
-			has_completed_focus = MDQ_02_34
-		}
+		} 
 		completion_reward = {
 			add_stability = 0.05
 			add_political_power = 50
@@ -2005,7 +1999,7 @@ focus_tree = {
 			focus = MDQ_04_05
 		}
 		completion_reward = {
-			completion_reward = {
+			
 				MOT = {
 					add_opinion_modifier = {
 						target = ROOT  
@@ -2050,7 +2044,7 @@ focus_tree = {
 				}
 				country_event = { days = 1 id = MDQ_event.49 }
 				add_manpower = 1000
-			}
+			
 		}
 	}
 	focus = {
@@ -2106,9 +2100,34 @@ focus_tree = {
 			focus = MDQ_04_05
 		}
 		completion_reward = {
-			add_unit_leader = MDQ_jack
-			add_unit_leader = MDQ_Albin_Naumann
-			add_unit_leader = MDQ_Ulrich_Wagner
+			create_corps_commander = {
+				name = "MDQ_jack"
+				portrait_path = "gfx/leaders/XXX/XXX.jpg"
+				traits = { trait_cautious }
+				skill = 2
+				attack_skill = 2
+				defense_skill = 2
+				planning_skill = 1
+				logistics_skill = 1
+			}			create_corps_commander = {
+				name = "MDQ_Albin_Naumann"
+				portrait_path = "gfx/leaders/XXX/XXX.jpg"
+				
+				skill = 2
+				attack_skill = 2
+				defense_skill = 1
+				planning_skill = 2
+				logistics_skill = 1
+			}			create_corps_commander = {
+				name = "MDQ_Ulrich_Wagner"
+				portrait_path = "gfx/leaders/XXX/XXX.jpg"
+				
+				skill = 3
+				attack_skill = 3
+				defense_skill = 1
+				planning_skill = 2
+				logistics_skill = 1
+			}			
 			add_political_power = -35
 		}
 
@@ -2280,7 +2299,7 @@ focus_tree = {
 			focus = MDQ_04_01
 		}
 		completion_reward = {
-			state_36 = {
+			36 = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
@@ -2347,7 +2366,7 @@ focus_tree = {
 			focus = MDQ_04_01
 		}
 		completion_reward = {
-			state_36 = {
+			36 = {
 				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
@@ -2370,7 +2389,7 @@ focus_tree = {
 			focus = MDQ_04_17
 		}
 		completion_reward = {
-			state_36 = {
+			36 = {
 				add_building_construction = {
 					type = infrastructure 
 					level = 1
@@ -2392,8 +2411,21 @@ focus_tree = {
 			focus = MDQ_04_18
 		}
 		completion_reward = {
-			#
+			3350 = {
+				add_building_construction = {
+					type = supply_node
+				level = 1
+				instant_build = yes
+				province = 3350
+				}
+			}
+		build_railway = { #铺设铁路
+		path = { 
+			1417 3321 1879 
 		}
+	    #（铁路沿线地块代码）
+		}
+	}
 	}
 	focus = {
 		id = MDQ_04_20		#收复失地
@@ -2437,11 +2469,7 @@ focus_tree = {
 	id = TTT_MDQ_focustree_05
 	country = {
 		factor = 0
-	}
-	allow_branch = {
-		has_completed_focus = MDQ_02_33
-		has_country_flag = MDQ_has_lost_ddup_war
-	} 
+	}  
 
 
 	focus = {
@@ -2456,6 +2484,14 @@ focus_tree = {
 		available = {
 			has_completed_focus = MDQ_02_33
 		}
+		allow_branch = {
+			has_completed_focus = MDQ_02_33
+			
+		} 
+		allow_branch = {
+			
+			has_country_flag = MDQ_has_lost_ddup_war
+		}  
 		completion_reward = {
 			#
 		}

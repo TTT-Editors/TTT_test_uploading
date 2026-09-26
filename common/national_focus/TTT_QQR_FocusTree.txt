@@ -8,7 +8,7 @@ focus_tree = {
 		}
 	}
 	default = no
-    focus = {
+	focus = {
 		id = QQR01		#
 		icon = GFX_goal_QQR_01
 		x = 4
@@ -269,6 +269,26 @@ focus_tree = {
 			add_stability = 0.1
 			}
 	}
+}
+
+
+
+
+
+
+
+
+focus_tree = {
+	id = QQR_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = QQR
+		}
+	}
+	default = no
+    
 
 	focus = {
 		id = QQR001 #第五次达达乌帕谷战争的胜利
@@ -2090,6 +2110,386 @@ focus_tree = {
 			}
 			ai_will_do = {
 				base = 15
+			}
+	
+		}
+		focus = {
+			id = QQR_2_01 #调整发展重心
+			icon = GFX_QQR_2_01
+			x = 20
+			y = 1
+			cost = 28
+			ai_will_do = {
+				base = 10
+			}
+			completion_reward = {
+				add_political_power = 50
+			}
+	
+		}
+		focus = {
+			id = QQR_2_02 #搜集遗留工具
+			icon = GFX_QQR_2_02
+			x = 16
+			y = 2
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_01
+			}
+			completion_reward = {
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq_0
+					amount = 500
+					producer = MDQ
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 800
+					producer = MDQ
+				}
+			}
+	
+		}
+		focus = {
+			id = QQR_2_03 #从复原中学习
+			icon = GFX_QQR_2_03
+			x = 16
+			y = 3
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_02
+			}
+			completion_reward = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 200
+					producer = MDQ
+				}
+				add_equipment_to_stockpile = {
+					type = ttt_uniform_eq_0
+					amount = 100
+					producer = MDQ
+				}
+				swap_ideas = {
+					remove_idea = QQR_factor_national
+					add_idea = QQR_factor_national_1			
+				}
+			}
+	
+		}
+		focus = {
+			id = QQR_2_04 #清理空地
+			icon = GFX_QQR_2_04
+			x = 18
+			y = 3
+			cost = 21
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_02
+			}
+			completion_reward = {
+				35 = {
+					add_extra_state_shared_building_slots = 2
+				}
+				36 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+	
+		}
+		focus = {
+			id = QQR_2_05 #重建工厂
+			icon = GFX_QQR_2_05
+			x = 16
+			y = 4
+			cost = 21
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_03
+			}
+			prerequisite = {
+				focus = QQR_2_04
+			}
+			completion_reward = {
+				swap_ideas = {
+					remove_idea = QQR_factor_national_1
+					add_idea = QQR_factor_national_2			
+				}
+				swap_ideas = {
+					remove_idea = QQR_creat_national
+					add_idea = QQR_creat_national_1			
+				}
+			}
+	
+		}
+		focus = {
+			id = QQR_2_06 #整合队伍
+			icon = GFX_QQR_2_06
+			x = 20
+			y = 2
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_01
+			}
+			completion_reward = {
+				add_stability = 0.05
+				add_manpower = 2000	
+				swap_ideas = {
+					remove_idea = QQR_the_army_full_of_QQR
+					add_idea = QQR_the_army_full_of_QQR_1	
+					
+				}
+				country_lock_all_division_template = no
+	
+			}
+	
+		}
+		focus = {
+			id = QQR_2_07 #联系其他部落
+			icon = GFX_QQR_2_07
+			x = 22
+			y = 2
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_01
+			}
+			completion_reward = {
+				add_manpower = 1000
+				swap_ideas = {
+					add_idea = QQR_man_from_other_village		
+				}
+			}
+	
+		}
+		focus = {
+			id = QQR_2_08 #强调纪律
+			icon = GFX_QQR_2_08
+			x = 20
+			y = 3
+			cost = 21
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_06
+			}
+			completion_reward = {
+				add_stability = 0.05
+				add_political_power = 40
+				add_war_support = 0.05
+			}
+	
+		}
+		focus = {
+			id = QQR_2_09 #统一训练
+			icon = GFX_QQR_2_099
+			x = 20
+			y = 4
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_08
+			}
+			completion_reward = {
+				army_experience = 30
+			}
+	
+		}
+		focus = {
+			id = QQR_2_10 #指挥链建设
+			icon = GFX_QQR_2_10
+			x = 22
+			y = 3
+			cost = 21
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_06
+			}
+			completion_reward = {
+				swap_ideas = {
+					remove_idea = QQR_the_army_full_of_QQR_1
+					add_idea = QQR_the_army_full_of_QQR_2					
+				}
+			}
+	
+		}
+		focus = {
+			id = QQR_2_11 #战术研究
+			icon = GFX_QQR_2_11
+			x = 22
+			y = 4
+			cost = 21
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_10
+			}
+			completion_reward = {
+				swap_ideas = {
+					remove_idea = QQR_the_army_full_of_QQR_2
+					add_idea = QQR_the_army_full_of_QQR_3					
+				}
+				army_experience = 20
+			}
+	
+		}
+		focus = {
+			id = QQR_2_12 #所谓军队
+			icon = GFX_QQR_2_12
+			x = 20
+			y = 5
+			cost = 21
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_11
+				
+			}
+			prerequisite = {
+				
+				focus = QQR_2_09
+			}
+			
+			completion_reward = {
+				army_experience = 10
+				add_war_support = 0.05
+				add_political_power = 25
+			}
+	
+		}
+		focus = {
+			id = QQR_2_13 #开辟道路
+			icon = GFX_QQR_2_13
+			x = 24
+			y = 2
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_01
+			}
+			completion_reward = {
+				38 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes 立刻完成 no反之
+					}
+				}
+				40 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes 立刻完成 no反之
+					}
+				}
+			}
+	
+		}
+		focus = {
+			id = QQR_2_14 #重视后勤
+			icon = GFX_QQR_2_14
+			x = 24
+			y = 3
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_13
+			}
+			completion_reward = {
+				build_railway = {
+					path = { 
+						3442 1569 3494 2549 3434 3413 5571 3386 
+					}
+				}
+				3442 = {
+					add_building_construction = {
+						type = supply_node
+						level = 1
+						instant_build = yes
+						province = 3442
+					}
+				}
+			}
+		}
+		focus = {
+			id = QQR_2_15 #部落建设
+			icon = GFX_QQR_2_15
+			x = 26
+			y = 3
+			cost = 21
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_13
+			}
+			completion_reward = {
+			}
+	
+		}
+		focus = {
+			id = QQR_2_16 #矿产探索
+			icon = GFX_QQR_2_16
+			x = 28
+			y = 3
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_13
+			}
+			completion_reward = {
+			}
+	
+		}
+		focus = {
+			id = QQR_2_17 #向人类学习
+			icon = GFX_QQR_2_17
+			x = 24
+			y = 4
+			cost = 14
+			ai_will_do = {
+				base = 10
+			}
+			prerequisite = {
+				focus = QQR_2_16
+			}
+			prerequisite = {
+				focus = QQR_2_15
+			}
+			prerequisite = {
+				focus = QQR_2_14
+			}
+			completion_reward = {
 			}
 	
 		}
